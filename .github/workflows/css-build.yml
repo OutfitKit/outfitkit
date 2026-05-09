@@ -30,11 +30,11 @@ jobs:
       - name: Build bundle (resolves @imports)
         run: |
           mkdir -p dist
-          npx lightningcss-cli --bundle css/outfitkit.css -o dist/outfitkit.css
+          cd css && ../node_modules/.bin/lightningcss --bundle outfitkit.css -o ../dist/outfitkit.css
 
       - name: Build minified bundle
         run: |
-          npx lightningcss-cli --bundle --minify css/outfitkit.css -o dist/outfitkit.min.css
+          cd css && ../node_modules/.bin/lightningcss --bundle --minify outfitkit.css -o ../dist/outfitkit.min.css
 
       - name: Verify outputs
         run: |
