@@ -1,0 +1,109 @@
+# OutfitKit
+
+Librería CSS de componentes para aplicaciones web. ~260 bloques semánticos con prefijo `ok-*`, BEM-light, themeable vía CSS custom properties.
+
+Cero JS obligatorio. Cero build pipeline para consumidores. Un solo `<link>` y listo.
+
+## Uso (consumidor solo CSS)
+
+### Producción — bundle minificado
+
+```html
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.min.css">
+
+<button class="ok-btn ok-btn--primary">Continuar</button>
+```
+
+### Desarrollo — fuente sin minificar
+
+Útil para inspeccionar reglas en DevTools sin pasar por la minificación:
+
+```html
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/outfitkit.css">
+```
+
+`outfitkit.css` es un archivo de `@import` que carga `tokens.css`, `base.css`, `utilities.css` y los 44 archivos de `components/`. Los navegadores modernos resuelven los `@import` sin problema.
+
+## Macros Jinja (opcional)
+
+Si tu backend es Python con Jinja2 (FastAPI, Flask, Django+jinja2 backend), puedes consumir los componentes como macros:
+
+```bash
+pip install outfitkit             # macros vanilla
+pip install outfitkit[jinjax]     # + sintaxis HTML-like <Button label="x" />
+```
+
+Las macros viven en [`showcase/`](./showcase/) y se publican desde ahí a PyPI. Cualquier macro funciona con o sin JinjaX (formato dual-mode).
+
+## Sitio de demos
+
+Componentes en vivo con código fuente al lado, navegable:
+**https://outfitkit.github.io/outfitkit/**
+
+## Estructura del repositorio
+
+```
+outfitkit/
+├── css/                ← fuentes CSS sin minificar (lo que editas)
+│   ├── tokens.css      ← variables --ok-* (paleta, spacing, themes)
+│   ├── base.css        ← reset + tipografía
+│   ├── utilities.css   ← .ok-flex, .ok-gap-*, .ok-text-*
+│   ├── outfitkit.css   ← entry point con @import de todo
+│   └── components/     ← 44 archivos, uno por familia (button, card, modal, ...)
+├── dist/               ← bundle generado SOLO en CI al taggear (no editar a mano)
+│   ├── outfitkit.css       (concatenado)
+│   └── outfitkit.min.css   (minificado con lightningcss)
+└── showcase/           ← macros Jinja + sitio de demos + paquete PyPI
+```
+
+## Contribuir
+
+### Editar CSS
+
+Edita los archivos en `css/`. Para previsualizar tus cambios:
+
+```html
+<link rel="stylesheet" href="./css/outfitkit.css">
+```
+
+cargado desde un servidor local cualquiera (`python3 -m http.server 8000`). No hay build local. Cuando estés contento, push y abre PR.
+
+### Releases
+
+El bundle minificado lo genera la Action `css-build.yml` al taggear:
+
+```bash
+git tag v3.0.0
+git push origin v3.0.0
+```
+
+La Action concatena `css/*.css`, minifica con `lightningcss-cli` y commitea `dist/outfitkit.{css,min.css}` al tag. jsDelivr sirve `@v3.0.0/dist/outfitkit.min.css` y `@latest` automáticamente.
+
+## Convenciones
+
+### Naming (BEM-light)
+
+```
+.ok-{block}              base               .ok-card
+.ok-{block}__{element}   child element      .ok-card__header
+.ok-{block}--{modifier}  variant            .ok-btn--primary
+.is-{state}              runtime state      .is-active, .is-open
+```
+
+### Theming
+
+Themes se aplican vía atributo `data-theme` en `<html>` o cualquier subárbol:
+
+```html
+<html data-theme="erplora">  <!-- default, dark terracota -->
+<html data-theme="dark">
+<html data-theme="light">
+```
+
+Cualquier variable `--ok-*` puede sobreescribirse para crear tu propio theme.
+
+## Licencia
+
+MIT.

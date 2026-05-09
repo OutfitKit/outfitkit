@@ -1,0 +1,57 @@
+{% extends "_layout.jinja" %}
+
+{% block title %}OutfitKit · Showcase{% endblock %}
+
+{% block content %}
+<h1>OutfitKit</h1>
+<p class="showcase__lead">
+  Librería CSS de componentes con prefijo <code>ok-*</code>, opcional
+  paquete Jinja para FastAPI/Django, y showcase desplegado en GitHub Pages.
+</p>
+
+<div class="showcase-grid">
+  <a href="/components/button.html" class="ok-card ok-card--interactive">
+    <div class="ok-card__body">
+      <h3 class="ok-card__title">Button</h3>
+      <p>Variantes, tamaños, estados.</p>
+    </div>
+  </a>
+  <a href="/components/badge.html" class="ok-card ok-card--interactive">
+    <div class="ok-card__body">
+      <h3 class="ok-card__title">Badge</h3>
+      <p>Etiquetas semánticas con dot opcional.</p>
+    </div>
+  </a>
+  <a href="/components/card.html" class="ok-card ok-card--interactive">
+    <div class="ok-card__body">
+      <h3 class="ok-card__title">Card</h3>
+      <p>Superficies con slot interno.</p>
+    </div>
+  </a>
+  <a href="/components/modal.html" class="ok-card ok-card--interactive">
+    <div class="ok-card__body">
+      <h3 class="ok-card__title">Modal</h3>
+      <p>Diálogo modal con icono, header, body.</p>
+    </div>
+  </a>
+  <a href="/components/drawer.html" class="ok-card ok-card--interactive">
+    <div class="ok-card__body">
+      <h3 class="ok-card__title">Drawer</h3>
+      <p>Panel lateral right/left/bottom.</p>
+    </div>
+  </a>
+</div>
+
+<style>
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.showcase-grid .ok-card {
+  text-decoration: none;
+  color: inherit;
+}
+</style>
+{% endblock %}

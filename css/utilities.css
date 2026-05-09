@@ -1,0 +1,257 @@
+/* ============================================================
+   OutfitKit · Utilities (subset puntual)
+   Utilidades discretas — flex, gap, padding/margin, color de texto.
+   No es un Tailwind completo; solo lo que usan los componentes
+   y plantillas comunes.
+   ============================================================ */
+
+/* Flex / Grid */
+.ok-flex { display: flex; }
+.ok-inline-flex { display: inline-flex; }
+.ok-grid { display: grid; }
+.ok-block { display: block; }
+.ok-hidden { display: none; }
+
+.ok-row { flex-direction: row; }
+.ok-col { flex-direction: column; }
+.ok-wrap { flex-wrap: wrap; }
+.ok-nowrap { flex-wrap: nowrap; }
+
+.ok-items-start { align-items: flex-start; }
+.ok-items-center { align-items: center; }
+.ok-items-end { align-items: flex-end; }
+.ok-items-baseline { align-items: baseline; }
+
+.ok-justify-start { justify-content: flex-start; }
+.ok-justify-center { justify-content: center; }
+.ok-justify-end { justify-content: flex-end; }
+.ok-justify-between { justify-content: space-between; }
+
+.ok-justify-items-start { justify-items: start; }
+.ok-justify-items-center { justify-items: center; }
+.ok-justify-items-end { justify-items: end; }
+.ok-place-items-center { place-items: center; }
+.ok-place-items-start { place-items: start; }
+
+.ok-self-start { align-self: flex-start; }
+.ok-self-center { align-self: center; }
+.ok-self-end { align-self: flex-end; }
+.ok-self-stretch { align-self: stretch; }
+
+.ok-flex-1 { flex: 1 1 0; min-width: 0; }
+.ok-shrink-0 { flex-shrink: 0; }
+
+/* Gap */
+.ok-gap-0 { gap: 0; }
+.ok-gap-1 { gap: var(--ok-space-1); }
+.ok-gap-2 { gap: var(--ok-space-2); }
+.ok-gap-3 { gap: var(--ok-space-3); }
+.ok-gap-4 { gap: var(--ok-space-4); }
+.ok-gap-5 { gap: var(--ok-space-5); }
+.ok-gap-6 { gap: var(--ok-space-6); }
+.ok-gap-7 { gap: var(--ok-space-7); }
+
+/* Margin */
+.ok-m-0 { margin: 0; }
+.ok-m-1 { margin: var(--ok-space-1); }
+.ok-m-2 { margin: var(--ok-space-2); }
+.ok-m-3 { margin: var(--ok-space-3); }
+.ok-m-4 { margin: var(--ok-space-4); }
+.ok-m-5 { margin: var(--ok-space-5); }
+.ok-m-6 { margin: var(--ok-space-6); }
+.ok-m-auto { margin: auto; }
+
+.ok-mt-0 { margin-top: 0; }
+.ok-mt-1 { margin-top: var(--ok-space-1); }
+.ok-mt-2 { margin-top: var(--ok-space-2); }
+.ok-mt-3 { margin-top: var(--ok-space-3); }
+.ok-mt-4 { margin-top: var(--ok-space-4); }
+.ok-mt-5 { margin-top: var(--ok-space-5); }
+.ok-mt-6 { margin-top: var(--ok-space-6); }
+.ok-mt-7 { margin-top: var(--ok-space-7); }
+
+.ok-mb-0 { margin-bottom: 0; }
+.ok-mb-1 { margin-bottom: var(--ok-space-1); }
+.ok-mb-2 { margin-bottom: var(--ok-space-2); }
+.ok-mb-3 { margin-bottom: var(--ok-space-3); }
+.ok-mb-4 { margin-bottom: var(--ok-space-4); }
+.ok-mb-5 { margin-bottom: var(--ok-space-5); }
+.ok-mb-6 { margin-bottom: var(--ok-space-6); }
+.ok-mb-7 { margin-bottom: var(--ok-space-7); }
+
+.ok-ml-0 { margin-left: 0; }
+.ok-ml-auto { margin-left: auto; }
+.ok-mr-0 { margin-right: 0; }
+.ok-mr-auto { margin-right: auto; }
+
+.ok-mx-0 { margin-left: 0; margin-right: 0; }
+.ok-mx-2 { margin-left: var(--ok-space-2); margin-right: var(--ok-space-2); }
+.ok-mx-3 { margin-left: var(--ok-space-3); margin-right: var(--ok-space-3); }
+.ok-mx-auto { margin-left: auto; margin-right: auto; }
+
+.ok-my-0 { margin-top: 0; margin-bottom: 0; }
+.ok-my-2 { margin-top: var(--ok-space-2); margin-bottom: var(--ok-space-2); }
+.ok-my-3 { margin-top: var(--ok-space-3); margin-bottom: var(--ok-space-3); }
+.ok-my-4 { margin-top: var(--ok-space-4); margin-bottom: var(--ok-space-4); }
+
+/* Padding */
+.ok-p-0 { padding: 0; }
+.ok-p-1 { padding: var(--ok-space-1); }
+.ok-p-2 { padding: var(--ok-space-2); }
+.ok-p-3 { padding: var(--ok-space-3); }
+.ok-p-4 { padding: var(--ok-space-4); }
+.ok-p-5 { padding: var(--ok-space-5); }
+.ok-p-6 { padding: var(--ok-space-6); }
+
+.ok-px-0 { padding-left: 0; padding-right: 0; }
+.ok-px-2 { padding-left: var(--ok-space-2); padding-right: var(--ok-space-2); }
+.ok-px-3 { padding-left: var(--ok-space-3); padding-right: var(--ok-space-3); }
+.ok-px-4 { padding-left: var(--ok-space-4); padding-right: var(--ok-space-4); }
+
+.ok-py-0 { padding-top: 0; padding-bottom: 0; }
+.ok-py-2 { padding-top: var(--ok-space-2); padding-bottom: var(--ok-space-2); }
+.ok-py-3 { padding-top: var(--ok-space-3); padding-bottom: var(--ok-space-3); }
+
+/* Sizing */
+.ok-w-full { width: 100%; }
+.ok-w-auto { width: auto; }
+.ok-w-fit  { width: fit-content; }
+.ok-h-full { height: 100%; }
+.ok-h-auto { height: auto; }
+.ok-min-w-0 { min-width: 0; }
+.ok-min-h-screen { min-height: 100vh; }
+
+/* Whitespace */
+.ok-whitespace-nowrap { white-space: nowrap; }
+.ok-whitespace-normal { white-space: normal; }
+.ok-whitespace-pre    { white-space: pre; }
+
+/* Overflow */
+.ok-overflow-hidden { overflow: hidden; }
+.ok-overflow-auto   { overflow: auto; }
+.ok-overflow-x-auto { overflow-x: auto; }
+.ok-overflow-y-auto { overflow-y: auto; }
+
+/* Text */
+.ok-text-2xs { font-size: var(--ok-text-2xs); }
+.ok-text-xs { font-size: var(--ok-text-xs); }
+.ok-text-sm { font-size: var(--ok-text-sm); }
+.ok-text-md { font-size: var(--ok-text-md); }
+.ok-text-base { font-size: var(--ok-text-base); }
+.ok-text-lg { font-size: var(--ok-text-lg); }
+.ok-text-xl { font-size: var(--ok-text-xl); }
+.ok-text-2xl { font-size: var(--ok-text-2xl); }
+
+/* Font family */
+.ok-font-sans    { font-family: var(--ok-font-sans); }
+.ok-font-display { font-family: var(--ok-font-display); }
+.ok-font-mono    { font-family: var(--ok-font-mono); }
+.ok-tabular      { font-variant-numeric: tabular-nums; }
+
+/* Overline label (uppercase + tracking) — pattern usado en cabeceras de demos */
+.ok-overline {
+  font-family: var(--ok-font-display);
+  font-size: var(--ok-text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ok-ink-3);
+}
+.ok-text-2xl { font-size: var(--ok-text-2xl); }
+
+.ok-font-medium { font-weight: 500; }
+.ok-font-semibold { font-weight: 600; }
+.ok-font-bold { font-weight: 700; }
+
+.ok-text-left { text-align: left; }
+.ok-text-center { text-align: center; }
+.ok-text-right { text-align: right; }
+
+.ok-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ok-no-decoration { text-decoration: none; }
+.ok-underline { text-decoration: underline; }
+.ok-line-through { text-decoration: line-through; }
+.ok-leading-tight  { line-height: 1.25; }
+.ok-leading-normal { line-height: 1.5; }
+.ok-leading-loose  { line-height: 1.7; }
+
+/* Opacity */
+.ok-opacity-0   { opacity: 0; }
+.ok-opacity-30  { opacity: 0.3; }
+.ok-opacity-50  { opacity: 0.5; }
+.ok-opacity-70  { opacity: 0.7; }
+.ok-opacity-100 { opacity: 1; }
+
+/* Responsive show/hide — breakpoint at 768px */
+.ok-show-mobile { display: initial; }
+.ok-show-desktop { display: none; }
+@media (min-width: 768px) {
+  .ok-show-mobile { display: none !important; }
+  .ok-show-desktop { display: initial; }
+}
+
+/* Color (solo los más usados — el resto se aplica con variables CSS) */
+.ok-c-ink { color: var(--ok-ink); }
+.ok-c-ink-2 { color: var(--ok-ink-2); }
+.ok-c-ink-3 { color: var(--ok-ink-3); }
+.ok-c-ink-4 { color: var(--ok-ink-4); }
+.ok-c-brand { color: var(--ok-brand); }
+.ok-c-brand-2 { color: var(--ok-brand-2); }
+.ok-c-brand-3 { color: var(--ok-brand-3); }
+.ok-c-leaf { color: var(--ok-leaf); }
+.ok-c-warn { color: var(--ok-warn); }
+.ok-c-danger { color: var(--ok-danger); }
+.ok-c-info { color: var(--ok-info); }
+
+/* Cursor */
+.ok-cursor-pointer { cursor: pointer; }
+.ok-cursor-default { cursor: default; }
+.ok-cursor-not-allowed { cursor: not-allowed; }
+
+/* Position */
+.ok-relative { position: relative; }
+.ok-absolute { position: absolute; }
+.ok-sticky { position: sticky; }
+.ok-fixed { position: fixed; }
+.ok-inset-0 { inset: 0; }
+
+/* Borders & radius */
+.ok-border { border: 1px solid var(--ok-line); }
+.ok-border-t { border-top: 1px solid var(--ok-line); }
+.ok-border-b { border-bottom: 1px solid var(--ok-line); }
+.ok-rounded-sm { border-radius: var(--ok-radius-sm); }
+.ok-rounded-md { border-radius: var(--ok-radius-md); }
+.ok-rounded-lg { border-radius: var(--ok-radius-lg); }
+.ok-rounded-pill { border-radius: var(--ok-radius-pill); }
+
+/* Visibility helpers per breakpoint */
+@media (max-width: 767px)  { .ok-hide-sm { display: none !important; } }
+@media (min-width: 768px) and (max-width: 1199px) { .ok-hide-md { display: none !important; } }
+@media (min-width: 1200px) { .ok-hide-lg { display: none !important; } }
+
+/* ===== Glass / blur effect — apply to any surface ============================
+   Use:  <div class="ok-card ok-glass">…</div>
+         <header class="ok-topbar ok-glass--strong">…</header>
+
+   Falls back to a translucent background if backdrop-filter isn't supported.
+   The opacity is kept high enough that text contrast stays readable in dark.
+============================================================================= */
+.ok-glass {
+  background: color-mix(in oklch, var(--ok-bg-2) 65%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid color-mix(in oklch, var(--ok-line-2) 75%, transparent);
+}
+.ok-glass--strong {
+  background: color-mix(in oklch, var(--ok-bg-1) 70%, transparent);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid color-mix(in oklch, var(--ok-line-2) 80%, transparent);
+}
+.ok-glass--soft {
+  background: color-mix(in oklch, var(--ok-bg-2) 50%, transparent);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .ok-glass, .ok-glass--strong, .ok-glass--soft { background: var(--ok-bg-2); }
+}

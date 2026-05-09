@@ -1,0 +1,77 @@
+/* ============================================================
+   OutfitKit · Badge / Pill / Chip
+   ============================================================ */
+
+.ok-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 20px;
+  padding: 0 8px;
+  font-size: var(--ok-text-2xs);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  color: var(--ok-ink-2);
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.ok-badge__dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--ok-ink-3);
+}
+
+/* Tonal variants */
+.ok-badge--brand   { background: var(--ok-brand-soft);  color: var(--ok-brand-3);  border-color: transparent; }
+.ok-badge--brand   .ok-badge__dot { background: var(--ok-brand); }
+.ok-badge--ok      { background: var(--ok-leaf-soft);   color: var(--ok-leaf);     border-color: transparent; }
+.ok-badge--ok      .ok-badge__dot { background: var(--ok-leaf); }
+.ok-badge--warn    { background: var(--ok-warn-soft);   color: var(--ok-warn);     border-color: transparent; }
+.ok-badge--warn    .ok-badge__dot { background: var(--ok-warn); }
+.ok-badge--danger  { background: var(--ok-danger-soft); color: var(--ok-danger);   border-color: transparent; }
+.ok-badge--danger  .ok-badge__dot { background: var(--ok-danger); }
+.ok-badge--info    { background: var(--ok-info-soft);   color: var(--ok-info);     border-color: transparent; }
+.ok-badge--info    .ok-badge__dot { background: var(--ok-info); }
+
+/* Solid variant (filled) */
+.ok-badge--solid       { background: var(--ok-bg-4); color: var(--ok-ink); border-color: transparent; }
+.ok-badge--solid-brand { background: var(--ok-brand); color: var(--ok-brand-fg); }
+
+/* Size */
+.ok-badge--sm { height: 17px; padding: 0 6px; font-size: 10px; }
+
+/* ============================================================
+   Chip — input-like, removable
+   ============================================================ */
+
+.ok-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line-2);
+  border-radius: 999px;
+  font-size: var(--ok-text-sm);
+  color: var(--ok-ink-2);
+  cursor: pointer;
+  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+}
+.ok-chip:hover { background: var(--ok-bg-4); color: var(--ok-ink); }
+.ok-chip[aria-pressed="true"],
+.ok-chip[data-active="true"] {
+  background: var(--ok-brand-soft);
+  border-color: transparent;
+  color: var(--ok-brand-3);
+}
+.ok-chip__remove {
+  width: 14px; height: 14px;
+  display: inline-grid; place-items: center;
+  border-radius: 50%;
+  color: var(--ok-ink-3);
+}
+.ok-chip__remove:hover { background: var(--ok-line-2); color: var(--ok-ink); }

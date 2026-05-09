@@ -1,0 +1,155 @@
+/* ============================================================
+   OutfitKit · Preview utilities
+   ------------------------------------------------------------
+   Clases reutilizables para los previews de la librería y
+   plantillas de demostración. Todos los valores usan tokens
+   --ok-* — no hay datos hardcodeados.
+
+   Componentes:
+     .ok-stage          — wrapper centrador full-viewport
+     .ok-block          — bloque genérico para placeholders
+     .ok-conv-row       — fila de conversación (avatar + nombre)
+   ============================================================ */
+
+/* ---------- Demo section ----------
+   Wrapper de sección dentro de un preview. Cada showcase está
+   compuesto por uno o varios `.ok-demo` con su `.ok-demo__hd`
+   indicando qué variante se muestra. */
+.ok-demo {
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-xl);
+  padding: var(--ok-space-5);
+}
+.ok-demo--ghost   { background: transparent; border-color: var(--ok-line); }
+.ok-demo--flush   { padding: 0; overflow: hidden; }
+.ok-demo--center  { display: grid; place-items: center; }
+
+.ok-demo__hd {
+  font-family: var(--ok-font-display);
+  font-size: var(--ok-text-2xs);
+  color: var(--ok-ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 var(--ok-space-3);
+}
+.ok-demo__hd--right { text-align: right; }
+.ok-demo__hd code {
+  font-family: var(--ok-font-mono);
+  font-size: var(--ok-text-xs);
+  color: var(--ok-ink-2);
+  background: var(--ok-bg-3);
+  padding: 0 var(--ok-space-1);
+  border-radius: var(--ok-radius-xs);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.ok-demo__bd {
+  padding: var(--ok-space-4);
+}
+.ok-demo__bd--sm { padding: var(--ok-space-3); }
+.ok-demo__bd--lg { padding: var(--ok-space-5); }
+
+/* ---------- Stage ----------
+   Centra un componente (modal, card, etc.) dentro de un viewport
+   de alto completo. Usado en previews de marketplace, modales y
+   pantallas que necesitan ver el componente "in situ". */
+.ok-stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--ok-space-5);
+  background: var(--ok-bg);
+}
+.ok-stage--top    { align-items: flex-start; }
+.ok-stage--bottom { align-items: flex-end; }
+.ok-stage--start  { justify-content: flex-start; }
+.ok-stage--end    { justify-content: flex-end; }
+.ok-stage--flush  { padding: 0; }
+
+/* ---------- Block ----------
+   Bloque rectangular para placeholders/contenido de demo.
+   No es una surface (eso es ok-card / ok-panel) — es un
+   contenedor minimalista para estructurar columnas, cuadrículas
+   y ejemplos visuales. */
+.ok-block {
+  --_blk-bg: var(--ok-bg-3);
+  --_blk-line: var(--ok-line);
+  --_blk-ink: var(--ok-ink-2);
+  --_blk-pad: var(--ok-space-3);
+  --_blk-text: var(--ok-text-md);
+
+  background: var(--_blk-bg);
+  border: 1px solid var(--_blk-line);
+  border-radius: var(--ok-radius-md);
+  padding: var(--_blk-pad);
+  color: var(--_blk-ink);
+  font-size: var(--_blk-text);
+}
+.ok-block--ghost   { --_blk-bg: transparent; }
+.ok-block--soft    { --_blk-bg: color-mix(in oklch, var(--ok-brand) 8%, transparent); --_blk-line: color-mix(in oklch, var(--ok-brand) 22%, transparent); }
+.ok-block--sm      { --_blk-pad: var(--ok-space-2); --_blk-text: var(--ok-text-sm); }
+.ok-block--lg      { --_blk-pad: var(--ok-space-4); }
+.ok-block--center  { text-align: center; }
+.ok-block--accent  { --_blk-line: var(--ok-brand); }
+
+/* ---------- Conv row ----------
+   Fila tipo lista de conversación: avatar circular + nombre con
+   ellipsis. Reutilizable en chats, listas de contactos, etc. */
+.ok-conv-row {
+  --_cr-pad-x: var(--ok-space-3);
+  --_cr-pad-y: var(--ok-space-2);
+  --_cr-gap: var(--ok-space-3);
+  --_cr-bg: transparent;
+  --_cr-bg-hover: var(--ok-bg-3);
+  --_cr-bg-selected: color-mix(in oklch, var(--ok-brand) 18%, transparent);
+  --_cr-ink: var(--ok-ink-2);
+  --_cr-ink-selected: var(--ok-ink);
+
+  display: flex;
+  align-items: center;
+  gap: var(--_cr-gap);
+  padding: var(--_cr-pad-y) var(--_cr-pad-x);
+  border-radius: var(--ok-radius-md);
+  cursor: pointer;
+  color: var(--_cr-ink);
+  font-size: var(--ok-text-md);
+  background: var(--_cr-bg);
+  transition: background 120ms ease;
+}
+.ok-conv-row:hover { background: var(--_cr-bg-hover); }
+.ok-conv-row.is-selected,
+.ok-conv-row[aria-selected="true"] {
+  background: var(--_cr-bg-selected);
+  color: var(--_cr-ink-selected);
+}
+
+.ok-conv-row__avatar {
+  width: var(--ok-space-7);
+  height: var(--ok-space-7);
+  border-radius: var(--ok-radius-pill);
+  background: linear-gradient(135deg, var(--ok-brand), var(--ok-brand-2));
+  color: var(--ok-brand-fg, #fff);
+  display: grid;
+  place-items: center;
+  font-family: var(--ok-font-display);
+  font-weight: 600;
+  font-size: var(--ok-text-sm);
+  flex-shrink: 0;
+}
+
+.ok-conv-row__name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ok-conv-row__meta {
+  font-size: var(--ok-text-xs);
+  color: var(--ok-ink-3);
+  flex-shrink: 0;
+}

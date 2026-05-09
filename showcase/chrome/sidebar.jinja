@@ -1,0 +1,73 @@
+{#def current="" #}
+
+{% macro sidebar(current="") -%}
+{% set sections = [
+  ("Inicio", [("/", "Overview")]),
+  ("Atómicos", [
+    ("/components/button.html", "Button"),
+    ("/components/badge.html", "Badge"),
+  ]),
+  ("Superficies", [
+    ("/components/card.html", "Card"),
+  ]),
+  ("Overlays", [
+    ("/components/modal.html", "Modal"),
+    ("/components/drawer.html", "Drawer"),
+  ]),
+] %}
+<nav class="showcase-nav">
+  <div class="showcase-nav__brand">OutfitKit</div>
+  {% for section_name, items in sections %}
+    <div class="showcase-nav__section">
+      <h4 class="showcase-nav__section-title">{{ section_name }}</h4>
+      <ul class="showcase-nav__list">
+      {% for href, label in items %}
+        <li>
+          <a href="{{ href }}"
+             class="showcase-nav__link {% if current.endswith(href.lstrip('/')) %}is-active{% endif %}">
+            {{ label }}
+          </a>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</nav>
+<style>
+.showcase-nav__brand {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 24px;
+  color: var(--ok-brand);
+}
+.showcase-nav__section { margin-bottom: 20px; }
+.showcase-nav__section-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ok-ink-3);
+  margin: 0 0 8px;
+}
+.showcase-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.showcase-nav__link {
+  display: block;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: var(--ok-ink-2);
+  text-decoration: none;
+  font-size: 14px;
+}
+.showcase-nav__link:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
+.showcase-nav__link.is-active {
+  background: var(--ok-bg-3);
+  color: var(--ok-ink);
+  font-weight: 500;
+}
+</style>
+{%- endmacro %}
+
+{% if current is defined %}{{ sidebar(current) }}{% endif %}

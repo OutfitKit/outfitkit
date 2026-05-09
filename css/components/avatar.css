@@ -1,0 +1,91 @@
+/* ============================================================
+   OutfitKit · Avatar
+   ============================================================ */
+
+.ok-avatar {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--ok-bg-4);
+  color: var(--ok-ink-2);
+  font-size: var(--ok-text-xs);
+  font-weight: 600;
+  font-family: var(--ok-font-display);
+  letter-spacing: -0.02em;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--ok-line);
+}
+.ok-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.ok-avatar--xs { width: 20px; height: 20px; font-size: 9px; }
+.ok-avatar--sm { width: 24px; height: 24px; font-size: 10px; }
+.ok-avatar--lg { width: 36px; height: 36px; font-size: var(--ok-text-sm); }
+.ok-avatar--xl { width: 48px; height: 48px; font-size: var(--ok-text-base); }
+
+.ok-avatar--brand { background: var(--ok-brand); color: var(--ok-brand-fg); border-color: transparent; }
+
+/* Avatar stack */
+.ok-avatar-stack {
+  display: inline-flex;
+}
+.ok-avatar-stack > .ok-avatar:not(:first-child) {
+  margin-left: -8px;
+  box-shadow: 0 0 0 2px var(--ok-bg-2);
+}
+
+/* Divider */
+.ok-divider {
+  height: 1px;
+  background: var(--ok-line);
+  border: none;
+  margin: var(--ok-space-4) 0;
+}
+.ok-divider--vert {
+  width: 1px; height: auto;
+  align-self: stretch;
+  margin: 0 var(--ok-space-3);
+}
+
+/* Icon button (square ghost) */
+.ok-icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border-radius: var(--ok-radius-md);
+  background: transparent;
+  color: var(--ok-ink-2);
+  border: 1px solid transparent;
+  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+}
+.ok-icon-btn:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
+.ok-icon-btn[aria-pressed="true"] { background: var(--ok-bg-3); color: var(--ok-ink); }
+.ok-icon-btn--sm { width: 24px; height: 24px; }
+.ok-icon-btn--lg { width: 36px; height: 36px; }
+
+/* Pill (status with leading dot) */
+.ok-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  padding: 0 9px 0 7px;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: 999px;
+  font-size: var(--ok-text-2xs);
+  font-weight: 500;
+  color: var(--ok-ink-2);
+}
+.ok-pill__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ok-ink-3);
+}
+.ok-pill--ok     .ok-pill__dot { background: var(--ok-leaf); box-shadow: 0 0 0 2px color-mix(in oklch, var(--ok-leaf) 25%, transparent); }
+.ok-pill--warn   .ok-pill__dot { background: var(--ok-warn); }
+.ok-pill--danger .ok-pill__dot { background: var(--ok-danger); }
+.ok-pill--brand  .ok-pill__dot { background: var(--ok-brand); }
+.ok-pill--info   .ok-pill__dot { background: var(--ok-info); }

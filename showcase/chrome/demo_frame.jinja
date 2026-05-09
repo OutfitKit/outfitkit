@@ -1,0 +1,59 @@
+{#def title="Demo" #}
+
+{% macro demo_frame(title="Demo") -%}
+{% set body = caller() %}
+<section class="demo-frame">
+  <header class="demo-frame__header">
+    <h3>{{ title }}</h3>
+  </header>
+  <div class="demo-frame__render">
+    {{ body|safe }}
+  </div>
+  <pre class="demo-frame__source"><code>{{ body|string|trim|e }}</code></pre>
+</section>
+<style>
+.demo-frame {
+  border: 1px solid var(--ok-line);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  background: var(--ok-bg-2);
+}
+.demo-frame__header {
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--ok-line);
+  background: var(--ok-bg-3);
+}
+.demo-frame__header h3 {
+  margin: 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ok-ink-3);
+  font-weight: 500;
+}
+.demo-frame__render {
+  padding: 24px 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+.demo-frame__source {
+  margin: 0;
+  padding: 16px 18px;
+  background: var(--ok-bg-1);
+  border-top: 1px solid var(--ok-line);
+  color: var(--ok-ink-2);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  overflow-x: auto;
+  white-space: pre;
+}
+</style>
+{%- endmacro %}
+
+{% if title is defined %}
+  {% call demo_frame(title) %}{{ content }}{% endcall %}
+{% endif %}

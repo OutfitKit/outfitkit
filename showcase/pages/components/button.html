@@ -1,0 +1,63 @@
+{% extends "_layout.jinja" %}
+{% from "ui/button.jinja" import button %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Button — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Button</h1>
+<p class="showcase__lead">Botón con 6 variantes, 3 tamaños y atributos arbitrarios para wiring reactivo.</p>
+
+{% call demo_frame("Variantes") %}
+{{ button("Primary", variant="primary") }}
+{{ button("Secondary", variant="secondary") }}
+{{ button("Outline", variant="outline") }}
+{{ button("Ghost", variant="ghost") }}
+{{ button("Danger", variant="danger") }}
+{{ button("Link", variant="link") }}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+{{ button("Small", variant="primary", size="sm") }}
+{{ button("Medium", variant="primary") }}
+{{ button("Large", variant="primary", size="lg") }}
+{% endcall %}
+
+{% call demo_frame("Estados") %}
+{{ button("Activo", variant="primary") }}
+{{ button("Deshabilitado", variant="primary", disabled=True) }}
+{{ button("Block", variant="primary", block=True) }}
+{% endcall %}
+
+{% call demo_frame("Datastar — contador interactivo") %}
+<div data-signals="{ count: 0 }">
+  {{ button("−", variant="ghost", attrs={"data-on:click": "$count--"}) }}
+  <span data-text="$count" style="padding: 0 12px; font-weight: 600;">0</span>
+  {{ button("+", variant="primary", attrs={"data-on:click": "$count++"}) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar — toggle visibilidad") %}
+<div data-signals="{ shown: false }">
+  {{ button("Mostrar / ocultar", variant="primary", attrs={"data-on:click": "$shown = !$shown"}) }}
+  <span data-show="$shown" style="margin-left: 12px;">¡Hola, soy reactivo!</span>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead>
+    <tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto del botón.</td></tr>
+    <tr><td><code>variant</code></td><td>"primary"|"secondary"|"outline"|"ghost"|"danger"|"link"</td><td>"secondary"</td><td>Estilo visual.</td></tr>
+    <tr><td><code>size</code></td><td>"sm"|"md"|"lg"</td><td>"md"</td><td>Tamaño.</td></tr>
+    <tr><td><code>disabled</code></td><td>bool</td><td>false</td><td>Deshabilita el botón.</td></tr>
+    <tr><td><code>block</code></td><td>bool</td><td>false</td><td>Ocupa todo el ancho disponible.</td></tr>
+    <tr><td><code>icon</code></td><td>bool</td><td>false</td><td>Botón cuadrado para un icono solo.</td></tr>
+    <tr><td><code>type</code></td><td>"button"|"submit"|"reset"</td><td>"button"</td><td>Tipo HTML.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos extra (data-*, aria-*, etc).</td></tr>
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,263 @@
+/* ============================================================
+   Progress + Spinner — barras lineales, segmentadas, circulares
+   ============================================================ */
+
+.ok-progress {
+  width: 100%;
+  height: 6px;
+  background: var(--ok-bg-3);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.ok-progress__bar {
+  height: 100%;
+  background: var(--ok-brand);
+  border-radius: inherit;
+  transition: width var(--ok-dur-base) var(--ok-ease-out);
+}
+.ok-progress--sm { height: 4px; }
+.ok-progress--lg { height: 10px; }
+.ok-progress--leaf .ok-progress__bar { background: var(--ok-leaf); }
+.ok-progress--warn .ok-progress__bar { background: var(--ok-warn); }
+.ok-progress--danger .ok-progress__bar { background: var(--ok-danger); }
+.ok-progress--info .ok-progress__bar { background: var(--ok-info); }
+
+/* Indeterminate */
+.ok-progress--indeterminate .ok-progress__bar {
+  width: 35% !important;
+  animation: ok-progress-indet 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+@keyframes ok-progress-indet {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(290%); }
+}
+
+/* Striped */
+.ok-progress--striped .ok-progress__bar {
+  background-image: linear-gradient(45deg,
+    rgba(255,255,255,0.18) 25%, transparent 25%,
+    transparent 50%, rgba(255,255,255,0.18) 50%,
+    rgba(255,255,255,0.18) 75%, transparent 75%);
+  background-size: 14px 14px;
+  animation: ok-progress-stripes 1.2s linear infinite;
+}
+@keyframes ok-progress-stripes {
+  from { background-position: 0 0; }
+  to   { background-position: 14px 0; }
+}
+
+/* Segmented */
+.ok-progress-segments {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+}
+.ok-progress-segments__seg {
+  flex: 1;
+  height: 6px;
+  background: var(--ok-bg-3);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+.ok-progress-segments__seg[data-state="done"] { background: var(--ok-brand); }
+.ok-progress-segments__seg[data-state="active"] {
+  background: var(--ok-bg-3);
+}
+.ok-progress-segments__seg[data-state="active"]::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--ok-brand);
+  animation: ok-seg-pulse 1.3s ease-in-out infinite;
+}
+@keyframes ok-seg-pulse {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
+}
+
+/* Progress with label */
+.ok-progress-block {
+  display: grid;
+  gap: 6px;
+}
+.ok-progress-block__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--ok-text-sm);
+}
+.ok-progress-block__label { color: var(--ok-ink-2); font-weight: 500; }
+.ok-progress-block__value {
+  color: var(--ok-ink-3);
+  font-family: var(--ok-font-mono);
+  font-size: var(--ok-text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   Spinner — circular, varios tamaños
+   ============================================================ */
+.ok-spinner {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 2px solid color-mix(in oklch, var(--ok-ink) 12%, transparent);
+  border-top-color: var(--ok-brand);
+  border-radius: 50%;
+  animation: ok-spin 0.7s linear infinite;
+}
+.ok-spinner--xs { width: 12px; height: 12px; border-width: 1.5px; }
+.ok-spinner--sm { width: 14px; height: 14px; }
+.ok-spinner--md { width: 20px; height: 20px; border-width: 2.5px; }
+.ok-spinner--lg { width: 28px; height: 28px; border-width: 3px; }
+.ok-spinner--xl { width: 40px; height: 40px; border-width: 3.5px; }
+.ok-spinner--ink { border-top-color: var(--ok-ink); }
+.ok-spinner--leaf { border-top-color: var(--ok-leaf); }
+.ok-spinner--warn { border-top-color: var(--ok-warn); }
+.ok-spinner--danger { border-top-color: var(--ok-danger); }
+@keyframes ok-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Dots spinner */
+.ok-dots {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.ok-dots__d {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ok-brand);
+  animation: ok-dots-bounce 1.2s ease-in-out infinite;
+}
+.ok-dots__d:nth-child(2) { animation-delay: 0.15s; }
+.ok-dots__d:nth-child(3) { animation-delay: 0.3s; }
+@keyframes ok-dots-bounce {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.7); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
+/* Circular progress (con SVG) */
+.ok-circ {
+  --ok-circ-size: 56px;
+  --ok-circ-stroke: 5;
+  --ok-circ-track: var(--ok-bg-3);
+  --ok-circ-fill: var(--ok-brand);
+  width: var(--ok-circ-size);
+  height: var(--ok-circ-size);
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+}
+.ok-circ svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.ok-circ__track { fill: none; stroke: var(--ok-circ-track); stroke-width: var(--ok-circ-stroke); }
+.ok-circ__bar {
+  fill: none;
+  stroke: var(--ok-circ-fill);
+  stroke-width: var(--ok-circ-stroke);
+  stroke-linecap: round;
+  transition: stroke-dashoffset var(--ok-dur-slow) var(--ok-ease-out);
+}
+.ok-circ__label {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ok-ink);
+  font-variant-numeric: tabular-nums;
+  font-family: var(--ok-font-mono);
+}
+
+/* ============================================================
+   Pagination
+   ============================================================ */
+.ok-paginator {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--ok-text-sm);
+}
+.ok-paginator__btn {
+  min-width: 28px;
+  height: 28px;
+  padding: 0 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: var(--ok-radius-sm);
+  color: var(--ok-ink-2);
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  transition: background var(--ok-dur-fast);
+}
+.ok-paginator__btn:hover {
+  background: var(--ok-bg-3);
+  color: var(--ok-ink);
+}
+.ok-paginator__btn[aria-current="page"],
+.ok-paginator__btn[data-active="true"] {
+  background: var(--ok-bg-3);
+  border-color: var(--ok-line-2);
+  color: var(--ok-ink);
+  font-weight: 500;
+}
+.ok-paginator__btn[disabled],
+.ok-paginator__btn[aria-disabled="true"] {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+.ok-paginator__btn svg {
+  width: 14px; height: 14px;
+}
+.ok-paginator__gap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 28px;
+  color: var(--ok-ink-3);
+  user-select: none;
+}
+
+/* Variant: compact (prev / value / next) */
+.ok-paginator--compact {
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-md);
+  padding: 1px;
+  background: var(--ok-bg-2);
+  gap: 0;
+}
+.ok-paginator--compact .ok-paginator__btn {
+  border-radius: var(--ok-radius-xs);
+}
+
+/* Pager — barra completa con info y page-size */
+.ok-pager {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: var(--ok-text-sm);
+  color: var(--ok-ink-3);
+}
+.ok-pager__info { font-variant-numeric: tabular-nums; }
+.ok-pager__info b { color: var(--ok-ink-2); font-weight: 500; }
+.ok-pager__pgsize {
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.ok-pager__pgsize select {
+  height: 26px;
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-sm);
+  color: var(--ok-ink);
+  padding: 0 22px 0 8px;
+  font: inherit;
+  font-size: 12px;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none' stroke='%23999'><path d='m1 1 4 4 4-4'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 7px center;
+}

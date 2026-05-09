@@ -1,0 +1,67 @@
+{% extends "_layout.jinja" %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/button.jinja" import button %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Card — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Card</h1>
+<p class="showcase__lead">Superficie con slot interno. El consumidor compone header / body / footer con las sub-clases <code>.ok-card__*</code>.</p>
+
+{% call demo_frame("Default") %}
+{% call card() %}
+<div class="ok-card__header">
+  <h3 class="ok-card__title">Pedido #1024</h3>
+  <p class="ok-card__sub">3 líneas · 87,40 €</p>
+</div>
+<div class="ok-card__body">
+  <p>Cliente: Juan Pérez · Mesa 7</p>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Con footer") %}
+{% call card() %}
+<div class="ok-card__header">
+  <h3 class="ok-card__title">Inventario bajo</h3>
+</div>
+<div class="ok-card__body">
+  <p>5 referencias por debajo del umbral mínimo.</p>
+</div>
+<div class="ok-card__footer">
+  {{ button("Ver detalle", variant="primary", size="sm") }}
+  {{ button("Ignorar", variant="ghost", size="sm") }}
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variant elevated") %}
+{% call card(variant="elevated") %}
+<div class="ok-card__body">
+  <h3 class="ok-card__title">Elevated</h3>
+  <p>Card con sombra más pronunciada.</p>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Interactive (hover)") %}
+{% call card(interactive=True) %}
+<div class="ok-card__body">
+  <h3 class="ok-card__title">Interactive</h3>
+  <p>Pasa el ratón por encima.</p>
+</div>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>variant</code></td><td>"default"|"flat"|"elevated"|"glass"</td><td>"default"</td><td>Estilo visual.</td></tr>
+    <tr><td><code>interactive</code></td><td>bool</td><td>false</td><td>Activa hover state.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido (header, body, footer composables).</td></tr>
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,914 @@
+/* ============================================================
+   OutfitKit · POS
+   Componentes específicos del punto de venta:
+   numpad · cart · payment · receipt · kds-order
+   ============================================================ */
+
+/* ============================================================
+   POS Layout · split en desktop (catálogo + carrito siempre visible)
+   En mobile el carrito se oculta y aparece como drawer al pulsar el FAB.
+   ============================================================ */
+.ok-pos {
+  position: relative;
+  background: var(--ok-bg);
+  height: 100%;
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 12px;
+}
+.ok-pos__main {
+  background: var(--ok-bg-1);
+  border-radius: var(--ok-radius-xl);
+  border: 1px solid var(--ok-line);
+  overflow: hidden;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ok-pos__main > .ok-cat-rail { flex: 0 0 auto; }
+
+/* Aside · split en desktop, drawer en mobile */
+.ok-pos__aside {
+  background: var(--ok-bg-1);
+  border-radius: var(--ok-radius-xl);
+  border: 1px solid var(--ok-line);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+@media (max-width: 900px) {
+  .ok-pos { grid-template-columns: 1fr; }
+  .ok-pos__aside {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: min(420px, 92vw);
+    border-radius: 0;
+    border: 0;
+    border-left: 1px solid var(--ok-line);
+    z-index: 60;
+    transform: translateX(100%);
+    transition: transform var(--ok-dur-slow) var(--ok-ease);
+    box-shadow: var(--ok-shadow-xl);
+  }
+  .ok-pos__aside--left {
+    right: auto; left: 0;
+    border-left: 0;
+    border-right: 1px solid var(--ok-line);
+    transform: translateX(-100%);
+  }
+  .ok-pos[data-cart-open="true"] .ok-pos__aside { transform: translateX(0); }
+}
+.ok-pos__backdrop {
+  display: none;
+  position: fixed; inset: 0;
+  background: var(--ok-overlay-medium);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--ok-dur-slow);
+  z-index: 55;
+}
+@media (max-width: 900px) {
+  .ok-pos__backdrop { display: block; }
+  .ok-pos[data-cart-open="true"] .ok-pos__backdrop {
+    opacity: 1; pointer-events: auto;
+  }
+}
+
+/* FAB del carrito · solo en mobile */
+.ok-pos__cart-fab {
+  display: none;
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--ok-brand);
+  color: var(--ok-brand-fg);
+  border: 0;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--ok-shadow-lg);
+  z-index: 50;
+  transition: transform var(--ok-dur-fast), background var(--ok-dur-fast);
+}
+.ok-pos__cart-fab:hover { transform: scale(1.05); background: var(--ok-brand-2); }
+.ok-pos__cart-fab svg { width: 24px; height: 24px; }
+@media (max-width: 900px) {
+  .ok-pos__cart-fab { display: inline-flex; }
+}
+.ok-pos__cart-fab__badge {
+  position: absolute;
+  top: -2px; right: -2px;
+  min-width: 22px; height: 22px;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--ok-ink);
+  color: var(--ok-bg);
+  font-size: 11px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--ok-bg);
+  font-variant-numeric: tabular-nums;
+}
+
+.ok-pos__cart-close {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  color: var(--ok-ink-2);
+  cursor: pointer;
+}
+.ok-pos__cart-close svg { width: 14px; height: 14px; }
+@media (max-width: 900px) {
+  .ok-pos__cart-close { display: inline-flex; }
+}
+
+/* ============================================================
+   Catálogo · scroll del grid de productos
+   ============================================================ */
+.ok-cat-scroll {
+  flex: 1 1 0;
+  overflow-y: auto;
+  min-height: 0;
+}
+.ok-cat-scroll::-webkit-scrollbar { width: 8px; }
+.ok-cat-scroll::-webkit-scrollbar-track { background: transparent; }
+.ok-cat-scroll::-webkit-scrollbar-thumb {
+  background: var(--ok-line-2);
+  border-radius: 4px;
+}
+.ok-cat-scroll::-webkit-scrollbar-thumb:hover { background: var(--ok-ink-3); }
+
+/* ============================================================
+   Categorías como cards · estilo miCard con imagen de fondo
+   Sustituyen a los chips planos cuando se quiere un toque más visual.
+   ============================================================ */
+.ok-cat-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 0 0 14px;
+}
+.ok-cat-card {
+  position: relative;
+  height: 96px;
+  border-radius: var(--ok-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--ok-line);
+  cursor: pointer;
+  background: var(--ok-bg-3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px;
+  text-align: left;
+  isolation: isolate;
+  transition: transform var(--ok-dur-fast), border-color var(--ok-dur-fast);
+  font-family: inherit;
+  color: var(--ok-media-fg);
+}
+.ok-cat-card:hover { transform: translateY(-2px); border-color: var(--ok-line-2); }
+.ok-cat-card:active { transform: scale(0.98); }
+.ok-cat-card__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+.ok-cat-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, var(--ok-overlay-strong) 100%);
+  z-index: -1;
+}
+.ok-cat-card__name {
+  font-family: var(--ok-font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-shadow: 0 1px 2px var(--ok-overlay-medium);
+}
+.ok-cat-card__count {
+  font-size: 11px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+.ok-cat-card[aria-pressed="true"] {
+  border-color: var(--ok-brand);
+  box-shadow: 0 0 0 2px var(--ok-brand);
+}
+/* ============================================================
+   Categorías · carrusel horizontal con flechas
+   ============================================================ */
+.ok-cat-rail {
+  position: relative;
+  padding: 14px 0 14px;
+  border-bottom: 1px solid var(--ok-line);
+}
+.ok-cat-rail__track {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 0 14px 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ok-line-2) transparent;
+}
+.ok-cat-rail__track::-webkit-scrollbar { height: 6px; }
+.ok-cat-rail__track::-webkit-scrollbar-track { background: transparent; }
+.ok-cat-rail__track::-webkit-scrollbar-thumb {
+  background: var(--ok-line-2);
+  border-radius: 3px;
+}
+.ok-cat-rail__track::-webkit-scrollbar-thumb:hover { background: var(--ok-ink-3); }
+
+.ok-cat-rail .ok-cat-card {
+  flex: 0 0 160px;
+  scroll-snap-align: start;
+}
+
+.ok-cat-rail__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ok-bg-1);
+  border: 1px solid var(--ok-line);
+  color: var(--ok-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: var(--ok-shadow-md);
+  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast);
+}
+.ok-cat-rail__arrow:hover { background: var(--ok-bg-2); }
+.ok-cat-rail__arrow:active { transform: translateY(-50%) scale(0.94); }
+.ok-cat-rail__arrow--prev { left: 4px; }
+.ok-cat-rail__arrow--next { right: 4px; }
+.ok-cat-rail__arrow svg { width: 16px; height: 16px; }
+
+/* Tile con imagen de producto */
+.ok-cat-tile__img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--ok-radius-md);
+  background-size: cover;
+  background-position: center;
+  background-color: var(--ok-bg-3);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ============================================================
+   Cat-card (carrusel) · efectos hover/active
+   ============================================================ */
+.ok-cat-card {
+  transition:
+    transform var(--ok-dur-fast) var(--ok-ease),
+    border-color var(--ok-dur-fast),
+    box-shadow var(--ok-dur-fast);
+}
+.ok-cat-card:hover {
+  transform: translateY(-3px) scale(1.02);
+  border-color: var(--ok-brand);
+  box-shadow: 0 10px 24px -10px var(--ok-overlay-medium);
+}
+.ok-cat-card:active {
+  transform: translateY(-1px) scale(0.98);
+  transition-duration: 80ms;
+}
+.ok-cat-card[aria-pressed="true"] {
+  border-color: var(--ok-brand);
+  box-shadow: 0 0 0 2px var(--ok-brand), 0 8px 20px -10px var(--ok-overlay-medium);
+}
+
+/* ============================================================
+   Fly-to-cart animation
+   ============================================================ */
+.ok-fly {
+  position: fixed;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  z-index: 999;
+  box-shadow: var(--ok-shadow-md);
+  transition: transform 700ms cubic-bezier(0.5, -0.2, 0.6, 1.4), opacity 700ms ease, width 700ms ease, height 700ms ease;
+}
+
+/* Cart badge bump */
+@keyframes ok-bump {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4); }
+  100% { transform: scale(1); }
+}
+.ok-bump { animation: ok-bump 380ms var(--ok-ease); }
+
+/* Cart line enter */
+@keyframes ok-line-in {
+  0%   { opacity: 0; transform: translateX(20px); background: color-mix(in oklch, var(--ok-brand) 25%, transparent); }
+  60%  { background: color-mix(in oklch, var(--ok-brand) 25%, transparent); }
+  100% { opacity: 1; transform: translateX(0); background: transparent; }
+}
+.ok-cart__line--enter { animation: ok-line-in 500ms var(--ok-ease); }
+
+/* Variantes de color tintado (sin imagen) */
+.ok-cat-card--coffee  .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-coffee-a), var(--ok-cat-coffee-b)); }
+.ok-cat-card--tea     .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-tea-a), var(--ok-cat-tea-b)); }
+.ok-cat-card--bakery  .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-bakery-a), var(--ok-cat-bakery-b)); }
+.ok-cat-card--cold    .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-cold-a), var(--ok-cat-cold-b)); }
+.ok-cat-card--menu    .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-menu-a), var(--ok-cat-menu-b)); }
+.ok-cat-card--dessert .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-dessert-a), var(--ok-cat-dessert-b)); }
+.ok-cat-card--snacks  .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-snacks-a), var(--ok-cat-snacks-b)); }
+.ok-cat-card--all     .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-all-a), var(--ok-cat-all-b)); }
+
+/* ============================================================
+   Numpad · grid 3×4 + acciones laterales
+   ============================================================ */
+.ok-numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  background: var(--ok-bg-2);
+  padding: 12px;
+  border-radius: var(--ok-radius-xl);
+  border: 1px solid var(--ok-line);
+}
+
+.ok-numpad__btn {
+  height: 56px;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-md);
+  color: var(--ok-ink);
+  font-family: var(--ok-font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ok-numpad__btn:hover { background: var(--ok-bg-4); }
+.ok-numpad__btn:active { transform: scale(0.97); }
+
+.ok-numpad__btn--brand {
+  background: var(--ok-brand);
+  color: var(--ok-brand-fg);
+  border-color: transparent;
+}
+.ok-numpad__btn--brand:hover { background: var(--ok-brand-2); }
+
+.ok-numpad__btn--ghost {
+  background: transparent;
+  color: var(--ok-ink-2);
+  border-color: var(--ok-line);
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--ok-font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ok-numpad__btn--double { grid-column: span 2; }
+.ok-numpad__btn--tall   { grid-row: span 2; height: auto; }
+
+/* Display del numpad */
+.ok-numpad-display {
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-lg);
+  padding: 16px;
+  text-align: right;
+  margin-bottom: 12px;
+  font-family: var(--ok-font-display);
+}
+.ok-numpad-display__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--ok-ink-3);
+  letter-spacing: var(--ok-tracking-wide);
+}
+.ok-numpad-display__value {
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--ok-ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  margin-top: 4px;
+}
+
+/* ============================================================
+   Cart · línea de pedido
+   ============================================================ */
+.ok-cart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.ok-cart__header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--ok-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.ok-cart__title {
+  font-family: var(--ok-font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ok-ink);
+}
+.ok-cart__sub {
+  font-size: 11px;
+  color: var(--ok-ink-3);
+  margin-top: 2px;
+}
+
+.ok-cart__list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.ok-cart__line {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: var(--ok-radius-md);
+  transition: background var(--ok-dur-fast);
+  cursor: pointer;
+}
+.ok-cart__line:hover { background: var(--ok-bg-3); }
+.ok-cart__line--selected { background: color-mix(in oklch, var(--ok-brand) 10%, transparent); }
+.ok-cart__line--selected:hover { background: color-mix(in oklch, var(--ok-brand) 14%, transparent); }
+
+.ok-cart__line-name {
+  font-size: 13px;
+  color: var(--ok-ink);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ok-cart__line-qty {
+  display: inline-block;
+  min-width: 22px;
+  padding: 1px 6px;
+  background: var(--ok-bg-4);
+  color: var(--ok-ink-2);
+  border-radius: var(--ok-radius-xs);
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.ok-cart__line-meta {
+  font-size: 11px;
+  color: var(--ok-ink-3);
+  margin-top: 2px;
+}
+.ok-cart__line-price {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ok-ink);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+.ok-cart__line-orig {
+  text-decoration: line-through;
+  color: var(--ok-ink-3);
+  font-size: 11px;
+}
+
+/* Totals box */
+.ok-cart__totals {
+  border-top: 1px solid var(--ok-line);
+  padding: 12px 16px;
+  background: var(--ok-bg);
+}
+.ok-cart__total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  color: var(--ok-ink-3);
+  margin-bottom: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.ok-cart__total-row--main {
+  font-family: var(--ok-font-display);
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ok-ink);
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--ok-line);
+}
+
+.ok-cart__actions {
+  padding: 12px;
+  border-top: 1px solid var(--ok-line);
+  display: grid;
+  gap: 8px;
+}
+.ok-cart__cta {
+  height: 56px;
+  border-radius: var(--ok-radius-lg);
+  font-size: 16px;
+  font-weight: 500;
+  background: var(--ok-brand);
+  color: var(--ok-brand-fg);
+  border: none;
+  cursor: pointer;
+  font-family: var(--ok-font-display);
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+  transition: background var(--ok-dur-fast);
+}
+.ok-cart__cta:hover { background: var(--ok-brand-2); }
+.ok-cart__cta-amount { font-variant-numeric: tabular-nums; font-weight: 600; }
+
+/* ============================================================
+   Catalog tile · botón de producto en cuadrícula POS
+   ============================================================ */
+.ok-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  padding: 14px;
+}
+.ok-cat-scroll > .ok-cat-grid { padding-top: 14px; }
+
+.ok-cat-tile {
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-lg);
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: left;
+  font: inherit;
+  transition:
+    transform var(--ok-dur-fast) var(--ok-ease),
+    border-color var(--ok-dur-fast),
+    box-shadow var(--ok-dur-fast),
+    background var(--ok-dur-fast);
+  position: relative;
+  min-height: 96px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.ok-cat-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklch, var(--ok-brand) 18%, transparent) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity var(--ok-dur-base);
+  pointer-events: none;
+  z-index: 0;
+}
+.ok-cat-tile > * { position: relative; z-index: 1; }
+.ok-cat-tile:hover {
+  border-color: var(--ok-brand);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px -8px var(--ok-overlay-medium), 0 0 0 1px var(--ok-brand);
+}
+.ok-cat-tile:hover::before { opacity: 1; }
+.ok-cat-tile:hover .ok-cat-tile__img { transform: scale(1.06); }
+.ok-cat-tile:active {
+  transform: translateY(-1px) scale(0.97);
+  transition-duration: 80ms;
+}
+/* Pulso al añadir */
+@keyframes ok-tile-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in oklch, var(--ok-brand) 60%, transparent); }
+  100% { box-shadow: 0 0 0 14px transparent; }
+}
+.ok-cat-tile--pulse {
+  animation: ok-tile-pulse 500ms var(--ok-ease);
+  border-color: var(--ok-brand) !important;
+}
+.ok-cat-tile__img {
+  transition: transform var(--ok-dur-slow) var(--ok-ease);
+}
+
+.ok-cat-tile__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ok-ink);
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.ok-cat-tile__price {
+  font-size: 12px;
+  color: var(--ok-ink-3);
+  font-variant-numeric: tabular-nums;
+  margin-top: auto;
+}
+.ok-cat-tile__swatch {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ok-brand);
+}
+.ok-cat-tile--out {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.ok-cat-tile--out::after {
+  content: "Sin stock";
+  position: absolute;
+  bottom: 8px; right: 8px;
+  font-size: 9px;
+  color: var(--ok-danger);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+/* Categoría chips horizontales */
+.ok-cat-chips {
+  display: flex;
+  gap: 6px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--ok-line);
+  background: var(--ok-bg-1);
+  scrollbar-width: none;
+}
+.ok-cat-chips::-webkit-scrollbar { display: none; }
+.ok-cat-chip {
+  flex-shrink: 0;
+  padding: 8px 14px;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  color: var(--ok-ink-2);
+  border-radius: var(--ok-radius-pill);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  font: inherit;
+  transition: all var(--ok-dur-fast);
+}
+.ok-cat-chip:hover { border-color: var(--ok-line-2); color: var(--ok-ink); }
+.ok-cat-chip[aria-pressed="true"] {
+  background: var(--ok-ink);
+  color: var(--ok-bg);
+  border-color: var(--ok-ink);
+}
+
+/* ============================================================
+   Payment · método y desglose
+   ============================================================ */
+.ok-pay-methods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.ok-pay-method {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-lg);
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  transition: border-color var(--ok-dur-fast), background var(--ok-dur-fast);
+}
+.ok-pay-method:hover { border-color: var(--ok-line-2); }
+.ok-pay-method[aria-pressed="true"] {
+  border-color: var(--ok-brand);
+  background: color-mix(in oklch, var(--ok-brand) 6%, var(--ok-bg-2));
+}
+.ok-pay-method__icon {
+  width: 36px; height: 36px;
+  border-radius: 9px;
+  background: var(--ok-bg-3);
+  display: grid;
+  place-items: center;
+  color: var(--ok-ink-2);
+}
+.ok-pay-method__icon svg { width: 18px; height: 18px; }
+.ok-pay-method[aria-pressed="true"] .ok-pay-method__icon { background: var(--ok-brand-soft); color: var(--ok-brand-3); }
+
+.ok-pay-method__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ok-ink);
+}
+.ok-pay-method__sub {
+  font-size: 11px;
+  color: var(--ok-ink-3);
+}
+
+/* ============================================================
+   Receipt · ticket impreso (estilo papel)
+   ============================================================ */
+.ok-receipt {
+  background: var(--ok-paper-bg);
+  color: var(--ok-paper-ink);
+  font-family: var(--ok-font-mono);
+  font-size: 11.5px;
+  line-height: 1.55;
+  padding: 22px 18px;
+  border-radius: var(--ok-radius-lg);
+  width: 280px;
+  max-width: 100%;
+  border: 1px solid var(--ok-line);
+  box-shadow: var(--ok-shadow-md);
+  position: relative;
+  /* dentado superior e inferior */
+  -webkit-mask:
+    radial-gradient(circle at 6px 0, transparent 4px, var(--ok-paper-ink) 4.5px) top left / 12px 8px repeat-x,
+    radial-gradient(circle at 6px 8px, transparent 4px, var(--ok-paper-ink) 4.5px) bottom left / 12px 8px repeat-x,
+    linear-gradient(var(--ok-paper-ink), var(--ok-paper-ink));
+  -webkit-mask-composite: source-over;
+          mask:
+    radial-gradient(circle at 6px 0, transparent 4px, var(--ok-paper-ink) 4.5px) top left / 12px 8px repeat-x,
+    radial-gradient(circle at 6px 8px, transparent 4px, var(--ok-paper-ink) 4.5px) bottom left / 12px 8px repeat-x,
+    linear-gradient(var(--ok-paper-ink), var(--ok-paper-ink));
+  margin: 8px 0;
+}
+
+.ok-receipt__title {
+  font-family: var(--ok-font-display);
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.ok-receipt__sub {
+  text-align: center;
+  font-size: 10.5px;
+  color: var(--ok-paper-ink-2);
+  margin-bottom: 14px;
+}
+.ok-receipt__divider {
+  border: none;
+  border-top: 1px dashed var(--ok-paper-line);
+  margin: 8px 0;
+}
+.ok-receipt__line {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.ok-receipt__line-name {
+  flex: 1;
+  word-break: break-word;
+}
+.ok-receipt__line-price {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.ok-receipt__total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+.ok-receipt__footer {
+  text-align: center;
+  font-size: 10px;
+  color: var(--ok-paper-ink-2);
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+/* ============================================================
+   KDS · ticket de cocina
+   ============================================================ */
+.ok-kds {
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-xl);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 280px;
+  max-width: 100%;
+  position: relative;
+  border-top: 4px solid var(--ok-info);
+}
+.ok-kds--ready { border-top-color: var(--ok-leaf); }
+.ok-kds--late { border-top-color: var(--ok-danger); animation: ok-kds-pulse 1.5s ease-in-out infinite; }
+@keyframes ok-kds-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50% { box-shadow: 0 0 0 4px color-mix(in oklch, var(--ok-danger) 25%, transparent); }
+}
+
+.ok-kds__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ok-kds__order {
+  font-family: var(--ok-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ok-ink);
+}
+.ok-kds__time {
+  font-family: var(--ok-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ok-ink-2);
+  background: var(--ok-bg-3);
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+.ok-kds--late .ok-kds__time { color: var(--ok-danger); background: var(--ok-danger-soft); }
+.ok-kds--ready .ok-kds__time { color: var(--ok-leaf); background: var(--ok-leaf-soft); }
+
+.ok-kds__source {
+  font-size: 11px;
+  color: var(--ok-ink-3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ok-kds__items {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+.ok-kds__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 2px 0;
+  color: var(--ok-ink);
+}
+.ok-kds__qty {
+  font-weight: 700;
+  color: var(--ok-brand);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  min-width: 22px;
+}
+.ok-kds__notes {
+  font-size: 11px;
+  color: var(--ok-warn);
+  margin-left: 30px;
+  font-style: italic;
+}
+.ok-kds__item--done {
+  color: var(--ok-ink-3);
+  text-decoration: line-through;
+}
+
+.ok-kds__actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+.ok-kds__actions .ok-btn { flex: 1; }

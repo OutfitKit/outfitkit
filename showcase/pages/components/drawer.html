@@ -1,0 +1,76 @@
+{% extends "_layout.jinja" %}
+{% from "ui/drawer.jinja" import drawer %}
+{% from "ui/button.jinja" import button %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Drawer — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Drawer</h1>
+<p class="showcase__lead">Panel lateral right (default), left o bottom. Mismo patrón <code>data-state</code> que el modal.</p>
+
+{% call demo_frame("Right (default)") %}
+<div class="drawer-stage">
+  {% call drawer(title="Detalle del pedido", subtitle="Pedido #1024", state="open") %}
+    <p>3 líneas · 87,40 €</p>
+    <p>Cliente: Juan Pérez</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{% call demo_frame("Left") %}
+<div class="drawer-stage">
+  {% call drawer(title="Filtros", side="left", state="open") %}
+    <p>Categoría, precio, disponibilidad...</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{% call demo_frame("Bottom") %}
+<div class="drawer-stage">
+  {% call drawer(title="Acciones rápidas", side="bottom", state="open") %}
+    <p>Compartir, duplicar, eliminar...</p>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar · abrir/cerrar") %}
+<div data-signals="{ open: false }">
+  {{ button("Abrir drawer", variant="primary", attrs={"data-on:click": "$open = true"}) }}
+  <div class="drawer-stage" data-show="$open" style="display: none;">
+    {% call drawer(title="Notificaciones", state="open") %}
+      <p>3 notificaciones nuevas.</p>
+    {% endcall %}
+  </div>
+</div>
+{% endcall %}
+
+<style>
+.drawer-stage {
+  position: relative;
+  height: 360px;
+  background: var(--ok-bg-1);
+  border: 1px solid var(--ok-line);
+  border-radius: 14px;
+  overflow: hidden;
+  flex: 1 1 100%;
+}
+.drawer-stage .ok-drawer-root,
+.drawer-stage .ok-backdrop {
+  position: absolute;
+}
+</style>
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td>—</td><td>Título del drawer.</td></tr>
+    <tr><td><code>subtitle</code></td><td>str</td><td>""</td><td>Subtítulo opcional.</td></tr>
+    <tr><td><code>side</code></td><td>"right"|"left"|"bottom"</td><td>"right"</td><td>Lado por el que aparece.</td></tr>
+    <tr><td><code>state</code></td><td>"open"|"closed"</td><td>"closed"</td><td>Estado inicial.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos extra en el root.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido del body.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,85 @@
+/* ============================================================
+   OutfitKit · Menu Button (hamburger)
+   Botón hamburger con animación a X (alineado con ERPlora/ux oficial)
+   ============================================================ */
+
+.ok-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-radius: var(--ok-radius-md);
+  color: var(--ok-ink-2);
+  cursor: pointer;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast);
+}
+.ok-menu-btn:hover {
+  background: var(--ok-bg-3);
+  color: var(--ok-ink);
+}
+.ok-menu-btn:active {
+  transform: scale(0.94);
+}
+.ok-menu-btn:focus-visible {
+  outline: 2px solid var(--ok-brand);
+  outline-offset: 2px;
+}
+
+/* CSS Hamburger (3 lines → X) */
+.ok-menu-btn-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18px;
+  height: 14px;
+  gap: 4px;
+  pointer-events: none;
+}
+.ok-menu-btn-line {
+  width: 100%;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+  transition: transform var(--ok-dur-fast) var(--ok-ease-out),
+              opacity var(--ok-dur-fast) var(--ok-ease-out);
+}
+
+/* Open state: animate to X */
+.ok-menu-btn[aria-expanded="true"] .ok-menu-btn-line:nth-child(1),
+.ok-menu-btn[data-state="open"] .ok-menu-btn-line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.ok-menu-btn[aria-expanded="true"] .ok-menu-btn-line:nth-child(2),
+.ok-menu-btn[data-state="open"] .ok-menu-btn-line:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.ok-menu-btn[aria-expanded="true"] .ok-menu-btn-line:nth-child(3),
+.ok-menu-btn[data-state="open"] .ok-menu-btn-line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Solo visible en mobile por defecto (uso como toggle del drawer) */
+.ok-menu-btn--mobile-only {
+  display: none;
+}
+@media (max-width: 767px) {
+  .ok-menu-btn--mobile-only {
+    display: inline-flex;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ok-menu-btn,
+  .ok-menu-btn-line {
+    transition: none;
+  }
+}

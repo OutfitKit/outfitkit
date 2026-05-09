@@ -1,0 +1,208 @@
+/* ============================================================
+   OutfitKit · Design Tokens
+   Sistema oscuro y sobrio, acento terracota, tipografía Inter.
+   Todas las variables son CSS puras — sin dependencia de Tailwind.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+
+:root,
+[data-theme="erplora"] {
+  /* ---------- Tipografía ---------- */
+  --ok-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ok-font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --ok-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Escala tipográfica (densa, dashboard) */
+  --ok-text-2xs: 10.5px;
+  --ok-text-xs:  11.5px;
+  --ok-text-sm:  12.5px;
+  --ok-text-md:  13.5px;
+  --ok-text-base:14px;
+  --ok-text-lg:  16px;
+  --ok-text-xl:  19px;
+  --ok-text-2xl: 24px;
+  --ok-text-3xl: 32px;
+  --ok-text-4xl: 44px;
+  --ok-text-5xl: 60px;
+
+  --ok-leading-tight: 1.15;
+  --ok-leading-snug: 1.3;
+  --ok-leading-normal: 1.5;
+
+  --ok-tracking-tight: -0.015em;
+  --ok-tracking-tighter: -0.03em;
+  --ok-tracking-display: -0.04em;
+  --ok-tracking-wide: 0.06em;
+  --ok-tracking-mono: -0.005em;
+
+  /* ---------- Paleta neutra (oscuro por defecto) ---------- */
+  --ok-bg:        #0B0A09;       /* canvas */
+  --ok-bg-1:      #131210;       /* nivel 1 — sidebar / topbar */
+  --ok-bg-2:      #1A1815;       /* nivel 2 — cards */
+  --ok-bg-3:      #221F1B;       /* nivel 3 — hover / inputs */
+  --ok-bg-4:      #2B2722;       /* nivel 4 — pressed / chips */
+
+  --ok-line:      rgba(255, 255, 255, 0.06);
+  --ok-line-2:    rgba(255, 255, 255, 0.10);
+  --ok-line-3:    rgba(255, 255, 255, 0.16);
+
+  --ok-ink:       #F5F1EA;       /* texto principal */
+  --ok-ink-2:     #C4BCB0;       /* texto secundario */
+  --ok-ink-3:     #8A8378;       /* texto terciario / muted */
+  --ok-ink-4:     #5C564D;       /* placeholder / disabled */
+
+  /* ---------- Acentos ---------- */
+  --ok-brand:     #E8552A;       /* terracota — primario */
+  --ok-brand-2:   #B83A12;       /* terracota oscuro — hover/pressed */
+  --ok-brand-3:   #FF7A4D;       /* terracota claro — focus ring */
+  --ok-brand-fg:  #FFFFFF;
+  --ok-brand-soft: color-mix(in oklch, var(--ok-brand) 18%, transparent);
+
+  --ok-leaf:      #4F9D6E;       /* éxito */
+  --ok-leaf-soft: color-mix(in oklch, var(--ok-leaf) 18%, transparent);
+  --ok-leaf-fg:   #FFFFFF;
+
+  --ok-warn:      #D8A23A;       /* aviso */
+  --ok-warn-soft: color-mix(in oklch, var(--ok-warn) 18%, transparent);
+  --ok-warn-fg:   #1A1815;
+
+  --ok-danger:    #D8553F;       /* error */
+  --ok-danger-soft: color-mix(in oklch, var(--ok-danger) 18%, transparent);
+  --ok-danger-fg: #FFFFFF;
+
+  --ok-info:      #5B8CD9;       /* información */
+  --ok-info-soft: color-mix(in oklch, var(--ok-info) 18%, transparent);
+  --ok-info-fg:   #FFFFFF;
+
+  /* ---------- Espaciado (escala 4px) ---------- */
+  --ok-space-0: 0;
+  --ok-space-1: 4px;
+  --ok-space-2: 8px;
+  --ok-space-3: 12px;
+  --ok-space-4: 16px;
+  --ok-space-5: 20px;
+  --ok-space-6: 24px;
+  --ok-space-7: 32px;
+  --ok-space-8: 40px;
+  --ok-space-9: 56px;
+  --ok-space-10: 72px;
+
+  /* ---------- Radios ---------- */
+  --ok-radius-xs: 4px;
+  --ok-radius-sm: 6px;
+  --ok-radius-md: 8px;
+  --ok-radius-lg: 10px;
+  --ok-radius-xl: 14px;
+  --ok-radius-2xl: 18px;
+  --ok-radius-pill: 9999px;
+
+  /* ---------- Sombras ---------- */
+  --ok-shadow-xs: 0 1px 0 rgba(0,0,0,0.4);
+  --ok-shadow-sm: 0 2px 6px rgba(0,0,0,0.35);
+  --ok-shadow-md: 0 8px 20px rgba(0,0,0,0.4);
+  --ok-shadow-lg: 0 20px 40px rgba(0,0,0,0.5);
+  --ok-shadow-glow: 0 0 0 3px color-mix(in oklch, var(--ok-brand) 35%, transparent);
+
+  /* ---------- Layout ---------- */
+  --ok-sidebar-w: 232px;
+  --ok-sidebar-w-collapsed: 60px;
+  --ok-topbar-h: 52px;
+  --ok-page-pad: 22px;
+  --ok-page-max: 1440px;
+
+  /* ---------- Motion ---------- */
+  --ok-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ok-ease-spring: cubic-bezier(0.28, 0.84, 0.42, 1);
+  --ok-dur-fast: 120ms;
+  --ok-dur-base: 180ms;
+  --ok-dur-slow: 280ms;
+
+  /* ---------- Z-index ---------- */
+  --ok-z-base: 1;
+  --ok-z-sticky: 100;
+  --ok-z-drawer: 200;
+  --ok-z-modal: 300;
+  --ok-z-toast: 400;
+  --ok-z-tooltip: 500;
+
+  /* ---------- Overlays (media UI on top of photo/video content) ---------- */
+  /* These default to neutral black/white because media content can be any
+     colour. Override only if your app demands a tinted overlay. */
+  --ok-overlay-strong: rgba(0, 0, 0, 0.70);
+  --ok-overlay-medium: rgba(0, 0, 0, 0.50);
+  --ok-overlay-soft:   rgba(0, 0, 0, 0.25);
+  --ok-overlay-faint:  rgba(0, 0, 0, 0.15);
+  --ok-overlay-glass:  rgba(255, 255, 255, 0.10);
+  --ok-overlay-glass-2: rgba(255, 255, 255, 0.18);
+  --ok-overlay-glass-3: rgba(255, 255, 255, 0.40);
+  --ok-overlay-glass-4: rgba(255, 255, 255, 0.92);
+  --ok-overlay-fade-bottom: linear-gradient(180deg, transparent, var(--ok-overlay-strong));
+  --ok-overlay-fade-top:    linear-gradient(180deg, var(--ok-overlay-medium), transparent);
+
+  /* Media surfaces (always neutral — video letterbox / lightbox bg) */
+  --ok-media-bg:       #000;
+  --ok-media-bg-soft:  rgba(0, 0, 0, 0.92);
+  --ok-media-fg:       #FFFFFF;
+  --ok-media-fg-soft:  rgba(255, 255, 255, 0.70);
+
+  /* ---------- Paper / receipt (printed look — always light regardless of theme) */
+  --ok-paper-bg:    #FAFAF6;
+  --ok-paper-ink:   #1A1815;
+  --ok-paper-ink-2: #5C564D;
+  --ok-paper-line:  #888888;
+
+  /* ---------- Loyalty / membership tier gradients ---------- */
+  --ok-tier-silver-a:  #6E6E74;
+  --ok-tier-silver-b:  #B4B6BB;
+  --ok-tier-silver-fg: #1A1A1C;
+  --ok-tier-gold-a:    #8A6418;
+  --ok-tier-gold-b:    #E6C159;
+  --ok-tier-gold-fg:   #2A1D05;
+  --ok-tier-platinum-a: #1F2024;
+  --ok-tier-platinum-b: #4A4D56;
+  --ok-tier-platinum-fg: #F0F1F3;
+
+  /* ---------- POS category card gradients ---------- */
+  --ok-cat-coffee-a:  #6B4226; --ok-cat-coffee-b:  #2A1810;
+  --ok-cat-tea-a:     #4A7D4A; --ok-cat-tea-b:     #1F3A1F;
+  --ok-cat-bakery-a:  #C89568; --ok-cat-bakery-b:  #6B4423;
+  --ok-cat-cold-a:    #4A7DA8; --ok-cat-cold-b:    #1F3A55;
+  --ok-cat-menu-a:    #A85A3A; --ok-cat-menu-b:    #5A2818;
+  --ok-cat-dessert-a: #B87A9D; --ok-cat-dessert-b: #5A2C4A;
+  --ok-cat-snacks-a:  #D8A23A; --ok-cat-snacks-b:  #6B4F1A;
+  --ok-cat-all-a:     #555555; --ok-cat-all-b:     #1A1A1A;
+
+  color-scheme: dark;
+}
+
+/* ---------- Tema claro ---------- */
+[data-theme="erplora-light"] {
+  --ok-bg:        #FAF8F4;
+  --ok-bg-1:      #FFFFFF;
+  --ok-bg-2:      #FFFFFF;
+  --ok-bg-3:      #F2EEE8;
+  --ok-bg-4:      #E6E1D8;
+
+  --ok-line:      rgba(20, 14, 8, 0.07);
+  --ok-line-2:    rgba(20, 14, 8, 0.13);
+  --ok-line-3:    rgba(20, 14, 8, 0.22);
+
+  --ok-ink:       #1A1612;
+  --ok-ink-2:     #524C44;
+  --ok-ink-3:     #837B70;
+  --ok-ink-4:     #B5AEA3;
+
+  --ok-brand-soft:  color-mix(in oklch, var(--ok-brand) 14%, white);
+  --ok-leaf-soft:   color-mix(in oklch, var(--ok-leaf) 14%, white);
+  --ok-warn-soft:   color-mix(in oklch, var(--ok-warn) 18%, white);
+  --ok-danger-soft: color-mix(in oklch, var(--ok-danger) 14%, white);
+  --ok-info-soft:   color-mix(in oklch, var(--ok-info) 14%, white);
+
+  --ok-shadow-xs: 0 1px 0 rgba(20,14,8,0.04);
+  --ok-shadow-sm: 0 1px 3px rgba(20,14,8,0.08);
+  --ok-shadow-md: 0 8px 20px rgba(20,14,8,0.10);
+  --ok-shadow-lg: 0 20px 40px rgba(20,14,8,0.12);
+
+  color-scheme: light;
+}

@@ -1,0 +1,151 @@
+/* ============================================================
+   ok-public-nav · Public storefront top bar
+   For the public-facing pages of a Hub (catalog, product, landing)
+   when a customer browses the hub URL before logging in.
+   ============================================================ */
+.ok-public-nav {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: var(--ok-space-4);
+  padding: var(--ok-space-3) var(--ok-space-5);
+  background: color-mix(in oklch, var(--ok-bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--ok-line);
+}
+.ok-public-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ok-space-2);
+  text-decoration: none;
+  color: inherit;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+.ok-public-nav__logo {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--ok-brand);
+  color: var(--ok-on-brand, white);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+.ok-public-nav__name { font-weight: 600; }
+.ok-public-nav__sub  { font-weight: 400; color: var(--ok-ink-3); font-size: 12px; margin-left: 6px; }
+.ok-public-nav__links {
+  display: none;
+  gap: var(--ok-space-4);
+  margin-left: var(--ok-space-4);
+}
+@media (min-width: 720px) {
+  .ok-public-nav__links { display: inline-flex; }
+}
+.ok-public-nav__link {
+  color: var(--ok-ink-2);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color .12s ease;
+}
+.ok-public-nav__link:hover,
+.ok-public-nav__link[aria-current="page"] { color: var(--ok-ink); }
+.ok-public-nav__spacer { flex: 1; }
+.ok-public-nav__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ok-space-2);
+}
+
+/* ============================================================
+   ok-public-map · Map placeholder with pin animation
+   For "where to find us" sections on storefront pages.
+   ============================================================ */
+.ok-public-map {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--ok-line);
+  background:
+    linear-gradient(135deg, color-mix(in oklch, var(--ok-brand) 4%, var(--ok-bg-2)) 0%, var(--ok-bg-2) 100%);
+}
+.ok-public-map::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--ok-line) 50%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in oklch, var(--ok-line) 50%, transparent) 1px, transparent 1px);
+  background-size: 32px 32px;
+  opacity: .8;
+}
+.ok-public-map__roads {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ok-public-map__roads path {
+  fill: none;
+  stroke: color-mix(in oklch, var(--ok-line) 70%, transparent);
+  stroke-width: 4;
+}
+.ok-public-map__pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--ok-brand);
+  filter: drop-shadow(0 4px 12px color-mix(in oklch, var(--ok-brand) 40%, transparent));
+  animation: ok-public-map-bounce 2s ease-in-out infinite;
+}
+.ok-public-map__pin svg { width: 100%; height: 100%; }
+@keyframes ok-public-map-bounce {
+  0%, 100% { transform: translate(-50%, -100%); }
+  50%      { transform: translate(-50%, -110%); }
+}
+.ok-public-map__pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--ok-brand);
+  transform: translate(-50%, -50%);
+  animation: ok-public-map-pulse 2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes ok-public-map-pulse {
+  0%   { box-shadow: 0 0 0 0    color-mix(in oklch, var(--ok-brand) 50%, transparent); opacity: 1; }
+  100% { box-shadow: 0 0 0 32px color-mix(in oklch, var(--ok-brand) 0%, transparent);  opacity: 0; }
+}
+.ok-public-map__caption {
+  position: absolute;
+  bottom: var(--ok-space-3);
+  left: var(--ok-space-3);
+  background: color-mix(in oklch, var(--ok-bg) 90%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: var(--ok-space-2) var(--ok-space-3);
+  border-radius: 8px;
+  border: 1px solid var(--ok-line);
+  font-size: 13px;
+  font-weight: 500;
+}
+.ok-public-map__caption-meta {
+  font-weight: 400;
+  color: var(--ok-ink-3);
+  font-size: 12px;
+  margin-top: 2px;
+}

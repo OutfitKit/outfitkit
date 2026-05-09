@@ -1,0 +1,370 @@
+/* ============================================================
+   OutfitKit · Calendar
+   Vistas mensual, semanal y agenda. Eventos con color-coding.
+   ============================================================ */
+
+.ok-cal {
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.ok-cal__head {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ok-line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background: var(--ok-bg-1);
+}
+.ok-cal__title {
+  font-family: var(--ok-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ok-ink);
+}
+.ok-cal__nav {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.ok-cal__nav-btn {
+  width: 28px; height: 28px;
+  border-radius: var(--ok-radius-sm);
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  color: var(--ok-ink-2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font: inherit;
+  transition: background var(--ok-dur-fast);
+}
+.ok-cal__nav-btn:hover { background: var(--ok-bg-4); color: var(--ok-ink); }
+.ok-cal__nav-btn svg { width: 14px; height: 14px; }
+.ok-cal__today {
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid var(--ok-line-2);
+  color: var(--ok-ink);
+  border-radius: var(--ok-radius-sm);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+.ok-cal__today:hover { background: var(--ok-bg-3); }
+
+/* ---------- View · Month ---------- */
+.ok-cal__weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: var(--ok-bg-1);
+  border-bottom: 1px solid var(--ok-line);
+}
+.ok-cal__weekday {
+  padding: 8px 10px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: var(--ok-tracking-wide);
+  font-weight: 500;
+  color: var(--ok-ink-3);
+  text-align: left;
+  border-right: 1px solid var(--ok-line);
+}
+.ok-cal__weekday:last-child { border-right: none; }
+
+.ok-cal__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-auto-rows: minmax(96px, 1fr);
+}
+.ok-cal__cell {
+  border-right: 1px solid var(--ok-line);
+  border-bottom: 1px solid var(--ok-line);
+  padding: 6px 8px;
+  background: var(--ok-bg-2);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  position: relative;
+  cursor: pointer;
+  transition: background var(--ok-dur-fast);
+}
+.ok-cal__cell:hover { background: var(--ok-bg-3); }
+.ok-cal__cell:nth-child(7n) { border-right: none; }
+.ok-cal__cell--out {
+  background: var(--ok-bg-1);
+}
+.ok-cal__cell--out .ok-cal__day { color: var(--ok-ink-4); }
+.ok-cal__cell--today .ok-cal__day {
+  background: var(--ok-brand);
+  color: var(--ok-brand-fg);
+  border-radius: 50%;
+  width: 22px; height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ok-cal__cell--weekend { background: color-mix(in oklch, var(--ok-bg-1) 60%, var(--ok-bg-2)); }
+.ok-cal__cell--selected {
+  background: color-mix(in oklch, var(--ok-brand) 8%, var(--ok-bg-2));
+  box-shadow: inset 0 0 0 1px var(--ok-brand);
+}
+
+.ok-cal__day {
+  font-family: var(--ok-font-display);
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ok-ink);
+  font-variant-numeric: tabular-nums;
+  align-self: flex-start;
+}
+
+.ok-cal__events {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ok-cal__event {
+  font-size: 10.5px;
+  padding: 2px 6px;
+  border-radius: var(--ok-radius-xs);
+  background: var(--ok-bg-3);
+  color: var(--ok-ink);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left: 2px solid var(--ok-ink-3);
+  cursor: pointer;
+  transition: background var(--ok-dur-fast);
+}
+.ok-cal__event:hover { background: var(--ok-bg-4); }
+.ok-cal__event-time {
+  font-variant-numeric: tabular-nums;
+  color: var(--ok-ink-3);
+  font-weight: 500;
+  font-size: 10px;
+}
+.ok-cal__event--brand  { border-left-color: var(--ok-brand);  background: color-mix(in oklch, var(--ok-brand) 14%, var(--ok-bg-2)); }
+.ok-cal__event--leaf   { border-left-color: var(--ok-leaf);   background: color-mix(in oklch, var(--ok-leaf) 14%, var(--ok-bg-2)); }
+.ok-cal__event--warn   { border-left-color: var(--ok-warn);   background: color-mix(in oklch, var(--ok-warn) 14%, var(--ok-bg-2)); }
+.ok-cal__event--danger { border-left-color: var(--ok-danger); background: color-mix(in oklch, var(--ok-danger) 14%, var(--ok-bg-2)); }
+.ok-cal__event--info   { border-left-color: var(--ok-info);   background: color-mix(in oklch, var(--ok-info) 14%, var(--ok-bg-2)); }
+.ok-cal__event--solid {
+  background: var(--ok-brand);
+  color: var(--ok-brand-fg);
+  border-left: none;
+}
+.ok-cal__event--solid .ok-cal__event-time { color: rgba(255,255,255,0.85); }
+
+.ok-cal__more {
+  font-size: 10px;
+  color: var(--ok-ink-3);
+  padding: 1px 6px;
+  cursor: pointer;
+}
+.ok-cal__more:hover { color: var(--ok-ink); }
+
+/* ---------- View · Week ---------- */
+.ok-cal-week {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  background: var(--ok-bg-2);
+}
+.ok-cal-week__hours {
+  display: grid;
+  grid-template-rows: repeat(12, 56px);
+  border-right: 1px solid var(--ok-line);
+  background: var(--ok-bg-1);
+}
+.ok-cal-week__hour {
+  font-size: 10.5px;
+  color: var(--ok-ink-3);
+  text-align: right;
+  padding: 2px 8px 0 0;
+  font-variant-numeric: tabular-nums;
+  border-bottom: 1px solid var(--ok-line);
+}
+
+.ok-cal-week__days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  position: relative;
+}
+.ok-cal-week__day {
+  border-right: 1px solid var(--ok-line);
+  position: relative;
+  background-image:
+    linear-gradient(to bottom, var(--ok-line) 0, var(--ok-line) 1px, transparent 1px, transparent 56px);
+  background-size: 100% 56px;
+}
+.ok-cal-week__day:last-child { border-right: none; }
+.ok-cal-week__day--today { background-color: color-mix(in oklch, var(--ok-brand) 5%, var(--ok-bg-2)); }
+
+.ok-cal-week__head {
+  display: grid;
+  grid-template-columns: 56px repeat(7, 1fr);
+  background: var(--ok-bg-1);
+  border-bottom: 1px solid var(--ok-line);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.ok-cal-week__head-cell {
+  padding: 8px 10px;
+  border-right: 1px solid var(--ok-line);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: var(--ok-tracking-wide);
+  font-weight: 500;
+  color: var(--ok-ink-3);
+}
+.ok-cal-week__head-cell:last-child { border-right: none; }
+.ok-cal-week__head-cell-day {
+  font-family: var(--ok-font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ok-ink);
+  text-transform: none;
+  letter-spacing: -0.02em;
+  margin-top: 2px;
+}
+.ok-cal-week__head-cell--today .ok-cal-week__head-cell-day { color: var(--ok-brand); }
+
+.ok-cal-week__event {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  background: color-mix(in oklch, var(--ok-brand) 22%, var(--ok-bg-2));
+  border-left: 2px solid var(--ok-brand);
+  border-radius: var(--ok-radius-sm);
+  padding: 4px 8px;
+  font-size: 11px;
+  color: var(--ok-ink);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background var(--ok-dur-fast);
+}
+.ok-cal-week__event:hover { background: color-mix(in oklch, var(--ok-brand) 30%, var(--ok-bg-2)); }
+.ok-cal-week__event-title {
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ok-cal-week__event-time {
+  font-size: 10px;
+  color: var(--ok-ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.ok-cal-week__event--leaf   { background: color-mix(in oklch, var(--ok-leaf) 22%, var(--ok-bg-2));   border-left-color: var(--ok-leaf); }
+.ok-cal-week__event--warn   { background: color-mix(in oklch, var(--ok-warn) 22%, var(--ok-bg-2));   border-left-color: var(--ok-warn); }
+.ok-cal-week__event--danger { background: color-mix(in oklch, var(--ok-danger) 22%, var(--ok-bg-2)); border-left-color: var(--ok-danger); }
+.ok-cal-week__event--info   { background: color-mix(in oklch, var(--ok-info) 22%, var(--ok-bg-2));   border-left-color: var(--ok-info); }
+
+.ok-cal-week__now {
+  position: absolute;
+  left: 0; right: 0;
+  height: 0;
+  border-top: 1px solid var(--ok-brand);
+  z-index: 3;
+  pointer-events: none;
+}
+.ok-cal-week__now::before {
+  content: "";
+  position: absolute;
+  left: -4px; top: -4px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--ok-brand);
+}
+
+/* ---------- Mini calendar ---------- */
+.ok-cal-mini {
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-lg);
+  padding: 12px;
+  width: 240px;
+}
+.ok-cal-mini__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.ok-cal-mini__title {
+  font-family: var(--ok-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ok-ink);
+}
+.ok-cal-mini__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.ok-cal-mini__wd {
+  font-size: 10px;
+  color: var(--ok-ink-3);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 0;
+}
+.ok-cal-mini__day {
+  aspect-ratio: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ok-ink);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  transition: background var(--ok-dur-fast);
+  position: relative;
+}
+.ok-cal-mini__day:hover { background: var(--ok-bg-3); }
+.ok-cal-mini__day--out  { color: var(--ok-ink-4); }
+.ok-cal-mini__day--today {
+  background: var(--ok-brand);
+  color: var(--ok-brand-fg);
+  font-weight: 600;
+}
+.ok-cal-mini__day--selected {
+  background: var(--ok-bg-4);
+  color: var(--ok-ink);
+  font-weight: 600;
+}
+.ok-cal-mini__day--has-event::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: var(--ok-brand);
+}
+.ok-cal-mini__day--today.ok-cal-mini__day--has-event::after { background: var(--ok-brand-fg); }

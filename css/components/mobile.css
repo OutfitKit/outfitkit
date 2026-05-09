@@ -1,0 +1,229 @@
+/* ============================================================
+   OutfitKit · Mobile patterns
+   Bottom-sheet · swipe-list · pull-to-refresh · segmented
+   ============================================================ */
+
+/* ---------- Segmented control (mobile) ---------- */
+.ok-segmented {
+  display: inline-flex;
+  background: var(--ok-bg-3);
+  border-radius: var(--ok-radius-md);
+  padding: 3px;
+  position: relative;
+  font-size: 13px;
+}
+.ok-segmented__option {
+  flex: 1;
+  padding: 7px 16px;
+  background: transparent;
+  border: none;
+  color: var(--ok-ink-2);
+  cursor: pointer;
+  border-radius: calc(var(--ok-radius-md) - 3px);
+  font: inherit;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color var(--ok-dur) var(--ok-ease-out);
+  position: relative;
+  z-index: 1;
+}
+.ok-segmented__option--active {
+  color: var(--ok-ink);
+  background: var(--ok-bg-2);
+  box-shadow: var(--ok-shadow-sm);
+}
+.ok-segmented--full { display: flex; width: 100%; }
+
+/* ---------- Bottom sheet ---------- */
+.ok-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 40;
+}
+.ok-sheet {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  background: var(--ok-bg-2);
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  z-index: 41;
+  max-height: 85%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.35);
+}
+.ok-sheet__handle {
+  width: 36px; height: 4px;
+  background: var(--ok-bg-4);
+  border-radius: 2px;
+  margin: 8px auto 0;
+  flex-shrink: 0;
+}
+.ok-sheet__head {
+  padding: 12px 18px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid var(--ok-line);
+}
+.ok-sheet__title {
+  font-family: var(--ok-font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ok-ink);
+  text-align: center;
+  margin: 0;
+}
+.ok-sheet__cancel,
+.ok-sheet__done {
+  background: transparent;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 14px;
+}
+.ok-sheet__cancel { color: var(--ok-ink-2); }
+.ok-sheet__done { color: var(--ok-brand); font-weight: 600; }
+.ok-sheet__body {
+  padding: 14px 18px;
+  overflow-y: auto;
+  flex: 1;
+}
+.ok-sheet__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--ok-line);
+  border-radius: var(--ok-radius-md);
+  overflow: hidden;
+  margin: 0 0 12px;
+}
+.ok-sheet__action {
+  background: var(--ok-bg-2);
+  border: none;
+  padding: 14px 16px;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  font-size: 14px;
+  color: var(--ok-ink);
+  cursor: pointer;
+  font: inherit;
+}
+.ok-sheet__action:hover { background: var(--ok-bg-3); }
+.ok-sheet__action--danger { color: var(--ok-danger); }
+.ok-sheet__action svg:first-child { color: var(--ok-ink-3); }
+.ok-sheet__action--danger svg:first-child { color: var(--ok-danger); }
+.ok-sheet__action-meta { font-size: 11.5px; color: var(--ok-ink-3); }
+
+/* ---------- Swipe-list ---------- */
+.ok-swipe {
+  list-style: none;
+  margin: 0; padding: 0;
+  background: var(--ok-bg-2);
+  border-radius: var(--ok-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--ok-line);
+}
+.ok-swipe__item {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ok-line);
+  background: var(--ok-bg-2);
+}
+.ok-swipe__item:last-child { border-bottom: none; }
+
+.ok-swipe__row {
+  display: grid;
+  grid-template-columns: 38px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 14px;
+  position: relative;
+  z-index: 1;
+  background: var(--ok-bg-2);
+  transition: transform var(--ok-dur) var(--ok-ease-out);
+}
+.ok-swipe__item--open .ok-swipe__row { transform: translateX(-160px); }
+
+.ok-swipe__name { font-size: 14px; color: var(--ok-ink); font-weight: 500; }
+.ok-swipe__sub { font-size: 12px; color: var(--ok-ink-3); margin-top: 2px; }
+
+.ok-swipe__actions {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 160px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.ok-swipe__btn {
+  border: none;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  color: white;
+}
+.ok-swipe__btn--archive { background: var(--ok-info); }
+.ok-swipe__btn--del { background: var(--ok-danger); }
+.ok-swipe__btn--flag { background: var(--ok-warn); color: var(--ok-warn-fg); }
+
+/* ---------- Pull-to-refresh ---------- */
+.ok-ptr {
+  background: var(--ok-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0 6px;
+  font-size: 11.5px;
+  color: var(--ok-ink-3);
+  font-family: var(--ok-font-mono);
+}
+.ok-ptr__spinner {
+  width: 22px; height: 22px;
+  border: 2px solid var(--ok-bg-4);
+  border-top-color: var(--ok-brand);
+  border-radius: 50%;
+  margin-bottom: 6px;
+  animation: ok-ptr-spin 0.9s linear infinite;
+}
+@keyframes ok-ptr-spin { to { transform: rotate(360deg); } }
+
+/* ---------- Mobile tab bar (already in mobile-shell, but a standalone variant) ---------- */
+.ok-mtab {
+  display: flex;
+  background: color-mix(in oklch, var(--ok-bg-2) 80%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--ok-line);
+  padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
+}
+.ok-mtab__item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 4px 0;
+  border: none;
+  background: transparent;
+  color: var(--ok-ink-3);
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+  font-family: var(--ok-font-display);
+}
+.ok-mtab__item--active { color: var(--ok-brand); }
+.ok-mtab__item svg { width: 22px; height: 22px; }

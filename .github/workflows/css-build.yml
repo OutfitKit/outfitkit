@@ -1,0 +1,58 @@
+name: Build CSS bundle
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install lightningcss-cli
+        run: npm install --no-save lightningcss-cli@1
+
+      - name: Build bundle (resolves @imports)
+        run: |
+          mkdir -p dist
+          npx lightningcss-cli --bundle css/outfitkit.css -o dist/outfitkit.css
+
+      - name: Build minified bundle
+        run: |
+          npx lightningcss-cli --bundle --minify css/outfitkit.css -o dist/outfitkit.min.css
+
+      - name: Verify outputs
+        run: |
+          test -s dist/outfitkit.css
+          test -s dist/outfitkit.min.css
+          echo "outfitkit.css     $(wc -c < dist/outfitkit.css) bytes"
+          echo "outfitkit.min.css $(wc -c < dist/outfitkit.min.css) bytes"
+
+      - name: Commit dist/ to the tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet dist/; then
+            echo "No changes in dist/, skipping commit."
+            exit 0
+          fi
+          git add dist/
+          git commit -m "build: dist for ${{ github.ref_name }}"
+          git tag -f ${{ github.ref_name }}
+          git push origin HEAD:refs/tags/${{ github.ref_name }} --force

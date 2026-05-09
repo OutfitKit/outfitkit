@@ -1,0 +1,21 @@
+{#def title, subtitle="", side="right", state="closed", attrs=None #}
+
+{% macro drawer(title, subtitle="", side="right", state="closed", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-backdrop"></div>
+<div class="ok-drawer-root" data-state="{{ state }}"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <aside class="ok-drawer{% if side != 'right' %} ok-drawer--{{ side }}{% endif %}">
+    <div class="ok-drawer__header">
+      <h3 class="ok-drawer__title">{{ title }}</h3>
+      {% if subtitle %}<p class="ok-drawer__sub">{{ subtitle }}</p>{% endif %}
+      <button class="ok-drawer__close" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="ok-drawer__body">{{ caller() }}</div>
+  </aside>
+</div>
+{%- endmacro %}
+
+{% if title is defined %}
+  {% call drawer(title, subtitle=subtitle, side=side, state=state, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

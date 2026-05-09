@@ -1,0 +1,445 @@
+/* ============================================================
+   OutfitKit · Forms Inputs (specialized)
+   .ok-currency · .ok-phone · .ok-qty-stepper
+   Match the height/visual style of .ok-input.
+   ============================================================ */
+
+
+/* ============================================================
+   1) Currency input — symbol chip + numeric input + currency picker
+   ============================================================ */
+.ok-currency {
+  --_h: 32px;
+  --_r: var(--ok-radius-md);
+  --_pad: 10px;
+  --_fz: var(--ok-text-md);
+
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  height: var(--_h);
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--_r);
+  overflow: hidden;
+  transition: border-color var(--ok-dur-fast), box-shadow var(--ok-dur-fast), background var(--ok-dur-fast);
+}
+.ok-currency:hover { border-color: var(--ok-line-2); }
+.ok-currency:focus-within {
+  border-color: var(--ok-brand);
+  box-shadow: 0 0 0 3px var(--ok-brand-soft);
+  background: var(--ok-bg-2);
+}
+
+.ok-currency__symbol {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  padding: 0 10px;
+  background: color-mix(in oklch, var(--ok-bg-4) 70%, transparent);
+  color: var(--ok-ink-2);
+  font-size: var(--_fz);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  border-right: 1px solid var(--ok-line);
+  user-select: none;
+}
+
+.ok-currency__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ok-ink);
+  font: inherit;
+  font-size: var(--_fz);
+  font-family: var(--ok-font-sans);
+  padding: 0 var(--_pad);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+.ok-currency__input::-webkit-outer-spin-button,
+.ok-currency__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.ok-currency__input::placeholder { color: var(--ok-ink-4); }
+
+.ok-currency__currency-select {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 24px 0 10px;
+  background: color-mix(in oklch, var(--ok-bg-4) 70%, transparent);
+  color: var(--ok-ink-2);
+  font: inherit;
+  font-size: var(--ok-text-sm);
+  font-weight: 500;
+  border: none;
+  border-left: 1px solid var(--ok-line);
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--ok-ink-3) 50%),
+    linear-gradient(135deg, var(--ok-ink-3) 50%, transparent 50%);
+  background-position:
+    calc(100% - 12px) 50%,
+    calc(100% - 8px) 50%;
+  background-size: 4px 4px, 4px 4px;
+  background-repeat: no-repeat;
+  outline: none;
+  transition: background-color var(--ok-dur-fast), color var(--ok-dur-fast);
+}
+.ok-currency__currency-select:hover {
+  background-color: var(--ok-bg-4);
+  color: var(--ok-ink);
+}
+
+/* Sizes */
+.ok-currency--sm {
+  --_h: 28px;
+  --_r: var(--ok-radius-sm);
+  --_pad: 8px;
+  --_fz: var(--ok-text-sm);
+}
+.ok-currency--sm .ok-currency__symbol { min-width: 26px; padding: 0 8px; }
+.ok-currency--sm .ok-currency__currency-select {
+  font-size: var(--ok-text-xs);
+  padding: 0 22px 0 8px;
+}
+
+.ok-currency--lg {
+  --_h: 40px;
+  --_r: var(--ok-radius-lg);
+  --_pad: 14px;
+  --_fz: var(--ok-text-base);
+}
+.ok-currency--lg .ok-currency__symbol { min-width: 36px; padding: 0 12px; }
+.ok-currency--lg .ok-currency__currency-select { font-size: var(--ok-text-md); padding: 0 26px 0 12px; }
+
+/* Invalid */
+.ok-currency--invalid { border-color: var(--ok-danger); }
+.ok-currency--invalid:focus-within {
+  border-color: var(--ok-danger);
+  box-shadow: 0 0 0 3px var(--ok-danger-soft);
+}
+
+
+/* ============================================================
+   2) Phone input — country chip + dial code + number
+   ============================================================ */
+.ok-phone {
+  --_h: 32px;
+  --_r: var(--ok-radius-md);
+  --_pad: 10px;
+  --_fz: var(--ok-text-md);
+
+  position: relative;
+  display: inline-flex;
+  align-items: stretch;
+  width: 100%;
+  height: var(--_h);
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--_r);
+  transition: border-color var(--ok-dur-fast), box-shadow var(--ok-dur-fast), background var(--ok-dur-fast);
+}
+.ok-phone:hover { border-color: var(--ok-line-2); }
+.ok-phone:focus-within {
+  border-color: var(--ok-brand);
+  box-shadow: 0 0 0 3px var(--ok-brand-soft);
+  background: var(--ok-bg-2);
+}
+
+.ok-phone__country {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  padding: 0 10px;
+  background: color-mix(in oklch, var(--ok-bg-4) 70%, transparent);
+  color: var(--ok-ink-2);
+  font: inherit;
+  font-size: var(--_fz);
+  font-weight: 500;
+  border: none;
+  border-right: 1px solid var(--ok-line);
+  border-radius: var(--_r) 0 0 var(--_r);
+  cursor: pointer;
+  outline: none;
+  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+  user-select: none;
+}
+.ok-phone__country:hover { background: var(--ok-bg-4); color: var(--ok-ink); }
+.ok-phone__country::after {
+  content: "";
+  width: 6px; height: 6px;
+  border-right: 1.5px solid var(--ok-ink-3);
+  border-bottom: 1.5px solid var(--ok-ink-3);
+  transform: rotate(45deg) translate(-1px, -1px);
+  margin-left: 2px;
+}
+
+.ok-phone__flag {
+  display: inline-flex;
+  font-size: 14px;
+  line-height: 1;
+}
+.ok-phone__dial {
+  font-variant-numeric: tabular-nums;
+  color: var(--ok-ink-2);
+}
+
+.ok-phone__input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ok-ink);
+  font: inherit;
+  font-size: var(--_fz);
+  font-family: var(--ok-font-sans);
+  padding: 0 var(--_pad);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+.ok-phone__input::placeholder { color: var(--ok-ink-4); }
+
+/* Country dropdown menu */
+.ok-phone__country-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: var(--ok-z-drawer);
+  min-width: 240px;
+  max-height: 280px;
+  background: var(--ok-bg-2);
+  border: 1px solid var(--ok-line-2);
+  border-radius: var(--ok-radius-md);
+  box-shadow: var(--ok-shadow-md);
+  overflow: hidden;
+  display: none;
+}
+.ok-phone__country-menu[data-open="true"],
+.ok-phone__country-menu.is-open {
+  display: block;
+}
+
+.ok-phone__country-list {
+  max-height: 280px;
+  overflow-y: auto;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.ok-phone__country-item {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--ok-radius-sm);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  color: var(--ok-ink-2);
+  font: inherit;
+  font-size: var(--ok-text-sm);
+  text-align: left;
+  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+}
+.ok-phone__country-item:hover {
+  background: var(--ok-bg-3);
+  color: var(--ok-ink);
+}
+.ok-phone__country-item .ok-phone__flag { font-size: 15px; }
+.ok-phone__country-item .ok-phone__dial {
+  font-family: var(--ok-font-mono);
+  font-size: 11.5px;
+  color: var(--ok-ink-3);
+}
+.ok-phone__country-item.is-selected {
+  background: var(--ok-brand-soft);
+  color: var(--ok-ink);
+}
+.ok-phone__country-item.is-selected .ok-phone__dial { color: var(--ok-brand-3); }
+
+/* Sizes */
+.ok-phone--sm {
+  --_h: 28px;
+  --_r: var(--ok-radius-sm);
+  --_pad: 8px;
+  --_fz: var(--ok-text-sm);
+}
+.ok-phone--sm .ok-phone__country { padding: 0 8px; gap: 4px; }
+
+.ok-phone--lg {
+  --_h: 40px;
+  --_r: var(--ok-radius-lg);
+  --_pad: 14px;
+  --_fz: var(--ok-text-base);
+}
+.ok-phone--lg .ok-phone__country { padding: 0 12px; gap: 8px; }
+
+/* Invalid */
+.ok-phone--invalid { border-color: var(--ok-danger); }
+.ok-phone--invalid:focus-within {
+  border-color: var(--ok-danger);
+  box-shadow: 0 0 0 3px var(--ok-danger-soft);
+}
+
+
+/* ============================================================
+   3) Quantity stepper — [-]  [12]  [+]
+   ============================================================ */
+.ok-qty-stepper {
+  --_h: 32px;
+  --_r: var(--ok-radius-md);
+  --_btn-w: 32px;
+  --_fz: var(--ok-text-md);
+
+  display: inline-flex;
+  align-items: stretch;
+  height: var(--_h);
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--_r);
+  overflow: hidden;
+  transition: border-color var(--ok-dur-fast), box-shadow var(--ok-dur-fast);
+}
+.ok-qty-stepper:hover { border-color: var(--ok-line-2); }
+.ok-qty-stepper:focus-within {
+  border-color: var(--ok-brand);
+  box-shadow: 0 0 0 3px var(--ok-brand-soft);
+}
+
+.ok-qty-stepper__btn {
+  width: var(--_btn-w);
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ok-ink-2);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  user-select: none;
+  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+  flex-shrink: 0;
+}
+.ok-qty-stepper__btn:hover {
+  background: var(--ok-bg-4);
+  color: var(--ok-ink);
+}
+.ok-qty-stepper__btn:active { background: color-mix(in oklch, var(--ok-bg-4) 70%, var(--ok-brand) 10%); }
+.ok-qty-stepper__btn:disabled,
+.ok-qty-stepper__btn[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.ok-qty-stepper__btn--minus::before { content: "−"; }
+.ok-qty-stepper__btn--plus::before  { content: "+"; }
+.ok-qty-stepper__btn--minus:not(:empty)::before,
+.ok-qty-stepper__btn--plus:not(:empty)::before { content: none; }
+
+.ok-qty-stepper__input,
+.ok-qty-stepper__value {
+  width: 48px;
+  min-width: 0;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ok-ink);
+  font: inherit;
+  font-size: var(--_fz);
+  font-family: var(--ok-font-sans);
+  font-weight: 500;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  border-left: 1px solid var(--ok-line);
+  border-right: 1px solid var(--ok-line);
+  appearance: textfield;
+  -moz-appearance: textfield;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ok-qty-stepper__input::-webkit-outer-spin-button,
+.ok-qty-stepper__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Sizes */
+.ok-qty-stepper--sm {
+  --_h: 28px;
+  --_r: var(--ok-radius-sm);
+  --_btn-w: 26px;
+  --_fz: var(--ok-text-sm);
+}
+.ok-qty-stepper--sm .ok-qty-stepper__input,
+.ok-qty-stepper--sm .ok-qty-stepper__value { width: 40px; }
+
+.ok-qty-stepper--lg {
+  --_h: 40px;
+  --_r: var(--ok-radius-lg);
+  --_btn-w: 40px;
+  --_fz: var(--ok-text-base);
+}
+.ok-qty-stepper--lg .ok-qty-stepper__input,
+.ok-qty-stepper--lg .ok-qty-stepper__value { width: 56px; }
+
+/* Variants */
+.ok-qty-stepper--ghost {
+  background: transparent;
+  border-color: transparent;
+}
+.ok-qty-stepper--ghost:hover { border-color: transparent; }
+.ok-qty-stepper--ghost:focus-within {
+  border-color: transparent;
+  box-shadow: none;
+}
+.ok-qty-stepper--ghost .ok-qty-stepper__btn {
+  background: var(--ok-bg-3);
+  border-radius: var(--_r);
+}
+.ok-qty-stepper--ghost .ok-qty-stepper__btn:hover { background: var(--ok-bg-4); }
+.ok-qty-stepper--ghost .ok-qty-stepper__input,
+.ok-qty-stepper--ghost .ok-qty-stepper__value {
+  border-left: none;
+  border-right: none;
+}
+
+.ok-qty-stepper--block {
+  display: flex;
+  width: 100%;
+}
+.ok-qty-stepper--block .ok-qty-stepper__input,
+.ok-qty-stepper--block .ok-qty-stepper__value {
+  flex: 1;
+  width: auto;
+}
+
+/* States */
+.ok-qty-stepper.is-disabled,
+.ok-qty-stepper[data-disabled="true"] {
+  opacity: 0.5;
+  pointer-events: none;
+  filter: grayscale(0.2);
+}

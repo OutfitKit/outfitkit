@@ -1,0 +1,388 @@
+/* ============================================================
+   OutfitKit · Orphan variants
+   ------------------------------------------------------------
+   Variantes de componentes que se usan en previews pero faltaban
+   definirse. Todo basado en tokens --ok-*.
+   ============================================================ */
+
+/* ---------- Sidebar badge variants ---------- */
+.ok-sidebar__badge--leaf  { background: var(--ok-leaf-soft);   color: var(--ok-leaf); }
+.ok-sidebar__badge--warn  { background: var(--ok-warn-soft);   color: var(--ok-warn); }
+.ok-sidebar__badge--info  { background: var(--ok-info-soft);   color: var(--ok-info); }
+.ok-sidebar__badge--danger{ background: var(--ok-danger-soft); color: var(--ok-danger); }
+
+/* ---------- Avatar size + composition ---------- */
+.ok-avatar--md {
+  width: var(--ok-space-7);
+  height: var(--ok-space-7);
+  font-size: var(--ok-text-md);
+}
+.ok-avatar--more {
+  background: var(--ok-bg-3);
+  color: var(--ok-ink-2);
+  border: 1px dashed var(--ok-line-2);
+}
+
+/* ---------- Card danger variant ---------- */
+.ok-card--danger {
+  border-color: color-mix(in oklch, var(--ok-danger) 35%, var(--ok-line));
+  background: color-mix(in oklch, var(--ok-danger) 6%, var(--ok-bg-2));
+}
+.ok-card--warn {
+  border-color: color-mix(in oklch, var(--ok-warn) 35%, var(--ok-line));
+  background: color-mix(in oklch, var(--ok-warn) 6%, var(--ok-bg-2));
+}
+.ok-card--ok {
+  border-color: color-mix(in oklch, var(--ok-leaf) 35%, var(--ok-line));
+  background: color-mix(in oklch, var(--ok-leaf) 6%, var(--ok-bg-2));
+}
+
+/* ---------- Status dot ---------- */
+.ok-status-dot {
+  display: inline-block;
+  width: var(--ok-space-2);
+  height: var(--ok-space-2);
+  border-radius: var(--ok-radius-pill);
+  background: var(--ok-ink-4);
+  flex-shrink: 0;
+}
+.ok-status-dot--ok    { background: var(--ok-leaf); }
+.ok-status-dot--warn  { background: var(--ok-warn); }
+.ok-status-dot--danger{ background: var(--ok-danger); }
+.ok-status-dot--info  { background: var(--ok-info); }
+.ok-status-dot--off   { background: var(--ok-ink-4); }
+
+/* ---------- Generic label ---------- */
+.ok-label {
+  display: block;
+  font-size: var(--ok-text-sm);
+  font-weight: 500;
+  color: var(--ok-ink-2);
+  margin-bottom: var(--ok-space-1);
+}
+.ok-label--req::after {
+  content: " *";
+  color: var(--ok-danger);
+}
+
+/* ---------- Check row (form layout for checkboxes/radios in row) ---------- */
+.ok-check-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--ok-space-3);
+  padding: var(--ok-space-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-md);
+  cursor: pointer;
+  transition: background var(--ok-dur-base) var(--ok-ease-out, ease);
+}
+.ok-check-row:hover {
+  background: var(--ok-bg-3);
+}
+.ok-check-row.is-checked,
+.ok-check-row[data-checked="true"] {
+  background: var(--ok-brand-soft);
+  border-color: var(--ok-brand);
+}
+
+/* ---------- Pager button ---------- */
+.ok-pager__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--ok-space-7);
+  height: var(--ok-space-7);
+  padding: 0 var(--ok-space-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-md);
+  background: var(--ok-bg-2);
+  color: var(--ok-ink-2);
+  font-size: var(--ok-text-sm);
+  cursor: pointer;
+  font-family: inherit;
+}
+.ok-pager__btn:hover {
+  background: var(--ok-bg-3);
+  color: var(--ok-ink);
+}
+.ok-pager__btn[aria-current="page"],
+.ok-pager__btn.is-active {
+  background: var(--ok-brand-soft);
+  border-color: var(--ok-brand);
+  color: var(--ok-brand-3);
+}
+.ok-pager__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Toggle internal parts ---------- */
+.ok-toggle__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.ok-toggle__thumb {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: calc(var(--ok-space-4) - 2px);
+  height: calc(var(--ok-space-4) - 2px);
+  border-radius: var(--ok-radius-pill);
+  background: var(--ok-ink);
+  transform: translateY(-50%);
+  transition: transform var(--ok-dur-base) var(--ok-ease-out, ease);
+}
+.ok-toggle.is-on .ok-toggle__thumb,
+.ok-toggle[aria-checked="true"] .ok-toggle__thumb {
+  transform: translateY(-50%) translateX(100%);
+}
+
+/* ---------- Table numeric column ---------- */
+.ok-th--num,
+.ok-td--num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--ok-font-mono);
+}
+
+/* ---------- Banner ---------- */
+.ok-banner__msg {
+  flex: 1;
+  min-width: 0;
+}
+.ok-banner--leaf {
+  border-color: color-mix(in oklch, var(--ok-leaf) 35%, var(--ok-line));
+  background: color-mix(in oklch, var(--ok-leaf) 8%, var(--ok-bg-2));
+  color: var(--ok-leaf);
+}
+
+/* ---------- Badge leaf ---------- */
+.ok-badge--leaf {
+  background: var(--ok-leaf-soft);
+  color: var(--ok-leaf);
+}
+
+/* ---------- Audio icon ---------- */
+.ok-audio__icon {
+  display: inline-grid;
+  place-items: center;
+  width: var(--ok-space-7);
+  height: var(--ok-space-7);
+  border-radius: var(--ok-radius-pill);
+  background: var(--ok-bg-3);
+  color: var(--ok-brand);
+}
+
+/* ---------- Menu item text ---------- */
+.ok-menu__item-text {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
+}
+
+/* ---------- Chip close ---------- */
+.ok-chip__close {
+  display: inline-grid;
+  place-items: center;
+  width: var(--ok-space-4);
+  height: var(--ok-space-4);
+  margin-left: var(--ok-space-1);
+  border: none;
+  border-radius: var(--ok-radius-pill);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--ok-text-md);
+  line-height: 1;
+  opacity: 0.7;
+}
+.ok-chip__close:hover {
+  background: color-mix(in oklch, currentColor 15%, transparent);
+  opacity: 1;
+}
+
+/* ---------- Input variant ---------- */
+.ok-input--select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--ok-ink-3) 50%),
+                    linear-gradient(135deg, var(--ok-ink-3) 50%, transparent 50%);
+  background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: var(--ok-space-7);
+  appearance: none;
+}
+
+/* ---------- Permissions matrix cells ---------- */
+.ok-pmatrix__td--hi   { background: color-mix(in oklch, var(--ok-leaf) 18%, transparent);   color: var(--ok-leaf); }
+.ok-pmatrix__td--mid  { background: color-mix(in oklch, var(--ok-warn) 18%, transparent);   color: var(--ok-warn); }
+.ok-pmatrix__td--lo   { background: color-mix(in oklch, var(--ok-danger) 14%, transparent); color: var(--ok-danger); }
+
+/* ---------- Definition-list / stack ----------
+   Used in detail views to render label/value pairs */
+.ok-stack {
+  display: grid;
+  gap: var(--ok-space-3);
+  margin: 0;
+}
+.ok-stack__row {
+  display: grid;
+  grid-template-columns: minmax(120px, 30%) 1fr;
+  gap: var(--ok-space-3);
+  align-items: baseline;
+}
+.ok-stack__label {
+  font-size: var(--ok-text-sm);
+  color: var(--ok-ink-3);
+  margin: 0;
+}
+.ok-stack__value {
+  font-size: var(--ok-text-md);
+  color: var(--ok-ink);
+  margin: 0;
+}
+
+/* ---------- List content layout ---------- */
+.ok-list__content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ok-list__meta {
+  font-size: var(--ok-text-xs);
+  color: var(--ok-ink-3);
+}
+
+/* ---------- Tabbar item (alias) ---------- */
+.ok-tabbar__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--ok-space-2);
+  padding: var(--ok-space-2) var(--ok-space-3);
+  background: transparent;
+  border: none;
+  color: var(--ok-ink-3);
+  cursor: pointer;
+  font-size: var(--ok-text-sm);
+  font-family: inherit;
+  text-decoration: none;
+  border-radius: var(--ok-radius-md);
+}
+.ok-tabbar__item:hover {
+  color: var(--ok-ink-2);
+}
+.ok-tabbar__item[aria-current="page"],
+.ok-tabbar__item.is-active {
+  color: var(--ok-brand);
+  background: var(--ok-brand-soft);
+}
+
+/* ---------- Icon tile ---------- */
+.ok-icon-tile {
+  display: inline-grid;
+  place-items: center;
+  width: var(--ok-space-7);
+  height: var(--ok-space-7);
+  border-radius: var(--ok-radius-md);
+  background: var(--ok-bg-3);
+  color: var(--ok-ink-2);
+  flex-shrink: 0;
+}
+.ok-icon-tile--brand  { background: var(--ok-brand-soft);  color: var(--ok-brand-3); }
+.ok-icon-tile--leaf   { background: var(--ok-leaf-soft);   color: var(--ok-leaf); }
+.ok-icon-tile--warn   { background: var(--ok-warn-soft);   color: var(--ok-warn); }
+.ok-icon-tile--danger { background: var(--ok-danger-soft); color: var(--ok-danger); }
+.ok-icon-tile--info   { background: var(--ok-info-soft);   color: var(--ok-info); }
+.ok-icon-tile--lg {
+  width: var(--ok-space-8);
+  height: var(--ok-space-8);
+}
+
+/* ---------- Chip variants ---------- */
+.ok-chip--brand {
+  background: var(--ok-brand-soft);
+  color: var(--ok-brand-3);
+  border-color: color-mix(in oklch, var(--ok-brand) 30%, transparent);
+}
+.ok-chip--info {
+  background: var(--ok-info-soft);
+  color: var(--ok-info);
+  border-color: color-mix(in oklch, var(--ok-info) 30%, transparent);
+}
+
+/* ---------- Badge success (alias for leaf) ---------- */
+.ok-badge--success {
+  background: var(--ok-leaf-soft);
+  color: var(--ok-leaf);
+}
+
+/* ---------- Toggle slider ---------- */
+.ok-toggle__slider {
+  position: relative;
+  display: inline-block;
+  width: calc(var(--ok-space-7) + var(--ok-space-1));
+  height: var(--ok-space-5);
+  background: var(--ok-bg-3);
+  border-radius: var(--ok-radius-pill);
+  cursor: pointer;
+  transition: background var(--ok-dur-base) var(--ok-ease-out, ease);
+}
+.ok-toggle__slider::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: calc(var(--ok-space-5) - 4px);
+  height: calc(var(--ok-space-5) - 4px);
+  border-radius: var(--ok-radius-pill);
+  background: var(--ok-ink);
+  transition: transform var(--ok-dur-base) var(--ok-ease-out, ease);
+}
+.ok-toggle.is-on .ok-toggle__slider,
+.ok-toggle[aria-checked="true"] .ok-toggle__slider,
+[aria-checked="true"] > .ok-toggle__slider {
+  background: var(--ok-brand);
+}
+.ok-toggle.is-on .ok-toggle__slider::after,
+.ok-toggle[aria-checked="true"] .ok-toggle__slider::after,
+[aria-checked="true"] > .ok-toggle__slider::after {
+  transform: translateX(calc(var(--ok-space-5) - 4px));
+}
+
+/* ---------- Form actions row ---------- */
+.ok-form-actions {
+  display: flex;
+  gap: var(--ok-space-3);
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: var(--ok-space-4);
+  border-top: 1px solid var(--ok-line);
+  margin-top: var(--ok-space-5);
+}
+.ok-form-actions--start { justify-content: flex-start; }
+.ok-form-actions--between { justify-content: space-between; }
+
+/* ---------- Input group addon as button ---------- */
+.ok-input-group__addon--btn {
+  cursor: pointer;
+  border: none;
+  background: var(--ok-bg-3);
+  color: var(--ok-ink-2);
+  font-family: inherit;
+  font-size: var(--ok-text-md);
+  padding: 0 var(--ok-space-3);
+  transition: background var(--ok-dur-base) var(--ok-ease-out, ease);
+}
+.ok-input-group__addon--btn:hover {
+  background: var(--ok-bg-4);
+  color: var(--ok-ink);
+}
+
+/* ---------- Timeline sub ---------- */
+.ok-timeline__sub {
+  font-size: var(--ok-text-xs);
+  color: var(--ok-ink-3);
+  margin-top: 2px;
+}

@@ -1,0 +1,44 @@
+{% extends "_layout.jinja" %}
+{% from "ui/badge.jinja" import badge %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Badge — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Badge</h1>
+<p class="showcase__lead">Etiquetas pequeñas con dot indicator opcional. 5 variantes semánticas más versiones sólidas y de tamaño reducido.</p>
+
+{% call demo_frame("Default") %}
+{{ badge("Default") }}
+{% endcall %}
+
+{% call demo_frame("Variantes con dot") %}
+{{ badge("Brand", variant="brand", dot=True) }}
+{{ badge("Activo", variant="ok", dot=True) }}
+{{ badge("Pendiente", variant="warn", dot=True) }}
+{{ badge("Error", variant="danger", dot=True) }}
+{{ badge("Info", variant="info", dot=True) }}
+{% endcall %}
+
+{% call demo_frame("Variantes sólidas") %}
+{{ badge("12", variant="solid") }}
+{{ badge("NUEVO", variant="solid-brand") }}
+{% endcall %}
+
+{% call demo_frame("Tamaño pequeño") %}
+{{ badge("3", variant="brand", size="sm") }}
+{{ badge("99+", variant="danger", size="sm") }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto del badge.</td></tr>
+    <tr><td><code>variant</code></td><td>"brand"|"ok"|"warn"|"danger"|"info"|"solid"|"solid-brand"|None</td><td>None</td><td>Variante semántica. None = default.</td></tr>
+    <tr><td><code>size</code></td><td>"md"|"sm"</td><td>"md"</td><td>Tamaño.</td></tr>
+    <tr><td><code>dot</code></td><td>bool</td><td>false</td><td>Muestra un dot indicator a la izquierda.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

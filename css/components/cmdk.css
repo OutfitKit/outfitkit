@@ -1,0 +1,162 @@
+/* ============================================================
+   OutfitKit · Command palette ⌘K
+   ============================================================ */
+
+.ok-cmdk-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+  z-index: var(--ok-z-modal);
+  display: grid;
+  place-items: start center;
+  padding: 14vh 16px 16px;
+}
+
+.ok-cmdk {
+  width: 100%;
+  max-width: 580px;
+  background: var(--ok-bg-1);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-xl);
+  box-shadow: var(--ok-shadow-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  max-height: 70vh;
+}
+.ok-cmdk__head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--ok-line);
+  height: 52px;
+  flex-shrink: 0;
+}
+.ok-cmdk__icon {
+  width: 18px; height: 18px;
+  color: var(--ok-ink-3);
+  flex-shrink: 0;
+}
+.ok-cmdk__input {
+  flex: 1;
+  background: transparent;
+  border: 0; outline: 0;
+  font-size: var(--ok-text-lg);
+  color: var(--ok-ink);
+  font-weight: 400;
+}
+.ok-cmdk__input::placeholder { color: var(--ok-ink-4); }
+.ok-cmdk__hint {
+  font-size: var(--ok-text-2xs);
+  color: var(--ok-ink-4);
+  display: inline-flex; gap: 4px;
+}
+.ok-cmdk__hint kbd {
+  font-family: var(--ok-font-mono);
+  padding: 1px 5px;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-xs);
+  color: var(--ok-ink-3);
+}
+
+.ok-cmdk__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 6px;
+}
+.ok-cmdk__group {
+  font-size: var(--ok-text-2xs);
+  color: var(--ok-ink-4);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 10px 4px;
+}
+.ok-cmdk__item {
+  display: flex; align-items: center; gap: 12px;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: var(--ok-radius-sm);
+  background: transparent; border: 0;
+  color: var(--ok-ink-2);
+  font-size: var(--ok-text-md);
+  cursor: pointer;
+  text-align: left;
+}
+.ok-cmdk__item-icon {
+  width: 28px; height: 28px;
+  border-radius: var(--ok-radius-sm);
+  background: var(--ok-bg-3);
+  display: grid; place-items: center;
+  color: var(--ok-ink-3);
+  flex-shrink: 0;
+}
+.ok-cmdk__item-icon svg { width: 14px; height: 14px; }
+.ok-cmdk__item-text {
+  flex: 1;
+  display: flex; flex-direction: column;
+  min-width: 0;
+}
+.ok-cmdk__item-title { color: var(--ok-ink); font-weight: 450; }
+.ok-cmdk__item-sub { font-size: var(--ok-text-sm); color: var(--ok-ink-3); }
+.ok-cmdk__item-meta {
+  font-size: var(--ok-text-2xs);
+  color: var(--ok-ink-4);
+  font-family: var(--ok-font-mono);
+}
+.ok-cmdk__item-shortcut {
+  display: inline-flex; gap: 3px;
+}
+.ok-cmdk__item-shortcut kbd {
+  font-family: var(--ok-font-mono);
+  font-size: var(--ok-text-2xs);
+  padding: 1px 5px;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-xs);
+  color: var(--ok-ink-3);
+}
+.ok-cmdk__item:hover,
+.ok-cmdk__item[aria-selected="true"] {
+  background: var(--ok-bg-3);
+}
+.ok-cmdk__item[aria-selected="true"] {
+  outline: 1px solid var(--ok-line-2);
+}
+.ok-cmdk__item mark {
+  background: transparent;
+  color: var(--ok-brand-3);
+  font-weight: 600;
+}
+
+.ok-cmdk__empty {
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--ok-ink-4);
+}
+.ok-cmdk__empty-icon {
+  display: inline-grid; place-items: center;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--ok-bg-3);
+  color: var(--ok-ink-3);
+  margin-bottom: 12px;
+}
+.ok-cmdk__empty-text { font-size: var(--ok-text-md); color: var(--ok-ink-2); }
+.ok-cmdk__empty-sub  { font-size: var(--ok-text-sm); color: var(--ok-ink-4); margin-top: 4px; }
+
+.ok-cmdk__footer {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 8px 14px;
+  border-top: 1px solid var(--ok-line);
+  font-size: var(--ok-text-2xs);
+  color: var(--ok-ink-4);
+  flex-shrink: 0;
+}
+.ok-cmdk__footer kbd {
+  font-family: var(--ok-font-mono);
+  font-size: 10px;
+  padding: 1px 4px;
+  background: var(--ok-bg-3);
+  border: 1px solid var(--ok-line);
+  border-radius: var(--ok-radius-xs);
+  color: var(--ok-ink-3);
+}
