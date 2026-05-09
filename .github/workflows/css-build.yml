@@ -77,11 +77,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet dist/; then
-            echo "No changes in dist/, skipping commit."
+          git add -f dist/
+          if git diff --cached --quiet; then
+            echo "No staged changes — dist/ already matches the tag."
             exit 0
           fi
-          git add dist/
           git commit -m "build: dist for ${{ github.ref_name }}"
           git tag -f ${{ github.ref_name }}
           git push origin HEAD:refs/tags/${{ github.ref_name }} --force
