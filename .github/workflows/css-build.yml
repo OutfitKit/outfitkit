@@ -19,29 +19,58 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          node-version: "20"
+          python-version: "3.14"
 
-      - name: Install lightningcss-cli
-        run: npm install --no-save lightningcss-cli@1
+      - name: Install rcssmin (pure-Python minifier)
+        run: pip install rcssmin==1.1.2
 
-      - name: Build bundle (resolves @imports)
+      - name: Bundle CSS (resolve @imports)
         run: |
           mkdir -p dist
-          cd css && ../node_modules/.bin/lightningcss --bundle outfitkit.css -o ../dist/outfitkit.css
+          python <<'PY'
+          import re
+          from pathlib import Path
 
-      - name: Build minified bundle
+          IMPORT_RE = re.compile(r'^\s*@import\s+["\'](?P<path>[^"\']+)["\'];\s*$', re.M)
+          ROOT = Path("css")
+
+          def expand(file: Path, seen: set[Path]) -> str:
+              if file in seen:
+                  return ""
+              seen.add(file)
+              src = file.read_text()
+
+              def repl(m: re.Match) -> str:
+                  rel = m.group("path")
+                  target = (file.parent / rel).resolve()
+                  return f"\n/* === {target.relative_to(Path.cwd())} === */\n" + expand(target, seen)
+
+              return IMPORT_RE.sub(repl, src)
+
+          bundled = expand(ROOT / "outfitkit.css", set())
+          Path("dist/outfitkit.css").write_text(bundled)
+          print(f"Wrote dist/outfitkit.css ({len(bundled):,} bytes)")
+          PY
+
+      - name: Minify
         run: |
-          cd css && ../node_modules/.bin/lightningcss --bundle --minify outfitkit.css -o ../dist/outfitkit.min.css
+          python <<'PY'
+          import rcssmin
+          from pathlib import Path
+          src = Path("dist/outfitkit.css").read_text()
+          minified = rcssmin.cssmin(src)
+          Path("dist/outfitkit.min.css").write_text(minified)
+          print(f"Wrote dist/outfitkit.min.css ({len(minified):,} bytes, {len(minified)/len(src)*100:.1f}% of source)")
+          PY
 
       - name: Verify outputs
         run: |
           test -s dist/outfitkit.css
           test -s dist/outfitkit.min.css
-          echo "outfitkit.css     $(wc -c < dist/outfitkit.css) bytes"
-          echo "outfitkit.min.css $(wc -c < dist/outfitkit.min.css) bytes"
+          ls -lh dist/
 
       - name: Commit dist/ to the tag
         if: startsWith(github.ref, 'refs/tags/v')
