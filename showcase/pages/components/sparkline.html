@@ -1,0 +1,43 @@
+{% extends "_layout.jinja" %}
+{% from "ui/sparkline.jinja" import sparkline %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Sparkline — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Sparkline</h1>
+<p class="showcase__lead">Mini gráfica SVG de línea. Acepta un string de puntos <code>"x1,y1 x2,y2 ..."</code> o una lista de tuplas <code>[(x, y), ...]</code>. Tres tamaños y direcciones up/down/brand.</p>
+
+{% call demo_frame("Default") %}
+{{ sparkline("0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9") }}
+{% endcall %}
+
+{% call demo_frame("Direcciones") %}
+{{ sparkline("0,18 10,16 20,14 30,12 40,10 50,9 60,7 70,5 80,3", direction="up") }}
+{{ sparkline("0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,19", direction="down") }}
+{{ sparkline("0,12 10,8 20,14 30,9 40,15 50,7 60,12 70,6 80,10", direction="brand") }}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+{{ sparkline("0,15 14,10 28,12 42,7 56,5", size="sm") }}
+{{ sparkline("0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9") }}
+{{ sparkline("0,28 12,24 24,26 36,20 48,22 60,16 72,18 84,12 96,14 108,8 120,4", direction="up", size="lg") }}
+{% endcall %}
+
+{% call demo_frame("Lista de tuplas") %}
+{{ sparkline([(0, 18), (20, 14), (40, 10), (60, 6), (80, 2)], direction="up") }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>points</code></td><td>str | list[tuple]</td><td>—</td><td>Puntos SVG. String <code>"x,y x,y …"</code> o lista de tuplas.</td></tr>
+    <tr><td><code>direction</code></td><td>"up"|"down"|"brand"|None</td><td>None</td><td>Color del trazo.</td></tr>
+    <tr><td><code>size</code></td><td>"sm"|"md"|"lg"</td><td>"md"</td><td>Define <code>width</code> y <code>height</code> del viewBox.</td></tr>
+    <tr><td><code>width</code></td><td>int</td><td>80</td><td>Override manual (ignorado si <code>size</code> ≠ md).</td></tr>
+    <tr><td><code>height</code></td><td>int</td><td>22</td><td>Override manual (ignorado si <code>size</code> ≠ md).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

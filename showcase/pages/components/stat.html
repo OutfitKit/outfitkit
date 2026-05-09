@@ -1,0 +1,43 @@
+{% extends "_layout.jinja" %}
+{% from "ui/stat.jinja" import stat %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Stat — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Stat</h1>
+<p class="showcase__lead">Métrica compacta para fila comparativa. Se compone dentro del wrapper <code>.ok-stats</code> que aplica grid + bordes verticales entre items.</p>
+
+{% call demo_frame("Fila de 4") %}
+<div class="ok-stats" style="width: 100%;">
+  {{ stat("Pedidos", "1.284", delta="+6,2%", delta_dir="up") }}
+  {{ stat("Facturación", "€48.210", delta="+9,1%", delta_dir="up") }}
+  {{ stat("Devoluciones", "12", delta="−4 vs mes", delta_dir="down") }}
+  {{ stat("Clientes nuevos", "38", delta="igual que mes") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Fila de 3 sin delta") %}
+<div class="ok-stats" style="width: 100%;">
+  {{ stat("Stock crítico", "7 SKU") }}
+  {{ stat("En tránsito", "23") }}
+  {{ stat("Almacenes", "4") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Stat aislado") %}
+{{ stat("Total ventas", "€48.210", delta="+9,1% vs ayer", delta_dir="up") }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Etiqueta uppercase superior.</td></tr>
+    <tr><td><code>value</code></td><td>str</td><td>—</td><td>Valor numérico/texto.</td></tr>
+    <tr><td><code>delta</code></td><td>str|None</td><td>None</td><td>Texto delta opcional.</td></tr>
+    <tr><td><code>delta_dir</code></td><td>"up"|"down"|None</td><td>None</td><td>Color del delta (verde/rojo).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

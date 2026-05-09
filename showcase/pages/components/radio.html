@@ -1,0 +1,58 @@
+{% extends "_layout.jinja" %}
+{% from "ui/radio.jinja" import radio %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Radio — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Radio</h1>
+<p class="showcase__lead">Botón de opción único por grupo (mismo <code>name</code>). Combina con <code>.ok-radio-group</code> o <code>.ok-radio-card</code>.</p>
+
+{% call demo_frame("Inline") %}
+<div class="ok-radio-group ok-radio-group--inline">
+  {{ radio("Mensual", "billing", value="monthly", checked=True) }}
+  {{ radio("Anual", "billing", value="annual") }}
+  {{ radio("Personalizado", "billing", value="custom") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Vertical") %}
+<div class="ok-radio-group">
+  {{ radio("Tarjeta de crédito", "pay", value="card", checked=True) }}
+  {{ radio("Transferencia", "pay", value="wire") }}
+  {{ radio("Bizum", "pay", value="bizum") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Estados") %}
+<div class="ok-radio-group">
+  {{ radio("Activo", "s1", checked=True) }}
+  {{ radio("Sin marcar", "s2") }}
+  {{ radio("Deshabilitado", "s3", disabled=True) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar — selección reactiva") %}
+<div data-signals="{ plan: 'monthly' }">
+  <div class="ok-radio-group ok-radio-group--inline">
+    {{ radio("Mensual", "plan", value="monthly", checked=True, attrs={"data-bind-plan": ""}) }}
+    {{ radio("Anual", "plan", value="annual", attrs={"data-bind-plan": ""}) }}
+    {{ radio("Personalizado", "plan", value="custom", attrs={"data-bind-plan": ""}) }}
+  </div>
+  <p style="margin-top:8px;">Plan elegido: <strong data-text="$plan"></strong></p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto inline.</td></tr>
+    <tr><td><code>name</code></td><td>str</td><td>—</td><td>Grupo (todas las opciones del mismo grupo comparten <code>name</code>).</td></tr>
+    <tr><td><code>value</code></td><td>str</td><td>""</td><td>Valor enviado al hacer submit.</td></tr>
+    <tr><td><code>checked</code></td><td>bool</td><td>false</td><td>Estado inicial.</td></tr>
+    <tr><td><code>disabled</code></td><td>bool</td><td>false</td><td>Deshabilita el radio.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

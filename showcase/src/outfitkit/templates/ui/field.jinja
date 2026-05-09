@@ -1,0 +1,16 @@
+{#def label, required=false, hint="", error="", attrs=None #}
+
+{% macro field(label, required=false, hint="", error="", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-field"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  <label class="ok-field__label{% if required %} ok-field__label--req{% endif %}">{{ label }}</label>
+  {{ caller() }}
+  {%- if error %}<span class="ok-field__error">{{ error }}</span>{% endif %}
+  {%- if hint and not error %}<span class="ok-field__hint">{{ hint }}</span>{% endif %}
+</div>
+{%- endmacro %}
+
+{% if label is defined %}
+  {% call field(label, required=required, hint=hint, error=error, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

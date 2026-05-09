@@ -1,0 +1,80 @@
+{% extends "_layout.jinja" %}
+{% from "ui/empty.jinja" import empty %}
+{% from "ui/button.jinja" import button %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Empty — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Empty state</h1>
+<p class="showcase__lead">Estado vacío con icono, título, descripción y acciones opcionales. Variante <code>compact</code> para usar dentro de cards.</p>
+
+{% set inv_icon %}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+  <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+  <path d="M3 12l9 4 9-4"/>
+  <path d="M3 17l9 4 9-4"/>
+</svg>
+{% endset %}
+
+{% set bell_icon %}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+{% endset %}
+
+{% set search_icon %}
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+{% endset %}
+
+{% call demo_frame("Default") %}
+<div style="width: 100%;">
+  {{ empty("Sin movimientos", desc="Cuando registres entradas o salidas de stock aparecerán aquí.", icon=inv_icon) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Con acciones") %}
+{% set actions %}
+{{ button("Importar CSV", variant="secondary") }}
+{{ button("Nuevo movimiento", variant="primary") }}
+{% endset %}
+<div style="width: 100%;">
+  {{ empty(
+    "Sin movimientos de inventario",
+    desc="Cuando registres entradas o salidas de stock aparecerán aquí. Puedes empezar importando un CSV o creando un movimiento manual.",
+    icon=inv_icon,
+    actions=actions
+  ) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Compact") %}
+<div style="width: 100%;">
+  {{ empty("Todo al día", desc="No tienes alertas activas.", icon=bell_icon, compact=True) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Compact con acción") %}
+{% set clear_action = button("Limpiar filtros", variant="ghost", size="sm") %}
+<div style="width: 100%;">
+  {{ empty(
+    "Sin resultados para «xyz»",
+    desc="Prueba con otro término o revisa los filtros.",
+    icon=search_icon,
+    actions=clear_action,
+    compact=True
+  ) }}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td>—</td><td>Título principal.</td></tr>
+    <tr><td><code>desc</code></td><td>str|None</td><td>None</td><td>Descripción opcional.</td></tr>
+    <tr><td><code>icon</code></td><td>safe HTML</td><td>None</td><td>SVG inline. Se envuelve en <code>.ok-empty__icon</code>.</td></tr>
+    <tr><td><code>actions</code></td><td>safe HTML</td><td>None</td><td>Botones u otros elementos en <code>.ok-empty__actions</code>.</td></tr>
+    <tr><td><code>compact</code></td><td>bool</td><td>False</td><td>Variante compacta para cards.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

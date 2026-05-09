@@ -1,0 +1,13 @@
+{#def compact=false, zebra=false, attrs=None #}
+
+{% macro table(compact=false, zebra=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<table class="ok-table{% if compact %} ok-table--compact{% endif %}{% if zebra %} ok-table--zebra{% endif %}"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</table>
+{%- endmacro %}
+
+{% if compact is defined %}
+  {% call table(compact=compact, zebra=zebra, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

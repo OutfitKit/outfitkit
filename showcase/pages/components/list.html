@@ -1,0 +1,106 @@
+{% extends "_layout.jinja" %}
+{% from "ui/list.jinja" import list %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}List — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>List</h1>
+<p class="showcase__lead">Lista interactiva con icon + body + aside. El consumidor compone los items con <code>.ok-list__item</code>, <code>.ok-list__icon</code>, <code>.ok-list__body</code>, <code>.ok-list__title</code>, <code>.ok-list__desc</code>, <code>.ok-list__aside</code>, <code>.ok-list__chev</code>.</p>
+
+{% call demo_frame("Default — settings nav") %}
+{% call list() %}
+<a class="ok-list__item" aria-current="true" href="#">
+  <span class="ok-list__icon ok-list__icon--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg></span>
+  <div class="ok-list__body">
+    <div class="ok-list__title">Perfil de empresa</div>
+    <div class="ok-list__desc">Cafetería La Rambla S.L. · CIF B-65432109</div>
+  </div>
+  <span class="ok-list__aside">
+    <span class="ok-badge ok-badge--brand">Sin guardar</span>
+    <svg class="ok-list__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+  </span>
+</a>
+<a class="ok-list__item" href="#">
+  <span class="ok-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/></svg></span>
+  <div class="ok-list__body">
+    <div class="ok-list__title">Facturación y pagos</div>
+    <div class="ok-list__desc">Plan Business · próxima factura 31 may 2026</div>
+  </div>
+  <span class="ok-list__aside">
+    <svg class="ok-list__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+  </span>
+</a>
+<a class="ok-list__item" href="#">
+  <span class="ok-list__icon ok-list__icon--warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/></svg></span>
+  <div class="ok-list__body">
+    <div class="ok-list__title">Seguridad <span class="ok-badge ok-badge--warn">Atención</span></div>
+    <div class="ok-list__desc">3 miembros sin 2FA</div>
+  </div>
+  <span class="ok-list__aside">
+    <svg class="ok-list__chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
+  </span>
+</a>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variant separated · cards") %}
+{% call list(variant="separated") %}
+<a class="ok-list__item" href="#">
+  <span class="ok-list__icon ok-list__icon--leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></span>
+  <div class="ok-list__body">
+    <div class="ok-list__title">Pedido FCT-184 enviado</div>
+    <div class="ok-list__desc">Restaurante El Caracol · 1.245,80 €</div>
+  </div>
+  <span class="ok-list__aside">hace 12 min</span>
+</a>
+<a class="ok-list__item" href="#">
+  <span class="ok-list__icon ok-list__icon--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+  <div class="ok-list__body">
+    <div class="ok-list__title">Nuevo mensaje de Marc Riera</div>
+    <div class="ok-list__desc">Sobre presupuesto P-2026-022</div>
+  </div>
+  <span class="ok-list__aside">14:38</span>
+</a>
+<a class="ok-list__item" href="#">
+  <span class="ok-list__icon ok-list__icon--danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg></span>
+  <div class="ok-list__body">
+    <div class="ok-list__title">Stock crítico · Café Brasil 1kg</div>
+    <div class="ok-list__desc">4 uds en almacén · mínimo 25</div>
+  </div>
+  <span class="ok-list__aside">15:02</span>
+</a>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Dense + ghost") %}
+{% call list(variant="ghost", dense=True) %}
+<button class="ok-list__item">
+  <span class="ok-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></span>
+  <div class="ok-list__body"><div class="ok-list__title">Validar plan contable</div></div>
+  <span class="ok-list__aside">⌘ 1</span>
+</button>
+<button class="ok-list__item">
+  <span class="ok-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg></span>
+  <div class="ok-list__body"><div class="ok-list__title">Confirmar dirección fiscal</div></div>
+  <span class="ok-list__aside">⌘ 2</span>
+</button>
+<button class="ok-list__item">
+  <span class="ok-list__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg></span>
+  <div class="ok-list__body"><div class="ok-list__title">Invitar al equipo</div></div>
+  <span class="ok-list__aside">⌘ 3</span>
+</button>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>variant</code></td><td>"default"|"ghost"|"separated"</td><td>"default"</td><td>Estilo del contenedor.</td></tr>
+    <tr><td><code>dense</code></td><td>bool</td><td>false</td><td>Padding/iconos reducidos.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.ok-list__item</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

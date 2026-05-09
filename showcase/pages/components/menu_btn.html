@@ -1,0 +1,38 @@
+{% extends "_layout.jinja" %}
+{% from "ui/menu_btn.jinja" import menu_btn %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Menu button — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Menu button</h1>
+<p class="showcase__lead">Botón hamburger con animación a X. Estado controlado por <code>aria-expanded</code>; click para alternar con Datastar.</p>
+
+{% call demo_frame("Cerrado / abierto") %}
+{{ menu_btn() }}
+{{ menu_btn(label="Cerrar", expanded=True) }}
+{% endcall %}
+
+{% call demo_frame("Datastar — toggle") %}
+<div data-signals="{ menu: false }">
+  {{ menu_btn(attrs={"data-attr-aria-expanded": "$menu", "data-on:click": "$menu = !$menu"}) }}
+  <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ok-ink-3);">Cerrado</span>
+</div>
+{% endcall %}
+
+{% call demo_frame("Solo en mobile (oculto ≥768px)") %}
+{{ menu_btn(mobile_only=True) }}
+<span style="margin-left: 12px; color: var(--ok-ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>"Menú"</td><td>aria-label.</td></tr>
+    <tr><td><code>expanded</code></td><td>bool</td><td>False</td><td>Estado inicial. Cambia con Datastar.</td></tr>
+    <tr><td><code>mobile_only</code></td><td>bool</td><td>False</td><td>Oculto en ≥768px (toggle de drawer).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (data-on:click, etc).</td></tr>
+  </tbody>
+</table>
+{% endblock %}

@@ -51,9 +51,184 @@ COMPONENTS = {
         "expected_text": "Filters",
         "slot": "<p>body</p>",
     },
+    # --- Category A — atomics ---
+    "avatar": {
+        "kwargs": {"label": "JC", "size": "lg", "variant": "brand"},
+        "expected_classes": ["ok-avatar", "ok-avatar--lg", "ok-avatar--brand"],
+        "expected_text": "JC",
+    },
+    "breadcrumbs": {
+        "kwargs": {
+            "items": [
+                {"label": "Home", "href": "#"},
+                {"label": "Section", "href": "#"},
+                {"label": "Current"},
+            ],
+            "variant": "chips",
+        },
+        "expected_classes": ["ok-crumbs", "ok-crumbs--chips", "ok-crumbs__item"],
+        "expected_text": "Current",
+    },
+    "kpi": {
+        "kwargs": {
+            "label": "Sales",
+            "value": "€2.847",
+            "unit": ",30",
+            "delta": "+12,4%",
+            "delta_dir": "up",
+            "variant": "brand",
+        },
+        "expected_classes": [
+            "ok-kpi", "ok-kpi--brand", "ok-kpi__label", "ok-kpi__value",
+            "ok-kpi__value-unit", "ok-kpi__delta", "ok-kpi__delta--up",
+            "ok-kpi__delta-arrow",
+        ],
+        "expected_text": "Sales",
+    },
+    "menu_btn": {
+        "kwargs": {"label": "Menu", "expanded": True, "mobile_only": True},
+        "expected_classes": [
+            "ok-menu-btn", "ok-menu-btn--mobile-only",
+            "ok-menu-btn-lines", "ok-menu-btn-line",
+        ],
+    },
+    "progress": {
+        "kwargs": {
+            "value": 73,
+            "label": "Importing",
+            "value_text": "73%",
+            "variant": "leaf",
+            "size": "lg",
+        },
+        "expected_classes": [
+            "ok-progress-block", "ok-progress-block__head",
+            "ok-progress-block__label", "ok-progress-block__value",
+            "ok-progress", "ok-progress--leaf", "ok-progress--lg",
+            "ok-progress__bar",
+        ],
+        "expected_text": "Importing",
+    },
+    "stat": {
+        "kwargs": {
+            "label": "Orders", "value": "1.284",
+            "delta": "+6,2%", "delta_dir": "up",
+        },
+        "expected_classes": [
+            "ok-stat", "ok-stat__label", "ok-stat__value",
+            "ok-stat__delta", "ok-stat__delta--up",
+        ],
+        "expected_text": "1.284",
+    },
+    "sparkline": {
+        "kwargs": {"points": "0,18 10,15 20,16 30,12", "direction": "up", "size": "lg"},
+        "expected_classes": ["ok-spark", "ok-spark--up", "ok-spark--lg"],
+    },
+    "empty": {
+        "kwargs": {
+            "title": "No data",
+            "desc": "Nothing to show.",
+            "compact": True,
+        },
+        "expected_classes": [
+            "ok-empty", "ok-empty--compact", "ok-empty__title", "ok-empty__desc",
+        ],
+        "expected_text": "No data",
+    },
+    # --- Category B — slots ---
+    "accordion": {
+        "kwargs": {"variant": "ghost"},
+        "expected_classes": ["ok-accordion", "ok-accordion--ghost"],
+        "slot": '<div class="ok-accordion__item">x</div>',
+    },
+    "tabs": {
+        "kwargs": {"variant": "pill"},
+        "expected_classes": ["ok-tabs", "ok-tabs--pill"],
+        "slot": '<button class="ok-tab">Hoy</button>',
+    },
+    "list": {
+        "kwargs": {"variant": "separated", "dense": True},
+        "expected_classes": ["ok-list", "ok-list--separated", "ok-list--dense"],
+        "slot": '<a class="ok-list__item">x</a>',
+    },
+    "banner": {
+        "kwargs": {
+            "title": "Heads up", "description": "Maintenance soon",
+            "variant": "warn", "dismissible": True,
+        },
+        "expected_classes": [
+            "ok-banner", "ok-banner--warn", "ok-banner__icon",
+            "ok-banner__body", "ok-banner__title", "ok-banner__desc", "ok-banner__close",
+        ],
+        "expected_text": "Heads up",
+        "slot": "",
+    },
+    "receipt": {
+        "kwargs": {},
+        "expected_classes": ["ok-receipt"],
+        "slot": '<div class="ok-receipt__title">Demo</div>',
+    },
+    "stepper": {
+        "kwargs": {"orientation": "vertical"},
+        "expected_classes": ["ok-stepper", "ok-stepper--vertical"],
+        "slot": '<li class="ok-stepper__step">x</li>',
+    },
+    "table": {
+        "kwargs": {"compact": True, "zebra": True},
+        "expected_classes": ["ok-table", "ok-table--compact", "ok-table--zebra"],
+        "slot": "<thead><tr><th>x</th></tr></thead>",
+    },
+    "tabbar": {
+        "kwargs": {"variant": "pill"},
+        "expected_classes": ["ok-tabbar", "ok-tabbar--pill"],
+        "slot": '<a class="ok-tabbar-item">x</a>',
+    },
+    # --- Forms ---
+    "field": {
+        "kwargs": {"label": "Email", "required": True, "hint": "We never share."},
+        "expected_classes": [
+            "ok-field", "ok-field__label", "ok-field__label--req", "ok-field__hint",
+        ],
+        "expected_text": "Email",
+        "slot": '<input class="ok-input" />',
+    },
+    "input": {
+        "kwargs": {"name": "email", "type": "email", "size": "lg", "placeholder": "you@x.com"},
+        "expected_classes": ["ok-input", "ok-input--lg"],
+    },
+    "select": {
+        "kwargs": {"name": "country", "size": "sm"},
+        "expected_classes": ["ok-select", "ok-select--sm"],
+        "slot": "<option>ES</option>",
+    },
+    "textarea": {
+        "kwargs": {"name": "notes", "rows": 6, "invalid": True},
+        "expected_classes": ["ok-textarea", "ok-textarea--invalid"],
+    },
+    "checkbox": {
+        "kwargs": {"label": "Accept terms", "name": "tos", "checked": True},
+        "expected_classes": ["ok-check", "ok-check__box"],
+        "expected_text": "Accept terms",
+    },
+    "radio": {
+        "kwargs": {"label": "Monthly", "name": "plan", "value": "monthly", "checked": True},
+        "expected_classes": ["ok-radio", "ok-radio__dot"],
+        "expected_text": "Monthly",
+    },
+    "toggle": {
+        "kwargs": {"name": "notif", "checked": True, "size": "lg"},
+        "expected_classes": ["ok-toggle", "ok-toggle--lg", "ok-toggle__track"],
+    },
+    "slider": {
+        "kwargs": {"name": "vol", "min": 0, "max": 10, "step": 1, "value": 5},
+        "expected_classes": ["ok-slider"],
+    },
 }
 
-SLOTTED = {"card", "modal", "drawer"}
+SLOTTED = {
+    "card", "modal", "drawer",
+    "accordion", "tabs", "list", "banner", "receipt", "stepper", "table", "tabbar",
+    "field", "select",
+}
 
 
 def _macro_render(env: Environment, name: str, kwargs: dict, slot: str = "") -> str:
@@ -74,8 +249,14 @@ def _macro_render(env: Environment, name: str, kwargs: dict, slot: str = "") -> 
 
 def _jinjax_render(catalog: Catalog, name: str, kwargs: dict, slot: str = "") -> str:
     """Render via JinjaX catalog.render() — the same path JinjaX takes when
-    the preprocessor encounters ``<Component ... />`` in a page."""
-    component_name = name.title()  # button -> Button
+    the preprocessor encounters ``<Component ... />`` in a page.
+
+    Components whose file stem contains an underscore (e.g. ``menu_btn``)
+    are registered under the same name JinjaX recognises for them. We use
+    ``str.title()`` for simple names (``button`` → ``Button``) and fall back
+    to the raw stem for any name with an underscore.
+    """
+    component_name = name if "_" in name else name.title()
     if slot:
         # The catalog's render() accepts a `_content` kwarg as the slot HTML.
         return catalog.render(component_name, _content=slot, **kwargs)

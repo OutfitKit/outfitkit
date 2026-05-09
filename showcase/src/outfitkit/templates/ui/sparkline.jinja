@@ -1,0 +1,21 @@
+{#def points, direction=None, size="md", width=80, height=22, attrs=None #}
+
+{% macro sparkline(points, direction=None, size="md", width=80, height=22, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- if size == 'lg' %}{% set width = 120 %}{% set height = 32 %}{% endif -%}
+{%- if size == 'sm' %}{% set width = 56 %}{% set height = 18 %}{% endif -%}
+{%- if points is string %}{% set points_str = points %}{%- else -%}
+  {%- set parts = [] -%}
+  {%- for p in points -%}
+    {%- set _ = parts.append(p[0]|string ~ ',' ~ p[1]|string) -%}
+  {%- endfor -%}
+  {%- set points_str = parts|join(' ') -%}
+{%- endif -%}
+<svg class="ok-spark{% if size != 'md' %} ok-spark--{{ size }}{% endif %}{% if direction %} ok-spark--{{ direction }}{% endif %}"
+  viewBox="0 0 {{ width }} {{ height }}" preserveAspectRatio="none"
+  {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
+  <polyline points="{{ points_str }}"/>
+</svg>
+{%- endmacro %}
+
+{% if points is defined %}{{ sparkline(points, direction=direction, size=size, width=width, height=height, attrs=attrs) }}{% endif %}

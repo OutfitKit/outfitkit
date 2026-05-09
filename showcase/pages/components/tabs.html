@@ -1,0 +1,72 @@
+{% extends "_layout.jinja" %}
+{% from "ui/tabs.jinja" import tabs %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Tabs — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Tabs</h1>
+<p class="showcase__lead">Tablist horizontal o vertical. El consumidor compone los <code>.ok-tab</code> dentro y enlaza el estado activo con <code>aria-selected</code>.</p>
+
+{% call demo_frame("Default — underline") %}
+<div data-signals="{ tab: 'resumen' }" style="width: 100%;">
+  {% call tabs() %}
+  <button class="ok-tab" data-on:click="$tab = 'resumen'" data-attr-aria-selected="$tab === 'resumen'" aria-selected="true">Resumen</button>
+  <button class="ok-tab" data-on:click="$tab = 'movimientos'" data-attr-aria-selected="$tab === 'movimientos'" aria-selected="false">Movimientos <span class="ok-tab-badge">128</span></button>
+  <button class="ok-tab" data-on:click="$tab = 'conciliacion'" data-attr-aria-selected="$tab === 'conciliacion'" aria-selected="false">Conciliación <span class="ok-tab-badge">3</span></button>
+  <button class="ok-tab" data-on:click="$tab = 'auditoria'" data-attr-aria-selected="$tab === 'auditoria'" aria-selected="false">Auditoría</button>
+  <button class="ok-tab" data-on:click="$tab = 'configuracion'" data-attr-aria-selected="$tab === 'configuracion'" aria-selected="false">Configuración</button>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{% call demo_frame("Con iconos") %}
+{% call tabs() %}
+<button class="ok-tab" aria-selected="true">
+  <svg class="ok-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+  Vista general
+</button>
+<button class="ok-tab" aria-selected="false">
+  <svg class="ok-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg>
+  Métricas
+</button>
+<button class="ok-tab" aria-selected="false">
+  <svg class="ok-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg>
+  Equipo
+</button>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variant pill") %}
+{% call tabs(variant="pill") %}
+<button class="ok-tab" aria-selected="true">Hoy</button>
+<button class="ok-tab" aria-selected="false">7 días</button>
+<button class="ok-tab" aria-selected="false">30 días</button>
+<button class="ok-tab" aria-selected="false">Año</button>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Datastar · cambio reactivo de tab") %}
+<div data-signals="{ tab: 'general' }" style="width: 100%;">
+  {% call tabs() %}
+  <button class="ok-tab" data-on:click="$tab = 'general'" data-attr-aria-selected="$tab === 'general'" aria-selected="true">General</button>
+  <button class="ok-tab" data-on:click="$tab = 'facturacion'" data-attr-aria-selected="$tab === 'facturacion'" aria-selected="false">Facturación <span class="ok-tab-badge">3</span></button>
+  <button class="ok-tab" data-on:click="$tab = 'equipo'" data-attr-aria-selected="$tab === 'equipo'" aria-selected="false">Equipo</button>
+  <button class="ok-tab" data-on:click="$tab = 'seguridad'" data-attr-aria-selected="$tab === 'seguridad'" aria-selected="false">Seguridad</button>
+  {% endcall %}
+  <div style="margin-top: 16px; padding: 14px; border: 1px solid var(--ok-line); border-radius: 8px; color: var(--ok-ink-2); font-size: 13px;">
+    Tab activo: <strong data-text="$tab">general</strong>
+  </div>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>variant</code></td><td>"default"|"pill"|"vertical"</td><td>"default"</td><td>Estilo del tablist.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Botones <code>.ok-tab</code> con <code>aria-selected</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

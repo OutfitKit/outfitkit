@@ -1,0 +1,54 @@
+{% extends "_layout.jinja" %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Input — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Input</h1>
+<p class="showcase__lead">Input de texto base — admite cualquier <code>type</code> HTML, 3 tamaños y estado de error.</p>
+
+{% call demo_frame("Default") %}
+{{ input("name", placeholder="Cafetería La Plaza") }}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+<div style="display:grid;gap:8px;max-width:360px">
+  {{ input("a", size="sm", placeholder="Compact (sm) — 30px") }}
+  {{ input("b", placeholder="Default (md) — 36px") }}
+  {{ input("c", size="lg", placeholder="Large (lg) — 44px") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Estados") %}
+<div style="display:grid;gap:8px;max-width:360px">
+  {{ input("ok", value="contacto@laplaza.es", type="email") }}
+  {{ input("err", value="X-1234", invalid=True) }}
+  {{ input("dis", value="No editable", disabled=True) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar — bind bidireccional") %}
+<div data-signals="{ q: '' }">
+  {{ input("q", placeholder="Escribe algo…", attrs={"data-bind-q": ""}) }}
+  <p style="margin-top:8px;">Tu input: <strong data-text="$q"></strong></p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>name</code></td><td>str</td><td>—</td><td>Atributo <code>name</code>.</td></tr>
+    <tr><td><code>type</code></td><td>str</td><td>"text"</td><td>Tipo HTML (text, email, password, number, tel, url…).</td></tr>
+    <tr><td><code>value</code></td><td>str</td><td>""</td><td>Valor inicial.</td></tr>
+    <tr><td><code>placeholder</code></td><td>str</td><td>""</td><td>Texto guía.</td></tr>
+    <tr><td><code>size</code></td><td>"sm"|"md"|"lg"</td><td>"md"</td><td>Tamaño.</td></tr>
+    <tr><td><code>invalid</code></td><td>bool</td><td>false</td><td>Estado de error.</td></tr>
+    <tr><td><code>disabled</code></td><td>bool</td><td>false</td><td>Deshabilita el input.</td></tr>
+    <tr><td><code>required</code></td><td>bool</td><td>false</td><td>Marca como requerido.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos extra (data-bind-*, etc).</td></tr>
+  </tbody>
+</table>
+{% endblock %}

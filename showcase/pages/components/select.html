@@ -1,0 +1,58 @@
+{% extends "_layout.jinja" %}
+{% from "ui/select.jinja" import select %}
+{% from "ui/field.jinja" import field %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Select — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Select</h1>
+<p class="showcase__lead">Select nativo con flecha custom. Las <code>&lt;option&gt;</code> van como slot.</p>
+
+{% call demo_frame("Default") %}
+{% call select("country") %}
+  <option>España</option><option>Portugal</option><option>Francia</option><option>Italia</option>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+<div style="display:grid;gap:8px;max-width:280px">
+  {% call select("a", size="sm") %}<option>Small (sm)</option>{% endcall %}
+  {% call select("b") %}<option>Default (md)</option>{% endcall %}
+  {% call select("c", size="lg") %}<option>Large (lg)</option>{% endcall %}
+</div>
+{% endcall %}
+
+{% call demo_frame("Estados") %}
+<div style="display:grid;gap:8px;max-width:280px">
+  {% call select("ok") %}<option>Activo</option>{% endcall %}
+  {% call select("err", invalid=True) %}<option>Inválido</option>{% endcall %}
+  {% call select("dis", disabled=True) %}<option>Deshabilitado</option>{% endcall %}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar — bind reactivo") %}
+<div data-signals="{ currency: 'EUR' }">
+  {% call select("currency", attrs={"data-bind-currency": ""}) %}
+    <option value="EUR">EUR — Euro</option>
+    <option value="USD">USD — Dólar</option>
+    <option value="GBP">GBP — Libra</option>
+  {% endcall %}
+  <p style="margin-top:8px;">Seleccionada: <strong data-text="$currency"></strong></p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>name</code></td><td>str</td><td>—</td><td>Atributo <code>name</code>.</td></tr>
+    <tr><td><code>size</code></td><td>"sm"|"md"|"lg"</td><td>"md"</td><td>Tamaño.</td></tr>
+    <tr><td><code>invalid</code></td><td>bool</td><td>false</td><td>Estado de error.</td></tr>
+    <tr><td><code>disabled</code></td><td>bool</td><td>false</td><td>Deshabilita el select.</td></tr>
+    <tr><td><code>required</code></td><td>bool</td><td>false</td><td>Marca como requerido.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Las <code>&lt;option&gt;</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

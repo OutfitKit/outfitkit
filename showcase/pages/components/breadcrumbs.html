@@ -1,0 +1,57 @@
+{% extends "_layout.jinja" %}
+{% from "ui/breadcrumbs.jinja" import breadcrumbs %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Breadcrumbs — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Breadcrumbs</h1>
+<p class="showcase__lead">Navegación jerárquica con separadores. Acepta lista de items con <code>label</code>, <code>href</code> y <code>icon</code> opcional. El último item se marca <code>aria-current="page"</code>.</p>
+
+{% call demo_frame("Default — chevron") %}
+{{ breadcrumbs([
+  {"label": "ERPlora", "href": "#"},
+  {"label": "Cafetería La Rambla", "href": "#"},
+  {"label": "Sede · Eixample", "href": "#"},
+  {"label": "Comercial", "href": "#"},
+  {"label": "Pedido #FCT-2026-00184"},
+]) }}
+{% endcall %}
+
+{% call demo_frame("Slash separator") %}
+{{ breadcrumbs([
+  {"label": "Inicio", "href": "#"},
+  {"label": "Manufactura", "href": "#"},
+  {"label": "Línea 04", "href": "#"},
+  {"label": "Trazabilidad"},
+], separator="/") }}
+{% endcall %}
+
+{% call demo_frame("Chips") %}
+{{ breadcrumbs([
+  {"label": "Inventario", "href": "#"},
+  {"label": "Almacenes", "href": "#"},
+  {"label": "ALM-MAD-01", "href": "#"},
+  {"label": "SKU 8743290"},
+], variant="chips") }}
+{% endcall %}
+
+{% call demo_frame("Compact (sm)") %}
+{{ breadcrumbs([
+  {"label": "Inicio", "href": "#"},
+  {"label": "Operaciones", "href": "#"},
+  {"label": "Hoy"},
+], variant="sm", separator="/") }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>items</code></td><td>list[dict]</td><td>—</td><td>Lista de items <code>{label, href?, icon?, current?}</code>. El último se marca current si no se indica.</td></tr>
+    <tr><td><code>variant</code></td><td>"sm"|"chips"|None</td><td>None</td><td>Variante visual.</td></tr>
+    <tr><td><code>separator</code></td><td>"chevron"|str</td><td>"chevron"</td><td>SVG chevron (default) o cualquier carácter literal (e.g. <code>"/"</code>).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra en el <code>&lt;nav&gt;</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

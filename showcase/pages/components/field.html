@@ -1,0 +1,51 @@
+{% extends "_layout.jinja" %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/input.jinja" import input %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Field — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Field</h1>
+<p class="showcase__lead">Wrapper para label + control + hint/error. Componente <em>slot-based</em>: el control va dentro.</p>
+
+{% call demo_frame("Default") %}
+{% call field("Nombre comercial") %}
+  {{ input("name", placeholder="Cafetería La Plaza") }}
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Required + hint") %}
+{% call field("Email", required=True, hint="Te avisaremos de eventos clave.") %}
+  {{ input("email", type="email", value="contacto@laplaza.es") }}
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Estado de error") %}
+{% call field("CIF", error="Formato no válido (ej. B12345678).") %}
+  {{ input("cif", value="X-1234", invalid=True) }}
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Datastar — bind reactivo") %}
+<div data-signals="{ company: 'Cafetería La Plaza' }">
+  {% call field("Nombre comercial", hint="Se guarda automáticamente.") %}
+    {{ input("company", attrs={"data-bind-company": ""}) }}
+  {% endcall %}
+  <p style="margin-top:8px;">Vista previa: <strong data-text="$company"></strong></p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto del label.</td></tr>
+    <tr><td><code>required</code></td><td>bool</td><td>false</td><td>Añade el asterisco rojo.</td></tr>
+    <tr><td><code>hint</code></td><td>str</td><td>""</td><td>Texto de ayuda bajo el control.</td></tr>
+    <tr><td><code>error</code></td><td>str</td><td>""</td><td>Texto de error (oculta el hint).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Control de formulario.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

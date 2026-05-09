@@ -1,0 +1,17 @@
+{#def label, name, value="", checked=false, disabled=false, attrs=None #}
+
+{% macro radio(label, name, value="", checked=false, disabled=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<label class="ok-radio">
+  <input type="radio"
+    name="{{ name }}"
+    {% if value %}value="{{ value }}"{% endif %}
+    {% if checked %}checked{% endif %}
+    {% if disabled %}disabled{% endif %}
+    {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  <span class="ok-radio__dot"></span>
+  {{ label }}
+</label>
+{%- endmacro %}
+
+{% if label is defined %}{{ radio(label, name, value=value, checked=checked, disabled=disabled, attrs=attrs) }}{% endif %}

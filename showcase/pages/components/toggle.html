@@ -1,0 +1,66 @@
+{% extends "_layout.jinja" %}
+{% from "ui/toggle.jinja" import toggle %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Toggle — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Toggle</h1>
+<p class="showcase__lead">Switch on/off. Render limpio: solo input + track. Las filas con descripción se componen con <code>.ok-toggle-row</code>.</p>
+
+{% call demo_frame("Default") %}
+{{ toggle("notif", checked=True) }}
+{{ toggle("notif2") }}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+{{ toggle("a", size="sm", checked=True) }}
+{{ toggle("b", checked=True) }}
+{{ toggle("c", size="lg", checked=True) }}
+{% endcall %}
+
+{% call demo_frame("Estados") %}
+{{ toggle("on", checked=True) }}
+{{ toggle("off") }}
+{{ toggle("dis-on", checked=True, disabled=True) }}
+{{ toggle("dis-off", disabled=True) }}
+{% endcall %}
+
+{% call demo_frame("Toggle row — patrón habitual") %}
+<div class="ok-form-section" style="max-width:520px">
+  <div class="ok-toggle-row">
+    <div class="ok-toggle-row__text">
+      <span class="ok-toggle-row__label">Pedidos nuevos</span>
+      <span class="ok-toggle-row__desc">Sonido + push al recibir un pedido en POS.</span>
+    </div>
+    {{ toggle("orders", checked=True) }}
+  </div>
+  <div class="ok-toggle-row">
+    <div class="ok-toggle-row__text">
+      <span class="ok-toggle-row__label">Stock crítico</span>
+      <span class="ok-toggle-row__desc">Alerta cuando un SKU baja del umbral.</span>
+    </div>
+    {{ toggle("stock") }}
+  </div>
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar — toggle reactivo") %}
+<div data-signals="{ darkmode: false }">
+  {{ toggle("darkmode", attrs={"data-bind-darkmode": ""}) }}
+  <span style="margin-left:12px;">Modo oscuro: <strong data-text="$darkmode ? 'ON' : 'OFF'"></strong></span>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>name</code></td><td>str</td><td>—</td><td>Atributo <code>name</code>.</td></tr>
+    <tr><td><code>checked</code></td><td>bool</td><td>false</td><td>Estado inicial.</td></tr>
+    <tr><td><code>disabled</code></td><td>bool</td><td>false</td><td>Deshabilita el toggle.</td></tr>
+    <tr><td><code>size</code></td><td>"sm"|"md"|"lg"</td><td>"md"</td><td>Tamaño.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

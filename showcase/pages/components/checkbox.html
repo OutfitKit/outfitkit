@@ -1,0 +1,53 @@
+{% extends "_layout.jinja" %}
+{% from "ui/checkbox.jinja" import checkbox %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Checkbox — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Checkbox</h1>
+<p class="showcase__lead">Casilla de verificación con label inline. Soporta estado <em>checked</em> y <em>disabled</em>.</p>
+
+{% call demo_frame("Default") %}
+{{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}
+{% endcall %}
+
+{% call demo_frame("Grupo") %}
+<div class="ok-check-group">
+  {{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}
+  {{ checkbox("Mostrar precios con IVA incluido", name="vat") }}
+  {{ checkbox("Permitir descuentos manuales", name="discount") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Estados") %}
+<div class="ok-check-group">
+  {{ checkbox("Activo", name="a", checked=True) }}
+  {{ checkbox("Sin marcar", name="b") }}
+  {{ checkbox("Deshabilitado", name="c", disabled=True) }}
+  {{ checkbox("Deshabilitado + checked", name="d", checked=True, disabled=True) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar — toggle reactivo") %}
+<div data-signals="{ accept: false }">
+  {{ checkbox("Acepto los términos y condiciones", name="tos", attrs={"data-bind-accept": ""}) }}
+  <p style="margin-top:8px;">
+    Estado: <strong data-text="$accept ? 'aceptado' : 'sin aceptar'"></strong>
+  </p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto inline.</td></tr>
+    <tr><td><code>name</code></td><td>str</td><td>""</td><td>Atributo <code>name</code>.</td></tr>
+    <tr><td><code>value</code></td><td>str</td><td>""</td><td>Valor enviado al hacer submit.</td></tr>
+    <tr><td><code>checked</code></td><td>bool</td><td>false</td><td>Estado inicial.</td></tr>
+    <tr><td><code>disabled</code></td><td>bool</td><td>false</td><td>Deshabilita el checkbox.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos extra (data-bind-*, etc).</td></tr>
+  </tbody>
+</table>
+{% endblock %}

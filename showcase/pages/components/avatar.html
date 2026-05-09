@@ -1,0 +1,56 @@
+{% extends "_layout.jinja" %}
+{% from "ui/avatar.jinja" import avatar %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Avatar — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Avatar</h1>
+<p class="showcase__lead">Iniciales o imagen, 5 tamaños, variante brand. Se apilan con el wrapper <code>.ok-avatar-stack</code>.</p>
+
+{% call demo_frame("Default") %}
+{{ avatar("JC") }}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+{{ avatar("JC", size="xs") }}
+{{ avatar("JC", size="sm") }}
+{{ avatar("JC") }}
+{{ avatar("JC", size="lg") }}
+{{ avatar("JC", size="xl") }}
+{% endcall %}
+
+{% call demo_frame("Brand") %}
+{{ avatar("MR") }}
+{{ avatar("EX", variant="brand") }}
+{{ avatar("EX", variant="brand", size="lg") }}
+{% endcall %}
+
+{% call demo_frame("Imagen") %}
+{{ avatar("", src="https://i.pravatar.cc/64?img=11", alt="User 11") }}
+{{ avatar("", src="https://i.pravatar.cc/64?img=22", alt="User 22", size="lg") }}
+{{ avatar("", src="https://i.pravatar.cc/64?img=33", alt="User 33", size="xl") }}
+{% endcall %}
+
+{% call demo_frame("Stack") %}
+<span class="ok-avatar-stack">
+  {{ avatar("", src="https://i.pravatar.cc/64?img=1", alt="") }}
+  {{ avatar("", src="https://i.pravatar.cc/64?img=2", alt="") }}
+  {{ avatar("", src="https://i.pravatar.cc/64?img=3", alt="") }}
+  {{ avatar("+4") }}
+</span>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Iniciales (fallback cuando no hay imagen).</td></tr>
+    <tr><td><code>src</code></td><td>str|None</td><td>None</td><td>URL de la imagen. Si está, sustituye al label.</td></tr>
+    <tr><td><code>alt</code></td><td>str</td><td>""</td><td>Alt text de la imagen.</td></tr>
+    <tr><td><code>size</code></td><td>"xs"|"sm"|"md"|"lg"|"xl"</td><td>"md"</td><td>Tamaño.</td></tr>
+    <tr><td><code>variant</code></td><td>"brand"|None</td><td>None</td><td>Variante con fondo brand.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

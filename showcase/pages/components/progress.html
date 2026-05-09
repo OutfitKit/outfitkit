@@ -1,0 +1,72 @@
+{% extends "_layout.jinja" %}
+{% from "ui/progress.jinja" import progress %}
+{% from "ui/button.jinja" import button %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Progress — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Progress</h1>
+<p class="showcase__lead">Barra de progreso lineal. Sin <code>label</code> renderiza solo la pista; con <code>label</code> envuelve en <code>.ok-progress-block</code> con cabecera label + value.</p>
+
+{% call demo_frame("Default") %}
+<div style="width: 100%; max-width: 360px;">
+  {{ progress(value=42) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Con label y value") %}
+<div style="width: 100%; max-width: 480px;">
+  {{ progress(value=73, label="Importando productos", value_text="1.842 / 2.500 · 73%") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Variantes de color") %}
+<div style="width: 100%; max-width: 480px; display: grid; gap: 14px;">
+  {{ progress(value=42, label="Generando informe SII", value_text="42%", variant="leaf") }}
+  {{ progress(value=92, label="Cuota de almacenamiento", value_text="9,2 / 10 GB", variant="warn") }}
+  {{ progress(value=88, label="Cierre forzado", value_text="88%", variant="danger") }}
+  {{ progress(value=64, label="Sincronizando", value_text="64%", variant="info") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Tamaños y striped") %}
+<div style="width: 100%; max-width: 480px; display: grid; gap: 14px;">
+  {{ progress(value=58, size="sm") }}
+  {{ progress(value=58) }}
+  {{ progress(value=58, size="lg", striped=True) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Indeterminate") %}
+<div style="width: 100%; max-width: 480px;">
+  {{ progress(label="Subiendo factura", value_text="esperando…", indeterminate=True) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar — animar") %}
+<div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
+  {{ progress(value=35, attrs={"data-attr-style": "'width:' + $pct + '%' "}) }}
+  <div style="margin-top: 10px; display: flex; gap: 8px;">
+    {{ button("−10", variant="ghost", size="sm", attrs={"data-on:click": "$pct = Math.max(0, $pct - 10)"}) }}
+    {{ button("+10", variant="primary", size="sm", attrs={"data-on:click": "$pct = Math.min(100, $pct + 10)"}) }}
+    <span data-text="$pct + '%'" style="margin-left: 8px; font-variant-numeric: tabular-nums;">35%</span>
+  </div>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>value</code></td><td>int</td><td>0</td><td>Porcentaje 0..100.</td></tr>
+    <tr><td><code>label</code></td><td>str|None</td><td>None</td><td>Si está, envuelve en <code>.ok-progress-block</code> con cabecera.</td></tr>
+    <tr><td><code>value_text</code></td><td>str|None</td><td>None</td><td>Texto en la cabecera (e.g. "73%", "1.842 / 2.500"). Solo si hay <code>label</code>.</td></tr>
+    <tr><td><code>variant</code></td><td>"leaf"|"warn"|"danger"|"info"|None</td><td>None</td><td>Color del bar.</td></tr>
+    <tr><td><code>size</code></td><td>"sm"|"md"|"lg"</td><td>"md"</td><td>Altura.</td></tr>
+    <tr><td><code>indeterminate</code></td><td>bool</td><td>False</td><td>Animación de carga sin valor concreto.</td></tr>
+    <tr><td><code>striped</code></td><td>bool</td><td>False</td><td>Efecto rayado animado.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra en el track.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

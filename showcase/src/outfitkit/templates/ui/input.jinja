@@ -1,0 +1,16 @@
+{#def name, type="text", value="", placeholder="", size="md", invalid=false, disabled=false, required=false, attrs=None #}
+
+{% macro input(name, type="text", value="", placeholder="", size="md", invalid=false, disabled=false, required=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<input
+  type="{{ type }}"
+  name="{{ name }}"
+  class="ok-input{% if size != 'md' %} ok-input--{{ size }}{% endif %}{% if invalid %} ok-input--invalid{% endif %}"
+  {% if value != "" %}value="{{ value }}"{% endif %}
+  {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+  {% if disabled %}disabled{% endif %}
+  {% if required %}required{% endif %}
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+{%- endmacro %}
+
+{% if name is defined %}{{ input(name, type=type, value=value, placeholder=placeholder, size=size, invalid=invalid, disabled=disabled, required=required, attrs=attrs) }}{% endif %}

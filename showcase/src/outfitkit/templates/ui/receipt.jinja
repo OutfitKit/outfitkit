@@ -1,0 +1,13 @@
+{#def attrs=None #}
+
+{% macro receipt(attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-receipt"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</div>
+{%- endmacro %}
+
+{% if attrs is defined %}
+  {% call receipt(attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

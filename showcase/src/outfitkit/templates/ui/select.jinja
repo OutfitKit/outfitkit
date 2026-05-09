@@ -1,0 +1,17 @@
+{#def name, size="md", invalid=false, disabled=false, required=false, attrs=None #}
+
+{% macro select(name, size="md", invalid=false, disabled=false, required=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<select
+  name="{{ name }}"
+  class="ok-select{% if size != 'md' %} ok-select--{{ size }}{% endif %}{% if invalid %} ok-select--invalid{% endif %}"
+  {% if disabled %}disabled{% endif %}
+  {% if required %}required{% endif %}
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {{ caller() }}
+</select>
+{%- endmacro %}
+
+{% if name is defined %}
+  {% call select(name, size=size, invalid=invalid, disabled=disabled, required=required, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

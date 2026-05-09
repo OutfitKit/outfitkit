@@ -1,0 +1,49 @@
+{% extends "_layout.jinja" %}
+{% from "ui/banner.jinja" import banner %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Banner — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Banner</h1>
+<p class="showcase__lead">Aviso horizontal sobre la página o sección. Variantes semánticas (<code>info</code>, <code>ok</code>, <code>warn</code>, <code>danger</code>, <code>brand</code>). El slot acepta acciones (<code>.ok-banner__action</code>).</p>
+
+{% call demo_frame("Info dismissible") %}
+{% call banner(title="Mantenimiento programado", description="El sistema se actualizará el sábado 11 may de 02:00 a 04:00 (CEST). El POS seguirá funcionando offline.", variant="info", dismissible=True) %}{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Warn con acción") %}
+{% call banner(title="3 cuentas bancarias requieren reautenticación PSD2", description="Reconecta antes del 15 may para no interrumpir la conciliación automática.", variant="warn") %}
+<a class="ok-banner__action" href="#">Reconectar →</a>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Danger con acción") %}
+{% call banner(title="Stock crítico · 4 SKUs por debajo de mínimo", description="Café Brasil 1kg · Leche entera 1L · Croissant 60g · Servilletas 33×33.", variant="danger") %}
+<a class="ok-banner__action" href="#">Generar OC</a>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Ok · estado correcto") %}
+{% call banner(title="Conciliación bancaria al día", description="Las 4 cuentas activas están al 100 %. Última sincronización: hoy 15:42.", variant="ok") %}{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Brand") %}
+{% call banner(title="Nueva versión disponible", description="OutfitKit 1.4 trae un nuevo set de tokens y 8 componentes.", variant="brand") %}
+<a class="ok-banner__action ok-banner__action--primary" href="#">Ver changelog</a>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td>—</td><td>Título principal.</td></tr>
+    <tr><td><code>description</code></td><td>str</td><td>""</td><td>Descripción opcional.</td></tr>
+    <tr><td><code>variant</code></td><td>"info"|"ok"|"warn"|"danger"|"brand"</td><td>"info"</td><td>Color semántico.</td></tr>
+    <tr><td><code>dismissible</code></td><td>bool</td><td>false</td><td>Renderiza botón cerrar.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Acciones <code>.ok-banner__action</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

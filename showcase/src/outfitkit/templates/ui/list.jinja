@@ -1,0 +1,13 @@
+{#def variant="default", dense=false, attrs=None #}
+
+{% macro list(variant="default", dense=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-list{% if variant != 'default' %} ok-list--{{ variant }}{% endif %}{% if dense %} ok-list--dense{% endif %}"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</div>
+{%- endmacro %}
+
+{% if variant is defined %}
+  {% call list(variant=variant, dense=dense, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

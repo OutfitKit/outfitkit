@@ -1,0 +1,16 @@
+{#def name, min=0, max=100, step=1, value=0, disabled=false, attrs=None #}
+
+{% macro slider(name, min=0, max=100, step=1, value=0, disabled=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<input type="range"
+  class="ok-slider"
+  name="{{ name }}"
+  min="{{ min }}"
+  max="{{ max }}"
+  step="{{ step }}"
+  value="{{ value }}"
+  {% if disabled %}disabled{% endif %}
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+{%- endmacro %}
+
+{% if name is defined %}{{ slider(name, min=min, max=max, step=step, value=value, disabled=disabled, attrs=attrs) }}{% endif %}

@@ -1,0 +1,53 @@
+{% extends "_layout.jinja" %}
+{% from "ui/kpi.jinja" import kpi %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}KPI — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>KPI</h1>
+<p class="showcase__lead">Tarjeta de métrica destacada — label en mayúscula, valor grande, delta opcional con flecha y color, sparkline opcional.</p>
+
+{% call demo_frame("Default") %}
+{{ kpi("Tickets", "147") }}
+{% endcall %}
+
+{% call demo_frame("Delta up / down") %}
+{{ kpi("Ventas hoy", "€2.847", unit=",30", delta="+12,4% vs ayer", delta_dir="up") }}
+{{ kpi("Ticket medio", "€19", unit=",37", delta="−2,1%", delta_dir="down") }}
+{{ kpi("Margen", "68", unit="%", delta="objetivo 70%") }}
+{% endcall %}
+
+{% call demo_frame("Variante brand") %}
+{{ kpi("Margen", "68", unit="%", delta="objetivo 70%", variant="brand") }}
+{{ kpi("MRR", "€12.840", delta="+18%", delta_dir="up", variant="brand") }}
+{% endcall %}
+
+{% call demo_frame("Con sparkline") %}
+{% set spark_svg %}
+<svg class="ok-kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
+  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--ok-leaf)" stroke-width="1.5"/>
+</svg>
+{% endset %}
+{{ kpi(
+  "Ventas 7d", "€18.420",
+  delta="+12,4%", delta_dir="up",
+  sparkline=spark_svg
+) }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Etiqueta superior (uppercase tracking).</td></tr>
+    <tr><td><code>value</code></td><td>str</td><td>—</td><td>Valor grande.</td></tr>
+    <tr><td><code>unit</code></td><td>str|None</td><td>None</td><td>Unidad o decimales en tamaño reducido.</td></tr>
+    <tr><td><code>delta</code></td><td>str|None</td><td>None</td><td>Texto delta. Si está, se renderiza la fila inferior.</td></tr>
+    <tr><td><code>delta_dir</code></td><td>"up"|"down"|None</td><td>None</td><td>Dirección (color + flecha SVG).</td></tr>
+    <tr><td><code>variant</code></td><td>"brand"|"glass"|None</td><td>None</td><td>Variante de superficie.</td></tr>
+    <tr><td><code>sparkline</code></td><td>str|safe HTML</td><td>None</td><td>SVG sparkline injectado en absoluto bottom/right.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

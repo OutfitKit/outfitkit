@@ -1,0 +1,62 @@
+{% extends "_layout.jinja" %}
+{% from "ui/receipt.jinja" import receipt %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Receipt — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Receipt</h1>
+<p class="showcase__lead">Ticket de caja con ancho fijo (mono). Compón <code>.ok-receipt__title</code>, <code>.ok-receipt__sub</code>, <code>.ok-receipt__line</code>, <code>.ok-receipt__divider</code>, <code>.ok-receipt__total</code> y <code>.ok-receipt__footer</code>.</p>
+
+{% call demo_frame("Ticket cliente") %}
+{% call receipt() %}
+<div class="ok-receipt__title">Cafetería La Plaza</div>
+<div class="ok-receipt__sub">C/ Mayor 12 · Madrid<br/>NIF B12345678</div>
+<hr class="ok-receipt__divider"/>
+<div style="font-size:10.5px;color:var(--ok-ink-3)">PED-2041 · Mesa 4 · 14:22</div>
+<hr class="ok-receipt__divider"/>
+<div class="ok-receipt__line"><span class="ok-receipt__line-name">2× Café cortado</span><span class="ok-receipt__line-price">3,20</span></div>
+<div class="ok-receipt__line"><span class="ok-receipt__line-name">1× Tostada salmón</span><span class="ok-receipt__line-price">6,40</span></div>
+<div class="ok-receipt__line"><span class="ok-receipt__line-name">1× Zumo natural</span><span class="ok-receipt__line-price">3,60</span></div>
+<div class="ok-receipt__line"><span class="ok-receipt__line-name">2× Croissant choco</span><span class="ok-receipt__line-price">4,80</span></div>
+<hr class="ok-receipt__divider"/>
+<div class="ok-receipt__line"><span>Subtotal</span><span>17,64</span></div>
+<div class="ok-receipt__line"><span>IVA 10%</span><span>1,76</span></div>
+<div class="ok-receipt__total"><span>TOTAL</span><span>€19,40</span></div>
+<div class="ok-receipt__footer">
+  ¡Gracias por tu visita!<br/>
+  Sello digital VeriFactu · ABCD-1234
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Cierre Z (resumen turno)") %}
+{% call receipt() %}
+<div class="ok-receipt__title">Cierre Z · 18 oct</div>
+<div class="ok-receipt__sub">Turno 14:00–22:00 · Ana M.</div>
+<hr class="ok-receipt__divider"/>
+<div class="ok-receipt__line"><span>Tickets emitidos</span><span>147</span></div>
+<div class="ok-receipt__line"><span>Anulados</span><span>2</span></div>
+<div class="ok-receipt__line"><span>Reembolsos</span><span>1</span></div>
+<hr class="ok-receipt__divider"/>
+<div class="ok-receipt__line"><span>Tarjeta</span><span>1.842,30</span></div>
+<div class="ok-receipt__line"><span>Efectivo</span><span>684,50</span></div>
+<div class="ok-receipt__line"><span>Bizum</span><span>312,80</span></div>
+<hr class="ok-receipt__divider"/>
+<div class="ok-receipt__total"><span>TOTAL</span><span>€2.839,60</span></div>
+<div class="ok-receipt__footer">
+  Caja inicial: €100,00 · Final: €784,50<br/>
+  Diferencia: ✓ cuadrada
+</div>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Líneas del ticket compuestas con <code>.ok-receipt__*</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

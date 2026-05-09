@@ -1,0 +1,15 @@
+{#def name, value="", placeholder="", rows=4, invalid=false, disabled=false, required=false, attrs=None #}
+
+{% macro textarea(name, value="", placeholder="", rows=4, invalid=false, disabled=false, required=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<textarea
+  name="{{ name }}"
+  rows="{{ rows }}"
+  class="ok-textarea{% if invalid %} ok-textarea--invalid{% endif %}"
+  {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+  {% if disabled %}disabled{% endif %}
+  {% if required %}required{% endif %}
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>{{ value }}</textarea>
+{%- endmacro %}
+
+{% if name is defined %}{{ textarea(name, value=value, placeholder=placeholder, rows=rows, invalid=invalid, disabled=disabled, required=required, attrs=attrs) }}{% endif %}
