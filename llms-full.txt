@@ -1,0 +1,361 @@
+# OutfitKit — full reference for LLMs
+> CSS component library + Jinja macros for server-rendered web apps. Zero JS required, zero build pipeline for consumers.
+
+This is the long-form reference companion to [llms.txt](https://outfitkit.github.io/outfitkit/llms.txt). It includes macro signatures, the prefix decision matrix, and copy-paste patterns. Source: https://github.com/OutfitKit/outfitkit. Live demos: https://outfitkit.github.io/outfitkit/.
+
+## What OutfitKit is
+
+OutfitKit is two artifacts that ship together from one repo:
+
+1. **A CSS library** — ~260 semantic blocks under `css/components/*.css`, BEM-light naming (`.block`, `.block__el`, `.block--mod`, `.is-state`), themable through CSS custom properties named `--ok-*`. The dev source always carries the `ok-` prefix; CI compiles two release bundles from it: an unprefixed default (`outfitkit.min.css`, `.btn .card`) and a prefixed opt-in (`outfitkit.ok.min.css`, `.ok-btn .ok-card`).
+2. **A Jinja macro package** — `pip install outfitkit` exposes 69 macro files under `outfitkit/templates/ui/`. Each file works dual-mode: as a vanilla Jinja2 macro (`{% from "ui/button.jinja" import button %}`) AND as a JinjaX HTML-tag (`<Button label="Save" />`) from the **same file**. The package also exposes helpers: `TEMPLATES_DIR`, `register_globals`, `css_url`, `theme_url`.
+
+Both layers are independent — you can use the CSS without Python, or the macros against any prefix you compile.
+
+## Install
+
+### CSS-only (any framework)
+
+```html
+<!-- Default: clean unprefixed classes -->
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.min.css">
+<button class="btn btn--primary">Continue</button>
+
+<!-- Opt-in: ok- prefix when avoiding collisions with another CSS lib -->
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.ok.min.css">
+<button class="ok-btn ok-btn--primary">Continue</button>
+```
+
+### Python + Jinja2
+
+```bash
+pip install outfitkit             # vanilla macros
+pip install outfitkit[jinjax]     # + <Component /> HTML-tag syntax
+```
+
+```python
+from jinja2 import Environment, FileSystemLoader
+from outfitkit import TEMPLATES_DIR, register_globals, css_url
+
+env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
+register_globals(env)              # default: ok_prefix=""
+ctx = {"css": css_url()}           # → outfitkit.min.css
+```
+
+Then in `base.html`:
+
+```jinja
+<link rel="stylesheet" href="{{ css }}">
+{% from "ui/button.jinja" import button %}
+{{ button("Save", variant="primary") }}
+```
+
+To opt into the `ok-` prefix:
+
+```python
+register_globals(env, ok_prefix="ok-")
+ctx = {"css": css_url(prefix="ok-")}   # → outfitkit.ok.min.css
+```
+
+## Prefix decision matrix
+
+The macro `ok_prefix` and the loaded CSS bundle MUST match. Pick once per project:
+
+| Situation | `ok_prefix` | CSS bundle |
+|---|---|---|
+| OutfitKit is the only CSS lib (recommended) | `""` (default) | `outfitkit.min.css` |
+| Coexists with Bootstrap / Tailwind / legacy DS | `"ok-"` | `outfitkit.ok.min.css` |
+| Custom prefix needed (e.g. `acme-`) | `"acme-"` | self-built bundle (run `sed` on the unprefixed source) |
+
+`css_url(prefix=...)` raises `ValueError` for any prefix other than `""` or `"ok-"`; built-in bundles cover only those two.
+
+## Public Python API
+
+From `outfitkit/__init__.py`:
+
+```python
+TEMPLATES_DIR: Path        # absolute path to the bundled templates dir
+DEFAULT_OK_PREFIX = ""     # default prefix
+__version__: str           # package version
+
+def register_globals(env: Environment, *, ok_prefix: str = "") -> None: ...
+def css_url(version: str | None = None,
+            minified: bool = True,
+            prefix: str = "") -> str: ...
+def theme_url(name: str, version: str | None = None) -> str: ...
+```
+
+`css_url(version="v1.3.0")` pins to a tag; `version="main"` pulls the dev branch; `None` defaults to `"latest"`. `theme_url("corporate")` returns `https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/css/themes/corporate.css`.
+
+## Macro file layout (dual-mode)
+
+Every `.jinja` file under `templates/ui/` follows this shape so it works as both a vanilla import AND a JinjaX tag:
+
+```jinja
+{#def label, variant="secondary", size="md", attrs=None #}
+
+{% macro button(label, variant="secondary", size="md", attrs=None) -%}
+  ...HTML using {{ ok_prefix }}btn etc...
+{%- endmacro %}
+
+{% if label is defined %}{{ button(label, variant=variant, size=size, attrs=attrs) }}{% endif %}
+```
+
+- The `{#def ... #}` header is the JinjaX prop signature — used when JinjaX renders `<Button label="Save" />`.
+- The `{% macro %}` block is the vanilla Jinja2 entry point — used by `{% from "ui/button.jinja" import button %}`.
+- The trailing `{% if label is defined %}` line auto-renders the macro when the file is included via JinjaX so both paths produce identical HTML.
+- Every macro takes an optional `attrs` dict (extra HTML attributes) and emits class names prefixed with the global `ok_prefix`.
+
+## Macro signatures (full list)
+
+Each macro lives at `outfitkit/templates/ui/<name>.jinja`. Demos at `https://outfitkit.github.io/outfitkit/components/<name>.html`.
+
+### Buttons & status
+
+- `button(label, variant="secondary", size="md", icon=false, block=false, disabled=false, type="button", attrs=None)` — `variant`: primary/secondary/ghost/danger; `size`: sm/md/lg.
+- `badge(label, variant=None, size="md", dot=false, attrs=None)`.
+- `avatar(label, src=None, alt="", size="md", variant=None, attrs=None)`.
+- `icon(name, size="md", attrs=None)`.
+- `tags(attrs=None)` — block-level tag list.
+- `progress(value=0, label=None, value_text=None, variant=None, size="md", indeterminate=False, striped=False, attrs=None)`.
+- `rating(value=0, max=5, size="md", readonly=False, label="", attrs=None)`.
+
+### Surfaces & layout
+
+- `card(tag="div", variant="default", interactive=false, attrs=None)`.
+- `panel(title=None, sub=None, variant=None, size=None, attrs=None)`.
+- `app_shell(sidebar=None, tabbar=None, attrs=None)` — desktop frame: sidebar + topbar + main.
+- `mobile_shell(attrs=None)` — mobile frame with tabbar.
+- `sidebar_nav(attrs=None)`.
+- `topbar(page_title=None, back=false, with_crumb=false, attrs=None)`.
+- `menubar(app_name=None, variant=None, compact=false, attrs=None)`.
+- `tabbar(variant="default", attrs=None)`.
+- `tabs(variant="default", attrs=None)`.
+- `breadcrumbs(items, variant=None, separator="chevron", attrs=None)`.
+- `accordion(variant="default", attrs=None)`.
+- `menu_btn(label="Menú", expanded=False, mobile_only=False, attrs=None)`.
+
+### Overlays
+
+- `modal(title, subtitle="", size="md", icon_variant=None, state="closed", attrs=None)` — `size`: sm/md/lg/xl; `state`: closed/open.
+- `drawer(title, subtitle="", side="right", state="closed", attrs=None)` — `side`: left/right/top/bottom.
+- `toast(title, description="", variant="info", dismissible=false, attrs=None)`.
+- `banner(title, description="", variant="info", dismissible=false, attrs=None)`.
+- `tooltip(label, placement="top", attrs=None)`.
+- `context_menu(label=None, attrs=None)`.
+- `system_overlays(title=None, count=None, attrs=None)`.
+
+### Data display
+
+- `table(compact=false, zebra=false, attrs=None)` — caller writes `<thead>` / `<tbody>` inside the macro block.
+- `datatable(attrs=None)` — full grid (toolbar, filters, pagination).
+- `list(variant="default", dense=false, attrs=None)`.
+- `tree(variant="default", attrs=None)`.
+- `timeline(dense=false, attrs=None)`.
+- `stat(label, value, delta=None, delta_dir=None, attrs=None)`.
+- `stats(variant=None, attrs=None)` — group of stat tiles.
+- `kpi(label, value, unit=None, delta=None, delta_dir=None, variant=None, sparkline=None, attrs=None)`.
+- `chart(variant="default", attrs=None)`.
+- `sparkline(points, direction=None, size="md", width=80, height=22, attrs=None)`.
+- `empty(title, desc=None, icon=None, actions=None, compact=False, attrs=None)`.
+- `states(kind="text", width=None, height=None, attrs=None)` — skeleton/loading.
+
+### Forms
+
+- `field(label, required=false, hint="", error="", attrs=None)` — wraps an input with label/hint/error.
+- `input(name, type="text", value="", placeholder="", size="md", invalid=false, disabled=false, required=false, attrs=None)`.
+- `textarea(name, value="", placeholder="", rows=4, invalid=false, disabled=false, required=false, attrs=None)`.
+- `select(name, size="md", invalid=false, disabled=false, required=false, attrs=None)`.
+- `checkbox(label, name="", value="", checked=false, disabled=false, attrs=None)`.
+- `radio(label, name, value="", checked=false, disabled=false, attrs=None)`.
+- `toggle(name, checked=false, disabled=false, size="md", attrs=None)`.
+- `slider(name, min=0, max=100, step=1, value=0, disabled=false, attrs=None)`.
+- `search(placeholder="Buscar…", name="q", value="", clearable=True, kbd="", size=None, attrs=None)`.
+- `autocomplete(width=None, attrs=None)`.
+- `datepicker(title="", range=False, attrs=None)`.
+- `timepicker(hours=None, minutes=None, hour=None, minute=None, attrs=None)`.
+- `colorpicker(colors=None, selected="", attrs=None)`.
+- `otp(length=6, value="", size="md", separator_at=None, attrs=None)`.
+- `stepper(orientation="horizontal", attrs=None)` — horizontal/vertical.
+- `richtext(variant="default", attrs=None)`.
+
+### Verticals
+
+- `calendar(variant="month", attrs=None)` — month/week/day.
+- `kanban(attrs=None)`.
+- `chat(attrs=None)`.
+- `pos(tag="div", attrs=None)` — point-of-sale layout.
+- `kds(variant=None, attrs=None)` — kitchen display.
+- `numpad(display=None, label=None, decimal=",", show_backspace=True, attrs=None)`.
+- `pinpad(back_label="⌫", enter_label="↵", attrs=None)`.
+- `pay(tag="div", attrs=None)` — checkout flow surface.
+- `invoice(attrs=None)`.
+- `receipt(attrs=None)`.
+- `manufacturing(tag="div", attrs=None)`.
+- `hr_card(tag="article", attrs=None)`.
+- `gallery(attrs=None)`.
+- `audio_player(title="", artist="", duration="00:00", current="00:00", progress=0, cover="", variant="default", playing=False, speed="×1.0", attrs=None)`.
+- `video_player(poster="", src="", duration="00:00", current="00:00", progress=0, playing=False, attrs=None)`.
+
+## Common usage patterns
+
+### Vanilla Jinja import + render
+
+```jinja
+{% from "ui/button.jinja" import button %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/badge.jinja" import badge %}
+
+{{ button("Save changes", variant="primary") }}
+{{ button("Cancel", variant="ghost") }}
+{{ badge("Beta", variant="info", dot=true) }}
+```
+
+### JinjaX tag form
+
+Requires the JinjaX extension registered on the environment (`pip install outfitkit[jinjax]`):
+
+```html
+<Button label="Save changes" variant="primary" />
+<Button label="Cancel" variant="ghost" />
+<Badge label="Beta" variant="info" :dot="true" />
+```
+
+### Card with body content
+
+The `card` macro wraps content; use a `call` block to pass children:
+
+```jinja
+{% call card(variant="elevated") %}
+  <header class="{{ ok_prefix }}card__header">
+    <h3>Today's revenue</h3>
+  </header>
+  <div class="{{ ok_prefix }}card__body">
+    <p>€2,431</p>
+  </div>
+{% endcall %}
+```
+
+### Form with field + input
+
+```jinja
+{% from "ui/field.jinja" import field %}
+{% from "ui/input.jinja" import input %}
+
+{% call field(label="Email", required=true, hint="We'll never share it.") %}
+  {{ input("email", type="email", placeholder="you@example.com", required=true) }}
+{% endcall %}
+```
+
+### Modal in `closed` state, opened later
+
+```jinja
+{{ modal("Delete invoice?", subtitle="This cannot be undone.", size="sm", icon_variant="danger") }}
+```
+
+Toggle with whatever JS you use (the markup is just `data-` attrs and `is-open` state classes — no JS bundled).
+
+### Forwarding extra HTML attributes via `attrs`
+
+```jinja
+{{ button("Open dialog",
+          variant="primary",
+          attrs={"data-controller": "modal", "data-action": "click->modal#open"}) }}
+```
+
+### Pinning a specific OutfitKit version
+
+```python
+ctx["css"] = css_url(version="v1.3.0")
+```
+
+The same `version` argument applies to `theme_url`.
+
+## Theming
+
+All visual tokens are CSS custom properties named `--ok-*`. They live in `css/tokens.css`. Switch theme by setting `data-theme` on `<html>` (or any subtree):
+
+```html
+<html data-theme="erplora">  <!-- default, dark terracota -->
+<html data-theme="dark">
+<html data-theme="light">
+```
+
+Override any token to make a custom theme:
+
+```css
+[data-theme="acme"] {
+  --ok-accent: #ff5500;
+  --ok-bg: #0c0c0c;
+  --ok-ink: #ffffff;
+}
+```
+
+Token families (see `css/tokens.css` for the full list):
+
+- Typography — `--ok-font-sans/-display/-mono`, `--ok-text-{2xs..5xl}`, `--ok-leading-*`, `--ok-tracking-*`.
+- Surfaces — `--ok-bg`, `--ok-bg-1..4` (canvas → chips), `--ok-line`, `--ok-line-2`, `--ok-line-3`.
+- Ink (text) — `--ok-ink`, plus muted/dim variants.
+- Accent + status — `--ok-accent`, `--ok-success`, `--ok-warning`, `--ok-danger`, `--ok-info`.
+- Spacing & radii — `--ok-space-*`, `--ok-radius-*`, `--ok-shadow-*`.
+
+Themes ship in `css/themes/` (e.g. `corporate.css`); load them after the main bundle:
+
+```html
+<link rel="stylesheet" href="...outfitkit.min.css">
+<link rel="stylesheet" href="...css/themes/corporate.css">
+```
+
+## Class-name conventions (BEM-light)
+
+```
+.{block}              base                 .card
+.{block}__{element}   child element        .card__header
+.{block}--{modifier}  variant              .btn--primary
+.is-{state}           runtime state        .is-active, .is-open, .is-loading
+```
+
+Naming is consistent across all 44 component CSS files. Utilities (Tailwind-like) live in `css/utilities.css`: `.flex .grid .gap-* .mx/my/mt/mb/* .text-{xs..5xl} .font-{normal..bold} .c-{ink,muted,accent,...} .bg-{1..4}`.
+
+## Repository layout
+
+```
+outfitkit/
+├── css/                ← editable source (always ok- prefix)
+│   ├── tokens.css      ← --ok-* variables
+│   ├── base.css        ← reset + typography
+│   ├── utilities.css   ← .ok-flex, .ok-gap-*, .ok-text-*
+│   ├── outfitkit.css   ← @import entry point
+│   ├── themes/         ← corporate.css, future overrides
+│   └── components/     ← 44 files: button.css, card.css, modal.css, ...
+├── dist/               ← CI-built bundles (don't edit by hand)
+│   ├── outfitkit.css        (concatenated, no prefix)
+│   ├── outfitkit.min.css    (minified, no prefix — DEFAULT)
+│   ├── outfitkit.ok.css     (concatenated, ok- prefix)
+│   └── outfitkit.ok.min.css (minified, ok- prefix — opt-in)
+└── showcase/           ← Jinja macros + demo site + PyPI package
+    ├── pyproject.toml  ← package metadata (publishes as `outfitkit`)
+    ├── src/outfitkit/
+    │   ├── __init__.py ← public API: TEMPLATES_DIR, register_globals, css_url, theme_url
+    │   └── templates/ui/   ← 69 .jinja macro files
+    └── pages/          ← static demo site (built to outfitkit.github.io)
+```
+
+## Versioning & release
+
+The minified `dist/` bundles are produced by the `css-build.yml` GitHub Action when a tag is pushed. The Action concatenates `css/*.css`, minifies with `lightningcss-cli`, and commits both prefix variants to the tag. jsDelivr serves `@<tag>` and `@latest` automatically. The Python package is published to PyPI via the same release.
+
+## Where to look next
+
+- [Component demo index](https://outfitkit.github.io/outfitkit/) — every component, with side-by-side Preview / HTML / Jinja / JinjaX / Usage.
+- [Macros directory on GitHub](https://github.com/OutfitKit/outfitkit/tree/main/showcase/src/outfitkit/templates/ui) — the source of truth for signatures.
+- [CSS components directory](https://github.com/OutfitKit/outfitkit/tree/main/css/components) — class names, modifiers, states.
+- [tokens.css](https://github.com/OutfitKit/outfitkit/blob/main/css/tokens.css) — all `--ok-*` design tokens.
+- [README](https://github.com/OutfitKit/outfitkit/blob/main/README.md) — quick start in the project's own voice.
+- [CHANGELOG](https://github.com/OutfitKit/outfitkit/blob/main/CHANGELOG.md) — release notes.
+
+## License
+
+MIT.
