@@ -8,11 +8,31 @@
 <h1>Badge</h1>
 <p class="showcase__lead">Etiquetas pequeñas con dot indicator opcional. 5 variantes semánticas más versiones sólidas y de tamaño reducido.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/badge.jinja" import badge %}
+{{ badge("Default") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Badge label="Default" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ badge("Default") }}
 {% endcall %}
 
-{% call demo_frame("Variantes con dot") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/badge.jinja" import badge %}
+{{ badge("Brand", variant="brand", dot=True) }}
+{{ badge("Activo", variant="ok", dot=True) }}
+{{ badge("Pendiente", variant="warn", dot=True) }}
+{{ badge("Error", variant="danger", dot=True) }}
+{{ badge("Info", variant="info", dot=True) }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Badge label="Brand" variant="brand" dot />
+<Badge label="Activo" variant="ok" dot />
+<Badge label="Pendiente" variant="warn" dot />
+<Badge label="Error" variant="danger" dot />
+<Badge label="Info" variant="info" dot />{% endraw %}{% endset %}
+
+{% call demo_frame("Variantes con dot",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ badge("Brand", variant="brand", dot=True) }}
 {{ badge("Activo", variant="ok", dot=True) }}
 {{ badge("Pendiente", variant="warn", dot=True) }}
@@ -20,12 +40,28 @@
 {{ badge("Info", variant="info", dot=True) }}
 {% endcall %}
 
-{% call demo_frame("Variantes sólidas") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/badge.jinja" import badge %}
+{{ badge("12", variant="solid") }}
+{{ badge("NUEVO", variant="solid-brand") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Badge label="12" variant="solid" />
+<Badge label="NUEVO" variant="solid-brand" />{% endraw %}{% endset %}
+
+{% call demo_frame("Variantes sólidas",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ badge("12", variant="solid") }}
 {{ badge("NUEVO", variant="solid-brand") }}
 {% endcall %}
 
-{% call demo_frame("Tamaño pequeño") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/badge.jinja" import badge %}
+{{ badge("3", variant="brand", size="sm") }}
+{{ badge("99+", variant="danger", size="sm") }}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Badge label="3" variant="brand" size="sm" />
+<Badge label="99+" variant="danger" size="sm" />{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaño pequeño",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {{ badge("3", variant="brand", size="sm") }}
 {{ badge("99+", variant="danger", size="sm") }}
 {% endcall %}

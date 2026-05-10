@@ -8,7 +8,33 @@
 <h1>Menubar</h1>
 <p class="showcase__lead">Barra de menú estilo macOS/Windows: nombre de app + menús desplegables (<code>.ok-menubar__menu</code>) que abren un panel <code>.ok-menubar__panel</code>. Compatible con Datastar para gestionar el estado abierto.</p>
 
-{% call demo_frame("Menubar default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/menubar.jinja" import menubar %}
+<div style="position:relative;width:100%">
+{% call menubar(app_name="ERPlora") %}
+<button class="ok-menubar__menu">File</button>
+<button class="ok-menubar__menu">Edit</button>
+<button class="ok-menubar__menu">View</button>
+<button class="ok-menubar__menu">Window</button>
+<button class="ok-menubar__menu">Help</button>
+<span class="ok-menubar__divider"></span>
+<span class="ok-menubar__menu-shortcut" style="padding:0 10px;align-self:center">v3.1.0</span>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div style="position:relative;width:100%">
+<Menubar app_name="ERPlora">
+<button class="ok-menubar__menu">File</button>
+<button class="ok-menubar__menu">Edit</button>
+<button class="ok-menubar__menu">View</button>
+<button class="ok-menubar__menu">Window</button>
+<button class="ok-menubar__menu">Help</button>
+<span class="ok-menubar__divider"></span>
+<span class="ok-menubar__menu-shortcut" style="padding:0 10px;align-self:center">v3.1.0</span>
+</Menubar>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Menubar default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div style="position:relative;width:100%">
 {% call menubar(app_name="ERPlora") %}
 <button class="ok-menubar__menu">File</button>
@@ -22,7 +48,25 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Variante floating + compact") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/menubar.jinja" import menubar %}
+<div style="position:relative;padding:16px;background:linear-gradient(135deg, color-mix(in oklch, var(--ok-brand) 8%, var(--ok-bg)), var(--ok-bg-1));border-radius:10px">
+{% call menubar(app_name="ERPlora", variant="floating", compact=True) %}
+<button class="ok-menubar__menu">File</button>
+<button class="ok-menubar__menu">View</button>
+<button class="ok-menubar__menu">Help</button>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div style="position:relative;padding:16px;background:linear-gradient(135deg, color-mix(in oklch, var(--ok-brand) 8%, var(--ok-bg)), var(--ok-bg-1));border-radius:10px">
+<Menubar app_name="ERPlora" variant="floating" compact>
+<button class="ok-menubar__menu">File</button>
+<button class="ok-menubar__menu">View</button>
+<button class="ok-menubar__menu">Help</button>
+</Menubar>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Variante floating + compact",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div style="position:relative;padding:16px;background:linear-gradient(135deg, color-mix(in oklch, var(--ok-brand) 8%, var(--ok-bg)), var(--ok-bg-1));border-radius:10px">
 {% call menubar(app_name="ERPlora", variant="floating", compact=True) %}
 <button class="ok-menubar__menu">File</button>
@@ -32,7 +76,55 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Menubar con panel abierto (estado estático)") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/menubar.jinja" import menubar %}
+<div style="position:relative;min-height:240px">
+{% call menubar(app_name="Demo") %}
+<button class="ok-menubar__menu is-open">File</button>
+<div class="ok-menubar__panel" style="left:60px;display:block">
+  <button class="ok-menubar__item">
+    <span class="ok-menubar__item-icon"></span><span>New document</span><span></span>
+    <span class="ok-menubar__item-shortcut">Ctrl+N</span>
+  </button>
+  <button class="ok-menubar__item">
+    <span class="ok-menubar__item-icon"></span><span>Open…</span><span></span>
+    <span class="ok-menubar__item-shortcut">Ctrl+O</span>
+  </button>
+  <div class="ok-menubar__separator"></div>
+  <button class="ok-menubar__item">
+    <span class="ok-menubar__item-icon"></span><span>Print…</span><span></span>
+    <span class="ok-menubar__item-shortcut">Ctrl+P</span>
+  </button>
+</div>
+<button class="ok-menubar__menu">Edit</button>
+<button class="ok-menubar__menu">View</button>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div style="position:relative;min-height:240px">
+<Menubar app_name="Demo">
+<button class="ok-menubar__menu is-open">File</button>
+<div class="ok-menubar__panel" style="left:60px;display:block">
+  <button class="ok-menubar__item">
+    <span class="ok-menubar__item-icon"></span><span>New document</span><span></span>
+    <span class="ok-menubar__item-shortcut">Ctrl+N</span>
+  </button>
+  <button class="ok-menubar__item">
+    <span class="ok-menubar__item-icon"></span><span>Open…</span><span></span>
+    <span class="ok-menubar__item-shortcut">Ctrl+O</span>
+  </button>
+  <div class="ok-menubar__separator"></div>
+  <button class="ok-menubar__item">
+    <span class="ok-menubar__item-icon"></span><span>Print…</span><span></span>
+    <span class="ok-menubar__item-shortcut">Ctrl+P</span>
+  </button>
+</div>
+<button class="ok-menubar__menu">Edit</button>
+<button class="ok-menubar__menu">View</button>
+</Menubar>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Menubar con panel abierto (estado estático)",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div style="position:relative;min-height:240px">
 {% call menubar(app_name="Demo") %}
 <button class="ok-menubar__menu is-open">File</button>

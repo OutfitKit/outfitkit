@@ -8,15 +8,33 @@
 <h1>OTP</h1>
 <p class="showcase__lead">Inputs para códigos de un solo uso (verificación 2FA, recuperación de contraseña). Uno por dígito, con auto-foco entre celdas.</p>
 
-{% call demo_frame("SMS — 6 dígitos con separador") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/otp.jinja" import otp %}
+{{ otp(length=6, value="392", separator_at=3) }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Otp length="6" value="392" separator_at="3" />{% endraw %}{% endset %}
+
+{% call demo_frame("SMS — 6 dígitos con separador",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ otp(length=6, value="392", separator_at=3) }}
 {% endcall %}
 
-{% call demo_frame("Pequeño — 4 dígitos") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/otp.jinja" import otp %}
+{{ otp(length=4, value="1234", size="sm") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Otp length="4" value="1234" size="sm" />{% endraw %}{% endset %}
+
+{% call demo_frame("Pequeño — 4 dígitos",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ otp(length=4, value="1234", size="sm") }}
 {% endcall %}
 
-{% call demo_frame("Grande — alfanumérico vacío") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/otp.jinja" import otp %}
+{{ otp(length=4, size="lg") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Otp length="4" size="lg" />{% endraw %}{% endset %}
+
+{% call demo_frame("Grande — alfanumérico vacío",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ otp(length=4, size="lg") }}
 {% endcall %}
 

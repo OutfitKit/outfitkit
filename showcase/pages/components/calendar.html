@@ -8,7 +8,133 @@
 <h1>Calendar</h1>
 <p class="showcase__lead">Contenedor de calendario con vistas mensual y semanal. Compón cabecera (<code>.ok-cal__head</code>), barra de días (<code>.ok-cal__weekdays</code>), grid (<code>.ok-cal__grid</code>) y eventos (<code>.ok-cal__event</code>).</p>
 
-{% call demo_frame("Vista mensual · mayo 2026") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/calendar.jinja" import calendar %}
+{% call calendar() %}
+<header class="ok-cal__head">
+  <div class="ok-cal__title">Mayo 2026</div>
+  <div class="ok-cal__nav">
+    <button class="ok-cal__nav-btn">‹</button>
+    <button class="ok-cal__today">Hoy</button>
+    <button class="ok-cal__nav-btn">›</button>
+  </div>
+</header>
+<div class="ok-cal__weekdays">
+  <div class="ok-cal__weekday">Lun</div>
+  <div class="ok-cal__weekday">Mar</div>
+  <div class="ok-cal__weekday">Mié</div>
+  <div class="ok-cal__weekday">Jue</div>
+  <div class="ok-cal__weekday">Vie</div>
+  <div class="ok-cal__weekday">Sáb</div>
+  <div class="ok-cal__weekday">Dom</div>
+</div>
+<div class="ok-cal__grid">
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">28</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">29</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">30</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">1</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--info"><span class="ok-cal__event-time">09:00</span> Festivo</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">3</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">4</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">5</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand"><span class="ok-cal__event-time">10:00</span> Demo Café Norte</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">6</span>
+    <div class="ok-cal__events">
+      <div class="ok-cal__event ok-cal__event--leaf"><span class="ok-cal__event-time">12:00</span> Inv. mensual</div>
+      <div class="ok-cal__event ok-cal__event--info">Cierre nóminas</div>
+    </div>
+  </div>
+  <div class="ok-cal__cell ok-cal__cell--today"><span class="ok-cal__day">7</span>
+    <div class="ok-cal__events">
+      <div class="ok-cal__event ok-cal__event--solid"><span class="ok-cal__event-time">15:30</span> Reunión</div>
+      <div class="ok-cal__event ok-cal__event--warn"><span class="ok-cal__event-time">17:00</span> Llamada</div>
+      <div class="ok-cal__more">+ 3 más</div>
+    </div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">8</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">9</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">10</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">11</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">12</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">13</span></div>
+  <div class="ok-cal__cell ok-cal__cell--selected"><span class="ok-cal__day">14</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand">All-hands</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">15</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">16</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">17</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">18</span></div>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Calendar>
+<header class="ok-cal__head">
+  <div class="ok-cal__title">Mayo 2026</div>
+  <div class="ok-cal__nav">
+    <button class="ok-cal__nav-btn">‹</button>
+    <button class="ok-cal__today">Hoy</button>
+    <button class="ok-cal__nav-btn">›</button>
+  </div>
+</header>
+<div class="ok-cal__weekdays">
+  <div class="ok-cal__weekday">Lun</div>
+  <div class="ok-cal__weekday">Mar</div>
+  <div class="ok-cal__weekday">Mié</div>
+  <div class="ok-cal__weekday">Jue</div>
+  <div class="ok-cal__weekday">Vie</div>
+  <div class="ok-cal__weekday">Sáb</div>
+  <div class="ok-cal__weekday">Dom</div>
+</div>
+<div class="ok-cal__grid">
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">28</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">29</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">30</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">1</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--info"><span class="ok-cal__event-time">09:00</span> Festivo</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">3</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">4</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">5</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand"><span class="ok-cal__event-time">10:00</span> Demo Café Norte</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">6</span>
+    <div class="ok-cal__events">
+      <div class="ok-cal__event ok-cal__event--leaf"><span class="ok-cal__event-time">12:00</span> Inv. mensual</div>
+      <div class="ok-cal__event ok-cal__event--info">Cierre nóminas</div>
+    </div>
+  </div>
+  <div class="ok-cal__cell ok-cal__cell--today"><span class="ok-cal__day">7</span>
+    <div class="ok-cal__events">
+      <div class="ok-cal__event ok-cal__event--solid"><span class="ok-cal__event-time">15:30</span> Reunión</div>
+      <div class="ok-cal__event ok-cal__event--warn"><span class="ok-cal__event-time">17:00</span> Llamada</div>
+      <div class="ok-cal__more">+ 3 más</div>
+    </div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">8</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">9</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">10</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">11</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">12</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">13</span></div>
+  <div class="ok-cal__cell ok-cal__cell--selected"><span class="ok-cal__day">14</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand">All-hands</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">15</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">16</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">17</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">18</span></div>
+</div>
+</Calendar>{% endraw %}{% endset %}
+
+{% call demo_frame("Vista mensual · mayo 2026",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call calendar() %}
 <header class="ok-cal__head">
   <div class="ok-cal__title">Mayo 2026</div>
@@ -72,7 +198,76 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Mini calendar") %}
+{% set _src_jinja_2 %}{% raw %}<div class="ok-cal-mini">
+  <header class="ok-cal-mini__head">
+    <div class="ok-cal-mini__title">Mayo 2026</div>
+    <div class="ok-cal__nav">
+      <button class="ok-cal__nav-btn" style="width:22px;height:22px">‹</button>
+      <button class="ok-cal__nav-btn" style="width:22px;height:22px">›</button>
+    </div>
+  </header>
+  <div class="ok-cal-mini__grid">
+    <div class="ok-cal-mini__wd">L</div><div class="ok-cal-mini__wd">M</div><div class="ok-cal-mini__wd">X</div><div class="ok-cal-mini__wd">J</div><div class="ok-cal-mini__wd">V</div><div class="ok-cal-mini__wd">S</div><div class="ok-cal-mini__wd">D</div>
+    <button class="ok-cal-mini__day ok-cal-mini__day--out">28</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--out">29</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--out">30</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">1</button>
+    <button class="ok-cal-mini__day">2</button>
+    <button class="ok-cal-mini__day">3</button>
+    <button class="ok-cal-mini__day">4</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">5</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">6</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--today ok-cal-mini__day--has-event">7</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">8</button>
+    <button class="ok-cal-mini__day">9</button>
+    <button class="ok-cal-mini__day">10</button>
+    <button class="ok-cal-mini__day">11</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">12</button>
+    <button class="ok-cal-mini__day">13</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--selected ok-cal-mini__day--has-event">14</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">15</button>
+    <button class="ok-cal-mini__day">16</button>
+    <button class="ok-cal-mini__day">17</button>
+    <button class="ok-cal-mini__day">18</button>
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div class="ok-cal-mini">
+  <header class="ok-cal-mini__head">
+    <div class="ok-cal-mini__title">Mayo 2026</div>
+    <div class="ok-cal__nav">
+      <button class="ok-cal__nav-btn" style="width:22px;height:22px">‹</button>
+      <button class="ok-cal__nav-btn" style="width:22px;height:22px">›</button>
+    </div>
+  </header>
+  <div class="ok-cal-mini__grid">
+    <div class="ok-cal-mini__wd">L</div><div class="ok-cal-mini__wd">M</div><div class="ok-cal-mini__wd">X</div><div class="ok-cal-mini__wd">J</div><div class="ok-cal-mini__wd">V</div><div class="ok-cal-mini__wd">S</div><div class="ok-cal-mini__wd">D</div>
+    <button class="ok-cal-mini__day ok-cal-mini__day--out">28</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--out">29</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--out">30</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">1</button>
+    <button class="ok-cal-mini__day">2</button>
+    <button class="ok-cal-mini__day">3</button>
+    <button class="ok-cal-mini__day">4</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">5</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">6</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--today ok-cal-mini__day--has-event">7</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">8</button>
+    <button class="ok-cal-mini__day">9</button>
+    <button class="ok-cal-mini__day">10</button>
+    <button class="ok-cal-mini__day">11</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">12</button>
+    <button class="ok-cal-mini__day">13</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--selected ok-cal-mini__day--has-event">14</button>
+    <button class="ok-cal-mini__day ok-cal-mini__day--has-event">15</button>
+    <button class="ok-cal-mini__day">16</button>
+    <button class="ok-cal-mini__day">17</button>
+    <button class="ok-cal-mini__day">18</button>
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Mini calendar",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div class="ok-cal-mini">
   <header class="ok-cal-mini__head">
     <div class="ok-cal-mini__title">Mayo 2026</div>

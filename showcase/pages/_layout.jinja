@@ -83,10 +83,37 @@
     @media (max-width: 768px) {
       .doc__body { padding: 20px; }
     }
+
+    /* Viewport simulation: when $vp is tablet/mobile, frame the doc body. */
+    .ok-app__main[data-vp="tablet"] .doc__body,
+    .ok-app__main[data-vp="mobile"] .doc__body {
+      background: var(--ok-bg-1);
+      padding: 32px 0;
+    }
+    .ok-app__main[data-vp="tablet"] .doc__body > *,
+    .ok-app__main[data-vp="mobile"] .doc__body > * {
+      max-width: var(--vp-width, 100%);
+      margin-inline: auto;
+      background: var(--ok-bg);
+      padding-inline: 32px;
+      box-sizing: border-box;
+      border-left: 1px solid var(--ok-line-2);
+      border-right: 1px solid var(--ok-line-2);
+    }
+    .ok-app__main[data-vp="tablet"] .doc__body { --vp-width: 800px; }
+    .ok-app__main[data-vp="mobile"] .doc__body { --vp-width: 412px; }
+
+    /* Smooth transition. */
+    .ok-app__main .doc__body > * {
+      transition: max-width 0.28s ease, padding-inline 0.28s ease;
+    }
   </style>
 
   {# Theme runtime (synchronous, before Datastar). #}
   <script src="{{ base_path }}/static/theme-runtime.js"></script>
+
+  {# Iconify web component (lazy-loads icon sets from api.iconify.design). #}
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2/dist/iconify-icon.min.js" defer></script>
 
   {# Datastar (async ESM module). #}
   <script type="module"
@@ -141,7 +168,7 @@
     </aside>
 
     {# ====== MAIN ====== #}
-    <main class="ok-app__main">
+    <main class="ok-app__main" data-attr-data-vp="$vp">
       <header class="ok-topbar">
         <div class="ok-topbar__left">
           <button class="ok-topbar__menu-btn" aria-label="Menú lateral"

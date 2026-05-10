@@ -8,15 +8,56 @@
 <h1>Pinpad</h1>
 <p class="showcase__lead">Teclado numérico 3×4 para desbloqueo POS y entrada de PIN.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/pinpad.jinja" import pinpad %}
+{{ pinpad() }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Pinpad />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ pinpad() }}
 {% endcall %}
 
-{% call demo_frame("Etiquetas custom — confirmación de pago") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/pinpad.jinja" import pinpad %}
+{{ pinpad(back_label="C", enter_label="Cobrar") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Pinpad back_label="C" enter_label="Cobrar" />{% endraw %}{% endset %}
+
+{% call demo_frame("Etiquetas custom — confirmación de pago",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ pinpad(back_label="C", enter_label="Cobrar") }}
 {% endcall %}
 
-{% call demo_frame("Datastar — entrada de PIN reactiva") %}
+{% set _src_jinja_3 %}{% raw %}<div data-signals="{ pin: '' }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+  <div class="ok-pinpad">
+    {% for n in [1,2,3,4,5,6,7,8,9] %}
+    <button type="button" class="ok-pinpad__key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
+    {% endfor %}
+    <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
+    <button type="button" class="ok-pinpad__key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
+    <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$pin = ''">↵</button>
+  </div>
+  <div>
+    PIN: <strong style="font-family:var(--ok-font-mono);font-size:18px;letter-spacing:4px;" data-text="$pin.replace(/./g, '•').padEnd(6, '_')">______</strong>
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div data-signals="{ pin: '' }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+  <div class="ok-pinpad">
+    {% for n in [1,2,3,4,5,6,7,8,9] %}
+    <button type="button" class="ok-pinpad__key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
+    {% endfor %}
+    <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
+    <button type="button" class="ok-pinpad__key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
+    <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$pin = ''">↵</button>
+  </div>
+  <div>
+    PIN: <strong style="font-family:var(--ok-font-mono);font-size:18px;letter-spacing:4px;" data-text="$pin.replace(/./g, '•').padEnd(6, '_')">______</strong>
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — entrada de PIN reactiva",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div data-signals="{ pin: '' }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
   <div class="ok-pinpad">
     {% for n in [1,2,3,4,5,6,7,8,9] %}

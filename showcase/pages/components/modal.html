@@ -9,7 +9,22 @@
 <h1>Modal</h1>
 <p class="showcase__lead">Diálogo modal con icono semántico opcional, header, body y close button. El estado abierto/cerrado se controla con <code>data-state</code> y se enchufa a Datastar para reactividad.</p>
 
-{% call demo_frame("Estado abierto · sm") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/modal.jinja" import modal %}
+<div class="modal-stage">
+  {% call modal(title="¿Cerrar caja del turno?", subtitle="Se generará el resumen Z y se notificará a contabilidad.", size="sm", icon_variant="brand", state="open") %}
+    <p>Los movimientos posteriores quedarán bloqueados hasta apertura de nueva caja.</p>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div class="modal-stage">
+  <Modal title="¿Cerrar caja del turno?" subtitle="Se generará el resumen Z y se notificará a contabilidad." size="sm" icon_variant="brand" state="open">
+    <p>Los movimientos posteriores quedarán bloqueados hasta apertura de nueva caja.</p>
+  
+</Modal>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estado abierto · sm",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div class="modal-stage">
   {% call modal(title="¿Cerrar caja del turno?", subtitle="Se generará el resumen Z y se notificará a contabilidad.", size="sm", icon_variant="brand", state="open") %}
     <p>Los movimientos posteriores quedarán bloqueados hasta apertura de nueva caja.</p>
@@ -17,7 +32,22 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Estado abierto · md") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/modal.jinja" import modal %}
+<div class="modal-stage modal-stage--md">
+  {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open") %}
+    <p>Aquí va un formulario con razón social, NIF, email...</p>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div class="modal-stage modal-stage--md">
+  <Modal title="Nuevo proveedor" subtitle="Datos básicos para empezar a registrar compras." size="md" state="open">
+    <p>Aquí va un formulario con razón social, NIF, email...</p>
+  
+</Modal>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estado abierto · md",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div class="modal-stage modal-stage--md">
   {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open") %}
     <p>Aquí va un formulario con razón social, NIF, email...</p>
@@ -25,7 +55,29 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar · abrir/cerrar") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/button.jinja" import button %}
+{% from "ui/modal.jinja" import modal %}
+<div data-signals="{ open: false }">
+  {{ button("Abrir modal", variant="primary", attrs={"data-on:click": "$open = true"}) }}
+  <div class="modal-stage" style="display: none;" data-show="$open">
+    {% call modal(title="Confirmación", subtitle="Esta acción no se puede deshacer.", size="sm", icon_variant="danger", state="open") %}
+      <p>¿Seguro que quieres eliminar este registro?</p>
+    {% endcall %}
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div data-signals="{ open: false }">
+  <Button label="Abrir modal" variant="primary" data-on:click="$open = true" />
+  <div class="modal-stage" style="display: none;" data-show="$open">
+    <Modal title="Confirmación" subtitle="Esta acción no se puede deshacer." size="sm" icon_variant="danger" state="open">
+      <p>¿Seguro que quieres eliminar este registro?</p>
+    
+</Modal>
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar · abrir/cerrar",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div data-signals="{ open: false }">
   {{ button("Abrir modal", variant="primary", attrs={"data-on:click": "$open = true"}) }}
   <div class="modal-stage" style="display: none;" data-show="$open">

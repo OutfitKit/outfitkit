@@ -8,7 +8,21 @@
 <h1>Radio</h1>
 <p class="showcase__lead">Botón de opción único por grupo (mismo <code>name</code>). Combina con <code>.ok-radio-group</code> o <code>.ok-radio-card</code>.</p>
 
-{% call demo_frame("Inline") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/radio.jinja" import radio %}
+<div class="ok-radio-group ok-radio-group--inline">
+  {{ radio("Mensual", "billing", value="monthly", checked=True) }}
+  {{ radio("Anual", "billing", value="annual") }}
+  {{ radio("Personalizado", "billing", value="custom") }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div class="ok-radio-group ok-radio-group--inline">
+  <Radio label="Mensual" value="monthly" checked />
+  <Radio label="Anual" value="annual" />
+  <Radio label="Personalizado" value="custom" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Inline",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div class="ok-radio-group ok-radio-group--inline">
   {{ radio("Mensual", "billing", value="monthly", checked=True) }}
   {{ radio("Anual", "billing", value="annual") }}
@@ -16,7 +30,21 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Vertical") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/radio.jinja" import radio %}
+<div class="ok-radio-group">
+  {{ radio("Tarjeta de crédito", "pay", value="card", checked=True) }}
+  {{ radio("Transferencia", "pay", value="wire") }}
+  {{ radio("Bizum", "pay", value="bizum") }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div class="ok-radio-group">
+  <Radio label="Tarjeta de crédito" value="card" checked />
+  <Radio label="Transferencia" value="wire" />
+  <Radio label="Bizum" value="bizum" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Vertical",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div class="ok-radio-group">
   {{ radio("Tarjeta de crédito", "pay", value="card", checked=True) }}
   {{ radio("Transferencia", "pay", value="wire") }}
@@ -24,7 +52,21 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Estados") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/radio.jinja" import radio %}
+<div class="ok-radio-group">
+  {{ radio("Activo", "s1", checked=True) }}
+  {{ radio("Sin marcar", "s2") }}
+  {{ radio("Deshabilitado", "s3", disabled=True) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div class="ok-radio-group">
+  <Radio label="Activo" checked />
+  <Radio label="Sin marcar" />
+  <Radio label="Deshabilitado" disabled />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estados",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div class="ok-radio-group">
   {{ radio("Activo", "s1", checked=True) }}
   {{ radio("Sin marcar", "s2") }}
@@ -32,7 +74,27 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar — selección reactiva") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/radio.jinja" import radio %}
+<div data-signals="{ plan: 'monthly' }">
+  <div class="ok-radio-group ok-radio-group--inline">
+    {{ radio("Mensual", "plan", value="monthly", checked=True, attrs={"data-bind-plan": ""}) }}
+    {{ radio("Anual", "plan", value="annual", attrs={"data-bind-plan": ""}) }}
+    {{ radio("Personalizado", "plan", value="custom", attrs={"data-bind-plan": ""}) }}
+  </div>
+  <p style="margin-top:8px;">Plan elegido: <strong data-text="$plan"></strong></p>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ plan: 'monthly' }">
+  <div class="ok-radio-group ok-radio-group--inline">
+    <Radio label="Mensual" value="monthly" checked data-bind-plan="" />
+    <Radio label="Anual" value="annual" data-bind-plan="" />
+    <Radio label="Personalizado" value="custom" data-bind-plan="" />
+  </div>
+  <p style="margin-top:8px;">Plan elegido: <strong data-text="$plan"></strong></p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — selección reactiva",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ plan: 'monthly' }">
   <div class="ok-radio-group ok-radio-group--inline">
     {{ radio("Mensual", "plan", value="monthly", checked=True, attrs={"data-bind-plan": ""}) }}

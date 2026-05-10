@@ -26,6 +26,11 @@ COMPONENTS = {
         "expected_classes": ["ok-btn", "ok-btn--primary"],
         "expected_text": "Save",
     },
+    "icon": {
+        "kwargs": {"name": "lucide:home", "size": "md"},
+        "expected_classes": [],
+        "expected_text": "iconify-icon",
+    },
     "badge": {
         "kwargs": {"label": "New", "variant": "brand", "dot": True},
         "expected_classes": ["ok-badge", "ok-badge--brand", "ok-badge__dot"],

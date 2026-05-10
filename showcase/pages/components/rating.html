@@ -8,17 +8,62 @@
 <h1>Rating</h1>
 <p class="showcase__lead">Estrellas para encuestas y reseñas. Soporta tamaños y modo solo lectura.</p>
 
-{% call demo_frame("Tamaños") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/rating.jinja" import rating %}
+{{ rating(value=4, size="sm", label="3,1", readonly=True) }}
+{{ rating(value=4, label="4,0 / 5", readonly=True) }}
+{{ rating(value=4, size="lg", label="4,2 · 132 reseñas", readonly=True) }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Rating value="4" size="sm" label="3,1" readonly />
+<Rating value="4" label="4,0 / 5" readonly />
+<Rating value="4" size="lg" label="4,2 · 132 reseñas" readonly />{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ rating(value=4, size="sm", label="3,1", readonly=True) }}
 {{ rating(value=4, label="4,0 / 5", readonly=True) }}
 {{ rating(value=4, size="lg", label="4,2 · 132 reseñas", readonly=True) }}
 {% endcall %}
 
-{% call demo_frame("Calidad del servicio · readonly") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/rating.jinja" import rating %}
+{{ rating(value=4, max=5, label="4,2 · 132 reseñas", readonly=True) }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Rating value="4" max="5" label="4,2 · 132 reseñas" readonly />{% endraw %}{% endset %}
+
+{% call demo_frame("Calidad del servicio · readonly",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ rating(value=4, max=5, label="4,2 · 132 reseñas", readonly=True) }}
 {% endcall %}
 
-{% call demo_frame("Datastar — puntuar") %}
+{% set _src_jinja_3 %}{% raw %}<div data-signals="{ r: 4 }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+  <div class="ok-rating ok-rating--lg">
+    {% for i in range(1, 6) %}
+    <svg class="ok-rating__star"
+      data-attr-class="'ok-rating__star ' + ($r >= {{ i }} ? 'ok-rating__star--filled' : '')"
+      viewBox="0 0 24 24" fill="currentColor" data-on:click="$r = {{ i }}">
+      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+    </svg>
+    {% endfor %}
+    <span class="ok-rating__label" data-text="$r + ',0 / 5'"></span>
+  </div>
+  <span style="font-size:13px;color:var(--ok-ink-3);">Click en una estrella para puntuar</span>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div data-signals="{ r: 4 }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+  <div class="ok-rating ok-rating--lg">
+    {% for i in range(1, 6) %}
+    <svg class="ok-rating__star"
+      data-attr-class="'ok-rating__star ' + ($r >= {{ i }} ? 'ok-rating__star--filled' : '')"
+      viewBox="0 0 24 24" fill="currentColor" data-on:click="$r = {{ i }}">
+      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+    </svg>
+    {% endfor %}
+    <span class="ok-rating__label" data-text="$r + ',0 / 5'"></span>
+  </div>
+  <span style="font-size:13px;color:var(--ok-ink-3);">Click en una estrella para puntuar</span>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — puntuar",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div data-signals="{ r: 4 }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
   <div class="ok-rating ok-rating--lg">
     {% for i in range(1, 6) %}

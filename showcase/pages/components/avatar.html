@@ -8,11 +8,31 @@
 <h1>Avatar</h1>
 <p class="showcase__lead">Iniciales o imagen, 5 tamaños, variante brand. Se apilan con el wrapper <code>.ok-avatar-stack</code>.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
+{{ avatar("JC") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Avatar label="JC" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ avatar("JC") }}
 {% endcall %}
 
-{% call demo_frame("Tamaños") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
+{{ avatar("JC", size="xs") }}
+{{ avatar("JC", size="sm") }}
+{{ avatar("JC") }}
+{{ avatar("JC", size="lg") }}
+{{ avatar("JC", size="xl") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Avatar label="JC" size="xs" />
+<Avatar label="JC" size="sm" />
+<Avatar label="JC" />
+<Avatar label="JC" size="lg" />
+<Avatar label="JC" size="xl" />{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ avatar("JC", size="xs") }}
 {{ avatar("JC", size="sm") }}
 {{ avatar("JC") }}
@@ -20,19 +40,55 @@
 {{ avatar("JC", size="xl") }}
 {% endcall %}
 
-{% call demo_frame("Brand") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
+{{ avatar("MR") }}
+{{ avatar("EX", variant="brand") }}
+{{ avatar("EX", variant="brand", size="lg") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Avatar label="MR" />
+<Avatar label="EX" variant="brand" />
+<Avatar label="EX" variant="brand" size="lg" />{% endraw %}{% endset %}
+
+{% call demo_frame("Brand",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ avatar("MR") }}
 {{ avatar("EX", variant="brand") }}
 {{ avatar("EX", variant="brand", size="lg") }}
 {% endcall %}
 
-{% call demo_frame("Imagen") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
+{{ avatar("", src="https://i.pravatar.cc/64?img=11", alt="User 11") }}
+{{ avatar("", src="https://i.pravatar.cc/64?img=22", alt="User 22", size="lg") }}
+{{ avatar("", src="https://i.pravatar.cc/64?img=33", alt="User 33", size="xl") }}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Avatar label="" src="https://i.pravatar.cc/64?img=11" alt="User 11" />
+<Avatar label="" src="https://i.pravatar.cc/64?img=22" alt="User 22" size="lg" />
+<Avatar label="" src="https://i.pravatar.cc/64?img=33" alt="User 33" size="xl" />{% endraw %}{% endset %}
+
+{% call demo_frame("Imagen",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {{ avatar("", src="https://i.pravatar.cc/64?img=11", alt="User 11") }}
 {{ avatar("", src="https://i.pravatar.cc/64?img=22", alt="User 22", size="lg") }}
 {{ avatar("", src="https://i.pravatar.cc/64?img=33", alt="User 33", size="xl") }}
 {% endcall %}
 
-{% call demo_frame("Stack") %}
+{% set _src_jinja_5 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
+<span class="ok-avatar-stack">
+  {{ avatar("", src="https://i.pravatar.cc/64?img=1", alt="") }}
+  {{ avatar("", src="https://i.pravatar.cc/64?img=2", alt="") }}
+  {{ avatar("", src="https://i.pravatar.cc/64?img=3", alt="") }}
+  {{ avatar("+4") }}
+</span>{% endraw %}{% endset %}
+{% set _src_jinjax_5 %}{% raw %}<span class="ok-avatar-stack">
+  <Avatar label="" src="https://i.pravatar.cc/64?img=1" alt="" />
+  <Avatar label="" src="https://i.pravatar.cc/64?img=2" alt="" />
+  <Avatar label="" src="https://i.pravatar.cc/64?img=3" alt="" />
+  <Avatar label="+4" />
+</span>{% endraw %}{% endset %}
+
+{% call demo_frame("Stack",
+    jinja_src=_src_jinja_5,
+    jinjax_src=_src_jinjax_5) %}
 <span class="ok-avatar-stack">
   {{ avatar("", src="https://i.pravatar.cc/64?img=1", alt="") }}
   {{ avatar("", src="https://i.pravatar.cc/64?img=2", alt="") }}

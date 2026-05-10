@@ -5,19 +5,19 @@
    between the two is a no-op. New entries go here; sidebar items render
    from this list and Datastar hides items that don't match the search query. #}
 
-{% set _ICON_HOME = "M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z" %}
-{% set _ICON_LAYERS = "M12 2 2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5" %}
-{% set _ICON_LAYOUT = "M3 3h18v18H3zM3 9h18M9 21V9" %}
-{% set _ICON_NAV = "M3 12h18M3 6h18M3 18h12" %}
-{% set _ICON_CUBE = "M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM3.3 7L12 12l8.7-5M12 22V12" %}
-{% set _ICON_GRID = "M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" %}
-{% set _ICON_FORMS = "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8" %}
-{% set _ICON_TABLE = "M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18" %}
-{% set _ICON_ALERT = "M12 9v4M12 17h0M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" %}
-{% set _ICON_MODAL = "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" %}
-{% set _ICON_FLOW = "M22 12h-4l-3 9L9 3l-3 9H2" %}
-{% set _ICON_FACTORY = "M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" %}
-{% set _ICON_STORE = "M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4M3 9l1.5-3h15L21 9M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM10 21V13h4v8" %}
+{% set _ICON_HOME = "lucide:home" %}
+{% set _ICON_LAYERS = "lucide:layers" %}
+{% set _ICON_LAYOUT = "lucide:layout-grid" %}
+{% set _ICON_NAV = "lucide:menu" %}
+{% set _ICON_CUBE = "lucide:box" %}
+{% set _ICON_GRID = "lucide:layout-dashboard" %}
+{% set _ICON_FORMS = "lucide:file-text" %}
+{% set _ICON_TABLE = "lucide:table" %}
+{% set _ICON_ALERT = "lucide:alert-triangle" %}
+{% set _ICON_MODAL = "lucide:square-stack" %}
+{% set _ICON_FLOW = "lucide:workflow" %}
+{% set _ICON_FACTORY = "lucide:factory" %}
+{% set _ICON_STORE = "lucide:store" %}
 
 {% set NAV = [
   ("Foundations", [
@@ -244,11 +244,7 @@
       <a href="{{ full_href }}"
          class="ok-sidebar__item"
          data-route-active="{{ 'true' if is_active else 'false' }}">
-        <svg class="ok-sidebar__icon" width="16" height="16" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="2"
-             stroke-linecap="round" stroke-linejoin="round">
-          <path d="{{ icon }}"/>
-        </svg>
+        <iconify-icon icon="{{ icon }}" width="16" height="16" class="ok-sidebar__icon"></iconify-icon>
         <span class="ok-sidebar__label">{{ label }}</span>
         {% if badge -%}<span class="ok-sidebar__badge ok-sidebar__badge--{{ badge }}">{{ badge }}</span>{%- endif %}
       </a>

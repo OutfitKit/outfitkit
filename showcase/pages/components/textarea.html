@@ -9,17 +9,48 @@
 <h1>Textarea</h1>
 <p class="showcase__lead">Área multilínea. Por defecto resizable verticalmente. Suele ir dentro de un <code>field</code>.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/textarea.jinja" import textarea %}
+{{ textarea("notes", placeholder="Detalles del cliente, preferencias, alergias…") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Textarea label="notes" placeholder="Detalles del cliente, preferencias, alergias…" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ textarea("notes", placeholder="Detalles del cliente, preferencias, alergias…") }}
 {% endcall %}
 
-{% call demo_frame("Con field — label + hint") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/textarea.jinja" import textarea %}
+{% from "ui/field.jinja" import field %}
+{% call field("Notas internas", hint="Solo visible para el equipo. Hasta 500 caracteres.") %}
+  {{ textarea("notes", placeholder="Escribe aquí…") }}
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Field label="Notas internas" hint="Solo visible para el equipo. Hasta 500 caracteres.">
+  <Textarea label="notes" placeholder="Escribe aquí…" />
+</Field>{% endraw %}{% endset %}
+
+{% call demo_frame("Con field — label + hint",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call field("Notas internas", hint="Solo visible para el equipo. Hasta 500 caracteres.") %}
   {{ textarea("notes", placeholder="Escribe aquí…") }}
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Estados") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/textarea.jinja" import textarea %}
+<div style="display:grid;gap:8px;max-width:480px">
+  {{ textarea("ok", value="Texto válido.") }}
+  {{ textarea("err", value="Texto con error.", invalid=True) }}
+  {{ textarea("dis", value="Deshabilitado.", disabled=True) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div style="display:grid;gap:8px;max-width:480px">
+  <Textarea label="ok" value="Texto válido." />
+  <Textarea label="err" value="Texto con error." invalid />
+  <Textarea label="dis" value="Deshabilitado." disabled />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estados",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div style="display:grid;gap:8px;max-width:480px">
   {{ textarea("ok", value="Texto válido.") }}
   {{ textarea("err", value="Texto con error.", invalid=True) }}
@@ -27,7 +58,23 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar — contador de caracteres") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/textarea.jinja" import textarea %}
+<div data-signals="{ msg: '' }">
+  {{ textarea("msg", placeholder="Cuéntanos…", attrs={"data-bind-msg": ""}) }}
+  <p style="margin-top:8px;font-size:12px;">
+    <strong data-text="$msg.length"></strong> / 500 caracteres
+  </p>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ msg: '' }">
+  <Textarea label="msg" placeholder="Cuéntanos…" data-bind-msg="" />
+  <p style="margin-top:8px;font-size:12px;">
+    <strong data-text="$msg.length"></strong> / 500 caracteres
+  </p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — contador de caracteres",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ msg: '' }">
   {{ textarea("msg", placeholder="Cuéntanos…", attrs={"data-bind-msg": ""}) }}
   <p style="margin-top:8px;font-size:12px;">

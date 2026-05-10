@@ -8,7 +8,25 @@
 <h1>Breadcrumbs</h1>
 <p class="showcase__lead">Navegación jerárquica con separadores. Acepta lista de items con <code>label</code>, <code>href</code> y <code>icon</code> opcional. El último item se marca <code>aria-current="page"</code>.</p>
 
-{% call demo_frame("Default — chevron") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/breadcrumbs.jinja" import breadcrumbs %}
+{{ breadcrumbs([
+  {"label": "ERPlora", "href": "#"},
+  {"label": "Cafetería La Rambla", "href": "#"},
+  {"label": "Sede · Eixample", "href": "#"},
+  {"label": "Comercial", "href": "#"},
+  {"label": "Pedido #FCT-2026-00184"},
+]) }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Breadcrumbs items='[
+  {"label": "ERPlora", "href": "#"},
+  {"label": "Cafetería La Rambla", "href": "#"},
+  {"label": "Sede · Eixample", "href": "#"},
+  {"label": "Comercial", "href": "#"},
+  {"label": "Pedido #FCT-2026-00184"},
+]' />{% endraw %}{% endset %}
+
+{% call demo_frame("Default — chevron",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ breadcrumbs([
   {"label": "ERPlora", "href": "#"},
   {"label": "Cafetería La Rambla", "href": "#"},
@@ -18,7 +36,23 @@
 ]) }}
 {% endcall %}
 
-{% call demo_frame("Slash separator") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/breadcrumbs.jinja" import breadcrumbs %}
+{{ breadcrumbs([
+  {"label": "Inicio", "href": "#"},
+  {"label": "Manufactura", "href": "#"},
+  {"label": "Línea 04", "href": "#"},
+  {"label": "Trazabilidad"},
+], separator="/") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Breadcrumbs items='[
+  {"label": "Inicio", "href": "#"},
+  {"label": "Manufactura", "href": "#"},
+  {"label": "Línea 04", "href": "#"},
+  {"label": "Trazabilidad"},
+]' separator="/" />{% endraw %}{% endset %}
+
+{% call demo_frame("Slash separator",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ breadcrumbs([
   {"label": "Inicio", "href": "#"},
   {"label": "Manufactura", "href": "#"},
@@ -27,7 +61,23 @@
 ], separator="/") }}
 {% endcall %}
 
-{% call demo_frame("Chips") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/breadcrumbs.jinja" import breadcrumbs %}
+{{ breadcrumbs([
+  {"label": "Inventario", "href": "#"},
+  {"label": "Almacenes", "href": "#"},
+  {"label": "ALM-MAD-01", "href": "#"},
+  {"label": "SKU 8743290"},
+], variant="chips") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Breadcrumbs items='[
+  {"label": "Inventario", "href": "#"},
+  {"label": "Almacenes", "href": "#"},
+  {"label": "ALM-MAD-01", "href": "#"},
+  {"label": "SKU 8743290"},
+]' variant="chips" />{% endraw %}{% endset %}
+
+{% call demo_frame("Chips",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ breadcrumbs([
   {"label": "Inventario", "href": "#"},
   {"label": "Almacenes", "href": "#"},
@@ -36,7 +86,21 @@
 ], variant="chips") }}
 {% endcall %}
 
-{% call demo_frame("Compact (sm)") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/breadcrumbs.jinja" import breadcrumbs %}
+{{ breadcrumbs([
+  {"label": "Inicio", "href": "#"},
+  {"label": "Operaciones", "href": "#"},
+  {"label": "Hoy"},
+], variant="sm", separator="/") }}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Breadcrumbs items='[
+  {"label": "Inicio", "href": "#"},
+  {"label": "Operaciones", "href": "#"},
+  {"label": "Hoy"},
+]' variant="sm" separator="/" />{% endraw %}{% endset %}
+
+{% call demo_frame("Compact (sm)",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {{ breadcrumbs([
   {"label": "Inicio", "href": "#"},
   {"label": "Operaciones", "href": "#"},

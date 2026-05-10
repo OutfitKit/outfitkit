@@ -8,7 +8,18 @@
 <h1>Video player</h1>
 <p class="showcase__lead">Reproductor de vídeo con poster y controles personalizados.</p>
 
-{% call demo_frame("Default · poster + controles") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/video_player.jinja" import video_player %}
+{{ video_player(
+  poster="https://picsum.photos/seed/v1/640/360",
+  current="00:30",
+  duration="01:48",
+  progress=30
+) }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<video_player poster="https://picsum.photos/seed/v1/640/360" current="00:30" duration="01:48" progress="30" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default · poster + controles",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ video_player(
   poster="https://picsum.photos/seed/v1/640/360",
   current="00:30",
@@ -17,7 +28,19 @@
 ) }}
 {% endcall %}
 
-{% call demo_frame("Reproduciéndose · sin poster") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/video_player.jinja" import video_player %}
+{{ video_player(
+  poster="https://picsum.photos/seed/v2/640/360",
+  current="01:24",
+  duration="03:12",
+  progress=45,
+  playing=True
+) }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<video_player poster="https://picsum.photos/seed/v2/640/360" current="01:24" duration="03:12" progress="45" playing />{% endraw %}{% endset %}
+
+{% call demo_frame("Reproduciéndose · sin poster",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ video_player(
   poster="https://picsum.photos/seed/v2/640/360",
   current="01:24",

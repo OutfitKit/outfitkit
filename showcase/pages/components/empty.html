@@ -25,13 +25,47 @@
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
 {% endset %}
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/empty.jinja" import empty %}
+<div style="width: 100%;">
+  {{ empty("Sin movimientos", desc="Cuando registres entradas o salidas de stock aparecerán aquí.", icon=inv_icon) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div style="width: 100%;">
+  <Empty label="Sin movimientos" desc="Cuando registres entradas o salidas de stock aparecerán aquí." icon="inv_icon" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div style="width: 100%;">
   {{ empty("Sin movimientos", desc="Cuando registres entradas o salidas de stock aparecerán aquí.", icon=inv_icon) }}
 </div>
 {% endcall %}
 
-{% call demo_frame("Con acciones") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/button.jinja" import button %}
+{% from "ui/empty.jinja" import empty %}
+{% set actions %}
+{{ button("Importar CSV", variant="secondary") }}
+{{ button("Nuevo movimiento", variant="primary") }}
+{% endset %}
+<div style="width: 100%;">
+  {{ empty(
+    "Sin movimientos de inventario",
+    desc="Cuando registres entradas o salidas de stock aparecerán aquí. Puedes empezar importando un CSV o creando un movimiento manual.",
+    icon=inv_icon,
+    actions=actions
+  ) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}{% set actions %}
+<Button label="Importar CSV" variant="secondary" />
+<Button label="Nuevo movimiento" variant="primary" />
+{% endset %}
+<div style="width: 100%;">
+  <Empty label="Sin movimientos de inventario" desc="Cuando registres entradas o salidas de stock aparecerán aquí. Puedes empezar importando un CSV o creando un movimiento manual." icon="inv_icon" actions="actions" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Con acciones",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% set actions %}
 {{ button("Importar CSV", variant="secondary") }}
 {{ button("Nuevo movimiento", variant="primary") }}
@@ -46,13 +80,41 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Compact") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/empty.jinja" import empty %}
+<div style="width: 100%;">
+  {{ empty("Todo al día", desc="No tienes alertas activas.", icon=bell_icon, compact=True) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div style="width: 100%;">
+  <Empty label="Todo al día" desc="No tienes alertas activas." icon="bell_icon" compact />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Compact",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div style="width: 100%;">
   {{ empty("Todo al día", desc="No tienes alertas activas.", icon=bell_icon, compact=True) }}
 </div>
 {% endcall %}
 
-{% call demo_frame("Compact con acción") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/empty.jinja" import empty %}
+{% set clear_action = button("Limpiar filtros", variant="ghost", size="sm") %}
+<div style="width: 100%;">
+  {{ empty(
+    "Sin resultados para «xyz»",
+    desc="Prueba con otro término o revisa los filtros.",
+    icon=search_icon,
+    actions=clear_action,
+    compact=True
+  ) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}{% set clear_action = button("Limpiar filtros", variant="ghost", size="sm") %}
+<div style="width: 100%;">
+  <Empty label="Sin resultados para «xyz»" desc="Prueba con otro término o revisa los filtros." icon="search_icon" actions="clear_action" compact />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Compact con acción",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {% set clear_action = button("Limpiar filtros", variant="ghost", size="sm") %}
 <div style="width: 100%;">
   {{ empty(

@@ -8,7 +8,60 @@
 <h1>Tab bar</h1>
 <p class="showcase__lead">Barra de navegación inferior (mobile bottom nav). Compón <code>.ok-tabbar-item</code> con <code>.ok-tabbar-icon</code> + <code>.ok-tabbar-label</code> y opcional <code>.ok-tabbar-badge</code>. El item activo lleva <code>aria-current="page"</code>.</p>
 
-{% call demo_frame("Default · 5 items") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/tabbar.jinja" import tabbar %}
+<div data-signals="{ tab: 'inicio' }" style="width: 100%;">
+  {% call tabbar() %}
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'inicio'" data-attr-aria-current="$tab === 'inicio' ? 'page' : null" aria-current="page">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+    <span class="ok-tabbar-label">Inicio</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'cobros'" data-attr-aria-current="$tab === 'cobros' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="ok-tabbar-badge">3</span></span>
+    <span class="ok-tabbar-label">Cobros</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'ventas'" data-attr-aria-current="$tab === 'ventas' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></span>
+    <span class="ok-tabbar-label">Ventas</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'equipo'" data-attr-aria-current="$tab === 'equipo' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg></span>
+    <span class="ok-tabbar-label">Equipo</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'ajustes'" data-attr-aria-current="$tab === 'ajustes' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg></span>
+    <span class="ok-tabbar-label">Ajustes</span>
+  </a>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div data-signals="{ tab: 'inicio' }" style="width: 100%;">
+  <Tabbar>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'inicio'" data-attr-aria-current="$tab === 'inicio' ? 'page' : null" aria-current="page">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+    <span class="ok-tabbar-label">Inicio</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'cobros'" data-attr-aria-current="$tab === 'cobros' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="ok-tabbar-badge">3</span></span>
+    <span class="ok-tabbar-label">Cobros</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'ventas'" data-attr-aria-current="$tab === 'ventas' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-5"/></svg></span>
+    <span class="ok-tabbar-label">Ventas</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'equipo'" data-attr-aria-current="$tab === 'equipo' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg></span>
+    <span class="ok-tabbar-label">Equipo</span>
+  </a>
+  <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'ajustes'" data-attr-aria-current="$tab === 'ajustes' ? 'page' : null">
+    <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg></span>
+    <span class="ok-tabbar-label">Ajustes</span>
+  </a>
+  
+</Tabbar>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Default · 5 items",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div data-signals="{ tab: 'inicio' }" style="width: 100%;">
   {% call tabbar() %}
   <a class="ok-tabbar-item" href="#" data-on:click="$tab = 'inicio'" data-attr-aria-current="$tab === 'inicio' ? 'page' : null" aria-current="page">
@@ -35,7 +88,47 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Variant indicator") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/tabbar.jinja" import tabbar %}
+{% call tabbar(variant="indicator") %}
+<a class="ok-tabbar-item" href="#" aria-current="page">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+  <span class="ok-tabbar-label">Inicio</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></span>
+  <span class="ok-tabbar-label">Agenda</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+  <span class="ok-tabbar-label">Historial</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span>
+  <span class="ok-tabbar-label">Más</span>
+</a>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Tabbar variant="indicator">
+<a class="ok-tabbar-item" href="#" aria-current="page">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+  <span class="ok-tabbar-label">Inicio</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg></span>
+  <span class="ok-tabbar-label">Agenda</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+  <span class="ok-tabbar-label">Historial</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></span>
+  <span class="ok-tabbar-label">Más</span>
+</a>
+</Tabbar>{% endraw %}{% endset %}
+
+{% call demo_frame("Variant indicator",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call tabbar(variant="indicator") %}
 <a class="ok-tabbar-item" href="#" aria-current="page">
   <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
@@ -56,7 +149,47 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Variant pill") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/tabbar.jinja" import tabbar %}
+{% call tabbar(variant="pill") %}
+<a class="ok-tabbar-item" href="#" aria-current="page">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+  <span class="ok-tabbar-label">Inicio</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+  <span class="ok-tabbar-label">Buscar</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span class="ok-tabbar-badge">5</span></span>
+  <span class="ok-tabbar-label">Avisos</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></span>
+  <span class="ok-tabbar-label">Perfil</span>
+</a>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Tabbar variant="pill">
+<a class="ok-tabbar-item" href="#" aria-current="page">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+  <span class="ok-tabbar-label">Inicio</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+  <span class="ok-tabbar-label">Buscar</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg><span class="ok-tabbar-badge">5</span></span>
+  <span class="ok-tabbar-label">Avisos</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></span>
+  <span class="ok-tabbar-label">Perfil</span>
+</a>
+</Tabbar>{% endraw %}{% endset %}
+
+{% call demo_frame("Variant pill",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {% call tabbar(variant="pill") %}
 <a class="ok-tabbar-item" href="#" aria-current="page">
   <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
@@ -77,7 +210,53 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Con FAB central · POS") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/tabbar.jinja" import tabbar %}
+{% call tabbar() %}
+<a class="ok-tabbar-item" href="#" aria-current="page">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+  <span class="ok-tabbar-label">Inicio</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>
+  <span class="ok-tabbar-label">Catálogo</span>
+</a>
+<button class="ok-tabbar-fab" aria-label="Nueva venta">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+</button>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6l3 12h11l3-8H6"/></svg><span class="ok-tabbar-badge">2</span></span>
+  <span class="ok-tabbar-label">Pedidos</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></span>
+  <span class="ok-tabbar-label">Yo</span>
+</a>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Tabbar>
+<a class="ok-tabbar-item" href="#" aria-current="page">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
+  <span class="ok-tabbar-label">Inicio</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></span>
+  <span class="ok-tabbar-label">Catálogo</span>
+</a>
+<button class="ok-tabbar-fab" aria-label="Nueva venta">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+</button>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6l3 12h11l3-8H6"/></svg><span class="ok-tabbar-badge">2</span></span>
+  <span class="ok-tabbar-label">Pedidos</span>
+</a>
+<a class="ok-tabbar-item" href="#">
+  <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg></span>
+  <span class="ok-tabbar-label">Yo</span>
+</a>
+</Tabbar>{% endraw %}{% endset %}
+
+{% call demo_frame("Con FAB central · POS",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {% call tabbar() %}
 <a class="ok-tabbar-item" href="#" aria-current="page">
   <span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>

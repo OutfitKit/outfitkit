@@ -8,25 +8,76 @@
 <h1>Search</h1>
 <p class="showcase__lead">Input de búsqueda con icono de lupa y botón de limpiar (o atajo de teclado).</p>
 
-{% call demo_frame("Default · botón limpiar") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/search.jinja" import search %}
+{{ search(placeholder="Buscar productos, SKU, cliente…") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Search placeholder="Buscar productos, SKU, cliente…" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default · botón limpiar",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ search(placeholder="Buscar productos, SKU, cliente…") }}
 {% endcall %}
 
-{% call demo_frame("Con valor pre-rellenado") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/search.jinja" import search %}
+{{ search(placeholder="Buscar…", value="marmelada") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Search placeholder="Buscar…" value="marmelada" />{% endraw %}{% endset %}
+
+{% call demo_frame("Con valor pre-rellenado",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ search(placeholder="Buscar…", value="marmelada") }}
 {% endcall %}
 
-{% call demo_frame("Con atajo ⌘K") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/search.jinja" import search %}
+{{ search(placeholder="Buscar global…", clearable=False, kbd="⌘K") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Search placeholder="Buscar global…" kbd="⌘K" />{% endraw %}{% endset %}
+
+{% call demo_frame("Con atajo ⌘K",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ search(placeholder="Buscar global…", clearable=False, kbd="⌘K") }}
 {% endcall %}
 
-{% call demo_frame("Tamaños") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/search.jinja" import search %}
+{{ search(placeholder="Pequeño", size="sm") }}
+{{ search(placeholder="Mediano (default)") }}
+{{ search(placeholder="Grande", size="lg") }}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Search placeholder="Pequeño" size="sm" />
+<Search placeholder="Mediano (default)" />
+<Search placeholder="Grande" size="lg" />{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {{ search(placeholder="Pequeño", size="sm") }}
 {{ search(placeholder="Mediano (default)") }}
 {{ search(placeholder="Grande", size="lg") }}
 {% endcall %}
 
-{% call demo_frame("Datastar — bind reactivo") %}
+{% set _src_jinja_5 %}{% raw %}<div data-signals="{ q: '' }">
+  <div class="ok-search">
+    <span class="ok-search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+    <input class="ok-input" type="search" placeholder="Filtrar pedidos…" data-bind:q/>
+    <button type="button" class="ok-search__clear" data-show="$q.length > 0" data-on:click="$q = ''">×</button>
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--ok-ink-3);">
+    Filtro: <code data-text="$q || '(vacío)'"></code>
+  </p>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_5 %}{% raw %}<div data-signals="{ q: '' }">
+  <div class="ok-search">
+    <span class="ok-search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+    <input class="ok-input" type="search" placeholder="Filtrar pedidos…" data-bind:q/>
+    <button type="button" class="ok-search__clear" data-show="$q.length > 0" data-on:click="$q = ''">×</button>
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--ok-ink-3);">
+    Filtro: <code data-text="$q || '(vacío)'"></code>
+  </p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — bind reactivo",
+    jinja_src=_src_jinja_5,
+    jinjax_src=_src_jinjax_5) %}
 <div data-signals="{ q: '' }">
   <div class="ok-search">
     <span class="ok-search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>

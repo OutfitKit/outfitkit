@@ -8,23 +8,55 @@
 <h1>Sparkline</h1>
 <p class="showcase__lead">Mini gráfica SVG de línea. Acepta un string de puntos <code>"x1,y1 x2,y2 ..."</code> o una lista de tuplas <code>[(x, y), ...]</code>. Tres tamaños y direcciones up/down/brand.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/sparkline.jinja" import sparkline %}
+{{ sparkline("0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Sparkline label="0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ sparkline("0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9") }}
 {% endcall %}
 
-{% call demo_frame("Direcciones") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/sparkline.jinja" import sparkline %}
+{{ sparkline("0,18 10,16 20,14 30,12 40,10 50,9 60,7 70,5 80,3", direction="up") }}
+{{ sparkline("0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,19", direction="down") }}
+{{ sparkline("0,12 10,8 20,14 30,9 40,15 50,7 60,12 70,6 80,10", direction="brand") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Sparkline label="0,18 10,16 20,14 30,12 40,10 50,9 60,7 70,5 80,3" direction="up" />
+<Sparkline label="0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,19" direction="down" />
+<Sparkline label="0,12 10,8 20,14 30,9 40,15 50,7 60,12 70,6 80,10" direction="brand" />{% endraw %}{% endset %}
+
+{% call demo_frame("Direcciones",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ sparkline("0,18 10,16 20,14 30,12 40,10 50,9 60,7 70,5 80,3", direction="up") }}
 {{ sparkline("0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,19", direction="down") }}
 {{ sparkline("0,12 10,8 20,14 30,9 40,15 50,7 60,12 70,6 80,10", direction="brand") }}
 {% endcall %}
 
-{% call demo_frame("Tamaños") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/sparkline.jinja" import sparkline %}
+{{ sparkline("0,15 14,10 28,12 42,7 56,5", size="sm") }}
+{{ sparkline("0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9") }}
+{{ sparkline("0,28 12,24 24,26 36,20 48,22 60,16 72,18 84,12 96,14 108,8 120,4", direction="up", size="lg") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Sparkline label="0,15 14,10 28,12 42,7 56,5" size="sm" />
+<Sparkline label="0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9" />
+<Sparkline label="0,28 12,24 24,26 36,20 48,22 60,16 72,18 84,12 96,14 108,8 120,4" direction="up" size="lg" />{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ sparkline("0,15 14,10 28,12 42,7 56,5", size="sm") }}
 {{ sparkline("0,18 10,15 20,16 30,12 40,14 50,10 60,11 70,7 80,9") }}
 {{ sparkline("0,28 12,24 24,26 36,20 48,22 60,16 72,18 84,12 96,14 108,8 120,4", direction="up", size="lg") }}
 {% endcall %}
 
-{% call demo_frame("Lista de tuplas") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/sparkline.jinja" import sparkline %}
+{{ sparkline([(0, 18), (20, 14), (40, 10), (60, 6), (80, 2)], direction="up") }}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Sparkline items='[(0, 18), (20, 14), (40, 10), (60, 6), (80, 2)]' direction="up" />{% endraw %}{% endset %}
+
+{% call demo_frame("Lista de tuplas",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {{ sparkline([(0, 18), (20, 14), (40, 10), (60, 6), (80, 2)], direction="up") }}
 {% endcall %}
 

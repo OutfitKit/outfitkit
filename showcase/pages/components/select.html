@@ -9,13 +9,43 @@
 <h1>Select</h1>
 <p class="showcase__lead">Select nativo con flecha custom. Las <code>&lt;option&gt;</code> van como slot.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/select.jinja" import select %}
+{% call select("country") %}
+  <option>España</option><option>Portugal</option><option>Francia</option><option>Italia</option>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Select label="country">
+  <option>España</option><option>Portugal</option><option>Francia</option><option>Italia</option>
+</Select>{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call select("country") %}
   <option>España</option><option>Portugal</option><option>Francia</option><option>Italia</option>
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Tamaños") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/select.jinja" import select %}
+<div style="display:grid;gap:8px;max-width:280px">
+  {% call select("a", size="sm") %}<option>Small (sm)</option>{% endcall %}
+  {% call select("b") %}<option>Default (md)</option>{% endcall %}
+  {% call select("c", size="lg") %}<option>Large (lg)</option>{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div style="display:grid;gap:8px;max-width:280px">
+  <Select label="a" size="sm">
+<option>Small (sm)</option>
+</Select>
+  <Select label="b">
+<option>Default (md)</option>
+</Select>
+  <Select label="c" size="lg">
+<option>Large (lg)</option>
+</Select>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div style="display:grid;gap:8px;max-width:280px">
   {% call select("a", size="sm") %}<option>Small (sm)</option>{% endcall %}
   {% call select("b") %}<option>Default (md)</option>{% endcall %}
@@ -23,7 +53,27 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Estados") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/select.jinja" import select %}
+<div style="display:grid;gap:8px;max-width:280px">
+  {% call select("ok") %}<option>Activo</option>{% endcall %}
+  {% call select("err", invalid=True) %}<option>Inválido</option>{% endcall %}
+  {% call select("dis", disabled=True) %}<option>Deshabilitado</option>{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div style="display:grid;gap:8px;max-width:280px">
+  <Select label="ok">
+<option>Activo</option>
+</Select>
+  <Select label="err" invalid>
+<option>Inválido</option>
+</Select>
+  <Select label="dis" disabled>
+<option>Deshabilitado</option>
+</Select>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estados",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div style="display:grid;gap:8px;max-width:280px">
   {% call select("ok") %}<option>Activo</option>{% endcall %}
   {% call select("err", invalid=True) %}<option>Inválido</option>{% endcall %}
@@ -31,7 +81,28 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar — bind reactivo") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/select.jinja" import select %}
+<div data-signals="{ currency: 'EUR' }">
+  {% call select("currency", attrs={"data-bind-currency": ""}) %}
+    <option value="EUR">EUR — Euro</option>
+    <option value="USD">USD — Dólar</option>
+    <option value="GBP">GBP — Libra</option>
+  {% endcall %}
+  <p style="margin-top:8px;">Seleccionada: <strong data-text="$currency"></strong></p>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ currency: 'EUR' }">
+  <Select label="currency" data-bind-currency="">
+    <option value="EUR">EUR — Euro</option>
+    <option value="USD">USD — Dólar</option>
+    <option value="GBP">GBP — Libra</option>
+  
+</Select>
+  <p style="margin-top:8px;">Seleccionada: <strong data-text="$currency"></strong></p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — bind reactivo",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ currency: 'EUR' }">
   {% call select("currency", attrs={"data-bind-currency": ""}) %}
     <option value="EUR">EUR — Euro</option>

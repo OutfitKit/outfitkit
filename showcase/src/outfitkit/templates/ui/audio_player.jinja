@@ -6,10 +6,10 @@
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   <button type="button" class="ok-audio__play" aria-label="Play/Pause">
     <span class="ok-audio__icon ok-audio__icon--play">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 5v14l12-7z"/></svg>
+      <iconify-icon icon="lucide:play" width="14" height="14"></iconify-icon>
     </span>
     <span class="ok-audio__icon ok-audio__icon--pause">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+      <iconify-icon icon="lucide:pause" width="14" height="14"></iconify-icon>
     </span>
   </button>
   {%- if cover %}
@@ -27,7 +27,7 @@
     <span class="ok-audio__time">{{ duration }}</span>
   </div>
   <button type="button" class="ok-audio__vol" aria-label="Volumen">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
+    <iconify-icon icon="lucide:volume-2" width="14" height="14"></iconify-icon>
   </button>
   <button type="button" class="ok-audio__speed">{{ speed }}</button>
 </div>

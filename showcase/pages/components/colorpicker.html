@@ -8,15 +8,60 @@
 <h1>Color picker</h1>
 <p class="showcase__lead">Paleta de swatches curados para tematizar productos, etiquetas o categorías.</p>
 
-{% call demo_frame("Paleta por defecto") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/colorpicker.jinja" import colorpicker %}
+{{ colorpicker(selected="#D97757") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Colorpicker selected="#D97757" />{% endraw %}{% endset %}
+
+{% call demo_frame("Paleta por defecto",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ colorpicker(selected="#D97757") }}
 {% endcall %}
 
-{% call demo_frame("Paleta custom — pasteles") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/colorpicker.jinja" import colorpicker %}
+{{ colorpicker(colors=["#FFD9D6", "#FFE9C7", "#FFF6BA", "#D6F3D9", "#D6E8F7", "#E5D9F7", "#F7D6F0"], selected="#FFE9C7") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Colorpicker colors="["#FFD9D6", "#FFE9C7", "#FFF6BA", "#D6F3D9", "#D6E8F7", "#E5D9F7", "#F7D6F0"]" selected="#FFE9C7" />{% endraw %}{% endset %}
+
+{% call demo_frame("Paleta custom — pasteles",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ colorpicker(colors=["#FFD9D6", "#FFE9C7", "#FFF6BA", "#D6F3D9", "#D6E8F7", "#E5D9F7", "#F7D6F0"], selected="#FFE9C7") }}
 {% endcall %}
 
-{% call demo_frame("Datastar — selección reactiva") %}
+{% set _src_jinja_3 %}{% raw %}<div data-signals="{ c: '#D97757' }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+  <div class="ok-colorpicker">
+    {% for c in ["#D97757","#C44E37","#E8B548","#7BA374","#3D8B7C","#5C7CFA","#9C6ADE","#8A7765","#5A6168","#2F343A"] %}
+    <button type="button" class="ok-colorpicker__swatch"
+      style="background:{{ c }}"
+      data-attr:aria-pressed="$c === '{{ c }}'"
+      data-on:click="$c = '{{ c }}'"
+      aria-label="{{ c }}"></button>
+    {% endfor %}
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <div style="width:32px;height:32px;border-radius:8px;border:1px solid var(--ok-line);" data-style-background="$c"></div>
+    <code data-text="$c"></code>
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div data-signals="{ c: '#D97757' }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+  <div class="ok-colorpicker">
+    {% for c in ["#D97757","#C44E37","#E8B548","#7BA374","#3D8B7C","#5C7CFA","#9C6ADE","#8A7765","#5A6168","#2F343A"] %}
+    <button type="button" class="ok-colorpicker__swatch"
+      style="background:{{ c }}"
+      data-attr:aria-pressed="$c === '{{ c }}'"
+      data-on:click="$c = '{{ c }}'"
+      aria-label="{{ c }}"></button>
+    {% endfor %}
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <div style="width:32px;height:32px;border-radius:8px;border:1px solid var(--ok-line);" data-style-background="$c"></div>
+    <code data-text="$c"></code>
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — selección reactiva",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div data-signals="{ c: '#D97757' }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
   <div class="ok-colorpicker">
     {% for c in ["#D97757","#C44E37","#E8B548","#7BA374","#3D8B7C","#5C7CFA","#9C6ADE","#8A7765","#5A6168","#2F343A"] %}

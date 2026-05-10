@@ -8,7 +8,277 @@
 <h1>POS · Layout completo</h1>
 <p class="showcase__lead">Layout principal del punto de venta: rail de categorías, grid de productos y panel del carrito. El consumidor compone <code>.ok-pos__main</code>, <code>.ok-cat-rail</code>, <code>.ok-cat-grid</code> y <code>.ok-cart</code> dentro del slot. Sub-componentes (numpad, pay) son páginas aparte.</p>
 
-{% call demo_frame("Cafetería · catálogo + carrito") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/pos.jinja" import pos %}
+<div class="pos-stage">
+{% call pos() %}
+  <section class="ok-pos__main">
+    <div class="ok-cat-rail">
+      <div class="ok-cat-rail__track">
+        <button class="ok-cat-card ok-cat-card--all" aria-pressed="true">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Todos</span>
+          <span class="ok-cat-card__count">142 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--coffee">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Cafés</span>
+          <span class="ok-cat-card__count">18 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--tea">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Tés</span>
+          <span class="ok-cat-card__count">12 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--bakery">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Bocadillos</span>
+          <span class="ok-cat-card__count">24 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--dessert">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Postres</span>
+          <span class="ok-cat-card__count">14 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--cold">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Bebidas</span>
+          <span class="ok-cat-card__count">22 productos</span>
+        </button>
+      </div>
+    </div>
+    <div class="ok-cat-scroll">
+      <div class="ok-cat-grid">
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Café espresso</span>
+          <span class="ok-cat-tile__price">€1,40</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Café cortado</span>
+          <span class="ok-cat-tile__price">€1,60</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Café con leche</span>
+          <span class="ok-cat-tile__price">€1,80</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Cappuccino doble</span>
+          <span class="ok-cat-tile__price">€2,40</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Té matcha</span>
+          <span class="ok-cat-tile__price">€2,80</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Tostada con tomate</span>
+          <span class="ok-cat-tile__price">€3,50</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Tostada salmón</span>
+          <span class="ok-cat-tile__price">€5,90</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Croissant chocolate</span>
+          <span class="ok-cat-tile__price">€2,40</span>
+        </button>
+        <button class="ok-cat-tile ok-cat-tile--out">
+          <span class="ok-cat-tile__name">Tarta queso</span>
+          <span class="ok-cat-tile__price">€4,20</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="ok-pos__aside">
+    <div class="ok-cart">
+      <header class="ok-cart__header">
+        <div>
+          <div class="ok-cart__title">Mesa 4 · Ana</div>
+          <div class="ok-cart__sub">Pedido en curso · 4 líneas</div>
+        </div>
+      </header>
+      <div class="ok-cart__list">
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">2</span>Café cortado</div>
+            <div class="ok-cart__line-meta">leche desnatada · sin azúcar</div>
+          </div>
+          <div class="ok-cart__line-price">€3,20</div>
+        </div>
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">1</span>Tostada salmón</div>
+            <div class="ok-cart__line-meta">extra aguacate</div>
+          </div>
+          <div class="ok-cart__line-price">€6,40</div>
+        </div>
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">1</span>Zumo natural</div>
+            <div class="ok-cart__line-meta">naranja · grande</div>
+          </div>
+          <div class="ok-cart__line-price">€3,60</div>
+        </div>
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">2</span>Croissant chocolate</div>
+          </div>
+          <div class="ok-cart__line-price">€4,80</div>
+        </div>
+      </div>
+      <div class="ok-cart__totals">
+        <div class="ok-cart__total-row"><span>Subtotal</span><span>€18,00</span></div>
+        <div class="ok-cart__total-row"><span>IVA 10%</span><span>€1,80</span></div>
+        <div class="ok-cart__total-row ok-cart__total-row--main">
+          <span>Total</span><span>€19,80</span>
+        </div>
+      </div>
+      <div class="ok-cart__actions">
+        <button class="ok-cart__cta">
+          <span>Cobrar</span>
+          <span class="ok-cart__cta-amount">€19,80 →</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div class="pos-stage">
+<Pos>
+  <section class="ok-pos__main">
+    <div class="ok-cat-rail">
+      <div class="ok-cat-rail__track">
+        <button class="ok-cat-card ok-cat-card--all" aria-pressed="true">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Todos</span>
+          <span class="ok-cat-card__count">142 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--coffee">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Cafés</span>
+          <span class="ok-cat-card__count">18 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--tea">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Tés</span>
+          <span class="ok-cat-card__count">12 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--bakery">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Bocadillos</span>
+          <span class="ok-cat-card__count">24 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--dessert">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Postres</span>
+          <span class="ok-cat-card__count">14 productos</span>
+        </button>
+        <button class="ok-cat-card ok-cat-card--cold">
+          <span class="ok-cat-card__bg"></span>
+          <span class="ok-cat-card__name">Bebidas</span>
+          <span class="ok-cat-card__count">22 productos</span>
+        </button>
+      </div>
+    </div>
+    <div class="ok-cat-scroll">
+      <div class="ok-cat-grid">
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Café espresso</span>
+          <span class="ok-cat-tile__price">€1,40</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Café cortado</span>
+          <span class="ok-cat-tile__price">€1,60</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Café con leche</span>
+          <span class="ok-cat-tile__price">€1,80</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Cappuccino doble</span>
+          <span class="ok-cat-tile__price">€2,40</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Té matcha</span>
+          <span class="ok-cat-tile__price">€2,80</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Tostada con tomate</span>
+          <span class="ok-cat-tile__price">€3,50</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Tostada salmón</span>
+          <span class="ok-cat-tile__price">€5,90</span>
+        </button>
+        <button class="ok-cat-tile">
+          <span class="ok-cat-tile__name">Croissant chocolate</span>
+          <span class="ok-cat-tile__price">€2,40</span>
+        </button>
+        <button class="ok-cat-tile ok-cat-tile--out">
+          <span class="ok-cat-tile__name">Tarta queso</span>
+          <span class="ok-cat-tile__price">€4,20</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <aside class="ok-pos__aside">
+    <div class="ok-cart">
+      <header class="ok-cart__header">
+        <div>
+          <div class="ok-cart__title">Mesa 4 · Ana</div>
+          <div class="ok-cart__sub">Pedido en curso · 4 líneas</div>
+        </div>
+      </header>
+      <div class="ok-cart__list">
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">2</span>Café cortado</div>
+            <div class="ok-cart__line-meta">leche desnatada · sin azúcar</div>
+          </div>
+          <div class="ok-cart__line-price">€3,20</div>
+        </div>
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">1</span>Tostada salmón</div>
+            <div class="ok-cart__line-meta">extra aguacate</div>
+          </div>
+          <div class="ok-cart__line-price">€6,40</div>
+        </div>
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">1</span>Zumo natural</div>
+            <div class="ok-cart__line-meta">naranja · grande</div>
+          </div>
+          <div class="ok-cart__line-price">€3,60</div>
+        </div>
+        <div class="ok-cart__line">
+          <div>
+            <div class="ok-cart__line-name"><span class="ok-cart__line-qty">2</span>Croissant chocolate</div>
+          </div>
+          <div class="ok-cart__line-price">€4,80</div>
+        </div>
+      </div>
+      <div class="ok-cart__totals">
+        <div class="ok-cart__total-row"><span>Subtotal</span><span>€18,00</span></div>
+        <div class="ok-cart__total-row"><span>IVA 10%</span><span>€1,80</span></div>
+        <div class="ok-cart__total-row ok-cart__total-row--main">
+          <span>Total</span><span>€19,80</span>
+        </div>
+      </div>
+      <div class="ok-cart__actions">
+        <button class="ok-cart__cta">
+          <span>Cobrar</span>
+          <span class="ok-cart__cta-amount">€19,80 →</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+</Pos>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Cafetería · catálogo + carrito",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div class="pos-stage">
 {% call pos() %}
   <section class="ok-pos__main">

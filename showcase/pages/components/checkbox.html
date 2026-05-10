@@ -8,11 +8,31 @@
 <h1>Checkbox</h1>
 <p class="showcase__lead">Casilla de verificación con label inline. Soporta estado <em>checked</em> y <em>disabled</em>.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/checkbox.jinja" import checkbox %}
+{{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Checkbox label="Aceptar pedidos a domicilio" name="delivery" checked />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}
 {% endcall %}
 
-{% call demo_frame("Grupo") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/checkbox.jinja" import checkbox %}
+<div class="ok-check-group">
+  {{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}
+  {{ checkbox("Mostrar precios con IVA incluido", name="vat") }}
+  {{ checkbox("Permitir descuentos manuales", name="discount") }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div class="ok-check-group">
+  <Checkbox label="Aceptar pedidos a domicilio" name="delivery" checked />
+  <Checkbox label="Mostrar precios con IVA incluido" name="vat" />
+  <Checkbox label="Permitir descuentos manuales" name="discount" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Grupo",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div class="ok-check-group">
   {{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}
   {{ checkbox("Mostrar precios con IVA incluido", name="vat") }}
@@ -20,7 +40,23 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Estados") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/checkbox.jinja" import checkbox %}
+<div class="ok-check-group">
+  {{ checkbox("Activo", name="a", checked=True) }}
+  {{ checkbox("Sin marcar", name="b") }}
+  {{ checkbox("Deshabilitado", name="c", disabled=True) }}
+  {{ checkbox("Deshabilitado + checked", name="d", checked=True, disabled=True) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div class="ok-check-group">
+  <Checkbox label="Activo" name="a" checked />
+  <Checkbox label="Sin marcar" name="b" />
+  <Checkbox label="Deshabilitado" name="c" disabled />
+  <Checkbox label="Deshabilitado + checked" name="d" checked disabled />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estados",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div class="ok-check-group">
   {{ checkbox("Activo", name="a", checked=True) }}
   {{ checkbox("Sin marcar", name="b") }}
@@ -29,7 +65,23 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar — toggle reactivo") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/checkbox.jinja" import checkbox %}
+<div data-signals="{ accept: false }">
+  {{ checkbox("Acepto los términos y condiciones", name="tos", attrs={"data-bind-accept": ""}) }}
+  <p style="margin-top:8px;">
+    Estado: <strong data-text="$accept ? 'aceptado' : 'sin aceptar'"></strong>
+  </p>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ accept: false }">
+  <Checkbox label="Acepto los términos y condiciones" name="tos" data-bind-accept="" />
+  <p style="margin-top:8px;">
+    Estado: <strong data-text="$accept ? 'aceptado' : 'sin aceptar'"></strong>
+  </p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — toggle reactivo",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ accept: false }">
   {{ checkbox("Acepto los términos y condiciones", name="tos", attrs={"data-bind-accept": ""}) }}
   <p style="margin-top:8px;">

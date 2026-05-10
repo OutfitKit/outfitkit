@@ -8,7 +8,23 @@
 <h1>Button</h1>
 <p class="showcase__lead">Botón con 6 variantes, 3 tamaños y atributos arbitrarios para wiring reactivo.</p>
 
-{% call demo_frame("Variantes") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/button.jinja" import button %}
+{{ button("Primary", variant="primary") }}
+{{ button("Secondary", variant="secondary") }}
+{{ button("Outline", variant="outline") }}
+{{ button("Ghost", variant="ghost") }}
+{{ button("Danger", variant="danger") }}
+{{ button("Link", variant="link") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Button label="Primary" variant="primary" />
+<Button label="Secondary" variant="secondary" />
+<Button label="Outline" variant="outline" />
+<Button label="Ghost" variant="ghost" />
+<Button label="Danger" variant="danger" />
+<Button label="Link" variant="link" />{% endraw %}{% endset %}
+
+{% call demo_frame("Variantes",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ button("Primary", variant="primary") }}
 {{ button("Secondary", variant="secondary") }}
 {{ button("Outline", variant="outline") }}
@@ -17,19 +33,53 @@
 {{ button("Link", variant="link") }}
 {% endcall %}
 
-{% call demo_frame("Tamaños") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/button.jinja" import button %}
+{{ button("Small", variant="primary", size="sm") }}
+{{ button("Medium", variant="primary") }}
+{{ button("Large", variant="primary", size="lg") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Button label="Small" variant="primary" size="sm" />
+<Button label="Medium" variant="primary" />
+<Button label="Large" variant="primary" size="lg" />{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ button("Small", variant="primary", size="sm") }}
 {{ button("Medium", variant="primary") }}
 {{ button("Large", variant="primary", size="lg") }}
 {% endcall %}
 
-{% call demo_frame("Estados") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/button.jinja" import button %}
+{{ button("Activo", variant="primary") }}
+{{ button("Deshabilitado", variant="primary", disabled=True) }}
+{{ button("Block", variant="primary", block=True) }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Button label="Activo" variant="primary" />
+<Button label="Deshabilitado" variant="primary" disabled />
+<Button label="Block" variant="primary" block />{% endraw %}{% endset %}
+
+{% call demo_frame("Estados",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ button("Activo", variant="primary") }}
 {{ button("Deshabilitado", variant="primary", disabled=True) }}
 {{ button("Block", variant="primary", block=True) }}
 {% endcall %}
 
-{% call demo_frame("Datastar — contador interactivo") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/button.jinja" import button %}
+<div data-signals="{ count: 0 }">
+  {{ button("−", variant="ghost", attrs={"data-on:click": "$count--"}) }}
+  <span data-text="$count" style="padding: 0 12px; font-weight: 600;">0</span>
+  {{ button("+", variant="primary", attrs={"data-on:click": "$count++"}) }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ count: 0 }">
+  <Button label="−" variant="ghost" data-on:click="$count--" />
+  <span data-text="$count" style="padding: 0 12px; font-weight: 600;">0</span>
+  <Button label="+" variant="primary" data-on:click="$count++" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — contador interactivo",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ count: 0 }">
   {{ button("−", variant="ghost", attrs={"data-on:click": "$count--"}) }}
   <span data-text="$count" style="padding: 0 12px; font-weight: 600;">0</span>
@@ -37,7 +87,19 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar — toggle visibilidad") %}
+{% set _src_jinja_5 %}{% raw %}{% from "ui/button.jinja" import button %}
+<div data-signals="{ shown: false }">
+  {{ button("Mostrar / ocultar", variant="primary", attrs={"data-on:click": "$shown = !$shown"}) }}
+  <span data-show="$shown" style="margin-left: 12px;">¡Hola, soy reactivo!</span>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_5 %}{% raw %}<div data-signals="{ shown: false }">
+  <Button label="Mostrar / ocultar" variant="primary" data-on:click="$shown = !$shown" />
+  <span data-show="$shown" style="margin-left: 12px;">¡Hola, soy reactivo!</span>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — toggle visibilidad",
+    jinja_src=_src_jinja_5,
+    jinjax_src=_src_jinjax_5) %}
 <div data-signals="{ shown: false }">
   {{ button("Mostrar / ocultar", variant="primary", attrs={"data-on:click": "$shown = !$shown"}) }}
   <span data-show="$shown" style="margin-left: 12px;">¡Hola, soy reactivo!</span>

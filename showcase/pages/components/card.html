@@ -9,7 +9,29 @@
 <h1>Card</h1>
 <p class="showcase__lead">Superficie con slot interno. El consumidor compone header / body / footer con las sub-clases <code>.ok-card__*</code>.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/card.jinja" import card %}
+{% call card() %}
+<div class="ok-card__header">
+  <h3 class="ok-card__title">Pedido #1024</h3>
+  <p class="ok-card__sub">3 líneas · 87,40 €</p>
+</div>
+<div class="ok-card__body">
+  <p>Cliente: Juan Pérez · Mesa 7</p>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Card>
+<div class="ok-card__header">
+  <h3 class="ok-card__title">Pedido #1024</h3>
+  <p class="ok-card__sub">3 líneas · 87,40 €</p>
+</div>
+<div class="ok-card__body">
+  <p>Cliente: Juan Pérez · Mesa 7</p>
+</div>
+</Card>{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call card() %}
 <div class="ok-card__header">
   <h3 class="ok-card__title">Pedido #1024</h3>
@@ -21,7 +43,36 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Con footer") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/button.jinja" import button %}
+{% from "ui/card.jinja" import card %}
+{% call card() %}
+<div class="ok-card__header">
+  <h3 class="ok-card__title">Inventario bajo</h3>
+</div>
+<div class="ok-card__body">
+  <p>5 referencias por debajo del umbral mínimo.</p>
+</div>
+<div class="ok-card__footer">
+  {{ button("Ver detalle", variant="primary", size="sm") }}
+  {{ button("Ignorar", variant="ghost", size="sm") }}
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Card>
+<div class="ok-card__header">
+  <h3 class="ok-card__title">Inventario bajo</h3>
+</div>
+<div class="ok-card__body">
+  <p>5 referencias por debajo del umbral mínimo.</p>
+</div>
+<div class="ok-card__footer">
+  <Button label="Ver detalle" variant="primary" size="sm" />
+  <Button label="Ignorar" variant="ghost" size="sm" />
+</div>
+</Card>{% endraw %}{% endset %}
+
+{% call demo_frame("Con footer",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call card() %}
 <div class="ok-card__header">
   <h3 class="ok-card__title">Inventario bajo</h3>
@@ -36,7 +87,23 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Variant elevated") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/card.jinja" import card %}
+{% call card(variant="elevated") %}
+<div class="ok-card__body">
+  <h3 class="ok-card__title">Elevated</h3>
+  <p>Card con sombra más pronunciada.</p>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Card variant="elevated">
+<div class="ok-card__body">
+  <h3 class="ok-card__title">Elevated</h3>
+  <p>Card con sombra más pronunciada.</p>
+</div>
+</Card>{% endraw %}{% endset %}
+
+{% call demo_frame("Variant elevated",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {% call card(variant="elevated") %}
 <div class="ok-card__body">
   <h3 class="ok-card__title">Elevated</h3>
@@ -45,7 +112,23 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Interactive (hover)") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/card.jinja" import card %}
+{% call card(interactive=True) %}
+<div class="ok-card__body">
+  <h3 class="ok-card__title">Interactive</h3>
+  <p>Pasa el ratón por encima.</p>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Card interactive>
+<div class="ok-card__body">
+  <h3 class="ok-card__title">Interactive</h3>
+  <p>Pasa el ratón por encima.</p>
+</div>
+</Card>{% endraw %}{% endset %}
+
+{% call demo_frame("Interactive (hover)",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {% call card(interactive=True) %}
 <div class="ok-card__body">
   <h3 class="ok-card__title">Interactive</h3>

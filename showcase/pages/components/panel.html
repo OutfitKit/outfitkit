@@ -8,31 +8,81 @@
 <h1>Panel</h1>
 <p class="showcase__lead">Bloque-superficie con cabecera (título + sub) y body. Variantes <code>ghost</code>, <code>bordered</code>, <code>flush</code>, <code>sticky-head</code> y tamaños <code>sm</code>/<code>lg</code>.</p>
 
-{% call demo_frame("Por defecto con título") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/panel.jinja" import panel %}
+{% call panel(title="Pedidos pendientes", sub="Hoy · 12 órdenes en cola") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Panel base con head + body. Bg-2, line, radius-lg.</p>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Panel title="Pedidos pendientes" sub="Hoy · 12 órdenes en cola">
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Panel base con head + body. Bg-2, line, radius-lg.</p>
+</Panel>{% endraw %}{% endset %}
+
+{% call demo_frame("Por defecto con título",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call panel(title="Pedidos pendientes", sub="Hoy · 12 órdenes en cola") %}
 <p style="margin:0;color:var(--ok-ink-3);font-size:13px">Panel base con head + body. Bg-2, line, radius-lg.</p>
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Variante ghost (sin fondo)") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/panel.jinja" import panel %}
+{% call panel(title="Ghost", sub="Sin fondo, solo borde", variant="ghost") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--ghost</code>: transparente.</p>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Panel title="Ghost" sub="Sin fondo, solo borde" variant="ghost">
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--ghost</code>: transparente.</p>
+</Panel>{% endraw %}{% endset %}
+
+{% call demo_frame("Variante ghost (sin fondo)",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call panel(title="Ghost", sub="Sin fondo, solo borde", variant="ghost") %}
 <p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--ghost</code>: transparente.</p>
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Variante bordered") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/panel.jinja" import panel %}
+{% call panel(title="Bordered", sub="Borde más fuerte", variant="bordered") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--bordered</code> · usa <code>line-2</code>.</p>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Panel title="Bordered" sub="Borde más fuerte" variant="bordered">
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--bordered</code> · usa <code>line-2</code>.</p>
+</Panel>{% endraw %}{% endset %}
+
+{% call demo_frame("Variante bordered",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {% call panel(title="Bordered", sub="Borde más fuerte", variant="bordered") %}
 <p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--bordered</code> · usa <code>line-2</code>.</p>
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Tamaño compacto (sm)") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/panel.jinja" import panel %}
+{% call panel(title="Compact", size="sm") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Tamaño <code>--sm</code> con padding y title más pequeños.</p>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Panel title="Compact" size="sm">
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Tamaño <code>--sm</code> con padding y title más pequeños.</p>
+</Panel>{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaño compacto (sm)",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {% call panel(title="Compact", size="sm") %}
 <p style="margin:0;color:var(--ok-ink-3);font-size:13px">Tamaño <code>--sm</code> con padding y title más pequeños.</p>
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Sin head, solo body") %}
+{% set _src_jinja_5 %}{% raw %}{% from "ui/panel.jinja" import panel %}
+{% call panel() %}
+<p style="margin:0">Body suelto sin cabecera.</p>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_5 %}{% raw %}<Panel>
+<p style="margin:0">Body suelto sin cabecera.</p>
+</Panel>{% endraw %}{% endset %}
+
+{% call demo_frame("Sin head, solo body",
+    jinja_src=_src_jinja_5,
+    jinjax_src=_src_jinjax_5) %}
 {% call panel() %}
 <p style="margin:0">Body suelto sin cabecera.</p>
 {% endcall %}

@@ -8,22 +8,66 @@
 <h1>KPI</h1>
 <p class="showcase__lead">Tarjeta de métrica destacada — label en mayúscula, valor grande, delta opcional con flecha y color, sparkline opcional.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/kpi.jinja" import kpi %}
+{{ kpi("Tickets", "147") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Kpi label="Tickets" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ kpi("Tickets", "147") }}
 {% endcall %}
 
-{% call demo_frame("Delta up / down") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/kpi.jinja" import kpi %}
+{{ kpi("Ventas hoy", "€2.847", unit=",30", delta="+12,4% vs ayer", delta_dir="up") }}
+{{ kpi("Ticket medio", "€19", unit=",37", delta="−2,1%", delta_dir="down") }}
+{{ kpi("Margen", "68", unit="%", delta="objetivo 70%") }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Kpi label="Ventas hoy" unit=",30" delta="+12,4% vs ayer" delta_dir="up" />
+<Kpi label="Ticket medio" unit=",37" delta="−2,1%" delta_dir="down" />
+<Kpi label="Margen" unit="%" delta="objetivo 70%" />{% endraw %}{% endset %}
+
+{% call demo_frame("Delta up / down",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ kpi("Ventas hoy", "€2.847", unit=",30", delta="+12,4% vs ayer", delta_dir="up") }}
 {{ kpi("Ticket medio", "€19", unit=",37", delta="−2,1%", delta_dir="down") }}
 {{ kpi("Margen", "68", unit="%", delta="objetivo 70%") }}
 {% endcall %}
 
-{% call demo_frame("Variante brand") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/kpi.jinja" import kpi %}
+{{ kpi("Margen", "68", unit="%", delta="objetivo 70%", variant="brand") }}
+{{ kpi("MRR", "€12.840", delta="+18%", delta_dir="up", variant="brand") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Kpi label="Margen" unit="%" delta="objetivo 70%" variant="brand" />
+<Kpi label="MRR" delta="+18%" delta_dir="up" variant="brand" />{% endraw %}{% endset %}
+
+{% call demo_frame("Variante brand",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ kpi("Margen", "68", unit="%", delta="objetivo 70%", variant="brand") }}
 {{ kpi("MRR", "€12.840", delta="+18%", delta_dir="up", variant="brand") }}
 {% endcall %}
 
-{% call demo_frame("Con sparkline") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/kpi.jinja" import kpi %}
+{% set spark_svg %}
+<svg class="ok-kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
+  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--ok-leaf)" stroke-width="1.5"/>
+</svg>
+{% endset %}
+{{ kpi(
+  "Ventas 7d", "€18.420",
+  delta="+12,4%", delta_dir="up",
+  sparkline=spark_svg
+) }}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}{% set spark_svg %}
+<svg class="ok-kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
+  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--ok-leaf)" stroke-width="1.5"/>
+</svg>
+{% endset %}
+<Kpi label="Ventas 7d" delta="+12,4%" delta_dir="up" sparkline="spark_svg" />{% endraw %}{% endset %}
+
+{% call demo_frame("Con sparkline",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 {% set spark_svg %}
 <svg class="ok-kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
   <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--ok-leaf)" stroke-width="1.5"/>

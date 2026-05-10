@@ -9,7 +9,66 @@
 <h1>Autocomplete</h1>
 <p class="showcase__lead">Input con sugerencias filtradas. Combina <code>search</code> + lista de opciones agrupadas. Soporta marcado de coincidencias con <code>&lt;mark&gt;</code>.</p>
 
-{% call demo_frame("Buscar producto · 4 sugerencias") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/search.jinja" import search %}
+{% from "ui/autocomplete.jinja" import autocomplete %}
+{% call autocomplete(width="380px") %}
+{{ search(placeholder="Buscar producto…", value="mar", clearable=False) }}
+<div class="ok-autocomplete__list">
+  <div class="ok-autocomplete__group">Productos · 3 resultados</div>
+  <button class="ok-autocomplete__opt" aria-selected="true">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+    <span><mark>Mar</mark>melada de naranja amarga 250g</span>
+    <span class="ok-autocomplete__opt-meta">SKU 0184</span>
+  </button>
+  <button class="ok-autocomplete__opt">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+    <span><mark>Mar</mark>iscada congelada 1kg</span>
+    <span class="ok-autocomplete__opt-meta">SKU 0327</span>
+  </button>
+  <button class="ok-autocomplete__opt">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+    <span>Café <mark>mar</mark>roquí 500g</span>
+    <span class="ok-autocomplete__opt-meta">SKU 0904</span>
+  </button>
+  <div class="ok-autocomplete__group">Categorías · 1 resultado</div>
+  <button class="ok-autocomplete__opt">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    <span><mark>Mar</mark>iscos y pescados frescos</span>
+    <span class="ok-autocomplete__opt-meta">42 SKUs</span>
+  </button>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Autocomplete width="380px">
+<Search placeholder="Buscar producto…" value="mar" />
+<div class="ok-autocomplete__list">
+  <div class="ok-autocomplete__group">Productos · 3 resultados</div>
+  <button class="ok-autocomplete__opt" aria-selected="true">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+    <span><mark>Mar</mark>melada de naranja amarga 250g</span>
+    <span class="ok-autocomplete__opt-meta">SKU 0184</span>
+  </button>
+  <button class="ok-autocomplete__opt">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+    <span><mark>Mar</mark>iscada congelada 1kg</span>
+    <span class="ok-autocomplete__opt-meta">SKU 0327</span>
+  </button>
+  <button class="ok-autocomplete__opt">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+    <span>Café <mark>mar</mark>roquí 500g</span>
+    <span class="ok-autocomplete__opt-meta">SKU 0904</span>
+  </button>
+  <div class="ok-autocomplete__group">Categorías · 1 resultado</div>
+  <button class="ok-autocomplete__opt">
+    <svg class="ok-autocomplete__opt-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+    <span><mark>Mar</mark>iscos y pescados frescos</span>
+    <span class="ok-autocomplete__opt-meta">42 SKUs</span>
+  </button>
+</div>
+</Autocomplete>{% endraw %}{% endset %}
+
+{% call demo_frame("Buscar producto · 4 sugerencias",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call autocomplete(width="380px") %}
 {{ search(placeholder="Buscar producto…", value="mar", clearable=False) }}
 <div class="ok-autocomplete__list">
@@ -39,7 +98,50 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Datastar — filtrado reactivo") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/autocomplete.jinja" import autocomplete %}
+<div data-signals="{ q: 'man', open: true, items: ['Manzana golden 1kg','Mango Tommy Atkins','Mantequilla pasiega 250g','Manchego curado 200g','Queso de cabra'] }">
+  {% call autocomplete(width="380px") %}
+  <div class="ok-search">
+    <span class="ok-search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+    <input class="ok-input" type="search" placeholder="Buscar…" data-bind:q data-on:focus="$open = true"/>
+  </div>
+  <div class="ok-autocomplete__list" data-show="$open">
+    <div class="ok-autocomplete__group">Sugerencias</div>
+    <template data-for="item in $items.filter(x => x.toLowerCase().includes($q.toLowerCase()))">
+      <button class="ok-autocomplete__opt">
+        <span data-text="item"></span>
+      </button>
+    </template>
+  </div>
+  {% endcall %}
+  <div style="margin-top:8px;font-size:13px;color:var(--ok-ink-3);">
+    Texto: <code data-text="$q"></code>
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div data-signals="{ q: 'man', open: true, items: ['Manzana golden 1kg','Mango Tommy Atkins','Mantequilla pasiega 250g','Manchego curado 200g','Queso de cabra'] }">
+  <Autocomplete width="380px">
+  <div class="ok-search">
+    <span class="ok-search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+    <input class="ok-input" type="search" placeholder="Buscar…" data-bind:q data-on:focus="$open = true"/>
+  </div>
+  <div class="ok-autocomplete__list" data-show="$open">
+    <div class="ok-autocomplete__group">Sugerencias</div>
+    <template data-for="item in $items.filter(x => x.toLowerCase().includes($q.toLowerCase()))">
+      <button class="ok-autocomplete__opt">
+        <span data-text="item"></span>
+      </button>
+    </template>
+  </div>
+  
+</Autocomplete>
+  <div style="margin-top:8px;font-size:13px;color:var(--ok-ink-3);">
+    Texto: <code data-text="$q"></code>
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — filtrado reactivo",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ q: 'man', open: true, items: ['Manzana golden 1kg','Mango Tommy Atkins','Mantequilla pasiega 250g','Manchego curado 200g','Queso de cabra'] }">
   {% call autocomplete(width="380px") %}
   <div class="ok-search">

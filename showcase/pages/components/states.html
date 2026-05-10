@@ -8,7 +8,23 @@
 <h1>Skeletons (states)</h1>
 <p class="showcase__lead">Placeholder animado para contenido en carga. La macro <code>states</code> renderiza un átomo <code>.ok-skel</code> con <code>kind</code> = <code>text</code>, <code>title</code>, <code>circle</code>, <code>avatar</code>, <code>btn</code>, <code>chip</code>, <code>card</code>, <code>row</code>.</p>
 
-{% call demo_frame("Átomos por kind") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/states.jinja" import states %}
+<div style="display:flex;flex-direction:column;gap:8px;width:300px">
+  {{ states(kind="title") }}
+  {{ states(kind="text") }}
+  {{ states(kind="text", width="80%") }}
+  {{ states(kind="text", width="60%") }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div style="display:flex;flex-direction:column;gap:8px;width:300px">
+  <States kind="title" />
+  <States kind="text" />
+  <States kind="text" width="80%" />
+  <States kind="text" width="60%" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Átomos por kind",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div style="display:flex;flex-direction:column;gap:8px;width:300px">
   {{ states(kind="title") }}
   {{ states(kind="text") }}
@@ -17,7 +33,25 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Avatar + texto (composición típica)") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/states.jinja" import states %}
+<div style="display:flex;gap:10px;align-items:center;width:320px">
+  {{ states(kind="avatar") }}
+  <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+    {{ states(kind="title") }}
+    {{ states(kind="text", width="50%") }}
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div style="display:flex;gap:10px;align-items:center;width:320px">
+  <States kind="avatar" />
+  <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+    <States kind="title" />
+    <States kind="text" width="50%" />
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Avatar + texto (composición típica)",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div style="display:flex;gap:10px;align-items:center;width:320px">
   {{ states(kind="avatar") }}
   <div style="flex:1;display:flex;flex-direction:column;gap:6px">
@@ -27,7 +61,31 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Card + chips") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/states.jinja" import states %}
+<div style="width:280px;display:flex;flex-direction:column;gap:10px">
+  {{ states(kind="card", height="90px") }}
+  {{ states(kind="title") }}
+  {{ states(kind="text", width="80%") }}
+  <div style="display:flex;gap:6px">
+    {{ states(kind="chip") }}
+    {{ states(kind="chip", width="54px") }}
+    {{ states(kind="chip", width="88px") }}
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div style="width:280px;display:flex;flex-direction:column;gap:10px">
+  <States kind="card" height="90px" />
+  <States kind="title" />
+  <States kind="text" width="80%" />
+  <div style="display:flex;gap:6px">
+    <States kind="chip" />
+    <States kind="chip" width="54px" />
+    <States kind="chip" width="88px" />
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Card + chips",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div style="width:280px;display:flex;flex-direction:column;gap:10px">
   {{ states(kind="card", height="90px") }}
   {{ states(kind="title") }}
@@ -40,7 +98,21 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Circle / btn / row") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/states.jinja" import states %}
+<div style="display:flex;gap:14px;align-items:center">
+  {{ states(kind="circle", width="32px", height="32px") }}
+  {{ states(kind="btn") }}
+  {{ states(kind="row", width="240px") }}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div style="display:flex;gap:14px;align-items:center">
+  <States kind="circle" width="32px" height="32px" />
+  <States kind="btn" />
+  <States kind="row" width="240px" />
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Circle / btn / row",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div style="display:flex;gap:14px;align-items:center">
   {{ states(kind="circle", width="32px", height="32px") }}
   {{ states(kind="btn") }}

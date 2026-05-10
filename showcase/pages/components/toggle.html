@@ -8,25 +8,91 @@
 <h1>Toggle</h1>
 <p class="showcase__lead">Switch on/off. Render limpio: solo input + track. Las filas con descripción se componen con <code>.ok-toggle-row</code>.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
+{{ toggle("notif", checked=True) }}
+{{ toggle("notif2") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Toggle label="notif" checked />
+<Toggle label="notif2" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ toggle("notif", checked=True) }}
 {{ toggle("notif2") }}
 {% endcall %}
 
-{% call demo_frame("Tamaños") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
+{{ toggle("a", size="sm", checked=True) }}
+{{ toggle("b", checked=True) }}
+{{ toggle("c", size="lg", checked=True) }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Toggle label="a" size="sm" checked />
+<Toggle label="b" checked />
+<Toggle label="c" size="lg" checked />{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ toggle("a", size="sm", checked=True) }}
 {{ toggle("b", checked=True) }}
 {{ toggle("c", size="lg", checked=True) }}
 {% endcall %}
 
-{% call demo_frame("Estados") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
+{{ toggle("on", checked=True) }}
+{{ toggle("off") }}
+{{ toggle("dis-on", checked=True, disabled=True) }}
+{{ toggle("dis-off", disabled=True) }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Toggle label="on" checked />
+<Toggle label="off" />
+<Toggle label="dis-on" checked disabled />
+<Toggle label="dis-off" disabled />{% endraw %}{% endset %}
+
+{% call demo_frame("Estados",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ toggle("on", checked=True) }}
 {{ toggle("off") }}
 {{ toggle("dis-on", checked=True, disabled=True) }}
 {{ toggle("dis-off", disabled=True) }}
 {% endcall %}
 
-{% call demo_frame("Toggle row — patrón habitual") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
+<div class="ok-form-section" style="max-width:520px">
+  <div class="ok-toggle-row">
+    <div class="ok-toggle-row__text">
+      <span class="ok-toggle-row__label">Pedidos nuevos</span>
+      <span class="ok-toggle-row__desc">Sonido + push al recibir un pedido en POS.</span>
+    </div>
+    {{ toggle("orders", checked=True) }}
+  </div>
+  <div class="ok-toggle-row">
+    <div class="ok-toggle-row__text">
+      <span class="ok-toggle-row__label">Stock crítico</span>
+      <span class="ok-toggle-row__desc">Alerta cuando un SKU baja del umbral.</span>
+    </div>
+    {{ toggle("stock") }}
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div class="ok-form-section" style="max-width:520px">
+  <div class="ok-toggle-row">
+    <div class="ok-toggle-row__text">
+      <span class="ok-toggle-row__label">Pedidos nuevos</span>
+      <span class="ok-toggle-row__desc">Sonido + push al recibir un pedido en POS.</span>
+    </div>
+    <Toggle label="orders" checked />
+  </div>
+  <div class="ok-toggle-row">
+    <div class="ok-toggle-row__text">
+      <span class="ok-toggle-row__label">Stock crítico</span>
+      <span class="ok-toggle-row__desc">Alerta cuando un SKU baja del umbral.</span>
+    </div>
+    <Toggle label="stock" />
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Toggle row — patrón habitual",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div class="ok-form-section" style="max-width:520px">
   <div class="ok-toggle-row">
     <div class="ok-toggle-row__text">
@@ -45,7 +111,19 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar — toggle reactivo") %}
+{% set _src_jinja_5 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
+<div data-signals="{ darkmode: false }">
+  {{ toggle("darkmode", attrs={"data-bind-darkmode": ""}) }}
+  <span style="margin-left:12px;">Modo oscuro: <strong data-text="$darkmode ? 'ON' : 'OFF'"></strong></span>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_5 %}{% raw %}<div data-signals="{ darkmode: false }">
+  <Toggle label="darkmode" data-bind-darkmode="" />
+  <span style="margin-left:12px;">Modo oscuro: <strong data-text="$darkmode ? 'ON' : 'OFF'"></strong></span>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — toggle reactivo",
+    jinja_src=_src_jinja_5,
+    jinjax_src=_src_jinjax_5) %}
 <div data-signals="{ darkmode: false }">
   {{ toggle("darkmode", attrs={"data-bind-darkmode": ""}) }}
   <span style="margin-left:12px;">Modo oscuro: <strong data-text="$darkmode ? 'ON' : 'OFF'"></strong></span>

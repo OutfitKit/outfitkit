@@ -9,7 +9,24 @@
 <h1>Drawer</h1>
 <p class="showcase__lead">Panel lateral right (default), left o bottom. Mismo patrón <code>data-state</code> que el modal.</p>
 
-{% call demo_frame("Right (default)") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/drawer.jinja" import drawer %}
+<div class="drawer-stage">
+  {% call drawer(title="Detalle del pedido", subtitle="Pedido #1024", state="open") %}
+    <p>3 líneas · 87,40 €</p>
+    <p>Cliente: Juan Pérez</p>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div class="drawer-stage">
+  <Drawer title="Detalle del pedido" subtitle="Pedido #1024" state="open">
+    <p>3 líneas · 87,40 €</p>
+    <p>Cliente: Juan Pérez</p>
+  
+</Drawer>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Right (default)",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div class="drawer-stage">
   {% call drawer(title="Detalle del pedido", subtitle="Pedido #1024", state="open") %}
     <p>3 líneas · 87,40 €</p>
@@ -18,7 +35,22 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Left") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/drawer.jinja" import drawer %}
+<div class="drawer-stage">
+  {% call drawer(title="Filtros", side="left", state="open") %}
+    <p>Categoría, precio, disponibilidad...</p>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div class="drawer-stage">
+  <Drawer title="Filtros" side="left" state="open">
+    <p>Categoría, precio, disponibilidad...</p>
+  
+</Drawer>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Left",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div class="drawer-stage">
   {% call drawer(title="Filtros", side="left", state="open") %}
     <p>Categoría, precio, disponibilidad...</p>
@@ -26,7 +58,22 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Bottom") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/drawer.jinja" import drawer %}
+<div class="drawer-stage">
+  {% call drawer(title="Acciones rápidas", side="bottom", state="open") %}
+    <p>Compartir, duplicar, eliminar...</p>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div class="drawer-stage">
+  <Drawer title="Acciones rápidas" side="bottom" state="open">
+    <p>Compartir, duplicar, eliminar...</p>
+  
+</Drawer>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Bottom",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 <div class="drawer-stage">
   {% call drawer(title="Acciones rápidas", side="bottom", state="open") %}
     <p>Compartir, duplicar, eliminar...</p>
@@ -34,7 +81,29 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar · abrir/cerrar") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/button.jinja" import button %}
+{% from "ui/drawer.jinja" import drawer %}
+<div data-signals="{ open: false }">
+  {{ button("Abrir drawer", variant="primary", attrs={"data-on:click": "$open = true"}) }}
+  <div class="drawer-stage" data-show="$open" style="display: none;">
+    {% call drawer(title="Notificaciones", state="open") %}
+      <p>3 notificaciones nuevas.</p>
+    {% endcall %}
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ open: false }">
+  <Button label="Abrir drawer" variant="primary" data-on:click="$open = true" />
+  <div class="drawer-stage" data-show="$open" style="display: none;">
+    <Drawer title="Notificaciones" state="open">
+      <p>3 notificaciones nuevas.</p>
+    
+</Drawer>
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar · abrir/cerrar",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ open: false }">
   {{ button("Abrir drawer", variant="primary", attrs={"data-on:click": "$open = true"}) }}
   <div class="drawer-stage" data-show="$open" style="display: none;">

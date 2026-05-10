@@ -8,7 +8,20 @@
 <h1>Audio player</h1>
 <p class="showcase__lead">Reproductor de audio con cover, info, transporte y barra de progreso.</p>
 
-{% call demo_frame("Compacto · sin cover") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/audio_player.jinja" import audio_player %}
+{{ audio_player(
+  title="Briefing diario · L2",
+  artist="Operaciones · 02:14",
+  current="00:34",
+  duration="02:14",
+  progress=25,
+  variant="compact"
+) }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<audio_player title="Briefing diario · L2" artist="Operaciones · 02:14" current="00:34" duration="02:14" progress="25" variant="compact" />{% endraw %}{% endset %}
+
+{% call demo_frame("Compacto · sin cover",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ audio_player(
   title="Briefing diario · L2",
   artist="Operaciones · 02:14",
@@ -19,7 +32,20 @@
 ) }}
 {% endcall %}
 
-{% call demo_frame("Default · con cover") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/audio_player.jinja" import audio_player %}
+{{ audio_player(
+  title="Sesión QA · cabina pintura",
+  artist="Equipo Calidad · 04:48",
+  current="01:35",
+  duration="04:48",
+  progress=33,
+  cover="https://picsum.photos/seed/audio2/64/64"
+) }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<audio_player title="Sesión QA · cabina pintura" artist="Equipo Calidad · 04:48" current="01:35" duration="04:48" progress="33" cover="https://picsum.photos/seed/audio2/64/64" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default · con cover",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ audio_player(
   title="Sesión QA · cabina pintura",
   artist="Equipo Calidad · 04:48",
@@ -30,7 +56,23 @@
 ) }}
 {% endcall %}
 
-{% call demo_frame("Full · reproduciéndose") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/audio_player.jinja" import audio_player %}
+{{ audio_player(
+  title="Briefing dirección · cierre Q1",
+  artist="Dirección General · 18:02",
+  current="07:24",
+  duration="18:02",
+  progress=42,
+  cover="https://picsum.photos/seed/audio3/96/96",
+  variant="full",
+  playing=True,
+  speed="×1.5"
+) }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<audio_player title="Briefing dirección · cierre Q1" artist="Dirección General · 18:02" current="07:24" duration="18:02" progress="42" cover="https://picsum.photos/seed/audio3/96/96" variant="full" playing speed="×1.5" />{% endraw %}{% endset %}
+
+{% call demo_frame("Full · reproduciéndose",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ audio_player(
   title="Briefing dirección · cierre Q1",
   artist="Dirección General · 18:02",

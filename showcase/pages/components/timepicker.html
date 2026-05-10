@@ -8,15 +8,33 @@
 <h1>Time picker</h1>
 <p class="showcase__lead">Selector de hora 24h con dos columnas (hora · minuto). Minutos discretos por defecto (00, 15, 30, 45).</p>
 
-{% call demo_frame("Default 07–14h · 00/15/30/45") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/timepicker.jinja" import timepicker %}
+{{ timepicker(hour=9, minute=30) }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Timepicker hour="9" minute="30" />{% endraw %}{% endset %}
+
+{% call demo_frame("Default 07–14h · 00/15/30/45",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ timepicker(hour=9, minute=30) }}
 {% endcall %}
 
-{% call demo_frame("Apertura local · 06–22h cada 30min") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/timepicker.jinja" import timepicker %}
+{{ timepicker(hours=range(6, 23) | list, minutes=[0, 30], hour=8, minute=0) }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Timepicker hours="range(6, 23) | list" minutes="[0, 30]" hour="8" minute="0" />{% endraw %}{% endset %}
+
+{% call demo_frame("Apertura local · 06–22h cada 30min",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ timepicker(hours=range(6, 23) | list, minutes=[0, 30], hour=8, minute=0) }}
 {% endcall %}
 
-{% call demo_frame("Sin selección") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/timepicker.jinja" import timepicker %}
+{{ timepicker() }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Timepicker />{% endraw %}{% endset %}
+
+{% call demo_frame("Sin selección",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ timepicker() }}
 {% endcall %}
 

@@ -8,7 +8,101 @@
 <h1>Notification center</h1>
 <p class="showcase__lead">Lista filtrable de notificaciones <code>.ok-notif</code> con head (título + contador), filtros y items unread/read. La macro <code>system_overlays</code> es el contenedor; el consumidor compone los items.</p>
 
-{% call demo_frame("Centro de notificaciones") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/system_overlays.jinja" import system_overlays %}
+{% call system_overlays(title="Notificaciones", count=4) %}
+<div class="ok-notif__filters">
+  <button class="ok-notif__filter ok-notif__filter--active">Todas</button>
+  <button class="ok-notif__filter">Sin leer</button>
+  <button class="ok-notif__filter">Menciones</button>
+  <button class="ok-notif__filter">Sistema</button>
+</div>
+<div class="ok-notif__list">
+  <div class="ok-notif__item ok-notif__item--unread">
+    <div class="ok-notif__icon ok-notif__icon--brand"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text"><b>Marina V.</b> te ha mencionado en <b>WO-184</b></div>
+      <div class="ok-notif__meta">«Necesito que revises el QA antes de las 14h»</div>
+    </div>
+    <div class="ok-notif__time">12:42</div>
+  </div>
+  <div class="ok-notif__item ok-notif__item--unread">
+    <div class="ok-notif__icon ok-notif__icon--warn"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text">Stock crítico en <b>CP-WHL-073</b> — 0 unidades</div>
+      <div class="ok-notif__meta">Bloquea WO-184 · línea L-2</div>
+    </div>
+    <div class="ok-notif__time">11:18</div>
+  </div>
+  <div class="ok-notif__item ok-notif__item--unread">
+    <div class="ok-notif__icon ok-notif__icon--leaf"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text">Factura <b>F-2026-0182</b> cobrada — €3.218,40</div>
+      <div class="ok-notif__meta">Norden Bikes · transferencia</div>
+    </div>
+    <div class="ok-notif__time">10:04</div>
+  </div>
+  <div class="ok-notif__item">
+    <div class="ok-notif__icon ok-notif__icon--info"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text">Recordatorio: backup mensual programado mañana 03:00</div>
+      <div class="ok-notif__meta">Sistema</div>
+    </div>
+    <div class="ok-notif__time">ayer</div>
+  </div>
+</div>
+<footer class="ok-notif__foot">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver todas</button>
+</footer>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<system_overlays title="Notificaciones" count="4">
+<div class="ok-notif__filters">
+  <button class="ok-notif__filter ok-notif__filter--active">Todas</button>
+  <button class="ok-notif__filter">Sin leer</button>
+  <button class="ok-notif__filter">Menciones</button>
+  <button class="ok-notif__filter">Sistema</button>
+</div>
+<div class="ok-notif__list">
+  <div class="ok-notif__item ok-notif__item--unread">
+    <div class="ok-notif__icon ok-notif__icon--brand"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text"><b>Marina V.</b> te ha mencionado en <b>WO-184</b></div>
+      <div class="ok-notif__meta">«Necesito que revises el QA antes de las 14h»</div>
+    </div>
+    <div class="ok-notif__time">12:42</div>
+  </div>
+  <div class="ok-notif__item ok-notif__item--unread">
+    <div class="ok-notif__icon ok-notif__icon--warn"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text">Stock crítico en <b>CP-WHL-073</b> — 0 unidades</div>
+      <div class="ok-notif__meta">Bloquea WO-184 · línea L-2</div>
+    </div>
+    <div class="ok-notif__time">11:18</div>
+  </div>
+  <div class="ok-notif__item ok-notif__item--unread">
+    <div class="ok-notif__icon ok-notif__icon--leaf"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text">Factura <b>F-2026-0182</b> cobrada — €3.218,40</div>
+      <div class="ok-notif__meta">Norden Bikes · transferencia</div>
+    </div>
+    <div class="ok-notif__time">10:04</div>
+  </div>
+  <div class="ok-notif__item">
+    <div class="ok-notif__icon ok-notif__icon--info"></div>
+    <div class="ok-notif__body">
+      <div class="ok-notif__text">Recordatorio: backup mensual programado mañana 03:00</div>
+      <div class="ok-notif__meta">Sistema</div>
+    </div>
+    <div class="ok-notif__time">ayer</div>
+  </div>
+</div>
+<footer class="ok-notif__foot">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver todas</button>
+</footer>
+</system_overlays>{% endraw %}{% endset %}
+
+{% call demo_frame("Centro de notificaciones",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call system_overlays(title="Notificaciones", count=4) %}
 <div class="ok-notif__filters">
   <button class="ok-notif__filter ok-notif__filter--active">Todas</button>

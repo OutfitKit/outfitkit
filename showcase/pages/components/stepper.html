@@ -8,7 +8,61 @@
 <h1>Stepper</h1>
 <p class="showcase__lead">Progreso por pasos. Compón los <code>.ok-stepper__step</code> con estado <code>--done</code> / <code>--active</code> y <code>.ok-stepper__bullet</code> + <code>.ok-stepper__label</code>.</p>
 
-{% call demo_frame("Horizontal · checkout") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/stepper.jinja" import stepper %}
+{% call stepper() %}
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__label">Carrito</div>
+  <div class="ok-stepper__sub">3 productos</div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__label">Cliente</div>
+  <div class="ok-stepper__sub">Marisol G.</div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--active">
+  <div class="ok-stepper__bullet">3</div>
+  <div class="ok-stepper__label">Pago</div>
+  <div class="ok-stepper__sub">en curso</div>
+</li>
+<li class="ok-stepper__step">
+  <div class="ok-stepper__bullet">4</div>
+  <div class="ok-stepper__label">Ticket</div>
+</li>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Stepper>
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__label">Carrito</div>
+  <div class="ok-stepper__sub">3 productos</div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__label">Cliente</div>
+  <div class="ok-stepper__sub">Marisol G.</div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--active">
+  <div class="ok-stepper__bullet">3</div>
+  <div class="ok-stepper__label">Pago</div>
+  <div class="ok-stepper__sub">en curso</div>
+</li>
+<li class="ok-stepper__step">
+  <div class="ok-stepper__bullet">4</div>
+  <div class="ok-stepper__label">Ticket</div>
+</li>
+</Stepper>{% endraw %}{% endset %}
+
+{% call demo_frame("Horizontal · checkout",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call stepper() %}
 <li class="ok-stepper__step ok-stepper__step--done">
   <div class="ok-stepper__bullet">
@@ -36,7 +90,91 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Vertical · onboarding") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/stepper.jinja" import stepper %}
+{% call stepper(orientation="vertical") %}
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Datos fiscales</div>
+    <div class="ok-stepper__desc">CIF B12345678 verificado en agencia tributaria.</div>
+  </div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Catálogo importado</div>
+    <div class="ok-stepper__desc">142 productos · 18 categorías.</div>
+  </div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--active">
+  <div class="ok-stepper__bullet">3</div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Configuración de impuestos</div>
+    <div class="ok-stepper__desc">Define los tipos de IVA aplicables y zonas de envío.</div>
+  </div>
+</li>
+<li class="ok-stepper__step">
+  <div class="ok-stepper__bullet">4</div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Conectar TPV físico</div>
+    <div class="ok-stepper__desc">Empareja tu impresora y cajón portamonedas.</div>
+  </div>
+</li>
+<li class="ok-stepper__step">
+  <div class="ok-stepper__bullet">5</div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Equipo y permisos</div>
+  </div>
+</li>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Stepper orientation="vertical">
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Datos fiscales</div>
+    <div class="ok-stepper__desc">CIF B12345678 verificado en agencia tributaria.</div>
+  </div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--done">
+  <div class="ok-stepper__bullet">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+  </div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Catálogo importado</div>
+    <div class="ok-stepper__desc">142 productos · 18 categorías.</div>
+  </div>
+</li>
+<li class="ok-stepper__step ok-stepper__step--active">
+  <div class="ok-stepper__bullet">3</div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Configuración de impuestos</div>
+    <div class="ok-stepper__desc">Define los tipos de IVA aplicables y zonas de envío.</div>
+  </div>
+</li>
+<li class="ok-stepper__step">
+  <div class="ok-stepper__bullet">4</div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Conectar TPV físico</div>
+    <div class="ok-stepper__desc">Empareja tu impresora y cajón portamonedas.</div>
+  </div>
+</li>
+<li class="ok-stepper__step">
+  <div class="ok-stepper__bullet">5</div>
+  <div class="ok-stepper__body">
+    <div class="ok-stepper__label">Equipo y permisos</div>
+  </div>
+</li>
+</Stepper>{% endraw %}{% endset %}
+
+{% call demo_frame("Vertical · onboarding",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call stepper(orientation="vertical") %}
 <li class="ok-stepper__step ok-stepper__step--done">
   <div class="ok-stepper__bullet">

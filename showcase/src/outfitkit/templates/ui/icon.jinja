@@ -1,0 +1,10 @@
+{#def name, size="md", attrs=None #}
+
+{% macro icon(name, size="md", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _size_px = {"sm": "14", "md": "16", "lg": "20", "xl": "24"}.get(size, size|string) -%}
+<iconify-icon icon="{{ name }}" width="{{ _size_px }}" height="{{ _size_px }}"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}></iconify-icon>
+{%- endmacro %}
+
+{% if name is defined %}{{ icon(name, size=size, attrs=attrs) }}{% endif %}

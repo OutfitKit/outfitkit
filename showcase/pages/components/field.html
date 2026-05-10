@@ -9,25 +9,76 @@
 <h1>Field</h1>
 <p class="showcase__lead">Wrapper para label + control + hint/error. Componente <em>slot-based</em>: el control va dentro.</p>
 
-{% call demo_frame("Default") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% call field("Nombre comercial") %}
+  {{ input("name", placeholder="Cafetería La Plaza") }}
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Field label="Nombre comercial">
+  <Input label="name" placeholder="Cafetería La Plaza" />
+</Field>{% endraw %}{% endset %}
+
+{% call demo_frame("Default",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call field("Nombre comercial") %}
   {{ input("name", placeholder="Cafetería La Plaza") }}
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Required + hint") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% call field("Email", required=True, hint="Te avisaremos de eventos clave.") %}
+  {{ input("email", type="email", value="contacto@laplaza.es") }}
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Field label="Email" required hint="Te avisaremos de eventos clave.">
+  <Input label="email" type="email" value="contacto@laplaza.es" />
+</Field>{% endraw %}{% endset %}
+
+{% call demo_frame("Required + hint",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call field("Email", required=True, hint="Te avisaremos de eventos clave.") %}
   {{ input("email", type="email", value="contacto@laplaza.es") }}
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Estado de error") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% call field("CIF", error="Formato no válido (ej. B12345678).") %}
+  {{ input("cif", value="X-1234", invalid=True) }}
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Field label="CIF" error="Formato no válido (ej. B12345678).">
+  <Input label="cif" value="X-1234" invalid />
+</Field>{% endraw %}{% endset %}
+
+{% call demo_frame("Estado de error",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {% call field("CIF", error="Formato no válido (ej. B12345678).") %}
   {{ input("cif", value="X-1234", invalid=True) }}
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Datastar — bind reactivo") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+<div data-signals="{ company: 'Cafetería La Plaza' }">
+  {% call field("Nombre comercial", hint="Se guarda automáticamente.") %}
+    {{ input("company", attrs={"data-bind-company": ""}) }}
+  {% endcall %}
+  <p style="margin-top:8px;">Vista previa: <strong data-text="$company"></strong></p>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ company: 'Cafetería La Plaza' }">
+  <Field label="Nombre comercial" hint="Se guarda automáticamente.">
+    <Input label="company" data-bind-company="" />
+  
+</Field>
+  <p style="margin-top:8px;">Vista previa: <strong data-text="$company"></strong></p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar — bind reactivo",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ company: 'Cafetería La Plaza' }">
   {% call field("Nombre comercial", hint="Se guarda automáticamente.") %}
     {{ input("company", attrs={"data-bind-company": ""}) }}

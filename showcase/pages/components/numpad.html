@@ -8,19 +8,80 @@
 <h1>Numpad</h1>
 <p class="showcase__lead">Teclado numérico para entrada de cantidades en TPV: 1-9, 0, decimal y backspace. Display opcional con etiqueta y valor. Atomic — sin slot. La interactividad se enchufa con Datastar (<code>data-on:click</code> en cada botón si quieres editar el signal).</p>
 
-{% call demo_frame("Cobro de efectivo · con display") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/numpad.jinja" import numpad %}
+{{ numpad(label="A cobrar · €19,40", display="€20,00") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Numpad label="A cobrar · €19,40" display="€20,00" />{% endraw %}{% endset %}
+
+{% call demo_frame("Cobro de efectivo · con display",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {{ numpad(label="A cobrar · €19,40", display="€20,00") }}
 {% endcall %}
 
-{% call demo_frame("Importe libre · sin backspace") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/numpad.jinja" import numpad %}
+{{ numpad(label="Importe", display="12,50", show_backspace=False) }}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Numpad label="Importe" display="12,50" />{% endraw %}{% endset %}
+
+{% call demo_frame("Importe libre · sin backspace",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {{ numpad(label="Importe", display="12,50", show_backspace=False) }}
 {% endcall %}
 
-{% call demo_frame("Solo teclado · sin display") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/numpad.jinja" import numpad %}
+{{ numpad() }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Numpad />{% endraw %}{% endset %}
+
+{% call demo_frame("Solo teclado · sin display",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {{ numpad() }}
 {% endcall %}
 
-{% call demo_frame("Datastar · entrada reactiva") %}
+{% set _src_jinja_4 %}{% raw %}<div data-signals="{ amount: '0' }" style="max-width:240px">
+  <div class="ok-numpad-display">
+    <div class="ok-numpad-display__label">Importe</div>
+    <div class="ok-numpad-display__value" data-text="$amount + ' €'"></div>
+  </div>
+  <div class="ok-numpad">
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
+    <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
+    <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
+  </div>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ amount: '0' }" style="max-width:240px">
+  <div class="ok-numpad-display">
+    <div class="ok-numpad-display__label">Importe</div>
+    <div class="ok-numpad-display__value" data-text="$amount + ' €'"></div>
+  </div>
+  <div class="ok-numpad">
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
+    <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
+    <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar · entrada reactiva",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ amount: '0' }" style="max-width:240px">
   <div class="ok-numpad-display">
     <div class="ok-numpad-display__label">Importe</div>

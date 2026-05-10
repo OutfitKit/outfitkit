@@ -8,7 +8,47 @@
 <h1>KDS · Kitchen Display System</h1>
 <p class="showcase__lead">Tarjeta de pedido para cocina. El consumidor compone <code>.ok-kds__head</code>, <code>.ok-kds__items</code> y <code>.ok-kds__actions</code> dentro del slot. La variante <code>--late</code> pulsa en rojo, <code>--ready</code> marca pedido listo.</p>
 
-{% call demo_frame("Pedido en curso") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/kds.jinja" import kds %}
+{% call kds() %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">M2 · #2042</div>
+    <div class="ok-kds__source">📍 Barra · Roberto</div>
+  </div>
+  <span class="ok-kds__time">02:18</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item"><span class="ok-kds__qty">2×</span>Café cortado</li>
+  <li class="ok-kds__notes">leche desnatada · sin azúcar</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Bocadillo serrano</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Kds>
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">M2 · #2042</div>
+    <div class="ok-kds__source">📍 Barra · Roberto</div>
+  </div>
+  <span class="ok-kds__time">02:18</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item"><span class="ok-kds__qty">2×</span>Café cortado</li>
+  <li class="ok-kds__notes">leche desnatada · sin azúcar</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Bocadillo serrano</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+</Kds>{% endraw %}{% endset %}
+
+{% call demo_frame("Pedido en curso",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call kds() %}
 <header class="ok-kds__head">
   <div>
@@ -29,7 +69,49 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Variant late · pedido retrasado") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/kds.jinja" import kds %}
+{% call kds(variant="late") %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">M4 · #2041</div>
+    <div class="ok-kds__source">📍 Mesa · Ana</div>
+  </div>
+  <span class="ok-kds__time">14:32</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Tostada salmón</li>
+  <li class="ok-kds__notes">+ extra aguacate</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Zumo naranja grande</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">2×</span>Croissant chocolate</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Kds variant="late">
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">M4 · #2041</div>
+    <div class="ok-kds__source">📍 Mesa · Ana</div>
+  </div>
+  <span class="ok-kds__time">14:32</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Tostada salmón</li>
+  <li class="ok-kds__notes">+ extra aguacate</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Zumo naranja grande</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">2×</span>Croissant chocolate</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+</Kds>{% endraw %}{% endset %}
+
+{% call demo_frame("Variant late · pedido retrasado",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call kds(variant="late") %}
 <header class="ok-kds__head">
   <div>
@@ -51,7 +133,43 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Variant ready · listo para entregar") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/kds.jinja" import kds %}
+{% call kds(variant="ready") %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">DEL · #2043</div>
+    <div class="ok-kds__source">🛵 Glovo · Eva L.</div>
+  </div>
+  <span class="ok-kds__time">04:05</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item ok-kds__item--done"><span class="ok-kds__qty">1×</span>Menú del día</li>
+  <li class="ok-kds__item ok-kds__item--done"><span class="ok-kds__qty">1×</span>Postre del día</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--secondary ok-btn--sm">✓ Entregado</button>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Kds variant="ready">
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">DEL · #2043</div>
+    <div class="ok-kds__source">🛵 Glovo · Eva L.</div>
+  </div>
+  <span class="ok-kds__time">04:05</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item ok-kds__item--done"><span class="ok-kds__qty">1×</span>Menú del día</li>
+  <li class="ok-kds__item ok-kds__item--done"><span class="ok-kds__qty">1×</span>Postre del día</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--secondary ok-btn--sm">✓ Entregado</button>
+</div>
+</Kds>{% endraw %}{% endset %}
+
+{% call demo_frame("Variant ready · listo para entregar",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {% call kds(variant="ready") %}
 <header class="ok-kds__head">
   <div>
@@ -70,7 +188,53 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Datastar · marcar líneas como hechas") %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/kds.jinja" import kds %}
+<div data-signals="{ done1: false, done2: false, done3: false }">
+{% call kds() %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">B7 · #2044</div>
+    <div class="ok-kds__source">📍 Barra · Roberto</div>
+  </div>
+  <span class="ok-kds__time">00:42</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done1" data-on:click="$done1 = !$done1"><span class="ok-kds__qty">3×</span>Cappuccino doble</li>
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done2" data-on:click="$done2 = !$done2"><span class="ok-kds__qty">3×</span>Tostada con tomate</li>
+  <li class="ok-kds__notes">una sin gluten</li>
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done3" data-on:click="$done3 = !$done3"><span class="ok-kds__qty">2×</span>Zumo naranja</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<div data-signals="{ done1: false, done2: false, done3: false }">
+<Kds>
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">B7 · #2044</div>
+    <div class="ok-kds__source">📍 Barra · Roberto</div>
+  </div>
+  <span class="ok-kds__time">00:42</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done1" data-on:click="$done1 = !$done1"><span class="ok-kds__qty">3×</span>Cappuccino doble</li>
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done2" data-on:click="$done2 = !$done2"><span class="ok-kds__qty">3×</span>Tostada con tomate</li>
+  <li class="ok-kds__notes">una sin gluten</li>
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done3" data-on:click="$done3 = !$done3"><span class="ok-kds__qty">2×</span>Zumo naranja</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+</Kds>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar · marcar líneas como hechas",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ done1: false, done2: false, done3: false }">
 {% call kds() %}
 <header class="ok-kds__head">

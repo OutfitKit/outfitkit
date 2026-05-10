@@ -9,7 +9,24 @@
 <h1>Stats</h1>
 <p class="showcase__lead">Contenedor en grid para mostrar varios <code>&lt;Stat /&gt;</code> en línea con bordes verticales entre ellos.</p>
 
-{% call demo_frame("Fila de 4") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/stat.jinja" import stat %}
+{% from "ui/stats.jinja" import stats %}
+{% call stats() %}
+{{ stat("Pedidos", "1.284", delta="+6,2%", delta_dir="up") }}
+{{ stat("Facturación", "€48.210", delta="+9,1%", delta_dir="up") }}
+{{ stat("Devoluciones", "12", delta="−4 vs mes", delta_dir="down") }}
+{{ stat("Clientes nuevos", "38", delta="igual que mes") }}
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Stats>
+<Stat label="Pedidos" delta="+6,2%" delta_dir="up" />
+<Stat label="Facturación" delta="+9,1%" delta_dir="up" />
+<Stat label="Devoluciones" delta="−4 vs mes" delta_dir="down" />
+<Stat label="Clientes nuevos" delta="igual que mes" />
+</Stats>{% endraw %}{% endset %}
+
+{% call demo_frame("Fila de 4",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call stats() %}
 {{ stat("Pedidos", "1.284", delta="+6,2%", delta_dir="up") }}
 {{ stat("Facturación", "€48.210", delta="+9,1%", delta_dir="up") }}
@@ -18,7 +35,22 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Fila de 3 sin delta") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/stat.jinja" import stat %}
+{% from "ui/stats.jinja" import stats %}
+{% call stats() %}
+{{ stat("Stock crítico", "7 SKU") }}
+{{ stat("En tránsito", "23") }}
+{{ stat("Almacenes", "4") }}
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<Stats>
+<Stat label="Stock crítico" />
+<Stat label="En tránsito" />
+<Stat label="Almacenes" />
+</Stats>{% endraw %}{% endset %}
+
+{% call demo_frame("Fila de 3 sin delta",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call stats() %}
 {{ stat("Stock crítico", "7 SKU") }}
 {{ stat("En tránsito", "23") }}

@@ -8,7 +8,43 @@
 <h1>HR card</h1>
 <p class="showcase__lead">Ficha de empleado: portada, avatar, nombre, rol, estado y stats (antigüedad, vacaciones, horas). El consumidor compone <code>.ok-emp__cover</code>, <code>.ok-emp__head</code> y <code>.ok-emp__grid</code> dentro del slot.</p>
 
-{% call demo_frame("Empleada en turno") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/hr_card.jinja" import hr_card %}
+{% call hr_card() %}
+<div class="ok-emp__cover"></div>
+<header class="ok-emp__head">
+  <div class="ok-emp__avatar">MV</div>
+  <div class="ok-emp__name-block">
+    <h3 class="ok-emp__name">Marina Vidal</h3>
+    <div class="ok-emp__role">Jefa de línea · L-2</div>
+  </div>
+  <span class="ok-emp__status">En turno</span>
+</header>
+<div class="ok-emp__grid">
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Antig.</span><span class="ok-emp__stat-value">6,2 a</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Vac. rest.</span><span class="ok-emp__stat-value">14</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Horas mes</span><span class="ok-emp__stat-value">142</span></div>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<hr_card>
+<div class="ok-emp__cover"></div>
+<header class="ok-emp__head">
+  <div class="ok-emp__avatar">MV</div>
+  <div class="ok-emp__name-block">
+    <h3 class="ok-emp__name">Marina Vidal</h3>
+    <div class="ok-emp__role">Jefa de línea · L-2</div>
+  </div>
+  <span class="ok-emp__status">En turno</span>
+</header>
+<div class="ok-emp__grid">
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Antig.</span><span class="ok-emp__stat-value">6,2 a</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Vac. rest.</span><span class="ok-emp__stat-value">14</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Horas mes</span><span class="ok-emp__stat-value">142</span></div>
+</div>
+</hr_card>{% endraw %}{% endset %}
+
+{% call demo_frame("Empleada en turno",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 {% call hr_card() %}
 <div class="ok-emp__cover"></div>
 <header class="ok-emp__head">
@@ -27,7 +63,43 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Empleado en pausa") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/hr_card.jinja" import hr_card %}
+{% call hr_card() %}
+<div class="ok-emp__cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--ok-info) 30%, var(--ok-bg-3)), var(--ok-bg-3))"></div>
+<header class="ok-emp__head">
+  <div class="ok-emp__avatar" style="background:color-mix(in oklch, var(--ok-info) 30%, var(--ok-bg-4))">IR</div>
+  <div class="ok-emp__name-block">
+    <h3 class="ok-emp__name">Iván Ramos</h3>
+    <div class="ok-emp__role">Op. cabina pintura</div>
+  </div>
+  <span class="ok-emp__status ok-emp__status--break">Pausa</span>
+</header>
+<div class="ok-emp__grid">
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Antig.</span><span class="ok-emp__stat-value">2,8 a</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Vac. rest.</span><span class="ok-emp__stat-value">22</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Horas mes</span><span class="ok-emp__stat-value">128</span></div>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<hr_card>
+<div class="ok-emp__cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--ok-info) 30%, var(--ok-bg-3)), var(--ok-bg-3))"></div>
+<header class="ok-emp__head">
+  <div class="ok-emp__avatar" style="background:color-mix(in oklch, var(--ok-info) 30%, var(--ok-bg-4))">IR</div>
+  <div class="ok-emp__name-block">
+    <h3 class="ok-emp__name">Iván Ramos</h3>
+    <div class="ok-emp__role">Op. cabina pintura</div>
+  </div>
+  <span class="ok-emp__status ok-emp__status--break">Pausa</span>
+</header>
+<div class="ok-emp__grid">
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Antig.</span><span class="ok-emp__stat-value">2,8 a</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Vac. rest.</span><span class="ok-emp__stat-value">22</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Horas mes</span><span class="ok-emp__stat-value">128</span></div>
+</div>
+</hr_card>{% endraw %}{% endset %}
+
+{% call demo_frame("Empleado en pausa",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 {% call hr_card() %}
 <div class="ok-emp__cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--ok-info) 30%, var(--ok-bg-3)), var(--ok-bg-3))"></div>
 <header class="ok-emp__head">
@@ -46,7 +118,43 @@
 {% endcall %}
 {% endcall %}
 
-{% call demo_frame("Empleada fuera del turno") %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/hr_card.jinja" import hr_card %}
+{% call hr_card() %}
+<div class="ok-emp__cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--ok-leaf) 25%, var(--ok-bg-3)), var(--ok-bg-3))"></div>
+<header class="ok-emp__head">
+  <div class="ok-emp__avatar" style="background:color-mix(in oklch, var(--ok-leaf) 25%, var(--ok-bg-4))">LP</div>
+  <div class="ok-emp__name-block">
+    <h3 class="ok-emp__name">Lucía Peña</h3>
+    <div class="ok-emp__role">QA Senior</div>
+  </div>
+  <span class="ok-emp__status ok-emp__status--off">Fuera</span>
+</header>
+<div class="ok-emp__grid">
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Antig.</span><span class="ok-emp__stat-value">8,5 a</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Vac. rest.</span><span class="ok-emp__stat-value">3</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Horas mes</span><span class="ok-emp__stat-value">160</span></div>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<hr_card>
+<div class="ok-emp__cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--ok-leaf) 25%, var(--ok-bg-3)), var(--ok-bg-3))"></div>
+<header class="ok-emp__head">
+  <div class="ok-emp__avatar" style="background:color-mix(in oklch, var(--ok-leaf) 25%, var(--ok-bg-4))">LP</div>
+  <div class="ok-emp__name-block">
+    <h3 class="ok-emp__name">Lucía Peña</h3>
+    <div class="ok-emp__role">QA Senior</div>
+  </div>
+  <span class="ok-emp__status ok-emp__status--off">Fuera</span>
+</header>
+<div class="ok-emp__grid">
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Antig.</span><span class="ok-emp__stat-value">8,5 a</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Vac. rest.</span><span class="ok-emp__stat-value">3</span></div>
+  <div class="ok-emp__stat"><span class="ok-emp__stat-label">Horas mes</span><span class="ok-emp__stat-value">160</span></div>
+</div>
+</hr_card>{% endraw %}{% endset %}
+
+{% call demo_frame("Empleada fuera del turno",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinjax_3) %}
 {% call hr_card() %}
 <div class="ok-emp__cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--ok-leaf) 25%, var(--ok-bg-3)), var(--ok-bg-3))"></div>
 <header class="ok-emp__head">

@@ -8,7 +8,91 @@
 <h1>Pay · Métodos de pago</h1>
 <p class="showcase__lead">Selector de método de pago para TPV. El consumidor compone botones <code>.ok-pay-method</code> dentro del slot. Cada botón muestra un icono, nombre y subtítulo.</p>
 
-{% call demo_frame("Cobro · 4 métodos") %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/pay.jinja" import pay %}
+<div style="max-width:480px;width:100%">
+{% call pay() %}
+  <button class="ok-pay-method" aria-pressed="true">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Tarjeta</div>
+      <div class="ok-pay-method__sub">Visa · MC · Amex</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Efectivo</div>
+      <div class="ok-pay-method__sub">Cambio automático</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Bizum / móvil</div>
+      <div class="ok-pay-method__sub">QR contactless</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h4v4M10 20H6v-4M21 3l-7 7M3 21l7-7"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Mixto</div>
+      <div class="ok-pay-method__sub">2+ métodos</div>
+    </div>
+  </button>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div style="max-width:480px;width:100%">
+<Pay>
+  <button class="ok-pay-method" aria-pressed="true">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Tarjeta</div>
+      <div class="ok-pay-method__sub">Visa · MC · Amex</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Efectivo</div>
+      <div class="ok-pay-method__sub">Cambio automático</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Bizum / móvil</div>
+      <div class="ok-pay-method__sub">QR contactless</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h4v4M10 20H6v-4M21 3l-7 7M3 21l7-7"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Mixto</div>
+      <div class="ok-pay-method__sub">2+ métodos</div>
+    </div>
+  </button>
+</Pay>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Cobro · 4 métodos",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
 <div style="max-width:480px;width:100%">
 {% call pay() %}
   <button class="ok-pay-method" aria-pressed="true">
@@ -51,7 +135,87 @@
 </div>
 {% endcall %}
 
-{% call demo_frame("Datastar · selección reactiva") %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/pay.jinja" import pay %}
+<div data-signals="{ method: 'card' }" style="max-width:480px;width:100%">
+{% call pay() %}
+  <button class="ok-pay-method"
+          data-on:click="$method = 'card'"
+          data-attr-aria-pressed="$method === 'card'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Tarjeta</div>
+      <div class="ok-pay-method__sub">Visa · MC · Amex</div>
+    </div>
+  </button>
+  <button class="ok-pay-method"
+          data-on:click="$method = 'cash'"
+          data-attr-aria-pressed="$method === 'cash'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Efectivo</div>
+      <div class="ok-pay-method__sub">Cambio automático</div>
+    </div>
+  </button>
+  <button class="ok-pay-method"
+          data-on:click="$method = 'bizum'"
+          data-attr-aria-pressed="$method === 'bizum'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Bizum</div>
+      <div class="ok-pay-method__sub">QR contactless</div>
+    </div>
+  </button>
+{% endcall %}
+<p style="margin-top:12px;font-size:12px;color:var(--ok-ink-3)">Método seleccionado: <b data-text="$method"></b></p>
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div data-signals="{ method: 'card' }" style="max-width:480px;width:100%">
+<Pay>
+  <button class="ok-pay-method"
+          data-on:click="$method = 'card'"
+          data-attr-aria-pressed="$method === 'card'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Tarjeta</div>
+      <div class="ok-pay-method__sub">Visa · MC · Amex</div>
+    </div>
+  </button>
+  <button class="ok-pay-method"
+          data-on:click="$method = 'cash'"
+          data-attr-aria-pressed="$method === 'cash'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Efectivo</div>
+      <div class="ok-pay-method__sub">Cambio automático</div>
+    </div>
+  </button>
+  <button class="ok-pay-method"
+          data-on:click="$method = 'bizum'"
+          data-attr-aria-pressed="$method === 'bizum'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Bizum</div>
+      <div class="ok-pay-method__sub">QR contactless</div>
+    </div>
+  </button>
+</Pay>
+<p style="margin-top:12px;font-size:12px;color:var(--ok-ink-3)">Método seleccionado: <b data-text="$method"></b></p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Datastar · selección reactiva",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ method: 'card' }" style="max-width:480px;width:100%">
 {% call pay() %}
   <button class="ok-pay-method"
