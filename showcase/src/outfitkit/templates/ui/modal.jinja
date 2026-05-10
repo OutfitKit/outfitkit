@@ -2,9 +2,9 @@
 
 {% macro modal(title, subtitle="", size="md", icon_variant=None, state="closed", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}backdrop"></div>
 <div class="{{ ok_prefix }}modal-root" data-state="{{ state }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <div class="{{ ok_prefix }}backdrop"></div>
   <div class="{{ ok_prefix }}modal {{ ok_prefix }}modal--{{ size }}">
     <div class="{{ ok_prefix }}modal__header">
       {% if icon_variant %}

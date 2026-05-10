@@ -43,8 +43,10 @@
 {% call demo_frame("Variante brand",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch;">
 {{ kpi("Margen", "68", unit="%", delta="objetivo 70%", variant="brand") }}
 {{ kpi("MRR", "€12.840", delta="+18%", delta_dir="up", variant="brand") }}
+</div>
 {% endcall %}
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/kpi.jinja" import kpi %}

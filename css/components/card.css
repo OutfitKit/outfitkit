@@ -37,6 +37,10 @@
   border-color: var(--ok-line-2);
   transform: translateY(-1px);
 }
+.ok-card--interactive:focus-visible {
+  outline: 2px solid var(--ok-brand);
+  outline-offset: 2px;
+}
 
 .ok-card__header {
   display: flex;
@@ -100,7 +104,9 @@
   padding: 16px 18px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 6px;
+  min-height: 96px;
   position: relative;
   overflow: hidden;
 }
@@ -184,6 +190,9 @@
   border: 1px solid var(--ok-line);
   border-radius: var(--ok-radius-xl);
   overflow: hidden;
+  /* Take full row width when nested in a flex/inline parent so the
+     auto-fit grid actually has space to lay out columns. */
+  width: 100%;
 }
 
 .ok-stats--glass {
@@ -219,10 +228,11 @@
   font-size: 11px;
   color: var(--ok-ink-3);
   margin-top: 2px;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
 .ok-stat__delta--up { color: var(--ok-leaf); }
-.ok-stat__delta--down { color: var(--ok-danger); }
+.ok-stat__delta--down { color: oklch(55% 0.18 25); }
 
 @media (max-width: 640px) {
   .ok-stat { border-right: none; border-bottom: 1px solid var(--ok-line); }

@@ -2,9 +2,9 @@
 
 {% macro drawer(title, subtitle="", side="right", state="closed", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}backdrop"></div>
 <div class="{{ ok_prefix }}drawer-root" data-state="{{ state }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <div class="{{ ok_prefix }}backdrop"></div>
   <aside class="{{ ok_prefix }}drawer{% if side != 'right' %} {{ ok_prefix }}drawer--{{ side }}{% endif %}">
     <div class="{{ ok_prefix }}drawer__header">
       <h3 class="{{ ok_prefix }}drawer__title">{{ title }}</h3>

@@ -8,6 +8,79 @@
 </div>
 {%- endmacro %}
 
+{#
+  tree_node — branch node with reactive expand/collapse via Datastar.
+
+  Each node owns a local signal `open` (bool). The caret toggles it on click;
+  `data-state`, `aria-expanded`, the children visibility, and the caret rotation
+  are all driven from that signal so the whole node stays consistent.
+
+  Args:
+    label    — visible row label (HTML allowed via |safe at call site)
+    icon     — single character / emoji / inline SVG for the row icon
+    meta     — right-aligned meta string (counts, amounts, etc.)
+    expanded — initial open state (default False)
+    icon_kind— "folder" or "file" (drives icon color via .ok-tree__icon--*)
+    attrs    — extra HTML attrs on the node
+#}
+{% macro tree_node(label="", icon="", meta="", expanded=false, icon_kind="folder", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="{{ ok_prefix }}tree__node"
+     data-signals="{ open: {{ 'true' if expanded else 'false' }} }"
+     data-attr:data-state="$open ? 'open' : 'closed'"
+     {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <div class="{{ ok_prefix }}tree__row">
+    <span class="{{ ok_prefix }}tree__caret"
+          role="button"
+          tabindex="0"
+          data-on:click="$open = !$open"
+          data-on:keydown="(evt.key === 'Enter' || evt.key === ' ') && ($open = !$open)"
+          data-attr:aria-expanded="$open"
+          data-attr:data-rotated="$open">▸</span>
+    {%- if icon %}
+    <span class="{{ ok_prefix }}tree__icon {{ ok_prefix }}tree__icon--{{ icon_kind }}">{{ icon }}</span>
+    {%- endif %}
+    <span class="{{ ok_prefix }}tree__label">{{ label|safe }}</span>
+    {%- if meta %}
+    <span class="{{ ok_prefix }}tree__meta">{{ meta }}</span>
+    {%- endif %}
+  </div>
+  <div class="{{ ok_prefix }}tree__children" data-show="$open" role="group">
+    {{ caller() }}
+  </div>
+</div>
+{%- endmacro %}
+
+{#
+  tree_leaf — non-expandable leaf row (file / account / endpoint).
+
+  Args:
+    label    — visible row label (HTML allowed)
+    icon     — icon string
+    meta     — right-aligned meta
+    selected — initial selected state
+    value    — opaque selection key (used by ancestor `data-signals` if any)
+    attrs    — extra HTML attrs on the row
+#}
+{% macro tree_leaf(label="", icon="", meta="", selected=false, value=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="{{ ok_prefix }}tree__node">
+  <div class="{{ ok_prefix }}tree__row"
+       {%- if value is not none %} data-on:click="$sel = '{{ value }}'" data-attr:aria-selected="$sel === '{{ value }}'"{%- endif %}
+       {%- if selected %} aria-selected="true"{%- endif %}
+       {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+    <span class="{{ ok_prefix }}tree__caret {{ ok_prefix }}tree__caret--leaf"></span>
+    {%- if icon %}
+    <span class="{{ ok_prefix }}tree__icon {{ ok_prefix }}tree__icon--file">{{ icon }}</span>
+    {%- endif %}
+    <span class="{{ ok_prefix }}tree__label">{{ label|safe }}</span>
+    {%- if meta %}
+    <span class="{{ ok_prefix }}tree__meta">{{ meta }}</span>
+    {%- endif %}
+  </div>
+</div>
+{%- endmacro %}
+
 {% if variant is defined %}
   {% call tree(variant=variant, attrs=attrs) %}{{ content }}{% endcall %}
 {% endif %}

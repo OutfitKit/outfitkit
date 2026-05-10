@@ -194,11 +194,13 @@
   color: var(--ok-ink-2);
   border-radius: 50%;
   cursor: pointer;
-  display: grid;
+  /* Hidden by default; only shown when the sibling input has content. */
+  display: none;
   place-items: center;
   font-size: 11px;
   line-height: 1;
 }
+.ok-search:has(input:not(:placeholder-shown)) .ok-search__clear { display: grid; }
 .ok-search__clear:hover { background: var(--ok-line-3); color: var(--ok-ink); }
 
 /* Kbd shortcut hint dentro de search */

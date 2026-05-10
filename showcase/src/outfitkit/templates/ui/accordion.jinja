@@ -8,6 +8,61 @@
 </div>
 {%- endmacro %}
 
+{#
+  accordion_item — single expandable item with full a11y wiring.
+
+  Generates a unique id pair for trigger + panel so screen readers can map
+  `aria-expanded`/`aria-controls` on the button to `aria-labelledby`/`role=region`
+  on the panel. If the caller passes an explicit `id`, IDs are derived from it;
+  otherwise we fall back to a hash of the title (deterministic across renders).
+
+  Reactive open/close is driven by a local Datastar signal `open`; the caller
+  controls the initial value via the `expanded` prop.
+
+  Args:
+    title    — visible heading text
+    id       — optional stable id (used as base for `<id>-trigger`/`<id>-panel`)
+    sub      — optional sub-label rendered under the title
+    meta     — optional right-aligned meta (badge, count)
+    expanded — initial open state (default False)
+    no_icon  — if True, applies `--no-icon` modifier on the panel
+    attrs    — extra HTML attrs on the item wrapper
+#}
+{% macro accordion_item(title="", id=None, sub="", meta="", expanded=false, no_icon=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _base = id if id else "ok-acc-" ~ (title|string|replace(' ', '-')|replace('?', '')|replace('¿', '')|replace('/', '-')|lower)[:32] -%}
+{%- set _trigger_id = _base ~ "-trigger" -%}
+{%- set _panel_id = _base ~ "-panel" -%}
+<div class="{{ ok_prefix }}accordion__item"
+     data-signals="{ open: {{ 'true' if expanded else 'false' }} }"
+     data-attr:data-state="$open ? 'open' : 'closed'"
+     {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <button type="button"
+          id="{{ _trigger_id }}"
+          class="{{ ok_prefix }}accordion__trigger"
+          aria-controls="{{ _panel_id }}"
+          aria-expanded="{{ 'true' if expanded else 'false' }}"
+          data-attr:aria-expanded="$open"
+          data-on:click="$open = !$open">
+    <span class="{{ ok_prefix }}accordion__title">{{ title }}
+      {%- if sub %}
+      <span class="{{ ok_prefix }}accordion__sub">{{ sub }}</span>
+      {%- endif %}
+    </span>
+    {%- if meta %}
+    <span class="{{ ok_prefix }}accordion__meta">{{ meta }}</span>
+    {%- endif %}
+    <span class="{{ ok_prefix }}accordion__caret" aria-hidden="true">▾</span>
+  </button>
+  <div id="{{ _panel_id }}"
+       role="region"
+       aria-labelledby="{{ _trigger_id }}"
+       class="{{ ok_prefix }}accordion__panel{% if no_icon %} {{ ok_prefix }}accordion__panel--no-icon{% endif %}">
+    {{ caller() }}
+  </div>
+</div>
+{%- endmacro %}
+
 {% if variant is defined %}
   {% call accordion(variant=variant, attrs=attrs) %}{{ content }}{% endcall %}
 {% endif %}

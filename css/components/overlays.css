@@ -31,8 +31,9 @@
   padding: 24px;
   pointer-events: none;
 }
-.ok-modal-root .ok-backdrop { pointer-events: auto; }
 .ok-modal-root[data-state="open"] { pointer-events: auto; }
+.ok-modal-root[data-state="open"] .ok-backdrop { pointer-events: auto; }
+.ok-modal-root:not([data-state="open"]) .ok-backdrop { opacity: 0; pointer-events: none; }
 
 .ok-modal {
   position: relative;
@@ -140,7 +141,8 @@
   pointer-events: none;
 }
 .ok-drawer-root[data-state="open"] { pointer-events: auto; }
-.ok-drawer-root .ok-backdrop { pointer-events: auto; }
+.ok-drawer-root[data-state="open"] .ok-backdrop { pointer-events: auto; }
+.ok-drawer-root:not([data-state="open"]) .ok-backdrop { opacity: 0; pointer-events: none; }
 
 .ok-drawer {
   position: absolute;
