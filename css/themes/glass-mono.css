@@ -1,0 +1,115 @@
+/* ============================================================
+   Theme: Glass-Mono · Black & White with Blur
+   The glass look stripped of color. Translucent surfaces with backdrop
+   blur, but the accent is pure ink: black buttons in light mode, white
+   buttons in dark mode. Maximum contrast, minimum hue.
+   Activate with `data-template="glass-mono"` on <html> or <body>.
+   ============================================================ */
+
+[data-template="glass-mono"] {
+  --ok-font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --ok-tracking-display: -0.045em;
+
+  /* Estados sobrios — desaturated */
+  --ok-leaf:    #16A34A;          /* green-600 */
+  --ok-warn:    #CA8A04;          /* yellow-600 */
+  --ok-danger:  #DC2626;          /* red-600 */
+  --ok-info:    #525252;          /* neutral info */
+
+  /* Radios suaves */
+  --ok-radius-md: 10px;
+  --ok-radius-lg: 14px;
+  --ok-radius-xl: 18px;
+  --ok-radius-2xl: 24px;
+
+  /* Sombras neutras */
+  --ok-shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --ok-shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --ok-shadow-md: 0 8px 24px rgba(0,0,0,0.10);
+  --ok-shadow-lg: 0 24px 60px rgba(0,0,0,0.16);
+
+  --ok-page-pad: 24px;
+  --ok-topbar-h: 60px;
+}
+
+/* Glass-Mono · light: superficies blancas semitransparentes,
+   acento NEGRO (botones primarios negros sobre fondo blanco). */
+[data-template="glass-mono"][data-theme="erplora-light"],
+[data-template="glass-mono"]:not([data-theme]) {
+  --ok-bg:    #F5F5F5;
+  --ok-bg-1:  rgba(255, 255, 255, 0.78);
+  --ok-bg-2:  rgba(255, 255, 255, 0.70);
+  --ok-bg-3:  rgba(245, 245, 245, 0.85);
+  --ok-bg-4:  rgba(229, 229, 229, 0.85);
+
+  --ok-line:   rgba(0, 0, 0, 0.07);
+  --ok-line-2: rgba(0, 0, 0, 0.13);
+  --ok-line-3: rgba(0, 0, 0, 0.24);
+
+  --ok-ink:    #0A0A0A;
+  --ok-ink-2:  #404040;
+  --ok-ink-3:  #737373;
+  --ok-ink-4:  #A3A3A3;
+
+  --ok-brand:      #0A0A0A;       /* black */
+  --ok-brand-2:    #000000;
+  --ok-brand-3:    #404040;
+  --ok-brand-fg:   #FFFFFF;
+  --ok-brand-soft: rgba(0, 0, 0, 0.08);
+
+  color-scheme: light;
+}
+
+/* Glass-Mono · dark: superficies oscuras semitransparentes,
+   acento BLANCO (botones primarios blancos sobre fondo oscuro). */
+[data-template="glass-mono"][data-theme="erplora"] {
+  --ok-bg:    #0A0A0A;
+  --ok-bg-1:  rgba(20, 20, 20, 0.55);
+  --ok-bg-2:  rgba(28, 28, 28, 0.50);
+  --ok-bg-3:  rgba(38, 38, 38, 0.55);
+  --ok-bg-4:  rgba(60, 60, 60, 0.60);
+
+  --ok-line:   rgba(255, 255, 255, 0.08);
+  --ok-line-2: rgba(255, 255, 255, 0.16);
+  --ok-line-3: rgba(255, 255, 255, 0.28);
+
+  --ok-ink:    #FAFAFA;
+  --ok-ink-2:  #D4D4D4;
+  --ok-ink-3:  #A3A3A3;
+  --ok-ink-4:  #525252;
+
+  --ok-brand:      #FAFAFA;       /* white */
+  --ok-brand-2:    #FFFFFF;
+  --ok-brand-3:    #D4D4D4;
+  --ok-brand-fg:   #0A0A0A;       /* black ink on white */
+  --ok-brand-soft: rgba(255, 255, 255, 0.10);
+
+  color-scheme: dark;
+}
+
+/* Blur en las superficies clave (igual que glass.css) */
+[data-template="glass-mono"] .ok-card,
+[data-template="glass-mono"] .ok-app__topbar,
+[data-template="glass-mono"] .ok-topbar,
+[data-template="glass-mono"] .ok-sidebar,
+[data-template="glass-mono"] .ok-modal,
+[data-template="glass-mono"] .ok-drawer,
+[data-template="glass-mono"] .ok-popover,
+[data-template="glass-mono"] .ok-toast,
+[data-template="glass-mono"] .ok-table-wrap {
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}
+
+[data-template="glass-mono"] .card,
+[data-template="glass-mono"] .app__topbar,
+[data-template="glass-mono"] .topbar,
+[data-template="glass-mono"] .sidebar,
+[data-template="glass-mono"] .modal,
+[data-template="glass-mono"] .drawer,
+[data-template="glass-mono"] .popover,
+[data-template="glass-mono"] .toast,
+[data-template="glass-mono"] .table-wrap {
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+}

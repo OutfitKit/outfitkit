@@ -1,0 +1,86 @@
+/* ============================================================
+   Theme: Default Refresh · Terracotta Modern
+   Refinement of the built-in terracotta palette: warmer mid-tones,
+   slightly higher contrast, subtle glass on the topbar/sidebar,
+   Inter Tight everywhere display.
+   Activate with `data-template="default"` on <html> or <body>.
+   ============================================================ */
+
+[data-template="default"] {
+  --ok-font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --ok-tracking-display: -0.04em;
+
+  /* Acento — terracotta pulida (más cálido, menos rojo) */
+  --ok-brand:      #DD6B3A;       /* warmer terracotta */
+  --ok-brand-2:    #B85426;
+  --ok-brand-3:    #FF8A5C;
+  --ok-brand-fg:   #FFFFFF;
+  --ok-brand-soft: color-mix(in oklch, var(--ok-brand) 18%, transparent);
+
+  /* Estados — armónicos con terracotta */
+  --ok-leaf:    #5BA572;
+  --ok-warn:    #DDA53D;
+  --ok-danger:  #DD5945;
+  --ok-info:    #5C8FCA;
+
+  --ok-radius-md: 8px;
+  --ok-radius-lg: 12px;
+  --ok-radius-xl: 16px;
+  --ok-radius-2xl: 22px;
+
+  --ok-page-pad: 24px;
+  --ok-topbar-h: 56px;
+}
+
+/* Default-refresh · light */
+[data-template="default"][data-theme="erplora-light"],
+[data-template="default"]:not([data-theme]) {
+  --ok-bg:    #FBF7F1;            /* cálido off-white */
+  --ok-bg-1:  rgba(255, 255, 255, 0.85);  /* topbar/sidebar glass-light */
+  --ok-bg-2:  #FFFFFF;
+  --ok-bg-3:  #F5EFE5;
+  --ok-bg-4:  #E8DFD0;
+
+  --ok-line:   rgba(40, 24, 12, 0.07);
+  --ok-line-2: rgba(40, 24, 12, 0.13);
+  --ok-line-3: rgba(40, 24, 12, 0.24);
+
+  --ok-ink:    #1A0F08;
+  --ok-ink-2:  #524236;
+  --ok-ink-3:  #877665;
+  --ok-ink-4:  #B6A998;
+
+  color-scheme: light;
+}
+
+/* Default-refresh · dark */
+[data-template="default"][data-theme="erplora"] {
+  --ok-bg:    #0E0B08;
+  --ok-bg-1:  rgba(28, 24, 20, 0.65);     /* topbar/sidebar glass-dark */
+  --ok-bg-2:  #1E1A16;
+  --ok-bg-3:  #2A241E;
+  --ok-bg-4:  #38302A;
+
+  --ok-line:   rgba(245, 230, 215, 0.07);
+  --ok-line-2: rgba(245, 230, 215, 0.13);
+  --ok-line-3: rgba(245, 230, 215, 0.22);
+
+  --ok-ink:    #F8F2E8;
+  --ok-ink-2:  #C8BAA8;
+  --ok-ink-3:  #94856F;
+  --ok-ink-4:  #5E5345;
+
+  color-scheme: dark;
+}
+
+/* Glass sutil solo en chrome (topbar + sidebar), no en cards.
+   Distingue de "glass" / "glass-mono" que aplican blur a TODO. */
+[data-template="default"] .ok-topbar,
+[data-template="default"] .ok-sidebar,
+[data-template="default"] .ok-app__topbar,
+[data-template="default"] .topbar,
+[data-template="default"] .sidebar,
+[data-template="default"] .app__topbar {
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+}

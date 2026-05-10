@@ -12,16 +12,14 @@
     template: localStorage.getItem('ok-template') || '',
   };
 
-  function resolveTpl() {
-    if (!STATE.template) return '';
-    return STATE.theme === 'erplora-light' ? STATE.template + '-light' : STATE.template;
-  }
-
   function applyOn(el) {
     if (!el || !el.setAttribute) return;
     el.setAttribute('data-theme', STATE.theme);
-    var t = resolveTpl();
-    if (t) el.setAttribute('data-template', t);
+    /* Templates compose with data-theme inside their CSS:
+       [data-template="glass"][data-theme="erplora-light"] vs [data-theme="erplora"].
+       So we just write the bare template name; the matching CSS picks the
+       right variant based on data-theme. */
+    if (STATE.template) el.setAttribute('data-template', STATE.template);
     else el.removeAttribute('data-template');
   }
 

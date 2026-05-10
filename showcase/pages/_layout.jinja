@@ -223,6 +223,23 @@
         document.documentElement.setAttribute('data-embed', '1');
         document.addEventListener('DOMContentLoaded', function () {
           document.body.setAttribute('data-embed', '1');
+          // Make sure internal links keep the embed=1 flag — otherwise
+          // navigating from one app to another inside the iframe reloads
+          // the showcase chrome inside the iframe (visible duplication).
+          document.addEventListener('click', function (ev) {
+            var a = ev.target && ev.target.closest && ev.target.closest('a');
+            if (!a || !a.href) return;
+            var u;
+            try { u = new URL(a.href); } catch (_) { return; }
+            // Same origin only; external links untouched.
+            if (u.origin !== location.origin) return;
+            // Skip anchors / mailto / tel / hash-only.
+            if (u.pathname === location.pathname && u.search === location.search) return;
+            if (u.search.indexOf('embed=') === -1) {
+              u.searchParams.set('embed', '1');
+              a.href = u.toString();
+            }
+          }, true);
         });
       } else if (isAppPage) {
         // Outside the iframe, on an app page: replace the inline content with
@@ -330,6 +347,16 @@
               data-on:click="$theme = 'erplora-light'; window.okTheme.set('erplora-light', $template)"
               data-attr:aria-pressed="$theme === 'erplora-light'">☀ Light</button>
           </div>
+          <select class="topbar-template" aria-label="Template"
+                  data-bind:template
+                  data-on:change="window.okTheme.set($theme, $template); document.documentElement.setAttribute('data-template', $template)">
+            <option value="">⌘ Default · Built-in</option>
+            <option value="default">✦ Default+ · Terracotta refresh</option>
+            <option value="corporate">⬢ Corporate · Blue</option>
+            <option value="glass">◉ Glass · Vibrant + blur</option>
+            <option value="glass-mono">◐ Glass-Mono · B&amp;W + blur</option>
+            <option value="mono">○ Mono · Minimal</option>
+          </select>
           <div class="vp" role="tablist" aria-label="Viewport">
             <button data-on:click="$vp = 'desktop'" data-attr:aria-pressed="$vp === 'desktop'">▢ Desktop</button>
             <button data-on:click="$vp = 'tablet'"  data-attr:aria-pressed="$vp === 'tablet'">▭ Tablet</button>

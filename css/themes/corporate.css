@@ -1,0 +1,83 @@
+/* ============================================================
+   Theme: Corporate · Blue Professional
+   B2B / back-office. Stripe / Linear vibe — sober blues, calm grays,
+   no glass, predictable depth. Works on top of any base scheme.
+   Activate with `data-template="corporate"` on <html> or <body>.
+   ============================================================ */
+
+[data-template="corporate"] {
+  /* Tipografía — sin Inter Tight de display, Inter para todo */
+  --ok-font-display: "Inter", system-ui, -apple-system, sans-serif;
+  --ok-tracking-display: -0.02em;
+
+  /* Acento — azul corporate */
+  --ok-brand:      #2563EB;       /* indigo-600 */
+  --ok-brand-2:    #1D4ED8;
+  --ok-brand-3:    #60A5FA;
+  --ok-brand-fg:   #FFFFFF;
+  --ok-brand-soft: color-mix(in oklch, var(--ok-brand) 14%, transparent);
+
+  /* Estados */
+  --ok-leaf:    #10B981;          /* emerald */
+  --ok-warn:    #F59E0B;          /* amber */
+  --ok-danger:  #EF4444;          /* red */
+  --ok-info:    #06B6D4;          /* cyan */
+
+  /* Layout más generoso (típico corporate, menos denso) */
+  --ok-text-md: 14px;
+  --ok-text-base: 14.5px;
+  --ok-page-pad: 28px;
+  --ok-topbar-h: 56px;
+
+  /* Radios moderados */
+  --ok-radius-md: 6px;
+  --ok-radius-lg: 8px;
+  --ok-radius-xl: 12px;
+  --ok-radius-2xl: 16px;
+}
+
+/* Corporate · light variant */
+[data-template="corporate"][data-theme="erplora-light"],
+[data-template="corporate"]:not([data-theme]) {
+  --ok-bg:    #F8FAFC;            /* slate-50 */
+  --ok-bg-1:  #FFFFFF;
+  --ok-bg-2:  #FFFFFF;
+  --ok-bg-3:  #F1F5F9;            /* slate-100 */
+  --ok-bg-4:  #E2E8F0;            /* slate-200 */
+
+  --ok-line:   #E2E8F0;
+  --ok-line-2: #CBD5E1;
+  --ok-line-3: #94A3B8;
+
+  --ok-ink:    #0F172A;           /* slate-900 */
+  --ok-ink-2:  #334155;
+  --ok-ink-3:  #64748B;
+  --ok-ink-4:  #94A3B8;
+
+  --ok-shadow-xs: 0 1px 0 rgba(15,23,42,0.04);
+  --ok-shadow-sm: 0 1px 2px rgba(15,23,42,0.06);
+  --ok-shadow-md: 0 4px 12px rgba(15,23,42,0.08);
+  --ok-shadow-lg: 0 12px 32px rgba(15,23,42,0.10);
+
+  color-scheme: light;
+}
+
+/* Corporate · dark variant */
+[data-template="corporate"][data-theme="erplora"] {
+  --ok-bg:    #0F172A;            /* slate-900 */
+  --ok-bg-1:  #1E293B;            /* slate-800 */
+  --ok-bg-2:  #1E293B;
+  --ok-bg-3:  #334155;            /* slate-700 */
+  --ok-bg-4:  #475569;            /* slate-600 */
+
+  --ok-line:   rgba(148, 163, 184, 0.10);
+  --ok-line-2: rgba(148, 163, 184, 0.18);
+  --ok-line-3: rgba(148, 163, 184, 0.30);
+
+  --ok-ink:    #F1F5F9;
+  --ok-ink-2:  #CBD5E1;
+  --ok-ink-3:  #94A3B8;
+  --ok-ink-4:  #64748B;
+
+  color-scheme: dark;
+}
