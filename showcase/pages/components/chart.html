@@ -7,6 +7,7 @@
 {% block content %}
 <h1>Chart</h1>
 <p class="showcase__lead">Contenedor genérico para gráficos. Compón cabecera (<code>.ok-chart__head</code>), SVG (<code>.ok-chart__svg</code>) y leyenda (<code>.ok-chart__legend</code>). El SVG es responsabilidad del consumidor — usa <code>.ok-chart__bar</code>, <code>.ok-chart__line</code>, <code>.ok-chart__area</code>, <code>.ok-chart__dot</code>, etc.</p>
+<p class="showcase__lead"><b>Nota:</b> la serie <i>Proyectado</i> se dibuja con <code>stroke-dasharray="4 4"</code>; la leyenda usa <code>.ok-chart__legend-dash</code> para reflejar el mismo patrón. Las <code>&lt;rect&gt;</code> y <code>&lt;polyline&gt;</code> de los demos llevan <code>&lt;title&gt;</code> hijo para tooltip nativo del navegador.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/chart.jinja" import chart %}
 {% call chart() %}
@@ -41,12 +42,12 @@
   </g>
   <path class="ok-chart__area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
   <path class="ok-chart__line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
-  <path class="ok-chart__line ok-chart__line--mute" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"/>
+  <path class="ok-chart__line ok-chart__line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
   <circle class="ok-chart__dot" cx="500" cy="42" r="4"/>
 </svg>
 <div class="ok-chart__legend">
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot"></span> Real</span>
-  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-ink-3)"></span> Proyectado</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dash"></span> Proyectado</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Chart>
@@ -81,12 +82,12 @@
   </g>
   <path class="ok-chart__area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
   <path class="ok-chart__line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
-  <path class="ok-chart__line ok-chart__line--mute" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"/>
+  <path class="ok-chart__line ok-chart__line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
   <circle class="ok-chart__dot" cx="500" cy="42" r="4"/>
 </svg>
 <div class="ok-chart__legend">
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot"></span> Real</span>
-  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-ink-3)"></span> Proyectado</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dash"></span> Proyectado</span>
 </div>
 </Chart>{% endraw %}{% endset %}
 
@@ -125,12 +126,12 @@
   </g>
   <path class="ok-chart__area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
   <path class="ok-chart__line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
-  <path class="ok-chart__line ok-chart__line--mute" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"/>
+  <path class="ok-chart__line ok-chart__line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
   <circle class="ok-chart__dot" cx="500" cy="42" r="4"/>
 </svg>
 <div class="ok-chart__legend">
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot"></span> Real</span>
-  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-ink-3)"></span> Proyectado</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dash"></span> Proyectado</span>
 </div>
 {% endcall %}
 {% endcall %}
@@ -142,16 +143,18 @@
   <span class="ok-chart__big">€42,1k</span>
 </header>
 <svg class="ok-chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
-  <rect class="ok-chart__bar"       x="20"  y="60"  width="40" height="80"/>
-  <rect class="ok-chart__bar ok-chart__bar--leaf" x="80"  y="40"  width="40" height="100"/>
-  <rect class="ok-chart__bar ok-chart__bar--info" x="140" y="80"  width="40" height="60"/>
-  <rect class="ok-chart__bar ok-chart__bar--warn" x="200" y="100" width="40" height="40"/>
-  <rect class="ok-chart__bar ok-chart__bar--mute" x="260" y="120" width="40" height="20"/>
+  <rect class="ok-chart__bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
 </svg>
 <div class="ok-chart__legend">
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot"></span> POS</span>
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-leaf)"></span> Web</span>
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-info)"></span> App</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-warn)"></span> Marketplace</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-ink-2)"></span> Otros</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Chart>
@@ -160,16 +163,18 @@
   <span class="ok-chart__big">€42,1k</span>
 </header>
 <svg class="ok-chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
-  <rect class="ok-chart__bar"       x="20"  y="60"  width="40" height="80"/>
-  <rect class="ok-chart__bar ok-chart__bar--leaf" x="80"  y="40"  width="40" height="100"/>
-  <rect class="ok-chart__bar ok-chart__bar--info" x="140" y="80"  width="40" height="60"/>
-  <rect class="ok-chart__bar ok-chart__bar--warn" x="200" y="100" width="40" height="40"/>
-  <rect class="ok-chart__bar ok-chart__bar--mute" x="260" y="120" width="40" height="20"/>
+  <rect class="ok-chart__bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
 </svg>
 <div class="ok-chart__legend">
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot"></span> POS</span>
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-leaf)"></span> Web</span>
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-info)"></span> App</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-warn)"></span> Marketplace</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-ink-2)"></span> Otros</span>
 </div>
 </Chart>{% endraw %}{% endset %}
 
@@ -182,16 +187,18 @@
   <span class="ok-chart__big">€42,1k</span>
 </header>
 <svg class="ok-chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
-  <rect class="ok-chart__bar"       x="20"  y="60"  width="40" height="80"/>
-  <rect class="ok-chart__bar ok-chart__bar--leaf" x="80"  y="40"  width="40" height="100"/>
-  <rect class="ok-chart__bar ok-chart__bar--info" x="140" y="80"  width="40" height="60"/>
-  <rect class="ok-chart__bar ok-chart__bar--warn" x="200" y="100" width="40" height="40"/>
-  <rect class="ok-chart__bar ok-chart__bar--mute" x="260" y="120" width="40" height="20"/>
+  <rect class="ok-chart__bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
+  <rect class="ok-chart__bar ok-chart__bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
 </svg>
 <div class="ok-chart__legend">
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot"></span> POS</span>
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-leaf)"></span> Web</span>
   <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-info)"></span> App</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-warn)"></span> Marketplace</span>
+  <span class="ok-chart__legend-item"><span class="ok-chart__legend-dot" style="background:var(--ok-ink-2)"></span> Otros</span>
 </div>
 {% endcall %}
 {% endcall %}
@@ -203,7 +210,7 @@
   <span class="ok-chart__delta ok-chart__delta--down">▼ −2,1%</span>
 </header>
 <svg class="ok-chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
-  <path class="ok-chart__line ok-chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"/>
+  <path class="ok-chart__line ok-chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
 </svg>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Chart variant="flat">
@@ -212,7 +219,7 @@
   <span class="ok-chart__delta ok-chart__delta--down">▼ −2,1%</span>
 </header>
 <svg class="ok-chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
-  <path class="ok-chart__line ok-chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"/>
+  <path class="ok-chart__line ok-chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
 </svg>
 </Chart>{% endraw %}{% endset %}
 
@@ -225,7 +232,7 @@
   <span class="ok-chart__delta ok-chart__delta--down">▼ −2,1%</span>
 </header>
 <svg class="ok-chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
-  <path class="ok-chart__line ok-chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"/>
+  <path class="ok-chart__line ok-chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
 </svg>
 {% endcall %}
 {% endcall %}

@@ -72,6 +72,51 @@
 {% endcall %}
 {% endcall %}
 
+{% set _src_jinja_sticky %}{% raw %}{% from "ui/panel.jinja" import panel %}
+{# Variante --sticky-head: la cabecera permanece visible al scrollear el body. #}
+<div style="max-height: 220px; overflow-y: auto; border-radius: var(--ok-radius-lg);">
+{% call panel(title="Actividad reciente", sub="Últimas 24 h", variant="sticky-head") %}
+<ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:13px;color:var(--ok-ink-2)">
+  <li>10:14 · Nuevo pedido FCT-2026-00184</li>
+  <li>10:08 · Stock bajo: Camiseta básica L</li>
+  <li>09:51 · Pago recibido · 234,50 €</li>
+  <li>09:30 · Factura emitida FCT-2026-00183</li>
+  <li>08:47 · Cliente nuevo · Ana Pérez</li>
+  <li>08:22 · Devolución cerrada · DEV-019</li>
+  <li>07:55 · Cierre caja · Turno noche</li>
+  <li>07:10 · Apertura caja · Turno mañana</li>
+  <li>06:00 · Backup nocturno OK</li>
+  <li>23:42 · Sincronización catálogo</li>
+</ul>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_sticky %}{% raw %}<div style="max-height: 220px; overflow-y: auto; border-radius: var(--ok-radius-lg);">
+<Panel title="Actividad reciente" sub="Últimas 24 h" variant="sticky-head">
+<ul>… items …</ul>
+</Panel>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Sticky-head — cabecera fija al scrollear",
+    jinja_src=_src_jinja_sticky,
+    jinjax_src=_src_jinjax_sticky) %}
+<div style="max-height: 220px; overflow-y: auto; border-radius: var(--ok-radius-lg);">
+{% call panel(title="Actividad reciente", sub="Últimas 24 h", variant="sticky-head") %}
+<ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:13px;color:var(--ok-ink-2)">
+  <li>10:14 · Nuevo pedido FCT-2026-00184</li>
+  <li>10:08 · Stock bajo: Camiseta básica L</li>
+  <li>09:51 · Pago recibido · 234,50 €</li>
+  <li>09:30 · Factura emitida FCT-2026-00183</li>
+  <li>08:47 · Cliente nuevo · Ana Pérez</li>
+  <li>08:22 · Devolución cerrada · DEV-019</li>
+  <li>07:55 · Cierre caja · Turno noche</li>
+  <li>07:10 · Apertura caja · Turno mañana</li>
+  <li>06:00 · Backup nocturno OK</li>
+  <li>23:42 · Sincronización catálogo</li>
+</ul>
+{% endcall %}
+</div>
+{% endcall %}
+
 {% set _src_jinja_5 %}{% raw %}{% from "ui/panel.jinja" import panel %}
 {% call panel() %}
 <p style="margin:0">Body suelto sin cabecera.</p>

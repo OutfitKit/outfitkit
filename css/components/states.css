@@ -19,7 +19,12 @@
   100% { background-position: -200% 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ok-skel { animation: none; }
+  .ok-skel,
+  .ok-skeleton,
+  .ok-skel-chart__bar {
+    animation: none;
+    background: var(--ok-bg-3);
+  }
 }
 
 /* Variantes de forma */

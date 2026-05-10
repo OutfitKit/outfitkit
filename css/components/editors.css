@@ -137,12 +137,21 @@
 .ok-richtext__content h3 { font-size: var(--ok-text-lg);  font-weight: 600; }
 .ok-richtext__content h4 { font-size: var(--ok-text-md);  font-weight: 600; }
 
-.ok-richtext__content ul,
-.ok-richtext__content ol {
+/* Re-enable list markers inside the content area (base.css resets `list-style: none` globally) */
+.ok-richtext__content ul {
+  list-style: disc;
   margin: 0 0 var(--ok-space-3);
   padding-left: var(--ok-space-5);
 }
+.ok-richtext__content ol {
+  list-style: decimal;
+  margin: 0 0 var(--ok-space-3);
+  padding-left: var(--ok-space-5);
+}
+.ok-richtext__content ul ul     { list-style: circle; }
+.ok-richtext__content ul ul ul  { list-style: square; }
 .ok-richtext__content li { margin-bottom: var(--ok-space-1); }
+.ok-richtext__content li::marker { color: var(--ok-ink-3); }
 
 .ok-richtext__content a {
   color: var(--ok-brand-3);

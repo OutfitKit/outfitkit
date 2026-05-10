@@ -90,6 +90,38 @@
 </div>
 {% endcall %}
 
+{% set _src_jinja_2 %}{% raw %}{% from "ui/context_menu.jinja" import context_menu %}
+<div style="position:relative;height:180px;width:240px">
+{% call context_menu(label="Vista") %}
+<button class="ok-ctx-menu__item"><span>Ampliar</span></button>
+<button class="ok-ctx-menu__item"><span>Reducir</span></button>
+<div class="ok-ctx-menu__divider"></div>
+<button class="ok-ctx-menu__item"><span>Restaurar 100%</span></button>
+{% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_2 %}{% raw %}<div style="position:relative;height:180px;width:240px">
+<context_menu label="Vista">
+<button class="ok-ctx-menu__item"><span>Ampliar</span></button>
+<button class="ok-ctx-menu__item"><span>Reducir</span></button>
+<div class="ok-context-menu__divider"></div>
+<button class="ok-ctx-menu__item"><span>Restaurar 100%</span></button>
+</context_menu>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Con divider — separador entre grupos",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinjax_2) %}
+<div style="position:relative;height:180px;width:240px">
+{% call context_menu(label="Vista") %}
+<button class="ok-ctx-menu__item"><span>Ampliar</span></button>
+<button class="ok-ctx-menu__item"><span>Reducir</span></button>
+<div class="ok-ctx-menu__divider"></div>
+<div class="ok-context-menu__divider" hidden></div>
+<button class="ok-ctx-menu__item"><span>Restaurar 100%</span></button>
+{% endcall %}
+</div>
+{% endcall %}
+
 <h2>API</h2>
 <table class="ok-table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>

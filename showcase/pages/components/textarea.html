@@ -9,6 +9,12 @@
 <h1>Textarea</h1>
 <p class="showcase__lead">Área multilínea. Por defecto resizable verticalmente. Suele ir dentro de un <code>field</code>.</p>
 
+<div class="ok-callout ok-callout--info" style="margin: 16px 0 24px">
+  <strong>Estados de error:</strong> para mostrar icono + mensaje de error, envuelve el textarea en
+  <code>&lt;Field error="…"&gt;</code> (ver demo «Con field — error» más abajo). El modificador
+  <code>invalid</code> standalone solo pinta el borde rojo.
+</div>
+
 {% set _src_jinja_1 %}{% raw %}{% from "ui/textarea.jinja" import textarea %}
 {{ textarea("notes", placeholder="Detalles del cliente, preferencias, alergias…") }}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Textarea label="notes" placeholder="Detalles del cliente, preferencias, alergias…" />{% endraw %}{% endset %}
@@ -33,6 +39,23 @@
     jinjax_src=_src_jinjax_2) %}
 {% call field("Notas internas", hint="Solo visible para el equipo. Hasta 500 caracteres.") %}
   {{ textarea("notes", placeholder="Escribe aquí…") }}
+{% endcall %}
+{% endcall %}
+
+{% set _src_jinja_2b %}{% raw %}{% from "ui/textarea.jinja" import textarea %}
+{% from "ui/field.jinja" import field %}
+{% call field("Motivo de la devolución", required=True, error="Por favor describe el motivo") %}
+  {{ textarea("reason", value="", placeholder="Mínimo 20 caracteres…", invalid=True) }}
+{% endcall %}{% endraw %}{% endset %}
+{% set _src_jinjax_2b %}{% raw %}<Field label="Motivo de la devolución" required error="Por favor describe el motivo">
+  <Textarea label="reason" placeholder="Mínimo 20 caracteres…" invalid />
+</Field>{% endraw %}{% endset %}
+
+{% call demo_frame("Con field — error (icono + mensaje)",
+    jinja_src=_src_jinja_2b,
+    jinjax_src=_src_jinjax_2b) %}
+{% call field("Motivo de la devolución", required=True, error="Por favor describe el motivo") %}
+  {{ textarea("reason", value="", placeholder="Mínimo 20 caracteres…", invalid=True) }}
 {% endcall %}
 {% endcall %}
 

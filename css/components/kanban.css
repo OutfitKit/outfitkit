@@ -7,10 +7,15 @@
   display: flex;
   gap: 12px;
   overflow-x: auto;
-  padding: 4px;
+  overflow-y: hidden;
+  padding: 4px 4px 12px;
   scrollbar-width: thin;
   scrollbar-color: var(--ok-line-2) transparent;
   align-items: flex-start;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  /* prevent flex children from collapsing below their flex-basis */
+  min-width: 0;
 }
 .ok-kanban::-webkit-scrollbar { height: 8px; }
 .ok-kanban::-webkit-scrollbar-thumb {
@@ -20,6 +25,7 @@
 
 .ok-kanban__col {
   flex: 0 0 280px;
+  min-width: 280px;
   background: var(--ok-bg-1);
   border: 1px solid var(--ok-line);
   border-radius: var(--ok-radius-xl);
@@ -28,8 +34,9 @@
   max-height: 100%;
   min-height: 200px;
   overflow: hidden;
+  scroll-snap-align: start;
 }
-.ok-kanban__col--wide { flex-basis: 320px; }
+.ok-kanban__col--wide { flex-basis: 320px; min-width: 320px; }
 
 .ok-kanban__col-head {
   display: flex;

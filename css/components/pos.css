@@ -224,9 +224,27 @@
   gap: 10px;
   overflow-x: auto;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
   padding: 0 14px 4px;
   scrollbar-width: thin;
   scrollbar-color: var(--ok-line-2) transparent;
+}
+/* Chip-style fallback rail (no __track wrapper) — same scroll/snap pattern */
+.ok-cat-rail--chips {
+  display: flex;
+  gap: var(--ok-space-2);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+}
+.ok-cat-rail--chips > .ok-cat-rail__chip,
+.ok-cat-rail--chips > .ok-cat-rail__item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  white-space: nowrap;
 }
 .ok-cat-rail__track::-webkit-scrollbar { height: 6px; }
 .ok-cat-rail__track::-webkit-scrollbar-track { background: transparent; }
@@ -343,20 +361,23 @@
 
 /* ============================================================
    Numpad · grid 3×4 + acciones laterales
+   Comma decimal (`,`) lives bottom-left por convención española
+   (1.234,56). Para locales EN swap el `,` por `.` en el último
+   botón inferior izquierdo.
    ============================================================ */
 .ok-numpad {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 6px;
   background: var(--ok-bg-2);
-  padding: 12px;
-  border-radius: var(--ok-radius-xl);
+  padding: 6px;
+  border-radius: var(--ok-radius-md);
   border: 1px solid var(--ok-line);
 }
 
 .ok-numpad__btn {
   height: 56px;
-  background: var(--ok-bg-3);
+  background: var(--ok-bg-1);
   border: 1px solid var(--ok-line);
   border-radius: var(--ok-radius-md);
   color: var(--ok-ink);
@@ -366,13 +387,17 @@
   letter-spacing: -0.02em;
   cursor: pointer;
   font-variant-numeric: tabular-nums;
-  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast);
+  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast), box-shadow var(--ok-dur-fast);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.ok-numpad__btn:hover { background: var(--ok-bg-4); }
-.ok-numpad__btn:active { transform: scale(0.97); }
+.ok-numpad__btn:hover { background: var(--ok-bg-3); }
+.ok-numpad__btn:active {
+  transform: scale(0.97);
+  background: var(--ok-bg-4);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
 
 .ok-numpad__btn--brand {
   background: var(--ok-brand);
@@ -478,13 +503,13 @@
 }
 .ok-cart__line-qty {
   display: inline-block;
-  min-width: 22px;
-  padding: 1px 6px;
-  background: var(--ok-bg-4);
-  color: var(--ok-ink-2);
-  border-radius: var(--ok-radius-xs);
-  font-size: 11px;
-  font-weight: 500;
+  min-width: 24px;
+  padding: 2px 8px;
+  background: var(--ok-bg-3);
+  color: var(--ok-ink);
+  border-radius: 999px;
+  font-size: var(--ok-text-md);
+  font-weight: 600;
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
@@ -628,6 +653,24 @@
 .ok-cat-tile__img {
   transition: transform var(--ok-dur-slow) var(--ok-ease);
 }
+
+/* Optional product thumbnail slot · placeholder when image missing */
+.ok-cat-tile__media {
+  aspect-ratio: 1;
+  width: 100%;
+  background: var(--ok-bg-3);
+  border-radius: var(--ok-radius-sm);
+  overflow: hidden;
+  margin-bottom: 6px;
+  display: grid;
+  place-items: center;
+}
+.ok-cat-tile__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.ok-cat-tile__media--placeholder { color: var(--ok-ink-4); }
 
 .ok-cat-tile__name {
   font-size: 13px;
@@ -823,6 +866,15 @@
   line-height: 1.4;
 }
 
+/* All data inside a receipt is monospaced + tabular-nums so numeric columns
+   line up (Cierre Z totals, prices, counts). */
+.ok-receipt,
+.ok-receipt pre,
+.ok-receipt table {
+  font-family: var(--ok-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ============================================================
    KDS · ticket de cocina
    ============================================================ */
@@ -916,3 +968,16 @@
   margin-top: 4px;
 }
 .ok-kds__actions .ok-btn { flex: 1; }
+
+/* Ghost buttons inside KDS get a visible outline so "Marcar" doesn't look
+   like plain text against the card background. */
+.ok-kds__actions .ok-btn--ghost {
+  background: transparent;
+  border: 1px solid var(--ok-line-2);
+  color: var(--ok-ink-2);
+}
+.ok-kds__actions .ok-btn--ghost:hover {
+  background: var(--ok-bg-3);
+  border-color: var(--ok-line-3);
+  color: var(--ok-ink);
+}

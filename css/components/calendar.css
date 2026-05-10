@@ -61,6 +61,44 @@
 }
 .ok-cal__today:hover { background: var(--ok-bg-3); }
 
+/* ---------- Legend ---------- */
+.ok-cal__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--ok-bg-1);
+  border-bottom: 1px solid var(--ok-line);
+  font-size: 11px;
+  color: var(--ok-ink-3);
+}
+.ok-cal__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.ok-cal__legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ok-ink-3);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.ok-cal__legend-dot--today    { background: var(--ok-brand); }
+.ok-cal__legend-dot--selected { background: color-mix(in oklch, var(--ok-brand) 50%, var(--ok-bg-4)); box-shadow: inset 0 0 0 1px var(--ok-brand); }
+.ok-cal__legend-dot--brand    { background: var(--ok-brand); }
+.ok-cal__legend-dot--leaf     { background: var(--ok-leaf); }
+.ok-cal__legend-dot--warn     { background: var(--ok-warn); }
+.ok-cal__legend-dot--danger   { background: var(--ok-danger); }
+.ok-cal__legend-dot--info     { background: var(--ok-info); }
+.ok-cal__legend-sep {
+  width: 1px;
+  height: 12px;
+  background: var(--ok-line);
+}
+
 /* ---------- View · Month ---------- */
 .ok-cal__weekdays {
   display: grid;

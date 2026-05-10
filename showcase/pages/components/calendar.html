@@ -18,6 +18,14 @@
     <button class="ok-cal__nav-btn">›</button>
   </div>
 </header>
+<div class="ok-cal__legend">
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--today"></span>Hoy</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--selected"></span>Seleccionado</span>
+  <span class="ok-cal__legend-sep"></span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--danger"></span>Vencimiento</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--warn"></span>Recordatorio</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--info"></span>Informativo</span>
+</div>
 <div class="ok-cal__weekdays">
   <div class="ok-cal__weekday">Lun</div>
   <div class="ok-cal__weekday">Mar</div>
@@ -28,15 +36,18 @@
   <div class="ok-cal__weekday">Dom</div>
 </div>
 <div class="ok-cal__grid">
+  {# Row 1: Apr 27-30 (out) + May 1-3 #}
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">27</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">28</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">29</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">30</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">1</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--info"><span class="ok-cal__event-time">09:00</span> Festivo</div></div>
   </div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">2</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">3</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">4</span></div>
+  {# Row 2: May 4-10 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">4</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">5</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand"><span class="ok-cal__event-time">10:00</span> Demo Café Norte</div></div>
   </div>
@@ -54,9 +65,10 @@
     </div>
   </div>
   <div class="ok-cal__cell"><span class="ok-cal__day">8</span></div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">9</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">9</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">10</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">11</span></div>
+  {# Row 3: May 11-17 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">11</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">12</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura</div></div>
   </div>
@@ -65,9 +77,36 @@
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand">All-hands</div></div>
   </div>
   <div class="ok-cal__cell"><span class="ok-cal__day">15</span></div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">16</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">16</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">17</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">18</span></div>
+  {# Row 4: May 18-24 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">18</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">19</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--warn"><span class="ok-cal__event-time">11:00</span> Recordatorio IVA</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">20</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">21</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">22</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">23</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">24</span></div>
+  {# Row 5: May 25-31 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">25</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">26</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">27</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">28</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura Ibérica</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">29</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">30</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">31</span></div>
+  {# Row 6: Jun 1-7 (out) #}
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">1</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">3</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">4</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">5</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out ok-cal__cell--weekend"><span class="ok-cal__day">6</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out ok-cal__cell--weekend"><span class="ok-cal__day">7</span></div>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Calendar>
@@ -79,6 +118,14 @@
     <button class="ok-cal__nav-btn">›</button>
   </div>
 </header>
+<div class="ok-cal__legend">
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--today"></span>Hoy</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--selected"></span>Seleccionado</span>
+  <span class="ok-cal__legend-sep"></span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--danger"></span>Vencimiento</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--warn"></span>Recordatorio</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--info"></span>Informativo</span>
+</div>
 <div class="ok-cal__weekdays">
   <div class="ok-cal__weekday">Lun</div>
   <div class="ok-cal__weekday">Mar</div>
@@ -89,15 +136,16 @@
   <div class="ok-cal__weekday">Dom</div>
 </div>
 <div class="ok-cal__grid">
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">27</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">28</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">29</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">30</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">1</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--info"><span class="ok-cal__event-time">09:00</span> Festivo</div></div>
   </div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">2</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">3</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">4</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">4</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">5</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand"><span class="ok-cal__event-time">10:00</span> Demo Café Norte</div></div>
   </div>
@@ -115,9 +163,9 @@
     </div>
   </div>
   <div class="ok-cal__cell"><span class="ok-cal__day">8</span></div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">9</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">9</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">10</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">11</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">11</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">12</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura</div></div>
   </div>
@@ -126,9 +174,33 @@
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand">All-hands</div></div>
   </div>
   <div class="ok-cal__cell"><span class="ok-cal__day">15</span></div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">16</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">16</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">17</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">18</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">18</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">19</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--warn"><span class="ok-cal__event-time">11:00</span> Recordatorio IVA</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">20</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">21</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">22</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">23</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">24</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">25</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">26</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">27</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">28</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura Ibérica</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">29</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">30</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">31</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">1</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">3</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">4</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">5</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out ok-cal__cell--weekend"><span class="ok-cal__day">6</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out ok-cal__cell--weekend"><span class="ok-cal__day">7</span></div>
 </div>
 </Calendar>{% endraw %}{% endset %}
 
@@ -144,6 +216,14 @@
     <button class="ok-cal__nav-btn">›</button>
   </div>
 </header>
+<div class="ok-cal__legend">
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--today"></span>Hoy</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--selected"></span>Seleccionado</span>
+  <span class="ok-cal__legend-sep"></span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--danger"></span>Vencimiento</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--warn"></span>Recordatorio</span>
+  <span class="ok-cal__legend-item"><span class="ok-cal__legend-dot ok-cal__legend-dot--info"></span>Informativo</span>
+</div>
 <div class="ok-cal__weekdays">
   <div class="ok-cal__weekday">Lun</div>
   <div class="ok-cal__weekday">Mar</div>
@@ -154,15 +234,18 @@
   <div class="ok-cal__weekday">Dom</div>
 </div>
 <div class="ok-cal__grid">
+  {# Row 1: Apr 27-30 (out) + May 1-3 #}
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">27</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">28</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">29</span></div>
   <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">30</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">1</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--info"><span class="ok-cal__event-time">09:00</span> Festivo</div></div>
   </div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">2</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">3</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">4</span></div>
+  {# Row 2: May 4-10 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">4</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">5</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand"><span class="ok-cal__event-time">10:00</span> Demo Café Norte</div></div>
   </div>
@@ -180,9 +263,10 @@
     </div>
   </div>
   <div class="ok-cal__cell"><span class="ok-cal__day">8</span></div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">9</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">9</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">10</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">11</span></div>
+  {# Row 3: May 11-17 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">11</span></div>
   <div class="ok-cal__cell"><span class="ok-cal__day">12</span>
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura</div></div>
   </div>
@@ -191,9 +275,36 @@
     <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--brand">All-hands</div></div>
   </div>
   <div class="ok-cal__cell"><span class="ok-cal__day">15</span></div>
-  <div class="ok-cal__cell"><span class="ok-cal__day">16</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">16</span></div>
   <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">17</span></div>
-  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">18</span></div>
+  {# Row 4: May 18-24 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">18</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">19</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--warn"><span class="ok-cal__event-time">11:00</span> Recordatorio IVA</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">20</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">21</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">22</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">23</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">24</span></div>
+  {# Row 5: May 25-31 #}
+  <div class="ok-cal__cell"><span class="ok-cal__day">25</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">26</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">27</span></div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">28</span>
+    <div class="ok-cal__events"><div class="ok-cal__event ok-cal__event--danger">Vence factura Ibérica</div></div>
+  </div>
+  <div class="ok-cal__cell"><span class="ok-cal__day">29</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">30</span></div>
+  <div class="ok-cal__cell ok-cal__cell--weekend"><span class="ok-cal__day">31</span></div>
+  {# Row 6: Jun 1-7 (out) #}
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">1</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">2</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">3</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">4</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out"><span class="ok-cal__day">5</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out ok-cal__cell--weekend"><span class="ok-cal__day">6</span></div>
+  <div class="ok-cal__cell ok-cal__cell--out ok-cal__cell--weekend"><span class="ok-cal__day">7</span></div>
 </div>
 {% endcall %}
 {% endcall %}

@@ -1,5 +1,5 @@
 {% extends "_layout.jinja" %}
-{% from "ui/chat.jinja" import chat %}
+{% from "ui/chat.jinja" import chat, chat_composer %}
 {% from "demo_frame.jinja" import demo_frame %}
 
 {% block title %}Chat — OutfitKit{% endblock %}
@@ -8,7 +8,7 @@
 <h1>Chat</h1>
 <p class="showcase__lead">Layout de mensajería con barra lateral de conversaciones y vista principal de hilo. Compón <code>.ok-chat__list</code> (sidebar), <code>.ok-chat__thread</code> (viewport), y dentro <code>.ok-chat__conv</code>, <code>.ok-chat__msg</code>, <code>.ok-chat__bubble</code>.</p>
 
-{% set _src_jinja_1 %}{% raw %}{% from "ui/chat.jinja" import chat %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/chat.jinja" import chat, chat_composer %}
 {% call chat(attrs={"style": "height: 520px"}) %}
 <aside class="ok-chat__list">
   <div class="ok-chat__search">
@@ -91,6 +91,7 @@
       </div>
     </div>
   </div>
+  {{ chat_composer() }}
 </section>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Chat style="height: 520px">
@@ -175,6 +176,7 @@
       </div>
     </div>
   </div>
+  <ChatComposer />
 </section>
 </Chat>{% endraw %}{% endset %}
 
@@ -263,6 +265,7 @@
       </div>
     </div>
   </div>
+  {{ chat_composer() }}
 </section>
 {% endcall %}
 {% endcall %}

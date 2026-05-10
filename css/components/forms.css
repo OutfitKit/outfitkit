@@ -55,6 +55,13 @@
   border-color: var(--ok-danger);
 }
 
+/* Cuando el control es un textarea (multi-línea), el icono de error
+   debe anclarse arriba, no centrarse verticalmente. */
+.ok-field--error .ok-field__control:has(> .ok-textarea) .ok-field__error-icon {
+  top: 10px;
+  transform: none;
+}
+
 .ok-field__hint {
   font-size: var(--ok-text-xs);
   color: var(--ok-ink-3);
@@ -481,12 +488,25 @@
   cursor: not-allowed;
   background: var(--ok-bg-2);
   border-color: var(--ok-line);
+  filter: grayscale(0.4);
+}
+/* Preserve checked-ring on disabled+checked so it doesn't look "Sin marcar" */
+.ok-radio input:disabled:checked ~ .ok-radio__dot {
+  border-color: color-mix(in oklch, var(--ok-brand) 55%, var(--ok-ink-4));
+  border-width: 4px;
+  background: var(--ok-bg);
 }
 .ok-radio:has(input:disabled),
 .ok-radio--disabled {
   opacity: 0.55;
   cursor: not-allowed;
   color: var(--ok-ink-3);
+  pointer-events: none;
+}
+/* Bare input fallback (no .ok-radio wrapper) */
+input[type="radio"]:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 /* Radio card — opción seleccionable visual con label rico */

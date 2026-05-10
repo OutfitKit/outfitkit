@@ -6,7 +6,7 @@
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if title %}
   <header class="{{ ok_prefix }}notif__head">
-    <h3 class="{{ ok_prefix }}notif__title">{{ title }}{% if count is not none %} <b>{{ count }}</b>{% endif %}</h3>
+    <h3 class="{{ ok_prefix }}notif__title">{{ title }}{% if count is not none %} <b title="{{ count }} sin leer" aria-label="{{ count }} notificaciones sin leer">{{ count }}</b>{% endif %}</h3>
   </header>
   {% endif %}
   {{ caller() }}

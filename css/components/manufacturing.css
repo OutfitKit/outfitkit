@@ -46,10 +46,37 @@
   align-items: center;
   gap: 8px;
   min-width: 0;
+  position: relative;
 }
 .ok-bom__name--lvl-1 { padding-left: 0; }
 .ok-bom__name--lvl-2 { padding-left: 24px; color: var(--ok-ink-2); font-size: 12.5px; }
 .ok-bom__name--lvl-3 { padding-left: 48px; color: var(--ok-ink-3); font-size: 12px; }
+
+/* Tree connectors — vertical track + horizontal stub from parent to child.
+   Conforms to the .ok-track-line token (see bottom of file). Stepper, Timeline
+   and BOM all use the same 2px line in var(--ok-line). */
+.ok-bom__name--lvl-2::before,
+.ok-bom__name--lvl-3::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  bottom: 50%;
+  width: 2px;
+  background: var(--ok-line);
+}
+.ok-bom__name--lvl-2::after,
+.ok-bom__name--lvl-3::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 2px;
+  width: 11px;
+  background: var(--ok-line);
+}
+.ok-bom__name--lvl-2::before { left: 11px; }
+.ok-bom__name--lvl-2::after  { left: 11px; }
+.ok-bom__name--lvl-3::before { left: 35px; }
+.ok-bom__name--lvl-3::after  { left: 35px; }
 
 .ok-bom__caret {
   width: 16px; height: 16px;
@@ -74,17 +101,28 @@
 }
 .ok-bom__row:hover .ok-bom__sku { background: var(--ok-bg-2); }
 
+/* Status pills — subtle/leaf pair (Lote 7) for legibility on dark bg.
+   Adds a border so the badge holds its shape even when bg color-mix collapses. */
 .ok-bom__pill {
   display: inline-flex;
   padding: 1px 6px;
   border-radius: 3px;
   font-size: 10.5px;
   font-weight: 500;
-  background: color-mix(in oklch, var(--ok-leaf) 15%, transparent);
-  color: var(--ok-leaf);
+  background: color-mix(in oklch, var(--ok-leaf) 18%, transparent);
+  color: oklch(78% 0.15 145);
+  border: 1px solid color-mix(in oklch, var(--ok-leaf) 30%, transparent);
 }
-.ok-bom__pill--low { background: color-mix(in oklch, var(--ok-warn) 18%, transparent); color: var(--ok-warn); }
-.ok-bom__pill--out { background: color-mix(in oklch, var(--ok-danger) 18%, transparent); color: var(--ok-danger); }
+.ok-bom__pill--low {
+  background: color-mix(in oklch, var(--ok-warn) 18%, transparent);
+  color: var(--ok-warn);
+  border-color: color-mix(in oklch, var(--ok-warn) 30%, transparent);
+}
+.ok-bom__pill--out {
+  background: color-mix(in oklch, var(--ok-danger) 18%, transparent);
+  color: var(--ok-danger);
+  border-color: color-mix(in oklch, var(--ok-danger) 30%, transparent);
+}
 
 /* ---------- Work Order ---------- */
 .ok-wo {
@@ -1192,3 +1230,21 @@
   color: var(--ok-ink-3);
   font-variant-numeric: tabular-nums;
 }
+
+/* ============================================================
+   ok-track-line — reusable connector utility.
+   Single token-based rule shared by .ok-stepper, .ok-timeline
+   and .ok-bom tree connectors. Width 2px, color var(--ok-line),
+   absolute-positioned. Variants for "done" (brand) and horizontal
+   orientation. The Stepper and Timeline components conform to
+   this token via their own ::before/::after rules in
+   timeline.css; BOM connectors above also use the same 2px /
+   var(--ok-line) treatment.
+   ============================================================ */
+.ok-track-line {
+  position: absolute;
+  width: 2px;
+  background: var(--ok-line);
+}
+.ok-track-line--done { background: var(--ok-brand); }
+.ok-track-line--horizontal { width: auto; height: 2px; }

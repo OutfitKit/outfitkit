@@ -70,6 +70,19 @@
   background: var(--ok-brand);
   flex-shrink: 0;
 }
+/* Dashed indicator for legend entries that map to dashed lines in the SVG.
+   Renders a 2px tall double-segment that visually matches stroke-dasharray="4 4". */
+.ok-chart__legend-dash {
+  width: 18px; height: 2px;
+  flex-shrink: 0;
+  background-image: linear-gradient(
+    to right,
+    var(--ok-ink-2) 0 6px,
+    transparent     6px 10px,
+    var(--ok-ink-2) 10px 16px,
+    transparent    16px 18px
+  );
+}
 
 /* SVG canvas */
 .ok-chart__svg {
@@ -86,18 +99,22 @@
 .ok-chart__axis text { fill: var(--ok-ink-3); font-size: 10px; font-variant-numeric: tabular-nums; }
 .ok-chart__axis line { stroke: var(--ok-line-2); stroke-width: 1; }
 
-/* series colors */
+/* series colors — palette tokens kept distinct from chart background.
+   --mute uses ink-2 (mid-grey on dark bg) so trailing categories like
+   "Otros" stay readable instead of collapsing into --ok-bg-4. */
 .ok-chart__bar       { fill: var(--ok-brand); }
 .ok-chart__bar--leaf { fill: var(--ok-leaf); }
 .ok-chart__bar--warn { fill: var(--ok-warn); }
 .ok-chart__bar--info { fill: var(--ok-info); }
-.ok-chart__bar--mute { fill: var(--ok-bg-4); }
+.ok-chart__bar--ink2 { fill: var(--ok-ink-2); }
+.ok-chart__bar--mute { fill: var(--ok-ink-2); }
 .ok-chart__bar:hover { filter: brightness(1.15); }
 
 .ok-chart__line       { stroke: var(--ok-brand); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .ok-chart__line--leaf { stroke: var(--ok-leaf); }
 .ok-chart__line--info { stroke: var(--ok-info); }
-.ok-chart__line--mute { stroke: var(--ok-ink-3); stroke-dasharray: 4 4; stroke-width: 1.5; }
+/* Mute / projected line: dashed + lighter ink so it stays visible on dark bg. */
+.ok-chart__line--mute { stroke: var(--ok-ink-2); stroke-dasharray: 4 4; stroke-width: 1.5; }
 
 .ok-chart__area       { fill: url(#ok-area-grad); }
 .ok-chart__area-leaf  { fill: url(#ok-area-grad-leaf); }
