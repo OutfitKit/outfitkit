@@ -1,0 +1,94 @@
+{% extends "_layout.jinja" %}
+{% from "ui/invoice.jinja" import invoice %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Invoice — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Invoice</h1>
+<p class="showcase__lead">Documento factura/presupuesto con head (logo + emisor + meta), bloque facturar/enviar, líneas y totales. La macro <code>invoice</code> es el contenedor; el consumidor compone las secciones con clases <code>.ok-invoice__*</code>.</p>
+
+{% call demo_frame("Factura completa") %}
+{% call invoice() %}
+<header class="ok-invoice__head">
+  <div>
+    <div class="ok-invoice__logo">OutfitKit · Iberia</div>
+    <div class="ok-invoice__from">
+      OutfitKit Software S.L.<br>
+      Calle Velázquez 28, 28001 Madrid<br>
+      CIF B-87654321 · ES12 3456 7890 1234
+    </div>
+  </div>
+  <div class="ok-invoice__meta">
+    <div class="ok-invoice__title">Factura</div>
+    <div class="ok-invoice__meta-row"><span>Nº</span><b>F-2026-0184</b></div>
+    <div class="ok-invoice__meta-row"><span>Emisión</span><b>14/05/2026</b></div>
+    <div class="ok-invoice__meta-row"><span>Vencimiento</span><b>13/06/2026</b></div>
+    <div class="ok-invoice__meta-row"><span>Estado</span><span class="ok-badge ok-badge--warn">Pendiente</span></div>
+  </div>
+</header>
+
+<section class="ok-invoice__bill">
+  <div>
+    <h4>Facturar a</h4>
+    <div class="ok-invoice__bill-name">Norden Bikes S.L.</div>
+    <div class="ok-invoice__bill-info">
+      Avda. Diagonal 442, 08037 Barcelona<br>
+      CIF B-12345678 · contact@nordenbikes.com<br>
+      At. Roser Camps · Compras
+    </div>
+  </div>
+  <div>
+    <h4>Enviar a</h4>
+    <div class="ok-invoice__bill-name">Almacén Norden — Zona Franca</div>
+    <div class="ok-invoice__bill-info">
+      Carrer 60 Z, 08040 Barcelona<br>
+      Recepción: lun-vie 08:00–14:00<br>
+      Pedido: PO-2026-0042
+    </div>
+  </div>
+</section>
+
+<table class="ok-invoice__lines">
+  <thead><tr><th>Concepto</th><th>Cant.</th><th>Precio</th><th>Dto.</th><th>IVA</th><th>Total</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>Bicicleta urbana B-Línea (FG-BIK-001)<br><small>Lote LOT-2026-W19-184 · 12 ud</small></td>
+      <td>12</td><td>€384,20</td><td>5%</td><td>21%</td><td>€4.378,03</td>
+    </tr>
+    <tr>
+      <td>Servicio de montaje en tienda<br><small>2 técnicos · 4 horas</small></td>
+      <td>8 h</td><td>€42,00</td><td>—</td><td>21%</td><td>€336,00</td>
+    </tr>
+    <tr>
+      <td>Transporte refrigerado Madrid → Barcelona</td>
+      <td>1</td><td>€98,00</td><td>—</td><td>21%</td><td>€98,00</td>
+    </tr>
+  </tbody>
+</table>
+
+<section class="ok-invoice__totals">
+  <div class="ok-invoice__notes">
+    <h5>Notas</h5>
+    Pago a 30 días por transferencia. Descuento 2,5% si se paga en los primeros 10 días.
+  </div>
+  <div class="ok-invoice__sum">
+    <div class="ok-invoice__sum-row"><span>Subtotal</span><span>€4.812,03</span></div>
+    <div class="ok-invoice__sum-row"><span>Descuento</span><span>−€242,64</span></div>
+    <div class="ok-invoice__sum-row"><span>Base imponible</span><span>€4.569,39</span></div>
+    <div class="ok-invoice__sum-row"><span>IVA 21%</span><span>€959,57</span></div>
+    <div class="ok-invoice__sum-total"><span>Total</span><span>€5.390,74</span></div>
+  </div>
+</section>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Composición libre con clases <code>.ok-invoice__*</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

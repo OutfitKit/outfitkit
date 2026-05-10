@@ -1,0 +1,16 @@
+{#def title, description="", variant="info", dismissible=false, attrs=None #}
+
+{% macro toast(title, description="", variant="info", dismissible=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-toast{% if variant %} ok-toast--{{ variant }}{% endif %}"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  <svg class="ok-toast__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+  <div class="ok-toast__body">
+    <div class="ok-toast__title">{{ title }}</div>
+    {% if description %}<div class="ok-toast__desc">{{ description }}</div>{% endif %}
+  </div>
+  {% if dismissible %}<button class="ok-toast__close" aria-label="Cerrar">✕</button>{% endif %}
+</div>
+{%- endmacro %}
+
+{% if title is defined %}{{ toast(title, description=description, variant=variant, dismissible=dismissible, attrs=attrs) }}{% endif %}

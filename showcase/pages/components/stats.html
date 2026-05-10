@@ -1,0 +1,38 @@
+{% extends "_layout.jinja" %}
+{% from "ui/stats.jinja" import stats %}
+{% from "ui/stat.jinja" import stat %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Stats — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Stats</h1>
+<p class="showcase__lead">Contenedor en grid para mostrar varios <code>&lt;Stat /&gt;</code> en línea con bordes verticales entre ellos.</p>
+
+{% call demo_frame("Fila de 4") %}
+{% call stats() %}
+{{ stat("Pedidos", "1.284", delta="+6,2%", delta_dir="up") }}
+{{ stat("Facturación", "€48.210", delta="+9,1%", delta_dir="up") }}
+{{ stat("Devoluciones", "12", delta="−4 vs mes", delta_dir="down") }}
+{{ stat("Clientes nuevos", "38", delta="igual que mes") }}
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Fila de 3 sin delta") %}
+{% call stats() %}
+{{ stat("Stock crítico", "7 SKU") }}
+{{ stat("En tránsito", "23") }}
+{{ stat("Almacenes", "4") }}
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>variant</code></td><td>str|None</td><td>None</td><td>Modificador opcional (ej. <code>glass</code>).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>&lt;Stat /&gt;</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

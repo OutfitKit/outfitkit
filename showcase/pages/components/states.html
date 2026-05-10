@@ -1,0 +1,61 @@
+{% extends "_layout.jinja" %}
+{% from "ui/states.jinja" import states %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Skeletons — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Skeletons (states)</h1>
+<p class="showcase__lead">Placeholder animado para contenido en carga. La macro <code>states</code> renderiza un átomo <code>.ok-skel</code> con <code>kind</code> = <code>text</code>, <code>title</code>, <code>circle</code>, <code>avatar</code>, <code>btn</code>, <code>chip</code>, <code>card</code>, <code>row</code>.</p>
+
+{% call demo_frame("Átomos por kind") %}
+<div style="display:flex;flex-direction:column;gap:8px;width:300px">
+  {{ states(kind="title") }}
+  {{ states(kind="text") }}
+  {{ states(kind="text", width="80%") }}
+  {{ states(kind="text", width="60%") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Avatar + texto (composición típica)") %}
+<div style="display:flex;gap:10px;align-items:center;width:320px">
+  {{ states(kind="avatar") }}
+  <div style="flex:1;display:flex;flex-direction:column;gap:6px">
+    {{ states(kind="title") }}
+    {{ states(kind="text", width="50%") }}
+  </div>
+</div>
+{% endcall %}
+
+{% call demo_frame("Card + chips") %}
+<div style="width:280px;display:flex;flex-direction:column;gap:10px">
+  {{ states(kind="card", height="90px") }}
+  {{ states(kind="title") }}
+  {{ states(kind="text", width="80%") }}
+  <div style="display:flex;gap:6px">
+    {{ states(kind="chip") }}
+    {{ states(kind="chip", width="54px") }}
+    {{ states(kind="chip", width="88px") }}
+  </div>
+</div>
+{% endcall %}
+
+{% call demo_frame("Circle / btn / row") %}
+<div style="display:flex;gap:14px;align-items:center">
+  {{ states(kind="circle", width="32px", height="32px") }}
+  {{ states(kind="btn") }}
+  {{ states(kind="row", width="240px") }}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>kind</code></td><td>"text"|"title"|"circle"|"avatar"|"btn"|"chip"|"card"|"row"|"lg"</td><td>"text"</td><td>Forma del esqueleto.</td></tr>
+    <tr><td><code>width</code></td><td>str|None</td><td>None</td><td>Ancho CSS opcional (ej. "60%", "120px").</td></tr>
+    <tr><td><code>height</code></td><td>str|None</td><td>None</td><td>Altura CSS opcional.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

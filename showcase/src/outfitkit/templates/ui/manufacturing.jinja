@@ -1,0 +1,13 @@
+{#def tag="div", attrs=None #}
+
+{% macro manufacturing(tag="div", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<{{ tag }} class="ok-bom"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</{{ tag }}>
+{%- endmacro %}
+
+{% if tag is defined %}
+  {% call manufacturing(tag=tag, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

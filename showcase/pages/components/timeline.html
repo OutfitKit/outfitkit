@@ -1,0 +1,104 @@
+{% extends "_layout.jinja" %}
+{% from "ui/timeline.jinja" import timeline %}
+{% from "ui/card.jinja" import card %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Timeline — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Timeline</h1>
+<p class="showcase__lead">Bitácora vertical con bullets coloreados. El consumidor compone los items con <code>.ok-timeline__item</code>, <code>.ok-timeline__dot</code>, <code>.ok-timeline__body</code>, <code>.ok-timeline__head</code>, <code>.ok-timeline__title</code>, <code>.ok-timeline__time</code>, <code>.ok-timeline__desc</code>.</p>
+
+{% call demo_frame("Pedido #2041") %}
+{% call card() %}
+<div style="padding:18px 20px">
+{% call timeline() %}
+<li class="ok-timeline__item">
+  <span class="ok-timeline__dot ok-timeline__dot--brand"></span>
+  <div class="ok-timeline__body">
+    <div class="ok-timeline__head">
+      <h5 class="ok-timeline__title"><strong>Lucía P.</strong> creó el pedido</h5>
+      <span class="ok-timeline__time">14:02</span>
+    </div>
+    <p class="ok-timeline__desc">3 productos · €34,50 · Mesa 4</p>
+  </div>
+</li>
+<li class="ok-timeline__item">
+  <span class="ok-timeline__dot ok-timeline__dot--info"></span>
+  <div class="ok-timeline__body">
+    <div class="ok-timeline__head">
+      <h5 class="ok-timeline__title">Enviado a cocina</h5>
+      <span class="ok-timeline__time">14:03</span>
+    </div>
+  </div>
+</li>
+<li class="ok-timeline__item">
+  <span class="ok-timeline__dot ok-timeline__dot--leaf"></span>
+  <div class="ok-timeline__body">
+    <div class="ok-timeline__head">
+      <h5 class="ok-timeline__title">Servido y cobrado · efectivo</h5>
+      <span class="ok-timeline__time">14:32</span>
+    </div>
+    <p class="ok-timeline__desc">Vuelta de €5,50 entregada al cliente.</p>
+  </div>
+</li>
+{% endcall %}
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variante densa · audit log") %}
+{% call card() %}
+<div style="padding:18px 20px">
+{% call timeline(dense=True) %}
+<li class="ok-timeline__item">
+  <span class="ok-timeline__dot ok-timeline__dot--leaf"></span>
+  <div class="ok-timeline__body">
+    <div class="ok-timeline__head">
+      <h5 class="ok-timeline__title"><strong>Elena</strong> aprobó la propuesta</h5>
+      <span class="ok-timeline__time">hace 4 min</span>
+    </div>
+  </div>
+</li>
+<li class="ok-timeline__item">
+  <span class="ok-timeline__dot ok-timeline__dot--info"></span>
+  <div class="ok-timeline__body">
+    <div class="ok-timeline__head">
+      <h5 class="ok-timeline__title"><strong>Sistema</strong> generó factura #FE-1042</h5>
+      <span class="ok-timeline__time">hace 12 min</span>
+    </div>
+  </div>
+</li>
+<li class="ok-timeline__item">
+  <span class="ok-timeline__dot ok-timeline__dot--warn"></span>
+  <div class="ok-timeline__body">
+    <div class="ok-timeline__head">
+      <h5 class="ok-timeline__title">Stock crítico · <strong>Café arábica 1kg</strong></h5>
+      <span class="ok-timeline__time">hace 28 min</span>
+    </div>
+  </div>
+</li>
+<li class="ok-timeline__item">
+  <span class="ok-timeline__dot ok-timeline__dot--danger"></span>
+  <div class="ok-timeline__body">
+    <div class="ok-timeline__head">
+      <h5 class="ok-timeline__title">Intento de login fallido · IP 84.121.x.x</h5>
+      <span class="ok-timeline__time">hace 2 h</span>
+    </div>
+  </div>
+</li>
+{% endcall %}
+</div>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>dense</code></td><td>bool</td><td>false</td><td>Variante compacta para audit logs.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.ok-timeline__item</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

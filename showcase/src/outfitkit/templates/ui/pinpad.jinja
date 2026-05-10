@@ -1,0 +1,16 @@
+{#def back_label="⌫", enter_label="↵", attrs=None #}
+
+{% macro pinpad(back_label="⌫", enter_label="↵", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-pinpad"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {%- for n in [1, 2, 3, 4, 5, 6, 7, 8, 9] %}
+  <button type="button" class="ok-pinpad__key" data-key="{{ n }}">{{ n }}</button>
+  {%- endfor %}
+  <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-key="back" aria-label="Borrar">{{ back_label }}</button>
+  <button type="button" class="ok-pinpad__key" data-key="0">0</button>
+  <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-key="enter" aria-label="Aceptar">{{ enter_label }}</button>
+</div>
+{%- endmacro %}
+
+{% if back_label is defined %}{{ pinpad(back_label=back_label, enter_label=enter_label, attrs=attrs) }}{% endif %}

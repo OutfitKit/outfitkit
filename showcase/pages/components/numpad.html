@@ -1,0 +1,57 @@
+{% extends "_layout.jinja" %}
+{% from "ui/numpad.jinja" import numpad %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Numpad — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Numpad</h1>
+<p class="showcase__lead">Teclado numérico para entrada de cantidades en TPV: 1-9, 0, decimal y backspace. Display opcional con etiqueta y valor. Atomic — sin slot. La interactividad se enchufa con Datastar (<code>data-on:click</code> en cada botón si quieres editar el signal).</p>
+
+{% call demo_frame("Cobro de efectivo · con display") %}
+{{ numpad(label="A cobrar · €19,40", display="€20,00") }}
+{% endcall %}
+
+{% call demo_frame("Importe libre · sin backspace") %}
+{{ numpad(label="Importe", display="12,50", show_backspace=False) }}
+{% endcall %}
+
+{% call demo_frame("Solo teclado · sin display") %}
+{{ numpad() }}
+{% endcall %}
+
+{% call demo_frame("Datastar · entrada reactiva") %}
+<div data-signals="{ amount: '0' }" style="max-width:240px">
+  <div class="ok-numpad-display">
+    <div class="ok-numpad-display__label">Importe</div>
+    <div class="ok-numpad-display__value" data-text="$amount + ' €'"></div>
+  </div>
+  <div class="ok-numpad">
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
+    <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
+    <button type="button" class="ok-numpad__btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
+    <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
+  </div>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>display</code></td><td>str|None</td><td>None</td><td>Valor mostrado en el display. Si <code>None</code> y sin <code>label</code>, no se renderiza display.</td></tr>
+    <tr><td><code>label</code></td><td>str|None</td><td>None</td><td>Etiqueta sobre el valor del display.</td></tr>
+    <tr><td><code>decimal</code></td><td>str</td><td>","</td><td>Separador decimal (ES: <code>,</code>; EN: <code>.</code>).</td></tr>
+    <tr><td><code>show_backspace</code></td><td>bool</td><td>True</td><td>Renderiza la tecla de borrado.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra en el numpad.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

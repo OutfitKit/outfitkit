@@ -1,0 +1,49 @@
+{% extends "_layout.jinja" %}
+{% from "ui/rating.jinja" import rating %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Rating — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Rating</h1>
+<p class="showcase__lead">Estrellas para encuestas y reseñas. Soporta tamaños y modo solo lectura.</p>
+
+{% call demo_frame("Tamaños") %}
+{{ rating(value=4, size="sm", label="3,1", readonly=True) }}
+{{ rating(value=4, label="4,0 / 5", readonly=True) }}
+{{ rating(value=4, size="lg", label="4,2 · 132 reseñas", readonly=True) }}
+{% endcall %}
+
+{% call demo_frame("Calidad del servicio · readonly") %}
+{{ rating(value=4, max=5, label="4,2 · 132 reseñas", readonly=True) }}
+{% endcall %}
+
+{% call demo_frame("Datastar — puntuar") %}
+<div data-signals="{ r: 4 }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+  <div class="ok-rating ok-rating--lg">
+    {% for i in range(1, 6) %}
+    <svg class="ok-rating__star"
+      data-attr-class="'ok-rating__star ' + ($r >= {{ i }} ? 'ok-rating__star--filled' : '')"
+      viewBox="0 0 24 24" fill="currentColor" data-on:click="$r = {{ i }}">
+      <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
+    </svg>
+    {% endfor %}
+    <span class="ok-rating__label" data-text="$r + ',0 / 5'"></span>
+  </div>
+  <span style="font-size:13px;color:var(--ok-ink-3);">Click en una estrella para puntuar</span>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>value</code></td><td>int</td><td>0</td><td>Estrellas rellenadas.</td></tr>
+    <tr><td><code>max</code></td><td>int</td><td>5</td><td>Total de estrellas.</td></tr>
+    <tr><td><code>size</code></td><td>str</td><td>"md"</td><td><code>sm</code> · <code>md</code> · <code>lg</code>.</td></tr>
+    <tr><td><code>readonly</code></td><td>bool</td><td>false</td><td>Desactiva hover y cursor de pointer.</td></tr>
+    <tr><td><code>label</code></td><td>str</td><td>""</td><td>Etiqueta a la derecha (ej. "4,2 · 132 reseñas").</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

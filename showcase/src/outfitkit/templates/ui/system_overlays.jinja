@@ -1,0 +1,18 @@
+{#def title=None, count=None, attrs=None #}
+
+{% macro system_overlays(title=None, count=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-notif"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {% if title %}
+  <header class="ok-notif__head">
+    <h3 class="ok-notif__title">{{ title }}{% if count is not none %} <b>{{ count }}</b>{% endif %}</h3>
+  </header>
+  {% endif %}
+  {{ caller() }}
+</div>
+{%- endmacro %}
+
+{% if title is defined %}
+  {% call system_overlays(title=title, count=count, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

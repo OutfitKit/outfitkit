@@ -1,0 +1,13 @@
+{#def dense=false, attrs=None #}
+
+{% macro timeline(dense=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<ul class="ok-timeline{% if dense %} ok-timeline--dense{% endif %}" style="list-style:none;padding:0;margin:0"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {{ caller() }}
+</ul>
+{%- endmacro %}
+
+{% if dense is defined %}
+  {% call timeline(dense=dense, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

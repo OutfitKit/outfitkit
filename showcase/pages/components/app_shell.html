@@ -1,0 +1,56 @@
+{% extends "_layout.jinja" %}
+{% from "ui/app_shell.jinja" import app_shell %}
+{% from "ui/sidebar_nav.jinja" import sidebar_nav %}
+{% from "ui/topbar.jinja" import topbar %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}App shell — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>App shell</h1>
+<p class="showcase__lead">Contenedor outer <code>.ok-app</code> con grid sidebar + main + (opcional) tab-bar inferior. Slot libre — el consumidor compone <code>&lt;SidebarNav /&gt;</code>, <code>&lt;Topbar /&gt;</code> y la zona <code>.ok-app__body</code> con su propio contenido.</p>
+
+{% call demo_frame("App shell · sidebar + topbar + body") %}
+<div style="height:480px;border:1px solid var(--ok-line);border-radius:8px;overflow:hidden">
+{% call app_shell() %}
+{% call sidebar_nav() %}
+<div class="ok-sidebar__brand">
+  <div class="ok-sidebar__logo">EX</div>
+  <div class="ok-sidebar__brand-text">
+    <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+    <div class="ok-sidebar__brand-meta">3 sedes</div>
+  </div>
+</div>
+<div class="ok-sidebar__body">
+  <div class="ok-sidebar__group">Operación</div>
+  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
+  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span><span class="ok-sidebar__badge">12</span></button>
+  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Facturación</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span></button>
+  <div class="ok-sidebar__group">Plataforma</div>
+  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Configuración</span></button>
+</div>
+{% endcall %}
+<div class="ok-app__main">
+  {% call topbar(page_title="Terminales") %}
+  <div class="ok-topbar__actions">
+    <button class="ok-btn ok-btn--primary ok-btn--sm">Nuevo terminal</button>
+  </div>
+  {% endcall %}
+  <div class="ok-app__body" style="padding:24px">
+    <p style="margin:0;color:var(--ok-ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
+  </div>
+</div>
+{% endcall %}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>tabbar</code></td><td>"bottom"|None</td><td>None</td><td>Activa el slot inferior para tab-bar móvil.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (e.g. data-signals para Datastar).</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Sidebar + main + (opcional) tabbar.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

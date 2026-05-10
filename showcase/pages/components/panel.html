@@ -1,0 +1,53 @@
+{% extends "_layout.jinja" %}
+{% from "ui/panel.jinja" import panel %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Panel — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Panel</h1>
+<p class="showcase__lead">Bloque-superficie con cabecera (título + sub) y body. Variantes <code>ghost</code>, <code>bordered</code>, <code>flush</code>, <code>sticky-head</code> y tamaños <code>sm</code>/<code>lg</code>.</p>
+
+{% call demo_frame("Por defecto con título") %}
+{% call panel(title="Pedidos pendientes", sub="Hoy · 12 órdenes en cola") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Panel base con head + body. Bg-2, line, radius-lg.</p>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variante ghost (sin fondo)") %}
+{% call panel(title="Ghost", sub="Sin fondo, solo borde", variant="ghost") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--ghost</code>: transparente.</p>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variante bordered") %}
+{% call panel(title="Bordered", sub="Borde más fuerte", variant="bordered") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Variante <code>--bordered</code> · usa <code>line-2</code>.</p>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Tamaño compacto (sm)") %}
+{% call panel(title="Compact", size="sm") %}
+<p style="margin:0;color:var(--ok-ink-3);font-size:13px">Tamaño <code>--sm</code> con padding y title más pequeños.</p>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Sin head, solo body") %}
+{% call panel() %}
+<p style="margin:0">Body suelto sin cabecera.</p>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str|None</td><td>None</td><td>Título de la cabecera.</td></tr>
+    <tr><td><code>sub</code></td><td>str|None</td><td>None</td><td>Subtítulo opcional.</td></tr>
+    <tr><td><code>variant</code></td><td>"ghost"|"bordered"|"flush"|"sticky-head"|None</td><td>None</td><td>Modificador visual.</td></tr>
+    <tr><td><code>size</code></td><td>"sm"|"lg"|None</td><td>None</td><td>Densidad.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido del body.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

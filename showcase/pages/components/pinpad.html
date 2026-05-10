@@ -1,0 +1,44 @@
+{% extends "_layout.jinja" %}
+{% from "ui/pinpad.jinja" import pinpad %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Pinpad — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Pinpad</h1>
+<p class="showcase__lead">Teclado numérico 3×4 para desbloqueo POS y entrada de PIN.</p>
+
+{% call demo_frame("Default") %}
+{{ pinpad() }}
+{% endcall %}
+
+{% call demo_frame("Etiquetas custom — confirmación de pago") %}
+{{ pinpad(back_label="C", enter_label="Cobrar") }}
+{% endcall %}
+
+{% call demo_frame("Datastar — entrada de PIN reactiva") %}
+<div data-signals="{ pin: '' }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+  <div class="ok-pinpad">
+    {% for n in [1,2,3,4,5,6,7,8,9] %}
+    <button type="button" class="ok-pinpad__key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
+    {% endfor %}
+    <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
+    <button type="button" class="ok-pinpad__key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
+    <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$pin = ''">↵</button>
+  </div>
+  <div>
+    PIN: <strong style="font-family:var(--ok-font-mono);font-size:18px;letter-spacing:4px;" data-text="$pin.replace(/./g, '•').padEnd(6, '_')">______</strong>
+  </div>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>back_label</code></td><td>str</td><td>"⌫"</td><td>Texto del botón de borrado.</td></tr>
+    <tr><td><code>enter_label</code></td><td>str</td><td>"↵"</td><td>Texto del botón de confirmación.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

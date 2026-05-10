@@ -1,0 +1,68 @@
+{% extends "_layout.jinja" %}
+{% from "ui/sidebar_nav.jinja" import sidebar_nav %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Sidebar nav — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Sidebar nav</h1>
+<p class="showcase__lead">Navegación lateral con brand, grupos, items con icono + label + badge, item activo con barra brand y user footer. En desktop ocupa la columna izquierda; en móvil suele convertirse en drawer off-canvas.</p>
+
+{% call demo_frame("Sidebar nav completo") %}
+<div style="height:520px;width:280px;border:1px solid var(--ok-line);border-radius:8px;overflow:hidden">
+{% call sidebar_nav() %}
+<div class="ok-sidebar__brand">
+  <div class="ok-sidebar__logo">EX</div>
+  <div class="ok-sidebar__brand-text">
+    <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+    <div class="ok-sidebar__brand-meta">3 sedes</div>
+  </div>
+</div>
+<div class="ok-sidebar__body">
+  <div class="ok-sidebar__group">Operación</div>
+  <button class="ok-sidebar__item" aria-current="page">
+    <svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+    <span class="ok-sidebar__label">Vista general</span>
+  </button>
+  <button class="ok-sidebar__item">
+    <svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/></svg>
+    <span class="ok-sidebar__label">Terminales</span>
+    <span class="ok-sidebar__badge">12</span>
+  </button>
+  <button class="ok-sidebar__item">
+    <svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/></svg>
+    <span class="ok-sidebar__label">Organizaciones</span>
+  </button>
+  <button class="ok-sidebar__item">
+    <svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg>
+    <span class="ok-sidebar__label">Facturación</span>
+    <span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span>
+  </button>
+  <div class="ok-sidebar__group">Plataforma</div>
+  <button class="ok-sidebar__item">
+    <svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>
+    <span class="ok-sidebar__label">Configuración</span>
+  </button>
+</div>
+<div class="ok-sidebar__footer">
+  <div class="ok-sidebar__user">
+    <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
+    <div class="ok-sidebar__user-info">
+      <div class="ok-sidebar__user-name">Joan Castell</div>
+      <div class="ok-sidebar__user-meta">joan@larambla.es</div>
+    </div>
+  </div>
+</div>
+{% endcall %}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Composición libre con clases <code>.ok-sidebar__*</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

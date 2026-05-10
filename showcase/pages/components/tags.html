@@ -1,0 +1,89 @@
+{% extends "_layout.jinja" %}
+{% from "ui/tags.jinja" import tags, tag %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Tags — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Tags</h1>
+<p class="showcase__lead">Etiquetas para clasificar entidades. Variantes de color, sólidas, con tamaños y removibles.</p>
+
+{% call demo_frame("Subtle · variantes de color") %}
+{% call tags() %}
+{{ tag("Default") }}
+{{ tag("Brand", variant="brand") }}
+{{ tag("Activo", variant="leaf") }}
+{{ tag("Pendiente", variant="warn") }}
+{{ tag("Crítico", variant="danger") }}
+{{ tag("Info", variant="info") }}
+{{ tag("Neutral", variant="neutral") }}
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Solid") %}
+{% call tags() %}
+{{ tag("VIP", variant="brand", solid=True) }}
+{{ tag("Pagado", variant="leaf", solid=True) }}
+{{ tag("Demora", variant="warn", solid=True) }}
+{{ tag("Anulado", variant="danger", solid=True) }}
+{{ tag("Nuevo", variant="info", solid=True) }}
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+{% call tags() %}
+{{ tag("XS", variant="brand", size="xs") }}
+{{ tag("SM", variant="brand", size="sm") }}
+{{ tag("Default", variant="brand") }}
+{{ tag("Large", variant="brand", size="lg") }}
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Datastar — añadir y quitar etiquetas") %}
+<div data-signals="{ tags: ['urgente', 'cocina', 'mesa-7', 'sin-gluten'] }">
+  <div class="ok-tags">
+    <span class="ok-tag ok-tag--brand is-removable" data-show="$tags.includes('urgente')">
+      Urgente
+      <button type="button" class="ok-tag__remove" data-on:click="$tags = $tags.filter(t => t !== 'urgente')" aria-label="Eliminar">×</button>
+    </span>
+    <span class="ok-tag ok-tag--leaf is-removable" data-show="$tags.includes('cocina')">
+      Cocina
+      <button type="button" class="ok-tag__remove" data-on:click="$tags = $tags.filter(t => t !== 'cocina')" aria-label="Eliminar">×</button>
+    </span>
+    <span class="ok-tag ok-tag--info is-removable" data-show="$tags.includes('mesa-7')">
+      Mesa 7
+      <button type="button" class="ok-tag__remove" data-on:click="$tags = $tags.filter(t => t !== 'mesa-7')" aria-label="Eliminar">×</button>
+    </span>
+    <span class="ok-tag ok-tag--warn is-removable" data-show="$tags.includes('sin-gluten')">
+      Sin gluten
+      <button type="button" class="ok-tag__remove" data-on:click="$tags = $tags.filter(t => t !== 'sin-gluten')" aria-label="Eliminar">×</button>
+    </span>
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--ok-ink-3);">
+    Activos: <code data-text="$tags.join(', ') || '—'"></code>
+  </p>
+</div>
+{% endcall %}
+
+<h2>API · <code>tags</code> (contenedor)</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+
+<h2>API · <code>tag</code> (chip individual)</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto de la etiqueta.</td></tr>
+    <tr><td><code>variant</code></td><td>str</td><td>None</td><td><code>brand</code> · <code>leaf</code> · <code>warn</code> · <code>danger</code> · <code>info</code> · <code>neutral</code>.</td></tr>
+    <tr><td><code>size</code></td><td>str</td><td>None</td><td><code>xs</code> · <code>sm</code> · <code>lg</code>.</td></tr>
+    <tr><td><code>solid</code></td><td>bool</td><td>false</td><td>Aplica fondo sólido.</td></tr>
+    <tr><td><code>removable</code></td><td>bool</td><td>false</td><td>Renderiza botón ×.</td></tr>
+    <tr><td><code>remove_action</code></td><td>str</td><td>""</td><td>Expresión Datastar para <code>data-on:click</code> del botón ×.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

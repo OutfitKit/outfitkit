@@ -1,0 +1,21 @@
+{#def page_title=None, back=false, attrs=None #}
+
+{% macro topbar(page_title=None, back=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<header class="ok-topbar"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {% if back %}
+  <div class="ok-topbar__left">
+    <button class="ok-topbar__back-btn" aria-label="Volver" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    </button>
+  </div>
+  {% endif %}
+  {% if page_title %}<h1 class="ok-topbar__page-title">{{ page_title }}</h1>{% endif %}
+  {{ caller() }}
+</header>
+{%- endmacro %}
+
+{% if page_title is defined %}
+  {% call topbar(page_title=page_title, back=back, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

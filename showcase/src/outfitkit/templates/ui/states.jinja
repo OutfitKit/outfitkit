@@ -1,0 +1,13 @@
+{#def kind="text", width=None, height=None, attrs=None #}
+
+{% macro states(kind="text", width=None, height=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _style = [] -%}
+{%- if width is not none %}{%- set _ = _style.append("width:" ~ width) %}{% endif -%}
+{%- if height is not none %}{%- set _ = _style.append("height:" ~ height) %}{% endif -%}
+<span class="ok-skel ok-skel--{{ kind }}"
+  {%- if _style %} style="{{ _style|join(';') }}"{% endif %}
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}></span>
+{%- endmacro %}
+
+{% if kind is defined %}{{ states(kind=kind, width=width, height=height, attrs=attrs) }}{% endif %}

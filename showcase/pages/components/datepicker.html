@@ -1,0 +1,75 @@
+{% extends "_layout.jinja" %}
+{% from "ui/datepicker.jinja" import datepicker %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Datepicker — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Datepicker</h1>
+<p class="showcase__lead">Calendario popover. Cabecera con título y navegación, rejilla de días (con día seleccionado, hoy, fuera de mes y rango). Fechas en formato DD/MM/YYYY.</p>
+
+{% call demo_frame("Mes simple — 15/05/2026 seleccionado") %}
+{% call datepicker("Mayo 2026") %}
+<div class="ok-datepicker__grid">
+  <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
+  {% for d in range(1, 32) %}
+    {% if d == 15 %}<button class="ok-datepicker__day ok-datepicker__day--selected">{{ d }}</button>
+    {% elif d == 10 %}<button class="ok-datepicker__day ok-datepicker__day--today">{{ d }}</button>
+    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
+  {% endfor %}
+</div>
+<div class="ok-datepicker__shortcuts">
+  <button class="ok-datepicker__shortcut">Hoy</button>
+  <button class="ok-datepicker__shortcut">Ayer</button>
+  <button class="ok-datepicker__shortcut">Esta semana</button>
+  <button class="ok-datepicker__shortcut">Este mes</button>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Datastar — selección reactiva") %}
+<div data-signals="{ pickedDay: 15 }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
+  {% call datepicker("Mayo 2026") %}
+  <div class="ok-datepicker__grid">
+    <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
+    {% for d in range(1, 32) %}
+    <button class="ok-datepicker__day"
+      data-attr-class="'ok-datepicker__day' + ($pickedDay === {{ d }} ? ' ok-datepicker__day--selected' : '')"
+      data-on:click="$pickedDay = {{ d }}">{{ d }}</button>
+    {% endfor %}
+  </div>
+  {% endcall %}
+  <div>
+    Fecha: <strong data-text="('0' + $pickedDay).slice(-2) + '/05/2026'">15/05/2026</strong>
+  </div>
+</div>
+{% endcall %}
+
+{% call demo_frame("Rango — 07/05/2026 → 22/05/2026") %}
+{% call datepicker("Rango · 07 may → 22 may") %}
+<div class="ok-datepicker__grid">
+  <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
+  {% for d in range(1, 32) %}
+    {% if d == 7 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-start">{{ d }}</button>
+    {% elif d == 22 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-end">{{ d }}</button>
+    {% elif d > 7 and d < 22 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
+    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
+  {% endfor %}
+</div>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td>""</td><td>Título de cabecera con flechas de navegación. Vacío oculta la cabecera.</td></tr>
+    <tr><td><code>range</code></td><td>bool</td><td>false</td><td>Layout de dos meses lado a lado (rango).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra (data-signals, etc).</td></tr>
+  </tbody>
+</table>
+<p class="showcase__lead">Slot: la rejilla <code>.ok-datepicker__grid</code>, accesos rápidos <code>.ok-datepicker__shortcuts</code> y footer son markup libre dentro del macro.</p>
+{% endblock %}

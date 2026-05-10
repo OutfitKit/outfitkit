@@ -1,0 +1,23 @@
+{#def placeholder="Buscar…", name="q", value="", clearable=True, kbd="", size=None, attrs=None #}
+
+{% macro search(placeholder="Buscar…", name="q", value="", clearable=True, kbd="", size=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-search"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  <span class="ok-search__icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  </span>
+  <input type="search"
+    class="ok-input{% if size == 'sm' %} ok-input--sm{% elif size == 'lg' %} ok-input--lg{% endif %}"
+    name="{{ name }}"
+    placeholder="{{ placeholder }}"
+    value="{{ value }}"/>
+  {%- if kbd %}
+  <kbd class="ok-search__kbd">{{ kbd }}</kbd>
+  {%- elif clearable %}
+  <button type="button" class="ok-search__clear" aria-label="Limpiar">×</button>
+  {%- endif %}
+</div>
+{%- endmacro %}
+
+{% if placeholder is defined %}{{ search(placeholder=placeholder, name=name, value=value, clearable=clearable, kbd=kbd, size=size, attrs=attrs) }}{% endif %}

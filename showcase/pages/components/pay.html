@@ -1,0 +1,104 @@
+{% extends "_layout.jinja" %}
+{% from "ui/pay.jinja" import pay %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Pay — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Pay · Métodos de pago</h1>
+<p class="showcase__lead">Selector de método de pago para TPV. El consumidor compone botones <code>.ok-pay-method</code> dentro del slot. Cada botón muestra un icono, nombre y subtítulo.</p>
+
+{% call demo_frame("Cobro · 4 métodos") %}
+<div style="max-width:480px;width:100%">
+{% call pay() %}
+  <button class="ok-pay-method" aria-pressed="true">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Tarjeta</div>
+      <div class="ok-pay-method__sub">Visa · MC · Amex</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Efectivo</div>
+      <div class="ok-pay-method__sub">Cambio automático</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Bizum / móvil</div>
+      <div class="ok-pay-method__sub">QR contactless</div>
+    </div>
+  </button>
+  <button class="ok-pay-method">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h4v4M10 20H6v-4M21 3l-7 7M3 21l7-7"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Mixto</div>
+      <div class="ok-pay-method__sub">2+ métodos</div>
+    </div>
+  </button>
+{% endcall %}
+</div>
+{% endcall %}
+
+{% call demo_frame("Datastar · selección reactiva") %}
+<div data-signals="{ method: 'card' }" style="max-width:480px;width:100%">
+{% call pay() %}
+  <button class="ok-pay-method"
+          data-on:click="$method = 'card'"
+          data-attr-aria-pressed="$method === 'card'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Tarjeta</div>
+      <div class="ok-pay-method__sub">Visa · MC · Amex</div>
+    </div>
+  </button>
+  <button class="ok-pay-method"
+          data-on:click="$method = 'cash'"
+          data-attr-aria-pressed="$method === 'cash'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1l3 5 6 1-4 4 1 6-6-3-6 3 1-6-4-4 6-1z"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Efectivo</div>
+      <div class="ok-pay-method__sub">Cambio automático</div>
+    </div>
+  </button>
+  <button class="ok-pay-method"
+          data-on:click="$method = 'bizum'"
+          data-attr-aria-pressed="$method === 'bizum'">
+    <div class="ok-pay-method__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+    </div>
+    <div>
+      <div class="ok-pay-method__name">Bizum</div>
+      <div class="ok-pay-method__sub">QR contactless</div>
+    </div>
+  </button>
+{% endcall %}
+<p style="margin-top:12px;font-size:12px;color:var(--ok-ink-3)">Método seleccionado: <b data-text="$method"></b></p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>tag</code></td><td>str</td><td>"div"</td><td>Tag raíz HTML.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Botones <code>.ok-pay-method</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

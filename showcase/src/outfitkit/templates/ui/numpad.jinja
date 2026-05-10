@@ -1,0 +1,30 @@
+{#def display=None, label=None, decimal=",", show_backspace=True, attrs=None #}
+
+{% macro numpad(display=None, label=None, decimal=",", show_backspace=True, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- if display is not none or label %}
+<div class="ok-numpad-display">
+  {%- if label %}<div class="ok-numpad-display__label">{{ label }}</div>{% endif %}
+  <div class="ok-numpad-display__value">{{ display if display is not none else '' }}</div>
+</div>
+{%- endif %}
+<div class="ok-numpad"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <button type="button" class="ok-numpad__btn">1</button>
+  <button type="button" class="ok-numpad__btn">2</button>
+  <button type="button" class="ok-numpad__btn">3</button>
+  <button type="button" class="ok-numpad__btn">4</button>
+  <button type="button" class="ok-numpad__btn">5</button>
+  <button type="button" class="ok-numpad__btn">6</button>
+  <button type="button" class="ok-numpad__btn">7</button>
+  <button type="button" class="ok-numpad__btn">8</button>
+  <button type="button" class="ok-numpad__btn">9</button>
+  <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost">{{ decimal }}</button>
+  <button type="button" class="ok-numpad__btn">0</button>
+  {%- if show_backspace %}
+  <button type="button" class="ok-numpad__btn ok-numpad__btn--ghost" aria-label="Borrar">⌫</button>
+  {%- endif %}
+</div>
+{%- endmacro %}
+
+{% if display is defined %}{{ numpad(display=display, label=label, decimal=decimal, show_backspace=show_backspace, attrs=attrs) }}{% endif %}

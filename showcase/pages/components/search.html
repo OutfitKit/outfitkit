@@ -1,0 +1,55 @@
+{% extends "_layout.jinja" %}
+{% from "ui/search.jinja" import search %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Search — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Search</h1>
+<p class="showcase__lead">Input de búsqueda con icono de lupa y botón de limpiar (o atajo de teclado).</p>
+
+{% call demo_frame("Default · botón limpiar") %}
+{{ search(placeholder="Buscar productos, SKU, cliente…") }}
+{% endcall %}
+
+{% call demo_frame("Con valor pre-rellenado") %}
+{{ search(placeholder="Buscar…", value="marmelada") }}
+{% endcall %}
+
+{% call demo_frame("Con atajo ⌘K") %}
+{{ search(placeholder="Buscar global…", clearable=False, kbd="⌘K") }}
+{% endcall %}
+
+{% call demo_frame("Tamaños") %}
+{{ search(placeholder="Pequeño", size="sm") }}
+{{ search(placeholder="Mediano (default)") }}
+{{ search(placeholder="Grande", size="lg") }}
+{% endcall %}
+
+{% call demo_frame("Datastar — bind reactivo") %}
+<div data-signals="{ q: '' }">
+  <div class="ok-search">
+    <span class="ok-search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+    <input class="ok-input" type="search" placeholder="Filtrar pedidos…" data-bind:q/>
+    <button type="button" class="ok-search__clear" data-show="$q.length > 0" data-on:click="$q = ''">×</button>
+  </div>
+  <p style="margin-top:10px;font-size:13px;color:var(--ok-ink-3);">
+    Filtro: <code data-text="$q || '(vacío)'"></code>
+  </p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>placeholder</code></td><td>str</td><td>"Buscar…"</td><td>Texto del placeholder.</td></tr>
+    <tr><td><code>name</code></td><td>str</td><td>"q"</td><td>Atributo <code>name</code> del input.</td></tr>
+    <tr><td><code>value</code></td><td>str</td><td>""</td><td>Valor inicial.</td></tr>
+    <tr><td><code>clearable</code></td><td>bool</td><td>true</td><td>Muestra botón ×. Ignorado si <code>kbd</code> está presente.</td></tr>
+    <tr><td><code>kbd</code></td><td>str</td><td>""</td><td>Hint de atajo (ej. <code>"⌘K"</code>) en lugar del botón limpiar.</td></tr>
+    <tr><td><code>size</code></td><td>str</td><td>None</td><td><code>sm</code> · <code>lg</code>.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

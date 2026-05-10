@@ -1,0 +1,34 @@
+{% extends "_layout.jinja" %}
+{% from "ui/otp.jinja" import otp %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}OTP — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>OTP</h1>
+<p class="showcase__lead">Inputs para códigos de un solo uso (verificación 2FA, recuperación de contraseña). Uno por dígito, con auto-foco entre celdas.</p>
+
+{% call demo_frame("SMS — 6 dígitos con separador") %}
+{{ otp(length=6, value="392", separator_at=3) }}
+{% endcall %}
+
+{% call demo_frame("Pequeño — 4 dígitos") %}
+{{ otp(length=4, value="1234", size="sm") }}
+{% endcall %}
+
+{% call demo_frame("Grande — alfanumérico vacío") %}
+{{ otp(length=4, size="lg") }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>length</code></td><td>int</td><td>6</td><td>Número de celdas.</td></tr>
+    <tr><td><code>value</code></td><td>str</td><td>""</td><td>Valor pre-rellenado (1 carácter por celda).</td></tr>
+    <tr><td><code>size</code></td><td>str</td><td>"md"</td><td><code>sm</code> · <code>md</code> · <code>lg</code>.</td></tr>
+    <tr><td><code>separator_at</code></td><td>int</td><td>None</td><td>Inserta separador <code>—</code> antes de la celda i.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

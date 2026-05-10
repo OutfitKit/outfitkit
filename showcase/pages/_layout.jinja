@@ -1,70 +1,188 @@
+{% from "ui/avatar.jinja" import avatar %}
 <!doctype html>
-<html lang="es" data-theme="erplora">
+<html lang="es">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>{% block title %}OutfitKit{% endblock %}</title>
+  <title>{% block title %}OutfitKit · Librería{% endblock %}</title>
 
   {# OutfitKit CSS — desde CDN en producción, desde build/css en local. #}
   <link rel="stylesheet" href="{{ css_url }}">
 
-  {# Datastar — reactividad declarativa via data-* sin build. #}
-  <script type="module"
-          src="https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"></script>
-
+  {# Showcase chrome (search highlight, viewport iframes, demo grid). #}
   <style>
-    /* Showcase chrome — no entra en la librería ni en el paquete. */
-    body {
-      background: var(--ok-bg);
-      color: var(--ok-ink);
-      font-family: var(--ok-font, system-ui, -apple-system, sans-serif);
-      margin: 0;
+    body { background: var(--ok-bg); color: var(--ok-ink); font-family: var(--ok-font, system-ui, -apple-system, sans-serif); margin: 0; }
+
+    /* Sidebar overrides for the showcase: a bit wider so labels don't truncate. */
+    .ok-app[data-docs] { grid-template-columns: 250px 1fr; }
+    .ok-app[data-docs] .ok-sidebar { width: 250px; }
+
+    /* Active state via [data-route-active="true"] (set by Datastar). */
+    .ok-sidebar__item[data-route-active="true"] {
+      background: var(--ok-bg-3); color: var(--ok-ink);
     }
-    .showcase {
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      min-height: 100vh;
+    .ok-sidebar__item[data-route-active="true"]::before {
+      content: ""; position: absolute; left: 0;
+      width: 3px; height: 16px;
+      background: var(--ok-brand); border-radius: 0 2px 2px 0;
     }
-    .showcase__sidebar {
-      background: var(--ok-bg-2);
-      border-right: 1px solid var(--ok-line);
-      padding: 16px;
-      overflow-y: auto;
-      position: sticky;
-      top: 0;
-      height: 100vh;
+    .ok-sidebar__item.is-hidden { display: none; }
+    .ok-sidebar__group.is-hidden { display: none; }
+
+    /* Pill selector (theme + viewport) — lives in the topbar. */
+    .vp { display: inline-flex; padding: 2px;
+      background: var(--ok-bg-3); border: 1px solid var(--ok-line);
+      border-radius: var(--ok-radius-md); flex-shrink: 0; }
+    .vp button { height: 26px; padding: 0 9px; font-size: 11.5px;
+      color: var(--ok-ink-3); border-radius: 5px; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 5px;
+      background: transparent; border: 0; cursor: pointer; }
+    .vp button:hover { color: var(--ok-ink); }
+    .vp button[aria-pressed="true"] {
+      background: var(--ok-bg-1); color: var(--ok-ink);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.4);
     }
-    .showcase__main {
-      padding: 32px 48px;
-      max-width: 1100px;
+
+    /* Template selector — matches .vp pill aesthetic. */
+    .topbar-template {
+      height: 30px; padding: 0 28px 0 10px;
+      background: var(--ok-bg-3) url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%238A8378' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>") no-repeat right 8px center;
+      border: 1px solid var(--ok-line); border-radius: var(--ok-radius-md);
+      color: var(--ok-ink-2); font-family: inherit; font-size: 11.5px; font-weight: 500;
+      -webkit-appearance: none; appearance: none; cursor: pointer;
+      flex-shrink: 0;
     }
-    .showcase__main h1 {
-      font-size: 28px;
-      margin: 0 0 8px;
+    .topbar-template:hover { border-color: var(--ok-line-2); color: var(--ok-ink); }
+    .topbar-template:focus-visible {
+      outline: 0; border-color: var(--ok-brand); box-shadow: 0 0 0 3px var(--ok-brand-soft);
     }
-    .showcase__lead {
-      color: var(--ok-ink-3);
-      margin-bottom: 32px;
-    }
+    .topbar-template option { background: var(--ok-bg-1); color: var(--ok-ink); }
+
+    /* Doc body — page heading + lead. */
+    .doc__body { padding: 32px 48px; max-width: 1120px; }
+    .doc__title { font-family: var(--ok-font-display, var(--ok-font)); font-size: 28px; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .doc__sub { color: var(--ok-ink-3); margin: 0 0 32px; line-height: 1.55; }
+
+    /* "Demo grid" used by the overview page. */
+    .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .demo { background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: 12px; padding: 16px; }
+    .demo__label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ok-ink-3); margin-bottom: 8px; font-weight: 500; }
+
+    /* Demo frame chrome (per-component pages). Inherited from the original chrome/demo_frame.jinja. */
+    .demo-frame { border: 1px solid var(--ok-line); border-radius: 12px; margin-bottom: 24px; overflow: hidden; background: var(--ok-bg-2); }
+    .demo-frame__header { padding: 12px 18px; border-bottom: 1px solid var(--ok-line); background: var(--ok-bg-3); }
+    .demo-frame__header h3 { margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ok-ink-3); font-weight: 500; }
+    .demo-frame__render { padding: 24px 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .demo-frame__source { margin: 0; padding: 16px 18px; background: var(--ok-bg-1); border-top: 1px solid var(--ok-line); color: var(--ok-ink-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; overflow-x: auto; white-space: pre; }
+
     @media (max-width: 768px) {
-      .showcase { grid-template-columns: 1fr; }
-      .showcase__sidebar {
-        position: static;
-        height: auto;
-        border-right: 0;
-        border-bottom: 1px solid var(--ok-line);
-      }
-      .showcase__main { padding: 24px; }
+      .doc__body { padding: 20px; }
     }
   </style>
+
+  {# Theme runtime (synchronous, before Datastar). #}
+  <script src="/static/theme-runtime.js"></script>
+
+  {# Datastar (async ESM module). #}
+  <script type="module"
+    src="https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"></script>
 </head>
 <body>
-  <div class="showcase">
-    <aside class="showcase__sidebar">
-      <Sidebar current="{{ self._TemplateReference__context.name | default('') }}" />
+  <div class="ok-app" data-docs
+       data-signals='{"q": "", "theme": (window.okTheme && window.okTheme.getState().theme) || "erplora", "vp": "desktop", "template": (window.okTheme && window.okTheme.getState().template) || "", "sidebarOpen": false}'
+       data-attr:data-sidebar="$sidebarOpen ? 'open' : ''"
+       data-effect="$theme; $template; window.okTheme && window.okTheme.set($theme, $template)">
+
+    <div class="ok-app__sidebar-overlay" data-on:click="$sidebarOpen = false"></div>
+
+    {# ====== SIDEBAR ====== #}
+    <aside class="ok-sidebar">
+      <div class="ok-sidebar__brand">
+        <div class="ok-sidebar__logo">OK</div>
+        <div class="ok-sidebar__brand-text">
+          <span class="ok-sidebar__brand-name">OutfitKit</span>
+          <span class="ok-sidebar__brand-meta">v1 · Librería</span>
+        </div>
+      </div>
+
+      {# Search box #}
+      <div style="padding: 10px 12px 4px;">
+        <div class="ok-search">
+          <span class="ok-search__icon">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+            </svg>
+          </span>
+          <input class="ok-input ok-input--sm" type="search"
+                 placeholder="Buscar componente…" data-bind:q>
+        </div>
+      </div>
+
+      {# Hierarchical nav #}
+      <nav class="ok-sidebar__body">
+        {% from "sidebar.jinja" import sidebar %}
+        <Sidebar current="{{ self._TemplateReference__context.name | default('') }}" />
+      </nav>
+
+      <div class="ok-sidebar__footer">
+        <div class="ok-sidebar__user">
+          <span class="ok-avatar ok-avatar--sm ok-avatar--brand">OK</span>
+          <div class="ok-sidebar__user-info">
+            <div class="ok-sidebar__user-name">Sistema</div>
+            <div class="ok-sidebar__user-meta">Rama main · GH Pages</div>
+          </div>
+        </div>
+      </div>
     </aside>
-    <main class="showcase__main">
-      {% block content %}{% endblock %}
+
+    {# ====== MAIN ====== #}
+    <main class="ok-app__main">
+      <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__menu-btn" aria-label="Menú lateral"
+                  data-on:click="$sidebarOpen = !$sidebarOpen"
+                  data-attr:aria-expanded="$sidebarOpen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 6h18M3 12h18M3 18h18"/>
+            </svg>
+          </button>
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+                  data-on:click="history.length > 1 ? history.back() : null">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+        </div>
+
+        <h1 class="ok-topbar__page-title">{% block page_title %}{{ self.title() }}{% endblock %}</h1>
+
+        <div class="ok-topbar__actions">
+          <div class="vp" role="tablist" aria-label="Tema">
+            <button
+              data-on:click="$theme = 'erplora'; window.okTheme.set('erplora', $template)"
+              data-attr:aria-pressed="$theme === 'erplora'">🌙 Dark</button>
+            <button
+              data-on:click="$theme = 'erplora-light'; window.okTheme.set('erplora-light', $template)"
+              data-attr:aria-pressed="$theme === 'erplora-light'">☀ Light</button>
+          </div>
+          <div class="vp" role="tablist" aria-label="Viewport">
+            <button data-on:click="$vp = 'desktop'" data-attr:aria-pressed="$vp === 'desktop'">▢ Desktop</button>
+            <button data-on:click="$vp = 'tablet'"  data-attr:aria-pressed="$vp === 'tablet'">▭ Tablet</button>
+            <button data-on:click="$vp = 'mobile'"  data-attr:aria-pressed="$vp === 'mobile'">▯ Mobile</button>
+          </div>
+          <a class="ok-btn ok-btn--ghost ok-btn--sm"
+             href="https://github.com/OutfitKit/outfitkit" target="_blank" rel="noopener">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 3-.4s2 .1 3 .4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
+      </header>
+
+      <div class="doc__body">
+        {% block content %}{% endblock %}
+      </div>
     </main>
   </div>
 </body>

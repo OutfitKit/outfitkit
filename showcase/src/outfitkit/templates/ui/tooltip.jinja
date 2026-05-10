@@ -1,0 +1,9 @@
+{#def label, placement="top", attrs=None #}
+
+{% macro tooltip(label, placement="top", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<span class="ok-tooltip ok-tooltip--{{ placement }}"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>{{ label }}</span>
+{%- endmacro %}
+
+{% if label is defined %}{{ tooltip(label, placement=placement, attrs=attrs) }}{% endif %}

@@ -1,0 +1,152 @@
+{% extends "_layout.jinja" %}
+{% from "ui/chat.jinja" import chat %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Chat — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Chat</h1>
+<p class="showcase__lead">Layout de mensajería con barra lateral de conversaciones y vista principal de hilo. Compón <code>.ok-chat__list</code> (sidebar), <code>.ok-chat__thread</code> (viewport), y dentro <code>.ok-chat__conv</code>, <code>.ok-chat__msg</code>, <code>.ok-chat__bubble</code>.</p>
+
+{% call demo_frame("Chat interno · sala Operaciones") %}
+{% call chat(attrs={"style": "height: 520px"}) %}
+<aside class="ok-chat__list">
+  <div class="ok-chat__search">
+    <input type="text" placeholder="Buscar conversación…"/>
+  </div>
+  <div class="ok-chat__convs">
+    <div class="ok-chat__conv ok-chat__conv--active">
+      <div class="ok-chat__conv-avatar ok-chat__conv-online">OP</div>
+      <div class="ok-chat__conv-body">
+        <div class="ok-chat__conv-name">Operaciones</div>
+        <div class="ok-chat__conv-preview">Lucía: Acabo de cerrar arqueo</div>
+      </div>
+      <div class="ok-chat__conv-meta">
+        <span class="ok-chat__conv-time">14:32</span>
+      </div>
+    </div>
+    <div class="ok-chat__conv ok-chat__conv--unread">
+      <div class="ok-chat__conv-avatar">EM</div>
+      <div class="ok-chat__conv-body">
+        <div class="ok-chat__conv-name">Elena Marín</div>
+        <div class="ok-chat__conv-preview">¿Has revisado la propuesta?</div>
+      </div>
+      <div class="ok-chat__conv-meta">
+        <span class="ok-chat__conv-time">13:48</span>
+        <span class="ok-chat__conv-badge">3</span>
+      </div>
+    </div>
+    <div class="ok-chat__conv">
+      <div class="ok-chat__conv-avatar ok-chat__conv-online">JR</div>
+      <div class="ok-chat__conv-body">
+        <div class="ok-chat__conv-name">Javi Ruiz</div>
+        <div class="ok-chat__conv-preview">Tú: Perfecto, gracias</div>
+      </div>
+      <div class="ok-chat__conv-meta">
+        <span class="ok-chat__conv-time">12:20</span>
+      </div>
+    </div>
+    <div class="ok-chat__conv">
+      <div class="ok-chat__conv-avatar">CN</div>
+      <div class="ok-chat__conv-body">
+        <div class="ok-chat__conv-name">Café Norte</div>
+        <div class="ok-chat__conv-preview">Confirmado: vamos con plan Pro</div>
+      </div>
+      <div class="ok-chat__conv-meta">
+        <span class="ok-chat__conv-time">lun</span>
+      </div>
+    </div>
+  </div>
+</aside>
+<section class="ok-chat__thread">
+  <header class="ok-chat__head">
+    <div class="ok-chat__head-avatar">OP</div>
+    <div class="ok-chat__head-info">
+      <div class="ok-chat__head-name">Operaciones</div>
+      <div class="ok-chat__head-status ok-chat__head-status--online">7 miembros · 3 en línea</div>
+    </div>
+  </header>
+  <div class="ok-chat__messages">
+    <div class="ok-chat__day">Hoy</div>
+    <div class="ok-chat__msg">
+      <div class="ok-chat__msg-avatar">LP</div>
+      <div>
+        <div class="ok-chat__msg-name">Lucía Peña</div>
+        <div class="ok-chat__bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
+        <div class="ok-chat__msg-time">14:32</div>
+      </div>
+    </div>
+    <div class="ok-chat__msg ok-chat__msg--mine">
+      <div>
+        <div class="ok-chat__bubble">Genial, gracias Lucía 🙌</div>
+        <div class="ok-chat__msg-time">14:33</div>
+      </div>
+    </div>
+    <div class="ok-chat__msg">
+      <div class="ok-chat__msg-avatar">JR</div>
+      <div>
+        <div class="ok-chat__msg-name">Javi Ruiz</div>
+        <div class="ok-chat__bubble">¿Habéis recibido la entrega de Marisol?</div>
+        <div class="ok-chat__msg-time">14:40</div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Datastar · cambio de conversación reactivo") %}
+<div data-signals="{ active: 'op' }">
+{% call chat(attrs={"style": "height: 360px"}) %}
+<aside class="ok-chat__list">
+  <div class="ok-chat__convs">
+    <div class="ok-chat__conv"
+         data-on:click="$active = 'op'"
+         data-class-ok-chat__conv--active="$active === 'op'">
+      <div class="ok-chat__conv-avatar">OP</div>
+      <div class="ok-chat__conv-body">
+        <div class="ok-chat__conv-name">Operaciones</div>
+        <div class="ok-chat__conv-preview">Lucía cerró arqueo</div>
+      </div>
+    </div>
+    <div class="ok-chat__conv"
+         data-on:click="$active = 'em'"
+         data-class-ok-chat__conv--active="$active === 'em'">
+      <div class="ok-chat__conv-avatar">EM</div>
+      <div class="ok-chat__conv-body">
+        <div class="ok-chat__conv-name">Elena Marín</div>
+        <div class="ok-chat__conv-preview">¿Has revisado…?</div>
+      </div>
+    </div>
+  </div>
+</aside>
+<section class="ok-chat__thread">
+  <header class="ok-chat__head">
+    <div class="ok-chat__head-info">
+      <div class="ok-chat__head-name" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
+    </div>
+  </header>
+  <div class="ok-chat__messages">
+    <div class="ok-chat__msg" data-show="$active === 'op'">
+      <div class="ok-chat__msg-avatar">LP</div>
+      <div><div class="ok-chat__bubble">Cuadra al céntimo.</div></div>
+    </div>
+    <div class="ok-chat__msg" data-show="$active === 'em'">
+      <div class="ok-chat__msg-avatar">EM</div>
+      <div><div class="ok-chat__bubble">¿Has revisado la propuesta?</div></div>
+    </div>
+  </div>
+</section>
+{% endcall %}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (p.ej. <code>style</code> para fijar altura).</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Compón <code>.ok-chat__list</code> (sidebar) y <code>.ok-chat__thread</code> (viewport). Sub-clases: <code>.ok-chat__conv</code>, <code>.ok-chat__head</code>, <code>.ok-chat__messages</code>, <code>.ok-chat__msg</code>, <code>.ok-chat__bubble</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

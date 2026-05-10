@@ -1,0 +1,13 @@
+{#def variant="month", attrs=None #}
+
+{% macro calendar(variant="month", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-cal{% if variant != 'month' %} ok-cal--{{ variant }}{% endif %}"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</div>
+{%- endmacro %}
+
+{% if variant is defined %}
+  {% call calendar(variant=variant, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

@@ -1,0 +1,13 @@
+{#def attrs=None #}
+
+{% macro gallery(attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-gallery"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</div>
+{%- endmacro %}
+
+{% if attrs is defined %}
+  {% call gallery(attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

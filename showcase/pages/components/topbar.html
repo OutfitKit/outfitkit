@@ -1,0 +1,54 @@
+{% extends "_layout.jinja" %}
+{% from "ui/topbar.jinja" import topbar %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Topbar — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Topbar</h1>
+<p class="showcase__lead">Barra superior <em>sticky</em> con backdrop blur. Contiene título de página opcional, búsqueda global, acciones rápidas (notificaciones, avatar) y, en móvil, botón menú. Slot libre para componer.</p>
+
+{% call demo_frame("Topbar con título y acciones") %}
+{% call topbar(page_title="Pedidos") %}
+<div class="ok-topbar__search">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  <input placeholder="Buscar tickets, productos…"/>
+  <span class="ok-topbar__kbd">⌘K</span>
+</div>
+<div class="ok-topbar__actions">
+  <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>En línea</span>
+  <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Topbar con back button") %}
+{% call topbar(page_title="Pedido FCT-184", back=True) %}
+<div class="ok-topbar__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Duplicar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Guardar</button>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Topbar con breadcrumb") %}
+{% call topbar() %}
+<div class="ok-topbar__crumb">
+  <span class="ok-topbar__crumb-item">Inventario</span>
+  <span class="ok-topbar__crumb-sep">/</span>
+  <span class="ok-topbar__crumb-item">SKUs</span>
+</div>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>page_title</code></td><td>str|None</td><td>None</td><td>Título de página opcional (h1).</td></tr>
+    <tr><td><code>back</code></td><td>bool</td><td>false</td><td>Renderiza botón de volver.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Búsqueda, acciones, breadcrumb.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

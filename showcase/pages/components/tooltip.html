@@ -1,0 +1,40 @@
+{% extends "_layout.jinja" %}
+{% from "ui/tooltip.jinja" import tooltip %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Tooltip — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Tooltip</h1>
+<p class="showcase__lead">Pista textual posicionada (top/bottom). Se ancla al elemento padre con posición absoluta. Para tooltips CSS-puros sobre cualquier elemento usa el atributo <code>data-tip</code>.</p>
+
+{% call demo_frame("Variante top") %}
+<div style="position:relative;display:inline-block;padding:24px 60px">
+  <span style="background:var(--ok-bg-3);padding:8px 12px;border-radius:8px;font-size:12.5px;color:var(--ok-ink-2);border:1px solid var(--ok-line)">Botón anclaje</span>
+  {{ tooltip("Atajo: F2", placement="top") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Variante bottom") %}
+<div style="position:relative;display:inline-block;padding:24px 60px">
+  <span style="background:var(--ok-bg-3);padding:8px 12px;border-radius:8px;font-size:12.5px;color:var(--ok-ink-2);border:1px solid var(--ok-line)">Otro anclaje</span>
+  {{ tooltip("Última edición: hoy", placement="bottom") }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Tooltip CSS puro vía data-tip (pattern)") %}
+<button class="ok-btn ok-btn--ghost" data-tip="Filtrar">Filtrar</button>
+<button class="ok-btn ok-btn--ghost" data-tip="Exportar CSV">Exportar</button>
+<button class="ok-btn ok-btn--secondary" data-tip="Atajo: ⌘ + S">Guardar</button>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto del tooltip.</td></tr>
+    <tr><td><code>placement</code></td><td>"top"|"bottom"</td><td>"top"</td><td>Posición respecto al elemento.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (e.g. style con left/top).</td></tr>
+  </tbody>
+</table>
+{% endblock %}

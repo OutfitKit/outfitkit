@@ -97,6 +97,14 @@ def main() -> None:
     site = make_site()
     site.render()
 
+    # Always copy static/ into build/ so <link href="/static/..."> works
+    # both locally and on GitHub Pages.
+    if STATIC.exists():
+        static_dst = BUILD / "static"
+        if static_dst.exists():
+            shutil.rmtree(static_dst)
+        shutil.copytree(STATIC, static_dst)
+
     # When using local CSS, copy the source CSS folder into build/css so
     # that <link href="/css/outfitkit.css"> resolves under the dev server.
     if os.environ.get("OUTFITKIT_CSS") == "local":

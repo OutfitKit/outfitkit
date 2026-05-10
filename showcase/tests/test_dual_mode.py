@@ -222,12 +222,252 @@ COMPONENTS = {
         "kwargs": {"name": "vol", "min": 0, "max": 10, "step": 1, "value": 5},
         "expected_classes": ["ok-slider"],
     },
+    # --- Category C — complex compositions ---
+    "calendar": {
+        "kwargs": {"variant": "month"},
+        "expected_classes": ["ok-cal"],
+        "slot": '<header class="ok-cal__head"><div class="ok-cal__title">May 2026</div></header>',
+    },
+    "chart": {
+        "kwargs": {"variant": "flat"},
+        "expected_classes": ["ok-chart", "ok-chart--flat"],
+        "slot": '<header class="ok-chart__head"><h3 class="ok-chart__title">Sales</h3></header>',
+    },
+    "chat": {
+        "kwargs": {},
+        "expected_classes": ["ok-chat"],
+        "slot": '<aside class="ok-chat__list"></aside>',
+    },
+    "datatable": {
+        "kwargs": {},
+        "expected_classes": ["ok-table-wrap"],
+        "slot": '<div class="ok-dt-toolbar"><div class="ok-search"></div></div>',
+    },
+    "kanban": {
+        "kwargs": {},
+        "expected_classes": ["ok-kanban"],
+        "slot": '<section class="ok-kanban__col"></section>',
+    },
+    "gallery": {
+        "kwargs": {},
+        "expected_classes": ["ok-gallery"],
+        "slot": '<div class="ok-gallery__item"></div>',
+    },
+    "tree": {
+        "kwargs": {"variant": "dense"},
+        "expected_classes": ["ok-tree", "ok-tree--dense"],
+        "slot": '<div class="ok-tree__node"></div>',
+    },
+    # --- Category D — verticals ---
+    "kds": {
+        "kwargs": {"variant": "late"},
+        "expected_classes": ["ok-kds", "ok-kds--late"],
+        "slot": '<header class="ok-kds__head">x</header>',
+    },
+    "hr_card": {
+        "kwargs": {"tag": "article"},
+        "expected_classes": ["ok-emp"],
+        "slot": '<div class="ok-emp__cover"></div>',
+    },
+    "pos": {
+        "kwargs": {"tag": "div"},
+        "expected_classes": ["ok-pos"],
+        "slot": '<section class="ok-pos__main">x</section>',
+    },
+    "numpad": {
+        "kwargs": {"display": "12,50", "label": "Importe"},
+        "expected_classes": [
+            "ok-numpad", "ok-numpad__btn", "ok-numpad__btn--ghost",
+            "ok-numpad-display", "ok-numpad-display__label",
+            "ok-numpad-display__value",
+        ],
+        "expected_text": "Importe",
+    },
+    "pay": {
+        "kwargs": {"tag": "div"},
+        "expected_classes": ["ok-pay-methods"],
+        "slot": '<button class="ok-pay-method">x</button>',
+    },
+    "manufacturing": {
+        "kwargs": {"tag": "div"},
+        "expected_classes": ["ok-bom"],
+        "slot": '<div class="ok-bom__head">x</div>',
+    },
+    # --- Pickers / editors / multimedia / selection ---
+    "datepicker": {
+        "kwargs": {"title": "Mayo 2026", "range": False},
+        "expected_classes": ["ok-datepicker", "ok-datepicker__head", "ok-datepicker__title"],
+        "expected_text": "Mayo 2026",
+        "slot": '<div class="ok-datepicker__grid"></div>',
+    },
+    "colorpicker": {
+        "kwargs": {"selected": "#D97757"},
+        "expected_classes": ["ok-colorpicker", "ok-colorpicker__swatch"],
+    },
+    "timepicker": {
+        "kwargs": {"hour": 9, "minute": 30},
+        "expected_classes": ["ok-timepicker", "ok-timepicker__col", "ok-timepicker__opt"],
+    },
+    "otp": {
+        "kwargs": {"length": 6, "value": "392", "size": "md", "separator_at": 3},
+        "expected_classes": ["ok-otp", "ok-otp__cell", "ok-otp__sep"],
+    },
+    "pinpad": {
+        "kwargs": {},
+        "expected_classes": ["ok-pinpad", "ok-pinpad__key", "ok-pinpad__key--action"],
+    },
+    "rating": {
+        "kwargs": {"value": 4, "max": 5, "size": "lg", "label": "4,0 / 5"},
+        "expected_classes": [
+            "ok-rating", "ok-rating--lg", "ok-rating__star",
+            "ok-rating__star--filled", "ok-rating__label",
+        ],
+        "expected_text": "4,0 / 5",
+    },
+    "autocomplete": {
+        "kwargs": {"width": "380px"},
+        "expected_classes": ["ok-autocomplete"],
+        "slot": '<div class="ok-autocomplete__list"></div>',
+    },
+    "search": {
+        "kwargs": {"placeholder": "Buscar producto…", "value": "marmelada", "kbd": "⌘K"},
+        "expected_classes": ["ok-search", "ok-search__icon", "ok-search__kbd", "ok-input"],
+    },
+    "richtext": {
+        "kwargs": {"variant": "minimal"},
+        "expected_classes": ["ok-richtext", "ok-richtext--minimal"],
+        "slot": '<div class="ok-richtext__content"></div>',
+    },
+    "audio_player": {
+        "kwargs": {
+            "title": "Briefing", "artist": "Operaciones",
+            "duration": "02:14", "current": "00:34",
+            "progress": 25, "variant": "compact",
+        },
+        "expected_classes": [
+            "ok-audio", "ok-audio--compact", "ok-audio__play",
+            "ok-audio__title", "ok-audio__progress", "ok-audio__bar", "ok-audio__fill",
+        ],
+        "expected_text": "Briefing",
+    },
+    "video_player": {
+        "kwargs": {
+            "poster": "https://example/p.jpg", "duration": "01:48",
+            "current": "00:30", "progress": 30, "playing": True,
+        },
+        "expected_classes": [
+            "ok-video", "ok-video__poster", "ok-video__controls",
+            "ok-video__progress", "ok-video__progress-fill",
+        ],
+    },
+    "tags": {
+        "kwargs": {},
+        "expected_classes": ["ok-tags"],
+        "slot": '<span class="ok-tag ok-tag--brand">Urgente</span>',
+    },
+    # --- Worker G: page shells, feedback, misc ---
+    "toast": {
+        "kwargs": {
+            "title": "Pedido pagado",
+            "description": "PED-2041 — €124,50",
+            "variant": "ok",
+            "dismissible": True,
+        },
+        "expected_classes": [
+            "ok-toast", "ok-toast--ok", "ok-toast__icon",
+            "ok-toast__body", "ok-toast__title", "ok-toast__desc", "ok-toast__close",
+        ],
+        "expected_text": "Pedido pagado",
+    },
+    "tooltip": {
+        "kwargs": {"label": "Atajo: F2", "placement": "top"},
+        "expected_classes": ["ok-tooltip", "ok-tooltip--top"],
+        "expected_text": "Atajo: F2",
+    },
+    "timeline": {
+        "kwargs": {"dense": True},
+        "expected_classes": ["ok-timeline", "ok-timeline--dense"],
+        "slot": '<li class="ok-timeline__item">x</li>',
+    },
+    "states": {
+        "kwargs": {"kind": "title", "width": "60%"},
+        "expected_classes": ["ok-skel", "ok-skel--title"],
+    },
+    "stats": {
+        "kwargs": {},
+        "expected_classes": ["ok-stats"],
+        "slot": '<div class="ok-stat">x</div>',
+    },
+    "panel": {
+        "kwargs": {"title": "Pedidos", "sub": "Hoy", "variant": "ghost"},
+        "expected_classes": [
+            "ok-panel", "ok-panel--ghost", "ok-panel__head", "ok-panel__head-text",
+            "ok-panel__title", "ok-panel__sub", "ok-panel__body",
+        ],
+        "expected_text": "Pedidos",
+        "slot": "<p>body</p>",
+    },
+    "context_menu": {
+        "kwargs": {"label": "Pedido FCT-184"},
+        "expected_classes": ["ok-ctx-menu", "ok-ctx-menu__label"],
+        "expected_text": "Pedido FCT-184",
+        "slot": '<button class="ok-ctx-menu__item">x</button>',
+    },
+    "menubar": {
+        "kwargs": {"app_name": "ERPlora", "compact": True},
+        "expected_classes": [
+            "ok-menubar", "ok-menubar--compact",
+            "ok-menubar__app-name", "ok-menubar__divider",
+        ],
+        "expected_text": "ERPlora",
+        "slot": '<button class="ok-menubar__menu">File</button>',
+    },
+    "invoice": {
+        "kwargs": {},
+        "expected_classes": ["ok-invoice"],
+        "slot": '<div class="ok-invoice__title">Factura</div>',
+    },
+    "system_overlays": {
+        "kwargs": {"title": "Notificaciones", "count": 4},
+        "expected_classes": ["ok-notif", "ok-notif__head", "ok-notif__title"],
+        "expected_text": "Notificaciones",
+        "slot": '<div class="ok-notif__list"></div>',
+    },
+    "app_shell": {
+        "kwargs": {"tabbar": "bottom"},
+        "expected_classes": ["ok-app"],
+        "slot": '<aside class="ok-sidebar"></aside>',
+    },
+    "sidebar_nav": {
+        "kwargs": {},
+        "expected_classes": ["ok-sidebar"],
+        "slot": '<div class="ok-sidebar__brand">x</div>',
+    },
+    "topbar": {
+        "kwargs": {"page_title": "Pedidos", "back": True},
+        "expected_classes": [
+            "ok-topbar", "ok-topbar__left",
+            "ok-topbar__back-btn", "ok-topbar__page-title",
+        ],
+        "expected_text": "Pedidos",
+        "slot": '<div class="ok-topbar__actions">x</div>',
+    },
+    "mobile_shell": {
+        "kwargs": {},
+        "expected_classes": ["ok-app"],
+        "slot": '<aside class="ok-sidebar"></aside>',
+    },
 }
 
 SLOTTED = {
     "card", "modal", "drawer",
     "accordion", "tabs", "list", "banner", "receipt", "stepper", "table", "tabbar",
     "field", "select",
+    "calendar", "chart", "chat", "datatable", "kanban", "gallery", "tree",
+    "kds", "hr_card", "pos", "pay", "manufacturing",
+    "datepicker", "autocomplete", "richtext", "tags",
+    "timeline", "stats", "panel", "context_menu", "menubar", "invoice",
+    "system_overlays", "app_shell", "sidebar_nav", "topbar", "mobile_shell",
 }
 
 

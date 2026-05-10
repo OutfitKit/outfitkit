@@ -1,107 +1,139 @@
 {#def current="" #}
 
-{% macro sidebar(current="") -%}
-{% set sections = [
-  ("Inicio", [("/", "Overview")]),
-  ("Atómicos", [
-    ("/components/button.html", "Button"),
-    ("/components/badge.html", "Badge"),
-    ("/components/avatar.html", "Avatar"),
-    ("/components/menu_btn.html", "Menu button"),
+{# Single source of truth for the sidebar navigation. Mirrors the legacy
+   ERPlora UX showcase structure (22 groups, ~126 entries) so that switching
+   between the two is a no-op. New entries go here; sidebar items render
+   from this list and Datastar hides items that don't match the search query. #}
+
+{% set _ICON_HOME = "M3 11l9-8 9 8v9a2 2 0 0 1-2 2h-4v-7H9v7H5a2 2 0 0 1-2-2z" %}
+{% set _ICON_LAYERS = "M12 2 2 7l10 5 10-5zM2 17l10 5 10-5M2 12l10 5 10-5" %}
+{% set _ICON_LAYOUT = "M3 3h18v18H3zM3 9h18M9 21V9" %}
+{% set _ICON_NAV = "M3 12h18M3 6h18M3 18h12" %}
+{% set _ICON_CUBE = "M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16zM3.3 7L12 12l8.7-5M12 22V12" %}
+{% set _ICON_GRID = "M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z" %}
+{% set _ICON_FORMS = "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8" %}
+{% set _ICON_TABLE = "M3 3h18v18H3zM3 9h18M3 15h18M9 3v18M15 3v18" %}
+{% set _ICON_ALERT = "M12 9v4M12 17h0M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" %}
+{% set _ICON_MODAL = "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" %}
+{% set _ICON_FLOW = "M22 12h-4l-3 9L9 3l-3 9H2" %}
+{% set _ICON_FACTORY = "M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z" %}
+{% set _ICON_STORE = "M3 9V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4M3 9l1.5-3h15L21 9M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM10 21V13h4v8" %}
+
+{% set NAV = [
+  ("Foundations", [
+    ("/", "Visión general", _ICON_HOME, ""),
+    ("/design-system.html", "Design system", _ICON_LAYERS, ""),
   ]),
-  ("Formularios", [
-    ("/components/field.html", "Field"),
-    ("/components/input.html", "Input"),
-    ("/components/select.html", "Select"),
-    ("/components/textarea.html", "Textarea"),
-    ("/components/checkbox.html", "Checkbox"),
-    ("/components/radio.html", "Radio"),
-    ("/components/toggle.html", "Toggle"),
-    ("/components/slider.html", "Slider"),
+  ("Layout", [
+    ("/components/app_shell.html", "App shell", _ICON_LAYOUT, ""),
+    ("/components/mobile_shell.html", "Mobile shell", _ICON_LAYOUT, ""),
+    ("/components/sidebar_nav.html", "Sidebar", _ICON_LAYOUT, ""),
+    ("/components/topbar.html", "Topbar", _ICON_LAYOUT, ""),
   ]),
   ("Navegación", [
-    ("/components/breadcrumbs.html", "Breadcrumbs"),
-    ("/components/accordion.html", "Accordion"),
-    ("/components/tabs.html", "Tabs"),
-    ("/components/tabbar.html", "Tab bar"),
-    ("/components/list.html", "List"),
-    ("/components/stepper.html", "Stepper"),
+    ("/components/tabbar.html", "Tab bar (bottom)", _ICON_NAV, ""),
+    ("/components/tabs.html", "Tabs (top)", _ICON_NAV, ""),
+    ("/components/menu_btn.html", "Menu button", _ICON_NAV, ""),
+    ("/components/breadcrumbs.html", "Breadcrumbs", _ICON_NAV, ""),
+    ("/components/menubar.html", "Menubar", _ICON_NAV, ""),
   ]),
-  ("Datos", [
-    ("/components/kpi.html", "KPI"),
-    ("/components/stat.html", "Stat"),
-    ("/components/sparkline.html", "Sparkline"),
-    ("/components/progress.html", "Progress"),
-    ("/components/table.html", "Table"),
+  ("Atomics", [
+    ("/components/button.html", "Button", _ICON_CUBE, ""),
+    ("/components/badge.html", "Badge", _ICON_CUBE, ""),
+    ("/components/avatar.html", "Avatar", _ICON_CUBE, ""),
+    ("/components/progress.html", "Progress", _ICON_CUBE, ""),
+    ("/components/datepicker.html", "Datepicker", _ICON_CUBE, ""),
+    ("/components/colorpicker.html", "Color picker", _ICON_CUBE, ""),
+    ("/components/timepicker.html", "Time picker", _ICON_CUBE, ""),
+    ("/components/otp.html", "OTP", _ICON_CUBE, ""),
+    ("/components/pinpad.html", "PIN pad", _ICON_CUBE, ""),
+    ("/components/rating.html", "Rating", _ICON_CUBE, ""),
+    ("/components/autocomplete.html", "Autocomplete", _ICON_CUBE, ""),
+    ("/components/search.html", "Search", _ICON_CUBE, ""),
   ]),
-  ("Feedback", [
-    ("/components/banner.html", "Banner"),
-    ("/components/empty.html", "Empty"),
+  ("Surfaces", [
+    ("/components/card.html", "Card", _ICON_GRID, ""),
+    ("/components/kpi.html", "KPI", _ICON_GRID, ""),
+    ("/components/stat.html", "Stat", _ICON_GRID, ""),
+    ("/components/stats.html", "Stats", _ICON_GRID, ""),
+    ("/components/empty.html", "Empty state", _ICON_GRID, ""),
+    ("/components/accordion.html", "Accordion", _ICON_GRID, ""),
+    ("/components/list.html", "List", _ICON_GRID, ""),
+    ("/components/tree.html", "Tree", _ICON_GRID, ""),
+    ("/components/banner.html", "Banner", _ICON_ALERT, ""),
+    ("/components/panel.html", "Panel", _ICON_GRID, ""),
   ]),
-  ("Comercio", [
-    ("/components/receipt.html", "Receipt"),
+  ("Forms", [
+    ("/components/field.html", "Field", _ICON_FORMS, ""),
+    ("/components/input.html", "Input", _ICON_FORMS, ""),
+    ("/components/select.html", "Select", _ICON_FORMS, ""),
+    ("/components/textarea.html", "Textarea", _ICON_FORMS, ""),
+    ("/components/checkbox.html", "Checkbox", _ICON_FORMS, ""),
+    ("/components/radio.html", "Radio", _ICON_FORMS, ""),
+    ("/components/toggle.html", "Toggle", _ICON_FORMS, ""),
+    ("/components/slider.html", "Slider", _ICON_FORMS, ""),
+    ("/components/richtext.html", "Rich text", _ICON_FORMS, ""),
+    ("/components/tags.html", "Tags", _ICON_FORMS, ""),
   ]),
-  ("Superficies", [
-    ("/components/card.html", "Card"),
+  ("Data display", [
+    ("/components/table.html", "Table", _ICON_TABLE, ""),
+    ("/components/datatable.html", "DataTable", _ICON_TABLE, ""),
+    ("/components/sparkline.html", "Sparkline", _ICON_TABLE, ""),
+    ("/components/chart.html", "Charts", _ICON_TABLE, ""),
+    ("/components/timeline.html", "Timeline", _ICON_TABLE, ""),
+    ("/components/stepper.html", "Stepper", _ICON_TABLE, ""),
   ]),
   ("Overlays", [
-    ("/components/modal.html", "Modal"),
-    ("/components/drawer.html", "Drawer"),
+    ("/components/modal.html", "Modal", _ICON_MODAL, ""),
+    ("/components/drawer.html", "Drawer", _ICON_MODAL, ""),
+    ("/components/toast.html", "Toast", _ICON_MODAL, ""),
+    ("/components/tooltip.html", "Tooltip", _ICON_MODAL, ""),
+    ("/components/context_menu.html", "Context menu", _ICON_MODAL, ""),
+  ]),
+  ("Workflow", [
+    ("/components/kanban.html", "Kanban", _ICON_FLOW, ""),
+    ("/components/calendar.html", "Calendar", _ICON_FLOW, ""),
+    ("/components/chat.html", "Chat", _ICON_FLOW, ""),
+    ("/components/gallery.html", "Gallery", _ICON_FLOW, ""),
+    ("/components/system_overlays.html", "Notifications", _ICON_FLOW, ""),
+    ("/components/states.html", "Skeleton states", _ICON_FLOW, ""),
+  ]),
+  ("Industria", [
+    ("/components/manufacturing.html", "Manufactura", _ICON_FACTORY, ""),
+    ("/components/hr_card.html", "Recursos humanos", _ICON_FACTORY, ""),
+    ("/components/audio_player.html", "Audio player", _ICON_FACTORY, ""),
+    ("/components/video_player.html", "Video player", _ICON_FACTORY, ""),
+    ("/components/invoice.html", "Comercial · invoice", _ICON_FACTORY, ""),
+  ]),
+  ("POS · Punto de venta", [
+    ("/components/pos.html", "POS · canvas completo", _ICON_STORE, ""),
+    ("/components/numpad.html", "Numpad", _ICON_STORE, ""),
+    ("/components/pay.html", "Cobro / pago", _ICON_STORE, ""),
+    ("/components/receipt.html", "Receipt (ticket)", _ICON_STORE, ""),
+    ("/components/kds.html", "KDS · cocina", _ICON_STORE, ""),
   ]),
 ] %}
-<nav class="showcase-nav">
-  <div class="showcase-nav__brand">OutfitKit</div>
-  {% for section_name, items in sections %}
-    <div class="showcase-nav__section">
-      <h4 class="showcase-nav__section-title">{{ section_name }}</h4>
-      <ul class="showcase-nav__list">
-      {% for href, label in items %}
-        <li>
-          <a href="{{ href }}"
-             class="showcase-nav__link {% if current.endswith(href.lstrip('/')) %}is-active{% endif %}">
-            {{ label }}
-          </a>
-        </li>
-      {% endfor %}
-      </ul>
-    </div>
-  {% endfor %}
-</nav>
-<style>
-.showcase-nav__brand {
-  font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 24px;
-  color: var(--ok-brand);
-}
-.showcase-nav__section { margin-bottom: 20px; }
-.showcase-nav__section-title {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ok-ink-3);
-  margin: 0 0 8px;
-}
-.showcase-nav__list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-.showcase-nav__link {
-  display: block;
-  padding: 6px 10px;
-  border-radius: 6px;
-  color: var(--ok-ink-2);
-  text-decoration: none;
-  font-size: 14px;
-}
-.showcase-nav__link:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
-.showcase-nav__link.is-active {
-  background: var(--ok-bg-3);
-  color: var(--ok-ink);
-  font-weight: 500;
-}
-</style>
+
+{% macro sidebar(current="") -%}
+{% for group_name, items in NAV %}
+  <div class="ok-sidebar__group">
+    <div class="ok-sidebar__section">{{ group_name }}</div>
+    {% for href, label, icon, badge in items %}
+      {%- set is_active = current.endswith(href.lstrip('/')) and href != '/' or (href == '/' and current.endswith('index.html')) -%}
+      <a href="{{ href }}"
+         class="ok-sidebar__item"
+         data-route-active="{{ 'true' if is_active else 'false' }}">
+        <svg class="ok-sidebar__icon" width="16" height="16" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="{{ icon }}"/>
+        </svg>
+        <span class="ok-sidebar__label">{{ label }}</span>
+        {% if badge -%}<span class="ok-sidebar__badge ok-sidebar__badge--{{ badge }}">{{ badge }}</span>{%- endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% endfor %}
 {%- endmacro %}
 
 {% if current is defined %}{{ sidebar(current) }}{% endif %}

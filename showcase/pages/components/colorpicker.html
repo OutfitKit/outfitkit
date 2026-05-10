@@ -1,0 +1,46 @@
+{% extends "_layout.jinja" %}
+{% from "ui/colorpicker.jinja" import colorpicker %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Color picker — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Color picker</h1>
+<p class="showcase__lead">Paleta de swatches curados para tematizar productos, etiquetas o categorías.</p>
+
+{% call demo_frame("Paleta por defecto") %}
+{{ colorpicker(selected="#D97757") }}
+{% endcall %}
+
+{% call demo_frame("Paleta custom — pasteles") %}
+{{ colorpicker(colors=["#FFD9D6", "#FFE9C7", "#FFF6BA", "#D6F3D9", "#D6E8F7", "#E5D9F7", "#F7D6F0"], selected="#FFE9C7") }}
+{% endcall %}
+
+{% call demo_frame("Datastar — selección reactiva") %}
+<div data-signals="{ c: '#D97757' }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+  <div class="ok-colorpicker">
+    {% for c in ["#D97757","#C44E37","#E8B548","#7BA374","#3D8B7C","#5C7CFA","#9C6ADE","#8A7765","#5A6168","#2F343A"] %}
+    <button type="button" class="ok-colorpicker__swatch"
+      style="background:{{ c }}"
+      data-attr:aria-pressed="$c === '{{ c }}'"
+      data-on:click="$c = '{{ c }}'"
+      aria-label="{{ c }}"></button>
+    {% endfor %}
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <div style="width:32px;height:32px;border-radius:8px;border:1px solid var(--ok-line);" data-style-background="$c"></div>
+    <code data-text="$c"></code>
+  </div>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>colors</code></td><td>list[str]</td><td>None</td><td>Lista de colores hex. Si se omite, se usa la paleta ERPlora por defecto.</td></tr>
+    <tr><td><code>selected</code></td><td>str</td><td>""</td><td>Color seleccionado (marca <code>aria-pressed</code>).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

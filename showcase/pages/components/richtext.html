@@ -1,0 +1,68 @@
+{% extends "_layout.jinja" %}
+{% from "ui/richtext.jinja" import richtext %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Rich text — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Rich text</h1>
+<p class="showcase__lead">Editor con barra de herramientas y área editable. El componente provee el contenedor; el contenido es slot libre.</p>
+
+{% call demo_frame("Default · toolbar + contenido + footer") %}
+{% call richtext() %}
+<div class="ok-richtext__toolbar" role="toolbar" aria-label="Formato">
+  <select class="ok-richtext__select" aria-label="Estilo">
+    <option value="p">Párrafo</option>
+    <option value="h1">Título 1</option>
+    <option value="h2">Título 2</option>
+    <option value="h3">Título 3</option>
+  </select>
+  <span class="ok-richtext__divider"></span>
+  <button type="button" class="ok-richtext__btn" aria-label="Negrita">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7zM7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg>
+  </button>
+  <button type="button" class="ok-richtext__btn" aria-label="Cursiva">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg>
+  </button>
+  <button type="button" class="ok-richtext__btn" aria-label="Lista">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+  </button>
+  <span class="ok-richtext__spacer"></span>
+  <button type="button" class="ok-richtext__btn" aria-label="Deshacer">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 7 3 13 9 13"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>
+  </button>
+</div>
+<div class="ok-richtext__content" contenteditable="true" data-placeholder="Escribe aquí…">
+  <h2>Política de devoluciones</h2>
+  <p>Aceptamos devoluciones dentro de los <strong>30 días</strong> posteriores a la compra. El producto debe estar en su <em>estado original</em>, sin uso visible.</p>
+  <ul>
+    <li>Conservar el ticket</li>
+    <li>Embalaje original</li>
+    <li>Reembolso en 5–7 días hábiles</li>
+  </ul>
+</div>
+<div class="ok-richtext__footer">
+  <span>24 palabras</span>
+  <span>último guardado · hace 2 min</span>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variante minimal · sin toolbar") %}
+{% call richtext(variant="minimal") %}
+<div class="ok-richtext__content" contenteditable="true" data-placeholder="Edición inline sin barra…">
+  <p>Texto editable inline para encabezados, descripciones cortas o anotaciones rápidas.</p>
+</div>
+{% endcall %}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>variant</code></td><td>str</td><td>"default"</td><td><code>default</code> · <code>minimal</code> · <code>sm</code> · <code>lg</code>.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra (data-signals, etc).</td></tr>
+  </tbody>
+</table>
+<p class="showcase__lead">Slot: <code>.ok-richtext__toolbar</code>, <code>.ok-richtext__content</code> (contenteditable) y <code>.ok-richtext__footer</code> opcional.</p>
+{% endblock %}

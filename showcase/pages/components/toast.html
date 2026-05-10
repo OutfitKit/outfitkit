@@ -1,0 +1,39 @@
+{% extends "_layout.jinja" %}
+{% from "ui/toast.jinja" import toast %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Toast — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Toast</h1>
+<p class="showcase__lead">Notificación efímera con icono, título y descripción opcional. Variantes <code>info</code>, <code>ok</code>, <code>warn</code>, <code>danger</code>, <code>brand</code>. Se renderiza dentro de <code>.ok-toast-region[data-pos]</code> para gestionar la posición y el stack.</p>
+
+{% call demo_frame("Stack en top-right") %}
+<div class="ok-toast-region" data-pos="top-right" style="position:relative;width:340px">
+  {{ toast("Pedido pagado", description="PED-2041 — €124,50 vía tarjeta", variant="ok", dismissible=True) }}
+  {{ toast("Sincronizando inventario", description="3 SKU pendientes — finalizará en 30s.", variant="info") }}
+  {{ toast("Stock crítico", description="Leche desnatada — quedan 1 unidad.", variant="warn", dismissible=True) }}
+  {{ toast("Pago rechazado", description="El TPV devolvió «fondos insuficientes».", variant="danger", dismissible=True) }}
+</div>
+{% endcall %}
+
+{% call demo_frame("Variante brand simple") %}
+{{ toast("Nueva integración disponible", description="Conecta tu pasarela Adyen en 2 clics.", variant="brand") }}
+{% endcall %}
+
+{% call demo_frame("Solo título") %}
+{{ toast("Cambios guardados", variant="ok") }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td>—</td><td>Título principal.</td></tr>
+    <tr><td><code>description</code></td><td>str</td><td>""</td><td>Texto secundario opcional.</td></tr>
+    <tr><td><code>variant</code></td><td>"info"|"ok"|"warn"|"danger"|"brand"</td><td>"info"</td><td>Color semántico.</td></tr>
+    <tr><td><code>dismissible</code></td><td>bool</td><td>false</td><td>Renderiza botón cerrar.</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

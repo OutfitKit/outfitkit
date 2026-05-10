@@ -1,0 +1,21 @@
+{#def colors=None, selected="", attrs=None #}
+
+{% macro colorpicker(colors=None, selected="", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _palette = colors or [
+  "#D97757", "#C44E37", "#E8B548", "#7BA374",
+  "#3D8B7C", "#5C7CFA", "#9C6ADE", "#8A7765",
+  "#5A6168", "#2F343A"
+] -%}
+<div class="ok-colorpicker"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {%- for c in _palette %}
+  <button type="button" class="ok-colorpicker__swatch"
+    style="background:{{ c }}"
+    {% if selected == c %}aria-pressed="true"{% endif %}
+    aria-label="{{ c }}"></button>
+  {%- endfor %}
+</div>
+{%- endmacro %}
+
+{% if colors is defined %}{{ colorpicker(colors=colors, selected=selected, attrs=attrs) }}{% endif %}

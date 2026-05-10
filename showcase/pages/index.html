@@ -1,57 +1,61 @@
 {% extends "_layout.jinja" %}
 
-{% block title %}OutfitKit · Showcase{% endblock %}
+{% block title %}OutfitKit · Librería{% endblock %}
+{% block page_title %}Visión general{% endblock %}
 
 {% block content %}
-<h1>OutfitKit</h1>
-<p class="showcase__lead">
-  Librería CSS de componentes con prefijo <code>ok-*</code>, opcional
-  paquete Jinja para FastAPI/Django, y showcase desplegado en GitHub Pages.
+<h1 class="doc__title">OutfitKit</h1>
+<p class="doc__sub">
+  Librería CSS para construir aplicaciones internas (back-office, POS, dashboards,
+  manufactura, HR). Tema oscuro y sobrio por defecto, acento terracota,
+  tipografía Inter. Toda la interactividad va con Datastar — la librería es 100%
+  declarativa.
 </p>
 
-<div class="showcase-grid">
-  <a href="/components/button.html" class="ok-card ok-card--interactive">
-    <div class="ok-card__body">
-      <h3 class="ok-card__title">Button</h3>
-      <p>Variantes, tamaños, estados.</p>
-    </div>
-  </a>
-  <a href="/components/badge.html" class="ok-card ok-card--interactive">
-    <div class="ok-card__body">
-      <h3 class="ok-card__title">Badge</h3>
-      <p>Etiquetas semánticas con dot opcional.</p>
-    </div>
-  </a>
-  <a href="/components/card.html" class="ok-card ok-card--interactive">
-    <div class="ok-card__body">
-      <h3 class="ok-card__title">Card</h3>
-      <p>Superficies con slot interno.</p>
-    </div>
-  </a>
-  <a href="/components/modal.html" class="ok-card ok-card--interactive">
-    <div class="ok-card__body">
-      <h3 class="ok-card__title">Modal</h3>
-      <p>Diálogo modal con icono, header, body.</p>
-    </div>
-  </a>
-  <a href="/components/drawer.html" class="ok-card ok-card--interactive">
-    <div class="ok-card__body">
-      <h3 class="ok-card__title">Drawer</h3>
-      <p>Panel lateral right/left/bottom.</p>
-    </div>
-  </a>
+<div class="demo-grid">
+  <div class="demo">
+    <div class="demo__label">Sistema · tokens.css</div>
+    <p style="font-size:13px;color:var(--ok-ink-2);line-height:1.55;">
+      Una capa única de variables CSS define color, tipografía, espaciado, radios,
+      sombras y motion. Tema <code>erplora</code> (oscuro) y <code>erplora-light</code>.
+    </p>
+  </div>
+  <div class="demo">
+    <div class="demo__label">CSS plano</div>
+    <p style="font-size:13px;color:var(--ok-ink-2);line-height:1.55;">
+      Cada componente vive en un <code>.css</code> independiente. Sin <code>@apply</code>,
+      sin build steps. Importa lo que necesitas o el bundle <code>outfitkit.css</code>.
+    </p>
+  </div>
+  <div class="demo">
+    <div class="demo__label">Datastar · CDN</div>
+    <p style="font-size:13px;color:var(--ok-ink-2);line-height:1.55;">
+      Estados con <code>data-signals</code>, <code>data-on-*</code>,
+      <code>data-bind-*</code>. Esta misma página usa Datastar para tema, viewport
+      y filtrado del sidebar.
+    </p>
+  </div>
 </div>
 
-<style>
-.showcase-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px;
-  margin-top: 24px;
-}
-.showcase-grid .ok-card {
-  text-decoration: none;
-  color: inherit;
-}
-</style>
+<h3 style="font-family:var(--ok-font-display, var(--ok-font));font-size:18px;letter-spacing:-0.03em;margin:30px 0 14px;color:var(--ok-ink);">
+  Composición del shell
+</h3>
+<p style="font-size:13.5px;color:var(--ok-ink-2);line-height:1.7;max-width:680px;">
+  Esta misma documentación es un ejemplo en vivo de la librería: la barra lateral
+  usa <code>.ok-sidebar</code> con sus grupos, items, iconos y badges; el buscador
+  es <code>.ok-search</code> + <code>.ok-input--sm</code>; la cabecera es
+  <code>.ok-topbar</code> con breadcrumb y acciones; la app entera está envuelta
+  en <code>.ok-app</code>.
+</p>
+
+<h3 style="font-family:var(--ok-font-display, var(--ok-font));font-size:18px;letter-spacing:-0.03em;margin:30px 0 14px;color:var(--ok-ink);">
+  Macros Jinja (opcional)
+</h3>
+<p style="font-size:13.5px;color:var(--ok-ink-2);line-height:1.7;max-width:680px;">
+  Si tu backend es Python con Jinja2 (FastAPI, Flask, Django+jinja2 backend),
+  puedes consumir los componentes como macros: <code>pip install outfitkit</code>.
+  Las macros funcionan tanto como <code>{{ '{{' }} button(...) {{ '}}' }}</code> en Jinja2 vanilla
+  como <code>&lt;Button label="x" /&gt;</code> con JinjaX — el mismo archivo
+  soporta los dos modos sin duplicación.
+</p>
 {% endblock %}

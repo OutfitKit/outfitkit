@@ -1,0 +1,13 @@
+{#def variant="default", attrs=None #}
+
+{% macro richtext(variant="default", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-richtext{% if variant != 'default' %} ok-richtext--{{ variant }}{% endif %}"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {{ caller() }}
+</div>
+{%- endmacro %}
+
+{% if variant is defined %}
+  {% call richtext(variant=variant, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

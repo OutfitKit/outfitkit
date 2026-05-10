@@ -1,0 +1,106 @@
+{% extends "_layout.jinja" %}
+{% from "ui/kds.jinja" import kds %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}KDS — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>KDS · Kitchen Display System</h1>
+<p class="showcase__lead">Tarjeta de pedido para cocina. El consumidor compone <code>.ok-kds__head</code>, <code>.ok-kds__items</code> y <code>.ok-kds__actions</code> dentro del slot. La variante <code>--late</code> pulsa en rojo, <code>--ready</code> marca pedido listo.</p>
+
+{% call demo_frame("Pedido en curso") %}
+{% call kds() %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">M2 · #2042</div>
+    <div class="ok-kds__source">📍 Barra · Roberto</div>
+  </div>
+  <span class="ok-kds__time">02:18</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item"><span class="ok-kds__qty">2×</span>Café cortado</li>
+  <li class="ok-kds__notes">leche desnatada · sin azúcar</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Bocadillo serrano</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variant late · pedido retrasado") %}
+{% call kds(variant="late") %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">M4 · #2041</div>
+    <div class="ok-kds__source">📍 Mesa · Ana</div>
+  </div>
+  <span class="ok-kds__time">14:32</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Tostada salmón</li>
+  <li class="ok-kds__notes">+ extra aguacate</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">1×</span>Zumo naranja grande</li>
+  <li class="ok-kds__item"><span class="ok-kds__qty">2×</span>Croissant chocolate</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Variant ready · listo para entregar") %}
+{% call kds(variant="ready") %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">DEL · #2043</div>
+    <div class="ok-kds__source">🛵 Glovo · Eva L.</div>
+  </div>
+  <span class="ok-kds__time">04:05</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item ok-kds__item--done"><span class="ok-kds__qty">1×</span>Menú del día</li>
+  <li class="ok-kds__item ok-kds__item--done"><span class="ok-kds__qty">1×</span>Postre del día</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--secondary ok-btn--sm">✓ Entregado</button>
+</div>
+{% endcall %}
+{% endcall %}
+
+{% call demo_frame("Datastar · marcar líneas como hechas") %}
+<div data-signals="{ done1: false, done2: false, done3: false }">
+{% call kds() %}
+<header class="ok-kds__head">
+  <div>
+    <div class="ok-kds__order">B7 · #2044</div>
+    <div class="ok-kds__source">📍 Barra · Roberto</div>
+  </div>
+  <span class="ok-kds__time">00:42</span>
+</header>
+<ul class="ok-kds__items" style="padding:0;margin:0;list-style:none">
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done1" data-on:click="$done1 = !$done1"><span class="ok-kds__qty">3×</span>Cappuccino doble</li>
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done2" data-on:click="$done2 = !$done2"><span class="ok-kds__qty">3×</span>Tostada con tomate</li>
+  <li class="ok-kds__notes">una sin gluten</li>
+  <li class="ok-kds__item" data-class:ok-kds__item--done="$done3" data-on:click="$done3 = !$done3"><span class="ok-kds__qty">2×</span>Zumo naranja</li>
+</ul>
+<div class="ok-kds__actions">
+  <button class="ok-btn ok-btn--ghost ok-btn--sm">Marcar</button>
+  <button class="ok-btn ok-btn--primary ok-btn--sm">Listo →</button>
+</div>
+{% endcall %}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>variant</code></td><td>"late"|"ready"|None</td><td>None</td><td>Estado visual del pedido (retrasado / listo).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Cabecera, items y acciones (composición libre).</td></tr>
+  </tbody>
+</table>
+{% endblock %}

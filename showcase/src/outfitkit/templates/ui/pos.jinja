@@ -1,0 +1,13 @@
+{#def tag="div", attrs=None #}
+
+{% macro pos(tag="div", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<{{ tag }} class="ok-pos"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</{{ tag }}>
+{%- endmacro %}
+
+{% if tag is defined %}
+  {% call pos(tag=tag, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

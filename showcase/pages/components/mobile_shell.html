@@ -1,0 +1,61 @@
+{% extends "_layout.jinja" %}
+{% from "ui/mobile_shell.jinja" import mobile_shell %}
+{% from "ui/sidebar_nav.jinja" import sidebar_nav %}
+{% from "ui/topbar.jinja" import topbar %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Mobile shell — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Mobile shell</h1>
+<p class="showcase__lead">Variante del app shell preconfigurada para mobile (<code>data-tabbar="bottom"</code>): el sidebar pasa a drawer off-canvas, el topbar pierde la búsqueda y aparece la tab-bar inferior como nav principal.</p>
+
+{% call demo_frame("Mobile shell · drawer cerrado") %}
+<div style="width:390px;height:600px;border:8px solid #0a0a0a;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;background:var(--ok-bg)">
+{% call mobile_shell() %}
+{% call sidebar_nav() %}
+<div class="ok-sidebar__brand">
+  <div class="ok-sidebar__logo">EX</div>
+  <div class="ok-sidebar__brand-text">
+    <div class="ok-sidebar__brand-name">La Rambla</div>
+    <div class="ok-sidebar__brand-meta">3 sedes</div>
+  </div>
+</div>
+<div class="ok-sidebar__body">
+  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
+  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span></button>
+</div>
+{% endcall %}
+<div class="ok-app__main">
+  {% call topbar(page_title="Vista general") %}{% endcall %}
+  <div class="ok-app__body" style="padding:16px">
+    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;margin-bottom:10px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Ventas hoy</div>
+      <div style="font-size:26px;font-weight:600;margin-top:2px">2.481 €</div>
+    </div>
+    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Tickets</div>
+      <div style="font-size:26px;font-weight:600;margin-top:2px">184</div>
+    </div>
+  </div>
+</div>
+<nav class="ok-tabbar ok-app__tabbar">
+  <a class="ok-tabbar-item" aria-current="page"><span class="ok-tabbar-label">Inicio</span></a>
+  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Cobros</span></a>
+  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Ventas</span></a>
+  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Equipo</span></a>
+  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Más</span></a>
+</nav>
+{% endcall %}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (data-signals para Datastar).</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Sidebar + main + tabbar.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

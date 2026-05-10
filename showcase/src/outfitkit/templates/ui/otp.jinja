@@ -1,0 +1,18 @@
+{#def length=6, value="", size="md", separator_at=None, attrs=None #}
+
+{% macro otp(length=6, value="", size="md", separator_at=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="ok-otp{% if size == 'sm' %} ok-otp--sm{% elif size == 'lg' %} ok-otp--lg{% endif %}"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {%- for i in range(length) %}
+    {%- if separator_at is not none and i == separator_at %}
+    <span class="ok-otp__sep">—</span>
+    {%- endif %}
+    <input type="text" class="ok-otp__cell" maxlength="1"
+      {% if value and i < value|length %}value="{{ value[i] }}"{% endif %}
+      inputmode="numeric" autocomplete="one-time-code"/>
+  {%- endfor %}
+</div>
+{%- endmacro %}
+
+{% if length is defined %}{{ otp(length=length, value=value, size=size, separator_at=separator_at, attrs=attrs) }}{% endif %}

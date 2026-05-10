@@ -1,0 +1,43 @@
+{% extends "_layout.jinja" %}
+{% from "ui/video_player.jinja" import video_player %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Video player — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Video player</h1>
+<p class="showcase__lead">Reproductor de vídeo con poster y controles personalizados.</p>
+
+{% call demo_frame("Default · poster + controles") %}
+{{ video_player(
+  poster="https://picsum.photos/seed/v1/640/360",
+  current="00:30",
+  duration="01:48",
+  progress=30
+) }}
+{% endcall %}
+
+{% call demo_frame("Reproduciéndose · sin poster") %}
+{{ video_player(
+  poster="https://picsum.photos/seed/v2/640/360",
+  current="01:24",
+  duration="03:12",
+  progress=45,
+  playing=True
+) }}
+{% endcall %}
+
+<h2>API</h2>
+<table class="ok-table">
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>poster</code></td><td>str</td><td>""</td><td>URL de imagen de poster.</td></tr>
+    <tr><td><code>src</code></td><td>str</td><td>""</td><td>URL del vídeo (renderiza <code>&lt;video&gt;</code> si presente).</td></tr>
+    <tr><td><code>duration</code></td><td>str</td><td>"00:00"</td><td>Duración total.</td></tr>
+    <tr><td><code>current</code></td><td>str</td><td>"00:00"</td><td>Tiempo actual.</td></tr>
+    <tr><td><code>progress</code></td><td>int</td><td>0</td><td>Porcentaje 0–100.</td></tr>
+    <tr><td><code>playing</code></td><td>bool</td><td>false</td><td>Aplica <code>is-playing</code> (oculta poster y overlay).</td></tr>
+    <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
+  </tbody>
+</table>
+{% endblock %}
