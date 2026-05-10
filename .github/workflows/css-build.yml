@@ -55,21 +55,59 @@ jobs:
           print(f"Wrote dist/outfitkit.css ({len(bundled):,} bytes)")
           PY
 
-      - name: Minify
+      - name: Generate unprefixed bundle
+        run: |
+          python <<'PY'
+          import re
+          from pathlib import Path
+
+          # Strip `ok-` ONLY when it's the start of a CSS class selector — i.e.
+          # preceded by a `.`. Does NOT touch:
+          #   --ok-*        (CSS custom properties / tokens)
+          #   var(--ok-*)   (token references)
+          #   @keyframes ok-*  (animation names)
+          #   animation: ok-*  (animation references)
+          # Match: a dot followed by `ok-` and the first word char that follows.
+          # Use word boundary on the right so `.ok-card-title` becomes
+          # `.card-title`, not `.title`.
+          src = Path("dist/outfitkit.css").read_text()
+
+          # Robust strategy: capture `.ok-` (literal) and replace with `.`
+          # only when followed by a class-name character. This catches all
+          # selector forms: `.ok-foo`, `.ok-foo:hover`, `.ok-foo > .ok-bar`,
+          # `.ok-foo.ok-bar`, `.ok-foo[aria-pressed=""]`.
+          stripped = re.sub(r'\.ok-(?=[a-zA-Z])', '.', src)
+
+          out = Path("dist/outfitkit.unprefixed.css")
+          out.write_text(stripped)
+
+          # Sanity check: tokens, keyframes, animations must remain prefixed.
+          assert "--ok-" in stripped, "lost --ok-* tokens (BUG)"
+          assert "@keyframes ok-" in stripped, "lost @keyframes ok-* (BUG)"
+          # And every .ok- selector should be gone.
+          assert ".ok-" not in stripped, f"selectors still have .ok- prefix: {stripped[stripped.find('.ok-'):stripped.find('.ok-')+80]!r}"
+
+          print(f"Wrote dist/outfitkit.unprefixed.css ({len(stripped):,} bytes)")
+          PY
+
+      - name: Minify both bundles
         run: |
           python <<'PY'
           import rcssmin
           from pathlib import Path
-          src = Path("dist/outfitkit.css").read_text()
-          minified = rcssmin.cssmin(src)
-          Path("dist/outfitkit.min.css").write_text(minified)
-          print(f"Wrote dist/outfitkit.min.css ({len(minified):,} bytes, {len(minified)/len(src)*100:.1f}% of source)")
+          for name in ("outfitkit", "outfitkit.unprefixed"):
+              src = Path(f"dist/{name}.css").read_text()
+              minified = rcssmin.cssmin(src)
+              Path(f"dist/{name}.min.css").write_text(minified)
+              print(f"Wrote dist/{name}.min.css ({len(minified):,} bytes, {len(minified)/len(src)*100:.1f}% of source)")
           PY
 
       - name: Verify outputs
         run: |
           test -s dist/outfitkit.css
           test -s dist/outfitkit.min.css
+          test -s dist/outfitkit.unprefixed.css
+          test -s dist/outfitkit.unprefixed.min.css
           ls -lh dist/
 
       - name: Commit dist/ to the tag

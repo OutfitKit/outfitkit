@@ -6,13 +6,31 @@ Cero JS obligatorio. Cero build pipeline para consumidores. Un solo `<link>` y l
 
 ## Uso (consumidor solo CSS)
 
-### Producción — bundle minificado
+OutfitKit se publica en **dos sabores**, ambos con el mismo CSS:
+
+| Bundle | Clases | Cuándo usarlo |
+|---|---|---|
+| `outfitkit.min.css` | `.ok-btn`, `.ok-card`, `.ok-flex`, … | Cuando OutfitKit convive con otra librería CSS o cuando quieres distinguir tus clases en DevTools. |
+| `outfitkit.unprefixed.min.css` | `.btn`, `.card`, `.flex`, … | Cuando OutfitKit es tu única librería y prefieres clases cortas (estilo Tailwind / Daisy). Hub y Cloud usan este. |
+
+Ambos bundles comparten los mismos tokens (`--ok-*`), keyframes y animations — lo único que cambia es el nombre de los selectores de clase.
+
+### Producción — con prefijo `ok-`
 
 ```html
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.min.css">
 
 <button class="ok-btn ok-btn--primary">Continuar</button>
+```
+
+### Producción — sin prefijo
+
+```html
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.unprefixed.min.css">
+
+<button class="btn btn--primary">Continuar</button>
 ```
 
 ### Desarrollo — fuente sin minificar
@@ -24,7 +42,7 @@ Cero JS obligatorio. Cero build pipeline para consumidores. Un solo `<link>` y l
       href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/outfitkit.css">
 ```
 
-`outfitkit.css` es un archivo de `@import` que carga `tokens.css`, `base.css`, `utilities.css` y los 44 archivos de `components/`. Los navegadores modernos resuelven los `@import` sin problema.
+La fuente en `css/` siempre lleva el prefijo `ok-`; el bundle sin prefijo se genera solo en CI cuando se etiqueta una release. Los navegadores modernos resuelven los `@import` sin problema, así que el archivo de desarrollo no necesita bundling.
 
 ## Macros Jinja (opcional)
 
@@ -52,9 +70,11 @@ outfitkit/
 │   ├── utilities.css   ← .ok-flex, .ok-gap-*, .ok-text-*
 │   ├── outfitkit.css   ← entry point con @import de todo
 │   └── components/     ← 44 archivos, uno por familia (button, card, modal, ...)
-├── dist/               ← bundle generado SOLO en CI al taggear (no editar a mano)
-│   ├── outfitkit.css       (concatenado)
-│   └── outfitkit.min.css   (minificado con lightningcss)
+├── dist/               ← bundles generados SOLO en CI al taggear (no editar a mano)
+│   ├── outfitkit.css                  (concatenado, con prefijo ok-)
+│   ├── outfitkit.min.css              (minificado, con prefijo ok-)
+│   ├── outfitkit.unprefixed.css       (concatenado, sin prefijo)
+│   └── outfitkit.unprefixed.min.css   (minificado, sin prefijo)
 └── showcase/           ← macros Jinja + sitio de demos + paquete PyPI
 ```
 
