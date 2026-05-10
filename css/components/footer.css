@@ -1,0 +1,76 @@
+/* ============================================================
+   OutfitKit · Footer
+   Composable footer for marketing/public sites. <Footer> is just
+   a styled container; the consumer fills slots with brand,
+   columns, and bottom bar.
+   ============================================================ */
+
+.ok-footer {
+  border-top: 1px solid var(--ok-line);
+  background: var(--ok-bg-1);
+  color: var(--ok-ink-2);
+  font-size: var(--ok-text-sm);
+  padding: 48px clamp(16px, 4vw, 32px) 24px;
+}
+
+.ok-footer__columns {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+  .ok-footer__columns { grid-template-columns: repeat(5, 1fr); }
+}
+
+.ok-footer__col { display: flex; flex-direction: column; gap: 8px; }
+.ok-footer__col-title {
+  font-size: var(--ok-text-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ok-ink-3);
+  margin-bottom: 8px;
+}
+.ok-footer__link {
+  color: var(--ok-ink-2);
+  text-decoration: none;
+  transition: color var(--ok-dur-fast);
+}
+.ok-footer__link:hover { color: var(--ok-ink); }
+
+.ok-footer__bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
+  border-top: 1px solid var(--ok-line);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--ok-ink-3);
+}
+@media (min-width: 640px) {
+  .ok-footer__bottom { flex-direction: row; }
+}
+
+.ok-footer__social { display: flex; gap: 12px; }
+.ok-footer__social-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ok-bg-2);
+  border-radius: var(--ok-radius-md);
+  color: var(--ok-ink-2);
+  text-decoration: none;
+  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+}
+.ok-footer__social-icon:hover {
+  background: var(--ok-brand);
+  color: var(--ok-brand-fg);
+}

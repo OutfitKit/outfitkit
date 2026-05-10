@@ -1,0 +1,13 @@
+{#def sticky=True, attrs=None #}
+
+{% macro navbar(sticky=True, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<nav class="{{ ok_prefix }}navbar{% if sticky %} {{ ok_prefix }}navbar--sticky{% endif %}"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</nav>
+{%- endmacro %}
+
+{% if sticky is defined %}
+  {% call navbar(sticky=sticky, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

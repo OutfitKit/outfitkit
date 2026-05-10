@@ -1,0 +1,121 @@
+/* ============================================================
+   OutfitKit · Navbar
+   Sticky horizontal navigation bar for marketing/public sites.
+   Composable: <Navbar> wraps slots filled by the consumer
+   (brand, nav, end actions, mobile menu).
+   ============================================================ */
+
+.ok-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px clamp(16px, 4vw, 32px);
+  background: color-mix(in oklch, var(--ok-bg) 88%, transparent);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid var(--ok-line);
+  z-index: 50;
+  min-height: 64px;
+}
+
+.ok-navbar--sticky {
+  position: sticky;
+  top: 0;
+}
+
+/* Brand: logo + name link */
+.ok-navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--ok-ink);
+  font-family: var(--ok-font-display);
+  font-weight: 600;
+  font-size: var(--ok-text-lg);
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+.ok-navbar-brand img { width: 28px; height: 28px; }
+
+/* Nav links group (desktop) */
+.ok-navbar-nav {
+  display: none;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+@media (min-width: 768px) {
+  .ok-navbar-nav { display: flex; }
+}
+
+.ok-navbar-link {
+  color: var(--ok-ink-2);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: var(--ok-radius-md);
+  font-size: var(--ok-text-base);
+  font-weight: 500;
+  transition: color var(--ok-dur-fast), background var(--ok-dur-fast);
+}
+.ok-navbar-link:hover {
+  color: var(--ok-ink);
+  background: var(--ok-bg-1);
+}
+
+/* End: language selector, CTA, hamburger */
+.ok-navbar-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Mobile hamburger button (hidden on desktop). The consumer wires
+   it to a hidden checkbox + :has() selector on the navbar wrapper. */
+.ok-menu-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: var(--ok-radius-md);
+  cursor: pointer;
+  color: var(--ok-ink);
+}
+.ok-menu-button:hover { background: var(--ok-bg-1); }
+@media (min-width: 768px) { .ok-menu-button { display: none; } }
+
+.ok-menu-button-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 18px;
+}
+.ok-menu-button-line {
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform var(--ok-dur-base);
+}
+
+/* Mobile menu — collapsed by default, shown when the parent toggle
+   checkbox is checked. Consumer is responsible for the structure
+   (hidden checkbox + :has selector). */
+.ok-navbar-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px clamp(16px, 4vw, 32px);
+  background: color-mix(in oklch, var(--ok-bg) 92%, transparent);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--ok-line);
+}
+@media (min-width: 768px) {
+  .ok-navbar-mobile { display: none !important; }
+}

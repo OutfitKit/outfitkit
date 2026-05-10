@@ -1,0 +1,13 @@
+{#def attrs=None #}
+
+{% macro footer(attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<footer class="{{ ok_prefix }}footer"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {{ caller() }}
+</footer>
+{%- endmacro %}
+
+{% if attrs is defined %}
+  {% call footer(attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}
