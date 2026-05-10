@@ -2,11 +2,11 @@
 
 {% macro stat(label, value, delta=None, delta_dir=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-stat"
+<div class="{{ ok_prefix }}stat"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-  <div class="ok-stat__label">{{ label }}</div>
-  <div class="ok-stat__value">{{ value }}</div>
-  {%- if delta %}<div class="ok-stat__delta{% if delta_dir %} ok-stat__delta--{{ delta_dir }}{% endif %}">{{ delta }}</div>{% endif %}
+  <div class="{{ ok_prefix }}stat__label">{{ label }}</div>
+  <div class="{{ ok_prefix }}stat__value">{{ value }}</div>
+  {%- if delta %}<div class="{{ ok_prefix }}stat__delta{% if delta_dir %} {{ ok_prefix }}stat__delta--{{ delta_dir }}{% endif %}">{{ delta }}</div>{% endif %}
 </div>
 {%- endmacro %}
 

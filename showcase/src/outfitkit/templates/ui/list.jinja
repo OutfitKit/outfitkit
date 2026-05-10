@@ -2,7 +2,7 @@
 
 {% macro list(variant="default", dense=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-list{% if variant != 'default' %} ok-list--{{ variant }}{% endif %}{% if dense %} ok-list--dense{% endif %}"
+<div class="{{ ok_prefix }}list{% if variant != 'default' %} {{ ok_prefix }}list--{{ variant }}{% endif %}{% if dense %} {{ ok_prefix }}list--dense{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>

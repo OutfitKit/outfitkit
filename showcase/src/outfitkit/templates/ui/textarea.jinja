@@ -5,7 +5,7 @@
 <textarea
   name="{{ name }}"
   rows="{{ rows }}"
-  class="ok-textarea{% if invalid %} ok-textarea--invalid{% endif %}"
+  class="{{ ok_prefix }}textarea{% if invalid %} {{ ok_prefix }}textarea--invalid{% endif %}"
   {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
   {% if disabled %}disabled{% endif %}
   {% if required %}required{% endif %}

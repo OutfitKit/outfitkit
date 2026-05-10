@@ -2,14 +2,14 @@
 
 {% macro toast(title, description="", variant="info", dismissible=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-toast{% if variant %} ok-toast--{{ variant }}{% endif %}"
+<div class="{{ ok_prefix }}toast{% if variant %} {{ ok_prefix }}toast--{{ variant }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <iconify-icon class="ok-toast__icon" icon="lucide:info" width="16" height="16"></iconify-icon>
-  <div class="ok-toast__body">
-    <div class="ok-toast__title">{{ title }}</div>
-    {% if description %}<div class="ok-toast__desc">{{ description }}</div>{% endif %}
+  <iconify-icon class="{{ ok_prefix }}toast__icon" icon="lucide:info" width="16" height="16"></iconify-icon>
+  <div class="{{ ok_prefix }}toast__body">
+    <div class="{{ ok_prefix }}toast__title">{{ title }}</div>
+    {% if description %}<div class="{{ ok_prefix }}toast__desc">{{ description }}</div>{% endif %}
   </div>
-  {% if dismissible %}<button class="ok-toast__close" aria-label="Cerrar">✕</button>{% endif %}
+  {% if dismissible %}<button class="{{ ok_prefix }}toast__close" aria-label="Cerrar">✕</button>{% endif %}
 </div>
 {%- endmacro %}
 

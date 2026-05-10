@@ -2,17 +2,17 @@
 
 {% macro panel(title=None, sub=None, variant=None, size=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-panel{% if variant %} ok-panel--{{ variant }}{% endif %}{% if size %} ok-panel--{{ size }}{% endif %}"
+<div class="{{ ok_prefix }}panel{% if variant %} {{ ok_prefix }}panel--{{ variant }}{% endif %}{% if size %} {{ ok_prefix }}panel--{{ size }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if title or sub %}
-  <header class="ok-panel__head">
-    <div class="ok-panel__head-text">
-      {% if title %}<h3 class="ok-panel__title">{{ title }}</h3>{% endif %}
-      {% if sub %}<p class="ok-panel__sub">{{ sub }}</p>{% endif %}
+  <header class="{{ ok_prefix }}panel__head">
+    <div class="{{ ok_prefix }}panel__head-text">
+      {% if title %}<h3 class="{{ ok_prefix }}panel__title">{{ title }}</h3>{% endif %}
+      {% if sub %}<p class="{{ ok_prefix }}panel__sub">{{ sub }}</p>{% endif %}
     </div>
   </header>
   {% endif %}
-  <div class="ok-panel__body">{{ caller() }}</div>
+  <div class="{{ ok_prefix }}panel__body">{{ caller() }}</div>
 </div>
 {%- endmacro %}
 

@@ -2,7 +2,7 @@
 
 {% macro app_shell(sidebar=None, tabbar=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-app"
+<div class="{{ ok_prefix }}app"
   {%- if tabbar %} data-tabbar="{{ tabbar }}"{% endif %}
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}

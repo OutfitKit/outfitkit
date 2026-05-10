@@ -2,9 +2,9 @@
 
 {% macro badge(label, variant=None, size="md", dot=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<span class="ok-badge{% if variant %} ok-badge--{{ variant }}{% endif %}{% if size == 'sm' %} ok-badge--sm{% endif %}"
+<span class="{{ ok_prefix }}badge{% if variant %} {{ ok_prefix }}badge--{{ variant }}{% endif %}{% if size == 'sm' %} {{ ok_prefix }}badge--sm{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  {%- if dot %}<span class="ok-badge__dot"></span>{% endif -%}
+  {%- if dot %}<span class="{{ ok_prefix }}badge__dot"></span>{% endif -%}
   {{ label }}
 </span>
 {%- endmacro %}

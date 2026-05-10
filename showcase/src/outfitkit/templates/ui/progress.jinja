@@ -3,20 +3,20 @@
 {% macro progress(value=0, label=None, value_text=None, variant=None, size="md", indeterminate=False, striped=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- if label is not none -%}
-<div class="ok-progress-block">
-  <div class="ok-progress-block__head">
-    <span class="ok-progress-block__label">{{ label }}</span>
-    {%- if value_text is not none %}<span class="ok-progress-block__value">{{ value_text }}</span>{% endif %}
+<div class="{{ ok_prefix }}progress-block">
+  <div class="{{ ok_prefix }}progress-block__head">
+    <span class="{{ ok_prefix }}progress-block__label">{{ label }}</span>
+    {%- if value_text is not none %}<span class="{{ ok_prefix }}progress-block__value">{{ value_text }}</span>{% endif %}
   </div>
-  <div class="ok-progress{% if variant %} ok-progress--{{ variant }}{% endif %}{% if size != 'md' %} ok-progress--{{ size }}{% endif %}{% if indeterminate %} ok-progress--indeterminate{% endif %}{% if striped %} ok-progress--striped{% endif %}"
+  <div class="{{ ok_prefix }}progress{% if variant %} {{ ok_prefix }}progress--{{ variant }}{% endif %}{% if size != 'md' %} {{ ok_prefix }}progress--{{ size }}{% endif %}{% if indeterminate %} {{ ok_prefix }}progress--indeterminate{% endif %}{% if striped %} {{ ok_prefix }}progress--striped{% endif %}"
     {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-    <div class="ok-progress__bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
+    <div class="{{ ok_prefix }}progress__bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
   </div>
 </div>
 {%- else -%}
-<div class="ok-progress{% if variant %} ok-progress--{{ variant }}{% endif %}{% if size != 'md' %} ok-progress--{{ size }}{% endif %}{% if indeterminate %} ok-progress--indeterminate{% endif %}{% if striped %} ok-progress--striped{% endif %}"
+<div class="{{ ok_prefix }}progress{% if variant %} {{ ok_prefix }}progress--{{ variant }}{% endif %}{% if size != 'md' %} {{ ok_prefix }}progress--{{ size }}{% endif %}{% if indeterminate %} {{ ok_prefix }}progress--indeterminate{% endif %}{% if striped %} {{ ok_prefix }}progress--striped{% endif %}"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-  <div class="ok-progress__bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
+  <div class="{{ ok_prefix }}progress__bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
 </div>
 {%- endif %}
 {%- endmacro %}

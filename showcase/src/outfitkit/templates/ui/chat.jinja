@@ -2,7 +2,7 @@
 
 {% macro chat(attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-chat"
+<div class="{{ ok_prefix }}chat"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>

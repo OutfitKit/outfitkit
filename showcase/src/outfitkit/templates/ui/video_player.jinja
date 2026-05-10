@@ -2,28 +2,28 @@
 
 {% macro video_player(poster="", src="", duration="00:00", current="00:00", progress=0, playing=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-video{% if playing %} is-playing{% endif %}"
+<div class="{{ ok_prefix }}video{% if playing %} is-playing{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- if poster %}
-  <div class="ok-video__poster" style="background-image:url('{{ poster }}');"></div>
+  <div class="{{ ok_prefix }}video__poster" style="background-image:url('{{ poster }}');"></div>
   {%- endif %}
   {%- if src %}
-  <video class="ok-video__el" src="{{ src }}" preload="metadata"></video>
+  <video class="{{ ok_prefix }}video__el" src="{{ src }}" preload="metadata"></video>
   {%- endif %}
-  <button type="button" class="ok-video__play-overlay" aria-label="Reproducir"></button>
-  <div class="ok-video__controls">
-    <button type="button" class="ok-video__btn" aria-label="Play/Pause">
+  <button type="button" class="{{ ok_prefix }}video__play-overlay" aria-label="Reproducir"></button>
+  <div class="{{ ok_prefix }}video__controls">
+    <button type="button" class="{{ ok_prefix }}video__btn" aria-label="Play/Pause">
       <iconify-icon icon="lucide:play" width="14" height="14"></iconify-icon>
     </button>
-    <span class="ok-video__time">{{ current }}</span>
-    <div class="ok-video__progress">
-      <div class="ok-video__progress-fill" style="width:{{ progress }}%;"></div>
+    <span class="{{ ok_prefix }}video__time">{{ current }}</span>
+    <div class="{{ ok_prefix }}video__progress">
+      <div class="{{ ok_prefix }}video__progress-fill" style="width:{{ progress }}%;"></div>
     </div>
-    <span class="ok-video__time">{{ duration }}</span>
-    <button type="button" class="ok-video__volume" aria-label="Volumen">
+    <span class="{{ ok_prefix }}video__time">{{ duration }}</span>
+    <button type="button" class="{{ ok_prefix }}video__volume" aria-label="Volumen">
       <iconify-icon icon="lucide:volume-2" width="14" height="14"></iconify-icon>
     </button>
-    <button type="button" class="ok-video__fullscreen" aria-label="Pantalla completa">
+    <button type="button" class="{{ ok_prefix }}video__fullscreen" aria-label="Pantalla completa">
       <iconify-icon icon="lucide:maximize" width="14" height="14"></iconify-icon>
     </button>
   </div>

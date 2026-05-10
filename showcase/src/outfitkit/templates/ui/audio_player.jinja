@@ -2,34 +2,34 @@
 
 {% macro audio_player(title="", artist="", duration="00:00", current="00:00", progress=0, cover="", variant="default", playing=False, speed="×1.0", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-audio{% if variant != 'default' %} ok-audio--{{ variant }}{% endif %}{% if playing %} is-playing{% endif %}"
+<div class="{{ ok_prefix }}audio{% if variant != 'default' %} {{ ok_prefix }}audio--{{ variant }}{% endif %}{% if playing %} is-playing{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <button type="button" class="ok-audio__play" aria-label="Play/Pause">
-    <span class="ok-audio__icon ok-audio__icon--play">
+  <button type="button" class="{{ ok_prefix }}audio__play" aria-label="Play/Pause">
+    <span class="{{ ok_prefix }}audio__icon {{ ok_prefix }}audio__icon--play">
       <iconify-icon icon="lucide:play" width="14" height="14"></iconify-icon>
     </span>
-    <span class="ok-audio__icon ok-audio__icon--pause">
+    <span class="{{ ok_prefix }}audio__icon {{ ok_prefix }}audio__icon--pause">
       <iconify-icon icon="lucide:pause" width="14" height="14"></iconify-icon>
     </span>
   </button>
   {%- if cover %}
-  <div class="ok-audio__cover" style="background-image:url('{{ cover }}');"></div>
+  <div class="{{ ok_prefix }}audio__cover" style="background-image:url('{{ cover }}');"></div>
   {%- endif %}
-  <div class="ok-audio__info">
-    <div class="ok-audio__title">{{ title }}</div>
-    <div class="ok-audio__artist">{{ artist }}</div>
+  <div class="{{ ok_prefix }}audio__info">
+    <div class="{{ ok_prefix }}audio__title">{{ title }}</div>
+    <div class="{{ ok_prefix }}audio__artist">{{ artist }}</div>
   </div>
-  <div class="ok-audio__progress">
-    <span class="ok-audio__time">{{ current }}</span>
-    <div class="ok-audio__bar">
-      <div class="ok-audio__fill" style="width:{{ progress }}%;"><span class="ok-audio__handle"></span></div>
+  <div class="{{ ok_prefix }}audio__progress">
+    <span class="{{ ok_prefix }}audio__time">{{ current }}</span>
+    <div class="{{ ok_prefix }}audio__bar">
+      <div class="{{ ok_prefix }}audio__fill" style="width:{{ progress }}%;"><span class="{{ ok_prefix }}audio__handle"></span></div>
     </div>
-    <span class="ok-audio__time">{{ duration }}</span>
+    <span class="{{ ok_prefix }}audio__time">{{ duration }}</span>
   </div>
-  <button type="button" class="ok-audio__vol" aria-label="Volumen">
+  <button type="button" class="{{ ok_prefix }}audio__vol" aria-label="Volumen">
     <iconify-icon icon="lucide:volume-2" width="14" height="14"></iconify-icon>
   </button>
-  <button type="button" class="ok-audio__speed">{{ speed }}</button>
+  <button type="button" class="{{ ok_prefix }}audio__speed">{{ speed }}</button>
 </div>
 {%- endmacro %}
 

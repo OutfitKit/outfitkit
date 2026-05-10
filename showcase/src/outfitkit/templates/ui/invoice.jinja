@@ -2,7 +2,7 @@
 
 {% macro invoice(attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-invoice"
+<div class="{{ ok_prefix }}invoice"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}
 </div>

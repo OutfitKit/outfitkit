@@ -2,7 +2,7 @@
 
 {% macro timeline(dense=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<ul class="ok-timeline{% if dense %} ok-timeline--dense{% endif %}" style="list-style:none;padding:0;margin:0"
+<ul class="{{ ok_prefix }}timeline{% if dense %} {{ ok_prefix }}timeline--dense{% endif %}" style="list-style:none;padding:0;margin:0"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}
 </ul>

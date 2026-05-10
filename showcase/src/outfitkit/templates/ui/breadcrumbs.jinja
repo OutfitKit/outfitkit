@@ -2,7 +2,7 @@
 
 {% macro breadcrumbs(items, variant=None, separator="chevron", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<nav class="ok-crumbs{% if variant %} ok-crumbs--{{ variant }}{% endif %}" aria-label="breadcrumb"
+<nav class="{{ ok_prefix }}crumbs{% if variant %} {{ ok_prefix }}crumbs--{{ variant }}{% endif %}" aria-label="breadcrumb"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {%- for item in items -%}
     {%- set is_last = loop.last -%}
@@ -10,18 +10,18 @@
     {%- set current_val = item.get('current') -%}
     {%- set is_current = current_val if current_val is not none else is_last -%}
     {%- if href and not is_current -%}
-      <a class="ok-crumbs__item" href="{{ href }}">
+      <a class="{{ ok_prefix }}crumbs__item" href="{{ href }}">
         {%- if item.get('icon') %}{{ item.get('icon')|safe }}{% endif -%}
         {{ item.label }}
       </a>
     {%- else -%}
-      <span class="ok-crumbs__item"{% if is_current %} aria-current="page"{% endif %}>
+      <span class="{{ ok_prefix }}crumbs__item"{% if is_current %} aria-current="page"{% endif %}>
         {%- if item.get('icon') %}{{ item.get('icon')|safe }}{% endif -%}
         {{ item.label }}
       </span>
     {%- endif -%}
     {%- if not is_last and variant != 'chips' -%}
-      <span class="ok-crumbs__sep">
+      <span class="{{ ok_prefix }}crumbs__sep">
         {%- if separator == 'chevron' -%}
           <iconify-icon icon="lucide:chevron-right" width="14" height="14"></iconify-icon>
         {%- else -%}{{ separator }}{%- endif -%}

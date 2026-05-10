@@ -2,12 +2,12 @@
 
 {% macro empty(title, desc=None, icon=None, actions=None, compact=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-empty{% if compact %} ok-empty--compact{% endif %}"
+<div class="{{ ok_prefix }}empty{% if compact %} {{ ok_prefix }}empty--compact{% endif %}"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-  {%- if icon %}<div class="ok-empty__icon">{{ icon|safe }}</div>{% endif %}
-  <h3 class="ok-empty__title">{{ title }}</h3>
-  {%- if desc %}<p class="ok-empty__desc">{{ desc }}</p>{% endif %}
-  {%- if actions %}<div class="ok-empty__actions">{{ actions|safe }}</div>{% endif %}
+  {%- if icon %}<div class="{{ ok_prefix }}empty__icon">{{ icon|safe }}</div>{% endif %}
+  <h3 class="{{ ok_prefix }}empty__title">{{ title }}</h3>
+  {%- if desc %}<p class="{{ ok_prefix }}empty__desc">{{ desc }}</p>{% endif %}
+  {%- if actions %}<div class="{{ ok_prefix }}empty__actions">{{ actions|safe }}</div>{% endif %}
 </div>
 {%- endmacro %}
 

@@ -2,7 +2,7 @@
 
 {% macro pay(tag="div", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<{{ tag }} class="ok-pay-methods"
+<{{ tag }} class="{{ ok_prefix }}pay-methods"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </{{ tag }}>

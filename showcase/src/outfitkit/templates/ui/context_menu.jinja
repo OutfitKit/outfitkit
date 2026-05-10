@@ -2,9 +2,9 @@
 
 {% macro context_menu(label=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-ctx-menu"
+<div class="{{ ok_prefix }}ctx-menu"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  {% if label %}<div class="ok-ctx-menu__label">{{ label }}</div>{% endif %}
+  {% if label %}<div class="{{ ok_prefix }}ctx-menu__label">{{ label }}</div>{% endif %}
   {{ caller() }}
 </div>
 {%- endmacro %}

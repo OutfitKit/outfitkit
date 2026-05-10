@@ -2,20 +2,20 @@
 
 {% macro search(placeholder="Buscar…", name="q", value="", clearable=True, kbd="", size=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-search"
+<div class="{{ ok_prefix }}search"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <span class="ok-search__icon">
+  <span class="{{ ok_prefix }}search__icon">
     <iconify-icon icon="lucide:search" width="16" height="16"></iconify-icon>
   </span>
   <input type="search"
-    class="ok-input{% if size == 'sm' %} ok-input--sm{% elif size == 'lg' %} ok-input--lg{% endif %}"
+    class="{{ ok_prefix }}input{% if size == 'sm' %} {{ ok_prefix }}input--sm{% elif size == 'lg' %} {{ ok_prefix }}input--lg{% endif %}"
     name="{{ name }}"
     placeholder="{{ placeholder }}"
     value="{{ value }}"/>
   {%- if kbd %}
-  <kbd class="ok-search__kbd">{{ kbd }}</kbd>
+  <kbd class="{{ ok_prefix }}search__kbd">{{ kbd }}</kbd>
   {%- elif clearable %}
-  <button type="button" class="ok-search__clear" aria-label="Limpiar">×</button>
+  <button type="button" class="{{ ok_prefix }}search__clear" aria-label="Limpiar">×</button>
   {%- endif %}
 </div>
 {%- endmacro %}

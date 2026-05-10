@@ -5,7 +5,7 @@
 <input
   type="{{ type }}"
   name="{{ name }}"
-  class="ok-input{% if size != 'md' %} ok-input--{{ size }}{% endif %}{% if invalid %} ok-input--invalid{% endif %}"
+  class="{{ ok_prefix }}input{% if size != 'md' %} {{ ok_prefix }}input--{{ size }}{% endif %}{% if invalid %} {{ ok_prefix }}input--invalid{% endif %}"
   {% if value != "" %}value="{{ value }}"{% endif %}
   {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
   {% if disabled %}disabled{% endif %}

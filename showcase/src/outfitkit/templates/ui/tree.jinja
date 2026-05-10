@@ -2,7 +2,7 @@
 
 {% macro tree(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-tree{% if variant != 'default' %} ok-tree--{{ variant }}{% endif %}" role="tree"
+<div class="{{ ok_prefix }}tree{% if variant != 'default' %} {{ ok_prefix }}tree--{{ variant }}{% endif %}" role="tree"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>

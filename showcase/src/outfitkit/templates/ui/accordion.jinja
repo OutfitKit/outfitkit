@@ -2,7 +2,7 @@
 
 {% macro accordion(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-accordion{% if variant != 'default' %} ok-accordion--{{ variant }}{% endif %}"
+<div class="{{ ok_prefix }}accordion{% if variant != 'default' %} {{ ok_prefix }}accordion--{{ variant }}{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>

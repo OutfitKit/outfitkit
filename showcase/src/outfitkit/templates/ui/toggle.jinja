@@ -2,13 +2,13 @@
 
 {% macro toggle(name, checked=false, disabled=false, size="md", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<label class="ok-toggle{% if size != 'md' %} ok-toggle--{{ size }}{% endif %}">
+<label class="{{ ok_prefix }}toggle{% if size != 'md' %} {{ ok_prefix }}toggle--{{ size }}{% endif %}">
   <input type="checkbox"
     name="{{ name }}"
     {% if checked %}checked{% endif %}
     {% if disabled %}disabled{% endif %}
     {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <span class="ok-toggle__track"></span>
+  <span class="{{ ok_prefix }}toggle__track"></span>
 </label>
 {%- endmacro %}
 

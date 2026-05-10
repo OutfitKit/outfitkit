@@ -2,7 +2,7 @@
 
 {% macro sidebar_nav(attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<aside class="ok-sidebar"
+<aside class="{{ ok_prefix }}sidebar"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}
 </aside>

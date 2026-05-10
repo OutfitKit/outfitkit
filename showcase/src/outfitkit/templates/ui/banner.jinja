@@ -2,17 +2,17 @@
 
 {% macro banner(title, description="", variant="info", dismissible=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-banner ok-banner--{{ variant }}"
+<div class="{{ ok_prefix }}banner {{ ok_prefix }}banner--{{ variant }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  <span class="ok-banner__icon">
+  <span class="{{ ok_prefix }}banner__icon">
     <iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon>
   </span>
-  <div class="ok-banner__body">
-    <div class="ok-banner__title">{{ title }}</div>
-    {% if description %}<div class="ok-banner__desc">{{ description }}</div>{% endif %}
+  <div class="{{ ok_prefix }}banner__body">
+    <div class="{{ ok_prefix }}banner__title">{{ title }}</div>
+    {% if description %}<div class="{{ ok_prefix }}banner__desc">{{ description }}</div>{% endif %}
   </div>
   {{ caller() }}
-  {% if dismissible %}<button class="ok-banner__close" aria-label="Cerrar">×</button>{% endif %}
+  {% if dismissible %}<button class="{{ ok_prefix }}banner__close" aria-label="Cerrar">×</button>{% endif %}
 </div>
 {%- endmacro %}
 

@@ -2,7 +2,7 @@
 
 {% macro avatar(label, src=None, alt="", size="md", variant=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<span class="ok-avatar{% if size != 'md' %} ok-avatar--{{ size }}{% endif %}{% if variant %} ok-avatar--{{ variant }}{% endif %}"
+<span class="{{ ok_prefix }}avatar{% if size != 'md' %} {{ ok_prefix }}avatar--{{ size }}{% endif %}{% if variant %} {{ ok_prefix }}avatar--{{ variant }}{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {%- if src %}<img src="{{ src }}" alt="{{ alt }}"/>{% else %}{{ label }}{% endif -%}
 </span>

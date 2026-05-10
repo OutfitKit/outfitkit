@@ -2,16 +2,16 @@
 
 {% macro kpi(label, value, unit=None, delta=None, delta_dir=None, variant=None, sparkline=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-kpi{% if variant %} ok-kpi--{{ variant }}{% endif %}"
+<div class="{{ ok_prefix }}kpi{% if variant %} {{ ok_prefix }}kpi--{{ variant }}{% endif %}"
   {%- for key, value_attr in _attrs.items() %} {{ key }}="{{ value_attr }}"{% endfor %}>
-  <div class="ok-kpi__label">{{ label }}</div>
-  <div class="ok-kpi__value">{{ value }}{% if unit %}<span class="ok-kpi__value-unit">{{ unit }}</span>{% endif %}</div>
+  <div class="{{ ok_prefix }}kpi__label">{{ label }}</div>
+  <div class="{{ ok_prefix }}kpi__value">{{ value }}{% if unit %}<span class="{{ ok_prefix }}kpi__value-unit">{{ unit }}</span>{% endif %}</div>
   {%- if delta %}
-  <div class="ok-kpi__delta{% if delta_dir %} ok-kpi__delta--{{ delta_dir }}{% endif %}">
+  <div class="{{ ok_prefix }}kpi__delta{% if delta_dir %} {{ ok_prefix }}kpi__delta--{{ delta_dir }}{% endif %}">
     {%- if delta_dir == 'up' -%}
-      <iconify-icon class="ok-kpi__delta-arrow" icon="lucide:arrow-up-right" width="14" height="14"></iconify-icon>
+      <iconify-icon class="{{ ok_prefix }}kpi__delta-arrow" icon="lucide:arrow-up-right" width="14" height="14"></iconify-icon>
     {%- elif delta_dir == 'down' -%}
-      <iconify-icon class="ok-kpi__delta-arrow" icon="lucide:arrow-down-right" width="14" height="14"></iconify-icon>
+      <iconify-icon class="{{ ok_prefix }}kpi__delta-arrow" icon="lucide:arrow-down-right" width="14" height="14"></iconify-icon>
     {%- endif %}
     {{ delta }}
   </div>

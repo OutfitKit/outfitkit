@@ -4,7 +4,7 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <button
   type="{{ type }}"
-  class="ok-btn ok-btn--{{ variant }}{% if size != 'md' %} ok-btn--{{ size }}{% endif %}{% if block %} ok-btn--block{% endif %}{% if icon %} ok-btn--icon{% endif %}"
+  class="{{ ok_prefix }}btn {{ ok_prefix }}btn--{{ variant }}{% if size != 'md' %} {{ ok_prefix }}btn--{{ size }}{% endif %}{% if block %} {{ ok_prefix }}btn--block{% endif %}{% if icon %} {{ ok_prefix }}btn--icon{% endif %}"
   {% if disabled %}disabled aria-disabled="true"{% endif %}
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>{{ label }}</button>
 {%- endmacro %}

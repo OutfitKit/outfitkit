@@ -2,7 +2,7 @@
 
 {% macro mobile_shell(attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-app" data-tabbar="bottom"
+<div class="{{ ok_prefix }}app" data-tabbar="bottom"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}
 </div>

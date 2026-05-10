@@ -81,7 +81,14 @@ def make_site() -> ShowcaseSite:
         outpath=str(BUILD),
         extensions=["jinjax.JinjaX"],
         env_kwargs={"auto_reload": True},
-        env_globals={"css_url": _css_url(), "base_path": _base_path()},
+        env_globals={
+            "css_url": _css_url(),
+            "base_path": _base_path(),
+            # Default class-name prefix used by every macro. The showcase
+            # itself loads the prefixed CSS bundle, so it stays "ok-".
+            # Consumers that want the unprefixed bundle pass "" instead.
+            "ok_prefix": "ok-",
+        },
     )
 
     # Register every folder so that templates can `{% extends %}` /

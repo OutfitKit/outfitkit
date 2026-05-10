@@ -2,21 +2,21 @@
 
 {% macro modal(title, subtitle="", size="md", icon_variant=None, state="closed", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="ok-backdrop"></div>
-<div class="ok-modal-root" data-state="{{ state }}"
+<div class="{{ ok_prefix }}backdrop"></div>
+<div class="{{ ok_prefix }}modal-root" data-state="{{ state }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  <div class="ok-modal ok-modal--{{ size }}">
-    <div class="ok-modal__header">
+  <div class="{{ ok_prefix }}modal {{ ok_prefix }}modal--{{ size }}">
+    <div class="{{ ok_prefix }}modal__header">
       {% if icon_variant %}
-      <div class="ok-modal__icon ok-modal__icon--{{ icon_variant }}"></div>
+      <div class="{{ ok_prefix }}modal__icon {{ ok_prefix }}modal__icon--{{ icon_variant }}"></div>
       {% endif %}
-      <div class="ok-modal__heading">
-        <h3 class="ok-modal__title">{{ title }}</h3>
-        {% if subtitle %}<p class="ok-modal__sub">{{ subtitle }}</p>{% endif %}
+      <div class="{{ ok_prefix }}modal__heading">
+        <h3 class="{{ ok_prefix }}modal__title">{{ title }}</h3>
+        {% if subtitle %}<p class="{{ ok_prefix }}modal__sub">{{ subtitle }}</p>{% endif %}
       </div>
-      <button class="ok-modal__close" aria-label="Cerrar">✕</button>
+      <button class="{{ ok_prefix }}modal__close" aria-label="Cerrar">✕</button>
     </div>
-    <div class="ok-modal__body">{{ caller() }}</div>
+    <div class="{{ ok_prefix }}modal__body">{{ caller() }}</div>
   </div>
 </div>
 {%- endmacro %}
