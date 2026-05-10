@@ -4,6 +4,19 @@ All notable changes to OutfitKit are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.3.1] — 2026-05-10
+
+### Fixed
+
+- **Modal / Drawer backdrop interception**: the `<div class="ok-backdrop">`
+  was emitted as a sibling of `.ok-modal-root` / `.ok-drawer-root` instead
+  of a descendant. CSS rules like `.ok-modal-root .ok-backdrop` never
+  applied, and the backdrop intercepted clicks even when the overlay was
+  closed (verified end-to-end with Playwright). The macros now place the
+  backdrop inside the root and `overlays.css` uses
+  `[data-state="open"]` / `:not([data-state="open"])` selectors to switch
+  `pointer-events` and `opacity` cleanly.
+
 ## [1.0.0] — 2026-05-09
 
 Initial release.
