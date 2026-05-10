@@ -4,6 +4,24 @@ All notable changes to OutfitKit are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.4.0] — 2026-05-10
+
+### Added
+
+- **`Navbar` macro + `.ok-navbar` CSS**: composable sticky top bar for
+  marketing / public sites. Slot-only (`{{ caller() }}`); the consumer fills
+  the brand, nav links, language selector, CTA, and mobile menu. Glass
+  background, mobile-menu friendly chrome (CSS-only via consumer-provided
+  hidden checkbox + `:has()` selector).
+- **`Footer` macro + `.ok-footer` CSS**: composable footer container with
+  optional helpers (`.ok-footer__columns`, `.ok-footer__col`,
+  `.ok-footer__col-title`, `.ok-footer__link`, `.ok-footer__bottom`,
+  `.ok-footer__social`, `.ok-footer__social-icon`). 2→5 column responsive
+  grid. Slot-only.
+
+Both consumed by ERPlora Cloud's new `PublicLayout.jinja` shell on the
+landing page migration.
+
 ## [1.3.1] — 2026-05-10
 
 ### Fixed
