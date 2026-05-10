@@ -18,13 +18,14 @@ OutfitKit ships ~260 semantic blocks (BEM-light, themeable via CSS custom proper
 ## Python package
 - [outfitkit on PyPI](https://pypi.org/project/outfitkit/): `pip install outfitkit` (vanilla) or `pip install outfitkit[jinjax]` (HTML-tag syntax).
 - [Package source](https://github.com/OutfitKit/outfitkit/tree/main/showcase/src/outfitkit): exposes `TEMPLATES_DIR`, `register_globals(env, ok_prefix="")`, `css_url(version=None, minified=True, prefix="")`, `theme_url(name)`.
+- **The pip package does NOT ship the CSS** — it ships only macros + helpers. The CSS lives on jsDelivr (CDN). `css_url()` returns the URL string so your template can put it in a `<link>`. To self-host: download `dist/outfitkit.min.css` from a tagged release into your own `static/` dir and link it directly (don't use `css_url()` then).
 - Setup snippet:
   ```python
   from jinja2 import Environment, FileSystemLoader
   from outfitkit import TEMPLATES_DIR, register_globals, css_url
   env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
   register_globals(env)            # default: no prefix
-  ctx = {"css": css_url()}         # → outfitkit.min.css
+  ctx = {"css": css_url()}         # → CDN URL of outfitkit.min.css
   ```
 - Rule of thumb: the macro `ok_prefix` and the loaded CSS bundle MUST match. Both default to "".
 

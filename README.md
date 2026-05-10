@@ -83,6 +83,61 @@ Resultado: `{{ button("Save") }}` → `<button class="ok-btn ok-btn--primary">�
 
 El **prefijo de las macros** y el **bundle CSS cargado** tienen que coincidir. Como ambos se controlan desde dos líneas del setup, no es una preocupación recurrente — lo eliges una vez y olvidas.
 
+### ¿El paquete `pip install outfitkit` trae el CSS?
+
+**No, y es intencional.** El paquete pip trae solo:
+
+- Las **macros Jinja** (`outfitkit/templates/ui/*.jinja`) que se importan en tu app.
+- Helpers Python (`TEMPLATES_DIR`, `register_globals`, `css_url`, `theme_url`) que devuelven rutas y URLs.
+
+El **CSS lo sirve jsDelivr** (CDN externo, gratis, edge-cached globalmente). El helper `css_url()` te devuelve la URL ya construida — tu plantilla solo tiene que ponerla en un `<link>`:
+
+```html
+<link rel="stylesheet" href="{{ css_url() }}">
+```
+
+**Por qué separados:**
+
+1. **Versionado independiente**: un fix de CSS no necesita bumpear PyPI. Solo retaggeas `vX.Y.Z` y jsDelivr sirve la nueva versión al instante.
+2. **Sin tráfico duplicado**: no servirías 540 KB de CSS desde tu propio backend en cada petición; jsDelivr lo hace gratis y con CDN global.
+3. **Wheels Python no son ideales para assets estáticos**: empaquetar el CSS dentro obligaría a `pip install --upgrade` cada vez que cambia.
+
+### ¿Y si necesito servir el CSS desde mi propio backend? (offline / aislado)
+
+Casos válidos: red privada sin internet, paranoia con CDN, o cumplimiento que prohíbe externos. Tres opciones:
+
+**Opción A — descargar el bundle a tu `static/`:**
+
+```bash
+# Una vez, en tu deploy script:
+curl -L -o static/css/outfitkit.min.css \
+  https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@v1.3.0/dist/outfitkit.min.css
+```
+
+Y sirvelo desde tu backend:
+```html
+<link rel="stylesheet" href="/static/css/outfitkit.min.css">
+```
+
+**Opción B — git submodule del repo CSS:**
+
+```bash
+git submodule add https://github.com/OutfitKit/outfitkit vendor/outfitkit
+```
+
+Sirve `vendor/outfitkit/dist/outfitkit.min.css` desde tu backend. `git submodule update --remote` cuando quieras pullear cambios.
+
+**Opción C — copiar las fuentes y bundlear tú mismo:**
+
+```bash
+git clone --depth 1 https://github.com/OutfitKit/outfitkit
+# Copia css/ a tu repo, ejecuta tu propio bundler.
+```
+
+Útil solo si vas a forkearlo o necesitas modificar tokens. Para uso normal, sobra.
+
+**Importante:** sea cual sea la opción, el helper `css_url()` siempre apunta a jsDelivr. Si self-hosteas, **no uses `css_url()`** — pasa la URL de tu static directamente.
+
 ## Sitio de demos
 
 Componentes en vivo con código fuente al lado, navegable:
