@@ -23,11 +23,11 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/menu_btn.jinja" import menu_btn %}
 <div data-signals="{ menu: false }">
-  {{ menu_btn(attrs={"data-attr-aria-expanded": "$menu", "data-on:click": "$menu = !$menu"}) }}
+  {{ menu_btn(attrs={"data-attr:aria-expanded": "$menu", "data-on:click": "$menu = !$menu"}) }}
   <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ok-ink-3);">Cerrado</span>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<div data-signals="{ menu: false }">
-  <menu_btn data-attr-aria-expanded="$menu" data-on:click="$menu = !$menu" />
+  <menu_btn data-attr:aria-expanded="$menu" data-on:click="$menu = !$menu" />
   <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ok-ink-3);">Cerrado</span>
 </div>{% endraw %}{% endset %}
 
@@ -35,7 +35,7 @@
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ menu: false }">
-  {{ menu_btn(attrs={"data-attr-aria-expanded": "$menu", "data-on:click": "$menu = !$menu"}) }}
+  {{ menu_btn(attrs={"data-attr:aria-expanded": "$menu", "data-on:click": "$menu = !$menu"}) }}
   <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ok-ink-3);">Cerrado</span>
 </div>
 {% endcall %}

@@ -206,7 +206,8 @@
   opacity: 0.85;
   margin-top: 2px;
 }
-.ok-cat-card[aria-pressed="true"] {
+.ok-cat-card[aria-pressed="true"],
+.ok-cat-card[aria-pressed=""] {
   border-color: var(--ok-brand);
   box-shadow: 0 0 0 2px var(--ok-brand);
 }
@@ -294,7 +295,8 @@
   transform: translateY(-1px) scale(0.98);
   transition-duration: 80ms;
 }
-.ok-cat-card[aria-pressed="true"] {
+.ok-cat-card[aria-pressed="true"],
+.ok-cat-card[aria-pressed=""] {
   border-color: var(--ok-brand);
   box-shadow: 0 0 0 2px var(--ok-brand), 0 8px 20px -10px var(--ok-overlay-medium);
 }
@@ -688,7 +690,8 @@
   transition: all var(--ok-dur-fast);
 }
 .ok-cat-chip:hover { border-color: var(--ok-line-2); color: var(--ok-ink); }
-.ok-cat-chip[aria-pressed="true"] {
+.ok-cat-chip[aria-pressed="true"],
+.ok-cat-chip[aria-pressed=""] {
   background: var(--ok-ink);
   color: var(--ok-bg);
   border-color: var(--ok-ink);
@@ -717,7 +720,8 @@
   transition: border-color var(--ok-dur-fast), background var(--ok-dur-fast);
 }
 .ok-pay-method:hover { border-color: var(--ok-line-2); }
-.ok-pay-method[aria-pressed="true"] {
+.ok-pay-method[aria-pressed="true"],
+.ok-pay-method[aria-pressed=""] {
   border-color: var(--ok-brand);
   background: color-mix(in oklch, var(--ok-brand) 6%, var(--ok-bg-2));
 }

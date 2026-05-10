@@ -129,7 +129,8 @@
   text-align: center; min-width: 50px;
 }
 .ok-timepicker__opt:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
-.ok-timepicker__opt[aria-selected="true"] {
+.ok-timepicker__opt[aria-selected="true"],
+.ok-timepicker__opt[aria-selected=""] {
   background: var(--ok-brand-soft); color: var(--ok-brand-3); font-weight: 600;
 }
 
@@ -154,7 +155,8 @@
   position: relative;
 }
 .ok-colorpicker__swatch:hover { transform: scale(1.12); }
-.ok-colorpicker__swatch[aria-pressed="true"]::after {
+.ok-colorpicker__swatch[aria-pressed="true"]::after,
+.ok-colorpicker__swatch[aria-pressed=""]::after {
   content: ""; position: absolute; inset: -3px;
   border: 2px solid var(--ok-ink); border-radius: 8px;
   pointer-events: none;
@@ -273,7 +275,8 @@
   background: transparent; border: 0; width: 100%; text-align: left;
 }
 .ok-autocomplete__opt:hover,
-.ok-autocomplete__opt[aria-selected="true"] {
+.ok-autocomplete__opt[aria-selected="true"],
+.ok-autocomplete__opt[aria-selected=""] {
   background: var(--ok-bg-3); color: var(--ok-ink);
 }
 .ok-autocomplete__opt-meta {

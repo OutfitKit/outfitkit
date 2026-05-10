@@ -134,7 +134,8 @@
   transition: transform var(--ok-dur-base) var(--ok-ease-out, ease);
 }
 .ok-toggle.is-on .ok-toggle__thumb,
-.ok-toggle[aria-checked="true"] .ok-toggle__thumb {
+.ok-toggle[aria-checked="true"] .ok-toggle__thumb,
+.ok-toggle[aria-checked=""] .ok-toggle__thumb {
   transform: translateY(-50%) translateX(100%);
 }
 
@@ -342,12 +343,16 @@
 }
 .ok-toggle.is-on .ok-toggle__slider,
 .ok-toggle[aria-checked="true"] .ok-toggle__slider,
-[aria-checked="true"] > .ok-toggle__slider {
+.ok-toggle[aria-checked=""] .ok-toggle__slider,
+[aria-checked="true"] > .ok-toggle__slider,
+[aria-checked=""] > .ok-toggle__slider {
   background: var(--ok-brand);
 }
 .ok-toggle.is-on .ok-toggle__slider::after,
 .ok-toggle[aria-checked="true"] .ok-toggle__slider::after,
-[aria-checked="true"] > .ok-toggle__slider::after {
+.ok-toggle[aria-checked=""] .ok-toggle__slider::after,
+[aria-checked="true"] > .ok-toggle__slider::after,
+[aria-checked=""] > .ok-toggle__slider::after {
   transform: translateX(calc(var(--ok-space-5) - 4px));
 }
 

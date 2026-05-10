@@ -122,7 +122,8 @@
 }
 .ok-view-toggle__btn:hover { color: var(--ok-ink-2); }
 .ok-view-toggle__btn svg { width: 14px; height: 14px; }
-.ok-view-toggle__btn[aria-pressed="true"] {
+.ok-view-toggle__btn[aria-pressed="true"],
+.ok-view-toggle__btn[aria-pressed=""] {
   background: var(--ok-bg-4);
   color: var(--ok-ink);
   box-shadow: var(--ok-shadow-xs);
@@ -174,7 +175,8 @@
   transition: border-color var(--ok-dur-fast);
 }
 .ok-dt-card:hover { border-color: var(--ok-line-2); }
-.ok-dt-card[aria-selected="true"] {
+.ok-dt-card[aria-selected="true"],
+.ok-dt-card[aria-selected=""] {
   border-color: var(--ok-brand);
   background: color-mix(in oklch, var(--ok-brand) 6%, var(--ok-bg-2));
 }
@@ -286,10 +288,12 @@
 .ok-table tbody tr:hover {
   background: var(--ok-bg-3);
 }
-.ok-table tbody tr[aria-selected="true"] {
+.ok-table tbody tr[aria-selected="true"],
+.ok-table tbody tr[aria-selected=""] {
   background: color-mix(in oklch, var(--ok-brand) 8%, transparent);
 }
-.ok-table tbody tr[aria-selected="true"]:hover {
+.ok-table tbody tr[aria-selected="true"]:hover,
+.ok-table tbody tr[aria-selected=""]:hover {
   background: color-mix(in oklch, var(--ok-brand) 12%, transparent);
 }
 

@@ -163,7 +163,8 @@
   opacity: 0.6;
   transition: transform var(--ok-dur-fast);
 }
-.ok-navbar__link[aria-expanded="true"] .ok-navbar__link-caret {
+.ok-navbar__link[aria-expanded="true"] .ok-navbar__link-caret,
+.ok-navbar__link[aria-expanded=""] .ok-navbar__link-caret {
   transform: rotate(180deg);
 }
 .ok-navbar__sep {
@@ -313,7 +314,9 @@
 
 .ok-accordion__item[data-state="open"] .ok-accordion__caret,
 .ok-accordion__item[aria-expanded="true"] .ok-accordion__caret,
-.ok-accordion__trigger[aria-expanded="true"] .ok-accordion__caret {
+.ok-accordion__item[aria-expanded=""] .ok-accordion__caret,
+.ok-accordion__trigger[aria-expanded="true"] .ok-accordion__caret,
+.ok-accordion__trigger[aria-expanded=""] .ok-accordion__caret {
   transform: rotate(180deg);
   color: var(--ok-ink);
 }
@@ -494,11 +497,13 @@
 }
 .ok-tree__row:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
 .ok-tree__row[aria-selected="true"],
+.ok-tree__row[aria-selected=""],
 .ok-tree__row[data-selected="true"] {
   background: var(--ok-brand-soft);
   color: var(--ok-ink);
 }
 .ok-tree__row[aria-selected="true"]::before,
+.ok-tree__row[aria-selected=""]::before,
 .ok-tree__row[data-selected="true"]::before {
   content: "";
   position: absolute;
@@ -546,12 +551,14 @@
   display: none;
 }
 .ok-tree__node[data-state="open"] > .ok-tree__children,
-.ok-tree__node[aria-expanded="true"] > .ok-tree__children {
+.ok-tree__node[aria-expanded="true"] > .ok-tree__children,
+.ok-tree__node[aria-expanded=""] > .ok-tree__children {
   display: flex;
   flex-direction: column;
 }
 .ok-tree__node[data-state="open"] > .ok-tree__row > .ok-tree__caret,
-.ok-tree__node[aria-expanded="true"] > .ok-tree__row > .ok-tree__caret {
+.ok-tree__node[aria-expanded="true"] > .ok-tree__row > .ok-tree__caret,
+.ok-tree__node[aria-expanded=""] > .ok-tree__row > .ok-tree__caret {
   transform: rotate(90deg);
   color: var(--ok-ink);
 }
@@ -804,7 +811,8 @@
 }
 .ok-menubar__menu--active,
 .ok-menubar__menu.is-open,
-.ok-menubar__menu[aria-expanded="true"] {
+.ok-menubar__menu[aria-expanded="true"],
+.ok-menubar__menu[aria-expanded=""] {
   background: var(--ok-bg-3);
   color: var(--ok-ink);
 }
