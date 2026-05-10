@@ -3,8 +3,18 @@
  * Synchronous bootstrap that sets up window.okTheme BEFORE Datastar processes
  * the data-effect on .ok-app. Persists theme + template to localStorage.
  *
- * The full module would be shipped as part of the consumer's bundle; this is
- * a minimal showcase-only implementation.
+ * Cross-frame sync:
+ *   The showcase mounts each app demo inside an <iframe>. When the parent
+ *   shell switches Dark↔Light or changes the template, this runtime picks
+ *   it up in the iframe through two channels:
+ *     1. The browser-native `storage` event, fired in every same-origin
+ *        document when localStorage is mutated by another document.
+ *     2. A `message` (postMessage) listener as an explicit fallback —
+ *        useful before localStorage propagates, or for scenarios where
+ *        we want to force an immediate sync (e.g. on first paint).
+ *
+ * The full module would be shipped as part of the consumer's bundle; this
+ * file is the showcase-only minimal implementation.
  */
 (function () {
   /* Normalize a value coming from localStorage so we never paint with a
@@ -49,6 +59,18 @@
     } catch (_) {}
   }
 
+  function notifyChildFrames() {
+    /* Push the current state to any same-origin iframes embedded in this
+       document. They will also receive a `storage` event, but postMessage
+       is synchronous-ish and avoids a race where the iframe paints with
+       the previous value before `storage` fires. */
+    var msg = { type: 'ok-theme', theme: STATE.theme, template: STATE.template };
+    var frames = document.querySelectorAll('iframe');
+    for (var i = 0; i < frames.length; i++) {
+      try { frames[i].contentWindow.postMessage(msg, location.origin); } catch (_) {}
+    }
+  }
+
   // First paint is correct.
   applyAll();
 
@@ -69,7 +91,43 @@
       if (dirty) {
         persist();
         applyAll();
+        notifyChildFrames();
       }
     },
   };
+
+  /* Cross-frame: react when another same-origin document writes to
+     localStorage. This is what keeps an iframe in sync when its parent
+     shell flips the theme. */
+  window.addEventListener('storage', function (e) {
+    if (e.key !== 'ok-theme' && e.key !== 'ok-template') return;
+    var nextTheme = normTheme(localStorage.getItem('ok-theme'));
+    var nextTemplate = normTemplate(localStorage.getItem('ok-template'));
+    var dirty = false;
+    if (nextTheme !== STATE.theme) { STATE.theme = nextTheme; dirty = true; }
+    if (nextTemplate !== STATE.template) { STATE.template = nextTemplate; dirty = true; }
+    if (dirty) applyAll();
+  });
+
+  /* postMessage path — the parent shell sends one when it changes its
+     own theme. Faster than `storage` and works even if the iframe was
+     loaded before the parent persisted to localStorage. */
+  window.addEventListener('message', function (e) {
+    if (e.origin !== location.origin) return;
+    var d = e.data;
+    if (!d || d.type !== 'ok-theme') return;
+    var nextTheme = normTheme(d.theme);
+    var nextTemplate = normTemplate(d.template);
+    var dirty = false;
+    if (nextTheme !== STATE.theme) { STATE.theme = nextTheme; dirty = true; }
+    if (nextTemplate !== STATE.template) { STATE.template = nextTemplate; dirty = true; }
+    if (dirty) {
+      STATE.theme = nextTheme;
+      STATE.template = nextTemplate;
+      // The parent already persisted, but persist locally so a later
+      // reload of this iframe has the right initial value too.
+      persist();
+      applyAll();
+    }
+  });
 })();
