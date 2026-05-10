@@ -8,8 +8,15 @@
 @import "./utilities.css";
 
 /* Theme templates — opt-in via data-template="<name>". The default
-   (no data-template) keeps the built-in tokens.css palette. */
-@import "./themes/index.css";
+   (no data-template) keeps the built-in tokens.css palette. Imports are
+   listed directly here (instead of nested through themes/index.css) so
+   jsDelivr's edge cache doesn't miss the inner files when the bundle
+   path is hit before the inner files are warm. */
+@import "./themes/default.css";
+@import "./themes/corporate.css";
+@import "./themes/glass.css";
+@import "./themes/glass-mono.css";
+@import "./themes/mono.css";
 
 /* Layout primitives */
 @import "./components/app-shell.css";
