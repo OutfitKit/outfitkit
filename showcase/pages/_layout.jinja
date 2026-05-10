@@ -87,10 +87,19 @@
     .topbar-template option { background: var(--ok-bg-1); color: var(--ok-ink); }
 
     /* Doc body — page heading + lead.
-       Padding scales with viewport: tight on phones, generous on desktop. */
-    .doc__body { padding: 20px; max-width: 1120px; }
-    @media (min-width: 768px) { .doc__body { padding: 28px 32px; } }
-    @media (min-width: 1100px) { .doc__body { padding: 32px 48px; } }
+       Mobile (< 768px): full width, single 1rem of breathing room.
+       Desktop  (≥ 768px): centered, 1rem block padding, ~1120px max for readability. */
+    .doc__body {
+      padding: 1rem;
+      max-width: 100%;
+    }
+    @media (min-width: 768px) {
+      .doc__body {
+        padding: 1rem;
+        max-width: 1120px;
+        margin-inline: auto;
+      }
+    }
     .doc__title { font-family: var(--ok-font-display, var(--ok-font)); font-size: 28px; letter-spacing: -0.02em; margin: 0 0 8px; }
     .doc__sub { color: var(--ok-ink-3); margin: 0 0 32px; line-height: 1.55; }
 
@@ -107,45 +116,28 @@
     .demo-frame__source { margin: 0; padding: 16px 18px; background: var(--ok-bg-1); border-top: 1px solid var(--ok-line); color: var(--ok-ink-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; overflow-x: auto; white-space: pre; }
 
     /* Viewport simulator for inline content (component docs).
-       Switcher Desktop  → no clamp, content uses doc__body's own padding (full width).
-       Switcher Tablet   → clamp to ~800px ONLY when real viewport is wider.
-       Switcher Mobile   → clamp to ~412px ONLY when real viewport is wider.
-       On a real phone, the simulator never narrows the content past 100% — what
-       you see is the actual responsive rendering of the component at the device width. */
-    @media (min-width: 880px) {
-      .ok-app__main[data-vp="tablet"] .doc__body {
-        background: var(--ok-bg-1);
-        padding: 24px 0;
-      }
-      .ok-app__main[data-vp="tablet"] .doc__body > * {
-        max-width: 800px;
-        margin-inline: auto;
-        background: var(--ok-bg);
-        padding-inline: 28px;
-        box-sizing: border-box;
-        border-left: 1px solid var(--ok-line-2);
-        border-right: 1px solid var(--ok-line-2);
-      }
-    }
-    @media (min-width: 460px) {
+       The simulator only kicks in on real DESKTOP (≥ 768px) — on a phone
+       there is nothing to "simulate", you just see the page at device size.
+       Switcher Tablet   → clamp content to 800px, centered, with frame chrome.
+       Switcher Mobile   → clamp content to 412px, centered, with frame chrome. */
+    @media (min-width: 768px) {
+      .ok-app__main[data-vp="tablet"] .doc__body,
       .ok-app__main[data-vp="mobile"] .doc__body {
         background: var(--ok-bg-1);
-        padding: 24px 0;
+        padding: 1rem 0;
       }
+      .ok-app__main[data-vp="tablet"] .doc__body > *,
       .ok-app__main[data-vp="mobile"] .doc__body > * {
-        max-width: 412px;
         margin-inline: auto;
         background: var(--ok-bg);
-        padding-inline: 24px;
+        padding-inline: 1rem;
         box-sizing: border-box;
         border-left: 1px solid var(--ok-line-2);
         border-right: 1px solid var(--ok-line-2);
+        transition: max-width 0.28s ease, padding-inline 0.28s ease;
       }
-    }
-
-    /* Smooth transition. */
-    .ok-app__main .doc__body > * {
-      transition: max-width 0.28s ease, padding-inline 0.28s ease;
+      .ok-app__main[data-vp="tablet"] .doc__body > * { max-width: 800px; }
+      .ok-app__main[data-vp="mobile"] .doc__body > * { max-width: 412px; }
     }
 
     /* Iframe simulator (used for full-page apps in pages/apps/*).
@@ -169,13 +161,10 @@
       background: var(--ok-bg);
       transition: max-width 0.28s ease;
     }
-    /* Only clamp the iframe width when there's enough real viewport for it
-       to actually look like a tablet/phone preview — otherwise (real phone
-       browsing the showcase) keep it 100% so it isn't squashed further. */
-    @media (min-width: 880px) {
+    /* The clamp only applies on real desktop. On real mobile the iframe
+       takes the full viewport regardless of switcher state. */
+    @media (min-width: 768px) {
       .ok-app__main[data-vp="tablet"]  .vp-frame { max-width: 820px; box-shadow: 0 0 0 1px var(--ok-line-2); }
-    }
-    @media (min-width: 460px) {
       .ok-app__main[data-vp="mobile"]  .vp-frame { max-width: 412px; box-shadow: 0 0 0 1px var(--ok-line-2); }
     }
 
