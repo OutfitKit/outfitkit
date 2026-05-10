@@ -12,6 +12,11 @@
 }
 .ok-progress__bar {
   height: 100%;
+  /* If the parent .ok-progress sets --ok-progress-value (via inline style
+     or a Datastar binding), the bar follows it. The inline style="width:N%"
+     emitted by the macro still wins because it's a direct property — this
+     CSS only kicks in when no inline width is set. */
+  width: var(--ok-progress-value, 0%);
   background: var(--ok-brand);
   border-radius: inherit;
   transition: width var(--ok-dur-base) var(--ok-ease-out);

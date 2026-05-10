@@ -107,7 +107,9 @@
 {% set _src_jinja_6 %}{% raw %}{% from "ui/progress.jinja" import progress %}
 {% from "ui/button.jinja" import button %}
 <div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
-  {{ progress(value=35, attrs={"data-attr-style": "'width:' + $pct + '%' "}) }}
+  <div class="ok-progress" data-attr:style="'--ok-progress-value:' + $pct + '%'">
+    <div class="ok-progress__bar"></div>
+  </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     {{ button("−10", variant="ghost", size="sm", attrs={"data-on:click": "$pct = Math.max(0, $pct - 10)"}) }}
     {{ button("+10", variant="primary", size="sm", attrs={"data-on:click": "$pct = Math.min(100, $pct + 10)"}) }}
@@ -115,7 +117,9 @@
   </div>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_6 %}{% raw %}<div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
-  <Progress value="35" data-attr-style="'width:' + $pct + '%' " />
+  <div class="ok-progress" data-attr:style="'--ok-progress-value:' + $pct + '%'">
+    <div class="ok-progress__bar"></div>
+  </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     <Button label="−10" variant="ghost" size="sm" data-on:click="$pct = Math.max(0, $pct - 10)" />
     <Button label="+10" variant="primary" size="sm" data-on:click="$pct = Math.min(100, $pct + 10)" />
@@ -127,7 +131,9 @@
     jinja_src=_src_jinja_6,
     jinjax_src=_src_jinjax_6) %}
 <div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
-  {{ progress(value=35, attrs={"data-attr-style": "'width:' + $pct + '%' "}) }}
+  <div class="ok-progress" data-attr:style="'--ok-progress-value:' + $pct + '%'">
+    <div class="ok-progress__bar"></div>
+  </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     {{ button("−10", variant="ghost", size="sm", attrs={"data-on:click": "$pct = Math.max(0, $pct - 10)"}) }}
     {{ button("+10", variant="primary", size="sm", attrs={"data-on:click": "$pct = Math.min(100, $pct + 10)"}) }}
