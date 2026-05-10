@@ -32,9 +32,18 @@
 {% call demo_frame("Tamaños",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
-{{ toggle("a", size="sm", checked=True) }}
-{{ toggle("b", checked=True) }}
-{{ toggle("c", size="lg", checked=True) }}
+<div class="showcase-variant">
+  {{ toggle("a", size="sm", checked=True) }}
+  <small class="showcase-variant__caption">sm</small>
+</div>
+<div class="showcase-variant">
+  {{ toggle("b", checked=True) }}
+  <small class="showcase-variant__caption">md</small>
+</div>
+<div class="showcase-variant">
+  {{ toggle("c", size="lg", checked=True) }}
+  <small class="showcase-variant__caption">lg</small>
+</div>
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
@@ -50,10 +59,22 @@
 {% call demo_frame("Estados",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
-{{ toggle("on", checked=True) }}
-{{ toggle("off") }}
-{{ toggle("dis-on", checked=True, disabled=True) }}
-{{ toggle("dis-off", disabled=True) }}
+<div class="showcase-variant">
+  {{ toggle("on", checked=True) }}
+  <small class="showcase-variant__caption">on</small>
+</div>
+<div class="showcase-variant">
+  {{ toggle("off") }}
+  <small class="showcase-variant__caption">off</small>
+</div>
+<div class="showcase-variant">
+  {{ toggle("dis-on", checked=True, disabled=True) }}
+  <small class="showcase-variant__caption">disabled-on</small>
+</div>
+<div class="showcase-variant">
+  {{ toggle("dis-off", disabled=True) }}
+  <small class="showcase-variant__caption">disabled-off</small>
+</div>
 {% endcall %}
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}

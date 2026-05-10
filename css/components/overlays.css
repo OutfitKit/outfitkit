@@ -10,11 +10,14 @@
 .ok-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  width: 100%;
+  height: 100%;
+  background: color-mix(in oklch, black 55%, transparent);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
   opacity: 1;
   transition: opacity var(--ok-dur-base) var(--ok-ease-out);
+  pointer-events: auto;
 }
 .ok-backdrop[hidden],
 .ok-backdrop[data-state="closed"] { opacity: 0; pointer-events: none; }

@@ -10,35 +10,71 @@
 <p class="showcase__lead">Range input estilizado. Útil para volumen, comisiones, ratios… Combinable con <code>field</code> para label + hint.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/slider.jinja" import slider %}
-<div style="max-width:380px">
-  {{ slider("vol", min=0, max=100, value=50) }}
+<div class="ok-slider-block" style="max-width:380px">
+  <div class="ok-slider-block__head">
+    <span class="ok-slider-block__label">Volumen</span>
+    <output class="ok-slider-block__val ok-slider__value">50%</output>
+  </div>
+  {{ slider("vol", min=0, max=100, value=50,
+            attrs={"oninput": "this.parentElement.querySelector('.ok-slider__value').value = this.value + '%'"}) }}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_1 %}{% raw %}<div style="max-width:380px">
-  <Slider label="vol" min="0" max="100" value="50" />
+{% set _src_jinjax_1 %}{% raw %}<div class="ok-slider-block" style="max-width:380px">
+  <div class="ok-slider-block__head">
+    <span class="ok-slider-block__label">Volumen</span>
+    <output class="ok-slider-block__val ok-slider__value">50%</output>
+  </div>
+  <Slider label="vol" min="0" max="100" value="50"
+          oninput="this.parentElement.querySelector('.ok-slider__value').value = this.value + '%'" />
 </div>{% endraw %}{% endset %}
 
 {% call demo_frame("Default",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
-<div style="max-width:380px">
-  {{ slider("vol", min=0, max=100, value=50) }}
+<div class="ok-slider-block" style="max-width:380px">
+  <div class="ok-slider-block__head">
+    <span class="ok-slider-block__label">Volumen</span>
+    <output class="ok-slider-block__val ok-slider__value">50%</output>
+  </div>
+  {{ slider("vol", min=0, max=100, value=50,
+            attrs={"oninput": "this.parentElement.querySelector('.ok-slider__value').value = this.value + '%'"}) }}
 </div>
 {% endcall %}
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/slider.jinja" import slider %}
 {% from "ui/field.jinja" import field %}
 {% call field("Comisión por venta", hint="Aplica solo a integraciones de marketplace.") %}
-  {{ slider("commission", min=0, max=10, step=0.5, value=2.5) }}
+  <div class="ok-slider-block">
+    <div class="ok-slider-block__head">
+      <span class="ok-slider-block__label">Porcentaje</span>
+      <output class="ok-slider-block__val ok-slider__value">2.5%</output>
+    </div>
+    {{ slider("commission", min=0, max=10, step=0.5, value=2.5,
+              attrs={"oninput": "this.parentElement.querySelector('.ok-slider__value').value = this.value + '%'"}) }}
+  </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Field label="Comisión por venta" hint="Aplica solo a integraciones de marketplace.">
-  <Slider label="commission" min="0" max="10" step="0.5" value="2.5" />
+  <div class="ok-slider-block">
+    <div class="ok-slider-block__head">
+      <span class="ok-slider-block__label">Porcentaje</span>
+      <output class="ok-slider-block__val ok-slider__value">2.5%</output>
+    </div>
+    <Slider label="commission" min="0" max="10" step="0.5" value="2.5"
+            oninput="this.parentElement.querySelector('.ok-slider__value').value = this.value + '%'" />
+  </div>
 </Field>{% endraw %}{% endset %}
 
 {% call demo_frame("Con field",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call field("Comisión por venta", hint="Aplica solo a integraciones de marketplace.") %}
-  {{ slider("commission", min=0, max=10, step=0.5, value=2.5) }}
+  <div class="ok-slider-block">
+    <div class="ok-slider-block__head">
+      <span class="ok-slider-block__label">Porcentaje</span>
+      <output class="ok-slider-block__val ok-slider__value">2.5%</output>
+    </div>
+    {{ slider("commission", min=0, max=10, step=0.5, value=2.5,
+              attrs={"oninput": "this.parentElement.querySelector('.ok-slider__value').value = this.value + '%'"}) }}
+  </div>
 {% endcall %}
 {% endcall %}
 
@@ -56,8 +92,14 @@
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 <div style="display:grid;gap:16px;max-width:380px">
-  {{ slider("a", value=30) }}
-  {{ slider("b", value=70, disabled=True) }}
+  <div class="showcase-variant" style="align-items:stretch">
+    {{ slider("a", value=30) }}
+    <small class="showcase-variant__caption">enabled</small>
+  </div>
+  <div class="showcase-variant" style="align-items:stretch">
+    {{ slider("b", value=70, disabled=True) }}
+    <small class="showcase-variant__caption">disabled</small>
+  </div>
 </div>
 {% endcall %}
 

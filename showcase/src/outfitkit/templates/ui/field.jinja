@@ -2,11 +2,20 @@
 
 {% macro field(label, required=false, hint="", error="", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}field"
+<div class="{{ ok_prefix }}field{% if error %} {{ ok_prefix }}field--error{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <label class="{{ ok_prefix }}field__label{% if required %} {{ ok_prefix }}field__label--req{% endif %}">{{ label }}</label>
-  {{ caller() }}
-  {%- if error %}<span class="{{ ok_prefix }}field__error">{{ error }}</span>{% endif %}
+  <label class="{{ ok_prefix }}field__label">
+    {{ label }}{% if required %} <span class="{{ ok_prefix }}field__required" aria-label="obligatorio">*</span>{% endif %}
+  </label>
+  <div class="{{ ok_prefix }}field__control">
+    {{ caller() }}
+    {%- if error %}
+    <span class="{{ ok_prefix }}field__error-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+    </span>
+    {%- endif %}
+  </div>
+  {%- if error %}<span class="{{ ok_prefix }}field__error" role="alert">{{ error }}</span>{% endif %}
   {%- if hint and not error %}<span class="{{ ok_prefix }}field__hint">{{ hint }}</span>{% endif %}
 </div>
 {%- endmacro %}

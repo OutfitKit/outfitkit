@@ -24,6 +24,37 @@
   color: var(--ok-danger);
 }
 
+.ok-field__required {
+  color: var(--ok-danger);
+  font-weight: 500;
+  margin-left: 2px;
+}
+
+.ok-field__control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.ok-field__error-icon {
+  color: var(--ok-danger);
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ok-field--error .ok-field__control > .ok-input,
+.ok-field--error .ok-field__control > .ok-select,
+.ok-field--error .ok-field__control > .ok-textarea {
+  padding-right: 36px;
+  border-color: var(--ok-danger);
+}
+
 .ok-field__hint {
   font-size: var(--ok-text-xs);
   color: var(--ok-ink-3);
@@ -82,11 +113,20 @@
 }
 
 .ok-input:disabled,
+.ok-input[aria-disabled="true"],
 .ok-textarea:disabled,
-.ok-select:disabled {
-  opacity: 0.5;
+.ok-textarea[aria-disabled="true"],
+.ok-select:disabled,
+.ok-select[aria-disabled="true"] {
+  opacity: 0.55;
   cursor: not-allowed;
-  background: var(--ok-bg-2);
+  background: var(--ok-bg-3);
+  border-color: var(--ok-line);
+  color: var(--ok-ink-3);
+}
+.ok-input:disabled::placeholder,
+.ok-textarea:disabled::placeholder {
+  color: var(--ok-ink-4);
 }
 
 .ok-input--invalid,
@@ -102,9 +142,9 @@
 
 /* Tamaños */
 .ok-input--sm,
-.ok-select--sm { --_h: 30px; font-size: var(--ok-text-sm); padding: 0 10px; border-radius: var(--ok-radius-sm); }
+.ok-select--sm { --_h: 28px; font-size: var(--ok-text-sm); padding: 0 8px; border-radius: var(--ok-radius-sm); }
 .ok-input--lg,
-.ok-select--lg { --_h: 44px; font-size: var(--ok-text-base); padding: 0 14px; border-radius: var(--ok-radius-lg); }
+.ok-select--lg { --_h: 44px; font-size: var(--ok-text-lg); padding: 0 16px; border-radius: var(--ok-radius-lg); }
 
 /* Textarea */
 .ok-textarea {
@@ -293,7 +333,12 @@
   box-shadow: 0 0 0 3px var(--ok-brand-soft);
 }
 .ok-toggle input:disabled + .ok-toggle__track {
-  opacity: 0.5;
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+.ok-toggle:has(input:disabled),
+.ok-toggle--disabled {
+  opacity: 0.55;
   cursor: not-allowed;
 }
 
@@ -377,7 +422,18 @@
   box-shadow: 0 0 0 3px var(--ok-brand-soft);
 }
 
-.ok-check input:disabled ~ .ok-check__box { opacity: 0.5; cursor: not-allowed; }
+.ok-check input:disabled ~ .ok-check__box {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--ok-bg-2);
+  border-color: var(--ok-line);
+}
+.ok-check:has(input:disabled),
+.ok-check--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  color: var(--ok-ink-3);
+}
 
 /* ============================================================
    Radio
@@ -418,6 +474,19 @@
 
 .ok-radio input:focus-visible ~ .ok-radio__dot {
   box-shadow: 0 0 0 3px var(--ok-brand-soft);
+}
+
+.ok-radio input:disabled ~ .ok-radio__dot {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--ok-bg-2);
+  border-color: var(--ok-line);
+}
+.ok-radio:has(input:disabled),
+.ok-radio--disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  color: var(--ok-ink-3);
 }
 
 /* Radio card — opción seleccionable visual con label rico */

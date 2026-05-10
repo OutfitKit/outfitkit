@@ -20,11 +20,18 @@
 .ok-timeline__item:not(:last-child)::before {
   content: "";
   position: absolute;
-  top: 28px;
+  top: 32px;
   bottom: -4px;
   left: 17px;
-  width: 1px;
-  background: var(--ok-line-2);
+  width: 2px;
+  background: var(--ok-line);
+  border-radius: 1px;
+}
+.ok-timeline__item--done:not(:last-child)::before {
+  background: var(--ok-brand);
+}
+.ok-timeline__item--current:not(:last-child)::before {
+  background: linear-gradient(to bottom, var(--ok-brand), var(--ok-line));
 }
 
 .ok-timeline__dot {
@@ -155,7 +162,8 @@
 }
 .ok-timeline--dense .ok-timeline__dot svg { width: 10px; height: 10px; }
 .ok-timeline--dense .ok-timeline__item:not(:last-child)::before {
-  top: 20px;
+  top: 22px;
+  bottom: -2px;
   left: 17px;
 }
 

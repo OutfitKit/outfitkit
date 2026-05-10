@@ -92,11 +92,20 @@
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto del label.</td></tr>
-    <tr><td><code>required</code></td><td>bool</td><td>false</td><td>Añade el asterisco rojo.</td></tr>
+    <tr><td><code>required</code></td><td>bool</td><td>false</td><td>Añade el asterisco rojo con <code>aria-label="obligatorio"</code>.</td></tr>
     <tr><td><code>hint</code></td><td>str</td><td>""</td><td>Texto de ayuda bajo el control.</td></tr>
-    <tr><td><code>error</code></td><td>str</td><td>""</td><td>Texto de error (oculta el hint).</td></tr>
+    <tr><td><code>error</code></td><td>str</td><td>""</td><td>Texto de error (oculta el hint, añade icono de aviso al control).</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
     <tr><td>(slot)</td><td>—</td><td>—</td><td>Control de formulario.</td></tr>
   </tbody>
 </table>
+
+<h3>Accesibilidad</h3>
+<p class="showcase__lead">
+  El componente <code>Field</code> es <em>slot-based</em>: no renderiza el control interno, sólo el wrapper y el label.
+  Por eso el consumidor es responsable de añadir <code>aria-required="true"</code> al <code>&lt;input&gt;</code>/<code>&lt;select&gt;</code>/<code>&lt;textarea&gt;</code>
+  cuando <code>required=True</code>, así como <code>aria-invalid="true"</code> cuando <code>error</code> no está vacío.
+  El asterisco visual ya expone <code>aria-label="obligatorio"</code> a lectores de pantalla, y el icono de error
+  está marcado como <code>aria-hidden="true"</code> porque el mensaje textual de error es el que comunica el estado.
+</p>
 {% endblock %}

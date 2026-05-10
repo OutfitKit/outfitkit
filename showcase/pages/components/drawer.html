@@ -9,6 +9,10 @@
 <h1>Drawer</h1>
 <p class="showcase__lead">Panel lateral right (default), left o bottom. Mismo patrón <code>data-state</code> que el modal.</p>
 
+<div class="ok-callout ok-callout--info" style="margin-bottom:16px">
+  <strong>Nota:</strong> las variantes inferiores son markup estático con <code>state="open"</code> hardcodeado — la X visual no cierra el drawer. Para abrir/cerrar reactivo, mira el ejemplo final con Datastar (<code>$open</code>).
+</div>
+
 {% set _src_jinja_1 %}{% raw %}{% from "ui/drawer.jinja" import drawer %}
 <div class="drawer-stage">
   {% call drawer(title="Detalle del pedido", subtitle="Pedido #1024", state="open") %}

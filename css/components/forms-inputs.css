@@ -130,6 +130,22 @@
   box-shadow: 0 0 0 3px var(--ok-danger-soft);
 }
 
+/* Disabled */
+.ok-currency:has(input:disabled),
+.ok-currency--disabled,
+.ok-currency[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--ok-bg-3);
+  border-color: var(--ok-line);
+  color: var(--ok-ink-3);
+}
+.ok-currency:has(input:disabled) .ok-currency__input,
+.ok-currency--disabled .ok-currency__input {
+  cursor: not-allowed;
+  color: var(--ok-ink-3);
+}
+
 
 /* ============================================================
    2) Phone input — country chip + dial code + number
@@ -296,6 +312,22 @@
 .ok-phone--invalid:focus-within {
   border-color: var(--ok-danger);
   box-shadow: 0 0 0 3px var(--ok-danger-soft);
+}
+
+/* Disabled */
+.ok-phone:has(input:disabled),
+.ok-phone--disabled,
+.ok-phone[aria-disabled="true"] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--ok-bg-3);
+  border-color: var(--ok-line);
+  color: var(--ok-ink-3);
+}
+.ok-phone:has(input:disabled) .ok-phone__input,
+.ok-phone--disabled .ok-phone__input {
+  cursor: not-allowed;
+  color: var(--ok-ink-3);
 }
 
 

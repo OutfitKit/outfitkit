@@ -1,9 +1,9 @@
-{#def points, direction=None, size="md", width=80, height=22, attrs=None #}
+{#def points, direction=None, size="md", width=100, height=24, attrs=None #}
 
-{% macro sparkline(points, direction=None, size="md", width=80, height=22, attrs=None) -%}
+{% macro sparkline(points, direction=None, size="md", width=100, height=24, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-{%- if size == 'lg' %}{% set width = 120 %}{% set height = 32 %}{% endif -%}
-{%- if size == 'sm' %}{% set width = 56 %}{% set height = 18 %}{% endif -%}
+{%- if size == 'lg' %}{% set width = 160 %}{% set height = 40 %}{% endif -%}
+{%- if size == 'sm' %}{% set width = 60 %}{% set height = 16 %}{% endif -%}
 {%- if points is string %}{% set points_str = points %}{%- else -%}
   {%- set parts = [] -%}
   {%- for p in points -%}
