@@ -50,12 +50,15 @@ jobs:
 
               return IMPORT_RE.sub(repl, src)
 
-          bundled = expand(ROOT / "outfitkit.css", set())
-          Path("dist/outfitkit.css").write_text(bundled)
-          print(f"Wrote dist/outfitkit.css ({len(bundled):,} bytes)")
+          # The source under css/ is written with the `ok-` prefix throughout.
+          # We bundle it as-is into the "ok" variant, then derive the default
+          # (unprefixed) bundle by stripping `.ok-` from selectors only.
+          bundled_ok = expand(ROOT / "outfitkit.css", set())
+          Path("dist/outfitkit.ok.css").write_text(bundled_ok)
+          print(f"Wrote dist/outfitkit.ok.css ({len(bundled_ok):,} bytes)")
           PY
 
-      - name: Generate unprefixed bundle
+      - name: Generate default (unprefixed) bundle
         run: |
           python <<'PY'
           import re
@@ -67,10 +70,7 @@ jobs:
           #   var(--ok-*)   (token references)
           #   @keyframes ok-*  (animation names)
           #   animation: ok-*  (animation references)
-          # Match: a dot followed by `ok-` and the first word char that follows.
-          # Use word boundary on the right so `.ok-card-title` becomes
-          # `.card-title`, not `.title`.
-          src = Path("dist/outfitkit.css").read_text()
+          src = Path("dist/outfitkit.ok.css").read_text()
 
           # Robust strategy: capture `.ok-` (literal) and replace with `.`
           # only when followed by a class-name character. This catches all
@@ -78,7 +78,8 @@ jobs:
           # `.ok-foo.ok-bar`, `.ok-foo[aria-pressed=""]`.
           stripped = re.sub(r'\.ok-(?=[a-zA-Z])', '.', src)
 
-          out = Path("dist/outfitkit.unprefixed.css")
+          # The default (unprefixed) bundle is the canonical file name.
+          out = Path("dist/outfitkit.css")
           out.write_text(stripped)
 
           # Sanity check: tokens, keyframes, animations must remain prefixed.
@@ -87,7 +88,7 @@ jobs:
           # And every .ok- selector should be gone.
           assert ".ok-" not in stripped, f"selectors still have .ok- prefix: {stripped[stripped.find('.ok-'):stripped.find('.ok-')+80]!r}"
 
-          print(f"Wrote dist/outfitkit.unprefixed.css ({len(stripped):,} bytes)")
+          print(f"Wrote dist/outfitkit.css ({len(stripped):,} bytes)")
           PY
 
       - name: Minify both bundles
@@ -95,7 +96,9 @@ jobs:
           python <<'PY'
           import rcssmin
           from pathlib import Path
-          for name in ("outfitkit", "outfitkit.unprefixed"):
+          # outfitkit.css         = default (unprefixed)
+          # outfitkit.ok.css      = opt-in, prefixed with "ok-"
+          for name in ("outfitkit", "outfitkit.ok"):
               src = Path(f"dist/{name}.css").read_text()
               minified = rcssmin.cssmin(src)
               Path(f"dist/{name}.min.css").write_text(minified)
@@ -106,8 +109,8 @@ jobs:
         run: |
           test -s dist/outfitkit.css
           test -s dist/outfitkit.min.css
-          test -s dist/outfitkit.unprefixed.css
-          test -s dist/outfitkit.unprefixed.min.css
+          test -s dist/outfitkit.ok.css
+          test -s dist/outfitkit.ok.min.css
           ls -lh dist/
 
       - name: Commit dist/ to the tag

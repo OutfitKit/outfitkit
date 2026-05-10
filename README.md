@@ -6,43 +6,42 @@ Cero JS obligatorio. Cero build pipeline para consumidores. Un solo `<link>` y l
 
 ## Uso (consumidor solo CSS)
 
-OutfitKit se publica en **dos sabores**, ambos con el mismo CSS:
-
-| Bundle | Clases | Cuándo usarlo |
-|---|---|---|
-| `outfitkit.min.css` | `.ok-btn`, `.ok-card`, `.ok-flex`, … | Cuando OutfitKit convive con otra librería CSS o cuando quieres distinguir tus clases en DevTools. |
-| `outfitkit.unprefixed.min.css` | `.btn`, `.card`, `.flex`, … | Cuando OutfitKit es tu única librería y prefieres clases cortas (estilo Tailwind / Daisy). Hub y Cloud usan este. |
-
-Ambos bundles comparten los mismos tokens (`--ok-*`), keyframes y animations — lo único que cambia es el nombre de los selectores de clase.
-
-### Producción — con prefijo `ok-`
+### Producción (default, sin prefijo)
 
 ```html
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.min.css">
 
-<button class="ok-btn ok-btn--primary">Continuar</button>
-```
-
-### Producción — sin prefijo
-
-```html
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.unprefixed.min.css">
-
 <button class="btn btn--primary">Continuar</button>
 ```
 
+Clases cortas, sin ruido. Es lo recomendado para cualquier proyecto donde OutfitKit sea la única librería CSS de la página — Hub, Cloud, los módulos `m_*` del marketplace.
+
+### Producción (opcional, con prefijo `ok-`)
+
+Solo necesario si OutfitKit convive con otra librería CSS que ya define `.btn`, `.card`, etc. (Bootstrap, Tailwind utilities, Daisy, un design system propio anterior). El bundle prefijado evita las colisiones:
+
+```html
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.ok.min.css">
+
+<button class="ok-btn ok-btn--primary">Continuar</button>
+```
+
+Ambos bundles comparten exactamente los mismos tokens (`--ok-*`), keyframes y animations. Lo único que cambia son los nombres de los selectores de clase.
+
 ### Desarrollo — fuente sin minificar
 
-Útil para inspeccionar reglas en DevTools sin pasar por la minificación:
+Útil para inspeccionar reglas individuales en DevTools:
 
 ```html
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/outfitkit.css">
+
+<button class="ok-btn ok-btn--primary">Continuar</button>
 ```
 
-La fuente en `css/` siempre lleva el prefijo `ok-`; el bundle sin prefijo se genera solo en CI cuando se etiqueta una release. Los navegadores modernos resuelven los `@import` sin problema, así que el archivo de desarrollo no necesita bundling.
+La fuente en `css/` siempre lleva el prefijo `ok-` (es como editamos el repo). El bundle sin prefijo se genera solo en CI al taggear. Los navegadores modernos resuelven los `@import` directamente, sin bundling local.
 
 ## Macros Jinja (opcional)
 
@@ -54,6 +53,35 @@ pip install outfitkit[jinjax]     # + sintaxis HTML-like <Button label="x" />
 ```
 
 Las macros viven en [`showcase/`](./showcase/) y se publican desde ahí a PyPI. Cualquier macro funciona con o sin JinjaX (formato dual-mode).
+
+### Setup mínimo (default, sin prefijo)
+
+```python
+from jinja2 import Environment, FileSystemLoader
+from outfitkit import TEMPLATES_DIR, register_globals, css_url
+
+env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
+register_globals(env)            # establece ok_prefix = ""
+
+# En tu base.html
+#   <link rel="stylesheet" href="{{ css }}">
+ctx = {"css": css_url()}         # → outfitkit.min.css (sin prefijo)
+```
+
+Resultado: `{{ button("Save") }}` → `<button class="btn btn--primary">…</button>`.
+
+### Cambiar a prefijo `ok-` (solo si lo necesitas)
+
+```python
+register_globals(env, ok_prefix="ok-")
+ctx = {"css": css_url(prefix="ok-")}     # → outfitkit.ok.min.css
+```
+
+Resultado: `{{ button("Save") }}` → `<button class="ok-btn ok-btn--primary">…</button>`.
+
+### Regla de oro
+
+El **prefijo de las macros** y el **bundle CSS cargado** tienen que coincidir. Como ambos se controlan desde dos líneas del setup, no es una preocupación recurrente — lo eliges una vez y olvidas.
 
 ## Sitio de demos
 
@@ -71,10 +99,10 @@ outfitkit/
 │   ├── outfitkit.css   ← entry point con @import de todo
 │   └── components/     ← 44 archivos, uno por familia (button, card, modal, ...)
 ├── dist/               ← bundles generados SOLO en CI al taggear (no editar a mano)
-│   ├── outfitkit.css                  (concatenado, con prefijo ok-)
-│   ├── outfitkit.min.css              (minificado, con prefijo ok-)
-│   ├── outfitkit.unprefixed.css       (concatenado, sin prefijo)
-│   └── outfitkit.unprefixed.min.css   (minificado, sin prefijo)
+│   ├── outfitkit.css        (concatenado, sin prefijo — default)
+│   ├── outfitkit.min.css    (minificado, sin prefijo — default)
+│   ├── outfitkit.ok.css     (concatenado, prefijo ok- — opt-in)
+│   └── outfitkit.ok.min.css (minificado, prefijo ok- — opt-in)
 └── showcase/           ← macros Jinja + sitio de demos + paquete PyPI
 ```
 

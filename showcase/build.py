@@ -66,9 +66,14 @@ def _base_path() -> str:
 def _css_url() -> str:
     """Where the showcase loads OutfitKit's CSS from.
 
-    - Default: jsDelivr CDN, branch ``main`` (always-fresh).
-    - Set ``OUTFITKIT_CSS=local`` to load from ``<base>/css/outfitkit.css`` —
-      the build copies the CSS folder into ``build/css/`` for that case.
+    The showcase mirrors the source layout: source is authored with the
+    ``ok-`` prefix in ``css/``, so the showcase loads the prefixed bundle
+    and pairs it with ``ok_prefix="ok-"`` in the env globals (see
+    ``make_site``). Public consumers get the default (unprefixed) bundle
+    via ``css_url()`` from the package.
+
+    - Default: jsDelivr CDN, branch ``main`` (always-fresh, prefixed).
+    - Set ``OUTFITKIT_CSS=local`` to load from ``<base>/css/outfitkit.css``.
     """
     if os.environ.get("OUTFITKIT_CSS") == "local":
         return f"{_base_path()}/css/outfitkit.css"
