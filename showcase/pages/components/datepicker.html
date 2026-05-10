@@ -6,18 +6,14 @@
 
 {% block content %}
 <h1>Datepicker</h1>
-<p class="showcase__lead">Calendario popover. Cabecera con título y navegación, rejilla de días (con día seleccionado, hoy, fuera de mes y rango). Fechas en formato DD/MM/YYYY.</p>
+<p class="showcase__lead">Calendario popover. Cabecera con título y navegación, rejilla de días (con día seleccionado, hoy, fuera de mes y rango).</p>
+<p class="showcase__lead"><strong>Convención de fechas:</strong> los títulos de sección y los chips de resumen usan <code>DD/MM/YYYY</code> (ej. <code>15/05/2026</code>); la cabecera interna del calendario sigue la convención habitual de widgets (<code>Mayo 2026</code>).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/datepicker.jinja" import datepicker %}
 {% call datepicker("Mayo 2026") %}
 <div class="ok-datepicker__grid">
   <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
-  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
-  {% for d in range(1, 32) %}
-    {% if d == 15 %}<button class="ok-datepicker__day ok-datepicker__day--selected">{{ d }}</button>
-    {% elif d == 10 %}<button class="ok-datepicker__day ok-datepicker__day--today">{{ d }}</button>
-    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
-  {% endfor %}
+  {# … rejilla de días generada por el cliente … #}
 </div>
 <div class="ok-datepicker__shortcuts">
   <button class="ok-datepicker__shortcut">Hoy</button>
@@ -27,15 +23,7 @@
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Datepicker label="Mayo 2026">
-<div class="ok-datepicker__grid">
-  <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
-  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
-  {% for d in range(1, 32) %}
-    {% if d == 15 %}<button class="ok-datepicker__day ok-datepicker__day--selected">{{ d }}</button>
-    {% elif d == 10 %}<button class="ok-datepicker__day ok-datepicker__day--today">{{ d }}</button>
-    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
-  {% endfor %}
-</div>
+<div class="ok-datepicker__grid">…</div>
 <div class="ok-datepicker__shortcuts">
   <button class="ok-datepicker__shortcut">Hoy</button>
   <button class="ok-datepicker__shortcut">Ayer</button>
@@ -47,23 +35,22 @@
 {% call demo_frame("Mes simple — 15/05/2026 seleccionado",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
-{% call datepicker("Mayo 2026") %}
-<div class="ok-datepicker__grid">
-  <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
-  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
-  {% for d in range(1, 32) %}
-    {% if d == 15 %}<button class="ok-datepicker__day ok-datepicker__day--selected">{{ d }}</button>
-    {% elif d == 10 %}<button class="ok-datepicker__day ok-datepicker__day--today">{{ d }}</button>
-    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
-  {% endfor %}
+<div class="dp-mes-simple" data-dp-year="2026" data-dp-month="5" data-dp-day="15">
+  {% call datepicker("Mayo 2026") %}
+  <div class="ok-datepicker__grid">
+    <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+  </div>
+  <div class="ok-datepicker__shortcuts">
+    <button type="button" class="ok-datepicker__shortcut" data-dp-shortcut="today">Hoy</button>
+    <button type="button" class="ok-datepicker__shortcut" data-dp-shortcut="yesterday">Ayer</button>
+    <button type="button" class="ok-datepicker__shortcut" data-dp-shortcut="thisWeek">Esta semana</button>
+    <button type="button" class="ok-datepicker__shortcut" data-dp-shortcut="thisMonth">Este mes</button>
+  </div>
+  {% endcall %}
+  <p class="dp-mes-simple__caption" style="margin-top:10px;font-size:13px;color:var(--ok-ink-3);">
+    Fecha seleccionada: <strong class="dp-mes-simple__value">15/05/2026</strong>
+  </p>
 </div>
-<div class="ok-datepicker__shortcuts">
-  <button class="ok-datepicker__shortcut">Hoy</button>
-  <button class="ok-datepicker__shortcut">Ayer</button>
-  <button class="ok-datepicker__shortcut">Esta semana</button>
-  <button class="ok-datepicker__shortcut">Este mes</button>
-</div>
-{% endcall %}
 {% endcall %}
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/datepicker.jinja" import datepicker %}
@@ -94,7 +81,7 @@
       data-on:click="$pickedDay = {{ d }}">{{ d }}</button>
     {% endfor %}
   </div>
-  
+
 </Datepicker>
   <div>
     Fecha: <strong data-text="('0' + $pickedDay).slice(-2) + '/05/2026'">15/05/2026</strong>
@@ -123,46 +110,61 @@
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/datepicker.jinja" import datepicker %}
-{% call datepicker("Rango · 07 may → 22 may") %}
-<div class="ok-datepicker__grid">
-  <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
-  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
-  {% for d in range(1, 32) %}
-    {% if d == 7 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-start">{{ d }}</button>
-    {% elif d == 22 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-end">{{ d }}</button>
-    {% elif d > 7 and d < 22 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
-    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
-  {% endfor %}
-</div>
-{% endcall %}{% endraw %}{% endset %}
-{% set _src_jinjax_3 %}{% raw %}<Datepicker label="Rango · 07 may → 22 may">
-<div class="ok-datepicker__grid">
-  <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
-  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
-  {% for d in range(1, 32) %}
-    {% if d == 7 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-start">{{ d }}</button>
-    {% elif d == 22 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-end">{{ d }}</button>
-    {% elif d > 7 and d < 22 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
-    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
-  {% endfor %}
-</div>
-</Datepicker>{% endraw %}{% endset %}
+{# Dos meses lado a lado: la selección de rango se pinta sobre ambos calendarios. #}
+<div style="display:flex;gap:12px;flex-wrap:wrap;">
+  {% call datepicker("Mayo 2026") %}
+  <div class="ok-datepicker__grid">
+    <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
+    {% for d in range(1, 32) %}
+      {% if d == 7 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-start">{{ d }}</button>
+      {% elif d > 7 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
+      {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
+    {% endfor %}
+  </div>
+  {% endcall %}
+  {% call datepicker("Junio 2026") %}
+  <div class="ok-datepicker__grid">
+    <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+    {% for d in range(1, 31) %}
+      {% if d == 22 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-end">{{ d }}</button>
+      {% elif d < 22 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
+      {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
+    {% endfor %}
+  </div>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<div style="display:flex;gap:12px;flex-wrap:wrap;">
+  <Datepicker label="Mayo 2026">…</Datepicker>
+  <Datepicker label="Junio 2026">…</Datepicker>
+</div>{% endraw %}{% endset %}
 
-{% call demo_frame("Rango — 07/05/2026 → 22/05/2026",
+{% call demo_frame("Rango — 07/05/2026 → 22/06/2026",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
-{% call datepicker("Rango · 07 may → 22 may") %}
-<div class="ok-datepicker__grid">
-  <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
-  {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
-  {% for d in range(1, 32) %}
-    {% if d == 7 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-start">{{ d }}</button>
-    {% elif d == 22 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-end">{{ d }}</button>
-    {% elif d > 7 and d < 22 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
-    {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
-  {% endfor %}
+<div style="display:flex;gap:12px;flex-wrap:wrap;">
+  {% call datepicker("Mayo 2026") %}
+  <div class="ok-datepicker__grid">
+    <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="ok-datepicker__day ok-datepicker__day--muted">{{ d }}</button>{% endfor %}
+    {% for d in range(1, 32) %}
+      {% if d == 7 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-start">{{ d }}</button>
+      {% elif d > 7 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
+      {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
+    {% endfor %}
+  </div>
+  {% endcall %}
+  {% call datepicker("Junio 2026") %}
+  <div class="ok-datepicker__grid">
+    <div class="ok-datepicker__dow">L</div><div class="ok-datepicker__dow">M</div><div class="ok-datepicker__dow">X</div><div class="ok-datepicker__dow">J</div><div class="ok-datepicker__dow">V</div><div class="ok-datepicker__dow">S</div><div class="ok-datepicker__dow">D</div>
+    {% for d in range(1, 31) %}
+      {% if d == 22 %}<button class="ok-datepicker__day ok-datepicker__day--selected ok-datepicker__day--range-end">{{ d }}</button>
+      {% elif d < 22 %}<button class="ok-datepicker__day ok-datepicker__day--in-range">{{ d }}</button>
+      {% else %}<button class="ok-datepicker__day">{{ d }}</button>{% endif %}
+    {% endfor %}
+  </div>
+  {% endcall %}
 </div>
-{% endcall %}
 {% endcall %}
 
 <h2>API</h2>
@@ -170,9 +172,127 @@
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>title</code></td><td>str</td><td>""</td><td>Título de cabecera con flechas de navegación. Vacío oculta la cabecera.</td></tr>
-    <tr><td><code>range</code></td><td>bool</td><td>false</td><td>Layout de dos meses lado a lado (rango).</td></tr>
+    <tr><td><code>range</code></td><td>bool</td><td>false</td><td>Marca el componente como variante de rango (clase <code>--range</code>). Para layout dual de dos meses lado a lado, renderiza dos <code>&lt;Datepicker&gt;</code> en un wrapper flex y aplica <code>--range-start</code> / <code>--in-range</code> / <code>--range-end</code> a los días.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra (data-signals, etc).</td></tr>
   </tbody>
 </table>
 <p class="showcase__lead">Slot: la rejilla <code>.ok-datepicker__grid</code>, accesos rápidos <code>.ok-datepicker__shortcuts</code> y footer son markup libre dentro del macro.</p>
+
+<script>
+(() => {
+  // "Mes simple" demo: wire chevrons + shortcuts so they actually navigate / select.
+  // Anchor: today is 10/05/2026 (per page).
+  const TODAY = { y: 2026, m: 5, d: 10 };
+  const MONTH_NAMES = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+  const pad = n => String(n).padStart(2, '0');
+  const daysIn = (y, m) => new Date(y, m, 0).getDate();           // m is 1-12
+  // Monday-first day-of-week index (0..6) of the 1st of month
+  const firstDow = (y, m) => {
+    const js = new Date(y, m - 1, 1).getDay();                    // 0=Sun
+    return (js + 6) % 7;                                          // 0=Mon
+  };
+
+  function render(root) {
+    const y = parseInt(root.dataset.dpYear, 10);
+    const m = parseInt(root.dataset.dpMonth, 10);
+    const sel = parseInt(root.dataset.dpDay, 10);
+    const head = root.querySelector('.ok-datepicker__title');
+    const grid = root.querySelector('.ok-datepicker__grid');
+    if (!head || !grid) return;
+    head.textContent = `${MONTH_NAMES[m - 1]} ${y}`;
+
+    // Rebuild grid: keep the 7 dow headers, replace day buttons.
+    const dows = Array.from(grid.querySelectorAll('.ok-datepicker__dow'));
+    grid.innerHTML = '';
+    dows.forEach(d => grid.appendChild(d));
+
+    // Trailing days of previous month (muted)
+    const lead = firstDow(y, m);
+    const prevDays = daysIn(m === 1 ? y - 1 : y, m === 1 ? 12 : m - 1);
+    for (let i = lead - 1; i >= 0; i--) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ok-datepicker__day ok-datepicker__day--muted';
+      b.textContent = String(prevDays - i);
+      grid.appendChild(b);
+    }
+    // Days of current month
+    const dim = daysIn(y, m);
+    for (let d = 1; d <= dim; d++) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      let cls = 'ok-datepicker__day';
+      if (d === sel) cls += ' ok-datepicker__day--selected';
+      if (y === TODAY.y && m === TODAY.m && d === TODAY.d && d !== sel) cls += ' ok-datepicker__day--today';
+      b.className = cls;
+      b.textContent = String(d);
+      b.addEventListener('click', () => {
+        root.dataset.dpDay = String(d);
+        render(root);
+      });
+      grid.appendChild(b);
+    }
+    // Update caption
+    const cap = root.querySelector('.dp-mes-simple__value');
+    if (cap) {
+      const day = parseInt(root.dataset.dpDay, 10);
+      cap.textContent = `${pad(day)}/${pad(m)}/${y}`;
+    }
+  }
+
+  function shiftMonth(root, delta) {
+    let y = parseInt(root.dataset.dpYear, 10);
+    let m = parseInt(root.dataset.dpMonth, 10) + delta;
+    while (m < 1) { m += 12; y -= 1; }
+    while (m > 12) { m -= 12; y += 1; }
+    root.dataset.dpYear = String(y);
+    root.dataset.dpMonth = String(m);
+    // Clamp selected day to days in new month
+    const dim = daysIn(y, m);
+    const sel = Math.min(parseInt(root.dataset.dpDay, 10), dim);
+    root.dataset.dpDay = String(sel);
+    render(root);
+  }
+
+  function applyShortcut(root, key) {
+    if (key === 'today') {
+      root.dataset.dpYear = String(TODAY.y);
+      root.dataset.dpMonth = String(TODAY.m);
+      root.dataset.dpDay = String(TODAY.d);
+    } else if (key === 'yesterday') {
+      const d = new Date(TODAY.y, TODAY.m - 1, TODAY.d - 1);
+      root.dataset.dpYear = String(d.getFullYear());
+      root.dataset.dpMonth = String(d.getMonth() + 1);
+      root.dataset.dpDay = String(d.getDate());
+    } else if (key === 'thisWeek') {
+      // Monday of this week (anchor: TODAY)
+      const t = new Date(TODAY.y, TODAY.m - 1, TODAY.d);
+      const dow = (t.getDay() + 6) % 7; // 0=Mon
+      const mon = new Date(t.getFullYear(), t.getMonth(), t.getDate() - dow);
+      root.dataset.dpYear = String(mon.getFullYear());
+      root.dataset.dpMonth = String(mon.getMonth() + 1);
+      root.dataset.dpDay = String(mon.getDate());
+    } else if (key === 'thisMonth') {
+      root.dataset.dpYear = String(TODAY.y);
+      root.dataset.dpMonth = String(TODAY.m);
+      root.dataset.dpDay = '1';
+    }
+    render(root);
+  }
+
+  function init(root) {
+    const nav = root.querySelectorAll('.ok-datepicker__nav-btn');
+    if (nav.length >= 2) {
+      nav[0].addEventListener('click', () => shiftMonth(root, -1));
+      nav[1].addEventListener('click', () => shiftMonth(root, +1));
+    }
+    root.querySelectorAll('[data-dp-shortcut]').forEach(btn => {
+      btn.addEventListener('click', () => applyShortcut(root, btn.dataset.dpShortcut));
+    });
+    render(root);
+  }
+
+  document.querySelectorAll('.dp-mes-simple').forEach(init);
+})();
+</script>
 {% endblock %}

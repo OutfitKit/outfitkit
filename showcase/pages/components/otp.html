@@ -29,13 +29,13 @@
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/otp.jinja" import otp %}
-{{ otp(length=4, size="lg") }}{% endraw %}{% endset %}
-{% set _src_jinjax_3 %}{% raw %}<Otp length="4" size="lg" />{% endraw %}{% endset %}
+{{ otp(length=4, size="lg", mode="alphanumeric") }}{% endraw %}{% endset %}
+{% set _src_jinjax_3 %}{% raw %}<Otp length="4" size="lg" mode="alphanumeric" />{% endraw %}{% endset %}
 
-{% call demo_frame("Grande — alfanumérico vacío",
+{% call demo_frame("Grande — alfanumérico",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
-{{ otp(length=4, size="lg") }}
+{{ otp(length=4, size="lg", mode="alphanumeric") }}
 {% endcall %}
 
 <h2>API</h2>
@@ -45,6 +45,7 @@
     <tr><td><code>length</code></td><td>int</td><td>6</td><td>Número de celdas.</td></tr>
     <tr><td><code>value</code></td><td>str</td><td>""</td><td>Valor pre-rellenado (1 carácter por celda).</td></tr>
     <tr><td><code>size</code></td><td>str</td><td>"md"</td><td><code>sm</code> · <code>md</code> · <code>lg</code>.</td></tr>
+    <tr><td><code>mode</code></td><td>str</td><td>"numeric"</td><td><code>numeric</code> (solo dígitos) · <code>alphanumeric</code> (A-Z + 0-9, se normaliza a mayúsculas).</td></tr>
     <tr><td><code>separator_at</code></td><td>int</td><td>None</td><td>Inserta separador <code>—</code> antes de la celda i.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
   </tbody>
@@ -52,14 +53,22 @@
 
 {# Demo wiring — make all .ok-otp groups on this page interactive: typing
    auto-advances focus, backspace on empty cell goes back, paste distributes
-   digits across cells, only digits accepted. The macro itself ships markup
-   only (no JS), so this lives in the showcase demo. #}
+   chars across cells. The filter respects each cell's `inputmode`:
+   `numeric` → only digits; `text` (alphanumeric) → A-Z + 0-9, uppercased.
+   The macro itself ships markup only (no JS), so this lives in the showcase. #}
 <script>
 document.querySelectorAll('.ok-otp').forEach(function (group) {
   var inputs = group.querySelectorAll('input');
+  var firstInput = inputs[0];
+  var isAlpha = firstInput && firstInput.getAttribute('inputmode') === 'text';
+  var filterRe = isAlpha ? /[^A-Za-z0-9]/g : /[^0-9]/g;
+  var normalize = function (s) {
+    var v = s.replace(filterRe, '');
+    return isAlpha ? v.toUpperCase() : v;
+  };
   inputs.forEach(function (input, i) {
     input.addEventListener('input', function (e) {
-      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 1);
+      e.target.value = normalize(e.target.value).slice(0, 1);
       if (e.target.value && i < inputs.length - 1) inputs[i + 1].focus();
     });
     input.addEventListener('keydown', function (e) {
@@ -67,10 +76,11 @@ document.querySelectorAll('.ok-otp').forEach(function (group) {
     });
     input.addEventListener('paste', function (e) {
       e.preventDefault();
-      var digits = ((e.clipboardData || window.clipboardData).getData('text') || '')
-        .replace(/\D/g, '').slice(0, inputs.length);
-      digits.split('').forEach(function (d, j) { if (inputs[j]) inputs[j].value = d; });
-      var last = Math.min(digits.length, inputs.length - 1);
+      var chars = normalize(
+        (e.clipboardData || window.clipboardData).getData('text') || ''
+      ).slice(0, inputs.length);
+      chars.split('').forEach(function (d, j) { if (inputs[j]) inputs[j].value = d; });
+      var last = Math.min(chars.length, inputs.length - 1);
       if (inputs[last]) inputs[last].focus();
     });
   });

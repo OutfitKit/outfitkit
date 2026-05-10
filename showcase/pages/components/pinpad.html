@@ -8,6 +8,13 @@
 <h1>Pinpad</h1>
 <p class="showcase__lead">Teclado numérico 3×4 para desbloqueo POS y entrada de PIN.</p>
 
+<div class="ok-callout ok-callout--info">
+  <div class="ok-callout__body">
+    <div class="ok-callout__title">Sobre estas demos</div>
+    <div class="ok-callout__desc">Las primeras dos variantes son markup estático para mostrar layout; las teclas dan feedback visual (<code>:hover</code> · <code>:active</code>) pero no escriben en ningún display. La variante Datastar al final es la única que actualiza un display de PIN al pulsar.</div>
+  </div>
+</div>
+
 {% set _src_jinja_1 %}{% raw %}{% from "ui/pinpad.jinja" import pinpad %}
 {{ pinpad() }}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Pinpad />{% endraw %}{% endset %}

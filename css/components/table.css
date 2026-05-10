@@ -301,6 +301,14 @@
   vertical-align: middle;
 }
 .ok-table tbody tr:last-child td { border-bottom: none; }
+
+/* Compact padding for row-action cells so the icon cluster keeps room when
+   the table is narrower than its content. Detected either via class on the
+   td (`.ok-dt__actions`) or because the cell hosts a `.ok-row-actions` group. */
+.ok-table tbody td.ok-dt__actions,
+.ok-table tbody td:has(> .ok-row-actions) {
+  padding: 8px 12px;
+}
 .ok-table tbody tr {
   transition: background var(--ok-dur-fast);
 }

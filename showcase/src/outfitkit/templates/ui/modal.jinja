@@ -8,13 +8,25 @@
   <div class="{{ ok_prefix }}modal {{ ok_prefix }}modal--{{ size }}">
     <div class="{{ ok_prefix }}modal__header">
       {% if icon_variant %}
-      <div class="{{ ok_prefix }}modal__icon {{ ok_prefix }}modal__icon--{{ icon_variant }}"></div>
+      <div class="{{ ok_prefix }}modal__icon {{ ok_prefix }}modal__icon--{{ icon_variant }}" aria-hidden="true">
+        {%- if icon_variant == "warn" -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+        {%- elif icon_variant == "danger" -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        {%- elif icon_variant == "ok" -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 12 15 17 10"/></svg>
+        {%- elif icon_variant == "brand" -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 2"/></svg>
+        {%- else -%}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        {%- endif -%}
+      </div>
       {% endif %}
       <div class="{{ ok_prefix }}modal__heading">
         <h3 class="{{ ok_prefix }}modal__title">{{ title }}</h3>
         {% if subtitle %}<p class="{{ ok_prefix }}modal__sub">{{ subtitle }}</p>{% endif %}
       </div>
-      <button class="{{ ok_prefix }}modal__close" aria-label="Cerrar">✕</button>
+      <button class="{{ ok_prefix }}modal__close" aria-label="Cerrar" data-on:click="$open = false">✕</button>
     </div>
     <div class="{{ ok_prefix }}modal__body">{{ caller() }}</div>
   </div>

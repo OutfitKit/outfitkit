@@ -80,13 +80,13 @@
       <thead>
         <tr>
           <th style="width:36px"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
-          <th class="ok-th--sortable">Pedido</th>
-          <th class="ok-th--sortable">Cliente</th>
-          <th class="ok-th--sortable">Canal</th>
-          <th class="ok-th--sortable">Estado</th>
+          <th class="ok-th--sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
+          <th class="ok-th--sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
+          <th class="ok-th--sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
+          <th class="ok-th--sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
           <th>Tendencia 7d</th>
-          <th class="ok-th--sortable ok-td--right" aria-sort="descending">Total</th>
-          <th class="ok-th--sortable">Fecha</th>
+          <th class="ok-th--sortable ok-td--right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
+          <th class="ok-th--sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
           <th style="width:120px;text-align:right">Acciones</th>
         </tr>
       </thead>
@@ -479,13 +479,13 @@
       <thead>
         <tr>
           <th style="width:36px"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
-          <th class="ok-th--sortable">Pedido</th>
-          <th class="ok-th--sortable">Cliente</th>
-          <th class="ok-th--sortable">Canal</th>
-          <th class="ok-th--sortable">Estado</th>
+          <th class="ok-th--sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
+          <th class="ok-th--sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
+          <th class="ok-th--sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
+          <th class="ok-th--sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
           <th>Tendencia 7d</th>
-          <th class="ok-th--sortable ok-td--right" aria-sort="descending">Total</th>
-          <th class="ok-th--sortable">Fecha</th>
+          <th class="ok-th--sortable ok-td--right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
+          <th class="ok-th--sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
           <th style="width:120px;text-align:right">Acciones</th>
         </tr>
       </thead>
@@ -882,13 +882,13 @@
       <thead>
         <tr>
           <th style="width:36px"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
-          <th class="ok-th--sortable">Pedido</th>
-          <th class="ok-th--sortable">Cliente</th>
-          <th class="ok-th--sortable">Canal</th>
-          <th class="ok-th--sortable">Estado</th>
+          <th class="ok-th--sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
+          <th class="ok-th--sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
+          <th class="ok-th--sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
+          <th class="ok-th--sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
           <th>Tendencia 7d</th>
-          <th class="ok-th--sortable ok-td--right" aria-sort="descending">Total</th>
-          <th class="ok-th--sortable">Fecha</th>
+          <th class="ok-th--sortable ok-td--right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
+          <th class="ok-th--sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
           <th style="width:120px;text-align:right">Acciones</th>
         </tr>
       </thead>
@@ -1273,4 +1273,70 @@
   </tbody>
 </table>
 <p class="showcase__note">El macro <code>datatable</code> es solo el wrapper externo. El detalle (sort, filtros, paginación, view-toggle) lo orquesta el consumidor con HTMX o Datastar — no es responsabilidad del componente.</p>
+
+{# Inline vanilla-JS sort handler — demo-only. The macro stays declarative;
+   the page wires `data-sort-key` + `data-sort-col` headers to a tiny sorter
+   so visitors can interact with the example. Real apps use HTMX/Datastar. #}
+<script>
+(function () {
+  function parseNum(text) {
+    // Strip currency symbol, whitespace and unicode minus; keep digits, comma, dot.
+    var clean = text.replace(/[€$\s ]/g, '').replace(/−/g, '-');
+    // Heuristic: assume comma is decimal separator when both are absent or
+    // when a comma sits in the last 3 chars.
+    if (clean.indexOf(',') !== -1 && clean.lastIndexOf(',') >= clean.length - 3) {
+      clean = clean.replace(/\./g, '').replace(',', '.');
+    }
+    var n = parseFloat(clean);
+    return isNaN(n) ? 0 : n;
+  }
+  function cellText(row, col) {
+    var td = row.children[col];
+    return td ? (td.textContent || '').trim() : '';
+  }
+  function wire(table) {
+    var heads = table.querySelectorAll('thead th[data-sort-col]');
+    heads.forEach(function (th) {
+      th.addEventListener('click', function () {
+        var col = parseInt(th.getAttribute('data-sort-col'), 10);
+        var type = th.getAttribute('data-sort-type') || 'text';
+        var current = th.getAttribute('aria-sort');
+        var dir = current === 'ascending' ? 'descending' : 'ascending';
+        // Reset all peers, then set self.
+        table.querySelectorAll('thead th[aria-sort]').forEach(function (peer) {
+          peer.removeAttribute('aria-sort');
+        });
+        th.setAttribute('aria-sort', dir);
+        var tbody = table.tBodies[0];
+        if (!tbody) return;
+        var rows = Array.prototype.slice.call(tbody.rows);
+        rows.sort(function (a, b) {
+          var av = cellText(a, col);
+          var bv = cellText(b, col);
+          var cmp;
+          if (type === 'num') {
+            cmp = parseNum(av) - parseNum(bv);
+          } else {
+            cmp = av.localeCompare(bv, 'es', { numeric: true, sensitivity: 'base' });
+          }
+          return dir === 'ascending' ? cmp : -cmp;
+        });
+        var frag = document.createDocumentFragment();
+        rows.forEach(function (r) { frag.appendChild(r); });
+        tbody.appendChild(frag);
+      });
+    });
+  }
+  function init() {
+    document.querySelectorAll('table.ok-table').forEach(function (t) {
+      if (t.querySelector('thead th[data-sort-col]')) wire(t);
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
 {% endblock %}

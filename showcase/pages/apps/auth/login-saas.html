@@ -58,7 +58,7 @@ body { background: var(--ok-bg); margin: 0; }
   .cloud-otp { display: flex; flex-direction: column; gap: var(--ok-space-3); align-items: center; }
 </style>
 
-<main class="cloud-auth" data-signals='{"step": "creds", "remember": true, "trust": false}'>
+<main class="cloud-auth" data-signals='{"step": "creds", "remember": false, "trust": false}'>
 
   <div class="cloud-auth__card">
     <div class="cloud-auth__brand">
@@ -76,6 +76,14 @@ body { background: var(--ok-bg); margin: 0; }
         </div>
       </div>
       <div class="ok-card__body">
+        <div class="ok-callout ok-callout--info" style="margin-bottom: var(--ok-space-3);">
+          <span class="ok-callout__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          </span>
+          <div class="ok-callout__body">
+            <strong>Demo</strong> · credenciales pre-rellenadas para previsualización.
+          </div>
+        </div>
         <div class="ok-form">
 
           <div class="ok-field">

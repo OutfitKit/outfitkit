@@ -10,46 +10,46 @@
 <p class="showcase__lead">Diálogo modal con icono semántico opcional, header, body y close button. El estado abierto/cerrado se controla con <code>data-state</code> y se enchufa a Datastar para reactividad.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/modal.jinja" import modal %}
-<div class="modal-stage">
-  {% call modal(title="¿Cerrar caja del turno?", subtitle="Se generará el resumen Z y se notificará a contabilidad.", size="sm", icon_variant="brand", state="open") %}
+<div class="modal-stage" data-signals="{open: true}">
+  {% call modal(title="¿Cerrar caja del turno?", subtitle="Se generará el resumen Z y se notificará a contabilidad.", size="sm", icon_variant="warn", state="open", attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
     <p>Los movimientos posteriores quedarán bloqueados hasta apertura de nueva caja.</p>
   {% endcall %}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_1 %}{% raw %}<div class="modal-stage">
-  <Modal title="¿Cerrar caja del turno?" subtitle="Se generará el resumen Z y se notificará a contabilidad." size="sm" icon_variant="brand" state="open">
+{% set _src_jinjax_1 %}{% raw %}<div class="modal-stage" data-signals="{open: true}">
+  <Modal title="¿Cerrar caja del turno?" subtitle="Se generará el resumen Z y se notificará a contabilidad." size="sm" icon_variant="warn" state="open" data-attr:data-state="$open ? 'open' : 'closed'">
     <p>Los movimientos posteriores quedarán bloqueados hasta apertura de nueva caja.</p>
-  
+
 </Modal>
 </div>{% endraw %}{% endset %}
 
 {% call demo_frame("Estado abierto · sm",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
-<div class="modal-stage">
-  {% call modal(title="¿Cerrar caja del turno?", subtitle="Se generará el resumen Z y se notificará a contabilidad.", size="sm", icon_variant="brand", state="open") %}
+<div class="modal-stage" data-signals="{open: true}">
+  {% call modal(title="¿Cerrar caja del turno?", subtitle="Se generará el resumen Z y se notificará a contabilidad.", size="sm", icon_variant="warn", state="open", attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
     <p>Los movimientos posteriores quedarán bloqueados hasta apertura de nueva caja.</p>
   {% endcall %}
 </div>
 {% endcall %}
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/modal.jinja" import modal %}
-<div class="modal-stage modal-stage--md">
-  {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open") %}
+<div class="modal-stage modal-stage--md" data-signals="{open: true}">
+  {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open", attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
     <p>Aquí va un formulario con razón social, NIF, email...</p>
   {% endcall %}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_2 %}{% raw %}<div class="modal-stage modal-stage--md">
-  <Modal title="Nuevo proveedor" subtitle="Datos básicos para empezar a registrar compras." size="md" state="open">
+{% set _src_jinjax_2 %}{% raw %}<div class="modal-stage modal-stage--md" data-signals="{open: true}">
+  <Modal title="Nuevo proveedor" subtitle="Datos básicos para empezar a registrar compras." size="md" state="open" data-attr:data-state="$open ? 'open' : 'closed'">
     <p>Aquí va un formulario con razón social, NIF, email...</p>
-  
+
 </Modal>
 </div>{% endraw %}{% endset %}
 
 {% call demo_frame("Estado abierto · md",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
-<div class="modal-stage modal-stage--md">
-  {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open") %}
+<div class="modal-stage modal-stage--md" data-signals="{open: true}">
+  {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open", attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
     <p>Aquí va un formulario con razón social, NIF, email...</p>
   {% endcall %}
 </div>

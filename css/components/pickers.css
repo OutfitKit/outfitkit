@@ -190,8 +190,10 @@
   display: inline-flex; gap: 8px;
 }
 .ok-otp__cell {
+  /* md (default) */
   width: 44px; height: 52px;
-  font-size: 20px; font-weight: 600;
+  font-size: var(--ok-text-lg);
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
   text-align: center;
   background: var(--ok-bg-1);
@@ -210,8 +212,18 @@
   align-self: center;
   color: var(--ok-ink-4);
 }
-.ok-otp--lg .ok-otp__cell { width: 52px; height: 60px; font-size: 24px; }
-.ok-otp--sm .ok-otp__cell { width: 36px; height: 42px; font-size: 16px; }
+/* sm — compact, for inline confirmations */
+.ok-otp--sm .ok-otp__cell {
+  width: 36px; height: 44px;
+  font-size: var(--ok-text-md);
+}
+/* lg — hero/auth screens; the "OTP feel" with letter-spacing + bold */
+.ok-otp--lg .ok-otp__cell {
+  width: 56px; height: 68px;
+  font-size: var(--ok-text-2xl);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
 
 /* Pinpad (numérico para POS / desbloqueo) */
 .ok-pinpad {
@@ -234,10 +246,16 @@
   cursor: pointer;
   display: grid; place-items: center;
   font-variant-numeric: tabular-nums;
-  transition: background var(--ok-dur-fast);
+  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast), border-color var(--ok-dur-fast);
 }
-.ok-pinpad__key:hover { background: var(--ok-bg-3); }
-.ok-pinpad__key:active { background: var(--ok-bg-4); }
+.ok-pinpad__key:hover {
+  background: var(--ok-bg-3);
+  border-color: var(--ok-line-2);
+}
+.ok-pinpad__key:active {
+  background: var(--ok-bg-4);
+  transform: scale(0.97);
+}
 .ok-pinpad__key--action {
   background: var(--ok-bg-3);
   color: var(--ok-ink-2);

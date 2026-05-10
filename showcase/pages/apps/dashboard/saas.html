@@ -131,8 +131,11 @@
           <span data-text="$range === 'today' ? 'Facturas hoy' : $range === '7d' ? 'Facturas 7d' : $range === '30d' ? 'Facturas mes' : 'Facturas año'">Facturas mes</span>
         </div>
         <div class="ok-kpi__value num" data-text="$range === 'today' ? '2' : $range === '7d' ? '5' : $range === '30d' ? '14' : '167'">14</div>
-        <div class="ok-kpi__delta ok-kpi__delta--down">
-          <svg class="ok-kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M17 7l-10 10M17 17H7V7"/></svg>
+        <div class="ok-kpi__delta"
+             data-class:ok-kpi__delta--up="$range === 'year'"
+             data-class:ok-kpi__delta--down="$range !== 'year'">
+          <svg class="ok-kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" data-show="$range !== 'year'"><path d="M17 7l-10 10M17 17H7V7"/></svg>
+          <svg class="ok-kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" data-show="$range === 'year'"><path d="M7 17l10-10M7 7h10v10"/></svg>
           <span data-text="$range === 'today' ? '−1 vs ayer' : $range === '7d' ? '−2 vs sem. ant.' : $range === '30d' ? '−1 vs abril' : '+18 vs 2025'">−1 vs abril</span>
         </div>
       </button>
