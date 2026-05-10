@@ -116,16 +116,19 @@
 }
 .ok-sidebar__item[aria-current="page"],
 .ok-sidebar__item[data-active="true"] {
-  background: var(--ok-bg-3);
+  background: color-mix(in oklch, var(--ok-brand) 12%, transparent);
   color: var(--ok-ink);
+  font-weight: 600;
 }
 .ok-sidebar__item[aria-current="page"]::before,
 .ok-sidebar__item[data-active="true"]::before {
   content: "";
   position: absolute;
   left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 3px;
-  height: 16px;
+  height: 60%;
   background: var(--ok-brand);
   border-radius: 0 2px 2px 0;
 }

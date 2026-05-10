@@ -2,18 +2,46 @@
 {% from "ui/mobile_shell.jinja" import mobile_shell %}
 {% from "ui/sidebar_nav.jinja" import sidebar_nav %}
 {% from "ui/topbar.jinja" import topbar %}
+{% from "ui/kpi.jinja" import kpi %}
 {% from "demo_frame.jinja" import demo_frame %}
 
 {% block title %}Mobile shell — OutfitKit{% endblock %}
 
 {% block content %}
+<style>
+  .mobile-shell-stage {
+    width: 375px;
+    margin-inline: auto;
+    border: 1px solid var(--ok-line-2);
+    border-radius: 28px;
+    padding: 12px;
+    background: var(--ok-bg);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+  }
+  .mobile-shell-stage__inner {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--ok-bg);
+  }
+  .mobile-shell-kpis {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+</style>
+
 <h1>Mobile shell</h1>
 <p class="showcase__lead">Variante del app shell preconfigurada para mobile (<code>data-tabbar="bottom"</code>): el sidebar pasa a drawer off-canvas, el topbar pierde la búsqueda y aparece la tab-bar inferior como nav principal.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/mobile_shell.jinja" import mobile_shell %}
 {% from "ui/sidebar_nav.jinja" import sidebar_nav %}
 {% from "ui/topbar.jinja" import topbar %}
-<div style="width:390px;height:600px;border:8px solid #0a0a0a;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;background:var(--ok-bg)">
+{% from "ui/kpi.jinja" import kpi %}
+<div class="mobile-shell-stage">
+  <div class="mobile-shell-stage__inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
 <div class="ok-sidebar__brand">
@@ -31,13 +59,9 @@
 <div class="ok-app__main">
   {% call topbar(page_title="Vista general") %}{% endcall %}
   <div class="ok-app__body" style="padding:16px">
-    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;margin-bottom:10px">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Ventas hoy</div>
-      <div style="font-size:26px;font-weight:600;margin-top:2px">2.481 €</div>
-    </div>
-    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Tickets</div>
-      <div style="font-size:26px;font-weight:600;margin-top:2px">184</div>
+    <div class="mobile-shell-kpis">
+      {{ kpi(label="Ventas hoy", value="2.481 €") }}
+      {{ kpi(label="Tickets", value="184") }}
     </div>
   </div>
 </div>
@@ -49,8 +73,10 @@
   <a class="ok-tabbar-item"><span class="ok-tabbar-label">Más</span></a>
 </nav>
 {% endcall %}
+  </div>
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_1 %}{% raw %}<div style="width:390px;height:600px;border:8px solid #0a0a0a;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;background:var(--ok-bg)">
+{% set _src_jinjax_1 %}{% raw %}<div class="mobile-shell-stage">
+  <div class="mobile-shell-stage__inner">
 <mobile_shell>
 <sidebar_nav>
 <div class="ok-sidebar__brand">
@@ -66,17 +92,11 @@
 </div>
 </sidebar_nav>
 <div class="ok-app__main">
-  <Topbar page_title="Vista general">
-
-</Topbar>
+  <Topbar page_title="Vista general"></Topbar>
   <div class="ok-app__body" style="padding:16px">
-    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;margin-bottom:10px">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Ventas hoy</div>
-      <div style="font-size:26px;font-weight:600;margin-top:2px">2.481 €</div>
-    </div>
-    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Tickets</div>
-      <div style="font-size:26px;font-weight:600;margin-top:2px">184</div>
+    <div class="mobile-shell-kpis">
+      <Kpi label="Ventas hoy" value="2.481 €" />
+      <Kpi label="Tickets" value="184" />
     </div>
   </div>
 </div>
@@ -88,12 +108,14 @@
   <a class="ok-tabbar-item"><span class="ok-tabbar-label">Más</span></a>
 </nav>
 </mobile_shell>
+  </div>
 </div>{% endraw %}{% endset %}
 
 {% call demo_frame("Mobile shell · drawer cerrado",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
-<div style="width:390px;height:600px;border:8px solid #0a0a0a;border-radius:36px;overflow:hidden;display:flex;flex-direction:column;background:var(--ok-bg)">
+<div class="mobile-shell-stage">
+  <div class="mobile-shell-stage__inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
 <div class="ok-sidebar__brand">
@@ -111,13 +133,9 @@
 <div class="ok-app__main">
   {% call topbar(page_title="Vista general") %}{% endcall %}
   <div class="ok-app__body" style="padding:16px">
-    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;margin-bottom:10px">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Ventas hoy</div>
-      <div style="font-size:26px;font-weight:600;margin-top:2px">2.481 €</div>
-    </div>
-    <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px">
-      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--ok-ink-3)">Tickets</div>
-      <div style="font-size:26px;font-weight:600;margin-top:2px">184</div>
+    <div class="mobile-shell-kpis">
+      {{ kpi(label="Ventas hoy", value="2.481 €") }}
+      {{ kpi(label="Tickets", value="184") }}
     </div>
   </div>
 </div>
@@ -129,6 +147,7 @@
   <a class="ok-tabbar-item"><span class="ok-tabbar-label">Más</span></a>
 </nav>
 {% endcall %}
+  </div>
 </div>
 {% endcall %}
 

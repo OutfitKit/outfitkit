@@ -114,9 +114,25 @@
 }
 .ok-timepicker__col {
   display: flex; flex-direction: column;
-  max-height: 200px; overflow-y: auto;
+  height: 240px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
   scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
   border-right: 1px solid var(--ok-line);
+  /* Fade top and bottom 32px so clipped rows blend out instead of cutting hard */
+  mask-image: linear-gradient(to bottom,
+    transparent 0,
+    black 32px,
+    black calc(100% - 32px),
+    transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+    transparent 0,
+    black 32px,
+    black calc(100% - 32px),
+    transparent 100%);
+  /* Pad column so first/last items can snap to the centred active row */
+  padding-block: calc(50% - 16px);
 }
 .ok-timepicker__col:last-child { border-right: 0; }
 .ok-timepicker__opt {
@@ -127,6 +143,8 @@
   color: var(--ok-ink-2);
   cursor: pointer;
   text-align: center; min-width: 50px;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
 }
 .ok-timepicker__opt:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
 .ok-timepicker__opt[aria-selected="true"],

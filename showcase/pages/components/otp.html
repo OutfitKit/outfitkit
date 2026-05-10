@@ -49,4 +49,31 @@
     <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra.</td></tr>
   </tbody>
 </table>
+
+{# Demo wiring — make all .ok-otp groups on this page interactive: typing
+   auto-advances focus, backspace on empty cell goes back, paste distributes
+   digits across cells, only digits accepted. The macro itself ships markup
+   only (no JS), so this lives in the showcase demo. #}
+<script>
+document.querySelectorAll('.ok-otp').forEach(function (group) {
+  var inputs = group.querySelectorAll('input');
+  inputs.forEach(function (input, i) {
+    input.addEventListener('input', function (e) {
+      e.target.value = e.target.value.replace(/\D/g, '').slice(0, 1);
+      if (e.target.value && i < inputs.length - 1) inputs[i + 1].focus();
+    });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Backspace' && !e.target.value && i > 0) inputs[i - 1].focus();
+    });
+    input.addEventListener('paste', function (e) {
+      e.preventDefault();
+      var digits = ((e.clipboardData || window.clipboardData).getData('text') || '')
+        .replace(/\D/g, '').slice(0, inputs.length);
+      digits.split('').forEach(function (d, j) { if (inputs[j]) inputs[j].value = d; });
+      var last = Math.min(digits.length, inputs.length - 1);
+      if (inputs[last]) inputs[last].focus();
+    });
+  });
+});
+</script>
 {% endblock %}

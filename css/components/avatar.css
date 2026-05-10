@@ -3,6 +3,7 @@
    ============================================================ */
 
 .ok-avatar {
+  position: relative;
   display: inline-grid;
   place-items: center;
   width: 28px;
@@ -18,7 +19,22 @@
   flex-shrink: 0;
   border: 1px solid var(--ok-line);
 }
-.ok-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.ok-avatar__initials {
+  position: relative;
+  z-index: 0;
+  display: inline-grid;
+  place-items: center;
+  line-height: 1;
+}
+.ok-avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+  z-index: 1;
+}
 
 .ok-avatar--xs { width: 20px; height: 20px; font-size: 9px; }
 .ok-avatar--sm { width: 24px; height: 24px; font-size: 10px; }
@@ -26,6 +42,12 @@
 .ok-avatar--xl { width: 48px; height: 48px; font-size: var(--ok-text-base); }
 
 .ok-avatar--brand { background: var(--ok-brand); color: var(--ok-brand-fg); border-color: transparent; }
+
+.ok-avatar--more {
+  background: var(--ok-bg-3);
+  color: var(--ok-ink-2);
+  border-color: var(--ok-line);
+}
 
 /* Avatar stack */
 .ok-avatar-stack {

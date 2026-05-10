@@ -57,43 +57,43 @@
 {% endcall %}
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
-{{ avatar("", src="https://i.pravatar.cc/64?img=11", alt="User 11") }}
-{{ avatar("", src="https://i.pravatar.cc/64?img=22", alt="User 22", size="lg") }}
-{{ avatar("", src="https://i.pravatar.cc/64?img=33", alt="User 33", size="xl") }}{% endraw %}{% endset %}
-{% set _src_jinjax_4 %}{% raw %}<Avatar label="" src="https://i.pravatar.cc/64?img=11" alt="User 11" />
-<Avatar label="" src="https://i.pravatar.cc/64?img=22" alt="User 22" size="lg" />
-<Avatar label="" src="https://i.pravatar.cc/64?img=33" alt="User 33" size="xl" />{% endraw %}{% endset %}
+{{ avatar("MA", src="https://i.pravatar.cc/64?u=maria", alt="María") }}
+{{ avatar("JN", src="https://i.pravatar.cc/64?u=joan", alt="Joan", size="lg") }}
+{{ avatar("EL", src="https://i.pravatar.cc/64?u=elena", alt="Elena", size="xl") }}{% endraw %}{% endset %}
+{% set _src_jinjax_4 %}{% raw %}<Avatar label="MA" src="https://i.pravatar.cc/64?u=maria" alt="María" />
+<Avatar label="JN" src="https://i.pravatar.cc/64?u=joan" alt="Joan" size="lg" />
+<Avatar label="EL" src="https://i.pravatar.cc/64?u=elena" alt="Elena" size="xl" />{% endraw %}{% endset %}
 
 {% call demo_frame("Imagen",
     jinja_src=_src_jinja_4,
     jinjax_src=_src_jinjax_4) %}
-{{ avatar("", src="https://i.pravatar.cc/64?img=11", alt="User 11") }}
-{{ avatar("", src="https://i.pravatar.cc/64?img=22", alt="User 22", size="lg") }}
-{{ avatar("", src="https://i.pravatar.cc/64?img=33", alt="User 33", size="xl") }}
+{{ avatar("MA", src="https://i.pravatar.cc/64?u=maria", alt="María") }}
+{{ avatar("JN", src="https://i.pravatar.cc/64?u=joan", alt="Joan", size="lg") }}
+{{ avatar("EL", src="https://i.pravatar.cc/64?u=elena", alt="Elena", size="xl") }}
 {% endcall %}
 
 {% set _src_jinja_5 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
 <span class="ok-avatar-stack">
-  {{ avatar("", src="https://i.pravatar.cc/64?img=1", alt="") }}
-  {{ avatar("", src="https://i.pravatar.cc/64?img=2", alt="") }}
-  {{ avatar("", src="https://i.pravatar.cc/64?img=3", alt="") }}
-  {{ avatar("+4") }}
+  {{ avatar("MA", src="https://i.pravatar.cc/64?u=maria", alt="María") }}
+  {{ avatar("JN", src="https://i.pravatar.cc/64?u=joan", alt="Joan") }}
+  {{ avatar("EL", src="https://i.pravatar.cc/64?u=elena", alt="Elena") }}
+  {{ avatar("+4", variant="more") }}
 </span>{% endraw %}{% endset %}
 {% set _src_jinjax_5 %}{% raw %}<span class="ok-avatar-stack">
-  <Avatar label="" src="https://i.pravatar.cc/64?img=1" alt="" />
-  <Avatar label="" src="https://i.pravatar.cc/64?img=2" alt="" />
-  <Avatar label="" src="https://i.pravatar.cc/64?img=3" alt="" />
-  <Avatar label="+4" />
+  <Avatar label="MA" src="https://i.pravatar.cc/64?u=maria" alt="María" />
+  <Avatar label="JN" src="https://i.pravatar.cc/64?u=joan" alt="Joan" />
+  <Avatar label="EL" src="https://i.pravatar.cc/64?u=elena" alt="Elena" />
+  <Avatar label="+4" variant="more" />
 </span>{% endraw %}{% endset %}
 
 {% call demo_frame("Stack",
     jinja_src=_src_jinja_5,
     jinjax_src=_src_jinjax_5) %}
 <span class="ok-avatar-stack">
-  {{ avatar("", src="https://i.pravatar.cc/64?img=1", alt="") }}
-  {{ avatar("", src="https://i.pravatar.cc/64?img=2", alt="") }}
-  {{ avatar("", src="https://i.pravatar.cc/64?img=3", alt="") }}
-  {{ avatar("+4") }}
+  {{ avatar("MA", src="https://i.pravatar.cc/64?u=maria", alt="María") }}
+  {{ avatar("JN", src="https://i.pravatar.cc/64?u=joan", alt="Joan") }}
+  {{ avatar("EL", src="https://i.pravatar.cc/64?u=elena", alt="Elena") }}
+  {{ avatar("+4", variant="more") }}
 </span>
 {% endcall %}
 
