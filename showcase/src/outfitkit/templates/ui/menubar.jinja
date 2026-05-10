@@ -1,12 +1,63 @@
 {#def app_name=None, variant=None, compact=false, attrs=None #}
 
+{#
+  menubar — top-level navigation bar (macOS/Windows style).
+
+  Owns a Datastar signal `open` that stores the id of the currently expanded
+  menu (empty string = nothing open). Children use `menubar_item` to declare
+  triggers and `menubar_panel` to declare the dropdown body — both bind against
+  the shared signal so clicking one menu closes any other.
+#}
 {% macro menubar(app_name=None, variant=None, compact=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <nav class="{{ ok_prefix }}menubar{% if variant %} {{ ok_prefix }}menubar--{{ variant }}{% endif %}{% if compact %} {{ ok_prefix }}menubar--compact{% endif %}"
+  data-signals="{ open: '' }"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if app_name %}<span class="{{ ok_prefix }}menubar__app-name">{{ app_name }}</span><span class="{{ ok_prefix }}menubar__divider"></span>{% endif %}
   {{ caller() }}
 </nav>
+{%- endmacro %}
+
+{#
+  menubar_item — clickable menu trigger.
+
+  Toggles the shared `open` signal between its own id and "" so a second click
+  closes it. Sets `aria-expanded` reactively for a11y.
+
+  Args:
+    id    — stable id used as both the signal value and the panel hook
+    label — visible button label
+    attrs — extra HTML attrs
+#}
+{% macro menubar_item(id, label, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<button type="button"
+        class="{{ ok_prefix }}menubar__menu"
+        data-on:click="$open = $open === '{{ id }}' ? '' : '{{ id }}'"
+        data-attr:aria-expanded="$open === '{{ id }}'"
+        data-attr:data-state="$open === '{{ id }}' ? 'open' : 'closed'"
+        {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>{{ label }}</button>
+{%- endmacro %}
+
+{#
+  menubar_panel — dropdown body bound to a `menubar_item`.
+
+  Shown only while the shared `open` signal equals `for_item`. Caller renders
+  the panel content (typically `.ok-menubar__item` buttons + separators).
+
+  Args:
+    for_item — id of the menubar_item that controls this panel
+    style    — extra inline style (used for left-offset positioning)
+    attrs    — extra HTML attrs
+#}
+{% macro menubar_panel(for_item, style="", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="{{ ok_prefix }}menubar__panel"
+     data-show="$open === '{{ for_item }}'"
+     {% if style %}style="{{ style }}"{% endif %}
+     {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {{ caller() }}
+</div>
 {%- endmacro %}
 
 {% if app_name is defined %}

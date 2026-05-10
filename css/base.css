@@ -59,12 +59,18 @@ table { border-collapse: collapse; border-spacing: 0; }
 }
 ::-webkit-scrollbar-thumb:hover { background: var(--ok-line-3); }
 
-/* Focus base */
+/* Global focus ring — every interactive element gets a visible focus
+   indicator unless overridden. Use the brand accent for visibility on
+   any theme. */
 :focus-visible {
-  outline: 2px solid var(--ok-brand-3);
+  outline: 2px solid var(--ok-focus, var(--ok-brand));
   outline-offset: 2px;
   border-radius: var(--ok-radius-sm);
 }
+
+/* Some components need a tighter inset ring (e.g. inside a small
+   button cluster). Use --ok-focus-tight via a class opt-in. */
+.ok-focus-tight:focus-visible { outline-offset: 1px; }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {

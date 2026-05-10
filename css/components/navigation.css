@@ -386,10 +386,12 @@
   outline: 2px solid var(--ok-brand);
   outline-offset: -2px;
 }
+.ok-list__item[aria-current="page"],
 .ok-list__item[aria-current="true"],
 .ok-list__item[data-active="true"] {
-  background: var(--ok-brand-soft);
+  background: color-mix(in oklch, var(--ok-brand) 12%, transparent);
   color: var(--ok-ink);
+  box-shadow: inset 2px 0 0 var(--ok-brand);
 }
 
 .ok-list__icon {
@@ -851,6 +853,18 @@
   flex-shrink: 0;
 }
 
+/* Trailing meta (e.g. version chip) — pushed to the right end of the bar */
+.ok-menubar__version,
+.ok-menubar__meta {
+  margin-left: auto;
+  padding: 0 10px;
+  align-self: center;
+  font-size: var(--ok-text-2xs);
+  color: var(--ok-ink-3);
+  font-family: var(--ok-font-mono);
+  letter-spacing: var(--ok-tracking-mono);
+}
+
 /* Dropdown panel anchored to its trigger */
 .ok-menubar__panel {
   position: absolute;
@@ -949,6 +963,21 @@
   background: color-mix(in oklch, var(--ok-bg-1) 90%, transparent);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
+}
+
+/* Active item — floating + compact. The base `.is-open / aria-expanded`
+   rule paints `--ok-bg-3`, which on dark glass backgrounds is barely
+   distinguishable from the inactive background. Here we strengthen it
+   with a brand-tinted bg + brand bottom-border so the open menu (or an
+   explicit `aria-current="page"`) reads at a glance in any theme. */
+.ok-menubar--floating .ok-menubar__menu[aria-current="page"],
+.ok-menubar--floating .ok-menubar__menu.is-active,
+.ok-menubar--floating .ok-menubar__menu.is-open,
+.ok-menubar--floating .ok-menubar__menu[aria-expanded="true"],
+.ok-menubar--floating .ok-menubar__menu[aria-expanded=""] {
+  background: color-mix(in oklch, var(--ok-brand) 14%, transparent);
+  color: var(--ok-ink);
+  box-shadow: inset 0 -2px 0 var(--ok-brand);
 }
 
 

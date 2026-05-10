@@ -1,320 +1,143 @@
 {% extends "_layout.jinja" %}
-{% from "ui/accordion.jinja" import accordion %}
+{% from "ui/accordion.jinja" import accordion, accordion_item %}
 {% from "demo_frame.jinja" import demo_frame %}
 
 {% block title %}Accordion — OutfitKit{% endblock %}
 
 {% block content %}
 <h1>Accordion</h1>
-<p class="showcase__lead">Contenedor con paneles expandibles. Compón los items con <code>.ok-accordion__item</code>, <code>.ok-accordion__trigger</code> y <code>.ok-accordion__panel</code>. La interactividad se enchufa con Datastar (<code>data-signals</code> + <code>data-on:click</code>).</p>
+<p class="showcase__lead">Contenedor con paneles expandibles. Compón los items con la macro <code>accordion_item()</code> (recomendada) o manualmente con <code>.ok-accordion__item</code>, <code>.ok-accordion__trigger</code> y <code>.ok-accordion__panel</code>. La interactividad se enchufa con Datastar (<code>data-signals</code> + <code>data-on:click</code>).</p>
 
-{% set _src_jinja_1 %}{% raw %}{% from "ui/accordion.jinja" import accordion %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/accordion.jinja" import accordion, accordion_item %}
 {% call accordion() %}
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc1-fiscal-trigger" aria-controls="acc1-fiscal-panel" aria-expanded="true">
-    <span class="ok-accordion__title">Datos fiscales
-      <span class="ok-accordion__sub">CIF, dirección facturación, régimen IVA</span>
-    </span>
-    <span class="ok-accordion__meta">Completo</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-fiscal-panel" role="region" aria-labelledby="acc1-fiscal-trigger" class="ok-accordion__panel">
+  {% call accordion_item(title="Datos fiscales", id="acc1-fiscal", sub="CIF, dirección facturación, régimen IVA", meta="Completo", expanded=true) %}
     CIF B-65432109 · Cafetería La Rambla S.L. · Carrer Provença 287, 08008 Barcelona.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc1-pagos-trigger" aria-controls="acc1-pagos-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Métodos de pago
-      <span class="ok-accordion__sub">2 cuentas SEPA, 1 tarjeta</span>
-    </span>
-    <span class="ok-accordion__meta">3 activos</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-pagos-panel" role="region" aria-labelledby="acc1-pagos-trigger" class="ok-accordion__panel">SEPA principal — ES31 0049 1500 5126 1009 4283.</div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc1-equipo-trigger" aria-controls="acc1-equipo-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Equipo y permisos</span>
-    <span class="ok-accordion__meta">9 miembros</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-equipo-panel" role="region" aria-labelledby="acc1-equipo-trigger" class="ok-accordion__panel">9 usuarios activos repartidos en 4 roles personalizados.</div>
-</div>
+  {% endcall %}
+  {% call accordion_item(title="Métodos de pago", id="acc1-pagos", sub="2 cuentas SEPA, 1 tarjeta", meta="3 activos") %}
+    SEPA principal — ES31 0049 1500 5126 1009 4283.
+  {% endcall %}
+  {% call accordion_item(title="Equipo y permisos", id="acc1-equipo", meta="9 miembros") %}
+    9 usuarios activos repartidos en 4 roles personalizados.
+  {% endcall %}
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Accordion>
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc1-fiscal-trigger" aria-controls="acc1-fiscal-panel" aria-expanded="true">
-    <span class="ok-accordion__title">Datos fiscales
-      <span class="ok-accordion__sub">CIF, dirección facturación, régimen IVA</span>
-    </span>
-    <span class="ok-accordion__meta">Completo</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-fiscal-panel" role="region" aria-labelledby="acc1-fiscal-trigger" class="ok-accordion__panel">
+  <AccordionItem title="Datos fiscales" id="acc1-fiscal" sub="CIF, dirección facturación, régimen IVA" meta="Completo" expanded>
     CIF B-65432109 · Cafetería La Rambla S.L. · Carrer Provença 287, 08008 Barcelona.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc1-pagos-trigger" aria-controls="acc1-pagos-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Métodos de pago
-      <span class="ok-accordion__sub">2 cuentas SEPA, 1 tarjeta</span>
-    </span>
-    <span class="ok-accordion__meta">3 activos</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-pagos-panel" role="region" aria-labelledby="acc1-pagos-trigger" class="ok-accordion__panel">SEPA principal — ES31 0049 1500 5126 1009 4283.</div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc1-equipo-trigger" aria-controls="acc1-equipo-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Equipo y permisos</span>
-    <span class="ok-accordion__meta">9 miembros</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-equipo-panel" role="region" aria-labelledby="acc1-equipo-trigger" class="ok-accordion__panel">9 usuarios activos repartidos en 4 roles personalizados.</div>
-</div>
+  </AccordionItem>
+  <AccordionItem title="Métodos de pago" id="acc1-pagos" sub="2 cuentas SEPA, 1 tarjeta" meta="3 activos">
+    SEPA principal — ES31 0049 1500 5126 1009 4283.
+  </AccordionItem>
+  <AccordionItem title="Equipo y permisos" id="acc1-equipo" meta="9 miembros">
+    9 usuarios activos repartidos en 4 roles personalizados.
+  </AccordionItem>
 </Accordion>{% endraw %}{% endset %}
 
 {% call demo_frame("Default — bordered",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call accordion() %}
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc1-fiscal-trigger" aria-controls="acc1-fiscal-panel" aria-expanded="true">
-    <span class="ok-accordion__title">Datos fiscales
-      <span class="ok-accordion__sub">CIF, dirección facturación, régimen IVA</span>
-    </span>
-    <span class="ok-accordion__meta">Completo</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-fiscal-panel" role="region" aria-labelledby="acc1-fiscal-trigger" class="ok-accordion__panel">
+  {% call accordion_item(title="Datos fiscales", id="acc1-fiscal", sub="CIF, dirección facturación, régimen IVA", meta="Completo", expanded=true) %}
     CIF B-65432109 · Cafetería La Rambla S.L. · Carrer Provença 287, 08008 Barcelona.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc1-pagos-trigger" aria-controls="acc1-pagos-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Métodos de pago
-      <span class="ok-accordion__sub">2 cuentas SEPA, 1 tarjeta</span>
-    </span>
-    <span class="ok-accordion__meta">3 activos</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-pagos-panel" role="region" aria-labelledby="acc1-pagos-trigger" class="ok-accordion__panel">SEPA principal — ES31 0049 1500 5126 1009 4283.</div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc1-equipo-trigger" aria-controls="acc1-equipo-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Equipo y permisos</span>
-    <span class="ok-accordion__meta">9 miembros</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc1-equipo-panel" role="region" aria-labelledby="acc1-equipo-trigger" class="ok-accordion__panel">9 usuarios activos repartidos en 4 roles personalizados.</div>
-</div>
+  {% endcall %}
+  {% call accordion_item(title="Métodos de pago", id="acc1-pagos", sub="2 cuentas SEPA, 1 tarjeta", meta="3 activos") %}
+    SEPA principal — ES31 0049 1500 5126 1009 4283.
+  {% endcall %}
+  {% call accordion_item(title="Equipo y permisos", id="acc1-equipo", meta="9 miembros") %}
+    9 usuarios activos repartidos en 4 roles personalizados.
+  {% endcall %}
 {% endcall %}
 {% endcall %}
 
-{% set _src_jinja_2 %}{% raw %}{% from "ui/accordion.jinja" import accordion %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/accordion.jinja" import accordion, accordion_item %}
 {% call accordion(variant="ghost") %}
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc2-pmp-trigger" aria-controls="acc2-pmp-panel" aria-expanded="true">
-    <span class="ok-accordion__title">¿Cómo se calcula el coste medio?</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc2-pmp-panel" role="region" aria-labelledby="acc2-pmp-trigger" class="ok-accordion__panel ok-accordion__panel--no-icon">
+  {% call accordion_item(title="¿Cómo se calcula el coste medio?", id="acc2-pmp", expanded=true, no_icon=true) %}
     El coste medio (PMP) se recalcula al recibir cada compra: <code>(stock × coste actual + entrada × coste compra) / (stock + entrada)</code>.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc2-migrate-trigger" aria-controls="acc2-migrate-panel" aria-expanded="false">
-    <span class="ok-accordion__title">¿Puedo migrar desde otro ERP?</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc2-migrate-panel" role="region" aria-labelledby="acc2-migrate-trigger" class="ok-accordion__panel ok-accordion__panel--no-icon">
+  {% endcall %}
+  {% call accordion_item(title="¿Puedo migrar desde otro ERP?", id="acc2-migrate", no_icon=true) %}
     Soportamos importadores nativos para Holded, Sage 50, Contasol, A3 ERP y CSV plano.
-  </div>
-</div>
+  {% endcall %}
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Accordion variant="ghost">
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc2-pmp-trigger" aria-controls="acc2-pmp-panel" aria-expanded="true">
-    <span class="ok-accordion__title">¿Cómo se calcula el coste medio?</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc2-pmp-panel" role="region" aria-labelledby="acc2-pmp-trigger" class="ok-accordion__panel ok-accordion__panel--no-icon">
+  <AccordionItem title="¿Cómo se calcula el coste medio?" id="acc2-pmp" expanded no_icon>
     El coste medio (PMP) se recalcula al recibir cada compra: <code>(stock × coste actual + entrada × coste compra) / (stock + entrada)</code>.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc2-migrate-trigger" aria-controls="acc2-migrate-panel" aria-expanded="false">
-    <span class="ok-accordion__title">¿Puedo migrar desde otro ERP?</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc2-migrate-panel" role="region" aria-labelledby="acc2-migrate-trigger" class="ok-accordion__panel ok-accordion__panel--no-icon">
+  </AccordionItem>
+  <AccordionItem title="¿Puedo migrar desde otro ERP?" id="acc2-migrate" no_icon>
     Soportamos importadores nativos para Holded, Sage 50, Contasol, A3 ERP y CSV plano.
-  </div>
-</div>
+  </AccordionItem>
 </Accordion>{% endraw %}{% endset %}
 
 {% call demo_frame("Variant ghost — sin caja",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call accordion(variant="ghost") %}
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc2-pmp-trigger" aria-controls="acc2-pmp-panel" aria-expanded="true">
-    <span class="ok-accordion__title">¿Cómo se calcula el coste medio?</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc2-pmp-panel" role="region" aria-labelledby="acc2-pmp-trigger" class="ok-accordion__panel ok-accordion__panel--no-icon">
+  {% call accordion_item(title="¿Cómo se calcula el coste medio?", id="acc2-pmp", expanded=true, no_icon=true) %}
     El coste medio (PMP) se recalcula al recibir cada compra: <code>(stock × coste actual + entrada × coste compra) / (stock + entrada)</code>.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc2-migrate-trigger" aria-controls="acc2-migrate-panel" aria-expanded="false">
-    <span class="ok-accordion__title">¿Puedo migrar desde otro ERP?</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc2-migrate-panel" role="region" aria-labelledby="acc2-migrate-trigger" class="ok-accordion__panel ok-accordion__panel--no-icon">
+  {% endcall %}
+  {% call accordion_item(title="¿Puedo migrar desde otro ERP?", id="acc2-migrate", no_icon=true) %}
     Soportamos importadores nativos para Holded, Sage 50, Contasol, A3 ERP y CSV plano.
-  </div>
-</div>
+  {% endcall %}
 {% endcall %}
 {% endcall %}
 
-{% set _src_jinja_3 %}{% raw %}{% from "ui/accordion.jinja" import accordion %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/accordion.jinja" import accordion, accordion_item %}
 {% call accordion(variant="cards") %}
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc3-init-trigger" aria-controls="acc3-init-panel" aria-expanded="true">
-    <span class="ok-accordion__title">Configuración inicial
-      <span class="ok-accordion__sub">CIF, plan contable, ejercicio fiscal</span>
-    </span>
-    <span class="ok-accordion__meta">7/7 ✓</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc3-init-panel" role="region" aria-labelledby="acc3-init-trigger" class="ok-accordion__panel">
+  {% call accordion_item(title="Configuración inicial", id="acc3-init", sub="CIF, plan contable, ejercicio fiscal", meta="7/7 ✓", expanded=true) %}
     Empresa configurada — ejercicio 2026, divisa EUR, plan PGC 2007.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc3-bank-trigger" aria-controls="acc3-bank-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Conciliación bancaria
-      <span class="ok-accordion__sub">PSD2 con BBVA, La Caixa, Sabadell</span>
-    </span>
-    <span class="ok-accordion__meta">3/4 cuentas</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc3-bank-panel" role="region" aria-labelledby="acc3-bank-trigger" class="ok-accordion__panel">Falta refrescar el token de Banco Sabadell (caducó hace 6 días).</div>
-</div>
+  {% endcall %}
+  {% call accordion_item(title="Conciliación bancaria", id="acc3-bank", sub="PSD2 con BBVA, La Caixa, Sabadell", meta="3/4 cuentas") %}
+    Falta refrescar el token de Banco Sabadell (caducó hace 6 días).
+  {% endcall %}
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Accordion variant="cards">
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc3-init-trigger" aria-controls="acc3-init-panel" aria-expanded="true">
-    <span class="ok-accordion__title">Configuración inicial
-      <span class="ok-accordion__sub">CIF, plan contable, ejercicio fiscal</span>
-    </span>
-    <span class="ok-accordion__meta">7/7 ✓</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc3-init-panel" role="region" aria-labelledby="acc3-init-trigger" class="ok-accordion__panel">
+  <AccordionItem title="Configuración inicial" id="acc3-init" sub="CIF, plan contable, ejercicio fiscal" meta="7/7 ✓" expanded>
     Empresa configurada — ejercicio 2026, divisa EUR, plan PGC 2007.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc3-bank-trigger" aria-controls="acc3-bank-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Conciliación bancaria
-      <span class="ok-accordion__sub">PSD2 con BBVA, La Caixa, Sabadell</span>
-    </span>
-    <span class="ok-accordion__meta">3/4 cuentas</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc3-bank-panel" role="region" aria-labelledby="acc3-bank-trigger" class="ok-accordion__panel">Falta refrescar el token de Banco Sabadell (caducó hace 6 días).</div>
-</div>
+  </AccordionItem>
+  <AccordionItem title="Conciliación bancaria" id="acc3-bank" sub="PSD2 con BBVA, La Caixa, Sabadell" meta="3/4 cuentas">
+    Falta refrescar el token de Banco Sabadell (caducó hace 6 días).
+  </AccordionItem>
 </Accordion>{% endraw %}{% endset %}
 
 {% call demo_frame("Variant cards — separados",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {% call accordion(variant="cards") %}
-<div class="ok-accordion__item" data-state="open">
-  <button class="ok-accordion__trigger" id="acc3-init-trigger" aria-controls="acc3-init-panel" aria-expanded="true">
-    <span class="ok-accordion__title">Configuración inicial
-      <span class="ok-accordion__sub">CIF, plan contable, ejercicio fiscal</span>
-    </span>
-    <span class="ok-accordion__meta">7/7 ✓</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc3-init-panel" role="region" aria-labelledby="acc3-init-trigger" class="ok-accordion__panel">
+  {% call accordion_item(title="Configuración inicial", id="acc3-init", sub="CIF, plan contable, ejercicio fiscal", meta="7/7 ✓", expanded=true) %}
     Empresa configurada — ejercicio 2026, divisa EUR, plan PGC 2007.
-  </div>
-</div>
-<div class="ok-accordion__item" data-state="closed">
-  <button class="ok-accordion__trigger" id="acc3-bank-trigger" aria-controls="acc3-bank-panel" aria-expanded="false">
-    <span class="ok-accordion__title">Conciliación bancaria
-      <span class="ok-accordion__sub">PSD2 con BBVA, La Caixa, Sabadell</span>
-    </span>
-    <span class="ok-accordion__meta">3/4 cuentas</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc3-bank-panel" role="region" aria-labelledby="acc3-bank-trigger" class="ok-accordion__panel">Falta refrescar el token de Banco Sabadell (caducó hace 6 días).</div>
-</div>
+  {% endcall %}
+  {% call accordion_item(title="Conciliación bancaria", id="acc3-bank", sub="PSD2 con BBVA, La Caixa, Sabadell", meta="3/4 cuentas") %}
+    Falta refrescar el token de Banco Sabadell (caducó hace 6 días).
+  {% endcall %}
 {% endcall %}
 {% endcall %}
 
-{% set _src_jinja_4 %}{% raw %}{% from "ui/accordion.jinja" import accordion %}
+{% set _src_jinja_4 %}{% raw %}{% from "ui/accordion.jinja" import accordion, accordion_item %}
 {% call accordion() %}
-<div class="ok-accordion__item" data-signals="{ open: true }" data-attr:data-state="$open ? 'open' : 'closed'">
-  <button class="ok-accordion__trigger" id="acc4-toggle-trigger" aria-controls="acc4-toggle-panel" aria-expanded="true" data-attr:aria-expanded="$open" data-on:click="$open = !$open">
-    <span class="ok-accordion__title">Click aquí para expandir/colapsar</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc4-toggle-panel" role="region" aria-labelledby="acc4-toggle-trigger" class="ok-accordion__panel">
+  {% call accordion_item(title="Click aquí para expandir/colapsar", id="acc4-toggle", expanded=true) %}
     El estado <code>$open</code> se sincroniza con <code>data-state</code> y <code>aria-expanded</code> a través de Datastar.
-  </div>
-</div>
-<div class="ok-accordion__item" data-signals="{ open: false }" data-attr:data-state="$open ? 'open' : 'closed'">
-  <button class="ok-accordion__trigger" id="acc4-other-trigger" aria-controls="acc4-other-panel" aria-expanded="false" data-attr:aria-expanded="$open" data-on:click="$open = !$open">
-    <span class="ok-accordion__title">Otro item independiente</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc4-other-panel" role="region" aria-labelledby="acc4-other-trigger" class="ok-accordion__panel">Cada item tiene su propio signal local.</div>
-</div>
+  {% endcall %}
+  {% call accordion_item(title="Otro item independiente", id="acc4-other") %}
+    Cada item tiene su propio signal local.
+  {% endcall %}
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_4 %}{% raw %}<Accordion>
-<div class="ok-accordion__item" data-signals="{ open: true }" data-attr:data-state="$open ? 'open' : 'closed'">
-  <button class="ok-accordion__trigger" id="acc4-toggle-trigger" aria-controls="acc4-toggle-panel" aria-expanded="true" data-attr:aria-expanded="$open" data-on:click="$open = !$open">
-    <span class="ok-accordion__title">Click aquí para expandir/colapsar</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc4-toggle-panel" role="region" aria-labelledby="acc4-toggle-trigger" class="ok-accordion__panel">
+  <AccordionItem title="Click aquí para expandir/colapsar" id="acc4-toggle" expanded>
     El estado <code>$open</code> se sincroniza con <code>data-state</code> y <code>aria-expanded</code> a través de Datastar.
-  </div>
-</div>
-<div class="ok-accordion__item" data-signals="{ open: false }" data-attr:data-state="$open ? 'open' : 'closed'">
-  <button class="ok-accordion__trigger" id="acc4-other-trigger" aria-controls="acc4-other-panel" aria-expanded="false" data-attr:aria-expanded="$open" data-on:click="$open = !$open">
-    <span class="ok-accordion__title">Otro item independiente</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc4-other-panel" role="region" aria-labelledby="acc4-other-trigger" class="ok-accordion__panel">Cada item tiene su propio signal local.</div>
-</div>
+  </AccordionItem>
+  <AccordionItem title="Otro item independiente" id="acc4-other">
+    Cada item tiene su propio signal local.
+  </AccordionItem>
 </Accordion>{% endraw %}{% endset %}
 
 {% call demo_frame("Datastar · expand/collapse reactivo",
     jinja_src=_src_jinja_4,
     jinjax_src=_src_jinjax_4) %}
 {% call accordion() %}
-<div class="ok-accordion__item" data-signals="{ open: true }" data-attr:data-state="$open ? 'open' : 'closed'">
-  <button class="ok-accordion__trigger" id="acc4-toggle-trigger" aria-controls="acc4-toggle-panel" aria-expanded="true" data-attr:aria-expanded="$open" data-on:click="$open = !$open">
-    <span class="ok-accordion__title">Click aquí para expandir/colapsar</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc4-toggle-panel" role="region" aria-labelledby="acc4-toggle-trigger" class="ok-accordion__panel">
+  {% call accordion_item(title="Click aquí para expandir/colapsar", id="acc4-toggle", expanded=true) %}
     El estado <code>$open</code> se sincroniza con <code>data-state</code> y <code>aria-expanded</code> a través de Datastar.
-  </div>
-</div>
-<div class="ok-accordion__item" data-signals="{ open: false }" data-attr:data-state="$open ? 'open' : 'closed'">
-  <button class="ok-accordion__trigger" id="acc4-other-trigger" aria-controls="acc4-other-panel" aria-expanded="false" data-attr:aria-expanded="$open" data-on:click="$open = !$open">
-    <span class="ok-accordion__title">Otro item independiente</span>
-    <span class="ok-accordion__caret" aria-hidden="true">▾</span>
-  </button>
-  <div id="acc4-other-panel" role="region" aria-labelledby="acc4-other-trigger" class="ok-accordion__panel">Cada item tiene su propio signal local.</div>
-</div>
+  {% endcall %}
+  {% call accordion_item(title="Otro item independiente", id="acc4-other") %}
+    Cada item tiene su propio signal local.
+  {% endcall %}
 {% endcall %}
 {% endcall %}
 

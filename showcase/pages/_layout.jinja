@@ -6,6 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{% block title %}OutfitKit · Librería{% endblock %}</title>
 
+  {# Inter font preload — Google Fonts is loaded via @import inside
+     tokens.css, which is part of the OutfitKit bundle. Preconnect so
+     the woff2 fetch overlaps with the CSS download, and preload the
+     400-weight Latin subset (most common across UI chrome and body
+     copy). #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload"
+        href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2"
+        as="font" type="font/woff2" crossorigin>
+
   {# OutfitKit CSS — desde CDN en producción, desde build/css en local. #}
   <link rel="stylesheet" href="{{ css_url }}">
 

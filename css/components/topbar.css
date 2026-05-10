@@ -23,6 +23,10 @@
   /* Themes can override --ok-topbar-border to strengthen this line
      when --ok-line alone is too low contrast (Mono is the case). */
   border-bottom: 1px solid var(--ok-topbar-border, color-mix(in oklch, var(--ok-line) 80%, transparent));
+  /* Soft shadow underneath so when content scrolls under the sticky
+     topbar there's a subtle sense of depth. Always-on (acceptable for
+     documentation pages). */
+  box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--ok-shadow-color, black) 30%, transparent);
 }
 @supports not (backdrop-filter: blur(1px)) {
   .ok-topbar { background: var(--ok-bg-1); }

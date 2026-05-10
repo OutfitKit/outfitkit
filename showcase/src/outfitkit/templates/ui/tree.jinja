@@ -11,9 +11,16 @@
 {#
   tree_node — branch node with reactive expand/collapse via Datastar.
 
-  Each node owns a local signal `open` (bool). The caret toggles it on click;
-  `data-state`, `aria-expanded`, the children visibility, and the caret rotation
-  are all driven from that signal so the whole node stays consistent.
+  Datastar v1 signals are GLOBAL: a bare `{open: ...}` declared in nested
+  `data-signals` does NOT create a scoped signal — every `$open` on the page
+  points to the same variable, so toggling one node toggles all of them.
+
+  To avoid the leak each node owns a NAMESPACED signal under a unique id,
+  e.g. `data-signals="{n40: {open: true}}"` and references `$n40.open`
+  everywhere. Pass `node_id` explicitly (recommended) to guarantee
+  uniqueness; fallback derives one from the macro id + a module-level
+  counter, which is unique within a single render but not stable across
+  renders — so always pass `node_id` for production templates.
 
   Args:
     label    — visible row label (HTML allowed via |safe at call site)
@@ -21,22 +28,25 @@
     meta     — right-aligned meta string (counts, amounts, etc.)
     expanded — initial open state (default False)
     icon_kind— "folder" or "file" (drives icon color via .ok-tree__icon--*)
+    node_id  — unique signal namespace key (REQUIRED for interactive nodes
+               sharing a page; if omitted, an auto id `_n<counter>` is used)
     attrs    — extra HTML attrs on the node
 #}
-{% macro tree_node(label="", icon="", meta="", expanded=false, icon_kind="folder", attrs=None) -%}
+{% macro tree_node(label="", icon="", meta="", expanded=false, icon_kind="folder", node_id=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _ns = node_id if node_id else '_n' ~ range(100000, 999999) | random -%}
 <div class="{{ ok_prefix }}tree__node"
-     data-signals="{ open: {{ 'true' if expanded else 'false' }} }"
-     data-attr:data-state="$open ? 'open' : 'closed'"
+     data-signals="{ {{ _ns }}: { open: {{ 'true' if expanded else 'false' }} } }"
+     data-attr:data-state="${{ _ns }}.open ? 'open' : 'closed'"
      {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   <div class="{{ ok_prefix }}tree__row">
     <span class="{{ ok_prefix }}tree__caret"
           role="button"
           tabindex="0"
-          data-on:click="$open = !$open"
-          data-on:keydown="(evt.key === 'Enter' || evt.key === ' ') && ($open = !$open)"
-          data-attr:aria-expanded="$open"
-          data-attr:data-rotated="$open">▸</span>
+          data-on:click="${{ _ns }}.open = !${{ _ns }}.open"
+          data-on:keydown="(evt.key === 'Enter' || evt.key === ' ') && (${{ _ns }}.open = !${{ _ns }}.open)"
+          data-attr:aria-expanded="${{ _ns }}.open"
+          data-attr:data-rotated="${{ _ns }}.open">▸</span>
     {%- if icon %}
     <span class="{{ ok_prefix }}tree__icon {{ ok_prefix }}tree__icon--{{ icon_kind }}">{{ icon }}</span>
     {%- endif %}
@@ -45,7 +55,7 @@
     <span class="{{ ok_prefix }}tree__meta">{{ meta }}</span>
     {%- endif %}
   </div>
-  <div class="{{ ok_prefix }}tree__children" data-show="$open" role="group">
+  <div class="{{ ok_prefix }}tree__children" data-show="${{ _ns }}.open" role="group">
     {{ caller() }}
   </div>
 </div>

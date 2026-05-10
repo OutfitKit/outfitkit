@@ -230,8 +230,9 @@
         </article>
 
         <!-- Add new -->
-        <article class="ok-card ok-card--interactive" tabindex="0" style="border-style:dashed;"
-          data-on:click="$prn.editId = ''; $prn.name = ''; $prn.conn = 'network'; $prn.address = ''; $prn.showModal = true">
+        <article class="ok-card ok-card--interactive" tabindex="0" role="button" style="border-style:dashed;"
+          data-on:click="$prn.editId = ''; $prn.name = ''; $prn.conn = 'network'; $prn.address = ''; $prn.showModal = true"
+          data-on:keydown="(evt.key === 'Enter' || evt.key === ' ') && (evt.preventDefault(), $prn.editId = '', $prn.name = '', $prn.conn = 'network', $prn.address = '', $prn.showModal = true)">
           <div class="ok-card__body" style="text-align:center;padding:32px 16px;">
             <div style="width:48px;height:48px;border-radius:14px;background:var(--ok-bg-3);color:var(--ok-ink-3);display:grid;place-items:center;margin:0 auto 10px;">
               <iconify-icon icon="lucide:plus" width="22" height="22"></iconify-icon>

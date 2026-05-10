@@ -59,6 +59,13 @@
   --ok-brand-fg:  #FFFFFF;
   --ok-brand-soft: color-mix(in oklch, var(--ok-brand) 18%, transparent);
 
+  /* Accent alias — canonical theme accent. Defaults to brand; themes can
+     override either `--ok-brand` (cascades to logo, sidebar rail, tabs, badges)
+     or just `--ok-accent` for a finer-grained, non-branding accent. */
+  --ok-accent:      var(--ok-brand);
+  --ok-accent-soft: var(--ok-brand-soft);
+  --ok-accent-fg:   var(--ok-brand-fg);
+
   --ok-leaf:      #4F9D6E;       /* éxito */
   --ok-leaf-soft: color-mix(in oklch, var(--ok-leaf) 18%, transparent);
   --ok-leaf-fg:   #FFFFFF;
