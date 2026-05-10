@@ -1,0 +1,271 @@
+{% extends "_layout.jinja" %}
+
+{% block title %}Clases de impuestos · Cafetería La Rambla{% endblock %}
+{% block page_title %}Tax classes{% endblock %}
+
+{% block content %}
+<div class="ok-app" id="app" data-tabbar="bottom"
+     data-signals='{"sidebar": false, "tax": {"showModal": false, "editId": "", "name": "", "rate": "", "code": "", "active": true}}'
+     data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">CR</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="ok-sidebar__brand-meta">Hub · v0.0.9</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Plataforma</div>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="ok-sidebar__label">Configuración</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Joan Castell</div>
+          <div class="ok-sidebar__user-meta">joan@larambla.es</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Página</h1>
+        
+        
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <nav class="ok-tabs ok-tabs-scroll" aria-label="Sub-secciones de ajustes">
+      <a class="ok-tab" href="preferences.html">Preferencias</a>
+      <a class="ok-tab" href="hub.html">Hub</a>
+      <a class="ok-tab" href="hub-config.html">Config</a>
+      <a class="ok-tab" href="compliance.html">Cumplimiento</a>
+      <a class="ok-tab" href="devices.html">Dispositivos</a>
+      <a class="ok-tab" href="printers.html">Impresoras</a>
+      <a class="ok-tab" href="backup.html">Backup</a>
+      <a class="ok-tab" href="files.html">Archivos</a>
+      <a class="ok-tab" href="tax-classes.html" aria-current="page">Tax</a>
+      <a class="ok-tab" href="help.html">Ayuda</a>
+      <a class="ok-tab" href="scheduled-tasks.html">Tareas</a>
+      <a class="ok-tab" href="file-browser.html">File browser</a>
+    </nav>
+
+    <div class="ok-app__body">
+
+      <div class="ok-page-header" style="border-bottom:1px solid var(--ok-line);margin-bottom:18px;">
+        <div class="ok-page-header__title">
+          <h1>Clases de impuestos</h1>
+          <div class="ok-page-header__sub">IVA español aplicado a productos del catálogo (AEAT · VeriFactu)</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <button class="ok-btn ok-btn--ghost ok-btn--sm">Importar plantilla</button>
+          <button class="ok-btn ok-btn--primary ok-btn--sm"
+                  data-on:click="$tax.editId = ''; $tax.name = ''; $tax.rate = ''; $tax.code = ''; $tax.active = true; $tax.showModal = true">
+            + Nueva clase
+          </button>
+        </div>
+      </div>
+
+      <!-- Banner contexto -->
+      <div class="ok-banner ok-banner--info ok-mb-4">
+        <div class="ok-banner__icon"><iconify-icon icon="lucide:info" width="2" height="2"></iconify-icon></div>
+        <div class="ok-banner__body">
+          <div class="ok-banner__title">Régimen fiscal: General · España (ES)</div>
+          <div class="ok-banner__desc">Las tasas se sincronizan con VeriFactu. Cambios afectan a productos a partir de la fecha efectiva.</div>
+        </div>
+      </div>
+
+      <!-- Tabla -->
+      <article class="ok-card">
+        <div class="ok-table-scroll">
+          <table class="ok-table">
+            <thead>
+              <tr>
+                <th style="width:36px;"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
+                <th class="ok-th--sortable">Nombre</th>
+                <th class="ok-th--sortable ok-td--right">Tasa</th>
+                <th>Código fiscal</th>
+                <th>Países</th>
+                <th>Por defecto</th>
+                <th>Estado</th>
+                <th style="width:140px;text-align:right;">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-font-medium">IVA general</div>
+                  <div class="ok-text-xs ok-c-ink-3">Tasa estándar para hostelería</div>
+                </td>
+                <td class="ok-td--num"><strong>21,00 %</strong></td>
+                <td class="ok-td--mono">S1-21</td>
+                <td><span class="ok-badge">ES</span></td>
+                <td><span class="ok-badge ok-badge--brand">Predet.</span></td>
+                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Activo</span></td>
+                <td>
+                  <div class="ok-row-actions ok-justify-end">
+                    <button class="ok-row-action" title="Ver"><iconify-icon icon="lucide:eye" width="2" height="2"></iconify-icon></button>
+                    <button class="ok-row-action" title="Editar"
+                      data-on:click="$tax.editId = '1'; $tax.name = 'IVA general'; $tax.rate = '21'; $tax.code = 'S1-21'; $tax.active = true; $tax.showModal = true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-font-medium">IVA reducido</div>
+                  <div class="ok-text-xs ok-c-ink-3">Comida para llevar, bebidas no alcohólicas</div>
+                </td>
+                <td class="ok-td--num"><strong>10,00 %</strong></td>
+                <td class="ok-td--mono">S2-10</td>
+                <td><span class="ok-badge">ES</span></td>
+                <td>
+                  <button class="ok-btn ok-btn--ghost ok-btn--sm" style="padding:0 6px;font-size:11px;">Hacer predet.</button>
+                </td>
+                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Activo</span></td>
+                <td>
+                  <div class="ok-row-actions ok-justify-end">
+                    <button class="ok-row-action" title="Ver"><iconify-icon icon="lucide:eye" width="2" height="2"></iconify-icon></button>
+                    <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                    <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-font-medium">IVA superreducido</div>
+                  <div class="ok-text-xs ok-c-ink-3">Pan, leche, fruta, libros</div>
+                </td>
+                <td class="ok-td--num"><strong>4,00 %</strong></td>
+                <td class="ok-td--mono">S3-04</td>
+                <td><span class="ok-badge">ES</span></td>
+                <td>
+                  <button class="ok-btn ok-btn--ghost ok-btn--sm" style="padding:0 6px;font-size:11px;">Hacer predet.</button>
+                </td>
+                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Activo</span></td>
+                <td>
+                  <div class="ok-row-actions ok-justify-end">
+                    <button class="ok-row-action" title="Ver"><iconify-icon icon="lucide:eye" width="2" height="2"></iconify-icon></button>
+                    <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                    <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-font-medium">Exento</div>
+                  <div class="ok-text-xs ok-c-ink-3">Operaciones exentas (art. 20 LIVA)</div>
+                </td>
+                <td class="ok-td--num"><strong>0,00 %</strong></td>
+                <td class="ok-td--mono">EX-00</td>
+                <td><span class="ok-badge">ES</span></td>
+                <td>—</td>
+                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Activo</span></td>
+                <td>
+                  <div class="ok-row-actions ok-justify-end">
+                    <button class="ok-row-action" title="Ver"><iconify-icon icon="lucide:eye" width="2" height="2"></iconify-icon></button>
+                    <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+                    <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div style="font-weight:500;color:var(--ok-ink-3);">IGIC general</div>
+                  <div class="ok-text-xs ok-c-ink-3">Canarias · desactivado</div>
+                </td>
+                <td class="ok-td--num ok-c-ink-3">7,00 %</td>
+                <td class="ok-td--mono">IG1-07</td>
+                <td><span class="ok-badge">ES-CN</span></td>
+                <td>—</td>
+                <td><span class="ok-pill"><span class="ok-pill__dot"></span>Inactivo</span></td>
+                <td>
+                  <div class="ok-row-actions ok-justify-end">
+                    <button class="ok-row-action" title="Activar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg></button>
+                    <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- Modal nueva/editar -->
+      <div class="ok-modal-root"
+        data-show="$tax.showModal"
+        data-attr:data-state="$tax.showModal ? 'open' : 'closed'"
+        data-on:click__self="$tax.showModal = false">
+        <div class="ok-modal ok-modal--sm" role="dialog" aria-modal="true">
+          <div class="ok-modal__header">
+            <div class="ok-modal__icon ok-modal__icon--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/></svg></div>
+            <div class="ok-modal__heading">
+              <h3 class="ok-modal__title" data-text="$tax.editId ? 'Editar clase de impuesto' : 'Nueva clase de impuesto'"></h3>
+              <p class="ok-modal__sub">Tasa aplicada a productos asignados.</p>
+            </div>
+            <button class="ok-modal__close" data-on:click="$tax.showModal = false" aria-label="Cerrar">×</button>
+          </div>
+          <div class="ok-modal__body">
+            <div class="ok-form">
+              <div class="ok-field">
+                <label class="ok-field__label ok-field__label--req">Nombre</label>
+                <input class="ok-input" data-bind="tax.name" placeholder="ej. IVA general"/>
+              </div>
+              <div class="ok-form-row">
+                <div class="ok-field">
+                  <label class="ok-field__label ok-field__label--req">Tasa (%)</label>
+                  <input class="ok-input" type="number" step="0.01" min="0" max="100" data-bind="tax.rate" placeholder="21,00"/>
+                </div>
+                <div class="ok-field">
+                  <label class="ok-field__label">Código fiscal</label>
+                  <input class="ok-input" data-bind="tax.code" placeholder="S1-21"/>
+                </div>
+              </div>
+              <div class="ok-field">
+                <label class="ok-field__label">Países aplicables</label>
+                <select class="ok-select" multiple style="height:auto;min-height:96px;">
+                  <option selected>España (ES)</option>
+                  <option>Canarias (ES-CN)</option>
+                  <option>Ceuta y Melilla (ES-CE/ML)</option>
+                  <option>Portugal (PT)</option>
+                </select>
+              </div>
+              <label class="ok-toggle-row" style="border-top:1px solid var(--ok-line);padding-top:12px;">
+                <div class="ok-toggle-row__text">
+                  <span class="ok-toggle-row__label">Activo</span>
+                  <span class="ok-toggle-row__desc">Disponible para asignar a productos.</span>
+                </div>
+                <label class="ok-toggle"><input type="checkbox" data-bind="tax.active"/><span class="ok-toggle__track"></span></label>
+              </label>
+            </div>
+          </div>
+          <div class="ok-modal__footer">
+            <button class="ok-btn ok-btn--ghost" data-on:click="$tax.showModal = false">Cancelar</button>
+            <button class="ok-btn ok-btn--primary" data-text="$tax.editId ? 'Guardar cambios' : 'Crear clase'"></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

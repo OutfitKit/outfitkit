@@ -1,0 +1,446 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}ERPlora Cloud · Detalle de ingresos{% endblock %}
+
+{% block page_title %}Ingresos vendor{% endblock %}
+
+{% block content %}
+<style>
+  body { background: var(--ok-bg); margin: 0; }
+  .module-icon { width: 22px; height: 22px; border-radius: var(--ok-radius-sm); display: inline-grid; place-items: center; flex-shrink: 0; }
+  .module-icon svg { width: 12px; height: 12px; }
+</style>
+<div class="ok-app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">EX</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
+        <div class="ok-sidebar__brand-meta">Acme Industries SL</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Cuenta</div>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">5</span></button>
+
+      <div class="ok-sidebar__group">Facturación</div>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg><span class="ok-sidebar__label">Facturas</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg><span class="ok-sidebar__label">Suscripciones</span><span class="ok-sidebar__badge">5</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h2"/></svg><span class="ok-sidebar__label">Métodos de pago</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-4V3H8v4H4l8 9 8-9z"/><path d="M4 19h16"/></svg><span class="ok-sidebar__label">Mis compras</span></button>
+
+      <div class="ok-sidebar__group">Vendor</div>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-7"/></svg><span class="ok-sidebar__label">Vendor Dashboard</span></button>
+      <button class="ok-sidebar__item" aria-current="page"><iconify-icon icon="lucide:clock" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Ingresos</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Ioan Beilic</div>
+          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Detalle de ingresos</h1>
+        
+        <div class="ok-topbar__search">
+        <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
+        <input placeholder="Buscar movimiento, hub…"/>
+        <span class="ok-topbar__kbd">⌘K</span>
+      </div>
+        
+        <div class="ok-topbar__actions">
+          <button class="ok-icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
+        </div>
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <div class="ok-app__body">
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Detalle de ingresos</h1>
+          <div class="ok-page-header__sub">Desglose línea a línea por módulo, hub y tipo de movimiento</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <label class="ok-date-range">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span>Marzo 2026</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left: 4px;"><polyline points="6 9 12 15 18 9"/></svg>
+          </label>
+          <button class="ok-btn ok-btn--outline ok-btn--sm">Comparar mes</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="ok-grid-4 ok-mb-5">
+        <div class="ok-kpi">
+          <div class="ok-kpi__label">Ingresos brutos</div>
+          <div class="ok-kpi__value">2 140<span class="ok-kpi__value-unit">€</span></div>
+          <div class="ok-kpi__delta">15 movimientos · 8 ventas</div>
+        </div>
+        <div class="ok-kpi">
+          <div class="ok-kpi__label">Comisión plataforma 30%</div>
+          <div class="ok-kpi__value ok-c-warn">−642<span class="ok-kpi__value-unit">€</span></div>
+          <div class="ok-kpi__delta">Tarifa estándar Marketplace</div>
+        </div>
+        <div class="ok-kpi">
+          <div class="ok-kpi__label">Procesamiento Stripe 2,9%</div>
+          <div class="ok-kpi__value ok-c-warn">−42<span class="ok-kpi__value-unit">€</span></div>
+          <div class="ok-kpi__delta">+ 0,30 € por transacción</div>
+        </div>
+        <div class="ok-kpi ok-kpi--brand">
+          <div class="ok-kpi__label">Net (a payout)</div>
+          <div class="ok-kpi__value">1 456<span class="ok-kpi__value-unit">€</span></div>
+          <div class="ok-kpi__delta ok-kpi__delta--up">
+            <svg class="ok-kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9-9M9 8h7v7"/></svg>
+            68% margen tras fees
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut + bars -->
+      <div class="ok-row ok-mb-5">
+        <div class="ok-col-md-6 ok-chart">
+          <div class="ok-chart__head">
+            <div>
+              <h3 class="ok-chart__title">Distribución por módulo</h3>
+              <div class="ok-chart__sub">Ingresos brutos · marzo 2026</div>
+            </div>
+          </div>
+          <div class="ok-donut">
+            <svg class="ok-donut__svg" viewBox="0 0 140 140">
+              <circle class="ok-donut__track" cx="70" cy="70" r="56"/>
+              <!-- circumference ≈ 351.86; slices proportional -->
+              <circle class="ok-donut__slice ok-donut__slice--brand" cx="70" cy="70" r="56" stroke-dasharray="116 352" stroke-dashoffset="0"/>
+              <circle class="ok-donut__slice ok-donut__slice--leaf"  cx="70" cy="70" r="56" stroke-dasharray="80 352"  stroke-dashoffset="-116"/>
+              <circle class="ok-donut__slice ok-donut__slice--info"  cx="70" cy="70" r="56" stroke-dasharray="65 352"  stroke-dashoffset="-196"/>
+              <circle class="ok-donut__slice ok-donut__slice--warn"  cx="70" cy="70" r="56" stroke-dasharray="55 352"  stroke-dashoffset="-261"/>
+              <circle class="ok-donut__slice ok-donut__slice--mute"  cx="70" cy="70" r="56" stroke-dasharray="36 352"  stroke-dashoffset="-316"/>
+              <text class="ok-donut__center ok-donut__center-value" x="70" y="70" dy="0.05em">2 140 €</text>
+              <text class="ok-donut__center ok-donut__center-label" x="70" y="86">bruto · marzo</text>
+            </svg>
+            <div class="ok-donut__legend">
+              <div class="ok-donut__legend-row"><span class="ok-donut__legend-dot" style="background: var(--ok-brand);"></span><span>contabilidad-pro</span><b>710 €</b></div>
+              <div class="ok-donut__legend-row"><span class="ok-donut__legend-dot" style="background: var(--ok-leaf);"></span><span>vinedos-erp</span><b>490 €</b></div>
+              <div class="ok-donut__legend-row"><span class="ok-donut__legend-dot" style="background: var(--ok-info);"></span><span>facturae-export</span><b>395 €</b></div>
+              <div class="ok-donut__legend-row"><span class="ok-donut__legend-dot" style="background: var(--ok-warn);"></span><span>stock-multi-sede</span><b>335 €</b></div>
+              <div class="ok-donut__legend-row"><span class="ok-donut__legend-dot" style="background: var(--ok-bg-4);"></span><span>pos-tickets-bono</span><b>210 €</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-col-md-6 ok-chart">
+          <div class="ok-chart__head">
+            <div>
+              <h3 class="ok-chart__title">Distribución por hub comprador</h3>
+              <div class="ok-chart__sub">Top 5 hubs · marzo 2026</div>
+            </div>
+          </div>
+          <div class="ok-hbars">
+            <div class="ok-hbar">
+              <span class="ok-hbar__label">acme-prod</span>
+              <div class="ok-hbar__track"><div class="ok-hbar__fill" style="width: 88%;"></div></div>
+              <span class="ok-hbar__value">820 €</span>
+            </div>
+            <div class="ok-hbar">
+              <span class="ok-hbar__label">mariola-prod</span>
+              <div class="ok-hbar__track"><div class="ok-hbar__fill ok-hbar__fill--leaf" style="width: 60%;"></div></div>
+              <span class="ok-hbar__value">540 €</span>
+            </div>
+            <div class="ok-hbar">
+              <span class="ok-hbar__label">norte-prod</span>
+              <div class="ok-hbar__track"><div class="ok-hbar__fill ok-hbar__fill--info" style="width: 45%;"></div></div>
+              <span class="ok-hbar__value">390 €</span>
+            </div>
+            <div class="ok-hbar">
+              <span class="ok-hbar__label">rambla-prod</span>
+              <div class="ok-hbar__track"><div class="ok-hbar__fill ok-hbar__fill--warn" style="width: 25%;"></div></div>
+              <span class="ok-hbar__value">230 €</span>
+            </div>
+            <div class="ok-hbar">
+              <span class="ok-hbar__label">lola-prod</span>
+              <div class="ok-hbar__track"><div class="ok-hbar__fill" style="width: 18%;"></div></div>
+              <span class="ok-hbar__value">160 €</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DataTable of earnings -->
+      <div class="ok-table-wrap">
+        <div class="ok-table-toolbar">
+          <div class="ok-search" style="flex: 1 1 240px; max-width: 280px;">
+            <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input class="ok-input ok-input--sm" placeholder="Buscar referencia, hub…"/>
+          </div>
+
+          <select class="ok-select ok-select--sm" style="width: auto; min-width: 160px;">
+            <option>Todos los módulos</option>
+            <option>contabilidad-pro</option>
+            <option>vinedos-erp</option>
+            <option>facturae-export</option>
+            <option>stock-multi-sede</option>
+            <option>pos-tickets-bono</option>
+          </select>
+
+          <select class="ok-select ok-select--sm" style="width: auto; min-width: 130px;">
+            <option>Todos los tipos</option>
+            <option>Compra</option>
+            <option>Renovación</option>
+            <option>Expansión</option>
+          </select>
+
+          <select class="ok-select ok-select--sm" style="width: auto; min-width: 130px;">
+            <option>Todos los hubs</option>
+            <option>acme-prod</option>
+            <option>mariola-prod</option>
+            <option>norte-prod</option>
+            <option>rambla-prod</option>
+            <option>lola-prod</option>
+          </select>
+
+          <div class="ok-table-toolbar__spacer"></div>
+
+          <span class="ok-pill"><span class="ok-pill__dot"></span>15 líneas</span>
+        </div>
+
+        <div class="ok-table-scroll">
+          <table class="ok-table">
+            <thead>
+              <tr>
+                <th class="ok-th--sortable">Fecha</th>
+                <th>Módulo</th>
+                <th>Hub</th>
+                <th>Tipo</th>
+                <th class="ok-th--sortable ok-text-right">Bruto</th>
+                <th class="ok-text-right">Fees</th>
+                <th class="ok-th--sortable ok-text-right">Net</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>30 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-brand) 20%, transparent); color: var(--ok-brand-3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">contabilidad-pro</div></div></div></td>
+                <td class="ok-td--muted">acme-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">89,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−29,28 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">59,72 €</td>
+              </tr>
+              <tr>
+                <td>28 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-leaf) 20%, transparent); color: var(--ok-leaf);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v8M5 10h14M5 10v10h14V10"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">vinedos-erp</div></div></div></td>
+                <td class="ok-td--muted">mariola-prod</td>
+                <td><span class="ok-badge ok-badge--info">Renovación</span></td>
+                <td class="ok-td--num">159,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−52,11 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">106,89 €</td>
+              </tr>
+              <tr>
+                <td>26 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-info) 20%, transparent); color: var(--ok-info);"><iconify-icon icon="lucide:file-text" width="2" height="2"></iconify-icon></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">facturae-export</div></div></div></td>
+                <td class="ok-td--muted">norte-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">49,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−16,12 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">32,88 €</td>
+              </tr>
+              <tr>
+                <td>24 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-warn) 20%, transparent); color: var(--ok-warn);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v6H3zM3 13h18v6H3z"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">stock-multi-sede</div></div></div></td>
+                <td class="ok-td--muted">acme-prod</td>
+                <td><span class="ok-badge">Expansión</span></td>
+                <td class="ok-td--num">240,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−78,82 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">161,18 €</td>
+              </tr>
+              <tr>
+                <td>22 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-brand) 20%, transparent); color: var(--ok-brand-3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">contabilidad-pro</div></div></div></td>
+                <td class="ok-td--muted">rambla-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">89,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−29,28 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">59,72 €</td>
+              </tr>
+              <tr>
+                <td>20 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-leaf) 20%, transparent); color: var(--ok-leaf);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v8M5 10h14M5 10v10h14V10"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">vinedos-erp</div></div></div></td>
+                <td class="ok-td--muted">mariola-prod</td>
+                <td><span class="ok-badge">Expansión</span></td>
+                <td class="ok-td--num">159,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−52,11 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">106,89 €</td>
+              </tr>
+              <tr>
+                <td>18 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: rgba(255,255,255,0.06); color: var(--ok-ink-3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12h6"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">pos-tickets-bono</div></div></div></td>
+                <td class="ok-td--muted">rambla-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">29,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−9,57 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">19,43 €</td>
+              </tr>
+              <tr>
+                <td>16 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-info) 20%, transparent); color: var(--ok-info);"><iconify-icon icon="lucide:file-text" width="2" height="2"></iconify-icon></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">facturae-export</div></div></div></td>
+                <td class="ok-td--muted">acme-prod</td>
+                <td><span class="ok-badge ok-badge--info">Renovación</span></td>
+                <td class="ok-td--num">49,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−16,12 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">32,88 €</td>
+              </tr>
+              <tr>
+                <td>14 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-warn) 20%, transparent); color: var(--ok-warn);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v6H3zM3 13h18v6H3z"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">stock-multi-sede</div></div></div></td>
+                <td class="ok-td--muted">norte-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">95,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−31,21 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">63,79 €</td>
+              </tr>
+              <tr>
+                <td>12 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-brand) 20%, transparent); color: var(--ok-brand-3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">contabilidad-pro</div></div></div></td>
+                <td class="ok-td--muted">acme-prod</td>
+                <td><span class="ok-badge ok-badge--info">Renovación</span></td>
+                <td class="ok-td--num">89,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−29,28 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">59,72 €</td>
+              </tr>
+              <tr>
+                <td>10 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: rgba(255,255,255,0.06); color: var(--ok-ink-3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12h6"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">pos-tickets-bono</div></div></div></td>
+                <td class="ok-td--muted">lola-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">29,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−9,57 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">19,43 €</td>
+              </tr>
+              <tr>
+                <td>08 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-leaf) 20%, transparent); color: var(--ok-leaf);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v8M5 10h14M5 10v10h14V10"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">vinedos-erp</div></div></div></td>
+                <td class="ok-td--muted">mariola-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">159,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−52,11 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">106,89 €</td>
+              </tr>
+              <tr>
+                <td>06 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-warn) 20%, transparent); color: var(--ok-warn);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v6H3zM3 13h18v6H3z"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">stock-multi-sede</div></div></div></td>
+                <td class="ok-td--muted">rambla-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">95,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−31,21 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">63,79 €</td>
+              </tr>
+              <tr>
+                <td>04 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-info) 20%, transparent); color: var(--ok-info);"><iconify-icon icon="lucide:file-text" width="2" height="2"></iconify-icon></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">facturae-export</div></div></div></td>
+                <td class="ok-td--muted">norte-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">49,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−16,12 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">32,88 €</td>
+              </tr>
+              <tr>
+                <td>02 mar 2026</td>
+                <td><div class="ok-cell-rich"><span class="module-icon" style="background: color-mix(in oklch, var(--ok-brand) 20%, transparent); color: var(--ok-brand-3);"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M9 21V9"/></svg></span><div class="ok-cell-rich__main"><div class="ok-cell-rich__title">contabilidad-pro</div></div></div></td>
+                <td class="ok-td--muted">mariola-prod</td>
+                <td><span class="ok-badge ok-badge--ok">Compra</span></td>
+                <td class="ok-td--num">89,00 €</td>
+                <td class="ok-td--num ok-c-ink-3">−29,28 €</td>
+                <td class="ok-td--num ok-c-leaf ok-font-semibold">59,72 €</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="ok-table-footer">
+          <div class="ok-pager">
+            <span class="ok-pager__info">15 líneas · total bruto <b>2 140,00 €</b> · net <b class="ok-c-leaf">1 456,00 €</b></span>
+          </div>
+          <div class="ok-paginator">
+            <button class="ok-paginator__btn" aria-disabled="true">‹</button>
+            <button class="ok-paginator__btn" aria-current="page">1</button>
+            <button class="ok-paginator__btn" aria-disabled="true">›</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom actions -->
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 22px 0; flex-wrap: wrap;">
+        <div class="ok-text-sm ok-c-ink-3">
+          Datos actualizados en tiempo real · próximo cierre <b class="ok-c-ink">31 may 2026 23:59</b>
+        </div>
+        <div class="ok-flex ok-gap-2">
+          <select class="ok-select ok-select--sm" style="width: auto; min-width: 130px;">
+            <option>Exportar como…</option>
+            <option>CSV</option>
+            <option>Excel (XLSX)</option>
+            <option>PDF</option>
+          </select>
+          <button class="ok-btn ok-btn--outline ok-btn--sm">Exportar</button>
+          <button class="ok-btn ok-btn--primary ok-btn--sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Solicitar payout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
+  <nav class="ok-app__tabbar" aria-label="Navegación principal">
+    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
+      <a class="ok-tabbar-item" href="#" aria-current="page">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Inicio</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Hubs</span>
+        <span class="ok-tabbar-badge">7</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Usuarios</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Equipo</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Perfil</span>
+      </a>
+    </div>
+  </nav>
+</div>
+{% endblock %}

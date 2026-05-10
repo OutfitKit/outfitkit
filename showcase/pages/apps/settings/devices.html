@@ -1,0 +1,266 @@
+{% extends "_layout.jinja" %}
+
+{% block title %}Dispositivos · Cafetería La Rambla{% endblock %}
+{% block page_title %}Devices{% endblock %}
+
+{% block content %}
+<div class="ok-app" id="app" data-tabbar="bottom"
+     data-signals='{"sidebar": false, "devices": {"showRevoke": false, "revokeName": ""}}'
+     data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">CR</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="ok-sidebar__brand-meta">Hub · v0.0.9</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Plataforma</div>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06"/></svg><span class="ok-sidebar__label">Configuración</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Joan Castell</div>
+          <div class="ok-sidebar__user-meta">joan@larambla.es</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Página</h1>
+        
+        
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <nav class="ok-tabs ok-tabs-scroll" aria-label="Sub-secciones de ajustes">
+      <a class="ok-tab" href="preferences.html">Preferencias</a>
+      <a class="ok-tab" href="hub.html">Hub</a>
+      <a class="ok-tab" href="hub-config.html">Config</a>
+      <a class="ok-tab" href="compliance.html">Cumplimiento</a>
+      <a class="ok-tab" href="devices.html" aria-current="page">Dispositivos</a>
+      <a class="ok-tab" href="printers.html">Impresoras</a>
+      <a class="ok-tab" href="backup.html">Backup</a>
+      <a class="ok-tab" href="files.html">Archivos</a>
+      <a class="ok-tab" href="tax-classes.html">Tax</a>
+      <a class="ok-tab" href="help.html">Ayuda</a>
+      <a class="ok-tab" href="scheduled-tasks.html">Tareas</a>
+      <a class="ok-tab" href="file-browser.html">File browser</a>
+    </nav>
+
+    <div class="ok-app__body">
+
+      <div class="ok-page-header" style="border-bottom:1px solid var(--ok-line);margin-bottom:22px;">
+        <div class="ok-page-header__title">
+          <h1>Dispositivos de confianza</h1>
+          <div class="ok-page-header__sub">3 dispositivos activos · 1 bloqueado</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <button class="ok-btn ok-btn--ghost ok-btn--sm">Exportar lista</button>
+          <button class="ok-btn ok-btn--primary ok-btn--sm">+ Registrar dispositivo</button>
+        </div>
+      </div>
+
+      <!-- Grid de cards por dispositivo -->
+      <div class="ok-grid-3" style="gap:16px;">
+
+        <article class="ok-card">
+          <header class="ok-card__header">
+            <div class="ok-flex ok-items-center ok-gap-2">
+              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 14%, transparent);color:var(--ok-brand);display:grid;place-items:center;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M2 22h20"/></svg>
+              </div>
+              <div>
+                <h3 class="ok-card__title">TPV-01 Mostrador</h3>
+                <p class="ok-card__sub">Terminal · Mostrador principal</p>
+              </div>
+            </div>
+            <span class="ok-status-dot ok-status-dot--online" title="En línea"></span>
+          </header>
+          <div class="ok-card__body ok-grid ok-gap-2 ok-text-md">
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Tipo</span><span class="ok-badge">Terminal</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Última conexión</span><span class="ok-c-ink">Hoy · 14:22</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>IP</span><span class="ok-font-mono ok-c-ink">192.168.1.42</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Estado</span><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Activo</span>
+            </div>
+          </div>
+          <footer class="ok-card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+            <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver actividad</button>
+            <button class="ok-btn ok-btn--secondary ok-btn--sm"
+              data-on:click="$devices.revokeName = 'TPV-01 Mostrador'; $devices.showRevoke = true">Desvincular</button>
+          </footer>
+        </article>
+
+        <article class="ok-card">
+          <header class="ok-card__header">
+            <div class="ok-flex ok-items-center ok-gap-2">
+              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ok-warn) 14%, transparent);color:var(--ok-warn);display:grid;place-items:center;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M10 18h4"/></svg>
+              </div>
+              <div>
+                <h3 class="ok-card__title">Tablet Sala</h3>
+                <p class="ok-card__sub">Tablet · iPad 10ª gen</p>
+              </div>
+            </div>
+            <span class="ok-status-dot ok-status-dot--online" title="En línea"></span>
+          </header>
+          <div class="ok-card__body ok-grid ok-gap-2 ok-text-md">
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Tipo</span><span class="ok-badge">Tablet</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Última conexión</span><span class="ok-c-ink">Hace 4 min</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>IP</span><span class="ok-font-mono ok-c-ink">192.168.1.55</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Estado</span><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Activo</span>
+            </div>
+          </div>
+          <footer class="ok-card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+            <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver actividad</button>
+            <button class="ok-btn ok-btn--secondary ok-btn--sm"
+              data-on:click="$devices.revokeName = 'Tablet Sala'; $devices.showRevoke = true">Desvincular</button>
+          </footer>
+        </article>
+
+        <article class="ok-card">
+          <header class="ok-card__header">
+            <div class="ok-flex ok-items-center ok-gap-2">
+              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ok-info) 14%, transparent);color:var(--ok-info);display:grid;place-items:center;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg>
+              </div>
+              <div>
+                <h3 class="ok-card__title">Móvil camarero · Aitor</h3>
+                <p class="ok-card__sub">Móvil · Android — Aitor R.</p>
+              </div>
+            </div>
+            <span class="ok-status-dot ok-status-dot--busy" title="Inactivo"></span>
+          </header>
+          <div class="ok-card__body ok-grid ok-gap-2 ok-text-md">
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Tipo</span><span class="ok-badge">Móvil</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Última conexión</span><span class="ok-c-ink">Hace 2 h</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>IP</span><span class="ok-font-mono ok-c-ink">192.168.1.78</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Estado</span><span class="ok-pill"><span class="ok-pill__dot"></span>Inactivo</span>
+            </div>
+          </div>
+          <footer class="ok-card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+            <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver actividad</button>
+            <button class="ok-btn ok-btn--secondary ok-btn--sm"
+              data-on:click="$devices.revokeName = 'Móvil camarero · Aitor'; $devices.showRevoke = true">Desvincular</button>
+          </footer>
+        </article>
+
+        <article class="ok-card">
+          <header class="ok-card__header">
+            <div class="ok-flex ok-items-center ok-gap-2">
+              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ok-danger) 14%, transparent);color:var(--ok-danger);display:grid;place-items:center;">
+                <iconify-icon icon="lucide:lock" width="18" height="18"></iconify-icon>
+              </div>
+              <div>
+                <h3 class="ok-card__title">Tablet Terraza</h3>
+                <p class="ok-card__sub">Tablet · iPad — bloqueada</p>
+              </div>
+            </div>
+            <span class="ok-status-dot ok-status-dot--danger" title="Bloqueado"></span>
+          </header>
+          <div class="ok-card__body ok-grid ok-gap-2 ok-text-md">
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Tipo</span><span class="ok-badge">Tablet</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Última conexión</span><span class="ok-c-ink">Ayer · 23:11</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>IP</span><span class="ok-font-mono ok-c-ink">192.168.1.82</span>
+            </div>
+            <div class="ok-flex ok-justify-between ok-c-ink-3">
+              <span>Estado</span><span class="ok-pill ok-pill--danger"><span class="ok-pill__dot"></span>Bloqueada</span>
+            </div>
+            <div class="ok-banner ok-banner--warn ok-mt-1">
+              <div class="ok-banner__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+              <div class="ok-banner__body">
+                <div class="ok-banner__desc">5 intentos fallidos de PIN. Desbloquéala antes de continuar.</div>
+              </div>
+            </div>
+          </div>
+          <footer class="ok-card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+            <button class="ok-btn ok-btn--secondary ok-btn--sm">Desbloquear</button>
+            <button class="ok-btn ok-btn--secondary ok-btn--sm"
+              data-on:click="$devices.revokeName = 'Tablet Terraza'; $devices.showRevoke = true">Desvincular</button>
+          </footer>
+        </article>
+
+        <!-- Add new device -->
+        <article class="ok-card ok-card--interactive" tabindex="0" style="border-style:dashed;">
+          <div class="ok-card__body" style="text-align:center;padding:32px 16px;">
+            <div style="width:48px;height:48px;border-radius:14px;background:var(--ok-bg-3);color:var(--ok-ink-3);display:grid;place-items:center;margin:0 auto 10px;">
+              <iconify-icon icon="lucide:plus" width="22" height="22"></iconify-icon>
+            </div>
+            <div style="font-weight:600;color:var(--ok-ink);margin-bottom:4px;">Registrar dispositivo</div>
+            <p style="font-size:12px;color:var(--ok-ink-3);margin:0;">Genera un código de pareo de 6 dígitos.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Revoke modal -->
+      <div class="ok-modal-root"
+        data-show="$devices.showRevoke"
+        data-attr:data-state="$devices.showRevoke ? 'open' : 'closed'"
+        data-on:click__self="$devices.showRevoke = false">
+        <div class="ok-modal ok-modal--sm" role="dialog" aria-modal="true">
+          <div class="ok-modal__header">
+            <div class="ok-modal__icon ok-modal__icon--danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M15 9l-6 6M9 9l6 6"/></svg></div>
+            <div class="ok-modal__heading">
+              <h3 class="ok-modal__title">Desvincular dispositivo</h3>
+              <p class="ok-modal__sub" data-text="'Quitar acceso a ' + $devices.revokeName"></p>
+            </div>
+            <button class="ok-modal__close" data-on:click="$devices.showRevoke = false" aria-label="Cerrar">×</button>
+          </div>
+          <div class="ok-modal__body">
+            <p style="font-size:13px;color:var(--ok-ink-2);margin:0 0 6px;">El dispositivo dejará de tener acceso al Hub. Tendrás que registrarlo de nuevo si lo vuelves a usar.</p>
+          </div>
+          <div class="ok-modal__footer">
+            <button class="ok-btn ok-btn--ghost" data-on:click="$devices.showRevoke = false">Cancelar</button>
+            <button class="ok-btn ok-btn--danger">Desvincular</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,296 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}ERPlora Cloud · Dispositivos de confianza{% endblock %}
+
+{% block page_title %}Dispositivos de confianza{% endblock %}
+
+
+
+{% block content %}
+<style>
+body { background: var(--ok-bg); margin: 0; }
+</style>
+
+<div class="ok-app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false, "revokedOpen": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">EC</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
+        <div class="ok-sidebar__brand-meta">acme · Madrid</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Main</div>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span><span class="ok-sidebar__badge">4</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="ok-sidebar__label">Mi perfil</span></button>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="ok-sidebar__label">Seguridad</span></button>
+
+      <div class="ok-sidebar__group">Billing</div>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:credit-card" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Plan & facturación</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:file-text" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Facturas</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">2</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:clock" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Uso & cuotas</span></button>
+
+      <div class="ok-sidebar__group">Developer</div>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="ok-sidebar__label">API & tokens</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Webhooks</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="ok-sidebar__label">Audit log</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Ioan Beilic</div>
+          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Dispositivos de confianza</h1>
+        
+        <div class="ok-topbar__search">
+        <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
+        <input placeholder="Buscar en cuenta…"/>
+        <span class="ok-topbar__kbd">⌘K</span>
+      </div>
+        
+        <div class="ok-topbar__actions">
+          <button class="ok-icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        </div>
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <nav class="ok-tabs" aria-label="Sub-secciones de seguridad de cuenta">
+      <a class="ok-tab" href="change-password.html">Contraseña</a>
+      <a class="ok-tab" href="sessions.html">Sesiones</a>
+      <a class="ok-tab" href="trusted-devices.html" aria-current="page">Dispositivos</a>
+      <a class="ok-tab" href="delete-account.html">Eliminar cuenta</a>
+    </nav>
+
+    <div class="ok-app__body">
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Dispositivos de confianza</h1>
+          <div class="ok-page-header__sub">Equipos que pueden saltarse el 2FA durante 30 días tras una verificación válida.</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <span class="ok-text-xs ok-c-ink-3">Hasta 5 dispositivos · usa 3</span>
+          <button class="ok-btn ok-btn--outline">
+            <iconify-icon icon="lucide:plus" width="14" height="14"></iconify-icon>
+            Añadir dispositivo
+          </button>
+        </div>
+      </div>
+
+      <div class="ok-callout ok-callout--info ok-mb-6">
+        <span class="ok-callout__icon"><iconify-icon icon="lucide:info" width="14" height="14"></iconify-icon></span>
+        <div class="ok-callout__body">
+          <div class="ok-callout__title">Solo equipos personales</div>
+          <div class="ok-callout__desc">Los dispositivos de confianza pueden saltarse el 2FA durante 30 días. No marques como confiable un equipo prestado o compartido.</div>
+        </div>
+      </div>
+
+      <div class="ok-grid-3" style="margin-bottom:32px;">
+
+        <article class="ok-card">
+          <div class="ok-card__body ok-flex ok-col ok-gap-3">
+            <div class="ok-flex ok-items-start ok-gap-3">
+              <div style="width:44px;height:44px;border-radius:var(--ok-radius-md);background:var(--ok-brand-soft);color:var(--ok-brand-3);display:grid;place-items:center;flex-shrink:0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              </div>
+              <div class="ok-flex-1">
+                <strong class="ok-text-md">MacBook Pro M4</strong>
+                <div style="color:var(--ok-ink-3);font-size:var(--ok-text-sm);">Madrid · oficina</div>
+                <span class="ok-badge ok-badge--ok ok-mt-1"><span class="ok-badge__dot"></span>Activo</span>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:var(--ok-text-xs);color:var(--ok-ink-3);">
+              <div class="ok-flex ok-justify-between"><span>Sistema</span><span class="ok-c-ink-2">macOS 15.4 · Chrome 142</span></div>
+              <div class="ok-flex ok-justify-between"><span>Fingerprint</span><span style="color:var(--ok-ink-2);font-family:var(--ok-font-mono);font-size:11px;">a4:9c:21:fb…</span></div>
+              <div class="ok-flex ok-justify-between"><span>Confiado desde</span><span class="ok-c-ink-2">12 abr 2026</span></div>
+              <div class="ok-flex ok-justify-between"><span>Expira en</span><span class="ok-c-leaf">18 días</span></div>
+              <div class="ok-flex ok-justify-between"><span>Última conexión</span><span class="ok-c-ink-2">hace 12 min</span></div>
+            </div>
+          </div>
+          <footer class="ok-card__actions" style="display:flex;gap:8px;padding-top:0;">
+            <button class="ok-btn ok-btn--outline ok-btn--sm ok-flex-1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+              Renovar 30 d
+            </button>
+            <button class="ok-btn ok-btn--ghost ok-btn--danger ok-btn--sm ok-flex-1">Revocar</button>
+          </footer>
+        </article>
+
+        <article class="ok-card" style="border-color:color-mix(in oklch, var(--ok-warn) 40%, var(--ok-line));border-left-color:var(--ok-warn);border-left-width:3px;">
+          <div class="ok-card__body ok-flex ok-col ok-gap-3">
+            <div class="ok-flex ok-items-start ok-gap-3">
+              <div style="width:44px;height:44px;border-radius:var(--ok-radius-md);background:color-mix(in oklch, var(--ok-warn) 18%, transparent);color:var(--ok-warn);display:grid;place-items:center;flex-shrink:0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
+              </div>
+              <div class="ok-flex-1">
+                <strong class="ok-text-md">iPhone 16 Pro</strong>
+                <div style="color:var(--ok-ink-3);font-size:var(--ok-text-sm);">Personal · llevamos siempre</div>
+                <span class="ok-badge ok-badge--warn ok-mt-1"><span class="ok-badge__dot"></span>Expira en 2 días</span>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:var(--ok-text-xs);color:var(--ok-ink-3);">
+              <div class="ok-flex ok-justify-between"><span>Sistema</span><span class="ok-c-ink-2">iOS 18.4 · ERPlora App 4.8.2</span></div>
+              <div class="ok-flex ok-justify-between"><span>Fingerprint</span><span style="color:var(--ok-ink-2);font-family:var(--ok-font-mono);font-size:11px;">b1:38:d7:9e…</span></div>
+              <div class="ok-flex ok-justify-between"><span>Confiado desde</span><span class="ok-c-ink-2">8 abr 2026</span></div>
+              <div class="ok-flex ok-justify-between"><span>Expira en</span><span class="ok-c-warn ok-font-semibold">2 días · 10 may</span></div>
+              <div class="ok-flex ok-justify-between"><span>Última conexión</span><span class="ok-c-ink-2">hace 1 h</span></div>
+            </div>
+          </div>
+          <footer class="ok-card__actions" style="display:flex;gap:8px;padding-top:0;">
+            <button class="ok-btn ok-btn--primary ok-btn--sm ok-flex-1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+              Renovar 30 d
+            </button>
+            <button class="ok-btn ok-btn--ghost ok-btn--danger ok-btn--sm ok-flex-1">Revocar</button>
+          </footer>
+        </article>
+
+        <article class="ok-card">
+          <div class="ok-card__body ok-flex ok-col ok-gap-3">
+            <div class="ok-flex ok-items-start ok-gap-3">
+              <div style="width:44px;height:44px;border-radius:var(--ok-radius-md);background:var(--ok-bg-3);color:var(--ok-ink-2);display:grid;place-items:center;flex-shrink:0;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 19h2"/></svg>
+              </div>
+              <div class="ok-flex-1">
+                <strong class="ok-text-md">iPad Air</strong>
+                <div style="color:var(--ok-ink-3);font-size:var(--ok-text-sm);">Oficina · sala de reuniones</div>
+                <span class="ok-badge ok-badge--ok ok-mt-1"><span class="ok-badge__dot"></span>Activo</span>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:6px;font-size:var(--ok-text-xs);color:var(--ok-ink-3);">
+              <div class="ok-flex ok-justify-between"><span>Sistema</span><span class="ok-c-ink-2">iPadOS 18.3 · Safari 18</span></div>
+              <div class="ok-flex ok-justify-between"><span>Fingerprint</span><span style="color:var(--ok-ink-2);font-family:var(--ok-font-mono);font-size:11px;">7d:f0:4a:c8…</span></div>
+              <div class="ok-flex ok-justify-between"><span>Confiado desde</span><span class="ok-c-ink-2">22 abr 2026</span></div>
+              <div class="ok-flex ok-justify-between"><span>Expira en</span><span class="ok-c-leaf">28 días</span></div>
+              <div class="ok-flex ok-justify-between"><span>Última conexión</span><span class="ok-c-ink-2">hace 2 días</span></div>
+            </div>
+          </div>
+          <footer class="ok-card__actions" style="display:flex;gap:8px;padding-top:0;">
+            <button class="ok-btn ok-btn--outline ok-btn--sm ok-flex-1">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg>
+              Renovar 30 d
+            </button>
+            <button class="ok-btn ok-btn--ghost ok-btn--danger ok-btn--sm ok-flex-1">Revocar</button>
+          </footer>
+        </article>
+
+      </div>
+
+      <div class="ok-section">
+        <button data-on:click="$revokedOpen = !$revokedOpen" style="display:flex;width:100%;align-items:center;justify-content:space-between;background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:var(--ok-radius-md);padding:14px 16px;cursor:pointer;color:inherit;font:inherit;text-align:left;">
+          <div>
+            <strong class="ok-text-md">Dispositivos revocados</strong>
+            <span style="color:var(--ok-ink-3);font-size:var(--ok-text-sm);margin-left:8px;">últimos 90 días · 4 entradas</span>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-attr:style="$revokedOpen ? 'transform: rotate(180deg); transition: transform 200ms;' : 'transition: transform 200ms;'"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+
+        <div data-show="$revokedOpen" class="ok-mt-2">
+          <div class="ok-table-wrap">
+            <table class="ok-table">
+              <thead><tr>
+                <th>Dispositivo</th>
+                <th>Sistema</th>
+                <th>Confiado</th>
+                <th>Revocado</th>
+                <th>Motivo</th>
+              </tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Pixel 9</strong><div class="ok-text-xs ok-c-ink-3">Bilbao · backup</div></td>
+                  <td>Android 15 · App 4.7</td>
+                  <td class="ok-font-mono ok-text-xs">2026-03-14</td>
+                  <td class="ok-font-mono ok-text-xs">2026-04-21</td>
+                  <td><span class="ok-badge ok-badge--warn"><span class="ok-badge__dot"></span>Inactividad 30 d</span></td>
+                </tr>
+                <tr>
+                  <td><strong>ThinkPad T14</strong><div class="ok-text-xs ok-c-ink-3">Sevilla · viaje</div></td>
+                  <td>Ubuntu 24.04 · Firefox 128</td>
+                  <td class="ok-font-mono ok-text-xs">2026-02-08</td>
+                  <td class="ok-font-mono ok-text-xs">2026-04-02</td>
+                  <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Revocado por usuario</span></td>
+                </tr>
+                <tr>
+                  <td><strong>iPhone 15</strong><div class="ok-text-xs ok-c-ink-3">Madrid · antiguo</div></td>
+                  <td>iOS 17.6 · App 4.5</td>
+                  <td class="ok-font-mono ok-text-xs">2025-12-10</td>
+                  <td class="ok-font-mono ok-text-xs">2026-03-12</td>
+                  <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Reemplazado</span></td>
+                </tr>
+                <tr>
+                  <td><strong>MacBook Air M2</strong><div class="ok-text-xs ok-c-ink-3">Barcelona · oficina</div></td>
+                  <td>macOS 15.2 · Safari 18</td>
+                  <td class="ok-font-mono ok-text-xs">2026-01-05</td>
+                  <td class="ok-font-mono ok-text-xs">2026-02-18</td>
+                  <td><span class="ok-badge ok-badge--danger"><span class="ok-badge__dot"></span>Pérdida de equipo</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
+  <nav class="ok-app__tabbar" aria-label="Navegación principal">
+    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
+      <a class="ok-tabbar-item" href="#" aria-current="page">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Inicio</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Hubs</span>
+        <span class="ok-tabbar-badge">7</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Usuarios</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Equipo</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Perfil</span>
+      </a>
+    </div>
+  </nav>
+</div>
+{% endblock %}

@@ -1,0 +1,282 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}Hub · Empleados{% endblock %}
+
+{% block page_title %}Empleados{% endblock %}
+
+{% block content %}
+<div class="ok-app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">LR</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="ok-sidebar__brand-meta">5 empleados</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Operación</div>
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Inicio</span></a>
+      <a class="ok-sidebar__item" aria-current="page" href="#"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="ok-sidebar__label">Empleados</span><span class="ok-sidebar__badge">5</span></a>
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:shield" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Roles</span></a>
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Módulos</span></a>
+      <div class="ok-sidebar__group">Plataforma</div>
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:credit-card" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Facturación</span></a>
+      <a class="ok-sidebar__item" href="#"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="ok-sidebar__label">Ajustes</span></a>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Joan Castell</div>
+          <div class="ok-sidebar__user-meta">Admin</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Página</h1>
+        
+        
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <div class="ok-app__body">
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Empleados</h1>
+          <div class="ok-page-header__sub">5 cuentas · 4 activas</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <button class="ok-btn ok-btn--secondary ok-btn--sm">Importar CSV</button>
+          <a class="ok-btn ok-btn--primary ok-btn--sm" href="./employees-add.html">+ Añadir empleado</a>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="ok-table-wrap">
+        <div class="ok-dt-toolbar">
+          <div class="ok-search" style="flex:1 1 220px;max-width:280px">
+            <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input class="ok-input ok-input--sm" placeholder="Buscar por nombre o email…" data-bind:q/>
+          </div>
+          <select class="ok-select ok-select--sm" style="width:auto;min-width:130px" data-bind:role>
+            <option value="">Todos los roles</option>
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="cajero">Cajero</option>
+            <option value="cocinero">Cocinero</option>
+          </select>
+          <select class="ok-select ok-select--sm" style="width:auto;min-width:120px" data-bind:status>
+            <option value="">Todos</option>
+            <option value="active">Activos</option>
+            <option value="inactive">Inactivos</option>
+          </select>
+          <div class="ok-dt-toolbar__spacer"></div>
+          <select class="ok-select ok-select--sm" style="width:auto;min-width:64px" title="Por página">
+            <option>12</option><option selected>24</option><option>48</option>
+          </select>
+          <div class="ok-dt-toolbar__divider"></div>
+          <div class="ok-view-toggle" role="tablist" aria-label="Vista">
+            <button class="ok-view-toggle__btn" data-on:click="$empView = 'table'" data-attr:aria-pressed="$empView === 'table'" title="Tabla"><iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon></button>
+            <button class="ok-view-toggle__btn" data-on:click="$empView = 'grid'" data-attr:aria-pressed="$empView === 'grid'" title="Grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Vista tabla -->
+        <div class="ok-table-scroll" data-show="$empView === 'table'">
+          <table class="ok-table">
+            <thead>
+              <tr>
+                <th style="width:36px"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
+                <th class="ok-th--sortable">Empleado</th>
+                <th>Email</th>
+                <th>Rol</th>
+                <th>Idioma</th>
+                <th>Último acceso</th>
+                <th>Estado</th>
+                <th style="width:120px;text-align:right">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-on:click="$preview = 'joan'" class="ok-cursor-pointer">
+                <td data-on:click__stop="evt.stopPropagation()"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-flex ok-items-center ok-gap-2">
+                    <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
+                    <div><div class="ok-font-medium">Joan Castell</div><div class="ok-text-2xs ok-c-ink-3">PIN ••••</div></div>
+                  </div>
+                </td>
+                <td>joan@larambla.es</td>
+                <td><span class="ok-badge ok-badge--brand">Admin</span></td>
+                <td>Català</td>
+                <td>hace 2 min</td>
+                <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></td>
+                <td data-on:click__stop="evt.stopPropagation()" class="ok-text-right">
+                  <button class="ok-icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
+                  <button class="ok-icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-flex ok-items-center ok-gap-2">
+                    <span class="ok-avatar ok-avatar--sm">MR</span>
+                    <div><div class="ok-font-medium">María Ruiz</div><div class="ok-text-2xs ok-c-ink-3">PIN ••••</div></div>
+                  </div>
+                </td>
+                <td>maria@larambla.es</td>
+                <td><span class="ok-badge ok-badge--info">Manager</span></td>
+                <td>Español</td>
+                <td>hace 1 h</td>
+                <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></td>
+                <td class="ok-text-right">
+                  <button class="ok-icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
+                  <button class="ok-icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-flex ok-items-center ok-gap-2">
+                    <span class="ok-avatar ok-avatar--sm">AL</span>
+                    <div><div class="ok-font-medium">Aitana López</div><div class="ok-text-2xs ok-c-ink-3">PIN ••••</div></div>
+                  </div>
+                </td>
+                <td>aitana@larambla.es</td>
+                <td><span class="ok-badge">Cajero</span></td>
+                <td>Español</td>
+                <td>hace 3 h</td>
+                <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></td>
+                <td class="ok-text-right">
+                  <button class="ok-icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
+                  <button class="ok-icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+                </td>
+              </tr>
+              <tr>
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-flex ok-items-center ok-gap-2">
+                    <span class="ok-avatar ok-avatar--sm">PG</span>
+                    <div><div class="ok-font-medium">Pol Garcia</div><div class="ok-text-2xs ok-c-ink-3">PIN ••••</div></div>
+                  </div>
+                </td>
+                <td>pol@larambla.es</td>
+                <td><span class="ok-badge">Cocinero</span></td>
+                <td>Català</td>
+                <td>ayer</td>
+                <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></td>
+                <td class="ok-text-right">
+                  <button class="ok-icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
+                  <button class="ok-icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+                </td>
+              </tr>
+              <tr style="opacity:0.6;">
+                <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                <td>
+                  <div class="ok-flex ok-items-center ok-gap-2">
+                    <span class="ok-avatar ok-avatar--sm">SM</span>
+                    <div><div class="ok-font-medium">Sara Martínez</div><div class="ok-text-2xs ok-c-ink-3">PIN ••••</div></div>
+                  </div>
+                </td>
+                <td>sara@larambla.es</td>
+                <td><span class="ok-badge">Cocinero</span></td>
+                <td>Español</td>
+                <td>hace 12 d</td>
+                <td><span class="ok-badge"><span class="ok-badge__dot"></span>Inactivo</span></td>
+                <td class="ok-text-right">
+                  <button class="ok-icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
+                  <button class="ok-icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Vista grid (cards) -->
+        <div class="ok-dt-grid ok-grid-auto ok-grid-auto--sm" data-show="$empView === 'grid'" style="padding:18px;gap:14px;">
+          <article class="ok-card ok-card--interactive">
+            <div class="ok-card__body" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+              <span class="ok-avatar ok-avatar--lg ok-avatar--brand">JC</span>
+              <div>
+                <div class="ok-font-semibold">Joan Castell</div>
+                <div class="ok-text-xs ok-c-ink-3">joan@larambla.es</div>
+              </div>
+              <span class="ok-badge ok-badge--brand">Admin</span>
+            </div>
+          </article>
+          <article class="ok-card ok-card--interactive">
+            <div class="ok-card__body" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;">
+              <span class="ok-avatar ok-avatar--lg">MR</span>
+              <div>
+                <div class="ok-font-semibold">María Ruiz</div>
+                <div class="ok-text-xs ok-c-ink-3">maria@larambla.es</div>
+              </div>
+              <span class="ok-badge ok-badge--info">Manager</span>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Modal preview empleado -->
+      <div class="ok-modal-root" data-signals='{"preview": ""}' data-attr:data-state="$preview ? 'open' : 'closed'" data-show="$preview">
+        <div class="ok-backdrop" data-on:click="$preview = ''"></div>
+        <div class="ok-modal ok-modal--md">
+          <header class="ok-modal__header">
+            <h3>Joan Castell</h3>
+            <button class="ok-icon-btn" data-on:click="$preview = ''" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+          </header>
+          <div class="ok-modal__body">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px;">
+              <span class="ok-avatar ok-avatar--lg ok-avatar--brand">JC</span>
+              <div>
+                <div style="font-weight:600;font-size:15px;">Joan Castell</div>
+                <div class="ok-text-sm ok-c-ink-3">joan@larambla.es</div>
+                <span class="ok-badge ok-badge--brand ok-mt-1">Admin</span>
+              </div>
+            </div>
+            <dl style="display:grid;grid-template-columns:minmax(90px, 120px) 1fr;gap:8px 14px;font-size:13px;margin:0;">
+              <dt class="ok-c-ink-3">PIN</dt><dd class="ok-font-mono">••••</dd>
+              <dt class="ok-c-ink-3">Idioma</dt><dd>Català</dd>
+              <dt class="ok-c-ink-3">Estado</dt><dd><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></dd>
+              <dt class="ok-c-ink-3">Último acceso</dt><dd>hace 2 minutos</dd>
+              <dt class="ok-c-ink-3">Sesiones</dt><dd>3 dispositivos</dd>
+            </dl>
+          </div>
+          <footer class="ok-modal__footer">
+            <button class="ok-btn ok-btn--ghost" data-on:click="$preview = ''">Cerrar</button>
+            <a class="ok-btn ok-btn--primary" href="./employees-edit.html">Editar empleado</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon></span><span class="ok-tabbar-label">Inicio</span></a>
+    <a class="ok-tabbar-item" aria-current="page" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span><span class="ok-tabbar-label">Empleados</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="2" height="2"></iconify-icon></span><span class="ok-tabbar-label">Facturas</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  </nav>
+</div>
+{% endblock %}

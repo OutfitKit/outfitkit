@@ -1,0 +1,409 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}ERPlora Cloud · Conectar repositorio{% endblock %}
+{% block page_title %}Add from git{% endblock %}
+
+
+
+{% block content %}
+<style>
+  body { background: var(--ok-bg); margin: 0; }
+</style>
+
+<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">EC</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
+        <div class="ok-sidebar__brand-meta">acme · ES</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Principal</div>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+
+      <div class="ok-sidebar__group">Facturación</div>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="ok-sidebar__label">Facturas</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="ok-sidebar__label">Suscripciones</span></button>
+
+      <div class="ok-sidebar__group">Desarrollador</div>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7"/></svg><span class="ok-sidebar__label">Repositorios</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">8</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:code" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Módulos</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:credit-card" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Stripe Connect</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="ok-sidebar__label">Payouts</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Ioan Beilic</div>
+          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Conectar repositorio</h1>
+        
+        <div class="ok-topbar__search">
+        <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
+        <input placeholder="Buscar…"/>
+        <span class="ok-topbar__kbd">⌘K</span>
+      </div>
+        
+        <div class="ok-topbar__actions">
+          <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        </div>
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <div class="ok-app__body">
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Conectar repositorio GitHub</h1>
+          <div class="ok-page-header__sub">Importa un módulo desde un repositorio existente para activarlo en tus hubs</div>
+        </div>
+      </div>
+
+      <div class="ok-wizard" style="margin-bottom:96px;">
+        <div class="ok-wizard__steps">
+          <div class="ok-wizard__step ok-wizard__step--done">
+            <span class="ok-wizard__step-num">✓</span>
+            <div>
+              <div class="ok-wizard__step-name">Autorizar GitHub</div>
+              <div class="ok-wizard__step-sub">OAuth completado</div>
+            </div>
+          </div>
+          <div class="ok-wizard__step ok-wizard__step--active">
+            <span class="ok-wizard__step-num">2</span>
+            <div>
+              <div class="ok-wizard__step-name">Seleccionar repo</div>
+              <div class="ok-wizard__step-sub">Elige el repositorio</div>
+            </div>
+          </div>
+          <div class="ok-wizard__step">
+            <span class="ok-wizard__step-num">3</span>
+            <div>
+              <div class="ok-wizard__step-name">Detectar metadata</div>
+              <div class="ok-wizard__step-sub">manifest.json + tests</div>
+            </div>
+          </div>
+          <div class="ok-wizard__step">
+            <span class="ok-wizard__step-num">4</span>
+            <div>
+              <div class="ok-wizard__step-name">Confirmar</div>
+              <div class="ok-wizard__step-sub">Asignar a módulo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-wizard__body">
+          <h3 class="ok-wizard__title">Selecciona un repositorio de tu cuenta GitHub</h3>
+          <p class="ok-wizard__sub">Solo se listan repos que contienen un <code class="ok-code ok-code--inline">erplora.module.json</code> en la raíz.</p>
+
+          <!-- GitHub user info card -->
+          <article class="ok-card ok-mb-4">
+            <div class="ok-card__body ok-flex ok-items-center ok-gap-3">
+              <span class="ok-avatar ok-avatar--lg" style="background:#1f2024;color:#f0f1f3;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.3 9.3 7.9 10.8.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.7.1 3 .8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.2 21.3 23.5 17 23.5 12 23.5 5.7 18.3.5 12 .5z"/></svg>
+              </span>
+              <div class="ok-flex-1">
+                <div style="font-weight:600;font-size:15px;">@acme-dev</div>
+                <div class="ok-text-md ok-c-ink-3">Conectado desde 12 mar 2026 · 47 repos accesibles</div>
+              </div>
+              <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>OAuth válido</span>
+              <button class="ok-btn ok-btn--secondary ok-btn--sm">Reautorizar</button>
+            </div>
+          </article>
+
+          <!-- Search -->
+          <div class="ok-search ok-mb-3">
+            <span class="ok-search__icon"><iconify-icon icon="lucide:search" width="2" height="2"></iconify-icon></span>
+            <input class="ok-input" placeholder="Filtrar por nombre o descripción…" data-bind:q/>
+          </div>
+
+          <!-- Repo list -->
+          <div class="ok-list ok-list--separated" style="border:1px solid var(--ok-line);border-radius:var(--ok-radius-md);background:var(--ok-bg-2);">
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-pos-tablet <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">POS optimizado para tablet Android · checkout offline-first · sync en background.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 12</span>
+                  <span>Último commit · hace 3 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-pos-tablet'" data-class:is-active="$selected === 'erplora-pos-tablet'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-warehouse-mobile <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">App handheld para almacén · escaneo de barcode · gestión de albaranes.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 8</span>
+                  <span>Último commit · hace 1 d</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--ghost ok-btn--sm" disabled>Ya conectado</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-public-docs <span class="ok-tag ok-tag--leaf ok-tag--xs">público</span></div>
+                <div class="ok-list__desc">Documentación abierta del módulo POS · Astro + MDX.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#f1e05a;"></span>JavaScript</span>
+                  <span>★ 142</span>
+                  <span>Último commit · hace 6 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-public-docs'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-financiero <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">Módulo de tesorería · conciliación bancaria · informes IRPF.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3572A5;"></span>Python</span>
+                  <span>★ 4</span>
+                  <span>Último commit · hace 2 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-financiero'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-loyalty-cards <span class="ok-tag ok-tag--leaf ok-tag--xs">público</span></div>
+                <div class="ok-list__desc">Sistema de tarjetas de fidelización · NFC · puntos por compra.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 38</span>
+                  <span>Último commit · hace 4 d</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-loyalty-cards'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-rrhh-portal <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">Portal del empleado · vacaciones · nóminas · fichaje.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 6</span>
+                  <span>Último commit · hace 12 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-rrhh-portal'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">bodegas-casadejus/inventario-vinos <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">Trazabilidad de barricas · DO Ribera del Duero · catas y notas.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 2</span>
+                  <span>Último commit · hace 1 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--ghost ok-btn--sm" disabled>Ya conectado</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-restaurant-kds <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">Kitchen Display System · ticket routing por estación.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 17</span>
+                  <span>Último commit · hace 9 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-restaurant-kds'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-marketplace-sdk <span class="ok-tag ok-tag--leaf ok-tag--xs">público</span></div>
+                <div class="ok-list__desc">SDK para publicar módulos en el marketplace de ERPlora · CLI incluida.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 287</span>
+                  <span>Último commit · hace 2 d</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-marketplace-sdk'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">vinos-roca/etiquetas-ai <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">Reconocimiento de etiquetas con visión por IA · Tensorflow Lite.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3572A5;"></span>Python</span>
+                  <span>★ 11</span>
+                  <span>Último commit · hace 6 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--ghost ok-btn--sm" disabled>Ya conectado</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-stock-alerts <span class="ok-tag ok-tag--neutral ok-tag--xs">privado</span></div>
+                <div class="ok-list__desc">Reglas de reorden y notificaciones de stock mínimo.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
+                  <span>★ 3</span>
+                  <span>Último commit · hace 5 h</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-stock-alerts'">Conectar</button>
+              </div>
+            </div>
+            <div class="ok-list__item">
+              <span class="ok-c-ink-3">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
+              </span>
+              <div class="ok-list__body">
+                <div class="ok-list__title">acme-dev/erplora-data-pipelines <span class="ok-tag ok-tag--leaf ok-tag--xs">público</span></div>
+                <div class="ok-list__desc">ETLs y dashboards para BI · DuckDB + Metabase.</div>
+                <div class="ok-flex ok-items-center ok-gap-3 ok-text-xs ok-c-ink-3 ok-mt-1">
+                  <span class="ok-inline-flex ok-items-center ok-gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3572A5;"></span>Python</span>
+                  <span>★ 64</span>
+                  <span>Último commit · hace 1 d</span>
+                </div>
+              </div>
+              <div class="ok-list__aside">
+                <button class="ok-btn ok-btn--primary ok-btn--sm" data-on:click="$selected = 'erplora-data-pipelines'">Conectar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination -->
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:13px;color:var(--ok-ink-3);">
+            <span>Mostrando 12 de 47 repos</span>
+            <div class="ok-pager">
+              <button class="ok-pager__btn" disabled>‹</button>
+              <span class="ok-pager__info">Página 1 de 7</span>
+              <button class="ok-pager__btn">›</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-wizard__foot">
+          <span class="ok-wizard__foot-meta">PASO 2 / 4 — <span data-text="$selected || 'ningún repo seleccionado'">ningún repo seleccionado</span></span>
+          <div class="ok-wizard__foot-actions">
+            <button class="ok-btn ok-btn--ghost">Atrás</button>
+            <button class="ok-btn ok-btn--primary" data-attr:disabled="$selected === '' ? true : null">Continuar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
+  <nav class="ok-app__tabbar" aria-label="Navegación principal">
+    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
+      <a class="ok-tabbar-item" href="#" aria-current="page">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Inicio</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Hubs</span>
+        <span class="ok-tabbar-badge">7</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Usuarios</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Equipo</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Perfil</span>
+      </a>
+    </div>
+  </nav>
+</div>
+{% endblock %}

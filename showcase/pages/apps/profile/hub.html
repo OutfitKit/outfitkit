@@ -1,0 +1,260 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}Perfil del negocio · Cafetería La Rambla{% endblock %}
+
+{% block page_title %}Perfil (Hub){% endblock %}
+
+{% block content %}
+<div class="ok-app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">CR</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="ok-sidebar__brand-meta">Hub · v0.0.9</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Plataforma</div>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg><span class="ok-sidebar__label">Configuración</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Joan Castell</div>
+          <div class="ok-sidebar__user-meta">joan@larambla.es</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Página</h1>
+        
+        
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <nav class="ok-tabs" aria-label="Sub-secciones de perfil">
+      <a class="ok-tab" href="saas.html">Perfil (SaaS)</a>
+      <a class="ok-tab" href="hub.html" aria-current="page">Perfil (Hub)</a>
+    </nav>
+
+    <div class="ok-app__body">
+
+      <div class="ok-page-header" style="border-bottom:1px solid var(--ok-line);margin-bottom:22px;">
+        <div class="ok-page-header__title">
+          <h1>Perfil del negocio</h1>
+          <div class="ok-page-header__sub">Datos fiscales, contacto y preferencias regionales</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <a class="ok-btn ok-btn--ghost ok-btn--sm" href="index.html">Volver</a>
+        </div>
+      </div>
+
+      <form class="ok-form" data-on:submit="event.preventDefault()" style="max-width:880px;"
+            data-signals='{"profile": {"country": "ES", "currency": "EUR", "logoUrl": ""}}'>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Datos fiscales</h3>
+          <p class="ok-form-section__desc">Aparecen en facturas, tickets y verifactu (AEAT).</p>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Razón social</label>
+              <input class="ok-input" value="Cafetería La Rambla SL"/>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">CIF / NIF</label>
+              <input class="ok-input" value="ES B12345678"/>
+            </div>
+          </div>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label">Régimen fiscal</label>
+              <select class="ok-select">
+                <option selected>General</option>
+                <option>Recargo de equivalencia</option>
+                <option>Exento</option>
+                <option>Módulos</option>
+              </select>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Sub-región</label>
+              <input class="ok-input" value="ES-CT" maxlength="10" placeholder="ej. ES-CT"/>
+              <span class="ok-field__hint">Déjalo en blanco si aplica todo el país.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Dirección</h3>
+          <p class="ok-form-section__desc">Domicilio fiscal y de operación principal.</p>
+
+          <div class="ok-field">
+            <label class="ok-field__label ok-field__label--req">Calle y número</label>
+            <input class="ok-input" value="Calle Major 12"/>
+          </div>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Código postal</label>
+              <input class="ok-input" value="08001"/>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Ciudad</label>
+              <input class="ok-input" value="Barcelona"/>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Provincia</label>
+              <input class="ok-input" value="Barcelona"/>
+            </div>
+          </div>
+
+          <div class="ok-field">
+            <label class="ok-field__label ok-field__label--req">País</label>
+            <select class="ok-select" data-bind="profile.country">
+              <option value="ES" selected>España</option>
+              <option value="PT">Portugal</option>
+              <option value="FR">Francia</option>
+              <option value="IT">Italia</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Contacto</h3>
+          <p class="ok-form-section__desc">Cómo se pondrán en contacto tus clientes y proveedores.</p>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Email de contacto</label>
+              <input class="ok-input" type="email" value="hola@larambla.es"/>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Teléfono</label>
+              <input class="ok-input" type="tel" value="+34 933 456 789"/>
+            </div>
+          </div>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label">Web</label>
+              <input class="ok-input" type="url" value="https://larambla.es"/>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Idioma de la interfaz</label>
+              <select class="ok-select">
+                <option selected>Español (es)</option>
+                <option>Català (ca)</option>
+                <option>English (en)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Identidad visual</h3>
+          <p class="ok-form-section__desc">Logo que aparece en tickets, facturas y la cabecera del Hub.</p>
+
+          <div class="ok-form-row" style="grid-template-columns: 96px 1fr; align-items:center; gap:16px;">
+            <div style="width:96px;height:96px;border-radius:14px;background:var(--ok-bg-3);border:1px solid var(--ok-line);display:grid;place-items:center;color:var(--ok-ink-3);font-family:var(--ok-font-display);font-size:32px;font-weight:600;">CR</div>
+            <div>
+              <label class="ok-dropzone ok-m-0"
+                data-signals='{"drag": false}'
+                data-attr:data-state="$drag ? 'dragging' : ''"
+                data-on:dragover__prevent="$drag = true"
+                data-on:dragleave="$drag = false"
+                data-on:drop__prevent="$drag = false">
+                <input type="file" hidden accept="image/png,image/jpeg,image/svg+xml"/>
+                <span class="ok-dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
+                <div class="ok-dropzone__title">Arrastra o <b>elige el logo</b></div>
+                <div class="ok-dropzone__hint">PNG, JPG o SVG · máximo 2 MB · cuadrado recomendado 512×512</div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Moneda y formato</h3>
+          <p class="ok-form-section__desc">Cómo se muestran los precios en POS y facturas.</p>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label">Moneda</label>
+              <select class="ok-select" data-bind="profile.currency">
+                <option value="EUR" selected>EUR — Euro</option>
+                <option value="USD">USD — Dólar</option>
+                <option value="GBP">GBP — Libra</option>
+              </select>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Zona horaria</label>
+              <select class="ok-select">
+                <option selected>Europe/Madrid (UTC+1)</option>
+                <option>Europe/Lisbon</option>
+                <option>UTC</option>
+              </select>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Formato fecha</label>
+              <select class="ok-select">
+                <option selected>DD/MM/YYYY</option>
+                <option>YYYY-MM-DD</option>
+                <option>MM/DD/YYYY</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Tipo de venta</h3>
+          <div class="ok-toggle-row">
+            <div class="ok-toggle-row__text">
+              <span class="ok-toggle-row__label">Vendo a empresas (B2B)</span>
+              <span class="ok-toggle-row__desc">Emites facturas a otras empresas o profesionales.</span>
+            </div>
+            <label class="ok-toggle"><input type="checkbox" checked/><span class="ok-toggle__track"></span></label>
+          </div>
+          <div class="ok-toggle-row">
+            <div class="ok-toggle-row__text">
+              <span class="ok-toggle-row__label">Vendo a consumidores (B2C)</span>
+              <span class="ok-toggle-row__desc">Tickets a cliente final en POS.</span>
+            </div>
+            <label class="ok-toggle"><input type="checkbox" checked/><span class="ok-toggle__track"></span></label>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;justify-content:flex-end;padding-top:12px;">
+          <a class="ok-btn ok-btn--ghost" href="index.html">Cancelar</a>
+          <button type="submit" class="ok-btn ok-btn--primary">Guardar perfil</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

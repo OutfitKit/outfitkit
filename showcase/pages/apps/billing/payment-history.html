@@ -1,0 +1,592 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}ERPlora Cloud · Historial de pagos{% endblock %}
+
+{% block page_title %}Historial de pagos{% endblock %}
+
+{% block content %}
+<style>
+  body { background: var(--ok-bg); margin: 0; }
+
+  .ph-toolbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+
+  .table-wrap { background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-lg); overflow: hidden; }
+
+  .pay-method-cell { display: inline-flex; align-items: center; gap: 8px; }
+  .pay-method-cell__icon {
+    width: 28px; height: 18px;
+    border-radius: 3px;
+    background: var(--ok-bg-3);
+    border: 1px solid var(--ok-line);
+    display: grid; place-items: center;
+    font-family: var(--ok-font-mono); font-size: 8px;
+    font-weight: 700; color: var(--ok-ink-2); letter-spacing: 0.06em;
+  }
+  .pay-method-cell__icon--visa { background: linear-gradient(135deg, #1a1f71, #2a3593); color: #fff; }
+  .pay-method-cell__icon--mc   { background: linear-gradient(135deg, #b30100, #f9a000); color: #fff; }
+  .pay-method-cell__icon--amex { background: linear-gradient(135deg, #2671b8, #0a2d6e); color: #fff; }
+  .pay-method-cell__icon--sepa { background: var(--ok-info-soft); color: var(--ok-info); }
+
+  .donut-wrap { padding: 18px; background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-lg); }
+  .donut-wrap__title { font-family: var(--ok-font-display); font-size: 15px; font-weight: 600; color: var(--ok-ink); margin: 0 0 14px; }
+</style>
+<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">EX</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
+        <div class="ok-sidebar__brand-meta">Acme Industries</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Principal</div>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="ok-sidebar__label">Equipamiento</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+
+      <div class="ok-sidebar__group">Facturación</div>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="ok-sidebar__label">Facturas</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Suscripciones</span></button>
+      <button class="ok-sidebar__item" aria-current="page"><iconify-icon icon="lucide:credit-card" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Pagos</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Ioan Beilic</div>
+          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Historial de pagos</h1>
+        
+        <div class="ok-topbar__search">
+        <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
+        <input placeholder="Buscar por concepto, ID, importe…"/>
+        <span class="ok-topbar__kbd">⌘K</span>
+      </div>
+        
+        <div class="ok-topbar__actions">
+          <button class="ok-icon-btn ok-relative" aria-label="Carrito">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <span class="ok-qty-badge ok-qty-badge--sm ok-qty-badge--brand ok-qty-badge--floating">3</span>
+        </button>
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        </div>
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <nav class="ok-tabs" aria-label="Sub-secciones de facturación">
+      <a class="ok-tab" href="invoices.html">Facturas</a>
+      <a class="ok-tab" href="subscriptions.html">Suscripciones</a>
+      <a class="ok-tab" href="purchases.html">Compras</a>
+      <a class="ok-tab" href="payment-history.html" aria-current="page">Historial pagos</a>
+      <a class="ok-tab" href="hub.html">Hub</a>
+    </nav>
+
+    <div class="ok-app__body">
+
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Historial de pagos</h1>
+          <div class="ok-page-header__sub">Movimientos de tu cuenta · suscripciones, pedidos y reembolsos</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <button class="ok-btn ok-btn--ghost">
+            <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Exportar CSV
+          </button>
+          <button class="ok-btn ok-btn--secondary">
+            <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            8 abr - 8 may 2026
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI strip -->
+      <div class="ok-grid-4 ok-mb-4">
+        <div class="ok-kpi">
+          <div class="ok-kpi__label">Total pagado</div>
+          <div class="ok-kpi__value">€18 240,50</div>
+          <div class="ok-kpi__delta ok-kpi__delta--up">+€2 286 último pedido</div>
+        </div>
+        <div class="ok-kpi">
+          <div class="ok-kpi__label">Cobros este mes</div>
+          <div class="ok-kpi__value">8</div>
+          <div class="ok-kpi__delta">5 suscrip. · 3 pedidos</div>
+        </div>
+        <div class="ok-kpi">
+          <div class="ok-kpi__label">Métodos usados</div>
+          <div class="ok-kpi__value">3</div>
+          <div class="ok-kpi__delta">VISA · SEPA · Amex</div>
+        </div>
+        <div class="ok-kpi ok-kpi--brand">
+          <div class="ok-kpi__label">Última transacción</div>
+          <div class="ok-kpi__value">hace 12h</div>
+          <div class="ok-kpi__delta">PED-2026-0142 · €2 286</div>
+        </div>
+      </div>
+
+      <!-- Filter chips toolbar -->
+      <div class="ph-toolbar">
+        <div class="ok-toggle-group ok-toggle-group--sm">
+          <button class="ok-toggle-group__option" data-on:click="$status = 'all'" data-class:is-selected="$status === 'all'">Todos <span class="ok-qty-badge ok-qty-badge--xs" style="margin-left:6px;">14</span></button>
+          <button class="ok-toggle-group__option" data-on:click="$status = 'paid'" data-class:is-selected="$status === 'paid'">Cobrados <span class="ok-qty-badge ok-qty-badge--xs ok-qty-badge--leaf" style="margin-left:6px;">11</span></button>
+          <button class="ok-toggle-group__option" data-on:click="$status = 'pending'" data-class:is-selected="$status === 'pending'">Procesando <span class="ok-qty-badge ok-qty-badge--xs ok-qty-badge--warn" style="margin-left:6px;">1</span></button>
+          <button class="ok-toggle-group__option" data-on:click="$status = 'failed'" data-class:is-selected="$status === 'failed'">Fallidos <span class="ok-qty-badge ok-qty-badge--xs ok-qty-badge--danger" style="margin-left:6px;">1</span></button>
+          <button class="ok-toggle-group__option" data-on:click="$status = 'refund'" data-class:is-selected="$status === 'refund'">Reembolsos <span class="ok-qty-badge ok-qty-badge--xs ok-qty-badge--info" style="margin-left:6px;">1</span></button>
+        </div>
+        <div class="ok-flex-1"></div>
+        <div class="ok-search" style="min-width:240px;max-width:280px;">
+          <iconify-icon icon="lucide:search" width="2" height="2"></iconify-icon>
+          <input class="ok-input ok-input--sm" placeholder="Filtrar concepto / ID"/>
+        </div>
+        <select class="ok-select ok-select--sm ok-w-auto">
+          <option>Todos los métodos</option>
+          <option>Visa ••4242</option>
+          <option>SEPA ES12••9012</option>
+          <option>Amex ••1004</option>
+        </select>
+      </div>
+
+      <!-- Datatable -->
+      <div class="table-wrap">
+        <div class="ok-table-scroll">
+          <table class="ok-table">
+            <thead>
+              <tr>
+                <th class="ok-th--sortable" aria-sort="descending">Transaction ID</th>
+                <th class="ok-th--sortable" aria-sort="descending">Fecha</th>
+                <th>Concepto</th>
+                <th>Método</th>
+                <th class="ok-th--sortable ok-text-right">Importe</th>
+                <th>Estado</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <tr>
+                <td class="ok-td--mono">tx_7K2s9aP1Lq</td>
+                <td>8 may · 14:32</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pedido #PED-2026-0142</span>
+                      <span class="ok-cell-rich__sub">5 artículos · TPV Modelo X + accesorios</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••4242</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€2 286,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_3Kp9V2Mn8r</td>
+                <td>6 may · 09:15</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Suscripción acme-prod · mayo</span>
+                      <span class="ok-cell-rich__sub">Plan Business · 12 usuarios</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">ES12••9012</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€489,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_9Lp2q1Vn4x</td>
+                <td>5 may · 18:42</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pedido #PED-2026-0138</span>
+                      <span class="ok-cell-rich__sub">Pack 10 rollos térmicos · ×3</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••4242</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€54,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_2Hk8j3Rq7t</td>
+                <td>3 may · 11:08</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pago variable · uso API</span>
+                      <span class="ok-cell-rich__sub">428 200 calls · abril</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••1004</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€128,40</td>
+                <td><span class="ok-badge ok-badge--warn">Procesando</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_5Vp2K9z7Lw</td>
+                <td>1 may · 06:00</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Suscripción acme-prod · abril</span>
+                      <span class="ok-cell-rich__sub">Plan Business · 11 usuarios</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">ES12••9012</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€448,50</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_8Ww9p2Nx3v</td>
+                <td>28 abr · 22:14</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pedido #PED-2026-0131</span>
+                      <span class="ok-cell-rich__sub">Reembolso · pantalla cliente devuelta</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••4242</span>
+                  </span>
+                </td>
+                <td class="ok-td--num ok-c-info">−€189,00</td>
+                <td><span class="ok-badge ok-badge--info">Reembolsado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_4Hp7q1Mn2k</td>
+                <td>26 abr · 14:55</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pedido #PED-2026-0128</span>
+                      <span class="ok-cell-rich__sub">Brother QL-820NWB · ×2</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••4242</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€680,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_6Yh3p9Lk8w</td>
+                <td>22 abr · 09:31</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Add-on Reporting Pro</span>
+                      <span class="ok-cell-rich__sub">Suscripción mensual</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">ES12••9012</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€39,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_1Lz5w8Pq4j</td>
+                <td>19 abr · 17:08</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pedido #PED-2026-0119</span>
+                      <span class="ok-cell-rich__sub">Caja CR-7 · 3 ud</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••4242</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€1 020,00</td>
+                <td><span class="ok-badge ok-badge--danger">Fallido</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_3Bg7n2Vp1c</td>
+                <td>17 abr · 11:00</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pedido #PED-2026-0117</span>
+                      <span class="ok-cell-rich__sub">Bundle Tienda Básica · ×1</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••1004</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€1 240,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+                </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_7Pq8j2Wq5x</td>
+                <td>14 abr · 06:00</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Add-on Multitienda · marzo</span>
+                      <span class="ok-cell-rich__sub">3 tiendas · ajuste prorrateado</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">ES12••9012</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€87,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_9Tw3p1Vh6m</td>
+                <td>10 abr · 19:48</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Pedido #PED-2026-0106</span>
+                      <span class="ok-cell-rich__sub">Lectores SumUp Air · ×6</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••4242</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€234,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_2Mq6n7Lp4x</td>
+                <td>5 abr · 13:22</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Suscripción acme-stage · marzo</span>
+                      <span class="ok-cell-rich__sub">Plan Pro · entorno staging</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">••1004</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€189,00</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+              <tr>
+                <td class="ok-td--mono">tx_4Ng2k9Vw1p</td>
+                <td>1 abr · 06:00</td>
+                <td>
+                  <div class="ok-cell-rich">
+                    <div class="ok-cell-rich__main">
+                      <span class="ok-cell-rich__title">Suscripción acme-prod · marzo</span>
+                      <span class="ok-cell-rich__sub">Plan Business · 11 usuarios</span>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <span class="pay-method-cell">
+                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="ok-font-mono ok-text-xs ok-c-ink-2">ES12••9012</span>
+                  </span>
+                </td>
+                <td class="ok-td--num">€448,50</td>
+                <td><span class="ok-badge ok-badge--ok">Cobrado</span></td>
+                <td><button class="ok-icon-btn ok-icon-btn--sm" aria-label="Más"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="18" r="1.5"/></svg></button></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table footer with pagination -->
+        <div class="ok-table-footer">
+          <div class="ok-pager__info">Mostrando <b class="ok-c-ink-2">1-14</b> de <b class="ok-c-ink-2">87</b> transacciones</div>
+          <div class="ok-paginator">
+            <button class="ok-paginator__btn" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="ok-paginator__btn" aria-current="page">1</button>
+            <button class="ok-paginator__btn">2</button>
+            <button class="ok-paginator__btn">3</button>
+            <span class="ok-paginator__gap">…</span>
+            <button class="ok-paginator__btn">7</button>
+            <button class="ok-paginator__btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Donut by method -->
+      <section class="donut-wrap" style="margin-top:18px;">
+        <h3 class="donut-wrap__title">Distribución por método de pago</h3>
+        <div class="ok-donut">
+          <svg class="ok-donut__svg" viewBox="0 0 120 120">
+            <circle class="ok-donut__track" cx="60" cy="60" r="48"/>
+            <!-- Visa 64% -->
+            <circle class="ok-donut__slice ok-donut__slice--brand" cx="60" cy="60" r="48"
+                    stroke-dasharray="193 302" stroke-dashoffset="0"/>
+            <!-- SEPA 22% -->
+            <circle class="ok-donut__slice ok-donut__slice--info" cx="60" cy="60" r="48"
+                    stroke-dasharray="66 302" stroke-dashoffset="-193"/>
+            <!-- Amex 14% -->
+            <circle class="ok-donut__slice ok-donut__slice--warn" cx="60" cy="60" r="48"
+                    stroke-dasharray="42 302" stroke-dashoffset="-259"/>
+            <text class="ok-donut__center" x="60" y="58">
+              <tspan class="ok-donut__center-value" x="60" dy="0">€18,2k</tspan>
+              <tspan class="ok-donut__center-label" x="60" dy="14">PAGADO 2026</tspan>
+            </text>
+          </svg>
+          <div class="ok-donut__legend">
+            <div class="ok-donut__legend-row">
+              <span class="ok-donut__legend-dot" style="background:var(--ok-brand);"></span>
+              <span>Visa ••4242</span>
+              <b>64% · €11 674</b>
+            </div>
+            <div class="ok-donut__legend-row">
+              <span class="ok-donut__legend-dot" style="background:var(--ok-info);"></span>
+              <span>SEPA ES12••9012</span>
+              <b>22% · €4 013</b>
+            </div>
+            <div class="ok-donut__legend-row">
+              <span class="ok-donut__legend-dot" style="background:var(--ok-warn);"></span>
+              <span>Amex ••1004</span>
+              <b>14% · €2 553</b>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
+  <nav class="ok-app__tabbar" aria-label="Navegación principal">
+    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
+      <a class="ok-tabbar-item" href="#" aria-current="page">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Inicio</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Hubs</span>
+        <span class="ok-tabbar-badge">7</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Usuarios</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Equipo</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Perfil</span>
+      </a>
+    </div>
+  </nav>
+</div>
+{% endblock %}

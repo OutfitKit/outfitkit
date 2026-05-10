@@ -1,0 +1,538 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}ERPlora Cloud · Checkout{% endblock %}
+{% block page_title %}Saas checkout{% endblock %}
+
+
+
+{% block content %}
+<style>
+  body { background: var(--ok-bg); margin: 0; }
+  .checkout-section { padding: 18px; background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-lg); }
+  .checkout-section + .checkout-section { margin-top: 16px; }
+  .checkout-section__head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .checkout-section__num {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--ok-brand); color: var(--ok-brand-fg);
+    display: grid; place-items: center;
+    font-family: var(--ok-font-mono); font-size: 12px; font-weight: 700;
+  }
+  .checkout-section__title { font-family: var(--ok-font-display); font-size: 16px; font-weight: 600; color: var(--ok-ink); }
+  .checkout-section__sub  { font-size: 12px; color: var(--ok-ink-3); margin-top: 2px; }
+  .checkout-section__body { display: flex; flex-direction: column; gap: 12px; }
+
+  .stepper-wrap { padding: 14px 18px; background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-lg); margin-bottom: 18px; }
+
+  .summary-card { background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-lg); padding: 18px; }
+  .mini-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 12px; }
+  .mini-line { display: grid; grid-template-columns: 36px 1fr auto; gap: 10px; align-items: center; }
+  .mini-line__thumb { width: 36px; height: 36px; border-radius: var(--ok-radius-sm); background: var(--ok-bg-3); display: grid; place-items: center; color: var(--ok-ink-3); font-family: var(--ok-font-mono); font-size: 8px; }
+  .mini-line__name { font-size: 12.5px; color: var(--ok-ink); font-weight: 500; line-height: 1.3; }
+  .mini-line__qty  { font-size: 11px; color: var(--ok-ink-3); }
+  .mini-line__price { font-family: var(--ok-font-mono); font-size: 12.5px; font-weight: 600; color: var(--ok-ink); font-variant-numeric: tabular-nums; }
+  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 13px; color: var(--ok-ink-2); font-variant-numeric: tabular-nums; }
+  .summary-row b { color: var(--ok-ink); font-weight: 500; }
+  .summary-divider { border: none; border-top: 1px dashed var(--ok-line); margin: 10px 0; }
+  .summary-total { display: flex; justify-content: space-between; align-items: baseline; margin: 4px 0 14px; }
+  .summary-total__label { font-size: 13px; color: var(--ok-ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .summary-total__value { font-family: var(--ok-font-display); font-size: 26px; font-weight: 700; color: var(--ok-ink); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+
+  .pay-tabs { display: flex; gap: 4px; padding: 3px; background: var(--ok-bg-3); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-md); }
+  .pay-tabs__tab { flex: 1; height: 36px; border: 0; background: transparent; color: var(--ok-ink-3); font: inherit; font-weight: 500; cursor: pointer; border-radius: var(--ok-radius-sm); display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: 13px; }
+  .pay-tabs__tab.is-selected { background: var(--ok-bg-1); color: var(--ok-ink); box-shadow: 0 1px 0 rgba(0,0,0,0.4), inset 0 0 0 1px var(--ok-line); }
+
+  .new-addr-form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 10px; border-top: 1px dashed var(--ok-line); }
+  .new-addr-form__full { grid-column: 1 / -1; }
+
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+</style>
+
+<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">EX</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
+        <div class="ok-sidebar__brand-meta">Acme Industries</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Principal</div>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="ok-sidebar__label">Equipamiento</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+
+      <div class="ok-sidebar__group">Facturación</div>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="ok-sidebar__label">Facturas</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Suscripciones</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:credit-card" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Pagos</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Ioan Beilic</div>
+          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Checkout</h1>
+        
+        <div class="ok-topbar__search">
+        <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
+        <input placeholder="Buscar…"/>
+        <span class="ok-topbar__kbd">⌘K</span>
+      </div>
+        
+        <div class="ok-topbar__actions">
+          <button class="ok-icon-btn ok-relative" aria-label="Carrito">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <span class="ok-qty-badge ok-qty-badge--sm ok-qty-badge--brand ok-qty-badge--floating">5</span>
+        </button>
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        </div>
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <nav class="ok-tabs" aria-label="Sub-secciones del marketplace SaaS">
+      <a class="ok-tab" href="saas-shop.html">Tienda</a>
+      <a class="ok-tab" href="saas-cart.html">Carrito</a>
+      <a class="ok-tab" href="saas-checkout.html" aria-current="page">Checkout</a>
+      <a class="ok-tab" href="saas-success.html">Confirmación</a>
+    </nav>
+
+    <div class="ok-app__body">
+
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Checkout</h1>
+          <div class="ok-page-header__sub">Confirma envío y pago para finalizar el pedido · Total €2 286</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <span class="ok-tag ok-tag--brand">Paso 2 de 3</span>
+          <button class="ok-btn ok-btn--ghost">
+            <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+            Volver al carrito
+          </button>
+        </div>
+      </div>
+
+      <!-- Stepper progress -->
+      <div class="stepper-wrap">
+        <div class="ok-stepper">
+          <div class="ok-stepper__step" data-state="done">
+            <div class="ok-stepper__bullet"><span>1</span></div>
+            <div class="ok-stepper__label"><span class="ok-stepper__title">Carrito</span><span class="ok-stepper__sub">5 artículos</span></div>
+          </div>
+          <div class="ok-stepper__step" data-state="active">
+            <div class="ok-stepper__bullet"><span>2</span></div>
+            <div class="ok-stepper__label"><span class="ok-stepper__title">Envío y pago</span><span class="ok-stepper__sub">En curso</span></div>
+          </div>
+          <div class="ok-stepper__step">
+            <div class="ok-stepper__bullet"><span>3</span></div>
+            <div class="ok-stepper__label"><span class="ok-stepper__title">Confirmación</span><span class="ok-stepper__sub">Pedido listo</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ok-row">
+
+        <main class="ok-col-md-7 ok-col-lg-8">
+
+          <!-- Dirección de envío -->
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <div class="checkout-section__num">1</div>
+              <div>
+                <div class="checkout-section__title">Dirección de envío</div>
+                <div class="checkout-section__sub">Selecciona dónde quieres recibir el pedido</div>
+              </div>
+            </div>
+            <div class="checkout-section__body">
+
+              <label class="ok-radio-card">
+                <input type="radio" name="addr" data-on:change="$addr = 'home'; $addNew = false" checked/>
+                <div>
+                  <div class="ok-radio-card__title">Oficina · Madrid <span class="ok-tag ok-tag--brand ok-tag--xs" style="margin-left:6px;">Predeterminada</span></div>
+                  <div class="ok-radio-card__desc">Calle Velázquez 47, 4º izq · 28001 Madrid · España · +34 911 23 45 67</div>
+                </div>
+              </label>
+
+              <label class="ok-radio-card">
+                <input type="radio" name="addr" data-on:change="$addr = 'wh'; $addNew = false"/>
+                <div>
+                  <div class="ok-radio-card__title">Almacén · Getafe</div>
+                  <div class="ok-radio-card__desc">Polígono Los Olivos, Nave 12 · 28906 Getafe (Madrid) · +34 916 88 22 11</div>
+                </div>
+              </label>
+
+              <label class="ok-radio-card">
+                <input type="radio" name="addr" data-on:change="$addr = 'shop'; $addNew = false"/>
+                <div>
+                  <div class="ok-radio-card__title">Tienda Barcelona</div>
+                  <div class="ok-radio-card__desc">Av. Diagonal 412, local 3 · 08037 Barcelona · +34 931 12 34 56</div>
+                </div>
+              </label>
+
+              <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$addNew = !$addNew" data-attr:aria-expanded="$addNew" style="align-self:flex-start;">
+                <iconify-icon icon="lucide:plus" width="2" height="2"></iconify-icon>
+                Añadir nueva dirección
+              </button>
+
+              <div class="new-addr-form" data-show="$addNew">
+                <div class="ok-field new-addr-form__full">
+                  <span class="ok-field__label">País</span>
+                  <div class="ok-phone" style="width:auto;max-width:280px;">
+                    <button type="button" class="ok-phone__country">
+                      <span class="ok-phone__flag">🇪🇸</span>
+                      <span>España</span>
+                    </button>
+                    <input class="ok-phone__input" placeholder="—" disabled/>
+                  </div>
+                </div>
+                <div class="ok-field new-addr-form__full">
+                  <span class="ok-field__label">Dirección</span>
+                  <input class="ok-input" placeholder="Calle, número, piso"/>
+                </div>
+                <div class="ok-field">
+                  <span class="ok-field__label">Ciudad</span>
+                  <input class="ok-input" placeholder="Madrid"/>
+                </div>
+                <div class="ok-field">
+                  <span class="ok-field__label">Código postal</span>
+                  <input class="ok-input" placeholder="28001"/>
+                </div>
+                <div class="ok-field new-addr-form__full">
+                  <span class="ok-field__label">Provincia</span>
+                  <select class="ok-select">
+                    <option>Madrid</option>
+                    <option>Barcelona</option>
+                    <option>Valencia</option>
+                    <option>Sevilla</option>
+                    <option>Bilbao</option>
+                  </select>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Datos de contacto -->
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <div class="checkout-section__num">2</div>
+              <div>
+                <div class="checkout-section__title">Datos de contacto</div>
+                <div class="checkout-section__sub">Para avisos de envío y soporte</div>
+              </div>
+            </div>
+            <div class="checkout-section__body">
+              <div class="form-row-2">
+                <div class="ok-field">
+                  <span class="ok-field__label">Nombre</span>
+                  <input class="ok-input" value="Ioan Beilic"/>
+                </div>
+                <div class="ok-field">
+                  <span class="ok-field__label">Email</span>
+                  <input class="ok-input" value="ioan@acme.com" readonly style="opacity:0.75;"/>
+                </div>
+              </div>
+              <div class="ok-field">
+                <span class="ok-field__label">Teléfono</span>
+                <div class="ok-phone" style="max-width:360px;">
+                  <button type="button" class="ok-phone__country">
+                    <span class="ok-phone__flag">🇪🇸</span>
+                    <span class="ok-phone__dial">+34</span>
+                  </button>
+                  <input class="ok-phone__input" placeholder="611 22 33 44" value="611 22 33 44"/>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Método de envío -->
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <div class="checkout-section__num">3</div>
+              <div>
+                <div class="checkout-section__title">Método de envío</div>
+                <div class="checkout-section__sub">Tiempos estimados desde el día siguiente al pago</div>
+              </div>
+            </div>
+            <div class="checkout-section__body">
+              <label class="ok-radio-card">
+                <input type="radio" name="ship" data-on:change="$ship = 'std'" checked/>
+                <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+                  <div>
+                    <div class="ok-radio-card__title">Estándar · 3-5 días laborables</div>
+                    <div class="ok-radio-card__desc">SEUR · Entregas península · Seguimiento en tiempo real</div>
+                  </div>
+                  <span class="ok-tag ok-tag--leaf">Gratis</span>
+                </div>
+              </label>
+              <label class="ok-radio-card">
+                <input type="radio" name="ship" data-on:change="$ship = 'exp'"/>
+                <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+                  <div>
+                    <div class="ok-radio-card__title">Express · 24h</div>
+                    <div class="ok-radio-card__desc">UPS · Pedidos antes de 14:00 llegan al día siguiente</div>
+                  </div>
+                  <span style="font-family:var(--ok-font-mono);font-weight:600;color:var(--ok-ink);">€12</span>
+                </div>
+              </label>
+              <label class="ok-radio-card">
+                <input type="radio" name="ship" data-on:change="$ship = 'pickup'"/>
+                <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
+                  <div>
+                    <div class="ok-radio-card__title">Recoger en tienda · Madrid</div>
+                    <div class="ok-radio-card__desc">Velázquez 47 · Mañana 12 may a partir de 11:00</div>
+                  </div>
+                  <span class="ok-tag ok-tag--info">Gratis</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Método de pago -->
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <div class="checkout-section__num">4</div>
+              <div>
+                <div class="checkout-section__title">Método de pago</div>
+                <div class="checkout-section__sub">Procesado de forma segura por Stripe</div>
+              </div>
+            </div>
+            <div class="checkout-section__body">
+
+              <div class="pay-tabs">
+                <button class="pay-tabs__tab" data-on:click="$payMethod = 'card'" data-class:is-selected="$payMethod === 'card'">
+                  <iconify-icon icon="lucide:credit-card" width="14" height="14"></iconify-icon>
+                  Tarjeta
+                </button>
+                <button class="pay-tabs__tab" data-on:click="$payMethod = 'sepa'" data-class:is-selected="$payMethod === 'sepa'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10v9M21 10v9M3 10l9-7 9 7"/></svg>
+                  SEPA
+                </button>
+                <button class="pay-tabs__tab" data-on:click="$payMethod = 'apay'" data-class:is-selected="$payMethod === 'apay'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1H7a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4z"/></svg>
+                  Apple Pay
+                </button>
+                <button class="pay-tabs__tab" data-on:click="$payMethod = 'bank'" data-class:is-selected="$payMethod === 'bank'">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+                  Transferencia
+                </button>
+              </div>
+
+              <!-- Tarjeta -->
+              <div data-show="$payMethod === 'card'" class="ok-flex ok-col ok-gap-3">
+                <div class="ok-field">
+                  <span class="ok-field__label">Número de tarjeta</span>
+                  <div class="ok-input-group ok-input-group--with-right">
+                    <input class="ok-input" placeholder="4242 4242 4242 4242" inputmode="numeric"/>
+                    <span class="ok-input-group__icon ok-input-group__icon--right" style="font-family:var(--ok-font-mono);font-weight:700;color:var(--ok-ink-2);font-size:11px;letter-spacing:0.06em;">VISA</span>
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="ok-field">
+                    <span class="ok-field__label">Caducidad</span>
+                    <input class="ok-input" placeholder="MM / AA" inputmode="numeric"/>
+                  </div>
+                  <div class="ok-field">
+                    <span class="ok-field__label">CVC</span>
+                    <input class="ok-input" placeholder="123" inputmode="numeric" maxlength="4"/>
+                  </div>
+                </div>
+                <div class="ok-field">
+                  <span class="ok-field__label">Titular</span>
+                  <input class="ok-input" placeholder="Como aparece en la tarjeta" value="IOAN BEILIC"/>
+                </div>
+              </div>
+
+              <!-- SEPA -->
+              <div data-show="$payMethod === 'sepa'" style="display:none;flex-direction:column;gap:12px;">
+                <div class="ok-field">
+                  <span class="ok-field__label">IBAN</span>
+                  <input class="ok-input" placeholder="ES12 3456 7890 1234 5678 9012"/>
+                </div>
+                <div class="ok-field">
+                  <span class="ok-field__label">Titular de la cuenta</span>
+                  <input class="ok-input" placeholder="Acme Industries SL"/>
+                </div>
+                <div class="ok-callout ok-callout--info ok-callout--compact">
+                  <div class="ok-callout__icon"><iconify-icon icon="lucide:info" width="2" height="2"></iconify-icon></div>
+                  <div class="ok-callout__body">El cobro se realizará por SEPA Direct Debit. Tarda hasta 3 días hábiles en procesarse.</div>
+                </div>
+              </div>
+
+              <!-- Apple Pay -->
+              <div data-show="$payMethod === 'apay'" style="display:none;flex-direction:column;gap:12px;">
+                <div class="ok-callout ok-callout--brand ok-callout--compact">
+                  <div class="ok-callout__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 1H7a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4z"/></svg></div>
+                  <div class="ok-callout__body">Confirma con Touch ID / Face ID al pulsar el botón final.</div>
+                </div>
+              </div>
+
+              <!-- Transferencia -->
+              <div data-show="$payMethod === 'bank'" style="display:none;flex-direction:column;gap:12px;">
+                <div class="ok-callout ok-callout--warn ok-callout--compact">
+                  <div class="ok-callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4M12 17h.01"/></svg></div>
+                  <div class="ok-callout__body">El pedido se reservará 5 días hábiles. Recibirás los datos bancarios por email.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Notas -->
+          <div class="checkout-section">
+            <div class="checkout-section__head">
+              <div class="checkout-section__num">5</div>
+              <div>
+                <div class="checkout-section__title">Notas para el envío</div>
+                <div class="checkout-section__sub">Opcional · indicaciones para el repartidor</div>
+              </div>
+            </div>
+            <div class="checkout-section__body">
+              <textarea class="ok-textarea" rows="3" placeholder="Por ejemplo: 'Llamar al telefonillo de Acme · piso 4 izq'."></textarea>
+
+              <div class="ok-toggle-row" style="border:1px solid var(--ok-line);border-radius:var(--ok-radius-md);padding:10px 12px;">
+                <div class="ok-toggle-row__text">
+                  <span class="ok-toggle-row__label">Guardar dirección para próximas compras</span>
+                  <span class="ok-toggle-row__desc">Aparecerá automáticamente en el siguiente checkout</span>
+                </div>
+                <label class="ok-toggle">
+                  <input type="checkbox" checked/>
+                  <span class="ok-toggle__track"></span>
+                </label>
+              </div>
+
+              <label class="ok-check ok-check-row" style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ok-ink-2);">
+                <input type="checkbox" data-bind:terms style="margin-top:3px;"/>
+                <span>Acepto los <a href="#" class="ok-c-brand-3">términos y condiciones</a> y la <a href="#" class="ok-c-brand-3">política de privacidad</a>. Confirmo que los datos son correctos. <span class="ok-c-danger">*</span></span>
+              </label>
+            </div>
+          </div>
+
+        </main>
+
+        <!-- Sticky summary -->
+        <aside class="ok-col-md-5 ok-col-lg-4 ok-col-sticky">
+          <div class="summary-card">
+            <h3 style="margin:0 0 12px;font-family:var(--ok-font-display);font-size:16px;font-weight:600;color:var(--ok-ink);">Resumen del pedido</h3>
+
+            <div class="mini-list">
+              <div class="mini-line">
+                <div class="mini-line__thumb">[TPV]</div>
+                <div><div class="mini-line__name">Terminal POS Modelo X Pro</div><div class="mini-line__qty">2 ud · €890</div></div>
+                <div class="mini-line__price">€1 780</div>
+              </div>
+              <div class="mini-line">
+                <div class="mini-line__thumb">[Air]</div>
+                <div><div class="mini-line__name">Lector SumUp Air</div><div class="mini-line__qty">1 ud · €39</div></div>
+                <div class="mini-line__price">€39</div>
+              </div>
+              <div class="mini-line">
+                <div class="mini-line__thumb">[Star]</div>
+                <div><div class="mini-line__name">Impresora Star TSP143</div><div class="mini-line__qty">1 ud · €229</div></div>
+                <div class="mini-line__price">€229</div>
+              </div>
+              <div class="mini-line">
+                <div class="mini-line__thumb">[Acc]</div>
+                <div><div class="mini-line__name">Bundle accesorios POS</div><div class="mini-line__qty">1 ud · €85</div></div>
+                <div class="mini-line__price">€85</div>
+              </div>
+              <div class="mini-line">
+                <div class="mini-line__thumb">[Sop]</div>
+                <div><div class="mini-line__name">Soporte tablet metálico</div><div class="mini-line__qty">1 ud · €89</div></div>
+                <div class="mini-line__price">€89</div>
+              </div>
+            </div>
+
+            <hr class="summary-divider"/>
+
+            <div class="summary-row"><span>Subtotal</span><b>€2 222</b></div>
+            <div class="summary-row"><span>IVA 21%</span><b>€467</b></div>
+            <div class="summary-row">
+              <span>Envío</span>
+              <span class="ok-tag ok-tag--leaf ok-tag--sm">Gratis</span>
+            </div>
+            <div class="summary-row"><span>Descuento (BUNDLE10)</span><b class="ok-c-leaf">−€403</b></div>
+
+            <hr class="summary-divider"/>
+
+            <div class="summary-total">
+              <span class="summary-total__label">Total</span>
+              <span class="summary-total__value">€2 286</span>
+            </div>
+
+            <button class="ok-btn ok-btn--primary ok-btn--lg ok-btn--block" data-attr:disabled="!$terms" data-class:ok-btn--disabled="!$terms">
+              Confirmar pedido (€2 286)
+              <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </button>
+
+            <div style="margin-top:10px;font-size:11.5px;color:var(--ok-ink-3);display:flex;gap:6px;align-items:center;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ok-leaf)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Pago seguro · Cifrado TLS · 30 días devolución
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
+  <nav class="ok-app__tabbar" aria-label="Navegación principal">
+    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
+      <a class="ok-tabbar-item" href="#" aria-current="page">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Inicio</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Hubs</span>
+        <span class="ok-tabbar-badge">7</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Usuarios</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Equipo</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Perfil</span>
+      </a>
+    </div>
+  </nav>
+</div>
+{% endblock %}

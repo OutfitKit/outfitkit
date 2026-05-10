@@ -1,0 +1,175 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}Hub · Añadir empleado{% endblock %}
+
+{% block page_title %}Nuevo empleado{% endblock %}
+
+{% block content %}
+<div class="ok-app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">LR</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="ok-sidebar__brand-meta">5 empleados</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Inicio</span></a>
+      <a class="ok-sidebar__item" aria-current="page" href="./employees-list.html"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="ok-sidebar__label">Empleados</span></a>
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:shield" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Roles</span></a>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Página</h1>
+        
+        
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <div class="ok-app__body">
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Añadir empleado</h1>
+          <div class="ok-page-header__sub">Crea una cuenta con PIN para que el equipo entre al Hub</div>
+        </div>
+        <div class="ok-page-header__actions">
+          <a class="ok-btn ok-btn--ghost ok-btn--sm" href="./employees-list.html">Cancelar</a>
+          <button class="ok-btn ok-btn--primary ok-btn--sm" form="emp-add">Crear empleado</button>
+        </div>
+      </div>
+
+      <form class="ok-form" id="emp-add" data-on:submit="event.preventDefault()" style="max-width:760px;">
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Información personal</h3>
+          <p class="ok-form-section__desc">Datos visibles para el equipo y registros internos.</p>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Nombre completo</label>
+              <input class="ok-input" placeholder="Joan Castell" autofocus/>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Email</label>
+              <input class="ok-input" type="email" placeholder="joan@larambla.es"/>
+              <span class="ok-field__hint">Se usará para iniciar sesión y recibir códigos de verificación.</span>
+            </div>
+          </div>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label">Foto de perfil</label>
+              <div class="ok-flex ok-items-center ok-gap-3">
+                <span class="ok-avatar ok-avatar--lg">+</span>
+                <label class="ok-btn ok-btn--secondary ok-btn--sm">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  Subir foto
+                  <input type="file" accept="image/*" hidden/>
+                </label>
+              </div>
+              <span class="ok-field__hint">JPG o PNG · max 2 MB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Acceso al Hub</h3>
+          <p class="ok-form-section__desc">PIN de 4 cifras para acceso rápido en TPV y dispositivos del local.</p>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">PIN inicial</label>
+              <input class="ok-input" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="••••"/>
+              <span class="ok-field__hint">El empleado podrá cambiarlo desde su perfil.</span>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Idioma de la interfaz</label>
+              <select class="ok-select">
+                <option>Català</option>
+                <option selected>Español</option>
+                <option>English</option>
+                <option>Galego</option>
+                <option>Euskara</option>
+                <option>Português</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Rol y permisos</h3>
+          <p class="ok-form-section__desc">El rol determina qué módulos y acciones puede ejecutar.</p>
+
+          <div class="ok-row">
+            <label class="ok-radio-card ok-col-md-6">
+              <input type="radio" name="role"/>
+              <span class="ok-radio__dot ok-mt-1"></span>
+              <div>
+                <div class="ok-radio-card__title">Admin</div>
+                <div class="ok-radio-card__desc">Acceso total al Hub, módulos, facturación y empleados.</div>
+              </div>
+            </label>
+            <label class="ok-radio-card ok-col-md-6">
+              <input type="radio" name="role" checked/>
+              <span class="ok-radio__dot ok-mt-1"></span>
+              <div>
+                <div class="ok-radio-card__title">Manager</div>
+                <div class="ok-radio-card__desc">Ventas, inventario, empleados (sin facturación ni configuración crítica).</div>
+              </div>
+            </label>
+            <label class="ok-radio-card ok-col-md-6">
+              <input type="radio" name="role"/>
+              <span class="ok-radio__dot ok-mt-1"></span>
+              <div>
+                <div class="ok-radio-card__title">Cajero</div>
+                <div class="ok-radio-card__desc">POS, tickets y caja. Sin acceso a costes ni stock.</div>
+              </div>
+            </label>
+            <label class="ok-radio-card ok-col-md-6">
+              <input type="radio" name="role"/>
+              <span class="ok-radio__dot ok-mt-1"></span>
+              <div>
+                <div class="ok-radio-card__title">Cocinero</div>
+                <div class="ok-radio-card__desc">Solo KDS y comandas. Sin acceso a precios ni clientes.</div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="ok-form-actions" style="display:flex;gap:8px;justify-content:flex-end;padding-top:6px;">
+          <a class="ok-btn ok-btn--ghost" href="./employees-list.html">Cancelar</a>
+          <button class="ok-btn ok-btn--primary" type="submit">Crear empleado</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/></svg></span><span class="ok-tabbar-label">Inicio</span></a>
+    <a class="ok-tabbar-item" aria-current="page" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span><span class="ok-tabbar-label">Empleados</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="ok-tabbar-label">Facturas</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  </nav>
+</div>
+{% endblock %}

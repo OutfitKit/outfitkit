@@ -1,0 +1,375 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}ERPlora Cloud · Factura INV-2026-0142{% endblock %}
+
+{% block page_title %}Detalle de factura{% endblock %}
+
+{% block content %}
+<style>
+  body { background: var(--ok-bg); margin: 0; }
+  .invoice-layout { display: grid; grid-template-columns: 1fr 320px; gap: 22px; }
+  @media (max-width: 1100px) { .invoice-layout { grid-template-columns: 1fr; } }
+  .meta-card { background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-xl); padding: 16px 18px; display: flex; flex-direction: column; gap: 14px; }
+  .meta-card h4 { font-family: var(--ok-font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ok-ink-3); margin: 0; font-weight: 500; }
+  .meta-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; font-size: 12.5px; padding: 4px 0; border-bottom: 1px solid var(--ok-line); }
+  .meta-row:last-child { border-bottom: none; }
+  .meta-row__key { color: var(--ok-ink-3); }
+  .meta-row__val { color: var(--ok-ink); font-variant-numeric: tabular-nums; }
+  .meta-row__val--mono { font-family: var(--ok-font-mono); font-size: 11.5px; }
+</style>
+<div class="ok-app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">EX</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
+        <div class="ok-sidebar__brand-meta">Acme Industries SL</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <div class="ok-sidebar__group">Cuenta</div>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">5</span></button>
+
+      <div class="ok-sidebar__group">Facturación</div>
+      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg><span class="ok-sidebar__label">Facturas</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg><span class="ok-sidebar__label">Suscripciones</span><span class="ok-sidebar__badge">5</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h2"/></svg><span class="ok-sidebar__label">Métodos de pago</span></button>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-4V3H8v4H4l8 9 8-9z"/><path d="M4 19h16"/></svg><span class="ok-sidebar__label">Mis compras</span></button>
+
+      <div class="ok-sidebar__group">Vendor</div>
+      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-7"/></svg><span class="ok-sidebar__label">Vendor Dashboard</span></button>
+      <button class="ok-sidebar__item"><iconify-icon icon="lucide:clock" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Ingresos</span></button>
+    </div>
+    <div class="ok-sidebar__footer">
+      <div class="ok-sidebar__user">
+        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="ok-sidebar__user-info">
+          <div class="ok-sidebar__user-name">Ioan Beilic</div>
+          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Factura INV-2026-0142</h1>
+        
+        <div class="ok-topbar__search">
+        <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
+        <input placeholder="Buscar…"/>
+        <span class="ok-topbar__kbd">⌘K</span>
+      </div>
+        
+        <div class="ok-topbar__actions">
+          <button class="ok-icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
+        </div>
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <div class="ok-app__body">
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <h1>Factura INV-2026-0142</h1>
+          <div class="ok-page-header__sub ok-flex ok-items-center ok-gap-2">
+            <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagada · 12 mar 2026</span>
+            <span>·</span>
+            <span>Acme Industries SL</span>
+          </div>
+        </div>
+        <div class="ok-page-header__actions">
+          <button class="ok-btn ok-btn--outline ok-btn--sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Imprimir
+          </button>
+          <button class="ok-btn ok-btn--outline ok-btn--sm">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+            Reenviar email
+          </button>
+          <button class="ok-btn ok-btn--primary ok-btn--sm">
+            <iconify-icon icon="lucide:download" width="14" height="14"></iconify-icon>
+            Descargar PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="invoice-layout">
+        <!-- Invoice document -->
+        <div>
+          <article class="ok-invoice">
+            <header class="ok-invoice__head">
+              <div>
+                <div class="ok-invoice__logo">ERPlora SL</div>
+                <div class="ok-invoice__from">
+                  CIF B-87 654 321<br/>
+                  C/ Gran Via 28, 4ª planta<br/>
+                  08010 Barcelona · España<br/>
+                  facturacion@erplora.com
+                </div>
+              </div>
+              <div>
+                <div class="ok-invoice__title">FACTURA</div>
+                <div class="ok-invoice__meta">
+                  <div class="ok-invoice__meta-row"><span>Nº</span><b>INV-2026-0142</b></div>
+                  <div class="ok-invoice__meta-row"><span>Emisión</span><b>12/03/2026</b></div>
+                  <div class="ok-invoice__meta-row"><span>Vencimiento</span><b>26/03/2026</b></div>
+                  <div class="ok-invoice__meta-row"><span>Periodo</span><b>Marzo 2026</b></div>
+                </div>
+              </div>
+            </header>
+
+            <div class="ok-invoice__bill">
+              <div>
+                <h4>Facturar a</h4>
+                <div class="ok-invoice__bill-name">Acme Industries SL</div>
+                <div class="ok-invoice__bill-info">
+                  CIF B-12 345 678<br/>
+                  Polígono Las Salinas, nave 14<br/>
+                  03007 Alicante · España<br/>
+                  cuentas@acme-industries.com
+                </div>
+              </div>
+              <div>
+                <h4>Forma de pago</h4>
+                <div class="ok-invoice__bill-name">Stripe · Visa **** 4242</div>
+                <div class="ok-invoice__bill-info">
+                  Cargo automático realizado<br/>
+                  Ref. transacción: ch_3PqW1kK8s · 12/03 12:04<br/>
+                  Próxima domiciliación: 12/04/2026
+                </div>
+              </div>
+            </div>
+
+            <table class="ok-invoice__lines">
+              <thead>
+                <tr>
+                  <th style="width: 50%;">Concepto</th>
+                  <th>Cant.</th>
+                  <th>Precio uds.</th>
+                  <th>Importe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Plan Business · acme-prod · marzo 2026<small>Suscripción mensual incluyendo 5 hubs y soporte estándar</small></td>
+                  <td>1</td>
+                  <td>890,00 €</td>
+                  <td>890,00 €</td>
+                </tr>
+                <tr>
+                  <td>Terminal extra POS<small>Modelo X · 2 unidades adicionales</small></td>
+                  <td>2</td>
+                  <td>410,00 €</td>
+                  <td>820,00 €</td>
+                </tr>
+                <tr>
+                  <td>Soporte premium<small>8 horas de consultoría · marzo 2026</small></td>
+                  <td>8</td>
+                  <td>80,00 €</td>
+                  <td>640,00 €</td>
+                </tr>
+                <tr>
+                  <td>Migración módulo contabilidad<small>Servicio profesional · proyecto cerrado</small></td>
+                  <td>1</td>
+                  <td>1 240,00 €</td>
+                  <td>1 240,00 €</td>
+                </tr>
+                <tr>
+                  <td>Almacenamiento extra 50 GB<small>Add-on mensual · marzo 2026</small></td>
+                  <td>1</td>
+                  <td>45,00 €</td>
+                  <td>45,00 €</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="ok-invoice__totals">
+              <div class="ok-invoice__notes">
+                <h5>Notas</h5>
+                Pago automático procesado mediante Stripe el 12/03/2026 a las 12:04 CET.
+                IVA general 21% aplicado conforme a la Ley 37/1992.
+                Para cualquier consulta sobre esta factura escríbenos a
+                <b class="ok-c-brand-3">facturacion@erplora.com</b> indicando el número.
+              </div>
+              <div class="ok-invoice__sum">
+                <div class="ok-invoice__sum-row"><span>Subtotal</span><span>3 635,00 €</span></div>
+                <div class="ok-invoice__sum-row"><span>Descuento socio (−5%)</span><span>−181,75 €</span></div>
+                <div class="ok-invoice__sum-row"><span>Base imponible</span><span>3 453,25 €</span></div>
+                <div class="ok-invoice__sum-row"><span>IVA 21%</span><span>725,18 €</span></div>
+                <div class="ok-invoice__sum-total"><span>Total</span><span>4 178,43 €</span></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Timeline -->
+          <section class="ok-section" style="margin-top: 22px;">
+            <div class="ok-section__head">
+              <div>
+                <div class="ok-section__title">Historial de eventos</div>
+                <div class="ok-section__sub">Auditoría completa de la factura</div>
+              </div>
+            </div>
+
+            <div class="ok-card" style="padding: 20px 22px;">
+              <div class="ok-timeline">
+                <div class="ok-timeline__item">
+                  <div class="ok-timeline__dot ok-timeline__dot--brand"><iconify-icon icon="lucide:file-text" width="2" height="2"></iconify-icon></div>
+                  <div class="ok-timeline__body">
+                    <div class="ok-timeline__head">
+                      <div class="ok-timeline__title">Factura <strong>emitida</strong> por sistema</div>
+                      <div class="ok-timeline__time">12/03/2026 · 12:00</div>
+                    </div>
+                    <p class="ok-timeline__desc">Generada automáticamente al renovarse la suscripción Business · acme-prod.</p>
+                  </div>
+                </div>
+                <div class="ok-timeline__item">
+                  <div class="ok-timeline__dot ok-timeline__dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg></div>
+                  <div class="ok-timeline__body">
+                    <div class="ok-timeline__head">
+                      <div class="ok-timeline__title">Email enviado a <strong>cuentas@acme-industries.com</strong></div>
+                      <div class="ok-timeline__time">12/03/2026 · 12:01</div>
+                    </div>
+                    <p class="ok-timeline__desc">Asunto: «Tu factura ERPlora · marzo 2026 (4 178,43 €)».</p>
+                  </div>
+                </div>
+                <div class="ok-timeline__item">
+                  <div class="ok-timeline__dot"><iconify-icon icon="lucide:eye" width="2" height="2"></iconify-icon></div>
+                  <div class="ok-timeline__body">
+                    <div class="ok-timeline__head">
+                      <div class="ok-timeline__title">Factura <strong>vista</strong> por <strong>Ioan Beilic</strong></div>
+                      <div class="ok-timeline__time">12/03/2026 · 12:03</div>
+                    </div>
+                    <p class="ok-timeline__desc">Apertura desde IP 81.14.22.10 · Madrid · navegador Safari.</p>
+                  </div>
+                </div>
+                <div class="ok-timeline__item">
+                  <div class="ok-timeline__dot ok-timeline__dot--leaf"><iconify-icon icon="lucide:check" width="2" height="2"></iconify-icon></div>
+                  <div class="ok-timeline__body">
+                    <div class="ok-timeline__head">
+                      <div class="ok-timeline__title"><strong>Pagada</strong> vía Stripe · Visa **** 4242</div>
+                      <div class="ok-timeline__time">12/03/2026 · 12:04</div>
+                    </div>
+                    <p class="ok-timeline__desc">Cargo automático de 4 178,43 € procesado correctamente. Ref. ch_3PqW1kK8sJxYz.</p>
+                  </div>
+                </div>
+                <div class="ok-timeline__item">
+                  <div class="ok-timeline__dot ok-timeline__dot--leaf"><iconify-icon icon="lucide:download" width="2" height="2"></iconify-icon></div>
+                  <div class="ok-timeline__body">
+                    <div class="ok-timeline__head">
+                      <div class="ok-timeline__title">Recibo enviado a <strong>cuentas@acme-industries.com</strong></div>
+                      <div class="ok-timeline__time">12/03/2026 · 12:05</div>
+                    </div>
+                    <p class="ok-timeline__desc">PDF del recibo adjunto · sello digital QES verificable.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Right column · metadata -->
+        <aside class="ok-flex ok-col ok-gap-4">
+          <div class="meta-card">
+            <h4>Pago</h4>
+            <div class="meta-row"><span class="meta-row__key">Estado</span><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagada</span></div>
+            <div class="meta-row"><span class="meta-row__key">Método</span><span class="meta-row__val">Stripe · Visa **** 4242</span></div>
+            <div class="meta-row"><span class="meta-row__key">Cargo</span><span class="meta-row__val">12 mar 2026 · 12:04</span></div>
+            <div class="meta-row"><span class="meta-row__key">Ref. transacción</span><span class="meta-row__val meta-row__val--mono">ch_3PqW1kK8s</span></div>
+            <div class="meta-row"><span class="meta-row__key">Total</span><span class="meta-row__val" style="font-weight: 600; font-size: 14px;">4 178,43 €</span></div>
+          </div>
+
+          <div class="meta-card">
+            <h4>Documentos</h4>
+            <button class="ok-btn ok-btn--outline ok-btn--block ok-btn--sm ok-justify-start">
+              <iconify-icon icon="lucide:file-text" width="14" height="14"></iconify-icon>
+              Factura PDF
+              <span style="margin-left: auto; font-size: 11px; color: var(--ok-ink-3);">214 KB</span>
+            </button>
+            <button class="ok-btn ok-btn--outline ok-btn--block ok-btn--sm ok-justify-start">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
+              Recibo PDF
+              <span style="margin-left: auto; font-size: 11px; color: var(--ok-ink-3);">89 KB</span>
+            </button>
+            <button class="ok-btn ok-btn--outline ok-btn--block ok-btn--sm ok-justify-start">
+              <iconify-icon icon="lucide:code" width="14" height="14"></iconify-icon>
+              Factura XML (Facturae)
+              <span style="margin-left: auto; font-size: 11px; color: var(--ok-ink-3);">12 KB</span>
+            </button>
+          </div>
+
+          <div class="meta-card">
+            <h4>Cliente</h4>
+            <div style="display: flex; gap: 10px; align-items: center;">
+              <span class="ok-avatar ok-avatar--lg ok-avatar--brand">AC</span>
+              <div>
+                <div style="font-weight: 600; font-size: 13.5px;">Acme Industries SL</div>
+                <div style="font-size: 11.5px; color: var(--ok-ink-3); font-family: var(--ok-font-mono);">B12345678</div>
+              </div>
+            </div>
+            <button class="ok-btn ok-btn--outline ok-btn--sm">Ver organización</button>
+          </div>
+
+          <div class="meta-card">
+            <h4>Acciones</h4>
+            <button class="ok-btn ok-btn--ghost ok-btn--sm" style="justify-content: flex-start; color: var(--ok-danger);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 4v5h5"/></svg>
+              Solicitar reembolso
+            </button>
+            <button class="ok-btn ok-btn--ghost ok-btn--sm ok-justify-start">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg>
+              Abrir disputa
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
+  <nav class="ok-app__tabbar" aria-label="Navegación principal">
+    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
+      <a class="ok-tabbar-item" href="#" aria-current="page">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Inicio</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Hubs</span>
+        <span class="ok-tabbar-badge">7</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Usuarios</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Equipo</span>
+      </a>
+      <a class="ok-tabbar-item" href="#">
+        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="ok-tabbar-label">Perfil</span>
+      </a>
+    </div>
+  </nav>
+</div>
+{% endblock %}

@@ -1,0 +1,197 @@
+{% extends "_layout.jinja" %}
+
+{% from "ui/button.jinja" import button %}
+{% from "ui/badge.jinja" import badge %}
+{% from "ui/card.jinja" import card %}
+{% from "ui/input.jinja" import input %}
+{% from "ui/field.jinja" import field %}
+{% from "ui/empty.jinja" import empty %}
+
+{% block title %}Hub · Editar empleado{% endblock %}
+
+{% block page_title %}Editar empleado{% endblock %}
+
+{% block content %}
+<div class="ok-app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <aside class="ok-sidebar">
+    <div class="ok-sidebar__brand">
+      <div class="ok-sidebar__logo">LR</div>
+      <div class="ok-sidebar__brand-text">
+        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="ok-sidebar__brand-meta">5 empleados</div>
+      </div>
+    </div>
+    <div class="ok-sidebar__body">
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Inicio</span></a>
+      <a class="ok-sidebar__item" aria-current="page" href="./employees-list.html"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="ok-sidebar__label">Empleados</span></a>
+      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:shield" width="2" height="2"></iconify-icon><span class="ok-sidebar__label">Roles</span></a>
+    </div>
+  </aside>
+
+  <div class="ok-app__main">
+    <header class="ok-topbar">
+        <div class="ok-topbar__left">
+          <button class="ok-topbar__back-btn" aria-label="Volver"
+            data-on:click="history.length > 1 ? history.back() : null">
+            <iconify-icon icon="lucide:arrow-left" width="2" height="2"></iconify-icon>
+          </button>
+        </div>
+        <h1 class="ok-topbar__page-title">Página</h1>
+        
+        
+        <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="2" height="2"></iconify-icon>
+          </button>
+      </header>
+
+    <div class="ok-app__body">
+      <div class="ok-page-header">
+        <div class="ok-page-header__title">
+          <div class="ok-flex ok-items-center ok-gap-3">
+            <span class="ok-avatar ok-avatar--lg">MR</span>
+            <div>
+              <h1>María Ruiz</h1>
+              <div class="ok-page-header__sub">maria@larambla.es · Manager</div>
+            </div>
+          </div>
+        </div>
+        <div class="ok-page-header__actions">
+          <a class="ok-btn ok-btn--ghost ok-btn--sm" href="./employees-list.html">Cancelar</a>
+          <button class="ok-btn ok-btn--primary ok-btn--sm">Guardar cambios</button>
+        </div>
+      </div>
+
+      <form class="ok-form" data-on:submit="event.preventDefault()" style="max-width:760px;">
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Información personal</h3>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Nombre completo</label>
+              <input class="ok-input" value="María Ruiz"/>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label ok-field__label--req">Email</label>
+              <input class="ok-input" type="email" value="maria@larambla.es"/>
+            </div>
+          </div>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label">Idioma de la interfaz</label>
+              <select class="ok-select">
+                <option>Català</option>
+                <option selected>Español</option>
+                <option>English</option>
+              </select>
+            </div>
+            <div class="ok-field">
+              <label class="ok-field__label">Rol</label>
+              <select class="ok-select">
+                <option>Admin</option>
+                <option selected>Manager</option>
+                <option>Cajero</option>
+                <option>Cocinero</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="ok-form-row">
+            <div class="ok-field">
+              <label class="ok-field__label">Foto de perfil</label>
+              <div class="ok-flex ok-items-center ok-gap-3">
+                <span class="ok-avatar ok-avatar--lg">MR</span>
+                <label class="ok-btn ok-btn--secondary ok-btn--sm">
+                  Cambiar foto
+                  <input type="file" accept="image/*" hidden/>
+                </label>
+                <button type="button" class="ok-btn ok-btn--ghost ok-btn--sm">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ok-form-section">
+          <h3 class="ok-form-section__title">Estado de la cuenta</h3>
+
+          <div class="ok-toggle-row">
+            <div class="ok-toggle-row__text">
+              <span class="ok-toggle-row__label">Cuenta activa</span>
+              <span class="ok-toggle-row__desc">Si se desactiva, María no podrá iniciar sesión en el Hub.</span>
+            </div>
+            <label class="ok-toggle">
+              <input type="checkbox" checked/>
+              <span class="ok-toggle__track"></span>
+            </label>
+          </div>
+        </div>
+
+      </form>
+
+      <!-- Zona peligro -->
+      <article class="ok-card ok-card--danger" style="max-width:760px;margin-top:18px;border:1px solid var(--ok-danger);">
+        <header class="ok-card__header" style="border-bottom:1px solid color-mix(in oklch, var(--ok-danger) 30%, transparent);">
+          <h3 class="ok-card__title ok-c-danger">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-right:6px;"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Zona peligro
+          </h3>
+        </header>
+        <div class="ok-card__body">
+          <div class="ok-flex ok-col ok-gap-3">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ok-line);padding-bottom:12px;">
+              <div>
+                <div class="ok-font-medium">Restablecer PIN</div>
+                <div class="ok-text-sm ok-c-ink-3">Genera un nuevo PIN aleatorio. María lo recibirá por email.</div>
+              </div>
+              <button class="ok-btn ok-btn--outline ok-btn--sm">Restablecer PIN</button>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--ok-line);padding-bottom:12px;">
+              <div>
+                <div class="ok-font-medium">Cerrar todas las sesiones</div>
+                <div class="ok-text-sm ok-c-ink-3">Cierra los 3 dispositivos donde María tiene la sesión abierta.</div>
+              </div>
+              <button class="ok-btn ok-btn--outline ok-btn--sm">Cerrar sesiones</button>
+            </div>
+
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+              <div>
+                <div style="font-weight:500;color:var(--ok-danger);">Eliminar empleado</div>
+                <div class="ok-text-sm ok-c-ink-3">Borra permanentemente la cuenta y desvincula todos los registros. No se puede deshacer.</div>
+              </div>
+              <button class="ok-btn ok-btn--danger ok-btn--sm" data-on:click="$confirm = true">Eliminar empleado</button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Modal confirmar eliminación -->
+      <div class="ok-modal-root" data-signals='{"confirm": false}' data-attr:data-state="$confirm ? 'open' : 'closed'" data-show="$confirm">
+        <div class="ok-backdrop" data-on:click="$confirm = false"></div>
+        <div class="ok-modal ok-modal--sm">
+          <header class="ok-modal__header"><h3>¿Eliminar a María Ruiz?</h3></header>
+          <div class="ok-modal__body">
+            <p style="font-size:13.5px;margin:0 0 8px;">Se borrará la cuenta y se desvincularán los tickets y comandas que generó. Los registros históricos se conservarán como anónimos.</p>
+            <p style="font-size:12.5px;color:var(--ok-ink-3);margin:0;">Esta acción no se puede deshacer.</p>
+          </div>
+          <footer class="ok-modal__footer">
+            <button class="ok-btn ok-btn--ghost" data-on:click="$confirm = false">Cancelar</button>
+            <button class="ok-btn ok-btn--danger">Sí, eliminar</button>
+          </footer>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="ok-tabbar-label">Inicio</span></a>
+    <a class="ok-tabbar-item" aria-current="page" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span><span class="ok-tabbar-label">Empleados</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="2" height="2"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="ok-tabbar-label">Facturas</span></a>
+    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  </nav>
+</div>
+{% endblock %}
