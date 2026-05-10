@@ -7,9 +7,24 @@
  * a minimal showcase-only implementation.
  */
 (function () {
+  /* Normalize a value coming from localStorage so we never paint with a
+     stale or unknown value. data-theme must be one of these two; everything
+     else is treated as the default (dark). */
+  var KNOWN_THEMES = { 'erplora': 1, 'erplora-light': 1 };
+  function normTheme(v) {
+    return KNOWN_THEMES[v] ? v : 'erplora';
+  }
+  var KNOWN_TEMPLATES = {
+    '': 1, 'default': 1, 'corporate': 1, 'glass': 1,
+    'glass-mono': 1, 'mono': 1,
+  };
+  function normTemplate(v) {
+    return KNOWN_TEMPLATES[v] ? v : '';
+  }
+
   var STATE = {
-    theme: localStorage.getItem('ok-theme') || 'erplora',
-    template: localStorage.getItem('ok-template') || '',
+    theme: normTheme(localStorage.getItem('ok-theme')),
+    template: normTemplate(localStorage.getItem('ok-template')),
   };
 
   function applyOn(el) {
@@ -43,13 +58,13 @@
     },
     set: function (theme, template) {
       var dirty = false;
-      if (typeof theme === 'string' && STATE.theme !== theme) {
-        STATE.theme = theme;
-        dirty = true;
+      if (typeof theme === 'string') {
+        var nt = normTheme(theme);
+        if (STATE.theme !== nt) { STATE.theme = nt; dirty = true; }
       }
-      if (template !== undefined && STATE.template !== (template || '')) {
-        STATE.template = template || '';
-        dirty = true;
+      if (template !== undefined) {
+        var ntpl = normTemplate(template);
+        if (STATE.template !== ntpl) { STATE.template = ntpl; dirty = true; }
       }
       if (dirty) {
         persist();
