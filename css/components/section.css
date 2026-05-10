@@ -1,0 +1,69 @@
+/* ============================================================
+   OutfitKit · Section
+   Composable section wrapper for marketing/public pages.
+   <Section title subtitle icon icon_variant align padded container>
+     {content}
+   </Section>
+   ============================================================ */
+
+.ok-section {
+  display: block;
+  width: 100%;
+}
+
+.ok-section--padded {
+  padding-block: clamp(48px, 7vw, 96px);
+}
+
+/* Header alignment */
+.ok-section--center .ok-section__header { text-align: center; }
+.ok-section--left   .ok-section__header { text-align: left; }
+
+.ok-section__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ok-space-3);
+  max-width: 720px;
+  margin: 0 auto var(--ok-space-7);
+}
+.ok-section--left .ok-section__header { margin-inline: 0; max-width: 880px; }
+
+/* Decorative icon disc */
+.ok-section__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--ok-radius-2xl);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--ok-space-1);
+}
+.ok-section--center .ok-section__icon { margin-inline: auto; }
+.ok-section__icon .iconify { font-size: 28px; }
+
+/* Icon variants pull tokens from OutfitKit */
+.ok-section__icon--brand   { background: var(--ok-brand-soft);   color: var(--ok-brand-3); }
+.ok-section__icon--leaf    { background: var(--ok-leaf-soft);    color: var(--ok-leaf); }
+.ok-section__icon--warn    { background: var(--ok-warn-soft);    color: var(--ok-warn); }
+.ok-section__icon--danger  { background: var(--ok-danger-soft);  color: var(--ok-danger); }
+.ok-section__icon--info    { background: var(--ok-info-soft);    color: var(--ok-info); }
+.ok-section__icon--neutral { background: var(--ok-bg-3);         color: var(--ok-ink-2); }
+
+.ok-section__title {
+  font-family: var(--ok-font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ok-ink);
+  margin: 0;
+}
+
+.ok-section__subtitle {
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.55;
+  color: var(--ok-ink-2);
+  margin: 0;
+}
+
+.ok-section__body { width: 100%; }

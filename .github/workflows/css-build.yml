@@ -64,29 +64,36 @@ jobs:
           import re
           from pathlib import Path
 
-          # Strip `ok-` ONLY when it's the start of a CSS class selector — i.e.
-          # preceded by a `.`. Does NOT touch:
-          #   --ok-*        (CSS custom properties / tokens)
-          #   var(--ok-*)   (token references)
-          #   @keyframes ok-*  (animation names)
-          #   animation: ok-*  (animation references)
+          # Strip `ok-` from BOTH selectors AND custom-property tokens. Does NOT touch:
+          #   @keyframes ok-*    (animation names — safe identifier prefix)
+          #   animation: ok-*    (animation references)
+          #   animation-name: ok-*
+          # Keyframes keep the prefix because they're not user-facing in the
+          # consumer's stylesheet — and renaming them risks colliding with any
+          # `@keyframes spin` or `@keyframes pulse` the consumer may have defined.
           src = Path("dist/outfitkit.ok.css").read_text()
 
-          # Robust strategy: capture `.ok-` (literal) and replace with `.`
-          # only when followed by a class-name character. This catches all
-          # selector forms: `.ok-foo`, `.ok-foo:hover`, `.ok-foo > .ok-bar`,
-          # `.ok-foo.ok-bar`, `.ok-foo[aria-pressed=""]`.
+          # Step 1: strip `.ok-` from class selectors.
           stripped = re.sub(r'\.ok-(?=[a-zA-Z])', '.', src)
+
+          # Step 2: strip `--ok-` from custom-property names AND var() references.
+          # This catches both `--ok-foo: value;` (definitions) and
+          # `var(--ok-foo)` (references). Pattern: literal `--ok-` followed by
+          # a class-name character.
+          stripped = re.sub(r'--ok-(?=[a-zA-Z])', '--', stripped)
 
           # The default (unprefixed) bundle is the canonical file name.
           out = Path("dist/outfitkit.css")
           out.write_text(stripped)
 
-          # Sanity check: tokens, keyframes, animations must remain prefixed.
-          assert "--ok-" in stripped, "lost --ok-* tokens (BUG)"
+          # Sanity checks: keyframe/animation names keep their prefix.
           assert "@keyframes ok-" in stripped, "lost @keyframes ok-* (BUG)"
-          # And every .ok- selector should be gone.
-          assert ".ok-" not in stripped, f"selectors still have .ok- prefix: {stripped[stripped.find('.ok-'):stripped.find('.ok-')+80]!r}"
+          # Every .ok- class selector should be gone, EXCEPT inside CSS comments
+          # (which are human-readable text, not browser-parsed). Strip /* ... */
+          # before checking.
+          no_comments = re.sub(r'/\*.*?\*/', '', stripped, flags=re.S)
+          assert ".ok-" not in no_comments, f"selectors still have .ok- prefix: {no_comments[no_comments.find('.ok-'):no_comments.find('.ok-')+80]!r}"
+          assert "--ok-" not in no_comments, f"tokens still have --ok- prefix: {no_comments[no_comments.find('--ok-'):no_comments.find('--ok-')+80]!r}"
 
           print(f"Wrote dist/outfitkit.css ({len(stripped):,} bytes)")
           PY

@@ -4,6 +4,30 @@ All notable changes to OutfitKit are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.5.0] — 2026-05-10
+
+### Changed
+
+- **Default bundle (`outfitkit.css` / `outfitkit.min.css`) now strips `--ok-`
+  from CSS custom properties too**, not just from class selectors. Consumers
+  of the unprefixed bundle can write `var(--brand)`, `var(--ink-3)`,
+  `var(--space-4)` instead of `var(--ok-brand)`. This makes the unprefixed
+  bundle truly prefix-free. The prefixed bundle (`outfitkit.ok.css`) is
+  unchanged. **Migration**: search-and-replace `var(--ok-` → `var(--` in
+  any consumer that loads the unprefixed bundle.
+- Keyframe and `animation-name` identifiers (`ok-spin`, `ok-pulse`, …) keep
+  their prefix in both bundles, since they share a global namespace with
+  any consumer-defined `@keyframes` and renaming them would risk collisions.
+
+### Added
+
+- **`Section` macro + `.ok-section` CSS**: composable section wrapper for
+  marketing/public pages. Props: `title`, `subtitle`, `icon` (iconify name),
+  `icon_variant` (`brand` | `leaf` | `warn` | `danger` | `info` | `neutral`),
+  `align` (`center` | `left`), `padded` (default `True`), `container`
+  (`default` | `narrow` | `wide` | `none`). Slot receives the section body.
+  Replaces the 13× hand-rolled `<section><div class="container"><div class="section-header"><div class="icon-circle">…` pattern in ERPlora's landing.
+
 ## [1.4.0] — 2026-05-10
 
 ### Added

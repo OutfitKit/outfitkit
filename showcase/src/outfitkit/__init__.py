@@ -58,7 +58,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from jinja2 import Environment
 
-__version__ = "1.4.0"
+__version__ = "1.5.0"
 
 #: Absolute path to the bundled Jinja templates folder.
 #: Layout: ``TEMPLATES_DIR/ui/<component>.jinja``.
