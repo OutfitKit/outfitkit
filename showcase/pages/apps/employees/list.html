@@ -12,7 +12,7 @@
 {% block page_title %}Empleados{% endblock %}
 
 {% block content %}
-<div class="ok-app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+<div class="ok-app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="ok-sidebar">
     <div class="ok-sidebar__brand">
       <div class="ok-sidebar__logo">LR</div>
@@ -60,7 +60,7 @@
           </button>
       </header>
 
-    <div class="ok-app__body">
+    <div class="ok-app__body" data-signals='{"empView": "table", "q": "", "role": "", "status": ""}'>
       <div class="ok-page-header">
         <div class="ok-page-header__title">
           <h1>Empleados</h1>

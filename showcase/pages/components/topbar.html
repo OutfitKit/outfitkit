@@ -74,14 +74,14 @@
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/topbar.jinja" import topbar %}
-{% call topbar() %}
+{% call topbar(with_crumb=True) %}
 <div class="ok-topbar__crumb">
   <span class="ok-topbar__crumb-item">Inventario</span>
   <span class="ok-topbar__crumb-sep">/</span>
   <span class="ok-topbar__crumb-item">SKUs</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
-{% set _src_jinjax_3 %}{% raw %}<Topbar>
+{% set _src_jinjax_3 %}{% raw %}<Topbar with_crumb>
 <div class="ok-topbar__crumb">
   <span class="ok-topbar__crumb-item">Inventario</span>
   <span class="ok-topbar__crumb-sep">/</span>
@@ -92,7 +92,7 @@
 {% call demo_frame("Topbar con breadcrumb",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
-{% call topbar() %}
+{% call topbar(with_crumb=True) %}
 <div class="ok-topbar__crumb">
   <span class="ok-topbar__crumb-item">Inventario</span>
   <span class="ok-topbar__crumb-sep">/</span>

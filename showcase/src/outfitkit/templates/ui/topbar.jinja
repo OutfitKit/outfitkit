@@ -1,8 +1,8 @@
-{#def page_title=None, back=false, attrs=None #}
+{#def page_title=None, back=false, with_crumb=false, attrs=None #}
 
-{% macro topbar(page_title=None, back=false, attrs=None) -%}
+{% macro topbar(page_title=None, back=false, with_crumb=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<header class="ok-topbar"
+<header class="ok-topbar{% if with_crumb %} ok-topbar--with-crumb{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if back %}
   <div class="ok-topbar__left">
@@ -17,5 +17,5 @@
 {%- endmacro %}
 
 {% if page_title is defined %}
-  {% call topbar(page_title=page_title, back=back, attrs=attrs) %}{{ content }}{% endcall %}
+  {% call topbar(page_title=page_title, back=back, with_crumb=with_crumb, attrs=attrs) %}{{ content }}{% endcall %}
 {% endif %}
