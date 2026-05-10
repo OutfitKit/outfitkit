@@ -61,6 +61,11 @@
 
   <header class="ok-topbar">
         <div class="ok-topbar__left">
+          <button class="ok-topbar__menu-btn" aria-label="Menú"
+            data-on:click="$sidebar = !$sidebar"
+            data-attr:aria-expanded="$sidebar">
+            <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
+          </button>
           <button class="ok-topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
@@ -78,11 +83,6 @@
           <button class="ok-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
       <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
         </div>
-        <button class="ok-topbar__menu-btn" aria-label="Menú"
-            data-on:click="$sidebar = !$sidebar"
-            data-attr:aria-expanded="$sidebar">
-            <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
-          </button>
       </header>
 
   <div class="ok-app__body">
