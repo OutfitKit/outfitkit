@@ -20,6 +20,9 @@
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-top: 1px solid var(--ok-line);
+  /* allow the indicator (variant: --indicator) to sit flush against the top
+     edge without being clipped by ancestor overflow: hidden (e.g. demo frames) */
+  overflow-x: clip;
 }
 
 /* Variante: fija en la parte inferior (modo mobile-app) */
@@ -133,19 +136,22 @@
   right: -4px;
 }
 
-/* Variant: con indicator superior estilo iOS */
+/* Variant: con indicator superior estilo iOS
+   Reserve room at the top of the bar so the indicator can never be clipped
+   by ancestor overflow contexts (demo frames, app shells with rounded corners). */
+.ok-tabbar--indicator { padding-top: 7px; }
 .ok-tabbar--indicator .ok-tabbar-item[aria-current="page"]::before,
 .ok-tabbar--indicator .ok-tabbar-item[data-active="true"]::before,
 .ok-tabbar--indicator .ok-tabbar-item.is-active::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: 2px;
   left: 50%;
   transform: translateX(-50%);
   width: 28px;
   height: 3px;
   background: var(--ok-brand);
-  border-radius: 0 0 3px 3px;
+  border-radius: 3px;
 }
 
 /* Variant: pill background activo (Material) */

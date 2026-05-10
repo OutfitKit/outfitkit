@@ -233,17 +233,52 @@
   ]),
 ] %}
 
+{# Datastar match expression for a single item.
+   `$q === ''` short-circuits when the search box is empty (everything visible).
+   Otherwise we lowercase both sides and check substring. The label is
+   pre-lowercased at template-render time so the runtime cost is just a
+   `.toLowerCase()` on `$q` and `.includes()`. Single-quoted strings inside
+   the expression are safe because labels never contain a single quote. #}
+{% macro _match_expr(label) -%}
+$q === '' || '{{ label | lower }}'.includes($q.toLowerCase())
+{%- endmacro %}
+
+{# Datastar match expression for a group: visible if the search box is empty
+   OR at least one item matches. Built by OR-ing each item's include() check. #}
+{% macro _group_match_expr(items) -%}
+$q === '' ||
+{%- for href, label, icon, badge in items %}
+ '{{ label | lower }}'.includes($q.toLowerCase()){% if not loop.last %} ||{% endif %}
+{%- endfor %}
+{%- endmacro %}
+
+{# Datastar match expression for the global empty state: visible only when
+   the user typed something AND no item across the whole nav matches.
+   Implemented as `$q !== '' && !(any item matches)`; trailing `false`
+   keeps the OR chain syntactically valid no matter how many items there are. #}
+{% macro _empty_match_expr(nav) -%}
+$q !== '' && !(
+{%- for group_name, items in nav -%}
+{%- for href, label, icon, badge in items %}
+ '{{ label | lower }}'.includes($q.toLowerCase()) ||
+{%- endfor -%}
+{%- endfor %}
+ false)
+{%- endmacro %}
+
 {% macro sidebar(current="") -%}
 {% set _base = base_path | default("") %}
 {% for group_name, items in NAV %}
-  <div class="ok-sidebar__group">
+  <div class="ok-sidebar__group" data-show="{{ _group_match_expr(items) | trim }}">
     <div class="ok-sidebar__section">{{ group_name }}</div>
     {% for href, label, icon, badge in items %}
       {%- set is_active = current.endswith(href.lstrip('/')) and href != '/' or (href == '/' and current.endswith('index.html')) -%}
       {%- set full_href = (_base + "/") if href == "/" else (_base + href) -%}
       <a href="{{ full_href }}"
          class="ok-sidebar__item"
-         data-route-active="{{ 'true' if is_active else 'false' }}">
+         {% if is_active %}aria-current="page"{% endif %}
+         data-route-active="{{ 'true' if is_active else 'false' }}"
+         data-show="{{ _match_expr(label) | trim }}">
         <iconify-icon icon="{{ icon }}" width="16" height="16" class="ok-sidebar__icon"></iconify-icon>
         <span class="ok-sidebar__label">{{ label }}</span>
         {% if badge -%}<span class="ok-sidebar__badge ok-sidebar__badge--{{ badge }}">{{ badge }}</span>{%- endif %}
@@ -251,6 +286,9 @@
     {% endfor %}
   </div>
 {% endfor %}
+<div class="ok-sidebar__empty" data-show="{{ _empty_match_expr(NAV) | trim }}">
+  Sin resultados
+</div>
 {%- endmacro %}
 
 {% if current is defined %}{{ sidebar(current) }}{% endif %}

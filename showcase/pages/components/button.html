@@ -67,23 +67,23 @@
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/button.jinja" import button %}
 <div data-signals="{ count: 0 }">
-  {{ button("−", variant="ghost", attrs={"data-on:click": "$count--"}) }}
+  {{ button("−", variant="ghost", attrs={"data-on:click": "$count = Math.max(0, $count - 1)"}) }}
   <span data-text="$count" style="padding: 0 12px; font-weight: 600;">0</span>
-  {{ button("+", variant="primary", attrs={"data-on:click": "$count++"}) }}
+  {{ button("+", variant="primary", attrs={"data-on:click": "$count = $count + 1"}) }}
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_4 %}{% raw %}<div data-signals="{ count: 0 }">
-  <Button label="−" variant="ghost" data-on:click="$count--" />
+  <Button label="−" variant="ghost" data-on:click="$count = Math.max(0, $count - 1)" />
   <span data-text="$count" style="padding: 0 12px; font-weight: 600;">0</span>
-  <Button label="+" variant="primary" data-on:click="$count++" />
+  <Button label="+" variant="primary" data-on:click="$count = $count + 1" />
 </div>{% endraw %}{% endset %}
 
 {% call demo_frame("Datastar — contador interactivo",
     jinja_src=_src_jinja_4,
     jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ count: 0 }">
-  {{ button("−", variant="ghost", attrs={"data-on:click": "$count--"}) }}
+  {{ button("−", variant="ghost", attrs={"data-on:click": "$count = Math.max(0, $count - 1)"}) }}
   <span data-text="$count" style="padding: 0 12px; font-weight: 600;">0</span>
-  {{ button("+", variant="primary", attrs={"data-on:click": "$count++"}) }}
+  {{ button("+", variant="primary", attrs={"data-on:click": "$count = $count + 1"}) }}
 </div>
 {% endcall %}
 

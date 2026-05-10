@@ -44,6 +44,17 @@
     .ok-sidebar__item.is-hidden { display: none; }
     .ok-sidebar__group.is-hidden { display: none; }
 
+    /* "Sin resultados" empty state — appears at the bottom of the nav when
+       the search query matches no items. Datastar toggles display via
+       data-show, we just style the rendered text. */
+    .ok-sidebar__empty {
+      padding: 16px 14px;
+      color: var(--ok-ink-3);
+      font-size: 12px;
+      text-align: center;
+      font-style: italic;
+    }
+
     /* Custom sidebar badges (saas / hub / new). */
     .ok-sidebar__badge--saas { background: var(--ok-info-soft); color: var(--ok-info); }
     .ok-sidebar__badge--hub { background: var(--ok-brand-soft); color: var(--ok-brand-3); }
@@ -139,28 +150,32 @@
     .demo-frame__source { margin: 0; padding: 16px 18px; background: var(--ok-bg-1); border-top: 1px solid var(--ok-line); color: var(--ok-ink-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; overflow-x: auto; white-space: pre; }
 
     /* Viewport simulator for inline content (component docs).
-       The simulator only kicks in on real DESKTOP (≥ 768px) — on a phone
-       there is nothing to "simulate", you just see the page at device size.
-       Switcher Tablet   → clamp content to 800px, centered, with frame chrome.
-       Switcher Mobile   → clamp content to 412px, centered, with frame chrome. */
+       Only kicks in on real DESKTOP (≥ 768px). On real mobile there is
+       nothing to "simulate", we render at device size.
+
+       The whole .doc__body becomes a "device" — a centered card with
+       the simulated viewport's exact width (Tablet 768px, Mobile 375px),
+       a thick rounded border, and a soft shadow so it reads as a phone
+       silhouette. The body's children inherit that constrained width. */
     @media (min-width: 768px) {
+      .ok-app__main[data-vp="tablet"],
+      .ok-app__main[data-vp="mobile"] {
+        background: var(--ok-bg-1);
+        padding: 24px 0;
+      }
       .ok-app__main[data-vp="tablet"] .doc__body,
       .ok-app__main[data-vp="mobile"] .doc__body {
-        background: var(--ok-bg-1);
-        padding: 1rem 0;
-      }
-      .ok-app__main[data-vp="tablet"] .doc__body > *,
-      .ok-app__main[data-vp="mobile"] .doc__body > * {
         margin-inline: auto;
         background: var(--ok-bg);
-        padding-inline: 1rem;
+        padding: 1rem;
         box-sizing: border-box;
-        border-left: 1px solid var(--ok-line-2);
-        border-right: 1px solid var(--ok-line-2);
-        transition: max-width 0.28s ease, padding-inline 0.28s ease;
+        border: 1px solid var(--ok-line-2);
+        border-radius: 28px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.20);
+        transition: max-width 0.28s ease, padding 0.28s ease;
       }
-      .ok-app__main[data-vp="tablet"] .doc__body > * { max-width: 800px; }
-      .ok-app__main[data-vp="mobile"] .doc__body > * { max-width: 412px; }
+      .ok-app__main[data-vp="tablet"] .doc__body { max-width: 768px; }
+      .ok-app__main[data-vp="mobile"] .doc__body { max-width: 375px; }
     }
 
     /* Iframe simulator (used for full-page apps in pages/apps/*).
@@ -276,6 +291,20 @@
           docBody.replaceWith(wrap);
         });
       }
+
+      /* Hide the topbar back-button when we're at the showcase home —
+         there's nothing to go back to and `history.back()` can either
+         leave the site or do nothing. The button is rendered server-side
+         so we hide it as soon as DOM is ready. */
+      document.addEventListener('DOMContentLoaded', function () {
+        var path = location.pathname.replace(/\/$/, '');
+        var basePath = '{{ base_path }}'.replace(/\/$/, '');
+        var atHome = (path === basePath || path === basePath + '/index');
+        if (atHome) {
+          var back = document.querySelector('.ok-app[data-docs] > .ok-app__main > .ok-topbar .ok-topbar__back-btn');
+          if (back) back.style.display = 'none';
+        }
+      });
     })();
   </script>
 
@@ -317,10 +346,14 @@
         </div>
       </div>
 
-      {# Hierarchical nav #}
+      {# Hierarchical nav. We call the macro directly instead of using the
+         JinjaX component tag, because JinjaX does not evaluate Jinja
+         expressions inside component attribute strings — it would pass
+         the raw "{{ ... }}" text as the current-route value, which breaks
+         active-route detection. #}
       <nav class="ok-sidebar__body">
         {% from "sidebar.jinja" import sidebar %}
-        <Sidebar current="{{ self._TemplateReference__context.name | default('') }}" />
+        {{ sidebar(self._TemplateReference__context.name | default('')) }}
       </nav>
 
       <div class="ok-sidebar__footer">
@@ -346,7 +379,7 @@
             </svg>
           </button>
           <button class="ok-topbar__back-btn" aria-label="Volver"
-                  data-on:click="history.length > 1 ? history.back() : null">
+                  data-on:click="history.length > 1 ? history.back() : (location.href = '{{ base_path }}/')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
             </svg>

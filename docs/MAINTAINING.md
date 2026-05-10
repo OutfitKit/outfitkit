@@ -1,6 +1,6 @@
 # Maintaining OutfitKit
 
-Guía rápida para el maintainer. Si vienes a arreglar un bug o cortar una release, lee esto primero.
+Guía rápida para el maintainer. Léela antes de tocar nada.
 
 ## Qué importa: tres cosas
 
@@ -72,26 +72,17 @@ grep '^version'    showcase/pyproject.toml
 
 ## Local dev
 
-Servidor del showcase apuntando a tu CSS local (no al CDN):
-
 ```bash
 cd showcase
 OUTFITKIT_CSS=local OUTFITKIT_BASE="" python build.py
 python -m http.server 8000 -d build
-# abre http://localhost:8000/
+# http://localhost:8000/
 ```
 
-- `OUTFITKIT_CSS=local` — carga `css/outfitkit.css` desde el repo (en lugar de `cdn.jsdelivr.net@main`).
-- `OUTFITKIT_BASE=""` — quita el prefijo `/outfitkit` (sólo para servir desde la raíz local; en GH Pages se publica en `https://outfitkit.github.io/outfitkit/`).
+- `OUTFITKIT_CSS=local` — carga `css/outfitkit.css` desde el repo (no del CDN).
+- `OUTFITKIT_BASE=""` — quita el prefijo `/outfitkit` (en GH Pages se publica bajo `/outfitkit/`).
 
-Para previsualizar el CSS sin pasar por staticjinja:
-
-```bash
-python3 -m http.server 8000
-# abre http://localhost:8000/css/outfitkit.css
-```
-
-Los navegadores resuelven los `@import` directamente, no necesitas bundling local.
+Para inspeccionar CSS sin staticjinja: `python3 -m http.server 8000` desde la raíz, abre `/css/outfitkit.css`. Los navegadores resuelven los `@import` directamente.
 
 ## Cache de jsDelivr
 
@@ -110,8 +101,8 @@ En producción usa siempre `@v<tag>` (immutable, cacheable forever) en vez de `@
 ```bash
 cd showcase/tests/visual
 npm install            # primera vez
-npm test               # corre la suite contra http://localhost:8000
-npm run test:update    # regenera baselines tras un cambio intencional
+npm test               # suite contra http://localhost:8000
+npm run test:update    # regenera baselines
 ```
 
-Los baselines viven en `showcase/tests/visual/__screenshots__/`. CI corre estos tests antes de cualquier deploy. Más detalle en [ADDING-A-COMPONENT.md](./ADDING-A-COMPONENT.md#tests-visuales).
+Baselines en `showcase/tests/visual/__screenshots__/`. Más detalle en [ADDING-A-COMPONENT.md](./ADDING-A-COMPONENT.md#tests-visuales).

@@ -155,11 +155,14 @@
   position: relative;
 }
 .ok-colorpicker__swatch:hover { transform: scale(1.12); }
-.ok-colorpicker__swatch[aria-pressed="true"]::after,
-.ok-colorpicker__swatch[aria-pressed=""]::after {
-  content: ""; position: absolute; inset: -3px;
-  border: 2px solid var(--ok-ink); border-radius: 8px;
-  pointer-events: none;
+/* Active swatch: ring-style selection that always sits within the picker's
+   bounds (avoids the previous absolutely-positioned check overflowing on
+   small/pastel swatches). The outline frames the swatch without affecting
+   layout, and is offset for clear separation against any palette colour. */
+.ok-colorpicker__swatch[aria-pressed="true"],
+.ok-colorpicker__swatch[aria-pressed=""] {
+  outline: 2px solid var(--ok-brand);
+  outline-offset: 2px;
 }
 
 /* ============================================================
