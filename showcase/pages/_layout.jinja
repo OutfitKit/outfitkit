@@ -85,7 +85,8 @@
       .doc__body { padding: 20px; }
     }
 
-    /* Viewport simulation: when $vp is tablet/mobile, frame the doc body. */
+    /* Viewport simulation for inline content (component docs):
+       just clamp width via max-width. */
     .ok-app__main[data-vp="tablet"] .doc__body,
     .ok-app__main[data-vp="mobile"] .doc__body {
       background: var(--ok-bg-1);
@@ -108,10 +109,80 @@
     .ok-app__main .doc__body > * {
       transition: max-width 0.28s ease, padding-inline 0.28s ease;
     }
+
+    /* Iframe simulator (used for full-page apps in pages/apps/*).
+       The iframe's actual viewport is the simulated width — so the page's
+       own @media (max-width:767px) rules fire correctly inside it. */
+    .vp-frame__wrap {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0;
+      background: var(--ok-bg-1);
+      min-height: calc(100vh - 56px);
+      min-height: calc(100dvh - 56px);
+    }
+    .vp-frame {
+      display: block;
+      border: 0;
+      width: 100%;
+      max-width: var(--vp-width, 100%);
+      height: calc(100vh - 56px);
+      height: calc(100dvh - 56px);
+      background: var(--ok-bg);
+      transition: max-width 0.28s ease;
+    }
+    .ok-app__main[data-vp="tablet"]  .vp-frame { --vp-width: 820px; box-shadow: 0 0 0 1px var(--ok-line-2); }
+    .ok-app__main[data-vp="mobile"]  .vp-frame { --vp-width: 412px; box-shadow: 0 0 0 1px var(--ok-line-2); }
+
+    /* Embed mode: when ?embed=1 we hide the showcase chrome and render the
+       content full-bleed, so it can be loaded inside the iframe above. */
+    [data-embed="1"] .ok-app[data-docs] > .ok-sidebar,
+    [data-embed="1"] .ok-app[data-docs] > .ok-app__sidebar-overlay,
+    [data-embed="1"] .ok-app__main > .ok-topbar { display: none !important; }
+    [data-embed="1"] .ok-app[data-docs] { grid-template-columns: 1fr; }
+    [data-embed="1"] .doc__body { padding: 0; max-width: none; }
   </style>
 
   {# Theme runtime (synchronous, before Datastar). #}
   <script src="{{ base_path }}/static/theme-runtime.js"></script>
+
+  {# Embed mode + iframe-based viewport simulator for full-page apps.
+     Runs synchronously so the chrome never flashes before being hidden. #}
+  <script>
+    (function () {
+      var params = new URLSearchParams(location.search);
+      var isEmbed = params.get('embed') === '1';
+      // Page is a "full app" if its path includes /apps/ — those need the
+      // iframe sim because their own @media rules must fire on a real viewport.
+      var isAppPage = location.pathname.indexOf('/apps/') !== -1;
+
+      if (isEmbed) {
+        // Inside the iframe: strip chrome (sidebar, topbar, switcher).
+        document.documentElement.setAttribute('data-embed', '1');
+        document.addEventListener('DOMContentLoaded', function () {
+          document.body.setAttribute('data-embed', '1');
+        });
+      } else if (isAppPage) {
+        // Outside the iframe, on an app page: replace the inline content with
+        // an iframe pointing to the same URL plus ?embed=1.
+        document.addEventListener('DOMContentLoaded', function () {
+          var docBody = document.querySelector('.ok-app__main > .doc__body');
+          if (!docBody) return;
+          var src = location.pathname + '?embed=1' + location.hash;
+          var wrap = document.createElement('div');
+          wrap.className = 'vp-frame__wrap';
+          var iframe = document.createElement('iframe');
+          iframe.className = 'vp-frame';
+          iframe.id = 'vp-frame';
+          iframe.src = src;
+          iframe.title = 'App preview';
+          wrap.appendChild(iframe);
+          docBody.replaceWith(wrap);
+        });
+      }
+    })();
+  </script>
 
   {# Iconify web component (lazy-loads icon sets from api.iconify.design). #}
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2/dist/iconify-icon.min.js" defer></script>
