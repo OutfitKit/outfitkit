@@ -10,6 +10,25 @@
   border-radius: var(--ok-radius-xl);
   overflow: hidden;
 }
+/* The table inside .ok-table-wrap scrolls horizontally if it is wider
+   than the wrapper. We keep the toolbar/pagination unaffected — only
+   the table area scrolls. The parent wrap stays clipped vertically so
+   the rounded corners look correct. */
+.ok-table-wrap > .ok-table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.ok-table-wrap > .ok-table > thead,
+.ok-table-wrap > .ok-table > tbody,
+.ok-table-wrap > .ok-table > tfoot {
+  display: table;
+  width: 100%;
+  min-width: max-content;
+  border-collapse: separate;
+  border-spacing: 0;
+}
 
 .ok-table-toolbar {
   display: flex;

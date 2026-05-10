@@ -83,13 +83,24 @@
     opacity: 1;
   }
 
-  /* Tab-bar fijo abajo, visible solo en mobile */
+  /* Tab-bar fijo abajo, visible solo en mobile.
+     Includes the dimensions that .ok-tabbar carries — pages may attach
+     just .ok-app__tabbar without .ok-tabbar so we cannot rely on the
+     latter's height/padding rules. */
   .ok-app__tabbar {
     display: flex;
+    align-items: stretch;
+    justify-content: space-around;
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
+    height: calc(58px + env(safe-area-inset-bottom));
+    padding: 4px 8px env(safe-area-inset-bottom);
+    background: color-mix(in oklch, var(--ok-bg-1) 92%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid var(--ok-line);
     z-index: var(--ok-z-sticky);
   }
 

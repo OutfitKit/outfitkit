@@ -136,12 +136,15 @@
     .ok-app__main[data-vp="mobile"]  .vp-frame { --vp-width: 412px; box-shadow: 0 0 0 1px var(--ok-line-2); }
 
     /* Embed mode: when ?embed=1 we hide the showcase chrome and render the
-       content full-bleed, so it can be loaded inside the iframe above. */
+       content full-bleed, so it can be loaded inside the iframe above.
+       Important: we only hide chrome under .ok-app[data-docs] — the showcase
+       wrapper. Selectors must NOT match topbars/sidebars belonging to the
+       embedded app's own .ok-app shell, which is rendered inside .doc__body. */
     [data-embed="1"] .ok-app[data-docs] > .ok-sidebar,
     [data-embed="1"] .ok-app[data-docs] > .ok-app__sidebar-overlay,
-    [data-embed="1"] .ok-app__main > .ok-topbar { display: none !important; }
+    [data-embed="1"] .ok-app[data-docs] > .ok-app__main > .ok-topbar { display: none !important; }
     [data-embed="1"] .ok-app[data-docs] { grid-template-columns: 1fr; }
-    [data-embed="1"] .doc__body { padding: 0; max-width: none; }
+    [data-embed="1"] .ok-app[data-docs] > .ok-app__main > .doc__body { padding: 0; max-width: none; }
   </style>
 
   {# Theme runtime (synchronous, before Datastar). #}
