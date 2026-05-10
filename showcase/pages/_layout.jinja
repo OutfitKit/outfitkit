@@ -148,7 +148,16 @@
 
     /* Iframe simulator (used for full-page apps in pages/apps/*).
        The iframe's actual viewport is the simulated width — so the page's
-       own @media (max-width:767px) rules fire correctly inside it. */
+       own @media (max-width:767px) rules fire correctly inside it.
+
+       On real desktop (≥ 768px) every app preview lives inside a centered,
+       framed iframe so it visually reads as "an app in a chrome", not as
+       part of the showcase shell itself. The exact width depends on the
+       switcher: Desktop = ~1120px, Tablet = 820px, Mobile = 412px.
+
+       On real mobile (< 768px) the iframe goes full-bleed and the wrap
+       drops its outer padding — the app and the showcase shell merge so
+       there's no wasted space on a ~390px screen. */
     .vp-frame__wrap {
       display: flex;
       justify-content: center;
@@ -167,11 +176,21 @@
       background: var(--ok-bg);
       transition: max-width 0.28s ease;
     }
-    /* The clamp only applies on real desktop. On real mobile the iframe
-       takes the full viewport regardless of switcher state. */
     @media (min-width: 768px) {
-      .ok-app__main[data-vp="tablet"]  .vp-frame { max-width: 820px; box-shadow: 0 0 0 1px var(--ok-line-2); }
-      .ok-app__main[data-vp="mobile"]  .vp-frame { max-width: 412px; box-shadow: 0 0 0 1px var(--ok-line-2); }
+      .vp-frame__wrap {
+        padding: 1rem;
+        min-height: calc(100vh - 56px);
+        min-height: calc(100dvh - 56px);
+      }
+      .vp-frame {
+        height: calc(100vh - 56px - 2rem);
+        height: calc(100dvh - 56px - 2rem);
+        border-radius: 12px;
+        box-shadow: 0 0 0 1px var(--ok-line-2);
+      }
+      .ok-app__main[data-vp="desktop"] .vp-frame { max-width: 1120px; }
+      .ok-app__main[data-vp="tablet"]  .vp-frame { max-width: 820px; }
+      .ok-app__main[data-vp="mobile"]  .vp-frame { max-width: 412px; }
     }
 
     /* Embed mode: when ?embed=1 we hide the showcase chrome and render the
