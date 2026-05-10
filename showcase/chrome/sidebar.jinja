@@ -234,12 +234,14 @@
 ] %}
 
 {% macro sidebar(current="") -%}
+{% set _base = base_path | default("") %}
 {% for group_name, items in NAV %}
   <div class="ok-sidebar__group">
     <div class="ok-sidebar__section">{{ group_name }}</div>
     {% for href, label, icon, badge in items %}
       {%- set is_active = current.endswith(href.lstrip('/')) and href != '/' or (href == '/' and current.endswith('index.html')) -%}
-      <a href="{{ href }}"
+      {%- set full_href = (_base + "/") if href == "/" else (_base + href) -%}
+      <a href="{{ full_href }}"
          class="ok-sidebar__item"
          data-route-active="{{ 'true' if is_active else 'false' }}">
         <svg class="ok-sidebar__icon" width="16" height="16" viewBox="0 0 24 24"

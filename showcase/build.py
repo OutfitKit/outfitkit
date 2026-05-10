@@ -52,15 +52,26 @@ class ShowcaseSite(Site):
         return False
 
 
+def _base_path() -> str:
+    """URL prefix for ALL internal links and static assets.
+
+    GitHub Pages serves the project at ``/outfitkit/`` (the repo name) instead
+    of the domain root, so every absolute href in the site must include that
+    prefix. Set ``OUTFITKIT_BASE=""`` to disable (e.g. for local dev or if the
+    site is published at a domain root).
+    """
+    return os.environ.get("OUTFITKIT_BASE", "/outfitkit").rstrip("/")
+
+
 def _css_url() -> str:
     """Where the showcase loads OutfitKit's CSS from.
 
     - Default: jsDelivr CDN, branch ``main`` (always-fresh).
-    - Set ``OUTFITKIT_CSS=local`` to load from ``./css/outfitkit.css`` —
+    - Set ``OUTFITKIT_CSS=local`` to load from ``<base>/css/outfitkit.css`` —
       the build copies the CSS folder into ``build/css/`` for that case.
     """
     if os.environ.get("OUTFITKIT_CSS") == "local":
-        return "/css/outfitkit.css"
+        return f"{_base_path()}/css/outfitkit.css"
     return "https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/outfitkit.css"
 
 
@@ -70,7 +81,7 @@ def make_site() -> ShowcaseSite:
         outpath=str(BUILD),
         extensions=["jinjax.JinjaX"],
         env_kwargs={"auto_reload": True},
-        env_globals={"css_url": _css_url()},
+        env_globals={"css_url": _css_url(), "base_path": _base_path()},
     )
 
     # Register every folder so that templates can `{% extends %}` /
