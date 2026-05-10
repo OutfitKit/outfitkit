@@ -9,6 +9,15 @@
   {# OutfitKit CSS — desde CDN en producción, desde build/css en local. #}
   <link rel="stylesheet" href="{{ css_url }}">
 
+  {# Theme templates loaded as separate stylesheets — bypasses jsDelivr's
+     aggressive caching of nested @import chains in the bundle. Each
+     template only fires when [data-template="<name>"] matches the page. #}
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/themes/default.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/themes/corporate.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/themes/glass.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/themes/glass-mono.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/themes/mono.css">
+
   {# Showcase chrome (search highlight, viewport iframes, demo grid). #}
   <style>
     body { background: var(--ok-bg); color: var(--ok-ink); font-family: var(--ok-font, system-ui, -apple-system, sans-serif); margin: 0; }
