@@ -25,6 +25,6 @@
 </section>
 {%- endmacro %}
 
-{% if title is defined or icon is defined %}
+{% if title is defined %}
   {% call section(title=title, subtitle=subtitle, icon=icon, icon_variant=icon_variant, align=align, padded=padded, container=container, attrs=attrs) %}{{ content }}{% endcall %}
 {% endif %}
