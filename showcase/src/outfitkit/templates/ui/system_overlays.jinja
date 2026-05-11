@@ -2,11 +2,11 @@
 
 {% macro system_overlays(title=None, count=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}notif"
+<div class="notif"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if title %}
-  <header class="{{ ok_prefix }}notif__head">
-    <h3 class="{{ ok_prefix }}notif__title">{{ title }}{% if count is not none %} <b title="{{ count }} sin leer" aria-label="{{ count }} notificaciones sin leer">{{ count }}</b>{% endif %}</h3>
+  <header class="notif__head">
+    <h3 class="notif__title">{{ title }}{% if count is not none %} <b title="{{ count }} sin leer" aria-label="{{ count }} notificaciones sin leer">{{ count }}</b>{% endif %}</h3>
   </header>
   {% endif %}
   {{ caller() }}

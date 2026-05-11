@@ -4,17 +4,17 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- set _hours = hours or range(7, 15) | list -%}
 {%- set _minutes = minutes or [0, 15, 30, 45] -%}
-<div class="{{ ok_prefix }}timepicker"
+<div class="timepicker"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <div class="{{ ok_prefix }}timepicker__col">
+  <div class="timepicker__col">
     {%- for h in _hours %}
-    <button type="button" class="{{ ok_prefix }}timepicker__opt"
+    <button type="button" class="timepicker__opt"
       {% if hour == h %}aria-selected="true"{% endif %}>{{ "%02d"|format(h) }}</button>
     {%- endfor %}
   </div>
-  <div class="{{ ok_prefix }}timepicker__col">
+  <div class="timepicker__col">
     {%- for m in _minutes %}
-    <button type="button" class="{{ ok_prefix }}timepicker__opt"
+    <button type="button" class="timepicker__opt"
       {% if minute == m %}aria-selected="true"{% endif %}>{{ "%02d"|format(m) }}</button>
     {%- endfor %}
   </div>

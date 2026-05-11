@@ -19,7 +19,7 @@ body { background: var(--bg); margin: 0; }
 </style>
 
 <div class="app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false, "deviceFilter": "all", "historyOpen": true}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
     <div class="sidebar__brand">
@@ -57,7 +57,7 @@ body { background: var(--bg); margin: 0; }
     </div>
   </aside>
 
-  <div class="app__main">
+  <div class="page">
     <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu-btn" aria-label="Menú"
@@ -91,7 +91,7 @@ body { background: var(--bg); margin: 0; }
       <a class="tab" href="delete-account.html">Eliminar cuenta</a>
     </nav>
 
-    <div class="app__body">
+    <div class="content scroll body">
       <div class="page-header">
         <div class="page-header__title">
           <h1>Sesiones activas</h1>

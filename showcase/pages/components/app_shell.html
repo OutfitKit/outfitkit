@@ -8,7 +8,7 @@
 
 {% block content %}
 <h1>App shell</h1>
-<p class="showcase__lead">Contenedor outer <code>.ok-app</code> con grid sidebar + main + (opcional) tab-bar inferior. Slot libre — el consumidor compone <code>&lt;SidebarNav /&gt;</code>, <code>&lt;Topbar /&gt;</code> y la zona <code>.ok-app__body</code> con su propio contenido.</p>
+<p class="showcase__lead">Contenedor outer <code>.ok-app</code> con grid sidebar + main + (opcional) tab-bar inferior. Slot libre — el consumidor compone <code>&lt;SidebarNav /&gt;</code>, <code>&lt;Topbar /&gt;</code> y la zona <code>.ok-content scroll body</code> con su propio contenido.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/app_shell.jinja" import app_shell %}
 {% from "ui/sidebar_nav.jinja" import sidebar_nav %}
@@ -32,13 +32,13 @@
   <button class="sidebar__item"><span class="sidebar__label">Configuración</span></button>
 </div>
 {% endcall %}
-<div class="app__main">
+<div class="page">
   {% call topbar(page_title="Terminales") %}
   <div class="topbar__actions">
     <button class="btn primary sm">Nuevo terminal</button>
   </div>
   {% endcall %}
-  <div class="app__body" style="padding:24px">
+  <div class="content scroll body" style="padding:24px">
     <p style="margin:0;color:var(--ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
   </div>
 </div>
@@ -63,14 +63,14 @@
   <button class="sidebar__item"><span class="sidebar__label">Configuración</span></button>
 </div>
 </sidebar_nav>
-<div class="app__main">
+<div class="page">
   <Topbar page_title="Terminales">
   <div class="topbar__actions">
     <button class="btn primary sm">Nuevo terminal</button>
   </div>
   
 </Topbar>
-  <div class="app__body" style="padding:24px">
+  <div class="content scroll body" style="padding:24px">
     <p style="margin:0;color:var(--ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
   </div>
 </div>
@@ -99,13 +99,13 @@
   <button class="sidebar__item"><span class="sidebar__label">Configuración</span></button>
 </div>
 {% endcall %}
-<div class="app__main">
+<div class="page">
   {% call topbar(page_title="Terminales") %}
   <div class="topbar__actions">
     <button class="btn primary sm">Nuevo terminal</button>
   </div>
   {% endcall %}
-  <div class="app__body" style="padding:24px">
+  <div class="content scroll body" style="padding:24px">
     <p style="margin:0;color:var(--ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
   </div>
 </div>

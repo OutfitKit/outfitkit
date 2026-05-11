@@ -2,29 +2,29 @@
 
 {% macro video_player(poster="", src="", duration="00:00", current="00:00", progress=0, playing=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}video{% if playing %} is-playing{% endif %}" data-playing="{{ 'true' if playing else 'false' }}"
+<div class="video{% if playing %} is-playing{% endif %}" data-playing="{{ 'true' if playing else 'false' }}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- if poster %}
-  <div class="{{ ok_prefix }}video__poster" style="background-image:url('{{ poster }}');"></div>
+  <div class="video__poster" style="background-image:url('{{ poster }}');"></div>
   {%- endif %}
   {%- if src %}
-  <video class="{{ ok_prefix }}video__el" src="{{ src }}" preload="metadata"></video>
+  <video class="video__el" src="{{ src }}" preload="metadata"></video>
   {%- endif %}
-  <button type="button" class="{{ ok_prefix }}video__play-overlay" aria-label="Reproducir"></button>
-  <div class="{{ ok_prefix }}video__controls">
-    <button type="button" class="{{ ok_prefix }}video__btn" aria-label="{% if playing %}Pausar{% else %}Reproducir{% endif %}" title="{% if playing %}Pausar{% else %}Reproducir{% endif %}">
+  <button type="button" class="video__play-overlay" aria-label="Reproducir"></button>
+  <div class="video__controls">
+    <button type="button" class="video__btn" aria-label="{% if playing %}Pausar{% else %}Reproducir{% endif %}" title="{% if playing %}Pausar{% else %}Reproducir{% endif %}">
       <iconify-icon class="play" icon="lucide:play" width="14" height="14"></iconify-icon>
       <iconify-icon class="pause" icon="lucide:pause" width="14" height="14"></iconify-icon>
     </button>
-    <span class="{{ ok_prefix }}video__time">{{ current }}</span>
-    <div class="{{ ok_prefix }}video__progress">
-      <div class="{{ ok_prefix }}video__progress-fill" style="width:{{ progress }}%;"></div>
+    <span class="video__time">{{ current }}</span>
+    <div class="video__progress">
+      <div class="video__progress-fill" style="width:{{ progress }}%;"></div>
     </div>
-    <span class="{{ ok_prefix }}video__time">{{ duration }}</span>
-    <button type="button" class="{{ ok_prefix }}video__volume" aria-label="Volumen">
+    <span class="video__time">{{ duration }}</span>
+    <button type="button" class="video__volume" aria-label="Volumen">
       <iconify-icon icon="lucide:volume-2" width="14" height="14"></iconify-icon>
     </button>
-    <button type="button" class="{{ ok_prefix }}video__fullscreen" aria-label="Pantalla completa">
+    <button type="button" class="video__fullscreen" aria-label="Pantalla completa">
       <iconify-icon icon="lucide:maximize" width="14" height="14"></iconify-icon>
     </button>
   </div>

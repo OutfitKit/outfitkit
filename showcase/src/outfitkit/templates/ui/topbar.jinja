@@ -2,16 +2,16 @@
 
 {% macro topbar(page_title=None, back=false, with_crumb=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<header class="{{ ok_prefix }}topbar{% if with_crumb %} with-crumb{% endif %}"
+<header class="topbar{% if with_crumb %} with-crumb{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if back %}
-  <div class="{{ ok_prefix }}topbar__left">
-    <button class="{{ ok_prefix }}topbar__back-btn" aria-label="Volver" type="button">
+  <div class="topbar__left">
+    <button class="topbar__back-btn" aria-label="Volver" type="button">
       <iconify-icon icon="lucide:arrow-left" width="16" height="16"></iconify-icon>
     </button>
   </div>
   {% endif %}
-  {% if page_title %}<h1 class="{{ ok_prefix }}topbar__page-title">{{ page_title }}</h1>{% endif %}
+  {% if page_title %}<h1 class="topbar__page-title">{{ page_title }}</h1>{% endif %}
   {{ caller() }}
 </header>
 {%- endmacro %}

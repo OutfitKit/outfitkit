@@ -2,14 +2,14 @@
 
 {% macro checkbox(label, name="", value="", checked=false, disabled=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<label class="{{ ok_prefix }}check">
+<label class="check">
   <input type="checkbox"
     {% if name %}name="{{ name }}"{% endif %}
     {% if value %}value="{{ value }}"{% endif %}
     {% if checked %}checked{% endif %}
     {% if disabled %}disabled{% endif %}
     {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <span class="{{ ok_prefix }}check__box"></span>
+  <span class="check__box"></span>
   {{ label }}
 </label>
 {%- endmacro %}

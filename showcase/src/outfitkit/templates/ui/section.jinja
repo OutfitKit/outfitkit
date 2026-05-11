@@ -3,24 +3,24 @@
 {% macro section(title=None, subtitle=None, icon=None, icon_variant="brand", align="center", padded=True, container="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- set _container_class = "" if container == "none" else (
-    "{}container".format(ok_prefix) if container == "default" else
-    "{}container {}container--{}".format(ok_prefix, ok_prefix, container)
+    "container" if container == "default" else
+    "container container--" ~ container
 ) -%}
-<section class="{{ ok_prefix }}section{% if padded %} padded{% endif %} {{ align }}"
+<section class="section{% if padded %} padded{% endif %} {{ align }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {% if _container_class %}<div class="{{ _container_class }}">{% endif %}
     {% if icon or title or subtitle %}
-    <header class="{{ ok_prefix }}section__header">
+    <header class="section__header">
       {% if icon %}
-      <div class="{{ ok_prefix }}section__icon {{ icon_variant }}" aria-hidden="true">
+      <div class="section__icon {{ icon_variant }}" aria-hidden="true">
         <span class="iconify" data-icon="{{ icon }}"></span>
       </div>
       {% endif %}
-      {% if title %}<h2 class="{{ ok_prefix }}section__title">{{ title }}</h2>{% endif %}
-      {% if subtitle %}<p class="{{ ok_prefix }}section__subtitle">{{ subtitle }}</p>{% endif %}
+      {% if title %}<h2 class="section__title">{{ title }}</h2>{% endif %}
+      {% if subtitle %}<p class="section__subtitle">{{ subtitle }}</p>{% endif %}
     </header>
     {% endif %}
-    <div class="{{ ok_prefix }}section__body">{{ caller() }}</div>
+    <div class="section__body">{{ caller() }}</div>
   {% if _container_class %}</div>{% endif %}
 </section>
 {%- endmacro %}

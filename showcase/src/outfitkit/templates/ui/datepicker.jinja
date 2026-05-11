@@ -2,14 +2,14 @@
 
 {% macro datepicker(title="", range=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}datepicker{% if range %} range{% endif %}"
+<div class="datepicker{% if range %} range{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- if title %}
-  <div class="{{ ok_prefix }}datepicker__head">
-    <span class="{{ ok_prefix }}datepicker__title">{{ title }}</span>
-    <span class="{{ ok_prefix }}datepicker__nav">
-      <button type="button" class="{{ ok_prefix }}datepicker__nav-btn" aria-label="Anterior"><iconify-icon icon="lucide:chevron-left" width="16" height="16"></iconify-icon></button>
-      <button type="button" class="{{ ok_prefix }}datepicker__nav-btn" aria-label="Siguiente"><iconify-icon icon="lucide:chevron-right" width="16" height="16"></iconify-icon></button>
+  <div class="datepicker__head">
+    <span class="datepicker__title">{{ title }}</span>
+    <span class="datepicker__nav">
+      <button type="button" class="datepicker__nav-btn" aria-label="Anterior"><iconify-icon icon="lucide:chevron-left" width="16" height="16"></iconify-icon></button>
+      <button type="button" class="datepicker__nav-btn" aria-label="Siguiente"><iconify-icon icon="lucide:chevron-right" width="16" height="16"></iconify-icon></button>
     </span>
   </div>
   {%- endif %}

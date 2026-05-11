@@ -5,7 +5,7 @@
 {%- set _style = [] -%}
 {%- if width is not none %}{%- set _ = _style.append("width:" ~ width) %}{% endif -%}
 {%- if height is not none %}{%- set _ = _style.append("height:" ~ height) %}{% endif -%}
-<span class="{{ ok_prefix }}skel {{ kind }}"
+<span class="skel {{ kind }}"
   {%- if _style %} style="{{ _style|join(';') }}"{% endif %}
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}></span>
 {%- endmacro %}

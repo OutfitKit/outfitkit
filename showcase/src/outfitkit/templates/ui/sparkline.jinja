@@ -11,7 +11,7 @@
   {%- endfor -%}
   {%- set points_str = parts|join(' ') -%}
 {%- endif -%}
-<svg class="{{ ok_prefix }}spark{% if size != 'md' %} {{ size }}{% endif %}{% if direction %} {{ direction }}{% endif %}"
+<svg class="spark{% if size != 'md' %} {{ size }}{% endif %}{% if direction %} {{ direction }}{% endif %}"
   viewBox="0 0 {{ width }} {{ height }}" preserveAspectRatio="none"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
   <polyline points="{{ points_str }}"/>

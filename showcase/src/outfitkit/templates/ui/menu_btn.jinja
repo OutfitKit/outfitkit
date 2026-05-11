@@ -2,11 +2,11 @@
 
 {% macro menu_btn(label="Menú", expanded=False, mobile_only=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<button class="{{ ok_prefix }}menu-btn{% if mobile_only %} mobile-only{% endif %}"
+<button class="menu-btn{% if mobile_only %} mobile-only{% endif %}"
   aria-label="{{ label }}"
   aria-expanded="{{ 'true' if expanded else 'false' }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  <span class="{{ ok_prefix }}menu-btn-lines"><span class="{{ ok_prefix }}menu-btn-line"></span><span class="{{ ok_prefix }}menu-btn-line"></span><span class="{{ ok_prefix }}menu-btn-line"></span></span>
+  <span class="menu-btn-lines"><span class="menu-btn-line"></span><span class="menu-btn-line"></span><span class="menu-btn-line"></span></span>
 </button>
 {%- endmacro %}
 

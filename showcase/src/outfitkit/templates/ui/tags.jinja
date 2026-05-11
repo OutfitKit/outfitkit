@@ -2,7 +2,7 @@
 
 {% macro tags(attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}tags"
+<div class="tags"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}
 </div>
@@ -10,7 +10,7 @@
 
 {% macro tag(label, variant=None, size=None, solid=False, removable=False, remove_action="", attrs=None) -%}
 {%- set _tattrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<span class="{{ ok_prefix }}tag
+<span class="tag
   {%- if solid %} solid{% endif %}
   {%- if variant %} {{ variant }}{% endif %}
   {%- if size %} {{ size }}{% endif %}
@@ -18,7 +18,7 @@
   {%- for k, v in _tattrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ label }}
   {%- if removable %}
-  <button type="button" class="{{ ok_prefix }}tag__remove"
+  <button type="button" class="tag__remove"
     {% if remove_action %}data-on:click="{{ remove_action }}"{% endif %}
     aria-label="Eliminar">×</button>
   {%- endif %}

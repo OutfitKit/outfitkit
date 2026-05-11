@@ -3,7 +3,7 @@
 {% macro slider(name, min=0, max=100, step=1, value=0, disabled=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <input type="range"
-  class="{{ ok_prefix }}slider"
+  class="slider"
   name="{{ name }}"
   min="{{ min }}"
   max="{{ max }}"

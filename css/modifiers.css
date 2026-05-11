@@ -504,10 +504,34 @@
   gap: var(--gap, var(--space-3));
 }
 
+/* `.body` — padding semántico del medio de un contenedor.
+   Solo aplica padding + color, no asume flex ni scroll. Para área
+   scrolleable que toma el espacio sobrante, usa `.content` (con `.scroll`
+   si quieres scroll). Pueden combinarse: `<div class="body content scroll">`. */
 .body {
   padding: var(--pad-y, var(--space-5)) var(--pad-x, var(--space-5));
   color: var(--color, var(--ink-2));
 }
+
+/* `.content` — área que toma el espacio sobrante en un contenedor flex/grid.
+   Se usa entre `.head`/`.foot` (de modal, card, panel) o entre `.topbar`/
+   `.tabbar` (de page). Anidable: el `.content` de la page puede contener
+   otra card con su propio `.content` interno. NO incluye overflow — añade
+   `.scroll` si quieres scroll. NO incluye padding — añade `.body` si quieres. */
+.content {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+/* `.scroll` — overflow-y auto, scroll suave. Ortogonal a `.content`.
+   `<div class="content scroll">` = típica área central scrolleable. */
+.scroll {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+.scroll.x { overflow-y: hidden; overflow-x: auto; }
+.scroll.both { overflow: auto; }
 
 .foot {
   padding: var(--pad-y, var(--space-4)) var(--pad-x, var(--space-5));
@@ -620,6 +644,29 @@
 .icon-disc > svg {
   width: var(--icon, var(--icon-md));
   height: var(--icon, var(--icon-md));
+}
+
+/* `.page` — columna principal de una app shell (la "main").
+   Estructura: flex column con topbar arriba, .content (+scroll) en el
+   medio, tabbar abajo. Compone con `.app` (root con sidebar).
+
+     <div class="app">
+       <aside class="sidebar">…</aside>
+       <main class="page">
+         <header class="topbar sticky">…</header>
+         <div class="content scroll body">…</div>
+         <nav class="tabbar">…</nav>
+       </main>
+     </div>
+
+   También vale para módulos cargados dinámicamente (el contenido swap
+   sucede dentro del `.content`, dejando `.topbar` y `.tabbar` intactos). */
+.page {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  background: var(--background, var(--bg));
 }
 
 /* ───── Botón de cierre (X) ─────────────────────────────── */

@@ -63,7 +63,7 @@
      data-attr:data-sidebar="$sidebar ? 'open' : ''">
 
   <!-- Mobile drawer overlay -->
-  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <!-- ====== Sidebar ====== -->
   <aside class="sidebar">
@@ -134,7 +134,7 @@
   </aside>
 
   <!-- ====== Main ====== -->
-  <div class="app__main">
+  <div class="page">
     <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu-btn" aria-label="Menú"
@@ -168,7 +168,7 @@
         </div>
       </header>
 
-    <div class="app__body">
+    <div class="content scroll body">
 
       <!-- Page header -->
       <div class="page-header">
@@ -459,7 +459,7 @@
   </div>
 
   <!-- ====== Mobile tab-bar ====== -->
-  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+  <nav class="tabbar" aria-label="Navegación principal">
     <a class="tabbar-item" aria-current="page" href="/">
       <span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
       <span class="tabbar-label">Inicio</span>

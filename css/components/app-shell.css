@@ -1,63 +1,68 @@
 /* ============================================================
    OutfitKit · App Shell
-   Estructura de aplicación: sidebar fijo + topbar pegajoso + main
-   En mobile: sidebar se convierte en drawer con backdrop, tab-bar inferior aparece como nav principal
+   ─────────────────────────────────────────────────────────────
+   Estructura de aplicación: sidebar fijo + topbar pegajoso + main.
+   En mobile: el sidebar se convierte en drawer offcanvas con
+   backdrop, y el tabbar inferior aparece como nav principal.
+
+   Composición universal:
+
+     <div class="app">                 root grid
+       <aside class="sidebar">…</aside> nav izquierda
+       <main class="page">              columna derecha
+         <header class="topbar sticky">…</header>
+         <div class="content scroll body">…</div>
+         <nav class="tabbar">…</nav>   bottom nav (mobile)
+       </main>
+       <div class="backdrop"></div>    overlay del sidebar drawer mobile
+     </div>
+
+   Sin BEM: `.app`, `.page`, `.content`, `.scroll`, `.body`, `.topbar`,
+   `.tabbar`, `.sidebar`, `.backdrop` son todas clases universales
+   componibles. El `.app` solo define el grid 2-columnas y los
+   responsive overrides; el resto lo aportan las clases universales.
    ============================================================ */
 
 .app {
-  /* API canónica de override */
-  --app-background:        var(--bg);
-  --app-sidebar-width:     var(--sidebar-w);
-  --app-body-pad-x:        var(--page-pad);
-  --app-body-pad-top:      var(--space-5);
-  --app-body-pad-bottom:   var(--space-9);
-
   display: grid;
-  grid-template-columns: var(--app-sidebar-width) 1fr;
+  grid-template-columns: var(--sidebar-width, var(--sidebar-w)) 1fr;
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--app-background);
+  background: var(--background, var(--bg));
   position: relative;
 }
 
 .app[data-sidebar="collapsed"] {
-  --app-sidebar-width: var(--sidebar-w-collapsed);
+  --sidebar-width: var(--sidebar-w-collapsed);
 }
 
 .app[data-sidebar="hidden"] {
-  --app-sidebar-width: 0px;
+  --sidebar-width: 0px;
   grid-template-columns: 1fr;
 }
 
-.app__main {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
+/* ─── Sticky positions dentro de un .app > .page ────────────
+   La page es flex column, así que para que el topbar quede
+   pegado arriba al scrollear el .content usamos position:sticky
+   en el topbar, no en la page. */
+.app .page > .topbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
 }
 
-.app__body {
-  flex: 1 1 auto;
-  min-width: 0;
-  padding: var(--app-body-pad-top) var(--app-body-pad-x) var(--app-body-pad-bottom);
+/* El tabbar dentro de una page (no en mobile-shell) es bottom-nav
+   secundaria, relativo al final de la página. */
+.app .page > .tabbar {
+  position: relative;
+  border-top: var(--border-w) solid var(--line);
 }
 
-/* Tab-bar inferior en el shell (oculto en desktop) */
-.app__tabbar {
+/* ─── Backdrop del sidebar drawer (oculto en desktop) ─────── */
+.app > .backdrop {
   display: none;
 }
 
-/* Backdrop del sidebar drawer (oculto en desktop) */
-.app__sidebar-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  z-index: calc(var(--z-drawer) - 1);
-  opacity: 0;
-  transition: opacity var(--dur-base) var(--ease-out);
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
 
 /* ============================================================
    Mobile (<768px)
@@ -70,93 +75,50 @@
   }
 
   /* Sidebar como drawer offcanvas */
-  .app .sidebar {
+  .app > .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: min(288px, 85vw);
+    width: min(var(--sidebar-w-mobile, 288px), 85vw);
     transform: translateX(-100%);
     z-index: var(--z-drawer);
     box-shadow: var(--shadow-lg);
     transition: transform var(--dur-base) var(--ease-out);
   }
 
-  .app[data-sidebar="open"] .sidebar {
+  .app[data-sidebar="open"] > .sidebar {
     transform: translateX(0);
   }
 
-  .app[data-sidebar="open"] .app__sidebar-overlay {
+  .app[data-sidebar="open"] > .backdrop {
     display: block;
+    position: fixed;
+    inset: 0;
+    background: color-mix(in oklch, black 50%, transparent);
+    z-index: calc(var(--z-drawer) - 1);
     opacity: 1;
+    transition: opacity var(--dur-base) var(--ease-out);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
   }
 
-  /* Tab-bar fijo abajo, visible solo en mobile.
-     Includes the dimensions that .tabbar carries — pages may attach
-     just .app__tabbar without .tabbar so we cannot rely on the
-     latter's height/padding rules. */
-  .app__tabbar {
-    display: flex;
-    align-items: stretch;
-    justify-content: space-around;
+  /* Tab-bar fijo abajo cuando el .app declara data-tabbar */
+  .app[data-tabbar] .page > .tabbar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: calc(58px + env(safe-area-inset-bottom));
-    padding: 4px 8px env(safe-area-inset-bottom);
+    height: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
     background: color-mix(in oklch, var(--bg-1) 92%, transparent);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-top: var(--border-w) solid var(--line);
+    backdrop-filter: blur(var(--blur-default)) saturate(var(--saturate));
+    -webkit-backdrop-filter: blur(var(--blur-default)) saturate(var(--saturate));
     z-index: var(--z-sticky);
   }
 
-  /* Reservar espacio para el tab-bar */
-  .app[data-tabbar] .app__body {
-    padding-bottom: calc(58px + env(safe-area-inset-bottom) + var(--space-5));
+  /* Reservar espacio para el tab-bar fixed en el .content */
+  .app[data-tabbar] .page > .content {
+    padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom) + var(--space-5));
   }
-}
-
-/* ============================================================
-   Page shell — el contenedor por módulo dentro de .app__main
-   ============================================================
-   Se usa para el módulo activo cargado al hacer click en el menú
-   izquierdo. Contiene un topbar (título + back btn + menu_btn),
-   un content shell central swappable, y un tabbar de navegación
-   secundaria pegado al fondo del propio page_shell (no del viewport).
-*/
-.page-shell {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 0;
-  flex: 1 1 auto;
-  min-width: 0;
-  background: var(--bg);
-}
-
-.page-shell > .topbar {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-sticky);
-}
-
-/* Content shell — donde se carga el contenido dinámico al cambiar
-   de tab. Datastar `@get(..., {target: '#content'})` reemplaza el
-   innerHTML de este div sin tocar el sidebar ni el page_shell. */
-.content-shell {
-  flex: 1 1 auto;
-  min-width: 0;
-  min-height: 0;
-  padding: var(--space-5) var(--page-pad) var(--space-5);
-  overflow-y: auto;
-  scroll-behavior: smooth;
-}
-
-/* El tabbar dentro del page_shell sustituye a la posición `fixed`
-   del tabbar mobile-only — en page_shell la nav secundaria es
-   relevante también en desktop. */
-.page-shell > .tabbar {
-  position: relative;
-  border-top: var(--border-w) solid var(--line);
 }

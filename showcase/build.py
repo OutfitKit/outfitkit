@@ -66,13 +66,11 @@ def _base_path() -> str:
 def _css_url() -> str:
     """Where the showcase loads OutfitKit's CSS from.
 
-    The showcase mirrors the source layout: source is authored with the
-    ``ok-`` prefix in ``css/``, so the showcase loads the prefixed bundle
-    and pairs it with ``ok_prefix="ok-"`` in the env globals (see
-    ``make_site``). Public consumers get the default (unprefixed) bundle
-    via ``css_url()`` from the package.
+    OutfitKit 2.0 is unprefixed end-to-end (sources, macros and dist all
+    use unprefixed class names). The showcase loads the same canonical
+    bundle that public consumers get via ``css_url()`` from the package.
 
-    - Default: jsDelivr CDN, branch ``main`` (always-fresh, prefixed).
+    - Default: jsDelivr CDN, branch ``main`` (always-fresh).
     - Set ``OUTFITKIT_CSS=local`` to load from ``<base>/css/outfitkit.css``.
     """
     if os.environ.get("OUTFITKIT_CSS") == "local":
@@ -102,10 +100,6 @@ def make_site() -> ShowcaseSite:
             "base_path": _base_path(),
             # When True: skip Google Fonts preload + load themes locally.
             "local_mode": _local_mode(),
-            # Default class-name prefix used by every macro. The showcase
-            # itself loads the prefixed CSS bundle, so it stays "ok-".
-            # Consumers that want the unprefixed bundle pass "" instead.
-            "ok_prefix": "",
         },
     )
 

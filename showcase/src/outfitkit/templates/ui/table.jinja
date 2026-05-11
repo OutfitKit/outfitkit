@@ -2,7 +2,7 @@
 
 {% macro table(compact=false, zebra=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<table class="{{ ok_prefix }}table{% if compact %} compact{% endif %}{% if zebra %} zebra{% endif %}"
+<table class="table{% if compact %} compact{% endif %}{% if zebra %} zebra{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </table>

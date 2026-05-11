@@ -28,7 +28,7 @@ body { background: var(--bg); margin: 0; }
 </style>
 
 <div class="app" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <!-- =================== SIDEBAR =================== -->
   <aside class="sidebar">
@@ -83,7 +83,7 @@ body { background: var(--bg); margin: 0; }
   </aside>
 
   <!-- =================== MAIN =================== -->
-  <main class="app__main">
+  <main class="page">
     <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu-btn" aria-label="Menú"
@@ -112,7 +112,7 @@ body { background: var(--bg); margin: 0; }
         </div>
       </header>
 
-    <div class="app__body" style="padding: 24px;">
+    <div class="content scroll body" style="padding: 24px;">
       <div class="page-header">
         <div>
           <h1 class="page-header__title">Invitar usuarios a hubs</h1>
@@ -381,8 +381,8 @@ body { background: var(--bg); margin: 0; }
   </main>
 
 
-  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="app__tabbar" aria-label="Navegación principal">
+  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
       <a class="tabbar-item" href="#" aria-current="page">
         <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>

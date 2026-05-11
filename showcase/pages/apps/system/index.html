@@ -7,7 +7,7 @@
 <div class="app" id="app" data-tabbar="bottom"
      data-signals='{"sidebar": false, "bridge": {"connected": true, "port": 9100, "autoPrint": true}}'
      data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
     <div class="sidebar__brand">
@@ -33,7 +33,7 @@
     </div>
   </aside>
 
-  <div class="app__main">
+  <div class="page">
     <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu-btn" aria-label="Menú"
@@ -49,7 +49,7 @@
         <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <div class="app__body">
+    <div class="content scroll body">
 
       <div class="page-header" style="border-bottom:1px solid var(--line);margin-bottom:18px;">
         <div class="page-header__title">
@@ -264,7 +264,7 @@
 
     </div>
   </div>
-  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+  <nav class="tabbar" aria-label="Navegación principal">
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>

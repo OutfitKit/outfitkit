@@ -2,7 +2,7 @@
 
 {% macro tabs(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}tabs{% if variant != 'default' %} {{ variant }}{% endif %}" role="tablist"
+<div class="tabs{% if variant != 'default' %} {{ variant }}{% endif %}" role="tablist"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>

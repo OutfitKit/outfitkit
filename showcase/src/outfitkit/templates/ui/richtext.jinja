@@ -2,7 +2,7 @@
 
 {% macro richtext(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}richtext{% if variant != 'default' %} {{ variant }}{% endif %}"
+<div class="richtext{% if variant != 'default' %} {{ variant }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}
 </div>

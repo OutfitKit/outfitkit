@@ -2,7 +2,7 @@
 
 {% macro hr_card(tag="article", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<{{ tag }} class="{{ ok_prefix }}emp"
+<{{ tag }} class="emp"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </{{ tag }}>

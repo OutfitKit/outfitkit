@@ -109,18 +109,18 @@
     /* Below ~900px the template <select> takes too much room; hide it.
        Users can still load templates via URL or localStorage. */
     @media (max-width: 899px) {
-      .app[data-docs] > .app__main > .topbar .topbar-template { display: none; }
+      .app[data-docs] > .page > .topbar .topbar-template { display: none; }
     }
 
     /* Below 600px drop the GitHub link too. */
     @media (max-width: 599px) {
-      .app[data-docs] > .app__main > .topbar .topbar__actions {
+      .app[data-docs] > .page > .topbar .topbar__actions {
         gap: 6px;
       }
-      .app[data-docs] > .app__main > .topbar .topbar__actions .btn {
+      .app[data-docs] > .page > .topbar .topbar__actions .btn {
         display: none;
       }
-      .app[data-docs] > .app__main > .topbar .vp button {
+      .app[data-docs] > .page > .topbar .vp button {
         padding: 0 6px;
         font-size: 11px;
       }
@@ -129,7 +129,7 @@
     /* Below 420px the viewport switcher itself takes too much room; drop
        the theme switcher (light/dark) so the viewport pill fits. */
     @media (max-width: 419px) {
-      .app[data-docs] > .app__main > .topbar [aria-label="Tema"] { display: none; }
+      .app[data-docs] > .page > .topbar [aria-label="Tema"] { display: none; }
     }
 
     /* Template selector — matches .vp pill aesthetic. */
@@ -192,13 +192,13 @@
        a thick rounded border, and a soft shadow so it reads as a phone
        silhouette. The body's children inherit that constrained width. */
     @media (min-width: 768px) {
-      .app__main[data-vp="tablet"],
-      .app__main[data-vp="mobile"] {
+      .page[data-vp="tablet"],
+      .page[data-vp="mobile"] {
         background: var(--bg-1);
         padding: 24px 0;
       }
-      .app__main[data-vp="tablet"] .doc__body,
-      .app__main[data-vp="mobile"] .doc__body {
+      .page[data-vp="tablet"] .doc__body,
+      .page[data-vp="mobile"] .doc__body {
         margin-inline: auto;
         background: var(--bg);
         padding: 1rem;
@@ -208,8 +208,8 @@
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.20);
         transition: max-width 0.28s ease, padding 0.28s ease;
       }
-      .app__main[data-vp="tablet"] .doc__body { max-width: 768px; }
-      .app__main[data-vp="mobile"] .doc__body { max-width: 375px; }
+      .page[data-vp="tablet"] .doc__body { max-width: 768px; }
+      .page[data-vp="mobile"] .doc__body { max-width: 375px; }
     }
 
     /* Iframe simulator (used for full-page apps in pages/apps/*).
@@ -254,9 +254,9 @@
         border-radius: 12px;
         box-shadow: 0 0 0 1px var(--line-2);
       }
-      .app__main[data-vp="desktop"] .vp-frame { max-width: 1120px; }
-      .app__main[data-vp="tablet"]  .vp-frame { max-width: 820px; }
-      .app__main[data-vp="mobile"]  .vp-frame { max-width: 412px; }
+      .page[data-vp="desktop"] .vp-frame { max-width: 1120px; }
+      .page[data-vp="tablet"]  .vp-frame { max-width: 820px; }
+      .page[data-vp="mobile"]  .vp-frame { max-width: 412px; }
     }
 
     /* Embed mode: when ?embed=1 we hide the showcase chrome and render the
@@ -265,10 +265,10 @@
        wrapper. Selectors must NOT match topbars/sidebars belonging to the
        embedded app's own .app shell, which is rendered inside .doc__body. */
     [data-embed="1"] .app[data-docs] > .sidebar,
-    [data-embed="1"] .app[data-docs] > .app__sidebar-overlay,
-    [data-embed="1"] .app[data-docs] > .app__main > .topbar { display: none !important; }
+    [data-embed="1"] .app[data-docs] > .backdrop,
+    [data-embed="1"] .app[data-docs] > .page > .topbar { display: none !important; }
     [data-embed="1"] .app[data-docs] { grid-template-columns: 1fr; }
-    [data-embed="1"] .app[data-docs] > .app__main > .doc__body { padding: 0; max-width: none; }
+    [data-embed="1"] .app[data-docs] > .page > .doc__body { padding: 0; max-width: none; }
   </style>
 
   {# Theme runtime (synchronous, before Datastar). #}
@@ -311,7 +311,7 @@
         // Outside the iframe, on an app page: replace the inline content with
         // an iframe pointing to the same URL plus ?embed=1.
         document.addEventListener('DOMContentLoaded', function () {
-          var docBody = document.querySelector('.app__main > .doc__body');
+          var docBody = document.querySelector('.page > .doc__body');
           if (!docBody) return;
           var src = location.pathname + '?embed=1' + location.hash;
           var wrap = document.createElement('div');
@@ -335,7 +335,7 @@
         var basePath = '{{ base_path }}'.replace(/\/$/, '');
         var atHome = (path === basePath || path === basePath + '/index');
         if (atHome) {
-          var back = document.querySelector('.app[data-docs] > .app__main > .topbar .topbar__back-btn');
+          var back = document.querySelector('.app[data-docs] > .page > .topbar .topbar__back-btn');
           if (back) back.style.display = 'none';
         }
       });
@@ -359,7 +359,7 @@
        data-attr:data-sidebar="$sidebarOpen ? 'open' : ''"
        data-effect="$theme; $template; window.okTheme && window.okTheme.set($theme, $template)">
 
-    <div class="app__sidebar-overlay" data-on:click="$sidebarOpen = false"></div>
+    <div class="backdrop" data-on:click="$sidebarOpen = false"></div>
 
     {# ====== SIDEBAR ====== #}
     <aside class="sidebar">
@@ -406,7 +406,7 @@
     </aside>
 
     {# ====== MAIN ====== #}
-    <main class="app__main" data-attr:data-vp="$vp">
+    <main class="page" data-attr:data-vp="$vp">
       <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu-btn" aria-label="Menú lateral"

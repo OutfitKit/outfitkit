@@ -21,7 +21,7 @@
     </div>
   </aside>
 
-  <div class="app__main">
+  <div class="page">
     <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu-btn" aria-label="Menú"
@@ -37,7 +37,7 @@
         <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <div class="app__body">
+    <div class="content scroll body">
       <div class="page-header">
         <div class="page-header__title">
           <h1>Roles y permisos</h1>
@@ -180,7 +180,7 @@
     </div>
   </div>
 
-  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+  <nav class="tabbar" aria-label="Navegación principal">
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="tabbar-label">Inicio</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="tabbar-label">Empleados</span></a>
     <a class="tabbar-item" aria-current="page" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Roles</span></a>

@@ -2,7 +2,7 @@
 
 {% macro accordion(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}accordion{% if variant != 'default' %} {{ variant }}{% endif %}"
+<div class="accordion{% if variant != 'default' %} {{ variant }}{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>
@@ -33,31 +33,31 @@
 {%- set _base = id if id else "ok-acc-" ~ (title|string|replace(' ', '-')|replace('?', '')|replace('¿', '')|replace('/', '-')|lower)[:32] -%}
 {%- set _trigger_id = _base ~ "-trigger" -%}
 {%- set _panel_id = _base ~ "-panel" -%}
-<div class="{{ ok_prefix }}accordion__item"
+<div class="accordion__item"
      data-signals="{ open: {{ 'true' if expanded else 'false' }} }"
      data-attr:data-state="$open ? 'open' : 'closed'"
      {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   <button type="button"
           id="{{ _trigger_id }}"
-          class="{{ ok_prefix }}accordion__trigger"
+          class="accordion__trigger"
           aria-controls="{{ _panel_id }}"
           aria-expanded="{{ 'true' if expanded else 'false' }}"
           data-attr:aria-expanded="$open"
           data-on:click="$open = !$open">
-    <span class="{{ ok_prefix }}accordion__title">{{ title }}
+    <span class="accordion__title">{{ title }}
       {%- if sub %}
-      <span class="{{ ok_prefix }}accordion__sub">{{ sub }}</span>
+      <span class="accordion__sub">{{ sub }}</span>
       {%- endif %}
     </span>
     {%- if meta %}
-    <span class="{{ ok_prefix }}accordion__meta">{{ meta }}</span>
+    <span class="accordion__meta">{{ meta }}</span>
     {%- endif %}
-    <span class="{{ ok_prefix }}accordion__caret" aria-hidden="true">▾</span>
+    <span class="accordion__caret" aria-hidden="true">▾</span>
   </button>
   <div id="{{ _panel_id }}"
        role="region"
        aria-labelledby="{{ _trigger_id }}"
-       class="{{ ok_prefix }}accordion__panel{% if no_icon %} no-icon{% endif %}">
+       class="accordion__panel{% if no_icon %} no-icon{% endif %}">
     {{ caller() }}
   </div>
 </div>

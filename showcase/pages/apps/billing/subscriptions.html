@@ -33,7 +33,7 @@
   .sub-card__actions { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
 </style>
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
     <div class="sidebar__brand">
@@ -69,7 +69,7 @@
     </div>
   </aside>
 
-  <div class="app__main">
+  <div class="page">
     <header class="topbar">
         <div class="topbar__left">
           <button class="topbar__menu-btn" aria-label="Menú"
@@ -103,7 +103,7 @@
       <a class="tab" href="hub.html">Hub</a>
     </nav>
 
-    <div class="app__body">
+    <div class="content scroll body">
       <div class="page-header">
         <div class="page-header__title">
           <h1>Suscripciones</h1>
@@ -376,8 +376,8 @@
     </div>
   </div>
 
-  <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="app__tabbar" aria-label="Navegación principal">
+  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
       <a class="tabbar-item" href="#" aria-current="page">
         <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>

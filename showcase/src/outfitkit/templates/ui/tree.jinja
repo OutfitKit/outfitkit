@@ -2,7 +2,7 @@
 
 {% macro tree(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}tree{% if variant != 'default' %} {{ variant }}{% endif %}" role="tree"
+<div class="tree{% if variant != 'default' %} {{ variant }}{% endif %}" role="tree"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>
@@ -35,12 +35,12 @@
 {% macro tree_node(label="", icon="", meta="", expanded=false, icon_kind="folder", node_id=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- set _ns = node_id if node_id else '_n' ~ range(100000, 999999) | random -%}
-<div class="{{ ok_prefix }}tree__node"
+<div class="tree__node"
      data-signals="{ {{ _ns }}: { open: {{ 'true' if expanded else 'false' }} } }"
      data-attr:data-state="${{ _ns }}.open ? 'open' : 'closed'"
      {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  <div class="{{ ok_prefix }}tree__row">
-    <span class="{{ ok_prefix }}tree__caret"
+  <div class="tree__row">
+    <span class="tree__caret"
           role="button"
           tabindex="0"
           data-on:click="${{ _ns }}.open = !${{ _ns }}.open"
@@ -48,14 +48,14 @@
           data-attr:aria-expanded="${{ _ns }}.open"
           data-attr:data-rotated="${{ _ns }}.open">▸</span>
     {%- if icon %}
-    <span class="{{ ok_prefix }}tree__icon {{ icon_kind }}">{{ icon }}</span>
+    <span class="tree__icon {{ icon_kind }}">{{ icon }}</span>
     {%- endif %}
-    <span class="{{ ok_prefix }}tree__label">{{ label|safe }}</span>
+    <span class="tree__label">{{ label|safe }}</span>
     {%- if meta %}
-    <span class="{{ ok_prefix }}tree__meta">{{ meta }}</span>
+    <span class="tree__meta">{{ meta }}</span>
     {%- endif %}
   </div>
-  <div class="{{ ok_prefix }}tree__children" data-show="${{ _ns }}.open" role="group">
+  <div class="tree__children" data-show="${{ _ns }}.open" role="group">
     {{ caller() }}
   </div>
 </div>
@@ -74,18 +74,18 @@
 #}
 {% macro tree_leaf(label="", icon="", meta="", selected=false, value=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}tree__node">
-  <div class="{{ ok_prefix }}tree__row"
+<div class="tree__node">
+  <div class="tree__row"
        {%- if value is not none %} data-on:click="$sel = '{{ value }}'" data-attr:aria-selected="$sel === '{{ value }}'"{%- endif %}
        {%- if selected %} aria-selected="true"{%- endif %}
        {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-    <span class="{{ ok_prefix }}tree__caret leaf"></span>
+    <span class="tree__caret leaf"></span>
     {%- if icon %}
-    <span class="{{ ok_prefix }}tree__icon file">{{ icon }}</span>
+    <span class="tree__icon file">{{ icon }}</span>
     {%- endif %}
-    <span class="{{ ok_prefix }}tree__label">{{ label|safe }}</span>
+    <span class="tree__label">{{ label|safe }}</span>
     {%- if meta %}
-    <span class="{{ ok_prefix }}tree__meta">{{ meta }}</span>
+    <span class="tree__meta">{{ meta }}</span>
     {%- endif %}
   </div>
 </div>

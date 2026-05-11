@@ -2,7 +2,7 @@
 
 {% macro manufacturing(tag="div", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<{{ tag }} class="{{ ok_prefix }}bom"
+<{{ tag }} class="bom"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </{{ tag }}>

@@ -2,7 +2,7 @@
 
 {% macro autocomplete(width=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}autocomplete"
+<div class="autocomplete"
   {% if width %}style="width:{{ width }};"{% endif %}
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}

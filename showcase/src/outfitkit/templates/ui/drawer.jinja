@@ -2,16 +2,16 @@
 
 {% macro drawer(title, subtitle="", side="right", state="closed", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}drawer-root" data-state="{{ state }}"
+<div class="drawer-root" data-state="{{ state }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  <div class="{{ ok_prefix }}backdrop"></div>
-  <aside class="{{ ok_prefix }}drawer{% if side != 'right' %} {{ side }}{% endif %}">
-    <div class="{{ ok_prefix }}drawer__header">
-      <h3 class="{{ ok_prefix }}drawer__title">{{ title }}</h3>
-      {% if subtitle %}<p class="{{ ok_prefix }}drawer__sub">{{ subtitle }}</p>{% endif %}
-      <button class="{{ ok_prefix }}drawer__close" aria-label="Cerrar">✕</button>
+  <div class="backdrop"></div>
+  <aside class="drawer{% if side != 'right' %} {{ side }}{% endif %}">
+    <div class="drawer__header">
+      <h3 class="drawer__title">{{ title }}</h3>
+      {% if subtitle %}<p class="drawer__sub">{{ subtitle }}</p>{% endif %}
+      <button class="drawer__close" aria-label="Cerrar">✕</button>
     </div>
-    <div class="{{ ok_prefix }}drawer__body">{{ caller() }}</div>
+    <div class="drawer__body">{{ caller() }}</div>
   </aside>
 </div>
 {%- endmacro %}

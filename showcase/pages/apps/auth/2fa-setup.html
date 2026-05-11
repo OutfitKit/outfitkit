@@ -63,7 +63,7 @@ body { background: var(--bg); margin: 0; }
 </style>
 
 <div class="app cloud-shell" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
-<div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="backdrop" data-on:click="$sidebar = false"></div>
 
 <aside class="sidebar">
   <div class="sidebar__brand">
@@ -99,7 +99,7 @@ body { background: var(--bg); margin: 0; }
   </div>
 </aside>
 
-<div class="app__main">
+<div class="page">
 
   <header class="topbar">
         <div class="topbar__left">
@@ -133,7 +133,7 @@ body { background: var(--bg); margin: 0; }
     <a class="tab" href="2fa-disable.html">Desactivar 2FA</a>
   </nav>
 
-  <div class="app__body" data-signals='{"step": 2, "showSecret": false, "codesSaved": false}'>
+  <div class="content scroll body" data-signals='{"step": 2, "showSecret": false, "codesSaved": false}'>
 
     <!-- Stepper -->
     <div class="stepper-progress" style="margin-bottom: var(--space-5);">

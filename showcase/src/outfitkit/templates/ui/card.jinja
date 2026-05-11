@@ -2,7 +2,7 @@
 
 {% macro card(tag="div", variant="default", interactive=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<{{ tag }} class="{{ ok_prefix }}card{% if variant != 'default' %} {{ variant }}{% endif %}{% if interactive %} interactive{% endif %}"
+<{{ tag }} class="card{% if variant != 'default' %} {{ variant }}{% endif %}{% if interactive %} interactive{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </{{ tag }}>

@@ -7,10 +7,10 @@
   "#3D8B7C", "#5C7CFA", "#9C6ADE", "#8A7765",
   "#5A6168", "#2F343A"
 ] -%}
-<div class="{{ ok_prefix }}colorpicker"
+<div class="colorpicker"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- for c in _palette %}
-  <button type="button" class="{{ ok_prefix }}colorpicker__swatch"
+  <button type="button" class="colorpicker__swatch"
     style="background:{{ c }}"
     {% if selected == c %}aria-pressed="true"{% endif %}
     aria-label="{{ c }}"></button>
