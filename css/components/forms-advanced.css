@@ -4,354 +4,381 @@
    ============================================================ */
 
 /* ---------- Date picker (popover) ---------- */
-.ok-datepicker {
+.datepicker {
+  /* API canónica de override */
+  --datepicker-accent:      var(--brand);
+  --datepicker-accent-soft: var(--brand-soft);
+  --datepicker-accent-fg:   var(--brand-fg);
+  --datepicker-background:  var(--bg-2);
+  --datepicker-border-color: var(--line);
+
   position: relative;
   display: inline-block;
 }
-.ok-datepicker__field {
+.datepicker__field {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
   font-size: 13px;
-  color: var(--ok-ink);
+  color: var(--ink);
   cursor: pointer;
   font-variant-numeric: tabular-nums;
   min-width: 160px;
-  transition: border-color var(--ok-dur) var(--ok-ease-out);
+  transition: border-color var(--dur) var(--ease-out);
 }
-.ok-datepicker__field:hover { border-color: var(--ok-line-2); }
-.ok-datepicker__field--open { border-color: var(--ok-brand); box-shadow: 0 0 0 3px var(--ok-brand-soft); }
-.ok-datepicker__field svg { color: var(--ok-ink-3); flex-shrink: 0; }
+.datepicker__field:hover { border-color: var(--line-2); }
+.datepicker__field--open { border-color: var(--datepicker-accent); box-shadow: 0 0 0 3px var(--datepicker-accent-soft); }
+.datepicker__field svg { color: var(--ink-3); flex-shrink: 0; }
 
-.ok-datepicker__pop {
+.datepicker__pop {
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
-  box-shadow: var(--ok-shadow-lg);
-  padding: 12px;
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-3);
   width: 280px;
   z-index: 20;
 }
-.ok-datepicker__head {
+.datepicker__head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-2);
 }
-.ok-datepicker__title {
-  font-family: var(--ok-font-display);
+.datepicker__title {
+  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 600;
-  color: var(--ok-ink);
+  color: var(--ink);
 }
-.ok-datepicker__nav {
+.datepicker__nav {
   display: inline-flex;
-  gap: 4px;
+  gap: var(--space-1);
 }
-.ok-datepicker__nav button {
-  width: 24px; height: 24px;
-  border-radius: var(--ok-radius-sm);
+.datepicker__nav button {
+  width: var(--avatar-2xs); height: var(--avatar-2xs);
+  border-radius: var(--radius-sm);
   background: transparent;
   border: none;
-  color: var(--ok-ink-2);
+  color: var(--ink-2);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-.ok-datepicker__nav button:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
+.datepicker__nav button:hover { background: var(--bg-3); color: var(--ink); }
 
-.ok-datepicker__week,
-.ok-datepicker__grid {
+.datepicker__week,
+.datepicker__grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 2px;
+  gap: var(--border-w-2);
 }
-.ok-datepicker__week {
-  font-family: var(--ok-font-mono);
+.datepicker__week {
+  font-family: var(--font-mono);
   font-size: 10px;
   text-align: center;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: var(--space-1);
 }
-.ok-datepicker__day {
+.datepicker__day {
   aspect-ratio: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
-  border-radius: var(--ok-radius-sm);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  color: var(--ok-ink);
-  transition: background var(--ok-dur) var(--ok-ease-out);
+  color: var(--ink);
+  transition: background var(--dur) var(--ease-out);
 }
-.ok-datepicker__day:hover { background: var(--ok-bg-3); }
-.ok-datepicker__day--out { color: var(--ok-ink-4); }
-.ok-datepicker__day--today { box-shadow: inset 0 0 0 1px var(--ok-brand); }
-.ok-datepicker__day--sel  { background: var(--ok-brand); color: var(--ok-brand-fg); font-weight: 600; }
-.ok-datepicker__day--in-range { background: var(--ok-brand-soft); color: var(--ok-brand); border-radius: 0; }
-.ok-datepicker__day--range-start { background: var(--ok-brand); color: var(--ok-brand-fg); border-top-right-radius: 0; border-bottom-right-radius: 0; }
-.ok-datepicker__day--range-end   { background: var(--ok-brand); color: var(--ok-brand-fg); border-top-left-radius: 0; border-bottom-left-radius: 0; }
-.ok-datepicker__day--disabled { color: var(--ok-ink-4); cursor: not-allowed; opacity: 0.5; }
+.datepicker__day:hover { background: var(--bg-3); }
+.datepicker__day--out { color: var(--ink-4); }
+.datepicker__day--today { box-shadow: inset 0 0 0 1px var(--datepicker-accent); }
+.datepicker__day--sel  { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); font-weight: 600; }
+.datepicker__day--in-range { background: var(--datepicker-accent-soft); color: var(--datepicker-accent); border-radius: 0; }
+.datepicker__day--range-start { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.datepicker__day--range-end   { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.datepicker__day--disabled { color: var(--ink-4); cursor: not-allowed; opacity: 0.5; }
 
-.ok-datepicker__presets {
+.datepicker__presets {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
-  padding-top: 10px;
-  margin-top: 10px;
-  border-top: 1px solid var(--ok-line);
+  gap: var(--space-1);
+  padding-top: var(--space-2-5);
+  margin-top: var(--space-2-5);
+  border-top: var(--border-w) solid var(--line);
 }
-.ok-datepicker__preset {
-  font-size: 11.5px;
-  padding: 4px 8px;
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-sm);
+.datepicker__preset {
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-2);
+  background: var(--bg-3);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  color: var(--ok-ink-2);
+  color: var(--ink-2);
   border: none;
-  transition: background var(--ok-dur) var(--ok-ease-out);
+  transition: background var(--dur) var(--ease-out);
 }
-.ok-datepicker__preset:hover { background: var(--ok-bg-4); color: var(--ok-ink); }
-.ok-datepicker__preset--active { background: var(--ok-brand-soft); color: var(--ok-brand); }
+.datepicker__preset:hover { background: var(--bg-4); color: var(--ink); }
+.datepicker__preset--active { background: var(--datepicker-accent-soft); color: var(--datepicker-accent); }
 
 /* ---------- Time picker ---------- */
-.ok-timepicker {
+.timepicker {
+  /* API canónica de override */
+  --timepicker-background:    var(--bg-2);
+  --timepicker-border-color:  var(--line);
+  --timepicker-border-radius: var(--radius-md);
+  --timepicker-accent:        var(--brand);
+
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px 10px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  font-family: var(--ok-font-mono);
-  font-size: 14px;
-  color: var(--ok-ink);
+  gap: var(--space-1);
+  padding: var(--space-1-5) var(--space-2-5);
+  background: var(--timepicker-background);
+  border: var(--border-w) solid var(--timepicker-border-color);
+  border-radius: var(--timepicker-border-radius);
+  font-family: var(--font-mono);
+  font-size: var(--text-base);
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.ok-timepicker input {
+.timepicker input {
   background: transparent;
   border: none;
-  width: 28px;
+  width: var(--size-sm);
   text-align: center;
   color: inherit;
   font: inherit;
   outline: none;
 }
-.ok-timepicker input:focus { background: var(--ok-bg-3); border-radius: 3px; }
+.timepicker input:focus { background: var(--bg-3); border-radius: 3px; }
 
 /* ---------- Combobox / autocomplete ---------- */
-.ok-combo {
+.combo {
+  /* API canónica de override */
+  --combo-background:    var(--bg-2);
+  --combo-border-color:  var(--line);
+  --combo-border-radius: var(--radius-md);
+  --combo-accent:        var(--brand);
+  --combo-accent-soft:   var(--brand-soft);
+
   position: relative;
   width: 100%;
 }
-.ok-combo__field {
+.combo__field {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-1-5);
   flex-wrap: wrap;
-  padding: 6px 10px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  min-height: 36px;
+  padding: var(--space-1-5) var(--space-2-5);
+  background: var(--combo-background);
+  border: var(--border-w) solid var(--combo-border-color);
+  border-radius: var(--combo-border-radius);
+  min-height: var(--size-md);
   cursor: text;
-  transition: border-color var(--ok-dur) var(--ok-ease-out);
+  transition: border-color var(--dur) var(--ease-out);
 }
-.ok-combo__field--open { border-color: var(--ok-brand); box-shadow: 0 0 0 3px var(--ok-brand-soft); }
+.combo__field--open { border-color: var(--combo-accent); box-shadow: 0 0 0 3px var(--combo-accent-soft); }
 
-.ok-combo__chip {
+.combo__chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 2px 4px 2px 8px;
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-sm);
+  gap: var(--space-1-5);
+  padding: var(--border-w-2) var(--space-1) var(--border-w-2) var(--space-2);
+  background: var(--bg-3);
+  border-radius: var(--radius-sm);
   font-size: 12px;
-  color: var(--ok-ink);
+  color: var(--ink);
 }
-.ok-combo__chip-x {
+.combo__chip-x {
   width: 16px; height: 16px;
   border-radius: 3px;
   background: transparent;
   border: none;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-.ok-combo__chip-x:hover { background: var(--ok-bg-4); color: var(--ok-ink); }
+.combo__chip-x:hover { background: var(--bg-4); color: var(--ink); }
 
-.ok-combo__input {
+.combo__input {
   flex: 1;
   min-width: 80px;
   background: transparent;
   border: none;
   outline: none;
   font: inherit;
-  color: var(--ok-ink);
+  color: var(--ink);
   font-size: 13px;
-  padding: 4px 0;
+  padding: var(--space-1) var(--space-0);
 }
-.ok-combo__input::placeholder { color: var(--ok-ink-4); }
+.combo__input::placeholder { color: var(--ink-4); }
 
-.ok-combo__caret {
-  color: var(--ok-ink-3);
-  transition: transform var(--ok-dur) var(--ok-ease-out);
+.combo__caret {
+  color: var(--ink-3);
+  transition: transform var(--dur) var(--ease-out);
   flex-shrink: 0;
 }
-.ok-combo__field--open .ok-combo__caret { transform: rotate(180deg); }
+.combo__field--open .combo__caret { transform: rotate(180deg); }
 
-.ok-combo__menu {
+.combo__menu {
   position: absolute;
   top: calc(100% + 4px);
   left: 0; right: 0;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
-  box-shadow: var(--ok-shadow-lg);
-  padding: 4px;
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-1);
   max-height: 280px;
   overflow-y: auto;
   z-index: 20;
 }
-.ok-combo__group {
-  font-family: var(--ok-font-mono);
+.combo__group {
+  font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ok-ink-3);
-  padding: 8px 10px 4px;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+  padding: var(--space-2) var(--space-2-5) var(--space-1);
 }
-.ok-combo__option {
+.combo__option {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 10px;
+  gap: var(--space-2-5);
   align-items: center;
-  padding: 8px 10px;
-  border-radius: var(--ok-radius-sm);
+  padding: var(--space-2) var(--space-2-5);
+  border-radius: var(--radius-sm);
   font-size: 13px;
-  color: var(--ok-ink);
+  color: var(--ink);
   cursor: pointer;
-  transition: background var(--ok-dur) var(--ok-ease-out);
+  transition: background var(--dur) var(--ease-out);
 }
-.ok-combo__option:hover,
-.ok-combo__option--active { background: var(--ok-bg-3); }
-.ok-combo__option--selected { background: var(--ok-brand-soft); color: var(--ok-brand); }
-.ok-combo__option-meta { color: var(--ok-ink-3); font-size: 11.5px; }
-.ok-combo__option mark {
-  background: color-mix(in oklch, var(--ok-brand) 25%, transparent);
+.combo__option:hover,
+.combo__option--active { background: var(--bg-3); }
+.combo__option--selected { background: var(--combo-accent-soft); color: var(--combo-accent); }
+.combo__option-meta { color: var(--ink-3); font-size: var(--text-xs); }
+.combo__option mark {
+  background: color-mix(in oklch, var(--brand) 25%, transparent);
   color: inherit;
   border-radius: 2px;
-  padding: 0 1px;
+  padding: var(--space-0) var(--border-w);
 }
 
-.ok-combo__empty {
-  padding: 16px 12px;
+.combo__empty {
+  padding: var(--space-4) var(--space-3);
   text-align: center;
-  color: var(--ok-ink-3);
-  font-size: 12.5px;
+  color: var(--ink-3);
+  font-size: var(--text-sm);
 }
 
 /* ---------- File upload (multi-file) ---------- */
-/* Reuses .ok-upload + .ok-attachment from multimedia. */
+/* Reuses .upload + .attachment from multimedia. */
 
 /* ---------- Wizard ---------- */
-.ok-wizard {
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-xl);
+.wizard {
+  /* API canónica de override */
+  --wizard-background:    var(--bg-2);
+  --wizard-border-color:  var(--line);
+  --wizard-border-radius: var(--radius-xl);
+  --wizard-accent:        var(--brand);
+  --wizard-accent-fg:     var(--brand-fg);
+
+  background: var(--wizard-background);
+  border: var(--border-w) solid var(--wizard-border-color);
+  border-radius: var(--wizard-border-radius);
   overflow: hidden;
 }
-.ok-wizard__steps {
+.wizard__steps {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
-  background: var(--ok-bg-3);
-  border-bottom: 1px solid var(--ok-line);
+  background: var(--bg-3);
+  border-bottom: var(--border-w) solid var(--line);
 }
-.ok-wizard__step {
+.wizard__step {
   display: grid;
   grid-template-columns: 28px 1fr;
-  gap: 10px;
+  gap: var(--space-2-5);
   align-items: center;
-  padding: 14px 16px;
+  padding: var(--space-3-5) var(--space-4);
   position: relative;
   cursor: default;
-  border-right: 1px solid var(--ok-line);
+  border-right: var(--border-w) solid var(--line);
 }
-.ok-wizard__step:last-child { border-right: none; }
+.wizard__step:last-child { border-right: none; }
 
-.ok-wizard__step-num {
+.wizard__step-num {
   width: 26px; height: 26px;
-  border-radius: 50%;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line-2);
-  color: var(--ok-ink-3);
+  border-radius: var(--radius-circle);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line-2);
+  color: var(--ink-3);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--ok-font-mono);
+  font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 600;
 }
-.ok-wizard__step--done .ok-wizard__step-num   { background: var(--ok-leaf); border-color: var(--ok-leaf); color: var(--ok-bg); }
-.ok-wizard__step--active .ok-wizard__step-num { background: var(--ok-brand); border-color: var(--ok-brand); color: var(--ok-brand-fg); }
+.wizard__step--done .wizard__step-num   { background: var(--leaf); border-color: var(--leaf); color: var(--bg); }
+.wizard__step--active .wizard__step-num { background: var(--wizard-accent); border-color: var(--wizard-accent); color: var(--wizard-accent-fg); }
 
-.ok-wizard__step-name {
-  font-size: 12.5px;
-  color: var(--ok-ink-3);
+.wizard__step-name {
+  font-size: var(--text-sm);
+  color: var(--ink-3);
   font-weight: 500;
 }
-.ok-wizard__step--done .ok-wizard__step-name   { color: var(--ok-ink-2); }
-.ok-wizard__step--active .ok-wizard__step-name { color: var(--ok-ink); }
-.ok-wizard__step-sub {
+.wizard__step--done .wizard__step-name   { color: var(--ink-2); }
+.wizard__step--active .wizard__step-name { color: var(--ink); }  /* intentional: always full-ink when active */
+.wizard__step-sub {
   font-size: 11px;
-  color: var(--ok-ink-4);
-  margin-top: 1px;
+  color: var(--ink-4);
+  margin-top: var(--border-w);
 }
 
-.ok-wizard__body {
-  padding: 24px;
+.wizard__body {
+  padding: var(--space-6);
 }
-.ok-wizard__title {
-  font-family: var(--ok-font-display);
+.wizard__title {
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 600;
-  letter-spacing: -0.02em;
-  margin: 0 0 4px;
-  color: var(--ok-ink);
+  letter-spacing: var(--tracking-near);
+  margin: var(--space-0) var(--space-0) var(--space-1);
+  color: var(--ink);
 }
-.ok-wizard__sub {
+.wizard__sub {
   font-size: 13px;
-  color: var(--ok-ink-3);
-  margin: 0 0 18px;
+  color: var(--ink-3);
+  margin: var(--space-0) var(--space-0) 18px;
 }
 
-.ok-wizard__foot {
-  padding: 14px 18px;
-  border-top: 1px solid var(--ok-line);
+.wizard__foot {
+  padding: var(--space-3-5) 18px;
+  border-top: var(--border-w) solid var(--line);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: var(--ok-bg-2);
+  background: var(--bg-2);
 }
-.ok-wizard__foot-meta {
-  font-size: 11.5px;
-  color: var(--ok-ink-3);
-  font-family: var(--ok-font-mono);
+.wizard__foot-meta {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
 }
-.ok-wizard__foot-actions {
+.wizard__foot-actions {
   display: inline-flex;
-  gap: 8px;
+  gap: var(--space-2);
 }

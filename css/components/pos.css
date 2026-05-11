@@ -8,328 +8,335 @@
    POS Layout · split en desktop (catálogo + carrito siempre visible)
    En mobile el carrito se oculta y aparece como drawer al pulsar el FAB.
    ============================================================ */
-.ok-pos {
+.pos {
+  /* API canónica de override */
+  --pos-background:   var(--bg);
+  --pos-accent:       var(--brand);
+  --pos-accent-fg:    var(--brand-fg);
+  --pos-border-color: var(--line);
+  --pos-aside-width:  var(--pos-aside-w);
+
   position: relative;
-  background: var(--ok-bg);
+  background: var(--pos-background);
   height: 100%;
-  min-height: 600px;
+  min-height: var(--pos-min-h);
   display: grid;
-  grid-template-columns: 1fr 380px;
-  gap: 12px;
+  grid-template-columns: 1fr var(--pos-aside-width);
+  gap: var(--space-3);
 }
-.ok-pos__main {
-  background: var(--ok-bg-1);
-  border-radius: var(--ok-radius-xl);
-  border: 1px solid var(--ok-line);
+.pos__main {
+  background: var(--bg-1);
+  border-radius: var(--radius-xl);
+  border: var(--border-w) solid var(--line);
   overflow: hidden;
   height: 100%;
   min-height: 0;
   display: flex;
   flex-direction: column;
 }
-.ok-pos__main > .ok-cat-rail { flex: 0 0 auto; }
+.pos__main > .cat-rail { flex: 0 0 auto; }
 
 /* Aside · split en desktop, drawer en mobile */
-.ok-pos__aside {
-  background: var(--ok-bg-1);
-  border-radius: var(--ok-radius-xl);
-  border: 1px solid var(--ok-line);
+.pos__aside {
+  background: var(--bg-1);
+  border-radius: var(--radius-xl);
+  border: var(--border-w) solid var(--line);
   display: flex;
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
 }
 @media (max-width: 900px) {
-  .ok-pos { grid-template-columns: 1fr; }
-  .ok-pos__aside {
+  .pos { grid-template-columns: 1fr; }
+  .pos__aside {
     position: fixed;
     top: 0; right: 0; bottom: 0;
     width: min(420px, 92vw);
     border-radius: 0;
     border: 0;
-    border-left: 1px solid var(--ok-line);
+    border-left: var(--border-w) solid var(--line);
     z-index: 60;
     transform: translateX(100%);
-    transition: transform var(--ok-dur-slow) var(--ok-ease);
-    box-shadow: var(--ok-shadow-xl);
+    transition: transform var(--dur-slow) var(--ease);
+    box-shadow: var(--shadow-xl);
   }
-  .ok-pos__aside--left {
+  .pos__aside--left {
     right: auto; left: 0;
     border-left: 0;
-    border-right: 1px solid var(--ok-line);
+    border-right: var(--border-w) solid var(--line);
     transform: translateX(-100%);
   }
-  .ok-pos[data-cart-open="true"] .ok-pos__aside { transform: translateX(0); }
+  .pos[data-cart-open="true"] .pos__aside { transform: translateX(0); }
 }
-.ok-pos__backdrop {
+.pos__backdrop {
   display: none;
   position: fixed; inset: 0;
-  background: var(--ok-overlay-medium);
+  background: var(--overlay-medium);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--ok-dur-slow);
+  transition: opacity var(--dur-slow);
   z-index: 55;
 }
 @media (max-width: 900px) {
-  .ok-pos__backdrop { display: block; }
-  .ok-pos[data-cart-open="true"] .ok-pos__backdrop {
+  .pos__backdrop { display: block; }
+  .pos[data-cart-open="true"] .pos__backdrop {
     opacity: 1; pointer-events: auto;
   }
 }
 
 /* FAB del carrito · solo en mobile */
-.ok-pos__cart-fab {
+.pos__cart-fab {
   display: none;
   position: fixed;
-  right: 18px;
-  bottom: 18px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: var(--ok-brand);
-  color: var(--ok-brand-fg);
+  right: var(--pos-fab-offset);
+  bottom: var(--pos-fab-offset);
+  width: var(--pos-fab-size);
+  height: var(--pos-fab-size);
+  border-radius: var(--radius-circle);
+  background: var(--brand);
+  color: var(--brand-fg);
   border: 0;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: var(--ok-shadow-lg);
+  box-shadow: var(--shadow-lg);
   z-index: 50;
-  transition: transform var(--ok-dur-fast), background var(--ok-dur-fast);
+  transition: transform var(--dur-fast), background var(--dur-fast);
 }
-.ok-pos__cart-fab:hover { transform: scale(1.05); background: var(--ok-brand-2); }
-.ok-pos__cart-fab svg { width: 24px; height: 24px; }
+.pos__cart-fab:hover { transform: scale(1.05); background: var(--brand-2); }
+.pos__cart-fab svg { width: var(--icon-lg); height: var(--icon-lg); }
 @media (max-width: 900px) {
-  .ok-pos__cart-fab { display: inline-flex; }
+  .pos__cart-fab { display: inline-flex; }
 }
-.ok-pos__cart-fab__badge {
+.pos__cart-fab__badge {
   position: absolute;
   top: -2px; right: -2px;
-  min-width: 22px; height: 22px;
-  padding: 0 6px;
-  border-radius: 11px;
-  background: var(--ok-ink);
-  color: var(--ok-bg);
-  font-size: 11px;
+  min-width: var(--size-xs); height: var(--size-xs);
+  padding: 0 var(--space-1-5);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: var(--text-xs);
   font-weight: 600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--ok-bg);
+  border: var(--border-w-2) solid var(--bg);
   font-variant-numeric: tabular-nums;
 }
 
-.ok-pos__cart-close {
+.pos__cart-close {
   display: none;
   align-items: center;
   justify-content: center;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line);
-  color: var(--ok-ink-2);
+  width: var(--size-sm); height: var(--size-sm);
+  border-radius: var(--radius-circle);
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  color: var(--ink-2);
   cursor: pointer;
 }
-.ok-pos__cart-close svg { width: 14px; height: 14px; }
+.pos__cart-close svg { width: var(--icon-sm); height: var(--icon-sm); }
 @media (max-width: 900px) {
-  .ok-pos__cart-close { display: inline-flex; }
+  .pos__cart-close { display: inline-flex; }
 }
 
 /* ============================================================
    Catálogo · scroll del grid de productos
    ============================================================ */
-.ok-cat-scroll {
+.cat-scroll {
   flex: 1 1 0;
   overflow-y: auto;
   min-height: 0;
 }
-.ok-cat-scroll::-webkit-scrollbar { width: 8px; }
-.ok-cat-scroll::-webkit-scrollbar-track { background: transparent; }
-.ok-cat-scroll::-webkit-scrollbar-thumb {
-  background: var(--ok-line-2);
-  border-radius: 4px;
+.cat-scroll::-webkit-scrollbar { width: var(--space-2); }
+.cat-scroll::-webkit-scrollbar-track { background: transparent; }
+.cat-scroll::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: var(--radius-xs);
 }
-.ok-cat-scroll::-webkit-scrollbar-thumb:hover { background: var(--ok-ink-3); }
+.cat-scroll::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
 
 /* ============================================================
    Categorías como cards · estilo miCard con imagen de fondo
    Sustituyen a los chips planos cuando se quiere un toque más visual.
    ============================================================ */
-.ok-cat-cards {
+.cat-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
-  padding: 0 0 14px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--pos-cat-card-w), 1fr));
+  gap: var(--space-2-5);
+  padding: 0 0 var(--pos-cat-rail-pad);
 }
-.ok-cat-card {
+.cat-card {
   position: relative;
-  height: 96px;
-  border-radius: var(--ok-radius-lg);
+  height: var(--pos-cat-card-h);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid var(--ok-line);
+  border: var(--border-w) solid var(--line);
   cursor: pointer;
-  background: var(--ok-bg-3);
+  background: var(--bg-3);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 12px;
+  padding: var(--space-3);
   text-align: left;
   isolation: isolate;
-  transition: transform var(--ok-dur-fast), border-color var(--ok-dur-fast);
+  transition: transform var(--dur-fast), border-color var(--dur-fast);
   font-family: inherit;
-  color: var(--ok-media-fg);
+  color: var(--media-fg);
 }
-.ok-cat-card:hover { transform: translateY(-2px); border-color: var(--ok-line-2); }
-.ok-cat-card:active { transform: scale(0.98); }
-.ok-cat-card__bg {
+.cat-card:hover { transform: translateY(-2px); border-color: var(--line-2); }
+.cat-card:active { transform: scale(0.98); }
+.cat-card__bg {
   position: absolute;
   inset: 0;
   background-size: cover;
   background-position: center;
   z-index: -2;
 }
-.ok-cat-card::after {
+.cat-card::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 30%, var(--ok-overlay-strong) 100%);
+  background: linear-gradient(180deg, transparent 30%, var(--overlay-strong) 100%);
   z-index: -1;
 }
-.ok-cat-card__name {
-  font-family: var(--ok-font-display);
-  font-size: 14px;
+.cat-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
   font-weight: 600;
-  letter-spacing: -0.01em;
-  text-shadow: 0 1px 2px var(--ok-overlay-medium);
+  letter-spacing: var(--tracking-snug);
+  text-shadow: 0 1px 2px var(--overlay-medium);
 }
-.ok-cat-card__count {
-  font-size: 11px;
+.cat-card__count {
+  font-size: var(--text-xs);
   opacity: 0.85;
-  margin-top: 2px;
+  margin-top: var(--space-0);
 }
-.ok-cat-card[aria-pressed="true"],
-.ok-cat-card[aria-pressed=""] {
-  border-color: var(--ok-brand);
-  box-shadow: 0 0 0 2px var(--ok-brand);
+.cat-card[aria-pressed="true"],
+.cat-card[aria-pressed=""] {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px var(--brand);
 }
 /* ============================================================
    Categorías · carrusel horizontal con flechas
    ============================================================ */
-.ok-cat-rail {
+.cat-rail {
   position: relative;
-  padding: 14px 0 14px;
-  border-bottom: 1px solid var(--ok-line);
+  padding: var(--pos-cat-rail-pad) 0 var(--pos-cat-rail-pad);
+  border-bottom: var(--border-w) solid var(--line);
 }
-.ok-cat-rail__track {
+.cat-rail__track {
   display: flex;
-  gap: 10px;
+  gap: var(--space-2-5);
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: 0 14px 4px;
+  padding: 0 var(--pos-cat-rail-pad) var(--space-1);
   scrollbar-width: thin;
-  scrollbar-color: var(--ok-line-2) transparent;
+  scrollbar-color: var(--line-2) transparent;
 }
 /* Chip-style fallback rail (no __track wrapper) — same scroll/snap pattern */
-.ok-cat-rail--chips {
+.cat-rail.chips {
   display: flex;
-  gap: var(--ok-space-2);
+  gap: var(--space-2);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding-bottom: 4px;
+  padding-bottom: var(--space-1);
   scrollbar-width: thin;
 }
-.ok-cat-rail--chips > .ok-cat-rail__chip,
-.ok-cat-rail--chips > .ok-cat-rail__item {
+.cat-rail.chips > .cat-rail__chip,
+.cat-rail.chips > .cat-rail__item {
   flex: 0 0 auto;
   scroll-snap-align: start;
   white-space: nowrap;
 }
-.ok-cat-rail__track::-webkit-scrollbar { height: 6px; }
-.ok-cat-rail__track::-webkit-scrollbar-track { background: transparent; }
-.ok-cat-rail__track::-webkit-scrollbar-thumb {
-  background: var(--ok-line-2);
-  border-radius: 3px;
+.cat-rail__track::-webkit-scrollbar { height: var(--space-1-5); }
+.cat-rail__track::-webkit-scrollbar-track { background: transparent; }
+.cat-rail__track::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: var(--radius-xs);
 }
-.ok-cat-rail__track::-webkit-scrollbar-thumb:hover { background: var(--ok-ink-3); }
+.cat-rail__track::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
 
-.ok-cat-rail .ok-cat-card {
-  flex: 0 0 160px;
+.cat-rail .cat-card {
+  flex: 0 0 var(--pos-cat-card-w);
   scroll-snap-align: start;
 }
 
-.ok-cat-rail__arrow {
+.cat-rail__arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--ok-bg-1);
-  border: 1px solid var(--ok-line);
-  color: var(--ok-ink);
+  width: var(--size-md);
+  height: var(--size-md);
+  border-radius: var(--radius-circle);
+  background: var(--bg-1);
+  border: var(--border-w) solid var(--line);
+  color: var(--ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   z-index: 2;
-  box-shadow: var(--ok-shadow-md);
-  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast);
+  box-shadow: var(--shadow-md);
+  transition: background var(--dur-fast), transform var(--dur-fast);
 }
-.ok-cat-rail__arrow:hover { background: var(--ok-bg-2); }
-.ok-cat-rail__arrow:active { transform: translateY(-50%) scale(0.94); }
-.ok-cat-rail__arrow--prev { left: 4px; }
-.ok-cat-rail__arrow--next { right: 4px; }
-.ok-cat-rail__arrow svg { width: 16px; height: 16px; }
+.cat-rail__arrow:hover { background: var(--bg-2); }
+.cat-rail__arrow:active { transform: translateY(-50%) scale(0.94); }
+.cat-rail__arrow--prev { left: var(--space-1); }
+.cat-rail__arrow--next { right: var(--space-1); }
+.cat-rail__arrow svg { width: var(--icon-md); height: var(--icon-md); }
 
 /* Tile con imagen de producto */
-.ok-cat-tile__img {
+.cat-tile__img {
   width: 100%;
   aspect-ratio: 4 / 3;
-  border-radius: var(--ok-radius-md);
+  border-radius: var(--radius-md);
   background-size: cover;
   background-position: center;
-  background-color: var(--ok-bg-3);
-  margin-bottom: 8px;
+  background-color: var(--bg-3);
+  margin-bottom: var(--space-2);
   display: block;
 }
 
 /* ============================================================
    Cat-card (carrusel) · efectos hover/active
    ============================================================ */
-.ok-cat-card {
+.cat-card {
   transition:
-    transform var(--ok-dur-fast) var(--ok-ease),
-    border-color var(--ok-dur-fast),
-    box-shadow var(--ok-dur-fast);
+    transform var(--dur-fast) var(--ease),
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast);
 }
-.ok-cat-card:hover {
+.cat-card:hover {
   transform: translateY(-3px) scale(1.02);
-  border-color: var(--ok-brand);
-  box-shadow: 0 10px 24px -10px var(--ok-overlay-medium);
+  border-color: var(--brand);
+  box-shadow: 0 10px 24px -10px var(--overlay-medium);
 }
-.ok-cat-card:active {
+.cat-card:active {
   transform: translateY(-1px) scale(0.98);
   transition-duration: 80ms;
 }
-.ok-cat-card[aria-pressed="true"],
-.ok-cat-card[aria-pressed=""] {
-  border-color: var(--ok-brand);
-  box-shadow: 0 0 0 2px var(--ok-brand), 0 8px 20px -10px var(--ok-overlay-medium);
+.cat-card[aria-pressed="true"],
+.cat-card[aria-pressed=""] {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 2px var(--brand), 0 8px 20px -10px var(--overlay-medium);
 }
 
 /* ============================================================
    Fly-to-cart animation
    ============================================================ */
-.ok-fly {
+.fly {
   position: fixed;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   background-size: cover;
   background-position: center;
   pointer-events: none;
   z-index: 999;
-  box-shadow: var(--ok-shadow-md);
+  box-shadow: var(--shadow-md);
   transition: transform 700ms cubic-bezier(0.5, -0.2, 0.6, 1.4), opacity 700ms ease, width 700ms ease, height 700ms ease;
 }
 
@@ -339,25 +346,25 @@
   40%  { transform: scale(1.4); }
   100% { transform: scale(1); }
 }
-.ok-bump { animation: ok-bump 380ms var(--ok-ease); }
+.bump { animation: ok-bump 380ms var(--ease); }
 
 /* Cart line enter */
 @keyframes ok-line-in {
-  0%   { opacity: 0; transform: translateX(20px); background: color-mix(in oklch, var(--ok-brand) 25%, transparent); }
-  60%  { background: color-mix(in oklch, var(--ok-brand) 25%, transparent); }
+  0%   { opacity: 0; transform: translateX(20px); background: color-mix(in oklch, var(--brand) 25%, transparent); }
+  60%  { background: color-mix(in oklch, var(--brand) 25%, transparent); }
   100% { opacity: 1; transform: translateX(0); background: transparent; }
 }
-.ok-cart__line--enter { animation: ok-line-in 500ms var(--ok-ease); }
+.cart__line--enter { animation: ok-line-in 500ms var(--ease); }
 
 /* Variantes de color tintado (sin imagen) */
-.ok-cat-card--coffee  .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-coffee-a), var(--ok-cat-coffee-b)); }
-.ok-cat-card--tea     .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-tea-a), var(--ok-cat-tea-b)); }
-.ok-cat-card--bakery  .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-bakery-a), var(--ok-cat-bakery-b)); }
-.ok-cat-card--cold    .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-cold-a), var(--ok-cat-cold-b)); }
-.ok-cat-card--menu    .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-menu-a), var(--ok-cat-menu-b)); }
-.ok-cat-card--dessert .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-dessert-a), var(--ok-cat-dessert-b)); }
-.ok-cat-card--snacks  .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-snacks-a), var(--ok-cat-snacks-b)); }
-.ok-cat-card--all     .ok-cat-card__bg { background: linear-gradient(135deg, var(--ok-cat-all-a), var(--ok-cat-all-b)); }
+.cat-card.coffee  .cat-card__bg { background: linear-gradient(135deg, var(--cat-coffee-a), var(--cat-coffee-b)); }
+.cat-card.tea     .cat-card__bg { background: linear-gradient(135deg, var(--cat-tea-a), var(--cat-tea-b)); }
+.cat-card.bakery  .cat-card__bg { background: linear-gradient(135deg, var(--cat-bakery-a), var(--cat-bakery-b)); }
+.cat-card.cold    .cat-card__bg { background: linear-gradient(135deg, var(--cat-cold-a), var(--cat-cold-b)); }
+.cat-card.menu    .cat-card__bg { background: linear-gradient(135deg, var(--cat-menu-a), var(--cat-menu-b)); }
+.cat-card.dessert .cat-card__bg { background: linear-gradient(135deg, var(--cat-dessert-a), var(--cat-dessert-b)); }
+.cat-card.snacks  .cat-card__bg { background: linear-gradient(135deg, var(--cat-snacks-a), var(--cat-snacks-b)); }
+.cat-card.all     .cat-card__bg { background: linear-gradient(135deg, var(--cat-all-a), var(--cat-all-b)); }
 
 /* ============================================================
    Numpad · grid 3×4 + acciones laterales
@@ -365,619 +372,644 @@
    (1.234,56). Para locales EN swap el `,` por `.` en el último
    botón inferior izquierdo.
    ============================================================ */
-.ok-numpad {
+.numpad {
+  /* API canónica de override */
+  --numpad-background:    var(--bg-2);
+  --numpad-border-color:  var(--line);
+  --numpad-border-radius: var(--radius-md);
+  --numpad-accent:        var(--brand);
+  --numpad-accent-fg:     var(--brand-fg);
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  background: var(--ok-bg-2);
-  padding: 6px;
-  border-radius: var(--ok-radius-md);
-  border: 1px solid var(--ok-line);
+  gap: var(--pos-numpad-gap);
+  background: var(--numpad-background);
+  padding: var(--pos-numpad-gap);
+  border-radius: var(--numpad-border-radius);
+  border: var(--border-w) solid var(--numpad-border-color);
 }
 
-.ok-numpad__btn {
-  height: 56px;
-  background: var(--ok-bg-1);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  color: var(--ok-ink);
-  font-family: var(--ok-font-display);
-  font-size: 22px;
+.numpad__btn {
+  height: var(--pos-numpad-btn-h);
+  background: var(--bg-1);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--pos-numpad-fz);
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--tracking-near);
   cursor: pointer;
   font-variant-numeric: tabular-nums;
-  transition: background var(--ok-dur-fast), transform var(--ok-dur-fast), box-shadow var(--ok-dur-fast);
+  transition: background var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.ok-numpad__btn:hover { background: var(--ok-bg-3); }
-.ok-numpad__btn:active {
+.numpad__btn:hover { background: var(--bg-3); }
+.numpad__btn:active {
   transform: scale(0.97);
-  background: var(--ok-bg-4);
+  background: var(--bg-4);
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.ok-numpad__btn--brand {
-  background: var(--ok-brand);
-  color: var(--ok-brand-fg);
+.numpad__btn--brand {
+  background: var(--numpad-accent);
+  color: var(--numpad-accent-fg);
   border-color: transparent;
 }
-.ok-numpad__btn--brand:hover { background: var(--ok-brand-2); }
+.numpad__btn--brand:hover { background: var(--brand-2); }
 
-.ok-numpad__btn--ghost {
+.numpad__btn--ghost {
   background: transparent;
-  color: var(--ok-ink-2);
-  border-color: var(--ok-line);
-  font-size: 14px;
+  color: var(--ink-2);
+  border-color: var(--line);
+  font-size: var(--text-base);
   font-weight: 500;
-  font-family: var(--ok-font-sans);
+  font-family: var(--font-sans);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wide);
 }
 
-.ok-numpad__btn--double { grid-column: span 2; }
-.ok-numpad__btn--tall   { grid-row: span 2; height: auto; }
+.numpad__btn--double { grid-column: span 2; }
+.numpad__btn--tall   { grid-row: span 2; height: auto; }
 
 /* Display del numpad */
-.ok-numpad-display {
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
-  padding: 16px;
+.numpad-display {
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
   text-align: right;
-  margin-bottom: 12px;
-  font-family: var(--ok-font-display);
+  margin-bottom: var(--space-3);
+  font-family: var(--font-display);
 }
-.ok-numpad-display__label {
-  font-size: 11px;
+.numpad-display__label {
+  font-size: var(--text-xs);
   text-transform: uppercase;
-  color: var(--ok-ink-3);
-  letter-spacing: var(--ok-tracking-wide);
+  color: var(--ink-3);
+  letter-spacing: var(--tracking-wide);
 }
-.ok-numpad-display__value {
-  font-size: 38px;
+.numpad-display__value {
+  font-size: var(--pos-cart-total-fz);
   font-weight: 600;
-  letter-spacing: -0.04em;
-  color: var(--ok-ink);
+  letter-spacing: var(--tracking-tightest);
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
   line-height: 1.05;
-  margin-top: 4px;
+  margin-top: var(--space-1);
 }
 
 /* ============================================================
    Cart · línea de pedido
    ============================================================ */
-.ok-cart {
+.cart {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
-.ok-cart__header {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--ok-line);
+.cart__header {
+  padding: var(--pos-cat-rail-pad) var(--space-4);
+  border-bottom: var(--border-w) solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.ok-cart__title {
-  font-family: var(--ok-font-display);
-  font-size: 14px;
+.cart__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  color: var(--ok-ink);
+  letter-spacing: var(--tracking-near);
+  color: var(--ink);
 }
-.ok-cart__sub {
-  font-size: 11px;
-  color: var(--ok-ink-3);
-  margin-top: 2px;
+.cart__sub {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin-top: var(--space-0);
 }
 
-.ok-cart__list {
+.cart__list {
   flex: 1;
   overflow-y: auto;
-  padding: 6px;
+  padding: var(--pos-numpad-gap);
 }
 
-.ok-cart__line {
+.cart__line {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 6px;
-  padding: 10px 12px;
-  border-radius: var(--ok-radius-md);
-  transition: background var(--ok-dur-fast);
+  gap: var(--pos-numpad-gap);
+  padding: var(--space-2-5) var(--space-3);
+  border-radius: var(--radius-md);
+  transition: background var(--dur-fast);
   cursor: pointer;
 }
-.ok-cart__line:hover { background: var(--ok-bg-3); }
-.ok-cart__line--selected { background: color-mix(in oklch, var(--ok-brand) 10%, transparent); }
-.ok-cart__line--selected:hover { background: color-mix(in oklch, var(--ok-brand) 14%, transparent); }
+.cart__line:hover { background: var(--bg-3); }
+.cart__line--selected { background: color-mix(in oklch, var(--brand) 10%, transparent); }
+.cart__line--selected:hover { background: color-mix(in oklch, var(--brand) 14%, transparent); }
 
-.ok-cart__line-name {
-  font-size: 13px;
-  color: var(--ok-ink);
+.cart__line-name {
+  font-size: var(--text-sm);
+  color: var(--ink);
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--pos-numpad-gap);
 }
-.ok-cart__line-qty {
+.cart__line-qty {
   display: inline-block;
-  min-width: 24px;
-  padding: 2px 8px;
-  background: var(--ok-bg-3);
-  color: var(--ok-ink);
-  border-radius: 999px;
-  font-size: var(--ok-text-md);
+  min-width: var(--icon-lg);
+  padding: var(--space-0) var(--space-2);
+  background: var(--bg-3);
+  color: var(--ink);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-md);
   font-weight: 600;
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
-.ok-cart__line-meta {
-  font-size: 11px;
-  color: var(--ok-ink-3);
-  margin-top: 2px;
+.cart__line-meta {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin-top: var(--space-0);
 }
-.ok-cart__line-price {
-  font-size: 13px;
+.cart__line-price {
+  font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--ok-ink);
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
   text-align: right;
 }
-.ok-cart__line-orig {
+.cart__line-orig {
   text-decoration: line-through;
-  color: var(--ok-ink-3);
-  font-size: 11px;
+  color: var(--ink-3);
+  font-size: var(--text-xs);
 }
 
 /* Totals box */
-.ok-cart__totals {
-  border-top: 1px solid var(--ok-line);
-  padding: 12px 16px;
-  background: var(--ok-bg);
+.cart__totals {
+  border-top: var(--border-w) solid var(--line);
+  padding: var(--space-3) var(--space-4);
+  background: var(--bg);
 }
-.ok-cart__total-row {
+.cart__total-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12.5px;
-  color: var(--ok-ink-3);
-  margin-bottom: 4px;
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+  margin-bottom: var(--space-1);
   font-variant-numeric: tabular-nums;
 }
-.ok-cart__total-row--main {
-  font-family: var(--ok-font-display);
-  font-size: 22px;
+.cart__total-row--main {
+  font-family: var(--font-display);
+  font-size: var(--pos-numpad-fz);
   font-weight: 600;
-  letter-spacing: -0.03em;
-  color: var(--ok-ink);
-  margin-top: 8px;
-  padding-top: 8px;
-  border-top: 1px dashed var(--ok-line);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--ink);
+  margin-top: var(--space-2);
+  padding-top: var(--space-2);
+  border-top: 1px dashed var(--line);
 }
 
-.ok-cart__actions {
-  padding: 12px;
-  border-top: 1px solid var(--ok-line);
+.cart__actions {
+  padding: var(--space-3);
+  border-top: var(--border-w) solid var(--line);
   display: grid;
-  gap: 8px;
+  gap: var(--space-2);
 }
-.ok-cart__cta {
-  height: 56px;
-  border-radius: var(--ok-radius-lg);
-  font-size: 16px;
+.cart__cta {
+  height: var(--pos-numpad-btn-h);
+  border-radius: var(--radius-lg);
+  font-size: var(--text-lg);
   font-weight: 500;
-  background: var(--ok-brand);
-  color: var(--ok-brand-fg);
+  background: var(--brand);
+  color: var(--brand-fg);
   border: none;
   cursor: pointer;
-  font-family: var(--ok-font-display);
-  letter-spacing: -0.01em;
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-snug);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 18px;
-  transition: background var(--ok-dur-fast);
+  padding: 0 var(--mfg-wo-pad);
+  transition: background var(--dur-fast);
 }
-.ok-cart__cta:hover { background: var(--ok-brand-2); }
-.ok-cart__cta-amount { font-variant-numeric: tabular-nums; font-weight: 600; }
+.cart__cta:hover { background: var(--brand-2); }
+.cart__cta-amount { font-variant-numeric: tabular-nums; font-weight: 600; }
 
 /* ============================================================
    Catalog tile · botón de producto en cuadrícula POS
    ============================================================ */
-.ok-cat-grid {
+.cat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 10px;
-  padding: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(var(--pos-cat-card-w), 1fr));
+  gap: var(--space-2-5);
+  padding: var(--pos-cat-rail-pad);
 }
-.ok-cat-scroll > .ok-cat-grid { padding-top: 14px; }
+.cat-scroll > .cat-grid { padding-top: var(--pos-cat-rail-pad); }
 
-.ok-cat-tile {
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
-  padding: 10px;
+.cat-tile {
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2-5);
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: var(--space-1);
   text-align: left;
   font: inherit;
   transition:
-    transform var(--ok-dur-fast) var(--ok-ease),
-    border-color var(--ok-dur-fast),
-    box-shadow var(--ok-dur-fast),
-    background var(--ok-dur-fast);
+    transform var(--dur-fast) var(--ease),
+    border-color var(--dur-fast),
+    box-shadow var(--dur-fast),
+    background var(--dur-fast);
   position: relative;
-  min-height: 96px;
+  min-height: var(--pos-cat-card-h);
   overflow: hidden;
   isolation: isolate;
 }
-.ok-cat-tile::before {
+.cat-tile::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
     circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in oklch, var(--ok-brand) 18%, transparent) 0%,
+    color-mix(in oklch, var(--brand) 18%, transparent) 0%,
     transparent 60%
   );
   opacity: 0;
-  transition: opacity var(--ok-dur-base);
+  transition: opacity var(--dur-base);
   pointer-events: none;
   z-index: 0;
 }
-.ok-cat-tile > * { position: relative; z-index: 1; }
-.ok-cat-tile:hover {
-  border-color: var(--ok-brand);
+.cat-tile > * { position: relative; z-index: 1; }
+.cat-tile:hover {
+  border-color: var(--brand);
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px -8px var(--ok-overlay-medium), 0 0 0 1px var(--ok-brand);
+  box-shadow: 0 8px 20px -8px var(--overlay-medium), 0 0 0 1px var(--brand);
 }
-.ok-cat-tile:hover::before { opacity: 1; }
-.ok-cat-tile:hover .ok-cat-tile__img { transform: scale(1.06); }
-.ok-cat-tile:active {
+.cat-tile:hover::before { opacity: 1; }
+.cat-tile:hover .cat-tile__img { transform: scale(1.06); }
+.cat-tile:active {
   transform: translateY(-1px) scale(0.97);
   transition-duration: 80ms;
 }
 /* Pulso al añadir */
 @keyframes ok-tile-pulse {
-  0%   { box-shadow: 0 0 0 0 color-mix(in oklch, var(--ok-brand) 60%, transparent); }
+  0%   { box-shadow: 0 0 0 0 color-mix(in oklch, var(--brand) 60%, transparent); }
   100% { box-shadow: 0 0 0 14px transparent; }
 }
-.ok-cat-tile--pulse {
-  animation: ok-tile-pulse 500ms var(--ok-ease);
-  border-color: var(--ok-brand) !important;
+.cat-tile.pulse {
+  animation: ok-tile-pulse 500ms var(--ease);
+  border-color: var(--brand) !important;
 }
-.ok-cat-tile__img {
-  transition: transform var(--ok-dur-slow) var(--ok-ease);
+.cat-tile__img {
+  transition: transform var(--dur-slow) var(--ease);
 }
 
 /* Optional product thumbnail slot · placeholder when image missing */
-.ok-cat-tile__media {
+.cat-tile__media {
   aspect-ratio: 1;
   width: 100%;
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-sm);
+  background: var(--bg-3);
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  margin-bottom: 6px;
+  margin-bottom: var(--space-1-5);
   display: grid;
   place-items: center;
 }
-.ok-cat-tile__media img {
+.cat-tile__media img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.ok-cat-tile__media--placeholder { color: var(--ok-ink-4); }
+.cat-tile__media--placeholder { color: var(--ink-4); }
 
-.ok-cat-tile__name {
-  font-size: 13px;
+.cat-tile__name {
+  font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--ok-ink);
+  color: var(--ink);
   line-height: 1.3;
   text-wrap: balance;
 }
-.ok-cat-tile__price {
-  font-size: 12px;
-  color: var(--ok-ink-3);
+.cat-tile__price {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   margin-top: auto;
 }
-.ok-cat-tile__swatch {
+.cat-tile__swatch {
   position: absolute;
-  top: 8px; right: 8px;
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--ok-brand);
+  top: var(--space-2); right: var(--space-2);
+  width: var(--dot-md); height: var(--dot-md);
+  border-radius: var(--radius-circle);
+  background: var(--brand);
 }
-.ok-cat-tile--out {
+.cat-tile.out {
   opacity: 0.4;
   cursor: not-allowed;
 }
-.ok-cat-tile--out::after {
+.cat-tile.out::after {
   content: "Sin stock";
   position: absolute;
-  bottom: 8px; right: 8px;
-  font-size: 9px;
-  color: var(--ok-danger);
+  bottom: var(--space-2); right: var(--space-2);
+  font-size: var(--text-2xs);
+  color: var(--danger);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: var(--tracking-wider);
   font-weight: 500;
 }
 
 /* Categoría chips horizontales */
-.ok-cat-chips {
+.cat-chips {
   display: flex;
-  gap: 6px;
-  padding: 12px 14px;
+  gap: var(--pos-numpad-gap);
+  padding: var(--space-3) var(--pos-cat-rail-pad);
   overflow-x: auto;
-  border-bottom: 1px solid var(--ok-line);
-  background: var(--ok-bg-1);
+  border-bottom: var(--border-w) solid var(--line);
+  background: var(--bg-1);
   scrollbar-width: none;
 }
-.ok-cat-chips::-webkit-scrollbar { display: none; }
-.ok-cat-chip {
+.cat-chips::-webkit-scrollbar { display: none; }
+.cat-chip {
   flex-shrink: 0;
-  padding: 8px 14px;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line);
-  color: var(--ok-ink-2);
-  border-radius: var(--ok-radius-pill);
-  font-size: 12.5px;
+  padding: var(--space-2) var(--pos-cat-rail-pad);
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  color: var(--ink-2);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
   font: inherit;
-  transition: all var(--ok-dur-fast);
+  transition: all var(--dur-fast);
 }
-.ok-cat-chip:hover { border-color: var(--ok-line-2); color: var(--ok-ink); }
-.ok-cat-chip[aria-pressed="true"],
-.ok-cat-chip[aria-pressed=""] {
-  background: var(--ok-ink);
-  color: var(--ok-bg);
-  border-color: var(--ok-ink);
+.cat-chip:hover { border-color: var(--line-2); color: var(--ink); }
+.cat-chip[aria-pressed="true"],
+.cat-chip[aria-pressed=""] {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
 
 /* ============================================================
    Payment · método y desglose
    ============================================================ */
-.ok-pay-methods {
+.pay-methods {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: var(--space-2-5);
 }
-.ok-pay-method {
+.pay-method {
+  /* API canónica de override */
+  --pay-method-background:    var(--bg-2);
+  --pay-method-border-color:  var(--line);
+  --pay-method-border-radius: var(--radius-lg);
+  --pay-method-accent:        var(--brand);
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  padding: 16px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--pay-method-background);
+  border: var(--border-w) solid var(--pay-method-border-color);
+  border-radius: var(--pay-method-border-radius);
   cursor: pointer;
   font: inherit;
   text-align: left;
-  transition: border-color var(--ok-dur-fast), background var(--ok-dur-fast);
+  transition: border-color var(--dur-fast), background var(--dur-fast);
 }
-.ok-pay-method:hover { border-color: var(--ok-line-2); }
-.ok-pay-method[aria-pressed="true"],
-.ok-pay-method[aria-pressed=""] {
-  border-color: var(--ok-brand);
-  background: color-mix(in oklch, var(--ok-brand) 6%, var(--ok-bg-2));
+.pay-method:hover { border-color: var(--line-2); }
+.pay-method[aria-pressed="true"],
+.pay-method[aria-pressed=""] {
+  border-color: var(--pay-method-accent);
+  background: color-mix(in oklch, var(--pay-method-accent) 6%, var(--pay-method-background));
 }
-.ok-pay-method__icon {
-  width: 36px; height: 36px;
-  border-radius: 9px;
-  background: var(--ok-bg-3);
+.pay-method__icon {
+  width: var(--size-md); height: var(--size-md);
+  border-radius: var(--radius-md);
+  background: var(--bg-3);
   display: grid;
   place-items: center;
-  color: var(--ok-ink-2);
+  color: var(--ink-2);
 }
-.ok-pay-method__icon svg { width: 18px; height: 18px; }
-.ok-pay-method[aria-pressed="true"] .ok-pay-method__icon { background: var(--ok-brand-soft); color: var(--ok-brand-3); }
+.pay-method__icon svg { width: var(--icon-md); height: var(--icon-md); }
+.pay-method[aria-pressed="true"] .pay-method__icon { background: var(--brand-soft); color: var(--brand-3); }
 
-.ok-pay-method__name {
-  font-size: 13px;
+.pay-method__name {
+  font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--ok-ink);
+  color: var(--ink);
 }
-.ok-pay-method__sub {
-  font-size: 11px;
-  color: var(--ok-ink-3);
+.pay-method__sub {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
 }
 
 /* ============================================================
    Receipt · ticket impreso (estilo papel)
    ============================================================ */
-.ok-receipt {
-  background: var(--ok-paper-bg);
-  color: var(--ok-paper-ink);
-  font-family: var(--ok-font-mono);
-  font-size: 11.5px;
+.receipt {
+  /* API canónica de override */
+  --receipt-background:    var(--paper-bg);
+  --receipt-color:         var(--paper-ink);
+  --receipt-border-radius: var(--radius-lg);
+  --receipt-border-color:  var(--line);
+
+  background: var(--receipt-background);
+  color: var(--receipt-color);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
   line-height: 1.55;
-  padding: 22px 18px;
-  border-radius: var(--ok-radius-lg);
-  width: 280px;
+  padding: var(--space-5) var(--mfg-wo-pad);
+  border-radius: var(--radius-lg);
+  width: var(--invoice-w);
   max-width: 100%;
-  border: 1px solid var(--ok-line);
-  box-shadow: var(--ok-shadow-md);
+  border: var(--border-w) solid var(--line);
+  box-shadow: var(--shadow-md);
   position: relative;
   /* dentado superior e inferior */
   -webkit-mask:
-    radial-gradient(circle at 6px 0, transparent 4px, var(--ok-paper-ink) 4.5px) top left / 12px 8px repeat-x,
-    radial-gradient(circle at 6px 8px, transparent 4px, var(--ok-paper-ink) 4.5px) bottom left / 12px 8px repeat-x,
-    linear-gradient(var(--ok-paper-ink), var(--ok-paper-ink));
+    radial-gradient(circle at 6px 0, transparent 4px, var(--paper-ink) 4.5px) top left / 12px 8px repeat-x,
+    radial-gradient(circle at 6px 8px, transparent 4px, var(--paper-ink) 4.5px) bottom left / 12px 8px repeat-x,
+    linear-gradient(var(--paper-ink), var(--paper-ink));
   -webkit-mask-composite: source-over;
           mask:
-    radial-gradient(circle at 6px 0, transparent 4px, var(--ok-paper-ink) 4.5px) top left / 12px 8px repeat-x,
-    radial-gradient(circle at 6px 8px, transparent 4px, var(--ok-paper-ink) 4.5px) bottom left / 12px 8px repeat-x,
-    linear-gradient(var(--ok-paper-ink), var(--ok-paper-ink));
+    radial-gradient(circle at 6px 0, transparent 4px, var(--paper-ink) 4.5px) top left / 12px 8px repeat-x,
+    radial-gradient(circle at 6px 8px, transparent 4px, var(--paper-ink) 4.5px) bottom left / 12px 8px repeat-x,
+    linear-gradient(var(--paper-ink), var(--paper-ink));
   margin: 8px 0;
 }
 
-.ok-receipt__title {
-  font-family: var(--ok-font-display);
-  font-size: 15px;
+.receipt__title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
   font-weight: 700;
   text-align: center;
-  letter-spacing: 0.05em;
+  letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  margin-bottom: var(--space-1);
 }
-.ok-receipt__sub {
+.receipt__sub {
   text-align: center;
-  font-size: 10.5px;
-  color: var(--ok-paper-ink-2);
-  margin-bottom: 14px;
+  font-size: var(--text-2xs);
+  color: var(--paper-ink-2);
+  margin-bottom: var(--pos-cat-rail-pad);
 }
-.ok-receipt__divider {
+.receipt__divider {
   border: none;
-  border-top: 1px dashed var(--ok-paper-line);
-  margin: 8px 0;
+  border-top: var(--border-w) dashed var(--paper-line);
+  margin: var(--space-2) 0;
 }
-.ok-receipt__line {
+.receipt__line {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--space-2);
 }
-.ok-receipt__line-name {
+.receipt__line-name {
   flex: 1;
   word-break: break-word;
 }
-.ok-receipt__line-price {
+.receipt__line-price {
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-.ok-receipt__total {
+.receipt__total {
   display: flex;
   justify-content: space-between;
-  font-size: 14px;
+  font-size: var(--text-base);
   font-weight: 700;
-  margin-top: 8px;
+  margin-top: var(--space-2);
 }
-.ok-receipt__footer {
+.receipt__footer {
   text-align: center;
-  font-size: 10px;
-  color: var(--ok-paper-ink-2);
-  margin-top: 12px;
+  font-size: var(--text-2xs);
+  color: var(--paper-ink-2);
+  margin-top: var(--space-3);
   line-height: 1.4;
 }
 
 /* All data inside a receipt is monospaced + tabular-nums so numeric columns
    line up (Cierre Z totals, prices, counts). */
-.ok-receipt,
-.ok-receipt pre,
-.ok-receipt table {
-  font-family: var(--ok-font-mono);
+.receipt,
+.receipt pre,
+.receipt table {
+  font-family: var(--font-mono);
   font-variant-numeric: tabular-nums;
 }
 
 /* ============================================================
    KDS · ticket de cocina
    ============================================================ */
-.ok-kds {
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-xl);
-  padding: 12px 14px;
+.kds {
+  /* API canónica de override */
+  --kds-background:    var(--bg-2);
+  --kds-border-color:  var(--line);
+  --kds-border-radius: var(--radius-xl);
+  --kds-accent:        var(--info);
+
+  background: var(--kds-background);
+  border: var(--border-w) solid var(--kds-border-color);
+  border-radius: var(--kds-border-radius);
+  padding: var(--space-3) var(--pos-cat-rail-pad);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  width: 280px;
+  gap: var(--space-2);
+  width: var(--invoice-w);
   max-width: 100%;
   position: relative;
-  border-top: 4px solid var(--ok-info);
+  border-top: var(--border-w-4) solid var(--kds-accent);
 }
-.ok-kds--ready { border-top-color: var(--ok-leaf); }
-.ok-kds--late { border-top-color: var(--ok-danger); animation: ok-kds-pulse 1.5s ease-in-out infinite; }
+.kds.ready { border-top-color: var(--leaf); }
+.kds.late { border-top-color: var(--danger); animation: ok-kds-pulse 1.5s ease-in-out infinite; }
 @keyframes ok-kds-pulse {
   0%, 100% { box-shadow: 0 0 0 0 transparent; }
-  50% { box-shadow: 0 0 0 4px color-mix(in oklch, var(--ok-danger) 25%, transparent); }
+  50% { box-shadow: 0 0 0 4px color-mix(in oklch, var(--danger) 25%, transparent); }
 }
 
-.ok-kds__head {
+.kds__head {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.ok-kds__order {
-  font-family: var(--ok-font-display);
-  font-size: 16px;
+.kds__order {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ok-ink);
+  letter-spacing: var(--tracking-near);
+  color: var(--ink);
 }
-.ok-kds__time {
-  font-family: var(--ok-font-mono);
-  font-size: 12px;
+.kds__time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--ok-ink-2);
-  background: var(--ok-bg-3);
-  padding: 3px 7px;
-  border-radius: 4px;
+  color: var(--ink-2);
+  background: var(--bg-3);
+  padding: var(--space-0) var(--space-2);
+  border-radius: var(--radius-xs);
 }
-.ok-kds--late .ok-kds__time { color: var(--ok-danger); background: var(--ok-danger-soft); }
-.ok-kds--ready .ok-kds__time { color: var(--ok-leaf); background: var(--ok-leaf-soft); }
+.kds.late .kds__time { color: var(--danger); background: var(--danger-soft); }
+.kds.ready .kds__time { color: var(--leaf); background: var(--leaf-soft); }
 
-.ok-kds__source {
-  font-size: 11px;
-  color: var(--ok-ink-3);
+.kds__source {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--pos-numpad-gap);
 }
 
-.ok-kds__items {
+.kds__items {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  font-size: 13px;
+  gap: var(--space-0);
+  font-size: var(--text-sm);
 }
-.ok-kds__item {
+.kds__item {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  padding: 2px 0;
-  color: var(--ok-ink);
+  gap: var(--space-2);
+  padding: var(--space-0) 0;
+  color: var(--ink);
 }
-.ok-kds__qty {
+.kds__qty {
   font-weight: 700;
-  color: var(--ok-brand);
+  color: var(--brand);
   flex-shrink: 0;
   font-variant-numeric: tabular-nums;
-  min-width: 22px;
+  min-width: var(--size-xs);
 }
-.ok-kds__notes {
-  font-size: 11px;
-  color: var(--ok-warn);
-  margin-left: 30px;
+.kds__notes {
+  font-size: var(--text-xs);
+  color: var(--warn);
+  margin-left: var(--space-7);
   font-style: italic;
 }
-.ok-kds__item--done {
-  color: var(--ok-ink-3);
+.kds__item--done {
+  color: var(--ink-3);
   text-decoration: line-through;
 }
 
-.ok-kds__actions {
+.kds__actions {
   display: flex;
-  gap: 6px;
-  margin-top: 4px;
+  gap: var(--pos-numpad-gap);
+  margin-top: var(--space-1);
 }
-.ok-kds__actions .ok-btn { flex: 1; }
+.kds__actions .btn { flex: 1; }
 
 /* Ghost buttons inside KDS get a visible outline so "Marcar" doesn't look
    like plain text against the card background. */
-.ok-kds__actions .ok-btn--ghost {
+.kds__actions .btn.ghost {
   background: transparent;
-  border: 1px solid var(--ok-line-2);
-  color: var(--ok-ink-2);
+  border: var(--border-w) solid var(--line-2);
+  color: var(--ink-2);
 }
-.ok-kds__actions .ok-btn--ghost:hover {
-  background: var(--ok-bg-3);
-  border-color: var(--ok-line-3);
-  color: var(--ok-ink);
+.kds__actions .btn.ghost:hover {
+  background: var(--bg-3);
+  border-color: var(--line-3);
+  color: var(--ink);
 }

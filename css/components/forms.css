@@ -5,39 +5,46 @@
    ============================================================ */
 
 /* Field — wrapper genérico con label + control + hint */
-.ok-field {
+.field {
+  /* API canónica de override */
+  --field-gap:         var(--space-1-5);
+  --field-label-color: var(--ink-2);
+  --field-label-size:  var(--text-sm);
+  --field-hint-color:  var(--ink-3);
+  --field-error-color: var(--danger);
+
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--field-gap);
 }
 
-.ok-field__label {
-  font-size: var(--ok-text-sm);
+.field__label {
+  font-size: var(--field-label-size);
   font-weight: 500;
-  color: var(--ok-ink-2);
+  color: var(--field-label-color);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-1-5);
 }
-.ok-field__label--req::after {
+.field__label--req::after {
   content: "*";
-  color: var(--ok-danger);
+  color: var(--field-error-color);
 }
 
-.ok-field__required {
-  color: var(--ok-danger);
+.field__required {
+  color: var(--field-error-color);
   font-weight: 500;
-  margin-left: 2px;
+  margin-left: var(--border-w-2);
 }
 
-.ok-field__control {
+.field__control {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.ok-field__error-icon {
-  color: var(--ok-danger);
+.field__error-icon {
+  color: var(--field-error-color);
   position: absolute;
   right: 10px;
   top: 50%;
@@ -48,221 +55,233 @@
   justify-content: center;
 }
 
-.ok-field--error .ok-field__control > .ok-input,
-.ok-field--error .ok-field__control > .ok-select,
-.ok-field--error .ok-field__control > .ok-textarea {
+.field.error .field__control > .input,
+.field.error .field__control > .select,
+.field.error .field__control > .textarea {
   padding-right: 36px;
-  border-color: var(--ok-danger);
+  border-color: var(--field-error-color);
 }
 
 /* Cuando el control es un textarea (multi-línea), el icono de error
    debe anclarse arriba, no centrarse verticalmente. */
-.ok-field--error .ok-field__control:has(> .ok-textarea) .ok-field__error-icon {
+.field.error .field__control:has(> .textarea) .field__error-icon {
   top: 10px;
   transform: none;
 }
 
-.ok-field__hint {
-  font-size: var(--ok-text-xs);
-  color: var(--ok-ink-3);
-  line-height: 1.4;
+.field__hint {
+  font-size: var(--text-xs);
+  color: var(--field-hint-color);
+  line-height: var(--leading-base);
 }
 
-.ok-field__error {
-  font-size: var(--ok-text-xs);
-  color: var(--ok-danger);
+.field__error {
+  font-size: var(--text-xs);
+  color: var(--field-error-color);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-1);
 }
 
 /* ============================================================
    Input · base para text/email/password/url/number/tel
    ============================================================ */
 
-.ok-input,
-.ok-textarea,
-.ok-select {
-  --_h: 36px;
+.input,
+.textarea,
+.select {
+  /* API canónica de override */
+  --input-background:    var(--bg-3);
+  --input-color:         var(--ink);
+  --input-placeholder:   var(--ink-4);
+  --input-border-color:  var(--line);
+  --input-border-radius: var(--radius-md);
+  --input-height:        var(--size, var(--size-md));
+  --input-pad-x:         var(--space-3);
+  --input-pad-y:         var(--space-0);
+  --input-text:          var(--text, var(--text-md));
+
   width: 100%;
-  height: var(--_h);
-  background: var(--ok-bg-3);
-  color: var(--ok-ink);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  padding: 0 12px;
+  height: var(--input-height);
+  background: var(--input-background);
+  color: var(--input-color);
+  border: var(--border-w) solid var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  padding: var(--input-pad-y) var(--input-pad-x);
   font: inherit;
-  font-size: var(--ok-text-md);
-  font-family: var(--ok-font-sans);
+  font-size: var(--input-text);
+  font-family: var(--font-sans);
   outline: none;
-  transition: border-color var(--ok-dur-fast), box-shadow var(--ok-dur-fast), background var(--ok-dur-fast);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              box-shadow   var(--dur-fast) var(--ease-out),
+              background   var(--dur-fast) var(--ease-out);
   appearance: none;
   -webkit-appearance: none;
 }
 
-.ok-input::placeholder,
-.ok-textarea::placeholder {
-  color: var(--ok-ink-4);
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--input-placeholder);
 }
 
-.ok-input:hover,
-.ok-textarea:hover,
-.ok-select:hover {
-  border-color: var(--ok-line-2);
+.input:hover,
+.textarea:hover,
+.select:hover {
+  border-color: var(--line-2);
 }
 
-.ok-input:focus,
-.ok-textarea:focus,
-.ok-select:focus {
-  border-color: var(--ok-brand);
-  box-shadow: 0 0 0 3px var(--ok-brand-soft);
-  background: var(--ok-bg-2);
+.input:focus,
+.textarea:focus,
+.select:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-soft);
+  background: var(--bg-2);
 }
 
-.ok-input:disabled,
-.ok-input[aria-disabled="true"],
-.ok-textarea:disabled,
-.ok-textarea[aria-disabled="true"],
-.ok-select:disabled,
-.ok-select[aria-disabled="true"] {
+.input:disabled,
+.input[aria-disabled="true"],
+.textarea:disabled,
+.textarea[aria-disabled="true"],
+.select:disabled,
+.select[aria-disabled="true"] {
   opacity: 0.55;
   cursor: not-allowed;
-  background: var(--ok-bg-3);
-  border-color: var(--ok-line);
-  color: var(--ok-ink-3);
+  background: var(--bg-3);
+  border-color: var(--line);
+  color: var(--ink-3);
 }
-.ok-input:disabled::placeholder,
-.ok-textarea:disabled::placeholder {
-  color: var(--ok-ink-4);
+.input:disabled::placeholder,
+.textarea:disabled::placeholder {
+  color: var(--ink-4);
 }
 
-.ok-input--invalid,
-.ok-textarea--invalid,
-.ok-select--invalid {
-  border-color: var(--ok-danger);
+.input.invalid,
+.textarea.invalid,
+.select.invalid {
+  border-color: var(--danger);
 }
-.ok-input--invalid:focus,
-.ok-textarea--invalid:focus,
-.ok-select--invalid:focus {
-  box-shadow: 0 0 0 3px var(--ok-danger-soft);
+.input.invalid:focus,
+.textarea.invalid:focus,
+.select.invalid:focus {
+  box-shadow: 0 0 0 3px var(--danger-soft);
 }
 
 /* Tamaños */
-.ok-input--sm,
-.ok-select--sm { --_h: 28px; font-size: var(--ok-text-sm); padding: 0 8px; border-radius: var(--ok-radius-sm); }
-.ok-input--lg,
-.ok-select--lg { --_h: 44px; font-size: var(--ok-text-lg); padding: 0 16px; border-radius: var(--ok-radius-lg); }
+.input.sm,
+.select.sm { --_h: 28px; font-size: var(--text-sm); padding: var(--space-0) var(--space-2); border-radius: var(--radius-sm); }
+.input.lg,
+.select.lg { --_h: 44px; font-size: var(--text-lg); padding: var(--space-0) var(--space-4); border-radius: var(--radius-lg); }
 
 /* Textarea */
-.ok-textarea {
+.textarea {
   height: auto;
   min-height: 88px;
-  padding: 10px 12px;
+  padding: var(--space-2-5) var(--space-3);
   resize: vertical;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
 }
 
 /* ============================================================
    Input group — adornos (icono / texto) y botones embebidos
    ============================================================ */
 
-.ok-input-group {
+.input-group {
   position: relative;
   display: flex;
   align-items: stretch;
   width: 100%;
 }
 
-.ok-input-group .ok-input {
-  border-radius: var(--ok-radius-md);
+.input-group .input {
+  border-radius: var(--radius-md);
 }
 
-.ok-input-group__icon {
+.input-group__icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   width: 16px; height: 16px;
   pointer-events: none;
 }
-.ok-input-group__icon--left { left: 11px; }
-.ok-input-group__icon--right { right: 11px; }
+.input-group__icon--left { left: 11px; }
+.input-group__icon--right { right: 11px; }
 
-.ok-input-group--with-left  .ok-input { padding-left: 34px; }
-.ok-input-group--with-right .ok-input { padding-right: 34px; }
+.input-group.with-left  .input { padding-left: 34px; }
+.input-group.with-right .input { padding-right: 34px; }
 
-.ok-input-group__addon {
+.input-group__addon {
   display: inline-flex;
   align-items: center;
-  padding: 0 12px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  color: var(--ok-ink-3);
-  font-size: var(--ok-text-sm);
+  padding: var(--space-0) var(--space-3);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  color: var(--ink-3);
+  font-size: var(--text-sm);
   white-space: nowrap;
 }
-.ok-input-group__addon:first-child {
+.input-group__addon:first-child {
   border-right: none;
-  border-radius: var(--ok-radius-md) 0 0 var(--ok-radius-md);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
-.ok-input-group__addon:last-child {
+.input-group__addon:last-child {
   border-left: none;
-  border-radius: 0 var(--ok-radius-md) var(--ok-radius-md) 0;
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
-.ok-input-group__addon + .ok-input { border-top-left-radius: 0; border-bottom-left-radius: 0; }
-.ok-input-group .ok-input:has(+ .ok-input-group__addon) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.input-group__addon + .input { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.input-group .input:has(+ .input-group__addon) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
 
 /* Search — input con lupa + botón clear */
-.ok-search {
+.search {
   position: relative;
   width: 100%;
 }
-.ok-search .ok-input {
+.search .input {
   padding-left: 34px;
   padding-right: 34px;
 }
-.ok-search__icon {
+.search__icon {
   position: absolute;
   left: 11px;
   top: 50%;
   transform: translateY(-50%);
   width: 16px; height: 16px;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   pointer-events: none;
 }
-.ok-search__clear {
+.search__clear {
   position: absolute;
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  width: 22px; height: 22px;
+  width: var(--size-xs); height: var(--size-xs);
   border: none;
-  background: var(--ok-bg-4);
-  color: var(--ok-ink-2);
-  border-radius: 50%;
+  background: var(--bg-4);
+  color: var(--ink-2);
+  border-radius: var(--radius-circle);
   cursor: pointer;
   /* Hidden by default; only shown when the sibling input has content. */
   display: none;
   place-items: center;
   font-size: 11px;
-  line-height: 1;
+  line-height: var(--leading-flat);
 }
-.ok-search:has(input:not(:placeholder-shown)) .ok-search__clear { display: grid; }
-.ok-search__clear:hover { background: var(--ok-line-3); color: var(--ok-ink); }
+.search:has(input:not(:placeholder-shown)) .search__clear { display: grid; }
+.search__clear:hover { background: var(--line-3); color: var(--ink); }
 
 /* Kbd shortcut hint dentro de search */
-.ok-search__kbd {
+.search__kbd {
   position: absolute;
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  font-family: var(--ok-font-mono);
-  font-size: 10.5px;
-  color: var(--ok-ink-3);
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: 4px;
-  padding: 2px 6px;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-3);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-xs);
+  padding: var(--border-w-2) var(--space-1-5);
   pointer-events: none;
 }
 
@@ -270,12 +289,12 @@
    Select nativo — flecha custom
    ============================================================ */
 
-.ok-select {
+.select {
   cursor: pointer;
   padding-right: 34px;
   background-image:
-    linear-gradient(45deg, transparent 50%, var(--ok-ink-3) 50%),
-    linear-gradient(135deg, var(--ok-ink-3) 50%, transparent 50%);
+    linear-gradient(45deg, transparent 50%, var(--ink-3) 50%),
+    linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
   background-position:
     calc(100% - 16px) 50%,
     calc(100% - 11px) 50%;
@@ -287,9 +306,18 @@
    Toggle switch
    ============================================================ */
 
-.ok-toggle {
-  --_w: 36px;
-  --_h: 20px;
+.toggle {
+  /* API canónica de override */
+  --toggle-width:        36px;
+  --toggle-height:       20px;
+  --toggle-track-bg:     var(--bg-4);
+  --toggle-track-border: var(--line-2);
+  --toggle-thumb-bg:     var(--ink);
+  --toggle-accent:       var(--brand);
+  --toggle-accent-fg:    var(--brand-fg);
+
+  --_w: var(--toggle-width);
+  --_h: var(--toggle-height);
   --_pad: 2px;
   position: relative;
   display: inline-block;
@@ -298,330 +326,346 @@
   flex-shrink: 0;
 }
 
-.ok-toggle input {
+.toggle input {
   opacity: 0;
   width: 0; height: 0;
   position: absolute;
 }
 
-.ok-toggle__track {
+.toggle__track {
   position: absolute;
   inset: 0;
-  background: var(--ok-bg-4);
-  border: 1px solid var(--ok-line-2);
-  border-radius: var(--ok-radius-pill);
-  transition: background var(--ok-dur-base), border-color var(--ok-dur-base);
+  background: var(--toggle-track-bg);
+  border: var(--border-w) solid var(--toggle-track-border);
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-base), border-color var(--dur-base);
   cursor: pointer;
 }
 
-.ok-toggle__track::before {
+.toggle__track::before {
   content: "";
   position: absolute;
   top: var(--_pad);
   left: var(--_pad);
   width: calc(var(--_h) - 2 * var(--_pad) - 2px);
   height: calc(var(--_h) - 2 * var(--_pad) - 2px);
-  background: var(--ok-ink);
-  border-radius: 50%;
-  transition: transform var(--ok-dur-base) var(--ok-ease-spring), background var(--ok-dur-base);
+  background: var(--toggle-thumb-bg);
+  border-radius: var(--radius-circle);
+  transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base);
   box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
-.ok-toggle input:checked + .ok-toggle__track {
-  background: var(--ok-brand);
-  border-color: var(--ok-brand);
+.toggle input:checked + .toggle__track {
+  background: var(--toggle-accent);
+  border-color: var(--toggle-accent);
 }
-.ok-toggle input:checked + .ok-toggle__track::before {
+.toggle input:checked + .toggle__track::before {
   transform: translateX(calc(var(--_w) - var(--_h)));
-  background: var(--ok-brand-fg);
+  background: var(--toggle-accent-fg);
 }
 
-.ok-toggle input:focus-visible + .ok-toggle__track {
-  box-shadow: 0 0 0 3px var(--ok-brand-soft);
+.toggle input:focus-visible + .toggle__track {
+  box-shadow: 0 0 0 3px var(--brand-soft);
 }
-.ok-toggle input:disabled + .ok-toggle__track {
+.toggle input:disabled + .toggle__track {
   opacity: 0.55;
   cursor: not-allowed;
 }
-.ok-toggle:has(input:disabled),
-.ok-toggle--disabled {
+.toggle:has(input:disabled),
+.toggle.disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-.ok-toggle--sm { --_w: 28px; --_h: 16px; }
-.ok-toggle--lg { --_w: 44px; --_h: 24px; }
+.toggle.sm { --toggle-width: 28px; --toggle-height: 16px; --_w: 28px; --_h: 16px; }
+.toggle.lg { --toggle-width: 44px; --toggle-height: 24px; --_w: 44px; --_h: 24px; }
 
 /* Toggle row — label + descripción + switch */
-.ok-toggle-row {
+.toggle-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--ok-line);
+  gap: var(--space-4);
+  padding: var(--space-2-5) var(--space-0);
+  border-bottom: var(--border-w) solid var(--line);
 }
-.ok-toggle-row:last-child { border-bottom: none; }
-.ok-toggle-row__text { display: flex; flex-direction: column; gap: 2px; }
-.ok-toggle-row__label { font-size: var(--ok-text-md); color: var(--ok-ink); font-weight: 500; }
-.ok-toggle-row__desc { font-size: var(--ok-text-xs); color: var(--ok-ink-3); line-height: 1.4; }
+.toggle-row:last-child { border-bottom: none; }
+.toggle-row__text { display: flex; flex-direction: column; gap: var(--border-w-2); }
+.toggle-row__label { font-size: var(--text-md); color: var(--ink); font-weight: 500; }
+.toggle-row__desc { font-size: var(--text-xs); color: var(--ink-3); line-height: var(--leading-base); }
 
 /* ============================================================
    Checkbox
    ============================================================ */
 
-.ok-check {
+.check {
+  /* API canónica de override */
+  --check-size:         16px;
+  --check-background:   var(--bg-3);
+  --check-border-color: var(--line-3);
+  --check-accent:       var(--brand);
+  --check-accent-fg:    var(--brand-fg);
+  --check-radius:       var(--radius-xs);
+  --check-color:        var(--ink);
+
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   cursor: pointer;
-  font-size: var(--ok-text-md);
-  color: var(--ok-ink);
+  font-size: var(--text-md);
+  color: var(--check-color);
   user-select: none;
 }
 
-.ok-check__box {
+.check__box {
   position: relative;
-  width: 16px;
-  height: 16px;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line-3);
-  border-radius: var(--ok-radius-xs);
+  width: var(--check-size);
+  height: var(--check-size);
+  background: var(--check-background);
+  border: var(--border-w) solid var(--check-border-color);
+  border-radius: var(--check-radius);
   flex-shrink: 0;
-  transition: background var(--ok-dur-fast), border-color var(--ok-dur-fast);
+  transition: background var(--dur-fast), border-color var(--dur-fast);
 }
 
-.ok-check input {
+.check input {
   position: absolute;
   opacity: 0;
   width: 0; height: 0;
 }
 
-.ok-check input:checked ~ .ok-check__box {
-  background: var(--ok-brand);
-  border-color: var(--ok-brand);
+.check input:checked ~ .check__box {
+  background: var(--check-accent);
+  border-color: var(--check-accent);
 }
 
-.ok-check input:checked ~ .ok-check__box::after {
+.check input:checked ~ .check__box::after {
   content: "";
   position: absolute;
   top: 1px; left: 4px;
   width: 5px; height: 9px;
-  border: solid var(--ok-brand-fg);
-  border-width: 0 2px 2px 0;
+  border: solid var(--check-accent-fg);
+  border-width: 0 var(--border-w-2) var(--border-w-2) 0;
   transform: rotate(45deg);
 }
 
-.ok-check input:indeterminate ~ .ok-check__box {
-  background: var(--ok-brand);
-  border-color: var(--ok-brand);
+.check input:indeterminate ~ .check__box {
+  background: var(--check-accent);
+  border-color: var(--check-accent);
 }
-.ok-check input:indeterminate ~ .ok-check__box::after {
+.check input:indeterminate ~ .check__box::after {
   content: "";
   position: absolute;
   top: 6px; left: 3px;
-  width: 8px; height: 2px;
-  background: var(--ok-brand-fg);
+  width: 8px; height: var(--border-w-2);
+  background: var(--check-accent-fg);
   border-radius: 1px;
 }
 
-.ok-check input:focus-visible ~ .ok-check__box {
-  box-shadow: 0 0 0 3px var(--ok-brand-soft);
+.check input:focus-visible ~ .check__box {
+  box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
-.ok-check input:disabled ~ .ok-check__box {
+.check input:disabled ~ .check__box {
   opacity: 0.55;
   cursor: not-allowed;
-  background: var(--ok-bg-2);
-  border-color: var(--ok-line);
+  background: var(--bg-2);
+  border-color: var(--line);
 }
-.ok-check:has(input:disabled),
-.ok-check--disabled {
+.check:has(input:disabled),
+.check.disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
 }
 
 /* ============================================================
    Radio
    ============================================================ */
 
-.ok-radio {
+.radio {
+  /* API canónica de override */
+  --radio-size:         16px;
+  --radio-background:   var(--bg-3);
+  --radio-border-color: var(--line-3);
+  --radio-accent:       var(--brand);
+  --radio-color:        var(--ink);
+
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   cursor: pointer;
-  font-size: var(--ok-text-md);
-  color: var(--ok-ink);
+  font-size: var(--text-md);
+  color: var(--radio-color);
   user-select: none;
 }
 
-.ok-radio__dot {
+.radio__dot {
   position: relative;
-  width: 16px;
-  height: 16px;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line-3);
-  border-radius: 50%;
+  width: var(--radio-size);
+  height: var(--radio-size);
+  background: var(--radio-background);
+  border: var(--border-w) solid var(--radio-border-color);
+  border-radius: var(--radius-circle);
   flex-shrink: 0;
-  transition: border-color var(--ok-dur-fast);
+  transition: border-color var(--dur-fast);
 }
 
-.ok-radio input {
+.radio input {
   position: absolute;
   opacity: 0;
   width: 0; height: 0;
 }
 
-.ok-radio input:checked ~ .ok-radio__dot {
-  border-color: var(--ok-brand);
-  border-width: 4px;
-  background: var(--ok-bg);
+.radio input:checked ~ .radio__dot {
+  border-color: var(--radio-accent);
+  border-width: var(--border-w-4);
+  background: var(--bg);
 }
 
-.ok-radio input:focus-visible ~ .ok-radio__dot {
-  box-shadow: 0 0 0 3px var(--ok-brand-soft);
+.radio input:focus-visible ~ .radio__dot {
+  box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
-.ok-radio input:disabled ~ .ok-radio__dot {
+.radio input:disabled ~ .radio__dot {
   opacity: 0.55;
   cursor: not-allowed;
-  background: var(--ok-bg-2);
-  border-color: var(--ok-line);
+  background: var(--bg-2);
+  border-color: var(--line);
   filter: grayscale(0.4);
 }
 /* Preserve checked-ring on disabled+checked so it doesn't look "Sin marcar" */
-.ok-radio input:disabled:checked ~ .ok-radio__dot {
-  border-color: color-mix(in oklch, var(--ok-brand) 55%, var(--ok-ink-4));
-  border-width: 4px;
-  background: var(--ok-bg);
+.radio input:disabled:checked ~ .radio__dot {
+  border-color: color-mix(in oklch, var(--brand) 55%, var(--ink-4));
+  border-width: var(--border-w-4);
+  background: var(--bg);
 }
-.ok-radio:has(input:disabled),
-.ok-radio--disabled {
+.radio:has(input:disabled),
+.radio.disabled {
   opacity: 0.55;
   cursor: not-allowed;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   pointer-events: none;
 }
-/* Bare input fallback (no .ok-radio wrapper) */
+/* Bare input fallback (no .radio wrapper) */
 input[type="radio"]:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
 
 /* Radio card — opción seleccionable visual con label rico */
-.ok-radio-card {
+.radio-card {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  padding: 12px 14px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
+  gap: var(--space-2-5);
+  padding: var(--space-3) var(--space-3-5);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: border-color var(--ok-dur-fast), background var(--ok-dur-fast);
+  transition: border-color var(--dur-fast), background var(--dur-fast);
 }
-.ok-radio-card:hover { border-color: var(--ok-line-2); }
-.ok-radio-card:has(input:checked) {
-  border-color: var(--ok-brand);
-  background: color-mix(in oklch, var(--ok-brand) 6%, var(--ok-bg-2));
+.radio-card:hover { border-color: var(--line-2); }
+.radio-card:has(input:checked) {
+  border-color: var(--brand);
+  background: color-mix(in oklch, var(--brand) 6%, var(--bg-2));
 }
-.ok-radio-card input {
+.radio-card input {
   position: absolute; opacity: 0; pointer-events: none;
 }
-.ok-radio-card__title { font-weight: 500; font-size: var(--ok-text-md); color: var(--ok-ink); }
-.ok-radio-card__desc { font-size: var(--ok-text-xs); color: var(--ok-ink-3); margin-top: 2px; line-height: 1.4; }
+.radio-card__title { font-weight: 500; font-size: var(--text-md); color: var(--ink); }
+.radio-card__desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: var(--border-w-2); line-height: var(--leading-base); }
 
 /* ============================================================
    Range slider
    ============================================================ */
 
-.ok-range {
+.range {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 24px;
+  height: var(--avatar-2xs);
   background: transparent;
   cursor: pointer;
 }
-.ok-range::-webkit-slider-runnable-track {
+.range::-webkit-slider-runnable-track {
   height: 4px;
-  background: var(--ok-bg-4);
+  background: var(--bg-4);
   border-radius: 2px;
 }
-.ok-range::-moz-range-track {
+.range::-moz-range-track {
   height: 4px;
-  background: var(--ok-bg-4);
+  background: var(--bg-4);
   border-radius: 2px;
 }
-.ok-range::-webkit-slider-thumb {
+.range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 16px; height: 16px;
-  background: var(--ok-brand-fg);
-  border: 2px solid var(--ok-brand);
-  border-radius: 50%;
+  background: var(--brand-fg);
+  border: var(--border-w-2) solid var(--brand);
+  border-radius: var(--radius-circle);
   margin-top: -6px;
-  box-shadow: var(--ok-shadow-sm);
-  transition: transform var(--ok-dur-fast);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-fast);
 }
-.ok-range::-moz-range-thumb {
+.range::-moz-range-thumb {
   width: 16px; height: 16px;
-  background: var(--ok-brand-fg);
-  border: 2px solid var(--ok-brand);
-  border-radius: 50%;
-  box-shadow: var(--ok-shadow-sm);
+  background: var(--brand-fg);
+  border: var(--border-w-2) solid var(--brand);
+  border-radius: var(--radius-circle);
+  box-shadow: var(--shadow-sm);
 }
-.ok-range:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px var(--ok-brand-soft);
+.range:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
 /* ============================================================
    Form layout helpers
    ============================================================ */
 
-.ok-form {
+.form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
-.ok-form-row {
+.form-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
+  gap: var(--space-3);
 }
 
-.ok-form-section {
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-xl);
+.form-section {
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-xl);
   padding: 18px;
 }
-.ok-form-section__title {
-  font-family: var(--ok-font-display);
-  font-size: 14px;
+.form-section__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
   font-weight: 600;
-  letter-spacing: -0.02em;
-  margin: 0 0 4px;
-  color: var(--ok-ink);
+  letter-spacing: var(--tracking-near);
+  margin: var(--space-0) var(--space-0) var(--space-1);
+  color: var(--ink);
 }
-.ok-form-section__desc {
-  font-size: var(--ok-text-xs);
-  color: var(--ok-ink-3);
-  margin: 0 0 14px;
+.form-section__desc {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin: var(--space-0) var(--space-0) var(--space-3-5);
 }
 
 /* Fieldset visual con grupo de checks/radios */
-.ok-check-group,
-.ok-radio-group {
+.check-group,
+.radio-group {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
 }
-.ok-check-group--inline,
-.ok-radio-group--inline {
+.check-group.inline,
+.radio-group.inline {
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: var(--space-3-5);
 }

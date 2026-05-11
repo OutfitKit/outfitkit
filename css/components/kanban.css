@@ -3,32 +3,42 @@
    Tablero horizontal con columnas y tarjetas arrastrables.
    ============================================================ */
 
-.ok-kanban {
+.kanban {
+  /* API canónica de override */
+  --kanban-col-width:    280px;
+  --kanban-col-bg:       var(--bg-1);
+  --kanban-col-border:   var(--line);
+  --kanban-col-radius:   var(--radius-xl);
+  --kanban-card-bg:      var(--bg-2);
+  --kanban-card-border:  var(--line);
+  --kanban-card-radius:  var(--radius-lg);
+  --kanban-accent:       var(--brand);
+
   display: flex;
-  gap: 12px;
+  gap: var(--space-3);
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 4px 4px 12px;
+  padding: var(--space-1) var(--space-1) var(--space-3);
   scrollbar-width: thin;
-  scrollbar-color: var(--ok-line-2) transparent;
+  scrollbar-color: var(--line-2) transparent;
   align-items: flex-start;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   /* prevent flex children from collapsing below their flex-basis */
   min-width: 0;
 }
-.ok-kanban::-webkit-scrollbar { height: 8px; }
-.ok-kanban::-webkit-scrollbar-thumb {
-  background: var(--ok-line-2);
-  border-radius: 4px;
+.kanban::-webkit-scrollbar { height: 8px; }
+.kanban::-webkit-scrollbar-thumb {
+  background: var(--line-2);
+  border-radius: var(--radius-xs);
 }
 
-.ok-kanban__col {
-  flex: 0 0 280px;
-  min-width: 280px;
-  background: var(--ok-bg-1);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-xl);
+.kanban__col {
+  flex: 0 0 var(--kanban-col-width);
+  min-width: var(--kanban-col-width);
+  background: var(--kanban-col-bg);
+  border: var(--border-w) solid var(--kanban-col-border);
+  border-radius: var(--kanban-col-radius);
   display: flex;
   flex-direction: column;
   max-height: 100%;
@@ -36,206 +46,206 @@
   overflow: hidden;
   scroll-snap-align: start;
 }
-.ok-kanban__col--wide { flex-basis: 320px; min-width: 320px; }
+.kanban__col--wide { flex-basis: 320px; min-width: 320px; }
 
-.ok-kanban__col-head {
+.kanban__col-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 14px 10px;
-  border-bottom: 1px solid var(--ok-line);
-  gap: 8px;
+  padding: var(--space-3) var(--space-3-5) var(--space-2-5);
+  border-bottom: var(--border-w) solid var(--line);
+  gap: var(--space-2);
 }
-.ok-kanban__col-title {
+.kanban__col-title {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--ok-font-display);
+  gap: var(--space-2);
+  font-family: var(--font-display);
   font-size: 13px;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ok-ink);
+  letter-spacing: var(--tracking-snug);
+  color: var(--ink);
 }
-.ok-kanban__col-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--ok-ink-3);
+.kanban__col-dot {
+  width: var(--dot-md); height: var(--dot-md);
+  border-radius: var(--radius-circle);
+  background: var(--ink-3);
   flex-shrink: 0;
 }
-.ok-kanban__col-dot--brand  { background: var(--ok-brand); }
-.ok-kanban__col-dot--leaf   { background: var(--ok-leaf); }
-.ok-kanban__col-dot--warn   { background: var(--ok-warn); }
-.ok-kanban__col-dot--danger { background: var(--ok-danger); }
-.ok-kanban__col-dot--info   { background: var(--ok-info); }
+.kanban__col-dot--brand  { background: var(--brand); }
+.kanban__col-dot--leaf   { background: var(--leaf); }
+.kanban__col-dot--warn   { background: var(--warn); }
+.kanban__col-dot--danger { background: var(--danger); }
+.kanban__col-dot--info   { background: var(--info); }
 
-.ok-kanban__col-count {
+.kanban__col-count {
   font-size: 11px;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   font-variant-numeric: tabular-nums;
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-pill);
-  padding: 2px 8px;
+  background: var(--bg-3);
+  border-radius: var(--radius-pill);
+  padding: var(--border-w-2) var(--space-2);
 }
-.ok-kanban__col-actions {
+.kanban__col-actions {
   display: flex;
-  gap: 4px;
+  gap: var(--space-1);
   margin-left: auto;
 }
 
-.ok-kanban__col-body {
+.kanban__col-body {
   flex: 1;
   overflow-y: auto;
-  padding: 10px;
+  padding: var(--space-2-5);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
   scrollbar-width: thin;
 }
-.ok-kanban__col-body::-webkit-scrollbar { width: 6px; }
-.ok-kanban__col-body::-webkit-scrollbar-thumb {
-  background: var(--ok-line-2);
+.kanban__col-body::-webkit-scrollbar { width: 6px; }
+.kanban__col-body::-webkit-scrollbar-thumb {
+  background: var(--line-2);
   border-radius: 3px;
 }
 
-.ok-kanban__col-foot {
-  padding: 8px 10px;
-  border-top: 1px solid var(--ok-line);
-  background: var(--ok-bg);
+.kanban__col-foot {
+  padding: var(--space-2) var(--space-2-5);
+  border-top: var(--border-w) solid var(--line);
+  background: var(--bg);
 }
-.ok-kanban__add {
+.kanban__add {
   width: 100%;
   background: transparent;
-  border: 1px dashed var(--ok-line-2);
-  color: var(--ok-ink-3);
-  border-radius: var(--ok-radius-md);
-  padding: 8px 10px;
+  border: 1px dashed var(--line-2);
+  color: var(--ink-3);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-2-5);
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: var(--space-1-5);
   font-family: inherit;
-  transition: border-color var(--ok-dur-fast), color var(--ok-dur-fast);
+  transition: border-color var(--dur-fast), color var(--dur-fast);
 }
-.ok-kanban__add:hover {
-  border-color: var(--ok-brand);
-  color: var(--ok-ink);
+.kanban__add:hover {
+  border-color: var(--brand);
+  color: var(--ink);
 }
 
 /* ---------- Card ---------- */
-.ok-kcard {
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
-  padding: 10px 12px;
+.kcard {
+  background: var(--kanban-card-bg);
+  border: var(--border-w) solid var(--kanban-card-border);
+  border-radius: var(--kanban-card-radius);
+  padding: var(--space-2-5) var(--space-3);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
   cursor: grab;
-  transition: border-color var(--ok-dur-fast), transform var(--ok-dur-fast), box-shadow var(--ok-dur-fast);
+  transition: border-color var(--dur-fast), transform var(--dur-fast), box-shadow var(--dur-fast);
   position: relative;
 }
-.ok-kcard:hover {
-  border-color: var(--ok-line-2);
+.kcard:hover {
+  border-color: var(--line-2);
   transform: translateY(-1px);
-  box-shadow: var(--ok-shadow-sm);
+  box-shadow: var(--shadow-sm);
 }
-.ok-kcard:active { cursor: grabbing; }
-.ok-kcard--dragging {
+.kcard:active { cursor: grabbing; }
+.kcard.dragging {
   opacity: 0.5;
   transform: rotate(2deg);
 }
 
-.ok-kcard__cover {
+.kcard__cover {
   height: 80px;
-  background: var(--ok-bg-3) center/cover;
-  border-radius: var(--ok-radius-md);
-  margin: -10px -12px 0;
-  border-top-left-radius: var(--ok-radius-lg);
-  border-top-right-radius: var(--ok-radius-lg);
+  background: var(--bg-3) center/cover;
+  border-radius: var(--radius-md);
+  margin: -10px -12px var(--space-0);
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
 }
 
-.ok-kcard__tags {
+.kcard__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: var(--space-1);
 }
-.ok-kcard__tag {
+.kcard__tag {
   display: inline-block;
   height: 6px;
-  width: 36px;
+  width: var(--size-md);
   border-radius: 3px;
-  background: var(--ok-ink-3);
+  background: var(--ink-3);
 }
-.ok-kcard__tag--brand  { background: var(--ok-brand); }
-.ok-kcard__tag--leaf   { background: var(--ok-leaf); }
-.ok-kcard__tag--warn   { background: var(--ok-warn); }
-.ok-kcard__tag--danger { background: var(--ok-danger); }
-.ok-kcard__tag--info   { background: var(--ok-info); }
+.kcard__tag--brand  { background: var(--brand); }
+.kcard__tag--leaf   { background: var(--leaf); }
+.kcard__tag--warn   { background: var(--warn); }
+.kcard__tag--danger { background: var(--danger); }
+.kcard__tag--info   { background: var(--info); }
 
-.ok-kcard__title {
+.kcard__title {
   font-size: 13px;
   font-weight: 500;
-  color: var(--ok-ink);
+  color: var(--ink);
   line-height: 1.35;
   text-wrap: pretty;
-  margin: 0;
+  margin: var(--space-0);
 }
-.ok-kcard__desc {
-  font-size: 11.5px;
-  color: var(--ok-ink-3);
-  line-height: 1.4;
-  margin: 0;
+.kcard__desc {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  line-height: var(--leading-base);
+  margin: var(--space-0);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.ok-kcard__meta {
+.kcard__meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--space-2);
 }
-.ok-kcard__meta-l, .ok-kcard__meta-r {
+.kcard__meta-l, .kcard__meta-r {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
 }
-.ok-kcard__icon {
+.kcard__icon {
   display: inline-flex;
   align-items: center;
   gap: 3px;
   font-size: 11px;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
-.ok-kcard__icon svg { width: 12px; height: 12px; }
-.ok-kcard__icon--due-soon { color: var(--ok-warn); }
-.ok-kcard__icon--overdue  { color: var(--ok-danger); font-weight: 500; }
+.kcard__icon svg { width: var(--icon-xs); height: var(--icon-xs); }
+.kcard__icon--due-soon { color: var(--warn); }
+.kcard__icon--overdue  { color: var(--danger); font-weight: 500; }
 
-.ok-kcard__avatars {
+.kcard__avatars {
   display: flex;
 }
-.ok-kcard__avatars > * + * { margin-left: -6px; }
+.kcard__avatars > * + * { margin-left: -6px; }
 
-.ok-kcard__priority {
+.kcard__priority {
   position: absolute;
   top: 0; left: 12px;
   width: 4px;
-  height: 28px;
+  height: var(--size-sm);
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
-  background: var(--ok-ink-3);
+  background: var(--ink-3);
 }
-.ok-kcard__priority--high { background: var(--ok-danger); }
-.ok-kcard__priority--med  { background: var(--ok-warn); }
-.ok-kcard__priority--low  { background: var(--ok-info); }
+.kcard__priority--high { background: var(--danger); }
+.kcard__priority--med  { background: var(--warn); }
+.kcard__priority--low  { background: var(--info); }
 
-.ok-kcard--ghost {
+.kcard.ghost {
   background: transparent;
   border-style: dashed;
   cursor: default;

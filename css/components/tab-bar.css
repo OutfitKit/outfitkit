@@ -1,46 +1,54 @@
 /* ============================================================
    OutfitKit · Tab Bar + Tabs
    Patrones alineados con la librería oficial ERPlora/ux:
-   - .ok-tabbar         → navegación principal (footer en mobile, opcional en desktop)
-   - .ok-tabs           → subnavegación dentro de un módulo
+   - .tabbar         → navegación principal (footer en mobile, opcional en desktop)
+   - .tabs           → subnavegación dentro de un módulo
    ============================================================ */
 
 /* ============================================================
    1. TAB BAR — Navegación principal (mobile + apps modulares)
    ============================================================ */
 
-.ok-tabbar {
+.tabbar {
+  /* API canónica de override */
+  --tabbar-background:   color-mix(in oklch, var(--bg-1) 92%, transparent);
+  --tabbar-border-color: var(--line);
+  --tabbar-height:       58px;
+  --tabbar-accent:       var(--brand);
+  --tabbar-color:        var(--ink-3);
+  --tabbar-blur:         20px;
+
   display: flex;
   align-items: stretch;
   justify-content: space-around;
-  gap: 0;
-  height: calc(58px + env(safe-area-inset-bottom));
-  padding: 4px 8px env(safe-area-inset-bottom);
-  background: color-mix(in oklch, var(--ok-bg-1) 92%, transparent);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-top: 1px solid var(--ok-line);
+  gap: var(--space-0);
+  height: calc(var(--tabbar-height) + env(safe-area-inset-bottom));
+  padding: var(--space-1) var(--space-2) env(safe-area-inset-bottom);
+  background: var(--tabbar-background);
+  backdrop-filter: blur(var(--tabbar-blur)) saturate(180%);
+  -webkit-backdrop-filter: blur(var(--tabbar-blur)) saturate(180%);
+  border-top: var(--border-w) solid var(--tabbar-border-color);
   /* allow the indicator (variant: --indicator) to sit flush against the top
      edge without being clipped by ancestor overflow: hidden (e.g. demo frames) */
   overflow-x: clip;
 }
 
 /* Variante: fija en la parte inferior (modo mobile-app) */
-.ok-tabbar--fixed {
+.tabbar.fixed {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: var(--ok-z-sticky);
+  z-index: var(--z-sticky);
 }
 
 /* Variante: integrada en el shell (cuando el app shell la posiciona) */
-.ok-tabbar--inset {
+.tabbar.inset {
   position: relative;
 }
 
 /* Tab item */
-.ok-tabbar-item {
+.tabbar-item {
   flex: 1 1 0;
   min-width: 0;
   display: flex;
@@ -48,11 +56,11 @@
   align-items: center;
   justify-content: center;
   gap: 3px;
-  padding: 4px 6px;
-  border-radius: var(--ok-radius-md);
+  padding: var(--space-1) var(--space-1-5);
+  border-radius: var(--radius-md);
   background: transparent;
   border: none;
-  color: var(--ok-ink-3);
+  color: var(--tabbar-color);
   opacity: 0.7;
   font-family: inherit;
   cursor: pointer;
@@ -60,42 +68,42 @@
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  transition: color var(--ok-dur-fast), opacity var(--ok-dur-fast), background var(--ok-dur-fast);
+  transition: color var(--dur-fast), opacity var(--dur-fast), background var(--dur-fast);
 }
-.ok-tabbar-item:hover { opacity: 0.9; color: var(--ok-ink-2); }
-.ok-tabbar-item:focus-visible {
-  outline: 2px solid var(--ok-brand);
+.tabbar-item:hover { opacity: 0.9; color: var(--ink-2); }
+.tabbar-item:focus-visible {
+  outline: var(--border-w-2) solid var(--brand);
   outline-offset: -2px;
 }
 
 /* Active state */
-.ok-tabbar-item[aria-current="page"],
-.ok-tabbar-item[aria-selected="true"],
-.ok-tabbar-item[aria-selected=""],
-.ok-tabbar-item[data-active="true"],
-.ok-tabbar-item--active,
-.ok-tabbar-item.is-active {
+.tabbar-item[aria-current="page"],
+.tabbar-item[aria-selected="true"],
+.tabbar-item[aria-selected=""],
+.tabbar-item[data-active="true"],
+.tabbar-item.active,
+.tabbar-item.is-active {
   opacity: 1;
-  color: var(--ok-brand);
+  color: var(--tabbar-accent);
 }
 
 /* Icon */
-.ok-tabbar-icon {
-  width: 22px;
-  height: 22px;
+.tabbar-icon {
+  width: var(--size-xs);
+  height: var(--size-xs);
   flex-shrink: 0;
   position: relative;
   display: grid;
   place-items: center;
 }
-.ok-tabbar-icon svg { width: 100%; height: 100%; }
+.tabbar-icon svg { width: 100%; height: 100%; }
 
 /* Label */
-.ok-tabbar-label {
+.tabbar-label {
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: -0.005em;
-  line-height: 1;
+  letter-spacing: var(--tracking-mono);
+  line-height: var(--leading-flat);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -104,22 +112,22 @@
 
 /* Desktop: ligeramente más grande */
 @media (min-width: 768px) {
-  .ok-tabbar-icon { width: 24px; height: 24px; }
-  .ok-tabbar-label { font-size: 11px; }
+  .tabbar-icon { width: 24px; height: 24px; }
+  .tabbar-label { font-size: 11px; }
 }
 
 /* Badge sobre el icono */
-.ok-tabbar-badge {
+.tabbar-badge {
   position: absolute;
   top: -4px;
   right: -8px;
   min-width: 16px;
   height: 16px;
   padding: 0 5px;
-  background: var(--ok-danger);
-  color: var(--ok-brand-fg);
-  border: 2px solid var(--ok-bg-1);
-  border-radius: 999px;
+  background: var(--danger);
+  color: var(--brand-fg);
+  border: var(--border-w-2) solid var(--bg-1);
+  border-radius: var(--radius-pill);
   font-size: 9px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -127,7 +135,7 @@
   place-items: center;
   line-height: 1;
 }
-.ok-tabbar-badge--dot {
+.tabbar-badge.dot {
   min-width: 8px;
   width: 8px;
   height: 8px;
@@ -139,10 +147,10 @@
 /* Variant: con indicator superior estilo iOS
    Reserve room at the top of the bar so the indicator can never be clipped
    by ancestor overflow contexts (demo frames, app shells with rounded corners). */
-.ok-tabbar--indicator { padding-top: 7px; }
-.ok-tabbar--indicator .ok-tabbar-item[aria-current="page"]::before,
-.ok-tabbar--indicator .ok-tabbar-item[data-active="true"]::before,
-.ok-tabbar--indicator .ok-tabbar-item.is-active::before {
+.tabbar.indicator { padding-top: 7px; }
+.tabbar.indicator .tabbar-item[aria-current="page"]::before,
+.tabbar.indicator .tabbar-item[data-active="true"]::before,
+.tabbar.indicator .tabbar-item.is-active::before {
   content: "";
   position: absolute;
   top: 2px;
@@ -150,175 +158,181 @@
   transform: translateX(-50%);
   width: 28px;
   height: 3px;
-  background: var(--ok-brand);
+  background: var(--brand);
   border-radius: 3px;
 }
 
 /* Variant: pill background activo (Material) */
-.ok-tabbar--pill .ok-tabbar-item[aria-current="page"],
-.ok-tabbar--pill .ok-tabbar-item[data-active="true"] {
-  background: var(--ok-brand-soft);
-  color: var(--ok-brand);
+.tabbar.pill .tabbar-item[aria-current="page"],
+.tabbar.pill .tabbar-item[data-active="true"] {
+  background: var(--brand-soft);
+  color: var(--brand);
 }
-.ok-tabbar--pill .ok-tabbar-item[aria-current="page"]::before,
-.ok-tabbar--pill .ok-tabbar-item[data-active="true"]::before {
+.tabbar.pill .tabbar-item[aria-current="page"]::before,
+.tabbar.pill .tabbar-item[data-active="true"]::before {
   display: none;
 }
 
 /* Variant: solo iconos */
-.ok-tabbar--icons .ok-tabbar-label { display: none; }
-.ok-tabbar--icons .ok-tabbar-item { gap: 0; padding: 10px; }
+.tabbar.icons .tabbar-label { display: none; }
+.tabbar.icons .tabbar-item { gap: 0; padding: 10px; }
 
 /* Variant: con FAB central (typical mobile pattern) */
-.ok-tabbar-fab {
+.tabbar-fab {
   flex: 0 0 auto;
   width: 52px;
   height: 52px;
   margin-top: -16px;
-  border-radius: 50%;
-  background: var(--ok-brand);
-  color: var(--ok-brand-fg);
+  border-radius: var(--radius-circle);
+  background: var(--brand);
+  color: var(--brand-fg);
   display: grid;
   place-items: center;
-  border: 4px solid var(--ok-bg-1);
-  box-shadow: var(--ok-shadow-md);
+  border: 4px solid var(--bg-1);
+  box-shadow: var(--shadow-md);
   cursor: pointer;
-  transition: transform var(--ok-dur-fast);
+  transition: transform var(--dur-fast);
 }
-.ok-tabbar-fab:hover { transform: translateY(-2px); }
-.ok-tabbar-fab svg { width: 22px; height: 22px; }
+.tabbar-fab:hover { transform: translateY(-2px); }
+.tabbar-fab svg { width: 22px; height: 22px; }
 
 /* ============================================================
    2. TABS — Subnavegación dentro de un módulo
    ============================================================ */
 
-.ok-tabs {
+.tabs {
+  /* API canónica de override */
+  --tabs-border-color:   var(--line);
+  --tabs-accent:         var(--brand);
+  --tabs-color:          var(--ink-3);
+  --tabs-color-active:   var(--ink);
+
   display: flex;
   align-items: stretch;
-  gap: var(--ok-space-1);
-  border-bottom: 1px solid var(--ok-line);
-  padding: 0 var(--ok-space-1);
+  gap: var(--space-1);
+  border-bottom: var(--border-w) solid var(--tabs-border-color);
+  padding: 0 var(--space-1);
   overflow-x: auto;
   scrollbar-width: none;
 }
-.ok-tabs::-webkit-scrollbar { display: none; }
+.tabs::-webkit-scrollbar { display: none; }
 
-.ok-tab {
+.tab {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   height: 38px;
-  padding: 0 12px;
+  padding: var(--space-0) var(--space-3);
   background: transparent;
   border: none;
-  color: var(--ok-ink-3);
-  font-size: var(--ok-text-md);
+  color: var(--tabs-color);
+  font-size: var(--text-md);
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
   text-decoration: none;
-  transition: color var(--ok-dur-fast);
+  transition: color var(--dur-fast);
 }
-.ok-tab:hover { color: var(--ok-ink-2); }
-.ok-tab[aria-selected="true"],
-.ok-tab[aria-selected=""],
-.ok-tab[data-active="true"] {
-  color: var(--ok-ink);
+.tab:hover { color: var(--ink-2); }
+.tab[aria-selected="true"],
+.tab[aria-selected=""],
+.tab[data-active="true"] {
+  color: var(--tabs-color-active);
 }
-.ok-tab[aria-selected="true"]::after,
-.ok-tab[aria-selected=""]::after,
-.ok-tab[data-active="true"]::after {
+.tab[aria-selected="true"]::after,
+.tab[aria-selected=""]::after,
+.tab[data-active="true"]::after {
   content: "";
   position: absolute;
   left: 8px;
   right: 8px;
   bottom: -1px;
   height: 2px;
-  background: var(--ok-brand);
+  background: var(--tabs-accent);
   border-radius: 2px 2px 0 0;
 }
-.ok-tab:focus-visible {
-  outline: 2px solid var(--ok-brand);
+.tab:focus-visible {
+  outline: var(--border-w-2) solid var(--brand);
   outline-offset: -2px;
-  border-radius: var(--ok-radius-sm);
+  border-radius: var(--radius-sm);
 }
 
-.ok-tab-icon {
+.tab-icon {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
 }
 
-.ok-tab-badge {
+.tab-badge {
   margin-left: 2px;
   min-width: 18px;
   height: 18px;
   padding: 0 5px;
-  background: var(--ok-bg-3);
-  color: var(--ok-ink-2);
-  border-radius: 999px;
+  background: var(--bg-3);
+  color: var(--ink-2);
+  border-radius: var(--radius-pill);
   font-size: 10px;
   font-weight: 500;
   display: inline-grid;
   place-items: center;
   font-variant-numeric: tabular-nums;
 }
-.ok-tab[aria-selected="true"] .ok-tab-badge,
-.ok-tab[aria-selected=""] .ok-tab-badge,
-.ok-tab[data-active="true"] .ok-tab-badge {
-  background: var(--ok-brand-soft);
-  color: var(--ok-brand);
+.tab[aria-selected="true"] .tab-badge,
+.tab[aria-selected=""] .tab-badge,
+.tab[data-active="true"] .tab-badge {
+  background: var(--brand-soft);
+  color: var(--brand);
 }
 
 /* Variant: pill tabs (segmented) */
-.ok-tabs--pill {
+.tabs.pill {
   border-bottom: none;
-  background: var(--ok-bg-3);
+  background: var(--bg-3);
   padding: 3px;
-  border-radius: var(--ok-radius-md);
+  border-radius: var(--radius-md);
   gap: 0;
   display: inline-flex;
   align-items: center;
-  border: 1px solid var(--ok-line);
+  border: var(--border-w) solid var(--line);
   overflow: visible;
 }
-.ok-tabs--pill .ok-tab {
+.tabs.pill .tab {
   height: 28px;
-  padding: 0 12px;
-  font-size: var(--ok-text-sm);
-  border-radius: var(--ok-radius-sm);
+  padding: var(--space-0) var(--space-3);
+  font-size: var(--text-sm);
+  border-radius: var(--radius-sm);
 }
-.ok-tabs--pill .ok-tab[aria-selected="true"]::after,
-.ok-tabs--pill .ok-tab[aria-selected=""]::after,
-.ok-tabs--pill .ok-tab[data-active="true"]::after { display: none; }
-.ok-tabs--pill .ok-tab[aria-selected="true"],
-.ok-tabs--pill .ok-tab[aria-selected=""],
-.ok-tabs--pill .ok-tab[data-active="true"] {
-  background: var(--ok-bg-1);
-  color: var(--ok-ink);
-  box-shadow: var(--ok-shadow-xs);
+.tabs.pill .tab[aria-selected="true"]::after,
+.tabs.pill .tab[aria-selected=""]::after,
+.tabs.pill .tab[data-active="true"]::after { display: none; }
+.tabs.pill .tab[aria-selected="true"],
+.tabs.pill .tab[aria-selected=""],
+.tabs.pill .tab[data-active="true"] {
+  background: var(--bg-1);
+  color: var(--ink);
+  box-shadow: var(--shadow-xs);
 }
 
 /* Variant: vertical (settings-style) */
-.ok-tabs--vertical {
+.tabs.vertical {
   flex-direction: column;
   border-bottom: none;
-  border-right: 1px solid var(--ok-line);
-  padding: var(--ok-space-1) 0;
+  border-right: var(--border-w) solid var(--line);
+  padding: var(--space-1) 0;
   align-items: stretch;
   overflow: visible;
 }
-.ok-tabs--vertical .ok-tab {
+.tabs.vertical .tab {
   height: auto;
   padding: 8px 14px;
   justify-content: flex-start;
   border-radius: 0;
 }
-.ok-tabs--vertical .ok-tab[aria-selected="true"]::after,
-.ok-tabs--vertical .ok-tab[aria-selected=""]::after,
-.ok-tabs--vertical .ok-tab[data-active="true"]::after {
+.tabs.vertical .tab[aria-selected="true"]::after,
+.tabs.vertical .tab[aria-selected=""]::after,
+.tabs.vertical .tab[data-active="true"]::after {
   left: -1px;
   right: auto;
   top: 6px;
@@ -329,74 +343,74 @@
 }
 
 /* Variant: enclosed (folder-style) — útil en sub-tabs de detalle */
-.ok-tabs--enclosed {
-  border-bottom: 1px solid var(--ok-line);
+.tabs.enclosed {
+  border-bottom: var(--border-w) solid var(--line);
   gap: 2px;
   padding: 0;
 }
-.ok-tabs--enclosed .ok-tab {
+.tabs.enclosed .tab {
   height: 34px;
   padding: 0 14px;
-  border: 1px solid transparent;
+  border: var(--border-w) solid transparent;
   border-bottom: none;
-  border-radius: var(--ok-radius-md) var(--ok-radius-md) 0 0;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
   margin-bottom: -1px;
 }
-.ok-tabs--enclosed .ok-tab[aria-selected="true"]::after,
-.ok-tabs--enclosed .ok-tab[aria-selected=""]::after,
-.ok-tabs--enclosed .ok-tab[data-active="true"]::after { display: none; }
-.ok-tabs--enclosed .ok-tab[aria-selected="true"],
-.ok-tabs--enclosed .ok-tab[aria-selected=""],
-.ok-tabs--enclosed .ok-tab[data-active="true"] {
-  background: var(--ok-bg-2);
-  border-color: var(--ok-line);
-  border-bottom-color: var(--ok-bg-2);
-  color: var(--ok-ink);
+.tabs.enclosed .tab[aria-selected="true"]::after,
+.tabs.enclosed .tab[aria-selected=""]::after,
+.tabs.enclosed .tab[data-active="true"]::after { display: none; }
+.tabs.enclosed .tab[aria-selected="true"],
+.tabs.enclosed .tab[aria-selected=""],
+.tabs.enclosed .tab[data-active="true"] {
+  background: var(--bg-2);
+  border-color: var(--line);
+  border-bottom-color: var(--bg-2);
+  color: var(--ink);
 }
 
 /* Variant: scrollable wrapper con flechas */
-.ok-tabs-scroll {
+.tabs-scroll {
   position: relative;
   display: flex;
   align-items: stretch;
 }
-.ok-tabs-scroll__btn {
+.tabs-scroll__btn {
   flex-shrink: 0;
   width: 28px;
   align-self: stretch;
-  background: var(--ok-bg);
+  background: var(--bg);
   border: none;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   cursor: pointer;
   display: grid;
   place-items: center;
-  border-bottom: 1px solid var(--ok-line);
+  border-bottom: var(--border-w) solid var(--line);
 }
-.ok-tabs-scroll__btn:hover { color: var(--ok-ink); }
-.ok-tabs-scroll__btn svg { width: 14px; height: 14px; }
-.ok-tabs-scroll__btn--prev { box-shadow: 4px 0 8px var(--ok-bg); }
-.ok-tabs-scroll__btn--next { box-shadow: -4px 0 8px var(--ok-bg); }
-.ok-tabs-scroll .ok-tabs { flex: 1; min-width: 0; }
+.tabs-scroll__btn:hover { color: var(--ink); }
+.tabs-scroll__btn svg { width: 14px; height: 14px; }
+.tabs-scroll__btn--prev { box-shadow: 4px 0 8px var(--bg); }
+.tabs-scroll__btn--next { box-shadow: -4px 0 8px var(--bg); }
+.tabs-scroll .tabs { flex: 1; min-width: 0; }
 
 /* Variant: tabs con count + close (browser-tabs style) */
-.ok-tab__close {
+.tab__close {
   width: 16px; height: 16px;
   border: none;
   background: transparent;
-  color: var(--ok-ink-3);
-  border-radius: var(--ok-radius-xs);
+  color: var(--ink-3);
+  border-radius: var(--radius-xs);
   font-size: 12px;
   line-height: 1;
-  margin-left: 4px;
+  margin-left: var(--space-1);
   cursor: pointer;
   display: grid; place-items: center;
 }
-.ok-tab__close:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
+.tab__close:hover { background: var(--bg-3); color: var(--ink); }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .ok-tabbar-item,
-  .ok-tab {
+  .tabbar-item,
+  .tab {
     transition: none;
   }
 }

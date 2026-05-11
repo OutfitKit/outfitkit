@@ -4,49 +4,59 @@
    ============================================================ */
 
 /* ---------- Segmented control (mobile) ---------- */
-.ok-segmented {
+.segmented {
+  /* API canónica de override */
+  --segmented-background:    var(--bg-3);
+  --segmented-border-radius: var(--radius-md);
+  --segmented-accent:        var(--brand);
+  --segmented-accent-fg:     var(--brand-fg);
+
   display: inline-flex;
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-md);
+  background: var(--segmented-background);
+  border-radius: var(--segmented-border-radius);
   padding: 3px;
   position: relative;
   font-size: 13px;
 }
-.ok-segmented__option {
+.segmented__option {
   flex: 1;
-  padding: 7px 16px;
+  padding: 7px var(--space-4);
   background: transparent;
   border: none;
-  color: var(--ok-ink-2);
+  color: var(--ink-2);
   cursor: pointer;
-  border-radius: calc(var(--ok-radius-md) - 3px);
+  border-radius: calc(var(--radius-md) - 3px);
   font: inherit;
   font-weight: 500;
   white-space: nowrap;
-  transition: color var(--ok-dur) var(--ok-ease-out);
+  transition: color var(--dur) var(--ease-out);
   position: relative;
   z-index: 1;
 }
-.ok-segmented__option--active {
-  color: var(--ok-ink);
-  background: var(--ok-bg-2);
-  box-shadow: var(--ok-shadow-sm);
+.segmented__option--active {
+  color: var(--ink);
+  background: var(--bg-2);
+  box-shadow: var(--shadow-sm);
 }
-.ok-segmented--full { display: flex; width: 100%; }
+.segmented.full { display: flex; width: 100%; }
 
 /* ---------- Bottom sheet ---------- */
-.ok-sheet-backdrop {
+.sheet-backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.5);
   z-index: 40;
 }
-.ok-sheet {
+.sheet {
+  /* API canónica de override */
+  --sheet-background:   var(--bg-2);
+  --sheet-border-radius: var(--radius-2xl);
+
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  background: var(--ok-bg-2);
-  border-top-left-radius: 18px;
-  border-top-right-radius: 18px;
+  background: var(--sheet-background);
+  border-top-left-radius: var(--sheet-border-radius);
+  border-top-right-radius: var(--sheet-border-radius);
   z-index: 41;
   max-height: 85%;
   display: flex;
@@ -54,116 +64,121 @@
   overflow: hidden;
   box-shadow: 0 -8px 32px rgba(0,0,0,0.35);
 }
-.ok-sheet__handle {
-  width: 36px; height: 4px;
-  background: var(--ok-bg-4);
+.sheet__handle {
+  width: var(--size-md); height: 4px;
+  background: var(--bg-4);
   border-radius: 2px;
-  margin: 8px auto 0;
+  margin: var(--space-2) auto var(--space-0);
   flex-shrink: 0;
 }
-.ok-sheet__head {
-  padding: 12px 18px;
+.sheet__head {
+  padding: var(--space-3) 18px;
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: 12px;
+  gap: var(--space-3);
   align-items: center;
-  border-bottom: 1px solid var(--ok-line);
+  border-bottom: var(--border-w) solid var(--line);
 }
-.ok-sheet__title {
-  font-family: var(--ok-font-display);
+.sheet__title {
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--ok-ink);
+  letter-spacing: var(--tracking-snug);
+  color: var(--ink);
   text-align: center;
-  margin: 0;
+  margin: var(--space-0);
 }
-.ok-sheet__cancel,
-.ok-sheet__done {
+.sheet__cancel,
+.sheet__done {
   background: transparent;
   border: none;
   font: inherit;
   cursor: pointer;
-  padding: 4px;
-  font-size: 14px;
+  padding: var(--space-1);
+  font-size: var(--text-base);
 }
-.ok-sheet__cancel { color: var(--ok-ink-2); }
-.ok-sheet__done { color: var(--ok-brand); font-weight: 600; }
-.ok-sheet__body {
-  padding: 14px 18px;
+.sheet__cancel { color: var(--ink-2); }
+.sheet__done { color: var(--brand); font-weight: 600; }
+.sheet__body {
+  padding: var(--space-3-5) 18px;
   overflow-y: auto;
   flex: 1;
 }
-.ok-sheet__actions {
+.sheet__actions {
   display: flex;
   flex-direction: column;
-  gap: 1px;
-  background: var(--ok-line);
-  border-radius: var(--ok-radius-md);
+  gap: var(--border-w);
+  background: var(--line);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  margin: 0 0 12px;
+  margin: var(--space-0) var(--space-0) var(--space-3);
 }
-.ok-sheet__action {
-  background: var(--ok-bg-2);
+.sheet__action {
+  background: var(--bg-2);
   border: none;
-  padding: 14px 16px;
+  padding: var(--space-3-5) var(--space-4);
   text-align: left;
   display: grid;
   grid-template-columns: 22px 1fr auto;
-  gap: 12px;
+  gap: var(--space-3);
   align-items: center;
-  font-size: 14px;
-  color: var(--ok-ink);
+  font-size: var(--text-base);
+  color: var(--ink);
   cursor: pointer;
   font: inherit;
 }
-.ok-sheet__action:hover { background: var(--ok-bg-3); }
-.ok-sheet__action--danger { color: var(--ok-danger); }
-.ok-sheet__action svg:first-child { color: var(--ok-ink-3); }
-.ok-sheet__action--danger svg:first-child { color: var(--ok-danger); }
-.ok-sheet__action-meta { font-size: 11.5px; color: var(--ok-ink-3); }
+.sheet__action:hover { background: var(--bg-3); }
+.sheet__action--danger { color: var(--danger); }
+.sheet__action svg:first-child { color: var(--ink-3); }
+.sheet__action--danger svg:first-child { color: var(--danger); }
+.sheet__action-meta { font-size: var(--text-xs); color: var(--ink-3); }
 
 /* ---------- Swipe-list ---------- */
-.ok-swipe {
+.swipe {
+  /* API canónica de override */
+  --swipe-background:    var(--bg-2);
+  --swipe-border-color:  var(--line);
+  --swipe-border-radius: var(--radius-lg);
+
   list-style: none;
-  margin: 0; padding: 0;
-  background: var(--ok-bg-2);
-  border-radius: var(--ok-radius-lg);
+  margin: var(--space-0); padding: var(--space-0);
+  background: var(--swipe-background);
+  border-radius: var(--swipe-border-radius);
   overflow: hidden;
-  border: 1px solid var(--ok-line);
+  border: var(--border-w) solid var(--swipe-border-color);
 }
-.ok-swipe__item {
+.swipe__item {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--ok-line);
-  background: var(--ok-bg-2);
+  border-bottom: var(--border-w) solid var(--line);
+  background: var(--bg-2);
 }
-.ok-swipe__item:last-child { border-bottom: none; }
+.swipe__item:last-child { border-bottom: none; }
 
-.ok-swipe__row {
+.swipe__row {
   display: grid;
   grid-template-columns: 38px 1fr auto;
-  gap: 12px;
+  gap: var(--space-3);
   align-items: center;
-  padding: 12px 14px;
+  padding: var(--space-3) var(--space-3-5);
   position: relative;
   z-index: 1;
-  background: var(--ok-bg-2);
-  transition: transform var(--ok-dur) var(--ok-ease-out);
+  background: var(--bg-2);
+  transition: transform var(--dur) var(--ease-out);
 }
-.ok-swipe__item--open .ok-swipe__row { transform: translateX(-160px); }
+.swipe__item--open .swipe__row { transform: translateX(-160px); }
 
-.ok-swipe__name { font-size: 14px; color: var(--ok-ink); font-weight: 500; }
-.ok-swipe__sub { font-size: 12px; color: var(--ok-ink-3); margin-top: 2px; }
+.swipe__name { font-size: var(--text-base); color: var(--ink); font-weight: 500; }
+.swipe__sub { font-size: 12px; color: var(--ink-3); margin-top: var(--border-w-2); }
 
-.ok-swipe__actions {
+.swipe__actions {
   position: absolute;
   inset: 0 0 0 auto;
   width: 160px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.ok-swipe__btn {
+.swipe__btn {
   border: none;
   font: inherit;
   font-size: 12px;
@@ -172,45 +187,45 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: var(--space-1);
   cursor: pointer;
   color: white;
 }
-.ok-swipe__btn--archive { background: var(--ok-info); }
-.ok-swipe__btn--del { background: var(--ok-danger); }
-.ok-swipe__btn--flag { background: var(--ok-warn); color: var(--ok-warn-fg); }
+.swipe__btn--archive { background: var(--info); }
+.swipe__btn--del { background: var(--danger); }
+.swipe__btn--flag { background: var(--warn); color: var(--warn-fg); }
 
 /* ---------- Pull-to-refresh ---------- */
-.ok-ptr {
-  background: var(--ok-bg);
+.ptr {
+  background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 16px 0 6px;
-  font-size: 11.5px;
-  color: var(--ok-ink-3);
-  font-family: var(--ok-font-mono);
+  padding: var(--space-4) var(--space-0) var(--space-1-5);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
 }
-.ok-ptr__spinner {
-  width: 22px; height: 22px;
-  border: 2px solid var(--ok-bg-4);
-  border-top-color: var(--ok-brand);
-  border-radius: 50%;
-  margin-bottom: 6px;
+.ptr__spinner {
+  width: var(--size-xs); height: var(--size-xs);
+  border: var(--border-w-2) solid var(--bg-4);
+  border-top-color: var(--brand);
+  border-radius: var(--radius-circle);
+  margin-bottom: var(--space-1-5);
   animation: ok-ptr-spin 0.9s linear infinite;
 }
 @keyframes ok-ptr-spin { to { transform: rotate(360deg); } }
 
 /* ---------- Mobile tab bar (already in mobile-shell, but a standalone variant) ---------- */
-.ok-mtab {
+.mtab {
   display: flex;
-  background: color-mix(in oklch, var(--ok-bg-2) 80%, transparent);
+  background: color-mix(in oklch, var(--bg-2) 80%, transparent);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-top: 1px solid var(--ok-line);
+  border-top: var(--border-w) solid var(--line);
   padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
 }
-.ok-mtab__item {
+.mtab__item {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -219,11 +234,11 @@
   padding: 4px 0;
   border: none;
   background: transparent;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   font: inherit;
   font-size: 10px;
   cursor: pointer;
-  font-family: var(--ok-font-display);
+  font-family: var(--font-display);
 }
-.ok-mtab__item--active { color: var(--ok-brand); }
-.ok-mtab__item svg { width: 22px; height: 22px; }
+.mtab__item--active { color: var(--brand); }
+.mtab__item svg { width: 22px; height: 22px; }

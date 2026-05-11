@@ -6,245 +6,260 @@
 
 
 /* ============================================================
-   1. BANNER  ·  .ok-banner  — barra full-width sobre la página
+   1. BANNER  ·  .banner  — barra full-width sobre la página
    ============================================================ */
-.ok-banner {
+.banner {
+  /* API canónica de override */
+  --banner-background:   var(--bg-2);
+  --banner-border-color: var(--line);
+  --banner-color:        var(--ink);
+  --banner-padding:      var(--space-2-5) var(--space-4);
+  --banner-icon-color:   var(--ink-2);
+
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
-  gap: 12px;
-  padding: 10px 16px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  color: var(--ok-ink);
-  font-size: var(--ok-text-md);
+  gap: var(--space-3);
+  padding: var(--banner-padding);
+  background: var(--banner-background);
+  border: var(--border-w) solid var(--banner-border-color);
+  color: var(--banner-color);
+  font-size: var(--text-md);
   position: relative;
 }
-.ok-banner__icon {
-  width: 18px; height: 18px;
+.banner__icon {
+  width: var(--icon-md); height: var(--icon-md);
   flex-shrink: 0;
-  color: var(--ok-ink-2);
+  color: var(--banner-icon-color);
 }
-.ok-banner__body {
+.banner__body {
   min-width: 0;
   line-height: 1.45;
 }
-.ok-banner__title { font-weight: 500; color: var(--ok-ink); }
-.ok-banner__desc {
+.banner__title { font-weight: 500; color: var(--ink); }
+.banner__desc {
   display: inline;
-  color: var(--ok-ink-3);
-  font-size: var(--ok-text-sm);
+  color: var(--ink-3);
+  font-size: var(--text-sm);
 }
-.ok-banner__title + .ok-banner__desc {
+.banner__title + .banner__desc {
   display: block;
-  margin-top: 2px;
+  margin-top: var(--border-w-2);
 }
-.ok-banner__actions {
+.banner__actions {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-1-5);
   flex-shrink: 0;
 }
-.ok-banner__action {
+.banner__action {
   background: transparent;
-  border: 1px solid var(--ok-line-2);
-  color: var(--ok-ink);
+  border: var(--border-w) solid var(--line-2);
+  color: var(--ink);
   font: inherit;
-  font-size: var(--ok-text-sm);
+  font-size: var(--text-sm);
   font-weight: 500;
   height: 26px;
-  padding: 0 10px;
-  border-radius: var(--ok-radius-sm);
+  padding: var(--space-0) var(--space-2-5);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background var(--ok-dur-fast);
+  transition: background var(--dur-fast);
 }
-.ok-banner__action:hover { background: var(--ok-bg-3); }
-.ok-banner__action--primary {
-  background: var(--ok-ink);
-  color: var(--ok-bg);
-  border-color: var(--ok-ink);
+.banner__action:hover { background: var(--bg-3); }
+.banner__action--primary {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
-.ok-banner__action--primary:hover { background: var(--ok-ink-2); }
-.ok-banner__close {
-  width: 24px; height: 24px;
+.banner__action--primary:hover { background: var(--ink-2); }
+.banner__close {
+  width: var(--avatar-2xs); height: var(--avatar-2xs);
   border: none;
   background: transparent;
-  color: var(--ok-ink-3);
-  border-radius: var(--ok-radius-xs);
+  color: var(--ink-3);
+  border-radius: var(--radius-xs);
   cursor: pointer;
   display: grid; place-items: center;
-  font-size: 14px;
-  line-height: 1;
+  font-size: var(--text-base);
+  line-height: var(--leading-flat);
 }
-.ok-banner__close:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
+.banner__close:hover { background: var(--bg-3); color: var(--ink); }
 
 /* Tono semántico — fondo suave + borde acento */
-.ok-banner--info {
-  background: color-mix(in oklch, var(--ok-info) 10%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-info) 35%, var(--ok-line-2));
+.banner.info {
+  background: color-mix(in oklch, var(--info) 10%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--info) 35%, var(--line-2));
 }
-.ok-banner--info .ok-banner__icon { color: var(--ok-info); }
-.ok-banner--ok {
-  background: color-mix(in oklch, var(--ok-leaf) 10%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-leaf) 35%, var(--ok-line-2));
+.banner.info .banner__icon { color: var(--info); }
+.banner.ok {
+  background: color-mix(in oklch, var(--leaf) 10%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--leaf) 35%, var(--line-2));
 }
-.ok-banner--ok .ok-banner__icon { color: var(--ok-leaf); }
-.ok-banner--warn {
-  background: color-mix(in oklch, var(--ok-warn) 12%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-warn) 35%, var(--ok-line-2));
+.banner.ok .banner__icon { color: var(--leaf); }
+.banner.warn {
+  background: color-mix(in oklch, var(--warn) 12%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--warn) 35%, var(--line-2));
 }
-.ok-banner--warn .ok-banner__icon { color: var(--ok-warn); }
-.ok-banner--danger {
-  background: color-mix(in oklch, var(--ok-danger) 10%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-danger) 35%, var(--ok-line-2));
+.banner.warn .banner__icon { color: var(--warn); }
+.banner.danger {
+  background: color-mix(in oklch, var(--danger) 10%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--danger) 35%, var(--line-2));
 }
-.ok-banner--danger .ok-banner__icon { color: var(--ok-danger); }
-.ok-banner--brand {
-  background: color-mix(in oklch, var(--ok-brand) 10%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-brand) 35%, var(--ok-line-2));
+.banner.danger .banner__icon { color: var(--danger); }
+.banner.brand {
+  background: color-mix(in oklch, var(--brand) 10%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--brand) 35%, var(--line-2));
 }
-.ok-banner--brand .ok-banner__icon { color: var(--ok-brand-3); }
+.banner.brand .banner__icon { color: var(--brand-3); }
 
 /* High-emphasis banner — fondo saturado, texto sobre color */
-.ok-banner--solid {
-  background: var(--ok-ink);
-  color: var(--ok-bg);
-  border-color: var(--ok-ink);
+.banner.solid {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
 }
-.ok-banner--solid .ok-banner__desc,
-.ok-banner--solid .ok-banner__icon { color: color-mix(in oklch, var(--ok-bg) 70%, transparent); }
-.ok-banner--solid .ok-banner__action {
-  background: color-mix(in oklch, var(--ok-bg) 18%, transparent);
-  border-color: color-mix(in oklch, var(--ok-bg) 35%, transparent);
-  color: var(--ok-bg);
+.banner.solid .banner__desc,
+.banner.solid .banner__icon { color: color-mix(in oklch, var(--bg) 70%, transparent); }
+.banner.solid .banner__action {
+  background: color-mix(in oklch, var(--bg) 18%, transparent);
+  border-color: color-mix(in oklch, var(--bg) 35%, transparent);
+  color: var(--bg);
 }
-.ok-banner--solid .ok-banner__close { color: color-mix(in oklch, var(--ok-bg) 70%, transparent); }
+.banner.solid .banner__close { color: color-mix(in oklch, var(--bg) 70%, transparent); }
 
 /* Layouts — sticky top y inline */
-.ok-banner--top {
+.banner.top {
   position: sticky;
   top: 0;
-  z-index: var(--ok-z-sticky);
+  z-index: var(--z-sticky);
   border-radius: 0;
   border-left: none;
   border-right: none;
   border-top: none;
 }
-.ok-banner--inline { border-radius: var(--ok-radius-lg); }
+.banner.inline { border-radius: var(--radius-lg); }
 
 
 /* ============================================================
-   2. CALLOUT  ·  .ok-callout
+   2. CALLOUT  ·  .callout
    Bloque inline tipo "nota / warning" usado dentro de docs y forms
    ============================================================ */
-.ok-callout {
+.callout {
+  /* API canónica de override */
+  --callout-background:     var(--bg-2);
+  --callout-border-color:   var(--line);
+  --callout-border-radius:  var(--radius-md);
+  --callout-accent-color:   var(--line-3);
+  --callout-color:          var(--ink);
+  --callout-padding:        var(--space-3) var(--space-3-5) var(--space-3) var(--space-3);
+
   display: grid;
   grid-template-columns: 28px 1fr;
-  gap: 12px;
-  padding: 12px 14px 12px 12px;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
+  gap: var(--space-3);
+  padding: var(--callout-padding);
+  background: var(--callout-background);
+  border: var(--border-w) solid var(--callout-border-color);
+  border-radius: var(--callout-border-radius);
   border-left-width: 3px;
-  border-left-color: var(--ok-line-3);
-  font-size: var(--ok-text-md);
-  color: var(--ok-ink);
-  line-height: 1.5;
+  border-left-color: var(--callout-accent-color);
+  font-size: var(--text-md);
+  color: var(--ink);
+  line-height: var(--leading-normal);
 }
-.ok-callout__icon {
-  width: 28px; height: 28px;
-  border-radius: var(--ok-radius-sm);
-  background: var(--ok-bg-3);
-  color: var(--ok-ink-2);
+.callout__icon {
+  width: var(--size-sm); height: var(--size-sm);
+  border-radius: var(--radius-sm);
+  background: var(--bg-3);
+  color: var(--ink-2);
   display: grid; place-items: center;
   flex-shrink: 0;
 }
-.ok-callout__icon svg { width: 15px; height: 15px; }
-.ok-callout__body { min-width: 0; }
-.ok-callout__title {
+.callout__icon svg { width: 15px; height: 15px; }
+.callout__body { min-width: 0; }
+.callout__title {
   font-weight: 600;
-  color: var(--ok-ink);
-  margin: 0 0 2px;
-  font-size: var(--ok-text-md);
+  color: var(--ink);
+  margin: var(--space-0) var(--space-0) var(--border-w-2);
+  font-size: var(--text-md);
 }
-.ok-callout__desc { color: var(--ok-ink-2); }
-.ok-callout__desc code {
-  font-family: var(--ok-font-mono);
+.callout__desc { color: var(--ink-2); }
+.callout__desc code {
+  font-family: var(--font-mono);
   font-size: 12px;
-  padding: 1px 5px;
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-xs);
-  color: var(--ok-ink);
+  padding: var(--border-w) 5px;
+  background: var(--bg-3);
+  border-radius: var(--radius-xs);
+  color: var(--ink);
 }
-.ok-callout__list {
-  margin: 6px 0 0;
+.callout__list {
+  margin: var(--space-1-5) var(--space-0) var(--space-0);
   padding-left: 18px;
-  font-size: var(--ok-text-sm);
-  color: var(--ok-ink-2);
+  font-size: var(--text-sm);
+  color: var(--ink-2);
   line-height: 1.6;
 }
-.ok-callout__actions {
+.callout__actions {
   display: flex;
-  gap: 6px;
-  margin-top: 8px;
+  gap: var(--space-1-5);
+  margin-top: var(--space-2);
 }
-.ok-callout__link {
-  color: var(--ok-brand-3);
+.callout__link {
+  color: var(--brand-3);
   font-weight: 500;
-  font-size: var(--ok-text-sm);
+  font-size: var(--text-sm);
   text-decoration: none;
 }
-.ok-callout__link:hover { text-decoration: underline; }
+.callout__link:hover { text-decoration: underline; }
 
 /* Tonos */
-.ok-callout--info {
-  background: color-mix(in oklch, var(--ok-info) 8%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-info) 30%, var(--ok-line-2));
-  border-left-color: var(--ok-info);
+.callout.info {
+  background: color-mix(in oklch, var(--info) 8%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--info) 30%, var(--line-2));
+  border-left-color: var(--info);
 }
-.ok-callout--info .ok-callout__icon { background: var(--ok-info-soft); color: var(--ok-info); }
+.callout.info .callout__icon { background: var(--info-soft); color: var(--info); }
 
-.ok-callout--ok {
-  background: color-mix(in oklch, var(--ok-leaf) 8%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-leaf) 30%, var(--ok-line-2));
-  border-left-color: var(--ok-leaf);
+.callout.ok {
+  background: color-mix(in oklch, var(--leaf) 8%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--leaf) 30%, var(--line-2));
+  border-left-color: var(--leaf);
 }
-.ok-callout--ok .ok-callout__icon { background: var(--ok-leaf-soft); color: var(--ok-leaf); }
+.callout.ok .callout__icon { background: var(--leaf-soft); color: var(--leaf); }
 
-.ok-callout--warn {
-  background: color-mix(in oklch, var(--ok-warn) 10%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-warn) 30%, var(--ok-line-2));
-  border-left-color: var(--ok-warn);
+.callout.warn {
+  background: color-mix(in oklch, var(--warn) 10%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--warn) 30%, var(--line-2));
+  border-left-color: var(--warn);
 }
-.ok-callout--warn .ok-callout__icon { background: var(--ok-warn-soft); color: var(--ok-warn); }
+.callout.warn .callout__icon { background: var(--warn-soft); color: var(--warn); }
 
-.ok-callout--danger {
-  background: color-mix(in oklch, var(--ok-danger) 8%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-danger) 30%, var(--ok-line-2));
-  border-left-color: var(--ok-danger);
+.callout.danger {
+  background: color-mix(in oklch, var(--danger) 8%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--danger) 30%, var(--line-2));
+  border-left-color: var(--danger);
 }
-.ok-callout--danger .ok-callout__icon { background: var(--ok-danger-soft); color: var(--ok-danger); }
+.callout.danger .callout__icon { background: var(--danger-soft); color: var(--danger); }
 
-.ok-callout--brand {
-  background: color-mix(in oklch, var(--ok-brand) 8%, var(--ok-bg-1));
-  border-color: color-mix(in oklch, var(--ok-brand) 30%, var(--ok-line-2));
-  border-left-color: var(--ok-brand);
+.callout.brand {
+  background: color-mix(in oklch, var(--brand) 8%, var(--bg-1));
+  border-color: color-mix(in oklch, var(--brand) 30%, var(--line-2));
+  border-left-color: var(--brand);
 }
-.ok-callout--brand .ok-callout__icon { background: var(--ok-brand-soft); color: var(--ok-brand-3); }
+.callout.brand .callout__icon { background: var(--brand-soft); color: var(--brand-3); }
 
 /* Variante compact (single line) */
-.ok-callout--compact {
-  padding: 8px 12px;
+.callout.compact {
+  padding: var(--space-2) var(--space-3);
   grid-template-columns: 16px 1fr;
-  gap: 10px;
-  font-size: var(--ok-text-sm);
+  gap: var(--space-2-5);
+  font-size: var(--text-sm);
   align-items: center;
 }
-.ok-callout--compact .ok-callout__icon {
+.callout.compact .callout__icon {
   width: 16px; height: 16px;
   background: transparent;
   border-radius: 0;
 }
-.ok-callout--compact .ok-callout__icon svg { width: 14px; height: 14px; }
-.ok-callout--compact .ok-callout__title { display: inline; }
-.ok-callout--compact .ok-callout__desc { display: inline; margin-left: 6px; color: var(--ok-ink-3); }
+.callout.compact .callout__icon svg { width: var(--icon-sm); height: var(--icon-sm); }
+.callout.compact .callout__title { display: inline; }
+.callout.compact .callout__desc { display: inline; margin-left: var(--space-1-5); color: var(--ink-3); }
