@@ -1,0 +1,143 @@
+/* ============================================================
+   OutfitKit · Chart
+   ============================================================ */
+
+.chart {
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-xl);
+  --padding-x: var(--space-4);
+  --padding-y: var(--space-4);
+  --width: 10rem;
+  --height: 0.5rem;
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding-y) var(--padding-x);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.chart.flat { background: transparent; border: none; padding: var(--space-0); }
+
+/* .chart__head -> use universal .head (or .row when no border is needed) */
+.chart > .head {
+  border-bottom: none;
+  padding: var(--space-0) var(--space-0) var(--space-2);
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* .chart__title -> use universal .title sm */
+/* .chart__sub   -> use universal .sub sm  */
+
+.chart__big {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-display);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--leading-flat);
+}
+
+.chart__delta {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  margin-top: var(--space-1);
+}
+
+.chart__delta--up { color: var(--leaf); }
+.chart__delta--down { color: var(--danger); }
+
+.chart__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+
+.chart__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+}
+
+.chart__legend-dot {
+  width: var(--dot-md);
+  height: var(--dot-md);
+  border-radius: 0.125rem;
+  background: var(--brand);
+  flex-shrink: 0;
+}
+
+/* Dashed indicator for legend entries that map to dashed lines in the SVG. */
+.chart__legend-dash {
+  width: var(--icon-md);
+  height: var(--border-w-2);
+  flex-shrink: 0;
+  background-image: linear-gradient(
+    to right,
+    var(--ink-2) 0 6px,
+    transparent 6px 10px,
+    var(--ink-2) 10px 16px,
+    transparent 16px 18px
+  );
+}
+
+.chart__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  overflow: visible;
+}
+
+.chart__grid line { stroke: var(--line); stroke-width: 1; shape-rendering: crispEdges; }
+.chart__axis text { fill: var(--ink-3); font-size: 0.625rem; font-variant-numeric: tabular-nums; }
+.chart__axis line { stroke: var(--line-2); stroke-width: 1; }
+
+.chart__bar { fill: var(--brand); }
+.chart__bar--leaf { fill: var(--leaf); }
+.chart__bar--warn { fill: var(--warn); }
+.chart__bar--info { fill: var(--info); }
+.chart__bar--ink2 { fill: var(--ink-2); }
+.chart__bar--mute { fill: var(--ink-2); }
+.chart__bar:hover { filter: brightness(1.15); }
+
+.chart__line {
+  stroke: var(--brand);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.chart__line--leaf { stroke: var(--leaf); }
+.chart__line--info { stroke: var(--info); }
+.chart__line--mute { stroke: var(--ink-2); stroke-dasharray: 4 4; stroke-width: 1.5; }
+
+.chart__area { fill: url(#ok-area-grad); }
+.chart__area-leaf { fill: url(#ok-area-grad-leaf); }
+
+.chart__dot { fill: var(--brand); stroke: var(--bg-2); stroke-width: 2; }
+.chart__dot--leaf { fill: var(--leaf); }
+
+.chart__label-value {
+  fill: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.6875rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.chart__hover {
+  fill: transparent;
+  cursor: pointer;
+}
+
+.chart__hover:hover ~ .chart__hover-bar { opacity: 1; }

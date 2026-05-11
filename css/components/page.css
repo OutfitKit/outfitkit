@@ -3,17 +3,21 @@
    ============================================================ */
 
 .page-header {
+  --gap: var(--space-4);
+  --padding-y: var(--space-5);
+  --border-color: var(--line);
+
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: var(--space-4);
-  padding-bottom: var(--space-5);
-  margin-bottom: var(--space-5);
-  border-bottom: var(--border-w) solid var(--line);
+  gap: var(--gap);
+  padding-bottom: var(--padding-y);
+  margin-bottom: var(--padding-y);
+  border-bottom: var(--border-w) solid var(--border-color);
 }
 
 .page-header-title {
-  flex: 1 1 240px;
+  flex: 1 1 15rem;
   min-width: 0;
 }
 .page-header-title h1 {
@@ -47,17 +51,31 @@
 
 /* Section — app panel section (settings, detail pages) */
 .section {
-  margin-bottom: var(--space-7);
+  --margin-y: var(--space-7);
+
+  margin-bottom: var(--margin-y);
 }
 /* .section > .head  — uses universal .head for the header row */
 /* .section .title   — uses universal .title for section headings */
 /* .section .meta    — uses universal .meta for secondary text */
 
 /* Grid presets */
-.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-4); }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); }
-.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-3); }
-.grid-6 { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--space-3); }
+.grid-2,
+.grid-3,
+.grid-4,
+.grid-6 {
+  --gap: var(--space-4);
+
+  display: grid;
+  gap: var(--gap);
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4,
+.grid-6 { --gap: var(--space-3); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-6 { grid-template-columns: repeat(6, 1fr); }
 
 @media (max-width: 1199px) {
   .grid-4 { grid-template-columns: repeat(2, 1fr); }

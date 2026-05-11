@@ -1,56 +1,43 @@
 # OutfitKit
-> CSS component library + Jinja macros for server-rendered web apps. Zero JS required, zero build pipeline for consumers.
+> CSS component library + Jinja macros for server-rendered web apps.
 
-OutfitKit ships ~260 semantic blocks (BEM-light, themeable via CSS custom properties) as both a single-`<link>` CSS bundle and a `pip install outfitkit` package of Jinja2 macros that render the same markup. Every macro file is dual-mode: it works as a vanilla `{% from "ui/x.jinja" import x %}` import AND as a JinjaX `<X />` tag from the same file.
+OutfitKit uses a composable CSS API:
+
+- component: `.btn`, `.card`, `.modal`, `.badge`
+- variant: `.primary`, `.danger`, `.success`, `.neutral`, ...
+- size: `.2xs`, `.xs`, `.sm`, `.md`, `.lg`, `.xl`, `.2xl`
+- style: `.outline`, `.ghost`, `.soft`, `.link`
+
+Example:
+
+```html
+<button class="btn primary lg outline">Save</button>
+<div class="modal soft" style="--max-width: 40rem;"></div>
+```
 
 ## Quick start
-- [README](https://github.com/OutfitKit/outfitkit/blob/main/README.md): install + usage for CSS-only and Python+Jinja.
-- [Live showcase](https://outfitkit.github.io/outfitkit/): every component, Preview / HTML / Jinja / JinjaX / Usage tabs.
-- [Repository](https://github.com/OutfitKit/outfitkit): source, issues, releases.
-- [Design system](https://outfitkit.github.io/outfitkit/design-system.html): tokens, themes, scales.
+- [README](https://github.com/OutfitKit/outfitkit/blob/main/README.md)
+- [Live showcase](https://outfitkit.github.io/outfitkit/)
+- [Repository](https://github.com/OutfitKit/outfitkit)
+- [Design system](https://outfitkit.github.io/outfitkit/design-system.html)
 
-## CSS bundles (jsDelivr)
-- [outfitkit.min.css (default, no prefix)](https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.min.css): Use when OutfitKit is the only CSS lib. Classes: `.btn`, `.card`, `.modal`.
-- [outfitkit.ok.min.css (opt-in, `ok-` prefix)](https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.ok.min.css): Use only to avoid name collisions with Bootstrap / Tailwind / legacy DS. Classes: `.ok-btn`, `.ok-card`.
-- [outfitkit.css (unminified dev source, always `ok-` prefix)](https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/outfitkit.css): For DevTools inspection.
-- Both bundles share identical tokens, keyframes, and animations — only selector names differ.
+## CSS
+- [outfitkit.css](https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/css/outfitkit.css): canonical source bundle.
+- [outfitkit.min.css](https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.min.css): production bundle.
+- [outfitkit.ok.min.css](https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.ok.min.css): legacy prefixed compatibility snapshot.
 
 ## Python package
-- [outfitkit on PyPI](https://pypi.org/project/outfitkit/): `pip install outfitkit` (vanilla) or `pip install outfitkit[jinjax]` (HTML-tag syntax).
-- [Package source](https://github.com/OutfitKit/outfitkit/tree/main/showcase/src/outfitkit): exposes `TEMPLATES_DIR`, `register_globals(env, ok_prefix="")`, `css_url(version=None, minified=True, prefix="")`, `theme_url(name)`.
-- **The pip package does NOT ship the CSS** — it ships only macros + helpers. The CSS lives on jsDelivr (CDN). `css_url()` returns the URL string so your template can put it in a `<link>`. To self-host: download `dist/outfitkit.min.css` from a tagged release into your own `static/` dir and link it directly (don't use `css_url()` then).
-- Setup snippet:
-  ```python
-  from jinja2 import Environment, FileSystemLoader
-  from outfitkit import TEMPLATES_DIR, register_globals, css_url
-  env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
-  register_globals(env)            # default: no prefix
-  ctx = {"css": css_url()}         # → CDN URL of outfitkit.min.css
-  ```
-- Rule of thumb: the macro `ok_prefix` and the loaded CSS bundle MUST match. Both default to "".
-
-## Components
-
-Every component has a demo at `https://outfitkit.github.io/outfitkit/components/<name>.html` (Preview / HTML / Jinja / JinjaX / Usage tabs). Names below match the macro filename; substitute into the URL pattern.
-
-- Buttons & status: button, badge, avatar, icon, tags, progress, rating.
-- Surfaces & layout: card, panel, app_shell, mobile_shell, sidebar_nav, topbar, menubar, tabbar, tabs, breadcrumbs, accordion.
-- Overlays: modal, drawer, toast, banner, tooltip, context_menu, system_overlays.
-- Data: table, datatable, list, tree, timeline, stat, stats, kpi, chart, sparkline, empty, states.
-- Forms: field, input, textarea, select, checkbox, radio, toggle, slider, search, autocomplete, datepicker, timepicker, colorpicker, otp, stepper, richtext.
-- Verticals: calendar, kanban, chat, pos, kds, numpad, pinpad, pay, invoice, receipt, manufacturing, hr_card, gallery, audio_player, video_player.
-
-Index of all demos: [showcase home](https://outfitkit.github.io/outfitkit/).
-
-## Macros API
-- [Macros directory](https://github.com/OutfitKit/outfitkit/tree/main/showcase/src/outfitkit/templates/ui): 69 `.jinja` files, dual-mode (vanilla `{% macro %}` + JinjaX `{#def #}` header) — identical HTML either way.
-- Every macro accepts `attrs=None` (extra HTML attrs as dict) and emits classes prefixed with the global `ok_prefix` set via `register_globals`.
+- [outfitkit on PyPI](https://pypi.org/project/outfitkit/)
+- package exposes `TEMPLATES_DIR`, `register_globals(env)` as a compatibility no-op, `css_url(version=None, minified=True)`, `theme_url(name)`
 
 ## Themes
-- [Tokens source](https://github.com/OutfitKit/outfitkit/blob/main/css/tokens.css): all tokens are CSS custom properties named `--ok-*` (palette, spacing, radii, shadows, typography).
-- Themes apply via `data-theme` on `<html>` or subtree: `erplora` (default), `dark`, `light`. Override any `--ok-*` var.
-- [Corporate theme](https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/css/themes/corporate.css): example.
+- themes combine `data-theme` (`erplora`, `erplora-light`) with optional `data-template`
+- global tokens are unprefixed: `--bg`, `--brand`, `--space-4`, `--radius-md`, ...
 
-## Optional
-- [CHANGELOG](https://github.com/OutfitKit/outfitkit/blob/main/CHANGELOG.md).
-- [llms-full.txt](https://outfitkit.github.io/outfitkit/llms-full.txt): expanded reference with macro signatures and patterns.
+## Components
+- buttons & status: button, badge, avatar, icon, tags, progress, rating
+- surfaces & layout: card, panel, app_shell, mobile_shell, sidebar_nav, topbar, menubar, tabbar, tabs, breadcrumbs, accordion
+- overlays: modal, drawer, toast, banner, tooltip, context_menu, system_overlays
+- data: table, datatable, list, tree, timeline, stat, stats, kpi, chart, sparkline, empty, states
+- forms: field, input, textarea, select, checkbox, radio, toggle, slider, search, autocomplete, datepicker, timepicker, colorpicker, otp, stepper, richtext
+- verticals: calendar, kanban, chat, pos, kds, numpad, pinpad, pay, invoice, receipt, manufacturing, hr_card, gallery, audio_player, video_player

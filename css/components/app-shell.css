@@ -24,8 +24,13 @@
    ============================================================ */
 
 .app {
+  --column-width: var(--sidebar-w);
+  --drawer-width: min(var(--sidebar-w-mobile, 18rem), 85vw);
+  --backdrop: color-mix(in oklch, black 50%, transparent);
+  --tabbar-background: color-mix(in oklch, var(--bg-1) 92%, transparent);
+
   display: grid;
-  grid-template-columns: var(--sidebar-width, var(--sidebar-w)) 1fr;
+  grid-template-columns: var(--column-width) 1fr;
   min-height: 100vh;
   min-height: 100dvh;
   background: var(--background, var(--bg));
@@ -33,11 +38,11 @@
 }
 
 .app[data-sidebar="collapsed"] {
-  --sidebar-width: var(--sidebar-w-collapsed);
+  --column-width: var(--sidebar-w-collapsed);
 }
 
 .app[data-sidebar="hidden"] {
-  --sidebar-width: 0px;
+  --column-width: 0rem;
   grid-template-columns: 1fr;
 }
 
@@ -80,7 +85,7 @@
     top: 0;
     left: 0;
     bottom: 0;
-    width: min(var(--sidebar-w-mobile, 288px), 85vw);
+    width: var(--drawer-width);
     transform: translateX(-100%);
     z-index: var(--z-drawer);
     box-shadow: var(--shadow-lg);
@@ -95,7 +100,7 @@
     display: block;
     position: fixed;
     inset: 0;
-    background: color-mix(in oklch, black 50%, transparent);
+    background: var(--backdrop);
     z-index: calc(var(--z-drawer) - 1);
     opacity: 1;
     transition: opacity var(--dur-base) var(--ease-out);
@@ -111,7 +116,7 @@
     right: 0;
     height: calc(var(--tabbar-h) + env(safe-area-inset-bottom));
     padding-bottom: env(safe-area-inset-bottom);
-    background: color-mix(in oklch, var(--bg-1) 92%, transparent);
+    background: var(--tabbar-background);
     backdrop-filter: blur(var(--blur-default)) saturate(var(--saturate));
     -webkit-backdrop-filter: blur(var(--blur-default)) saturate(var(--saturate));
     z-index: var(--z-sticky);

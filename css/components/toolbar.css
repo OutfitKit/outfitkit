@@ -1,0 +1,76 @@
+/* ============================================================
+   OutfitKit · Toolbar
+   ============================================================ */
+
+.toolbar {
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius, var(--radius-lg));
+  --padding-y: var(--pad-y, var(--space-2));
+  --padding-x: var(--pad-x, var(--space-3));
+  --height: var(--size, 2.5rem);
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  min-height: var(--height);
+  flex-wrap: wrap;
+}
+
+.toolbar__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+  margin-right: var(--space-2);
+  flex-shrink: 0;
+}
+
+.toolbar__group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  border-right: var(--border-w) solid var(--line);
+  padding-right: var(--space-2);
+}
+
+.toolbar__group:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.toolbar__divider {
+  width: 0.0625rem;
+  height: 1.25rem;
+  background: var(--line);
+  flex-shrink: 0;
+  margin: 0 var(--space-1);
+}
+
+.toolbar__spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar.floating {
+  border-radius: 0;
+  box-shadow: var(--shadow-md);
+  border-left: none;
+  border-right: none;
+}
+
+.toolbar.ghost {
+  background: transparent;
+  border-color: transparent;
+}
+
+.toolbar.sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+}

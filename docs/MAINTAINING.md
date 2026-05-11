@@ -35,7 +35,7 @@ Los tres tienen su propio trigger de release. Ver [PUBLISHING.md](./PUBLISHING.m
 
 - **`showcase/pages/_layout.jinja`** — base de todas las páginas. Carga CSS, theme runtime, sidebar/topbar. Si rompe, el sitio entero se cae.
 - **`showcase/static/theme-runtime.js`** — bootstrap síncrono que aplica `data-theme` y `data-template` antes de Datastar. Sin él hay FOUC y los iframes no sincronizan.
-- **`css/tokens.css`** — todas las variables `--ok-*`. Un nombre mal escrito aquí cascada a todos los componentes.
+- **`css/tokens.css`** — contrato global de variables. Un nombre mal escrito aquí cascada a todos los componentes.
 - **`css/outfitkit.css`** — entry point con los `@import`. Si añades un componente y olvidas el `@import`, no entra en el bundle.
 - **`showcase/build.py`** — generador staticjinja + JinjaX. Configura `OUTFITKIT_BASE`, `OUTFITKIT_CSS`, registra carpetas.
 - **`showcase/src/outfitkit/__init__.py`** — `__version__`, `register_globals`, `css_url`, `theme_url`. Cambio de API → release PyPI.
@@ -46,7 +46,7 @@ Los tres tienen su propio trigger de release. Ver [PUBLISHING.md](./PUBLISHING.m
 |---|---|
 | FOUC: parpadeo de tema al cargar | `showcase/static/theme-runtime.js` (o falta `<script>` síncrono en `_layout.jinja`) |
 | Componente sin estilos | falta `@import` en `css/outfitkit.css`, o nombre del archivo no coincide |
-| `--ok-foo is not defined` | `css/tokens.css` o `css/themes/<name>.css` |
+| `--foo is not defined` | `css/tokens.css` o `css/themes/<name>.css` |
 | Macro no se importa en JinjaX | `showcase/src/outfitkit/templates/ui/<name>.jinja` (¿tiene `{#def ... #}` y el shim final?) |
 | Build falla con "template not found" | `showcase/build.py` — loader paths, o nombre de archivo en `pages/`/`chrome/`/`ui/` |
 | 404 en `/static/theme-runtime.js` en GH Pages | `OUTFITKIT_BASE` no se está aplicando; mira `_base_path()` en `build.py` |

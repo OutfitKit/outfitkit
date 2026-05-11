@@ -1,0 +1,40 @@
+.osk-display,
+.vkb-display {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--space-2);
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  color: var(--ink);
+  min-height: var(--size-md);
+  font-variant-numeric: tabular-nums;
+}
+.osk-display__label,
+.vkb-display__label {
+  font-size: var(--text-2xs);
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-family: var(--font-sans);
+}
+.osk-display__value,
+.vkb-display__value {
+  flex: 1;
+  color: var(--ink);
+  letter-spacing: 0.05em;
+  word-break: break-all;
+}
+.osk-display__value:empty::before,
+.vkb-display__value:empty::before {
+  content: "_";
+  color: var(--ink-4);
+  animation: ok-osk-blink 1s step-end infinite;
+}
+@keyframes ok-osk-blink {
+  50% { opacity: 0; }
+}

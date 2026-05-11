@@ -1,0 +1,13 @@
+/* ============================================================
+   Track line utility · .track-line
+   Shared connector token for BOM, stepper and timeline.
+   ============================================================ */
+.track-line {
+  --thickness: var(--border-w-2);
+
+  position: absolute;
+  width: var(--thickness);
+  background: var(--line);
+}
+.track-line.done { background: var(--brand); }
+.track-line.horizontal { width: auto; height: var(--thickness); }

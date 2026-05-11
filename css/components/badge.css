@@ -2,81 +2,52 @@
    OutfitKit · Badge / Chip
    ─────────────────────────────────────────────────────────────
    Uso:
-     <span class="badge">3</span>                  ← neutral
-     <span class="badge primary">Nuevo</span>      ← tonal soft
-     <span class="badge danger solid">Off</span>   ← filled
+     <span class="badge">3</span>
+     <span class="badge primary">Nuevo</span>
+     <span class="badge danger solid">Off</span>
      <span class="badge success outline sm">OK</span>
 
    Consume:
-     --variant, --variant-shade, --variant-tint
-     --size, --pad-x, --pad-y, --text
-   Expone (override por consumidor):
+     --variant, --variant-contrast, --variant-shade
+     --size, --pad-x, --pad-y, --text, --radius
+   Expone:
      --background, --color, --border-color, --border-radius
    ============================================================ */
 
 
 .badge {
-  /* API canónica de override */
-  --badge-background:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
-  --badge-color:         var(--variant, var(--ink-2));
-  --badge-border-color:  transparent;
-  --badge-border-radius: var(--radius-pill);
-  --badge-height:        20px;
-  --badge-pad-x:         var(--pad-x, var(--space-2));
-  --badge-text:          var(--text, var(--text-2xs));
-  --badge-gap:           var(--space-1);
+  --background:    var(--bg-mode, color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent));
+  --color:         var(--color-mode, var(--variant, var(--ink-2)));
+  --border-color:  var(--border-mode, transparent);
+  --border-radius: var(--radius, var(--radius-pill));
+  --height:        var(--size, 1.25rem);
+  --padding-x:     var(--pad-x, var(--space-2));
+  --font-size:     var(--text, var(--text-2xs));
+  --gap:           var(--space-1);
 
   display: inline-flex;
   align-items: center;
-  gap: var(--badge-gap);
-  height: var(--badge-height);
-  padding-inline: var(--badge-pad-x);
-  font-size: var(--badge-text);
+  gap: var(--gap);
+  min-height: var(--height);
+  padding-inline: var(--padding-x);
+  font-size: var(--font-size);
   font-weight: var(--weight-medium);
   line-height: var(--leading-flat);
   letter-spacing: var(--tracking-snug);
-  color: var(--badge-color);
-  background: var(--badge-background);
-  border: var(--border-w) solid var(--badge-border-color);
-  border-radius: var(--badge-border-radius);
+  color: var(--color);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
   white-space: nowrap;
 }
 
-/* Default sin variante: fondo bg-3 + texto ink-2 + borde line */
-.badge:not(.primary):not(.secondary):not(.tertiary):not(.success):not(.warning):not(.warn):not(.danger):not(.info):not(.medium):not(.neutral):not(.light):not(.dark):not(.brand):not(.accent):not(.ok):not(.leaf) {
-  --badge-background:   var(--bg-3);
-  --badge-color:        var(--ink-2);
-  --badge-border-color: var(--line);
+.badge.solid,
+.badge.filled {
+  --background:   var(--variant, var(--bg-4));
+  --color:        var(--variant-contrast, var(--ink));
+  --border-color: transparent;
 }
 
-/* Solid (filled) — fondo --variant sólido, texto --variant-contrast */
-.badge.solid {
-  --badge-background:   var(--variant, var(--bg-4));
-  --badge-color:        var(--variant-contrast, var(--ink));
-  --badge-border-color: transparent;
-}
-
-/* Outline — sin fondo, borde + texto --variant */
-.badge.outline {
-  --badge-background:   transparent;
-  --badge-color:        var(--variant, var(--ink-2));
-  --badge-border-color: var(--variant, var(--line-3));
-}
-
-/* Ghost — sin fondo ni borde */
-.badge.ghost {
-  --badge-background:   transparent;
-  --badge-border-color: transparent;
-}
-
-/* Sizes */
-.badge.xs { --badge-height: 16px; --badge-pad-x: var(--space-1); --badge-text: var(--text-2xs); }
-.badge.sm { --badge-height: 17px; --badge-pad-x: var(--space-2); --badge-text: var(--text-2xs); }
-.badge.md { --badge-height: 22px; --badge-pad-x: var(--space-2); --badge-text: var(--text-xs); }
-.badge.lg { --badge-height: 26px; --badge-pad-x: var(--space-3); --badge-text: var(--text-sm); }
-
-
-/* Punto interno (estado online/offline, etc.) */
 .badge__dot {
   width: var(--dot-xs);
   height: var(--dot-xs);
@@ -88,59 +59,47 @@
 
 /* ============================================================
    Chip — input-like, removable, clickable
-   ─────────────────────────────────────────────────────────────
-   Uso:
-     <button class="chip">Filtro</button>
-     <button class="chip primary">Activo</button>
-     <button class="chip" aria-pressed="true">Seleccionado</button>
    ============================================================ */
 
 .chip {
-  --chip-background:    var(--bg-3);
-  --chip-color:         var(--ink-2);
-  --chip-border-color:  var(--line-2);
-  --chip-height:        26px;
-  --chip-pad-x:         var(--space-3);
+  --background:    var(--bg-mode, color-mix(in oklch, var(--variant, var(--bg-3)) 14%, transparent));
+  --color:         var(--color-mode, var(--variant, var(--ink-2)));
+  --border-color:  var(--border-mode, transparent);
+  --border-radius: var(--radius, var(--radius-pill));
+  --height:        var(--size, 1.625rem);
+  --padding-x:     var(--pad-x, var(--space-3));
+  --font-size:     var(--text, var(--text-sm));
+  --gap:           var(--space-2);
 
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  height: var(--chip-height);
-  padding-inline: var(--chip-pad-x);
-  background: var(--chip-background);
-  border: var(--border-w) solid var(--chip-border-color);
-  border-radius: var(--radius-pill);
-  font-size: var(--text-sm);
-  color: var(--chip-color);
+  gap: var(--gap);
+  min-height: var(--height);
+  padding-inline: var(--padding-x);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
+  color: var(--color);
   cursor: pointer;
   transition: background var(--dur-fast) var(--ease-out),
               color var(--dur-fast) var(--ease-out),
               border-color var(--dur-fast) var(--ease-out);
 }
+
 .chip:hover {
-  --chip-background: var(--bg-4);
-  --chip-color:      var(--ink);
+  --background: color-mix(in oklch, var(--variant, var(--bg-4)) 16%, transparent);
+  --color:      var(--variant, var(--ink));
 }
 
 .chip[aria-pressed="true"],
 .chip[aria-pressed=""],
 .chip[data-active="true"],
 .chip.is-active {
-  --chip-background:   color-mix(in oklch, var(--variant, var(--color-primary)) 18%, transparent);
-  --chip-border-color: transparent;
-  --chip-color:        var(--variant, var(--color-primary));
+  --background:   color-mix(in oklch, var(--variant, var(--color-primary)) 18%, transparent);
+  --border-color: transparent;
+  --color:        var(--variant, var(--color-primary));
 }
-
-/* Si tiene variante color directa */
-.chip.primary, .chip.secondary, .chip.success, .chip.warning, .chip.warn,
-.chip.danger,  .chip.info,      .chip.tertiary {
-  --chip-background:   color-mix(in oklch, var(--variant) 14%, transparent);
-  --chip-border-color: transparent;
-  --chip-color:        var(--variant);
-}
-
-.chip.sm { --chip-height: 22px; --chip-pad-x: var(--space-2); font-size: var(--text-xs); }
-.chip.lg { --chip-height: 32px; --chip-pad-x: var(--space-4); font-size: var(--text-md); }
 
 .chip__remove {
   width: var(--icon-sm);
@@ -150,6 +109,7 @@
   border-radius: var(--radius-circle);
   color: var(--ink-3);
 }
+
 .chip__remove:hover {
   background: var(--line-2);
   color: var(--ink);

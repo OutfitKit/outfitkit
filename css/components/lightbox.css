@@ -1,0 +1,84 @@
+/* ---------- Lightbox ---------- */
+.lightbox {
+  --background: var(--media-bg-soft);
+  --color: var(--media-fg-soft);
+  --padding-x: var(--space-5);
+  --padding-y: var(--space-5);
+  --gap: var(--space-1-5);
+  --width: 3rem;
+  --height: 2.25rem;
+  --accent-background: var(--variant, var(--color-primary));
+
+  position: fixed;
+  inset: 0;
+  background: var(--background);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  padding: var(--padding-y) var(--padding-x);
+}
+/* Lightbox head: use .meta for counter/filename text */
+.lightbox__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+}
+.lightbox__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) var(--space-0);
+  position: relative;
+}
+.lightbox__img {
+  max-width: 100%;
+  max-height: 100%;
+  background: var(--bg-3);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  color: var(--ink-3);
+  aspect-ratio: 16/10;
+  width: 60%;
+}
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: var(--touch-target); height: var(--touch-target);
+  border-radius: var(--radius-circle);
+  background: var(--overlay-glass);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  transition: background var(--dur-base) var(--ease-out);
+}
+.lightbox__nav:hover { background: var(--overlay-glass-2); }
+.lightbox__nav--prev { left: var(--space-5); }
+.lightbox__nav--next { right: var(--space-5); }
+.lightbox__strip {
+  display: flex;
+  gap: var(--gap);
+  justify-content: center;
+  padding-top: var(--space-3);
+}
+.lightbox__strip-item {
+  width: var(--width);
+  height: var(--height);
+  background: var(--bg-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.lightbox__strip-item:hover { opacity: 0.8; }
+.lightbox__strip-item--active { opacity: 1; outline: var(--border-w-2) solid var(--accent-background); outline-offset: 0.125rem; }

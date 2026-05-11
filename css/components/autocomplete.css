@@ -1,0 +1,87 @@
+/* ============================================================
+   OutfitKit · Autocomplete
+   Combobox and results list
+   ============================================================ */
+
+.autocomplete {
+  --background: var(--bg-1);
+  --border-color: var(--line);
+  --border-radius: var(--radius-md);
+  --color: var(--variant, var(--color-primary));
+  --menu-offset: 0.25rem;
+  --max-height: 17.5rem;
+
+  position: relative;
+}
+
+.autocomplete__list {
+  position: absolute;
+  top: calc(100% + var(--menu-offset));
+  left: 0;
+  right: 0;
+  z-index: var(--z-popover);
+  max-height: var(--max-height);
+  overflow-y: auto;
+  padding: var(--space-1);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+}
+
+.autocomplete__opt {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  width: 100%;
+  padding: 0.4375rem var(--space-2-5);
+  background: transparent;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--ink-2);
+  font-size: var(--text-md);
+  text-align: left;
+  cursor: pointer;
+}
+
+.autocomplete__opt:hover,
+.autocomplete__opt[aria-selected="true"],
+.autocomplete__opt[aria-selected=""] {
+  background: var(--bg-3);
+  color: var(--ink);
+}
+
+.autocomplete__opt-meta {
+  margin-left: auto;
+  color: var(--ink-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+}
+
+.autocomplete__opt-icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  flex-shrink: 0;
+  color: var(--ink-3);
+}
+
+.autocomplete__opt mark {
+  background: transparent;
+  color: var(--color);
+  font-weight: 600;
+}
+
+.autocomplete__group {
+  padding: var(--space-2) var(--space-2-5) var(--space-1);
+  color: var(--ink-4);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+}
+
+.autocomplete__empty {
+  padding: var(--space-4);
+  color: var(--ink-4);
+  font-size: var(--text-sm);
+  text-align: center;
+}

@@ -6,32 +6,34 @@
      <span class="avatar primary lg">IB</span>
      <span class="avatar success xl"><img src="..."/></span>
 
-   Consume: --variant, --variant-contrast, --size, --text, --icon
-   Expone:  --avatar-bg, --avatar-color, --avatar-size, --avatar-text
+   Consume: --variant, --variant-contrast, --size, --text, --icon, --radius
+   Expone:  --background, --color, --width, --height, --font-size
    ============================================================ */
 
 .avatar {
-  --avatar-bg:     var(--variant, var(--bg-4));
-  --avatar-color:  var(--variant-contrast, var(--ink-2));
-  --avatar-size:   var(--size, var(--avatar-md));
-  --avatar-text:   var(--text, var(--text-xs));
-  --avatar-border: var(--line);
+  --background:    var(--variant, var(--bg-4));
+  --color:         var(--variant-contrast, var(--ink-2));
+  --width:         var(--size, var(--avatar-md));
+  --height:        var(--size, var(--avatar-md));
+  --font-size:     var(--text, var(--text-xs));
+  --border-color:  color-mix(in oklch, var(--background) 20%, var(--line));
+  --border-radius: var(--radius-circle);
 
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: var(--avatar-size);
-  height: var(--avatar-size);
-  border-radius: var(--radius-circle);
-  background: var(--avatar-bg);
-  color: var(--avatar-color);
-  font-size: var(--avatar-text);
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--border-radius);
+  background: var(--background);
+  color: var(--color);
+  font-size: var(--font-size);
   font-weight: var(--weight-semibold);
   font-family: var(--font-display);
   letter-spacing: var(--tracking-near);
   overflow: hidden;
   flex-shrink: 0;
-  border: var(--border-w) solid var(--avatar-border);
+  border: var(--border-w) solid var(--border-color);
 }
 
 .avatar__initials {
@@ -41,6 +43,7 @@
   place-items: center;
   line-height: var(--leading-flat);
 }
+
 .avatar img {
   position: absolute;
   inset: 0;
@@ -51,32 +54,16 @@
   z-index: 1;
 }
 
-/* Sizes — usan tokens semánticos --avatar-* */
-.avatar.xs  { --avatar-size: var(--avatar-xs);  --avatar-text: 9px; }
-.avatar.sm  { --avatar-size: var(--avatar-sm);  --avatar-text: 10px; }
-.avatar.md  { --avatar-size: var(--avatar-md);  --avatar-text: var(--text-xs); }
-.avatar.lg  { --avatar-size: var(--avatar-lg);  --avatar-text: var(--text-sm); }
-.avatar.xl  { --avatar-size: var(--avatar-xl);  --avatar-text: var(--text-base); }
-
-/* Cuando hay variante (.primary etc.), el borde desaparece */
-.avatar.primary, .avatar.secondary, .avatar.success, .avatar.warning, .avatar.warn,
-.avatar.danger,  .avatar.info,      .avatar.tertiary, .avatar.brand,
-.avatar.accent {
-  --avatar-border: transparent;
-}
-
-/* Variante "more" (mostrar +N) */
 .avatar.more {
-  --avatar-bg:     var(--bg-3);
-  --avatar-color:  var(--ink-2);
-  --avatar-border: var(--line);
+  --background:   var(--bg-3);
+  --color:        var(--ink-2);
+  --border-color: var(--line);
 }
 
-
-/* Avatar stack — solapados */
 .avatar-stack {
   display: inline-flex;
 }
+
 .avatar-stack > .avatar:not(:first-child) {
   margin-left: calc(var(--space-2) * -1);
   box-shadow: 0 0 0 var(--border-w-2) var(--bg-2);
@@ -86,12 +73,14 @@
 /* ============================================================
    Divider — separador horizontal/vertical
    ============================================================ */
+
 .divider {
   height: var(--border-w);
   background: var(--line);
   border: none;
   margin-block: var(--space-4);
 }
+
 .divider.vertical,
 .divider.vert {
   width: var(--border-w);
@@ -103,82 +92,83 @@
 
 
 /* ============================================================
-   Icon button — botón cuadrado para iconos
-   ─────────────────────────────────────────────────────────────
-   Variante simplificada del .btn cuando solo lleva un icono.
-   Para más control usar .btn.icon directamente.
+   Icon button
    ============================================================ */
 
 .icon-btn {
-  --icon-btn-size:   30px;
-  --icon-btn-bg:     transparent;
-  --icon-btn-color:  var(--variant, var(--ink-2));
-  --icon-btn-border: transparent;
+  --background:    var(--bg-mode, transparent);
+  --color:         var(--color-mode, var(--variant, var(--ink-2)));
+  --border-color:  var(--border-mode, transparent);
+  --border-radius: var(--radius, var(--radius-md));
+  --size:          var(--size, 1.875rem);
 
   display: inline-grid;
   place-items: center;
-  width: var(--icon-btn-size);
-  height: var(--icon-btn-size);
-  border-radius: var(--radius-md);
-  background: var(--icon-btn-bg);
-  color: var(--icon-btn-color);
-  border: var(--border-w) solid var(--icon-btn-border);
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--border-radius);
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-w) solid var(--border-color);
   cursor: pointer;
   transition: background var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
 }
+
 .icon-btn:hover {
-  --icon-btn-bg:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
-  --icon-btn-color: var(--variant, var(--ink));
+  --background: color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
+  --color:      var(--variant, var(--ink));
 }
+
 .icon-btn[aria-pressed="true"],
 .icon-btn[data-active="true"],
 .icon-btn.is-active {
-  --icon-btn-bg:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
-  --icon-btn-color: var(--variant, var(--ink));
+  --background: color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
+  --color:      var(--variant, var(--ink));
 }
 
-.icon-btn.sm { --icon-btn-size: 24px; }
-.icon-btn.md { --icon-btn-size: 30px; }
-.icon-btn.lg { --icon-btn-size: 36px; }
-
-/* Solid: relleno con --variant */
-.icon-btn.solid {
-  --icon-btn-bg:    var(--variant, var(--bg-3));
-  --icon-btn-color: var(--variant-contrast, var(--ink));
+.icon-btn.solid,
+.icon-btn.filled {
+  --background:   var(--variant, var(--bg-3));
+  --color:        var(--variant-contrast, var(--ink));
+  --border-color: transparent;
 }
 
-/* Outline */
 .icon-btn.outline {
-  --icon-btn-bg:     transparent;
-  --icon-btn-border: var(--variant, var(--line-3));
-  --icon-btn-color:  var(--variant, var(--ink));
+  --background:   transparent;
+  --border-color: var(--variant, var(--line-3));
+  --color:        var(--variant, var(--ink));
 }
 
 
 /* ============================================================
    Pill — status indicator con dot
-   ─────────────────────────────────────────────────────────────
-   <span class="pill success"><span class="pill__dot"></span>En línea</span>
    ============================================================ */
 
 .pill {
-  --pill-bg:           var(--bg-3);
-  --pill-color:        var(--ink-2);
-  --pill-border-color: var(--line);
+  --background:    var(--bg-mode, color-mix(in oklch, var(--variant, var(--bg-3)) 12%, transparent));
+  --color:         var(--color-mode, var(--variant, var(--ink-2)));
+  --border-color:  var(--border-mode, var(--line));
+  --border-radius: var(--radius, var(--radius-pill));
+  --height:        var(--size, var(--size-xs));
+  --padding-x:     var(--pad-x, var(--space-2));
+  --font-size:     var(--text, var(--text-2xs));
+  --gap:           var(--space-2);
 
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  height: var(--size-xs);
-  padding-inline: var(--space-2);
-  background: var(--pill-bg);
-  border: var(--border-w) solid var(--pill-border-color);
-  border-radius: var(--radius-pill);
-  font-size: var(--text-2xs);
+  gap: var(--gap);
+  min-height: var(--height);
+  padding-inline: var(--padding-x);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size);
   font-weight: var(--weight-medium);
-  color: var(--pill-color);
+  color: var(--color);
 }
+
 .pill__dot {
   width: var(--dot-sm);
   height: var(--dot-sm);
@@ -186,7 +176,8 @@
   background: var(--variant, var(--ink-3));
   flex-shrink: 0;
 }
+
 .pill.success .pill__dot,
-.pill.ok      .pill__dot {
+.pill.ok .pill__dot {
   box-shadow: 0 0 0 var(--border-w-2) color-mix(in oklch, var(--color-success) 25%, transparent);
 }

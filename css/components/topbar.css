@@ -5,27 +5,34 @@
 
 .topbar {
   /* API canónica de override */
-  --background:          color-mix(in oklch, var(--bg) 72%, transparent);
-  --topbar-border-color: var(--topbar-border, color-mix(in oklch, var(--line) 80%, transparent));
-  --topbar-height:       var(--topbar-h);
-  --topbar-pad-x:        var(--page-pad);
-  --topbar-gap:          var(--space-3);
-  --topbar-z:            calc(var(--z-sticky) - 1);
+  --background: color-mix(in oklch, var(--bg) 72%, transparent);
+  --border-color: var(--topbar-border, color-mix(in oklch, var(--line) 80%, transparent));
+  --height: var(--topbar-h);
+  --padding-x: var(--page-pad);
+  --gap: var(--space-3);
+  --z-index: calc(var(--z-sticky) - 1);
+  --button-size: var(--size-md);
+  --button-icon-size: 1.125rem;
+  --search-height: 2rem;
+  --search-padding-x: 0.625rem;
+  --search-width: 15rem;
+  --kbd-padding-y: 0.0625rem;
+  --kbd-padding-x: 0.3125rem;
 
   position: sticky;
   top: 0;
-  z-index: var(--topbar-z);
-  height: var(--topbar-height);
+  z-index: var(--z-index);
+  height: var(--height);
   display: flex;
   align-items: center;
-  gap: var(--topbar-gap);
-  padding-inline: var(--topbar-pad-x);
+  gap: var(--gap);
+  padding-inline: var(--padding-x);
   background: var(--background);
   color: var(--color, var(--ink));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   isolation: isolate;
-  border-bottom: var(--border-w) solid var(--topbar-border-color);
+  border-bottom: var(--border-w) solid var(--border-color);
   box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--shadow-color, black) 30%, transparent);
 }
 @supports not (backdrop-filter: blur(1px)) {
@@ -38,7 +45,8 @@
 .topbar-menu-btn,
 .topbar-back-btn {
   display: inline-flex;
-  width: 36px; height: 36px;
+  width: var(--button-size);
+  height: var(--button-size);
   border-radius: var(--radius-md);
   align-items: center;
   justify-content: center;
@@ -52,7 +60,10 @@
 .topbar-menu-btn:hover,
 .topbar-back-btn:hover { background: var(--bg-3); color: var(--ink); }
 .topbar-menu-btn svg,
-.topbar-back-btn svg { width: 18px; height: 18px; }
+.topbar-back-btn svg {
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+}
 .topbar-back-btn:disabled,
 .topbar-back-btn[aria-disabled="true"] { opacity: 0.35; pointer-events: none; }
 
@@ -111,14 +122,14 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
-  height: 32px;
-  padding: 0 10px;
+  height: var(--search-height);
+  padding: 0 var(--search-padding-x);
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
   color: var(--ink-3);
   font-size: var(--text-sm);
-  width: 240px;
+  width: var(--search-width);
   transition: border-color var(--dur-fast);
 }
 .topbar-search:focus-within { border-color: var(--line-3); }
@@ -134,7 +145,7 @@
 .topbar-kbd {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
-  padding: 1px 5px;
+  padding: var(--kbd-padding-y) var(--kbd-padding-x);
   border: var(--border-w) solid var(--line-2);
   border-radius: var(--radius-xs);
   color: var(--ink-3);

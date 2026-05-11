@@ -1,0 +1,145 @@
+/* ---------- Production line ---------- */
+.prodline {
+  --width: 6rem;
+  --connector-width: 0.25rem;
+  --connector-height: 2rem;
+
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+}
+.prodline__line {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.prodline.vertical .prodline__line {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.prodline__station {
+  --_st-bg: var(--bg-3);
+  --_st-fg: var(--ink-2);
+  --_st-bd: var(--line);
+  flex-shrink: 0;
+  width: var(--width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: var(--space-3) var(--space-2);
+  background: var(--_st-bg);
+  color: var(--_st-fg);
+  border: var(--border-w) solid var(--_st-bd);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition:
+    background var(--dur-base) var(--ease-out),
+    border-color var(--dur-base) var(--ease-out);
+}
+.prodline__station.is-running {
+  --_st-bg: color-mix(in oklch, var(--brand) 18%, var(--bg-2));
+  --_st-fg: var(--ink);
+  --_st-bd: color-mix(in oklch, var(--brand) 50%, var(--line));
+}
+.prodline__station.is-idle {
+  --_st-bg: var(--bg-3);
+  --_st-fg: var(--ink-3);
+}
+.prodline__station.is-blocked {
+  --_st-bg: var(--danger-soft);
+  --_st-fg: var(--danger);
+  --_st-bd: color-mix(in oklch, var(--danger) 50%, var(--line));
+}
+
+.prodline__station-icon {
+  width: var(--size-md); height: var(--size-md);
+  border-radius: var(--radius-circle);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--_st-bd);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+.prodline__station.is-running .prodline__station-icon {
+  background: var(--brand);
+  color: var(--brand-fg);
+  border-color: var(--brand);
+}
+.prodline__station-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  color: inherit;
+  line-height: 1.1;
+}
+.prodline__station-count {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+.prodline__station.is-running .prodline__station-count { color: var(--ink-2); }
+
+.prodline__connector {
+  flex: 1;
+  position: relative;
+  height: var(--connector-width);
+  background: var(--bg-3);
+  border-radius: var(--radius-pill);
+  min-width: 24px;
+}
+.prodline.vertical .prodline__connector {
+  width: var(--connector-width);
+  height: var(--connector-height);
+  margin-left: auto;
+  margin-right: auto;
+  flex: 0 0 auto;
+}
+.prodline__connector-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--brand);
+  border-radius: inherit;
+  transition: transform var(--dur-slow) var(--ease-out);
+  transform-origin: left center;
+}
+.prodline.vertical .prodline__connector-fill { transform-origin: top center; }
+.prodline__connector::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 7px solid var(--bg-4);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+.prodline.vertical .prodline__connector::after {
+  right: 50%;
+  top: auto;
+  bottom: -1px;
+  transform: translateX(50%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 7px solid var(--bg-4);
+  border-bottom: none;
+}
+.prodline__connector--blocked {
+  background: var(--danger-soft);
+}
+.prodline__connector--blocked .prodline__connector-fill { background: var(--danger); }
+.prodline__connector--blocked::after { border-left-color: var(--danger); }
+.prodline.vertical .prodline__connector--blocked::after { border-top-color: var(--danger); border-left-color: transparent; }
+.prodline__connector--slow {
+  background: var(--warn-soft);
+}
+.prodline__connector--slow .prodline__connector-fill { background: var(--warn); }
+.prodline__connector--slow::after { border-left-color: var(--warn); }
+.prodline.vertical .prodline__connector--slow::after { border-top-color: var(--warn); border-left-color: transparent; }

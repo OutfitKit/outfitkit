@@ -1,0 +1,41 @@
+/* ============================================================
+   OutfitKit · Context Notification
+   Placeholder granular para el split de overlays.
+   ============================================================ */
+
+.context-notification {
+  --background: var(--bg-2);
+  --color: var(--text-color);
+  --border-color: var(--line-2);
+  --border-radius: var(--radius, var(--radius-lg));
+  --border-width: var(--border-w);
+  --shadow: var(--shadow-md);
+  --width: 17.5rem;
+  --padding-x: var(--space-4);
+  --padding-y: var(--space-3);
+  --gap: var(--space-3);
+  --icon-size: 2.375rem;
+
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap);
+  width: min(var(--width), 100%);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.context-notification__icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex-shrink: 0;
+  color: var(--variant, var(--ink-2));
+}
+
+.context-notification__body {
+  flex: 1 1 auto;
+  min-width: 0;
+}

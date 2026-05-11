@@ -1,0 +1,152 @@
+/* ---------- Work Order ---------- */
+.wo {
+  /* API canónica de override */
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-xl);
+  --accent: var(--brand);
+  --accent-contrast: var(--brand-fg);
+  --bar-height: 0.5rem;
+  --step-grid: 2rem;
+  --step-number-size: 1.625rem;
+
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.wo__head {
+  padding: var(--space-4) var(--space-5);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-4);
+  align-items: center;
+  border-bottom: var(--border-w) solid var(--line);
+  background: linear-gradient(180deg, var(--bg-3), var(--bg-2));
+}
+.wo__id {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  padding: var(--space-1-5) var(--space-2-5);
+  background: var(--bg);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+}
+.wo__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+  color: var(--ink);
+  margin: var(--space-0);
+}
+.wo__sub {
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+  margin-top: var(--border-w-2);
+}
+
+.wo__progress {
+  padding: var(--space-3-5) var(--space-5);
+  border-bottom: var(--border-w) solid var(--line);
+}
+.wo__progress-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  margin-bottom: var(--space-2);
+  font-variant-numeric: tabular-nums;
+}
+.wo__progress-head b {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: var(--tracking-near);
+}
+.wo__bar {
+  height: var(--bar-height);
+  background: var(--bg-3);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  display: flex;
+}
+.wo__bar-seg { height: 100%; transition: width var(--dur-slow) var(--ease-out); }
+.wo__bar-seg--done    { background: var(--leaf); }
+.wo__bar-seg--running { background: var(--brand); }
+.wo__bar-seg--scrap   { background: var(--danger); }
+
+.wo__steps {
+  display: flex;
+  flex-direction: column;
+}
+.wo__step {
+  display: grid;
+  grid-template-columns: var(--step-grid) 1fr auto;
+  gap: var(--space-3-5);
+  padding: var(--space-3) var(--space-5);
+  border-bottom: var(--border-w) solid var(--line);
+  align-items: center;
+  position: relative;
+}
+.wo__step:last-child { border-bottom: none; }
+.wo__step::before {
+  content: "";
+  position: absolute;
+  left: 33px;
+  top: 36px;
+  bottom: -12px;
+  width: var(--border-w);
+  background: var(--line);
+}
+.wo__step:last-child::before { display: none; }
+
+.wo__step-num {
+  width: var(--step-number-size); height: var(--step-number-size);
+  border-radius: var(--radius-circle);
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  color: var(--ink-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  z-index: 1;
+}
+.wo__step--done .wo__step-num    { background: var(--leaf); border-color: var(--leaf); color: var(--bg); }
+.wo__step--active .wo__step-num  { background: var(--accent); border-color: var(--accent); color: var(--accent-contrast); box-shadow: 0 0 0 4px color-mix(in oklch, var(--accent) 18%, transparent); }
+.wo__step--blocked .wo__step-num { background: var(--bg-3); border-color: var(--danger); color: var(--danger); }
+
+.wo__step-name {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink);
+}
+.wo__step--done .wo__step-name { color: var(--ink-2); }
+.wo__step-meta {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin-top: var(--border-w-2);
+  display: flex;
+  gap: var(--space-2-5);
+  flex-wrap: wrap;
+}
+.wo__step-meta b { color: var(--ink-2); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+.wo__step-status {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-weight: 600;
+  color: var(--ink-3);
+}
+.wo__step--done .wo__step-status    { color: var(--leaf); }
+.wo__step--active .wo__step-status  { color: var(--accent); }
+.wo__step--blocked .wo__step-status { color: var(--danger); }

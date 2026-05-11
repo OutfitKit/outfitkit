@@ -1,0 +1,51 @@
+/* ============================================================
+   OutfitKit · Horizontal bars
+   ============================================================ */
+
+.hbars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hbar {
+  display: grid;
+  grid-template-columns: 6.875rem 1fr 3.75rem;
+  gap: var(--space-2-5);
+  align-items: center;
+  font-size: var(--text-sm);
+}
+
+.hbar__label {
+  color: var(--ink-2);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hbar__track {
+  height: var(--height);
+  background: var(--bg-3);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+  position: relative;
+}
+
+.hbar__fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: var(--radius-xs);
+  transition: width var(--dur-slow) var(--ease-out);
+}
+
+.hbar__fill--leaf { background: var(--leaf); }
+.hbar__fill--warn { background: var(--warn); }
+.hbar__fill--info { background: var(--info); }
+.hbar__fill--danger { background: var(--danger); }
+
+.hbar__value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  font-weight: 500;
+}

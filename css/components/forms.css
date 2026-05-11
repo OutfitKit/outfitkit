@@ -1,35 +1,38 @@
 /* ============================================================
    OutfitKit · Forms
    Inputs, select, textarea, toggle, checkbox, radio, range, search.
-   Variables locales para que cada control pueda ajustarse.
    ============================================================ */
 
 /* Field — wrapper genérico con label + control + hint */
 .field {
-  --field-error-color: var(--danger);
+  --color: var(--ink-2);
+  --gap: var(--space-1-5);
+  --icon-offset: 0.6875rem;
+  --icon-padding: 2.25rem;
 
   display: flex;
   flex-direction: column;
-  gap: var(--space-1-5);
+  gap: var(--gap);
 }
 
 .field__label {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--ink-2);
   display: flex;
   align-items: center;
-  gap: var(--space-1-5);
+  gap: var(--gap);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color);
 }
+
 .field__label--req::after {
   content: "*";
-  color: var(--field-error-color);
+  color: var(--color-danger);
 }
 
 .field__required {
-  color: var(--field-error-color);
-  font-weight: 500;
   margin-left: var(--border-w-2);
+  font-weight: 500;
+  color: var(--color-danger);
 }
 
 .field__control {
@@ -39,26 +42,24 @@
 }
 
 .field__error-icon {
-  color: var(--field-error-color);
   position: absolute;
-  right: var(--space-2-5);
   top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
+  right: var(--space-2-5);
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  color: var(--color-danger);
+  transform: translateY(-50%);
+  pointer-events: none;
 }
 
 .field.error .field__control > .input,
 .field.error .field__control > .select,
 .field.error .field__control > .textarea {
-  padding-right: 36px; /* TOKEN-MISSING: no hay token para 36px */
-  border-color: var(--field-error-color);
+  padding-right: var(--icon-padding);
+  border-color: var(--color-danger);
 }
 
-/* Cuando el control es un textarea (multi-línea), el icono de error
-   debe anclarse arriba, no centrarse verticalmente. */
 .field.error .field__control:has(> .textarea) .field__error-icon {
   top: var(--space-2-5);
   transform: none;
@@ -66,16 +67,16 @@
 
 .field__hint {
   font-size: var(--text-xs);
-  color: var(--ink-3);
   line-height: var(--leading-base);
+  color: var(--ink-3);
 }
 
 .field__error {
-  font-size: var(--text-xs);
-  color: var(--field-error-color);
   display: flex;
   align-items: center;
   gap: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--color-danger);
 }
 
 /* ============================================================
@@ -85,39 +86,39 @@
 .input,
 .textarea,
 .select {
-  /* API canónica de override — consume vars universales cuando se compone
-     con un modificador de tamaño (.sm/.md/.lg). */
-  --input-background:    var(--background, var(--bg-3));
-  --input-color:         var(--color, var(--ink));
-  --input-placeholder:   var(--ink-4);
-  --input-border-color:  var(--border-color, var(--line));
-  --input-border-radius: var(--radius, var(--radius-md));
-  --input-height:        var(--size, var(--size-md));
-  --input-pad-x:         var(--pad-x, var(--space-3));
-  --input-pad-y:         var(--pad-y, var(--space-0));
-  --input-text:          var(--text, var(--text-md));
+  --_background: var(--background, var(--bg-3));
+  --_color: var(--color, var(--ink));
+  --_placeholder-color: var(--placeholder-color, var(--ink-4));
+  --_border-color: var(--border-color, var(--line));
+  --_border-radius: var(--border-radius, var(--radius, var(--radius-md)));
+  --_height: var(--height, var(--size, var(--size-md)));
+  --_padding-x: var(--padding-x, var(--pad-x, var(--space-3)));
+  --_padding-y: var(--padding-y, var(--pad-y, var(--space-0)));
+  --_font-size: var(--font-size, var(--text, var(--text-md)));
+  --_focus-border-color: var(--focus-border-color, var(--variant, var(--color-primary)));
 
   width: 100%;
-  height: var(--input-height);
-  background: var(--input-background);
-  color: var(--input-color);
-  border: var(--border-w) solid var(--input-border-color);
-  border-radius: var(--input-border-radius);
-  padding: var(--input-pad-y) var(--input-pad-x);
+  height: var(--_height);
+  padding: var(--_padding-y) var(--_padding-x);
+  background: var(--_background);
+  color: var(--_color);
+  border: var(--border-w) solid var(--_border-color);
+  border-radius: var(--_border-radius);
   font: inherit;
-  font-size: var(--input-text);
+  font-size: var(--_font-size);
   font-family: var(--font-sans);
   outline: none;
-  transition: border-color var(--dur-fast) var(--ease-out),
-              box-shadow   var(--dur-fast) var(--ease-out),
-              background   var(--dur-fast) var(--ease-out);
+  transition:
+    border-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out),
+    background var(--dur-fast) var(--ease-out);
   appearance: none;
   -webkit-appearance: none;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: var(--input-placeholder);
+  color: var(--_placeholder-color);
 }
 
 .input:hover,
@@ -129,8 +130,8 @@
 .input:focus,
 .textarea:focus,
 .select:focus {
-  border-color: var(--brand);
-  box-shadow: 0 0 0 3px var(--brand-soft);
+  border-color: var(--_focus-border-color);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--_focus-border-color) 18%, transparent);
   background: var(--bg-2);
 }
 
@@ -146,6 +147,7 @@
   border-color: var(--line);
   color: var(--ink-3);
 }
+
 .input:disabled::placeholder,
 .textarea:disabled::placeholder {
   color: var(--ink-4);
@@ -154,27 +156,20 @@
 .input.invalid,
 .textarea.invalid,
 .select.invalid {
-  border-color: var(--danger);
+  border-color: var(--color-danger);
 }
+
 .input.invalid:focus,
 .textarea.invalid:focus,
 .select.invalid:focus {
-  box-shadow: 0 0 0 3px var(--danger-soft);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-danger) 18%, transparent);
 }
 
-/* Tamaños — se delega en el modificador universal .sm/.md/.lg que setea
-   --size, --pad-x, --pad-y, --text, --radius. No es necesario repetir
-   literales aquí; el componente los lee via --input-* que ya consumen
-   esas vars. Estos overrides solo ajustan lo que el universal no cubre. */
-.input.sm,
-.select.sm { border-radius: var(--radius-sm); }
-.input.lg,
-.select.lg { border-radius: var(--radius-lg); }
-
-/* Textarea */
 .textarea {
+  --min-height: 5.5rem;
+
   height: auto;
-  min-height: 88px; /* TOKEN-MISSING: no hay token para 88px (~5 líneas de texto) */
+  min-height: var(--min-height);
   padding: var(--space-2-5) var(--space-3);
   resize: vertical;
   line-height: var(--leading-normal);
@@ -185,6 +180,9 @@
    ============================================================ */
 
 .input-group {
+  --icon-offset: 0.6875rem;
+  --input-padding: 2.125rem;
+
   position: relative;
   display: flex;
   align-items: stretch;
@@ -192,22 +190,34 @@
 }
 
 .input-group .input {
-  border-radius: var(--radius-md);
+  border-radius: var(--radius, var(--radius-md));
 }
 
 .input-group__icon {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  width: var(--icon-md);
+  height: var(--icon-md);
   color: var(--ink-3);
-  width: var(--icon-md); height: var(--icon-md);
+  transform: translateY(-50%);
   pointer-events: none;
 }
-.input-group__icon--left { left: 11px; }  /* geometric offset: (height - icon) / 2 */
-.input-group__icon--right { right: 11px; }
 
-.input-group.with-left  .input { padding-left: 34px; }
-.input-group.with-right .input { padding-right: 34px; }
+.input-group__icon--left {
+  left: var(--icon-offset);
+}
+
+.input-group__icon--right {
+  right: var(--icon-offset);
+}
+
+.input-group.with-left .input {
+  padding-left: var(--input-padding);
+}
+
+.input-group.with-right .input {
+  padding-right: var(--input-padding);
+}
 
 .input-group__addon {
   display: inline-flex;
@@ -219,68 +229,92 @@
   font-size: var(--text-sm);
   white-space: nowrap;
 }
+
 .input-group__addon:first-child {
   border-right: none;
   border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
+
 .input-group__addon:last-child {
   border-left: none;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
-.input-group__addon + .input { border-top-left-radius: 0; border-bottom-left-radius: 0; }
-.input-group .input:has(+ .input-group__addon) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+
+.input-group__addon + .input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.input-group .input:has(+ .input-group__addon) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
 
 /* Search — input con lupa + botón clear */
 .search {
+  --icon-offset: 0.6875rem;
+  --input-padding: 2.125rem;
+  --clear-offset: 0.5rem;
+
   position: relative;
   width: 100%;
 }
+
 .search .input {
-  padding-left: 34px;
-  padding-right: 34px;
+  padding-left: var(--input-padding);
+  padding-right: var(--input-padding);
 }
+
 .search__icon {
   position: absolute;
-  left: 11px; /* geometric: (input-height - icon) / 2 offset */
   top: 50%;
-  transform: translateY(-50%);
-  width: var(--icon-md); height: var(--icon-md);
+  left: var(--icon-offset);
+  width: var(--icon-md);
+  height: var(--icon-md);
   color: var(--ink-3);
+  transform: translateY(-50%);
   pointer-events: none;
 }
+
 .search__clear {
   position: absolute;
-  right: 8px;
   top: 50%;
-  transform: translateY(-50%);
-  width: var(--size-xs); height: var(--size-xs);
-  border: none;
-  background: var(--bg-4);
-  color: var(--ink-2);
-  border-radius: var(--radius-circle);
-  cursor: pointer;
-  /* Hidden by default; only shown when the sibling input has content. */
+  right: var(--clear-offset);
   display: none;
   place-items: center;
-  font-size: var(--text-2xs); /* was 11px literal; closest token is 10.5px */
+  width: var(--size-xs);
+  height: var(--size-xs);
+  border: none;
+  border-radius: var(--radius-circle);
+  background: var(--bg-4);
+  color: var(--ink-2);
+  font-size: var(--text-2xs);
   line-height: var(--leading-flat);
+  transform: translateY(-50%);
+  cursor: pointer;
 }
-.search:has(input:not(:placeholder-shown)) .search__clear { display: grid; }
-.search__clear:hover { background: var(--line-3); color: var(--ink); }
 
-/* Kbd shortcut hint dentro de search */
+.search:has(input:not(:placeholder-shown)) .search__clear {
+  display: grid;
+}
+
+.search__clear:hover {
+  background: var(--line-3);
+  color: var(--ink);
+}
+
 .search__kbd {
   position: absolute;
-  right: 8px;
   top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
+  right: var(--clear-offset);
+  padding: var(--border-w-2) var(--space-1-5);
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-xs);
-  padding: var(--border-w-2) var(--space-1-5);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  transform: translateY(-50%);
   pointer-events: none;
 }
 
@@ -290,14 +324,14 @@
 
 .select {
   cursor: pointer;
-  padding-right: 34px;
+  padding-right: 2.125rem;
   background-image:
     linear-gradient(45deg, transparent 50%, var(--ink-3) 50%),
     linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
   background-position:
-    calc(100% - 16px) 50%,
-    calc(100% - 11px) 50%;
-  background-size: 5px 5px, 5px 5px;
+    calc(100% - 1rem) 50%,
+    calc(100% - 0.6875rem) 50%;
+  background-size: 0.3125rem 0.3125rem, 0.3125rem 0.3125rem;
   background-repeat: no-repeat;
 }
 
@@ -306,36 +340,34 @@
    ============================================================ */
 
 .toggle {
-  /* API canónica de override */
-  --toggle-width:        var(--size-md);  /* 36px */
-  --toggle-height:       20px;            /* TOKEN-REVIEW: no hay token exacto para 20px */
-  --toggle-track-bg:     var(--bg-4);
-  --toggle-track-border: var(--line-2);
-  --toggle-thumb-bg:     var(--ink);
-  --toggle-accent:       var(--brand);
-  --toggle-accent-fg:    var(--brand-fg);
+  --background: var(--bg-4);
+  --border-color: var(--line-2);
+  --color: var(--ink);
+  --active-background: var(--variant, var(--color-primary));
+  --active-color: var(--variant-contrast, var(--color-primary-contrast));
+  --width: var(--size, var(--size-md));
+  --height: 1.25rem;
+  --padding-x: var(--border-w-2);
 
-  --_w: var(--toggle-width);
-  --_h: var(--toggle-height);
-  --_pad: var(--border-w-2); /* 2px — espacio interno del thumb */
   position: relative;
   display: inline-block;
-  width: var(--_w);
-  height: var(--_h);
+  width: var(--width);
+  height: var(--height);
   flex-shrink: 0;
 }
 
 .toggle input {
-  opacity: 0;
-  width: 0; height: 0;
   position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
 }
 
 .toggle__track {
   position: absolute;
   inset: 0;
-  background: var(--toggle-track-bg);
-  border: var(--border-w) solid var(--toggle-track-border);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
   border-radius: var(--radius-pill);
   transition: background var(--dur-base), border-color var(--dur-base);
   cursor: pointer;
@@ -344,42 +376,37 @@
 .toggle__track::before {
   content: "";
   position: absolute;
-  top: var(--_pad);
-  left: var(--_pad);
-  width: calc(var(--_h) - 2 * var(--_pad) - var(--border-w-2));
-  height: calc(var(--_h) - 2 * var(--_pad) - var(--border-w-2));
-  background: var(--toggle-thumb-bg);
+  top: var(--padding-x);
+  left: var(--padding-x);
+  width: calc(var(--height) - (2 * var(--padding-x)) - var(--border-w-2));
+  height: calc(var(--height) - (2 * var(--padding-x)) - var(--border-w-2));
+  background: var(--color);
   border-radius: var(--radius-circle);
-  transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base);
   box-shadow: var(--shadow-sm);
+  transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base);
 }
 
 .toggle input:checked + .toggle__track {
-  background: var(--toggle-accent);
-  border-color: var(--toggle-accent);
+  background: var(--active-background);
+  border-color: var(--active-background);
 }
+
 .toggle input:checked + .toggle__track::before {
-  transform: translateX(calc(var(--_w) - var(--_h)));
-  background: var(--toggle-accent-fg);
+  transform: translateX(calc(var(--width) - var(--height)));
+  background: var(--active-color);
 }
 
 .toggle input:focus-visible + .toggle__track {
-  box-shadow: 0 0 0 3px var(--brand-soft);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--active-background) 18%, transparent);
 }
-.toggle input:disabled + .toggle__track {
-  opacity: 0.55;
-  cursor: not-allowed;
-}
+
+.toggle input:disabled + .toggle__track,
 .toggle:has(input:disabled),
 .toggle.disabled {
   opacity: 0.55;
   cursor: not-allowed;
 }
 
-.toggle.sm { --toggle-width: var(--size-sm); --toggle-height: 16px; --_w: var(--size-sm); --_h: 16px; } /* height 16px: TOKEN-REVIEW */
-.toggle.lg { --toggle-width: var(--size-lg); --toggle-height: var(--space-6); --_w: var(--size-lg); --_h: var(--space-6); } /* space-6=24px */
-
-/* Toggle row — label + descripción + switch */
 .toggle-row {
   display: flex;
   align-items: center;
@@ -388,93 +415,112 @@
   padding: var(--space-2-5) var(--space-0);
   border-bottom: var(--border-w) solid var(--line);
 }
-.toggle-row:last-child { border-bottom: none; }
-.toggle-row__text { display: flex; flex-direction: column; gap: var(--border-w-2); }
-.toggle-row__label { font-size: var(--text-md); color: var(--ink); font-weight: 500; }
-.toggle-row__desc { font-size: var(--text-xs); color: var(--ink-3); line-height: var(--leading-base); }
+
+.toggle-row:last-child {
+  border-bottom: none;
+}
+
+.toggle-row__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--border-w-2);
+}
+
+.toggle-row__label {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.toggle-row__desc {
+  font-size: var(--text-xs);
+  line-height: var(--leading-base);
+  color: var(--ink-3);
+}
 
 /* ============================================================
    Checkbox
    ============================================================ */
 
 .check {
-  /* API canónica de override */
-  --check-size:         var(--slider-thumb, 16px); /* reutiliza token global 16px */
-  --check-background:   var(--bg-3);
-  --check-border-color: var(--line-3);
-  --check-accent:       var(--brand);
-  --check-accent-fg:    var(--brand-fg);
-  --check-radius:       var(--radius-xs);
-  --check-color:        var(--ink);
+  --background: var(--bg-3);
+  --border-color: var(--line-3);
+  --color: var(--ink);
+  --active-background: var(--variant, var(--color-primary));
+  --active-color: var(--variant-contrast, var(--color-primary-contrast));
+  --width: 1rem;
+  --height: 1rem;
+  --border-radius: var(--radius-xs);
 
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   cursor: pointer;
+  color: var(--color);
   font-size: var(--text-md);
-  color: var(--check-color);
   user-select: none;
 }
 
 .check__box {
   position: relative;
-  width: var(--check-size);
-  height: var(--check-size);
-  background: var(--check-background);
-  border: var(--border-w) solid var(--check-border-color);
-  border-radius: var(--check-radius);
+  width: var(--width);
+  height: var(--height);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
   flex-shrink: 0;
   transition: background var(--dur-fast), border-color var(--dur-fast);
 }
 
 .check input {
   position: absolute;
+  width: 0;
+  height: 0;
   opacity: 0;
-  width: 0; height: 0;
 }
 
-.check input:checked ~ .check__box {
-  background: var(--check-accent);
-  border-color: var(--check-accent);
+.check input:checked ~ .check__box,
+.check input:indeterminate ~ .check__box {
+  background: var(--active-background);
+  border-color: var(--active-background);
 }
 
 .check input:checked ~ .check__box::after {
   content: "";
   position: absolute;
-  top: 1px; left: 4px;
-  width: 5px; height: 9px;
-  border: solid var(--check-accent-fg);
+  top: 0.0625rem;
+  left: 0.25rem;
+  width: 0.3125rem;
+  height: 0.5625rem;
+  border: solid var(--active-color);
   border-width: 0 var(--border-w-2) var(--border-w-2) 0;
   transform: rotate(45deg);
 }
 
-.check input:indeterminate ~ .check__box {
-  background: var(--check-accent);
-  border-color: var(--check-accent);
-}
 .check input:indeterminate ~ .check__box::after {
   content: "";
   position: absolute;
-  top: 6px; left: 3px;
-  width: 8px; height: var(--border-w-2);
-  background: var(--check-accent-fg);
-  border-radius: var(--border-w); /* 1px */
+  top: 0.375rem;
+  left: 0.1875rem;
+  width: 0.5rem;
+  height: var(--border-w-2);
+  background: var(--active-color);
+  border-radius: var(--border-w);
 }
 
 .check input:focus-visible ~ .check__box {
-  box-shadow: 0 0 0 3px var(--brand-soft);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--active-background) 18%, transparent);
 }
 
-.check input:disabled ~ .check__box {
-  opacity: 0.55;
-  cursor: not-allowed;
-  background: var(--bg-2);
-  border-color: var(--line);
-}
+.check input:disabled ~ .check__box,
 .check:has(input:disabled),
 .check.disabled {
   opacity: 0.55;
   cursor: not-allowed;
+}
+
+.check:has(input:disabled),
+.check.disabled {
   color: var(--ink-3);
 }
 
@@ -483,28 +529,28 @@
    ============================================================ */
 
 .radio {
-  /* API canónica de override */
-  --radio-size:         var(--slider-thumb, 16px); /* reutiliza token global 16px */
-  --radio-background:   var(--bg-3);
-  --radio-border-color: var(--line-3);
-  --radio-accent:       var(--brand);
-  --radio-color:        var(--ink);
+  --background: var(--bg-3);
+  --border-color: var(--line-3);
+  --color: var(--ink);
+  --active-background: var(--variant, var(--color-primary));
+  --width: 1rem;
+  --height: 1rem;
 
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
   cursor: pointer;
+  color: var(--color);
   font-size: var(--text-md);
-  color: var(--radio-color);
   user-select: none;
 }
 
 .radio__dot {
   position: relative;
-  width: var(--radio-size);
-  height: var(--radio-size);
-  background: var(--radio-background);
-  border: var(--border-w) solid var(--radio-border-color);
+  width: var(--width);
+  height: var(--height);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
   border-radius: var(--radius-circle);
   flex-shrink: 0;
   transition: border-color var(--dur-fast);
@@ -512,41 +558,46 @@
 
 .radio input {
   position: absolute;
+  width: 0;
+  height: 0;
   opacity: 0;
-  width: 0; height: 0;
 }
 
 .radio input:checked ~ .radio__dot {
-  border-color: var(--radio-accent);
-  border-width: var(--border-w-4);
   background: var(--bg);
+  border-color: var(--active-background);
+  border-width: var(--border-w-4);
 }
 
 .radio input:focus-visible ~ .radio__dot {
-  box-shadow: 0 0 0 3px var(--brand-soft);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--active-background) 18%, transparent);
 }
 
-.radio input:disabled ~ .radio__dot {
-  opacity: 0.55;
-  cursor: not-allowed;
-  background: var(--bg-2);
-  border-color: var(--line);
-  filter: grayscale(0.4);
-}
-/* Preserve checked-ring on disabled+checked so it doesn't look "Sin marcar" */
-.radio input:disabled:checked ~ .radio__dot {
-  border-color: color-mix(in oklch, var(--brand) 55%, var(--ink-4));
-  border-width: var(--border-w-4);
-  background: var(--bg);
-}
+.radio input:disabled ~ .radio__dot,
 .radio:has(input:disabled),
 .radio.disabled {
   opacity: 0.55;
   cursor: not-allowed;
+}
+
+.radio input:disabled ~ .radio__dot {
+  background: var(--bg-2);
+  border-color: var(--line);
+  filter: grayscale(0.4);
+}
+
+.radio input:disabled:checked ~ .radio__dot {
+  background: var(--bg);
+  border-color: color-mix(in oklch, var(--active-background) 55%, var(--ink-4));
+  border-width: var(--border-w-4);
+}
+
+.radio:has(input:disabled),
+.radio.disabled {
   color: var(--ink-3);
   pointer-events: none;
 }
-/* Bare input fallback (no .radio wrapper) */
+
 input[type="radio"]:disabled {
   cursor: not-allowed;
   opacity: 0.55;
@@ -554,69 +605,104 @@ input[type="radio"]:disabled {
 
 /* Radio card — opción seleccionable visual con label rico */
 .radio-card {
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-lg);
+  --padding-x: var(--space-3-5);
+  --padding-y: var(--space-3);
+  --active-border-color: var(--variant, var(--color-primary));
+
   display: flex;
   align-items: flex-start;
   gap: var(--space-2-5);
-  padding: var(--space-3) var(--space-3-5);
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-lg);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
   cursor: pointer;
   transition: border-color var(--dur-fast), background var(--dur-fast);
 }
-.radio-card:hover { border-color: var(--line-2); }
+
+.radio-card:hover {
+  border-color: var(--line-2);
+}
+
 .radio-card:has(input:checked) {
-  border-color: var(--brand);
-  background: color-mix(in oklch, var(--brand) 6%, var(--bg-2));
+  border-color: var(--active-border-color);
+  background: color-mix(in oklch, var(--active-border-color) 6%, var(--background));
 }
+
 .radio-card input {
-  position: absolute; opacity: 0; pointer-events: none;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
-.radio-card__title { font-weight: 500; font-size: var(--text-md); color: var(--ink); }
-.radio-card__desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: var(--border-w-2); line-height: var(--leading-base); }
+
+.radio-card__title {
+  font-size: var(--text-md);
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.radio-card__desc {
+  margin-top: var(--border-w-2);
+  font-size: var(--text-xs);
+  line-height: var(--leading-base);
+  color: var(--ink-3);
+}
 
 /* ============================================================
    Range slider
    ============================================================ */
 
 .range {
-  -webkit-appearance: none;
-  appearance: none;
+  --background: var(--bg-4);
+  --border-radius: var(--radius-pill);
+  --height: var(--avatar-2xs);
+  --thumb-size: 1rem;
+  --track-height: 0.25rem;
+  --color: var(--variant, var(--color-primary));
+  --thumb-background: var(--variant-contrast, var(--color-primary-contrast));
+
   width: 100%;
-  height: var(--avatar-2xs);
+  height: var(--height);
   background: transparent;
   cursor: pointer;
-}
-.range::-webkit-slider-runnable-track {
-  height: var(--slider-track-h, 4px);
-  background: var(--bg-4);
-  border-radius: var(--radius-pill);
-}
-.range::-moz-range-track {
-  height: var(--slider-track-h, 4px);
-  background: var(--bg-4);
-  border-radius: var(--radius-pill);
-}
-.range::-webkit-slider-thumb {
-  -webkit-appearance: none;
   appearance: none;
-  width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px);
-  background: var(--brand-fg);
-  border: var(--border-w-2) solid var(--brand);
+  -webkit-appearance: none;
+}
+
+.range::-webkit-slider-runnable-track,
+.range::-moz-range-track {
+  height: var(--track-height);
+  background: var(--background);
+  border-radius: var(--border-radius);
+}
+
+.range::-webkit-slider-thumb {
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  margin-top: calc(-1 * (var(--thumb-size) / 2 - var(--track-height) / 2));
+  background: var(--thumb-background);
+  border: var(--border-w-2) solid var(--color);
   border-radius: var(--radius-circle);
-  margin-top: -6px;
   box-shadow: var(--shadow-sm);
   transition: transform var(--dur-fast);
+  appearance: none;
+  -webkit-appearance: none;
 }
+
 .range::-moz-range-thumb {
-  width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px);
-  background: var(--brand-fg);
-  border: var(--border-w-2) solid var(--brand);
+  width: var(--thumb-size);
+  height: var(--thumb-size);
+  background: var(--thumb-background);
+  border: var(--border-w-2) solid var(--color);
   border-radius: var(--radius-circle);
   box-shadow: var(--shadow-sm);
 }
+
 .range:focus-visible::-webkit-slider-thumb {
-  box-shadow: 0 0 0 3px var(--brand-soft);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color) 18%, transparent);
 }
 
 /* ============================================================
@@ -631,37 +717,45 @@ input[type="radio"]:disabled {
 
 .form-row {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(11.25rem, 1fr));
   gap: var(--space-3);
 }
 
 .form-section {
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-xl);
-  padding: 18px; /* TOKEN-MISSING: no hay token para 18px (entre space-4:16px y space-5:20px) */
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-xl);
+  --padding-x: var(--space-4);
+  --padding-y: var(--space-4);
+
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
 }
+
 .form-section__title {
+  margin: var(--space-0) var(--space-0) var(--space-1);
+  color: var(--ink);
   font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: var(--tracking-near);
-  margin: var(--space-0) var(--space-0) var(--space-1);
-  color: var(--ink);
-}
-.form-section__desc {
-  font-size: var(--text-xs);
-  color: var(--ink-3);
-  margin: var(--space-0) var(--space-0) var(--space-3-5);
 }
 
-/* Fieldset visual con grupo de checks/radios */
+.form-section__desc {
+  margin: var(--space-0) var(--space-0) var(--space-3-5);
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+}
+
 .check-group,
 .radio-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
 }
+
 .check-group.inline,
 .radio-group.inline {
   flex-direction: row;

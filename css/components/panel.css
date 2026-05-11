@@ -1,0 +1,69 @@
+/* ============================================================
+   OutfitKit · Panel
+   ============================================================ */
+
+.panel {
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius, var(--radius-lg));
+  --padding-y: var(--pad-y, var(--space-4));
+  --padding-x: var(--pad-x, var(--space-4));
+
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* .head / .body / .foot from modifiers.css handle padding, borders, flex.
+   Panel-specific: override pad vars to match panel density defaults. */
+.panel > .head {
+  --pad-y: var(--padding-y);
+  --pad-x: var(--padding-x);
+}
+
+.panel > .body {
+  --pad-y: var(--padding-y);
+  --pad-x: var(--padding-x);
+  flex: 1;
+  min-width: 0;
+}
+
+.panel > .foot {
+  --pad-y: var(--padding-y);
+  --pad-x: var(--padding-x);
+  background: var(--bg-1);
+  justify-content: space-between;
+}
+
+.panel.ghost {
+  background: transparent;
+}
+
+.panel.ghost > .foot {
+  background: transparent;
+}
+
+.panel.bordered {
+  background: transparent;
+  border-color: var(--line-2);
+}
+
+.panel.bordered > .foot {
+  background: transparent;
+}
+
+.panel.flush > .body {
+  padding: var(--space-0);
+}
+
+.panel.sticky-head > .head {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--bg-2);
+  backdrop-filter: blur(var(--blur-sm, 0.5rem));
+  -webkit-backdrop-filter: blur(var(--blur-sm, 0.5rem));
+}

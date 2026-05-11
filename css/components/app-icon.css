@@ -1,0 +1,75 @@
+.app-icon {
+  --background: var(--bg-mode, var(--bg-3));
+  --color: var(--color-mode, var(--ink-2));
+  --border-color: var(--border-mode, var(--line));
+  --border-radius: var(--radius, var(--radius-lg));
+  --height: var(--size, 3.5rem);
+  --width: var(--icon, 1.5rem);
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1-5);
+  width: max-content;
+  background: transparent;
+  border: none;
+  padding: var(--space-0);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  text-decoration: none;
+  color: inherit;
+}
+
+.app-icon__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--height);
+  height: var(--height);
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    background var(--dur-fast),
+    box-shadow var(--dur-base);
+  flex-shrink: 0;
+}
+.app-icon__icon svg,
+.app-icon__icon img {
+  width: var(--width);
+  height: var(--width);
+}
+
+.app-icon:hover .app-icon__icon {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.app-icon:active .app-icon__icon { transform: scale(0.96); }
+.app-icon:focus-visible {
+  outline: none;
+}
+.app-icon:focus-visible .app-icon__icon {
+  box-shadow: var(--shadow-glow);
+}
+
+.app-icon__label {
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+  font-weight: 500;
+  letter-spacing: var(--tracking-tight);
+  text-align: center;
+  max-width: calc(var(--height) + 1.5rem);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-icons {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: var(--space-3);
+  justify-items: center;
+}

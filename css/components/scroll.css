@@ -1,0 +1,70 @@
+/* ============================================================
+   OutfitKit · Scroll
+   ============================================================ */
+
+.scroll {
+  position: relative;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-3) var(--bg-3);
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.5rem;
+}
+
+.scroll::-webkit-scrollbar-track {
+  background: var(--bg-3);
+  border-radius: var(--radius-pill);
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--line-3);
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-3);
+}
+
+.scroll::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.scroll.y { overflow-x: hidden; overflow-y: auto; }
+.scroll.x { overflow-x: auto; overflow-y: hidden; }
+.scroll.both { overflow: auto; }
+
+.scroll.invisible {
+  scrollbar-color: transparent transparent;
+}
+
+.scroll.invisible::-webkit-scrollbar-thumb { background: transparent; }
+.scroll.invisible::-webkit-scrollbar-track { background: transparent; }
+
+.scroll.invisible:hover {
+  scrollbar-color: var(--line-3) var(--bg-3);
+}
+
+.scroll.invisible:hover::-webkit-scrollbar-thumb { background: var(--line-3); }
+.scroll.invisible:hover::-webkit-scrollbar-track { background: var(--bg-3); }
+
+.scroll__sentinel-top,
+.scroll__sentinel-bottom {
+  height: 0.0625rem;
+  width: 100%;
+  pointer-events: none;
+  background: transparent;
+}
+
+.scroll.fade {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+}
+
+.scroll.fade.scroll.x {
+  -webkit-mask-image: linear-gradient(to right, transparent 0, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, black 0.75rem, black calc(100% - 0.75rem), transparent 100%);
+}

@@ -1,0 +1,90 @@
+/* ---------- Vacation calendar ---------- */
+.vac {
+  /* API canónica de override */
+  --vac-background:    var(--bg-2);
+  --vac-border-color:  var(--line);
+  --vac-border-radius: var(--radius-xl);
+  --vac-accent:        var(--brand);
+
+  background: var(--vac-background);
+  border: var(--border-w) solid var(--vac-border-color);
+  border-radius: var(--vac-border-radius);
+  padding: var(--space-4);
+}
+.vac__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: var(--space-3-5);
+}
+.vac__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  margin: var(--space-0);
+  color: var(--ink);
+}
+.vac__balance {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+}
+.vac__balance b {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: var(--tracking-near);
+  font-variant-numeric: tabular-nums;
+}
+
+.vac__year {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-2);
+}
+.vac__month {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+.vac__month-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: center;
+}
+.vac__days {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--border-w-2);
+}
+.vac__day {
+  height: 8px;
+  border-radius: 1px;
+  background: var(--bg-3);
+}
+.vac__day--vac    { background: var(--brand); }
+.vac__day--sick   { background: var(--warn); }
+.vac__day--public { background: var(--info); }
+.vac__day--off    { background: var(--bg-4); }
+
+.vac__legend {
+  display: flex;
+  gap: var(--space-3-5);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: var(--border-w) solid var(--line);
+  font-size: var(--text-xs);
+  color: var(--ink-2);
+}
+.vac__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+}
+.vac__legend-item span {
+  width: var(--icon-2xs); height: var(--icon-2xs);
+  border-radius: 2px;
+}

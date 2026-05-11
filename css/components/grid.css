@@ -17,21 +17,25 @@
 
 /* ---------- 1. Container ---------- */
 .container {
-  width: 100%;
+  --width: 100%;
+  --max-width: var(--page-max);
+  --padding-x: var(--space-4);
+
+  width: var(--width);
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--space-4);
-  padding-right: var(--space-4);
-  max-width: var(--page-max);
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
+  max-width: var(--max-width);
 }
-.container.narrow { max-width: 720px; }
-.container.reading { max-width: 880px; }       /* doc/article width */
-.container.wide { max-width: 1440px; }
-.container.full { max-width: 100%; padding-inline: var(--space-3); }
+.container.narrow { --max-width: 45rem; }
+.container.reading { --max-width: 55rem; }       /* doc/article width */
+.container.wide { --max-width: 90rem; }
+.container.full { --max-width: 100%; --padding-x: var(--space-3); }
 .container.flush { padding-inline: var(--space-0); }
 
 @media (max-width: 767px) {
-  .container { padding-left: var(--space-3); padding-right: var(--space-3); }
+  .container { --padding-x: var(--space-3); }
 }
 
 /* ---------- 2. 12-column responsive grid ---------- */
@@ -40,13 +44,15 @@
    class (.col-{1..12}) — when no span is set, items fall to default
    `auto`-fit for backwards compat. */
 .row {
+  --gap: var(--space-4);
+
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--space-4);
+  gap: var(--gap);
 }
-.row.gap-sm { gap: var(--space-2); }
-.row.gap-lg { gap: var(--space-6); }
-.row.gap-0 { gap: 0; }
+.row.gap-sm { --gap: var(--space-2); }
+.row.gap-lg { --gap: var(--space-6); }
+.row.gap-0 { --gap: 0; }
 
 /* Stack utility — forces column flow regardless of viewport */
 .row.stack { grid-template-columns: 1fr; }
@@ -70,7 +76,7 @@
 /* On mobile (≤767), default to full-width unless an explicit `sm` span is set.
    This is the safest default for cards/forms in cramped viewports. */
 @media (max-width: 767px) {
-  .row > [class*="ok-col-"]:not([class*="ok-col-sm-"]) { grid-column: 1 / -1; }
+  .row > [class*="col-"]:not([class*="col-sm-"]) { grid-column: 1 / -1; }
 }
 
 /* Tablet override (≥768px) */
@@ -129,15 +135,13 @@
 
 /* Cards reflow themselves: each cell at least 240px wide, fills available room. */
 .grid-auto {
+  --width: 15rem;
+  --gap: var(--space-4);
+
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--_min, 240px), 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(var(--width), 1fr));
+  gap: var(--gap);
 }
-.grid-auto.xs { --_min: 140px; }
-.grid-auto.sm { --_min: 180px; }
-.grid-auto.md { --_min: 240px; }   /* default */
-.grid-auto.lg { --_min: 320px; }
-.grid-auto.xl { --_min: 400px; }
 
 /* ---------- Gap responsive helpers ---------- */
 @media (min-width: 768px) {
@@ -217,10 +221,14 @@
 
 /* ---------- 7. Fluid container — uses clamp() for organic widths ---------- */
 .container.fluid {
-  width: 100%;
+  --width: 100%;
+  --max-width: clamp(20rem, 100%, 90rem);
+  --padding-x: clamp(var(--space-3), 4vw, var(--space-7));
+
+  width: var(--width);
   margin-inline: auto;
-  padding-inline: clamp(var(--space-3), 4vw, var(--space-7));
-  max-width: clamp(320px, 100%, 1440px);
+  padding-inline: var(--padding-x);
+  max-width: var(--max-width);
 }
 
 /* ---------- 8. Aspect-ratio cells ----------

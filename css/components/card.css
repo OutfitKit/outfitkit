@@ -1,334 +1,54 @@
 /* ============================================================
-   OutfitKit · Card / KPI / Stat / Stats / Empty
-   ─────────────────────────────────────────────────────────────
-   Uso:
-     <article class="card">…</article>
-     <article class="card primary elevated">…</article>
-     <article class="card glass interactive">…</article>
-
-   Composición interna con clases universales (v2):
-     <header class="head">
-       <div class="heading"><h3 class="title">…</h3><p class="sub">…</p></div>
-       <div class="actions">…</div>
-     </header>
-     <div class="body">…</div>
-     <footer class="foot">…</footer>
-
-   Modificadores universales: primary, danger, success...
-     elevated, flat, glass, interactive, lg, sm
+   OutfitKit · Card
    ============================================================ */
 
 .card {
-  background: var(--background, var(--bg-2));
-  color: var(--color, var(--ink));
-  border: var(--border-w) solid var(--border-color, var(--line));
-  border-radius: var(--radius, var(--radius-xl));
+  --background:    color-mix(in oklch, var(--variant, var(--bg-2)) 8%, var(--bg-2));
+  --color:         var(--color-mode, var(--ink));
+  --border-color:  var(--border-mode, color-mix(in oklch, var(--variant, var(--line)) 25%, var(--line)));
+  --border-radius: var(--radius, var(--radius-xl));
+
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-/* Variante con tinte del variant en el fondo */
-.card.primary, .card.secondary, .card.tertiary, .card.success, .card.warning,
-.card.warn,    .card.danger,    .card.info,     .card.brand,   .card.accent {
-  background:    color-mix(in oklch, var(--variant) 8%, var(--bg-2));
-  border-color:  color-mix(in oklch, var(--variant) 25%, var(--line));
-}
-
-/* Variante .filled: card sólido del color del variant */
 .card.filled {
-  background:   var(--variant, var(--bg-3));
-  color:        var(--variant-contrast, var(--ink));
-  border-color: transparent;
+  --background:   var(--variant, var(--bg-3));
+  --color:        var(--variant-contrast, var(--ink));
+  --border-color: transparent;
 }
 
-/* Variante .flat: sin fondo (solo borde) */
 .card.flat {
-  background:   transparent;
-  border-color: var(--line);
+  --background:   transparent;
+  --border-color: var(--line);
 }
 
-/* Interactive: cursor + hover lift */
 .card.interactive {
   cursor: pointer;
   transition: border-color var(--dur-fast) var(--ease-out),
-              transform    var(--dur-fast) var(--ease-out),
-              box-shadow   var(--dur-fast) var(--ease-out);
+              transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
 }
+
 .card.interactive:hover {
-  border-color: var(--line-2);
-  transform: translateY(-1px);
+  --border-color: color-mix(in oklch, var(--variant, var(--line-2)) 25%, var(--line-2));
+  transform: translateY(-0.0625rem);
 }
+
 .card.interactive:focus-visible {
   outline: var(--border-w-2) solid var(--variant, var(--color-primary));
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
 }
 
-/* Sizes — override radius via --radius consumed by .card */
-.card.sm { --radius: var(--radius-lg); }
-.card.lg { --radius: var(--radius-2xl); }
+.card > .head + .body {
+  padding-top: var(--space-0);
+}
 
-/* ── head / body / foot consumed from modifiers.css universals ──────
-   .head  → padding, border-bottom, flex align
-   .body  → padding, color
-   .foot  → padding, border-top, flex align
-   These work inside .card out of the box. Only structural overrides needed. */
-
-/* body directly after head: remove redundant top padding */
-.card > .head + .body { padding-top: var(--space-0); }
-
-/* foot background override (card-specific: slightly dimmer) */
 .card > .foot {
-  background: var(--bg-1);
-}
-
-/* card__header / card__title / card__sub / card__actions / card__body /
-   card__footer / card__divider — eliminados en v2. Los consumidores
-   usan las clases universales: .head, .title, .sub, .actions, .body,
-   .foot, .divider directamente dentro del .card. */
-
-
-/* ============================================================
-   KPI · métrica destacada
-   ─────────────────────────────────────────────────────────────
-   Composición interna v2:
-     <div class="label">VENTAS HOY</div>
-     <div class="value">€2.847<span class="unit">€</span></div>
-     <div class="kpi__delta up">▲ +12%</div>
-   ============================================================ */
-
-.kpi {
-  background: var(--background, var(--bg-2));
-  border: var(--border-w) solid var(--border-color, var(--line));
-  border-radius: var(--radius, var(--radius-xl));
-  padding: var(--pad-y, var(--space-4)) var(--pad-x, var(--space-4));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: var(--gap, var(--space-2));
-  min-height: var(--kpi-min-h);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Variante con tinte del variant */
-.kpi.primary, .kpi.secondary, .kpi.success, .kpi.warning, .kpi.warn,
-.kpi.danger,  .kpi.info,      .kpi.brand,   .kpi.accent {
-  background:   color-mix(in oklch, var(--variant) 10%, var(--bg-2));
-  border-color: color-mix(in oklch, var(--variant) 30%, var(--line));
-}
-.kpi.primary .value,
-.kpi.brand   .value,
-.kpi.accent  .value {
-  color: var(--variant-tint, var(--color-primary-tint));
-}
-
-/* .label and .value consumed from universal classes in modifiers.css.
-   kpi__label / kpi__value are kept as aliases for backward compat. */
-.kpi__label,
-.kpi .label {
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-medium);
-  color: var(--ink-3);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.kpi__icon,
-.kpi .icon {
-  width: var(--icon-sm);
-  height: var(--icon-sm);
-  color: var(--ink-4);
-}
-
-.kpi__value,
-.kpi .value {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl, var(--text-2xl));
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-display);
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-  line-height: 1.05;
-}
-
-.kpi__value-unit,
-.kpi .unit {
-  font-size: var(--text-lg);
-  color: var(--ink-3);
-  font-weight: var(--weight-medium);
-  margin-left: var(--space-1);
-}
-
-.kpi__delta {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-medium);
-  color: var(--ink-3);
-  font-variant-numeric: tabular-nums;
-}
-.kpi__delta.up,
-.kpi__delta--up   { color: var(--color-success); }
-.kpi__delta.down,
-.kpi__delta--down { color: var(--color-danger); }
-.kpi__delta-arrow {
-  width: var(--icon-xs);
-  height: var(--icon-xs);
-}
-
-.kpi__sparkline {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: var(--sparkline-w);
-  height: var(--sparkline-h);
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-
-/* ============================================================
-   Stats · fila compacta de métricas
-   ============================================================ */
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: var(--space-0);
-  background: var(--background, var(--bg-2));
-  border: var(--border-w) solid var(--border-color, var(--line));
-  border-radius: var(--radius, var(--radius-xl));
-  overflow: hidden;
-  width: 100%;
-}
-
-.stat {
-  padding: var(--pad-y, var(--space-3)) var(--pad-x, var(--space-4));
-  border-right: var(--border-w) solid var(--line);
-}
-.stat:last-child { border-right: none; }
-
-/* .label and .value come from universal classes. Aliases kept for compat. */
-.stat__label,
-.stat .label {
-  font-size: var(--text-2xs);
-  font-weight: var(--weight-medium);
-  color: var(--ink-3);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  margin-bottom: var(--space-1);
-}
-.stat__value,
-.stat .value {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-tighter);
-  color: var(--ink);
-  font-variant-numeric: tabular-nums;
-}
-.stat__delta {
-  font-size: var(--text-xs);
-  color: var(--ink-3);
-  margin-top: var(--border-w-2);
-  font-weight: var(--weight-medium);
-  font-variant-numeric: tabular-nums;
-}
-.stat__delta.up,
-.stat__delta--up   { color: var(--color-success); }
-.stat__delta.down,
-.stat__delta--down { color: var(--color-danger); }
-
-@media (max-width: 640px) {
-  .stat {
-    border-right: none;
-    border-bottom: var(--border-w) solid var(--line);
-  }
-  .stat:last-child { border-bottom: none; }
-}
-
-
-/* ============================================================
-   Empty state — sin contenido
-   ─────────────────────────────────────────────────────────────
-   Composición interna v2:
-     <div class="icon-disc primary lg">…svg…</div>
-     <h3 class="title lg">Sin resultados</h3>
-     <p class="sub">Descripción…</p>
-     <div class="actions">…btns…</div>
-   ============================================================ */
-
-.empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--pad-y, var(--space-8)) var(--pad-x, var(--space-6));
-  gap: var(--gap, var(--space-3));
-  background: var(--background, var(--bg-2));
-  border: var(--border-w) dashed var(--border-color, var(--line-2));
-  border-radius: var(--radius, var(--radius-xl));
-}
-
-/* .icon-disc composes with .lg/.xl + color modifier (from modifiers.css) */
-.empty__icon {
-  width: var(--icon-2xl);
-  height: var(--icon-2xl);
-  border-radius: var(--radius-xl);
-  background: var(--bg-3);
-  color: var(--variant, var(--ink-3));
-  display: grid;
-  place-items: center;
-}
-.empty__icon svg {
-  width: var(--icon-lg);
-  height: var(--icon-lg);
-}
-
-/* .title and .sub come from universal classes. Aliases kept for compat. */
-.empty__title,
-.empty .title {
-  font-family: var(--font-display);
-  font-size: var(--text, var(--text-lg));
-  font-weight: var(--weight-semibold);
-  letter-spacing: var(--tracking-near);
-  color: var(--ink);
-  margin: 0;
-}
-
-.empty__desc,
-.empty .sub {
-  font-size: var(--text, var(--text-md));
-  color: var(--ink-3);
-  max-width: var(--empty-max-w);
-  line-height: var(--leading-normal);
-  margin: 0;
-}
-
-/* .actions comes from universal class */
-.empty__actions,
-.empty .actions {
-  margin-top: var(--space-1);
-}
-
-/* Variante compacta */
-.empty.compact {
-  --pad-y: var(--space-5);
-  --pad-x: var(--space-4);
-  --gap:   var(--space-2);
-}
-.empty.compact .empty__icon {
-  width: var(--icon-xl);
-  height: var(--icon-xl);
-  border-radius: var(--radius-lg);
-}
-.empty.compact .empty__icon svg {
-  width: var(--icon-md);
-  height: var(--icon-md);
+  background: color-mix(in oklch, var(--background) 82%, var(--bg-1));
 }

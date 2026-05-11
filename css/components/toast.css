@@ -1,0 +1,106 @@
+/* ============================================================
+   OutfitKit · Toast
+   ============================================================ */
+
+.toast-region {
+  position: fixed;
+  z-index: var(--z-toast);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: min(22rem, calc(100vw - var(--space-8)));
+  padding: var(--space-4);
+  pointer-events: none;
+}
+
+.toast-region[data-pos="top-right"] {
+  top: 0;
+  right: 0;
+}
+
+.toast-region[data-pos="top-left"] {
+  top: 0;
+  left: 0;
+}
+
+.toast-region[data-pos="bottom-right"] {
+  right: 0;
+  bottom: 0;
+}
+
+.toast-region[data-pos="bottom-left"] {
+  bottom: 0;
+  left: 0;
+}
+
+.toast-region[data-pos="top-center"] {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toast-region[data-pos="bottom-center"] {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toast {
+  --background: var(--bg-2);
+  --color: var(--text-color);
+  --border-color: color-mix(in oklch, var(--variant, var(--line-2)) 35%, var(--line-2));
+  --border-radius: var(--radius, var(--radius-lg));
+  --border-width: var(--border-w);
+  --shadow: var(--shadow-md);
+  --font-size: var(--text, var(--text-md));
+  --padding-x: var(--space-3-5);
+  --padding-y: var(--space-3);
+  --gap: var(--space-2-5);
+
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  font-size: var(--font-size);
+  animation: ok-toast-in var(--dur-base) var(--ease-spring);
+}
+
+@keyframes ok-toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast > .icon {
+  color: var(--variant, var(--ink-2));
+}
+
+.toast > .body {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+}
+
+.toast__action {
+  margin-top: var(--space-1);
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: var(--variant, var(--color-primary));
+  font: inherit;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+}

@@ -1,0 +1,49 @@
+/* ============================================================
+   OutfitKit · Segment
+   Segmented control
+   ============================================================ */
+
+.segment {
+  --background: var(--bg-3);
+  --border-color: var(--line);
+  --border-radius: var(--radius, var(--radius-md));
+  --color: var(--variant, var(--color-primary));
+  --height: var(--size-sm);
+  --padding-x: var(--space-3);
+  --padding-y: var(--border-w-2);
+
+  display: inline-flex;
+  padding: var(--padding-y);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--text-sm);
+}
+
+.segment__opt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  height: var(--height);
+  padding: var(--space-0) var(--padding-x);
+  background: transparent;
+  border: none;
+  border-radius: calc(var(--border-radius) - var(--border-w-2));
+  color: var(--ink-3);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--dur-fast);
+}
+
+.segment__opt:hover {
+  color: var(--ink);
+}
+
+.segment__opt[aria-pressed="true"],
+.segment__opt[aria-pressed=""],
+.segment__opt[data-active="true"] {
+  background: var(--bg-1);
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.4), inset 0 0 0 1px var(--line);
+}

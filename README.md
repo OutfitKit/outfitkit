@@ -1,6 +1,6 @@
 # OutfitKit
 
-Librería CSS de componentes para aplicaciones web. ~260 bloques semánticos con prefijo `ok-*`, BEM-light, themeable vía CSS custom properties.
+Librería CSS de componentes para aplicaciones web. API composable sin clases combinadas: componente + variante + tamaño + estilo.
 
 Cero JS obligatorio. Cero build pipeline para consumidores. Un solo `<link>` y listo.
 
@@ -10,25 +10,27 @@ Cero JS obligatorio. Cero build pipeline para consumidores. Un solo `<link>` y l
 
 ```html
 <link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.min.css">
+      href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/css/outfitkit.css">
 
-<button class="btn btn--primary">Continuar</button>
+<button class="btn primary lg">Continuar</button>
+<button class="btn outline danger sm">Borrar</button>
 ```
 
-Clases cortas, sin ruido. Es lo recomendado para cualquier proyecto donde OutfitKit sea la única librería CSS de la página — Hub, Cloud, los módulos `m_*` del marketplace.
+Clases cortas, sin ruido. La API esperada es composable:
+`[componente] × [variante] × [tamaño] × [estilo]`.
 
-### Producción (opcional, con prefijo `ok-`)
+### Compatibilidad legacy (`ok-`)
 
-Solo necesario si OutfitKit convive con otra librería CSS que ya define `.btn`, `.card`, etc. (Bootstrap, Tailwind utilities, Daisy, un design system propio anterior). El bundle prefijado evita las colisiones:
+Solo relevante para consumers antiguos congelados en la API prefijada. La librería actual y las macros públicas trabajan sin prefijo; `dist/outfitkit.ok.min.css` se conserva como snapshot de compatibilidad para integraciones v1.5 que todavía no han migrado.
 
 ```html
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@latest/dist/outfitkit.ok.min.css">
 
-<button class="ok-btn ok-btn--primary">Continuar</button>
+<button class="ok-btn ok-primary ok-lg">Continuar</button>
 ```
 
-Ambos bundles comparten exactamente los mismos tokens (`--ok-*`), keyframes y animations. Lo único que cambia son los nombres de los selectores de clase.
+Si empiezas hoy, usa siempre el bundle canónico sin prefijo.
 
 ### Desarrollo — fuente sin minificar
 
@@ -38,10 +40,10 @@ Ambos bundles comparten exactamente los mismos tokens (`--ok-*`), keyframes y an
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/outfitkit.css">
 
-<button class="ok-btn ok-btn--primary">Continuar</button>
+<button class="btn primary">Continuar</button>
 ```
 
-La fuente en `css/` siempre lleva el prefijo `ok-` (es como editamos el repo). El bundle sin prefijo se genera solo en CI al taggear. Los navegadores modernos resuelven los `@import` directamente, sin bundling local.
+La fuente en `css/` ya es la API canónica. Los navegadores modernos resuelven los `@import` directamente, sin bundling local.
 
 ## Macros Jinja (opcional)
 
@@ -54,34 +56,25 @@ pip install outfitkit[jinjax]     # + sintaxis HTML-like <Button label="x" />
 
 Las macros viven en [`showcase/`](./showcase/) y se publican desde ahí a PyPI. Cualquier macro funciona con o sin JinjaX (formato dual-mode).
 
-### Setup mínimo (default, sin prefijo)
+### Setup mínimo
 
 ```python
 from jinja2 import Environment, FileSystemLoader
 from outfitkit import TEMPLATES_DIR, register_globals, css_url
 
 env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
-register_globals(env)            # establece ok_prefix = ""
+register_globals(env)            # no-op compatible
 
 # En tu base.html
 #   <link rel="stylesheet" href="{{ css }}">
 ctx = {"css": css_url()}         # → outfitkit.min.css (sin prefijo)
 ```
 
-Resultado: `{{ button("Save") }}` → `<button class="btn btn--primary">…</button>`.
-
-### Cambiar a prefijo `ok-` (solo si lo necesitas)
-
-```python
-register_globals(env, ok_prefix="ok-")
-ctx = {"css": css_url(prefix="ok-")}     # → outfitkit.ok.min.css
-```
-
-Resultado: `{{ button("Save") }}` → `<button class="ok-btn ok-btn--primary">…</button>`.
+Resultado: `{{ button("Save") }}` → `<button class="btn primary">…</button>`.
 
 ### Regla de oro
 
-El **prefijo de las macros** y el **bundle CSS cargado** tienen que coincidir. Como ambos se controlan desde dos líneas del setup, no es una preocupación recurrente — lo eliges una vez y olvidas.
+Las macros públicas de OutfitKit 2.x emiten clases canónicas sin prefijo. Si todavía dependes de `ok-`, te quedas en la rama/tag legacy compatible y cargas su bundle correspondiente por tu cuenta.
 
 ### ¿El paquete `pip install outfitkit` trae el CSS?
 
@@ -148,16 +141,16 @@ Componentes en vivo con código fuente al lado, navegable:
 ```
 outfitkit/
 ├── css/                ← fuentes CSS sin minificar (lo que editas)
-│   ├── tokens.css      ← variables --ok-* (paleta, spacing, themes)
+│   ├── tokens.css      ← escalas globales y tokens compartidos
 │   ├── base.css        ← reset + tipografía
-│   ├── utilities.css   ← .ok-flex, .ok-gap-*, .ok-text-*
+│   ├── utilities.css   ← utilidades globales
 │   ├── outfitkit.css   ← entry point con @import de todo
 │   └── components/     ← 44 archivos, uno por familia (button, card, modal, ...)
 ├── dist/               ← bundles generados SOLO en CI al taggear (no editar a mano)
-│   ├── outfitkit.css        (concatenado, sin prefijo — default)
-│   ├── outfitkit.min.css    (minificado, sin prefijo — default)
-│   ├── outfitkit.ok.css     (concatenado, prefijo ok- — opt-in)
-│   └── outfitkit.ok.min.css (minificado, prefijo ok- — opt-in)
+│   ├── outfitkit.css
+│   ├── outfitkit.min.css
+│   ├── outfitkit.ok.css      ← snapshot legacy de compatibilidad
+│   └── outfitkit.ok.min.css
 └── showcase/           ← macros Jinja + sitio de demos + paquete PyPI
 ```
 
@@ -186,13 +179,13 @@ La Action concatena `css/*.css`, minifica con `lightningcss-cli` y commitea `dis
 
 ## Convenciones
 
-### Naming (BEM-light)
+### Naming
 
 ```
-.ok-{block}              base               .ok-card
-.ok-{block}__{element}   child element      .ok-card__header
-.ok-{block}--{modifier}  variant            .ok-btn--primary
-.is-{state}              runtime state      .is-active, .is-open
+.block                  base                .card
+.block__element         child element       .kanban__card
+.state / utility        modifier            .primary, .lg, .outline, .block
+.is-{state}             runtime state       .is-active, .is-open
 ```
 
 ### Theming
@@ -205,7 +198,8 @@ Themes se aplican vía atributo `data-theme` en `<html>` o cualquier subárbol:
 <html data-theme="light">
 ```
 
-Cualquier variable `--ok-*` puede sobreescribirse para crear tu propio theme.
+Los componentes consumen el contrato global de `tokens.css` y `modifiers.css`.
+Para crear componentes nuevos o entender el patrón canónico, ver [docs/COMPONENT-PATTERN.md](./docs/COMPONENT-PATTERN.md).
 
 ## Licencia
 

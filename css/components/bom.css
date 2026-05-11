@@ -1,0 +1,128 @@
+/* ---------- Bill of Materials (árbol jerárquico) ---------- */
+.bom {
+  /* API canónica de override */
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-xl);
+  --column-width: 5.625rem;
+  --indent-3: 3rem;
+  --caret-size: 1rem;
+
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.bom__head {
+  display: grid;
+  grid-template-columns: 1fr var(--column-width) var(--column-width) var(--column-width) var(--column-width);
+  gap: var(--space-3);
+  padding: var(--space-2-5) var(--space-3-5);
+  background: var(--bg-3);
+  border-bottom: var(--border-w) solid var(--line);
+  font-family: var(--font-display);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+}
+.bom__head > *:not(:first-child) { text-align: right; }
+
+.bom__row {
+  display: grid;
+  grid-template-columns: 1fr var(--column-width) var(--column-width) var(--column-width) var(--column-width);
+  gap: var(--space-3);
+  padding: var(--space-2-5) var(--space-3-5);
+  border-bottom: var(--border-w) solid var(--line);
+  align-items: center;
+  font-size: var(--text-md);
+  font-variant-numeric: tabular-nums;
+  transition: background var(--dur-base) var(--ease-out);
+}
+.bom__row:last-child { border-bottom: none; }
+.bom__row:hover { background: var(--bg-3); }
+.bom__row > *:not(:first-child) { text-align: right; color: var(--ink-2); }
+
+.bom__name {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-width: 0;
+  position: relative;
+}
+.bom__name--lvl-1 { padding-left: var(--space-0); }
+.bom__name--lvl-2 { padding-left: var(--space-6); color: var(--ink-2); font-size: var(--text-sm); }
+.bom__name--lvl-3 { padding-left: var(--indent-3); color: var(--ink-3); font-size: var(--text-sm); }
+
+/* Tree connectors — vertical track + horizontal stub from parent to child.
+   Conforms to the .track-line token (see bottom of file). Stepper, Timeline
+   and BOM all use the same 2px line in var(--line). */
+.bom__name--lvl-2::before,
+.bom__name--lvl-3::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  bottom: 50%;
+  width: var(--border-w-2);
+  background: var(--line);
+}
+.bom__name--lvl-2::after,
+.bom__name--lvl-3::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: var(--border-w-2);
+  width: 11px;
+  background: var(--line);
+}
+.bom__name--lvl-2::before { left: 11px; }
+.bom__name--lvl-2::after  { left: 11px; }
+.bom__name--lvl-3::before { left: 35px; }
+.bom__name--lvl-3::after  { left: 35px; }
+
+.bom__caret {
+  width: var(--caret-size); height: var(--caret-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition: transform var(--dur-base) var(--ease-out);
+  flex-shrink: 0;
+}
+.bom__caret--open { transform: rotate(90deg); }
+.bom__caret--leaf { visibility: hidden; }
+
+.bom__sku {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-3);
+  background: var(--bg-3);
+  padding: var(--border-w) var(--space-1-5);
+  border-radius: var(--radius-xs);
+}
+.bom__row:hover .bom__sku { background: var(--bg-2); }
+
+/* Status pills — subtle/leaf pair (Lote 7) for legibility on dark bg.
+   Adds a border so the badge holds its shape even when bg color-mix collapses. */
+.bom__pill {
+  display: inline-flex;
+  padding: var(--border-w) var(--space-1-5);
+  border-radius: var(--radius-xs);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  background: color-mix(in oklch, var(--leaf) 18%, transparent);
+  color: oklch(78% 0.15 145);
+  border: var(--border-w) solid color-mix(in oklch, var(--leaf) 30%, transparent);
+}
+.bom__pill--low {
+  background: color-mix(in oklch, var(--warn) 18%, transparent);
+  color: var(--warn);
+  border-color: color-mix(in oklch, var(--warn) 30%, transparent);
+}
+.bom__pill--out {
+  background: color-mix(in oklch, var(--danger) 18%, transparent);
+  color: var(--danger);
+  border-color: color-mix(in oklch, var(--danger) 30%, transparent);
+}

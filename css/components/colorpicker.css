@@ -1,0 +1,39 @@
+/* ============================================================
+   OutfitKit · Colorpicker
+   Curated swatches
+   ============================================================ */
+
+.colorpicker {
+  --background: var(--bg-1);
+  --border-color: var(--line);
+  --border-radius: var(--radius-md);
+  --color: var(--variant, var(--color-primary));
+
+  display: inline-grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: var(--space-1-5);
+  padding: var(--space-3);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.colorpicker__swatch {
+  position: relative;
+  width: var(--avatar-2xs);
+  height: var(--avatar-2xs);
+  border: var(--border-w) solid color-mix(in oklch, white 8%, transparent);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: transform var(--dur-fast);
+}
+
+.colorpicker__swatch:hover {
+  transform: scale(1.12);
+}
+
+.colorpicker__swatch[aria-pressed="true"],
+.colorpicker__swatch[aria-pressed=""] {
+  outline: var(--border-w-2) solid var(--color);
+  outline-offset: var(--border-w-2);
+}

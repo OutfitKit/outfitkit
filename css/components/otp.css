@@ -1,0 +1,46 @@
+/* ============================================================
+   OutfitKit · OTP
+   ============================================================ */
+
+.otp {
+  --background: var(--bg-1);
+  --border-color: var(--line-2);
+  --border-radius: var(--radius-md);
+  --color: var(--variant, var(--color-primary));
+  --width: var(--touch-target);
+  --height: var(--topbar-h);
+  --gap: var(--space-2);
+  --font-size: var(--text-lg);
+
+  display: inline-flex;
+  gap: var(--gap);
+}
+
+.otp__cell {
+  width: var(--width);
+  height: var(--height);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--ink);
+  font-size: var(--font-size);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  outline: 0;
+  transition: border-color var(--dur-fast);
+}
+
+.otp__cell:focus {
+  border-color: var(--color);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color) 18%, transparent);
+}
+
+.otp__cell:disabled {
+  opacity: 0.5;
+}
+
+.otp__sep {
+  align-self: center;
+  color: var(--ink-4);
+}

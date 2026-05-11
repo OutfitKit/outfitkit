@@ -6,16 +6,23 @@
 
 /* ---------- 1. JSON viewer ---------- */
 .json {
-  --_indent: var(--space-4);
+  --background:    var(--bg-1);
+  --border-color:  var(--line);
+  --border-radius: var(--radius, var(--radius-md));
+  --padding-x:     var(--space-4);
+  --padding-y:     var(--space-3);
+  --font-size:     var(--text-sm);
+  --indent:        var(--space-4);
+
   font-family: var(--font-mono);
-  font-size: var(--text-sm);
+  font-size: var(--font-size);
   font-variant-numeric: tabular-nums;
   line-height: 1.55;
   color: var(--ink-2);
-  background: var(--bg-1);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-md);
-  padding: var(--space-3) var(--space-4);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding-y) var(--padding-x);
   overflow: auto;
 }
 .json__row {
@@ -55,7 +62,7 @@
 .json__comma    { color: var(--ink-3); }
 .json__nested {
   display: block;
-  padding-left: var(--_indent);
+  padding-left: var(--indent);
   border-left: var(--border-w) solid var(--line);
   margin-left: var(--space-1-5);
 }
@@ -66,21 +73,33 @@
   margin-left: var(--space-1-5);
 }
 
-.json.compact { font-size: var(--text-xs); padding: var(--space-2) var(--space-3); }
-.json.compact .json { --_indent: var(--space-3); }
-.json.lg { font-size: var(--text-md); padding: var(--space-4) var(--space-5); }
+.json.compact {
+  --font-size: var(--text-xs);
+  --padding-x: var(--space-3);
+  --padding-y: var(--space-2);
+  --indent: var(--space-3);
+}
+
+.json.lg {
+  --font-size: var(--text-md);
+  --padding-x: var(--space-5);
+  --padding-y: var(--space-4);
+}
 
 /* ---------- 2. QR ---------- */
 .qr {
-  --_size: 160px;
+  --width: 10rem;
+  --height: 10rem;
+  --gap: var(--space-2);
+
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--gap);
 }
 .qr__img {
-  width: var(--_size);
-  height: var(--_size);
+  width: var(--width);
+  height: var(--height);
   background: var(--paper-bg);
   padding: var(--space-3);
   border-radius: var(--radius-md);
@@ -102,9 +121,9 @@
   text-align: center;
   text-transform: uppercase;
 }
-.qr.sm { --_size: 96px; }
+.qr.sm { --width: 6rem; --height: 6rem; }
 .qr.sm .qr__img { padding: var(--space-2); border-radius: var(--radius-sm); }
-.qr.lg { --_size: 240px; }
+.qr.lg { --width: 15rem; --height: 15rem; }
 .qr.lg .qr__img { padding: var(--space-4); border-radius: var(--radius-lg); }
 .qr.bordered .qr__img {
   border: var(--border-w) solid var(--line-3);
@@ -113,7 +132,8 @@
 
 /* ---------- 3. Stock indicator ---------- */
 .stock {
-  --_color: var(--ink-3);
+  --accent: var(--variant, var(--ink-3));
+
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -125,7 +145,7 @@
   width: var(--dot-md);
   height: var(--dot-md);
   border-radius: var(--radius-circle);
-  background: var(--_color);
+  background: var(--accent);
   flex-shrink: 0;
 }
 .stock__label {
@@ -138,22 +158,23 @@
   font-weight: 600;
   margin-left: var(--space-1);
 }
-.stock.in-stock { --_color: var(--leaf); }
-.stock.low      { --_color: var(--warn); }
-.stock.out      { --_color: var(--danger); }
+.stock.in-stock { --accent: var(--color-success); }
+.stock.low      { --accent: var(--color-warning); }
+.stock.out      { --accent: var(--color-danger); }
 
 .stock.soft {
   padding: var(--space-1) var(--space-2-5);
   border-radius: var(--radius-pill);
-  background: color-mix(in oklch, var(--_color) 14%, transparent);
+  background: color-mix(in oklch, var(--accent) 14%, transparent);
 }
-.stock.soft.stock.in-stock { color: var(--leaf); }
-.stock.soft.stock.in-stock .stock__count { color: var(--leaf); }
-.stock.soft.stock.low      { color: var(--warn); }
-.stock.soft.stock.low      .stock__count { color: var(--warn); }
-.stock.soft.stock.out      { color: var(--danger); }
-.stock.soft.stock.out      .stock__count { color: var(--danger); }
-.stock.soft .stock__label   { color: inherit; }
+.stock.soft {
+  color: var(--accent);
+}
+
+.stock.soft .stock__count,
+.stock.soft .stock__label {
+  color: inherit;
+}
 
 /* ---------- 4. Reorder list ---------- */
 .reorder {
@@ -171,7 +192,7 @@
 }
 .reorder__item {
   display: grid;
-  grid-template-columns: 24px 1fr auto;
+  grid-template-columns: 1.5rem 1fr auto;
   align-items: center;
   gap: var(--space-3);
   padding: var(--space-3) var(--space-3);
@@ -189,7 +210,7 @@
 .reorder__item.is-dragging {
   opacity: 0.5;
   outline: 1px dashed var(--brand-3);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
   background: var(--bg-3);
   cursor: grabbing;
 }
@@ -232,9 +253,10 @@
 
 /* ---------- 5. Virtual list ---------- */
 .vlist {
-  --_h: 360px;
-  --_row-h: 40px;
-  height: var(--_h);
+  --height: 22.5rem;
+  --row-height: 2.5rem;
+
+  height: var(--height);
   overflow: auto;
   background: var(--bg-1);
   border: var(--border-w) solid var(--line);
@@ -245,7 +267,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  height: var(--_row-h);
+  height: var(--row-height);
   padding: var(--space-0) var(--space-4);
   font-size: var(--text-sm);
   color: var(--ink);
@@ -273,15 +295,17 @@
   color: var(--ink-3);
   font-size: var(--text-xs);
 }
-.vlist.dense { --_row-h: 28px; }
+.vlist.dense { --row-height: 1.75rem; }
 .vlist.dense .vlist__row { font-size: var(--text-xs); padding: var(--space-0) var(--space-3); }
 
 /* ---------- 6. Carousel ---------- */
 .carousel {
-  --_h: auto;
+  --height: auto;
+  --border-radius: var(--radius, var(--radius-lg));
+
   position: relative;
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--border-radius);
   background: var(--bg-2);
 }
 .carousel__track {
@@ -343,10 +367,10 @@
 .carousel__dot--active {
   background: white;
   width: var(--icon-md);
-  border-radius: 3px;
+  border-radius: 0.1875rem;
 }
 
-.carousel.sm { max-height: 220px; }
+.carousel.sm { max-height: 13.75rem; }
 .carousel.sm .carousel__nav { width: var(--size-sm); height: var(--size-sm); }
 .carousel.cards .carousel__slide {
   flex: 0 0 80%;
@@ -419,7 +443,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  height: var(--avatar-sm);
+  height: var(--size, var(--avatar-sm));
   padding: var(--space-0) var(--space-4);
   background: transparent;
   border: var(--border-w) solid var(--line-2);
@@ -521,8 +545,10 @@
 
 /* ---------- 10. Image zoom ---------- */
 .zoom {
-  --_zoom: 1.5;
-  --_lens: 96px;
+  --zoom: 1.5;
+  --width: 6rem;
+  --height: 6rem;
+
   display: block;
   position: relative;
 }
@@ -541,12 +567,12 @@
 }
 .zoom__lens {
   position: absolute;
-  width: var(--_lens);
-  height: var(--_lens);
+  width: var(--width);
+  height: var(--height);
   border: var(--border-w-2) solid white;
   border-radius: var(--radius-sm);
   background: var(--overlay-glass);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(0.125rem);
   pointer-events: none;
   opacity: 0;
   box-shadow: 0 0 0 9999px var(--overlay-soft), var(--shadow-sm);
@@ -554,7 +580,7 @@
 }
 
 .zoom.is-zooming .zoom__container { cursor: zoom-out; }
-.zoom.is-zooming .zoom__img { transform: scale(var(--_zoom)); }
+.zoom.is-zooming .zoom__img { transform: scale(var(--zoom)); }
 .zoom.is-zooming .zoom__lens { opacity: 1; }
 
 .zoom.inline.is-zooming .zoom__lens { display: none; }

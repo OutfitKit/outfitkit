@@ -1,0 +1,88 @@
+/* ---------- Payslip ---------- */
+.payslip {
+  /* API canónica de override */
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-xl);
+  --padding-x: 1.125rem;
+
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+.payslip__head {
+  padding: var(--padding-x);
+  background: linear-gradient(180deg, var(--bg-3), var(--bg-2));
+  border-bottom: var(--border-w) solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+}
+.payslip__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: var(--tracking-snug);
+  margin: var(--space-0);
+  color: var(--ink);
+}
+.payslip__period {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin-top: var(--border-w-2);
+}
+.payslip__net {
+  text-align: right;
+}
+.payslip__net-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  color: var(--ink-3);
+}
+.payslip__net-value {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 600;
+  letter-spacing: var(--tracking-display);
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.payslip__rows { padding: var(--space-1-5) var(--space-0); }
+.payslip__row {
+  display: grid;
+  grid-template-columns: 1fr 90px 110px;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--padding-x);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  align-items: center;
+  border-bottom: var(--border-w) solid var(--line);
+}
+.payslip__row:last-child { border-bottom: none; }
+.payslip__row > *:not(:first-child) { text-align: right; color: var(--ink-2); }
+.payslip__row > *:last-child { color: var(--ink); font-weight: 500; }
+
+.payslip__row--neg > *:last-child { color: var(--danger); }
+.payslip__row--header {
+  background: var(--bg-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+  font-weight: 500;
+}
+.payslip__row--header > *:last-child { color: var(--ink-3); font-weight: 500; }
+.payslip__row--total {
+  background: var(--bg-3);
+  border-top: var(--border-w) solid var(--line);
+  font-weight: 600;
+  font-family: var(--font-display);
+}
+.payslip__row--total > *:last-child { color: var(--ink); }

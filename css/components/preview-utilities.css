@@ -2,8 +2,8 @@
    OutfitKit · Preview utilities
    ------------------------------------------------------------
    Clases reutilizables para los previews de la librería y
-   plantillas de demostración. Todos los valores usan tokens
-   --ok-* — no hay datos hardcodeados.
+   plantillas de demostración. Los ajustes viven en variables
+   locales del componente y en el contrato global.
 
    Componentes:
      .stage          — wrapper centrador full-viewport
@@ -16,13 +16,19 @@
    compuesto por uno o varios `.demo` con su `.demo__hd`
    indicando qué variante se muestra. */
 .demo {
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-xl);
-  padding: var(--space-5);
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-xl);
+  --padding-y: var(--space-5);
+  --padding-x: var(--space-5);
+
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding-y) var(--padding-x);
 }
-.demo.ghost   { background: transparent; border-color: var(--line); }
-.demo.flush   { padding: var(--space-0); overflow: hidden; }
+.demo.ghost   { --background: transparent; }
+.demo.flush   { --padding-y: var(--space-0); --padding-x: var(--space-0); overflow: hidden; }
 .demo.center  { display: grid; place-items: center; }
 
 .demo__hd {
@@ -56,12 +62,16 @@
    de alto completo. Usado en previews de marketplace, modales y
    pantallas que necesitan ver el componente "in situ". */
 .stage {
+  --padding-y: var(--space-5);
+  --padding-x: var(--space-5);
+  --background: var(--bg);
+
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: var(--space-5);
-  background: var(--bg);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
 }
 .stage.top    { align-items: flex-start; }
 .stage.bottom { align-items: flex-end; }
@@ -75,64 +85,66 @@
    contenedor minimalista para estructurar columnas, cuadrículas
    y ejemplos visuales. */
 .block {
-  --_blk-bg: var(--bg-3);
-  --_blk-line: var(--line);
-  --_blk-ink: var(--ink-2);
-  --_blk-pad: var(--space-3);
-  --_blk-text: var(--text-md);
+  --background: var(--bg-3);
+  --border-color: var(--variant, var(--line));
+  --color: var(--ink-2);
+  --border-radius: var(--radius, var(--radius-md));
+  --padding-y: var(--pad-y, var(--space-3));
+  --padding-x: var(--pad-x, var(--space-3));
+  --font-size: var(--text, var(--text-md));
 
-  background: var(--_blk-bg);
-  border: var(--border-w) solid var(--_blk-line);
-  border-radius: var(--radius-md);
-  padding: var(--_blk-pad);
-  color: var(--_blk-ink);
-  font-size: var(--_blk-text);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--padding-y) var(--padding-x);
+  color: var(--color);
+  font-size: var(--font-size);
 }
-.block.ghost   { --_blk-bg: transparent; }
-.block.soft    { --_blk-bg: color-mix(in oklch, var(--brand) 8%, transparent); --_blk-line: color-mix(in oklch, var(--brand) 22%, transparent); }
-.block.sm      { --_blk-pad: var(--space-2); --_blk-text: var(--text-sm); }
-.block.lg      { --_blk-pad: var(--space-4); }
+.block.ghost   { --background: transparent; }
+.block.soft    {
+  --background: color-mix(in oklch, var(--variant, var(--color-primary)) 8%, transparent);
+  --border-color: color-mix(in oklch, var(--variant, var(--color-primary)) 22%, transparent);
+}
 .block.center  { text-align: center; }
-.block.accent  { --_blk-line: var(--brand); }
 
 /* ---------- Conv row ----------
    Fila tipo lista de conversación: avatar circular + nombre con
    ellipsis. Reutilizable en chats, listas de contactos, etc. */
 .conv-row {
-  --_cr-pad-x: var(--space-3);
-  --_cr-pad-y: var(--space-2);
-  --_cr-gap: var(--space-3);
-  --_cr-bg: transparent;
-  --_cr-bg-hover: var(--bg-3);
-  --_cr-bg-selected: color-mix(in oklch, var(--brand) 18%, transparent);
-  --_cr-ink: var(--ink-2);
-  --_cr-ink-selected: var(--ink);
+  --padding-x: var(--space-3);
+  --padding-y: var(--space-2);
+  --gap: var(--space-3);
+  --background: transparent;
+  --background-hover: var(--bg-3);
+  --background-active: color-mix(in oklch, var(--variant, var(--color-primary)) 18%, transparent);
+  --color: var(--ink-2);
+  --active-color: var(--ink);
 
   display: flex;
   align-items: center;
-  gap: var(--_cr-gap);
-  padding: var(--_cr-pad-y) var(--_cr-pad-x);
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x);
   border-radius: var(--radius-md);
   cursor: pointer;
-  color: var(--_cr-ink);
+  color: var(--color);
   font-size: var(--text-md);
-  background: var(--_cr-bg);
+  background: var(--background);
   transition: background var(--dur-fast) ease;
 }
-.conv-row:hover { background: var(--_cr-bg-hover); }
+.conv-row:hover { background: var(--background-hover); }
 .conv-row.is-selected,
 .conv-row[aria-selected="true"],
 .conv-row[aria-selected=""] {
-  background: var(--_cr-bg-selected);
-  color: var(--_cr-ink-selected);
+  background: var(--background-active);
+  color: var(--active-color);
 }
 
 .conv-row__avatar {
   width: var(--space-7);
   height: var(--space-7);
   border-radius: var(--radius-pill);
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  color: var(--brand-fg, #fff);
+  background: linear-gradient(135deg, var(--variant, var(--color-primary)), var(--variant-tint, var(--color-primary-tint)));
+  color: var(--variant-contrast, var(--color-primary-contrast));
   display: grid;
   place-items: center;
   font-family: var(--font-display);

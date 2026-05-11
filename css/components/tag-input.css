@@ -1,0 +1,41 @@
+/* ============================================================
+   OutfitKit · Tag Input
+   Multi-select token field
+   ============================================================ */
+
+.tag-input {
+  --background: var(--bg-1);
+  --border-color: var(--line-2);
+  --border-radius: var(--radius-md);
+  --color: var(--variant, var(--color-primary));
+
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1-5);
+  width: 100%;
+  min-height: var(--size, var(--size-md));
+  padding: var(--space-1-5) var(--space-2-5);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.tag-input:focus-within {
+  border-color: var(--color);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color) 18%, transparent);
+}
+
+.tag-input input {
+  flex: 1;
+  min-width: var(--sidebar-w-collapsed);
+  background: transparent;
+  border: 0;
+  outline: 0;
+  color: var(--ink);
+  font-size: var(--text-md);
+}
+
+.tag-input input::placeholder {
+  color: var(--ink-4);
+}

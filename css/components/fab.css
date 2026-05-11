@@ -1,0 +1,53 @@
+/* ============================================================
+   OutfitKit · FAB
+   Floating action button
+   ============================================================ */
+
+.fab {
+  --background: var(--variant, var(--color-primary));
+  --color: var(--variant-contrast, var(--color-primary-contrast));
+  --height: var(--topbar-h);
+  --width: var(--topbar-h);
+  --border-radius: var(--radius-circle);
+  --padding-x: 1.125rem;
+  --padding-y: var(--space-0);
+  --offset: 1.5rem;
+
+  position: fixed;
+  right: var(--offset);
+  bottom: var(--offset);
+  display: grid;
+  place-items: center;
+  width: var(--width);
+  height: var(--height);
+  background: var(--background);
+  border: none;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  color: var(--color);
+  cursor: pointer;
+  transition: all var(--dur-fast);
+  z-index: var(--z-fab, 60);
+}
+
+.fab:hover {
+  background: var(--variant-shade, color-mix(in oklch, var(--background) 88%, black));
+  transform: scale(1.05);
+}
+
+.fab svg {
+  width: var(--size-xs);
+  height: var(--size-xs);
+}
+
+.fab.extended {
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  height: var(--avatar-lg);
+  padding: var(--padding-y) var(--padding-x) var(--padding-y) var(--space-3-5);
+  border-radius: var(--radius-pill);
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}

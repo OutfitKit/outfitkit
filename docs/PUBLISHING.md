@@ -20,10 +20,10 @@ git push origin v1.4.0
 `css-build.yml` (resumen, ver el archivo para el detalle):
 
 1. Resuelve los `@import` recursivamente partiendo de `css/outfitkit.css` → un único string.
-2. Escribe `dist/outfitkit.ok.css` (con prefijo `ok-`, tal cual la fuente).
-3. Deriva `dist/outfitkit.css` aplicando `re.sub(r'\.ok-(?=[a-zA-Z])', '.', src)` — strip de `ok-` **sólo en selectores de clase** (los tokens `--ok-*` y `@keyframes ok-*` se mantienen).
+2. Escribe `dist/outfitkit.ok.css` para el bundle de compatibilidad con prefijo.
+3. Deriva `dist/outfitkit.css` para el bundle canónico sin prefijo de clases.
 4. Minifica los dos con `rcssmin` → `dist/*.min.css`.
-5. Sanity-checks: tokens y keyframes deben seguir prefijados; selectores no deben tener `.ok-`.
+5. Sanity-checks: las clases del bundle canónico no deben salir con `ok-`.
 6. Commit + force-push del `dist/` al **mismo tag** (no a `main`).
 
 URLs resultantes:
@@ -138,7 +138,7 @@ Si se invierte el orden no rompe nada, pero tener el showcase actualizado antes 
 
 | Falla | Diagnóstico |
 |---|---|
-| `css-build.yml` rojo en `assert ".ok-" not in stripped` | un selector se escribió con el prefijo de forma rara (escapes, comentarios). Mira el output del Action. |
+| `css-build.yml` rojo en checks del bundle | revisa transformaciones de clases y el output del Action. |
 | `pypi-publish.yml` rojo en "Trusted Publishing" | versión de `pyproject.toml` ≠ tag, o el Trusted Publisher ya no apunta al workflow correcto. |
 | `pages.yml` rojo en `python build.py` | template no encontrado o syntax error en un `.jinja`. Reproduce local con `python showcase/build.py`. |
 

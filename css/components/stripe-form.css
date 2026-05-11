@@ -1,0 +1,97 @@
+/* ============================================================
+   OutfitKit · Stripe Form
+   Placeholder visual for Stripe Elements iframe
+   ============================================================ */
+
+.stripe-form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.stripe-form__row {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.stripe-form__row--cols-2 {
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+}
+
+.stripe-form__label {
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.stripe-form__card-element,
+.stripe-form__field {
+  min-height: var(--touch-target);
+  padding: var(--space-3) var(--space-3-5);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: var(--text-base);
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.stripe-form__card-element {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  letter-spacing: 0.04em;
+}
+
+.stripe-form__card-element.is-focused,
+.stripe-form__field:focus-within {
+  border-color: var(--variant, var(--color-primary));
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--variant, var(--color-primary)) 18%, transparent);
+}
+
+.stripe-form__card-element.is-invalid,
+.stripe-form__field.is-invalid {
+  border-color: var(--color-danger);
+}
+
+.stripe-form__brands {
+  display: inline-flex;
+  gap: var(--space-1);
+  margin-left: auto;
+}
+
+.stripe-form__brand {
+  display: grid;
+  place-items: center;
+  width: var(--size-sm);
+  height: var(--icon-md);
+  background: var(--bg);
+  border: var(--border-w) solid var(--line);
+  border-radius: 0.1875rem;
+  color: var(--ink-3);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  letter-spacing: var(--tracking-normal);
+}
+
+.stripe-form__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+}
+
+.stripe-form__hint--error {
+  color: var(--color-danger);
+}
+
+.stripe-form__powered {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+  color: var(--ink-3);
+  font-size: var(--text-2xs);
+}

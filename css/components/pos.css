@@ -9,12 +9,17 @@
    En mobile el carrito se oculta y aparece como drawer al pulsar el FAB.
    ============================================================ */
 .pos {
+  --background: var(--bg);
+  --min-height: 40rem;
+  --width: 22rem;
+  --height: 3.5rem;
+  --gap: var(--space-2-5);
   position: relative;
-  background: var(--background, var(--bg));
+  background: var(--background);
   height: 100%;
-  min-height: var(--pos-min-h);
+  min-height: var(--min-height);
   display: grid;
-  grid-template-columns: 1fr var(--pos-aside-w);
+  grid-template-columns: 1fr var(--width);
   gap: var(--space-3);
 }
 .pos__main {
@@ -44,13 +49,13 @@
   .pos__aside {
     position: fixed;
     top: 0; right: 0; bottom: 0;
-    width: min(420px, 92vw);
+    width: min(26.25rem, 92vw);
     border-radius: 0;
     border: 0;
     border-left: var(--border-w) solid var(--line);
     z-index: 60;
     transform: translateX(100%);
-    transition: transform var(--dur-slow) var(--ease);
+    transition: transform var(--dur-slow) var(--ease-out);
     box-shadow: var(--shadow-xl);
   }
   .pos__aside--left {
@@ -81,10 +86,10 @@
 .pos__cart-fab {
   display: none;
   position: fixed;
-  right: var(--pos-fab-offset);
-  bottom: var(--pos-fab-offset);
-  width: var(--pos-fab-size);
-  height: var(--pos-fab-size);
+  right: var(--space-4);
+  bottom: var(--space-4);
+  width: var(--height);
+  height: var(--height);
   border-radius: var(--radius-circle);
   background: var(--brand);
   color: var(--brand-fg);
@@ -103,7 +108,7 @@
 }
 .pos__cart-fab__badge {
   position: absolute;
-  top: -2px; right: -2px;
+  top: -0.125rem; right: -0.125rem;
   min-width: var(--size-xs); height: var(--size-xs);
   padding: 0 var(--space-1-5);
   border-radius: var(--radius-pill);
@@ -156,13 +161,13 @@
    ============================================================ */
 .cat-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--pos-cat-card-w), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
   gap: var(--space-2-5);
   padding: 0 0 var(--space-3-5);
 }
 .cat-card {
   position: relative;
-  height: var(--pos-cat-card-h);
+  height: 7.5rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: var(--border-w) solid var(--line);
@@ -263,7 +268,7 @@
 .cat-rail__track::-webkit-scrollbar-thumb:hover { background: var(--ink-3); }
 
 .cat-rail .cat-card {
-  flex: 0 0 var(--pos-cat-card-w);
+  flex: 0 0 9rem;
   scroll-snap-align: start;
 }
 
@@ -308,7 +313,7 @@
    ============================================================ */
 .cat-card {
   transition:
-    transform var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast),
     box-shadow var(--dur-fast);
 }
@@ -347,7 +352,7 @@
   40%  { transform: scale(1.4); }
   100% { transform: scale(1); }
 }
-.bump { animation: ok-bump 380ms var(--ease); }
+.bump { animation: ok-bump 380ms var(--ease-out); }
 
 /* Cart line enter */
 @keyframes ok-line-in {
@@ -355,7 +360,7 @@
   60%  { background: color-mix(in oklch, var(--brand) 25%, transparent); }
   100% { opacity: 1; transform: translateX(0); background: transparent; }
 }
-.cart__line--enter { animation: ok-line-in 500ms var(--ease); }
+.cart__line--enter { animation: ok-line-in 500ms var(--ease-out); }
 
 /* Variantes de color tintado (sin imagen) */
 .cat-card.coffee  .cat-card__bg { background: linear-gradient(135deg, var(--cat-coffee-a), var(--cat-coffee-b)); }
@@ -374,17 +379,21 @@
    botón inferior izquierdo.
    ============================================================ */
 .numpad {
+  --padding-x: var(--space-2-5);
+  --padding-y: var(--space-2-5);
+  --height: 4rem;
+  --gap: var(--space-2-5);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--pos-numpad-gap);
+  gap: var(--gap);
   background: var(--background, var(--bg-2));
-  padding: var(--pos-numpad-gap);
+  padding: var(--padding-y) var(--padding-x);
   border-radius: var(--radius, var(--radius-md));
   border: var(--border-w) solid var(--border-color, var(--line));
 }
 
 .numpad__btn {
-  height: var(--pos-numpad-btn-h);
+  height: var(--height);
   background: var(--bg-1);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
@@ -497,14 +506,14 @@
 .cart__list {
   flex: 1;
   overflow-y: auto;
-  padding: var(--pos-numpad-gap);
+  padding: var(--gap, var(--space-2-5));
 }
 
 /* .cart__line is a domain-specific layout (BEM legitimate) */
 .cart__line {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: var(--pos-numpad-gap);
+  gap: var(--gap, var(--space-2-5));
   padding: var(--space-2-5) var(--space-3);
   border-radius: var(--radius-md);
   transition: background var(--dur-fast);
@@ -520,7 +529,7 @@
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: var(--pos-numpad-gap);
+  gap: var(--gap, var(--space-2-5));
 }
 .cart__line-qty {
   display: inline-block;
@@ -586,7 +595,7 @@
   gap: var(--space-2);
 }
 .cart__cta {
-  height: var(--pos-numpad-btn-h);
+  height: var(--height, 4rem);
   border-radius: var(--radius-lg);
   font-size: var(--text-lg);
   font-weight: 500;
@@ -610,7 +619,7 @@
    ============================================================ */
 .cat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(var(--pos-cat-card-w), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
   gap: var(--space-2-5);
   padding: var(--space-3-5);
 }
@@ -628,12 +637,12 @@
   text-align: left;
   font: inherit;
   transition:
-    transform var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease-out),
     border-color var(--dur-fast),
     box-shadow var(--dur-fast),
     background var(--dur-fast);
   position: relative;
-  min-height: var(--pos-cat-card-h);
+  min-height: 7.5rem;
   overflow: hidden;
   isolation: isolate;
 }
@@ -669,11 +678,11 @@
   100% { box-shadow: 0 0 0 14px transparent; }
 }
 .cat-tile.pulse {
-  animation: ok-tile-pulse 500ms var(--ease);
+  animation: ok-tile-pulse 500ms var(--ease-out);
   border-color: var(--brand) !important;
 }
 .cat-tile__img {
-  transition: transform var(--dur-slow) var(--ease);
+  transition: transform var(--dur-slow) var(--ease-out);
 }
 
 /* Optional product thumbnail slot · placeholder when image missing */
@@ -734,7 +743,7 @@
 /* Categoría chips horizontales */
 .cat-chips {
   display: flex;
-  gap: var(--pos-numpad-gap);
+  gap: var(--gap, var(--space-2-5));
   padding: var(--space-3) var(--space-3-5);
   overflow-x: auto;
   border-bottom: var(--border-w) solid var(--line);
@@ -827,7 +836,7 @@
   line-height: 1.55;
   padding: var(--space-5) var(--space-4);
   border-radius: var(--radius, var(--radius-lg));
-  width: var(--invoice-w);
+  width: 24rem;
   max-width: 100%;
   border: var(--border-w) solid var(--border-color, var(--line));
   box-shadow: var(--shadow-md);
@@ -842,7 +851,7 @@
     radial-gradient(circle at 6px 0, transparent 4px, var(--paper-ink) 4.5px) top left / 12px 8px repeat-x,
     radial-gradient(circle at 6px 8px, transparent 4px, var(--paper-ink) 4.5px) bottom left / 12px 8px repeat-x,
     linear-gradient(var(--paper-ink), var(--paper-ink));
-  margin: 8px 0;
+  margin: 0.5rem 0;
 }
 
 /* Use .title and .sub inside .receipt for universal composition.
@@ -915,7 +924,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
-  width: var(--invoice-w);
+  width: 24rem;
   max-width: 100%;
   position: relative;
   border-top: var(--border-w-4) solid var(--variant, var(--info));
@@ -961,7 +970,7 @@
   color: var(--ink-3);
   display: flex;
   align-items: center;
-  gap: var(--pos-numpad-gap);
+  gap: var(--gap, var(--space-2-5));
 }
 
 .kds__items {
@@ -999,7 +1008,7 @@
    Legacy BEM: */
 .kds__actions {
   display: flex;
-  gap: var(--pos-numpad-gap);
+  gap: var(--gap, var(--space-2-5));
   margin-top: var(--space-1);
 }
 .kds__actions .btn { flex: 1; }

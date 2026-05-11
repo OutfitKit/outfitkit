@@ -1,0 +1,39 @@
+/* ============================================================
+   OutfitKit · Masonry
+   ============================================================ */
+
+.masonry {
+  --width: 3;
+  --gap: var(--space-4);
+
+  column-count: var(--width);
+  column-gap: var(--gap);
+}
+
+.masonry__item {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: var(--space-4);
+  display: block;
+}
+
+.masonry--2 { --width: 2; }
+.masonry--3 { --width: 3; }
+.masonry--4 { --width: 4; }
+.masonry--5 { --width: 5; }
+
+@media (max-width: 768px) {
+  .masonry,
+  .masonry--3,
+  .masonry--4,
+  .masonry--5 { --width: 2; }
+}
+
+@media (max-width: 480px) {
+  .masonry,
+  .masonry--2,
+  .masonry--3,
+  .masonry--4,
+  .masonry--5 { --width: 1; }
+}

@@ -1,0 +1,163 @@
+/* ============================================================
+   Video player · .video
+   ============================================================ */
+.video {
+  --background: var(--media-bg);
+  --border-radius: var(--radius-lg);
+  --max-width: 100%;
+  --width: 4.5rem;
+  --height: 2rem;
+  --track-height: 0.375rem;
+  --accent-background: var(--variant, var(--color-primary));
+  --accent-color: var(--variant-contrast, var(--color-primary-contrast));
+
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  max-width: var(--max-width);
+  background: var(--background);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.video__el,
+.video__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video.contain .video__el,
+.video.contain .video__poster { object-fit: contain; }
+
+.video__poster {
+  background: var(--bg-3) center / cover no-repeat;
+  transition: opacity var(--dur-slow) var(--ease-out);
+  z-index: 2;
+}
+.video.is-playing .video__poster { opacity: 0; pointer-events: none; }
+
+.video__play-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  background: linear-gradient(180deg, var(--overlay-faint), var(--overlay-medium));
+  cursor: pointer;
+  border: none;
+  color: white;
+  transition: opacity var(--dur-slow) var(--ease-out);
+}
+.video.is-playing .video__play-overlay { opacity: 0; pointer-events: none; }
+
+.video__play-overlay::before {
+  content: "";
+  width: var(--width);
+  height: var(--width);
+  border-radius: var(--radius-circle);
+  background: var(--overlay-glass-4);
+  box-shadow: var(--shadow-lg);
+}
+.video__play-overlay::after {
+  content: "";
+  position: absolute;
+  width: 0; height: 0;
+  border-left: 1.375rem solid var(--bg);
+  border-top: 0.875rem solid transparent;
+  border-bottom: 0.875rem solid transparent;
+  margin-left: var(--space-1-5);
+}
+
+.video__controls {
+  position: absolute;
+  inset: auto 0 0 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: linear-gradient(180deg, transparent, var(--overlay-medium));
+  z-index: 4;
+  color: white;
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-out);
+}
+.video.no-controls .video__controls { display: none; }
+
+.video__btn {
+  width: var(--height);
+  height: var(--height);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.video__btn:hover { background: var(--overlay-glass-2); }
+.video__btn .video__icon--pause { display: none; }
+.video__btn .video__icon--play  { display: inline-flex; }
+.video.is-playing .video__btn .video__icon--play  { display: none; }
+.video.is-playing .video__btn .video__icon--pause { display: inline-flex; }
+
+.video__progress {
+  flex: 1;
+  position: relative;
+  height: var(--track-height);
+  background: var(--overlay-glass-2);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  overflow: hidden;
+}
+.video__progress-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 35%;
+  background: var(--accent-background);
+  border-radius: var(--radius-pill);
+  transition: width var(--dur-base) var(--ease-out);
+}
+
+.video__time {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--media-fg-soft);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  padding: 0 var(--space-1);
+}
+
+.video__volume,
+.video__fullscreen {
+  width: var(--height);
+  height: var(--height);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.video__volume:hover,
+.video__fullscreen:hover { background: var(--overlay-glass-2); }
+
+.video.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  border-radius: 0;
+  z-index: var(--z-modal);
+  aspect-ratio: auto;
+}

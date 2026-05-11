@@ -1,0 +1,174 @@
+/* ============================================================
+   OutfitKit · Tree
+   ============================================================ */
+
+.tree {
+  --indent: 1.125rem;
+  --toggle-size: 1rem;
+  --icon-size: 1rem;
+  --caret-size: 0.6875rem;
+  --children-offset: 0.6875rem;
+  --children-offset-dense: 0.5625rem;
+  --guide-width: 1px;
+
+  font-family: inherit;
+  font-size: var(--text-sm);
+  color: var(--ink);
+  padding: var(--space-1);
+}
+
+.tree__node {
+  display: flex;
+  flex-direction: column;
+}
+
+.tree__row {
+  display: grid;
+  grid-template-columns: var(--toggle-size) var(--icon-size) 1fr auto;
+  gap: var(--space-1-5);
+  align-items: center;
+  height: var(--size-sm);
+  padding: var(--space-0) var(--space-1-5);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  user-select: none;
+  color: var(--ink-2);
+  position: relative;
+}
+
+.tree__row:hover {
+  background: var(--bg-3);
+  color: var(--ink);
+}
+
+.tree__row[aria-selected="true"],
+.tree__row[aria-selected=""],
+.tree__row[data-selected="true"] {
+  background: var(--brand-soft);
+  color: var(--ink);
+}
+
+.tree__row[aria-selected="true"]::before,
+.tree__row[aria-selected=""]::before,
+.tree__row[data-selected="true"]::before {
+  content: "";
+  position: absolute;
+  left: -0.25rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
+  width: var(--border-w-2);
+  background: var(--brand);
+  border-radius: 0.125rem;
+}
+
+.tree__caret {
+  width: var(--toggle-size);
+  height: var(--toggle-size);
+  display: grid;
+  place-items: center;
+  color: var(--ink-3);
+  transition: transform var(--dur-fast), color var(--dur-fast);
+  cursor: pointer;
+}
+
+.tree__caret:hover {
+  color: var(--ink);
+}
+
+.tree__caret:focus-visible {
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: 0.125rem;
+  border-radius: var(--radius-sm);
+}
+
+.tree__caret[data-rotated="true"] {
+  transform: rotate(90deg);
+  color: var(--ink);
+}
+
+.tree__caret svg {
+  width: var(--caret-size);
+  height: var(--caret-size);
+}
+
+.tree__caret--leaf {
+  visibility: hidden;
+}
+
+.tree__icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: grid;
+  place-items: center;
+  color: var(--ink-3);
+  flex-shrink: 0;
+}
+
+.tree__icon svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.tree__icon--folder {
+  color: color-mix(in oklch, var(--brand) 65%, var(--ink-3));
+}
+
+.tree__icon--file {
+  color: var(--ink-3);
+}
+
+.tree__label {
+  font-size: var(--text-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tree__meta {
+  font-size: var(--text-2xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.tree__children {
+  margin-left: var(--children-offset);
+  padding-left: var(--space-2);
+  border-left: var(--guide-width) dashed var(--line-2);
+  display: none;
+}
+
+.tree__node[data-state="open"] > .tree__children,
+.tree__node[aria-expanded="true"] > .tree__children,
+.tree__node[aria-expanded=""] > .tree__children {
+  display: flex;
+  flex-direction: column;
+}
+
+.tree__node[data-state="open"] > .tree__row > .tree__caret,
+.tree__node[aria-expanded="true"] > .tree__row > .tree__caret,
+.tree__node[aria-expanded=""] > .tree__row > .tree__caret {
+  transform: rotate(90deg);
+  color: var(--ink);
+}
+
+.tree.dense .tree__row {
+  height: var(--avatar-2xs);
+  padding: var(--space-0) var(--space-1);
+}
+
+.tree.dense .tree__label {
+  font-size: var(--text-xs);
+}
+
+.tree.dense .tree__children {
+  margin-left: var(--children-offset-dense);
+  padding-left: var(--space-1-5);
+}
+
+.tree.dense .tree__icon--folder {
+  color: var(--warn);
+}
+
+.tree.dense .tree__icon--file {
+  color: var(--ink-3);
+}

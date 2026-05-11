@@ -1,0 +1,33 @@
+/* ============================================================
+   OutfitKit · Popover
+   ============================================================ */
+
+.popover {
+  --background: var(--bg-2);
+  --color: var(--text-color);
+  --border-color: var(--line-2);
+  --border-radius: var(--radius, var(--radius-lg));
+  --border-width: var(--border-w);
+  --shadow: var(--shadow-md);
+  --min-width: 12.5rem;
+  --max-width: 20rem;
+  --font-size: var(--text, var(--text-sm));
+  --foot-background: var(--bg-1);
+
+  position: absolute;
+  z-index: var(--z-popover);
+  min-width: var(--min-width);
+  max-width: var(--max-width);
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  font-size: var(--font-size);
+}
+
+.popover > .foot {
+  background: var(--foot-background);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  justify-content: flex-end;
+}

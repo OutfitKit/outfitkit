@@ -10,18 +10,27 @@
    ============================================================ */
 .crumbs {
   /* API canónica de override */
-  --crumbs-color:        var(--ink-3);
-  --crumbs-font-size:    var(--text-sm);
-  --crumbs-hover-bg:     var(--bg-3);
-  --crumbs-hover-color:  var(--ink);
-  --crumbs-active-color: var(--ink);
+  --color: var(--ink-3);
+  --font-size: var(--text, var(--text-sm));
+  --background-hover: var(--bg-3);
+  --color-hover: var(--ink);
+  --color-active: var(--ink);
+  --padding-y: var(--pad-y, 0.1875rem);
+  --padding-x: var(--pad-x, 0.4375rem);
+  --icon-size: var(--icon, 0.8125rem);
+  --separator-size: 0.6875rem;
+  --separator-font-size: 0.625rem;
+  --max-width: 13.75rem;
+  --more-size: var(--size, var(--size-xs));
+  --more-font-size: 0.6875rem;
+  --chip-padding-y: 0.1875rem;
 
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--border-w-2);
-  font-size: var(--crumbs-font-size);
-  color: var(--crumbs-color);
+  font-size: var(--font-size);
+  color: var(--color);
   font-weight: 500;
   min-width: 0;
 }
@@ -29,43 +38,43 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
-  padding: 3px 7px;
+  padding: var(--padding-y) var(--padding-x);
   border-radius: var(--radius-sm);
-  color: var(--crumbs-color);
+  color: var(--color);
   text-decoration: none;
   white-space: nowrap;
-  max-width: var(--crumb-max-w, 220px);
+  max-width: var(--max-width);
   overflow: hidden;
   text-overflow: ellipsis;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
 .crumbs__item:hover {
-  background: var(--crumbs-hover-bg);
-  color: var(--crumbs-hover-color);
+  background: var(--background-hover);
+  color: var(--color-hover);
 }
 .crumbs__item[aria-current="page"],
 .crumbs__item--current {
-  color: var(--crumbs-active-color);
+  color: var(--color-active);
   cursor: default;
   pointer-events: none;
 }
 
 /* Icon — use <svg class="icon"> or keep .crumbs__icon for specificity */
 .crumbs__icon {
-  width: var(--crumb-icon-size, 13px);
-  height: var(--crumb-icon-size, 13px);
+  width: var(--icon-size);
+  height: var(--icon-size);
   flex-shrink: 0;
   color: var(--ink-3);
 }
 .crumbs__sep {
   color: var(--ink-4);
-  font-size: 10px;
+  font-size: var(--separator-font-size);
   padding: var(--space-0) var(--border-w);
   user-select: none;
 }
 .crumbs__sep svg {
-  width: var(--crumb-sep-size, 11px);
-  height: var(--crumb-sep-size, 11px);
+  width: var(--separator-size);
+  height: var(--separator-size);
   display: block;
 }
 
@@ -74,28 +83,25 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--size-xs); min-width: var(--size-xs);
+  height: var(--more-size);
+  min-width: var(--more-size);
   padding: var(--space-0) var(--space-1-5);
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-sm);
   color: var(--ink-3);
   cursor: pointer;
-  font-size: 11px;
+  font-size: var(--more-font-size);
   letter-spacing: 0.05em;
 }
 .crumbs__more:hover { background: var(--bg-4); color: var(--ink); }
-
-/* Variante condensada (topbar tight) */
-.crumbs.sm { font-size: var(--text-xs); gap: var(--space-0); }
-.crumbs.sm .crumbs__item { padding: var(--border-w-2) 5px; }
 
 /* Variante "chips" — cada item es chip pill */
 .crumbs.chips .crumbs__item {
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-pill);
-  padding: 3px var(--space-2-5);
+  padding: var(--chip-padding-y) var(--space-2-5);
 }
 .crumbs.chips .crumbs__sep { display: none; }
 .crumbs.chips { gap: var(--space-1-5); }
@@ -106,13 +112,30 @@
    Top bar de aplicación (no marketing) — logo + nav links + CTAs
    ============================================================ */
 .navbar {
+  --background: var(--bg-1);
+  --border-color: var(--line);
+  --height: var(--topbar-h);
+  --padding-x: var(--page-pad);
+  --color: var(--ink);
+  --logo-size: 1.625rem;
+  --logo-radius: 0.4375rem;
+  --logo-font-size: 0.75rem;
+  --item-height: 1.875rem;
+  --caret-size: 0.6875rem;
+  --separator-height: 1.25rem;
+  --panel-width: 45rem;
+  --panel-icon-size: 1.875rem;
+  --panel-icon-glyph-size: 0.9375rem;
+  --panel-title-size: 0.8125rem;
+
   display: flex;
   align-items: center;
   gap: var(--space-4);
-  height: var(--topbar-h);
-  padding: var(--space-0) var(--page-pad);
-  background: var(--bg-1);
-  border-bottom: var(--border-w) solid var(--line);
+  height: var(--height);
+  padding: var(--space-0) var(--padding-x);
+  background: var(--background);
+  border-bottom: var(--border-w) solid var(--border-color);
+  color: var(--color);
 }
 .navbar.floating {
   margin: var(--space-3);
@@ -120,8 +143,8 @@
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-sm);
   background: color-mix(in oklch, var(--bg-1) 92%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(1rem);
+  -webkit-backdrop-filter: blur(1rem);
 }
 /* Brand — use <a class="navbar__brand"> */
 .navbar__brand {
@@ -137,12 +160,14 @@
   flex-shrink: 0;
 }
 .navbar__logo {
-  width: var(--navbar-logo-size, 26px); height: var(--navbar-logo-size, 26px);
-  border-radius: var(--navbar-logo-r, 7px);
+  width: var(--logo-size);
+  height: var(--logo-size);
+  border-radius: var(--logo-radius);
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   color: var(--brand-fg);
   display: grid; place-items: center;
-  font-size: 12px; font-weight: 700;
+  font-size: var(--logo-font-size);
+  font-weight: 700;
   letter-spacing: var(--tracking-display);
 }
 .navbar__nav {
@@ -156,7 +181,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
-  height: var(--navbar-item-h, 30px);
+  height: var(--item-height);
   padding: var(--space-0) var(--space-3);
   border-radius: var(--radius-md);
   font-size: var(--text-md);
@@ -174,7 +199,8 @@
 }
 .navbar__link svg { width: var(--icon-sm); height: var(--icon-sm); opacity: 0.75; }
 .navbar__link-caret {
-  width: 11px; height: 11px;
+  width: var(--caret-size);
+  height: var(--caret-size);
   opacity: 0.6;
   transition: transform var(--dur-fast);
 }
@@ -183,7 +209,8 @@
   transform: rotate(180deg);
 }
 .navbar__sep {
-  width: var(--border-w); height: 20px;
+  width: var(--border-w);
+  height: var(--separator-height);
   background: var(--line);
   margin: var(--space-0) var(--space-1);
 }
@@ -210,7 +237,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-4);
-  max-width: 720px;
+  max-width: var(--panel-width);
 }
 .navbar__mega-col {
   display: flex; flex-direction: column; gap: var(--space-1);
@@ -227,7 +254,7 @@
 }
 .navbar__mega-item {
   display: grid;
-  grid-template-columns: 30px 1fr;
+  grid-template-columns: var(--panel-icon-size) 1fr;
   gap: var(--space-2-5);
   align-items: start;
   padding: var(--space-2);
@@ -237,15 +264,22 @@
 }
 .navbar__mega-item:hover { background: var(--bg-3); }
 .navbar__mega-item-icon {
-  width: 30px; height: 30px;
+  width: var(--panel-icon-size);
+  height: var(--panel-icon-size);
   border-radius: var(--radius-md);
   background: var(--bg-3);
   color: var(--ink-2);
   display: grid; place-items: center;
 }
-.navbar__mega-item-icon svg { width: 15px; height: 15px; }
+.navbar__mega-item-icon svg {
+  width: var(--panel-icon-glyph-size);
+  height: var(--panel-icon-glyph-size);
+}
 /* Item title/desc — use <p class="title sm"> / <p class="meta"> */
-.navbar__mega-item-title { font-size: 13px; font-weight: 500; }
+.navbar__mega-item-title {
+  font-size: var(--panel-title-size);
+  font-weight: 500;
+}
 .navbar__mega-item-desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: var(--border-w-2); line-height: var(--leading-base); }
 
 
@@ -376,6 +410,11 @@
    4. LIST  ·  .list  — lista interactiva con icon + meta + caret
    ============================================================ */
 .list {
+  --item-padding-y: 0.6875rem;
+  --item-icon-size: 1.875rem;
+  --item-icon-glyph-size: 0.9375rem;
+  --dense-padding-y: 0.4375rem;
+
   display: flex;
   flex-direction: column;
   background: var(--bg-2);
@@ -388,7 +427,7 @@
   grid-template-columns: auto 1fr auto;
   align-items: center;
   gap: var(--space-3);
-  padding: 11px var(--space-3-5);
+  padding: var(--item-padding-y) var(--space-3-5);
   background: transparent;
   border: none;
   font: inherit;
@@ -412,18 +451,18 @@
 .list__item[data-active="true"] {
   background: color-mix(in oklch, var(--brand) 12%, transparent);
   color: var(--ink);
-  box-shadow: inset 2px 0 0 var(--brand);
+  box-shadow: inset var(--border-w-2) 0 0 var(--brand);
 }
 
 .list__icon {
-  width: var(--list-icon-size, 30px); height: var(--list-icon-size, 30px);
+  width: var(--list-icon-size, var(--item-icon-size)); height: var(--list-icon-size, var(--item-icon-size));
   border-radius: var(--radius-md);
   background: var(--bg-3);
   color: var(--ink-2);
   display: grid; place-items: center;
   flex-shrink: 0;
 }
-.list__icon svg { width: 15px; height: 15px; }
+.list__icon svg { width: var(--item-icon-glyph-size); height: var(--item-icon-glyph-size); }
 .list__icon--brand  { background: var(--brand-soft);  color: var(--brand-3); }
 .list__icon--leaf   { background: var(--leaf-soft);   color: var(--leaf); }
 .list__icon--warn   { background: var(--warn-soft);   color: var(--warn); }
@@ -487,7 +526,7 @@
 }
 .list.separated .list__item + .list__item { border-top: none; }
 
-.list.dense .list__item { padding: 7px var(--space-3); gap: var(--space-2-5); }
+.list.dense .list__item { padding: var(--dense-padding-y) var(--space-3); gap: var(--space-2-5); }
 .list.dense .list__icon { width: var(--avatar-2xs); height: var(--avatar-2xs); }
 .list.dense .list__icon svg { width: var(--icon-xs); height: var(--icon-xs); }
 .list.dense .list__title { font-size: var(--text-sm); }
@@ -497,10 +536,17 @@
    5. TREE  ·  .tree  — árbol jerárquico (file-tree, org-tree)
    ============================================================ */
 .tree {
+  --indent: 1.125rem;
+  --toggle-size: 1rem;
+  --icon-size: 1rem;
+  --caret-size: 0.6875rem;
+  --children-offset: 0.6875rem;
+  --children-offset-dense: 0.5625rem;
+  --guide-width: 1px;
+
   font-family: inherit;
   font-size: var(--text-sm);
   color: var(--ink);
-  --tree-indent: var(--tree-indent, 18px);
   padding: var(--space-1);
 }
 .tree__node {
@@ -509,7 +555,7 @@
 }
 .tree__row {
   display: grid;
-  grid-template-columns: 16px 16px 1fr auto;
+  grid-template-columns: var(--toggle-size) var(--icon-size) 1fr auto;
   gap: var(--space-1-5);
   align-items: center;
   height: var(--size-sm);
@@ -532,13 +578,16 @@
 .tree__row[data-selected="true"]::before {
   content: "";
   position: absolute;
-  left: -4px; top: 4px; bottom: 4px;
+  left: -0.25rem;
+  top: 0.25rem;
+  bottom: 0.25rem;
   width: var(--border-w-2);
   background: var(--brand);
-  border-radius: 2px;
+  border-radius: 0.125rem;
 }
 .tree__caret {
-  width: 16px; height: 16px;
+  width: var(--toggle-size);
+  height: var(--toggle-size);
   display: grid; place-items: center;
   color: var(--ink-3);
   transition: transform var(--dur-fast), color var(--dur-fast);
@@ -547,17 +596,21 @@
 .tree__caret:hover { color: var(--ink); }
 .tree__caret:focus-visible {
   outline: var(--border-w-2) solid var(--brand);
-  outline-offset: 2px;
+  outline-offset: 0.125rem;
   border-radius: var(--radius-sm);
 }
 .tree__caret[data-rotated="true"] {
   transform: rotate(90deg);
   color: var(--ink);
 }
-.tree__caret svg { width: var(--tree-caret-size, 11px); height: var(--tree-caret-size, 11px); }
+.tree__caret svg {
+  width: var(--caret-size);
+  height: var(--caret-size);
+}
 .tree__caret--leaf { visibility: hidden; }
 .tree__icon {
-  width: var(--tree-icon-size, 16px); height: var(--tree-icon-size, 16px);
+  width: var(--icon-size);
+  height: var(--icon-size);
   display: grid; place-items: center;
   color: var(--ink-3);
   flex-shrink: 0;
@@ -582,9 +635,9 @@
 
 /* Children (recursive level — guías verticales) */
 .tree__children {
-  margin-left: 11px;
+  margin-left: var(--children-offset);
   padding-left: var(--space-2);
-  border-left: 1px dashed var(--line-2);
+  border-left: var(--guide-width) dashed var(--line-2);
   display: none;
 }
 .tree__node[data-state="open"] > .tree__children,
@@ -603,7 +656,10 @@
 /* Variante densa (file-tree IDE) */
 .tree.dense .tree__row { height: var(--avatar-2xs); padding: var(--space-0) var(--space-1); }
 .tree.dense .tree__label { font-size: var(--text-xs); }
-.tree.dense .tree__children { margin-left: 9px; padding-left: var(--space-1-5); }
+.tree.dense .tree__children {
+  margin-left: var(--children-offset-dense);
+  padding-left: var(--space-1-5);
+}
 .tree.dense .tree__icon--folder { color: var(--warn); }
 .tree.dense .tree__icon--file   { color: var(--ink-3); }
 
@@ -614,6 +670,12 @@
 
 /* Segmented progress bar */
 .stepper-progress {
+  --bar-height: 0.25rem;
+  --bar-radius: 0.125rem;
+  --compact-num-font-size: 0.6875rem;
+  --card-num-font-size: 0.8125rem;
+  --card-status-padding-y: 0.1875rem;
+
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -623,13 +685,13 @@
   flex: 1;
   display: flex;
   gap: var(--space-1);
-  height: 4px;
+  height: var(--bar-height);
 }
 .stepper-progress__seg {
   flex: 1;
   height: 100%;
   background: var(--bg-3);
-  border-radius: 2px;
+  border-radius: var(--bar-radius);
   transition: background var(--dur-base);
 }
 .stepper-progress__seg--done { background: var(--brand); }
@@ -707,7 +769,7 @@
   background: var(--brand);
   color: var(--brand-fg);
   display: grid; place-items: center;
-  font-size: 11px; font-weight: 700;
+  font-size: var(--compact-num-font-size); font-weight: 700;
   font-variant-numeric: tabular-nums;
   flex-shrink: 0;
 }
@@ -750,7 +812,7 @@
   color: var(--ink-3);
   display: grid; place-items: center;
   font-weight: 600;
-  font-size: 13px;
+  font-size: var(--card-num-font-size);
   font-variant-numeric: tabular-nums;
 }
 .stepper-card__title { font-size: var(--text-md); font-weight: 500; color: var(--ink); }
@@ -761,7 +823,7 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--ink-3);
-  padding: 3px var(--space-2);
+  padding: var(--card-status-padding-y) var(--space-2);
   background: var(--bg-3);
   border-radius: var(--radius-pill);
 }
@@ -790,435 +852,5 @@
 .stepper-card[data-state="error"] .stepper-card__status { background: var(--danger-soft); color: var(--danger); }
 
 
-/* ============================================================
-   7. MENUBAR  ·  .menubar
-   Desktop app menu bar (File / Edit / View / Help…)
-   ============================================================ */
-.menubar {
-  /* API canónica de override */
-  --menubar-background:   var(--bg-1);
-  --menubar-border-color: var(--line);
-  --menubar-color:        var(--ink-2);
-  --menubar-height:       var(--mbar-h, 32px);
-  --menubar-panel-min-w:  var(--mbar-panel-min-w, 220px);
-
-  --_mbar-h:             var(--menubar-height);
-  --_mbar-trigger-pad-x: var(--mbar-pad-x, 10px);
-  --_mbar-panel-min-w:   var(--menubar-panel-min-w);
-
-  position: relative;
-  display: flex;
-  align-items: stretch;
-  gap: var(--space-0);
-  height: var(--_mbar-h);
-  padding: var(--space-0) var(--space-1-5);
-  background: var(--menubar-background);
-  border-bottom: var(--border-w) solid var(--menubar-border-color);
-  font-size: var(--text-sm);
-  color: var(--menubar-color);
-  user-select: none;
-  z-index: var(--z-sticky);
-}
-
-.menubar__app-name {
-  display: inline-flex;
-  align-items: center;
-  padding: var(--space-0) var(--space-3) var(--space-0) var(--space-2);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--text-md);
-  letter-spacing: var(--tracking-tight);
-  color: var(--ink);
-  flex-shrink: 0;
-}
-
-.menubar__menu {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  height: 100%;
-  padding: var(--space-0) var(--_mbar-trigger-pad-x);
-  background: transparent;
-  border: none;
-  font: inherit;
-  font-size: var(--text-sm);
-  color: var(--ink-2);
-  cursor: pointer;
-  white-space: nowrap;
-  border-radius: var(--radius-sm);
-  transition: background var(--dur-fast), color var(--dur-fast);
-}
-.menubar__menu:hover {
-  background: var(--bg-3);
-  color: var(--ink);
-}
-.menubar__menu--active,
-.menubar__menu.is-open,
-.menubar__menu[aria-expanded="true"],
-.menubar__menu[aria-expanded=""] {
-  background: var(--bg-3);
-  color: var(--ink);
-}
-
-.menubar__menu-shortcut {
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
-  margin-left: var(--space-1-5);
-  font-family: var(--font-mono);
-  letter-spacing: var(--tracking-mono);
-}
-
-.menubar__divider {
-  width: var(--border-w);
-  margin: var(--space-1-5) var(--space-1);
-  background: var(--line);
-  align-self: stretch;
-  flex-shrink: 0;
-}
-
-/* Trailing meta — use <span class="meta"> or keep .menubar__version */
-.menubar__version,
-.menubar__meta {
-  margin-left: auto;
-  padding: var(--space-0) var(--space-2-5);
-  align-self: center;
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
-  font-family: var(--font-mono);
-  letter-spacing: var(--tracking-mono);
-}
-
-/* Dropdown panel anchored to its trigger */
-.menubar__panel {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: var(--z-tooltip);
-  margin-top: var(--border-w-2);
-  min-width: var(--_mbar-panel-min-w);
-  padding: var(--space-1);
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line-2);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  gap: var(--border-w);
-  font-size: var(--text-sm);
-  color: var(--ink);
-}
-
-.menubar__item {
-  display: grid;
-  grid-template-columns: 16px 1fr auto auto;
-  gap: var(--space-2-5);
-  align-items: center;
-  padding: var(--space-1-5) var(--space-2-5);
-  border-radius: var(--radius-sm);
-  background: transparent;
-  border: none;
-  font: inherit;
-  font-size: var(--text-sm);
-  text-align: left;
-  width: 100%;
-  cursor: pointer;
-  color: var(--ink);
-  text-decoration: none;
-  transition: background var(--dur-fast);
-}
-.menubar__item:hover {
-  background: var(--bg-3);
-}
-.menubar__item[aria-disabled="true"],
-.menubar__item[disabled] {
-  color: var(--ink-4);
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.menubar__item-icon {
-  width: 16px; height: 16px;
-  display: grid; place-items: center;
-  color: var(--ink-3);
-  flex-shrink: 0;
-}
-.menubar__item-icon svg { width: 13px; height: 13px; }
-
-.menubar__item-shortcut {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
-  letter-spacing: var(--tracking-mono);
-  font-variant-numeric: tabular-nums;
-}
-
-.menubar__separator {
-  height: var(--border-w);
-  margin: var(--space-1) var(--space-1-5);
-  background: var(--line);
-}
-
-.menubar__submenu {
-  width: var(--icon-xs); height: var(--icon-xs);
-  color: var(--ink-3);
-  display: grid; place-items: center;
-  flex-shrink: 0;
-}
-.menubar__submenu svg { width: var(--icon-2xs); height: var(--icon-2xs); }
-
-/* Variant: compact */
-.menubar.compact {
-  --_mbar-h: var(--mbar-h-compact, 26px);
-  --_mbar-trigger-pad-x: 8px;
-  font-size: var(--text-xs);
-}
-.menubar.compact .menubar__app-name { font-size: var(--text-sm); padding: var(--space-0) var(--space-2-5) var(--space-0) var(--space-1-5); }
-.menubar.compact .menubar__menu { font-size: var(--text-xs); }
-.menubar.compact .menubar__item { padding: 5px var(--space-2); }
-
-/* Variant: floating (macOS-like) */
-.menubar.floating {
-  margin: var(--space-2);
-  border: var(--border-w) solid var(--line-2);
-  border-bottom: var(--border-w) solid var(--line-2);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  background: color-mix(in oklch, var(--bg-1) 90%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-}
-
-.menubar.floating .menubar__menu[aria-current="page"],
-.menubar.floating .menubar__menu.is-active,
-.menubar.floating .menubar__menu.is-open,
-.menubar.floating .menubar__menu[aria-expanded="true"],
-.menubar.floating .menubar__menu[aria-expanded=""] {
-  background: color-mix(in oklch, var(--brand) 14%, transparent);
-  color: var(--ink);
-  box-shadow: inset 0 -2px 0 var(--brand);
-}
-
-
-/* ============================================================
-   8. SCHEDULER  ·  .scheduler
-   ============================================================ */
-.scheduler {
-  --_sch-row-h: 40px;
-  --_sch-time-col-w: 60px;
-  --_sch-days: 7;
-  --_sch-hours: 24;
-  --_sch-cell-line: var(--line);
-  --_sch-cell-line-soft: color-mix(in oklch, var(--line) 55%, transparent);
-
-  display: grid;
-  grid-template-columns: var(--_sch-time-col-w) 1fr;
-  grid-template-rows: auto 1fr;
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  font-size: var(--text-sm);
-  color: var(--ink);
-  position: relative;
-  min-height: 0;
-}
-
-/* Header row — use <div class="head"> or .scheduler__head */
-.scheduler__head {
-  grid-column: 1 / -1;
-  display: grid;
-  grid-template-columns: var(--_sch-time-col-w) repeat(var(--_sch-days), 1fr);
-  background: var(--bg-1);
-  border-bottom: var(--border-w) solid var(--line);
-  position: sticky;
-  top: 0;
-  z-index: 2;
-}
-.scheduler__head::before {
-  content: "";
-  border-right: var(--border-w) solid var(--line);
-}
-
-.scheduler__day {
-  padding: var(--space-2) var(--space-2-5) var(--space-2-5);
-  border-right: var(--border-w) solid var(--line);
-  font-size: var(--text-2xs);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  font-weight: 500;
-  color: var(--ink-3);
-  display: flex;
-  flex-direction: column;
-  gap: var(--border-w-2);
-  align-items: flex-start;
-}
-.scheduler__day:last-child { border-right: none; }
-.scheduler__day-name { font-size: var(--text-2xs); color: var(--ink-3); }
-.scheduler__day-date {
-  font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: 600;
-  color: var(--ink);
-  text-transform: none;
-  letter-spacing: var(--tracking-tight);
-}
-.scheduler__day--today .scheduler__day-date { color: var(--brand); }
-.scheduler__day--today {
-  background: color-mix(in oklch, var(--brand) 6%, var(--bg-1));
-}
-
-.scheduler__time-col {
-  display: grid;
-  grid-auto-rows: var(--_sch-row-h);
-  background: var(--bg-1);
-  border-right: var(--border-w) solid var(--line);
-}
-.scheduler__hour-label {
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
-  text-align: right;
-  padding: var(--border-w-2) var(--space-2) var(--space-0) var(--space-0);
-  font-variant-numeric: tabular-nums;
-  border-bottom: var(--border-w) solid var(--line);
-  line-height: var(--leading-flat);
-}
-
-.scheduler__grid {
-  display: grid;
-  grid-template-columns: repeat(var(--_sch-days), 1fr);
-  position: relative;
-  min-height: 0;
-}
-.scheduler__cell {
-  border-right: var(--border-w) solid var(--line);
-  position: relative;
-  min-height: var(--_sch-row-h);
-  cursor: pointer;
-  background-image:
-    linear-gradient(to bottom,
-      transparent 0,
-      transparent calc(var(--_sch-row-h) - 1px),
-      var(--_sch-cell-line) calc(var(--_sch-row-h) - 1px),
-      var(--_sch-cell-line) var(--_sch-row-h)),
-    repeating-linear-gradient(to bottom,
-      transparent 0,
-      transparent calc(var(--_sch-row-h) / 4 - 1px),
-      var(--_sch-cell-line-soft) calc(var(--_sch-row-h) / 4 - 1px),
-      var(--_sch-cell-line-soft) calc(var(--_sch-row-h) / 4));
-  background-size: 100% var(--_sch-row-h), 100% var(--_sch-row-h);
-  transition: background-color var(--dur-fast);
-}
-.scheduler__cell:last-child { border-right: none; }
-.scheduler__cell:hover { background-color: color-mix(in oklch, var(--brand) 4%, transparent); }
-.scheduler__cell.is-selecting {
-  background-color: color-mix(in oklch, var(--brand) 18%, transparent);
-}
-.scheduler__cell.is-busy {
-  background-color: color-mix(in oklch, var(--ink-3) 8%, transparent);
-}
-.scheduler__cell.is-blocked {
-  background-image:
-    repeating-linear-gradient(135deg,
-      var(--bg-3) 0,
-      var(--bg-3) 6px,
-      var(--bg-2) 6px,
-      var(--bg-2) 12px);
-  cursor: not-allowed;
-}
-
-.scheduler__appointment {
-  position: absolute;
-  left: 4px;
-  right: 4px;
-  background: color-mix(in oklch, var(--brand) 22%, var(--bg-2));
-  border-left: 2px solid var(--brand);
-  border-radius: var(--radius-sm);
-  padding: var(--space-1) var(--space-2);
-  font-size: var(--text-xs);
-  color: var(--ink);
-  cursor: pointer;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: var(--border-w);
-  transition: background var(--dur-fast), transform var(--dur-fast);
-  z-index: 1;
-}
-.scheduler__appointment:hover {
-  background: color-mix(in oklch, var(--brand) 30%, var(--bg-2));
-  transform: translateY(-1px);
-}
-
-.scheduler__appointment-title {
-  font-weight: 500;
-  font-size: var(--text-xs);
-  color: var(--ink);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.25;
-}
-.scheduler__appointment-time {
-  font-size: var(--text-2xs);
-  color: var(--ink-2);
-  font-variant-numeric: tabular-nums;
-  line-height: 1.2;
-}
-.scheduler__appointment-attendee {
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.2;
-}
-
-.scheduler__appointment--brand {
-  background: color-mix(in oklch, var(--brand) 22%, var(--bg-2));
-  border-left-color: var(--brand);
-}
-.scheduler__appointment--leaf {
-  background: color-mix(in oklch, var(--leaf) 22%, var(--bg-2));
-  border-left-color: var(--leaf);
-}
-.scheduler__appointment--warn {
-  background: color-mix(in oklch, var(--warn) 22%, var(--bg-2));
-  border-left-color: var(--warn);
-}
-.scheduler__appointment--danger {
-  background: color-mix(in oklch, var(--danger) 22%, var(--bg-2));
-  border-left-color: var(--danger);
-}
-.scheduler__appointment--info {
-  background: color-mix(in oklch, var(--info) 22%, var(--bg-2));
-  border-left-color: var(--info);
-}
-
-.scheduler__now {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 0;
-  border-top: var(--border-w) solid var(--danger);
-  z-index: 3;
-  pointer-events: none;
-}
-.scheduler__now::before {
-  content: "";
-  position: absolute;
-  left: -4px; top: -4px;
-  width: 8px; height: 8px;
-  border-radius: var(--radius-circle);
-  background: var(--danger);
-  box-shadow: 0 0 0 3px color-mix(in oklch, var(--danger) 28%, transparent);
-}
-
-.scheduler.sm { --_sch-row-h: 30px; }
-.scheduler.lg { --_sch-row-h: 60px; }
-
-.scheduler.day {
-  --_sch-days: 1;
-  --_sch-row-h: 64px;
-}
-.scheduler.day .scheduler__head { grid-template-columns: var(--_sch-time-col-w) 1fr; }
-.scheduler.day .scheduler__grid { grid-template-columns: 1fr; }
+@import "./menubar.css";
+@import "./scheduler.css";

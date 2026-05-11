@@ -12,7 +12,7 @@ The 30-minute read for a new maintainer. After this, jump to:
 
 Three independent things that ship together:
 
-1. **A CSS component library** — ~260 semantic blocks (BEM-light) built on CSS custom properties (`--ok-*` tokens). One `<link>` and you have buttons, cards, modals, datatables, charts, POS, calendar, kanban, the works. **No JavaScript required.**
+1. **A CSS component library** — semantic blocks built on global CSS custom properties and composable modifiers. Usage is `component + variant + size + style`, e.g. `<button class="btn primary lg outline">`. **No JavaScript required.**
 2. **A Jinja2 macro package** (`outfitkit` on PyPI) — every component has a dual-mode macro: works as `{% from "ui/button.jinja" import button %}` (vanilla Jinja2) AND as `<Button label="…" />` (JinjaX) from the same file. Optional layer for Python backends.
 3. **A live showcase** at <https://outfitkit.github.io/outfitkit/> — every component with Preview / HTML / Jinja / JinjaX / Usage tabs, plus 90+ app demo pages. Runs on staticjinja, deployed to GitHub Pages.
 
@@ -25,17 +25,17 @@ The CSS bundle is the **fundamental** layer. The macros are a convenience for Py
 ```
 outfitkit/
 ├── css/                ← THE LIBRARY (CSS source)
-│   ├── tokens.css      ← --ok-* design tokens (colours, spacing, radii, themes)
+│   ├── tokens.css      ← global scales and shared tokens
 │   ├── base.css        ← reset + typography
-│   ├── utilities.css   ← .ok-flex, .ok-gap-*, .ok-text-*, etc.
+│   ├── utilities.css   ← global utility classes
 │   ├── outfitkit.css   ← entry point — @imports everything in order
 │   ├── components/     ← 44 CSS files, one per family (button, card, table, ...)
 │   └── themes/         ← 5 opt-in templates (default, corporate, glass, glass-mono, mono)
 │
 ├── dist/               ← BUILD OUTPUT (CI-only; never edit by hand)
-│   ├── outfitkit.css         ← unprefixed bundle, default
+│   ├── outfitkit.css         ← canonical unprefixed bundle, default
 │   ├── outfitkit.min.css
-│   ├── outfitkit.ok.css      ← ok-prefixed bundle, opt-in
+│   ├── outfitkit.ok.css      ← legacy prefixed compatibility snapshot
 │   └── outfitkit.ok.min.css
 │
 ├── showcase/           ← THE PYPI PACKAGE + THE DEMO SITE
@@ -86,7 +86,7 @@ Each maps to a **different artifact** with a **different trigger**. They don't d
               ┌─────────────────────────────────────┐
               │  css-build.yml                      │  → commits dist/ to the tag
               │  bundle CSS, minify, generate       │    jsDelivr serves
-              │  prefixed AND unprefixed variants   │    @v1.4.0/dist/*
+              │  canonical bundle + legacy snapshot │    @v2.0.0/dist/*
               └─────────────────────────────────────┘
 
                 ┌─────────────────────────────────────────┐
@@ -129,7 +129,14 @@ See [`MAINTAINING.md`](./MAINTAINING.md#hot-paths) for which files are critical 
 
 ## Design tokens & themes — at a glance
 
-`css/tokens.css` defines ~140 CSS custom properties under `:root, [data-theme="erplora"]` (the dark default). It also defines the light variant under `[data-theme="erplora-light"]`.
+`css/tokens.css` defines the global contract under `:root, [data-theme="erplora"]` (dark default) and `[data-theme="erplora-light"]`.
+
+Rules:
+
+- `tokens.css` stores only global scales and shared primitives.
+- Component-private dimensions do not live in `tokens.css`.
+- Component roots expose local generic vars such as `--background`, `--color`, `--width`, `--height`, `--padding-x`, `--padding-y`, `--font-size`, `--gap`.
+- Global modifiers in `css/modifiers.css` provide `--variant*` and `--size` / `--pad-*` / `--text` / `--icon` / `--radius`.
 
 Themes live in `css/themes/<name>.css` and override a subset of those tokens, gated by:
 
@@ -153,7 +160,7 @@ Every macro file under `showcase/src/outfitkit/templates/ui/<name>.jinja` follow
 
 {% macro button(label, variant="primary", size="md", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<button class="{{ ok_prefix }}btn {{ ok_prefix }}btn--{{ variant }}{% if size != 'md' %} {{ ok_prefix }}btn--{{ size }}{% endif %}"
+<button class="btn {{ variant }} {{ size }}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ label }}
 </button>
@@ -168,7 +175,7 @@ Three pieces:
 2. **`{% macro %}`** — the real Jinja2 macro, importable by anyone.
 3. **`{% if X is defined %}` shim** — the magic that makes both modes work from the same file. JinjaX injects the props before evaluating the body, so the `if` is true and the macro runs. Vanilla `{% from %}` doesn't define those names → the `if` is false → only the macro is exposed for callers.
 
-The `{{ ok_prefix }}` placeholder is a Jinja global registered by `outfitkit.register_globals(env)`. Default is `""` (no prefix). Consumers loading the prefixed bundle pass `ok_prefix="ok-"`. See [`ADDING-A-COMPONENT.md`](./ADDING-A-COMPONENT.md).
+`register_globals(env)` is retained as a compatibility no-op. OutfitKit 2.x macros emit canonical unprefixed classes directly. The `ok-` bundle exists only as a legacy snapshot for older consumers and is not the target authoring model anymore.
 
 ---
 
@@ -216,9 +223,9 @@ The whole stack picks "boring, declarative, no build" wherever it can. That's th
    ```bash
    cd showcase
    source .venv/bin/activate    # or create one with `python3 -m venv .venv && pip install -e .[showcase]`
-   python build.py
-   python -m http.server 8000 -d build
-   open http://localhost:8000
+   OUTFITKIT_BASE=/outfitkit OUTFITKIT_CSS=local python build.py
+   python -m http.server 8000 -d /tmp/outfitkit-preview
+   open http://localhost:8000/outfitkit/
    ```
 4. Click around, try every theme, try every component.
 5. Read [`ADDING-A-COMPONENT.md`](./ADDING-A-COMPONENT.md) and add a throwaway component as a smoke test.

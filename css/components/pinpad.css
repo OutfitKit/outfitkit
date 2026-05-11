@@ -1,0 +1,52 @@
+/* ============================================================
+   OutfitKit · Pinpad
+   Numeric keypad for POS and unlock flows
+   ============================================================ */
+
+.pinpad {
+  --background: var(--bg-1);
+  --border-color: var(--line);
+  --border-radius: var(--radius-lg);
+  --button-background: var(--bg-2);
+
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-3);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.pinpad__key {
+  display: grid;
+  place-items: center;
+  width: var(--avatar-xl);
+  height: var(--avatar-xl);
+  background: var(--button-background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background var(--dur-fast), transform var(--dur-fast), border-color var(--dur-fast);
+}
+
+.pinpad__key:hover {
+  background: var(--bg-3);
+  border-color: var(--line-2);
+}
+
+.pinpad__key:active {
+  background: var(--bg-4);
+  transform: scale(0.97);
+}
+
+.pinpad__key--action {
+  background: var(--bg-3);
+  color: var(--ink-2);
+  font-size: var(--text-lg);
+}

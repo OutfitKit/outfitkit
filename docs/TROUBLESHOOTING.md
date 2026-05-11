@@ -15,20 +15,20 @@ Real bugs we've hit, with the symptom on the left and the fix on the right. Add 
 7. [jsDelivr keeps serving the old CSS bundle](#7-jsdelivr-cache)
 8. [Tests pass locally but fail in CI](#8-tests-fail-in-ci)
 9. [`build.py` errors with "ModuleNotFoundError: build"](#9-build-py-shadowing)
-10. [Macros emit `class="ok-btn"` even though I asked for unprefixed](#10-prefix-mismatch)
+10. [Legacy prefixed bundle mismatch](#10-prefix-mismatch)
 
 ---
 
 ## 1. The CSS doesn't apply
 
-**Symptom**: you write `<button class="btn btn--primary">` and the button has no styling, or some styles but not others.
+**Symptom**: you write `<button class="btn primary">` and the button has no styling, or some styles but not others.
 
 **Diagnose**:
 1. Open DevTools → Elements → check the `class` attribute on the rendered HTML matches the CSS bundle's class names. Default bundle = `btn`. Prefixed bundle = `ok-btn`.
 2. Network tab → confirm `outfitkit.min.css` (or `.ok.min.css`) actually loaded (status 200).
-3. If using macros: confirm `register_globals(env, ok_prefix="…")` matches the bundle. See [#10](#10-prefix-mismatch).
+3. If using macros from OutfitKit 2.x: they always emit unprefixed classes. If you loaded a legacy `ok-` bundle, that mismatch is the bug. See [#10](#10-prefix-mismatch).
 
-**Common cause**: prefix mismatch. The most common case is loading `outfitkit.ok.min.css` (prefixed) but having `register_globals(env)` (unprefixed default), so macros emit `class="btn"` but CSS only has `.ok-btn`.
+**Common cause**: loading the legacy prefixed bundle `outfitkit.ok.min.css` while rendering canonical HTML (`class="btn"`), or the inverse.
 
 **Fix**: pick one and align both. See [`PUBLISHING.md`](./PUBLISHING.md#which-bundle-do-i-use).
 
@@ -40,7 +40,7 @@ Real bugs we've hit, with the symptom on the left and the fix on the right. Add 
 
 **Diagnose**:
 1. DevTools → Console → run `document.documentElement.getAttribute('data-theme')` — should be `erplora` or `erplora-light`. If it's `null` or `auto` or anything else, the runtime didn't apply.
-2. Run `getComputedStyle(document.documentElement).getPropertyValue('--ok-brand')`. If it stays `#E8552A` regardless of which template is "active", the theme CSS file didn't load.
+2. Run `getComputedStyle(document.documentElement).getPropertyValue('--brand')`. If it stays `#E8552A` regardless of which template is "active", the theme CSS file didn't load.
 3. Run `Array.from(document.querySelectorAll('link[href*="themes/"]')).map(l => l.href)` — should list 5 theme CSS files.
 
 **Common causes & fixes**:
@@ -171,25 +171,20 @@ cd /tmp && python3 -m build --outdir /Users/ioan/Desktop/code/ERPlora/outfitkit/
 
 ## 10. Prefix mismatch
 
-**Symptom**: macros emit `class="ok-btn ok-btn--primary"` but the CSS bundle is `outfitkit.min.css` (unprefixed) → buttons unstyled. Or the inverse.
+**Symptom**: the page renders `class="btn primary"` but the loaded CSS bundle is `outfitkit.ok.min.css`, or the page renders `class="ok-btn ok-primary"` from a frozen legacy template while the loaded CSS is `outfitkit.min.css`.
 
-**The contract**: the macro `ok_prefix` global and the loaded CSS bundle MUST agree.
+**The contract**: OutfitKit 2.x has one canonical macro API and one canonical bundle: unprefixed.
 
-**Default**: no prefix everywhere.
+**Current default**: no prefix everywhere.
 ```python
-register_globals(env)                  # ok_prefix=""
+register_globals(env)
 ctx = {"css": css_url()}               # → outfitkit.min.css (unprefixed)
 ```
-Result: `<button class="btn btn--primary">`.
+Result: `<button class="btn primary">`.
 
-**Opt-in**: prefix everywhere.
-```python
-register_globals(env, ok_prefix="ok-")
-ctx = {"css": css_url(prefix="ok-")}   # → outfitkit.ok.min.css (prefixed)
-```
-Result: `<button class="ok-btn ok-btn--primary">`.
+**Legacy mode**: if you still need `ok-`, use the frozen legacy bundle and matching legacy templates/package version. That is not configurable from `register_globals()` in 2.x.
 
-**Tip**: print `env.globals.get('ok_prefix')` at startup to confirm. The default is `""`, so silence = unprefixed.
+**Tip**: inspect the rendered HTML first. If it says `btn`, load the canonical bundle. If it says `ok-btn`, you are on legacy markup and must keep the legacy bundle too.
 
 ---
 

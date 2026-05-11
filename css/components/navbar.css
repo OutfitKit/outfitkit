@@ -3,26 +3,41 @@
    Sticky horizontal navigation bar for marketing/public sites.
    Composable: <Navbar> wraps slots filled by the consumer
    (brand, nav, end actions, mobile menu).
+
+   Variantes globales soportadas (mismo contrato que .btn / .card):
+     <nav class="navbar primary">…</nav>
+     <nav class="navbar danger sticky">…</nav>
+   Consume `--variant`, `--variant-contrast`, `--variant-shade`.
    ============================================================ */
 
 .navbar {
-  /* API canónica de override */
-  --background:          color-mix(in oklch, var(--bg) 88%, transparent);
-  --navbar-border-color: var(--line);
-  --navbar-padding:      12px clamp(16px, 4vw, 32px);
-  --navbar-min-height:   var(--avatar-xl);
+  /* API canónica de override.
+     Color del navbar sale del contrato global de variantes.
+     Si no hay variante, cae al fondo glass por defecto. */
+  --background: var(--variant, color-mix(in oklch, var(--bg) 88%, transparent));
+  --color: var(--variant-contrast, var(--ink));
+  --border-color: var(--variant-shade, var(--line));
+  --padding-x: var(--page-pad);
+  --padding-y: var(--pad-lg-y);
+  --min-height: var(--topbar-h);
+  --link-padding-x: var(--pad-sm-x);
+  --link-padding-y: var(--pad-sm-y);
+  --button-size: var(--size-md);
+  --button-line-width: 1rem;
+  --button-line-height: 0.125rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  padding: var(--navbar-padding);
+  padding: var(--padding-y) var(--padding-x);
   background: var(--background);
+  color: var(--color);
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  border-bottom: var(--border-w) solid var(--navbar-border-color);
+  border-bottom: var(--border-w) solid var(--border-color);
   z-index: 50;
-  min-height: var(--navbar-min-height);
+  min-height: var(--min-height);
 }
 
 .navbar.sticky {
@@ -36,14 +51,18 @@
   align-items: center;
   gap: var(--space-2);
   text-decoration: none;
-  color: var(--ink);
+  color: var(--color);
   font-family: var(--font-display);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   font-size: var(--text-lg);
   letter-spacing: var(--tracking-snug);
   flex-shrink: 0;
 }
-.navbar-brand img { width: var(--size-sm); height: var(--size-sm); }
+
+.navbar-brand img {
+  width: var(--size-sm);
+  height: var(--size-sm);
+}
 
 /* Nav links group (desktop) */
 .navbar-nav {
@@ -53,22 +72,26 @@
   flex: 1;
   justify-content: center;
 }
+
 @media (min-width: 768px) {
-  .navbar-nav { display: flex; }
+  .navbar-nav {
+    display: flex;
+  }
 }
 
 .navbar-link {
-  color: var(--ink-2);
+  color: color-mix(in oklch, var(--color) 80%, transparent);
   text-decoration: none;
-  padding: 6px 12px;
+  padding: var(--link-padding-y) var(--link-padding-x);
   border-radius: var(--radius-md);
   font-size: var(--text-base);
-  font-weight: 500;
+  font-weight: var(--weight-medium);
   transition: color var(--dur-fast), background var(--dur-fast);
 }
+
 .navbar-link:hover {
-  color: var(--ink);
-  background: var(--bg-1);
+  color: var(--color);
+  background: color-mix(in oklch, var(--variant, var(--ink)) 12%, transparent);
 }
 
 /* End actions — use <div class="actions"> or .navbar-end */
@@ -84,27 +107,36 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: var(--button-size);
+  height: var(--button-size);
   border: none;
   background: transparent;
   border-radius: var(--radius-md);
   cursor: pointer;
-  color: var(--ink);
+  color: var(--color);
 }
-.menu-button:hover { background: var(--bg-1); }
-@media (min-width: 768px) { .menu-button { display: none; } }
+
+.menu-button:hover {
+  background: color-mix(in oklch, var(--variant, var(--ink)) 12%, transparent);
+}
+
+@media (min-width: 768px) {
+  .menu-button {
+    display: none;
+  }
+}
 
 .menu-button-lines {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  width: 18px;
+  width: var(--button-line-width);
 }
+
 .menu-button-line {
-  height: 2px;
+  height: var(--button-line-height);
   background: currentColor;
-  border-radius: 2px;
+  border-radius: var(--radius-xs);
   transition: transform var(--dur-base);
 }
 
@@ -113,12 +145,16 @@
   display: none;
   flex-direction: column;
   gap: var(--space-1);
-  padding: 12px clamp(16px, 4vw, 32px);
-  background: color-mix(in oklch, var(--bg) 92%, transparent);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border-bottom: var(--border-w) solid var(--line);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--variant, color-mix(in oklch, var(--bg) 92%, transparent));
+  color: var(--variant-contrast, var(--ink));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border-bottom: var(--border-w) solid var(--variant-shade, var(--line));
 }
+
 @media (min-width: 768px) {
-  .navbar-mobile { display: none !important; }
+  .navbar-mobile {
+    display: none !important;
+  }
 }

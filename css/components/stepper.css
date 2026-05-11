@@ -1,0 +1,124 @@
+/* ============================================================
+   OutfitKit · Stepper
+   Wizard steps, horizontal and vertical
+   ============================================================ */
+
+.stepper {
+  --color: var(--variant, var(--color-primary));
+  --color-contrast: var(--variant-contrast, var(--color-primary-contrast));
+  --bullet-size: var(--avatar-2xs);
+  --line-offset: 0.6875rem;
+  --line-top: 1.625rem;
+
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  font-size: var(--text-sm);
+}
+
+.stepper__step {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: var(--space-2-5);
+  padding: var(--space-1) var(--space-0);
+}
+
+.stepper__step:not(:last-child)::after {
+  content: "";
+  flex: 1;
+  height: var(--border-w);
+  margin: var(--space-0) var(--space-3);
+  background: var(--line-2);
+}
+
+.stepper__step[data-state="done"]:not(:last-child)::after {
+  background: var(--color);
+}
+
+.stepper__bullet {
+  display: grid;
+  place-items: center;
+  width: var(--bullet-size);
+  height: var(--bullet-size);
+  flex-shrink: 0;
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line-2);
+  border-radius: var(--radius-circle);
+  color: var(--ink-3);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stepper__step[data-state="active"] .stepper__bullet,
+.stepper__step[data-state="done"] .stepper__bullet {
+  background: var(--color);
+  border-color: var(--color);
+  color: var(--color-contrast);
+}
+
+.stepper__step[data-state="active"] .stepper__bullet {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--color) 18%, transparent);
+}
+
+.stepper__step[data-state="done"] .stepper__bullet::before {
+  content: "\2713";
+  font-size: 0.75rem;
+}
+
+.stepper__step[data-state="done"] .stepper__bullet > span {
+  display: none;
+}
+
+.stepper__label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.stepper__title {
+  color: var(--ink-3);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.stepper__step[data-state="active"] .stepper__title,
+.stepper__step[data-state="done"] .stepper__title {
+  color: var(--ink);
+}
+
+.stepper__sub {
+  margin-top: var(--border-w-2);
+  color: var(--ink-4);
+  font-size: var(--text-xs);
+}
+
+.stepper.vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-0);
+}
+
+.stepper.vertical .stepper__step {
+  width: 100%;
+  align-items: flex-start;
+  padding: var(--space-0) var(--space-0) var(--space-4) var(--space-0);
+}
+
+.stepper.vertical .stepper__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: var(--line-top);
+  bottom: 0;
+  left: var(--line-offset);
+  width: var(--border-w);
+  height: auto;
+  margin: var(--space-0);
+  background: var(--line-2);
+}
+
+.stepper.vertical .stepper__step[data-state="done"]:not(:last-child)::after {
+  background: var(--color);
+}

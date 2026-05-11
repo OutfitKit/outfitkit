@@ -1,0 +1,81 @@
+.keyboard {
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-sm);
+  --gap: var(--space-1);
+  --padding-x: var(--space-1);
+  --padding-y: var(--space-1);
+  --height: 1.375rem;
+  --min-width: 1.375rem;
+  --font-size: 0.6875rem;
+
+  display: inline-flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-family: var(--font-mono);
+}
+
+.keyboard.inline {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-1);
+  background: transparent;
+  border: 0;
+  padding: var(--space-0);
+}
+
+.keyboard__row {
+  display: flex;
+  gap: var(--gap);
+  align-items: center;
+}
+
+.keyboard__key {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--min-width);
+  height: var(--height);
+  padding: 0 0.3125rem;
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line-2);
+  border-bottom-width: 2px;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--font-size);
+  color: var(--ink-2);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  line-height: var(--leading-flat);
+}
+
+.keyboard__key--space {
+  min-width: calc(var(--min-width) * 5);
+}
+
+.keyboard__key--mod {
+  background: var(--bg-4);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  font-size: 0.625rem;
+}
+
+.keyboard__plus {
+  font-size: 0.625rem;
+  color: var(--ink-4);
+  margin: var(--space-0) var(--border-w);
+  font-family: var(--font-sans);
+}
+
+.keyboard.compact {
+  --height: 1.125rem;
+  --min-width: 1.125rem;
+  --font-size: 0.625rem;
+}

@@ -3,154 +3,26 @@
    Invoice/quote builder · pricing matrix · signature pad
    ============================================================ */
 
-/* ---------- Invoice / quote document ----------
-   El consumidor compone con clases universales:
-     <article class="invoice">
-       <header class="head row" style="--gap: var(--space-6)">
-         <div class="col">
-           <h1 class="title 2xl">Mi Empresa S.L.</h1>
-           <p class="sub">Calle Mayor 1, 28013 Madrid</p>
-         </div>
-         <div class="meta col">
-           <span class="row" style="--gap: var(--space-4)">Factura <b>#A-2025-0042</b></span>
-           …
-         </div>
-       </header>
-       <section class="body row" style="--gap: var(--space-6)">
-         <div class="col"> <span class="label">Facturar a</span> <span class="value">Cliente</span> </div>
-         <div class="col"> <span class="label">Enviar a</span>   <span class="value">…</span> </div>
-       </section>
-       <table class="table">
-         <thead><tr><th>Concepto</th><th>Cant.</th><th>Precio</th><th>Total</th></tr></thead>
-         <tbody><tr><td><input class="line-input" value="…"></td>…</tr></tbody>
-       </table>
-       <button class="btn link sm">+ Añadir línea</button>
-       <section class="body row" style="--gap: var(--space-6)">
-         <div class="meta col"> <span class="label">Notas</span> <p>…</p> </div>
-         <div class="col">
-           <div class="row"><span>Subtotal</span><span>1.000 €</span></div>
-           …
-           <div class="row title lg" style="border-top: var(--border-w) solid var(--line)">
-             <span>Total</span><span>1.210 €</span>
-           </div>
-         </div>
-       </section>
-     </article>
-*/
-.invoice {
-  background: var(--background, var(--bg-2));
-  border: var(--border-w) solid var(--border-color, var(--line));
-  border-radius: var(--radius, var(--radius-xl));
-  overflow: hidden;
-  font-variant-numeric: tabular-nums;
-}
-/* invoice usa .table en su mesa de líneas, pero la tabla NO debe heredar
-   el border-radius del wrapper porque ya estamos dentro de un container
-   con overflow:hidden. Reseteamos por si la tabla añade el suyo propio. */
-.invoice > .table {
-  border-radius: 0;
-  border-left: 0;
-  border-right: 0;
-}
-
-/* ---------- Pricing/tax matrix ---------- */
-.pmatrix {
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-}
-.pmatrix table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--text-sm);
-  font-variant-numeric: tabular-nums;
-}
-.pmatrix th, .pmatrix td {
-  padding: var(--space-2-5) var(--space-3);
-  border-bottom: var(--border-w) solid var(--line);
-  border-right: var(--border-w) solid var(--line);
-  text-align: right;
-  color: var(--ink);
-}
-.pmatrix th { background: var(--bg-3); color: var(--ink-3); font-family: var(--font-mono); font-size: var(--text-2xs); text-transform: uppercase; letter-spacing: var(--tracking-wide); font-weight: 500; }
-.pmatrix th:first-child, .pmatrix td:first-child { text-align: left; color: var(--ink); position: sticky; left: 0; background: var(--bg-2); }
-.pmatrix th:first-child { background: var(--bg-3); }
-.pmatrix tr:last-child td { border-bottom: none; }
-.pmatrix td:last-child, .pmatrix th:last-child { border-right: none; }
-.pmatrix td--hi { background: color-mix(in oklch, var(--brand) 12%, transparent); color: var(--brand); font-weight: 600; }
-.pmatrix td--mid { background: color-mix(in oklch, var(--brand) 5%, transparent); }
-
-/* ---------- Signature pad ---------- */
-.sign {
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-xl);
-  padding: var(--modal-header-pad);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-}
-.sign__pad {
-  position: relative;
-  height: var(--sign-viewport-h);
-  background: var(--paper-bg);
-  border-radius: var(--radius-md);
-  border: var(--border-w) solid var(--line);
-  overflow: hidden;
-}
-.sign__pad::before {
-  content: "";
-  position: absolute;
-  left: 16px; right: 16px;
-  bottom: 38px;
-  border-bottom: 1px dashed var(--paper-line);
-}
-.sign__pad::after {
-  content: "× firma del cliente";
-  position: absolute;
-  bottom: 16px; left: 16px;
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  color: var(--paper-ink-2);
-}
-.sign__pad svg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.sign__stroke {
-  fill: none;
-  stroke: var(--paper-ink);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-.sign__bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: var(--text-xs);
-  color: var(--ink-3);
-  font-family: var(--font-mono);
-}
+@import "./invoice.css";
+@import "./pricing-matrix.css";
+@import "./signature.css";
 
 /* ============================================================
    Loyalty / membership card · landscape brand card
    ============================================================ */
 .loyalty {
-  --_w: var(--receipt-w);
-  --_h: var(--receipt-h);
+  --width: 22rem;
+  --height: 13.75rem;
   --_grad-a: var(--brand-2);
   --_grad-b: var(--brand);
   --_fg: var(--brand-fg);
-  --_pad: var(--space-5);
+  --padding-x: var(--space-5);
+  --padding-y: var(--space-5);
   position: relative;
-  width: var(--_w);
-  height: var(--_h);
+  width: var(--width);
+  height: var(--height);
   border-radius: var(--radius-xl);
-  padding: var(--_pad);
+  padding: var(--padding-y) var(--padding-x);
   background: linear-gradient(135deg, var(--_grad-a), var(--_grad-b));
   color: var(--_fg);
   box-shadow: var(--shadow-md);
@@ -185,7 +57,7 @@
 }
 .loyalty__chip {
   width: var(--size-md);
-  height: var(--loyalty-chip-h);
+  height: 1.5rem;
   border-radius: var(--radius-sm);
   background:
     linear-gradient(135deg,
@@ -198,12 +70,12 @@
 .loyalty__chip::after {
   content: "";
   position: absolute;
-  inset: 4px;
+  inset: 0.25rem;
   border: var(--border-w) solid color-mix(in oklch, black 35%, transparent);
-  border-radius: 2px;
+  border-radius: 0.125rem;
 }
 .loyalty__chip::after {
-  inset: 8px 6px;
+  inset: 0.5rem 0.375rem;
   border-top: 0;
   border-bottom: 0;
 }
@@ -320,16 +192,18 @@
 
 /* Sizes */
 .loyalty.sm {
-  --_w: var(--loyalty-sm-w);
-  --_h: var(--loyalty-sm-h);
-  --_pad: var(--space-4);
+  --width: 18rem;
+  --height: 11.25rem;
+  --padding-x: var(--space-4);
+  --padding-y: var(--space-4);
 }
 .loyalty.sm .loyalty__num { font-size: var(--text-md); }
 .loyalty.sm .loyalty__points-value { font-size: var(--text-xl); }
 .loyalty.lg {
-  --_w: var(--loyalty-lg-w);
-  --_h: var(--loyalty-lg-h);
-  --_pad: var(--space-6);
+  --width: 25rem;
+  --height: 15.5rem;
+  --padding-x: var(--space-6);
+  --padding-y: var(--space-6);
 }
 .loyalty.lg .loyalty__num { font-size: var(--text-xl); }
 .loyalty.lg .loyalty__points-value { font-size: var(--text-3xl); }
@@ -338,12 +212,13 @@
    Order ticket · narrow vertical kitchen/order ticket
    ============================================================ */
 .ticket {
+  --width: 22rem;
   --_accent: var(--brand);
   position: relative;
-  width: var(--ticket-w);
+  width: var(--width);
   max-width: 100%;
   background: var(--bg-2);
-  border: 1px dashed var(--line-2);
+  border: var(--border-w) dashed var(--line-2);
   border-top: 4px solid var(--_accent);
   border-radius: var(--radius-lg);
   padding: var(--space-4);
@@ -381,7 +256,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  padding: 3px var(--space-2);
+  padding: 0.1875rem var(--space-2);
   border-radius: var(--radius-pill);
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
@@ -494,7 +369,7 @@
 }
 @keyframes ok-ticket-pulse {
   0%, 100% { box-shadow: 0 0 0 0 transparent; }
-  50%      { box-shadow: 0 0 0 5px color-mix(in oklch, var(--danger) 20%, transparent); }
+  50%      { box-shadow: 0 0 0 0.3125rem color-mix(in oklch, var(--danger) 20%, transparent); }
 }
 
 /* ============================================================
@@ -531,7 +406,7 @@
   color: var(--_accent);
   border-radius: var(--radius-md);
   padding: var(--space-2) var(--space-3);
-  min-width: var(--event-date-min-w);
+  min-width: 4.75rem;
 }
 .event-card__day {
   font-family: var(--font-display);
@@ -591,12 +466,12 @@
   display: inline-flex;
 }
 .event-card__avatars > * {
-  width: var(--event-avatar-size);
-  height: var(--event-avatar-size);
+  width: 1.75rem;
+  height: 1.75rem;
   border-radius: var(--radius-circle);
   border: var(--border-w-2) solid var(--bg-2);
   background: var(--bg-3);
-  margin-left: calc(-1 * var(--event-avatar-overlap));
+  margin-left: -0.5rem;
   display: inline-grid;
   place-items: center;
   font-size: var(--text-2xs);
@@ -653,21 +528,19 @@
    Product card · storefront / catalog
    ============================================================ */
 .product {
-  /* API canónica de override */
-  --product-background:    var(--bg-2);
-  --product-border-color:  var(--line);
-  --product-border-radius: var(--radius-lg);
-  --product-accent:        var(--brand);
-  --product-accent-fg:     var(--brand-fg);
-  --product-padding:       var(--space-4);
-
-  --_pad: var(--product-padding);
+  --background: var(--bg-2);
+  --border-color: var(--line);
+  --border-radius: var(--radius-lg);
+  --padding-x: var(--space-4);
+  --padding-y: var(--space-4);
+  --height: var(--size-md);
+  --width: 6rem;
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--product-background);
-  border: var(--border-w) solid var(--product-border-color);
-  border-radius: var(--product-border-radius);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
   overflow: hidden;
   font-family: var(--font-sans);
   transition:
@@ -707,7 +580,7 @@
 .product__badge {
   display: inline-flex;
   align-items: center;
-  padding: 3px var(--space-2);
+  padding: 0.1875rem var(--space-2);
   border-radius: var(--radius-sm);
   font-size: var(--text-2xs);
   font-weight: 700;
@@ -732,8 +605,8 @@
   position: absolute;
   top: var(--space-2);
   left: var(--space-2);
-  width: var(--product-wishlist-size);
-  height: var(--product-wishlist-size);
+  width: var(--size-sm);
+  height: var(--size-sm);
   border-radius: var(--radius-circle);
   background: color-mix(in oklch, var(--bg) 75%, transparent);
   border: var(--border-w) solid var(--line);
@@ -764,7 +637,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
-  padding: var(--_pad);
+  padding: var(--padding-y) var(--padding-x);
   flex: 1;
   min-width: 0;
 }
@@ -828,7 +701,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-1-5);
-  height: var(--product-cta-h);
+  height: var(--height);
   padding: 0 var(--space-3);
   border-radius: var(--radius-md);
   background: var(--brand);
@@ -845,7 +718,7 @@
 .product__cta:hover { background: var(--brand-2); }
 .product__cta svg { width: var(--icon-sm); height: var(--icon-sm); }
 .product__variant {
-  height: var(--product-cta-h);
+  height: var(--height);
   padding: 0 var(--space-2);
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
@@ -862,7 +735,7 @@
   align-items: stretch;
 }
 .product.list .product__media {
-  flex: 0 0 var(--product-thumb-w);
+  flex: 0 0 var(--width);
   aspect-ratio: 1 / 1;
 }
 .product.list .product__body { padding: var(--space-3) var(--space-4); }
@@ -870,12 +743,13 @@
 
 /* Compact */
 .product.compact {
-  --_pad: var(--space-3);
+  --padding-x: var(--space-3);
+  --padding-y: var(--space-3);
+  --height: var(--size-sm);
 }
 .product.compact .product__name { font-size: var(--text-sm); }
 .product.compact .product__price { font-size: var(--text-md); }
-.product.compact .product__cta { height: var(--product-compact-cta-h); font-size: var(--text-xs); }
-.product.compact .product__variant { height: var(--product-compact-cta-h); }
+.product.compact .product__cta { font-size: var(--text-xs); }
 
 /* Grid (default) - already vertical */
 .product.grid { /* default */ }
@@ -900,7 +774,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(0.125rem);
   z-index: 3;
 }
 .product.is-out .product__cta {
@@ -914,6 +788,9 @@
    PDP Gallery — product detail page master image + thumb strip
    ============================================================ */
 .pdp-gallery {
+  --border-radius: var(--radius-xl);
+  --height: 2.5rem;
+  --width: 4.5rem;
   display: grid;
   gap: var(--space-3);
 }
@@ -922,7 +799,7 @@
   aspect-ratio: 4 / 3;
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
-  border-radius: var(--pdp-gallery-hero-r);
+  border-radius: var(--border-radius);
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -944,8 +821,8 @@
 .pdp-gallery__nav {
   position: absolute;
   top: 50%;
-  width: var(--pdp-gallery-nav);
-  height: var(--pdp-gallery-nav);
+  width: var(--height);
+  height: var(--height);
   border-radius: var(--radius-circle);
   background: color-mix(in oklch, var(--bg) 80%, transparent);
   border: var(--border-w) solid var(--line);
@@ -970,8 +847,8 @@
 }
 .pdp-gallery__thumb {
   flex-shrink: 0;
-  width: var(--pdp-gallery-thumb);
-  height: var(--pdp-gallery-thumb);
+  width: var(--width);
+  height: var(--width);
   border-radius: var(--radius-md);
   border: var(--border-w-2) solid var(--line);
   overflow: hidden;
@@ -996,6 +873,9 @@
    PDP Quantity — large touch-friendly stepper for product pages
    ============================================================ */
 .pdp-qty {
+  --height: var(--size-lg);
+  --width: 3rem;
+  --min-width: 3.5rem;
   display: inline-flex;
   align-items: stretch;
   gap: 0;
@@ -1003,10 +883,10 @@
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  height: var(--pdp-qty-h);
+  height: var(--height);
 }
 .pdp-qty__btn {
-  width: var(--pdp-qty-btn-w);
+  width: var(--width);
   height: 100%;
   display: grid;
   place-items: center;
@@ -1023,7 +903,7 @@
 .pdp-qty__btn:active { background: color-mix(in oklch, var(--ink) 12%, transparent); }
 .pdp-qty__btn:disabled { opacity: .35; cursor: not-allowed; }
 .pdp-qty__value {
-  width: var(--pdp-qty-value-w);
+  width: var(--min-width);
   display: grid;
   place-items: center;
   background: var(--bg);
@@ -1048,6 +928,9 @@
 }
 .pdp-qty__value input::-webkit-outer-spin-button,
 .pdp-qty__value input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-.pdp-qty.sm { height: var(--pdp-qty-sm-h); }
-.pdp-qty.sm .pdp-qty__btn { width: var(--pdp-qty-sm-btn-w); font-size: var(--text-lg); }
-.pdp-qty.sm .pdp-qty__value { width: var(--pdp-qty-sm-value-w); font-size: var(--text-base); }
+.pdp-qty.sm {
+  --height: var(--size-md);
+  --width: 2.5rem;
+  --min-width: 3rem;
+}
+.pdp-qty.sm .pdp-qty__btn { font-size: var(--text-lg); }

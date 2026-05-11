@@ -1,0 +1,74 @@
+/* ============================================================
+   OutfitKit · Timepicker
+   ============================================================ */
+
+.timepicker {
+  --background: var(--bg-1);
+  --border-color: var(--line);
+  --border-radius: var(--radius-md);
+  --color: var(--variant, var(--color-primary));
+  --height: 15rem;
+  --min-width: 3.125rem;
+
+  display: inline-flex;
+  overflow: hidden;
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+}
+
+.timepicker__col {
+  display: flex;
+  flex-direction: column;
+  height: var(--height);
+  overflow-y: auto;
+  padding-block: calc(50% - var(--space-4));
+  border-right: var(--border-w) solid var(--border-color);
+  scroll-snap-type: y mandatory;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--space-7),
+    black calc(100% - var(--space-7)),
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0,
+    black var(--space-7),
+    black calc(100% - var(--space-7)),
+    transparent 100%
+  );
+}
+
+.timepicker__col:last-child {
+  border-right: 0;
+}
+
+.timepicker__opt {
+  min-width: var(--min-width);
+  padding: var(--space-1-5) var(--space-4);
+  background: transparent;
+  border: 0;
+  color: var(--ink-2);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  cursor: pointer;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.timepicker__opt:hover {
+  background: var(--bg-3);
+  color: var(--ink);
+}
+
+.timepicker__opt[aria-selected="true"],
+.timepicker__opt[aria-selected=""] {
+  background: color-mix(in oklch, var(--color) 18%, transparent);
+  color: var(--color);
+  font-weight: 600;
+}

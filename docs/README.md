@@ -92,7 +92,7 @@ Strongly recommended:
 ## Conventions
 
 - **Commit messages**: imperative mood, scoped prefix when relevant (`fix(showcase)`, `feat(themes)`, `docs(maintaining)`). Co-authored-by lines are kept for AI-assisted work.
-- **Naming**: CSS classes follow BEM-light. Macros are `snake_case` filenames, JinjaX tags are `PascalCase`. `--ok-*` for tokens, `data-ok-*` reserved for future use.
+- **Naming**: CSS classes follow the composable root-pattern plus legitimate BEM for truly component-specific sub-elements. Macros are `snake_case` filenames, JinjaX tags are `PascalCase`.
 - **Branching**: `main` is always deployable. Hotfixes go directly to `main` (small repo, single maintainer). Larger changes via PR with visual regression CI passing.
 
 ---
@@ -103,7 +103,7 @@ Escalate to the team / open a public issue when:
 
 - You're about to change a public API (macro signature, `outfitkit.css` import order, `register_globals` argument).
 - You're considering a major version bump (`v2.0.0`).
-- You're changing token names (any `--ok-*` rename) — this can ripple through every theme override.
+- You're changing token names in `tokens.css` — this can ripple through every theme override.
 - You're considering removing a component or page (anyone using it externally would break).
 
 For everything else, ship it.

@@ -1,44 +1,43 @@
 /* ============================================================
    OutfitKit · Inline feedback
    Banner · Callout — comunicación de estado dentro de la página
-   (los toasts viven en overlays.css; los alerts vienen en states.css)
    ============================================================ */
 
 
 /* ============================================================
-   1. BANNER  ·  .banner  — barra full-width sobre la página
+   1. BANNER  ·  .banner
    ============================================================ */
-/* .banner — barra full-width sobre la página o sección.
-   El consumidor compone con clases universales:
-     <div class="banner info">
-       <svg class="icon">…</svg>
-       <div class="body">
-         <span class="title sm">…</span>
-         <span class="meta">…</span>
-       </div>
-       <div class="actions">…</div>
-       <button class="close">✕</button>
-     </div>
-   Variantes: .info .ok .warn .danger .brand .solid .top .inline
-*/
 .banner {
+  --background:      color-mix(in oklch, var(--variant, var(--color-info)) 10%, var(--bg-1));
+  --border-color:    color-mix(in oklch, var(--variant, var(--color-info)) 35%, var(--line-2));
+  --color:           var(--ink);
+  --icon-color:      var(--variant, var(--color-info));
+  --padding-x:       var(--pad-x, var(--space-4));
+  --padding-y:       var(--pad-y, var(--space-2-5));
+  --gap:             var(--space-3);
+  --font-size:       var(--text-md);
+  --action-height:   1.625rem;
+  --action-bg:       transparent;
+  --action-color:    var(--ink);
+  --action-border:   var(--line-2);
+  --action-hover-bg: var(--bg-3);
+
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
-  gap: var(--space-3);
-  padding: var(--pad-y, var(--space-2-5)) var(--pad-x, var(--space-4));
-  background: var(--background, var(--bg-2));
-  border: var(--border-w) solid var(--border-color, var(--line));
-  color: var(--color, var(--ink));
-  font-size: var(--text-md);
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  color: var(--color);
+  font-size: var(--font-size);
   position: relative;
 }
 
-/* Semantic icon — the .icon universal class handles size;
-   color is set per-variant below */
-.banner > .icon { color: var(--ink-2); }
+.banner > .icon {
+  color: var(--icon-color);
+}
 
-/* Body group — holds title + description text */
 .banner > .body {
   min-width: 0;
   line-height: 1.45;
@@ -46,14 +45,20 @@
   color: inherit;
 }
 
-/* Title within banner body */
-.banner > .body > .title { font-weight: 500; color: var(--ink); }
+.banner > .body > .title {
+  font-weight: var(--weight-medium);
+  color: inherit;
+}
 
-/* Description text */
-.banner > .body > .meta { display: inline; }
-.banner > .body > .title + .meta { display: block; margin-top: var(--border-w-2); }
+.banner > .body > .meta {
+  display: inline;
+}
 
-/* Actions slot */
+.banner > .body > .title + .meta {
+  display: block;
+  margin-top: var(--border-w-2);
+}
+
 .banner > .actions {
   display: inline-flex;
   align-items: center;
@@ -61,71 +66,46 @@
   flex-shrink: 0;
 }
 
-/* Inline action button (kept as BEM — specific dimensions + primary variant) */
 .banner__action {
-  background: transparent;
-  border: var(--border-w) solid var(--line-2);
-  color: var(--ink);
+  background: var(--action-bg);
+  border: var(--border-w) solid var(--action-border);
+  color: var(--action-color);
   font: inherit;
   font-size: var(--text-sm);
-  font-weight: 500;
-  height: 26px;
+  font-weight: var(--weight-medium);
+  height: var(--action-height);
   padding: var(--space-0) var(--space-2-5);
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background var(--dur-fast);
+  transition: background var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
 }
-.banner__action:hover { background: var(--bg-3); }
+
+.banner__action:hover {
+  background: var(--action-hover-bg);
+}
+
 .banner__action--primary {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  --action-bg: var(--variant, var(--color-primary));
+  --action-color: var(--variant-contrast, var(--color-primary-contrast));
+  --action-border: var(--variant, var(--color-primary));
+  --action-hover-bg: var(--variant-shade, var(--color-primary-shade));
 }
-.banner__action--primary:hover { background: var(--ink-2); }
 
-/* Tono semántico — fondo suave + borde acento */
-.banner.info {
-  background: color-mix(in oklch, var(--info) 10%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--info) 35%, var(--line-2));
-}
-.banner.info > .icon { color: var(--info); }
-.banner.ok {
-  background: color-mix(in oklch, var(--leaf) 10%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--leaf) 35%, var(--line-2));
-}
-.banner.ok > .icon { color: var(--leaf); }
-.banner.warn {
-  background: color-mix(in oklch, var(--warn) 12%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--warn) 35%, var(--line-2));
-}
-.banner.warn > .icon { color: var(--warn); }
-.banner.danger {
-  background: color-mix(in oklch, var(--danger) 10%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--danger) 35%, var(--line-2));
-}
-.banner.danger > .icon { color: var(--danger); }
-.banner.brand {
-  background: color-mix(in oklch, var(--brand) 10%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--brand) 35%, var(--line-2));
-}
-.banner.brand > .icon { color: var(--brand-3); }
-
-/* High-emphasis banner — fondo saturado, texto sobre color */
 .banner.solid {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  --background:      var(--variant, var(--color-primary));
+  --border-color:    var(--variant, var(--color-primary));
+  --color:           var(--variant-contrast, var(--color-primary-contrast));
+  --icon-color:      color-mix(in oklch, var(--variant-contrast, var(--color-primary-contrast)) 70%, transparent);
+  --action-bg:       color-mix(in oklch, var(--variant-contrast, var(--color-primary-contrast)) 18%, transparent);
+  --action-color:    var(--variant-contrast, var(--color-primary-contrast));
+  --action-border:   color-mix(in oklch, var(--variant-contrast, var(--color-primary-contrast)) 35%, transparent);
+  --action-hover-bg: color-mix(in oklch, var(--variant-contrast, var(--color-primary-contrast)) 26%, transparent);
 }
-.banner.solid > .body > .meta,
-.banner.solid > .icon { color: color-mix(in oklch, var(--bg) 70%, transparent); }
-.banner.solid .banner__action {
-  background: color-mix(in oklch, var(--bg) 18%, transparent);
-  border-color: color-mix(in oklch, var(--bg) 35%, transparent);
-  color: var(--bg);
-}
-.banner.solid > .close { color: color-mix(in oklch, var(--bg) 70%, transparent); }
 
-/* Layouts — sticky top y inline */
+.banner.solid > .close {
+  color: color-mix(in oklch, var(--variant-contrast, var(--color-primary-contrast)) 70%, transparent);
+}
+
 .banner.top {
   position: sticky;
   top: 0;
@@ -135,121 +115,134 @@
   border-right: none;
   border-top: none;
 }
-.banner.inline { border-radius: var(--radius-lg); }
+
+.banner.inline {
+  border-radius: var(--radius-lg);
+}
 
 
 /* ============================================================
    2. CALLOUT  ·  .callout
-   Bloque inline tipo "nota / warning" usado dentro de docs y forms
    ============================================================ */
 .callout {
+  --background:   color-mix(in oklch, var(--variant, var(--color-info)) 8%, var(--bg-1));
+  --border-color: color-mix(in oklch, var(--variant, var(--color-info)) 30%, var(--line-2));
+  --accent:       var(--variant, var(--color-info));
+  --color:        var(--ink);
+  --padding-x:    var(--pad-x, var(--space-3-5));
+  --padding-y:    var(--pad-y, var(--space-3));
+  --gap:          var(--space-3);
+  --font-size:    var(--text-md);
+  --icon-size:    var(--size-sm);
+  --icon-bg:      color-mix(in oklch, var(--accent) 16%, var(--bg-3));
+  --icon-color:   var(--accent);
+
   display: grid;
-  grid-template-columns: 28px 1fr;
-  gap: var(--space-3);
-  padding: var(--pad-y, var(--space-3)) var(--pad-x, var(--space-3-5)) var(--pad-y, var(--space-3)) var(--pad-x, var(--space-3));
-  background: var(--background, var(--bg-2));
-  border: var(--border-w) solid var(--border-color, var(--line));
+  grid-template-columns: 1.75rem 1fr;
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x) var(--padding-y) var(--space-3);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
   border-radius: var(--radius, var(--radius-md));
   border-left-width: 3px;
-  border-left-color: var(--accent-color, var(--line-3));
-  font-size: var(--text-md);
-  color: var(--color, var(--ink));
+  border-left-color: var(--accent);
+  font-size: var(--font-size);
+  color: var(--color);
   line-height: var(--leading-normal);
 }
+
 .callout__icon {
-  width: var(--size-sm); height: var(--size-sm);
+  width: var(--icon-size);
+  height: var(--icon-size);
   border-radius: var(--radius-sm);
-  background: var(--bg-3);
-  color: var(--ink-2);
-  display: grid; place-items: center;
+  background: var(--icon-bg);
+  color: var(--icon-color);
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
 }
-.callout__icon svg { width: 15px; height: 15px; }
-.callout__body { min-width: 0; }
+
+.callout__icon svg {
+  width: 0.9375rem;
+  height: 0.9375rem;
+}
+
+.callout__body {
+  min-width: 0;
+}
+
 .callout__title {
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
   color: var(--ink);
   margin: var(--space-0) var(--space-0) var(--border-w-2);
   font-size: var(--text-md);
 }
-.callout__desc { color: var(--ink-2); }
+
+.callout__desc {
+  color: var(--ink-2);
+}
+
 .callout__desc code {
   font-family: var(--font-mono);
-  font-size: 12px;
-  padding: var(--border-w) 5px;
+  font-size: var(--text-sm);
+  padding: var(--border-w) 0.3125rem;
   background: var(--bg-3);
   border-radius: var(--radius-xs);
   color: var(--ink);
 }
+
 .callout__list {
   margin: var(--space-1-5) var(--space-0) var(--space-0);
-  padding-left: 18px;
+  padding-left: 1.125rem;
   font-size: var(--text-sm);
   color: var(--ink-2);
   line-height: 1.6;
 }
+
 .callout__actions {
   display: flex;
   gap: var(--space-1-5);
   margin-top: var(--space-2);
 }
+
 .callout__link {
-  color: var(--brand-3);
-  font-weight: 500;
+  color: var(--variant, var(--color-primary));
+  font-weight: var(--weight-medium);
   font-size: var(--text-sm);
   text-decoration: none;
 }
-.callout__link:hover { text-decoration: underline; }
 
-/* Tonos semánticos */
-.callout.info {
-  background: color-mix(in oklch, var(--info) 8%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--info) 30%, var(--line-2));
-  --accent-color: var(--info);
+.callout__link:hover {
+  text-decoration: underline;
 }
-.callout.info .callout__icon { background: var(--info-soft); color: var(--info); }
 
-.callout.ok {
-  background: color-mix(in oklch, var(--leaf) 8%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--leaf) 30%, var(--line-2));
-  --accent-color: var(--leaf);
-}
-.callout.ok .callout__icon { background: var(--leaf-soft); color: var(--leaf); }
-
-.callout.warn {
-  background: color-mix(in oklch, var(--warn) 10%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--warn) 30%, var(--line-2));
-  --accent-color: var(--warn);
-}
-.callout.warn .callout__icon { background: var(--warn-soft); color: var(--warn); }
-
-.callout.danger {
-  background: color-mix(in oklch, var(--danger) 8%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--danger) 30%, var(--line-2));
-  --accent-color: var(--danger);
-}
-.callout.danger .callout__icon { background: var(--danger-soft); color: var(--danger); }
-
-.callout.brand {
-  background: color-mix(in oklch, var(--brand) 8%, var(--bg-1));
-  border-color: color-mix(in oklch, var(--brand) 30%, var(--line-2));
-  --accent-color: var(--brand);
-}
-.callout.brand .callout__icon { background: var(--brand-soft); color: var(--brand-3); }
-
-/* Variante compact (single line) */
 .callout.compact {
-  padding: var(--space-2) var(--space-3);
-  grid-template-columns: 16px 1fr;
-  gap: var(--space-2-5);
+  --padding-x: var(--space-3);
+  --padding-y: var(--space-2);
+  --gap:       var(--space-2-5);
+  --icon-size: 1rem;
+
+  grid-template-columns: 1rem 1fr;
   font-size: var(--text-sm);
   align-items: center;
 }
+
 .callout.compact .callout__icon {
-  width: 16px; height: 16px;
   background: transparent;
   border-radius: 0;
 }
-.callout.compact .callout__icon svg { width: var(--icon-sm); height: var(--icon-sm); }
-.callout.compact .callout__title { display: inline; }
-.callout.compact .callout__desc { display: inline; margin-left: var(--space-1-5); color: var(--ink-3); }
+
+.callout.compact .callout__icon svg {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.callout.compact .callout__title {
+  display: inline;
+}
+
+.callout.compact .callout__desc {
+  display: inline;
+  margin-left: var(--space-1-5);
+  color: var(--ink-3);
+}

@@ -2,64 +2,65 @@
    OutfitKit · Progress / Spinner / Pagination
    ─────────────────────────────────────────────────────────────
    Uso:
-     <div class="progress"><div class="progress__bar" style="--progress-value:60%"></div></div>
-     <div class="progress success indeterminate striped sm"><...></div>
+     <div class="progress"><div class="progress__bar" style="--value: 60%"></div></div>
+     <div class="progress success indeterminate striped"><...></div>
      <span class="spinner primary lg"></span>
 
-   Consume: --variant, --size, --text
-   Expone:  --progress-track, --progress-fill, --progress-height
+   Consume: --variant, --size, --text, --icon, --radius
    ============================================================ */
 
 
 .progress {
-  --progress-track:  var(--bg-3);
-  --progress-fill:   var(--variant, var(--color-primary));
-  --progress-height: 6px;
+  --background:  var(--bg-3);
+  --color:       var(--variant, var(--color-primary));
+  --height:      clamp(0.125rem, calc(var(--size, var(--size-md)) / 6), 0.875rem);
+  --value:       0%;
+  --stripe-size: 0.875rem;
+  --stripe-fill: color-mix(in oklch, var(--variant-contrast, var(--color-primary-contrast)) 18%, transparent);
 
   width: 100%;
-  height: var(--progress-height);
-  background: var(--progress-track);
+  height: var(--height);
+  background: var(--background);
   border-radius: var(--radius-pill);
   overflow: hidden;
   position: relative;
 }
+
 .progress__bar {
   height: 100%;
-  width: var(--progress-value, 0%);
-  background: var(--progress-fill);
+  width: var(--value);
+  background: var(--color);
   border-radius: inherit;
   transition: width var(--dur-base) var(--ease-out);
 }
 
-/* Sizes */
-.progress.xs { --progress-height: 2px; }
-.progress.sm { --progress-height: 4px; }
-.progress.md { --progress-height: 6px; }
-.progress.lg { --progress-height: 10px; }
-.progress.xl { --progress-height: 14px; }
-
-/* Indeterminate */
 .progress.indeterminate .progress__bar {
   width: 35% !important;
   animation: ok-progress-indet 1.4s var(--ease-inout) infinite;
 }
+
 @keyframes ok-progress-indet {
-  0%   { transform: translateX(-100%); }
+  0% { transform: translateX(-100%); }
   100% { transform: translateX(290%); }
 }
 
-/* Striped */
 .progress.striped .progress__bar {
-  background-image: linear-gradient(45deg,
-    rgba(255, 255, 255, 0.18) 25%, transparent 25%,
-    transparent 50%, rgba(255, 255, 255, 0.18) 50%,
-    rgba(255, 255, 255, 0.18) 75%, transparent 75%);
-  background-size: 14px 14px;
+  background-image: linear-gradient(
+    45deg,
+    var(--stripe-fill) 25%,
+    transparent 25%,
+    transparent 50%,
+    var(--stripe-fill) 50%,
+    var(--stripe-fill) 75%,
+    transparent 75%
+  );
+  background-size: var(--stripe-size) var(--stripe-size);
   animation: ok-progress-stripes 1.2s linear infinite;
 }
+
 @keyframes ok-progress-stripes {
   from { background-position: 0 0; }
-  to   { background-position: 14px 0; }
+  to { background-position: var(--stripe-size) 0; }
 }
 
 
@@ -67,21 +68,27 @@
    Progress segments (steps)
    ============================================================ */
 .progress-segments {
+  --gap:    0.1875rem;
+  --height: 0.375rem;
+
   display: flex;
-  gap: 3px;
+  gap: var(--gap);
   width: 100%;
 }
+
 .progress-segments__seg {
   flex: 1;
-  height: 6px;
+  height: var(--height);
   background: var(--bg-3);
-  border-radius: 2px;
+  border-radius: 0.125rem;
   position: relative;
   overflow: hidden;
 }
+
 .progress-segments__seg[data-state="done"] {
   background: var(--variant, var(--color-primary));
 }
+
 .progress-segments__seg[data-state="active"]::after {
   content: "";
   position: absolute;
@@ -89,9 +96,11 @@
   background: var(--variant, var(--color-primary));
   animation: ok-seg-pulse 1.3s ease-in-out infinite;
 }
+
 @keyframes ok-seg-pulse {
-  0%, 100% { transform: translateX(-100%); }
-  50%      { transform: translateX(0); }
+  0%,
+  100% { transform: translateX(-100%); }
+  50% { transform: translateX(0); }
 }
 
 
@@ -102,16 +111,19 @@
   display: grid;
   gap: var(--space-2);
 }
+
 .progress-block__head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   font-size: var(--text-sm);
 }
+
 .progress-block__label {
   color: var(--ink-2);
   font-weight: var(--weight-medium);
 }
+
 .progress-block__value {
   color: var(--ink-3);
   font-family: var(--font-mono);
@@ -122,55 +134,66 @@
 
 /* ============================================================
    Spinner — circular
-   ─────────────────────────────────────────────────────────────
-   <span class="spinner"></span>           — default md
-   <span class="spinner primary lg"></span>
    ============================================================ */
-
 .spinner {
-  --spinner-size:   var(--icon, var(--icon-md));
-  --spinner-track:  color-mix(in oklch, var(--ink) 12%, transparent);
-  --spinner-fill:   var(--variant, var(--color-primary));
-  --spinner-width:  2px;
+  --width:        var(--icon, var(--icon-md));
+  --color:        var(--variant, var(--color-primary));
+  --border-color: color-mix(in oklch, var(--ink) 12%, transparent);
+  --border-size:  var(--border-w-2);
 
   display: inline-block;
-  width: var(--spinner-size);
-  height: var(--spinner-size);
-  border: var(--spinner-width) solid var(--spinner-track);
-  border-top-color: var(--spinner-fill);
+  width: var(--width);
+  height: var(--width);
+  border: var(--border-size) solid var(--border-color);
+  border-top-color: var(--color);
   border-radius: var(--radius-circle);
   animation: ok-spin 0.7s linear infinite;
+  flex-shrink: 0;
 }
-.spinner.xs { --spinner-size: 12px; --spinner-width: 1.5px; }
-.spinner.sm { --spinner-size: 14px; --spinner-width: 2px; }
-.spinner.md { --spinner-size: 20px; --spinner-width: 2.5px; }
-.spinner.lg { --spinner-size: 28px; --spinner-width: 3px; }
-.spinner.xl { --spinner-size: 40px; --spinner-width: 3.5px; }
+
+.spinner.inverse {
+  --color:        var(--variant-contrast, var(--color-light-contrast));
+  --border-color: color-mix(in oklch, var(--variant-contrast, var(--color-light-contrast)) 25%, transparent);
+}
 
 @keyframes ok-spin {
   from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
 
 /* Dots spinner */
 .dots {
+  --gap:   var(--space-1);
+  --width: 0.375rem;
+
   display: inline-flex;
-  gap: var(--space-1);
+  gap: var(--gap);
   align-items: center;
 }
+
 .dots__d {
-  width: 6px;
-  height: 6px;
+  width: var(--width);
+  height: var(--width);
   border-radius: var(--radius-circle);
   background: var(--variant, var(--color-primary));
   animation: ok-dots-bounce 1.2s ease-in-out infinite;
 }
+
 .dots__d:nth-child(2) { animation-delay: 0.15s; }
 .dots__d:nth-child(3) { animation-delay: 0.3s; }
+
 @keyframes ok-dots-bounce {
-  0%, 80%, 100% { opacity: 0.3; transform: scale(0.7); }
-  40%           { opacity: 1;   transform: scale(1); }
+  0%,
+  80%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 
@@ -178,34 +201,53 @@
    Circular progress (SVG)
    ============================================================ */
 .circ {
-  --circ-size:   56px;
-  --circ-stroke: 5;
-  --circ-track:  var(--bg-3);
-  --circ-fill:   var(--variant, var(--color-primary));
+  --width:        3.5rem;
+  --border-size:  5;
+  --background:   var(--bg-3);
+  --color:        var(--variant, var(--color-primary));
 
-  width: var(--circ-size);
-  height: var(--circ-size);
+  width: var(--width);
+  height: var(--width);
   position: relative;
   display: inline-grid;
   place-items: center;
 }
-.circ.sm { --circ-size: 40px; --circ-stroke: 4; }
-.circ.lg { --circ-size: 80px; --circ-stroke: 6; }
-.circ.xl { --circ-size: 120px; --circ-stroke: 8; }
 
-.circ svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+.circ.sm {
+  --width: 2.5rem;
+  --border-size: 4;
+}
+
+.circ.lg {
+  --width: 5rem;
+  --border-size: 6;
+}
+
+.circ.xl {
+  --width: 7.5rem;
+  --border-size: 8;
+}
+
+.circ svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
 .circ__track {
   fill: none;
-  stroke: var(--circ-track);
-  stroke-width: var(--circ-stroke);
+  stroke: var(--background);
+  stroke-width: var(--border-size);
 }
+
 .circ__bar {
   fill: none;
-  stroke: var(--circ-fill);
-  stroke-width: var(--circ-stroke);
+  stroke: var(--color);
+  stroke-width: var(--border-size);
   stroke-linecap: round;
   transition: stroke-dashoffset var(--dur-slow) var(--ease-out);
 }
+
 .circ__label {
   position: absolute;
   font-size: var(--text-sm);
@@ -220,51 +262,58 @@
    Pagination
    ============================================================ */
 .paginator {
+  --gap: 0.125rem;
+
   display: inline-flex;
   align-items: center;
-  gap: 2px;
+  gap: var(--gap);
   font-size: var(--text-sm);
 }
+
 .paginator__btn {
-  --pag-bg:    transparent;
-  --pag-color: var(--ink-2);
+  --background: transparent;
+  --color:      var(--ink-2);
 
   min-width: var(--size-sm);
   height: var(--size-sm);
   padding-inline: var(--space-2);
   border: var(--border-w) solid transparent;
-  background: var(--pag-bg);
+  background: var(--background);
   border-radius: var(--radius-sm);
-  color: var(--pag-color);
+  color: var(--color);
   font: inherit;
   font-variant-numeric: tabular-nums;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--dur-fast) var(--ease-out),
-              color var(--dur-fast) var(--ease-out);
+  transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
+
 .paginator__btn:hover {
-  --pag-bg:    var(--bg-3);
-  --pag-color: var(--ink);
+  --background: var(--bg-3);
+  --color: var(--ink);
 }
+
 .paginator__btn[aria-current="page"],
 .paginator__btn[data-active="true"] {
-  --pag-bg:    var(--variant, var(--color-primary));
-  --pag-color: var(--variant-contrast, var(--color-primary-contrast));
+  --background: var(--variant, var(--color-primary));
+  --color: var(--variant-contrast, var(--color-primary-contrast));
   font-weight: var(--weight-medium);
 }
+
 .paginator__btn[disabled],
 .paginator__btn[aria-disabled="true"] {
   opacity: 0.35;
   cursor: not-allowed;
   pointer-events: none;
 }
+
 .paginator__btn svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
 }
+
 .paginator__gap {
   display: inline-flex;
   align-items: center;
@@ -275,14 +324,14 @@
   user-select: none;
 }
 
-/* Variant: compact */
 .paginator.compact {
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
-  padding: 1px;
+  padding: 0.0625rem;
   background: var(--bg-2);
   gap: 0;
 }
+
 .paginator.compact .paginator__btn {
   border-radius: var(--radius-xs);
 }
@@ -298,29 +347,33 @@
   font-size: var(--text-sm);
   color: var(--ink-3);
 }
+
 .pager__info {
   font-variant-numeric: tabular-nums;
 }
+
 .pager__info b {
   color: var(--ink-2);
   font-weight: var(--weight-medium);
 }
+
 .pager__pgsize {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
 }
+
 .pager__pgsize select {
   height: var(--size-sm);
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-sm);
   color: var(--ink);
-  padding: 0 22px 0 var(--space-2);
+  padding: 0 1.375rem 0 var(--space-2);
   font: inherit;
   font-size: var(--text-sm);
   appearance: none;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none' stroke='%23999'><path d='m1 1 4 4 4-4'/></svg>");
   background-repeat: no-repeat;
-  background-position: right 7px center;
+  background-position: right 0.4375rem center;
 }

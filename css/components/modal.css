@@ -1,0 +1,109 @@
+/* ============================================================
+   OutfitKit · Modal
+   ============================================================ */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in oklch, black 55%, transparent);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 1;
+  transition: opacity var(--dur-base) var(--ease-out);
+  pointer-events: auto;
+}
+
+.backdrop[hidden],
+.backdrop[data-state="closed"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: grid;
+  place-items: center;
+  padding: var(--space-6);
+  pointer-events: none;
+}
+
+.modal-root[data-state="open"] {
+  pointer-events: auto;
+}
+
+.modal-root[data-state="open"] .backdrop {
+  pointer-events: auto;
+}
+
+.modal-root:not([data-state="open"]) .backdrop {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  --background: color-mix(in oklch, var(--bg-2) 88%, transparent);
+  --color: var(--text-color);
+  --border-color: color-mix(in oklch, var(--line-2) 85%, transparent);
+  --border-radius: var(--radius, var(--radius-2xl));
+  --border-width: var(--border-w);
+  --shadow: var(--shadow-lg);
+  --width: 100%;
+  --max-width: 30rem;
+  --max-height: calc(100vh - var(--space-8));
+  --font-size: var(--text, var(--text-base));
+  --padding-x: var(--space-4);
+  --padding-y: var(--space-4);
+  --gap: var(--space-4);
+  --min-height: calc(var(--size, var(--size-md)) * 4);
+  --foot-background: var(--bg-1);
+
+  position: relative;
+  width: var(--width);
+  max-width: min(var(--max-width), calc(100vw - var(--space-8)));
+  min-height: var(--min-height);
+  max-height: var(--max-height);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  overflow: hidden;
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  font-size: var(--font-size);
+  transform: translateY(var(--space-2)) scale(0.98);
+  opacity: 0;
+  transition:
+    transform var(--dur-base) var(--ease-spring),
+    opacity var(--dur-base) var(--ease-out);
+}
+
+.modal-root[data-state="open"] .modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.modal > .head,
+.modal > .body,
+.modal > .foot {
+  padding: var(--padding-y) var(--padding-x);
+}
+
+.modal > .body {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+
+.modal > .foot {
+  background: var(--foot-background);
+  justify-content: var(--align, flex-end);
+}
+
+.modal > .foot.between {
+  justify-content: space-between;
+}

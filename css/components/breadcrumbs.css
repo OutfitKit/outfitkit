@@ -1,0 +1,112 @@
+/* ============================================================
+   OutfitKit · Breadcrumbs
+   ============================================================ */
+
+.crumbs {
+  --color: var(--ink-3);
+  --font-size: var(--text, var(--text-sm));
+  --background-hover: var(--bg-3);
+  --color-hover: var(--ink);
+  --color-active: var(--ink);
+  --padding-y: var(--pad-y, 0.1875rem);
+  --padding-x: var(--pad-x, 0.4375rem);
+  --icon-size: var(--icon, 0.8125rem);
+  --separator-size: 0.6875rem;
+  --separator-font-size: 0.625rem;
+  --max-width: 13.75rem;
+  --more-size: var(--size, var(--size-xs));
+  --more-font-size: 0.6875rem;
+  --chip-padding-y: 0.1875rem;
+
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--border-w-2);
+  font-size: var(--font-size);
+  color: var(--color);
+  font-weight: 500;
+  min-width: 0;
+}
+
+.crumbs__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: var(--padding-y) var(--padding-x);
+  border-radius: var(--radius-sm);
+  color: var(--color);
+  text-decoration: none;
+  white-space: nowrap;
+  max-width: var(--max-width);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background var(--dur-fast), color var(--dur-fast);
+}
+
+.crumbs__item:hover {
+  background: var(--background-hover);
+  color: var(--color-hover);
+}
+
+.crumbs__item[aria-current="page"],
+.crumbs__item--current {
+  color: var(--color-active);
+  cursor: default;
+  pointer-events: none;
+}
+
+.crumbs__icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  flex-shrink: 0;
+  color: var(--ink-3);
+}
+
+.crumbs__sep {
+  color: var(--ink-4);
+  font-size: var(--separator-font-size);
+  padding: var(--space-0) var(--border-w);
+  user-select: none;
+}
+
+.crumbs__sep svg {
+  width: var(--separator-size);
+  height: var(--separator-size);
+  display: block;
+}
+
+.crumbs__more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--more-size);
+  min-width: var(--more-size);
+  padding: var(--space-0) var(--space-1-5);
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink-3);
+  cursor: pointer;
+  font-size: var(--more-font-size);
+  letter-spacing: 0.05em;
+}
+
+.crumbs__more:hover {
+  background: var(--bg-4);
+  color: var(--ink);
+}
+
+.crumbs.chips .crumbs__item {
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: var(--chip-padding-y) var(--space-2-5);
+}
+
+.crumbs.chips .crumbs__sep {
+  display: none;
+}
+
+.crumbs.chips {
+  gap: var(--space-1-5);
+}

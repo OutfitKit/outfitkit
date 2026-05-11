@@ -4,6 +4,31 @@ All notable changes to OutfitKit are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## [2.0.0] — 2026-05-11
+
+### Changed
+
+- Refactored the CSS library to the canonical composition pattern:
+  component root + global variant modifiers + global size modifiers + style modifiers.
+- `tokens.css` now acts as a global-scale file rather than a bucket of component-private dimensions.
+- Overlay CSS was split from one `overlays.css` file into granular modules:
+  `modal.css`, `drawer.css`, `toast.css`, `tooltip.css`, `popover.css`,
+  `menu.css`, `context-menu.css`, `hover-card.css`, `context-notification.css`.
+- Canonical pilots were rebuilt around generic local variables:
+  `button.css` and `modal.css`.
+- Public docs were updated to describe the new contract.
+
+### Added
+
+- New semantic sizes `2xs` and `2xl` in the global sizing contract.
+- `docs/COMPONENT-PATTERN.md` as the component authoring contract.
+
+### Breaking
+
+- Component-private global tokens are being removed in favor of local generic vars on component roots.
+- Components are expected to consume `--variant*` and `--size` / `--pad-*` / `--text` / `--icon` / `--radius` directly instead of custom per-component size/color APIs.
+- The Python package version was bumped to `2.0.0` to reflect the rebuild.
+
 ## [1.0.0] — 2026-05-11
 
 **Versioning reset.** All previous tags (v1.0.0..v1.5.0 + pypi-v1.1.1..pypi-v1.5.0)

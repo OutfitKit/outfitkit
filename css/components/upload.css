@@ -1,0 +1,34 @@
+/* ---------- Uploader (dropzone) ---------- */
+.upload {
+  /* API canónica de override */
+  --background: var(--bg-2);
+  --border-color: var(--line-2);
+  --border-radius: var(--radius-xl);
+  --accent-background: var(--variant, var(--color-primary));
+
+  background: var(--background);
+  border: var(--border-w-2) dashed var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  transition: border-color var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
+  cursor: pointer;
+}
+.upload:hover, .upload.drag {
+  border-color: var(--accent-background);
+  background: color-mix(in oklch, var(--accent-background) 6%, var(--background));
+}
+.upload__icon {
+  width: var(--avatar-lg); height: var(--avatar-lg);
+  border-radius: var(--radius-circle);
+  background: var(--bg-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ink-2);
+}
+/* upload uses universal .title and .sub for text */

@@ -5,25 +5,48 @@
 
 .sidebar {
   /* API canónica de override */
-  --background:           color-mix(in oklch, var(--bg-1) 78%, transparent);
-  --sidebar-border-color: color-mix(in oklch, var(--line) 80%, transparent);
-  --sidebar-width:        var(--sidebar-w);
-  --sidebar-z:            var(--z-sticky);
+  --background: color-mix(in oklch, var(--bg-1) 78%, transparent);
+  --border-color: color-mix(in oklch, var(--line) 80%, transparent);
+  --width: var(--sidebar-w);
+  --z-index: var(--z-sticky);
+  --header-padding-x: 0.875rem;
+  --header-padding-y: 0.875rem;
+  --header-padding-bottom: 0.625rem;
+  --header-gap: 0.625rem;
+  --logo-size: 1.625rem;
+  --logo-radius: 0.4375rem;
+  --content-gap: 0.0625rem;
+  --label-padding-x: 0.625rem;
+  --label-padding-top: 0.875rem;
+  --label-padding-bottom: 0.3125rem;
+  --item-padding-x: 0.625rem;
+  --item-padding-y: 0.4375rem;
+  --item-gap: 0.625rem;
+  --item-icon-size: 1.0625rem;
+  --item-indicator-width: 3px;
+  --user-gap: 0.625rem;
+  --user-padding: 0.375rem;
+  --empty-padding-x: 0.875rem;
+  --empty-padding-y: 1rem;
+  --section-padding-top: 1rem;
+  --section-padding-bottom: 0.25rem;
+  --section-font-size: 0.625rem;
+  --empty-font-size: 0.75rem;
 
   position: sticky;
   top: 0;
   align-self: start;
   height: 100vh;
   height: 100dvh;
-  width: var(--sidebar-width);
+  width: var(--width);
   background: var(--background);
   color: var(--color, var(--ink));
   backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-  border-right: var(--border-w) solid var(--sidebar-border-color);
+  border-right: var(--border-w) solid var(--border-color);
   display: flex;
   flex-direction: column;
-  z-index: var(--sidebar-z);
+  z-index: var(--z-index);
   transition: width var(--dur-base) var(--ease-out);
 }
 @supports not (backdrop-filter: blur(1px)) {
@@ -31,33 +54,33 @@
 }
 
 .sidebar.collapsed {
-  --sidebar-width: var(--sidebar-w-collapsed);
+  --width: var(--sidebar-w-collapsed);
 }
 
 /* ── Header / brand ── */
 /* Use <div class="head"> as direct child of .sidebar */
 .sidebar > .head {
-  --pad-x: 14px;
-  --pad-y: 14px;
-  padding-bottom: 10px;
+  --pad-x: var(--header-padding-x);
+  --pad-y: var(--header-padding-y);
+  padding-bottom: var(--header-padding-bottom);
   height: var(--topbar-h);
-  gap: 10px;
+  gap: var(--header-gap);
   align-items: center;
   flex-shrink: 0;
 }
 
 /* Square logo badge in brand area */
 .sidebar-logo {
-  width: 26px;
-  height: 26px;
-  border-radius: 7px;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  border-radius: var(--logo-radius);
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   display: grid;
   place-items: center;
   color: var(--brand-fg);
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 0.8125rem;
   letter-spacing: -0.04em;
   flex-shrink: 0;
 }
@@ -75,23 +98,23 @@
   padding: var(--space-3) var(--space-2);
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: var(--content-gap);
 }
-.sidebar > .content::-webkit-scrollbar { width: 6px; }
+.sidebar > .content::-webkit-scrollbar { width: 0.375rem; }
 
 /* ── Group label ── */
 /* Use <div class="label"> — universal uppercase section label */
 .sidebar .label {
-  padding: 14px 10px 5px;
+  padding: var(--label-padding-top) var(--label-padding-x) var(--label-padding-bottom);
   color: var(--ink-4);
 }
 
 /* ── Menu item ── */
 /* Use <button class="item"> — universal clickable row */
 .sidebar .item {
-  --pad-x: 10px;
-  --pad-y: 7px;
-  --gap: 10px;
+  --pad-x: var(--item-padding-x);
+  --pad-y: var(--item-padding-y);
+  --gap: var(--item-gap);
   color: var(--ink-2);
   font-size: var(--text-md);
   font-weight: 450;
@@ -119,7 +142,7 @@
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: 3px;
+  width: var(--item-indicator-width);
   height: 60%;
   background: var(--brand);
   border-radius: 0 2px 2px 0;
@@ -127,7 +150,7 @@
 
 /* Icon inside nav item — use <svg class="icon"> */
 .sidebar .item > .icon {
-  --icon: 17px;
+  --icon: var(--item-icon-size);
   color: var(--ink-3);
 }
 .sidebar .item:hover > .icon,
@@ -161,8 +184,8 @@
 .sidebar-user {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 6px;
+  gap: var(--user-gap);
+  padding: var(--user-padding);
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: background var(--dur-fast);
@@ -186,7 +209,7 @@
 }
 .sidebar.collapsed > .head {
   justify-content: center;
-  padding: 14px 10px;
+  padding: var(--header-padding-y) var(--header-padding-x);
 }
 
 /* Mobile drawer */
@@ -207,17 +230,17 @@
 /* ── Showcase / layout helpers ── */
 /* Empty state when search matches nothing */
 .sidebar-empty {
-  padding: 16px 14px;
+  padding: var(--empty-padding-y) var(--empty-padding-x);
   color: var(--ink-3);
-  font-size: 12px;
+  font-size: var(--empty-font-size);
   text-align: center;
   font-style: italic;
 }
 
 /* Section header (subset of .label with extra top padding) */
 .sidebar-section {
-  padding: 16px 14px 4px;
-  font-size: 10px;
+  padding: var(--section-padding-top) var(--empty-padding-x) var(--section-padding-bottom);
+  font-size: var(--section-font-size);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;

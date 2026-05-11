@@ -10,399 +10,203 @@
 :root,
 [data-theme="erplora"] {
 
-  /* ───── Tipografía · familias ──────────────────────────── */
-  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+   /* ───── Tipografía · familias ──────────────────────────── */
+   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+   --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* ───── Tipografía · escala (densa, dashboard) ────────── */
-  --text-2xs:  10.5px;
-  --text-xs:   11.5px;
-  --text-sm:   12.5px;
-  --text-md:   13.5px;
-  --text-base: 14px;
-  --text-lg:   16px;
-  --text-xl:   19px;
-  --text-2xl:  24px;
-  --text-3xl:  32px;
-  --text-4xl:  44px;
-  --text-5xl:  60px;
+   /* ───── Tipografía · escala (densa, dashboard) ────────── */
+   --text-2xs: 0.65625rem;
+   --text-xs: 0.71875rem;
+   --text-sm: 0.78125rem;
+   --text-md: 0.84375rem;
+   --text-base: 0.875rem;
+   --text-lg: 1rem;
+   --text-xl: 1.1875rem;
+   --text-2xl: 1.5rem;
+   --text-3xl: 2rem;
+   --text-4xl: 2.75rem;
+   --text-5xl: 3.75rem;
 
-  --leading-flat:   1;       /* botones, badges, pills */
-  --leading-tight:  1.15;
-  --leading-snug:   1.30;
-  --leading-base:   1.40;    /* default reading */
-  --leading-normal: 1.50;
-  --leading-loose:  1.70;
+   --leading-flat: 1;
+   /* botones, badges, pills */
+   --leading-tight: 1.15;
+   --leading-snug: 1.30;
+   --leading-base: 1.40;
+   /* default reading */
+   --leading-normal: 1.50;
+   --leading-loose: 1.70;
 
-  --tracking-tightest: -0.04em;
-  --tracking-tighter:  -0.03em;
-  --tracking-tight:    -0.015em;
-  --tracking-near:     -0.02em;   /* labels compactas */
-  --tracking-snug:     -0.01em;
-  --tracking-normal:    0;
-  --tracking-wide:      0.06em;
-  --tracking-wider:     0.08em;
-  --tracking-display:  -0.04em;
-  --tracking-mono:     -0.005em;
+   --tracking-tightest: -0.04em;
+   --tracking-tighter: -0.03em;
+   --tracking-tight: -0.015em;
+   --tracking-near: -0.02em;
+   /* labels compactas */
+   --tracking-snug: -0.01em;
+   --tracking-normal: 0;
+   --tracking-wide: 0.06em;
+   --tracking-wider: 0.08em;
+   --tracking-display: -0.04em;
+   --tracking-mono: -0.005em;
 
-  --weight-regular:  400;
-  --weight-medium:   500;
-  --weight-semibold: 600;
-  --weight-bold:     700;
+   --weight-regular: 400;
+   --weight-medium: 500;
+   --weight-semibold: 600;
+   --weight-bold: 700;
 
-  /* ───── Espaciado · escala 4px (con medios para densidad UI) ── */
-  --space-0:    0;
-  --space-1:    4px;
-  --space-1-5:  6px;     /* medio paso · gap fino, dot, badge */
-  --space-2:    8px;
-  --space-2-5:  10px;    /* medio paso · paddings de chips */
-  --space-3:    12px;
-  --space-3-5:  14px;    /* medio paso · padding intermedio */
-  --space-4:    16px;
-  --space-5:    20px;
-  --space-6:    24px;
-  --space-7:    32px;
-  --space-8:    40px;
-  --space-9:    56px;
-  --space-10:   72px;
+   /* ───── Espaciado · escala 4px (con medios para densidad UI) ── */
+   --space-0: 0;
+   --space-1: 0.25rem;
+   --space-1-5: 0.375rem;
+   /* medio paso · gap fino, dot, badge */
+   --space-2: 0.5rem;
+   --space-2-5: 0.625rem;
+   /* medio paso · paddings de chips */
+   --space-3: 0.75rem;
+   --space-3-5: 0.875rem;
+   /* medio paso · padding intermedio */
+   --space-4: 1rem;
+   --space-5: 1.25rem;
+   --space-6: 1.5rem;
+   --space-7: 2rem;
+   --space-8: 2.5rem;
+   --space-9: 3.5rem;
+   --space-10: 4.5rem;
 
-  /* ───── Sizing · alturas semánticas (interactivos) ────── */
-  --size-xs: 22px;
-  --size-sm: 28px;
-  --size-md: 36px;
-  --size-lg: 44px;
-  --size-xl: 52px;
+   /* ───── Sizing · alturas semánticas (interactivos) ────── */
+   --size-2xs: 1.25rem;
+   --size-xs: 1.375rem;
+   --size-sm: 1.75rem;
+   --size-md: 2.25rem;
+   --size-lg: 2.75rem;
+   --size-xl: 3.25rem;
+   --size-2xl: 3.5rem;
 
-  /* Padding por tamaño — los componentes consumen --pad-x/--pad-y */
-  --pad-xs-x: var(--space-2);
-  --pad-xs-y: var(--space-1);
-  --pad-sm-x: var(--space-3);
-  --pad-sm-y: var(--space-1);
-  --pad-md-x: var(--space-4);
-  --pad-md-y: var(--space-2);
-  --pad-lg-x: var(--space-5);
-  --pad-lg-y: var(--space-3);
-  --pad-xl-x: var(--space-6);
-  --pad-xl-y: var(--space-4);
+   /* Padding por tamaño — los componentes consumen --pad-x/--pad-y */
+   --pad-xs-x: var(--space-2);
+   --pad-xs-y: var(--space-1);
+   --pad-sm-x: var(--space-3);
+   --pad-sm-y: var(--space-1);
+   --pad-md-x: var(--space-4);
+   --pad-md-y: var(--space-2);
+   --pad-lg-x: var(--space-5);
+   --pad-lg-y: var(--space-3);
+   --pad-xl-x: var(--space-6);
+   --pad-xl-y: var(--space-4);
 
-  /* Iconografía */
-  --icon-2xs: 10px;
-  --icon-xs:  12px;
-  --icon-sm:  14px;
-  --icon-md:  18px;
-  --icon-lg:  22px;
-  --icon-xl:  28px;
-  --icon-2xl: 36px;
+   /* Iconografía */
+   --icon-2xs: 0.625rem;
+   --icon-xs: 0.75rem;
+   --icon-sm: 0.875rem;
+   --icon-md: 1.125rem;
+   --icon-lg: 1.375rem;
+   --icon-xl: 1.75rem;
+   --icon-2xl: 2.25rem;
 
-  /* Avatares */
-  --avatar-2xs: 18px;
-  --avatar-xs:  22px;
-  --avatar-sm:  28px;
-  --avatar-md:  36px;
-  --avatar-lg:  48px;
-  --avatar-xl:  64px;
-  --avatar-2xl: 96px;
+   /* Avatares */
+   --avatar-2xs: 1.125rem;
+   --avatar-xs: 1.375rem;
+   --avatar-sm: 1.75rem;
+   --avatar-md: 2.25rem;
+   --avatar-lg: 3rem;
+   --avatar-xl: 4rem;
+   --avatar-2xl: 6rem;
 
-  /* Touch target mínimo accesible */
-  --touch-target: 44px;
+   /* Touch target mínimo accesible */
+   --touch-target: 2.75rem;
 
-  /* ───── Dots (status indicators) ───────────────────────── */
-  --dot-2xs: 3px;
-  --dot-xs:  5px;
-  --dot-sm:  6px;
-  --dot-md:  8px;
-  --dot-lg:  9px;
-  --dot-xl:  12px;
+   /* ───── Dots (status indicators) ───────────────────────── */
+   --dot-2xs: 3px;
+   --dot-xs: 0.3125rem;
+   --dot-sm: 0.375rem;
+   --dot-md: 0.5rem;
+   --dot-lg: 0.5625rem;
+   --dot-xl: 0.75rem;
 
-  /* ───── Dimensiones específicas por componente ─────────── */
-  --sparkline-w:    80px;
-  --sparkline-h:    32px;
-  --kpi-min-h:      96px;
-  --empty-max-w:    380px;
-  --cmdk-max-w:     580px;
-  --chat-min-h:     480px;
-  --menu-w:         240px;
-  --card-max-w:     380px;
-  --actions-w:      280px;
-  --calendar-w:     240px;
-  --calendar-cell:  36px;
-  --chart-pie:      140px;
-  --avatar-bubble-h:78px;
+   /* ───── Radios ─────────────────────────────────────────── */
+   --radius-xs: 0.25rem;
+   --radius-sm: 0.375rem;
+   --radius-md: 0.5rem;
+   --radius-lg: 0.625rem;
+   --radius-xl: 0.875rem;
+   --radius-2xl: 1.125rem;
+   --radius-3xl: 1.5rem;
+   --radius-pill: 9999px;
+   --radius-circle: 50%;
 
-  /* POS */
-  --pos-min-h:        600px;
-  --pos-aside-w:      380px;
-  --pos-fab-size:     60px;
-  --pos-fab-offset:   18px;
-  --pos-numpad-gap:   6px;
-  --pos-numpad-btn-h: 56px;
-  --pos-cat-card-h:   96px;
-  --pos-cat-card-w:   160px;
+   /* ───── Bordes ─────────────────────────────────────────── */
+   --border-w: 1px;
+   --border-w-2: 2px;
+   --border-w-4: 4px;
 
-  /* Manufacturing */
-  --mfg-bom-col-w:    90px;
-  --mfg-bom-indent-1: 0px;
-  --mfg-bom-indent-2: var(--space-6);
-  --mfg-bom-indent-3: 48px;
-  --mfg-bom-caret-size: var(--tree-icon-size);
-  --mfg-oee-gauge-w:  180px;
-  --mfg-oee-gauge-h:  100px;
-  --mfg-scanner-h:    160px;
-  --mfg-bar-h:        60px;
-  --mfg-gantt-label-w: 200px;
-  --mfg-gantt-row-h:  22px;
-  --mfg-gantt-row-min-h: var(--size-lg);
-  --mfg-wo-bar-h:     var(--hr-bar-h);
-  --mfg-wo-step-grid: 32px;
-  --mfg-wo-step-num-size: 26px;
-  --mfg-machine-progress-h: var(--hr-bar-h);
-  --mfg-prodline-station-w: 96px;
-  --mfg-prodline-connector-h: var(--slider-track-h);
-  --mfg-prodline-connector-v: 32px;
-  --mfg-qc-check-icon: var(--icon-sm);
-  --mfg-qc-notes-border-l: var(--border-w-4);
-  --mfg-batch-chain-dot: 14px;
-  --mfg-batch-chain-col: 24px;
-  --mfg-track-line-w: var(--border-w-2);
+   /* ───── Paleta neutra · oscuro (default) ───────────────── */
+   --bg: #0B0A09;
+   /* canvas */
+   --bg-1: #131210;
+   /* sidebar / topbar */
+   --bg-2: #1A1815;
+   /* cards */
+   --bg-3: #221F1B;
+   /* hover / inputs */
+   --bg-4: #2B2722;
+   /* pressed / chips */
 
-  /* States / Skeleton */
-  --skel-text-h:      12px;
-  --skel-title-h:     18px;
-  --skel-btn-h:       32px;
-  --skel-btn-w:       96px;
-  --skel-chip-h:      22px;
-  --skel-chip-w:      72px;
-  --skel-card-h:      120px;
-  --skel-chart-h:     180px;
-  --skel-table-pad-y: 14px;
-  --spinner-size-sm:  14px;
-  --spinner-size-md:  18px;
-  --spinner-size-lg:  28px;
-  --spinner-size-xl:  44px;
-  --loadbar-h:        2px;
-  --progress-h:       6px;
-  --progress-h-sm:    4px;
-  --progress-h-lg:    10px;
-  --error-icon-size:  56px;
-  --error-min-h:      240px;
-  --error-page-inner-max-w: 560px;
-  --error-page-illu-size:   96px;
-  --error-diag-icon-size:   18px;
-  --bootstrap-icon-size:    40px;
+   --line: rgba(255, 255, 255, 0.06);
+   --line-2: rgba(255, 255, 255, 0.10);
+   --line-3: rgba(255, 255, 255, 0.16);
 
-  /* Overlays (modal/drawer/toast/tooltip/menu) */
-  --modal-max-w-sm:   var(--empty-max-w);
-  --modal-max-w-md:   480px;
-  --modal-max-w-lg:   640px;
-  --modal-max-w-xl:   880px;
-  --modal-header-pad: 18px;
-  --drawer-default-max-w: 420px;
-  --drawer-handle-h:  4px;
-  --tooltip-pad-x:    8px;
-  --tooltip-pad-y:    5px;
-  --tooltip-arrow:    8px;
-  --popover-max-w:    320px;
-  --menu-min-w:       200px;
-  --menu-sm-w:        160px;
-  --menu-lg-w:        240px;
-  --menu-item-pad-x:  10px;
-  --menu-item-pad-y:  7px;
-  --menu-item-icon-w: 14px;
-  --menu-item-gap:    10px;
-  --menu-divider-my:  6px;
-  --menu-label-pad-b: 4px;
-  --menu-check-left:  10px;
-  --menu-check-size:  12px;
-  --menu-sub-pad:     6px;
-  --menu-sub-min-w:   200px;
-  --menu-userblock-pad: 10px;
-  --menu-userblock-mb: 4px;
-  --ctx-menu-pad:     5px;
-  --ctx-menu-item-gap: 10px;
-  --ctx-menu-item-pad-x: 10px;
-  --ctx-menu-item-pad-y: 6px;
-  --ctx-menu-icon-w:  16px;
-  --ctx-menu-min-w:   200px;
-  --ctx-menu-divider-my: 4px;
-  --ctx-menu-label-pad-b: 4px;
-  --hover-card-w:     280px;
-  --hover-card-avatar: 38px;
-  --hover-card-gap:   10px;
-  --hover-card-stats-gap: 14px;
-  --hover-card-stats-mt: 10px;
-  --hover-card-footer-gap: 6px;
-  --hover-card-footer-mt: 10px;
-  --hover-card-action-h: 28px;
-  --ctx-notification-w: 280px;
-  --ctx-notification-icon: 38px;
+   --ink: #F5F1EA;
+   /* texto principal */
+   --ink-2: #C4BCB0;
+   /* secundario */
+   --ink-3: #8A8378;
+   /* terciario / muted */
+   --ink-4: #5C564D;
+   /* placeholder / disabled */
 
-  /* Commerce (receipt/invoice/product/ticket) */
-  --receipt-w:        340px;
-  --receipt-h:        210px;
-  --receipt-h-sm:     172px;
-  --receipt-w-lg:     400px;
-  --receipt-h-lg:     250px;
-  --invoice-w:        280px;
-  --invoice-totals-sum-w: 280px;
-  --sign-viewport-h:  var(--mfg-scanner-h);
-  --loyalty-chip-h:   26px;
-  --loyalty-sm-w:     280px;
-  --loyalty-sm-h:     172px;
-  --loyalty-lg-w:     400px;
-  --loyalty-lg-h:     250px;
-  --ticket-w:         var(--invoice-w);
-  --event-date-min-w: 64px;
-  --event-avatar-size: var(--size-xs);
-  --event-avatar-overlap: var(--space-1-5);
-  --product-cta-h:    38px;
-  --product-thumb-w:  140px;
-  --product-wishlist-size: 32px;
-  --product-compact-cta-h: 32px;
-  --pdp-gallery-hero-r: var(--radius-2xl);
-  --pdp-gallery-nav: var(--size-md);
-  --pdp-gallery-thumb: 72px;
-  --pdp-qty-h:        48px;
-  --pdp-qty-btn-w:    48px;
-  --pdp-qty-value-w:  56px;
-  --pdp-qty-sm-h:     36px;
-  --pdp-qty-sm-btn-w: 36px;
-  --pdp-qty-sm-value-w: 44px;
+   /* ───── Acento marca (terracota) ───────────────────────── */
+   --brand: #E8552A;
+   --brand-2: #B83A12;
+   /* hover/pressed */
+   --brand-3: #FF7A4D;
+   /* focus ring claro */
+   --brand-fg: #FFFFFF;
+   --brand-soft: color-mix(in oklch, var(--brand) 18%, transparent);
 
-  /* Navigation */
-  --crumb-icon-size:  13px;
-  --crumb-sep-size:   11px;
-  --crumb-max-w:      220px;
-  --navbar-logo-size: 26px;
-  --navbar-logo-r:    7px;
-  --navbar-item-h:    30px;
-  --tree-indent:      18px;
-  --tree-caret-size:  11px;
-  --tree-icon-size:   16px;
-  --mbar-h:           32px;
-  --mbar-h-compact:   26px;
-  --mbar-pad-x:       10px;
-  --mbar-panel-min-w: 220px;
+   /* Alias accent — themes pueden sobreescribir solo accent sin tocar brand */
+   --accent: var(--brand);
+   --accent-2: var(--brand-2);
+   --accent-3: var(--brand-3);
+   --accent-fg: var(--brand-fg);
+   --accent-soft: var(--brand-soft);
 
-  /* Chat */
-  --chat-avatar-size: 32px;
-  --chat-badge-size:  18px;
-  --chat-badge-h:     18px;
-  --chat-status-dot:  6px;
-  --chat-typing-dot:  6px;
+   /* ───── Acentos semánticos ─────────────────────────────── */
+   --leaf: #4F9D6E;
+   /* éxito */
+   --leaf-2: color-mix(in oklch, var(--leaf) 80%, black);
+   --leaf-fg: #FFFFFF;
+   --leaf-soft: color-mix(in oklch, var(--leaf) 18%, transparent);
 
-  /* Tab-bar */
-  --tabbar-icon-size: 24px;
-  --tabbar-badge-size: 16px;
-  --tabbar-dot-size:  8px;
-  --tabbar-fab-size:  52px;
-  --tabbar-fab-border: 4px;
-  --tabbar-indicator-h: 3px;
-  --tabbar-tabs-h:    38px;
-  --tabbar-pills-h:   28px;
+   --warn: #D8A23A;
+   /* aviso */
+   --warn-2: color-mix(in oklch, var(--warn) 80%, black);
+   --warn-fg: #1A1815;
+   --warn-soft: color-mix(in oklch, var(--warn) 18%, transparent);
 
-  /* HR (human resources) */
-  --hr-bar-h:         8px;
+   --danger: #D8553F;
+   /* error */
+   --danger-2: color-mix(in oklch, var(--danger) 80%, black);
+   --danger-fg: #FFFFFF;
+   --danger-soft: color-mix(in oklch, var(--danger) 18%, transparent);
 
-  /* Multimedia */
-  --audio-h:          60px;
-  --audio-h-compact:  52px;
-  --audio-h-full:     76px;
-  --audio-btn:        38px;
-  --audio-progress-h: 4px;
-  --audio-progress-w: 140px;
-  --audio-thumb-w:    80px;
-  --video-play-size:  72px;
-  --video-ctrl-size:  32px;
-  --video-progress-h: 4px;
-  --gallery-nav-w:    50px;
-  --gallery-dot-size: 8px;
-  --cropper-handle:   8px;
-
-  /* System overlays / CMDk */
-  --cmdk-item-icon:   38px;
-
-  /* Forms advanced (OTP, slider, etc.) */
-  --slider-track-h:   4px;
-  --slider-thumb:     16px;
-  --otp-cell-h:       44px;
-
-  /* Editors (richtext) */
-  --editor-toolbar-h: 38px;
-
-  /* Layout-extra / page structures */
-  --page-loading-min-h: 240px;
-  --section-max-w:    720px;
-
-  /* ───── Radios ─────────────────────────────────────────── */
-  --radius-xs:   4px;
-  --radius-sm:   6px;
-  --radius-md:   8px;
-  --radius-lg:   10px;
-  --radius-xl:   14px;
-  --radius-2xl:  18px;
-  --radius-3xl:  24px;
-  --radius-pill: 9999px;
-  --radius-circle: 50%;
-
-  /* ───── Bordes ─────────────────────────────────────────── */
-  --border-w:   1px;
-  --border-w-2: 2px;
-  --border-w-4: 4px;
-
-  /* ───── Paleta neutra · oscuro (default) ───────────────── */
-  --bg:    #0B0A09;     /* canvas */
-  --bg-1:  #131210;     /* sidebar / topbar */
-  --bg-2:  #1A1815;     /* cards */
-  --bg-3:  #221F1B;     /* hover / inputs */
-  --bg-4:  #2B2722;     /* pressed / chips */
-
-  --line:   rgba(255, 255, 255, 0.06);
-  --line-2: rgba(255, 255, 255, 0.10);
-  --line-3: rgba(255, 255, 255, 0.16);
-
-  --ink:   #F5F1EA;     /* texto principal */
-  --ink-2: #C4BCB0;     /* secundario */
-  --ink-3: #8A8378;     /* terciario / muted */
-  --ink-4: #5C564D;     /* placeholder / disabled */
-
-  /* ───── Acento marca (terracota) ───────────────────────── */
-  --brand:      #E8552A;
-  --brand-2:    #B83A12;     /* hover/pressed */
-  --brand-3:    #FF7A4D;     /* focus ring claro */
-  --brand-fg:   #FFFFFF;
-  --brand-soft: color-mix(in oklch, var(--brand) 18%, transparent);
-
-  /* Alias accent — themes pueden sobreescribir solo accent sin tocar brand */
-  --accent:      var(--brand);
-  --accent-2:    var(--brand-2);
-  --accent-3:    var(--brand-3);
-  --accent-fg:   var(--brand-fg);
-  --accent-soft: var(--brand-soft);
-
-  /* ───── Acentos semánticos ─────────────────────────────── */
-  --leaf:        #4F9D6E;     /* éxito */
-  --leaf-2:      color-mix(in oklch, var(--leaf) 80%, black);
-  --leaf-fg:     #FFFFFF;
-  --leaf-soft:   color-mix(in oklch, var(--leaf) 18%, transparent);
-
-  --warn:        #D8A23A;     /* aviso */
-  --warn-2:      color-mix(in oklch, var(--warn) 80%, black);
-  --warn-fg:     #1A1815;
-  --warn-soft:   color-mix(in oklch, var(--warn) 18%, transparent);
-
-  --danger:      #D8553F;     /* error */
-  --danger-2:    color-mix(in oklch, var(--danger) 80%, black);
-  --danger-fg:   #FFFFFF;
-  --danger-soft: color-mix(in oklch, var(--danger) 18%, transparent);
-
-  --info:        #5B8CD9;     /* información */
-  --info-2:      color-mix(in oklch, var(--info) 80%, black);
-  --info-fg:     #FFFFFF;
-  --info-soft:   color-mix(in oklch, var(--info) 18%, transparent);
+   --info: #5B8CD9;
+   /* información */
+   --info-2: color-mix(in oklch, var(--info) 80%, black);
+   --info-fg: #FFFFFF;
+   --info-soft: color-mix(in oklch, var(--info) 18%, transparent);
 
 
-  /* ============================================================
+   /* ============================================================
      Schema Ionic-like · API canónica de colores
      ─────────────────────────────────────────────────────────────
      Cada color expone 6 variables: base, rgb, contrast,
@@ -411,268 +215,278 @@
      conocer el resto.
      ============================================================ */
 
-  /* Primary — alias semántico del color de marca */
-  --color-primary:              var(--brand);
-  --color-primary-rgb:          232, 85, 42;
-  --color-primary-contrast:     var(--brand-fg);
-  --color-primary-contrast-rgb: 255, 255, 255;
-  --color-primary-shade:        var(--brand-2);
-  --color-primary-tint:         var(--brand-3);
+   /* Primary — alias semántico del color de marca */
+   --color-primary: var(--brand);
+   --color-primary-rgb: 232, 85, 42;
+   --color-primary-contrast: var(--brand-fg);
+   --color-primary-contrast-rgb: 255, 255, 255;
+   --color-primary-shade: var(--brand-2);
+   --color-primary-tint: var(--brand-3);
 
-  /* Secondary — accent (themes pueden override sin tocar primary) */
-  --color-secondary:              var(--accent);
-  --color-secondary-rgb:          232, 85, 42;
-  --color-secondary-contrast:     var(--accent-fg);
-  --color-secondary-contrast-rgb: 255, 255, 255;
-  --color-secondary-shade:        var(--accent-2);
-  --color-secondary-tint:         var(--accent-3);
+   /* Secondary — accent (themes pueden override sin tocar primary) */
+   --color-secondary: var(--accent);
+   --color-secondary-rgb: 232, 85, 42;
+   --color-secondary-contrast: var(--accent-fg);
+   --color-secondary-contrast-rgb: 255, 255, 255;
+   --color-secondary-shade: var(--accent-2);
+   --color-secondary-tint: var(--accent-3);
 
-  /* Tertiary — útil para badges/highlights extra (default info) */
-  --color-tertiary:              var(--info);
-  --color-tertiary-rgb:          91, 140, 217;
-  --color-tertiary-contrast:     var(--info-fg);
-  --color-tertiary-contrast-rgb: 255, 255, 255;
-  --color-tertiary-shade:        var(--info-2);
-  --color-tertiary-tint:         color-mix(in oklch, var(--info) 88%, white);
+   /* Tertiary — útil para badges/highlights extra (default info) */
+   --color-tertiary: var(--info);
+   --color-tertiary-rgb: 91, 140, 217;
+   --color-tertiary-contrast: var(--info-fg);
+   --color-tertiary-contrast-rgb: 255, 255, 255;
+   --color-tertiary-shade: var(--info-2);
+   --color-tertiary-tint: color-mix(in oklch, var(--info) 88%, white);
 
-  /* Success */
-  --color-success:              var(--leaf);
-  --color-success-rgb:          79, 157, 110;
-  --color-success-contrast:     var(--leaf-fg);
-  --color-success-contrast-rgb: 255, 255, 255;
-  --color-success-shade:        var(--leaf-2);
-  --color-success-tint:         color-mix(in oklch, var(--leaf) 88%, white);
+   /* Success */
+   --color-success: var(--leaf);
+   --color-success-rgb: 79, 157, 110;
+   --color-success-contrast: var(--leaf-fg);
+   --color-success-contrast-rgb: 255, 255, 255;
+   --color-success-shade: var(--leaf-2);
+   --color-success-tint: color-mix(in oklch, var(--leaf) 88%, white);
 
-  /* Warning */
-  --color-warning:              var(--warn);
-  --color-warning-rgb:          216, 162, 58;
-  --color-warning-contrast:     var(--warn-fg);
-  --color-warning-contrast-rgb: 26, 24, 21;
-  --color-warning-shade:        var(--warn-2);
-  --color-warning-tint:         color-mix(in oklch, var(--warn) 88%, white);
+   /* Warning */
+   --color-warning: var(--warn);
+   --color-warning-rgb: 216, 162, 58;
+   --color-warning-contrast: var(--warn-fg);
+   --color-warning-contrast-rgb: 26, 24, 21;
+   --color-warning-shade: var(--warn-2);
+   --color-warning-tint: color-mix(in oklch, var(--warn) 88%, white);
 
-  /* Danger */
-  --color-danger:              var(--danger);
-  --color-danger-rgb:          216, 85, 63;
-  --color-danger-contrast:     var(--danger-fg);
-  --color-danger-contrast-rgb: 255, 255, 255;
-  --color-danger-shade:        var(--danger-2);
-  --color-danger-tint:         color-mix(in oklch, var(--danger) 88%, white);
+   /* Danger */
+   --color-danger: var(--danger);
+   --color-danger-rgb: 216, 85, 63;
+   --color-danger-contrast: var(--danger-fg);
+   --color-danger-contrast-rgb: 255, 255, 255;
+   --color-danger-shade: var(--danger-2);
+   --color-danger-tint: color-mix(in oklch, var(--danger) 88%, white);
 
-  /* Info — alias de tertiary */
-  --color-info:              var(--info);
-  --color-info-rgb:          91, 140, 217;
-  --color-info-contrast:     var(--info-fg);
-  --color-info-contrast-rgb: 255, 255, 255;
-  --color-info-shade:        var(--info-2);
-  --color-info-tint:         color-mix(in oklch, var(--info) 88%, white);
+   /* Info — alias de tertiary */
+   --color-info: var(--info);
+   --color-info-rgb: 91, 140, 217;
+   --color-info-contrast: var(--info-fg);
+   --color-info-contrast-rgb: 255, 255, 255;
+   --color-info-shade: var(--info-2);
+   --color-info-tint: color-mix(in oklch, var(--info) 88%, white);
 
-  /* Medium — neutro (usado por buttons sin variante, badges sin color) */
-  --color-medium:              var(--bg-3);
-  --color-medium-rgb:          34, 31, 27;
-  --color-medium-contrast:     var(--ink);
-  --color-medium-contrast-rgb: 245, 241, 234;
-  --color-medium-shade:        var(--bg-4);
-  --color-medium-tint:         var(--bg-2);
+   /* Medium — neutro (usado por buttons sin variante, badges sin color) */
+   --color-medium: var(--bg-3);
+   --color-medium-rgb: 34, 31, 27;
+   --color-medium-contrast: var(--ink);
+   --color-medium-contrast-rgb: 245, 241, 234;
+   --color-medium-shade: var(--bg-4);
+   --color-medium-tint: var(--bg-2);
 
-  /* Light — para fondos sutiles */
-  --color-light:              var(--bg-2);
-  --color-light-rgb:          26, 24, 21;
-  --color-light-contrast:     var(--ink);
-  --color-light-contrast-rgb: 245, 241, 234;
-  --color-light-shade:        var(--bg-3);
-  --color-light-tint:         var(--bg-1);
+   /* Light — para fondos sutiles */
+   --color-light: var(--bg-2);
+   --color-light-rgb: 26, 24, 21;
+   --color-light-contrast: var(--ink);
+   --color-light-contrast-rgb: 245, 241, 234;
+   --color-light-shade: var(--bg-3);
+   --color-light-tint: var(--bg-1);
 
-  /* Dark — para texto/cabeceras enfáticas en light theme; bg oscuro en dark */
-  --color-dark:              var(--ink);
-  --color-dark-rgb:          245, 241, 234;
-  --color-dark-contrast:     var(--bg);
-  --color-dark-contrast-rgb: 11, 10, 9;
-  --color-dark-shade:        var(--ink-2);
-  --color-dark-tint:         var(--bg-1);
+   /* Dark — para texto/cabeceras enfáticas en light theme; bg oscuro en dark */
+   --color-dark: var(--ink);
+   --color-dark-rgb: 245, 241, 234;
+   --color-dark-contrast: var(--bg);
+   --color-dark-contrast-rgb: 11, 10, 9;
+   --color-dark-shade: var(--ink-2);
+   --color-dark-tint: var(--bg-1);
 
 
-  /* ============================================================
+   /* ============================================================
      Color steps (gradaciones)
      ─────────────────────────────────────────────────────────────
      50..950 — útil para tablas, listas, separadores, fondos
      alternativos. En tema oscuro empiezan en el canvas y se
      vuelven más claros. Themes light invierten el sentido.
      ============================================================ */
-  --color-step-50:   color-mix(in oklch, var(--bg) 95%, var(--ink));
-  --color-step-100:  color-mix(in oklch, var(--bg) 90%, var(--ink));
-  --color-step-150:  color-mix(in oklch, var(--bg) 85%, var(--ink));
-  --color-step-200:  color-mix(in oklch, var(--bg) 80%, var(--ink));
-  --color-step-250:  color-mix(in oklch, var(--bg) 75%, var(--ink));
-  --color-step-300:  color-mix(in oklch, var(--bg) 70%, var(--ink));
-  --color-step-350:  color-mix(in oklch, var(--bg) 65%, var(--ink));
-  --color-step-400:  color-mix(in oklch, var(--bg) 60%, var(--ink));
-  --color-step-450:  color-mix(in oklch, var(--bg) 55%, var(--ink));
-  --color-step-500:  color-mix(in oklch, var(--bg) 50%, var(--ink));
-  --color-step-550:  color-mix(in oklch, var(--bg) 45%, var(--ink));
-  --color-step-600:  color-mix(in oklch, var(--bg) 40%, var(--ink));
-  --color-step-650:  color-mix(in oklch, var(--bg) 35%, var(--ink));
-  --color-step-700:  color-mix(in oklch, var(--bg) 30%, var(--ink));
-  --color-step-750:  color-mix(in oklch, var(--bg) 25%, var(--ink));
-  --color-step-800:  color-mix(in oklch, var(--bg) 20%, var(--ink));
-  --color-step-850:  color-mix(in oklch, var(--bg) 15%, var(--ink));
-  --color-step-900:  color-mix(in oklch, var(--bg) 10%, var(--ink));
-  --color-step-950:  color-mix(in oklch, var(--bg) 5%,  var(--ink));
+   --color-step-50: color-mix(in oklch, var(--bg) 95%, var(--ink));
+   --color-step-100: color-mix(in oklch, var(--bg) 90%, var(--ink));
+   --color-step-150: color-mix(in oklch, var(--bg) 85%, var(--ink));
+   --color-step-200: color-mix(in oklch, var(--bg) 80%, var(--ink));
+   --color-step-250: color-mix(in oklch, var(--bg) 75%, var(--ink));
+   --color-step-300: color-mix(in oklch, var(--bg) 70%, var(--ink));
+   --color-step-350: color-mix(in oklch, var(--bg) 65%, var(--ink));
+   --color-step-400: color-mix(in oklch, var(--bg) 60%, var(--ink));
+   --color-step-450: color-mix(in oklch, var(--bg) 55%, var(--ink));
+   --color-step-500: color-mix(in oklch, var(--bg) 50%, var(--ink));
+   --color-step-550: color-mix(in oklch, var(--bg) 45%, var(--ink));
+   --color-step-600: color-mix(in oklch, var(--bg) 40%, var(--ink));
+   --color-step-650: color-mix(in oklch, var(--bg) 35%, var(--ink));
+   --color-step-700: color-mix(in oklch, var(--bg) 30%, var(--ink));
+   --color-step-750: color-mix(in oklch, var(--bg) 25%, var(--ink));
+   --color-step-800: color-mix(in oklch, var(--bg) 20%, var(--ink));
+   --color-step-850: color-mix(in oklch, var(--bg) 15%, var(--ink));
+   --color-step-900: color-mix(in oklch, var(--bg) 10%, var(--ink));
+   --color-step-950: color-mix(in oklch, var(--bg) 5%, var(--ink));
 
 
-  /* ============================================================
+   /* ============================================================
      Globales (Ionic-like)
      ─────────────────────────────────────────────────────────────
      APIs canónicas que cualquier consumidor puede override una
      vez para cambiar el aspecto de toda la app.
      ============================================================ */
-  --background-color:     var(--bg);
-  --background-color-rgb: 11, 10, 9;
-  --text-color:           var(--ink);
-  --text-color-rgb:       245, 241, 234;
+   --background-color: var(--bg);
+   --background-color-rgb: 11, 10, 9;
+   --text-color: var(--ink);
+   --text-color-rgb: 245, 241, 234;
 
-  --font-family:          var(--font-sans);
-  --font-family-display:  var(--font-display);
-  --font-family-mono:     var(--font-mono);
+   --font-family: var(--font-sans);
+   --font-family-display: var(--font-display);
+   --font-family-mono: var(--font-mono);
 
 
-  /* ============================================================
+   /* ============================================================
      Safe area insets (notch / home bar handling)
      ─────────────────────────────────────────────────────────────
      Útil para PWAs en iOS/Android — los componentes fijos los
      consumen automáticamente cuando aplica.
      ============================================================ */
-  --safe-area-top:    env(safe-area-inset-top,    0px);
-  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
-  --safe-area-left:   env(safe-area-inset-left,   0px);
-  --safe-area-right:  env(safe-area-inset-right,  0px);
+   --safe-area-top: env(safe-area-inset-top, 0px);
+   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+   --safe-area-left: env(safe-area-inset-left, 0px);
+   --safe-area-right: env(safe-area-inset-right, 0px);
 
 
-  /* ───── Sombras ────────────────────────────────────────── */
-  --shadow-xs:   0 1px 0 rgba(0, 0, 0, 0.40);
-  --shadow-sm:   0 2px 6px rgba(0, 0, 0, 0.35);
-  --shadow-md:   0 8px 20px rgba(0, 0, 0, 0.40);
-  --shadow-lg:   0 20px 40px rgba(0, 0, 0, 0.50);
-  --shadow-xl:   0 32px 64px rgba(0, 0, 0, 0.55);
-  --shadow-glow: 0 0 0 3px color-mix(in oklch, var(--brand) 35%, transparent);
-  --shadow-focus: 0 0 0 3px color-mix(in oklch, var(--accent) 28%, transparent);
+   /* ───── Sombras ────────────────────────────────────────── */
+   --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.40);
+   --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+   --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.40);
+   --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.50);
+   --shadow-xl: 0 32px 64px rgba(0, 0, 0, 0.55);
+   --shadow-glow: 0 0 0 3px color-mix(in oklch, var(--brand) 35%, transparent);
+   --shadow-focus: 0 0 0 3px color-mix(in oklch, var(--accent) 28%, transparent);
 
-  /* ───── Layout · alturas y anchos del shell ────────────── */
-  --sidebar-w:           232px;
-  --sidebar-w-collapsed: 60px;
-  --sidebar-w-mobile:    288px;       /* drawer offcanvas */
+   /* ───── Layout · alturas y anchos del shell ────────────── */
+   --sidebar-w: 14.5rem;
+   --sidebar-w-collapsed: 3.75rem;
+   --sidebar-w-mobile: 18rem;
+   /* drawer offcanvas */
 
-  --topbar-h:    52px;
-  --tabbar-h:    58px;
-  --bottombar-h: 64px;
+   --topbar-h: 3.25rem;
+   --tabbar-h: 3.625rem;
+   --bottombar-h: 4rem;
 
-  --page-pad:    22px;                 /* padding lateral del body */
-  --page-max:    1440px;
+   --page-pad: 1.375rem;
+   /* padding lateral del body */
+   --page-max: 90rem;
 
-  /* ───── Containers (Bootstrap-style) ───────────────────── */
-  --container-narrow:  720px;
-  --container-reading: 880px;
-  --container:         1200px;
-  --container-wide:    1440px;
-  --container-full:    100%;
+   /* ───── Containers (Bootstrap-style) ───────────────────── */
+   --container-narrow: 45rem;
+   --container-reading: 55rem;
+   --container: 75rem;
+   --container-wide: 90rem;
+   --container-full: 100%;
 
-  /* ───── Breakpoints (custom-prop, referencia) ──────────── */
-  --bp-sm: 640px;
-  --bp-md: 768px;
-  --bp-lg: 1024px;
-  --bp-xl: 1200px;
-  --bp-2xl: 1440px;
+   /* ───── Breakpoints (custom-prop, referencia) ──────────── */
+   --bp-sm: 640px;
+   --bp-md: 768px;
+   --bp-lg: 1024px;
+   --bp-xl: 1200px;
+   --bp-2xl: 1440px;
 
-  /* ───── Motion · easing y duración ─────────────────────── */
-  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
-  --ease-inout:  cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-spring: cubic-bezier(0.28, 0.84, 0.42, 1);
+   /* ───── Motion · easing y duración ─────────────────────── */
+   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+   --ease-in: cubic-bezier(0.4, 0, 1, 1);
+   --ease-inout: cubic-bezier(0.4, 0, 0.2, 1);
+   --ease-spring: cubic-bezier(0.28, 0.84, 0.42, 1);
 
-  --dur-instant: 80ms;
-  --dur-fast:    120ms;
-  --dur-base:    180ms;
-  --dur-slow:    280ms;
-  --dur-slower:  400ms;
+   --dur-instant: 80ms;
+   --dur-fast: 120ms;
+   --dur-base: 180ms;
+   --dur-slow: 280ms;
+   --dur-slower: 400ms;
 
-  /* ───── Z-index ────────────────────────────────────────── */
-  --z-base:    1;
-  --z-dropdown: 50;
-  --z-sticky:  100;
-  --z-drawer:  200;
-  --z-modal:   300;
-  --z-toast:   400;
-  --z-tooltip: 500;
-  --z-popover: 600;
+   /* ───── Z-index ────────────────────────────────────────── */
+   --z-base: 1;
+   --z-dropdown: 50;
+   --z-sticky: 100;
+   --z-drawer: 200;
+   --z-modal: 300;
+   --z-toast: 400;
+   --z-tooltip: 500;
+   --z-popover: 600;
 
-  /* ───── Overlays (UI sobre media) ─────────────────────── */
-  --overlay-strong: rgba(0, 0, 0, 0.70);
-  --overlay-medium: rgba(0, 0, 0, 0.50);
-  --overlay-soft:   rgba(0, 0, 0, 0.25);
-  --overlay-faint:  rgba(0, 0, 0, 0.15);
+   /* ───── Overlays (UI sobre media) ─────────────────────── */
+   --overlay-strong: rgba(0, 0, 0, 0.70);
+   --overlay-medium: rgba(0, 0, 0, 0.50);
+   --overlay-soft: rgba(0, 0, 0, 0.25);
+   --overlay-faint: rgba(0, 0, 0, 0.15);
 
-  --overlay-glass:   rgba(255, 255, 255, 0.10);
-  --overlay-glass-2: rgba(255, 255, 255, 0.18);
-  --overlay-glass-3: rgba(255, 255, 255, 0.40);
-  --overlay-glass-4: rgba(255, 255, 255, 0.92);
+   --overlay-glass: rgba(255, 255, 255, 0.10);
+   --overlay-glass-2: rgba(255, 255, 255, 0.18);
+   --overlay-glass-3: rgba(255, 255, 255, 0.40);
+   --overlay-glass-4: rgba(255, 255, 255, 0.92);
 
-  --overlay-fade-bottom: linear-gradient(180deg, transparent, var(--overlay-strong));
-  --overlay-fade-top:    linear-gradient(180deg, var(--overlay-medium), transparent);
+   --overlay-fade-bottom: linear-gradient(180deg, transparent, var(--overlay-strong));
+   --overlay-fade-top: linear-gradient(180deg, var(--overlay-medium), transparent);
 
-  /* ───── Glass / blur (componentes traslúcidos) ────────── */
-  --glass-blur:        14px;
-  --glass-blur-strong: 22px;
-  --glass-blur-soft:   10px;
-  --glass-saturate:        140%;
-  --glass-saturate-strong: 160%;
-  --glass-saturate-soft:   120%;
+   /* ───── Glass / blur (componentes traslúcidos) ────────── */
+   --glass-blur: 14px;
+   --glass-blur-strong: 22px;
+   --glass-blur-soft: 10px;
+   --glass-saturate: 140%;
+   --glass-saturate-strong: 160%;
+   --glass-saturate-soft: 120%;
 
-  /* ───── Defaults de modificadores universales de efecto ───
+   /* ───── Defaults de modificadores universales de efecto ───
      Consumidos por .blur, .saturate, .elevated, .brightness, .dim
      en modifiers.css. Override por elemento via style="--blur: …". */
-  --blur-default:    24px;
-  --blur-sm:         8px;
-  --blur-lg:         32px;
-  --saturate:        140%;
-  --saturate-strong: 160%;
-  --saturate-soft:   120%;
-  --brightness-default: 1.1;
-  --brightness-dim:     0.6;
+   --blur-default: 24px;
+   --blur-sm: 8px;
+   --blur-lg: 32px;
+   --saturate: 140%;
+   --saturate-strong: 160%;
+   --saturate-soft: 120%;
+   --brightness-default: 1.1;
+   --brightness-dim: 0.6;
 
-  /* ───── Media surfaces (siempre neutro) ────────────────── */
-  --media-bg:      #000000;
-  --media-bg-soft: rgba(0, 0, 0, 0.92);
-  --media-fg:      #FFFFFF;
-  --media-fg-soft: rgba(255, 255, 255, 0.70);
+   /* ───── Media surfaces (siempre neutro) ────────────────── */
+   --media-bg: #000000;
+   --media-bg-soft: rgba(0, 0, 0, 0.92);
+   --media-fg: #FFFFFF;
+   --media-fg-soft: rgba(255, 255, 255, 0.70);
 
-  /* ───── Paper / receipt (impreso, siempre claro) ──────── */
-  --paper-bg:    #FAFAF6;
-  --paper-ink:   #1A1815;
-  --paper-ink-2: #5C564D;
-  --paper-line:  #888888;
+   /* ───── Paper / receipt (impreso, siempre claro) ──────── */
+   --paper-bg: #FAFAF6;
+   --paper-ink: #1A1815;
+   --paper-ink-2: #5C564D;
+   --paper-line: #888888;
 
-  /* ───── Tier gradients (loyalty / membership) ──────────── */
-  --tier-silver-a:   #6E6E74;
-  --tier-silver-b:   #B4B6BB;
-  --tier-silver-fg:  #1A1A1C;
-  --tier-gold-a:     #8A6418;
-  --tier-gold-b:     #E6C159;
-  --tier-gold-fg:    #2A1D05;
-  --tier-platinum-a: #1F2024;
-  --tier-platinum-b: #4A4D56;
-  --tier-platinum-fg:#F0F1F3;
+   /* ───── Tier gradients (loyalty / membership) ──────────── */
+   --tier-silver-a: #6E6E74;
+   --tier-silver-b: #B4B6BB;
+   --tier-silver-fg: #1A1A1C;
+   --tier-gold-a: #8A6418;
+   --tier-gold-b: #E6C159;
+   --tier-gold-fg: #2A1D05;
+   --tier-platinum-a: #1F2024;
+   --tier-platinum-b: #4A4D56;
+   --tier-platinum-fg: #F0F1F3;
 
-  /* ───── POS category gradients ─────────────────────────── */
-  --cat-coffee-a:  #6B4226; --cat-coffee-b:  #2A1810;
-  --cat-tea-a:     #4A7D4A; --cat-tea-b:     #1F3A1F;
-  --cat-bakery-a:  #C89568; --cat-bakery-b:  #6B4423;
-  --cat-cold-a:    #4A7DA8; --cat-cold-b:    #1F3A55;
-  --cat-menu-a:    #A85A3A; --cat-menu-b:    #5A2818;
-  --cat-dessert-a: #B87A9D; --cat-dessert-b: #5A2C4A;
-  --cat-snacks-a:  #D8A23A; --cat-snacks-b:  #6B4F1A;
-  --cat-all-a:     #555555; --cat-all-b:     #1A1A1A;
+   /* ───── POS category gradients ─────────────────────────── */
+   --cat-coffee-a: #6B4226;
+   --cat-coffee-b: #2A1810;
+   --cat-tea-a: #4A7D4A;
+   --cat-tea-b: #1F3A1F;
+   --cat-bakery-a: #C89568;
+   --cat-bakery-b: #6B4423;
+   --cat-cold-a: #4A7DA8;
+   --cat-cold-b: #1F3A55;
+   --cat-menu-a: #A85A3A;
+   --cat-menu-b: #5A2818;
+   --cat-dessert-a: #B87A9D;
+   --cat-dessert-b: #5A2C4A;
+   --cat-snacks-a: #D8A23A;
+   --cat-snacks-b: #6B4F1A;
+   --cat-all-a: #555555;
+   --cat-all-b: #1A1A1A;
 
-  color-scheme: dark;
+   color-scheme: dark;
 }
 
 
@@ -680,201 +494,33 @@
    Tema claro · sobrescribe solo lo que cambia
    ============================================================ */
 [data-theme="erplora-light"] {
-  --bg:    #FAF8F4;
-  --bg-1:  #FFFFFF;
-  --bg-2:  #FFFFFF;
-  --bg-3:  #F2EEE8;
-  --bg-4:  #E6E1D8;
+   --bg: #FAF8F4;
+   --bg-1: #FFFFFF;
+   --bg-2: #FFFFFF;
+   --bg-3: #F2EEE8;
+   --bg-4: #E6E1D8;
 
-  --line:   rgba(20, 14, 8, 0.07);
-  --line-2: rgba(20, 14, 8, 0.13);
-  --line-3: rgba(20, 14, 8, 0.22);
+   --line: rgba(20, 14, 8, 0.07);
+   --line-2: rgba(20, 14, 8, 0.13);
+   --line-3: rgba(20, 14, 8, 0.22);
 
-  --ink:   #1A1612;
-  --ink-2: #524C44;
-  --ink-3: #837B70;
-  --ink-4: #B5AEA3;
+   --ink: #1A1612;
+   --ink-2: #524C44;
+   --ink-3: #837B70;
+   --ink-4: #B5AEA3;
 
-  --brand-soft:  color-mix(in oklch, var(--brand)  14%, white);
-  --leaf-soft:   color-mix(in oklch, var(--leaf)   14%, white);
-  --warn-soft:   color-mix(in oklch, var(--warn)   18%, white);
-  --danger-soft: color-mix(in oklch, var(--danger) 14%, white);
-  --info-soft:   color-mix(in oklch, var(--info)   14%, white);
+   --brand-soft: color-mix(in oklch, var(--brand) 14%, white);
+   --leaf-soft: color-mix(in oklch, var(--leaf) 14%, white);
+   --warn-soft: color-mix(in oklch, var(--warn) 18%, white);
+   --danger-soft: color-mix(in oklch, var(--danger) 14%, white);
+   --info-soft: color-mix(in oklch, var(--info) 14%, white);
 
-  --shadow-xs: 0 1px 0  rgba(20, 14, 8, 0.04);
-  --shadow-sm: 0 1px 3px rgba(20, 14, 8, 0.08);
-  --shadow-md: 0 8px 20px rgba(20, 14, 8, 0.10);
-  --shadow-lg: 0 20px 40px rgba(20, 14, 8, 0.12);
-  --shadow-xl: 0 32px 64px rgba(20, 14, 8, 0.14);
+   --shadow-xs: 0 1px 0 rgba(20, 14, 8, 0.04);
+   --shadow-sm: 0 1px 3px rgba(20, 14, 8, 0.08);
+   --shadow-md: 0 8px 20px rgba(20, 14, 8, 0.10);
+   --shadow-lg: 0 20px 40px rgba(20, 14, 8, 0.12);
+   --shadow-xl: 0 32px 64px rgba(20, 14, 8, 0.14);
 
-  color-scheme: light;
+   color-scheme: light;
 }
 
-
-/* ============================================================
-   COMPATIBILIDAD TEMPORAL · alias --ok-* → variables nuevas
-   ─────────────────────────────────────────────────────────────
-   Bloque transicional. Permite que los componentes/themes que
-   todavía consumen `var(--ok-*)` sigan funcionando mientras
-   migramos cada fichero al naming sin prefijo. SE ELIMINA al
-   cerrar el rebuild — cualquier referencia a --ok-* es deuda.
-   ============================================================ */
-:root,
-[data-theme="erplora"],
-[data-theme="erplora-light"] {
-  /* Tipografía */
-  --ok-font-sans:    var(--font-sans);
-  --ok-font-display: var(--font-display);
-  --ok-font-mono:    var(--font-mono);
-  --ok-text-2xs:     var(--text-2xs);
-  --ok-text-xs:      var(--text-xs);
-  --ok-text-sm:      var(--text-sm);
-  --ok-text-md:      var(--text-md);
-  --ok-text-base:    var(--text-base);
-  --ok-text-lg:      var(--text-lg);
-  --ok-text-xl:      var(--text-xl);
-  --ok-text-2xl:     var(--text-2xl);
-  --ok-text-3xl:     var(--text-3xl);
-  --ok-text-4xl:     var(--text-4xl);
-  --ok-text-5xl:     var(--text-5xl);
-  --ok-leading-tight:  var(--leading-tight);
-  --ok-leading-snug:   var(--leading-snug);
-  --ok-leading-normal: var(--leading-normal);
-  --ok-tracking-tight:   var(--tracking-tight);
-  --ok-tracking-tighter: var(--tracking-tighter);
-  --ok-tracking-display: var(--tracking-display);
-  --ok-tracking-wide:    var(--tracking-wide);
-  --ok-tracking-mono:    var(--tracking-mono);
-
-  /* Paleta */
-  --ok-bg:    var(--bg);
-  --ok-bg-1:  var(--bg-1);
-  --ok-bg-2:  var(--bg-2);
-  --ok-bg-3:  var(--bg-3);
-  --ok-bg-4:  var(--bg-4);
-  --ok-line:    var(--line);
-  --ok-line-2:  var(--line-2);
-  --ok-line-3:  var(--line-3);
-  --ok-ink:   var(--ink);
-  --ok-ink-2: var(--ink-2);
-  --ok-ink-3: var(--ink-3);
-  --ok-ink-4: var(--ink-4);
-
-  /* Acentos */
-  --ok-brand:      var(--brand);
-  --ok-brand-2:    var(--brand-2);
-  --ok-brand-3:    var(--brand-3);
-  --ok-brand-fg:   var(--brand-fg);
-  --ok-brand-soft: var(--brand-soft);
-  --ok-accent:      var(--accent);
-  --ok-accent-soft: var(--accent-soft);
-  --ok-accent-fg:   var(--accent-fg);
-
-  --ok-leaf:       var(--leaf);
-  --ok-leaf-soft:  var(--leaf-soft);
-  --ok-leaf-fg:    var(--leaf-fg);
-  --ok-warn:       var(--warn);
-  --ok-warn-soft:  var(--warn-soft);
-  --ok-warn-fg:    var(--warn-fg);
-  --ok-danger:     var(--danger);
-  --ok-danger-soft:var(--danger-soft);
-  --ok-danger-fg:  var(--danger-fg);
-  --ok-info:       var(--info);
-  --ok-info-soft:  var(--info-soft);
-  --ok-info-fg:    var(--info-fg);
-
-  /* Espaciado */
-  --ok-space-0:  var(--space-0);
-  --ok-space-1:  var(--space-1);
-  --ok-space-2:  var(--space-2);
-  --ok-space-3:  var(--space-3);
-  --ok-space-4:  var(--space-4);
-  --ok-space-5:  var(--space-5);
-  --ok-space-6:  var(--space-6);
-  --ok-space-7:  var(--space-7);
-  --ok-space-8:  var(--space-8);
-  --ok-space-9:  var(--space-9);
-  --ok-space-10: var(--space-10);
-
-  /* Radios */
-  --ok-radius-xs:   var(--radius-xs);
-  --ok-radius-sm:   var(--radius-sm);
-  --ok-radius-md:   var(--radius-md);
-  --ok-radius-lg:   var(--radius-lg);
-  --ok-radius-xl:   var(--radius-xl);
-  --ok-radius-2xl:  var(--radius-2xl);
-  --ok-radius-pill: var(--radius-pill);
-
-  /* Sombras */
-  --ok-shadow-xs:   var(--shadow-xs);
-  --ok-shadow-sm:   var(--shadow-sm);
-  --ok-shadow-md:   var(--shadow-md);
-  --ok-shadow-lg:   var(--shadow-lg);
-  --ok-shadow-glow: var(--shadow-glow);
-
-  /* Layout */
-  --ok-sidebar-w:           var(--sidebar-w);
-  --ok-sidebar-w-collapsed: var(--sidebar-w-collapsed);
-  --ok-topbar-h:            var(--topbar-h);
-  --ok-tabbar-h:            var(--tabbar-h);
-  --ok-page-pad:            var(--page-pad);
-  --ok-page-max:            var(--page-max);
-
-  /* Motion */
-  --ok-ease-out:    var(--ease-out);
-  --ok-ease-spring: var(--ease-spring);
-  --ok-dur-fast:    var(--dur-fast);
-  --ok-dur-base:    var(--dur-base);
-  --ok-dur-slow:    var(--dur-slow);
-
-  /* Z-index */
-  --ok-z-base:    var(--z-base);
-  --ok-z-sticky:  var(--z-sticky);
-  --ok-z-drawer:  var(--z-drawer);
-  --ok-z-modal:   var(--z-modal);
-  --ok-z-toast:   var(--z-toast);
-  --ok-z-tooltip: var(--z-tooltip);
-
-  /* Overlays */
-  --ok-overlay-strong: var(--overlay-strong);
-  --ok-overlay-medium: var(--overlay-medium);
-  --ok-overlay-soft:   var(--overlay-soft);
-  --ok-overlay-faint:  var(--overlay-faint);
-  --ok-overlay-glass:   var(--overlay-glass);
-  --ok-overlay-glass-2: var(--overlay-glass-2);
-  --ok-overlay-glass-3: var(--overlay-glass-3);
-  --ok-overlay-glass-4: var(--overlay-glass-4);
-  --ok-overlay-fade-bottom: var(--overlay-fade-bottom);
-  --ok-overlay-fade-top:    var(--overlay-fade-top);
-
-  /* Media + paper */
-  --ok-media-bg:      var(--media-bg);
-  --ok-media-bg-soft: var(--media-bg-soft);
-  --ok-media-fg:      var(--media-fg);
-  --ok-media-fg-soft: var(--media-fg-soft);
-  --ok-paper-bg:    var(--paper-bg);
-  --ok-paper-ink:   var(--paper-ink);
-  --ok-paper-ink-2: var(--paper-ink-2);
-  --ok-paper-line:  var(--paper-line);
-
-  /* Tier gradients */
-  --ok-tier-silver-a:  var(--tier-silver-a);
-  --ok-tier-silver-b:  var(--tier-silver-b);
-  --ok-tier-silver-fg: var(--tier-silver-fg);
-  --ok-tier-gold-a:    var(--tier-gold-a);
-  --ok-tier-gold-b:    var(--tier-gold-b);
-  --ok-tier-gold-fg:   var(--tier-gold-fg);
-  --ok-tier-platinum-a: var(--tier-platinum-a);
-  --ok-tier-platinum-b: var(--tier-platinum-b);
-  --ok-tier-platinum-fg: var(--tier-platinum-fg);
-
-  /* POS category gradients */
-  --ok-cat-coffee-a:  var(--cat-coffee-a);  --ok-cat-coffee-b:  var(--cat-coffee-b);
-  --ok-cat-tea-a:     var(--cat-tea-a);     --ok-cat-tea-b:     var(--cat-tea-b);
-  --ok-cat-bakery-a:  var(--cat-bakery-a);  --ok-cat-bakery-b:  var(--cat-bakery-b);
-  --ok-cat-cold-a:    var(--cat-cold-a);    --ok-cat-cold-b:    var(--cat-cold-b);
-  --ok-cat-menu-a:    var(--cat-menu-a);    --ok-cat-menu-b:    var(--cat-menu-b);
-  --ok-cat-dessert-a: var(--cat-dessert-a); --ok-cat-dessert-b: var(--cat-dessert-b);
-  --ok-cat-snacks-a:  var(--cat-snacks-a);  --ok-cat-snacks-b:  var(--cat-snacks-b);
-  --ok-cat-all-a:     var(--cat-all-a);     --ok-cat-all-b:     var(--cat-all-b);
-}

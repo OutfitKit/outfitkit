@@ -1,0 +1,68 @@
+/* ============================================================
+   OutfitKit · Pricing Matrix
+   ============================================================ */
+
+.pmatrix {
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.pmatrix table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.pmatrix th,
+.pmatrix td {
+  padding: var(--space-2-5) var(--space-3);
+  border-bottom: var(--border-w) solid var(--line);
+  border-right: var(--border-w) solid var(--line);
+  text-align: right;
+  color: var(--ink);
+}
+
+.pmatrix th {
+  background: var(--bg-3);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  font-weight: 500;
+}
+
+.pmatrix th:first-child,
+.pmatrix td:first-child {
+  text-align: left;
+  color: var(--ink);
+  position: sticky;
+  left: 0;
+  background: var(--bg-2);
+}
+
+.pmatrix th:first-child {
+  background: var(--bg-3);
+}
+
+.pmatrix tr:last-child td {
+  border-bottom: none;
+}
+
+.pmatrix td:last-child,
+.pmatrix th:last-child {
+  border-right: none;
+}
+
+.pmatrix td--hi {
+  background: color-mix(in oklch, var(--brand) 12%, transparent);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.pmatrix td--mid {
+  background: color-mix(in oklch, var(--brand) 5%, transparent);
+}
