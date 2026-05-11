@@ -7,7 +7,6 @@
   /* API canónica de override */
   --public-nav-background:   color-mix(in oklch, var(--bg) 85%, transparent);
   --public-nav-border-color: var(--line);
-  --public-nav-blur:         12px;
 
   position: sticky;
   top: 0;
@@ -17,8 +16,8 @@
   gap: var(--space-4);
   padding: var(--space-3) var(--space-5);
   background: var(--public-nav-background);
-  backdrop-filter: blur(var(--public-nav-blur));
-  -webkit-backdrop-filter: blur(var(--public-nav-blur));
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-bottom: var(--border-w) solid var(--public-nav-border-color);
 }
 .public-nav__brand {
@@ -43,7 +42,7 @@
   font-size: var(--text-base);
 }
 .public-nav__name { font-weight: 600; }
-.public-nav__sub  { font-weight: 400; color: var(--ink-3); font-size: 12px; margin-left: var(--space-1-5); }
+.public-nav__sub  { font-weight: 400; color: var(--ink-3); font-size: var(--text-xs); margin-left: var(--space-1-5); }
 .public-nav__links {
   display: none;
   gap: var(--space-4);
@@ -55,9 +54,9 @@
 .public-nav__link {
   color: var(--ink-2);
   text-decoration: none;
-  font-size: 14px;
+  font-size: var(--text-sm);
   font-weight: 500;
-  transition: color .12s ease;
+  transition: color var(--dur-fast) var(--ease-out);
 }
 .public-nav__link:hover,
 .public-nav__link[aria-current="page"] { color: var(--ink); }
@@ -75,7 +74,7 @@
 .public-map {
   position: relative;
   aspect-ratio: 16 / 9;
-  border-radius: 12px;
+  border-radius: var(--radius-xl);
   overflow: hidden;
   border: var(--border-w) solid var(--line);
   background:
@@ -106,8 +105,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -100%);
-  width: 32px;
-  height: 32px;
+  width: var(--space-8);
+  height: var(--space-8);
   display: grid;
   place-items: center;
   color: var(--brand);
@@ -123,8 +122,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 16px;
-  height: 16px;
+  width: var(--space-4);
+  height: var(--space-4);
   border-radius: var(--radius-circle);
   background: var(--brand);
   transform: translate(-50%, -50%);
@@ -140,17 +139,17 @@
   bottom: var(--space-3);
   left: var(--space-3);
   background: color-mix(in oklch, var(--bg) 90%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--glass-blur-soft));
+  -webkit-backdrop-filter: blur(var(--glass-blur-soft));
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
   border: var(--border-w) solid var(--line);
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 500;
 }
 .public-map__caption-meta {
   font-weight: 400;
   color: var(--ink-3);
-  font-size: 12px;
+  font-size: var(--text-xs);
   margin-top: 2px;
 }

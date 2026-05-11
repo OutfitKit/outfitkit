@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Gallery</h1>
-<p class="showcase__lead">Grid de miniaturas multimedia con selección. Compón <code>.ok-gallery__item</code> con opcional <code>.ok-gallery__caption</code> y <code>.ok-gallery__select</code>. Variante <code>.ok-gallery__item--ph</code> para placeholders sin imagen.</p>
+<p class="showcase__lead">Grid de miniaturas multimedia con selección. Compón <code>.gallery__item</code> con opcional <code>.gallery__caption</code> y <code>.gallery__select</code>. Variante <code>.gallery__item--ph</code> para placeholders sin imagen.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/gallery.jinja" import gallery %}
 {% call gallery() %}
@@ -228,7 +228,7 @@
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.ok-gallery__item</code>. Modificadores: <code>--ph</code> (placeholder), <code>--selected</code>. Sub-elementos: <code>.ok-gallery__caption</code>, <code>.ok-gallery__select</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.gallery__item</code>. Modificadores: <code>--ph</code> (placeholder), <code>--selected</code>. Sub-elementos: <code>.gallery__caption</code>, <code>.gallery__select</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

@@ -93,11 +93,11 @@ body { background: var(--bg); margin: 0; }
 
     <div class="content scroll body">
       <div class="page-header">
-        <div class="page-header__title">
+        <div class="page-header-title">
           <h1>Sesiones activas</h1>
-          <div class="page-header__sub">Revisa y revoca cualquier sesión que no reconozcas. Las sesiones inactivas más de 30 días caducan automáticamente.</div>
+          <div class="page-header-sub">Revisa y revoca cualquier sesión que no reconozcas. Las sesiones inactivas más de 30 días caducan automáticamente.</div>
         </div>
-        <div class="page-header__actions">
+        <div class="actions">
           <button class="btn outline danger">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
             Cerrar sesiones en otros dispositivos
@@ -129,10 +129,10 @@ body { background: var(--bg); margin: 0; }
       </div>
 
       <div class="section">
-        <div class="section__head">
+        <div class="head">
           <div>
-            <div class="section__title">Dispositivos conectados</div>
-            <div class="section__sub">5 sesiones · ordenadas por última actividad</div>
+            <div class="title lg">Dispositivos conectados</div>
+            <div class="meta">5 sesiones · ordenadas por última actividad</div>
           </div>
           <div class="toggle-group sm" role="tablist">
             <button class="toggle-group__option" data-on:click="$deviceFilter = 'all'" data-class:is-selected="$deviceFilter === 'all'">Todos</button>
@@ -236,10 +236,10 @@ body { background: var(--bg); margin: 0; }
       </div>
 
       <div class="section" data-signals='{"historyOpen": true}'>
-        <div class="section__head">
+        <div class="head">
           <div>
-            <div class="section__title">Historial de logins</div>
-            <div class="section__sub">Últimos 10 intentos · incluye fallidos</div>
+            <div class="title lg">Historial de logins</div>
+            <div class="meta">Últimos 10 intentos · incluye fallidos</div>
           </div>
           <div class="flex gap-2">
             <button class="btn ghost sm">

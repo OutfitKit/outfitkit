@@ -16,20 +16,20 @@
 }
 
 /* Header alignment */
-.section.center .section__header { text-align: center; }
-.section.left   .section__header { text-align: left; }
+.section.center > .head { text-align: center; }
+.section.left   > .head { text-align: left; }
 
-.section__header {
+.section > .head {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   max-width: 720px;
   margin: var(--space-0) auto var(--space-7);
 }
-.section.left .section__header { margin-inline: var(--space-0); max-width: 880px; }
+.section.left > .head { margin-inline: var(--space-0); max-width: 880px; }
 
 /* Decorative icon disc */
-.section__icon {
+.section-icon {
   width: var(--icon-2xl);
   height: var(--icon-2xl);
   border-radius: var(--radius-2xl);
@@ -38,18 +38,19 @@
   justify-content: center;
   margin-bottom: var(--space-1);
 }
-.section.center .section__icon { margin-inline: auto; }
-.section__icon .iconify { font-size: 28px; }
+.section.center .section-icon { margin-inline: auto; }
+.section-icon .iconify { font-size: 28px; }
 
 /* Icon variants pull tokens from OutfitKit */
-.section__icon--brand   { background: var(--brand-soft);   color: var(--brand-3); }
-.section__icon--leaf    { background: var(--leaf-soft);    color: var(--leaf); }
-.section__icon--warn    { background: var(--warn-soft);    color: var(--warn); }
-.section__icon--danger  { background: var(--danger-soft);  color: var(--danger); }
-.section__icon--info    { background: var(--info-soft);    color: var(--info); }
-.section__icon--neutral { background: var(--bg-3);         color: var(--ink-2); }
+.section-icon.brand   { background: var(--brand-soft);   color: var(--brand-3); }
+.section-icon.leaf    { background: var(--leaf-soft);    color: var(--leaf); }
+.section-icon.warn    { background: var(--warn-soft);    color: var(--warn); }
+.section-icon.danger  { background: var(--danger-soft);  color: var(--danger); }
+.section-icon.info    { background: var(--info-soft);    color: var(--info); }
+.section-icon.neutral { background: var(--bg-3);         color: var(--ink-2); }
 
-.section__title {
+/* Marketing section title: uses .title universal with clamp override */
+.section > .head > .title {
   font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 44px);
   font-weight: 700;
@@ -59,11 +60,12 @@
   margin: var(--space-0);
 }
 
-.section__subtitle {
+/* Marketing section subtitle: uses .sub universal with clamp override */
+.section > .head > .sub {
   font-size: clamp(16px, 1.4vw, 19px);
   line-height: 1.55;
   color: var(--ink-2);
   margin: var(--space-0);
 }
 
-.section__body { width: 100%; }
+.section > .body { width: 100%; }

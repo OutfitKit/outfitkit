@@ -149,11 +149,11 @@ body { background: var(--bg); margin: 0; }
 
     <!-- Header -->
     <header class="page-header">
-      <div class="page-header__title">
+      <div class="page-header-title">
         <h1>Activar verificación en dos pasos</h1>
-        <p class="page-header__sub">Añade una capa extra de seguridad a tu cuenta de ERPlora Cloud.</p>
+        <p class="page-header-sub">Añade una capa extra de seguridad a tu cuenta de ERPlora Cloud.</p>
       </div>
-      <div class="page-header__actions">
+      <div class="actions">
         <button class="btn ghost" data-show="$step <= 1">Cancelar</button>
         <button class="btn ghost" data-show="$step > 1" data-on:click="$step = Math.max(1, $step - 1)">
           <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
@@ -322,10 +322,10 @@ body { background: var(--bg); margin: 0; }
 
     <!-- STEP 4: Backup codes -->
     <section class="section" data-show="$step === 4">
-      <div class="section__head">
+      <div class="head">
         <div>
-          <div class="section__title">Códigos de respaldo</div>
-          <div class="section__sub">Úsalos cuando no tengas acceso a tu app autenticadora. Cada código es de un solo uso.</div>
+          <div class="title lg">Códigos de respaldo</div>
+          <div class="meta">Úsalos cuando no tengas acceso a tu app autenticadora. Cada código es de un solo uso.</div>
         </div>
       </div>
 

@@ -10,17 +10,17 @@
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {% if _container_class %}<div class="{{ _container_class }}">{% endif %}
     {% if icon or title or subtitle %}
-    <header class="section__header">
+    <header class="head">
       {% if icon %}
-      <div class="section__icon {{ icon_variant }}" aria-hidden="true">
+      <div class="section-icon {{ icon_variant }}" aria-hidden="true">
         <span class="iconify" data-icon="{{ icon }}"></span>
       </div>
       {% endif %}
-      {% if title %}<h2 class="section__title">{{ title }}</h2>{% endif %}
-      {% if subtitle %}<p class="section__subtitle">{{ subtitle }}</p>{% endif %}
+      {% if title %}<h2 class="title">{{ title }}</h2>{% endif %}
+      {% if subtitle %}<p class="sub">{{ subtitle }}</p>{% endif %}
     </header>
     {% endif %}
-    <div class="section__body">{{ caller() }}</div>
+    <div class="body">{{ caller() }}</div>
   {% if _container_class %}</div>{% endif %}
 </section>
 {%- endmacro %}

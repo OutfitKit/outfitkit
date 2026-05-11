@@ -32,7 +32,7 @@
   display: flex;
   align-items: flex-end;
   gap: var(--space-3-5);
-  margin-top: 18px;
+  margin-top: var(--modal-header-pad);
 }
 .emp__avatar {
   width: var(--avatar-xl); height: var(--avatar-xl);
@@ -44,7 +44,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: var(--text-xl);
   font-weight: 600;
   letter-spacing: var(--tracking-near);
   flex-shrink: 0;
@@ -52,7 +52,7 @@
 .emp__name-block { padding-bottom: var(--space-1); min-width: 0; }
 .emp__name {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: var(--tracking-near);
   color: var(--ink);
@@ -69,7 +69,7 @@
   gap: var(--space-1-5);
   padding: 3px var(--space-2);
   border-radius: var(--radius-pill);
-  font-size: 11px;
+  font-size: var(--text-xs);
   font-weight: 500;
   background: color-mix(in oklch, var(--leaf) 15%, transparent);
   color: var(--leaf);
@@ -97,7 +97,7 @@
 }
 .emp__stat-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--ink-3);
@@ -121,7 +121,7 @@
   background: var(--shift-background);
   border: var(--border-w) solid var(--shift-border-color);
   border-radius: var(--shift-border-radius);
-  padding: 18px;
+  padding: var(--modal-header-pad);
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-3-5);
@@ -139,7 +139,7 @@
 .shift__time small {
   display: block;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--text-2xs);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
@@ -148,9 +148,9 @@
 }
 .shift__bar {
   position: relative;
-  height: 6px;
+  height: var(--hr-bar-h);
   background: var(--bg-3);
-  border-radius: 3px;
+  border-radius: var(--radius-pill);
   overflow: hidden;
 }
 .shift__bar-fill {
@@ -196,12 +196,12 @@
 .org__node--root { background: linear-gradient(180deg, var(--bg-3), var(--bg-2)); border-color: var(--brand-soft-line); }
 .org__node-name {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: var(--text-sm);
   font-weight: 600;
   color: var(--ink);
 }
 .org__node-role {
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--ink-3);
 }
 .org__node-team {
@@ -213,7 +213,7 @@
 
 .org__row {
   display: flex;
-  gap: 28px;
+  gap: var(--space-7);
   position: relative;
   flex-wrap: wrap;
   justify-content: center;
@@ -259,7 +259,7 @@
   overflow: hidden;
 }
 .payslip__head {
-  padding: 18px;
+  padding: var(--modal-header-pad);
   background: linear-gradient(180deg, var(--bg-3), var(--bg-2));
   border-bottom: var(--border-w) solid var(--line);
   display: grid;
@@ -269,7 +269,7 @@
 }
 .payslip__title {
   font-family: var(--font-display);
-  font-size: 15px;
+  font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: var(--tracking-snug);
   margin: var(--space-0);
@@ -286,14 +286,14 @@
 }
 .payslip__net-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
   color: var(--ink-3);
 }
 .payslip__net-value {
   font-family: var(--font-display);
-  font-size: 26px;
+  font-size: var(--text-3xl);
   font-weight: 600;
   letter-spacing: var(--tracking-display);
   color: var(--ink);
@@ -305,8 +305,8 @@
   display: grid;
   grid-template-columns: 1fr 90px 110px;
   gap: var(--space-3);
-  padding: var(--space-2) 18px;
-  font-size: 13px;
+  padding: var(--space-2) var(--modal-header-pad);
+  font-size: var(--text-sm);
   font-variant-numeric: tabular-nums;
   align-items: center;
   border-bottom: var(--border-w) solid var(--line);
@@ -362,7 +362,7 @@
 }
 .vac__balance {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: var(--text-xs);
   color: var(--ink-3);
 }
 .vac__balance b {
@@ -386,7 +386,7 @@
 }
 .vac__month-label {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: var(--text-2xs);
   text-transform: uppercase;
   color: var(--ink-3);
   text-align: center;
@@ -733,7 +733,7 @@
   color: var(--ink);
 }
 .shift-cal__shift-type {
-  font-size: 10px;
+  font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--ink-3);
@@ -857,7 +857,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
-  padding: 3px var(--space-2-5);
+  padding: var(--space-1) var(--space-2-5);
   border-radius: var(--radius-pill);
   font-size: var(--text-xs);
   font-weight: 500;
@@ -1076,7 +1076,7 @@
   border: var(--border-w) solid var(--line);
 }
 .perf.mini .perf__label {
-  font-size: 10px;
+  font-size: var(--text-2xs);
   margin: var(--space-0);
 }
 .perf.mini .perf__bar {

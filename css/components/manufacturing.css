@@ -38,7 +38,7 @@
   padding: var(--space-2-5) var(--space-3-5);
   border-bottom: var(--border-w) solid var(--line);
   align-items: center;
-  font-size: var(--mfg-bom-row-fz);
+  font-size: var(--text-md);
   font-variant-numeric: tabular-nums;
   transition: background var(--dur) var(--ease-out);
 }
@@ -98,7 +98,7 @@
 
 .bom__sku {
   font-family: var(--font-mono);
-  font-size: var(--mfg-sku-fz);
+  font-size: var(--text-2xs);
   color: var(--ink-3);
   background: var(--bg-3);
   padding: var(--border-w) var(--space-1-5);
@@ -144,7 +144,7 @@
   overflow: hidden;
 }
 .wo__head {
-  padding: var(--space-4) var(--mfg-wo-pad);
+  padding: var(--space-4) var(--space-5);
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-4);
@@ -154,7 +154,7 @@
 }
 .wo__id {
   font-family: var(--font-mono);
-  font-size: var(--mfg-wo-id-fz);
+  font-size: var(--text-md);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   padding: var(--space-1-5) var(--space-2-5);
@@ -165,26 +165,26 @@
 }
 .wo__title {
   font-family: var(--font-display);
-  font-size: var(--mfg-wo-title-fz);
+  font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: var(--tracking-snug);
   color: var(--ink);
   margin: var(--space-0);
 }
 .wo__sub {
-  font-size: var(--mfg-wo-sub-fz);
+  font-size: var(--text-sm);
   color: var(--ink-3);
   margin-top: var(--border-w-2);
 }
 
 .wo__progress {
-  padding: var(--space-3-5) var(--mfg-wo-pad);
+  padding: var(--space-3-5) var(--space-5);
   border-bottom: var(--border-w) solid var(--line);
 }
 .wo__progress-head {
   display: flex;
   justify-content: space-between;
-  font-size: var(--mfg-wo-progress-fz);
+  font-size: var(--text-sm);
   color: var(--ink-2);
   margin-bottom: var(--space-2);
   font-variant-numeric: tabular-nums;
@@ -192,7 +192,7 @@
 .wo__progress-head b {
   color: var(--ink);
   font-family: var(--font-display);
-  font-size: var(--mfg-wo-pct-fz);
+  font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: var(--tracking-near);
 }
@@ -216,7 +216,7 @@
   display: grid;
   grid-template-columns: var(--mfg-wo-step-grid) 1fr auto;
   gap: var(--space-3-5);
-  padding: var(--space-3) var(--mfg-wo-pad);
+  padding: var(--space-3) var(--space-5);
   border-bottom: var(--border-w) solid var(--line);
   align-items: center;
   position: relative;
@@ -243,7 +243,7 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: var(--mfg-wo-step-num-fz);
+  font-size: var(--text-sm);
   font-weight: 600;
   z-index: 1;
 }
@@ -252,7 +252,7 @@
 .wo__step--blocked .wo__step-num { background: var(--bg-3); border-color: var(--danger); color: var(--danger); }
 
 .wo__step-name {
-  font-size: var(--mfg-wo-step-name-fz);
+  font-size: var(--text-md);
   font-weight: 500;
   color: var(--ink);
 }
@@ -269,7 +269,7 @@
 
 .wo__step-status {
   font-family: var(--font-mono);
-  font-size: var(--mfg-sku-fz);
+  font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   font-weight: 600;
@@ -340,7 +340,7 @@
 }
 .oee__metric-label {
   font-family: var(--font-mono);
-  font-size: var(--mfg-oee-metric-label-fz);
+  font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
   color: var(--ink-3);
@@ -348,13 +348,13 @@
 }
 .oee__metric-value {
   font-family: var(--font-display);
-  font-size: var(--mfg-oee-pct-fz);
+  font-size: var(--text-lg);
   font-weight: 600;
   letter-spacing: var(--tracking-near);
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.oee__metric-value sup { font-size: var(--mfg-oee-metric-label-fz); color: var(--ink-3); font-weight: 500; }
+.oee__metric-value sup { font-size: var(--text-2xs); color: var(--ink-3); font-weight: 500; }
 
 /* ---------- Lot scanner ---------- */
 .scanner {
@@ -367,7 +367,7 @@
   background: var(--scanner-background);
   border: var(--border-w) solid var(--scanner-border-color);
   border-radius: var(--scanner-border-radius);
-  padding: var(--mfg-scanner-pad);
+  padding: var(--space-5);
   display: flex;
   flex-direction: column;
   gap: var(--space-3-5);
@@ -420,7 +420,7 @@
   grid-template-columns: auto 1fr auto;
   gap: var(--space-3);
   align-items: center;
-  padding: var(--mfg-scanner-result-pad-y) var(--mfg-scanner-result-pad-x);
+  padding: var(--space-3) var(--space-3-5);
   background: var(--bg);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
@@ -430,7 +430,7 @@
 .scanner__result--err   { border-color: color-mix(in oklch, var(--danger) 60%, var(--line)); }
 
 .scanner__icon {
-  width: var(--mfg-scanner-icon); height: var(--mfg-scanner-icon);
+  width: var(--size-md); height: var(--size-md);
   border-radius: var(--radius-circle);
   display: inline-flex;
   align-items: center;
@@ -442,7 +442,7 @@
 .scanner__result--err  .scanner__icon { background: color-mix(in oklch, var(--danger) 18%, transparent); color: var(--danger); }
 
 .scanner__title {
-  font-size: var(--mfg-scanner-title-fz);
+  font-size: var(--text-md);
   font-weight: 600;
   color: var(--ink);
 }
@@ -466,9 +466,9 @@
   background: var(--bg-3);
 }
 .gantt__head-label {
-  padding: var(--mfg-gantt-pad) var(--space-3-5);
+  padding: var(--space-2-5) var(--space-3-5);
   font-family: var(--font-display);
-  font-size: var(--mfg-gantt-head-fz);
+  font-size: var(--text-2xs);
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
@@ -480,10 +480,10 @@
   grid-template-columns: repeat(12, 1fr);
 }
 .gantt__head-times span {
-  padding: var(--mfg-gantt-pad) 0;
+  padding: var(--space-2-5) 0;
   text-align: center;
   font-family: var(--font-mono);
-  font-size: var(--mfg-gantt-head-time-fz);
+  font-size: var(--text-2xs);
   color: var(--ink-3);
   border-left: var(--border-w) solid var(--line);
 }
@@ -497,7 +497,7 @@
 }
 .gantt__row:last-child { border-bottom: none; }
 .gantt__row-label {
-  padding: var(--mfg-gantt-pad) var(--space-3-5);
+  padding: var(--space-2-5) var(--space-3-5);
   font-size: var(--text-sm);
   color: var(--ink);
   border-right: var(--border-w) solid var(--line);
@@ -505,7 +505,7 @@
   align-items: center;
   gap: var(--space-2);
 }
-.gantt__row-label small { color: var(--ink-3); font-size: var(--mfg-sku-fz); font-family: var(--font-mono); }
+.gantt__row-label small { color: var(--ink-3); font-size: var(--text-2xs); font-family: var(--font-mono); }
 
 .gantt__row-track {
   position: relative;
@@ -527,7 +527,7 @@
   display: flex;
   align-items: center;
   padding: var(--space-0) var(--space-2);
-  font-size: var(--mfg-gantt-bar-fz);
+  font-size: var(--text-2xs);
   font-weight: 500;
   white-space: nowrap;
   overflow: hidden;
@@ -617,7 +617,7 @@
 }
 .machine__id {
   display: inline-block;
-  margin-top: var(--mfg-machine-id-mt);
+  margin-top: 2px;
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   color: var(--ink-3);
@@ -629,8 +629,8 @@
   align-self: start;
   display: inline-flex;
   align-items: center;
-  gap: var(--mfg-machine-badge-gap);
-  padding: var(--mfg-machine-badge-pad-y) var(--mfg-machine-badge-pad-x);
+  gap: var(--space-1-5);
+  padding: 3px var(--space-2);
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -642,7 +642,7 @@
 }
 .machine__state-badge::before {
   content: "";
-  width: var(--mfg-machine-state-dot); height: var(--mfg-machine-state-dot);
+  width: var(--space-1-5); height: var(--space-1-5);
   border-radius: var(--radius-circle);
   background: var(--_accent);
 }
@@ -665,7 +665,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-2);
 }
-.machine__metric { display: flex; flex-direction: column; gap: var(--mfg-machine-metric-gap); min-width: 0; }
+.machine__metric { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .machine__metric-label {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -685,14 +685,14 @@
   font-size: var(--text-2xs);
   color: var(--ink-3);
   font-weight: 500;
-  margin-left: var(--mfg-machine-id-mt);
+  margin-left: 2px;
 }
 .machine.sm .machine__metric-value { font-size: var(--text-md); }
 
 .machine__progress-row {
   display: flex;
   flex-direction: column;
-  gap: var(--mfg-machine-progress-gap);
+  gap: var(--space-1-5);
 }
 .machine__progress-row-head {
   display: flex;
@@ -722,7 +722,7 @@
 .machine__alerts {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--mfg-machine-alerts-gap);
+  gap: var(--space-1-5);
   padding-top: var(--space-2);
   border-top: var(--border-w) dashed var(--line);
 }
@@ -730,7 +730,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
-  padding: var(--mfg-machine-alert-pad-y) var(--mfg-machine-badge-pad-x);
+  padding: 2px var(--space-2);
   border-radius: var(--radius-pill);
   font-size: var(--text-2xs);
   font-weight: 500;
@@ -766,7 +766,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--mfg-prodline-station-gap);
+  gap: var(--space-1-5);
   padding: var(--space-3) var(--space-2);
   background: var(--_st-bg);
   color: var(--_st-fg);
@@ -793,7 +793,7 @@
 }
 
 .prodline__station-icon {
-  width: var(--mfg-prodline-station-icon); height: var(--mfg-prodline-station-icon);
+  width: var(--size-md); height: var(--size-md);
   border-radius: var(--radius-circle);
   background: var(--bg-2);
   border: var(--border-w) solid var(--_st-bd);
@@ -954,7 +954,7 @@
 }
 
 .qc__check {
-  width: var(--mfg-qc-check-size); height: var(--mfg-qc-check-size);
+  width: var(--size-sm); height: var(--size-sm);
   border-radius: var(--radius-circle);
   background: var(--_check-bg);
   border: var(--border-w) solid var(--_check-bd);
@@ -968,7 +968,7 @@
     border-color var(--dur-base) var(--ease-out);
 }
 .qc__check-icon {
-  width: var(--mfg-qc-check-icon); height: var(--mfg-qc-check-icon);
+  width: var(--icon-sm); height: var(--icon-sm);
   display: block;
 }
 .qc__item.is-pending .qc__check-icon { opacity: 0; }
@@ -984,7 +984,7 @@
   display: block;
   font-size: var(--text-2xs);
   color: var(--ink-3);
-  margin-top: var(--mfg-qc-sub-mt);
+  margin-top: 2px;
   font-weight: 400;
 }
 .qc__item.is-pass .qc__label,
@@ -994,13 +994,13 @@
 .qc__inspector {
   display: inline-flex;
   align-items: center;
-  gap: var(--mfg-qc-inspector-gap);
+  gap: var(--space-1-5);
   font-size: var(--text-xs);
   color: var(--ink-3);
 }
 .qc__inspector img,
 .qc__inspector-avatar {
-  width: var(--mfg-qc-inspector-avatar); height: var(--mfg-qc-inspector-avatar);
+  width: var(--size-xs); height: var(--size-xs);
   border-radius: var(--radius-circle);
   background: var(--bg-4);
   display: inline-flex;
@@ -1017,7 +1017,7 @@
   margin: var(--space-2) var(--space-5) var(--space-3);
   padding: var(--space-3);
   background: var(--bg-3);
-  border-left: var(--mfg-qc-notes-border-l) solid var(--danger);
+  border-left: var(--border-w-4) solid var(--danger);
   border-radius: var(--radius-sm);
   font-size: var(--text-xs);
   color: var(--ink-2);
@@ -1047,7 +1047,7 @@
 .qc__summary-stat {
   display: flex;
   flex-direction: column;
-  gap: var(--mfg-qc-stat-gap);
+  gap: 2px;
 }
 .qc__summary-stat-label {
   font-family: var(--font-mono);
@@ -1070,14 +1070,14 @@
 .qc__summary-stat--pending .qc__summary-stat-value { color: var(--info); }
 
 .qc.dense .qc__item { padding: var(--space-2) var(--space-4); gap: var(--space-2); }
-.qc.dense .qc__check { width: var(--mfg-qc-check-dense); height: var(--mfg-qc-check-dense); }
-.qc.dense .qc__check-icon { width: var(--mfg-qc-check-icon-dense); height: var(--mfg-qc-check-icon-dense); }
+.qc.dense .qc__check { width: var(--size-xs); height: var(--size-xs); }
+.qc.dense .qc__check-icon { width: var(--icon-xs); height: var(--icon-xs); }
 .qc.dense .qc__label { font-size: var(--text-sm); }
 .qc.dense .qc__head { padding: var(--space-3) var(--space-4); }
 
 .qc.inspection-mode .qc__item { padding: var(--space-4) var(--space-5); }
-.qc.inspection-mode .qc__check { width: var(--mfg-qc-check-insp); height: var(--mfg-qc-check-insp); }
-.qc.inspection-mode .qc__check-icon { width: var(--mfg-qc-check-icon-insp); height: var(--mfg-qc-check-icon-insp); }
+.qc.inspection-mode .qc__check { width: var(--size-md); height: var(--size-md); }
+.qc.inspection-mode .qc__check-icon { width: var(--icon-md); height: var(--icon-md); }
 .qc.inspection-mode .qc__label { font-size: var(--text-base); }
 
 /* ---------- Batch tracker ---------- */
@@ -1110,7 +1110,7 @@
   font-size: var(--text-md);
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  padding: var(--mfg-batch-id-pad-y) var(--mfg-batch-id-pad-x);
+  padding: var(--space-1-5) var(--space-2-5);
   background: var(--bg);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-sm);
@@ -1119,7 +1119,7 @@
 .batch__product {
   display: flex;
   flex-direction: column;
-  gap: var(--mfg-batch-gap);
+  gap: 2px;
   min-width: 0;
 }
 .batch__product-name {
@@ -1138,8 +1138,8 @@
 .batch__status-badge {
   display: inline-flex;
   align-items: center;
-  gap: var(--mfg-batch-badge-gap);
-  padding: var(--mfg-batch-badge-pad-y) var(--mfg-batch-badge-pad-x);
+  gap: var(--space-1-5);
+  padding: var(--slider-track-h) var(--space-2-5);
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -1163,7 +1163,7 @@
 .batch__meta-row {
   display: flex;
   flex-direction: column;
-  gap: var(--mfg-batch-gap);
+  gap: 2px;
 }
 .batch__meta-label {
   font-family: var(--font-mono);
@@ -1187,7 +1187,7 @@
   --_dot: var(--bg-3);
   --_dot-bd: var(--line-2);
   display: grid;
-  grid-template-columns: var(--mfg-batch-chain-col) 1fr auto;
+  grid-template-columns: 24px 1fr auto;
   gap: var(--space-3);
   align-items: center;
   padding: var(--space-2) 0;
@@ -1210,7 +1210,7 @@
 
 .batch__chain-step::after {
   content: "";
-  width: var(--mfg-batch-chain-dot); height: var(--mfg-batch-chain-dot);
+  width: 14px; height: 14px;
   border-radius: var(--radius-circle);
   background: var(--_dot);
   border: var(--border-w-2) solid var(--_dot-bd);
@@ -1234,7 +1234,7 @@
   grid-row: 1;
   display: flex;
   flex-direction: column;
-  gap: var(--mfg-batch-gap);
+  gap: 2px;
   min-width: 0;
 }
 .batch__chain-step-label {

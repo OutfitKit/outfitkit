@@ -9,19 +9,12 @@
    En mobile el carrito se oculta y aparece como drawer al pulsar el FAB.
    ============================================================ */
 .pos {
-  /* API canónica de override */
-  --pos-background:   var(--bg);
-  --pos-accent:       var(--brand);
-  --pos-accent-fg:    var(--brand-fg);
-  --pos-border-color: var(--line);
-  --pos-aside-width:  var(--pos-aside-w);
-
   position: relative;
-  background: var(--pos-background);
+  background: var(--background, var(--bg));
   height: 100%;
   min-height: var(--pos-min-h);
   display: grid;
-  grid-template-columns: 1fr var(--pos-aside-width);
+  grid-template-columns: 1fr var(--pos-aside-w);
   gap: var(--space-3);
 }
 .pos__main {
@@ -165,7 +158,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--pos-cat-card-w), 1fr));
   gap: var(--space-2-5);
-  padding: 0 0 var(--pos-cat-rail-pad);
+  padding: 0 0 var(--space-3-5);
 }
 .cat-card {
   position: relative;
@@ -201,6 +194,14 @@
   background: linear-gradient(180deg, transparent 30%, var(--overlay-strong) 100%);
   z-index: -1;
 }
+/* Use .title sm and .meta inside .cat-card for universal composition. */
+.cat-card .title {
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-snug);
+  text-shadow: 0 1px 2px var(--overlay-medium);
+}
+.cat-card .meta { opacity: 0.85; margin-top: var(--space-0); }
+/* Legacy BEM aliases */
 .cat-card__name {
   font-family: var(--font-display);
   font-size: var(--text-base);
@@ -223,7 +224,7 @@
    ============================================================ */
 .cat-rail {
   position: relative;
-  padding: var(--pos-cat-rail-pad) 0 var(--pos-cat-rail-pad);
+  padding: var(--space-3-5) 0 var(--space-3-5);
   border-bottom: var(--border-w) solid var(--line);
 }
 .cat-rail__track {
@@ -233,7 +234,7 @@
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  padding: 0 var(--pos-cat-rail-pad) var(--space-1);
+  padding: 0 var(--space-3-5) var(--space-1);
   scrollbar-width: thin;
   scrollbar-color: var(--line-2) transparent;
 }
@@ -373,20 +374,13 @@
    botón inferior izquierdo.
    ============================================================ */
 .numpad {
-  /* API canónica de override */
-  --numpad-background:    var(--bg-2);
-  --numpad-border-color:  var(--line);
-  --numpad-border-radius: var(--radius-md);
-  --numpad-accent:        var(--brand);
-  --numpad-accent-fg:     var(--brand-fg);
-
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--pos-numpad-gap);
-  background: var(--numpad-background);
+  background: var(--background, var(--bg-2));
   padding: var(--pos-numpad-gap);
-  border-radius: var(--numpad-border-radius);
-  border: var(--border-w) solid var(--numpad-border-color);
+  border-radius: var(--radius, var(--radius-md));
+  border: var(--border-w) solid var(--border-color, var(--line));
 }
 
 .numpad__btn {
@@ -396,7 +390,7 @@
   border-radius: var(--radius-md);
   color: var(--ink);
   font-family: var(--font-display);
-  font-size: var(--pos-numpad-fz);
+  font-size: var(--text, var(--text-2xl));
   font-weight: 500;
   letter-spacing: var(--tracking-near);
   cursor: pointer;
@@ -410,12 +404,12 @@
 .numpad__btn:active {
   transform: scale(0.97);
   background: var(--bg-4);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 4px var(--overlay-faint);
 }
 
 .numpad__btn--brand {
-  background: var(--numpad-accent);
-  color: var(--numpad-accent-fg);
+  background: var(--brand);
+  color: var(--brand-fg);
   border-color: transparent;
 }
 .numpad__btn--brand:hover { background: var(--brand-2); }
@@ -434,7 +428,7 @@
 .numpad__btn--double { grid-column: span 2; }
 .numpad__btn--tall   { grid-row: span 2; height: auto; }
 
-/* Display del numpad */
+/* Display del numpad — consume .label + .value inside for universal composition */
 .numpad-display {
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
@@ -444,6 +438,15 @@
   margin-bottom: var(--space-3);
   font-family: var(--font-display);
 }
+/* .label and .value universal classes apply directly inside numpad-display. */
+.numpad-display .value {
+  font-size: var(--text, var(--text-4xl));
+  font-weight: 600;
+  letter-spacing: var(--tracking-tightest);
+  line-height: 1.05;
+  margin-top: var(--space-1);
+}
+/* Legacy BEM aliases */
 .numpad-display__label {
   font-size: var(--text-xs);
   text-transform: uppercase;
@@ -451,7 +454,7 @@
   letter-spacing: var(--tracking-wide);
 }
 .numpad-display__value {
-  font-size: var(--pos-cart-total-fz);
+  font-size: var(--text-4xl);
   font-weight: 600;
   letter-spacing: var(--tracking-tightest);
   color: var(--ink);
@@ -468,8 +471,10 @@
   flex-direction: column;
   height: 100%;
 }
+/* .cart uses .head / .foot / .content.scroll from universal classes.
+   Legacy BEM kept for gradual migration: */
 .cart__header {
-  padding: var(--pos-cat-rail-pad) var(--space-4);
+  padding: var(--space-3-5) var(--space-4);
   border-bottom: var(--border-w) solid var(--line);
   display: flex;
   align-items: center;
@@ -488,12 +493,14 @@
   margin-top: var(--space-0);
 }
 
+/* Use .content.scroll for the cart list area. Legacy BEM: */
 .cart__list {
   flex: 1;
   overflow-y: auto;
   padding: var(--pos-numpad-gap);
 }
 
+/* .cart__line is a domain-specific layout (BEM legitimate) */
 .cart__line {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -560,15 +567,16 @@
   margin-bottom: var(--space-1);
   font-variant-numeric: tabular-nums;
 }
-.cart__total-row--main {
+.cart__total-row--main,
+.cart__total-row.main {
   font-family: var(--font-display);
-  font-size: var(--pos-numpad-fz);
+  font-size: var(--text, var(--text-2xl));
   font-weight: 600;
   letter-spacing: var(--tracking-tighter);
   color: var(--ink);
   margin-top: var(--space-2);
   padding-top: var(--space-2);
-  border-top: 1px dashed var(--line);
+  border-top: var(--border-w) dashed var(--line);
 }
 
 .cart__actions {
@@ -591,7 +599,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--mfg-wo-pad);
+  padding: 0 var(--space-4);
   transition: background var(--dur-fast);
 }
 .cart__cta:hover { background: var(--brand-2); }
@@ -604,9 +612,9 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--pos-cat-card-w), 1fr));
   gap: var(--space-2-5);
-  padding: var(--pos-cat-rail-pad);
+  padding: var(--space-3-5);
 }
-.cat-scroll > .cat-grid { padding-top: var(--pos-cat-rail-pad); }
+.cat-scroll > .cat-grid { padding-top: var(--space-3-5); }
 
 .cat-tile {
   background: var(--bg-2);
@@ -686,6 +694,8 @@
 }
 .cat-tile__media--placeholder { color: var(--ink-4); }
 
+/* Use .title.sm and .meta inside .cat-tile for universal composition.
+   Legacy BEM aliases: */
 .cat-tile__name {
   font-size: var(--text-sm);
   font-weight: 500;
@@ -725,7 +735,7 @@
 .cat-chips {
   display: flex;
   gap: var(--pos-numpad-gap);
-  padding: var(--space-3) var(--pos-cat-rail-pad);
+  padding: var(--space-3) var(--space-3-5);
   overflow-x: auto;
   border-bottom: var(--border-w) solid var(--line);
   background: var(--bg-1);
@@ -734,7 +744,7 @@
 .cat-chips::-webkit-scrollbar { display: none; }
 .cat-chip {
   flex-shrink: 0;
-  padding: var(--space-2) var(--pos-cat-rail-pad);
+  padding: var(--space-2) var(--space-3-5);
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   color: var(--ink-2);
@@ -763,20 +773,14 @@
   gap: var(--space-2-5);
 }
 .pay-method {
-  /* API canónica de override */
-  --pay-method-background:    var(--bg-2);
-  --pay-method-border-color:  var(--line);
-  --pay-method-border-radius: var(--radius-lg);
-  --pay-method-accent:        var(--brand);
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: var(--space-2);
   padding: var(--space-4);
-  background: var(--pay-method-background);
-  border: var(--border-w) solid var(--pay-method-border-color);
-  border-radius: var(--pay-method-border-radius);
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-lg));
   cursor: pointer;
   font: inherit;
   text-align: left;
@@ -785,9 +789,11 @@
 .pay-method:hover { border-color: var(--line-2); }
 .pay-method[aria-pressed="true"],
 .pay-method[aria-pressed=""] {
-  border-color: var(--pay-method-accent);
-  background: color-mix(in oklch, var(--pay-method-accent) 6%, var(--pay-method-background));
+  border-color: var(--variant, var(--brand));
+  background: color-mix(in oklch, var(--variant, var(--brand)) 6%, var(--background, var(--bg-2)));
 }
+/* Use .icon-disc universal class inside pay-method for the icon container.
+   Legacy BEM: */
 .pay-method__icon {
   width: var(--size-md); height: var(--size-md);
   border-radius: var(--radius-md);
@@ -798,7 +804,8 @@
 }
 .pay-method__icon svg { width: var(--icon-md); height: var(--icon-md); }
 .pay-method[aria-pressed="true"] .pay-method__icon { background: var(--brand-soft); color: var(--brand-3); }
-
+/* Use .title.sm and .sub.xs inside pay-method.
+   Legacy BEM aliases: */
 .pay-method__name {
   font-size: var(--text-sm);
   font-weight: 500;
@@ -813,22 +820,16 @@
    Receipt · ticket impreso (estilo papel)
    ============================================================ */
 .receipt {
-  /* API canónica de override */
-  --receipt-background:    var(--paper-bg);
-  --receipt-color:         var(--paper-ink);
-  --receipt-border-radius: var(--radius-lg);
-  --receipt-border-color:  var(--line);
-
-  background: var(--receipt-background);
-  color: var(--receipt-color);
+  background: var(--background, var(--paper-bg));
+  color: var(--color, var(--paper-ink));
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   line-height: 1.55;
-  padding: var(--space-5) var(--mfg-wo-pad);
-  border-radius: var(--radius-lg);
+  padding: var(--space-5) var(--space-4);
+  border-radius: var(--radius, var(--radius-lg));
   width: var(--invoice-w);
   max-width: 100%;
-  border: var(--border-w) solid var(--line);
+  border: var(--border-w) solid var(--border-color, var(--line));
   box-shadow: var(--shadow-md);
   position: relative;
   /* dentado superior e inferior */
@@ -844,6 +845,8 @@
   margin: 8px 0;
 }
 
+/* Use .title and .sub inside .receipt for universal composition.
+   Legacy BEM aliases: */
 .receipt__title {
   font-family: var(--font-display);
   font-size: var(--text-md);
@@ -857,7 +860,7 @@
   text-align: center;
   font-size: var(--text-2xs);
   color: var(--paper-ink-2);
-  margin-bottom: var(--pos-cat-rail-pad);
+  margin-bottom: var(--space-3-5);
 }
 .receipt__divider {
   border: none;
@@ -905,23 +908,17 @@
    KDS · ticket de cocina
    ============================================================ */
 .kds {
-  /* API canónica de override */
-  --kds-background:    var(--bg-2);
-  --kds-border-color:  var(--line);
-  --kds-border-radius: var(--radius-xl);
-  --kds-accent:        var(--info);
-
-  background: var(--kds-background);
-  border: var(--border-w) solid var(--kds-border-color);
-  border-radius: var(--kds-border-radius);
-  padding: var(--space-3) var(--pos-cat-rail-pad);
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-xl));
+  padding: var(--space-3) var(--space-3-5);
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
   width: var(--invoice-w);
   max-width: 100%;
   position: relative;
-  border-top: var(--border-w-4) solid var(--kds-accent);
+  border-top: var(--border-w-4) solid var(--variant, var(--info));
 }
 .kds.ready { border-top-color: var(--leaf); }
 .kds.late { border-top-color: var(--danger); animation: ok-kds-pulse 1.5s ease-in-out infinite; }
@@ -930,6 +927,9 @@
   50% { box-shadow: 0 0 0 4px color-mix(in oklch, var(--danger) 25%, transparent); }
 }
 
+/* Use .head universal class for kds card header.
+   Use .title.lg inside for order number.
+   Legacy BEM aliases: */
 .kds__head {
   display: flex;
   justify-content: space-between;
@@ -955,6 +955,7 @@
 .kds.late .kds__time { color: var(--danger); background: var(--danger-soft); }
 .kds.ready .kds__time { color: var(--leaf); background: var(--leaf-soft); }
 
+/* Use .meta or .sub inside .kds for source info. Legacy BEM: */
 .kds__source {
   font-size: var(--text-xs);
   color: var(--ink-3);
@@ -994,6 +995,8 @@
   text-decoration: line-through;
 }
 
+/* Use .actions universal class instead of .kds__actions.
+   Legacy BEM: */
 .kds__actions {
   display: flex;
   gap: var(--pos-numpad-gap);

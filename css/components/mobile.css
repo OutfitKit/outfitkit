@@ -16,7 +16,7 @@
   border-radius: var(--segmented-border-radius);
   padding: 3px;
   position: relative;
-  font-size: 13px;
+  font-size: var(--text-sm);
 }
 .segmented__option {
   flex: 1;
@@ -64,32 +64,27 @@
   overflow: hidden;
   box-shadow: 0 -8px 32px rgba(0,0,0,0.35);
 }
-.sheet__handle {
+.sheet-handle {
   width: var(--size-md); height: 4px;
   background: var(--bg-4);
   border-radius: 2px;
   margin: var(--space-2) auto var(--space-0);
   flex-shrink: 0;
 }
-.sheet__head {
-  padding: var(--space-3) 18px;
+/* .sheet > .head uses universal .head */
+.sheet > .head {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-3);
   align-items: center;
-  border-bottom: var(--border-w) solid var(--line);
 }
-.sheet__title {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: var(--tracking-snug);
-  color: var(--ink);
+/* .sheet > .head > .title uses universal .title */
+.sheet > .head > .title {
   text-align: center;
   margin: var(--space-0);
 }
-.sheet__cancel,
-.sheet__done {
+.sheet-cancel,
+.sheet-done {
   background: transparent;
   border: none;
   font: inherit;
@@ -97,14 +92,14 @@
   padding: var(--space-1);
   font-size: var(--text-base);
 }
-.sheet__cancel { color: var(--ink-2); }
-.sheet__done { color: var(--brand); font-weight: 600; }
-.sheet__body {
-  padding: var(--space-3-5) 18px;
+.sheet-cancel { color: var(--ink-2); }
+.sheet-done { color: var(--brand); font-weight: 600; }
+/* .sheet > .body uses universal .body */
+.sheet > .body {
   overflow-y: auto;
   flex: 1;
 }
-.sheet__actions {
+.sheet-actions {
   display: flex;
   flex-direction: column;
   gap: var(--border-w);
@@ -113,7 +108,7 @@
   overflow: hidden;
   margin: var(--space-0) var(--space-0) var(--space-3);
 }
-.sheet__action {
+.sheet-action {
   background: var(--bg-2);
   border: none;
   padding: var(--space-3-5) var(--space-4);
@@ -127,11 +122,11 @@
   cursor: pointer;
   font: inherit;
 }
-.sheet__action:hover { background: var(--bg-3); }
-.sheet__action--danger { color: var(--danger); }
-.sheet__action svg:first-child { color: var(--ink-3); }
-.sheet__action--danger svg:first-child { color: var(--danger); }
-.sheet__action-meta { font-size: var(--text-xs); color: var(--ink-3); }
+.sheet-action:hover { background: var(--bg-3); }
+.sheet-action.danger { color: var(--danger); }
+.sheet-action svg:first-child { color: var(--ink-3); }
+.sheet-action.danger svg:first-child { color: var(--danger); }
+/* .sheet-action > .meta uses universal .meta */
 
 /* ---------- Swipe-list ---------- */
 .swipe {
@@ -168,8 +163,8 @@
 }
 .swipe__item--open .swipe__row { transform: translateX(-160px); }
 
-.swipe__name { font-size: var(--text-base); color: var(--ink); font-weight: 500; }
-.swipe__sub { font-size: 12px; color: var(--ink-3); margin-top: var(--border-w-2); }
+/* .swipe__row .title uses universal .title for name */
+/* .swipe__row .sub uses universal .sub for secondary text */
 
 .swipe__actions {
   position: absolute;
@@ -181,7 +176,7 @@
 .swipe__btn {
   border: none;
   font: inherit;
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-weight: 500;
   display: flex;
   flex-direction: column;
@@ -220,8 +215,8 @@
 .mtab {
   display: flex;
   background: color-mix(in oklch, var(--bg-2) 80%, transparent);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
   border-top: var(--border-w) solid var(--line);
   padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
 }
@@ -236,7 +231,7 @@
   background: transparent;
   color: var(--ink-3);
   font: inherit;
-  font-size: 10px;
+  font-size: var(--text-xs);
   cursor: pointer;
   font-family: var(--font-display);
 }
