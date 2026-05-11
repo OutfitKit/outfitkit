@@ -148,11 +148,11 @@
 <div class="modal-root" data-signals='{"delete": {"open": false}, "confirmText": ""}' data-show="$delete.open">
   <div class="backdrop" data-on:click="$delete.open = false"></div>
   <div class="modal sm">
-    <header class="modal__header">
-      <h3 class="modal__title">Eliminar rol Manager</h3>
+    <header class="head">
+      <h3 class="title lg">Eliminar rol Manager</h3>
       <button class="icon-btn" data-on:click="$delete.open = false" aria-label="Cerrar">×</button>
     </header>
-    <div class="modal__body">
+    <div class="content scroll body">
       <div class="alert warning">
         <strong>3 usuarios usan este rol.</strong> Al eliminarlo, esos usuarios pasarán al rol por defecto (Cajero).
       </div>
@@ -162,7 +162,7 @@
         <input class="input" type="text" data-bind="confirmText" placeholder="manager"/>
       </label>
     </div>
-    <footer class="modal__footer">
+    <footer class="foot">
       <button class="btn ghost" data-on:click="$delete.open = false">Cancelar</button>
       <button class="btn danger" data-attr:disabled="$confirmText !== 'manager'">Eliminar definitivamente</button>
     </footer>

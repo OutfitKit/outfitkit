@@ -4,7 +4,7 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="search"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <span class="search__icon">
+  <span class="icon">
     <iconify-icon icon="lucide:search" width="16" height="16"></iconify-icon>
   </span>
   <input type="search"

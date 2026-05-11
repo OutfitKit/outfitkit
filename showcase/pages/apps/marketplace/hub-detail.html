@@ -53,8 +53,8 @@
       <iconify-icon icon="lucide:arrow-left" width="14" height="14"></iconify-icon>
       Marketplace
     </a>
-    <span class="text-xs c-ink-3">/</span>
-    <span class="text-xs c-ink-3">verifactu</span>
+    <span class="text-xs text-ink-3">/</span>
+    <span class="text-xs text-ink-3">verifactu</span>
   </div>
 
   <!-- Hero -->
@@ -287,7 +287,7 @@
           <div class="avatar sm brand">EP</div>
           <div>
             <div style="font-size:13px;font-weight:500;">ERPlora</div>
-            <div class="text-2xs c-ink-3">Equipo oficial</div>
+            <div class="text-2xs text-ink-3">Equipo oficial</div>
           </div>
           <span class="badge success" style="margin-left:auto;"><span class="badge__dot"></span>Verificado</span>
         </div>
@@ -331,15 +331,15 @@
   <div class="modal-root" data-attr:data-state="$showCheckout ? 'open' : 'closed'">
     <div class="backdrop" data-attr:data-state="$showCheckout ? 'open' : 'closed'" data-on:click="$showCheckout = false"></div>
     <div class="modal lg" role="dialog" aria-modal="true" aria-labelledby="checkout-title" data-on:click__stop="evt.stopPropagation()">
-      <div class="modal__header">
-        <div class="modal__icon modal__icon--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
-        <div class="modal__heading">
-          <h3 class="modal__title" id="checkout-title">Suscribir VeriFactu</h3>
-          <p class="modal__sub">15 días de prueba — cancela cuando quieras</p>
+      <div class="head">
+        <div class="icon-disc brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+        <div class="heading">
+          <h3 class="title lg" id="checkout-title">Suscribir VeriFactu</h3>
+          <p class="sub">15 días de prueba — cancela cuando quieras</p>
         </div>
-        <button class="modal__close" data-on:click="$showCheckout = false" aria-label="Cerrar">×</button>
+        <button class="close" data-on:click="$showCheckout = false" aria-label="Cerrar">×</button>
       </div>
-      <div class="modal__body">
+      <div class="content scroll body">
         <div class="grid-2" style="gap: 16px;">
           <div>
             <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin:0 0 8px;">Resumen</h4>
@@ -348,15 +348,15 @@
                 <div class="detail-hero__icon" style="width:40px;height:40px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
                 <div>
                   <div class="font-medium">VeriFactu</div>
-                  <div class="text-xs c-ink-3">Plan mensual</div>
+                  <div class="text-xs text-ink-3">Plan mensual</div>
                 </div>
               </div>
               <div style="border-top:1px solid var(--line);margin:12px 0;"></div>
               <div class="sidebar-row"><span>Precio mensual</span><b>€9,99</b></div>
-              <div class="sidebar-row"><span>Prueba gratis</span><b class="c-leaf">15 días</b></div>
+              <div class="sidebar-row"><span>Prueba gratis</span><b class="text-leaf">15 días</b></div>
               <div class="sidebar-row"><span>Primer cobro</span><b>23 may 2026</b></div>
               <div style="border-top:1px solid var(--line);margin:8px 0;"></div>
-              <div class="sidebar-row"><span class="font-medium c-ink">Hoy pagas</span><b style="font-size:18px;font-family:var(--font-display);">€0,00</b></div>
+              <div class="sidebar-row"><span class="font-medium text-ink">Hoy pagas</span><b style="font-size:18px;font-family:var(--font-display);">€0,00</b></div>
             </div>
           </div>
           <div>
@@ -378,13 +378,13 @@
               <label class="check mt-1">
                 <input type="checkbox" checked/>
                 <span class="check__box"></span>
-                <span style="font-size:12.5px;color:var(--ink-2);margin-left:6px;">Acepto los <a href="#" class="c-brand-3">términos del servicio</a> y la <a href="#" class="c-brand-3">política de privacidad</a>.</span>
+                <span style="font-size:12.5px;color:var(--ink-2);margin-left:6px;">Acepto los <a href="#" class="text-brand-3">términos del servicio</a> y la <a href="#" class="text-brand-3">política de privacidad</a>.</span>
               </label>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal__footer modal__footer--between">
+      <div class="foot justify-between">
         <span style="font-size:12px;color:var(--ink-3);display:flex;gap:6px;align-items:center;">
           <iconify-icon icon="lucide:lock" width="13" height="13"></iconify-icon>
           Pago seguro vía Stripe

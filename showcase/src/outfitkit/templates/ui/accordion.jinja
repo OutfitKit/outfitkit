@@ -30,10 +30,10 @@
 #}
 {% macro accordion_item(title="", id=None, sub="", meta="", expanded=false, no_icon=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-{%- set _base = id if id else "ok-acc-" ~ (title|string|replace(' ', '-')|replace('?', '')|replace('¿', '')|replace('/', '-')|lower)[:32] -%}
+{%- set _base = id if id else "acc-" ~ (title|string|replace(' ', '-')|replace('?', '')|replace('¿', '')|replace('/', '-')|lower)[:32] -%}
 {%- set _trigger_id = _base ~ "-trigger" -%}
 {%- set _panel_id = _base ~ "-panel" -%}
-<div class="accordion__item"
+<div class="item"
      data-signals="{ open: {{ 'true' if expanded else 'false' }} }"
      data-attr:data-state="$open ? 'open' : 'closed'"
      {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>

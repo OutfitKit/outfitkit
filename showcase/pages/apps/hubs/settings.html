@@ -14,9 +14,6 @@
 
 {% block content %}
 
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 <div class="app" data-signals='{"sidebar": false, "tab": "general", "copied": false, "domains": ['pos.acme.com', 'tienda.acme.com'], "newDomain": "", "notifDaily": true, "notifWeekly": true, "notifMarketing": false, "intStripe": true, "intSlack": false, "intGcal": true, "intZapier": false, "autoBackup": true, "encryptBackup": true}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
@@ -171,12 +168,12 @@
               <div data-show="$domains.includes('pos.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">pos.acme.com</span>
                 <span class="badge success"><span class="badge__dot"></span>SSL activo</span>
-                <button class="btn ghost sm c-danger" data-on:click="$domains = $domains.filter(d => d !== 'pos.acme.com')">Quitar</button>
+                <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'pos.acme.com')">Quitar</button>
               </div>
               <div data-show="$domains.includes('tienda.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">tienda.acme.com</span>
                 <span class="badge warning"><span class="badge__dot"></span>Esperando DNS</span>
-                <button class="btn ghost sm c-danger" data-on:click="$domains = $domains.filter(d => d !== 'tienda.acme.com')">Quitar</button>
+                <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'tienda.acme.com')">Quitar</button>
               </div>
               <template data-show="false"></template>
               <div data-show="$domains.length > 0 && !$domains.includes('pos.acme.com') && !$domains.includes('tienda.acme.com')" style="font-size:12px;color:var(--ink-3);padding:6px 0;">+ <span data-text="$domains.length"></span> dominio(s) personalizado(s) añadido(s).</div>
@@ -320,12 +317,12 @@
               <div data-show="$domains.includes('pos.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">pos.acme.com</span>
                 <span class="badge success"><span class="badge__dot"></span>SSL activo</span>
-                <button class="btn ghost sm c-danger" data-on:click="$domains = $domains.filter(d => d !== 'pos.acme.com')">Quitar</button>
+                <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'pos.acme.com')">Quitar</button>
               </div>
               <div data-show="$domains.includes('tienda.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">tienda.acme.com</span>
                 <span class="badge warning"><span class="badge__dot"></span>Esperando DNS</span>
-                <button class="btn ghost sm c-danger" data-on:click="$domains = $domains.filter(d => d !== 'tienda.acme.com')">Quitar</button>
+                <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'tienda.acme.com')">Quitar</button>
               </div>
               <div data-show="$domains.length === 0" style="font-size:12px;color:var(--ink-3);padding:6px 0;">No hay dominios personalizados configurados.</div>
             </div>
@@ -427,11 +424,11 @@
           </div>
           <div class="body flex col gap-3">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--line);border-radius:8px;">
-              <div><strong>Pausar hub</strong><div class="text-xs c-ink-3">El hub pasa a estado read-only.</div></div>
+              <div><strong>Pausar hub</strong><div class="text-xs text-ink-3">El hub pasa a estado read-only.</div></div>
               <button class="btn secondary sm">Pausar</button>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--danger);border-radius:8px;">
-              <div><strong class="c-danger">Eliminar hub</strong><div class="text-xs c-ink-3">Borra todos los datos. No se puede deshacer.</div></div>
+              <div><strong class="text-danger">Eliminar hub</strong><div class="text-xs text-ink-3">Borra todos los datos. No se puede deshacer.</div></div>
               <button class="btn danger sm">Eliminar</button>
             </div>
           </div>

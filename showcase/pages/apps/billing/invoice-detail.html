@@ -117,50 +117,48 @@
         <!-- Invoice document -->
         <div>
           <article class="invoice">
-            <header class="invoice__head">
-              <div>
-                <div class="invoice__logo">ERPlora SL</div>
-                <div class="invoice__from">
+            <header class="head row" style="--gap: var(--space-6); --align: flex-start;">
+              <div class="col" style="flex: 1;">
+                <h2 class="title 2xl">ERPlora SL</h2>
+                <p class="sub">
                   CIF B-87 654 321<br/>
                   C/ Gran Via 28, 4ª planta<br/>
                   08010 Barcelona · España<br/>
                   facturacion@erplora.com
-                </div>
+                </p>
               </div>
-              <div>
-                <div class="invoice__title">FACTURA</div>
-                <div class="invoice__meta">
-                  <div class="invoice__meta-row"><span>Nº</span><b>INV-2026-0142</b></div>
-                  <div class="invoice__meta-row"><span>Emisión</span><b>12/03/2026</b></div>
-                  <div class="invoice__meta-row"><span>Vencimiento</span><b>26/03/2026</b></div>
-                  <div class="invoice__meta-row"><span>Periodo</span><b>Marzo 2026</b></div>
-                </div>
+              <div class="col meta" style="text-align: right; align-items: flex-end;">
+                <span class="title lg">FACTURA</span>
+                <div class="row" style="--gap: var(--space-4);"><span>Nº</span><b>INV-2026-0142</b></div>
+                <div class="row" style="--gap: var(--space-4);"><span>Emisión</span><b>12/03/2026</b></div>
+                <div class="row" style="--gap: var(--space-4);"><span>Vencimiento</span><b>26/03/2026</b></div>
+                <div class="row" style="--gap: var(--space-4);"><span>Periodo</span><b>Marzo 2026</b></div>
               </div>
             </header>
 
-            <div class="invoice__bill">
-              <div>
-                <h4>Facturar a</h4>
-                <div class="invoice__bill-name">Acme Industries SL</div>
-                <div class="invoice__bill-info">
+            <section class="body row" style="--gap: var(--space-6); --align: flex-start; border-bottom: var(--border-w) solid var(--line);">
+              <div class="col" style="flex: 1;">
+                <span class="label">Facturar a</span>
+                <span class="value">Acme Industries SL</span>
+                <p class="sub">
                   CIF B-12 345 678<br/>
                   Polígono Las Salinas, nave 14<br/>
                   03007 Alicante · España<br/>
                   cuentas@acme-industries.com
-                </div>
+                </p>
               </div>
-              <div>
-                <h4>Forma de pago</h4>
-                <div class="invoice__bill-name">Stripe · Visa **** 4242</div>
-                <div class="invoice__bill-info">
+              <div class="col" style="flex: 1;">
+                <span class="label">Forma de pago</span>
+                <span class="value">Stripe · Visa **** 4242</span>
+                <p class="sub">
                   Cargo automático realizado<br/>
                   Ref. transacción: ch_3PqW1kK8s · 12/03 12:04<br/>
                   Próxima domiciliación: 12/04/2026
-                </div>
+                </p>
               </div>
-            </div>
+            </section>
 
-            <table class="invoice__lines">
+            <table class="table">
               <thead>
                 <tr>
                   <th style="width: 50%;">Concepto</th>
@@ -203,22 +201,24 @@
               </tbody>
             </table>
 
-            <div class="invoice__totals">
-              <div class="invoice__notes">
-                <h5>Notas</h5>
-                Pago automático procesado mediante Stripe el 12/03/2026 a las 12:04 CET.
+            <section class="body row" style="--gap: var(--space-6); --align: flex-start;">
+              <div class="col meta" style="flex: 1;">
+                <span class="label">Notas</span>
+                <p>Pago automático procesado mediante Stripe el 12/03/2026 a las 12:04 CET.
                 IVA general 21% aplicado conforme a la Ley 37/1992.
                 Para cualquier consulta sobre esta factura escríbenos a
-                <b class="c-brand-3">facturacion@erplora.com</b> indicando el número.
+                <b class="text-brand-3">facturacion@erplora.com</b> indicando el número.</p>
               </div>
-              <div class="invoice__sum">
-                <div class="invoice__sum-row"><span>Subtotal</span><span>3 635,00 €</span></div>
-                <div class="invoice__sum-row"><span>Descuento socio (−5%)</span><span>−181,75 €</span></div>
-                <div class="invoice__sum-row"><span>Base imponible</span><span>3 453,25 €</span></div>
-                <div class="invoice__sum-row"><span>IVA 21%</span><span>725,18 €</span></div>
-                <div class="invoice__sum-total"><span>Total</span><span>4 178,43 €</span></div>
+              <div class="col" style="width: 280px;">
+                <div class="row" style="justify-content: space-between;"><span class="meta">Subtotal</span><span>3 635,00 €</span></div>
+                <div class="row" style="justify-content: space-between;"><span class="meta">Descuento socio (−5%)</span><span>−181,75 €</span></div>
+                <div class="row" style="justify-content: space-between;"><span class="meta">Base imponible</span><span>3 453,25 €</span></div>
+                <div class="row" style="justify-content: space-between;"><span class="meta">IVA 21%</span><span>725,18 €</span></div>
+                <div class="row title lg" style="justify-content: space-between; border-top: var(--border-w) solid var(--line); padding-top: var(--space-3); margin-top: var(--space-2);">
+                  <span>Total</span><span>4 178,43 €</span>
+                </div>
               </div>
-            </div>
+            </section>
           </article>
 
           <!-- Timeline -->

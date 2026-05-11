@@ -12,9 +12,6 @@
 {% block page_title %}Stripe Connect{% endblock %}
 
 {% block content %}
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
@@ -89,7 +86,7 @@
         <div class="actions">
           <button class="btn outline">
             Visitar dashboard Stripe
-            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px;margin-right:0;"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px;margin-right:0;"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </button>
         </div>
       </div>
@@ -109,7 +106,7 @@
             <div style="font-size:14px;color:var(--ink-2);line-height:1.5;">
               <span data-show="$connected">Tu cuenta está lista para recibir pagos. Configurada el 12 mar 2026.<br/></span>
               <span data-show="!$connected">Los cobros del marketplace están <b>detenidos</b>. Reconecta para reanudar.<br/></span>
-              <span class="c-ink-3">acct_1ABC12345 · Express · capability: card_payments + transfers</span>
+              <span class="text-ink-3">acct_1ABC12345 · Express · capability: card_payments + transfers</span>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
@@ -137,7 +134,7 @@
         </div>
         <div class="kpi">
           <div class="kpi__label">Disputas</div>
-          <div class="kpi__value c-leaf">0</div>
+          <div class="kpi__value text-leaf">0</div>
           <span class="badge success"><span class="badge__dot"></span>limpio</span>
         </div>
       </div>
@@ -195,8 +192,8 @@
           </div>
           <div>
             <div style="font-size:14px;line-height:1.6;color:var(--ink-2);margin-bottom:14px;">
-              Las transferencias se realizan vía <b class="c-ink">SEPA Instant</b> y suelen llegar en menos de 60 segundos.<br/>
-              Titular verificado el <b class="c-ink">12 mar 2026</b>. Última micro-validación: 6 may 2026.
+              Las transferencias se realizan vía <b class="text-ink">SEPA Instant</b> y suelen llegar en menos de 60 segundos.<br/>
+              Titular verificado el <b class="text-ink">12 mar 2026</b>. Última micro-validación: 6 may 2026.
             </div>
             <button class="btn outline sm">Cambiar cuenta bancaria</button>
             <button class="btn ghost sm">Ver historial</button>
@@ -379,8 +376,8 @@
 
       <!-- Disconnect button -->
       <div style="display:flex;justify-content:flex-end;padding:14px 0;border-top:1px solid var(--line);">
-        <button class="btn ghost c-danger" data-on:click="$confirmDisconnect = true">
-          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>
+        <button class="btn ghost text-danger" data-on:click="$confirmDisconnect = true">
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>
           Desconectar Stripe
         </button>
       </div>
@@ -393,7 +390,7 @@
 <div class="modal-root hidden" data-show="$confirmDisconnect">
   <div class="backdrop" data-on:click="$confirmDisconnect = false"></div>
   <div class="modal" style="max-width:480px;">
-    <header class="modal__header">
+    <header class="head">
       <h3 style="margin:0;display:flex;align-items:center;gap:8px;">
         <span style="width:28px;height:28px;border-radius:50%;background:var(--danger-soft);color:var(--danger);display:grid;place-items:center;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
@@ -401,7 +398,7 @@
         Desconectar Stripe Connect
       </h3>
     </header>
-    <div class="modal__body">
+    <div class="content scroll body">
       <p style="margin:0 0 12px;color:var(--ink-2);line-height:1.5;">
         Esta acción <b>detendrá todos los cobros</b> del marketplace de módulos. Las ventas en curso quedarán pendientes hasta reconectar.
       </p>
@@ -413,7 +410,7 @@
         </div>
       </div>
     </div>
-    <footer class="modal__footer">
+    <footer class="foot">
       <button class="btn ghost" data-on:click="$confirmDisconnect = false">Cancelar</button>
       <button class="btn danger" data-on:click="$connected = false; $confirmDisconnect = false">Desconectar</button>
     </footer>

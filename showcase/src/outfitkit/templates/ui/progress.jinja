@@ -4,9 +4,9 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- if label is not none -%}
 <div class="progress-block">
-  <div class="progress-block__head">
-    <span class="progress-block__label">{{ label }}</span>
-    {%- if value_text is not none %}<span class="progress-block__value">{{ value_text }}</span>{% endif %}
+  <div class="head">
+    <span class="label">{{ label }}</span>
+    {%- if value_text is not none %}<span class="value">{{ value_text }}</span>{% endif %}
   </div>
   <div class="progress{% if variant %} {{ variant }}{% endif %}{% if size != 'md' %} {{ size }}{% endif %}{% if indeterminate %} indeterminate{% endif %}{% if striped %} striped{% endif %}"
     role="progressbar"

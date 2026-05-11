@@ -5,10 +5,10 @@
 <div class="audio{% if variant != 'default' %} {{ variant }}{% endif %}{% if playing %} is-playing{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   <button type="button" class="audio__play" aria-label="Play/Pause">
-    <span class="audio__icon play">
+    <span class="icon play">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
     </span>
-    <span class="audio__icon pause">
+    <span class="icon pause">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
     </span>
   </button>

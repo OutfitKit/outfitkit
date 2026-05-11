@@ -4,7 +4,7 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="empty{% if compact %} compact{% endif %}"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-  {%- if icon %}<div class="empty__icon">{{ icon|safe }}</div>{% endif %}
+  {%- if icon %}<div class="icon">{{ icon|safe }}</div>{% endif %}
   <h3 class="title lg">{{ title }}</h3>
   {%- if desc %}<p class="sub">{{ desc }}</p>{% endif %}
   {%- if actions %}<div class="actions">{{ actions|safe }}</div>{% endif %}

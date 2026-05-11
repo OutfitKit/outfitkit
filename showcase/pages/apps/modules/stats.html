@@ -13,9 +13,6 @@
 
 
 {% block content %}
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -91,8 +88,8 @@
             <button class="toggle-group__option" data-on:click="$range = '12m'" data-class:is-selected="$range === '12m'">12 meses</button>
             <button class="toggle-group__option" data-on:click="$range = 'all'" data-class:is-selected="$range === 'all'">Todo</button>
           </div>
-          <button class="btn ghost"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Rango personalizado</button>
-          <button class="btn outline"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Exportar</button>
+          <button class="btn ghost"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>Rango personalizado</button>
+          <button class="btn outline"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Exportar</button>
         </div>
       </div>
 
@@ -280,7 +277,7 @@
                   <strong>Carlos Méndez</strong>
                   <span style="font-size:12px;color:var(--ink-3);margin-left:6px;">@bodegas-casadejus · Pro</span>
                 </div>
-                <div class="text-xs c-ink-3">5 may 2026</div>
+                <div class="text-xs text-ink-3">5 may 2026</div>
               </div>
               <div style="color:var(--warn);font-size:14px;letter-spacing:0.05em;margin-top:2px;">★★★★★</div>
               <p style="margin:8px 0;color:var(--ink-2);font-size:14px;">Llevamos 8 meses con el módulo en 3 tiendas y es una maravilla. La integración con la impresora Epson TM-T20III funcionó a la primera y los turnos múltiples nos han salvado mucho tiempo. Soporte rápido del autor.</p>
@@ -296,7 +293,7 @@
             <div class="flex-1">
               <div class="flex justify-between items-center">
                 <div><strong>Ana Soriano</strong><span style="font-size:12px;color:var(--ink-3);margin-left:6px;">@cafeteria-velazquez · Pro</span></div>
-                <div class="text-xs c-ink-3">3 may 2026</div>
+                <div class="text-xs text-ink-3">3 may 2026</div>
               </div>
               <div style="color:var(--warn);font-size:14px;letter-spacing:0.05em;margin-top:2px;">★★★★★</div>
               <p style="margin:8px 0;color:var(--ink-2);font-size:14px;">Perfecto para hostelería. La pantalla cliente secundaria que añadieron en la v3.2 nos diferenció bastante. La generación de Verifactu va sin problemas con la AEAT.</p>
@@ -312,7 +309,7 @@
             <div class="flex-1">
               <div class="flex justify-between items-center">
                 <div><strong>Mateo Ramírez</strong><span style="font-size:12px;color:var(--ink-3);margin-left:6px;">@ferreteria-ramirez · Business</span></div>
-                <div class="text-xs c-ink-3">29 abr 2026</div>
+                <div class="text-xs text-ink-3">29 abr 2026</div>
               </div>
               <div style="color:var(--warn);font-size:14px;letter-spacing:0.05em;margin-top:2px;">★★★★<span style="color:var(--bg-4);">★</span></div>
               <p style="margin:8px 0;color:var(--ink-2);font-size:14px;">Muy completo, aunque echo en falta un export de tickets en CSV nativo (lo hago via API). Por lo demás, lo recomiendo. Precio justo.</p>
@@ -321,7 +318,7 @@
                 <button class="btn ghost sm">Responder</button>
               </div>
               <div style="margin-top:10px;padding:10px 12px;background:var(--bg-3);border-left:3px solid var(--brand);border-radius:6px;">
-                <div style="font-size:12px;color:var(--ink-3);margin-bottom:4px;"><strong class="c-ink">@ioanb</strong> · respuesta del autor · 30 abr 2026</div>
+                <div style="font-size:12px;color:var(--ink-3);margin-bottom:4px;"><strong class="text-ink">@ioanb</strong> · respuesta del autor · 30 abr 2026</div>
                 <div style="font-size:13px;color:var(--ink-2);">¡Gracias por el feedback Mateo! El export CSV nativo está confirmado para la v3.3 (junio 2026).</div>
               </div>
             </div>
@@ -332,7 +329,7 @@
             <div class="flex-1">
               <div class="flex justify-between items-center">
                 <div><strong>Patricia López</strong><span style="font-size:12px;color:var(--ink-3);margin-left:6px;">@pasteleria-mariola · Pro</span></div>
-                <div class="text-xs c-ink-3">22 abr 2026</div>
+                <div class="text-xs text-ink-3">22 abr 2026</div>
               </div>
               <div style="color:var(--warn);font-size:14px;letter-spacing:0.05em;margin-top:2px;">★★★<span style="color:var(--bg-4);">★★</span></div>
               <p style="margin:8px 0;color:var(--ink-2);font-size:14px;">El producto es bueno pero la curva de aprendizaje fue alta. Quizá un onboarding más guiado ayudaría a equipos pequeños.</p>
@@ -348,7 +345,7 @@
             <div class="flex-1">
               <div class="flex justify-between items-center">
                 <div><strong>Javier Núñez</strong><span style="font-size:12px;color:var(--ink-3);margin-left:6px;">@nordenbikes-store · Pro</span></div>
-                <div class="text-xs c-ink-3">14 abr 2026</div>
+                <div class="text-xs text-ink-3">14 abr 2026</div>
               </div>
               <div style="color:var(--warn);font-size:14px;letter-spacing:0.05em;margin-top:2px;">★★★★★</div>
               <p style="margin:8px 0;color:var(--ink-2);font-size:14px;">Migración desde otro POS sin perder histórico. Excelente. La integración con Stripe funciona como un reloj.</p>
@@ -360,7 +357,7 @@
           </div>
         </div>
         <footer class="footer">
-          <span class="text-xs c-ink-3">Mostrando 5 de 124</span>
+          <span class="text-xs text-ink-3">Mostrando 5 de 124</span>
           <button class="btn outline sm">Ver todas las reseñas</button>
         </footer>
       </article>

@@ -13,9 +13,6 @@
 
 
 {% block content %}
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -95,14 +92,14 @@
         </div>
         <div class="callout__body">
           <div class="callout__title">Reparto de ingresos</div>
-          <div class="callout__desc">Los colaboradores reciben porcentaje de ingresos según su rol. Configura las divisiones en <a href="#" class="c-info">Pago &gt; Reparto</a>. Stripe Connect distribuye los payouts automáticamente cada 15 días.</div>
+          <div class="callout__desc">Los colaboradores reciben porcentaje de ingresos según su rol. Configura las divisiones en <a href="#" class="text-info">Pago &gt; Reparto</a>. Stripe Connect distribuye los payouts automáticamente cada 15 días.</div>
         </div>
       </div>
 
       <div class="section mb-6">
         <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
           <h2 style="font-size:16px;margin:0;">Colaboradores activos</h2>
-          <span class="text-sm c-ink-3">4 personas · 100% repartido</span>
+          <span class="text-sm text-ink-3">4 personas · 100% repartido</span>
         </header>
         <div class="grid-2">
           <article class="card">
@@ -120,7 +117,7 @@
               <div class="stats">
                 <div class="stat">
                   <div class="stat__label">Reparto</div>
-                  <div class="stat__value c-brand">60%</div>
+                  <div class="stat__value text-brand">60%</div>
                 </div>
                 <div class="stat">
                   <div class="stat__label">Desde</div>
@@ -133,7 +130,7 @@
               </div>
             </div>
             <footer class="footer">
-              <span class="text-xs c-ink-3">Pago acumulado: €5 360</span>
+              <span class="text-xs text-ink-3">Pago acumulado: €5 360</span>
               <div class="flex gap-1">
                 <button class="btn ghost sm" disabled>Cambiar rol</button>
               </div>
@@ -155,7 +152,7 @@
               <div class="stats">
                 <div class="stat">
                   <div class="stat__label">Reparto</div>
-                  <div class="stat__value c-info">25%</div>
+                  <div class="stat__value text-info">25%</div>
                 </div>
                 <div class="stat">
                   <div class="stat__label">Desde</div>
@@ -168,7 +165,7 @@
               </div>
             </div>
             <footer class="footer">
-              <span class="text-xs c-ink-3">Pago acumulado: €1 480</span>
+              <span class="text-xs text-ink-3">Pago acumulado: €1 480</span>
               <div class="flex gap-1">
                 <button class="btn ghost sm">Cambiar rol</button>
                 <button class="btn ghost sm">Editar %</button>
@@ -191,7 +188,7 @@
               <div class="stats">
                 <div class="stat">
                   <div class="stat__label">Reparto</div>
-                  <div class="stat__value c-leaf">10%</div>
+                  <div class="stat__value text-leaf">10%</div>
                 </div>
                 <div class="stat">
                   <div class="stat__label">Desde</div>
@@ -204,7 +201,7 @@
               </div>
             </div>
             <footer class="footer">
-              <span class="text-xs c-ink-3">Pago acumulado: €420</span>
+              <span class="text-xs text-ink-3">Pago acumulado: €420</span>
               <div class="flex gap-1">
                 <button class="btn ghost sm">Cambiar rol</button>
                 <button class="btn ghost sm">Editar %</button>
@@ -227,7 +224,7 @@
               <div class="stats">
                 <div class="stat">
                   <div class="stat__label">Reparto</div>
-                  <div class="stat__value c-warn">5%</div>
+                  <div class="stat__value text-warn">5%</div>
                 </div>
                 <div class="stat">
                   <div class="stat__label">Desde</div>
@@ -240,7 +237,7 @@
               </div>
             </div>
             <footer class="footer">
-              <span class="text-xs c-ink-3">Pago acumulado: €120</span>
+              <span class="text-xs text-ink-3">Pago acumulado: €120</span>
               <div class="flex gap-1">
                 <button class="btn ghost sm">Cambiar rol</button>
                 <button class="btn ghost sm danger">Eliminar</button>
@@ -289,7 +286,7 @@
           </div>
         </div>
         <footer class="footer">
-          <span class="text-xs c-ink-3">Próximo payout: 15 may 2026 · Stripe Connect</span>
+          <span class="text-xs text-ink-3">Próximo payout: 15 may 2026 · Stripe Connect</span>
           <span style="font-size:12px;color:var(--ink);"><strong>Total:</strong> €1 480 / mes</span>
         </footer>
       </article>
@@ -310,10 +307,10 @@
                 <td><span class="badge success">Editor</span></td>
                 <td>5%</td>
                 <td>02 may 2026</td>
-                <td><span class="c-warn">en 4 días</span></td>
+                <td><span class="text-warn">en 4 días</span></td>
                 <td>
                   <button class="btn ghost sm">Reenviar</button>
-                  <button class="btn ghost sm c-danger">Cancelar</button>
+                  <button class="btn ghost sm text-danger">Cancelar</button>
                 </td>
               </tr>
               <tr>
@@ -321,10 +318,10 @@
                 <td><span class="badge">Viewer</span></td>
                 <td>0%</td>
                 <td>05 may 2026</td>
-                <td><span class="c-ink-3">en 7 días</span></td>
+                <td><span class="text-ink-3">en 7 días</span></td>
                 <td>
                   <button class="btn ghost sm">Reenviar</button>
-                  <button class="btn ghost sm c-danger">Cancelar</button>
+                  <button class="btn ghost sm text-danger">Cancelar</button>
                 </td>
               </tr>
             </tbody>

@@ -12,9 +12,6 @@
 {% block page_title %}Payouts{% endblock %}
 
 {% block content %}
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
@@ -118,12 +115,12 @@
 
       <!-- Stripe Connect banner -->
       <div class="banner success" style="border-radius:var(--radius-md);margin-bottom:18px;">
-        <span class="banner__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg></span>
-        <div class="banner__body">
-          <span class="banner__title">Stripe Connect activo</span>
-          <span class="banner__desc">Pagos automáticos cada lunes · Última transferencia 6 may 2026 · €1 240,00</span>
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg></span>
+        <div class="body">
+          <span class="title sm">Stripe Connect activo</span>
+          <span class="meta">Pagos automáticos cada lunes · Última transferencia 6 may 2026 · €1 240,00</span>
         </div>
-        <div class="banner__actions">
+        <div class="actions">
           <button class="banner__action">Configuración</button>
         </div>
       </div>
@@ -167,7 +164,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0008</td>
-                  <td><a href="payout-detail.html" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="payout-detail.html" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-0007'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>29 abr 2026</td>
@@ -175,7 +172,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0007</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-0006'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>22 abr 2026</td>
@@ -183,7 +180,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0006</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-0005'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>15 abr 2026</td>
@@ -191,7 +188,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0005</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-0004'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>8 abr 2026</td>
@@ -199,7 +196,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0004</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-0003'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>1 abr 2026</td>
@@ -207,7 +204,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0003</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-0002'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>25 mar 2026</td>
@@ -215,7 +212,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0002</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-0001'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>18 mar 2026</td>
@@ -223,7 +220,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0001</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr style="opacity:0.85;" data-show="($q === '' || 'PAYOUT-2026-0009'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'En tránsito')">
                   <td>13 may 2026</td>
@@ -247,7 +244,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-0000</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
                 <tr data-show="($q === '' || 'PAYOUT-2026-INI'.toLowerCase().includes($q.toLowerCase())) && ($statusFilter === 'all' || $statusFilter === 'Procesado')">
                   <td>4 mar 2026</td>
@@ -255,7 +252,7 @@
                   <td><span class="tag neutral sm">Stripe · IBAN</span></td>
                   <td><span class="badge success"><span class="badge__dot"></span>Procesado</span></td>
                   <td class="td mono">PAYOUT-2026-INI</td>
-                  <td><a href="#" class="c-brand-3">PDF ↓</a></td>
+                  <td><a href="#" class="text-brand-3">PDF ↓</a></td>
                 </tr>
               </tbody>
             </table>
@@ -276,15 +273,15 @@
               <div style="display:flex;flex-direction:column;gap:6px;">
                 <label style="display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;" data-attr:style="$freq === 'weekly' ? 'display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--brand);background:var(--brand-soft);border-radius:var(--radius-md);cursor:pointer;' : 'display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;'">
                   <input type="radio" name="freq" value="weekly" data-on:change="$freq = 'weekly'" data-attr:checked="$freq === 'weekly'"/>
-                  <div><div class="font-medium text-md">Semanal</div><div class="text-xs c-ink-3">Cada lunes · Recomendado</div></div>
+                  <div><div class="font-medium text-md">Semanal</div><div class="text-xs text-ink-3">Cada lunes · Recomendado</div></div>
                 </label>
                 <label style="display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;" data-attr:style="$freq === 'monthly' ? 'display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--brand);background:var(--brand-soft);border-radius:var(--radius-md);cursor:pointer;' : 'display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;'">
                   <input type="radio" name="freq" value="monthly" data-on:change="$freq = 'monthly'" data-attr:checked="$freq === 'monthly'"/>
-                  <div><div class="font-medium text-md">Mensual</div><div class="text-xs c-ink-3">Día 1 de cada mes</div></div>
+                  <div><div class="font-medium text-md">Mensual</div><div class="text-xs text-ink-3">Día 1 de cada mes</div></div>
                 </label>
                 <label style="display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;" data-attr:style="$freq === 'manual' ? 'display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--brand);background:var(--brand-soft);border-radius:var(--radius-md);cursor:pointer;' : 'display:flex;align-items:flex-start;gap:8px;padding:10px;border:1px solid var(--line);border-radius:var(--radius-md);cursor:pointer;'">
                   <input type="radio" name="freq" value="manual" data-on:change="$freq = 'manual'" data-attr:checked="$freq === 'manual'"/>
-                  <div><div class="font-medium text-md">Manual</div><div class="text-xs c-ink-3">Solo bajo solicitud</div></div>
+                  <div><div class="font-medium text-md">Manual</div><div class="text-xs text-ink-3">Solo bajo solicitud</div></div>
                 </label>
               </div>
             </div>
@@ -320,7 +317,7 @@
             </article>
           </div>
           <div class="foot">
-            <span class="text-xs c-ink-3">Cambios aplicables al próximo ciclo</span>
+            <span class="text-xs text-ink-3">Cambios aplicables al próximo ciclo</span>
             <button class="btn primary sm">Guardar</button>
           </div>
         </aside>
@@ -372,7 +369,7 @@
   <div class="modal-root hidden" data-show="$payoutOpen">
     <div class="backdrop" data-on:click="$payoutOpen = false"></div>
     <div class="modal" style="max-width:480px;">
-      <header class="modal__header">
+      <header class="head">
         <h3 style="margin:0;display:flex;align-items:center;gap:8px;">
           <span style="width:28px;height:28px;border-radius:50%;background:var(--brand-soft);color:var(--brand-3);display:grid;place-items:center;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
@@ -380,7 +377,7 @@
           Solicitar pago manual
         </h3>
       </header>
-      <div class="modal__body">
+      <div class="content scroll body">
         <p style="margin:0 0 12px;color:var(--ink-2);line-height:1.5;">
           Recibirás el importe solicitado en tu cuenta bancaria registrada en <b>Banco Sabadell ES•• 5547</b> en un plazo aproximado de <b>1 día hábil</b>.
         </p>
@@ -401,7 +398,7 @@
           </div>
         </div>
       </div>
-      <footer class="modal__footer">
+      <footer class="foot">
         <button class="btn ghost" data-on:click="$payoutOpen = false">Cancelar</button>
         <button class="btn primary" data-attr:disabled="$payoutAmount <= 0 || $payoutAmount > 1480" data-on:click="$payoutOpen = false; $payoutAmount = 0">Solicitar transferencia</button>
       </footer>

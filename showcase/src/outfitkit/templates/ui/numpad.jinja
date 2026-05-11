@@ -4,8 +4,8 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- if display is not none or label %}
 <div class="numpad-display">
-  {%- if label %}<div class="numpad-display__label">{{ label }}</div>{% endif %}
-  <div class="numpad-display__value">{{ display if display is not none else '' }}</div>
+  {%- if label %}<div class="label">{{ label }}</div>{% endif %}
+  <div class="value">{{ display if display is not none else '' }}</div>
 </div>
 {%- endif %}
 <div class="numpad"

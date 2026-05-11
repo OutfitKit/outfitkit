@@ -40,6 +40,9 @@
   <style>
     body { background: var(--bg); color: var(--ink); font-family: var(--font, system-ui, -apple-system, sans-serif); margin: 0; }
 
+    /* Save-bar clearance — pages with a fixed bottom save bar. */
+    .pb-save-bar { padding-bottom: 80px !important; }
+
     /* Sidebar overrides for the showcase: a bit wider so labels don't truncate.
        On mobile the sidebar collapses to an off-canvas drawer (handled by
        app-shell.css), so the showcase shell must release its 250px column
@@ -164,6 +167,9 @@
     }
     .doc__title { font-family: var(--font-display, var(--font)); font-size: 28px; letter-spacing: -0.02em; margin: 0 0 8px; }
     .doc__sub { color: var(--ink-3); margin: 0 0 32px; line-height: 1.55; }
+
+    /* Component page lead paragraph. */
+    .showcase__lead { color: var(--ink-3); font-size: var(--text-md); line-height: var(--leading-normal); margin: var(--space-2) 0 var(--space-5); max-width: 70ch; }
 
     /* "Demo grid" used by the overview page. */
     .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
@@ -372,7 +378,7 @@
       {# Search box #}
       <div style="padding: 10px 12px 4px;">
         <div class="search">
-          <span class="search__icon">
+          <span class="icon">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
             </svg>

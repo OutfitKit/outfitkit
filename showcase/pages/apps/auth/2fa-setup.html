@@ -15,7 +15,6 @@
 
 {% block content %}
 <style>
-body { background: var(--bg); margin: 0; }
   .cloud-shell { min-height: 100vh; }
   .cloud-codes {
     display: grid;
@@ -144,7 +143,7 @@ body { background: var(--bg); margin: 0; }
         <div class="stepper-progress__seg" data-class:stepper-progress__seg--done="$step > 3" data-class:stepper-progress__seg--active="$step === 3"></div>
         <div class="stepper-progress__seg" data-class:stepper-progress__seg--done="$step > 4" data-class:stepper-progress__seg--active="$step === 4"></div>
       </div>
-      <span class="stepper-progress__step" data-text="$step === 1 ? 'Instalar app · QR escaneado · Verificado · Códigos guardados' : ($step === 2 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : ($step === 3 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : 'Activado · QR escaneado · Verificado · Códigos guardados'))">Activado · <strong class="c-ink">QR escaneado</strong> · Verificado · Códigos guardados</span>
+      <span class="stepper-progress__step" data-text="$step === 1 ? 'Instalar app · QR escaneado · Verificado · Códigos guardados' : ($step === 2 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : ($step === 3 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : 'Activado · QR escaneado · Verificado · Códigos guardados'))">Activado · <strong class="text-ink">QR escaneado</strong> · Verificado · Códigos guardados</span>
     </div>
 
     <!-- Header -->
@@ -163,11 +162,11 @@ body { background: var(--bg); margin: 0; }
           data-on:click="$step = Math.min(4, $step + 1)"
           data-show="$step < 4">
           Continuar
-          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
         <button class="btn primary" data-show="$step === 4" data-attr:disabled="!$codesSaved">
           Activar 2FA
-          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
         </button>
       </div>
     </header>
@@ -337,11 +336,11 @@ body { background: var(--bg); margin: 0; }
           </div>
           <div class="actions">
             <button class="btn outline sm">
-              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               Descargar TXT
             </button>
             <button class="btn outline sm">
-              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               Copiar todos
             </button>
           </div>

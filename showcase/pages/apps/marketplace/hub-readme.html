@@ -47,15 +47,15 @@
   <div class="backdrop" data-attr:data-state="$showReadme ? 'open' : 'closed'" data-on:click="$showReadme = false"></div>
   <div class="modal readme-modal" role="dialog" aria-modal="true" aria-labelledby="readme-modal-title" data-on:click__stop="evt.stopPropagation()">
 
-    <div class="modal__header">
-      <div class="modal__icon modal__icon--brand">
+    <div class="head">
+      <div class="icon-disc brand">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
       </div>
-      <div class="modal__heading">
-        <h3 class="modal__title" id="readme-modal-title">VeriFactu</h3>
-        <p class="modal__sub">Documentación oficial del módulo · v1.0.0</p>
+      <div class="heading">
+        <h3 class="title lg" id="readme-modal-title">VeriFactu</h3>
+        <p class="sub">Documentación oficial del módulo · v1.0.0</p>
       </div>
-      <button class="modal__close" data-on:click="$showReadme = false" aria-label="Cerrar">×</button>
+      <button class="close" data-on:click="$showReadme = false" aria-label="Cerrar">×</button>
     </div>
 
     <!-- Tabs (README · Changelog) -->
@@ -159,8 +159,8 @@
       </ul>
     </div>
 
-    <div class="modal__footer modal__footer--between">
-      <span class="text-xs c-ink-3">
+    <div class="foot justify-between">
+      <span class="text-xs text-ink-3">
         Documentación oficial · ERPlora
       </span>
       <div class="flex gap-2">

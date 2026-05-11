@@ -13,9 +13,6 @@
 
 
 {% block content %}
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -96,7 +93,7 @@
           <div class="page-header-sub">12 módulos · 8 420 descargas totales · €8 920 ingresos totales</div>
         </div>
         <div class="actions">
-          <button class="btn ghost"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Exportar</button>
+          <button class="btn ghost"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>Exportar</button>
           <button class="btn primary">+ Subir módulo</button>
         </div>
       </div>
@@ -152,8 +149,8 @@
         </div>
 
         <div class="banner inline" data-show="$selected.length > 0" style="border-top:none;border-radius:0;">
-          <div class="banner__body"><strong data-text="$selected.length"></strong> módulos seleccionados</div>
-          <div class="banner__actions">
+          <div class="body"><strong data-text="$selected.length"></strong> módulos seleccionados</div>
+          <div class="actions">
             <button class="banner__action" data-on:click="$selected = []; $allChecked = false">Limpiar</button>
             <button class="banner__action">Pausar</button>
             <button class="banner__action">Despublicar</button>
@@ -186,20 +183,20 @@
                   data-on:click="$selected = $selected.includes('m1') ? $selected.filter(id => id !== 'm1') : [...$selected, 'm1']"
                   data-attr:checked="$selected.includes('m1')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#7B3F2A;color:#fff;border-radius:8px;">P</span></td>
-                <td><strong>POS Caja Registradora Pro</strong><div class="text-xs c-ink-3">@ioanb/pos-pro</div></td>
+                <td><strong>POS Caja Registradora Pro</strong><div class="text-xs text-ink-3">@ioanb/pos-pro</div></td>
                 <td><span class="tag neutral sm">v3.2.1</span></td>
                 <td>POS</td>
                 <td class="td num">2 184</td>
                 <td class="td num">€2 480</td>
-                <td>★ 4.8 <span class="text-2xs c-ink-3">(124)</span></td>
-                <td><span class="text-xs c-ink-3">hace 3 d</span></td>
+                <td>★ 4.8 <span class="text-2xs text-ink-3">(124)</span></td>
+                <td><span class="text-xs text-ink-3">hace 3 d</span></td>
                 <td><span class="badge success">Publicado</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm1' ? null : 'm1'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm1'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -208,20 +205,20 @@
                   data-on:click="$selected = $selected.includes('m2') ? $selected.filter(id => id !== 'm2') : [...$selected, 'm2']"
                   data-attr:checked="$selected.includes('m2')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#2A6B7B;color:#fff;border-radius:8px;">C</span></td>
-                <td><strong>Contabilidad Plus PGC07</strong><div class="text-xs c-ink-3">@ioanb/contabilidad-plus</div></td>
+                <td><strong>Contabilidad Plus PGC07</strong><div class="text-xs text-ink-3">@ioanb/contabilidad-plus</div></td>
                 <td><span class="tag neutral sm">v2.7.0</span></td>
                 <td>Contabilidad</td>
                 <td class="td num">1 612</td>
                 <td class="td num">€1 940</td>
-                <td>★ 4.6 <span class="text-2xs c-ink-3">(86)</span></td>
-                <td><span class="text-xs c-ink-3">hace 6 d</span></td>
+                <td>★ 4.6 <span class="text-2xs text-ink-3">(86)</span></td>
+                <td><span class="text-xs text-ink-3">hace 6 d</span></td>
                 <td><span class="badge success">Publicado</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm2' ? null : 'm2'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm2'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -230,20 +227,20 @@
                   data-on:click="$selected = $selected.includes('m3') ? $selected.filter(id => id !== 'm3') : [...$selected, 'm3']"
                   data-attr:checked="$selected.includes('m3')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#4F9D6E;color:#fff;border-radius:8px;">S</span></td>
-                <td><strong>Conciliación bancaria SEPA</strong><div class="text-xs c-ink-3">@ioanb/sepa-recon</div></td>
+                <td><strong>Conciliación bancaria SEPA</strong><div class="text-xs text-ink-3">@ioanb/sepa-recon</div></td>
                 <td><span class="tag warning sm">v1.4.2 → 1.5.0</span></td>
                 <td>Bancos</td>
                 <td class="td num">1 248</td>
                 <td class="td num">€1 320</td>
-                <td>★ 4.9 <span class="text-2xs c-ink-3">(74)</span></td>
-                <td><span class="text-xs c-ink-3">hace 1 d</span></td>
+                <td>★ 4.9 <span class="text-2xs text-ink-3">(74)</span></td>
+                <td><span class="text-xs text-ink-3">hace 1 d</span></td>
                 <td><span class="badge warning">Update pendiente</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm3' ? null : 'm3'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm3'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -252,20 +249,20 @@
                   data-on:click="$selected = $selected.includes('m4') ? $selected.filter(id => id !== 'm4') : [...$selected, 'm4']"
                   data-attr:checked="$selected.includes('m4')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#C7407A;color:#fff;border-radius:8px;">P</span></td>
-                <td><strong>Catálogo productos avanzado</strong><div class="text-xs c-ink-3">@ioanb/catalog-pro</div></td>
+                <td><strong>Catálogo productos avanzado</strong><div class="text-xs text-ink-3">@ioanb/catalog-pro</div></td>
                 <td><span class="tag neutral sm">v2.1.4</span></td>
                 <td>Inventario</td>
                 <td class="td num">948</td>
                 <td class="td num">€780</td>
-                <td>★ 4.5 <span class="text-2xs c-ink-3">(52)</span></td>
-                <td><span class="text-xs c-ink-3">hace 12 d</span></td>
+                <td>★ 4.5 <span class="text-2xs text-ink-3">(52)</span></td>
+                <td><span class="text-xs text-ink-3">hace 12 d</span></td>
                 <td><span class="badge success">Publicado</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm4' ? null : 'm4'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm4'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -274,20 +271,20 @@
                   data-on:click="$selected = $selected.includes('m5') ? $selected.filter(id => id !== 'm5') : [...$selected, 'm5']"
                   data-attr:checked="$selected.includes('m5')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#D8A23A;color:#fff;border-radius:8px;">T</span></td>
-                <td><strong>TPV pantalla doble</strong><div class="text-xs c-ink-3">@ioanb/dual-screen-tpv</div></td>
+                <td><strong>TPV pantalla doble</strong><div class="text-xs text-ink-3">@ioanb/dual-screen-tpv</div></td>
                 <td><span class="tag neutral sm">v1.2.0</span></td>
                 <td>POS</td>
                 <td class="td num">621</td>
                 <td class="td num">€480</td>
-                <td>★ 4.4 <span class="text-2xs c-ink-3">(28)</span></td>
-                <td><span class="text-xs c-ink-3">hace 18 d</span></td>
+                <td>★ 4.4 <span class="text-2xs text-ink-3">(28)</span></td>
+                <td><span class="text-xs text-ink-3">hace 18 d</span></td>
                 <td><span class="badge success">Publicado</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm5' ? null : 'm5'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm5'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -296,20 +293,20 @@
                   data-on:click="$selected = $selected.includes('m6') ? $selected.filter(id => id !== 'm6') : [...$selected, 'm6']"
                   data-attr:checked="$selected.includes('m6')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#5B8CD9;color:#fff;border-radius:8px;">I</span></td>
-                <td><strong>Inventario multitienda</strong><div class="text-xs c-ink-3">@ioanb/inventory-multi</div></td>
+                <td><strong>Inventario multitienda</strong><div class="text-xs text-ink-3">@ioanb/inventory-multi</div></td>
                 <td><span class="tag warning sm">v3.0.1 → 3.1.0</span></td>
                 <td>Inventario</td>
                 <td class="td num">588</td>
                 <td class="td num">€720</td>
-                <td>★ 4.7 <span class="text-2xs c-ink-3">(42)</span></td>
-                <td><span class="text-xs c-ink-3">hoy · 10:24</span></td>
+                <td>★ 4.7 <span class="text-2xs text-ink-3">(42)</span></td>
+                <td><span class="text-xs text-ink-3">hoy · 10:24</span></td>
                 <td><span class="badge warning">Update pendiente</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm6' ? null : 'm6'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm6'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -318,20 +315,20 @@
                   data-on:click="$selected = $selected.includes('m7') ? $selected.filter(id => id !== 'm7') : [...$selected, 'm7']"
                   data-attr:checked="$selected.includes('m7')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#9C5BAA;color:#fff;border-radius:8px;">R</span></td>
-                <td><strong>RRHH Nóminas España</strong><div class="text-xs c-ink-3">@ioanb/rrhh-nominas-es</div></td>
+                <td><strong>RRHH Nóminas España</strong><div class="text-xs text-ink-3">@ioanb/rrhh-nominas-es</div></td>
                 <td><span class="tag neutral sm">v1.8.3</span></td>
                 <td>RRHH</td>
                 <td class="td num">412</td>
                 <td class="td num">€620</td>
-                <td>★ 4.3 <span class="text-2xs c-ink-3">(31)</span></td>
-                <td><span class="text-xs c-ink-3">hace 4 d</span></td>
+                <td>★ 4.3 <span class="text-2xs text-ink-3">(31)</span></td>
+                <td><span class="text-xs text-ink-3">hace 4 d</span></td>
                 <td><span class="badge success">Publicado</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm7' ? null : 'm7'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm7'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -340,20 +337,20 @@
                   data-on:click="$selected = $selected.includes('m8') ? $selected.filter(id => id !== 'm8') : [...$selected, 'm8']"
                   data-attr:checked="$selected.includes('m8')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#3F8C5C;color:#fff;border-radius:8px;">M</span></td>
-                <td><strong>Marketplace integration</strong><div class="text-xs c-ink-3">@ioanb/marketplace-bridge</div></td>
+                <td><strong>Marketplace integration</strong><div class="text-xs text-ink-3">@ioanb/marketplace-bridge</div></td>
                 <td><span class="tag warning sm">v0.9.4 → 1.0.0</span></td>
                 <td>Integraciones</td>
                 <td class="td num">301</td>
                 <td class="td num">€380</td>
-                <td>★ 4.2 <span class="text-2xs c-ink-3">(18)</span></td>
-                <td><span class="text-xs c-ink-3">hace 9 d</span></td>
+                <td>★ 4.2 <span class="text-2xs text-ink-3">(18)</span></td>
+                <td><span class="text-xs text-ink-3">hace 9 d</span></td>
                 <td><span class="badge warning">Update pendiente</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm8' ? null : 'm8'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm8'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -362,20 +359,20 @@
                   data-on:click="$selected = $selected.includes('m9') ? $selected.filter(id => id !== 'm9') : [...$selected, 'm9']"
                   data-attr:checked="$selected.includes('m9')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#635BFF;color:#fff;border-radius:8px;">S</span></td>
-                <td><strong>Pasarela Stripe Avanzada</strong><div class="text-xs c-ink-3">@ioanb/stripe-pro</div></td>
+                <td><strong>Pasarela Stripe Avanzada</strong><div class="text-xs text-ink-3">@ioanb/stripe-pro</div></td>
                 <td><span class="tag neutral sm">v2.4.1</span></td>
                 <td>Pasarelas de pago</td>
                 <td class="td num">288</td>
                 <td class="td num">€220</td>
-                <td>★ 4.7 <span class="text-2xs c-ink-3">(22)</span></td>
-                <td><span class="text-xs c-ink-3">ayer</span></td>
+                <td>★ 4.7 <span class="text-2xs text-ink-3">(22)</span></td>
+                <td><span class="text-xs text-ink-3">ayer</span></td>
                 <td><span class="badge success">Publicado</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm9' ? null : 'm9'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm9'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Pausar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Despublicar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Despublicar</button>
                   </div>
                 </td>
               </tr>
@@ -384,20 +381,20 @@
                   data-on:click="$selected = $selected.includes('m10') ? $selected.filter(id => id !== 'm10') : [...$selected, 'm10']"
                   data-attr:checked="$selected.includes('m10')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#8A8378;color:#fff;border-radius:8px;">R</span></td>
-                <td><strong>Reportes contables IRS</strong><div class="text-xs c-ink-3">@ioanb/reports-irs</div></td>
+                <td><strong>Reportes contables IRS</strong><div class="text-xs text-ink-3">@ioanb/reports-irs</div></td>
                 <td><span class="tag neutral sm">v0.4.0-beta</span></td>
                 <td>Reportes</td>
                 <td class="td num">12</td>
                 <td class="td num">€0</td>
-                <td><span class="c-ink-3">— sin reseñas</span></td>
-                <td><span class="text-xs c-ink-3">hace 30 d</span></td>
+                <td><span class="text-ink-3">— sin reseñas</span></td>
+                <td><span class="text-xs text-ink-3">hace 30 d</span></td>
                 <td><span class="badge">Borrador</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm10' ? null : 'm10'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm10'">
                     <button class="btn ghost sm w-full justify-start">Editar</button>
                     <button class="btn ghost sm w-full justify-start">Publicar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -406,20 +403,20 @@
                   data-on:click="$selected = $selected.includes('m11') ? $selected.filter(id => id !== 'm11') : [...$selected, 'm11']"
                   data-attr:checked="$selected.includes('m11')"/><span class="check__box"></span></label></td>
                 <td><span class="avatar sm" style="background:#444;color:#fff;border-radius:8px;">B</span></td>
-                <td><strong>Backup automático Drive</strong><div class="text-xs c-ink-3">@ioanb/drive-backup</div></td>
+                <td><strong>Backup automático Drive</strong><div class="text-xs text-ink-3">@ioanb/drive-backup</div></td>
                 <td><span class="tag neutral sm">v1.0.2</span></td>
                 <td>Utilidades</td>
                 <td class="td num">88</td>
                 <td class="td num">€0</td>
-                <td>★ 3.6 <span class="text-2xs c-ink-3">(7)</span></td>
-                <td><span class="text-xs c-ink-3">hace 2 m</span></td>
+                <td>★ 3.6 <span class="text-2xs text-ink-3">(7)</span></td>
+                <td><span class="text-xs text-ink-3">hace 2 m</span></td>
                 <td><span class="badge danger">Despublicado</span></td>
                 <td class="relative">
                   <button class="icon-btn sm" data-on:click="$openMenu = $openMenu === 'm11' ? null : 'm11'"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'm11'">
                     <button class="btn ghost sm w-full justify-start">Republicar</button>
                     <button class="btn ghost sm w-full justify-start">Editar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -440,8 +437,8 @@
               <span class="badge success">Publicado</span>
             </header>
             <div class="body" style="display:flex;gap:12px;font-size:12.5px;color:var(--ink-3);">
-              <span><b class="c-ink">2 184</b> descargas</span>
-              <span><b class="c-ink">€2 480</b> ingresos</span>
+              <span><b class="text-ink">2 184</b> descargas</span>
+              <span><b class="text-ink">€2 480</b> ingresos</span>
               <span>★ 4.8</span>
             </div>
           </article>
@@ -457,8 +454,8 @@
               <span class="badge success">Publicado</span>
             </header>
             <div class="body" style="display:flex;gap:12px;font-size:12.5px;color:var(--ink-3);">
-              <span><b class="c-ink">1 612</b> descargas</span>
-              <span><b class="c-ink">€1 940</b></span>
+              <span><b class="text-ink">1 612</b> descargas</span>
+              <span><b class="text-ink">€1 940</b></span>
               <span>★ 4.6</span>
             </div>
           </article>

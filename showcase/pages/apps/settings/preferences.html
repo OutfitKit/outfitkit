@@ -8,7 +8,6 @@
 {% block content %}
 
 <style>
-  body { background: var(--bg); margin: 0; }
 </style>
 <div class="app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false, "tab": "general", "theme": "auto", "dateFmt": "DD/MM/YYYY", "timeFmt": "24h", "firstDay": "mon", "textSize": 16, "reduceMotion": false, "contrast": false, "push": true, "sound": true, "emailFreq": "daily", "template": "erplora", "dirty": false, "lang": "es-ES", "currency": "EUR", "screenReader": false, "keyboardNav": true, "dyslexicFont": false, "focusRings": true}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -91,7 +90,7 @@
       <a class="tab" href="file-browser.html">File browser</a>
     </nav>
 
-    <div class="content scroll body" style="padding-bottom:80px;">
+    <div class="content scroll body pb-save-bar">
       <div class="page-header">
         <div class="page-header-title">
           <h1>Preferencias</h1>
@@ -159,9 +158,9 @@
               <div class="field col-md-6">
                 <span class="field__label">Formato de fecha</span>
                 <div class="radio-group inline">
-                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'DD/MM/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'DD/MM/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>DD/MM/YYYY <span class="c-ink-4">· 08/05/2026</span></span></label>
-                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'MM/DD/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'MM/DD/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>MM/DD/YYYY <span class="c-ink-4">· 05/08/2026</span></span></label>
-                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'YYYY-MM-DD'; $dirty = true" data-attr:checked="$dateFmt === 'YYYY-MM-DD' ? 'checked' : null"/><span class="radio__dot"></span><span>YYYY-MM-DD <span class="c-ink-4">· 2026-05-08</span></span></label>
+                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'DD/MM/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'DD/MM/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>DD/MM/YYYY <span class="text-ink-4">· 08/05/2026</span></span></label>
+                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'MM/DD/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'MM/DD/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>MM/DD/YYYY <span class="text-ink-4">· 05/08/2026</span></span></label>
+                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'YYYY-MM-DD'; $dirty = true" data-attr:checked="$dateFmt === 'YYYY-MM-DD' ? 'checked' : null"/><span class="radio__dot"></span><span>YYYY-MM-DD <span class="text-ink-4">· 2026-05-08</span></span></label>
                 </div>
               </div>
               <div class="field col-md-6">
@@ -285,7 +284,7 @@
                 <span class="field__label">Horario laboral · solo recibo notificaciones en este rango</span>
                 <div style="display:flex;gap:10px;align-items:center;">
                   <input class="input" type="time" value="09:00" style="max-width:140px;"/>
-                  <span class="c-ink-3">→</span>
+                  <span class="text-ink-3">→</span>
                   <input class="input" type="time" value="19:00" style="max-width:140px;"/>
                   <span style="color:var(--ink-3);font-size:var(--text-sm);">L–V</span>
                 </div>
@@ -307,27 +306,27 @@
             <div class="body p-0">
               <div style="display:flex;flex-direction:column;">
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);">
-                  <div><strong>Paleta de comandos</strong><div class="text-xs c-ink-3">Buscar y ejecutar acciones.</div></div>
-                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="c-ink-4">+</span><span class="kbd">K</span></div>
+                  <div><strong>Paleta de comandos</strong><div class="text-xs text-ink-3">Buscar y ejecutar acciones.</div></div>
+                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="text-ink-4">+</span><span class="kbd">K</span></div>
                 </div>
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);">
-                  <div><strong>Nuevo registro</strong><div class="text-xs c-ink-3">Crear ítem en la sección actual.</div></div>
-                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="c-ink-4">+</span><span class="kbd">N</span></div>
+                  <div><strong>Nuevo registro</strong><div class="text-xs text-ink-3">Crear ítem en la sección actual.</div></div>
+                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="text-ink-4">+</span><span class="kbd">N</span></div>
                 </div>
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);">
-                  <div><strong>Buscar global</strong><div class="text-xs c-ink-3">Buscar en toda la organización.</div></div>
+                  <div><strong>Buscar global</strong><div class="text-xs text-ink-3">Buscar en toda la organización.</div></div>
                   <div style="display:flex;gap:4px;"><span class="kbd">/</span></div>
                 </div>
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);">
-                  <div><strong>Guardar</strong><div class="text-xs c-ink-3">Persistir cambios del formulario.</div></div>
-                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="c-ink-4">+</span><span class="kbd">S</span></div>
+                  <div><strong>Guardar</strong><div class="text-xs text-ink-3">Persistir cambios del formulario.</div></div>
+                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="text-ink-4">+</span><span class="kbd">S</span></div>
                 </div>
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);">
-                  <div><strong>Cambiar organización</strong><div class="text-xs c-ink-3">Saltar entre tenants.</div></div>
-                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="c-ink-4">+</span><span class="kbd">⇧</span><span class="c-ink-4">+</span><span class="kbd">O</span></div>
+                  <div><strong>Cambiar organización</strong><div class="text-xs text-ink-3">Saltar entre tenants.</div></div>
+                  <div style="display:flex;gap:4px;"><span class="kbd">⌘</span><span class="text-ink-4">+</span><span class="kbd">⇧</span><span class="text-ink-4">+</span><span class="kbd">O</span></div>
                 </div>
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;">
-                  <div><strong>Mostrar atajos</strong><div class="text-xs c-ink-3">Esta lista que estás viendo.</div></div>
+                  <div><strong>Mostrar atajos</strong><div class="text-xs text-ink-3">Esta lista que estás viendo.</div></div>
                   <div style="display:flex;gap:4px;"><span class="kbd">?</span></div>
                 </div>
               </div>

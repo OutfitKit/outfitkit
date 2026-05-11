@@ -15,7 +15,6 @@
 
 {% block content %}
 <style>
-body { background: var(--bg); margin: 0; }
   .cloud-shell { min-height: 100vh; }
   .method-card { display: flex; flex-direction: column; gap: 12px; height: 100%; }
   .method-card__top { display: flex; align-items: flex-start; gap: 12px; }
@@ -135,7 +134,7 @@ body { background: var(--bg); margin: 0; }
               <span class="badge success"><span class="badge__dot"></span>Activa</span>
             </div>
             <div style="font-size:var(--text-sm);color:var(--ink-3);margin-top:4px;">
-              Activada el <strong class="c-ink-2">12 marzo 2026</strong> · Última verificación: hoy a las 09:42 desde MacBook Pro M4
+              Activada el <strong class="text-ink-2">12 marzo 2026</strong> · Última verificación: hoy a las 09:42 desde MacBook Pro M4
             </div>
           </div>
           <div style="display:flex;gap:8px;flex-shrink:0;">
@@ -171,7 +170,7 @@ body { background: var(--bg); margin: 0; }
             </div>
           </div>
           <div class="list__aside">
-            <button class="btn ghost sm c-danger" data-on:click="$confirmRevoke = 'iphone-16-pro'">Revocar</button>
+            <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'iphone-16-pro'">Revocar</button>
           </div>
         </li>
 
@@ -188,7 +187,7 @@ body { background: var(--bg); margin: 0; }
             </div>
           </div>
           <div class="list__aside">
-            <button class="btn ghost sm c-danger" data-on:click="$confirmRevoke = 'macbook-pro'">Revocar</button>
+            <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'macbook-pro'">Revocar</button>
           </div>
         </li>
 
@@ -205,7 +204,7 @@ body { background: var(--bg); margin: 0; }
             </div>
           </div>
           <div class="list__aside">
-            <button class="btn ghost sm c-danger" data-on:click="$confirmRevoke = 'mac-studio'">Revocar</button>
+            <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'mac-studio'">Revocar</button>
           </div>
         </li>
 
@@ -222,7 +221,7 @@ body { background: var(--bg); margin: 0; }
             </div>
           </div>
           <div class="list__aside">
-            <button class="btn ghost sm c-danger" data-on:click="$confirmRevoke = 'samsung-s24'">Revocar</button>
+            <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'samsung-s24'">Revocar</button>
           </div>
         </li>
 
@@ -333,7 +332,7 @@ body { background: var(--bg); margin: 0; }
     <section class="section">
       <div class="head">
         <div>
-          <div class="title lg c-danger">Zona peligrosa</div>
+          <div class="title lg text-danger">Zona peligrosa</div>
           <div class="meta">Acciones irreversibles relacionadas con la seguridad de tu cuenta.</div>
         </div>
       </div>
@@ -353,7 +352,7 @@ body { background: var(--bg); margin: 0; }
     <div class="modal-root hidden" data-show="!!$confirmRevoke">
       <div class="backdrop" data-on:click="$confirmRevoke = null"></div>
       <div class="modal" style="max-width:460px;">
-        <header class="modal__header">
+        <header class="head">
           <h3 style="margin:0;display:flex;align-items:center;gap:8px;">
             <span style="width:28px;height:28px;border-radius:50%;background:var(--danger-soft);color:var(--danger);display:grid;place-items:center;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
@@ -361,12 +360,12 @@ body { background: var(--bg); margin: 0; }
             <span data-text="$confirmRevoke === 'all' ? 'Revocar todos los dispositivos' : 'Revocar este dispositivo'">Revocar dispositivo</span>
           </h3>
         </header>
-        <div class="modal__body">
+        <div class="content scroll body">
           <p style="margin:0;color:var(--ink-2);line-height:1.5;">
             Esta acción cerrará la sesión inmediatamente y obligará a verificar 2FA la próxima vez que se inicie sesión desde ese dispositivo.
           </p>
         </div>
-        <footer class="modal__footer">
+        <footer class="foot">
           <button class="btn ghost" data-on:click="$confirmRevoke = null">Cancelar</button>
           <button class="btn danger" data-on:click="$confirmRevoke = null">Confirmar revocación</button>
         </footer>
@@ -377,7 +376,7 @@ body { background: var(--bg); margin: 0; }
     <div class="modal-root hidden" data-show="$regenOpen">
       <div class="backdrop" data-on:click="$regenOpen = false"></div>
       <div class="modal" style="max-width:480px;">
-        <header class="modal__header">
+        <header class="head">
           <h3 style="margin:0;display:flex;align-items:center;gap:8px;">
             <span style="width:28px;height:28px;border-radius:50%;background:var(--warn-soft);color:var(--warn);display:grid;place-items:center;">
               <iconify-icon icon="lucide:refresh-ccw" width="16" height="16"></iconify-icon>
@@ -385,7 +384,7 @@ body { background: var(--bg); margin: 0; }
             Regenerar códigos de respaldo
           </h3>
         </header>
-        <div class="modal__body">
+        <div class="content scroll body">
           <p style="margin:0 0 12px;color:var(--ink-2);line-height:1.5;">
             Al regenerar, los <strong>códigos antiguos quedarán inválidos al instante</strong>. Asegúrate de descargar y guardar los nuevos en un lugar seguro.
           </p>
@@ -397,7 +396,7 @@ body { background: var(--bg); margin: 0; }
             </div>
           </div>
         </div>
-        <footer class="modal__footer">
+        <footer class="foot">
           <button class="btn ghost" data-on:click="$regenOpen = false">Cancelar</button>
           <button class="btn danger" data-on:click="$regenOpen = false">Regenerar ahora</button>
         </footer>

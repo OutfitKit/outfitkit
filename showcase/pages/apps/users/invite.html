@@ -15,7 +15,6 @@
 
 {% block content %}
 <style>
-body { background: var(--bg); margin: 0; }
   .preview-mock { background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 22px; }
   .preview-mock--light { background: #fefefe; color: #1a1612; }
   .preview-mock__sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
@@ -112,7 +111,7 @@ body { background: var(--bg); margin: 0; }
         </div>
       </header>
 
-    <div class="content scroll body" style="padding: 24px;">
+    <div class="content scroll body">
       <div class="page-header">
         <div>
           <h1 class="page-header-title">Invitar usuarios a hubs</h1>
@@ -353,23 +352,23 @@ body { background: var(--bg); margin: 0; }
             </header>
             <div class="body" style="display: grid; gap: 10px; font-size: var(--text-md);">
               <div class="flex justify-between">
-                <span class="c-ink-3">Destinatarios</span>
+                <span class="text-ink-3">Destinatarios</span>
                 <strong data-text="$emails.length"></strong>
               </div>
               <div class="flex justify-between">
-                <span class="c-ink-3">Hubs</span>
+                <span class="text-ink-3">Hubs</span>
                 <strong data-text="$hubs.length"></strong>
               </div>
               <div class="flex justify-between">
-                <span class="c-ink-3">Rol</span>
+                <span class="text-ink-3">Rol</span>
                 <strong data-text="$role === 'admin' ? 'Admin' : $role === 'editor' ? 'Editor' : $role === 'viewer' ? 'Viewer' : 'Solo POS'"></strong>
               </div>
               <div class="flex justify-between">
-                <span class="c-ink-3">Caducidad</span>
+                <span class="text-ink-3">Caducidad</span>
                 <strong data-text="$expiry === '24h' ? '24 horas' : $expiry === '7d' ? '7 días' : $expiry === '30d' ? '30 días' : 'sin caducidad'"></strong>
               </div>
               <div class="flex justify-between">
-                <span class="c-ink-3">Total invitaciones</span>
+                <span class="text-ink-3">Total invitaciones</span>
                 <strong data-text="($emails.length * $hubs.length)"></strong>
               </div>
             </div>

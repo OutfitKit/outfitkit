@@ -6,7 +6,6 @@
 
 {% block content %}
 <style>
-  body { background: var(--bg); margin: 0; }
   .cloud-shell { min-height: 100vh; }
   .hub-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
   .hub-row:last-child { border-bottom: none; }
@@ -100,7 +99,7 @@
           <button data-on:click="$range = 'year'" data-attr:data-active="$range === 'year' ? 'true' : null">Año</button>
         </div>
         <button class="btn outline">
-          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           Exportar
         </button>
         <button class="btn primary">
@@ -168,14 +167,14 @@
 
     <!-- Drill-down detail bar -->
     <div class="banner info inline" data-show="!!$drillDown" style="margin-bottom: var(--space-6);">
-      <div class="banner__icon">
+      <div class="icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
       </div>
-      <div class="banner__body">
-        <div class="banner__title" data-text="$drillDown === 'hubs' ? 'Detalle de hubs' : $drillDown === 'invoices' ? 'Detalle de facturas' : $drillDown === 'pending' ? 'Compras pendientes' : $drillDown === 'users' ? 'Detalle de usuarios' : ''"></div>
-        <div class="banner__desc" data-text="$drillDown === 'hubs' ? 'Mostrando los 7 hubs en producción · pulsa para abrir.' : $drillDown === 'invoices' ? 'Próximas 14 facturas con vencimiento próximo.' : $drillDown === 'pending' ? '5 compras pendientes de pago · €4 280,50 total.' : $drillDown === 'users' ? '142 usuarios distribuidos en 3 organizaciones.' : ''"></div>
+      <div class="body">
+        <div class="title sm" data-text="$drillDown === 'hubs' ? 'Detalle de hubs' : $drillDown === 'invoices' ? 'Detalle de facturas' : $drillDown === 'pending' ? 'Compras pendientes' : $drillDown === 'users' ? 'Detalle de usuarios' : ''"></div>
+        <div class="meta" data-text="$drillDown === 'hubs' ? 'Mostrando los 7 hubs en producción · pulsa para abrir.' : $drillDown === 'invoices' ? 'Próximas 14 facturas con vencimiento próximo.' : $drillDown === 'pending' ? '5 compras pendientes de pago · €4 280,50 total.' : $drillDown === 'users' ? '142 usuarios distribuidos en 3 organizaciones.' : ''"></div>
       </div>
-      <div class="banner__actions">
+      <div class="actions">
         <button class="banner__action" data-on:click="$drillDown = null">Cerrar</button>
       </div>
     </div>
@@ -330,7 +329,7 @@
               <div class="hub-row__meta">Acme Industries · 5 módulos</div>
             </div>
             <div class="hub-row__sync">
-              <strong class="c-warn">latencia alta</strong>
+              <strong class="text-warn">latencia alta</strong>
               hace 14 min
             </div>
           </div>
@@ -342,7 +341,7 @@
               <div class="hub-row__meta">Boutique Marina · 2 módulos</div>
             </div>
             <div class="hub-row__sync">
-              <strong class="c-ink-3">offline</strong>
+              <strong class="text-ink-3">offline</strong>
               hace 2 días
             </div>
           </div>
@@ -392,7 +391,7 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">AR</span>
                     <div>
-                      <div class="font-medium c-ink">Acme Restaurantes</div>
+                      <div class="font-medium text-ink">Acme Restaurantes</div>
                       <div style="font-size:var(--text-xs);color:var(--ink-3);">F-2026-0317</div>
                     </div>
                   </div>
@@ -408,7 +407,7 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">BM</span>
                     <div>
-                      <div class="font-medium c-ink">Boutique Marina</div>
+                      <div class="font-medium text-ink">Boutique Marina</div>
                       <div style="font-size:var(--text-xs);color:var(--ink-3);">F-2026-0318</div>
                     </div>
                   </div>
@@ -424,7 +423,7 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">AI</span>
                     <div>
-                      <div class="font-medium c-ink">Acme Industries</div>
+                      <div class="font-medium text-ink">Acme Industries</div>
                       <div style="font-size:var(--text-xs);color:var(--ink-3);">F-2026-0319</div>
                     </div>
                   </div>
@@ -440,7 +439,7 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">AR</span>
                     <div>
-                      <div class="font-medium c-ink">Acme Restaurantes</div>
+                      <div class="font-medium text-ink">Acme Restaurantes</div>
                       <div style="font-size:var(--text-xs);color:var(--ink-3);">F-2026-0320</div>
                     </div>
                   </div>
@@ -456,7 +455,7 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">AI</span>
                     <div>
-                      <div class="font-medium c-ink">Acme Industries</div>
+                      <div class="font-medium text-ink">Acme Industries</div>
                       <div style="font-size:var(--text-xs);color:var(--ink-3);">F-2026-0321</div>
                     </div>
                   </div>

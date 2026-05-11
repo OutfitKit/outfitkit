@@ -14,9 +14,6 @@
 
 {% block content %}
 
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 <div class="app" data-signals='{"sidebar": false, "copied": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
@@ -132,7 +129,7 @@
               <span style="flex:1;color:var(--ink);">https://acme.erplora.cloud</span>
               <button class="btn ghost sm" data-on:click="$copied = true" style="padding:2px 8px;">
                 <span data-show="!$copied">Copiar</span>
-                <span data-show="$copied" class="c-leaf">Copiado ✓</span>
+                <span data-show="$copied" class="text-leaf">Copiado ✓</span>
               </button>
             </div>
 
@@ -186,9 +183,9 @@
                   </div>
                 </td>
                 <td><code class="code inline">7K3X-29MD</code></td>
-                <td class="c-leaf">22 h 14 min</td>
-                <td class="c-ink-3">Ioan Beilic</td>
-                <td class="text-right"><button class="btn ghost sm c-danger">Revocar</button></td>
+                <td class="text-leaf">22 h 14 min</td>
+                <td class="text-ink-3">Ioan Beilic</td>
+                <td class="text-right"><button class="btn ghost sm text-danger">Revocar</button></td>
               </tr>
               <tr>
                 <td>
@@ -198,9 +195,9 @@
                   </div>
                 </td>
                 <td><code class="code inline">PL9Q-A1F2</code></td>
-                <td class="c-leaf">18 h 02 min</td>
-                <td class="c-ink-3">Marina Casals</td>
-                <td class="text-right"><button class="btn ghost sm c-danger">Revocar</button></td>
+                <td class="text-leaf">18 h 02 min</td>
+                <td class="text-ink-3">Marina Casals</td>
+                <td class="text-right"><button class="btn ghost sm text-danger">Revocar</button></td>
               </tr>
               <tr>
                 <td>
@@ -210,9 +207,9 @@
                   </div>
                 </td>
                 <td><code class="code inline">3R4N-K7B8</code></td>
-                <td class="c-warn">2 h 38 min</td>
-                <td class="c-ink-3">Jordi Roca</td>
-                <td class="text-right"><button class="btn ghost sm c-danger">Revocar</button></td>
+                <td class="text-warn">2 h 38 min</td>
+                <td class="text-ink-3">Jordi Roca</td>
+                <td class="text-right"><button class="btn ghost sm text-danger">Revocar</button></td>
               </tr>
               <tr>
                 <td>
@@ -222,9 +219,9 @@
                   </div>
                 </td>
                 <td><code class="code inline">M5T6-DH9P</code></td>
-                <td class="c-leaf">5 d 11 h</td>
-                <td class="c-ink-3">Núria Ferrer</td>
-                <td class="text-right"><button class="btn ghost sm c-danger">Revocar</button></td>
+                <td class="text-leaf">5 d 11 h</td>
+                <td class="text-ink-3">Núria Ferrer</td>
+                <td class="text-right"><button class="btn ghost sm text-danger">Revocar</button></td>
               </tr>
             </tbody>
           </table>
@@ -246,23 +243,23 @@
           <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:13px;">
             <li style="display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);">
               <span class="status-dot online"></span>
-              <span><b class="c-ink">7K3X-29MD</b> · TPV Cocina 1 · iPhone 15 Pro</span>
-              <span class="text-xs c-ink-3">hace 4 min</span>
+              <span><b class="text-ink">7K3X-29MD</b> · TPV Cocina 1 · iPhone 15 Pro</span>
+              <span class="text-xs text-ink-3">hace 4 min</span>
             </li>
             <li style="display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);">
               <span class="status-dot online"></span>
-              <span><b class="c-ink">PL9Q-A1F2</b> · Almacén Sant Cugat · Android · Samsung A54</span>
-              <span class="text-xs c-ink-3">hace 38 min</span>
+              <span><b class="text-ink">PL9Q-A1F2</b> · Almacén Sant Cugat · Android · Samsung A54</span>
+              <span class="text-xs text-ink-3">hace 38 min</span>
             </li>
             <li style="display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);">
               <span class="status-dot online"></span>
-              <span><b class="c-ink">3R4N-K7B8</b> · Tablet inventario · iPad Air</span>
-              <span class="text-xs c-ink-3">hace 2 h</span>
+              <span><b class="text-ink">3R4N-K7B8</b> · Tablet inventario · iPad Air</span>
+              <span class="text-xs text-ink-3">hace 2 h</span>
             </li>
             <li style="display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:8px 0;">
               <span class="status-dot offline"></span>
-              <span><b class="c-ink">M5T6-DH9P</b> · Auditor externo · MacBook Pro</span>
-              <span class="text-xs c-ink-3">ayer · 17:21</span>
+              <span><b class="text-ink">M5T6-DH9P</b> · Auditor externo · MacBook Pro</span>
+              <span class="text-xs text-ink-3">ayer · 17:21</span>
             </li>
           </ul>
         </div>

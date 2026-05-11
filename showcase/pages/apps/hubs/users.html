@@ -14,9 +14,6 @@
 
 {% block content %}
 
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 <div class="app" data-signals='{"sidebar": false, "tab": "active", "q": "", "roleFilter": "all", "accessFilter": "all", "selected": [], "allChecked": false, "openMenu": null}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
@@ -146,7 +143,7 @@
         <div class="toolbar__group">
           <button class="btn ghost sm">Cambiar rol</button>
           <button class="btn ghost sm">Suspender</button>
-          <button class="btn ghost sm c-danger">Eliminar</button>
+          <button class="btn ghost sm text-danger">Eliminar</button>
         </div>
       </div>
 
@@ -177,20 +174,20 @@
                     <span class="avatar sm brand">IB</span>
                     <div>
                       <div style="display:flex;align-items:center;gap:6px;font-weight:500;color:var(--ink);">Ioan Beilic <span class="badge brand sm">Tú</span></div>
-                      <div class="text-2xs c-ink-3">ioan@acme.com</div>
+                      <div class="text-2xs text-ink-3">ioan@acme.com</div>
                     </div>
                   </div>
                 </td>
                 <td><span class="chip brand">Admin</span></td>
                 <td>Todo el hub</td>
-                <td><span class="c-leaf">en línea</span></td>
+                <td><span class="text-leaf">en línea</span></td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
                   <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u1'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -203,8 +200,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">MC</span>
                     <div>
-                      <div class="font-medium c-ink">Marina Casals</div>
-                      <div class="text-2xs c-ink-3">marina@acme.com</div>
+                      <div class="font-medium text-ink">Marina Casals</div>
+                      <div class="text-2xs text-ink-3">marina@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -217,7 +214,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u2'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -230,8 +227,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">JR</span>
                     <div>
-                      <div class="font-medium c-ink">Jordi Roca</div>
-                      <div class="text-2xs c-ink-3">jordi@acme.com</div>
+                      <div class="font-medium text-ink">Jordi Roca</div>
+                      <div class="text-2xs text-ink-3">jordi@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -244,7 +241,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u3'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -257,8 +254,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">PV</span>
                     <div>
-                      <div class="font-medium c-ink">Paula Vives</div>
-                      <div class="text-2xs c-ink-3">paula@acme.com</div>
+                      <div class="font-medium text-ink">Paula Vives</div>
+                      <div class="text-2xs text-ink-3">paula@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -271,7 +268,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u4'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -284,8 +281,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">XP</span>
                     <div>
-                      <div class="font-medium c-ink">Xavier Puig</div>
-                      <div class="text-2xs c-ink-3">xavier@acme.com</div>
+                      <div class="font-medium text-ink">Xavier Puig</div>
+                      <div class="text-2xs text-ink-3">xavier@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -298,7 +295,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u5'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -311,8 +308,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">LS</span>
                     <div>
-                      <div class="font-medium c-ink">Laia Soler</div>
-                      <div class="text-2xs c-ink-3">laia@acme.com</div>
+                      <div class="font-medium text-ink">Laia Soler</div>
+                      <div class="text-2xs text-ink-3">laia@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -325,7 +322,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u6'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -338,8 +335,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">AM</span>
                     <div>
-                      <div class="font-medium c-ink">Albert Mateu</div>
-                      <div class="text-2xs c-ink-3">albert@acme.com</div>
+                      <div class="font-medium text-ink">Albert Mateu</div>
+                      <div class="text-2xs text-ink-3">albert@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -352,7 +349,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u7'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -365,8 +362,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">NF</span>
                     <div>
-                      <div class="font-medium c-ink">Núria Ferrer</div>
-                      <div class="text-2xs c-ink-3">nuria@acme.com</div>
+                      <div class="font-medium text-ink">Núria Ferrer</div>
+                      <div class="text-2xs text-ink-3">nuria@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -379,7 +376,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u8'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -392,8 +389,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">CR</span>
                     <div>
-                      <div class="font-medium c-ink">Carles Riba</div>
-                      <div class="text-2xs c-ink-3">carles@acme.com</div>
+                      <div class="font-medium text-ink">Carles Riba</div>
+                      <div class="text-2xs text-ink-3">carles@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -406,7 +403,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u9'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -419,8 +416,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">EV</span>
                     <div>
-                      <div class="font-medium c-ink">Eva Vidal</div>
-                      <div class="text-2xs c-ink-3">eva@acme.com</div>
+                      <div class="font-medium text-ink">Eva Vidal</div>
+                      <div class="text-2xs text-ink-3">eva@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -433,7 +430,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u10'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -446,8 +443,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">RT</span>
                     <div>
-                      <div class="font-medium c-ink">Roger Torra</div>
-                      <div class="text-2xs c-ink-3">roger@acme.com</div>
+                      <div class="font-medium text-ink">Roger Torra</div>
+                      <div class="text-2xs text-ink-3">roger@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -460,7 +457,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u11'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -473,8 +470,8 @@
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">BM</span>
                     <div>
-                      <div class="font-medium c-ink">Berta Massó</div>
-                      <div class="text-2xs c-ink-3">berta@acme.com</div>
+                      <div class="font-medium text-ink">Berta Massó</div>
+                      <div class="text-2xs text-ink-3">berta@acme.com</div>
                     </div>
                   </div>
                 </td>
@@ -487,7 +484,7 @@
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u12'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>

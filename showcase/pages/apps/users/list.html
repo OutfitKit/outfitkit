@@ -14,9 +14,6 @@
 
 
 {% block content %}
-<style>
-body { background: var(--bg); margin: 0; }
-</style>
 
 <div class="app" data-signals='{"sidebar": false, "selected": [], "hover": "", "q": "", "hubFilter": "all", "roleFilter": "all", "statusFilter": "all", "lastConnFilter": "all", "allChecked": false, "openMenu": null}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -91,7 +88,7 @@ body { background: var(--bg); margin: 0; }
         </div>
         <div class="actions">
           <button class="btn ghost">Exportar CSV</button>
-          <a href="invite-hub-user.html" class="btn primary no-decoration">+ Invitar a hubs</a>
+          <a href="invite-hub-user.html" class="btn primary no-underline">+ Invitar a hubs</a>
         </div>
       </div>
 
@@ -109,12 +106,12 @@ body { background: var(--bg); margin: 0; }
         </div>
         <div class="kpi">
           <div class="kpi__label">Pendientes</div>
-          <div class="kpi__value c-warn">5</div>
+          <div class="kpi__value text-warn">5</div>
           <span class="badge warning"><span class="badge__dot"></span>invitación enviada</span>
         </div>
         <div class="kpi">
           <div class="kpi__label">Suspendidos</div>
-          <div class="kpi__value c-danger">3</div>
+          <div class="kpi__value text-danger">3</div>
           <span class="badge danger"><span class="badge__dot"></span>baja temporal</span>
         </div>
       </div>
@@ -164,7 +161,7 @@ body { background: var(--bg); margin: 0; }
         <div class="flex-1"></div>
         <button class="btn secondary sm">Cambiar rol</button>
         <button class="btn secondary sm">Suspender</button>
-        <button class="btn ghost sm c-danger">Eliminar acceso</button>
+        <button class="btn ghost sm text-danger">Eliminar acceso</button>
         <button class="btn ghost sm">Exportar CSV</button>
         <button class="btn ghost sm" data-on:click="$selected = []">Cancelar</button>
       </div>
@@ -175,7 +172,7 @@ body { background: var(--bg); margin: 0; }
           <span class="title">Usuarios</span>
           <span class="table-toolbar__count">142</span>
           <div class="table-toolbar__spacer"></div>
-          <span class="text-xs c-ink-3">Mostrando 18 · ordenado por última conexión</span>
+          <span class="text-xs text-ink-3">Mostrando 18 · ordenado por última conexión</span>
         </div>
         <div class="table-scroll">
           <table class="table">
@@ -200,7 +197,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm brand">JG</span>
-                    <div><div class="font-medium">Juan García</div><div class="text-xs c-ink-3">juan.garcia@acme.com</div></div>
+                    <div><div class="font-medium">Juan García</div><div class="text-xs text-ink-3">juan.garcia@acme.com</div></div>
                   </div>
                 </td>
                 <td>
@@ -218,7 +215,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u1'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -229,7 +226,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#7B3F2A;color:#fff;">ML</span>
-                    <div><div class="font-medium">María López</div><div class="text-xs c-ink-3">maria.lopez@bodegas-casadejus.com</div></div>
+                    <div><div class="font-medium">María López</div><div class="text-xs text-ink-3">maria.lopez@bodegas-casadejus.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -241,7 +238,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u2'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -252,7 +249,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#2A6B7B;color:#fff;">CR</span>
-                    <div><div class="font-medium">Carlos Ruiz</div><div class="text-xs c-ink-3">c.ruiz@logistica-peninsular.es</div></div>
+                    <div><div class="font-medium">Carlos Ruiz</div><div class="text-xs text-ink-3">c.ruiz@logistica-peninsular.es</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">2 hubs</span></td>
@@ -264,7 +261,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u3'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -275,7 +272,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#C7407A;color:#fff;">AM</span>
-                    <div><div class="font-medium">Ana Martín</div><div class="text-xs c-ink-3">ana.martin@mariola.com</div></div>
+                    <div><div class="font-medium">Ana Martín</div><div class="text-xs text-ink-3">ana.martin@mariola.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -287,7 +284,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u4'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -298,7 +295,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#3a7d44;color:#fff;">SP</span>
-                    <div><div class="font-medium">Sergi Puig</div><div class="text-xs c-ink-3">sergi@ferreteria-puig.cat</div></div>
+                    <div><div class="font-medium">Sergi Puig</div><div class="text-xs text-ink-3">sergi@ferreteria-puig.cat</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -310,7 +307,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u5'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -321,7 +318,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#8a3b9b;color:#fff;">NR</span>
-                    <div><div class="font-medium">Núria Roca</div><div class="text-xs c-ink-3">nuria.roca@vinos-roca.es</div></div>
+                    <div><div class="font-medium">Núria Roca</div><div class="text-xs text-ink-3">nuria.roca@vinos-roca.es</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">2 hubs</span></td>
@@ -333,7 +330,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u6'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -344,7 +341,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#bd6620;color:#fff;">JC</span>
-                    <div><div class="font-medium">Javier Castaño</div><div class="text-xs c-ink-3">j.castano@acme.com</div></div>
+                    <div><div class="font-medium">Javier Castaño</div><div class="text-xs text-ink-3">j.castano@acme.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">4 hubs</span></td>
@@ -356,7 +353,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u7'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -367,7 +364,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#4f6a8d;color:#fff;">EF</span>
-                    <div><div class="font-medium">Elena Ferrer</div><div class="text-xs c-ink-3">elena.ferrer@bodegas-casadejus.com</div></div>
+                    <div><div class="font-medium">Elena Ferrer</div><div class="text-xs text-ink-3">elena.ferrer@bodegas-casadejus.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -379,7 +376,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u8'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -390,7 +387,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#a8324c;color:#fff;">MV</span>
-                    <div><div class="font-medium">Marta Vidal</div><div class="text-xs c-ink-3">marta.vidal@mariola.com</div></div>
+                    <div><div class="font-medium">Marta Vidal</div><div class="text-xs text-ink-3">marta.vidal@mariola.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -402,7 +399,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u9'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -413,7 +410,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#6a4f8a;color:#fff;">PB</span>
-                    <div><div class="font-medium">Pau Bonet</div><div class="text-xs c-ink-3">pau.bonet@logistica-peninsular.es</div></div>
+                    <div><div class="font-medium">Pau Bonet</div><div class="text-xs text-ink-3">pau.bonet@logistica-peninsular.es</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">3 hubs</span></td>
@@ -425,7 +422,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u10'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -436,7 +433,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#207a72;color:#fff;">CO</span>
-                    <div><div class="font-medium">Cristina Ortiz</div><div class="text-xs c-ink-3">c.ortiz@vinos-roca.es</div></div>
+                    <div><div class="font-medium">Cristina Ortiz</div><div class="text-xs text-ink-3">c.ortiz@vinos-roca.es</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -448,7 +445,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u11'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -459,7 +456,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#7c5b2a;color:#fff;">DI</span>
-                    <div><div class="font-medium">David Iglesias</div><div class="text-xs c-ink-3">david.iglesias@ferreteria-puig.cat</div></div>
+                    <div><div class="font-medium">David Iglesias</div><div class="text-xs text-ink-3">david.iglesias@ferreteria-puig.cat</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -471,7 +468,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u12'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -482,7 +479,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#506c87;color:#fff;">RM</span>
-                    <div><div class="font-medium">Rocío Mendoza</div><div class="text-xs c-ink-3">rocio.mendoza@acme.com</div></div>
+                    <div><div class="font-medium">Rocío Mendoza</div><div class="text-xs text-ink-3">rocio.mendoza@acme.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">2 hubs</span></td>
@@ -494,7 +491,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u13'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -505,7 +502,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#9d4838;color:#fff;">AT</span>
-                    <div><div class="font-medium">Andrés Tovar</div><div class="text-xs c-ink-3">a.tovar@bodegas-casadejus.com</div></div>
+                    <div><div class="font-medium">Andrés Tovar</div><div class="text-xs text-ink-3">a.tovar@bodegas-casadejus.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -516,7 +513,7 @@ body { background: var(--bg); margin: 0; }
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u14' ? null : 'u14'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u14'">
                     <button class="btn ghost sm w-full justify-start">Reenviar invitación</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Cancelar invitación</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Cancelar invitación</button>
                   </div>
                 </td>
               </tr>
@@ -527,7 +524,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#5b8e5e;color:#fff;">LP</span>
-                    <div><div class="font-medium">Laura Pérez</div><div class="text-xs c-ink-3">laura.perez@mariola.com</div></div>
+                    <div><div class="font-medium">Laura Pérez</div><div class="text-xs text-ink-3">laura.perez@mariola.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -538,7 +535,7 @@ body { background: var(--bg); margin: 0; }
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u15' ? null : 'u15'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u15'">
                     <button class="btn ghost sm w-full justify-start">Reenviar invitación</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Cancelar invitación</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Cancelar invitación</button>
                   </div>
                 </td>
               </tr>
@@ -549,7 +546,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#a07033;color:#fff;">XF</span>
-                    <div><div class="font-medium">Xavi Fontana</div><div class="text-xs c-ink-3">xavi@vinos-roca.es</div></div>
+                    <div><div class="font-medium">Xavi Fontana</div><div class="text-xs text-ink-3">xavi@vinos-roca.es</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">3 hubs</span></td>
@@ -561,7 +558,7 @@ body { background: var(--bg); margin: 0; }
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u16'">
                     <button class="btn ghost sm w-full justify-start">Ver perfil</button>
                     <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
@@ -572,7 +569,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#666;color:#fff;">SM</span>
-                    <div><div class="font-medium">Sara Moreno</div><div class="text-xs c-ink-3">sara.moreno@acme.com</div></div>
+                    <div><div class="font-medium">Sara Moreno</div><div class="text-xs text-ink-3">sara.moreno@acme.com</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">1 hub</span></td>
@@ -583,7 +580,7 @@ body { background: var(--bg); margin: 0; }
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u17' ? null : 'u17'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u17'">
                     <button class="btn ghost sm w-full justify-start">Reactivar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar acceso</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar acceso</button>
                   </div>
                 </td>
               </tr>
@@ -594,7 +591,7 @@ body { background: var(--bg); margin: 0; }
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm" style="background:#666;color:#fff;">MO</span>
-                    <div><div class="font-medium">Manuel Ortega</div><div class="text-xs c-ink-3">manuel.ortega@logistica-peninsular.es</div></div>
+                    <div><div class="font-medium">Manuel Ortega</div><div class="text-xs text-ink-3">manuel.ortega@logistica-peninsular.es</div></div>
                   </div>
                 </td>
                 <td><span class="tag neutral sm">2 hubs</span></td>
@@ -605,7 +602,7 @@ body { background: var(--bg); margin: 0; }
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u18' ? null : 'u18'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u18'">
                     <button class="btn ghost sm w-full justify-start">Reactivar</button>
-                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar acceso</button>
+                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar acceso</button>
                   </div>
                 </td>
               </tr>

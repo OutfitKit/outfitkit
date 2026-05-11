@@ -245,11 +245,11 @@
       <div class="modal-root" data-attr:data-state="$contact ? 'open' : 'closed'" data-show="$contact">
         <div class="backdrop" data-on:click="$contact = false"></div>
         <div class="modal md">
-          <header class="modal__header">
+          <header class="head">
             <h3>Contactar soporte</h3>
             <button class="icon-btn" data-on:click="$contact = false" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
           </header>
-          <div class="modal__body">
+          <div class="content scroll body">
             <form class="form" data-on:submit="event.preventDefault(); $contact = false">
               <div class="field">
                 <label class="field__label field__label--req">Asunto</label>
@@ -270,7 +270,7 @@
               </div>
             </form>
           </div>
-          <footer class="modal__footer">
+          <footer class="foot">
             <button class="btn ghost" data-on:click="$contact = false">Cancelar</button>
             <button class="btn primary" data-on:click="$contact = false">Enviar</button>
           </footer>

@@ -14,9 +14,6 @@
 
 
 {% block content %}
-<style>
-body { background: var(--bg); margin: 0; }
-</style>
 
 <div class="app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false, "confirm": "", "pwd": "", "showPwd": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -141,7 +138,7 @@ body { background: var(--bg); margin: 0; }
         <article class="card">
           <header class="head">
             <h3 class="title">Antes de eliminar</h3>
-            <span class="text-xs c-ink-3">Sugerencias antes del paso final</span>
+            <span class="text-xs text-ink-3">Sugerencias antes del paso final</span>
           </header>
           <div class="body grid-auto sm" style="gap:10px;">
             <button class="btn outline" style="height:auto;padding:14px;flex-direction:column;gap:6px;text-align:center;">
@@ -164,7 +161,7 @@ body { background: var(--bg); margin: 0; }
 
         <article class="card" style="border-color:color-mix(in oklch, var(--danger) 30%, var(--line));">
           <header class="head">
-            <h3 class="title c-danger">Confirmar eliminación</h3>
+            <h3 class="title text-danger">Confirmar eliminación</h3>
           </header>
           <div class="body flex col gap-4">
 
@@ -201,9 +198,9 @@ body { background: var(--bg); margin: 0; }
           <div style="color:var(--ink-2);font-size:var(--text-sm);font-weight:500;margin-bottom:8px;">¿Buscas otra cosa?</div>
           <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
             <a href="#" style="color:var(--brand-3);font-size:var(--text-sm);text-decoration:none;">Cambiar plan</a>
-            <span class="c-ink-4">·</span>
+            <span class="text-ink-4">·</span>
             <a href="#" style="color:var(--brand-3);font-size:var(--text-sm);text-decoration:none;">Pausar cuenta 30 días</a>
-            <span class="c-ink-4">·</span>
+            <span class="text-ink-4">·</span>
             <a href="#" style="color:var(--brand-3);font-size:var(--text-sm);text-decoration:none;">Contactar soporte</a>
           </div>
         </div>

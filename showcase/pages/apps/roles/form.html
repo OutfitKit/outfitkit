@@ -89,7 +89,7 @@
                   <div style="width:32px;height:32px;border-radius:8px;background:color-mix(in oklch, var(--brand) 18%, transparent);color:var(--brand);display:flex;align-items:center;justify-content:center;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 12H5L3 3z"/></svg>
                   </div>
-                  <div class="flex-1"><div class="font-semibold">Sales</div><div class="text-xs c-ink-3">Tickets, pedidos y devoluciones</div></div>
+                  <div class="flex-1"><div class="font-semibold">Sales</div><div class="text-xs text-ink-3">Tickets, pedidos y devoluciones</div></div>
                 </div>
                 <div class="row gap-sm">
                   <label class="check"><input type="checkbox" data-bind:perms.sales_view/><span class="check__box"></span> <span class="text-md">sales.view</span></label>
@@ -105,7 +105,7 @@
                   <div style="width:32px;height:32px;border-radius:8px;background:color-mix(in oklch, var(--info) 18%, transparent);color:var(--info);display:flex;align-items:center;justify-content:center;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg>
                   </div>
-                  <div class="flex-1"><div class="font-semibold">POS</div><div class="text-xs c-ink-3">TPV, caja, comandero</div></div>
+                  <div class="flex-1"><div class="font-semibold">POS</div><div class="text-xs text-ink-3">TPV, caja, comandero</div></div>
                 </div>
                 <div class="row gap-sm">
                   <label class="check"><input type="checkbox" data-bind:perms.pos_use/><span class="check__box"></span> <span class="text-md">pos.use</span></label>
@@ -121,7 +121,7 @@
                   <div style="width:32px;height:32px;border-radius:8px;background:color-mix(in oklch, var(--warn) 18%, transparent);color:var(--warn);display:flex;align-items:center;justify-content:center;">
                     <iconify-icon icon="lucide:package" width="16" height="16"></iconify-icon>
                   </div>
-                  <div class="flex-1"><div class="font-semibold">Inventory</div><div class="text-xs c-ink-3">Stock y almacenes</div></div>
+                  <div class="flex-1"><div class="font-semibold">Inventory</div><div class="text-xs text-ink-3">Stock y almacenes</div></div>
                 </div>
                 <div class="row gap-sm">
                   <label class="check"><input type="checkbox" data-bind:perms.inventory_view/><span class="check__box"></span> <span class="text-md">inventory.view</span></label>
@@ -137,7 +137,7 @@
                   <div style="width:32px;height:32px;border-radius:8px;background:color-mix(in oklch, var(--leaf) 18%, transparent);color:var(--leaf);display:flex;align-items:center;justify-content:center;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 13.87 4.39 7H19.6L18 13.87"/></svg>
                   </div>
-                  <div class="flex-1"><div class="font-semibold">KDS</div><div class="text-xs c-ink-3">Pantalla de cocina</div></div>
+                  <div class="flex-1"><div class="font-semibold">KDS</div><div class="text-xs text-ink-3">Pantalla de cocina</div></div>
                 </div>
                 <div class="row gap-sm">
                   <label class="check"><input type="checkbox" data-bind:perms.kds_view/><span class="check__box"></span> <span class="text-md">kds.view</span></label>
@@ -151,7 +151,7 @@
                   <div style="width:32px;height:32px;border-radius:8px;background:var(--bg-3);color:var(--ink-2);display:flex;align-items:center;justify-content:center;">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg>
                   </div>
-                  <div class="flex-1"><div class="font-semibold">Administración</div><div class="text-xs c-ink-3">Empleados, módulos, ajustes</div></div>
+                  <div class="flex-1"><div class="font-semibold">Administración</div><div class="text-xs text-ink-3">Empleados, módulos, ajustes</div></div>
                 </div>
                 <div class="row gap-sm">
                   <label class="check"><input type="checkbox" data-bind:perms.employees_view/><span class="check__box"></span> <span class="text-md">employees.view</span></label>
@@ -183,11 +183,11 @@
 
               <div class="eyebrow" style="margin-top:14px;margin-bottom:6px;">Permisos resumen</div>
               <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;font-size:12.5px;">
-                <li class="flex justify-between"><span class="c-ink-3">Sales</span><span data-text="($perms.sales_view ? 1 : 0) + ($perms.sales_create ? 1 : 0) + ' / 4'"></span></li>
-                <li class="flex justify-between"><span class="c-ink-3">POS</span><span data-text="($perms.pos_use ? 1 : 0) + ($perms.pos_refund ? 1 : 0) + ' / 4'"></span></li>
-                <li class="flex justify-between"><span class="c-ink-3">Inventory</span><span data-text="($perms.inventory_view ? 1 : 0) + ($perms.inventory_edit ? 1 : 0) + ' / 4'"></span></li>
-                <li class="flex justify-between"><span class="c-ink-3">KDS</span><span data-text="($perms.kds_view ? 1 : 0) + ($perms.kds_complete ? 1 : 0) + ' / 2'"></span></li>
-                <li class="flex justify-between"><span class="c-ink-3">Admin</span><span data-text="($perms.employees_view ? 1 : 0) + ($perms.billing_view ? 1 : 0) + ($perms.modules_install ? 1 : 0) + ($perms.settings_edit ? 1 : 0) + ' / 5'"></span></li>
+                <li class="flex justify-between"><span class="text-ink-3">Sales</span><span data-text="($perms.sales_view ? 1 : 0) + ($perms.sales_create ? 1 : 0) + ' / 4'"></span></li>
+                <li class="flex justify-between"><span class="text-ink-3">POS</span><span data-text="($perms.pos_use ? 1 : 0) + ($perms.pos_refund ? 1 : 0) + ' / 4'"></span></li>
+                <li class="flex justify-between"><span class="text-ink-3">Inventory</span><span data-text="($perms.inventory_view ? 1 : 0) + ($perms.inventory_edit ? 1 : 0) + ' / 4'"></span></li>
+                <li class="flex justify-between"><span class="text-ink-3">KDS</span><span data-text="($perms.kds_view ? 1 : 0) + ($perms.kds_complete ? 1 : 0) + ' / 2'"></span></li>
+                <li class="flex justify-between"><span class="text-ink-3">Admin</span><span data-text="($perms.employees_view ? 1 : 0) + ($perms.billing_view ? 1 : 0) + ($perms.modules_install ? 1 : 0) + ($perms.settings_edit ? 1 : 0) + ' / 5'"></span></li>
               </ul>
             </div>
           </article>

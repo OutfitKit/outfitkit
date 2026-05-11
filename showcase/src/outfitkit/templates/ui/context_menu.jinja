@@ -4,7 +4,7 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="ctx-menu"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  {% if label %}<div class="ctx-menu__label">{{ label }}</div>{% endif %}
+  {% if label %}<div class="label">{{ label }}</div>{% endif %}
   {{ caller() }}
 </div>
 {%- endmacro %}

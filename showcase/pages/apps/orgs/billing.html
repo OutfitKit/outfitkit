@@ -12,9 +12,6 @@
 {% block page_title %}Organización · facturación{% endblock %}
 
 {% block content %}
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
@@ -95,10 +92,10 @@
       </div>
 
       <div class="banner info mb-4">
-        <span class="banner__icon"><iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon></span>
-        <div class="banner__body">
-          <div class="banner__title">Próxima factura: €890 con vencimiento el 15 may 2026</div>
-          <div class="banner__desc">Cualquier cambio en estos datos se aplicará a las facturas generadas desde mañana.</div>
+        <span class="icon"><iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon></span>
+        <div class="body">
+          <div class="title sm">Próxima factura: €890 con vencimiento el 15 may 2026</div>
+          <div class="meta">Cualquier cambio en estos datos se aplicará a las facturas generadas desde mañana.</div>
         </div>
       </div>
 
@@ -291,7 +288,7 @@
             </div>
           </div>
           <footer class="footer">
-            <span class="text-xs c-ink-3">Cambios guardados automáticamente en el borrador</span>
+            <span class="text-xs text-ink-3">Cambios guardados automáticamente en el borrador</span>
             <div class="flex gap-2">
               <button class="btn ghost">Restablecer</button>
               <button class="btn primary">Guardar</button>

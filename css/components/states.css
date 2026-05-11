@@ -419,6 +419,58 @@
 .error-page.info   .error-page__illu { background: color-mix(in oklch, var(--info) 8%, var(--bg-2));   color: var(--info);   border-color: color-mix(in oklch, var(--info) 25%, transparent); }
 .error-page.danger .error-page__illu { background: color-mix(in oklch, var(--danger) 8%, var(--bg-2)); color: var(--danger); border-color: color-mix(in oklch, var(--danger) 25%, transparent); }
 
+/* ---------- Error page semantic children ---------- */
+.error-page__code {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--ink-3);
+  letter-spacing: 0.04em;
+}
+.error-page__title {
+  position: relative;
+  z-index: 1;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--ink);
+}
+.error-page__msg {
+  position: relative;
+  z-index: 1;
+  font-size: var(--text-sm);
+  color: var(--ink-2);
+  max-width: 40ch;
+  margin-inline: auto;
+  line-height: var(--leading-relaxed);
+}
+.error-page__actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: center;
+  align-items: center;
+}
+.error-page__meta {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-4);
+}
+.error-page__shortcut-title {
+  font-size: var(--text-sm);
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
 /* ---------- Error page sub-atoms ---------- */
 .error-page__search {
   position: relative;

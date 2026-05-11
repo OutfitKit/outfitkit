@@ -132,7 +132,7 @@
       <!-- Zona peligro -->
       <article class="card danger" style="max-width:760px;margin-top:18px;border:1px solid var(--danger);">
         <header class="head" style="border-bottom:1px solid color-mix(in oklch, var(--danger) 30%, transparent);">
-          <h3 class="title c-danger">
+          <h3 class="title text-danger">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:-3px;margin-right:6px;"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
             Zona peligro
           </h3>
@@ -142,7 +142,7 @@
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;">
               <div>
                 <div class="font-medium">Restablecer PIN</div>
-                <div class="text-sm c-ink-3">Genera un nuevo PIN aleatorio. María lo recibirá por email.</div>
+                <div class="text-sm text-ink-3">Genera un nuevo PIN aleatorio. María lo recibirá por email.</div>
               </div>
               <button class="btn outline sm">Restablecer PIN</button>
             </div>
@@ -150,7 +150,7 @@
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:12px;">
               <div>
                 <div class="font-medium">Cerrar todas las sesiones</div>
-                <div class="text-sm c-ink-3">Cierra los 3 dispositivos donde María tiene la sesión abierta.</div>
+                <div class="text-sm text-ink-3">Cierra los 3 dispositivos donde María tiene la sesión abierta.</div>
               </div>
               <button class="btn outline sm">Cerrar sesiones</button>
             </div>
@@ -158,7 +158,7 @@
             <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
               <div>
                 <div style="font-weight:500;color:var(--danger);">Eliminar empleado</div>
-                <div class="text-sm c-ink-3">Borra permanentemente la cuenta y desvincula todos los registros. No se puede deshacer.</div>
+                <div class="text-sm text-ink-3">Borra permanentemente la cuenta y desvincula todos los registros. No se puede deshacer.</div>
               </div>
               <button class="btn danger sm" data-on:click="$confirm = true">Eliminar empleado</button>
             </div>
@@ -170,12 +170,12 @@
       <div class="modal-root" data-signals='{"confirm": false}' data-attr:data-state="$confirm ? 'open' : 'closed'" data-show="$confirm">
         <div class="backdrop" data-on:click="$confirm = false"></div>
         <div class="modal sm">
-          <header class="modal__header"><h3>¿Eliminar a María Ruiz?</h3></header>
-          <div class="modal__body">
+          <header class="head"><h3>¿Eliminar a María Ruiz?</h3></header>
+          <div class="content scroll body">
             <p style="font-size:13.5px;margin:0 0 8px;">Se borrará la cuenta y se desvincularán los tickets y comandas que generó. Los registros históricos se conservarán como anónimos.</p>
             <p style="font-size:12.5px;color:var(--ink-3);margin:0;">Esta acción no se puede deshacer.</p>
           </div>
-          <footer class="modal__footer">
+          <footer class="foot">
             <button class="btn ghost" data-on:click="$confirm = false">Cancelar</button>
             <button class="btn danger">Sí, eliminar</button>
           </footer>

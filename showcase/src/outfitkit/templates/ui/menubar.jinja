@@ -13,7 +13,7 @@
 <nav class="menubar{% if variant %} {{ variant }}{% endif %}{% if compact %} compact{% endif %}"
   data-signals="{ open: '' }"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  {% if app_name %}<span class="menubar__app-name">{{ app_name }}</span><span class="menubar__divider"></span>{% endif %}
+  {% if app_name %}<span class="menubar__app-name">{{ app_name }}</span><span class="divider"></span>{% endif %}
   {{ caller() }}
 </nav>
 {%- endmacro %}
@@ -43,7 +43,7 @@
   menubar_panel — dropdown body bound to a `menubar_item`.
 
   Shown only while the shared `open` signal equals `for_item`. Caller renders
-  the panel content (typically `.ok-menubar__item` buttons + separators).
+  the panel content (typically `.menubar__item` buttons + separators).
 
   Args:
     for_item — id of the menubar_item that controls this panel

@@ -13,9 +13,6 @@
 
 
 {% block content %}
-<style>
-  body { background: var(--bg); margin: 0; }
-</style>
 
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -108,14 +105,14 @@
       </div>
 
       <div class="banner info inline mb-4">
-        <div class="banner__icon">
+        <div class="icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
         </div>
-        <div class="banner__body">
-          <div class="banner__title">Tienes 3 módulos pendientes de actualización</div>
-          <div class="banner__desc">Hay nuevas guidelines de la marketplace · revisa los manifiestos antes del 31 de mayo de 2026.</div>
+        <div class="body">
+          <div class="title sm">Tienes 3 módulos pendientes de actualización</div>
+          <div class="meta">Hay nuevas guidelines de la marketplace · revisa los manifiestos antes del 31 de mayo de 2026.</div>
         </div>
-        <div class="banner__actions">
+        <div class="actions">
           <button class="banner__action">Ver guidelines</button>
           <button class="banner__action banner__action--primary">Ver todos</button>
         </div>
@@ -216,7 +213,7 @@
                     <div class="title sm">Venta · <strong>POS Caja Registradora Pro</strong></div>
                     <span class="meta">hace 12 min</span>
                   </div>
-                  <div class="meta">Hub <em>bodegas-casadejus</em> · plan Business · <strong class="c-leaf">+€89,00</strong></div>
+                  <div class="meta">Hub <em>bodegas-casadejus</em> · plan Business · <strong class="text-leaf">+€89,00</strong></div>
                 </div>
               </li>
               <li class="timeline__item cursor-pointer" data-on:click="$selectedActivity = $selectedActivity === 'a2' ? null : 'a2'" data-class:is-active="$selectedActivity === 'a2'" data-show="$activityFilter === 'all' || $activityFilter === 'sales'">
@@ -226,7 +223,7 @@
                     <div class="title sm">Venta · <strong>Contabilidad Plus PGC07</strong></div>
                     <span class="meta">hace 47 min</span>
                   </div>
-                  <div class="meta">Hub <em>acme-industries</em> · plan Pro · <strong class="c-leaf">+€59,00</strong></div>
+                  <div class="meta">Hub <em>acme-industries</em> · plan Pro · <strong class="text-leaf">+€59,00</strong></div>
                 </div>
               </li>
               <li class="timeline__item cursor-pointer" data-on:click="$selectedActivity = $selectedActivity === 'a3' ? null : 'a3'" data-class:is-active="$selectedActivity === 'a3'" data-show="$activityFilter === 'all' || $activityFilter === 'reviews'">
@@ -246,7 +243,7 @@
                     <div class="title sm">Venta · <strong>Inventario multitienda</strong></div>
                     <span class="meta">hace 3 h</span>
                   </div>
-                  <div class="meta">Hub <em>pasteleria-mariola</em> · plan Pro · <strong class="c-leaf">+€49,00</strong></div>
+                  <div class="meta">Hub <em>pasteleria-mariola</em> · plan Pro · <strong class="text-leaf">+€49,00</strong></div>
                 </div>
               </li>
               <li class="timeline__item cursor-pointer" data-on:click="$selectedActivity = $selectedActivity === 'a5' ? null : 'a5'" data-class:is-active="$selectedActivity === 'a5'" data-show="$activityFilter === 'all' || $activityFilter === 'issues'">
@@ -256,7 +253,7 @@
                     <div class="title sm">Issue · <strong>RRHH Nóminas España</strong></div>
                     <span class="meta">hace 5 h</span>
                   </div>
-                  <div class="meta">"Error al exportar A3 con conceptos extra-salariales" · <a href="#" class="c-info">#142</a></div>
+                  <div class="meta">"Error al exportar A3 con conceptos extra-salariales" · <a href="#" class="text-info">#142</a></div>
                 </div>
               </li>
               <li class="timeline__item cursor-pointer" data-on:click="$selectedActivity = $selectedActivity === 'a6' ? null : 'a6'" data-class:is-active="$selectedActivity === 'a6'" data-show="$activityFilter === 'all' || $activityFilter === 'sales'">
@@ -266,7 +263,7 @@
                     <div class="title sm">Venta · <strong>POS Caja Registradora Pro</strong></div>
                     <span class="meta">hace 7 h</span>
                   </div>
-                  <div class="meta">Hub <em>logistica-peninsular</em> · plan Business · <strong class="c-leaf">+€89,00</strong></div>
+                  <div class="meta">Hub <em>logistica-peninsular</em> · plan Business · <strong class="text-leaf">+€89,00</strong></div>
                 </div>
               </li>
               <li class="timeline__item cursor-pointer" data-on:click="$selectedActivity = $selectedActivity === 'a7' ? null : 'a7'" data-class:is-active="$selectedActivity === 'a7'" data-show="$activityFilter === 'all' || $activityFilter === 'reviews'">
@@ -286,7 +283,7 @@
                     <div class="title sm">Venta · <strong>Pasarela Stripe Avanzada</strong></div>
                     <span class="meta">ayer · 18:32</span>
                   </div>
-                  <div class="meta">Hub <em>nordenbikes-store</em> · plan Pro · <strong class="c-leaf">+€39,00</strong></div>
+                  <div class="meta">Hub <em>nordenbikes-store</em> · plan Pro · <strong class="text-leaf">+€39,00</strong></div>
                 </div>
               </li>
             </ul>
@@ -322,7 +319,7 @@
               <p style="margin:0;font-size:13px;color:var(--ink-2);">Conecta tu cuenta Stripe para empezar a recibir payouts por tus módulos.</p>
             </div>
             <footer class="footer">
-              <span data-text="$stripeConnected ? 'Cuenta verificada · IBAN ES12 ··· 4521' : 'Necesario para recibir pagos'" class="text-xs c-ink-3">Cuenta verificada · IBAN ES12 ··· 4521</span>
+              <span data-text="$stripeConnected ? 'Cuenta verificada · IBAN ES12 ··· 4521' : 'Necesario para recibir pagos'" class="text-xs text-ink-3">Cuenta verificada · IBAN ES12 ··· 4521</span>
               <button class="btn outline sm" data-show="$stripeConnected" data-on:click="$stripeConnected = false">Desconectar</button>
               <button class="btn primary sm" data-show="!$stripeConnected" data-on:click="$stripeConnected = true">Conectar Stripe</button>
             </footer>
@@ -333,10 +330,10 @@
               <div class="title">Acciones rápidas</div>
             </header>
             <div class="body flex col gap-2">
-              <button class="btn outline block"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>Subir módulo</button>
-              <button class="btn outline block"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>Conectar GitHub</button>
+              <button class="btn outline block"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>Subir módulo</button>
+              <button class="btn outline block"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>Conectar GitHub</button>
               <button class="btn outline block"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon>Ver guidelines</button>
-              <button class="btn outline block"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Soporte developers</button>
+              <button class="btn outline block"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>Soporte developers</button>
             </div>
           </article>
         </div>

@@ -15,7 +15,6 @@
 
 {% block content %}
 <style>
-body { background: var(--bg); margin: 0; }
   .hub-auth {
     min-height: 100dvh;
     display: grid;
@@ -281,17 +280,17 @@ body { background: var(--bg); margin: 0; }
        data-show="$login.showPinSetup">
     <div class="backdrop" data-on:click="$login.showPinSetup = false"></div>
     <div class="modal sm">
-      <div class="modal__header">
-        <div class="modal__icon modal__icon--brand">
+      <div class="head">
+        <div class="icon-disc brand">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777z"/></svg>
         </div>
-        <div class="modal__heading">
-          <h3 class="modal__title">Configura tu PIN</h3>
-          <p class="modal__sub">Bienvenido, Joan Castell · Crea un PIN de 4 dígitos</p>
+        <div class="heading">
+          <h3 class="title lg">Configura tu PIN</h3>
+          <p class="sub">Bienvenido, Joan Castell · Crea un PIN de 4 dígitos</p>
         </div>
-        <button class="modal__close" data-on:click="$login.showPinSetup = false" aria-label="Cerrar">✕</button>
+        <button class="close" data-on:click="$login.showPinSetup = false" aria-label="Cerrar">✕</button>
       </div>
-      <div class="modal__body">
+      <div class="content scroll body">
         <div class="hub-pinpad-frame">
           <div class="hub-pin-dots">
             <div class="hub-pin-dot"
@@ -342,17 +341,17 @@ body { background: var(--bg); margin: 0; }
        data-show="$login.showTrustInfo">
     <div class="backdrop" data-on:click="$login.showTrustInfo = false"></div>
     <div class="modal sm">
-      <div class="modal__header">
-        <div class="modal__icon modal__icon--brand">
+      <div class="head">
+        <div class="icon-disc brand">
           <iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon>
         </div>
-        <div class="modal__heading">
-          <h3 class="modal__title">Confiar en este dispositivo</h3>
-          <p class="modal__sub">Acceso rápido con PIN</p>
+        <div class="heading">
+          <h3 class="title lg">Confiar en este dispositivo</h3>
+          <p class="sub">Acceso rápido con PIN</p>
         </div>
-        <button class="modal__close" data-on:click="$login.showTrustInfo = false" aria-label="Cerrar">✕</button>
+        <button class="close" data-on:click="$login.showTrustInfo = false" aria-label="Cerrar">✕</button>
       </div>
-      <div class="modal__body">
+      <div class="content scroll body">
         <p style="color:var(--ink-2); font-size: var(--text-sm); margin: 0 0 var(--space-3);">
           Cuando marcas un dispositivo como de confianza, puedes iniciar sesión rápidamente con tu PIN — sin escribir email y contraseña cada vez.
         </p>
@@ -363,7 +362,7 @@ body { background: var(--bg); margin: 0; }
           Confía solo dispositivos que te pertenecen y controlas. No confíes ordenadores compartidos o públicos. La confianza expira tras 90 días sin actividad.
         </p>
       </div>
-      <div class="modal__footer">
+      <div class="foot">
         <button class="btn primary" data-on:click="$login.showTrustInfo = false">Entendido</button>
       </div>
     </div>
