@@ -5,9 +5,9 @@
 <div class="empty{% if compact %} compact{% endif %}"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
   {%- if icon %}<div class="empty__icon">{{ icon|safe }}</div>{% endif %}
-  <h3 class="empty__title">{{ title }}</h3>
-  {%- if desc %}<p class="empty__desc">{{ desc }}</p>{% endif %}
-  {%- if actions %}<div class="empty__actions">{{ actions|safe }}</div>{% endif %}
+  <h3 class="title lg">{{ title }}</h3>
+  {%- if desc %}<p class="sub">{{ desc }}</p>{% endif %}
+  {%- if actions %}<div class="actions">{{ actions|safe }}</div>{% endif %}
 </div>
 {%- endmacro %}
 

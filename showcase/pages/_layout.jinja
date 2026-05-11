@@ -51,21 +51,21 @@
     }
 
     /* Active state via [data-route-active="true"] (set by Datastar). */
-    .sidebar__item[data-route-active="true"] {
+    .item[data-route-active="true"] {
       background: var(--bg-3); color: var(--ink);
     }
-    .sidebar__item[data-route-active="true"]::before {
+    .item[data-route-active="true"]::before {
       content: ""; position: absolute; left: 0;
       width: 3px; height: 16px;
       background: var(--brand); border-radius: 0 2px 2px 0;
     }
-    .sidebar__item.is-hidden { display: none; }
-    .sidebar__group.is-hidden { display: none; }
+    .item.is-hidden { display: none; }
+    .label.is-hidden { display: none; }
 
     /* "Sin resultados" empty state — appears at the bottom of the nav when
        the search query matches no items. Datastar toggles display via
        data-show, we just style the rendered text. */
-    .sidebar__empty {
+    .sidebar-empty {
       padding: 16px 14px;
       color: var(--ink-3);
       font-size: 12px;
@@ -74,7 +74,7 @@
     }
 
     /* Section headers in the showcase sidebar nav. */
-    .sidebar__section {
+    .sidebar-section {
       padding: 16px 14px 4px;
       font-size: 10px;
       font-weight: 600;
@@ -84,9 +84,9 @@
     }
 
     /* Custom sidebar badges (saas / hub / new). */
-    .sidebar__badge--saas { background: var(--info-soft); color: var(--info); }
-    .sidebar__badge--hub { background: var(--brand-soft); color: var(--brand-3); }
-    .sidebar__badge--new { background: var(--leaf-soft); color: var(--leaf); }
+    .badge saas { background: var(--info-soft); color: var(--info); }
+    .badge hub { background: var(--brand-soft); color: var(--brand-3); }
+    .badge new { background: var(--leaf-soft); color: var(--leaf); }
 
     /* Pill selector (theme + viewport) — lives in the topbar. */
     .vp { display: inline-flex; padding: 2px;
@@ -114,10 +114,10 @@
 
     /* Below 600px drop the GitHub link too. */
     @media (max-width: 599px) {
-      .app[data-docs] > .page > .topbar .topbar__actions {
+      .app[data-docs] > .page > .topbar .actions {
         gap: 6px;
       }
-      .app[data-docs] > .page > .topbar .topbar__actions .btn {
+      .app[data-docs] > .page > .topbar .actions .btn {
         display: none;
       }
       .app[data-docs] > .page > .topbar .vp button {
@@ -335,7 +335,7 @@
         var basePath = '{{ base_path }}'.replace(/\/$/, '');
         var atHome = (path === basePath || path === basePath + '/index');
         if (atHome) {
-          var back = document.querySelector('.app[data-docs] > .page > .topbar .topbar__back-btn');
+          var back = document.querySelector('.app[data-docs] > .page > .topbar .topbar-back-btn');
           if (back) back.style.display = 'none';
         }
       });
@@ -363,11 +363,11 @@
 
     {# ====== SIDEBAR ====== #}
     <aside class="sidebar">
-      <div class="sidebar__brand">
-        <div class="sidebar__logo">OK</div>
-        <div class="sidebar__brand-text">
-          <span class="sidebar__brand-name">OutfitKit</span>
-          <span class="sidebar__brand-meta">v1 · Librería</span>
+      <div class="head">
+        <div class="sidebar-logo">OK</div>
+        <div class="sidebar-brand-text">
+          <span class="title md">OutfitKit</span>
+          <span class="meta">v1 · Librería</span>
         </div>
       </div>
 
@@ -389,17 +389,17 @@
          expressions inside component attribute strings — it would pass
          the raw "{{ ... }}" text as the current-route value, which breaks
          active-route detection. #}
-      <nav class="sidebar__body">
+      <nav class="content scroll">
         {% from "sidebar.jinja" import sidebar %}
         {{ sidebar(self._TemplateReference__context.name | default('')) }}
       </nav>
 
-      <div class="sidebar__footer">
-        <div class="sidebar__user">
+      <div class="foot">
+        <div class="sidebar-user">
           <span class="avatar sm brand">OK</span>
-          <div class="sidebar__user-info">
-            <div class="sidebar__user-name">Sistema</div>
-            <div class="sidebar__user-meta">Rama main · GH Pages</div>
+          <div class="sidebar-user-info">
+            <div class="title sm">Sistema</div>
+            <div class="meta">Rama main · GH Pages</div>
           </div>
         </div>
       </div>
@@ -408,15 +408,15 @@
     {# ====== MAIN ====== #}
     <main class="page" data-attr:data-vp="$vp">
       <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú lateral"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú lateral"
                   data-on:click="$sidebarOpen = !$sidebarOpen"
                   data-attr:aria-expanded="$sidebarOpen">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M3 6h18M3 12h18M3 18h18"/>
             </svg>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
                   data-on:click="history.length > 1 ? history.back() : (location.href = '{{ base_path }}/')">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
@@ -424,9 +424,9 @@
           </button>
         </div>
 
-        <h1 class="topbar__page-title">{% block page_title %}{{ self.title() }}{% endblock %}</h1>
+        <h1 class="title">{% block page_title %}{{ self.title() }}{% endblock %}</h1>
 
-        <div class="topbar__actions">
+        <div class="actions">
           <div class="vp" role="tablist" aria-label="Tema">
             <button
               data-on:click="$theme = 'erplora'; window.okTheme.set('erplora', $template)"

@@ -26,19 +26,19 @@
     border-color: var(--line-2);
     box-shadow: var(--shadow-md);
   }
-  .hub-modcard__icon {
+  .hub-modicon {
     width: 48px; height: 48px;
     display: grid; place-items: center;
     border-radius: var(--radius-md);
     background: var(--brand-soft);
     color: var(--brand-3);
   }
-  .hub-modcard__icon svg { width: 22px; height: 22px; }
-  .hub-modcard--info .hub-modcard__icon { background: var(--info-soft); color: var(--info); }
-  .hub-modcard--leaf .hub-modcard__icon { background: var(--leaf-soft); color: var(--leaf); }
-  .hub-modcard--warn .hub-modcard__icon { background: var(--warn-soft); color: var(--warn); }
-  .hub-modcard--danger .hub-modcard__icon { background: var(--danger-soft); color: var(--danger); }
-  .hub-modcard__label { font-size: var(--text-sm); font-weight: 500; text-align: center; line-height: 1.2; }
+  .hub-modicon svg { width: 22px; height: 22px; }
+  .hub-modcard--info .hub-modicon { background: var(--info-soft); color: var(--info); }
+  .hub-modcard--leaf .hub-modicon { background: var(--leaf-soft); color: var(--leaf); }
+  .hub-modcard--warn .hub-modicon { background: var(--warn-soft); color: var(--warn); }
+  .hub-modcard--danger .hub-modicon { background: var(--danger-soft); color: var(--danger); }
+  .hub-modlabel { font-size: var(--text-sm); font-weight: 500; text-align: center; line-height: 1.2; }
   .hub-modcard__badge { position: absolute; top: 10px; right: 10px; }
   .hub-modcard--more {
     background: transparent;
@@ -46,7 +46,7 @@
     opacity: 0.7;
   }
   .hub-modcard--more:hover { opacity: 1; }
-  .hub-modcard--more .hub-modcard__icon { background: transparent; color: var(--ink-3); }
+  .hub-modcard--more .hub-modicon { background: transparent; color: var(--ink-3); }
 
   /* KPI row spacing */
   .hub-section { margin-bottom: var(--space-6); }
@@ -67,67 +67,67 @@
 
   <!-- ====== Sidebar ====== -->
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">LR</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="sidebar__brand-meta">3 sedes · 12 TPV</div>
+    <div class="head">
+      <div class="sidebar-logo">LR</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">Cafetería La Rambla</div>
+        <div class="meta">3 sedes · 12 TPV</div>
       </div>
     </div>
 
-    <div class="sidebar__body">
-      <div class="sidebar__group">Operación</div>
+    <div class="content scroll">
+      <div class="label">Operación</div>
 
-      <button class="sidebar__item" aria-current="page">
-        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg>
-        <span class="sidebar__label">Vista general</span>
+      <button class="item" aria-current="page">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg>
+        <span class="item-label">Vista general</span>
       </button>
-      <button class="sidebar__item">
+      <button class="item">
         <iconify-icon icon="lucide:trending-up" width="18" height="18"></iconify-icon>
-        <span class="sidebar__label">Ventas (POS)</span>
-        <span class="sidebar__badge sidebar__badge--brand">3</span>
+        <span class="item-label">Ventas (POS)</span>
+        <span class="badge badge brand">3</span>
       </button>
-      <button class="sidebar__item">
+      <button class="item">
         <iconify-icon icon="lucide:shopping-cart" width="18" height="18"></iconify-icon>
-        <span class="sidebar__label">Inventario</span>
+        <span class="item-label">Inventario</span>
       </button>
-      <button class="sidebar__item">
-        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        <span class="sidebar__label">Clientes</span>
+      <button class="item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="item-label">Clientes</span>
       </button>
-      <button class="sidebar__item">
-        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-2-2"/></svg>
-        <span class="sidebar__label">Empleados</span>
+      <button class="item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-2-2"/></svg>
+        <span class="item-label">Empleados</span>
       </button>
 
-      <div class="sidebar__group">Catálogo</div>
-      <button class="sidebar__item">
-        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
-        <span class="sidebar__label">Productos</span>
+      <div class="label">Catálogo</div>
+      <button class="item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
+        <span class="item-label">Productos</span>
       </button>
-      <button class="sidebar__item">
+      <button class="item">
         <iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon>
-        <span class="sidebar__label">Compras</span>
+        <span class="item-label">Compras</span>
       </button>
 
-      <div class="sidebar__group">Plataforma</div>
-      <button class="sidebar__item">
-        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
-        <span class="sidebar__label">Marketplace</span>
-        <span class="sidebar__badge">12</span>
+      <div class="label">Plataforma</div>
+      <button class="item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+        <span class="item-label">Marketplace</span>
+        <span class="badge">12</span>
       </button>
-      <button class="sidebar__item">
-        <svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-        <span class="sidebar__label">Configuración</span>
+      <button class="item">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span class="item-label">Configuración</span>
       </button>
     </div>
 
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">JC</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Joan Castell</div>
-          <div class="sidebar__user-meta">joan@larambla.es</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Joan Castell</div>
+          <div class="meta">joan@larambla.es</div>
         </div>
       </div>
     </div>
@@ -136,26 +136,26 @@
   <!-- ====== Main ====== -->
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar tickets, productos, clientes…" data-bind:search/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <button class="icon-btn" aria-label="Notificaciones">
           <iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon>
           <span class="badge brand" style="margin-left: 4px;">3</span>
@@ -251,98 +251,98 @@
         <h3 class="hub-section__title">Aplicaciones</h3>
         <div class="grid-auto sm">
           <a href="/m/pos/" class="hub-modcard">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h2"/></svg>
             </div>
-            <span class="hub-modcard__label">POS</span>
+            <span class="hub-modlabel">POS</span>
             <span class="badge brand hub-modcard__badge">Live</span>
           </a>
 
           <a href="/m/sales/" class="hub-modcard info">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <iconify-icon icon="lucide:trending-up" width="18" height="18"></iconify-icon>
             </div>
-            <span class="hub-modcard__label">Ventas</span>
+            <span class="hub-modlabel">Ventas</span>
           </a>
 
           <a href="/m/customers/" class="hub-modcard success">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon>
             </div>
-            <span class="hub-modcard__label">Clientes</span>
+            <span class="hub-modlabel">Clientes</span>
           </a>
 
           <a href="/m/products/" class="hub-modcard">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg>
             </div>
-            <span class="hub-modcard__label">Productos</span>
+            <span class="hub-modlabel">Productos</span>
           </a>
 
           <a href="/m/purchases/" class="hub-modcard warning">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <iconify-icon icon="lucide:shopping-cart" width="18" height="18"></iconify-icon>
             </div>
-            <span class="hub-modcard__label">Compras</span>
+            <span class="hub-modlabel">Compras</span>
             <span class="badge warning hub-modcard__badge">2</span>
           </a>
 
           <a href="/m/employees/" class="hub-modcard">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
             </div>
-            <span class="hub-modcard__label">Empleados</span>
+            <span class="hub-modlabel">Empleados</span>
           </a>
 
           <a href="/m/hr/" class="hub-modcard info">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-3V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v3H4a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
             </div>
-            <span class="hub-modcard__label">RRHH</span>
+            <span class="hub-modlabel">RRHH</span>
           </a>
 
           <a href="/m/verifactu/" class="hub-modcard danger">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="m9 15 2 2 4-4"/></svg>
             </div>
-            <span class="hub-modcard__label">VeriFactu</span>
+            <span class="hub-modlabel">VeriFactu</span>
             <span class="badge danger hub-modcard__badge">2</span>
           </a>
 
           <a href="/m/fiscal_es/" class="hub-modcard success">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21V12h6v9"/></svg>
             </div>
-            <span class="hub-modcard__label">Fiscal ES</span>
+            <span class="hub-modlabel">Fiscal ES</span>
           </a>
 
           <a href="/m/gestoria_es/" class="hub-modcard warning">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11H7l-2 2v8h4v-6"/><path d="M15 11h2l2 2v8h-4v-6"/><path d="M12 2 8 6h8z"/></svg>
             </div>
-            <span class="hub-modcard__label">Gestoría</span>
+            <span class="hub-modlabel">Gestoría</span>
           </a>
 
           <a href="/m/reports/" class="hub-modcard info">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><path d="M9 13h6M9 17h4"/></svg>
             </div>
-            <span class="hub-modcard__label">Informes</span>
+            <span class="hub-modlabel">Informes</span>
           </a>
 
           <a href="/m/ai-assistant/" class="hub-modcard">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
             </div>
-            <span class="hub-modcard__label">Asistente IA</span>
+            <span class="hub-modlabel">Asistente IA</span>
             <span class="badge brand hub-modcard__badge">New</span>
           </a>
 
           <a href="/marketplace/" class="hub-modcard more">
-            <div class="hub-modcard__icon">
+            <div class="hub-modicon">
               <iconify-icon icon="lucide:plus" width="18" height="18"></iconify-icon>
             </div>
-            <span class="hub-modcard__label">Más</span>
+            <span class="hub-modlabel">Más</span>
           </a>
         </div>
       </div>
@@ -352,12 +352,12 @@
 
         <!-- Sales week chart -->
         <article class="card col-md-7 col-lg-8">
-          <header class="card__header">
+          <header class="head">
             <div>
-              <h3 class="card__title">Ventas — última semana</h3>
-              <p class="card__sub">€14.218 totales · objetivo €15.000</p>
+              <h3 class="title">Ventas — última semana</h3>
+              <p class="sub">€14.218 totales · objetivo €15.000</p>
             </div>
-            <div class="card__actions">
+            <div class="actions">
               <div class="toggle-group sm">
                 <button class="toggle-group__option" data-active="false">Día</button>
                 <button class="toggle-group__option is-selected" data-active="true">Semana</button>
@@ -365,7 +365,7 @@
               </div>
             </div>
           </header>
-          <div class="card__body">
+          <div class="body">
             <div class="chart flat">
               <svg class="chart__svg" viewBox="0 0 480 180" preserveAspectRatio="none">
                 <g class="chart__grid">
@@ -401,22 +401,22 @@
 
         <!-- Activity timeline -->
         <article class="card col-md-5 col-lg-4">
-          <header class="card__header">
+          <header class="head">
             <div>
-              <h3 class="card__title">Actividad reciente</h3>
-              <p class="card__sub">Últimos 30 minutos</p>
+              <h3 class="title">Actividad reciente</h3>
+              <p class="sub">Últimos 30 minutos</p>
             </div>
           </header>
-          <div class="card__body">
+          <div class="body">
             <ul class="timeline" style="list-style:none;padding:0;margin:0;">
               <li class="timeline__item">
                 <span class="timeline__dot timeline__dot--brand">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18l-2 13a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L3 6z"/></svg>
                 </span>
                 <div class="timeline__body">
-                  <div class="timeline__title">Ticket #2041 cobrado</div>
+                  <div class="title sm">Ticket #2041 cobrado</div>
                   <div class="timeline__sub">Mostrador 2 · €23,40 · tarjeta</div>
-                  <div class="timeline__time">hace 2 min</div>
+                  <div class="meta">hace 2 min</div>
                 </div>
               </li>
               <li class="timeline__item">
@@ -424,9 +424,9 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 6L9 17l-5-5"/></svg>
                 </span>
                 <div class="timeline__body">
-                  <div class="timeline__title">VeriFactu — F-2026-0142 enviada</div>
+                  <div class="title sm">VeriFactu — F-2026-0142 enviada</div>
                   <div class="timeline__sub">CSV recibido de la AEAT</div>
-                  <div class="timeline__time">hace 8 min</div>
+                  <div class="meta">hace 8 min</div>
                 </div>
               </li>
               <li class="timeline__item">
@@ -434,9 +434,9 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/></svg>
                 </span>
                 <div class="timeline__body">
-                  <div class="timeline__title">Stock bajo · Café en grano 1kg</div>
+                  <div class="title sm">Stock bajo · Café en grano 1kg</div>
                   <div class="timeline__sub">Quedan 4 unidades · pedido sugerido</div>
-                  <div class="timeline__time">hace 14 min</div>
+                  <div class="meta">hace 14 min</div>
                 </div>
               </li>
               <li class="timeline__item">
@@ -444,9 +444,9 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"/><path d="M5 21v-2a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v2"/></svg>
                 </span>
                 <div class="timeline__body">
-                  <div class="timeline__title">Marta Soler ha fichado entrada</div>
+                  <div class="title sm">Marta Soler ha fichado entrada</div>
                   <div class="timeline__sub">Turno de tarde · 14:00 → 22:00</div>
-                  <div class="timeline__time">hace 22 min</div>
+                  <div class="meta">hace 22 min</div>
                 </div>
               </li>
             </ul>

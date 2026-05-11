@@ -6,34 +6,34 @@
 {% block content %}
 <div class="app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">LR</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="sidebar__brand-meta">Cumplimiento</div>
+    <div class="head">
+      <div class="sidebar-logo">LR</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">Cafetería La Rambla</div>
+        <div class="meta">Cumplimiento</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <a class="sidebar__item" href="#"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="sidebar__label">Inicio</span></a>
-      <a class="sidebar__item" href="#"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="sidebar__label">Ajustes</span></a>
-      <a class="sidebar__item" aria-current="page" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="sidebar__label">Cumplimiento</span></a>
+    <div class="content scroll">
+      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="item-label">Inicio</span></a>
+      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="item-label">Ajustes</span></a>
+      <a class="item" aria-current="page" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="item-label">Cumplimiento</span></a>
     </div>
   </aside>
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
     <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
@@ -61,8 +61,8 @@
 
       <!-- España -->
       <article class="card mb-4">
-        <header class="card__header">
-          <h3 class="card__title">
+        <header class="head">
+          <h3 class="title">
             <span class="inline-flex items-center gap-2">
               <span style="font-size:18px;">🇪🇸</span>
               España
@@ -70,7 +70,7 @@
           </h3>
           <span class="badge success"><span class="badge__dot"></span>Activo</span>
         </header>
-        <div class="card__body">
+        <div class="body">
 
           <div class="toggle-row">
             <div class="toggle-row__text">
@@ -160,7 +160,7 @@
             </div>
           </div>
         </div>
-        <footer class="card__actions">
+        <footer class="actions">
           <button class="btn ghost sm">Ver log AEAT</button>
           <button class="btn secondary sm">Probar conexión</button>
         </footer>
@@ -168,8 +168,8 @@
 
       <!-- Portugal -->
       <article class="card mb-4">
-        <header class="card__header">
-          <h3 class="card__title">
+        <header class="head">
+          <h3 class="title">
             <span class="inline-flex items-center gap-2">
               <span style="font-size:18px;">🇵🇹</span>
               Portugal
@@ -177,7 +177,7 @@
           </h3>
           <span class="badge"><span class="badge__dot"></span>No activo</span>
         </header>
-        <div class="card__body">
+        <div class="body">
           <p style="font-size:13px;color:var(--ink-3);margin:0 0 14px;">No tienes operaciones registradas en Portugal. Activa los requisitos si vendes a clientes portugueses.</p>
 
           <div class="toggle-row">
@@ -206,10 +206,10 @@
 
       <!-- Alertas dismissed -->
       <article class="card">
-        <header class="card__header">
-          <h3 class="card__title">Alertas descartadas</h3>
+        <header class="head">
+          <h3 class="title">Alertas descartadas</h3>
         </header>
-        <div class="card__body">
+        <div class="body">
           <p style="font-size:13px;color:var(--ink-3);margin:0 0 12px;">Alertas de cumplimiento que descartaste y se pueden recuperar.</p>
           <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-3);border-radius:8px;">
             <div class="flex items-center gap-2">

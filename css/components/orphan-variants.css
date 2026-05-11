@@ -5,11 +5,11 @@
    definirse. Todo basado en tokens --ok-*.
    ============================================================ */
 
-/* ---------- Sidebar badge variants ---------- */
-.sidebar__badge--leaf  { background: var(--leaf-soft);   color: var(--leaf); }
-.sidebar__badge--warn  { background: var(--warn-soft);   color: var(--warn); }
-.sidebar__badge--info  { background: var(--info-soft);   color: var(--info); }
-.sidebar__badge--danger{ background: var(--danger-soft); color: var(--danger); }
+/* ---------- Sidebar badge color variants ---------- */
+.sidebar .badge.leaf   { background: var(--leaf-soft);   color: var(--leaf); }
+.sidebar .badge.warn   { background: var(--warn-soft);   color: var(--warn); }
+.sidebar .badge.info   { background: var(--info-soft);   color: var(--info); }
+.sidebar .badge.danger { background: var(--danger-soft); color: var(--danger); }
 
 /* ---------- Avatar size + composition ---------- */
 .avatar.md {
@@ -256,8 +256,8 @@
   color: var(--ink-3);
 }
 
-/* ---------- Tabbar item (alias) ---------- */
-.tabbar__item {
+/* ---------- Tabbar item (standalone — no tabbar container) ---------- */
+.tabbar-item-standalone {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -271,11 +271,11 @@
   text-decoration: none;
   border-radius: var(--radius-md);
 }
-.tabbar__item:hover {
+.tabbar-item-standalone:hover {
   color: var(--ink-2);
 }
-.tabbar__item[aria-current="page"],
-.tabbar__item.is-active {
+.tabbar-item-standalone[aria-current="page"],
+.tabbar-item-standalone.is-active {
   color: var(--brand);
   background: var(--brand-soft);
 }

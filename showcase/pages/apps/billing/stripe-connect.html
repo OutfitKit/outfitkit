@@ -19,36 +19,36 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EC</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">acme · ES</div>
+    <div class="head">
+      <div class="sidebar-logo">EC</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">acme · ES</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
 
-      <div class="sidebar__group">Facturación</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="sidebar__label">Facturas</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="sidebar__label">Suscripciones</span></button>
+      <div class="label">Facturación</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="item-label">Facturas</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="item-label">Suscripciones</span></button>
 
-      <div class="sidebar__group">Desarrollador</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="sidebar__label">Repositorios</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="sidebar__label">Stripe Connect</span><span class="sidebar__badge sidebar__badge--brand">●</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="sidebar__label">Payouts</span></button>
+      <div class="label">Desarrollador</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="item-label">Repositorios</span></button>
+      <button class="item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="item-label">Módulos</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Stripe Connect</span><span class="badge badge brand">●</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="item-label">Payouts</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -56,26 +56,26 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Stripe Connect</h1>
+        <h1 class="title">Stripe Connect</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar…"/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <span class="avatar sm brand">IB</span>
         </div>
       </header>
@@ -96,7 +96,7 @@
 
       <!-- Status hero card -->
       <article class="card mb-4" data-attr:style="$connected ? 'margin-bottom:18px;border-left:3px solid var(--leaf);' : 'margin-bottom:18px;border-left:3px solid var(--danger);'">
-        <div class="card__body" style="display:flex;align-items:center;gap:18px;padding:24px;">
+        <div class="body" style="display:flex;align-items:center;gap:18px;padding:24px;">
           <div data-attr:style="$connected ? 'width:64px;height:64px;border-radius:var(--radius-lg);background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;flex-shrink:0;' : 'width:64px;height:64px;border-radius:var(--radius-lg);background:var(--danger-soft);color:var(--danger);display:grid;place-items:center;flex-shrink:0;'">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
           </div>
@@ -149,7 +149,7 @@
           <p style="margin:4px 0 0;font-size:13px;color:var(--ink-3);">Datos de la cuenta Stripe Express</p>
         </div>
         <article class="card">
-          <div class="card__body">
+          <div class="body">
             <div class="grid-4">
               <div>
                 <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:4px;">Tipo de cuenta</div>

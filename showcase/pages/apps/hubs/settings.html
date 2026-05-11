@@ -21,36 +21,36 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EC</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">acme · ES</div>
+    <div class="head">
+      <div class="sidebar-logo">EC</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">acme · ES</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg><span class="item-label">Hubs</span><span class="badge">7</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
 
-      <div class="sidebar__group">Facturación</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h2"/></svg><span class="sidebar__label">Facturas</span><span class="sidebar__badge sidebar__badge--brand">3</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83"/></svg><span class="sidebar__label">Planes</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 7v5l3 3"/></svg><span class="sidebar__label">Uso y consumo</span></button>
+      <div class="label">Facturación</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h2"/></svg><span class="item-label">Facturas</span><span class="badge badge brand">3</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83"/></svg><span class="item-label">Planes</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M12 7v5l3 3"/></svg><span class="item-label">Uso y consumo</span></button>
 
-      <div class="sidebar__group">Desarrollador</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="sidebar__label">API Tokens</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="sidebar__label">Logs</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="sidebar__label">Webhooks</span></button>
+      <div class="label">Desarrollador</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="item-label">API Tokens</span></button>
+      <button class="item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Logs</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="item-label">Webhooks</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -58,21 +58,21 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">acme-prod · Configuración</h1>
+        <h1 class="title">acme-prod · Configuración</h1>
         
         
-        <div class="topbar__actions">
+        <div class="actions">
           <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></button>
         <span class="avatar sm brand">IB</span>
         </div>
@@ -103,13 +103,13 @@
 
         <!-- General -->
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">General</div>
-              <div class="panel__sub">Información básica del hub.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">General</div>
+              <div class="sub">Información básica del hub.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div class="row">
               <label class="field col-md-6">
                 <span class="field__label">Nombre del hub</span>
@@ -147,13 +147,13 @@
 
         <!-- URL & domains -->
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">URL y dominios</div>
-              <div class="panel__sub">Subdominio gestionado por ERPlora y dominios personalizados.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">URL y dominios</div>
+              <div class="sub">Subdominio gestionado por ERPlora y dominios personalizados.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <label class="field mb-4">
               <span class="field__label">Subdominio principal</span>
               <div style="display:flex;gap:8px;align-items:stretch;">
@@ -191,13 +191,13 @@
 
         <!-- Contact -->
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">Contacto</div>
-              <div class="panel__sub">Quién recibe alertas e incidencias del hub.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">Contacto</div>
+              <div class="sub">Quién recibe alertas e incidencias del hub.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div class="row">
               <label class="field col-md-6">
                 <span class="field__label">Email del admin</span>
@@ -214,13 +214,13 @@
 
         <!-- Notifications -->
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">Notificaciones</div>
-              <div class="panel__sub">Qué emails envía ERPlora al equipo del hub.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">Notificaciones</div>
+              <div class="sub">Qué emails envía ERPlora al equipo del hub.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div class="toggle-row">
               <div class="toggle-row__text">
                 <div class="toggle-row__label">Alertas críticas</div>
@@ -254,13 +254,13 @@
 
         <!-- Maintenance window -->
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">Mantenimiento</div>
-              <div class="panel__sub">Ventana programada para actualizaciones del hub.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">Mantenimiento</div>
+              <div class="sub">Ventana programada para actualizaciones del hub.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div class="row">
               <label class="field col-md-6 col-lg-4">
                 <span class="field__label">Día de la semana</span>
@@ -309,13 +309,13 @@
       <!-- Dominios tab -->
       <div data-show="$tab === 'domains'" style="display:flex;flex-direction:column;gap:18px;">
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">Dominios personalizados</div>
-              <div class="panel__sub">Añade tus propios dominios y configura el SSL automático.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">Dominios personalizados</div>
+              <div class="sub">Añade tus propios dominios y configura el SSL automático.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
               <div data-show="$domains.includes('pos.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">pos.acme.com</span>
@@ -345,13 +345,13 @@
       <!-- Integrations tab -->
       <div data-show="$tab === 'integrations'" style="display:flex;flex-direction:column;gap:18px;">
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">Integraciones externas</div>
-              <div class="panel__sub">Conecta servicios de terceros con este hub.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">Integraciones externas</div>
+              <div class="sub">Conecta servicios de terceros con este hub.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div class="toggle-row">
               <div class="toggle-row__text">
                 <div class="toggle-row__label">Stripe</div>
@@ -387,13 +387,13 @@
       <!-- Backups tab -->
       <div data-show="$tab === 'backups'" style="display:flex;flex-direction:column;gap:18px;">
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">Copias de seguridad</div>
-              <div class="panel__sub">Snapshots diarios cifrados, retención 30 días.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">Copias de seguridad</div>
+              <div class="sub">Snapshots diarios cifrados, retención 30 días.</div>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div class="toggle-row">
               <div class="toggle-row__text">
                 <div class="toggle-row__label">Backups automáticos</div>
@@ -419,13 +419,13 @@
       <!-- Advanced tab -->
       <div data-show="$tab === 'advanced'" style="display:flex;flex-direction:column;gap:18px;">
         <section class="panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <div class="panel__title">Avanzado · zona de peligro</div>
-              <div class="panel__sub">Acciones irreversibles. Procede con precaución.</div>
+          <div class="head">
+            <div class="heading">
+              <div class="title">Avanzado · zona de peligro</div>
+              <div class="sub">Acciones irreversibles. Procede con precaución.</div>
             </div>
           </div>
-          <div class="panel__body flex col gap-3">
+          <div class="body flex col gap-3">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--line);border-radius:8px;">
               <div><strong>Pausar hub</strong><div class="text-xs c-ink-3">El hub pasa a estado read-only.</div></div>
               <button class="btn secondary sm">Pausar</button>

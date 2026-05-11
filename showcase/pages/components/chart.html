@@ -6,15 +6,15 @@
 
 {% block content %}
 <h1>Chart</h1>
-<p class="showcase__lead">Contenedor genérico para gráficos. Compón cabecera (<code>.ok-chart__head</code>), SVG (<code>.ok-chart__svg</code>) y leyenda (<code>.ok-chart__legend</code>). El SVG es responsabilidad del consumidor — usa <code>.ok-chart__bar</code>, <code>.ok-chart__line</code>, <code>.ok-chart__area</code>, <code>.ok-chart__dot</code>, etc.</p>
-<p class="showcase__lead"><b>Nota:</b> la serie <i>Proyectado</i> se dibuja con <code>stroke-dasharray="4 4"</code>; la leyenda usa <code>.ok-chart__legend-dash</code> para reflejar el mismo patrón. Las <code>&lt;rect&gt;</code> y <code>&lt;polyline&gt;</code> de los demos llevan <code>&lt;title&gt;</code> hijo para tooltip nativo del navegador.</p>
+<p class="showcase__lead">Contenedor genérico para gráficos. Compón cabecera con <code>.head</code>, SVG con <code>.chart__svg</code> y leyenda con <code>.chart__legend</code>. El SVG es responsabilidad del consumidor — usa <code>.chart__bar</code>, <code>.chart__line</code>, <code>.chart__area</code>, <code>.chart__dot</code>, etc.</p>
+<p class="showcase__lead"><b>Nota:</b> la serie <i>Proyectado</i> se dibuja con <code>stroke-dasharray="4 4"</code>; la leyenda usa <code>.chart__legend-dash</code> para reflejar el mismo patrón. Las <code>&lt;rect&gt;</code> y <code>&lt;polyline&gt;</code> de los demos llevan <code>&lt;title&gt;</code> hijo para tooltip nativo del navegador.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/chart.jinja" import chart %}
 {% call chart() %}
-<header class="chart__head">
+<header class="head">
   <div>
-    <h3 class="chart__title">Ventas 2026</h3>
-    <p class="chart__sub">Mensual · proyectado vs real</p>
+    <h3 class="title sm">Ventas 2026</h3>
+    <p class="sub sm">Mensual · proyectado vs real</p>
   </div>
   <div style="text-align:right">
     <div class="chart__big">€84,2k</div>
@@ -51,10 +51,10 @@
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Chart>
-<header class="chart__head">
+<header class="head">
   <div>
-    <h3 class="chart__title">Ventas 2026</h3>
-    <p class="chart__sub">Mensual · proyectado vs real</p>
+    <h3 class="title sm">Ventas 2026</h3>
+    <p class="sub sm">Mensual · proyectado vs real</p>
   </div>
   <div style="text-align:right">
     <div class="chart__big">€84,2k</div>
@@ -95,10 +95,10 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call chart() %}
-<header class="chart__head">
+<header class="head">
   <div>
-    <h3 class="chart__title">Ventas 2026</h3>
-    <p class="chart__sub">Mensual · proyectado vs real</p>
+    <h3 class="title sm">Ventas 2026</h3>
+    <p class="sub sm">Mensual · proyectado vs real</p>
   </div>
   <div style="text-align:right">
     <div class="chart__big">€84,2k</div>
@@ -138,8 +138,8 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/chart.jinja" import chart %}
 {% call chart() %}
-<header class="chart__head">
-  <h3 class="chart__title">Ventas por canal</h3>
+<header class="head">
+  <h3 class="title sm">Ventas por canal</h3>
   <span class="chart__big">€42,1k</span>
 </header>
 <svg class="chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
@@ -158,8 +158,8 @@
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Chart>
-<header class="chart__head">
-  <h3 class="chart__title">Ventas por canal</h3>
+<header class="head">
+  <h3 class="title sm">Ventas por canal</h3>
   <span class="chart__big">€42,1k</span>
 </header>
 <svg class="chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
@@ -182,8 +182,8 @@
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call chart() %}
-<header class="chart__head">
-  <h3 class="chart__title">Ventas por canal</h3>
+<header class="head">
+  <h3 class="title sm">Ventas por canal</h3>
   <span class="chart__big">€42,1k</span>
 </header>
 <svg class="chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
@@ -205,8 +205,8 @@
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/chart.jinja" import chart %}
 {% call chart(variant="flat") %}
-<header class="chart__head">
-  <h3 class="chart__title">Tendencia 24h</h3>
+<header class="head">
+  <h3 class="title sm">Tendencia 24h</h3>
   <span class="chart__delta chart__delta--down">▼ −2,1%</span>
 </header>
 <svg class="chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
@@ -214,8 +214,8 @@
 </svg>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Chart variant="flat">
-<header class="chart__head">
-  <h3 class="chart__title">Tendencia 24h</h3>
+<header class="head">
+  <h3 class="title sm">Tendencia 24h</h3>
   <span class="chart__delta chart__delta--down">▼ −2,1%</span>
 </header>
 <svg class="chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
@@ -227,8 +227,8 @@
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {% call chart(variant="flat") %}
-<header class="chart__head">
-  <h3 class="chart__title">Tendencia 24h</h3>
+<header class="head">
+  <h3 class="title sm">Tendencia 24h</h3>
   <span class="chart__delta chart__delta--down">▼ −2,1%</span>
 </header>
 <svg class="chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
@@ -243,7 +243,7 @@
   <tbody>
     <tr><td><code>variant</code></td><td>"default"|"flat"</td><td>"default"</td><td>"flat" elimina fondo/borde para incrustar.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Compón <code>.ok-chart__head</code>, <code>.ok-chart__svg</code>, <code>.ok-chart__legend</code>. SVG con sub-clases <code>.ok-chart__bar</code>, <code>.ok-chart__line</code>, <code>.ok-chart__area</code>, <code>.ok-chart__dot</code>, <code>.ok-chart__grid</code>, <code>.ok-chart__axis</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Compón <code>.head</code> (cabecera), <code>.chart__svg</code>, <code>.chart__legend</code>. SVG con sub-clases <code>.chart__bar</code>, <code>.chart__line</code>, <code>.chart__area</code>, <code>.chart__dot</code>, <code>.chart__grid</code>, <code>.chart__axis</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

@@ -5,113 +5,89 @@
 
 /* ============================================================
    1. PANEL
-   Surface block (more structural than card, less rounded)
+   ─────────────────────────────────────────────────────────────
+   Surface block (more structural than card, less rounded).
+   Composición interna v2 con clases universales:
+     <div class="panel">
+       <header class="head">
+         <div class="heading">
+           <h3 class="title">…</h3>
+           <p class="sub">…</p>
+         </div>
+         <div class="actions">…</div>
+       </header>
+       <div class="body">…</div>
+       <footer class="foot">…</footer>
+     </div>
    ============================================================ */
 
 .panel {
-  --_pad-y: var(--space-4);
-  --_pad-x: var(--space-4);
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-lg);
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-lg));
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-.panel__head {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--space-3);
-  padding: var(--_pad-y) var(--_pad-x);
-  border-bottom: var(--border-w) solid var(--line);
+/* .head / .body / .foot from modifiers.css handle padding, borders, flex.
+   Panel-specific: override pad vars to match panel density defaults. */
+.panel > .head {
+  --pad-y: var(--space-4);
+  --pad-x: var(--space-4);
 }
-
-.panel__head-text {
-  display: flex;
-  flex-direction: column;
-  gap: var(--border-w-2);
-  min-width: 0;
-  flex: 1;
-}
-
-.panel__title {
-  font-family: var(--font-display);
-  font-size: var(--text-md);
-  font-weight: 600;
-  letter-spacing: var(--tracking-tight);
-  color: var(--ink);
-  margin: var(--space-0);
-}
-
-.panel__sub {
-  font-size: var(--text-xs);
-  color: var(--ink-3);
-  margin: var(--space-0);
-}
-
-.panel__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  flex-shrink: 0;
-}
-
-.panel__body {
-  padding: var(--_pad-y) var(--_pad-x);
+.panel > .body {
+  --pad-y: var(--space-4);
+  --pad-x: var(--space-4);
   flex: 1;
   min-width: 0;
 }
-
-.panel__footer {
-  padding: var(--_pad-y) var(--_pad-x);
-  border-top: var(--border-w) solid var(--line);
+.panel > .foot {
+  --pad-y: var(--space-4);
+  --pad-x: var(--space-4);
   background: var(--bg-1);
-  display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: var(--space-3);
 }
 
 /* Variants */
 .panel.ghost {
   background: transparent;
-  border-color: var(--line);
 }
-.panel.ghost .panel__footer { background: transparent; }
+.panel.ghost > .foot { background: transparent; }
 
 .panel.bordered {
   background: transparent;
   border-color: var(--line-2);
 }
-.panel.bordered .panel__footer { background: transparent; }
+.panel.bordered > .foot { background: transparent; }
 
-.panel.flush .panel__body {
-  padding: var(--space-0);
-}
+.panel.flush > .body { padding: var(--space-0); }
 
-.panel.sticky-head .panel__head {
+.panel.sticky-head > .head {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
   background: var(--bg-2);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--blur-sm, 8px));
+  -webkit-backdrop-filter: blur(var(--blur-sm, 8px));
 }
 
-/* Sizes */
-.panel.sm {
-  --_pad-y: var(--space-2);
-  --_pad-x: var(--space-3);
+/* Sizes — override pad vars for .head / .body / .foot */
+.panel.sm > .head,
+.panel.sm > .body,
+.panel.sm > .foot {
+  --pad-y: var(--space-2);
+  --pad-x: var(--space-3);
 }
-.panel.sm .panel__title { font-size: var(--text-sm); }
+.panel.sm > .head .title { --text: var(--text-sm); }
 
-.panel.lg {
-  --_pad-y: var(--space-5);
-  --_pad-x: var(--space-6);
+.panel.lg > .head,
+.panel.lg > .body,
+.panel.lg > .foot {
+  --pad-y: var(--space-5);
+  --pad-x: var(--space-6);
 }
-.panel.lg .panel__title { font-size: var(--text-lg); }
+.panel.lg > .head .title { --text: var(--text-lg); }
 
 /* ============================================================
    2. MASONRY

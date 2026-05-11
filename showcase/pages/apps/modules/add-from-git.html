@@ -21,36 +21,36 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EC</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">acme · ES</div>
+    <div class="head">
+      <div class="sidebar-logo">EC</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">acme · ES</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
 
-      <div class="sidebar__group">Facturación</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="sidebar__label">Facturas</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="sidebar__label">Suscripciones</span></button>
+      <div class="label">Facturación</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="item-label">Facturas</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="item-label">Suscripciones</span></button>
 
-      <div class="sidebar__group">Desarrollador</div>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7"/></svg><span class="sidebar__label">Repositorios</span><span class="sidebar__badge sidebar__badge--brand">8</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Stripe Connect</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="sidebar__label">Payouts</span></button>
+      <div class="label">Desarrollador</div>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7"/></svg><span class="item-label">Repositorios</span><span class="badge badge brand">8</span></button>
+      <button class="item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="item-label">Módulos</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Stripe Connect</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="item-label">Payouts</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -58,26 +58,26 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Conectar repositorio</h1>
+        <h1 class="title">Conectar repositorio</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar…"/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <span class="avatar sm brand">IB</span>
         </div>
       </header>
@@ -128,7 +128,7 @@
 
           <!-- GitHub user info card -->
           <article class="card mb-4">
-            <div class="card__body flex items-center gap-3">
+            <div class="body flex items-center gap-3">
               <span class="avatar lg" style="background:#1f2024;color:#f0f1f3;">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.3 9.3 7.9 10.8.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.6-1.3-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.7 2.7 1.2 3.4.9.1-.7.4-1.2.7-1.5-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3 0 0 1-.3 3.2 1.2.9-.3 1.9-.4 2.9-.4s2 .1 2.9.4c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.7.1 3 .8.8 1.2 1.9 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6C20.2 21.3 23.5 17 23.5 12 23.5 5.7 18.3.5 12 .5z"/></svg>
               </span>

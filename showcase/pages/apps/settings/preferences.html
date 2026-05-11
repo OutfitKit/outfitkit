@@ -14,36 +14,36 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EC</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">acme · Madrid</div>
+    <div class="head">
+      <div class="sidebar-logo">EC</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">acme · Madrid</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Main</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span><span class="sidebar__badge">4</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="sidebar__label">Mi perfil</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="sidebar__label">Preferencias</span></button>
+    <div class="content scroll">
+      <div class="label">Main</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span><span class="badge">4</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="item-label">Mi perfil</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span class="item-label">Preferencias</span></button>
 
-      <div class="sidebar__group">Billing</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Plan & facturación</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="sidebar__label">Facturas</span><span class="sidebar__badge sidebar__badge--brand">2</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="sidebar__label">Uso & cuotas</span></button>
+      <div class="label">Billing</div>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Plan & facturación</span></button>
+      <button class="item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Facturas</span><span class="badge badge brand">2</span></button>
+      <button class="item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="item-label">Uso & cuotas</span></button>
 
-      <div class="sidebar__group">Developer</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="sidebar__label">API & tokens</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Webhooks</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="sidebar__label">Audit log</span></button>
+      <div class="label">Developer</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="item-label">API & tokens</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Webhooks</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="item-label">Audit log</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -51,26 +51,26 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Preferencias</h1>
+        <h1 class="title">Preferencias</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar en cuenta…"/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <button class="icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
         <span class="avatar sm brand">IB</span>
         </div>
@@ -132,7 +132,7 @@
             </div>
           </div>
           <article class="card">
-            <div class="card__body row">
+            <div class="body row">
               <label class="field col-md-6">
                 <span class="field__label">Idioma de la interfaz</span>
                 <select class="select">
@@ -190,7 +190,7 @@
             </div>
           </div>
           <article class="card">
-            <div class="card__body" style="display:flex;flex-direction:column;gap:18px;">
+            <div class="body" style="display:flex;flex-direction:column;gap:18px;">
               <div class="field">
                 <span class="field__label">Tema</span>
                 <div class="segment">
@@ -254,7 +254,7 @@
             </div>
           </div>
           <article class="card">
-            <div class="card__body flex col gap-4">
+            <div class="body flex col gap-4">
               <div class="field">
                 <span class="field__label">Resumen por email</span>
                 <div class="toggle-group block">
@@ -304,7 +304,7 @@
             <button class="btn ghost sm">Restaurar por defecto</button>
           </div>
           <article class="card">
-            <div class="card__body p-0">
+            <div class="body p-0">
               <div style="display:flex;flex-direction:column;">
                 <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--line);">
                   <div><strong>Paleta de comandos</strong><div class="text-xs c-ink-3">Buscar y ejecutar acciones.</div></div>
@@ -342,7 +342,7 @@
         <section class="section">
           <div class="section__head"><div><div class="section__title">Resumen por email</div><div class="section__sub">Frecuencia con la que recibes resúmenes.</div></div></div>
           <article class="card">
-            <div class="card__body">
+            <div class="body">
               <div class="toggle-group block">
                 <button class="toggle-group__option" data-on:click="$emailFreq = 'alert'; $dirty = true" data-class:is-selected="$emailFreq === 'alert'">Solo alertas</button>
                 <button class="toggle-group__option" data-on:click="$emailFreq = 'daily'; $dirty = true" data-class:is-selected="$emailFreq === 'daily'">Diario</button>
@@ -356,7 +356,7 @@
         <section class="section">
           <div class="section__head"><div><div class="section__title">Canales</div><div class="section__sub">Activa o desactiva los canales de aviso.</div></div></div>
           <article class="card">
-            <div class="card__body">
+            <div class="body">
               <div class="toggle-row">
                 <div class="toggle-row__text"><span class="toggle-row__label">Notificaciones push</span><span class="toggle-row__desc">En navegador y app móvil.</span></div>
                 <label class="toggle"><input type="checkbox" data-bind:push data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
@@ -375,7 +375,7 @@
         <section class="section">
           <div class="section__head"><div><div class="section__title">Tema</div><div class="section__sub">Auto / Claro / Oscuro.</div></div></div>
           <article class="card">
-            <div class="card__body">
+            <div class="body">
               <div class="segment">
                 <button class="segment__opt" data-on:click="$theme = 'auto'; $dirty = true" data-attr:aria-pressed="$theme === 'auto' ? 'true' : 'false'">Auto</button>
                 <button class="segment__opt" data-on:click="$theme = 'light'; $dirty = true" data-attr:aria-pressed="$theme === 'light' ? 'true' : 'false'">Claro</button>
@@ -387,7 +387,7 @@
         <section class="section">
           <div class="section__head"><div><div class="section__title">Densidad y tipografía</div></div></div>
           <article class="card">
-            <div class="card__body flex col gap-3">
+            <div class="body flex col gap-3">
               <div class="field">
                 <span class="field__label">Tamaño de texto · <span data-text="$textSize + ' px'"></span></span>
                 <input type="range" class="range" min="13" max="22" step="1" data-bind:text-size data-on:input="$dirty = true"/>
@@ -406,7 +406,7 @@
         <section class="section">
           <div class="section__head"><div><div class="section__title">Idioma</div></div></div>
           <article class="card">
-            <div class="card__body row">
+            <div class="body row">
               <label class="field col-md-6">
                 <span class="field__label">Idioma de la interfaz</span>
                 <select class="select" data-bind:lang data-on:change="$dirty = true">
@@ -453,7 +453,7 @@
         <section class="section">
           <div class="section__head"><div><div class="section__title">Accesibilidad visual y motriz</div><div class="section__sub">Ajustes para mejorar la usabilidad.</div></div></div>
           <article class="card">
-            <div class="card__body">
+            <div class="body">
               <div class="toggle-row">
                 <div class="toggle-row__text"><span class="toggle-row__label">Contraste alto</span><span class="toggle-row__desc">Aumenta el contraste de texto y bordes (WCAG AAA).</span></div>
                 <label class="toggle"><input type="checkbox" data-bind:contrast data-on:change="$dirty = true"/><span class="toggle__track"></span></label>

@@ -7,21 +7,19 @@
 
 .navbar {
   /* API canónica de override */
-  --navbar-background:   color-mix(in oklch, var(--bg) 88%, transparent);
+  --background:          color-mix(in oklch, var(--bg) 88%, transparent);
   --navbar-border-color: var(--line);
-  --navbar-color:        var(--ink);
   --navbar-padding:      12px clamp(16px, 4vw, 32px);
   --navbar-min-height:   var(--avatar-xl);
-  --navbar-blur:         12px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
   padding: var(--navbar-padding);
-  background: var(--navbar-background);
-  backdrop-filter: blur(var(--navbar-blur)) saturate(140%);
-  -webkit-backdrop-filter: blur(var(--navbar-blur)) saturate(140%);
+  background: var(--background);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border-bottom: var(--border-w) solid var(--navbar-border-color);
   z-index: 50;
   min-height: var(--navbar-min-height);
@@ -73,7 +71,7 @@
   background: var(--bg-1);
 }
 
-/* End: language selector, CTA, hamburger */
+/* End actions — use <div class="actions"> or .navbar-end */
 .navbar-end {
   display: flex;
   align-items: center;
@@ -81,8 +79,7 @@
   flex-shrink: 0;
 }
 
-/* Mobile hamburger button (hidden on desktop). The consumer wires
-   it to a hidden checkbox + :has() selector on the navbar wrapper. */
+/* Mobile hamburger button (hidden on desktop) */
 .menu-button {
   display: inline-flex;
   align-items: center;
@@ -111,9 +108,7 @@
   transition: transform var(--dur-base);
 }
 
-/* Mobile menu — collapsed by default, shown when the parent toggle
-   checkbox is checked. Consumer is responsible for the structure
-   (hidden checkbox + :has selector). */
+/* Mobile menu */
 .navbar-mobile {
   display: none;
   flex-direction: column;

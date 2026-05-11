@@ -1,53 +1,51 @@
 /* ============================================================
-   OutfitKit · Card / KPI / Stat / Stats / Empty / Panel
+   OutfitKit · Card / KPI / Stat / Stats / Empty
    ─────────────────────────────────────────────────────────────
    Uso:
      <article class="card">…</article>
      <article class="card primary elevated">…</article>
      <article class="card glass interactive">…</article>
 
-   Modificadores universales que usa: primary, danger, success...
+   Composición interna con clases universales (v2):
+     <header class="head">
+       <div class="heading"><h3 class="title">…</h3><p class="sub">…</p></div>
+       <div class="actions">…</div>
+     </header>
+     <div class="body">…</div>
+     <footer class="foot">…</footer>
+
+   Modificadores universales: primary, danger, success...
      elevated, flat, glass, interactive, lg, sm
-   Expone (override por consumidor):
-     --card-background, --card-color, --card-border-color,
-     --card-border-radius, --card-padding
    ============================================================ */
 
 .card {
-  --card-background:    var(--bg-2);
-  --card-color:         var(--ink);
-  --card-border-color:  var(--line);
-  --card-border-radius: var(--radius-xl);
-  --card-padding:       var(--space-4);
-  --card-gap:           var(--space-3);
-
-  background: var(--card-background);
-  color: var(--card-color);
-  border: var(--border-w) solid var(--card-border-color);
-  border-radius: var(--card-border-radius);
+  background: var(--background, var(--bg-2));
+  color: var(--color, var(--ink));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-xl));
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-/* Variante .primary/.danger/etc en card: tinte sutil del variant en el fondo */
+/* Variante con tinte del variant en el fondo */
 .card.primary, .card.secondary, .card.tertiary, .card.success, .card.warning,
 .card.warn,    .card.danger,    .card.info,     .card.brand,   .card.accent {
-  --card-background:    color-mix(in oklch, var(--variant) 8%, var(--bg-2));
-  --card-border-color:  color-mix(in oklch, var(--variant) 25%, var(--line));
+  background:    color-mix(in oklch, var(--variant) 8%, var(--bg-2));
+  border-color:  color-mix(in oklch, var(--variant) 25%, var(--line));
 }
 
 /* Variante .filled: card sólido del color del variant */
 .card.filled {
-  --card-background:   var(--variant, var(--bg-3));
-  --card-color:        var(--variant-contrast, var(--ink));
-  --card-border-color: transparent;
+  background:   var(--variant, var(--bg-3));
+  color:        var(--variant-contrast, var(--ink));
+  border-color: transparent;
 }
 
 /* Variante .flat: sin fondo (solo borde) */
 .card.flat {
-  --card-background:   transparent;
-  --card-border-color: var(--line);
+  background:   transparent;
+  border-color: var(--line);
 }
 
 /* Interactive: cursor + hover lift */
@@ -58,7 +56,7 @@
               box-shadow   var(--dur-fast) var(--ease-out);
 }
 .card.interactive:hover {
-  --card-border-color: var(--line-2);
+  border-color: var(--line-2);
   transform: translateY(-1px);
 }
 .card.interactive:focus-visible {
@@ -66,100 +64,69 @@
   outline-offset: 2px;
 }
 
+/* Sizes — override radius via --radius consumed by .card */
+.card.sm { --radius: var(--radius-lg); }
+.card.lg { --radius: var(--radius-2xl); }
 
-/* Sub-elementos BEM (mantenemos `__` para elementos hijos) */
-.card__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: var(--card-gap);
-  padding: var(--card-padding) var(--card-padding) var(--space-3);
-}
+/* ── head / body / foot consumed from modifiers.css universals ──────
+   .head  → padding, border-bottom, flex align
+   .body  → padding, color
+   .foot  → padding, border-top, flex align
+   These work inside .card out of the box. Only structural overrides needed. */
 
-.card__title {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: var(--weight-semibold);
-  color: var(--ink);
-  letter-spacing: var(--tracking-near);
-  margin: var(--space-0);
-}
+/* body directly after head: remove redundant top padding */
+.card > .head + .body { padding-top: var(--space-0); }
 
-.card__sub {
-  font-size: var(--text-sm);
-  color: var(--ink-3);
-  margin-top: var(--border-w-2);
-}
-
-.card__actions {
-  display: flex;
-  gap: var(--space-2);
-  flex-shrink: 0;
-}
-
-.card__body {
-  padding: var(--space-3) var(--card-padding) var(--card-padding);
-  flex: 1;
-}
-.card__header + .card__body { padding-top: var(--space-0); }
-
-.card__footer {
-  padding: var(--space-3) var(--card-padding);
-  border-top: var(--border-w) solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+/* foot background override (card-specific: slightly dimmer) */
+.card > .foot {
   background: var(--bg-1);
 }
 
-.card__divider {
-  height: var(--border-w);
-  background: var(--line);
-  margin: var(--space-0);
-}
-
-/* Sizes */
-.card.sm { --card-padding: var(--space-3); --card-border-radius: var(--radius-lg); }
-.card.lg { --card-padding: var(--space-5); --card-border-radius: var(--radius-2xl); }
+/* card__header / card__title / card__sub / card__actions / card__body /
+   card__footer / card__divider — eliminados en v2. Los consumidores
+   usan las clases universales: .head, .title, .sub, .actions, .body,
+   .foot, .divider directamente dentro del .card. */
 
 
 /* ============================================================
    KPI · métrica destacada
    ─────────────────────────────────────────────────────────────
-   Surface compacta para dashboards. Etiqueta + valor + delta
-   opcional + sparkline opcional.
+   Composición interna v2:
+     <div class="label">VENTAS HOY</div>
+     <div class="value">€2.847<span class="unit">€</span></div>
+     <div class="kpi__delta up">▲ +12%</div>
    ============================================================ */
 
 .kpi {
-  --kpi-background:   var(--bg-2);
-  --kpi-border-color: var(--line);
-  --kpi-min-height:   96px;
-
-  background: var(--kpi-background);
-  border: var(--border-w) solid var(--kpi-border-color);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4);
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-xl));
+  padding: var(--pad-y, var(--space-4)) var(--pad-x, var(--space-4));
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: var(--space-2);
-  min-height: var(--kpi-min-height);
+  gap: var(--gap, var(--space-2));
+  min-height: var(--kpi-min-h);
   position: relative;
   overflow: hidden;
 }
 
-/* Variante con tinte de variant */
+/* Variante con tinte del variant */
 .kpi.primary, .kpi.secondary, .kpi.success, .kpi.warning, .kpi.warn,
 .kpi.danger,  .kpi.info,      .kpi.brand,   .kpi.accent {
-  --kpi-background:   color-mix(in oklch, var(--variant) 10%, var(--bg-2));
-  --kpi-border-color: color-mix(in oklch, var(--variant) 30%, var(--line));
+  background:   color-mix(in oklch, var(--variant) 10%, var(--bg-2));
+  border-color: color-mix(in oklch, var(--variant) 30%, var(--line));
 }
-.kpi.primary .kpi__value, .kpi.brand .kpi__value, .kpi.accent .kpi__value {
+.kpi.primary .value,
+.kpi.brand   .value,
+.kpi.accent  .value {
   color: var(--variant-tint, var(--color-primary-tint));
 }
 
-.kpi__label {
+/* .label and .value consumed from universal classes in modifiers.css.
+   kpi__label / kpi__value are kept as aliases for backward compat. */
+.kpi__label,
+.kpi .label {
   font-size: var(--text-2xs);
   font-weight: var(--weight-medium);
   color: var(--ink-3);
@@ -170,22 +137,26 @@
   gap: var(--space-2);
 }
 
-.kpi__icon {
+.kpi__icon,
+.kpi .icon {
   width: var(--icon-sm);
   height: var(--icon-sm);
   color: var(--ink-4);
 }
 
-.kpi__value {
+.kpi__value,
+.kpi .value {
   font-family: var(--font-display);
-  font-size: 30px;
+  font-size: var(--text-3xl, var(--text-2xl));
   font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-display);
   color: var(--ink);
   font-variant-numeric: tabular-nums;
   line-height: 1.05;
 }
-.kpi__value-unit {
+
+.kpi__value-unit,
+.kpi .unit {
   font-size: var(--text-lg);
   color: var(--ink-3);
   font-weight: var(--weight-medium);
@@ -215,7 +186,7 @@
   bottom: 0;
   right: 0;
   width: var(--sparkline-w);
-  height: var(--avatar-sm);
+  height: var(--sparkline-h);
   opacity: 0.6;
   pointer-events: none;
 }
@@ -226,28 +197,25 @@
    ============================================================ */
 
 .stats {
-  --stats-background:   var(--bg-2);
-  --stats-border-color: var(--line);
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: var(--space-0);
-  background: var(--stats-background);
-  border: var(--border-w) solid var(--stats-border-color);
-  border-radius: var(--radius-xl);
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-xl));
   overflow: hidden;
   width: 100%;
 }
 
 .stat {
-  --stat-padding: var(--space-3) var(--space-4);
-
-  padding: var(--stat-padding);
+  padding: var(--pad-y, var(--space-3)) var(--pad-x, var(--space-4));
   border-right: var(--border-w) solid var(--line);
 }
 .stat:last-child { border-right: none; }
 
-.stat__label {
+/* .label and .value come from universal classes. Aliases kept for compat. */
+.stat__label,
+.stat .label {
   font-size: var(--text-2xs);
   font-weight: var(--weight-medium);
   color: var(--ink-3);
@@ -255,7 +223,8 @@
   letter-spacing: var(--tracking-wide);
   margin-bottom: var(--space-1);
 }
-.stat__value {
+.stat__value,
+.stat .value {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
@@ -286,25 +255,28 @@
 
 /* ============================================================
    Empty state — sin contenido
+   ─────────────────────────────────────────────────────────────
+   Composición interna v2:
+     <div class="icon-disc primary lg">…svg…</div>
+     <h3 class="title lg">Sin resultados</h3>
+     <p class="sub">Descripción…</p>
+     <div class="actions">…btns…</div>
    ============================================================ */
 
 .empty {
-  --empty-background:   var(--bg-2);
-  --empty-border-color: var(--line-2);
-  --empty-padding:      var(--space-8) var(--space-6);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--empty-padding);
-  gap: var(--space-3);
-  background: var(--empty-background);
-  border: var(--border-w) dashed var(--empty-border-color);
-  border-radius: var(--radius-xl);
+  padding: var(--pad-y, var(--space-8)) var(--pad-x, var(--space-6));
+  gap: var(--gap, var(--space-3));
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) dashed var(--border-color, var(--line-2));
+  border-radius: var(--radius, var(--radius-xl));
 }
 
+/* .icon-disc composes with .lg/.xl + color modifier (from modifiers.css) */
 .empty__icon {
   width: var(--icon-2xl);
   height: var(--icon-2xl);
@@ -319,33 +291,37 @@
   height: var(--icon-lg);
 }
 
-.empty__title {
+/* .title and .sub come from universal classes. Aliases kept for compat. */
+.empty__title,
+.empty .title {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
+  font-size: var(--text, var(--text-lg));
   font-weight: var(--weight-semibold);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--tracking-near);
   color: var(--ink);
   margin: 0;
 }
 
-.empty__desc {
-  font-size: var(--text-md);
+.empty__desc,
+.empty .sub {
+  font-size: var(--text, var(--text-md));
   color: var(--ink-3);
-  max-width: 380px;
+  max-width: var(--empty-max-w);
   line-height: var(--leading-normal);
   margin: 0;
 }
 
-.empty__actions {
-  display: flex;
-  gap: var(--space-2);
+/* .actions comes from universal class */
+.empty__actions,
+.empty .actions {
   margin-top: var(--space-1);
 }
 
 /* Variante compacta */
 .empty.compact {
-  --empty-padding: var(--space-5) var(--space-4);
-  gap: var(--space-2);
+  --pad-y: var(--space-5);
+  --pad-x: var(--space-4);
+  --gap:   var(--space-2);
 }
 .empty.compact .empty__icon {
   width: var(--icon-xl);
@@ -356,42 +332,3 @@
   width: var(--icon-md);
   height: var(--icon-md);
 }
-.empty.compact .empty__title { font-size: var(--text-base); }
-.empty.compact .empty__desc  { font-size: var(--text-sm); }
-
-
-/* ============================================================
-   Panel — surface más simple que card (sin header/footer/borders)
-   ─────────────────────────────────────────────────────────────
-   Útil para bloques de contenido contenidos en un layout más
-   grande, donde card sería demasiado pesado.
-   ============================================================ */
-
-.panel {
-  --panel-background:   var(--bg-2);
-  --panel-color:        var(--ink);
-  --panel-padding:      var(--space-4);
-  --panel-border-radius: var(--radius-lg);
-
-  background: var(--panel-background);
-  color: var(--panel-color);
-  padding: var(--panel-padding);
-  border-radius: var(--panel-border-radius);
-}
-
-.panel.primary, .panel.secondary, .panel.success, .panel.warning, .panel.warn,
-.panel.danger,  .panel.info,      .panel.brand {
-  --panel-background: color-mix(in oklch, var(--variant) 12%, var(--bg-2));
-}
-.panel.filled {
-  --panel-background: var(--variant, var(--bg-3));
-  --panel-color:      var(--variant-contrast, var(--ink));
-}
-.panel.flat {
-  --panel-background: transparent;
-}
-.panel.bordered {
-  border: var(--border-w) solid var(--line);
-}
-.panel.sm { --panel-padding: var(--space-3); }
-.panel.lg { --panel-padding: var(--space-5); }

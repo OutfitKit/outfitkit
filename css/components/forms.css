@@ -6,22 +6,17 @@
 
 /* Field — wrapper genérico con label + control + hint */
 .field {
-  /* API canónica de override */
-  --field-gap:         var(--space-1-5);
-  --field-label-color: var(--ink-2);
-  --field-label-size:  var(--text-sm);
-  --field-hint-color:  var(--ink-3);
   --field-error-color: var(--danger);
 
   display: flex;
   flex-direction: column;
-  gap: var(--field-gap);
+  gap: var(--space-1-5);
 }
 
 .field__label {
-  font-size: var(--field-label-size);
+  font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--field-label-color);
+  color: var(--ink-2);
   display: flex;
   align-items: center;
   gap: var(--space-1-5);
@@ -46,7 +41,7 @@
 .field__error-icon {
   color: var(--field-error-color);
   position: absolute;
-  right: 10px;
+  right: var(--space-2-5);
   top: 50%;
   transform: translateY(-50%);
   pointer-events: none;
@@ -58,20 +53,20 @@
 .field.error .field__control > .input,
 .field.error .field__control > .select,
 .field.error .field__control > .textarea {
-  padding-right: 36px;
+  padding-right: 36px; /* TOKEN-MISSING: no hay token para 36px */
   border-color: var(--field-error-color);
 }
 
 /* Cuando el control es un textarea (multi-línea), el icono de error
    debe anclarse arriba, no centrarse verticalmente. */
 .field.error .field__control:has(> .textarea) .field__error-icon {
-  top: 10px;
+  top: var(--space-2-5);
   transform: none;
 }
 
 .field__hint {
   font-size: var(--text-xs);
-  color: var(--field-hint-color);
+  color: var(--ink-3);
   line-height: var(--leading-base);
 }
 
@@ -90,15 +85,16 @@
 .input,
 .textarea,
 .select {
-  /* API canónica de override */
-  --input-background:    var(--bg-3);
-  --input-color:         var(--ink);
+  /* API canónica de override — consume vars universales cuando se compone
+     con un modificador de tamaño (.sm/.md/.lg). */
+  --input-background:    var(--background, var(--bg-3));
+  --input-color:         var(--color, var(--ink));
   --input-placeholder:   var(--ink-4);
-  --input-border-color:  var(--line);
-  --input-border-radius: var(--radius-md);
+  --input-border-color:  var(--border-color, var(--line));
+  --input-border-radius: var(--radius, var(--radius-md));
   --input-height:        var(--size, var(--size-md));
-  --input-pad-x:         var(--space-3);
-  --input-pad-y:         var(--space-0);
+  --input-pad-x:         var(--pad-x, var(--space-3));
+  --input-pad-y:         var(--pad-y, var(--space-0));
   --input-text:          var(--text, var(--text-md));
 
   width: 100%;
@@ -166,16 +162,19 @@
   box-shadow: 0 0 0 3px var(--danger-soft);
 }
 
-/* Tamaños */
+/* Tamaños — se delega en el modificador universal .sm/.md/.lg que setea
+   --size, --pad-x, --pad-y, --text, --radius. No es necesario repetir
+   literales aquí; el componente los lee via --input-* que ya consumen
+   esas vars. Estos overrides solo ajustan lo que el universal no cubre. */
 .input.sm,
-.select.sm { --_h: 28px; font-size: var(--text-sm); padding: var(--space-0) var(--space-2); border-radius: var(--radius-sm); }
+.select.sm { border-radius: var(--radius-sm); }
 .input.lg,
-.select.lg { --_h: 44px; font-size: var(--text-lg); padding: var(--space-0) var(--space-4); border-radius: var(--radius-lg); }
+.select.lg { border-radius: var(--radius-lg); }
 
 /* Textarea */
 .textarea {
   height: auto;
-  min-height: 88px;
+  min-height: 88px; /* TOKEN-MISSING: no hay token para 88px (~5 líneas de texto) */
   padding: var(--space-2-5) var(--space-3);
   resize: vertical;
   line-height: var(--leading-normal);
@@ -201,10 +200,10 @@
   top: 50%;
   transform: translateY(-50%);
   color: var(--ink-3);
-  width: 16px; height: 16px;
+  width: var(--icon-md); height: var(--icon-md);
   pointer-events: none;
 }
-.input-group__icon--left { left: 11px; }
+.input-group__icon--left { left: 11px; }  /* geometric offset: (height - icon) / 2 */
 .input-group__icon--right { right: 11px; }
 
 .input-group.with-left  .input { padding-left: 34px; }
@@ -242,10 +241,10 @@
 }
 .search__icon {
   position: absolute;
-  left: 11px;
+  left: 11px; /* geometric: (input-height - icon) / 2 offset */
   top: 50%;
   transform: translateY(-50%);
-  width: 16px; height: 16px;
+  width: var(--icon-md); height: var(--icon-md);
   color: var(--ink-3);
   pointer-events: none;
 }
@@ -263,7 +262,7 @@
   /* Hidden by default; only shown when the sibling input has content. */
   display: none;
   place-items: center;
-  font-size: 11px;
+  font-size: var(--text-2xs); /* was 11px literal; closest token is 10.5px */
   line-height: var(--leading-flat);
 }
 .search:has(input:not(:placeholder-shown)) .search__clear { display: grid; }
@@ -308,8 +307,8 @@
 
 .toggle {
   /* API canónica de override */
-  --toggle-width:        36px;
-  --toggle-height:       20px;
+  --toggle-width:        var(--size-md);  /* 36px */
+  --toggle-height:       20px;            /* TOKEN-REVIEW: no hay token exacto para 20px */
   --toggle-track-bg:     var(--bg-4);
   --toggle-track-border: var(--line-2);
   --toggle-thumb-bg:     var(--ink);
@@ -318,7 +317,7 @@
 
   --_w: var(--toggle-width);
   --_h: var(--toggle-height);
-  --_pad: 2px;
+  --_pad: var(--border-w-2); /* 2px — espacio interno del thumb */
   position: relative;
   display: inline-block;
   width: var(--_w);
@@ -347,12 +346,12 @@
   position: absolute;
   top: var(--_pad);
   left: var(--_pad);
-  width: calc(var(--_h) - 2 * var(--_pad) - 2px);
-  height: calc(var(--_h) - 2 * var(--_pad) - 2px);
+  width: calc(var(--_h) - 2 * var(--_pad) - var(--border-w-2));
+  height: calc(var(--_h) - 2 * var(--_pad) - var(--border-w-2));
   background: var(--toggle-thumb-bg);
   border-radius: var(--radius-circle);
   transition: transform var(--dur-base) var(--ease-spring), background var(--dur-base);
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  box-shadow: var(--shadow-sm);
 }
 
 .toggle input:checked + .toggle__track {
@@ -377,8 +376,8 @@
   cursor: not-allowed;
 }
 
-.toggle.sm { --toggle-width: 28px; --toggle-height: 16px; --_w: 28px; --_h: 16px; }
-.toggle.lg { --toggle-width: 44px; --toggle-height: 24px; --_w: 44px; --_h: 24px; }
+.toggle.sm { --toggle-width: var(--size-sm); --toggle-height: 16px; --_w: var(--size-sm); --_h: 16px; } /* height 16px: TOKEN-REVIEW */
+.toggle.lg { --toggle-width: var(--size-lg); --toggle-height: var(--space-6); --_w: var(--size-lg); --_h: var(--space-6); } /* space-6=24px */
 
 /* Toggle row — label + descripción + switch */
 .toggle-row {
@@ -400,7 +399,7 @@
 
 .check {
   /* API canónica de override */
-  --check-size:         16px;
+  --check-size:         var(--slider-thumb, 16px); /* reutiliza token global 16px */
   --check-background:   var(--bg-3);
   --check-border-color: var(--line-3);
   --check-accent:       var(--brand);
@@ -459,7 +458,7 @@
   top: 6px; left: 3px;
   width: 8px; height: var(--border-w-2);
   background: var(--check-accent-fg);
-  border-radius: 1px;
+  border-radius: var(--border-w); /* 1px */
 }
 
 .check input:focus-visible ~ .check__box {
@@ -485,7 +484,7 @@
 
 .radio {
   /* API canónica de override */
-  --radio-size:         16px;
+  --radio-size:         var(--slider-thumb, 16px); /* reutiliza token global 16px */
   --radio-background:   var(--bg-3);
   --radio-border-color: var(--line-3);
   --radio-accent:       var(--brand);
@@ -589,19 +588,19 @@ input[type="radio"]:disabled {
   cursor: pointer;
 }
 .range::-webkit-slider-runnable-track {
-  height: 4px;
+  height: var(--slider-track-h, 4px);
   background: var(--bg-4);
-  border-radius: 2px;
+  border-radius: var(--radius-pill);
 }
 .range::-moz-range-track {
-  height: 4px;
+  height: var(--slider-track-h, 4px);
   background: var(--bg-4);
-  border-radius: 2px;
+  border-radius: var(--radius-pill);
 }
 .range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 16px; height: 16px;
+  width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px);
   background: var(--brand-fg);
   border: var(--border-w-2) solid var(--brand);
   border-radius: var(--radius-circle);
@@ -610,7 +609,7 @@ input[type="radio"]:disabled {
   transition: transform var(--dur-fast);
 }
 .range::-moz-range-thumb {
-  width: 16px; height: 16px;
+  width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px);
   background: var(--brand-fg);
   border: var(--border-w-2) solid var(--brand);
   border-radius: var(--radius-circle);
@@ -640,7 +639,7 @@ input[type="radio"]:disabled {
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-xl);
-  padding: 18px;
+  padding: 18px; /* TOKEN-MISSING: no hay token para 18px (entre space-4:16px y space-5:20px) */
 }
 .form-section__title {
   font-family: var(--font-display);

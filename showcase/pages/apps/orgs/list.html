@@ -19,37 +19,37 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EX</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">Panel global</div>
+    <div class="head">
+      <div class="sidebar-logo">EX</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">Panel global</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg><span class="sidebar__label">Organizaciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="sidebar__label">Usuarios</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="sidebar__label">Equipamiento</span></button>
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/></svg><span class="item-label">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="item-label">Usuarios</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Equipamiento</span></button>
 
-      <div class="sidebar__group">Facturación</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span class="sidebar__label">Facturas</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="sidebar__label">Suscripciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Pagos</span></button>
+      <div class="label">Facturación</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><span class="item-label">Facturas</span></button>
+      <button class="item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="item-label">Suscripciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Pagos</span></button>
 
-      <div class="sidebar__group">Desarrollador</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span class="sidebar__label">Repositorios</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2 2 7l10 5 10-5z"/></svg><span class="sidebar__label">Stripe Connect</span></button>
+      <div class="label">Desarrollador</div>
+      <button class="item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="item-label">Módulos</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span class="item-label">Repositorios</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2 2 7l10 5 10-5z"/></svg><span class="item-label">Stripe Connect</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -57,26 +57,26 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Organizaciones</h1>
+        <h1 class="title">Organizaciones</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar organizaciones, hubs…"/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <button class="icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
         <span class="avatar sm brand">IB</span>
         </div>
@@ -200,40 +200,40 @@
 
       <div class="grid-2 hidden" data-show="$view === 'grid'">
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div style="display:flex;gap:12px;align-items:center;">
               <span class="avatar xl brand">AC</span>
               <div>
-                <div class="card__title">Acme Industries SL</div>
-                <div class="card__sub">Manufactura ligera</div>
+                <div class="title">Acme Industries SL</div>
+                <div class="sub">Manufactura ligera</div>
               </div>
             </div>
             <span class="badge info">Business</span>
           </header>
-          <div class="card__body" style="display:flex;gap:16px;font-size:13px;color:var(--ink-3);">
+          <div class="body" style="display:flex;gap:16px;font-size:13px;color:var(--ink-3);">
             <span><b class="c-ink">12</b> miembros</span>
             <span><b class="c-ink">5</b> hubs</span>
             <span class="tag brand sm">Owner</span>
           </div>
-          <footer class="card__footer"><span class="text-xs c-ink-3">Última actividad hace 2 h</span><button class="btn outline sm">Abrir</button></footer>
+          <footer class="footer"><span class="text-xs c-ink-3">Última actividad hace 2 h</span><button class="btn outline sm">Abrir</button></footer>
         </article>
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div style="display:flex;gap:12px;align-items:center;">
               <span class="avatar xl" style="background:#7B3F2A;color:#fff;">BC</span>
               <div>
-                <div class="card__title">Bodegas Casadejus</div>
-                <div class="card__sub">Vinos y crianza</div>
+                <div class="title">Bodegas Casadejus</div>
+                <div class="sub">Vinos y crianza</div>
               </div>
             </div>
             <span class="badge brand">Pro</span>
           </header>
-          <div class="card__body" style="display:flex;gap:16px;font-size:13px;color:var(--ink-3);">
+          <div class="body" style="display:flex;gap:16px;font-size:13px;color:var(--ink-3);">
             <span><b class="c-ink">7</b> miembros</span>
             <span><b class="c-ink">3</b> hubs</span>
             <span class="tag info sm">Admin</span>
           </div>
-          <footer class="card__footer"><span class="text-xs c-ink-3">Última actividad hace 1 d</span><button class="btn outline sm">Abrir</button></footer>
+          <footer class="footer"><span class="text-xs c-ink-3">Última actividad hace 1 d</span><button class="btn outline sm">Abrir</button></footer>
         </article>
       </div>
     </div>

@@ -7,24 +7,28 @@
 
 {% block content %}
 <h1>Card</h1>
-<p class="showcase__lead">Superficie con slot interno. El consumidor compone header / body / footer con las sub-clases <code>.ok-card__*</code>.</p>
+<p class="showcase__lead">Superficie con slot interno. El consumidor compone header / body / footer con las clases universales <code>.head</code>, <code>.body</code>, <code>.foot</code>, <code>.title</code>, <code>.sub</code>, <code>.actions</code>.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/card.jinja" import card %}
 {% call card() %}
-<div class="card__header">
-  <h3 class="card__title">Pedido #1024</h3>
-  <p class="card__sub">3 líneas · 87,40 €</p>
-</div>
-<div class="card__body">
+<header class="head">
+  <div class="heading">
+    <h3 class="title">Pedido #1024</h3>
+    <p class="sub">3 líneas · 87,40 €</p>
+  </div>
+</header>
+<div class="body">
   <p>Cliente: Juan Pérez · Mesa 7</p>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Card>
-<div class="card__header">
-  <h3 class="card__title">Pedido #1024</h3>
-  <p class="card__sub">3 líneas · 87,40 €</p>
-</div>
-<div class="card__body">
+<header class="head">
+  <div class="heading">
+    <h3 class="title">Pedido #1024</h3>
+    <p class="sub">3 líneas · 87,40 €</p>
+  </div>
+</header>
+<div class="body">
   <p>Cliente: Juan Pérez · Mesa 7</p>
 </div>
 </Card>{% endraw %}{% endset %}
@@ -33,11 +37,13 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call card() %}
-<div class="card__header">
-  <h3 class="card__title">Pedido #1024</h3>
-  <p class="card__sub">3 líneas · 87,40 €</p>
-</div>
-<div class="card__body">
+<header class="head">
+  <div class="heading">
+    <h3 class="title">Pedido #1024</h3>
+    <p class="sub">3 líneas · 87,40 €</p>
+  </div>
+</header>
+<div class="body">
   <p>Cliente: Juan Pérez · Mesa 7</p>
 </div>
 {% endcall %}
@@ -46,57 +52,63 @@
 {% set _src_jinja_2 %}{% raw %}{% from "ui/button.jinja" import button %}
 {% from "ui/card.jinja" import card %}
 {% call card() %}
-<div class="card__header">
-  <h3 class="card__title">Inventario bajo</h3>
-</div>
-<div class="card__body">
+<header class="head">
+  <div class="heading">
+    <h3 class="title">Inventario bajo</h3>
+  </div>
+</header>
+<div class="body">
   <p>5 referencias por debajo del umbral mínimo.</p>
 </div>
-<div class="card__footer">
+<footer class="foot">
   {{ button("Ver detalle", variant="primary", size="sm") }}
   {{ button("Ignorar", variant="ghost", size="sm") }}
-</div>
+</footer>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Card>
-<div class="card__header">
-  <h3 class="card__title">Inventario bajo</h3>
-</div>
-<div class="card__body">
+<header class="head">
+  <div class="heading">
+    <h3 class="title">Inventario bajo</h3>
+  </div>
+</header>
+<div class="body">
   <p>5 referencias por debajo del umbral mínimo.</p>
 </div>
-<div class="card__footer">
+<footer class="foot">
   <Button label="Ver detalle" variant="primary" size="sm" />
   <Button label="Ignorar" variant="ghost" size="sm" />
-</div>
+</footer>
 </Card>{% endraw %}{% endset %}
 
 {% call demo_frame("Con footer",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call card() %}
-<div class="card__header">
-  <h3 class="card__title">Inventario bajo</h3>
-</div>
-<div class="card__body">
+<header class="head">
+  <div class="heading">
+    <h3 class="title">Inventario bajo</h3>
+  </div>
+</header>
+<div class="body">
   <p>5 referencias por debajo del umbral mínimo.</p>
 </div>
-<div class="card__footer">
+<footer class="foot">
   {{ button("Ver detalle", variant="primary", size="sm") }}
   {{ button("Ignorar", variant="ghost", size="sm") }}
-</div>
+</footer>
 {% endcall %}
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/card.jinja" import card %}
 {% call card(variant="elevated") %}
-<div class="card__body">
-  <h3 class="card__title">Elevated</h3>
+<div class="body">
+  <h3 class="title">Elevated</h3>
   <p>Card con sombra más pronunciada.</p>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Card variant="elevated">
-<div class="card__body">
-  <h3 class="card__title">Elevated</h3>
+<div class="body">
+  <h3 class="title">Elevated</h3>
   <p>Card con sombra más pronunciada.</p>
 </div>
 </Card>{% endraw %}{% endset %}
@@ -105,8 +117,8 @@
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {% call card(variant="elevated") %}
-<div class="card__body">
-  <h3 class="card__title">Elevated</h3>
+<div class="body">
+  <h3 class="title">Elevated</h3>
   <p>Card con sombra más pronunciada.</p>
 </div>
 {% endcall %}
@@ -114,14 +126,14 @@
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/card.jinja" import card %}
 {% call card(interactive=True) %}
-<div class="card__body">
-  <h3 class="card__title">Interactive</h3>
+<div class="body">
+  <h3 class="title">Interactive</h3>
   <p>Pasa el ratón por encima.</p>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_4 %}{% raw %}<Card interactive>
-<div class="card__body">
-  <h3 class="card__title">Interactive</h3>
+<div class="body">
+  <h3 class="title">Interactive</h3>
   <p>Pasa el ratón por encima.</p>
 </div>
 </Card>{% endraw %}{% endset %}
@@ -130,8 +142,8 @@
     jinja_src=_src_jinja_4,
     jinjax_src=_src_jinjax_4) %}
 {% call card(interactive=True) %}
-<div class="card__body">
-  <h3 class="card__title">Interactive</h3>
+<div class="body">
+  <h3 class="title">Interactive</h3>
   <p>Pasa el ratón por encima.</p>
 </div>
 {% endcall %}
@@ -144,7 +156,7 @@
     <tr><td><code>variant</code></td><td>"default"|"flat"|"elevated"|"glass"</td><td>"default"</td><td>Estilo visual.</td></tr>
     <tr><td><code>interactive</code></td><td>bool</td><td>false</td><td>Activa hover state.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido (header, body, footer composables).</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido — componer con <code>.head</code>, <code>.body</code>, <code>.foot</code>, <code>.title</code>, <code>.sub</code>, <code>.actions</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

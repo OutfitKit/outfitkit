@@ -34,7 +34,7 @@
   color: var(--crumbs-color);
   text-decoration: none;
   white-space: nowrap;
-  max-width: 220px;
+  max-width: var(--crumb-max-w, 220px);
   overflow: hidden;
   text-overflow: ellipsis;
   transition: background var(--dur-fast), color var(--dur-fast);
@@ -49,8 +49,11 @@
   cursor: default;
   pointer-events: none;
 }
+
+/* Icon — use <svg class="icon"> or keep .crumbs__icon for specificity */
 .crumbs__icon {
-  width: 13px; height: 13px;
+  width: var(--crumb-icon-size, 13px);
+  height: var(--crumb-icon-size, 13px);
   flex-shrink: 0;
   color: var(--ink-3);
 }
@@ -60,7 +63,11 @@
   padding: var(--space-0) var(--border-w);
   user-select: none;
 }
-.crumbs__sep svg { width: 11px; height: 11px; display: block; }
+.crumbs__sep svg {
+  width: var(--crumb-sep-size, 11px);
+  height: var(--crumb-sep-size, 11px);
+  display: block;
+}
 
 /* Overflow item — el "..." que abre menu con padres ocultos */
 .crumbs__more {
@@ -83,7 +90,7 @@
 .crumbs.sm { font-size: var(--text-xs); gap: var(--space-0); }
 .crumbs.sm .crumbs__item { padding: var(--border-w-2) 5px; }
 
-/* Variante "stack" — cada item es chip pill (apps modernas tipo Linear) */
+/* Variante "chips" — cada item es chip pill */
 .crumbs.chips .crumbs__item {
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
@@ -95,7 +102,7 @@
 
 
 /* ============================================================
-   2. NAVBAR  ·  .navbar
+   2. NAVBAR  ·  .navbar  (navigation.css version — app navbar)
    Top bar de aplicación (no marketing) — logo + nav links + CTAs
    ============================================================ */
 .navbar {
@@ -116,6 +123,7 @@
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
+/* Brand — use <a class="navbar__brand"> */
 .navbar__brand {
   display: inline-flex;
   align-items: center;
@@ -129,8 +137,8 @@
   flex-shrink: 0;
 }
 .navbar__logo {
-  width: 26px; height: 26px;
-  border-radius: 7px;
+  width: var(--navbar-logo-size, 26px); height: var(--navbar-logo-size, 26px);
+  border-radius: var(--navbar-logo-r, 7px);
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
   color: var(--brand-fg);
   display: grid; place-items: center;
@@ -148,7 +156,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
-  height: 30px;
+  height: var(--navbar-item-h, 30px);
   padding: var(--space-0) var(--space-3);
   border-radius: var(--radius-md);
   font-size: var(--text-md);
@@ -179,6 +187,7 @@
   background: var(--line);
   margin: var(--space-0) var(--space-1);
 }
+/* Actions — use <div class="actions"> or .navbar__actions for specificity */
 .navbar__actions {
   display: inline-flex;
   align-items: center;
@@ -207,6 +216,7 @@
   display: flex; flex-direction: column; gap: var(--space-1);
   min-width: 0;
 }
+/* Mega-menu title — use <div class="label"> */
 .navbar__mega-title {
   font-size: var(--text-2xs);
   font-weight: 500;
@@ -234,6 +244,7 @@
   display: grid; place-items: center;
 }
 .navbar__mega-item-icon svg { width: 15px; height: 15px; }
+/* Item title/desc — use <p class="title sm"> / <p class="meta"> */
 .navbar__mega-item-title { font-size: 13px; font-weight: 500; }
 .navbar__mega-item-desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: var(--border-w-2); line-height: var(--leading-base); }
 
@@ -281,12 +292,14 @@
   flex-shrink: 0;
 }
 .accordion__icon svg { width: var(--icon-sm); height: var(--icon-sm); }
+/* Title — use <span class="title md"> or keep .accordion__title */
 .accordion__title {
   font-size: var(--text-md);
   font-weight: 500;
   color: var(--ink);
   min-width: 0;
 }
+/* Sub — use <span class="sub xs"> or keep .accordion__sub */
 .accordion__sub {
   display: block;
   font-size: var(--text-xs);
@@ -295,6 +308,7 @@
   margin-top: var(--border-w-2);
   line-height: var(--leading-base);
 }
+/* Meta — use <span class="meta"> or keep .accordion__meta */
 .accordion__meta {
   font-size: var(--text-xs);
   color: var(--ink-3);
@@ -331,7 +345,7 @@
   display: block;
 }
 
-/* Variante: ghost (sin borde, separadores discretos) */
+/* Variante: ghost */
 .accordion.ghost {
   background: transparent;
   border: none;
@@ -402,7 +416,7 @@
 }
 
 .list__icon {
-  width: 30px; height: 30px;
+  width: var(--list-icon-size, 30px); height: var(--list-icon-size, 30px);
   border-radius: var(--radius-md);
   background: var(--bg-3);
   color: var(--ink-2);
@@ -417,6 +431,7 @@
 .list__icon--info   { background: var(--info-soft);   color: var(--info); }
 
 .list__body { min-width: 0; }
+/* Title — use <p class="title md"> or .list__title */
 .list__title {
   font-size: var(--text-md);
   font-weight: 500;
@@ -426,6 +441,7 @@
   gap: var(--space-2);
   flex-wrap: wrap;
 }
+/* Desc — use <p class="meta"> or .list__desc */
 .list__desc {
   font-size: var(--text-xs);
   color: var(--ink-3);
@@ -469,10 +485,6 @@
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
 }
-/* Items in --separated are individual cards with their own border.
-   Cancel the default hairline border-top inherited from
-   `.list__item + .list__item` so we don't render both the per-item
-   border AND a separator. The 6px container gap provides spacing. */
 .list.separated .list__item + .list__item { border-top: none; }
 
 .list.dense .list__item { padding: 7px var(--space-3); gap: var(--space-2-5); }
@@ -488,7 +500,7 @@
   font-family: inherit;
   font-size: var(--text-sm);
   color: var(--ink);
-  --tree-indent: 18px;
+  --tree-indent: var(--tree-indent, 18px);
   padding: var(--space-1);
 }
 .tree__node {
@@ -542,10 +554,10 @@
   transform: rotate(90deg);
   color: var(--ink);
 }
-.tree__caret svg { width: 11px; height: 11px; }
+.tree__caret svg { width: var(--tree-caret-size, 11px); height: var(--tree-caret-size, 11px); }
 .tree__caret--leaf { visibility: hidden; }
 .tree__icon {
-  width: 16px; height: 16px;
+  width: var(--tree-icon-size, 16px); height: var(--tree-icon-size, 16px);
   display: grid; place-items: center;
   color: var(--ink-3);
   flex-shrink: 0;
@@ -554,12 +566,14 @@
 .tree__icon--folder { color: color-mix(in oklch, var(--brand) 65%, var(--ink-3)); }
 .tree__icon--file   { color: var(--ink-3); }
 
+/* Label — use <span> or .tree__label */
 .tree__label {
   font-size: var(--text-sm);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
+/* Meta — use <span class="meta"> or .tree__meta */
 .tree__meta {
   font-size: var(--text-2xs);
   color: var(--ink-3);
@@ -590,21 +604,15 @@
 .tree.dense .tree__row { height: var(--avatar-2xs); padding: var(--space-0) var(--space-1); }
 .tree.dense .tree__label { font-size: var(--text-xs); }
 .tree.dense .tree__children { margin-left: 9px; padding-left: var(--space-1-5); }
-/* En dense, file-tree IDE: folders se distinguen del archivo con un acento
-   más cálido para que la vista sea legible de un vistazo. */
 .tree.dense .tree__icon--folder { color: var(--warn); }
 .tree.dense .tree__icon--file   { color: var(--ink-3); }
 
 
 /* ============================================================
    6. STEPPER AVANZADO  (extiende .stepper de timeline.css)
-   - .stepper.segments  → barra de progreso por bloques
-   - .stepper__substep   → sub-pasos dentro del paso vertical
-   - .stepper.compact   → numbers + line indicator (mobile)
-   - .stepper.cards     → tarjetas clicables stacked
    ============================================================ */
 
-/* Segmented progress bar (1 / 5 · 20%) */
+/* Segmented progress bar */
 .stepper-progress {
   display: flex;
   align-items: center;
@@ -677,7 +685,7 @@
 }
 .stepper__substep--active { color: var(--ink); font-weight: 500; }
 
-/* Compact mobile: "Paso 2 de 5 · Datos del cliente" */
+/* Compact mobile: "Paso 2 de 5" */
 .stepper-compact {
   display: flex;
   flex-direction: column;
@@ -687,6 +695,7 @@
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-lg);
 }
+/* Use <div class="row"> for stepper-compact head */
 .stepper-compact__head {
   display: flex;
   align-items: center;
@@ -790,12 +799,11 @@
   --menubar-background:   var(--bg-1);
   --menubar-border-color: var(--line);
   --menubar-color:        var(--ink-2);
-  --menubar-height:       32px;
-  --menubar-trigger-pad:  10px;
-  --menubar-panel-min-w:  220px;
+  --menubar-height:       var(--mbar-h, 32px);
+  --menubar-panel-min-w:  var(--mbar-panel-min-w, 220px);
 
   --_mbar-h:             var(--menubar-height);
-  --_mbar-trigger-pad-x: var(--menubar-trigger-pad);
+  --_mbar-trigger-pad-x: var(--mbar-pad-x, 10px);
   --_mbar-panel-min-w:   var(--menubar-panel-min-w);
 
   position: relative;
@@ -868,7 +876,7 @@
   flex-shrink: 0;
 }
 
-/* Trailing meta (e.g. version chip) — pushed to the right end of the bar */
+/* Trailing meta — use <span class="meta"> or keep .menubar__version */
 .menubar__version,
 .menubar__meta {
   margin-left: auto;
@@ -958,9 +966,9 @@
 }
 .menubar__submenu svg { width: var(--icon-2xs); height: var(--icon-2xs); }
 
-/* Variant: compact (smaller height, reduced padding) */
+/* Variant: compact */
 .menubar.compact {
-  --_mbar-h: 26px;
+  --_mbar-h: var(--mbar-h-compact, 26px);
   --_mbar-trigger-pad-x: 8px;
   font-size: var(--text-xs);
 }
@@ -968,7 +976,7 @@
 .menubar.compact .menubar__menu { font-size: var(--text-xs); }
 .menubar.compact .menubar__item { padding: 5px var(--space-2); }
 
-/* Variant: floating (macOS-like, detached look) */
+/* Variant: floating (macOS-like) */
 .menubar.floating {
   margin: var(--space-2);
   border: var(--border-w) solid var(--line-2);
@@ -980,11 +988,6 @@
   -webkit-backdrop-filter: blur(14px);
 }
 
-/* Active item — floating + compact. The base `.is-open / aria-expanded`
-   rule paints `--bg-3`, which on dark glass backgrounds is barely
-   distinguishable from the inactive background. Here we strengthen it
-   with a brand-tinted bg + brand bottom-border so the open menu (or an
-   explicit `aria-current="page"`) reads at a glance in any theme. */
 .menubar.floating .menubar__menu[aria-current="page"],
 .menubar.floating .menubar__menu.is-active,
 .menubar.floating .menubar__menu.is-open,
@@ -998,10 +1001,9 @@
 
 /* ============================================================
    8. SCHEDULER  ·  .scheduler
-   Appointment scheduler — week × hours grid with appointment blocks
    ============================================================ */
 .scheduler {
-  --_sch-row-h: 40px;          /* default hour row */
+  --_sch-row-h: 40px;
   --_sch-time-col-w: 60px;
   --_sch-days: 7;
   --_sch-hours: 24;
@@ -1021,7 +1023,7 @@
   min-height: 0;
 }
 
-/* Header row spans both columns */
+/* Header row — use <div class="head"> or .scheduler__head */
 .scheduler__head {
   grid-column: 1 / -1;
   display: grid;
@@ -1065,7 +1067,6 @@
   background: color-mix(in oklch, var(--brand) 6%, var(--bg-1));
 }
 
-/* Time column (left) */
 .scheduler__time-col {
   display: grid;
   grid-auto-rows: var(--_sch-row-h);
@@ -1082,7 +1083,6 @@
   line-height: var(--leading-flat);
 }
 
-/* Grid (7 days × N hours, with quarter-hour soft lines) */
 .scheduler__grid {
   display: grid;
   grid-template-columns: repeat(var(--_sch-days), 1fr);
@@ -1094,7 +1094,6 @@
   position: relative;
   min-height: var(--_sch-row-h);
   cursor: pointer;
-  /* hour line bottom + 3 soft dashed quarter-hour guides */
   background-image:
     linear-gradient(to bottom,
       transparent 0,
@@ -1111,7 +1110,6 @@
 }
 .scheduler__cell:last-child { border-right: none; }
 .scheduler__cell:hover { background-color: color-mix(in oklch, var(--brand) 4%, transparent); }
-
 .scheduler__cell.is-selecting {
   background-color: color-mix(in oklch, var(--brand) 18%, transparent);
 }
@@ -1128,7 +1126,6 @@
   cursor: not-allowed;
 }
 
-/* Appointment block — placed via inline style top/height */
 .scheduler__appointment {
   position: absolute;
   left: 4px;
@@ -1176,7 +1173,6 @@
   line-height: 1.2;
 }
 
-/* Color variants per category */
 .scheduler__appointment--brand {
   background: color-mix(in oklch, var(--brand) 22%, var(--bg-2));
   border-left-color: var(--brand);
@@ -1198,7 +1194,6 @@
   border-left-color: var(--info);
 }
 
-/* Now line — red horizontal across all days */
 .scheduler__now {
   position: absolute;
   left: 0;
@@ -1218,11 +1213,9 @@
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--danger) 28%, transparent);
 }
 
-/* Sizes */
 .scheduler.sm { --_sch-row-h: 30px; }
 .scheduler.lg { --_sch-row-h: 60px; }
 
-/* Variant: single-day, taller */
 .scheduler.day {
   --_sch-days: 1;
   --_sch-row-h: 64px;

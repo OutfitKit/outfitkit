@@ -6,30 +6,33 @@
 
 /* ============================================================
    1) Rich text editor — toolbar + área de contenido
+   Composición universal:
+     <div class="richtext">
+       <header class="head" role="toolbar">…botones…</header>
+       <div class="body" contenteditable="true">…</div>
+       <footer class="foot">…wordcount…</footer>
+     </div>
+   Los elementos internos de toolbar (btn, select, divider, spacer)
+   conservan BEM pues son específicos de richtext.
    ============================================================ */
 .richtext {
-  /* API canónica de override */
-  --richtext-background:   var(--bg-2);
-  --richtext-color:        var(--ink);
-  --richtext-border-color: var(--line);
-  --richtext-border-radius: var(--radius-lg);
-  --richtext-toolbar-bg:   var(--bg-1);
-  --richtext-padding:      var(--space-3);
-  --richtext-min-height:   200px;
-
-  --_rt-pad:        var(--richtext-padding);
-  --_rt-min-h:      var(--richtext-min-height);
-  --_rt-radius:     var(--richtext-border-radius);
-  --_rt-toolbar-bg: var(--richtext-toolbar-bg);
+  /* API canónica de override — consume vars universales */
+  --background:  var(--bg-2);
+  --color:       var(--ink);
+  --border-color: var(--line);
+  --radius:      var(--radius-lg);
+  --_rt-toolbar-bg: var(--bg-1);
+  --_rt-pad:     var(--space-3);
+  --_rt-min-h:   200px;
 
   display: flex;
   flex-direction: column;
-  background: var(--richtext-background);
-  border: var(--border-w) solid var(--richtext-border-color);
-  border-radius: var(--_rt-radius);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius);
   overflow: hidden;
   font-size: var(--text-sm);
-  color: var(--richtext-color);
+  color: var(--color);
   transition: border-color var(--dur-fast) var(--ease-out),
               box-shadow var(--dur-fast) var(--ease-out);
 }
@@ -39,8 +42,8 @@
   box-shadow: var(--shadow-glow);
 }
 
-/* Toolbar */
-.richtext__toolbar {
+/* Toolbar — universal .head override scoped to richtext */
+.richtext > .head {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -48,7 +51,7 @@
   padding: var(--space-1) var(--space-2);
   background: var(--_rt-toolbar-bg);
   border-bottom: var(--border-w) solid var(--line);
-  min-height: 38px;
+  min-height: var(--editor-toolbar-h, 38px);
 }
 
 .richtext__btn {
@@ -84,7 +87,11 @@
   stroke-width: 2;
 }
 
-.richtext__divider {
+/* Vertical divider en toolbar — expresado como .divider.vertical con
+   override scoped. El consumidor puede usar <span class="richtext__divider">
+   o <hr class="divider vertical"> dentro de .richtext > .head. */
+.richtext__divider,
+.richtext > .head > .divider {
   width: var(--border-w);
   height: var(--icon-md);
   background: var(--line-2);
@@ -107,8 +114,9 @@
 
 .richtext__spacer { flex: 1; }
 
-/* Content area */
-.richtext__content {
+/* Content area — universal .body override scoped to richtext.
+   El consumidor usa <div class="body" contenteditable="true">. */
+.richtext > .body {
   min-height: var(--_rt-min-h);
   padding: var(--_rt-pad);
   outline: 0;
@@ -118,59 +126,59 @@
   color: var(--ink);
   overflow-y: auto;
 }
-.richtext__content:empty::before {
+.richtext > .body:empty::before {
   content: attr(data-placeholder);
   color: var(--ink-4);
   pointer-events: none;
 }
 
-.richtext__content > *:first-child { margin-top: var(--space-0); }
-.richtext__content > *:last-child  { margin-bottom: var(--space-0); }
+.richtext > .body > *:first-child { margin-top: var(--space-0); }
+.richtext > .body > *:last-child  { margin-bottom: var(--space-0); }
 
-.richtext__content p {
+.richtext > .body p {
   margin: var(--space-0) var(--space-0) var(--space-3);
 }
 
-.richtext__content h1,
-.richtext__content h2,
-.richtext__content h3,
-.richtext__content h4 {
+.richtext > .body h1,
+.richtext > .body h2,
+.richtext > .body h3,
+.richtext > .body h4 {
   font-family: var(--font-display);
   letter-spacing: var(--tracking-tight);
   color: var(--ink);
   margin: var(--space-4) var(--space-0) var(--space-2);
   line-height: var(--leading-tight);
 }
-.richtext__content h1 { font-size: var(--text-2xl); font-weight: 600; }
-.richtext__content h2 { font-size: var(--text-xl);  font-weight: 600; }
-.richtext__content h3 { font-size: var(--text-lg);  font-weight: 600; }
-.richtext__content h4 { font-size: var(--text-md);  font-weight: 600; }
+.richtext > .body h1 { font-size: var(--text-2xl); font-weight: 600; }
+.richtext > .body h2 { font-size: var(--text-xl);  font-weight: 600; }
+.richtext > .body h3 { font-size: var(--text-lg);  font-weight: 600; }
+.richtext > .body h4 { font-size: var(--text-md);  font-weight: 600; }
 
-/* Re-enable list markers inside the content area (base.css resets `list-style: none` globally) */
-.richtext__content ul {
+/* Re-enable list markers (base.css resets list-style globally) */
+.richtext > .body ul {
   list-style: disc;
   margin: var(--space-0) var(--space-0) var(--space-3);
   padding-left: var(--space-5);
 }
-.richtext__content ol {
+.richtext > .body ol {
   list-style: decimal;
   margin: var(--space-0) var(--space-0) var(--space-3);
   padding-left: var(--space-5);
 }
-.richtext__content ul ul     { list-style: circle; }
-.richtext__content ul ul ul  { list-style: square; }
-.richtext__content li { margin-bottom: var(--space-1); }
-.richtext__content li::marker { color: var(--ink-3); }
+.richtext > .body ul ul     { list-style: circle; }
+.richtext > .body ul ul ul  { list-style: square; }
+.richtext > .body li { margin-bottom: var(--space-1); }
+.richtext > .body li::marker { color: var(--ink-3); }
 
-.richtext__content a {
+.richtext > .body a {
   color: var(--brand-3);
   text-decoration: underline;
   text-underline-offset: 2px;
   text-decoration-color: color-mix(in oklch, var(--brand-3) 50%, transparent);
 }
-.richtext__content a:hover { color: var(--brand); }
+.richtext > .body a:hover { color: var(--brand); }
 
-.richtext__content code {
+.richtext > .body code {
   font-family: var(--font-mono);
   font-size: 0.9em;
   background: var(--bg-3);
@@ -179,7 +187,7 @@
   padding: var(--border-w) var(--space-1-5);
   color: var(--ink);
 }
-.richtext__content pre {
+.richtext > .body pre {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   background: var(--bg-1);
@@ -190,40 +198,41 @@
   margin: var(--space-0) var(--space-0) var(--space-3);
   line-height: 1.55;
 }
-.richtext__content pre code {
+.richtext > .body pre code {
   background: transparent;
   border: 0;
   padding: var(--space-0);
 }
 
-.richtext__content blockquote {
+.richtext > .body blockquote {
   margin: var(--space-0) var(--space-0) var(--space-3);
   padding: var(--space-1) var(--space-3);
-  border-left: 3px solid var(--brand);
+  border-left: var(--border-w-2) solid var(--brand);
   color: var(--ink-2);
   background: color-mix(in oklch, var(--brand) 6%, transparent);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-style: italic;
 }
 
-.richtext__content hr {
+.richtext > .body hr {
   border: 0;
   border-top: var(--border-w) solid var(--line-2);
   margin: var(--space-4) var(--space-0);
 }
 
-.richtext__content strong { font-weight: 600; color: var(--ink); }
-.richtext__content em     { font-style: italic; }
-.richtext__content u      { text-decoration: underline; text-underline-offset: 2px; }
-.richtext__content mark {
+.richtext > .body strong { font-weight: 600; color: var(--ink); }
+.richtext > .body em     { font-style: italic; }
+.richtext > .body u      { text-decoration: underline; text-underline-offset: 2px; }
+.richtext > .body mark {
   background: color-mix(in oklch, var(--warn) 28%, transparent);
   color: var(--ink);
   padding: var(--space-0) var(--border-w-2);
-  border-radius: 2px;
+  border-radius: var(--border-w);
 }
 
-/* Footer */
-.richtext__footer {
+/* Footer — universal .foot override scoped to richtext.
+   El consumidor usa <footer class="foot">. */
+.richtext > .foot {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -237,7 +246,7 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  min-height: 26px;
+  min-height: 26px; /* TOKEN-REVIEW: no hay token exacto para 26px */
 }
 
 /* Sizes */
@@ -248,21 +257,21 @@
 }
 .richtext.sm .richtext__btn { width: var(--avatar-2xs); height: var(--avatar-2xs); }
 .richtext.sm .richtext__btn svg { width: var(--icon-xs); height: var(--icon-xs); }
-.richtext.sm .richtext__content { font-size: var(--text-sm); }
+.richtext.sm > .body { font-size: var(--text-sm); }
 
 .richtext.lg {
   --_rt-min-h: 320px;
   --_rt-pad: var(--space-5);
 }
 .richtext.lg .richtext__btn { width: var(--avatar-sm); height: var(--avatar-sm); }
-.richtext.lg .richtext__btn svg { width: 16px; height: 16px; }
-.richtext.lg .richtext__content { font-size: var(--text-base); }
+.richtext.lg .richtext__btn svg { width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px); }
+.richtext.lg > .body { font-size: var(--text-base); }
 
 /* Minimal — sin toolbar/footer, solo edición inline */
 .richtext.minimal { background: transparent; }
-.richtext.minimal .richtext__toolbar,
-.richtext.minimal .richtext__footer { display: none; }
-.richtext.minimal .richtext__content { min-height: auto; }
+.richtext.minimal > .head,
+.richtext.minimal > .foot { display: none; }
+.richtext.minimal > .body { min-height: auto; }
 
 
 /* ============================================================

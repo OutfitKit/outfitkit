@@ -26,14 +26,11 @@
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: var(--space-3);
 }
-.datepicker__title {
-  font-size: var(--text-md); font-weight: 500; color: var(--ink);
-}
 .datepicker__nav {
   display: inline-flex; gap: var(--border-w-2);
 }
 .datepicker__nav-btn {
-  width: 26px; height: 26px;
+  width: var(--size-sm); height: var(--size-sm);
   border-radius: var(--radius-sm);
   background: transparent; border: 0;
   color: var(--ink-3);
@@ -65,7 +62,7 @@
 .datepicker__day--muted { color: var(--ink-4); }
 .datepicker__day--today { color: var(--datepicker-accent-text); font-weight: 600; }
 .datepicker__day--today::after {
-  content: ""; position: absolute; bottom: 4px; left: 50%; transform: translateX(-50%);
+  content: ""; position: absolute; bottom: var(--space-1); left: 50%; transform: translateX(-50%);
   width: 3px; height: 3px; border-radius: var(--radius-circle); background: var(--datepicker-accent-text);
 }
 .datepicker__day--selected {
@@ -93,7 +90,7 @@
 }
 .datepicker__shortcut {
   font-size: var(--text-2xs);
-  padding: 3px var(--space-2);
+  padding: var(--space-1) var(--space-2);
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-pill);
@@ -107,7 +104,7 @@
   width: 580px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 22px;
+  gap: var(--space-6);
 }
 .datepicker.range > .datepicker__head { grid-column: 1 / -1; }
 .datepicker.range > .datepicker__footer { grid-column: 1 / -1; }
@@ -137,16 +134,16 @@
   scrollbar-width: thin;
   -webkit-overflow-scrolling: touch;
   border-right: var(--border-w) solid var(--timepicker-border-color);
-  /* Fade top and bottom 32px so clipped rows blend out instead of cutting hard */
+  /* Fade top and bottom --space-7 so clipped rows blend out instead of cutting hard */
   mask-image: linear-gradient(to bottom,
     transparent 0,
-    black 32px,
-    black calc(100% - 32px),
+    black var(--space-7),
+    black calc(100% - var(--space-7)),
     transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom,
     transparent 0,
-    black 32px,
-    black calc(100% - 32px),
+    black var(--space-7),
+    black calc(100% - var(--space-7)),
     transparent 100%);
   /* Pad column so first/last items can snap to the centred active row */
   padding-block: calc(50% - var(--space-4));
@@ -203,7 +200,7 @@
 .colorpicker__swatch[aria-pressed="true"],
 .colorpicker__swatch[aria-pressed=""] {
   outline: var(--border-w-2) solid var(--colorpicker-accent);
-  outline-offset: 2px;
+  outline-offset: var(--border-w-2);
 }
 
 /* ============================================================
@@ -250,7 +247,7 @@
 }
 /* lg — hero/auth screens; the "OTP feel" with letter-spacing + bold */
 .otp.lg .otp__cell {
-  width: var(--icon-2xl); height: 68px;
+  width: var(--icon-2xl); height: 68px; /* TOKEN-MISSING: --otp-cell-lg-h */
   font-size: var(--text-2xl);
   font-weight: 600;
   letter-spacing: var(--tracking-near);
@@ -278,7 +275,7 @@
   border: var(--border-w) solid var(--pinpad-border-color);
   border-radius: var(--radius-md);
   font-family: var(--font-display);
-  font-size: 22px; font-weight: 500;
+  font-size: var(--text-xl); font-weight: 500; /* TOKEN-MISSING: --pinpad-key-fz (22px, between --text-xl 19px and --text-2xl 24px) */
   color: var(--ink);
   cursor: pointer;
   display: grid; place-items: center;
@@ -318,16 +315,11 @@
 }
 .rating__star:hover { transform: scale(1.15); }
 .rating__star--filled { color: var(--rating-color-filled); }
-.rating__label {
-  margin-left: var(--space-1-5);
-  font-size: var(--text-sm);
-  color: var(--ink-3);
+/* .rating .label and .rating .meta: use universal compositives */
+.rating > .label,
+.rating > .meta {
   font-variant-numeric: tabular-nums;
-}
-.rating__placeholder {
-  color: var(--ink-3);
-  font-size: var(--text-sm);
-  margin-left: var(--space-2);
+  margin-left: var(--space-1-5);
 }
 .rating.lg .rating__star { width: var(--avatar-2xs); height: var(--avatar-2xs); }
 .rating.sm .rating__star { width: var(--icon-sm); height: var(--icon-sm); }
@@ -338,19 +330,19 @@
    Autocomplete · Combobox
    ============================================================ */
 .autocomplete {
-  /* API canónica de override */
-  --autocomplete-background:    var(--bg-1);
-  --autocomplete-border-color:  var(--line);
-  --autocomplete-border-radius: var(--radius-md);
-  --autocomplete-accent:        var(--brand-3);
+  /* API canónica de override — consume vars universales */
+  --background:    var(--bg-1);
+  --border-color:  var(--line);
+  --radius:        var(--radius-md);
+  --autocomplete-accent: var(--brand-3); /* TOKEN-REVIEW: específico del componente */
 
   position: relative;
 }
 .autocomplete__list {
   position: absolute; top: calc(100% + 4px); left: 0; right: 0;
-  background: var(--autocomplete-background);
-  border: var(--border-w) solid var(--autocomplete-border-color);
-  border-radius: var(--autocomplete-border-radius);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius);
   box-shadow: var(--shadow-md);
   max-height: 280px; overflow-y: auto;
   padding: var(--space-1);
@@ -358,7 +350,7 @@
 }
 .autocomplete__opt {
   display: flex; align-items: center; gap: var(--space-2-5);
-  padding: 7px var(--space-2-5);
+  padding: 7px var(--space-2-5); /* TOKEN-MISSING: no hay token para 7px */
   border-radius: var(--radius-sm);
   font-size: var(--text-md);
   color: var(--ink-2);
@@ -394,7 +386,7 @@
   padding: var(--space-2) var(--space-2-5) var(--space-1);
 }
 .autocomplete__empty {
-  padding: 18px;
+  padding: 18px; /* TOKEN-MISSING: no hay token para 18px */
   text-align: center;
   font-size: var(--text-sm);
   color: var(--ink-4);
@@ -402,20 +394,21 @@
 
 /* Tag input multi-select (ej. asignar etiquetas a un producto) */
 .tag-input {
-  /* API canónica de override */
-  --tag-input-background:    var(--bg-1);
-  --tag-input-border-color:  var(--line-2);
-  --tag-input-border-radius: var(--radius-md);
-  --tag-input-accent:        var(--brand);
-  --tag-input-accent-soft:   var(--brand-soft);
+  /* API canónica de override — consume vars universales */
+  --background:   var(--bg-1);
+  --border-color: var(--line-2);
+  --radius:       var(--radius-md);
+  /* accent y accent-soft son específicos de focus-ring, sin equivalente universal */
+  --tag-input-accent:      var(--brand);
+  --tag-input-accent-soft: var(--brand-soft);
 
   display: inline-flex; flex-wrap: wrap; gap: var(--space-1-5);
   align-items: center;
   padding: var(--space-1-5) var(--space-2-5);
   min-height: var(--size-md);
-  background: var(--tag-input-background);
-  border: var(--border-w) solid var(--tag-input-border-color);
-  border-radius: var(--tag-input-border-radius);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius);
   width: 100%;
 }
 .tag-input:focus-within { border-color: var(--tag-input-accent); box-shadow: 0 0 0 3px var(--tag-input-accent-soft); }

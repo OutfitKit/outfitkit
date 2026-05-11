@@ -58,32 +58,32 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EX</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">Acme Industries</div>
+    <div class="head">
+      <div class="sidebar-logo">EX</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">Acme Industries</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="sidebar__label">Equipamiento</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Equipamiento</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
 
-      <div class="sidebar__group">Facturación</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="sidebar__label">Facturas</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="sidebar__label">Suscripciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Pagos</span></button>
+      <div class="label">Facturación</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="item-label">Facturas</span></button>
+      <button class="item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="item-label">Suscripciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Pagos</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -91,26 +91,26 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Checkout</h1>
+        <h1 class="title">Checkout</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar…"/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <button class="icon-btn relative" aria-label="Carrito">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
           <span class="qty-badge sm brand floating">5</span>
@@ -147,15 +147,15 @@
         <div class="stepper">
           <div class="stepper__step" data-state="done">
             <div class="stepper__bullet"><span>1</span></div>
-            <div class="stepper__label"><span class="stepper__title">Carrito</span><span class="stepper__sub">5 artículos</span></div>
+            <div class="label"><span class="title sm">Carrito</span><span class="meta">5 artículos</span></div>
           </div>
           <div class="stepper__step" data-state="active">
             <div class="stepper__bullet"><span>2</span></div>
-            <div class="stepper__label"><span class="stepper__title">Envío y pago</span><span class="stepper__sub">En curso</span></div>
+            <div class="label"><span class="title sm">Envío y pago</span><span class="meta">En curso</span></div>
           </div>
           <div class="stepper__step">
             <div class="stepper__bullet"><span>3</span></div>
-            <div class="stepper__label"><span class="stepper__title">Confirmación</span><span class="stepper__sub">Pedido listo</span></div>
+            <div class="label"><span class="title sm">Confirmación</span><span class="meta">Pedido listo</span></div>
           </div>
         </div>
       </div>
@@ -178,7 +178,7 @@
               <label class="radio-card">
                 <input type="radio" name="addr" data-on:change="$addr = 'home'; $addNew = false" checked/>
                 <div>
-                  <div class="radio-card__title">Oficina · Madrid <span class="tag brand xs" style="margin-left:6px;">Predeterminada</span></div>
+                  <div class="radio-title">Oficina · Madrid <span class="tag brand xs" style="margin-left:6px;">Predeterminada</span></div>
                   <div class="radio-card__desc">Calle Velázquez 47, 4º izq · 28001 Madrid · España · +34 911 23 45 67</div>
                 </div>
               </label>
@@ -186,7 +186,7 @@
               <label class="radio-card">
                 <input type="radio" name="addr" data-on:change="$addr = 'wh'; $addNew = false"/>
                 <div>
-                  <div class="radio-card__title">Almacén · Getafe</div>
+                  <div class="radio-title">Almacén · Getafe</div>
                   <div class="radio-card__desc">Polígono Los Olivos, Nave 12 · 28906 Getafe (Madrid) · +34 916 88 22 11</div>
                 </div>
               </label>
@@ -194,7 +194,7 @@
               <label class="radio-card">
                 <input type="radio" name="addr" data-on:change="$addr = 'shop'; $addNew = false"/>
                 <div>
-                  <div class="radio-card__title">Tienda Barcelona</div>
+                  <div class="radio-title">Tienda Barcelona</div>
                   <div class="radio-card__desc">Av. Diagonal 412, local 3 · 08037 Barcelona · +34 931 12 34 56</div>
                 </div>
               </label>
@@ -289,7 +289,7 @@
                 <input type="radio" name="ship" data-on:change="$ship = 'std'" checked/>
                 <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
                   <div>
-                    <div class="radio-card__title">Estándar · 3-5 días laborables</div>
+                    <div class="radio-title">Estándar · 3-5 días laborables</div>
                     <div class="radio-card__desc">SEUR · Entregas península · Seguimiento en tiempo real</div>
                   </div>
                   <span class="tag success">Gratis</span>
@@ -299,7 +299,7 @@
                 <input type="radio" name="ship" data-on:change="$ship = 'exp'"/>
                 <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
                   <div>
-                    <div class="radio-card__title">Express · 24h</div>
+                    <div class="radio-title">Express · 24h</div>
                     <div class="radio-card__desc">UPS · Pedidos antes de 14:00 llegan al día siguiente</div>
                   </div>
                   <span style="font-family:var(--font-mono);font-weight:600;color:var(--ink);">€12</span>
@@ -309,7 +309,7 @@
                 <input type="radio" name="ship" data-on:change="$ship = 'pickup'"/>
                 <div style="display:flex;justify-content:space-between;align-items:center;width:100%;">
                   <div>
-                    <div class="radio-card__title">Recoger en tienda · Madrid</div>
+                    <div class="radio-title">Recoger en tienda · Madrid</div>
                     <div class="radio-card__desc">Velázquez 47 · Mañana 12 may a partir de 11:00</div>
                   </div>
                   <span class="tag info">Gratis</span>

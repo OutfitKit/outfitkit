@@ -45,8 +45,8 @@
   .success-meta b { font-family: var(--font-mono); color: var(--ink); font-weight: 600; }
 
   .success-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; gap: 16px; }
-  .success-card__head { display: flex; justify-content: space-between; align-items: baseline; }
-  .success-card__head h2 { font-family: var(--font-display); font-size: 17px; font-weight: 600; margin: 0; color: var(--ink); }
+  .success-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .success-head h2 { font-family: var(--font-display); font-size: 17px; font-weight: 600; margin: 0; color: var(--ink); }
 
   .mini-list { display: flex; flex-direction: column; gap: 10px; }
   .mini-line { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed var(--line); }
@@ -99,14 +99,14 @@
     transition: border-color var(--dur-fast), transform var(--dur-fast);
   }
   .help-card:hover { border-color: var(--line-2); transform: translateY(-1px); }
-  .help-card__icon {
+  .help-icon {
     width: 36px; height: 36px; flex-shrink: 0;
     background: var(--bg-3);
     border-radius: var(--radius-sm);
     display: grid; place-items: center;
     color: var(--ink-2);
   }
-  .help-card__title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  .help-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
   .help-card__desc  { font-size: 12px; color: var(--ink-3); margin-top: 2px; line-height: 1.4; }
 </style>
 
@@ -114,32 +114,32 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EX</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">Acme Industries</div>
+    <div class="head">
+      <div class="sidebar-logo">EX</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">Acme Industries</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="sidebar__label">Equipamiento</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Equipamiento</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
 
-      <div class="sidebar__group">Facturación</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="sidebar__label">Facturas</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="sidebar__label">Suscripciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Pagos</span></button>
+      <div class="label">Facturación</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="item-label">Facturas</span></button>
+      <button class="item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="item-label">Suscripciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Pagos</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -147,21 +147,21 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Pedido confirmado</h1>
+        <h1 class="title">Pedido confirmado</h1>
         
         
-        <div class="topbar__actions">
+        <div class="actions">
           <button class="icon-btn relative" aria-label="Carrito">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
         </button>
@@ -196,7 +196,7 @@
         </section>
 
         <article class="success-card">
-          <div class="success-card__head">
+          <div class="success-head">
             <h2>Resumen del pedido</h2>
             <span class="text-xs c-ink-3 font-mono">5 artículos · €2 286 IVA inc.</span>
           </div>
@@ -283,29 +283,29 @@
           <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:8px 0 12px;color:var(--ink);">Mientras esperas tu pedido</h3>
           <div class="help-section">
             <a class="help-card" href="#">
-              <div class="help-card__icon">
+              <div class="help-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9"/></svg>
               </div>
               <div>
-                <div class="help-card__title">Configura tu hub</div>
+                <div class="help-title">Configura tu hub</div>
                 <div class="help-card__desc">Tutorial paso a paso para tener todo listo cuando llegue el equipo.</div>
               </div>
             </a>
             <a class="help-card" href="#">
-              <div class="help-card__icon">
+              <div class="help-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
               </div>
               <div>
-                <div class="help-card__title">Vídeos del Modelo X</div>
+                <div class="help-title">Vídeos del Modelo X</div>
                 <div class="help-card__desc">12 vídeos cortos sobre primer arranque, atajos y operativa diaria.</div>
               </div>
             </a>
             <a class="help-card" href="#">
-              <div class="help-card__icon">
+              <div class="help-icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
               <div>
-                <div class="help-card__title">Únete a la comunidad</div>
+                <div class="help-title">Únete a la comunidad</div>
                 <div class="help-card__desc">Foro y Slack con más de 2 400 comerciantes ERPlora.</div>
               </div>
             </a>

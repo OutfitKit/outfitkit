@@ -7,34 +7,34 @@
 {% block content %}
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">LR</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="sidebar__brand-meta">Nuevo rol</div>
+    <div class="head">
+      <div class="sidebar-logo">LR</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">Cafetería La Rambla</div>
+        <div class="meta">Nuevo rol</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <a class="sidebar__item" href="#"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="sidebar__label">Inicio</span></a>
-      <a class="sidebar__item" href="./employees-list.html"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span class="sidebar__label">Empleados</span></a>
-      <a class="sidebar__item" aria-current="page" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="sidebar__label">Roles</span></a>
+    <div class="content scroll">
+      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="item-label">Inicio</span></a>
+      <a class="item" href="./employees-list.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span class="item-label">Empleados</span></a>
+      <a class="item" aria-current="page" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="item-label">Roles</span></a>
     </div>
   </aside>
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
     <div class="content scroll body">
@@ -56,8 +56,8 @@
         <form class="form col-md-7 col-lg-8" data-on:submit="event.preventDefault()">
 
           <article class="card mb-4">
-            <header class="card__header"><h3 class="card__title">Información</h3></header>
-            <div class="card__body">
+            <header class="head"><h3 class="title">Información</h3></header>
+            <div class="body">
               <div class="form-row">
                 <div class="field">
                   <label class="field__label field__label--req">Identificador interno</label>
@@ -77,11 +77,11 @@
           </article>
 
           <article class="card">
-            <header class="card__header">
-              <h3 class="card__title">Matriz de permisos</h3>
+            <header class="head">
+              <h3 class="title">Matriz de permisos</h3>
               <span class="badge">5 módulos</span>
             </header>
-            <div class="card__body p-0">
+            <div class="body p-0">
 
               <!-- Sales -->
               <div style="padding:14px 18px;border-bottom:1px solid var(--line);">
@@ -168,8 +168,8 @@
         <!-- Preview derecha -->
         <aside class="col-md-5 col-lg-4 col-sticky">
           <article class="card">
-            <header class="card__header"><h3 class="card__title">Vista previa</h3></header>
-            <div class="card__body text-center">
+            <header class="head"><h3 class="title">Vista previa</h3></header>
+            <div class="body text-center">
               <span class="avatar lg" style="margin:0 auto;">
                 <iconify-icon icon="lucide:shield" width="22" height="22"></iconify-icon>
               </span>
@@ -177,7 +177,7 @@
               <p style="font-size:12.5px;color:var(--ink-3);margin:0 0 12px;" data-text="$desc || 'Descripción del rol…'"></p>
               <span class="badge"><span class="badge__dot"></span>Custom</span>
             </div>
-            <div class="card__body" style="border-top:1px solid var(--line);">
+            <div class="body" style="border-top:1px solid var(--line);">
               <div class="eyebrow mb-1">Identificador</div>
               <code style="font-family:var(--font-mono);font-size:12px;background:var(--bg-3);padding:3px 8px;border-radius:4px;display:inline-block;" data-text="$name || 'sin_definir'"></code>
 

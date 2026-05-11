@@ -5,13 +5,10 @@
 
 .sidebar {
   /* API canónica de override */
-  --sidebar-background:   color-mix(in oklch, var(--bg-1) 78%, transparent);
-  --sidebar-color:        var(--ink);
+  --background:           color-mix(in oklch, var(--bg-1) 78%, transparent);
   --sidebar-border-color: color-mix(in oklch, var(--line) 80%, transparent);
   --sidebar-width:        var(--sidebar-w);
   --sidebar-z:            var(--z-sticky);
-  --sidebar-blur:         18px;
-  --sidebar-saturate:     150%;
 
   position: sticky;
   top: 0;
@@ -19,10 +16,10 @@
   height: 100vh;
   height: 100dvh;
   width: var(--sidebar-width);
-  background: var(--sidebar-background);
-  color: var(--sidebar-color);
-  backdrop-filter: blur(var(--sidebar-blur)) saturate(var(--sidebar-saturate));
-  -webkit-backdrop-filter: blur(var(--sidebar-blur)) saturate(var(--sidebar-saturate));
+  background: var(--background);
+  color: var(--color, var(--ink));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   border-right: var(--border-w) solid var(--sidebar-border-color);
   display: flex;
   flex-direction: column;
@@ -37,17 +34,20 @@
   --sidebar-width: var(--sidebar-w-collapsed);
 }
 
-/* Header / brand */
-.sidebar__brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 14px 10px;
+/* ── Header / brand ── */
+/* Use <div class="head"> as direct child of .sidebar */
+.sidebar > .head {
+  --pad-x: 14px;
+  --pad-y: 14px;
+  padding-bottom: 10px;
   height: var(--topbar-h);
-  border-bottom: var(--border-w) solid var(--line);
+  gap: 10px;
+  align-items: center;
   flex-shrink: 0;
 }
-.sidebar__logo {
+
+/* Square logo badge in brand area */
+.sidebar-logo {
   width: 26px;
   height: 26px;
   border-radius: 7px;
@@ -61,54 +61,37 @@
   letter-spacing: -0.04em;
   flex-shrink: 0;
 }
-.sidebar__brand-text {
+
+/* Brand text stack (name + meta) */
+.sidebar-brand-text {
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
-.sidebar__brand-name {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--text-md);
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-.sidebar__brand-meta {
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-}
 
-/* Body / scroll area */
-.sidebar__body {
-  flex: 1 1 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
+/* ── Scrollable nav body ── */
+/* Use <div class="content scroll"> as direct child of .sidebar */
+.sidebar > .content {
   padding: var(--space-3) var(--space-2);
   display: flex;
   flex-direction: column;
   gap: 1px;
 }
-.sidebar__body::-webkit-scrollbar { width: 6px; }
+.sidebar > .content::-webkit-scrollbar { width: 6px; }
 
-/* Group label */
-.sidebar__group {
-  font-size: var(--text-2xs);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--ink-4);
+/* ── Group label ── */
+/* Use <div class="label"> — universal uppercase section label */
+.sidebar .label {
   padding: 14px 10px 5px;
+  color: var(--ink-4);
 }
 
-/* Menu item */
-.sidebar__item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 7px 10px;
-  border-radius: var(--radius-md);
+/* ── Menu item ── */
+/* Use <button class="item"> — universal clickable row */
+.sidebar .item {
+  --pad-x: 10px;
+  --pad-y: 7px;
+  --gap: 10px;
   color: var(--ink-2);
   font-size: var(--text-md);
   font-weight: 450;
@@ -118,20 +101,19 @@
   background: transparent;
   width: 100%;
   text-align: left;
-  transition: background var(--dur-fast), color var(--dur-fast);
 }
-.sidebar__item:hover {
+.sidebar .item:hover {
   background: var(--bg-3);
   color: var(--ink);
 }
-.sidebar__item[aria-current="page"],
-.sidebar__item[data-active="true"] {
+.sidebar .item[aria-current="page"],
+.sidebar .item[data-active="true"] {
   background: color-mix(in oklch, var(--brand) 12%, transparent);
   color: var(--ink);
   font-weight: 600;
 }
-.sidebar__item[aria-current="page"]::before,
-.sidebar__item[data-active="true"]::before {
+.sidebar .item[aria-current="page"]::before,
+.sidebar .item[data-active="true"]::before {
   content: "";
   position: absolute;
   left: 0;
@@ -142,21 +124,20 @@
   background: var(--brand);
   border-radius: 0 2px 2px 0;
 }
-.sidebar__item { position: relative; }
 
-.sidebar__icon {
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
+/* Icon inside nav item — use <svg class="icon"> */
+.sidebar .item > .icon {
+  --icon: 17px;
   color: var(--ink-3);
 }
-.sidebar__item:hover .sidebar__icon,
-.sidebar__item[aria-current="page"] .sidebar__icon,
-.sidebar__item[data-active="true"] .sidebar__icon {
+.sidebar .item:hover > .icon,
+.sidebar .item[aria-current="page"] > .icon,
+.sidebar .item[data-active="true"] > .icon {
   color: var(--ink);
 }
 
-.sidebar__label {
+/* Nav item text (no uppercase — not a section label) */
+.sidebar .item-label {
   flex: 1;
   min-width: 0;
   overflow: hidden;
@@ -164,28 +145,20 @@
   white-space: nowrap;
 }
 
-.sidebar__badge {
-  flex-shrink: 0;
-  font-size: var(--text-2xs);
-  font-weight: 500;
-  padding: 1px 6px;
-  border-radius: var(--radius-pill);
-  background: var(--bg-4);
-  color: var(--ink-2);
-  font-variant-numeric: tabular-nums;
-}
-.sidebar__badge--brand {
+/* Badge brand variant inside sidebar */
+.sidebar .badge.brand {
   background: var(--brand-soft);
   color: var(--brand-3);
 }
 
-/* Footer */
-.sidebar__footer {
-  border-top: var(--border-w) solid var(--line);
-  padding: var(--space-3);
+/* ── Footer ── */
+/* Use <div class="foot"> as direct child of .sidebar */
+.sidebar > .foot {
   flex-shrink: 0;
 }
-.sidebar__user {
+
+/* User block in footer */
+.sidebar-user {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -194,33 +167,24 @@
   cursor: pointer;
   transition: background var(--dur-fast);
 }
-.sidebar__user:hover { background: var(--bg-3); }
-.sidebar__user-info { flex: 1; min-width: 0; }
-.sidebar__user-name {
-  font-size: var(--text-md);
-  font-weight: 500;
-  color: var(--ink);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.sidebar__user-meta {
-  font-size: var(--text-2xs);
-  color: var(--ink-3);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
+.sidebar-user:hover { background: var(--bg-3); }
+
+/* User info container */
+.sidebar-user-info { flex: 1; min-width: 0; }
 
 /* Collapsed state */
-.sidebar.collapsed .sidebar__label,
-.sidebar.collapsed .sidebar__badge,
-.sidebar.collapsed .sidebar__group,
-.sidebar.collapsed .sidebar__brand-text,
-.sidebar.collapsed .sidebar__user-info {
+.sidebar.collapsed .item-label,
+.sidebar.collapsed .badge,
+.sidebar.collapsed .label,
+.sidebar.collapsed .sidebar-brand-text,
+.sidebar.collapsed .sidebar-user-info {
   display: none;
 }
-.sidebar.collapsed .sidebar__item {
+.sidebar.collapsed .item {
   justify-content: center;
   padding: var(--space-2);
 }
-.sidebar.collapsed .sidebar__brand {
+.sidebar.collapsed > .head {
   justify-content: center;
   padding: 14px 10px;
 }
@@ -239,3 +203,28 @@
     transform: translateX(0);
   }
 }
+
+/* ── Showcase / layout helpers ── */
+/* Empty state when search matches nothing */
+.sidebar-empty {
+  padding: 16px 14px;
+  color: var(--ink-3);
+  font-size: 12px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Section header (subset of .label with extra top padding) */
+.sidebar-section {
+  padding: 16px 14px 4px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+}
+
+/* Custom badge color variants (showcase nav) */
+.sidebar .badge.saas { background: var(--info-soft);  color: var(--info); }
+.sidebar .badge.hub  { background: var(--brand-soft); color: var(--brand-3); }
+.sidebar .badge.new  { background: var(--leaf-soft);  color: var(--leaf); }

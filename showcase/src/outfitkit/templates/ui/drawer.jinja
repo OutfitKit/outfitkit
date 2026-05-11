@@ -5,13 +5,15 @@
 <div class="drawer-root" data-state="{{ state }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   <div class="backdrop"></div>
-  <aside class="drawer{% if side != 'right' %} {{ side }}{% endif %}">
-    <div class="drawer__header">
-      <h3 class="drawer__title">{{ title }}</h3>
-      {% if subtitle %}<p class="drawer__sub">{{ subtitle }}</p>{% endif %}
-      <button class="drawer__close" aria-label="Cerrar">✕</button>
-    </div>
-    <div class="drawer__body">{{ caller() }}</div>
+  <aside class="drawer glass{% if side != 'right' %} {{ side }}{% endif %}">
+    <header class="head">
+      <div class="heading">
+        <h3 class="title lg">{{ title }}</h3>
+        {% if subtitle %}<p class="sub">{{ subtitle }}</p>{% endif %}
+      </div>
+      <button class="close" aria-label="Cerrar">✕</button>
+    </header>
+    <div class="content scroll body">{{ caller() }}</div>
   </aside>
 </div>
 {%- endmacro %}

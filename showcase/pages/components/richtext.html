@@ -10,7 +10,7 @@
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/richtext.jinja" import richtext %}
 {% call richtext() %}
-<div class="richtext__toolbar" role="toolbar" aria-label="Formato">
+<div class="head" role="toolbar" aria-label="Formato">
   <select class="richtext__select" aria-label="Estilo">
     <option value="p">Párrafo</option>
     <option value="h1">Título 1</option>
@@ -35,7 +35,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 7 3 13 9 13"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>
   </button>
 </div>
-<div class="richtext__content" contenteditable="true" data-placeholder="Escribe aquí…">
+<div class="body" contenteditable="true" data-placeholder="Escribe aquí…">
   <h2>Política de devoluciones</h2>
   <p>Aceptamos devoluciones dentro de los <strong>30 días</strong> posteriores a la compra. El producto debe estar en su <em>estado original</em>, sin uso visible.</p>
   <ul>
@@ -44,13 +44,13 @@
     <li>Reembolso en 5–7 días hábiles</li>
   </ul>
 </div>
-<div class="richtext__footer">
+<div class="foot">
   <span>24 palabras</span>
   <span>último guardado · hace 2 min</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Richtext>
-<div class="richtext__toolbar" role="toolbar" aria-label="Formato">
+<div class="head" role="toolbar" aria-label="Formato">
   <select class="richtext__select" aria-label="Estilo">
     <option value="p">Párrafo</option>
     <option value="h1">Título 1</option>
@@ -75,7 +75,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 7 3 13 9 13"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>
   </button>
 </div>
-<div class="richtext__content" contenteditable="true" data-placeholder="Escribe aquí…">
+<div class="body" contenteditable="true" data-placeholder="Escribe aquí…">
   <h2>Política de devoluciones</h2>
   <p>Aceptamos devoluciones dentro de los <strong>30 días</strong> posteriores a la compra. El producto debe estar en su <em>estado original</em>, sin uso visible.</p>
   <ul>
@@ -84,7 +84,7 @@
     <li>Reembolso en 5–7 días hábiles</li>
   </ul>
 </div>
-<div class="richtext__footer">
+<div class="foot">
   <span>24 palabras</span>
   <span>último guardado · hace 2 min</span>
 </div>
@@ -94,7 +94,7 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call richtext() %}
-<div class="richtext__toolbar" role="toolbar" aria-label="Formato">
+<div class="head" role="toolbar" aria-label="Formato">
   <select class="richtext__select" aria-label="Estilo">
     <option value="p">Párrafo</option>
     <option value="h1">Título 1</option>
@@ -119,7 +119,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 7 3 13 9 13"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>
   </button>
 </div>
-<div class="richtext__content" contenteditable="true" data-placeholder="Escribe aquí…">
+<div class="body" contenteditable="true" data-placeholder="Escribe aquí…">
   <h2>Política de devoluciones</h2>
   <p>Aceptamos devoluciones dentro de los <strong>30 días</strong> posteriores a la compra. El producto debe estar en su <em>estado original</em>, sin uso visible.</p>
   <ul>
@@ -128,7 +128,7 @@
     <li>Reembolso en 5–7 días hábiles</li>
   </ul>
 </div>
-<div class="richtext__footer">
+<div class="foot">
   <span>24 palabras</span>
   <span>último guardado · hace 2 min</span>
 </div>
@@ -137,12 +137,12 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/richtext.jinja" import richtext %}
 {% call richtext(variant="minimal") %}
-<div class="richtext__content" contenteditable="true" data-placeholder="Edición inline sin barra…">
+<div class="body" contenteditable="true" data-placeholder="Edición inline sin barra…">
   <p>Texto editable inline para encabezados, descripciones cortas o anotaciones rápidas.</p>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Richtext variant="minimal">
-<div class="richtext__content" contenteditable="true" data-placeholder="Edición inline sin barra…">
+<div class="body" contenteditable="true" data-placeholder="Edición inline sin barra…">
   <p>Texto editable inline para encabezados, descripciones cortas o anotaciones rápidas.</p>
 </div>
 </Richtext>{% endraw %}{% endset %}
@@ -151,7 +151,7 @@
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call richtext(variant="minimal") %}
-<div class="richtext__content" contenteditable="true" data-placeholder="Edición inline sin barra…">
+<div class="body" contenteditable="true" data-placeholder="Edición inline sin barra…">
   <p>Texto editable inline para encabezados, descripciones cortas o anotaciones rápidas.</p>
 </div>
 {% endcall %}
@@ -165,6 +165,6 @@
     <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra (data-signals, etc).</td></tr>
   </tbody>
 </table>
-<p class="showcase__lead">Slot: <code>.ok-richtext__toolbar</code>, <code>.ok-richtext__content</code> (contenteditable) y <code>.ok-richtext__footer</code> opcional.</p>
-<p class="showcase__lead">La toolbar es slot abierto: el consumidor compone los <code>.ok-richtext__btn</code> que necesite (Negrita, Cursiva, Lista, Enlace, Encabezados, Código, Deshacer/Rehacer…). Cada botón debe llevar <code>aria-label</code> + <code>title</code> para accesibilidad y tooltip nativo.</p>
+<p class="showcase__lead">Slot: <code>.head</code> (toolbar, role=toolbar), <code>.body</code> (contenteditable) y <code>.foot</code> (wordcount) opcional.</p>
+<p class="showcase__lead">La toolbar es slot abierto: el consumidor compone los <code>.richtext__btn</code> que necesite (Negrita, Cursiva, Lista, Enlace, Encabezados, Código, Deshacer/Rehacer…). Cada botón debe llevar <code>aria-label</code> + <code>title</code> para accesibilidad y tooltip nativo.</p>
 {% endblock %}

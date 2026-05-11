@@ -196,7 +196,7 @@
     const y = parseInt(root.dataset.dpYear, 10);
     const m = parseInt(root.dataset.dpMonth, 10);
     const sel = parseInt(root.dataset.dpDay, 10);
-    const head = root.querySelector('.datepicker__title');
+    const head = root.querySelector('.datepicker__head .title');
     const grid = root.querySelector('.datepicker__grid');
     if (!head || !grid) return;
     head.textContent = `${MONTH_NAMES[m - 1]} ${y}`;

@@ -10,23 +10,23 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">CR</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="sidebar__brand-meta">Hub · v0.0.9</div>
+    <div class="head">
+      <div class="sidebar-logo">CR</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">Cafetería La Rambla</div>
+        <div class="meta">Hub · v0.0.9</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Plataforma</div>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06"/></svg><span class="sidebar__label">Configuración</span></button>
+    <div class="content scroll">
+      <div class="label">Plataforma</div>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06"/></svg><span class="item-label">Configuración</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">JC</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Joan Castell</div>
-          <div class="sidebar__user-meta">joan@larambla.es</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Joan Castell</div>
+          <div class="meta">joan@larambla.es</div>
         </div>
       </div>
     </div>
@@ -34,18 +34,18 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
     <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
@@ -92,19 +92,19 @@
       <div class="grid-3" style="gap:16px;">
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
               </div>
               <div>
-                <h3 class="card__title">TM-T20III · Mostrador</h3>
-                <p class="card__sub">Epson · Térmica 80 mm</p>
+                <h3 class="title">TM-T20III · Mostrador</h3>
+                <p class="sub">Epson · Térmica 80 mm</p>
               </div>
             </div>
             <span class="pill success"><span class="pill__dot"></span>Online</span>
           </header>
-          <div class="card__body grid gap-2 text-md">
+          <div class="body grid gap-2 text-md">
             <div class="flex justify-between c-ink-3">
               <span>Tipo</span><span class="badge">Tickets</span>
             </div>
@@ -121,26 +121,26 @@
               <span>Por defecto</span><span class="badge brand">Sí</span>
             </div>
           </div>
-          <footer class="card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+          <footer class="footer" style="display:flex;gap:6px;justify-content:flex-end;">
             <button class="btn ghost sm">Test print</button>
             <button class="btn secondary sm">Editar</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--warn) 14%, transparent);color:var(--warn);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Star TSP143 · Cocina</h3>
-                <p class="card__sub">Star Micronics · Térmica 80 mm</p>
+                <h3 class="title">Star TSP143 · Cocina</h3>
+                <p class="sub">Star Micronics · Térmica 80 mm</p>
               </div>
             </div>
             <span class="pill success"><span class="pill__dot"></span>Online</span>
           </header>
-          <div class="card__body grid gap-2 text-md">
+          <div class="body grid gap-2 text-md">
             <div class="flex justify-between c-ink-3">
               <span>Tipo</span><span class="badge">Cocina</span>
             </div>
@@ -154,26 +154,26 @@
               <span>Ubicación</span><span class="c-ink">Cocina caliente</span>
             </div>
           </div>
-          <footer class="card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+          <footer class="footer" style="display:flex;gap:6px;justify-content:flex-end;">
             <button class="btn ghost sm">Test print</button>
             <button class="btn secondary sm">Editar</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--info) 14%, transparent);color:var(--info);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Bixolon SRP-330 · Barra</h3>
-                <p class="card__sub">Bixolon · Térmica 80 mm</p>
+                <h3 class="title">Bixolon SRP-330 · Barra</h3>
+                <p class="sub">Bixolon · Térmica 80 mm</p>
               </div>
             </div>
             <span class="pill success"><span class="pill__dot"></span>Online</span>
           </header>
-          <div class="card__body grid gap-2 text-md">
+          <div class="body grid gap-2 text-md">
             <div class="flex justify-between c-ink-3">
               <span>Tipo</span><span class="badge">Bebidas</span>
             </div>
@@ -187,26 +187,26 @@
               <span>Ubicación</span><span class="c-ink">Barra</span>
             </div>
           </div>
-          <footer class="card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+          <footer class="footer" style="display:flex;gap:6px;justify-content:flex-end;">
             <button class="btn ghost sm">Test print</button>
             <button class="btn secondary sm">Editar</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--danger) 12%, transparent);color:var(--danger);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Brother QL-820 · Etiquetas</h3>
-                <p class="card__sub">Brother · Etiquetas 62 mm</p>
+                <h3 class="title">Brother QL-820 · Etiquetas</h3>
+                <p class="sub">Brother · Etiquetas 62 mm</p>
               </div>
             </div>
             <span class="pill danger"><span class="pill__dot"></span>Offline</span>
           </header>
-          <div class="card__body grid gap-2 text-md">
+          <div class="body grid gap-2 text-md">
             <div class="flex justify-between c-ink-3">
               <span>Tipo</span><span class="badge">Etiquetas</span>
             </div>
@@ -223,7 +223,7 @@
               </div>
             </div>
           </div>
-          <footer class="card__footer" style="display:flex;gap:6px;justify-content:flex-end;">
+          <footer class="footer" style="display:flex;gap:6px;justify-content:flex-end;">
             <button class="btn ghost sm">Reintentar</button>
             <button class="btn secondary sm">Editar</button>
           </footer>
@@ -233,7 +233,7 @@
         <article class="card interactive" tabindex="0" role="button" style="border-style:dashed;"
           data-on:click="$prn.editId = ''; $prn.name = ''; $prn.conn = 'network'; $prn.address = ''; $prn.showModal = true"
           data-on:keydown="(evt.key === 'Enter' || evt.key === ' ') && (evt.preventDefault(), $prn.editId = '', $prn.name = '', $prn.conn = 'network', $prn.address = '', $prn.showModal = true)">
-          <div class="card__body" style="text-align:center;padding:32px 16px;">
+          <div class="body" style="text-align:center;padding:32px 16px;">
             <div style="width:48px;height:48px;border-radius:14px;background:var(--bg-3);color:var(--ink-3);display:grid;place-items:center;margin:0 auto 10px;">
               <iconify-icon icon="lucide:plus" width="22" height="22"></iconify-icon>
             </div>

@@ -4,8 +4,8 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="kpi{% if variant %} {{ variant }}{% endif %}"
   {%- for key, value_attr in _attrs.items() %} {{ key }}="{{ value_attr }}"{% endfor %}>
-  <div class="kpi__label">{{ label }}</div>
-  <div class="kpi__value">{{ value }}{% if unit %}<span class="kpi__value-unit">{{ unit }}</span>{% endif %}</div>
+  <div class="label">{{ label }}</div>
+  <div class="value">{{ value }}{% if unit %}<span class="unit">{{ unit }}</span>{% endif %}</div>
   {%- if delta %}
   <div class="kpi__delta{% if delta_dir %} {{ delta_dir }}{% endif %}">
     {%- if delta_dir == 'up' -%}

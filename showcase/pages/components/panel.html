@@ -26,54 +26,54 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/panel.jinja" import panel %}
 {% call panel(title="Ghost", sub="Sin fondo, solo borde", variant="ghost") %}
-<p style="margin:0;color:var(--ink-3);font-size:13px">Variante <code>--ghost</code>: transparente.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Variante ghost: transparente.</p>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Panel title="Ghost" sub="Sin fondo, solo borde" variant="ghost">
-<p style="margin:0;color:var(--ink-3);font-size:13px">Variante <code>--ghost</code>: transparente.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Variante ghost: transparente.</p>
 </Panel>{% endraw %}{% endset %}
 
 {% call demo_frame("Variante ghost (sin fondo)",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call panel(title="Ghost", sub="Sin fondo, solo borde", variant="ghost") %}
-<p style="margin:0;color:var(--ink-3);font-size:13px">Variante <code>--ghost</code>: transparente.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Variante ghost: transparente.</p>
 {% endcall %}
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/panel.jinja" import panel %}
 {% call panel(title="Bordered", sub="Borde más fuerte", variant="bordered") %}
-<p style="margin:0;color:var(--ink-3);font-size:13px">Variante <code>--bordered</code> · usa <code>line-2</code>.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Variante bordered · usa line-2.</p>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Panel title="Bordered" sub="Borde más fuerte" variant="bordered">
-<p style="margin:0;color:var(--ink-3);font-size:13px">Variante <code>--bordered</code> · usa <code>line-2</code>.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Variante bordered · usa line-2.</p>
 </Panel>{% endraw %}{% endset %}
 
 {% call demo_frame("Variante bordered",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {% call panel(title="Bordered", sub="Borde más fuerte", variant="bordered") %}
-<p style="margin:0;color:var(--ink-3);font-size:13px">Variante <code>--bordered</code> · usa <code>line-2</code>.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Variante bordered · usa line-2.</p>
 {% endcall %}
 {% endcall %}
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/panel.jinja" import panel %}
 {% call panel(title="Compact", size="sm") %}
-<p style="margin:0;color:var(--ink-3);font-size:13px">Tamaño <code>--sm</code> con padding y title más pequeños.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Tamaño sm con padding y title más pequeños.</p>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_4 %}{% raw %}<Panel title="Compact" size="sm">
-<p style="margin:0;color:var(--ink-3);font-size:13px">Tamaño <code>--sm</code> con padding y title más pequeños.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Tamaño sm con padding y title más pequeños.</p>
 </Panel>{% endraw %}{% endset %}
 
 {% call demo_frame("Tamaño compacto (sm)",
     jinja_src=_src_jinja_4,
     jinjax_src=_src_jinjax_4) %}
 {% call panel(title="Compact", size="sm") %}
-<p style="margin:0;color:var(--ink-3);font-size:13px">Tamaño <code>--sm</code> con padding y title más pequeños.</p>
+<p style="margin:0;color:var(--ink-3);font-size:13px">Tamaño sm con padding y title más pequeños.</p>
 {% endcall %}
 {% endcall %}
 
 {% set _src_jinja_sticky %}{% raw %}{% from "ui/panel.jinja" import panel %}
-{# Variante --sticky-head: la cabecera permanece visible al scrollear el body. #}
+{# Variante sticky-head: la cabecera permanece visible al scrollear el body. #}
 <div style="max-height: 220px; overflow-y: auto; border-radius: var(--radius-lg);">
 {% call panel(title="Actividad reciente", sub="Últimas 24 h", variant="sticky-head") %}
 <ul style="margin:0;padding:0;list-style:none;display:grid;gap:8px;font-size:13px;color:var(--ink-2)">

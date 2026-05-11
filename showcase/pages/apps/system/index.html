@@ -10,24 +10,24 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">CR</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="sidebar__brand-meta">Hub · v0.0.9</div>
+    <div class="head">
+      <div class="sidebar-logo">CR</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">Cafetería La Rambla</div>
+        <div class="meta">Hub · v0.0.9</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Plataforma</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="sidebar__label">Configuración</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01"/></svg><span class="sidebar__label">Sistema</span></button>
+    <div class="content scroll">
+      <div class="label">Plataforma</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="item-label">Configuración</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01M10 8h.01"/></svg><span class="item-label">Sistema</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">JC</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Joan Castell</div>
-          <div class="sidebar__user-meta">joan@larambla.es</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Joan Castell</div>
+          <div class="meta">joan@larambla.es</div>
         </div>
       </div>
     </div>
@@ -35,18 +35,18 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
     <div class="content scroll body">
@@ -64,7 +64,7 @@
 
       <!-- Bridge status (header) -->
       <article class="card glass mb-4">
-        <div class="card__body" style="display:flex;align-items:center;gap:16px;">
+        <div class="body" style="display:flex;align-items:center;gap:16px;">
           <div style="width:56px;height:56px;border-radius:14px;background:color-mix(in oklch, var(--leaf) 14%, transparent);color:var(--leaf);display:grid;place-items:center;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>
           </div>
@@ -92,85 +92,85 @@
       <div class="grid-3" style="gap:14px;margin-bottom:22px;">
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Impresora térmica</h3>
-                <p class="card__sub">Epson TM-T20III</p>
+                <h3 class="title">Impresora térmica</h3>
+                <p class="sub">Epson TM-T20III</p>
               </div>
             </div>
             <span class="status-dot online"></span>
           </header>
-          <div class="card__body text-xs c-ink-3">
+          <div class="body text-xs c-ink-3">
             <div class="flex justify-between"><span>Conexión</span><span style="color:var(--ink);font-family:var(--font-mono);">192.168.1.220:9100</span></div>
             <div style="display:flex;justify-content:space-between;margin-top:4px;"><span>Papel</span><span class="c-ink">80 mm · OK</span></div>
           </div>
-          <footer class="card__footer" style="display:flex;justify-content:flex-end;gap:6px;">
+          <footer class="footer" style="display:flex;justify-content:flex-end;gap:6px;">
             <button class="btn ghost sm">Test</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--leaf) 14%, transparent);color:var(--leaf);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="2"/><path d="M7 8V5a3 3 0 0 1 6 0v3"/><circle cx="12" cy="14" r="2"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Cajón monedas</h3>
-                <p class="card__sub">APG Vasario · USB pulse</p>
+                <h3 class="title">Cajón monedas</h3>
+                <p class="sub">APG Vasario · USB pulse</p>
               </div>
             </div>
             <span class="status-dot online"></span>
           </header>
-          <div class="card__body text-xs c-ink-3">
+          <div class="body text-xs c-ink-3">
             <div class="flex justify-between"><span>Conexión</span><span class="c-ink">Vinculado a Epson TM-T20III</span></div>
             <div style="display:flex;justify-content:space-between;margin-top:4px;"><span>Aperturas hoy</span><span class="c-ink">142</span></div>
           </div>
-          <footer class="card__footer" style="display:flex;justify-content:flex-end;gap:6px;">
+          <footer class="footer" style="display:flex;justify-content:flex-end;gap:6px;">
             <button class="btn ghost sm">Abrir cajón</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--info) 14%, transparent);color:var(--info);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h2v14H3zM7 5h1v14H7zM10 5h2v14h-2zM14 5h1v14h-1zM17 5h1v14h-1zM20 5h1v14h-1z"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Scanner código barras</h3>
-                <p class="card__sub">Honeywell Voyager 1450g</p>
+                <h3 class="title">Scanner código barras</h3>
+                <p class="sub">Honeywell Voyager 1450g</p>
               </div>
             </div>
             <span class="status-dot online"></span>
           </header>
-          <div class="card__body text-xs c-ink-3">
+          <div class="body text-xs c-ink-3">
             <div class="flex justify-between"><span>Conexión</span><span class="c-ink">USB HID · /dev/hidraw1</span></div>
             <div style="display:flex;justify-content:space-between;margin-top:4px;"><span>Lecturas hoy</span><span class="c-ink">88</span></div>
           </div>
-          <footer class="card__footer" style="display:flex;justify-content:flex-end;gap:6px;">
+          <footer class="footer" style="display:flex;justify-content:flex-end;gap:6px;">
             <button class="btn ghost sm">Test</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--warn) 14%, transparent);color:var(--warn);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18l-2 12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L3 7z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Balanza</h3>
-                <p class="card__sub">Mettler ICS425 · serie</p>
+                <h3 class="title">Balanza</h3>
+                <p class="sub">Mettler ICS425 · serie</p>
               </div>
             </div>
             <span class="status-dot busy"></span>
           </header>
-          <div class="card__body text-xs c-ink-3">
+          <div class="body text-xs c-ink-3">
             <div class="flex justify-between"><span>Conexión</span><span style="color:var(--ink);font-family:var(--font-mono);">/dev/ttyUSB0 · 9600 8N1</span></div>
             <div style="display:flex;justify-content:space-between;margin-top:4px;"><span>Última lectura</span><span class="c-ink">0,000 kg · estable</span></div>
             <div class="banner warning mt-2">
@@ -178,51 +178,51 @@
               <div class="banner__body"><div class="banner__desc">Calibración pendiente (último ajuste hace 6 meses).</div></div>
             </div>
           </div>
-          <footer class="card__footer" style="display:flex;justify-content:flex-end;gap:6px;">
+          <footer class="footer" style="display:flex;justify-content:flex-end;gap:6px;">
             <button class="btn ghost sm">Calibrar</button>
             <button class="btn ghost sm">Tare</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 8h20M6 18v3M18 18v3"/></svg>
               </div>
               <div>
-                <h3 class="card__title">Mostrador cliente</h3>
-                <p class="card__sub">VFD 2x20 · Posiflex PD-2607</p>
+                <h3 class="title">Mostrador cliente</h3>
+                <p class="sub">VFD 2x20 · Posiflex PD-2607</p>
               </div>
             </div>
             <span class="status-dot online"></span>
           </header>
-          <div class="card__body text-xs c-ink-3">
+          <div class="body text-xs c-ink-3">
             <div class="flex justify-between"><span>Conexión</span><span style="color:var(--ink);font-family:var(--font-mono);">/dev/ttyUSB1 · 9600 8N1</span></div>
             <div style="display:flex;justify-content:space-between;margin-top:4px;"><span>Mensaje actual</span><span class="c-ink">"Bienvenido"</span></div>
           </div>
-          <footer class="card__footer" style="display:flex;justify-content:flex-end;gap:6px;">
+          <footer class="footer" style="display:flex;justify-content:flex-end;gap:6px;">
             <button class="btn ghost sm">Enviar mensaje</button>
           </footer>
         </article>
 
         <article class="card">
-          <header class="card__header">
+          <header class="head">
             <div class="flex items-center gap-2">
               <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ink-3) 18%, transparent);color:var(--ink-3);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01"/></svg>
               </div>
               <div>
-                <h3 class="card__title">TPV pago</h3>
-                <p class="card__sub">Sin emparejar</p>
+                <h3 class="title">TPV pago</h3>
+                <p class="sub">Sin emparejar</p>
               </div>
             </div>
             <span class="status-dot offline"></span>
           </header>
-          <div class="card__body text-xs c-ink-3">
+          <div class="body text-xs c-ink-3">
             <p class="m-0">Conecta un datáfono compatible (Stripe Terminal, SumUp, Redsys) para cobrar con tarjeta integrado en el ticket.</p>
           </div>
-          <footer class="card__footer" style="display:flex;justify-content:flex-end;gap:6px;">
+          <footer class="footer" style="display:flex;justify-content:flex-end;gap:6px;">
             <button class="btn primary sm">Vincular datáfono</button>
           </footer>
         </article>
@@ -231,13 +231,13 @@
 
       <!-- Bridge tweaks -->
       <article class="card">
-        <header class="card__header">
+        <header class="head">
           <div>
-            <h3 class="card__title">Ajustes del Bridge</h3>
-            <p class="card__sub">Conexión local entre el navegador y los periféricos</p>
+            <h3 class="title">Ajustes del Bridge</h3>
+            <p class="sub">Conexión local entre el navegador y los periféricos</p>
           </div>
         </header>
-        <div class="card__body">
+        <div class="body">
           <div class="form-row">
             <div class="field">
               <label class="field__label">Puerto local</label>

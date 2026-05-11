@@ -5,15 +5,12 @@
 
 .topbar {
   /* API canónica de override */
-  --topbar-background:   color-mix(in oklch, var(--bg) 72%, transparent);
-  --topbar-color:         var(--ink);
-  --topbar-border-color:  var(--topbar-border, color-mix(in oklch, var(--line) 80%, transparent));
-  --topbar-height:        var(--topbar-h);
-  --topbar-pad-x:         var(--page-pad);
-  --topbar-gap:           var(--space-3);
-  --topbar-z:             calc(var(--z-sticky) - 1);
-  --topbar-blur:          18px;
-  --topbar-saturate:      150%;
+  --background:          color-mix(in oklch, var(--bg) 72%, transparent);
+  --topbar-border-color: var(--topbar-border, color-mix(in oklch, var(--line) 80%, transparent));
+  --topbar-height:       var(--topbar-h);
+  --topbar-pad-x:        var(--page-pad);
+  --topbar-gap:          var(--space-3);
+  --topbar-z:            calc(var(--z-sticky) - 1);
 
   position: sticky;
   top: 0;
@@ -23,10 +20,10 @@
   align-items: center;
   gap: var(--topbar-gap);
   padding-inline: var(--topbar-pad-x);
-  background: var(--topbar-background);
-  color: var(--topbar-color);
-  backdrop-filter: blur(var(--topbar-blur)) saturate(var(--topbar-saturate));
-  -webkit-backdrop-filter: blur(var(--topbar-blur)) saturate(var(--topbar-saturate));
+  background: var(--background);
+  color: var(--color, var(--ink));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
   isolation: isolate;
   border-bottom: var(--border-w) solid var(--topbar-border-color);
   box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--shadow-color, black) 30%, transparent);
@@ -35,16 +32,11 @@
   .topbar { background: var(--bg-1); }
 }
 
-/* Ionic-style layout:  [ back ]   ─   title   ─   [ burger ]  +  actions
-   - back button slot — left edge
-   - title — center, dominates the space
-   - burger button slot — right edge (always visible, toggles sidebar)
-   - actions cluster — right of title on desktop, hidden under burger drawer on mobile
-*/
+/* Ionic-style layout:  [ back ]   ─   title   ─   [ burger ]  +  actions */
 
 /* Generic icon button used by back & burger. */
-.topbar__menu-btn,
-.topbar__back-btn {
+.topbar-menu-btn,
+.topbar-back-btn {
   display: inline-flex;
   width: 36px; height: 36px;
   border-radius: var(--radius-md);
@@ -57,21 +49,19 @@
   cursor: pointer;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
-.topbar__menu-btn:hover,
-.topbar__back-btn:hover { background: var(--bg-3); color: var(--ink); }
-.topbar__menu-btn svg,
-.topbar__back-btn svg { width: 18px; height: 18px; }
-.topbar__back-btn:disabled,
-.topbar__back-btn[aria-disabled="true"] { opacity: 0.35; pointer-events: none; }
+.topbar-menu-btn:hover,
+.topbar-back-btn:hover { background: var(--bg-3); color: var(--ink); }
+.topbar-menu-btn svg,
+.topbar-back-btn svg { width: 18px; height: 18px; }
+.topbar-back-btn:disabled,
+.topbar-back-btn[aria-disabled="true"] { opacity: 0.35; pointer-events: none; }
 
-/* Center page title — visible on every viewport, dominant */
-.topbar__page-title {
+/* Center page title — use <h1 class="title"> inside .topbar */
+.topbar > .title {
+  --text: var(--text-md);
+  --weight: 600;
   flex: 1;
   min-width: 0;
-  margin: 0;
-  font-size: var(--text-md);
-  font-weight: 600;
-  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -79,9 +69,16 @@
   letter-spacing: var(--tracking-tight);
 }
 
-/* Breadcrumbs — kept for backwards-compat, hidden by default in new layout.
-   Pages can opt-in by adding ok-topbar--with-crumb on the .topbar. */
-.topbar__crumb {
+/* Left cluster (back btn wrapper) */
+.topbar-left {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  flex-shrink: 0;
+}
+
+/* Breadcrumbs slot — hidden by default, opt-in via .with-crumb */
+.topbar-crumb {
   display: none;
   align-items: center;
   gap: var(--space-2);
@@ -92,40 +89,25 @@
   color: var(--ink-2);
   overflow: hidden;
 }
-.topbar.with-crumb .topbar__crumb { display: flex; }
-.topbar.with-crumb .topbar__page-title { display: none; }
-.topbar__crumb-item {
+.topbar.with-crumb .topbar-crumb { display: flex; }
+.topbar.with-crumb > .title { display: none; }
+.topbar-crumb-item {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.topbar__crumb-item:last-child { color: var(--ink); }
-.topbar__crumb-sep { color: var(--ink-4); flex-shrink: 0; }
+.topbar-crumb-item:last-child { color: var(--ink); }
+.topbar-crumb-sep { color: var(--ink-4); flex-shrink: 0; }
 
-/* (Legacy) left cluster — kept renderable, now empty in the new layout. */
-.topbar__left {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  flex-shrink: 0;
-}
-
-/* Hide the search box on smaller viewports to leave room for title + buttons. */
+/* Search box — use <div class="topbar-search"> */
 @media (max-width: 1023px) {
-  .topbar__search { display: none; }
+  .topbar-search { display: none; }
 }
-.topbar__crumb-item {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.topbar__crumb-item:last-child { color: var(--ink); }
-.topbar__crumb-sep {
-  color: var(--ink-4);
-  flex-shrink: 0;
+@media (max-width: 767px) {
+  .topbar-search { display: none; }
 }
 
-.topbar__search {
+.topbar-search {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -139,8 +121,8 @@
   width: 240px;
   transition: border-color var(--dur-fast);
 }
-.topbar__search:focus-within { border-color: var(--line-3); }
-.topbar__search input {
+.topbar-search:focus-within { border-color: var(--line-3); }
+.topbar-search input {
   background: transparent;
   border: none;
   outline: none;
@@ -148,8 +130,8 @@
   min-width: 0;
   color: var(--ink);
 }
-.topbar__search input::placeholder { color: var(--ink-3); }
-.topbar__kbd {
+.topbar-search input::placeholder { color: var(--ink-3); }
+.topbar-kbd {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   padding: 1px 5px;
@@ -158,13 +140,7 @@
   color: var(--ink-3);
 }
 
-.topbar__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
+/* Actions cluster — use <div class="actions"> inside .topbar */
+.topbar > .actions {
   flex-shrink: 0;
-}
-
-@media (max-width: 767px) {
-  .topbar__search { display: none; }
 }

@@ -2,40 +2,29 @@
    OutfitKit · Notifications · Command palette · Coachmark
    ============================================================ */
 
-/* ---------- Notifications center (drawer) ---------- */
+/* ---------- Notifications center ---------- */
+/* Composición universal:
+     <div class="notif">
+       <header class="head">
+         <h3 class="title">…<b>count</b></h3>
+       </header>
+       .notif__filters | .notif__list | footer.foot
+     </div>
+*/
 .notif {
-  /* API canónica de override */
-  --notif-background:    var(--bg-2);
-  --notif-border-color:  var(--line);
-  --notif-border-radius: var(--radius-xl);
-  --notif-width:         360px;
-  --notif-accent:        var(--brand);
-  --notif-color:         var(--ink);
-
-  background: var(--notif-background);
-  border: var(--border-w) solid var(--notif-border-color);
-  border-radius: var(--notif-border-radius);
-  width: var(--notif-width);
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-xl));
+  width: var(--notif-width, 360px);
   max-width: 100%;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-.notif__head {
-  padding: var(--space-3-5) var(--space-4);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: var(--border-w) solid var(--line);
-}
-.notif__title {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 600;
-  margin: var(--space-0);
-  color: var(--ink);
-}
-.notif__title b {
+
+/* .head inside notif: justify override */
+.notif > .head { justify-content: space-between; }
+.notif > .head .title b {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -172,7 +161,7 @@
   outline-offset: 2px;
 }
 
-/* ---------- Command palette ---------- */
+/* ---------- Command palette (inline/embedded variant) ---------- */
 .cmdk-backdrop {
   position: absolute;
   inset: 0;
@@ -180,17 +169,8 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
-.cmdk {
-  position: relative;
-  background: var(--bg-2);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-xl);
-  width: 560px;
-  max-width: 90%;
-  margin: 80px auto var(--space-0);
-  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
-  overflow: hidden;
-}
+/* Inline cmdk uses universal vars from cmdk.css; these overrides apply
+   only to the embedded variant (positioned inside a container) */
 .cmdk__input-row {
   display: flex;
   align-items: center;
@@ -198,18 +178,6 @@
   padding: var(--space-3-5) var(--space-4);
   border-bottom: var(--border-w) solid var(--line);
 }
-.cmdk__icon { color: var(--ink-3); flex-shrink: 0; }
-.cmdk__input {
-  flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  font: inherit;
-  font-size: 15px;
-  color: var(--ink);
-  font-family: var(--font-display);
-}
-.cmdk__input::placeholder { color: var(--ink-4); }
 .cmdk__kbd {
   display: inline-flex;
   align-items: center;
@@ -222,57 +190,17 @@
   color: var(--ink-3);
   font-weight: 500;
 }
-
 .cmdk__list {
   max-height: 380px;
   overflow-y: auto;
   padding: var(--space-1-5) var(--space-1);
 }
-.cmdk__group {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--ink-3);
-  padding: var(--space-2) var(--space-3) var(--space-1);
-  font-weight: 500;
-}
-.cmdk__item {
-  display: grid;
-  grid-template-columns: 28px 1fr auto;
-  gap: var(--space-3);
-  align-items: center;
-  padding: var(--space-2) var(--space-3);
-  margin: var(--space-0) var(--space-1);
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  color: var(--ink);
-  cursor: pointer;
-  transition: background var(--dur) var(--ease-out);
-}
-.cmdk__item:hover,
-.cmdk__item--active { background: var(--bg-3); }
-.cmdk__item--active { box-shadow: inset 0 0 0 1px var(--line-2); }
-.cmdk__item-icon {
-  width: var(--size-sm); height: var(--size-sm);
-  border-radius: var(--radius-sm);
-  background: var(--bg-3);
-  color: var(--ink-2);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
 .cmdk__item--active .cmdk__item-icon { background: var(--bg-2); color: var(--brand); }
 .cmdk__item-name { font-weight: 500; }
 .cmdk__item-desc { color: var(--ink-3); font-size: var(--text-xs); margin-top: var(--border-w); }
-.cmdk__item-shortcut {
-  display: inline-flex;
-  gap: 3px;
-}
 .cmdk__item-shortcut .cmdk__kbd { padding: var(--border-w) 5px; font-size: 10px; }
 
 .cmdk__foot {
-  padding: var(--space-2) var(--space-3-5);
   border-top: var(--border-w) solid var(--line);
   display: flex;
   gap: var(--space-4);

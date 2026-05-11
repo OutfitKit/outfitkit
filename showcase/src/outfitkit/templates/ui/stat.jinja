@@ -4,8 +4,8 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="stat"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-  <div class="stat__label">{{ label }}</div>
-  <div class="stat__value">{{ value }}</div>
+  <div class="label">{{ label }}</div>
+  <div class="value">{{ value }}</div>
   {%- if delta %}<div class="stat__delta{% if delta_dir %} {{ delta_dir }}{% endif %}">{{ delta }}</div>{% endif %}
 </div>
 {%- endmacro %}

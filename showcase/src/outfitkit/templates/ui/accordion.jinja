@@ -44,13 +44,13 @@
           aria-expanded="{{ 'true' if expanded else 'false' }}"
           data-attr:aria-expanded="$open"
           data-on:click="$open = !$open">
-    <span class="accordion__title">{{ title }}
+    <span class="title">{{ title }}
       {%- if sub %}
-      <span class="accordion__sub">{{ sub }}</span>
+      <span class="sub">{{ sub }}</span>
       {%- endif %}
     </span>
     {%- if meta %}
-    <span class="accordion__meta">{{ meta }}</span>
+    <span class="meta">{{ meta }}</span>
     {%- endif %}
     <span class="accordion__caret" aria-hidden="true">▾</span>
   </button>

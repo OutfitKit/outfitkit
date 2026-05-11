@@ -10,23 +10,23 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">CR</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="sidebar__brand-meta">Hub · v0.0.9</div>
+    <div class="head">
+      <div class="sidebar-logo">CR</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">Cafetería La Rambla</div>
+        <div class="meta">Hub · v0.0.9</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Plataforma</div>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/></svg><span class="sidebar__label">Sistema</span></button>
+    <div class="content scroll">
+      <div class="label">Plataforma</div>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/></svg><span class="item-label">Sistema</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">JC</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Joan Castell</div>
-          <div class="sidebar__user-meta">joan@larambla.es</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Joan Castell</div>
+          <div class="meta">joan@larambla.es</div>
         </div>
       </div>
     </div>
@@ -34,18 +34,18 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
     <div class="content scroll body">
@@ -105,7 +105,7 @@
 
           <div class="grid-3" style="gap:14px;margin-top:18px;">
             <a class="card interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge.exe">
-              <div class="card__body text-center">
+              <div class="body text-center">
                 <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--info) 14%, transparent);color:var(--info);display:grid;place-items:center;margin:0 auto 10px;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5l8-1v8H3V5zm0 9h8v8l-8-1v-7zm9-10l9-1v9h-9V4zm0 10h9v9l-9-1v-8z"/></svg>
                 </div>
@@ -115,7 +115,7 @@
               </div>
             </a>
             <a class="card interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge-macos.dmg">
-              <div class="card__body text-center">
+              <div class="body text-center">
                 <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--ink-2) 14%, transparent);color:var(--ink);display:grid;place-items:center;margin:0 auto 10px;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 1.5c0 1.4-.6 2.7-1.6 3.6-1.1 1.1-2.3 1.6-3.6 1.5-.1-1.4.5-2.7 1.5-3.7C13.9 1.9 15.2 1.4 16.5 1.5zm4.4 16.4c-.4 1-.9 2-1.6 2.9-.9 1.2-1.6 2-2 2.4-.7.6-1.5 1-2.4 1-.6 0-1.4-.2-2.3-.5-.9-.4-1.7-.5-2.5-.5-.8 0-1.6.2-2.6.5-.9.3-1.7.5-2.3.5-.8 0-1.6-.4-2.4-1-.4-.4-1.1-1.2-2.1-2.5-1-1.4-1.9-3-2.5-4.8-.7-2-1.1-3.9-1.1-5.7 0-2.1.5-3.9 1.4-5.4.7-1.2 1.7-2.1 2.9-2.8 1.2-.7 2.5-1 3.9-1 .7 0 1.5.2 2.6.6 1 .4 1.7.6 2 .6.2 0 1-.2 2.2-.7 1.2-.4 2.2-.6 3-.5 2.2.2 3.9 1 5 2.6-2 1.2-3 2.9-3 5 0 1.7.6 3.1 1.7 4.2 1 1 2.1 1.6 3.4 2-.4 1.4-.9 2.4-1.3 3z"/></svg>
                 </div>
@@ -125,7 +125,7 @@
               </div>
             </a>
             <a class="card interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge-linux">
-              <div class="card__body text-center">
+              <div class="body text-center">
                 <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--warn) 14%, transparent);color:var(--warn);display:grid;place-items:center;margin:0 auto 10px;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M7 15l-2 6h14l-2-6"/></svg>
                 </div>

@@ -48,13 +48,7 @@
   border-bottom: var(--border-w) solid var(--table-border-color);
   background: var(--table-header-bg);
 }
-.table-toolbar__title {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 600;
-  letter-spacing: var(--tracking-near);
-  color: var(--ink);
-}
+/* .table-toolbar__title → use universal .title inside .table-toolbar */
 .table-toolbar__count {
   font-size: var(--text-xs);
   color: var(--ink-3);
@@ -122,7 +116,7 @@
   transition: all var(--dur-fast);
 }
 .icon-btn:hover { border-color: var(--line-2); color: var(--ink); background: var(--bg-3); }
-.icon-btn svg { width: 15px; height: 15px; }
+.icon-btn svg { width: var(--icon-sm); height: var(--icon-sm); }
 .icon-btn.brand { background: var(--brand); border-color: var(--brand); color: var(--brand-fg); }
 .icon-btn.brand:hover { background: var(--brand-2); border-color: var(--brand-2); color: var(--brand-fg); }
 .icon-btn.danger:hover { color: var(--danger); border-color: var(--danger); }
@@ -225,17 +219,10 @@
   justify-content: center;
   color: var(--ink-2);
 }
-.dt-card__icon svg { width: 16px; height: 16px; }
-.dt-card__title {
-  font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--ink);
-}
-.dt-card__sub {
-  font-size: var(--text-xs);
-  color: var(--ink-3);
-  font-family: var(--font-mono);
-}
+.dt-card__icon svg { width: var(--icon-sm); height: var(--icon-sm); }
+/* .dt-card__title → use universal .title sm inside .dt-card__head */
+/* .dt-card__sub   → use universal .meta (+ font-mono inline) inside .dt-card__head */
+.dt-card__head > .meta { font-family: var(--font-mono); }
 .dt-card__body {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -300,7 +287,7 @@
   content: "↕";
   margin-left: var(--space-1-5);
   opacity: 0.4;
-  font-size: 10px;
+  font-size: var(--text-2xs);
 }
 .table thead th[aria-sort="ascending"]::after  { content: "↑"; opacity: 1; color: var(--brand); }
 .table thead th[aria-sort="descending"]::after { content: "↓"; opacity: 1; color: var(--brand); }
@@ -342,7 +329,7 @@
 }
 .td.mono {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--ink-2);
 }
 .td.muted { color: var(--ink-3); }
@@ -363,8 +350,10 @@
   gap: var(--space-2-5);
 }
 .cell-rich__main { display: flex; flex-direction: column; gap: var(--border-w); min-width: 0; }
-.cell-rich__title { font-weight: 500; color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.cell-rich__sub { font-size: var(--text-xs); color: var(--ink-3); }
+/* .cell-rich__title → use universal .title sm (or just strong/b) inside .cell-rich__main */
+/* Override for ellipsis truncation on any .title inside a cell-rich */
+.cell-rich__main > .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* .cell-rich__sub → use universal .meta inside .cell-rich__main */
 
 /* Variantes */
 .table.zebra tbody tr:nth-child(even) {
@@ -457,12 +446,14 @@
 
 .spark {
   display: inline-block;
-  width: 100px;
-  height: var(--avatar-2xs);
+  width: var(--sparkline-w);
+  height: var(--sparkline-h);
   vertical-align: middle;
 }
 .spark.lg { width: 160px; height: var(--avatar-md); }
-.spark.sm { width: var(--sidebar-w-collapsed); height: 16px; }
+/* TOKEN-REVIEW: 160px for .spark.lg has no dedicated token — --sparkline-w-lg candidate */
+/* TOKEN-REVIEW: --sidebar-w-collapsed reused for spark.sm width — semantically wrong */
+.spark.sm { width: 60px; height: var(--icon-md); }
 
 .spark path,
 .spark polyline {
@@ -511,4 +502,6 @@
 }
 .trend.up { color: var(--leaf); }
 .trend.down { color: var(--danger); }
-.trend__arrow { width: var(--icon-2xs); height: var(--icon-2xs); }
+/* .trend__arrow → use universal .icon inside .trend */
+.trend > svg,
+.trend > .icon { width: var(--icon-2xs); height: var(--icon-2xs); }

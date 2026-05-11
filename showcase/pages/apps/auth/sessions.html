@@ -22,36 +22,36 @@ body { background: var(--bg); margin: 0; }
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EC</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">acme · Madrid</div>
+    <div class="head">
+      <div class="sidebar-logo">EC</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">acme · Madrid</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Main</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span><span class="sidebar__badge">4</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="sidebar__label">Mi perfil</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="sidebar__label">Seguridad</span></button>
+    <div class="content scroll">
+      <div class="label">Main</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span><span class="badge">4</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="item-label">Mi perfil</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="item-label">Seguridad</span></button>
 
-      <div class="sidebar__group">Billing</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Plan & facturación</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="sidebar__label">Facturas</span><span class="sidebar__badge sidebar__badge--brand">2</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="sidebar__label">Uso & cuotas</span></button>
+      <div class="label">Billing</div>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Plan & facturación</span></button>
+      <button class="item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Facturas</span><span class="badge badge brand">2</span></button>
+      <button class="item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="item-label">Uso & cuotas</span></button>
 
-      <div class="sidebar__group">Developer</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="sidebar__label">API & tokens</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Webhooks</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="sidebar__label">Audit log</span></button>
+      <div class="label">Developer</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="item-label">API & tokens</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Webhooks</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="item-label">Audit log</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -59,26 +59,26 @@ body { background: var(--bg); margin: 0; }
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Sesiones activas</h1>
+        <h1 class="title">Sesiones activas</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar en cuenta…"/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <button class="icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
         <span class="avatar sm brand">IB</span>
         </div>
@@ -145,7 +145,7 @@ body { background: var(--bg); margin: 0; }
         <div class="flex col gap-2">
 
           <article class="card" data-show="$deviceFilter === 'all' || $deviceFilter === 'desktop'">
-            <div class="card__body" style="display:flex;align-items:center;gap:16px;">
+            <div class="body" style="display:flex;align-items:center;gap:16px;">
               <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--brand-soft);color:var(--brand-3);display:grid;place-items:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
               </div>
@@ -162,7 +162,7 @@ body { background: var(--bg); margin: 0; }
           </article>
 
           <article class="card" data-show="$deviceFilter === 'all' || $deviceFilter === 'mobile'">
-            <div class="card__body" style="display:flex;align-items:center;gap:16px;">
+            <div class="body" style="display:flex;align-items:center;gap:16px;">
               <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--bg-3);color:var(--ink-2);display:grid;place-items:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
               </div>
@@ -179,7 +179,7 @@ body { background: var(--bg); margin: 0; }
           </article>
 
           <article class="card" data-show="$deviceFilter === 'all' || $deviceFilter === 'desktop'" style="border-color:color-mix(in oklch, var(--warn) 40%, var(--line));">
-            <div class="card__body" style="display:flex;align-items:center;gap:16px;">
+            <div class="body" style="display:flex;align-items:center;gap:16px;">
               <div style="width:44px;height:44px;border-radius:var(--radius-md);background:color-mix(in oklch, var(--warn) 18%, transparent);color:var(--warn);display:grid;place-items:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
               </div>
@@ -199,7 +199,7 @@ body { background: var(--bg); margin: 0; }
           </article>
 
           <article class="card" data-show="$deviceFilter === 'all' || $deviceFilter === 'tablet'">
-            <div class="card__body" style="display:flex;align-items:center;gap:16px;">
+            <div class="body" style="display:flex;align-items:center;gap:16px;">
               <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--bg-3);color:var(--ink-2);display:grid;place-items:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 19h2"/></svg>
               </div>
@@ -216,7 +216,7 @@ body { background: var(--bg); margin: 0; }
           </article>
 
           <article class="card" data-show="$deviceFilter === 'all' || $deviceFilter === 'mobile'">
-            <div class="card__body" style="display:flex;align-items:center;gap:16px;">
+            <div class="body" style="display:flex;align-items:center;gap:16px;">
               <div style="width:44px;height:44px;border-radius:var(--radius-md);background:var(--bg-3);color:var(--ink-2);display:grid;place-items:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg>
               </div>

@@ -5,13 +5,13 @@
 <header class="topbar{% if with_crumb %} with-crumb{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if back %}
-  <div class="topbar__left">
-    <button class="topbar__back-btn" aria-label="Volver" type="button">
+  <div class="topbar-left">
+    <button class="topbar-back-btn" aria-label="Volver" type="button">
       <iconify-icon icon="lucide:arrow-left" width="16" height="16"></iconify-icon>
     </button>
   </div>
   {% endif %}
-  {% if page_title %}<h1 class="topbar__page-title">{{ page_title }}</h1>{% endif %}
+  {% if page_title %}<h1 class="title">{{ page_title }}</h1>{% endif %}
   {{ caller() }}
 </header>
 {%- endmacro %}

@@ -9,7 +9,7 @@
   --chart-background:    var(--bg-2);
   --chart-border-color:  var(--line);
   --chart-border-radius: var(--radius-xl);
-  --chart-padding:       var(--space-4) 18px;
+  --chart-padding:       var(--space-4) var(--space-4);   /* TOKEN-MISSING: 18px had no token, approximated to --space-4 */
   --chart-accent:        var(--brand);
   --chart-color:         var(--ink);
   --chart-color-muted:   var(--ink-3);
@@ -24,36 +24,30 @@
 }
 .chart.flat { background: transparent; border: none; padding: var(--space-0); }
 
-.chart__head {
-  display: flex;
+/* .chart__head → use universal .head (or .row when no border is needed) */
+.chart > .head {
+  border-bottom: none;
+  padding: var(--space-0) var(--space-0) var(--space-2);
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--space-3);
 }
-.chart__title {
-  font-family: var(--font-display);
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: var(--tracking-snug);
-  color: var(--ink);
-  margin: var(--space-0);
-}
-.chart__sub {
-  font-size: 11px;
-  color: var(--ink-3);
-  margin-top: var(--border-w-2);
-}
+
+/* .chart__title → use universal .title sm */
+/* .chart__sub   → use universal .sub sm  */
+
+/* Big display number inside a chart header */
 .chart__big {
   font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 600;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-display);
   color: var(--ink);
   font-variant-numeric: tabular-nums;
   line-height: var(--leading-flat);
 }
+/* Delta trend line below the big number */
 .chart__delta {
-  font-size: 12px;
+  font-size: var(--text-xs);
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   margin-top: var(--space-1);
@@ -148,12 +142,12 @@
 /* ---------- Donut ---------- */
 .donut {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 18px;
+  grid-template-columns: var(--chart-pie) 1fr;
+  gap: var(--space-4);   /* TOKEN-MISSING: 18px had no token, approximated to --space-4 */
   align-items: center;
 }
 .donut__svg {
-  width: 140px; height: 140px;
+  width: var(--chart-pie); height: var(--chart-pie);
 }
 .donut__track { fill: none; stroke: var(--bg-3); stroke-width: 16; }
 .donut__slice { fill: none; stroke-width: 16; transform: rotate(-90deg); transform-origin: center; transition: stroke-dasharray var(--dur-slow) var(--ease-out); }
@@ -174,7 +168,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
-  font-size: 12px;
+  font-size: var(--text-sm);
 }
 .donut__legend-row {
   display: grid;
@@ -205,7 +199,7 @@
   grid-template-columns: 110px 1fr 60px;
   gap: var(--space-2-5);
   align-items: center;
-  font-size: 12px;
+  font-size: var(--text-sm);
 }
 .hbar__label {
   color: var(--ink-2);
@@ -274,8 +268,8 @@
   align-items: center;
   padding: var(--space-0) var(--space-3);
   color: var(--brand-fg);
-  font-size: 12px;
-  font-weight: 500;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
   min-width: 0;
 }
 .funnel__bar--leaf { background: linear-gradient(90deg, var(--leaf), color-mix(in oklch, var(--leaf) 60%, var(--bg-3))); }

@@ -5,14 +5,14 @@
 <div class="panel{% if variant %} {{ variant }}{% endif %}{% if size %} {{ size }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if title or sub %}
-  <header class="panel__head">
-    <div class="panel__head-text">
-      {% if title %}<h3 class="panel__title">{{ title }}</h3>{% endif %}
-      {% if sub %}<p class="panel__sub">{{ sub }}</p>{% endif %}
+  <header class="head">
+    <div class="heading">
+      {% if title %}<h3 class="title">{{ title }}</h3>{% endif %}
+      {% if sub %}<p class="sub">{{ sub }}</p>{% endif %}
     </div>
   </header>
   {% endif %}
-  <div class="panel__body">{{ caller() }}</div>
+  <div class="body">{{ caller() }}</div>
 </div>
 {%- endmacro %}
 

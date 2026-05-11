@@ -7,7 +7,7 @@
 
 {% block content %}
 <h1>Timeline</h1>
-<p class="showcase__lead">Bitácora vertical con bullets coloreados. El consumidor compone los items con <code>.ok-timeline__item</code>, <code>.ok-timeline__dot</code>, <code>.ok-timeline__body</code>, <code>.ok-timeline__head</code>, <code>.ok-timeline__title</code>, <code>.ok-timeline__time</code>, <code>.ok-timeline__desc</code>.</p>
+<p class="showcase__lead">Bitácora vertical con bullets coloreados. El consumidor compone los items con <code>.timeline__item</code>, <code>.timeline__dot</code>, <code>.timeline__body</code>, <code>.timeline__head</code>. Dentro del head: <code>.title sm</code> para el texto y <code>.meta</code> para la hora. Descripción con <code>.meta</code> directamente dentro de <code>.timeline__body</code>.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/card.jinja" import card %}
 {% from "ui/timeline.jinja" import timeline %}
@@ -18,18 +18,18 @@
   <span class="timeline__dot timeline__dot--brand"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Lucía P.</strong> creó el pedido</h5>
-      <span class="timeline__time">14:02</span>
+      <h5 class="title sm"><strong>Lucía P.</strong> creó el pedido</h5>
+      <span class="meta">14:02</span>
     </div>
-    <p class="timeline__desc">3 productos · €34,50 · Mesa 4</p>
+    <p class="meta">3 productos · €34,50 · Mesa 4</p>
   </div>
 </li>
 <li class="timeline__item">
   <span class="timeline__dot timeline__dot--info"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Enviado a cocina</h5>
-      <span class="timeline__time">14:03</span>
+      <h5 class="title sm">Enviado a cocina</h5>
+      <span class="meta">14:03</span>
     </div>
   </div>
 </li>
@@ -37,10 +37,10 @@
   <span class="timeline__dot timeline__dot--leaf"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Servido y cobrado · efectivo</h5>
-      <span class="timeline__time">14:32</span>
+      <h5 class="title sm">Servido y cobrado · efectivo</h5>
+      <span class="meta">14:32</span>
     </div>
-    <p class="timeline__desc">Vuelta de €5,50 entregada al cliente.</p>
+    <p class="meta">Vuelta de €5,50 entregada al cliente.</p>
   </div>
 </li>
 {% endcall %}
@@ -53,18 +53,18 @@
   <span class="timeline__dot timeline__dot--brand"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Lucía P.</strong> creó el pedido</h5>
-      <span class="timeline__time">14:02</span>
+      <h5 class="title sm"><strong>Lucía P.</strong> creó el pedido</h5>
+      <span class="meta">14:02</span>
     </div>
-    <p class="timeline__desc">3 productos · €34,50 · Mesa 4</p>
+    <p class="meta">3 productos · €34,50 · Mesa 4</p>
   </div>
 </li>
 <li class="timeline__item">
   <span class="timeline__dot timeline__dot--info"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Enviado a cocina</h5>
-      <span class="timeline__time">14:03</span>
+      <h5 class="title sm">Enviado a cocina</h5>
+      <span class="meta">14:03</span>
     </div>
   </div>
 </li>
@@ -72,10 +72,10 @@
   <span class="timeline__dot timeline__dot--leaf"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Servido y cobrado · efectivo</h5>
-      <span class="timeline__time">14:32</span>
+      <h5 class="title sm">Servido y cobrado · efectivo</h5>
+      <span class="meta">14:32</span>
     </div>
-    <p class="timeline__desc">Vuelta de €5,50 entregada al cliente.</p>
+    <p class="meta">Vuelta de €5,50 entregada al cliente.</p>
   </div>
 </li>
 </Timeline>
@@ -92,18 +92,18 @@
   <span class="timeline__dot timeline__dot--brand"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Lucía P.</strong> creó el pedido</h5>
-      <span class="timeline__time">14:02</span>
+      <h5 class="title sm"><strong>Lucía P.</strong> creó el pedido</h5>
+      <span class="meta">14:02</span>
     </div>
-    <p class="timeline__desc">3 productos · €34,50 · Mesa 4</p>
+    <p class="meta">3 productos · €34,50 · Mesa 4</p>
   </div>
 </li>
 <li class="timeline__item">
   <span class="timeline__dot timeline__dot--info"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Enviado a cocina</h5>
-      <span class="timeline__time">14:03</span>
+      <h5 class="title sm">Enviado a cocina</h5>
+      <span class="meta">14:03</span>
     </div>
   </div>
 </li>
@@ -111,10 +111,10 @@
   <span class="timeline__dot timeline__dot--leaf"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Servido y cobrado · efectivo</h5>
-      <span class="timeline__time">14:32</span>
+      <h5 class="title sm">Servido y cobrado · efectivo</h5>
+      <span class="meta">14:32</span>
     </div>
-    <p class="timeline__desc">Vuelta de €5,50 entregada al cliente.</p>
+    <p class="meta">Vuelta de €5,50 entregada al cliente.</p>
   </div>
 </li>
 {% endcall %}
@@ -131,8 +131,8 @@
   <span class="timeline__dot timeline__dot--leaf"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Elena</strong> aprobó la propuesta</h5>
-      <span class="timeline__time">hace 4 min</span>
+      <h5 class="title sm"><strong>Elena</strong> aprobó la propuesta</h5>
+      <span class="meta">hace 4 min</span>
     </div>
   </div>
 </li>
@@ -140,8 +140,8 @@
   <span class="timeline__dot timeline__dot--info"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Sistema</strong> generó factura #FE-1042</h5>
-      <span class="timeline__time">hace 12 min</span>
+      <h5 class="title sm"><strong>Sistema</strong> generó factura #FE-1042</h5>
+      <span class="meta">hace 12 min</span>
     </div>
   </div>
 </li>
@@ -149,8 +149,8 @@
   <span class="timeline__dot timeline__dot--warn"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Stock crítico · <strong>Café arábica 1kg</strong></h5>
-      <span class="timeline__time">hace 28 min</span>
+      <h5 class="title sm">Stock crítico · <strong>Café arábica 1kg</strong></h5>
+      <span class="meta">hace 28 min</span>
     </div>
   </div>
 </li>
@@ -158,8 +158,8 @@
   <span class="timeline__dot timeline__dot--danger"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Intento de login fallido · IP 84.121.x.x</h5>
-      <span class="timeline__time">hace 2 h</span>
+      <h5 class="title sm">Intento de login fallido · IP 84.121.x.x</h5>
+      <span class="meta">hace 2 h</span>
     </div>
   </div>
 </li>
@@ -173,8 +173,8 @@
   <span class="timeline__dot timeline__dot--leaf"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Elena</strong> aprobó la propuesta</h5>
-      <span class="timeline__time">hace 4 min</span>
+      <h5 class="title sm"><strong>Elena</strong> aprobó la propuesta</h5>
+      <span class="meta">hace 4 min</span>
     </div>
   </div>
 </li>
@@ -182,8 +182,8 @@
   <span class="timeline__dot timeline__dot--info"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Sistema</strong> generó factura #FE-1042</h5>
-      <span class="timeline__time">hace 12 min</span>
+      <h5 class="title sm"><strong>Sistema</strong> generó factura #FE-1042</h5>
+      <span class="meta">hace 12 min</span>
     </div>
   </div>
 </li>
@@ -191,8 +191,8 @@
   <span class="timeline__dot timeline__dot--warn"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Stock crítico · <strong>Café arábica 1kg</strong></h5>
-      <span class="timeline__time">hace 28 min</span>
+      <h5 class="title sm">Stock crítico · <strong>Café arábica 1kg</strong></h5>
+      <span class="meta">hace 28 min</span>
     </div>
   </div>
 </li>
@@ -200,8 +200,8 @@
   <span class="timeline__dot timeline__dot--danger"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Intento de login fallido · IP 84.121.x.x</h5>
-      <span class="timeline__time">hace 2 h</span>
+      <h5 class="title sm">Intento de login fallido · IP 84.121.x.x</h5>
+      <span class="meta">hace 2 h</span>
     </div>
   </div>
 </li>
@@ -219,8 +219,8 @@
   <span class="timeline__dot timeline__dot--leaf"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Elena</strong> aprobó la propuesta</h5>
-      <span class="timeline__time">hace 4 min</span>
+      <h5 class="title sm"><strong>Elena</strong> aprobó la propuesta</h5>
+      <span class="meta">hace 4 min</span>
     </div>
   </div>
 </li>
@@ -228,8 +228,8 @@
   <span class="timeline__dot timeline__dot--info"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title"><strong>Sistema</strong> generó factura #FE-1042</h5>
-      <span class="timeline__time">hace 12 min</span>
+      <h5 class="title sm"><strong>Sistema</strong> generó factura #FE-1042</h5>
+      <span class="meta">hace 12 min</span>
     </div>
   </div>
 </li>
@@ -237,8 +237,8 @@
   <span class="timeline__dot timeline__dot--warn"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Stock crítico · <strong>Café arábica 1kg</strong></h5>
-      <span class="timeline__time">hace 28 min</span>
+      <h5 class="title sm">Stock crítico · <strong>Café arábica 1kg</strong></h5>
+      <span class="meta">hace 28 min</span>
     </div>
   </div>
 </li>
@@ -246,8 +246,8 @@
   <span class="timeline__dot timeline__dot--danger"></span>
   <div class="timeline__body">
     <div class="timeline__head">
-      <h5 class="timeline__title">Intento de login fallido · IP 84.121.x.x</h5>
-      <span class="timeline__time">hace 2 h</span>
+      <h5 class="title sm">Intento de login fallido · IP 84.121.x.x</h5>
+      <span class="meta">hace 2 h</span>
     </div>
   </div>
 </li>
@@ -262,7 +262,7 @@
   <tbody>
     <tr><td><code>dense</code></td><td>bool</td><td>false</td><td>Variante compacta para audit logs.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.ok-timeline__item</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.timeline__item</code> con <code>.timeline__dot</code>, <code>.timeline__head</code>, y texto universal (<code>.title.sm</code>, <code>.meta</code>).</td></tr>
   </tbody>
 </table>
 {% endblock %}

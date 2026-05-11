@@ -1,7 +1,18 @@
 /* ============================================================
-   OutfitKit · Command palette ⌘K
+   OutfitKit · Command palette ⌘K (standalone)
+   Composición universal:
+     <div class="cmdk-backdrop">
+       <div class="cmdk">
+         <header class="head">
+           <svg class="icon">…</svg>
+           <input class="cmdk__input" …>
+           <span class="cmdk__hint">…</span>
+         </header>
+         <div class="content scroll body">…</div>
+         <footer class="foot">…</footer>
+       </div>
+     </div>
    ============================================================ */
-
 .cmdk-backdrop {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.55);
@@ -13,37 +24,24 @@
 }
 
 .cmdk {
-  /* API canónica de override */
-  --cmdk-background:    var(--bg-1);
-  --cmdk-border-color:  var(--line);
-  --cmdk-border-radius: var(--radius-xl);
-  --cmdk-shadow:        var(--shadow-lg);
-  --cmdk-max-width:     var(--cmdk-max-w);
-  --cmdk-color:         var(--ink);
-  --cmdk-accent:        var(--brand-3);
-
   width: 100%;
-  max-width: var(--cmdk-max-width);
-  background: var(--cmdk-background);
-  border: var(--border-w) solid var(--cmdk-border-color);
-  border-radius: var(--cmdk-border-radius);
-  box-shadow: var(--cmdk-shadow);
+  max-width: var(--max-width, var(--cmdk-max-w));
+  background: var(--background, var(--bg-1));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-xl));
+  box-shadow: var(--shadow, var(--shadow-lg));
   overflow: hidden;
   display: flex; flex-direction: column;
   max-height: 70vh;
 }
-.cmdk__head {
-  display: flex; align-items: center; gap: var(--space-3);
-  padding: var(--space-0) var(--space-4);
-  border-bottom: var(--border-w) solid var(--line);
+
+/* Head row — uses universal .head; height override specific to cmdk */
+.cmdk > .head {
   height: var(--topbar-h);
   flex-shrink: 0;
+  flex-wrap: nowrap;
 }
-.cmdk__icon {
-  width: var(--icon-md); height: var(--icon-md);
-  color: var(--ink-3);
-  flex-shrink: 0;
-}
+
 .cmdk__input {
   flex: 1;
   background: transparent;
@@ -67,11 +65,7 @@
   color: var(--ink-3);
 }
 
-.cmdk__body {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--space-1-5);
-}
+/* Body uses .content.scroll.body — padding and overflow handled universally */
 .cmdk__group {
   font-size: var(--text-2xs);
   color: var(--ink-4);
@@ -154,14 +148,14 @@
 .cmdk__empty-text { font-size: var(--text-md); color: var(--ink-2); }
 .cmdk__empty-sub  { font-size: var(--text-sm); color: var(--ink-4); margin-top: var(--space-1); }
 
-.cmdk__footer {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: var(--space-2) var(--space-3-5);
-  border-top: var(--border-w) solid var(--line);
+/* Footer — uses universal .foot; extra: space-between */
+.cmdk > .foot {
   font-size: var(--text-2xs);
   color: var(--ink-4);
   flex-shrink: 0;
+  justify-content: space-between;
 }
+.cmdk > .foot kbd,
 .cmdk__footer kbd {
   font-family: var(--font-mono);
   font-size: 10px;

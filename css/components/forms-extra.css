@@ -1,13 +1,15 @@
 /* ============================================================
    Slider / Range — controles deslizantes
+   Consume tokens globales --slider-track-h y --slider-thumb
+   (tokens.css). Compone con modificadores de color: .leaf .warn .danger.
    ============================================================ */
 .slider {
   /* API canónica de override */
   --slider-track:        var(--bg-3);
   --slider-fill:         var(--brand);
-  --slider-thumb:        var(--bg-1);
-  --slider-thumb-size:   16px;
-  --slider-track-height: 4px;
+  --slider-thumb-bg:     var(--bg-1);               /* renombrado de --slider-thumb para evitar colisión con token global */
+  --slider-thumb-size:   var(--slider-thumb, 16px); /* consume token global */
+  --slider-track-height: var(--slider-track-h, 4px); /* consume token global */
   --slider-radius:       var(--radius-pill);
   appearance: none;
   width: 100%;
@@ -30,27 +32,28 @@
   appearance: none;
   width: var(--slider-thumb-size); height: var(--slider-thumb-size);
   border-radius: var(--radius-circle);
-  background: var(--slider-thumb);
+  background: var(--slider-thumb-bg);
   border: var(--border-w-2) solid var(--slider-fill);
-  margin-top: -6px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  margin-top: calc(-1 * (var(--slider-thumb-size) / 2 - var(--slider-track-height) / 2));
+  box-shadow: var(--shadow-sm);
   transition: transform var(--dur-fast);
 }
 .slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
 .slider::-moz-range-thumb {
   width: var(--slider-thumb-size); height: var(--slider-thumb-size);
   border-radius: var(--radius-circle);
-  background: var(--slider-thumb);
+  background: var(--slider-thumb-bg);
   border: var(--border-w-2) solid var(--slider-fill);
 }
 .slider:focus-visible::-webkit-slider-thumb {
   outline: var(--border-w-2) solid var(--brand-3);
   outline-offset: 3px;
 }
-.slider.leaf { --slider-fill: var(--leaf); }
-.slider.warn { --slider-fill: var(--warn); }
+.slider.leaf   { --slider-fill: var(--leaf); }
+.slider.warn   { --slider-fill: var(--warn); }
 .slider.danger { --slider-fill: var(--danger); }
 
+/* Slider block — label + input + value display */
 .slider-block { display: grid; gap: var(--space-1-5); }
 .slider-block__head {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -64,7 +67,7 @@
   background: var(--bg-3);
   padding: var(--border-w) var(--space-2);
   border-radius: var(--radius-xs);
-  font-size: 12px;
+  font-size: var(--text-2xs); /* was 12px literal */
 }
 
 /* Dual range (min-max) — visual con dos thumbs */
@@ -74,14 +77,14 @@
 }
 .range-dual__track {
   position: absolute; top: 50%; left: 0; right: 0;
-  height: 4px; transform: translateY(-50%);
+  height: var(--slider-track-h, 4px); transform: translateY(-50%);
   background: var(--bg-3);
   border-radius: var(--radius-pill);
   pointer-events: none;
 }
 .range-dual__fill {
   position: absolute; top: 50%; transform: translateY(-50%);
-  height: 4px; border-radius: var(--radius-pill);
+  height: var(--slider-track-h, 4px); border-radius: var(--radius-pill);
   background: var(--brand);
 }
 .range-dual input[type="range"] {
@@ -94,7 +97,7 @@
 }
 .range-dual input[type="range"]::-webkit-slider-thumb {
   appearance: none;
-  width: 16px; height: 16px;
+  width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px);
   border-radius: var(--radius-circle);
   background: var(--bg-1);
   border: var(--border-w-2) solid var(--brand);

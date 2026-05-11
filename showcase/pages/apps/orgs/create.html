@@ -40,39 +40,39 @@
 
   <!-- ============ Sidebar ============ -->
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo" style="background: var(--brand); color: var(--brand-fg); display:grid; place-items:center; font-weight:700; font-size:13px;">EX</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">Nueva organización</div>
+    <div class="head">
+      <div class="sidebar-logo" style="background: var(--brand); color: var(--brand-fg); display:grid; place-items:center; font-weight:700; font-size:13px;">EX</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">Nueva organización</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <a class="sidebar__item" href="../dashboard/saas.html">
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <a class="item" href="../dashboard/saas.html">
         <iconify-icon icon="lucide:home" width="16" height="16"></iconify-icon>
-        <span class="sidebar__label">Overview</span>
+        <span class="item-label">Overview</span>
       </a>
-      <a class="sidebar__item" href="list.html" data-route-active="true">
-        <svg class="sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg>
-        <span class="sidebar__label">Organizations</span>
+      <a class="item" href="list.html" data-route-active="true">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg>
+        <span class="item-label">Organizations</span>
       </a>
-      <a class="sidebar__item" href="../hubs/active.html">
-        <svg class="sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg>
-        <span class="sidebar__label">Hubs</span>
-        <span class="sidebar__badge sidebar__badge--brand">7</span>
+      <a class="item" href="../hubs/active.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg>
+        <span class="item-label">Hubs</span>
+        <span class="badge badge brand">7</span>
       </a>
-      <a class="sidebar__item" href="../users/list.html">
-        <svg class="sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/></svg>
-        <span class="sidebar__label">Users</span>
+      <a class="item" href="../users/list.html">
+        <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/></svg>
+        <span class="item-label">Users</span>
       </a>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <div class="avatar sm">IB</div>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -81,19 +81,19 @@
   <!-- ============ Main ============ -->
   <main class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
           data-on:click="$sidebar = !$sidebar"
           data-attr:aria-expanded="$sidebar">
           <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
         </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Nueva organización</h1>
-        <div class="topbar__actions">
+        <h1 class="title">Nueva organización</h1>
+        <div class="actions">
           <a class="btn ghost sm" href="list.html">Cancelar</a>
         </div>
       </header>
@@ -116,7 +116,7 @@
       <div class="container reading row" style="padding-inline:0;">
 
         <form class="card col-md-7 col-lg-8" data-on:submit="event.preventDefault(); location.href='detail.html'">
-          <div class="card__body">
+          <div class="body">
 
             <div class="field">
               <label class="field__label field__label--req" for="org-name">Nombre</label>
@@ -175,7 +175,7 @@
             </div>
 
           </div>
-          <footer class="card__footer card__actions" style="display: flex; gap: 10px; justify-content: flex-end;">
+          <footer class="footer actions" style="display: flex; gap: 10px; justify-content: flex-end;">
             <a class="btn ghost" href="list.html">Cancelar</a>
             <button class="btn primary" type="submit"
               data-attr:disabled="$name.length === 0 || $slug.length === 0">

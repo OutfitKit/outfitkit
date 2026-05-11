@@ -13,59 +13,52 @@
 }
 
 .tag {
-  /* API canónica de override */
-  --tag-background:    var(--bg-3);
-  --tag-color:         var(--ink-2);
-  --tag-border-color:  var(--line-2);
-  --tag-height:        22px;
-  --tag-padding-x:     8px;
-  --tag-font-size:     var(--text-xs);
-  --tag-border-radius: var(--radius-sm);
-
-  --_tag-h:  var(--tag-height);
-  --_tag-px: var(--tag-padding-x);
-  --_tag-fz: var(--tag-font-size);
-  --_tag-bg: var(--tag-background);
-  --_tag-fg: var(--tag-color);
-  --_tag-bd: var(--tag-border-color);
+  /* API canónica de override — una capa plana, consume vars universales donde posible */
+  --background:    var(--bg-3);
+  --color:         var(--ink-2);
+  --border-color:  var(--line-2);
+  --tag-h:         22px; /* TOKEN-REVIEW: sin token exacto para 22px */
+  --pad-x:         var(--space-2); /* 8px */
+  --text:          var(--text-xs);
+  --radius:        var(--radius-sm);
 
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
-  height: var(--_tag-h);
-  padding: var(--space-0) var(--_tag-px);
-  font-size: var(--_tag-fz);
+  height: var(--tag-h);
+  padding: var(--space-0) var(--pad-x);
+  font-size: var(--text);
   font-weight: 500;
   line-height: var(--leading-flat);
   letter-spacing: var(--tracking-tight);
-  color: var(--_tag-fg);
-  background: var(--_tag-bg);
-  border: var(--border-w) solid var(--_tag-bd);
-  border-radius: var(--radius-sm);
+  color: var(--color);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--radius);
   white-space: nowrap;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
 
 /* Sizes */
-.tag.xs { --_tag-h: 16px; --_tag-px: 6px; --_tag-fz: var(--text-2xs); gap: var(--space-1); }
-.tag.sm { --_tag-h: 20px; --_tag-px: 8px; --_tag-fz: var(--text-xs); gap: 5px; }
-.tag.lg { --_tag-h: 28px; --_tag-px: 12px; --_tag-fz: var(--text-sm); gap: var(--space-2); }
+.tag.xs { --tag-h: 16px; --pad-x: var(--space-1-5); --text: var(--text-2xs); gap: var(--space-1); }
+.tag.sm { --tag-h: 20px; --pad-x: var(--space-2); --text: var(--text-xs); gap: 5px; } /* 5px gap: TOKEN-MISSING */
+.tag.lg { --tag-h: 28px; --pad-x: var(--space-3); --text: var(--text-sm); gap: var(--space-2); }
 
 /* Tonal (subtle) variants */
-.tag.brand   { --_tag-bg: var(--brand-soft);  --_tag-fg: var(--brand-3);  --_tag-bd: transparent; }
-.tag.leaf    { --_tag-bg: var(--leaf-soft);   --_tag-fg: oklch(78% 0.15 145); --_tag-bd: transparent; }
-.tag.warn    { --_tag-bg: var(--warn-soft);   --_tag-fg: var(--warn);     --_tag-bd: transparent; }
-.tag.danger  { --_tag-bg: var(--danger-soft); --_tag-fg: var(--danger);   --_tag-bd: transparent; }
-.tag.info    { --_tag-bg: var(--info-soft);   --_tag-fg: var(--info);     --_tag-bd: transparent; }
-.tag.neutral { --_tag-bg: var(--bg-3);        --_tag-fg: var(--ink-2);    --_tag-bd: var(--line-2); }
+.tag.brand   { --background: var(--brand-soft);  --color: var(--brand-3);  --border-color: transparent; }
+.tag.leaf    { --background: var(--leaf-soft);   --color: oklch(78% 0.15 145); --border-color: transparent; }
+.tag.warn    { --background: var(--warn-soft);   --color: var(--warn);     --border-color: transparent; }
+.tag.danger  { --background: var(--danger-soft); --color: var(--danger);   --border-color: transparent; }
+.tag.info    { --background: var(--info-soft);   --color: var(--info);     --border-color: transparent; }
+.tag.neutral { --background: var(--bg-3);        --color: var(--ink-2);    --border-color: var(--line-2); }
 
 /* Solid filled variants */
-.tag.solid                   { --_tag-bg: var(--bg-4);  --_tag-fg: var(--ink);        --_tag-bd: transparent; }
-.tag.solid.tag.brand     { --_tag-bg: var(--brand); --_tag-fg: var(--brand-fg); }
-.tag.solid.tag.leaf      { --_tag-bg: var(--leaf);  --_tag-fg: var(--leaf-fg); }
-.tag.solid.tag.warn      { --_tag-bg: var(--warn);  --_tag-fg: var(--warn-fg); }
-.tag.solid.tag.danger    { --_tag-bg: var(--danger);--_tag-fg: var(--danger-fg); }
-.tag.solid.tag.info      { --_tag-bg: var(--info);  --_tag-fg: var(--info-fg); }
+.tag.solid                   { --background: var(--bg-4);  --color: var(--ink);        --border-color: transparent; }
+.tag.solid.tag.brand     { --background: var(--brand); --color: var(--brand-fg); }
+.tag.solid.tag.leaf      { --background: var(--leaf);  --color: var(--leaf-fg); }
+.tag.solid.tag.warn      { --background: var(--warn);  --color: var(--warn-fg); }
+.tag.solid.tag.danger    { --background: var(--danger);--color: var(--danger-fg); }
+.tag.solid.tag.info      { --background: var(--info);  --color: var(--info-fg); }
 
 /* Removable */
 .tag.is-removable { padding-right: var(--space-1); }
@@ -81,7 +74,7 @@
   opacity: 0.7;
   border-radius: var(--radius-pill);
   cursor: pointer;
-  font-size: 13px;
+  font-size: var(--text-sm); /* approx 13px */
   line-height: var(--leading-flat);
   transition: background var(--dur-fast), opacity var(--dur-fast);
 }

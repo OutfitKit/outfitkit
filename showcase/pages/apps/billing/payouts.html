@@ -19,36 +19,36 @@
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">EC</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">ERPlora Cloud</div>
-        <div class="sidebar__brand-meta">acme · ES</div>
+    <div class="head">
+      <div class="sidebar-logo">EC</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">ERPlora Cloud</div>
+        <div class="meta">acme · ES</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <div class="sidebar__group">Principal</div>
-      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
+    <div class="content scroll">
+      <div class="label">Principal</div>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
 
-      <div class="sidebar__group">Facturación</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="sidebar__label">Facturas</span></button>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="sidebar__label">Suscripciones</span></button>
+      <div class="label">Facturación</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="item-label">Facturas</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="item-label">Suscripciones</span></button>
 
-      <div class="sidebar__group">Desarrollador</div>
-      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="sidebar__label">Repositorios</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span></button>
-      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Stripe Connect</span></button>
-      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="sidebar__label">Payouts</span><span class="sidebar__badge sidebar__badge--brand">€1 480</span></button>
+      <div class="label">Desarrollador</div>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="item-label">Repositorios</span></button>
+      <button class="item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="item-label">Módulos</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Stripe Connect</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="item-label">Payouts</span><span class="badge badge brand">€1 480</span></button>
     </div>
-    <div class="sidebar__footer">
-      <div class="sidebar__user">
+    <div class="foot">
+      <div class="sidebar-user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar__user-info">
-          <div class="sidebar__user-name">Ioan Beilic</div>
-          <div class="sidebar__user-meta">ioan@acme.com</div>
+        <div class="sidebar-user-info">
+          <div class="title sm">Ioan Beilic</div>
+          <div class="meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
@@ -56,26 +56,26 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">Payouts</h1>
+        <h1 class="title">Payouts</h1>
         
-        <div class="topbar__search">
+        <div class="topbar-search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar pagos…"/>
-        <span class="topbar__kbd">⌘K</span>
+        <span class="topbar-kbd">⌘K</span>
       </div>
         
-        <div class="topbar__actions">
+        <div class="actions">
           <span class="avatar sm brand">IB</span>
         </div>
       </header>
@@ -134,7 +134,7 @@
         <!-- Payouts table -->
         <main class="col-md-7 col-lg-8 table-wrap">
           <div class="table-toolbar">
-            <span class="table-toolbar__title">Historial de pagos</span>
+            <span class="title">Historial de pagos</span>
             <span class="table-toolbar__count">12</span>
             <div class="table-toolbar__spacer"></div>
             <div class="search" style="max-width:220px;">
@@ -264,13 +264,13 @@
 
         <!-- Settings sticky card -->
         <aside class="col-md-5 col-lg-4 col-sticky panel">
-          <div class="panel__head">
-            <div class="panel__head-text">
-              <h3 class="panel__title">Configuración</h3>
-              <p class="panel__sub">Programación y cuenta de destino</p>
+          <div class="head">
+            <div class="heading">
+              <h3 class="title">Configuración</h3>
+              <p class="sub">Programación y cuenta de destino</p>
             </div>
           </div>
-          <div class="panel__body">
+          <div class="body">
             <div class="field mb-3">
               <span class="field__label">Frecuencia</span>
               <div style="display:flex;flex-direction:column;gap:6px;">
@@ -306,7 +306,7 @@
 
             <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);font-weight:500;margin-bottom:8px;">Cuenta de destino</div>
             <article class="card mb-2">
-              <div class="card__body flex items-center gap-3">
+              <div class="body flex items-center gap-3">
                 <div style="width:42px;height:42px;border-radius:var(--radius-sm);background:#0066b3;color:#fff;display:grid;place-items:center;font-weight:700;font-size:13px;letter-spacing:0.04em;">SAB</div>
                 <div class="flex-1">
                   <div class="font-medium text-md">Banco Sabadell</div>
@@ -319,7 +319,7 @@
               </div>
             </article>
           </div>
-          <div class="panel__footer">
+          <div class="foot">
             <span class="text-xs c-ink-3">Cambios aplicables al próximo ciclo</span>
             <button class="btn primary sm">Guardar</button>
           </div>
@@ -329,13 +329,13 @@
 
       <!-- Saldo por moneda -->
       <div class="panel">
-        <div class="panel__head">
-          <div class="panel__head-text">
-            <h3 class="panel__title">Saldo por moneda</h3>
-            <p class="panel__sub">Importes pendientes de liquidar agrupados por divisa</p>
+        <div class="head">
+          <div class="heading">
+            <h3 class="title">Saldo por moneda</h3>
+            <p class="sub">Importes pendientes de liquidar agrupados por divisa</p>
           </div>
         </div>
-        <div class="panel__body">
+        <div class="body">
           <div class="row">
             <div class="col-md-6 col-lg-4">
               <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;">

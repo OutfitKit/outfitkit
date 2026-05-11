@@ -7,37 +7,37 @@
 {% block content %}
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__logo">LR</div>
-      <div class="sidebar__brand-text">
-        <div class="sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="sidebar__brand-meta">4 roles</div>
+    <div class="head">
+      <div class="sidebar-logo">LR</div>
+      <div class="sidebar-brand-text">
+        <div class="title md">Cafetería La Rambla</div>
+        <div class="meta">4 roles</div>
       </div>
     </div>
-    <div class="sidebar__body">
-      <a class="sidebar__item" href="../dashboard.html"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="sidebar__label">Inicio</span></a>
-      <a class="sidebar__item" href="./employees-list.html"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="sidebar__label">Empleados</span></a>
-      <a class="sidebar__item" aria-current="page" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="sidebar__label">Roles</span><span class="sidebar__badge">4</span></a>
+    <div class="content scroll">
+      <a class="item" href="../dashboard.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="item-label">Inicio</span></a>
+      <a class="item" href="./employees-list.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="item-label">Empleados</span></a>
+      <a class="item" aria-current="page" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="item-label">Roles</span><span class="badge">4</span></a>
     </div>
   </aside>
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar__left">
-          <button class="topbar__menu-btn" aria-label="Menú"
+        <div class="topbar-left">
+          <button class="topbar-menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar__back-btn" aria-label="Volver"
+          <button class="topbar-back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         
         
-        <div class="topbar__actions">
+        <div class="actions">
           <a class="btn ghost sm" href="./roles-list.html">Volver</a>
         <button class="btn secondary sm" data-on:click="window.ds.signals.merge({delete: {open: true}})">Eliminar</button>
         <a class="btn primary sm" href="./roles-form.html?id=2">Editar</a>
@@ -54,8 +54,8 @@
 
       <section class="grid-2" style="--grid-min:340px;">
         <article class="card">
-          <header class="card__header"><h3 class="card__title">Información</h3></header>
-          <div class="card__body">
+          <header class="head"><h3 class="title">Información</h3></header>
+          <div class="body">
             <dl class="stack">
               <div class="stack__row"><dt class="stack__label">Nombre</dt><dd class="stack__value">Manager</dd></div>
               <div class="stack__row"><dt class="stack__label">Slug</dt><dd class="stack__value"><code class="code">manager</code></dd></div>
@@ -68,11 +68,11 @@
         </article>
 
         <article class="card">
-          <header class="card__header">
-            <h3 class="card__title">Usuarios asignados</h3>
+          <header class="head">
+            <h3 class="title">Usuarios asignados</h3>
             <span class="badge">3</span>
           </header>
-          <div class="card__body">
+          <div class="body">
             <ul class="list">
               <li class="list__item">
                 <span class="avatar sm brand">MS</span>
@@ -100,18 +100,18 @@
               </li>
             </ul>
           </div>
-          <footer class="card__actions">
+          <footer class="actions">
             <a class="btn ghost sm" href="./employees-list.html?role=manager">Ver todos</a>
           </footer>
         </article>
       </section>
 
       <section class="card" style="margin-block-start:var(--space-4);">
-        <header class="card__header">
-          <h3 class="card__title">Permisos</h3>
+        <header class="head">
+          <h3 class="title">Permisos</h3>
           <span class="pill">Solo lectura</span>
         </header>
-        <div class="card__body">
+        <div class="body">
           <table class="table compact">
             <thead><tr><th>Módulo</th><th>Ver</th><th>Crear</th><th>Editar</th><th>Eliminar</th><th>Especiales</th></tr></thead>
             <tbody>
@@ -129,17 +129,17 @@
             </tbody>
           </table>
         </div>
-        <footer class="card__actions">
+        <footer class="actions">
           <a class="btn primary sm" href="./roles-form.html?id=2">Editar permisos</a>
         </footer>
       </section>
     </div>
 
     <nav class="tabbar" data-position="bottom">
-      <a class="tabbar__item" href="../dashboard.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/></svg><span>Inicio</span></a>
-      <a class="tabbar__item" href="./employees-list.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span>Empleados</span></a>
-      <a class="tabbar__item is-active" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="20" height="20"></iconify-icon><span>Roles</span></a>
-      <a class="tabbar__item" href="./settings.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span>Más</span></a>
+      <a class="tabbar-item" href="../dashboard.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/></svg><span>Inicio</span></a>
+      <a class="tabbar-item" href="./employees-list.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span>Empleados</span></a>
+      <a class="tabbar-item is-active" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="20" height="20"></iconify-icon><span>Roles</span></a>
+      <a class="tabbar-item" href="./settings.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span>Más</span></a>
     </nav>
   </div>
 </div>

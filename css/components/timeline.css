@@ -68,31 +68,26 @@
   padding-top: var(--space-1);
   min-width: 0;
 }
+/* Row header inside a timeline item: baseline-aligned, wraps on narrow viewports */
 .timeline__head {
   display: flex;
   align-items: baseline;
   gap: var(--space-2);
   flex-wrap: wrap;
 }
-.timeline__title {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink);
-  margin: var(--space-0);
-}
-.timeline__title strong { font-weight: 600; }
-.timeline__time {
-  font-size: 11px;
-  color: var(--ink-3);
-  font-variant-numeric: tabular-nums;
+/* .timeline__title → use universal .title sm inside .timeline__head */
+/* .timeline__time  → use universal .meta inside .timeline__head */
+/* Timestamp pushed to right edge of the head row */
+.timeline__head > .meta {
   margin-left: auto;
   flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
-.timeline__desc {
-  font-size: 12px;
-  color: var(--ink-3);
+/* .timeline__desc  → use universal .meta inside .timeline__body */
+/* Desc meta gets top margin to separate from title row */
+.timeline__body > .meta {
+  margin-top: var(--space-1);
   line-height: var(--leading-normal);
-  margin: var(--space-1) var(--space-0) var(--space-0);
 }
 
 .timeline__quote {
@@ -101,7 +96,7 @@
   padding: var(--space-2) var(--space-3);
   margin: var(--space-2) var(--space-0) var(--space-0);
   border-radius: var(--radius-sm);
-  font-size: 12px;
+  font-size: var(--text-sm);
   color: var(--ink-2);
   line-height: var(--leading-normal);
   font-style: italic;
@@ -122,7 +117,7 @@
 .timeline__diff-key {
   color: var(--ink-3);
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wide);
   align-self: center;
 }
@@ -229,18 +224,21 @@
 }
 .stepper__bullet svg { width: var(--icon-xs); height: var(--icon-xs); }
 
-.stepper__label {
-  font-size: var(--text-xs);
-  font-weight: 500;
-  color: var(--ink-3);
-  line-height: var(--leading-snug);
+/* .stepper__label → use universal .label inside .stepper__step */
+/* Stepper label keeps max-width for horizontal layout text balance */
+.stepper__step > .label {
   max-width: 110px;
   text-wrap: balance;
+  line-height: var(--leading-snug);
+  color: var(--ink-3);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: var(--weight-medium);
 }
-.stepper__sub {
-  font-size: var(--text-2xs);
-  color: var(--ink-4);
+/* .stepper__sub → use universal .meta inside .stepper__step */
+.stepper__step > .meta {
   font-variant-numeric: tabular-nums;
+  color: var(--ink-4);
 }
 
 /* Estados */
@@ -250,7 +248,7 @@
   color: var(--leaf-fg);
 }
 .stepper__step--done::after { background: var(--stepper-done-accent); }
-.stepper__step--done .stepper__label { color: var(--stepper-color-active); }
+.stepper__step--done > .label { color: var(--stepper-color-active); }
 
 .stepper__step--active .stepper__bullet {
   background: var(--stepper-accent);
@@ -258,9 +256,9 @@
   color: var(--brand-fg);
   box-shadow: 0 0 0 4px color-mix(in oklch, var(--stepper-accent) 18%, transparent);
 }
-.stepper__step--active .stepper__label {
+.stepper__step--active > .label {
   color: var(--stepper-color-active);
-  font-weight: 600;
+  font-weight: var(--weight-semibold);
 }
 
 .stepper__step--error .stepper__bullet {
@@ -268,7 +266,7 @@
   border-color: var(--danger);
   color: var(--danger-fg);
 }
-.stepper__step--error .stepper__label { color: var(--danger); }
+.stepper__step--error > .label { color: var(--danger); }
 
 /* Stepper vertical */
 .stepper.vertical {
@@ -289,9 +287,9 @@
   width: var(--border-w-2);
   height: calc(100% - 28px);
 }
-.stepper.vertical .stepper__label {
+.stepper.vertical .stepper__step > .label {
   max-width: none;
-  font-size: 13px;
+  font-size: var(--text-sm);
 }
 .stepper.vertical .stepper__body {
   flex: 1;

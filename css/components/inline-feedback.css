@@ -8,50 +8,60 @@
 /* ============================================================
    1. BANNER  ·  .banner  — barra full-width sobre la página
    ============================================================ */
+/* .banner — barra full-width sobre la página o sección.
+   El consumidor compone con clases universales:
+     <div class="banner info">
+       <svg class="icon">…</svg>
+       <div class="body">
+         <span class="title sm">…</span>
+         <span class="meta">…</span>
+       </div>
+       <div class="actions">…</div>
+       <button class="close">✕</button>
+     </div>
+   Variantes: .info .ok .warn .danger .brand .solid .top .inline
+*/
 .banner {
-  /* API canónica de override */
-  --banner-background:   var(--bg-2);
-  --banner-border-color: var(--line);
-  --banner-color:        var(--ink);
-  --banner-padding:      var(--space-2-5) var(--space-4);
-  --banner-icon-color:   var(--ink-2);
-
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--banner-padding);
-  background: var(--banner-background);
-  border: var(--border-w) solid var(--banner-border-color);
-  color: var(--banner-color);
+  padding: var(--pad-y, var(--space-2-5)) var(--pad-x, var(--space-4));
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  color: var(--color, var(--ink));
   font-size: var(--text-md);
   position: relative;
 }
-.banner__icon {
-  width: var(--icon-md); height: var(--icon-md);
-  flex-shrink: 0;
-  color: var(--banner-icon-color);
-}
-.banner__body {
+
+/* Semantic icon — the .icon universal class handles size;
+   color is set per-variant below */
+.banner > .icon { color: var(--ink-2); }
+
+/* Body group — holds title + description text */
+.banner > .body {
   min-width: 0;
   line-height: 1.45;
+  padding: 0;
+  color: inherit;
 }
-.banner__title { font-weight: 500; color: var(--ink); }
-.banner__desc {
-  display: inline;
-  color: var(--ink-3);
-  font-size: var(--text-sm);
-}
-.banner__title + .banner__desc {
-  display: block;
-  margin-top: var(--border-w-2);
-}
-.banner__actions {
+
+/* Title within banner body */
+.banner > .body > .title { font-weight: 500; color: var(--ink); }
+
+/* Description text */
+.banner > .body > .meta { display: inline; }
+.banner > .body > .title + .meta { display: block; margin-top: var(--border-w-2); }
+
+/* Actions slot */
+.banner > .actions {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
   flex-shrink: 0;
 }
+
+/* Inline action button (kept as BEM — specific dimensions + primary variant) */
 .banner__action {
   background: transparent;
   border: var(--border-w) solid var(--line-2);
@@ -72,45 +82,33 @@
   border-color: var(--ink);
 }
 .banner__action--primary:hover { background: var(--ink-2); }
-.banner__close {
-  width: var(--avatar-2xs); height: var(--avatar-2xs);
-  border: none;
-  background: transparent;
-  color: var(--ink-3);
-  border-radius: var(--radius-xs);
-  cursor: pointer;
-  display: grid; place-items: center;
-  font-size: var(--text-base);
-  line-height: var(--leading-flat);
-}
-.banner__close:hover { background: var(--bg-3); color: var(--ink); }
 
 /* Tono semántico — fondo suave + borde acento */
 .banner.info {
   background: color-mix(in oklch, var(--info) 10%, var(--bg-1));
   border-color: color-mix(in oklch, var(--info) 35%, var(--line-2));
 }
-.banner.info .banner__icon { color: var(--info); }
+.banner.info > .icon { color: var(--info); }
 .banner.ok {
   background: color-mix(in oklch, var(--leaf) 10%, var(--bg-1));
   border-color: color-mix(in oklch, var(--leaf) 35%, var(--line-2));
 }
-.banner.ok .banner__icon { color: var(--leaf); }
+.banner.ok > .icon { color: var(--leaf); }
 .banner.warn {
   background: color-mix(in oklch, var(--warn) 12%, var(--bg-1));
   border-color: color-mix(in oklch, var(--warn) 35%, var(--line-2));
 }
-.banner.warn .banner__icon { color: var(--warn); }
+.banner.warn > .icon { color: var(--warn); }
 .banner.danger {
   background: color-mix(in oklch, var(--danger) 10%, var(--bg-1));
   border-color: color-mix(in oklch, var(--danger) 35%, var(--line-2));
 }
-.banner.danger .banner__icon { color: var(--danger); }
+.banner.danger > .icon { color: var(--danger); }
 .banner.brand {
   background: color-mix(in oklch, var(--brand) 10%, var(--bg-1));
   border-color: color-mix(in oklch, var(--brand) 35%, var(--line-2));
 }
-.banner.brand .banner__icon { color: var(--brand-3); }
+.banner.brand > .icon { color: var(--brand-3); }
 
 /* High-emphasis banner — fondo saturado, texto sobre color */
 .banner.solid {
@@ -118,14 +116,14 @@
   color: var(--bg);
   border-color: var(--ink);
 }
-.banner.solid .banner__desc,
-.banner.solid .banner__icon { color: color-mix(in oklch, var(--bg) 70%, transparent); }
+.banner.solid > .body > .meta,
+.banner.solid > .icon { color: color-mix(in oklch, var(--bg) 70%, transparent); }
 .banner.solid .banner__action {
   background: color-mix(in oklch, var(--bg) 18%, transparent);
   border-color: color-mix(in oklch, var(--bg) 35%, transparent);
   color: var(--bg);
 }
-.banner.solid .banner__close { color: color-mix(in oklch, var(--bg) 70%, transparent); }
+.banner.solid > .close { color: color-mix(in oklch, var(--bg) 70%, transparent); }
 
 /* Layouts — sticky top y inline */
 .banner.top {
@@ -145,25 +143,17 @@
    Bloque inline tipo "nota / warning" usado dentro de docs y forms
    ============================================================ */
 .callout {
-  /* API canónica de override */
-  --callout-background:     var(--bg-2);
-  --callout-border-color:   var(--line);
-  --callout-border-radius:  var(--radius-md);
-  --callout-accent-color:   var(--line-3);
-  --callout-color:          var(--ink);
-  --callout-padding:        var(--space-3) var(--space-3-5) var(--space-3) var(--space-3);
-
   display: grid;
   grid-template-columns: 28px 1fr;
   gap: var(--space-3);
-  padding: var(--callout-padding);
-  background: var(--callout-background);
-  border: var(--border-w) solid var(--callout-border-color);
-  border-radius: var(--callout-border-radius);
+  padding: var(--pad-y, var(--space-3)) var(--pad-x, var(--space-3-5)) var(--pad-y, var(--space-3)) var(--pad-x, var(--space-3));
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-md));
   border-left-width: 3px;
-  border-left-color: var(--callout-accent-color);
+  border-left-color: var(--accent-color, var(--line-3));
   font-size: var(--text-md);
-  color: var(--ink);
+  color: var(--color, var(--ink));
   line-height: var(--leading-normal);
 }
 .callout__icon {
@@ -211,39 +201,39 @@
 }
 .callout__link:hover { text-decoration: underline; }
 
-/* Tonos */
+/* Tonos semánticos */
 .callout.info {
   background: color-mix(in oklch, var(--info) 8%, var(--bg-1));
   border-color: color-mix(in oklch, var(--info) 30%, var(--line-2));
-  border-left-color: var(--info);
+  --accent-color: var(--info);
 }
 .callout.info .callout__icon { background: var(--info-soft); color: var(--info); }
 
 .callout.ok {
   background: color-mix(in oklch, var(--leaf) 8%, var(--bg-1));
   border-color: color-mix(in oklch, var(--leaf) 30%, var(--line-2));
-  border-left-color: var(--leaf);
+  --accent-color: var(--leaf);
 }
 .callout.ok .callout__icon { background: var(--leaf-soft); color: var(--leaf); }
 
 .callout.warn {
   background: color-mix(in oklch, var(--warn) 10%, var(--bg-1));
   border-color: color-mix(in oklch, var(--warn) 30%, var(--line-2));
-  border-left-color: var(--warn);
+  --accent-color: var(--warn);
 }
 .callout.warn .callout__icon { background: var(--warn-soft); color: var(--warn); }
 
 .callout.danger {
   background: color-mix(in oklch, var(--danger) 8%, var(--bg-1));
   border-color: color-mix(in oklch, var(--danger) 30%, var(--line-2));
-  border-left-color: var(--danger);
+  --accent-color: var(--danger);
 }
 .callout.danger .callout__icon { background: var(--danger-soft); color: var(--danger); }
 
 .callout.brand {
   background: color-mix(in oklch, var(--brand) 8%, var(--bg-1));
   border-color: color-mix(in oklch, var(--brand) 30%, var(--line-2));
-  border-left-color: var(--brand);
+  --accent-color: var(--brand);
 }
 .callout.brand .callout__icon { background: var(--brand-soft); color: var(--brand-3); }
 
