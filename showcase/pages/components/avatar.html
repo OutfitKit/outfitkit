@@ -73,13 +73,13 @@
 {% endcall %}
 
 {% set _src_jinja_5 %}{% raw %}{% from "ui/avatar.jinja" import avatar %}
-<span class="ok-avatar-stack">
+<span class="avatar-stack">
   {{ avatar("MA", src="https://i.pravatar.cc/64?u=maria", alt="María") }}
   {{ avatar("JN", src="https://i.pravatar.cc/64?u=joan", alt="Joan") }}
   {{ avatar("EL", src="https://i.pravatar.cc/64?u=elena", alt="Elena") }}
   {{ avatar("+4", variant="more") }}
 </span>{% endraw %}{% endset %}
-{% set _src_jinjax_5 %}{% raw %}<span class="ok-avatar-stack">
+{% set _src_jinjax_5 %}{% raw %}<span class="avatar-stack">
   <Avatar label="MA" src="https://i.pravatar.cc/64?u=maria" alt="María" />
   <Avatar label="JN" src="https://i.pravatar.cc/64?u=joan" alt="Joan" />
   <Avatar label="EL" src="https://i.pravatar.cc/64?u=elena" alt="Elena" />
@@ -89,7 +89,7 @@
 {% call demo_frame("Stack",
     jinja_src=_src_jinja_5,
     jinjax_src=_src_jinjax_5) %}
-<span class="ok-avatar-stack">
+<span class="avatar-stack">
   {{ avatar("MA", src="https://i.pravatar.cc/64?u=maria", alt="María") }}
   {{ avatar("JN", src="https://i.pravatar.cc/64?u=joan", alt="Joan") }}
   {{ avatar("EL", src="https://i.pravatar.cc/64?u=elena", alt="Elena") }}
@@ -98,7 +98,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>label</code></td><td>str</td><td>—</td><td>Iniciales (fallback cuando no hay imagen).</td></tr>

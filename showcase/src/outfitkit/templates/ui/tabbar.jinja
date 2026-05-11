@@ -2,7 +2,7 @@
 
 {% macro tabbar(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<nav class="{{ ok_prefix }}tabbar{% if variant != 'default' %} {{ ok_prefix }}tabbar--{{ variant }}{% endif %}"
+<nav class="{{ ok_prefix }}tabbar{% if variant != 'default' %} {{ variant }}{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </nav>

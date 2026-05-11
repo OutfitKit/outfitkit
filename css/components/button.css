@@ -1,130 +1,185 @@
 /* ============================================================
    OutfitKit · Button
-   Variantes: primary / secondary / ghost / danger / link
-   Tamaños: sm / md (default) / lg
+   ─────────────────────────────────────────────────────────────
+   Uso:
+     <button class="btn">Cancel</button>           ← neutral md
+     <button class="btn primary">Save</button>     ← primary md
+     <button class="btn primary lg block">…</button>
+     <button class="btn outline danger sm">…</button>
+     <button class="btn ghost icon"><svg/></button>
+     <button class="btn link">Más info</button>
+
+   Consume:
+     --variant        (de .primary/.danger/.success/.warn/.info)
+     --variant-fg
+     --variant-2      (hover)
+     --variant-soft   (estado active sutil)
+     --size           (de .xs/.sm/.md/.lg/.xl)
+     --pad-x, --pad-y
+     --text
+     --icon           (tamaño del .btn-icon hijo)
+     --radius
    ============================================================ */
 
-.ok-btn {
-  --_btn-bg: var(--ok-bg-3);
-  --_btn-fg: var(--ok-ink);
-  --_btn-bd: var(--ok-line-2);
-  --_btn-bg-h: var(--ok-bg-4);
-  --_btn-h: 32px;
-  --_btn-px: 12px;
-  --_btn-fz: var(--ok-text-md);
-  --_btn-r: var(--ok-radius-md);
 
+/* ───── Base ─────────────────────────────────────────────── */
+.btn {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  height: var(--_btn-h);
-  padding: 0 var(--_btn-px);
-  font-size: var(--_btn-fz);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: var(--ok-tracking-tight);
-  color: var(--_btn-fg);
-  background: var(--_btn-bg);
-  border: 1px solid var(--_btn-bd);
-  border-radius: var(--_btn-r);
-  cursor: pointer;
-  user-select: none;
+  gap: var(--space-2);
+  height: var(--size, var(--size-md));
+  padding-inline: var(--pad-x, var(--pad-md-x));
+  font-family: inherit;
+  font-size: var(--text, var(--text-md));
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-flat);
+  letter-spacing: var(--tracking-tight);
   white-space: nowrap;
-  transition: background var(--ok-dur-fast), border-color var(--ok-dur-fast), color var(--ok-dur-fast), transform var(--ok-dur-fast);
+  user-select: none;
+  cursor: pointer;
+  border: var(--border-w) solid transparent;
+  border-radius: var(--radius, var(--radius-md));
+
+  /* Filled por defecto: si hay --variant lo usa, si no usa el neutro */
+  background: var(--variant, var(--bg-3));
+  color: var(--variant-fg, var(--ink));
+
+  transition: background var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out),
+              box-shadow var(--dur-fast) var(--ease-out);
 }
-.ok-btn:hover { background: var(--_btn-bg-h); }
-.ok-btn:active { transform: scale(0.98); }
-.ok-btn:disabled,
-.ok-btn[aria-disabled="true"] {
-  /* WCAG AA: text needs ≥ 4.5:1. Pure opacity 0.5 against bg-3 in light
-     theme drops to ~2.6:1. Use an explicit accessible foreground (ink-2)
-     plus a softer background and line-through as a non-color affordance. */
-  color: var(--ok-ink-2);
-  background: var(--ok-bg-3);
-  border-color: var(--ok-line);
+
+/* Sin variant: añade borde sutil para que destaque del bg */
+.btn:not(.primary):not(.danger):not(.success):not(.warn):not(.info):not(.brand):not(.accent):not(.outline):not(.ghost):not(.link):not(.soft) {
+  border-color: var(--line-2);
+}
+
+.btn:hover  { background: var(--variant-2, var(--bg-4)); }
+.btn:active { transform: scale(0.98); }
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  color: var(--ink-2);
+  background: var(--bg-3);
+  border-color: var(--line);
   opacity: 0.85;
   text-decoration: line-through;
-  text-decoration-thickness: 1px;
-  text-decoration-color: var(--ok-ink-3);
+  text-decoration-thickness: var(--border-w);
+  text-decoration-color: var(--ink-3);
   cursor: not-allowed;
   pointer-events: none;
   box-shadow: none;
+  transform: none;
 }
 
-/* Variants */
-.ok-btn--primary {
-  --_btn-bg: var(--ok-brand);
-  --_btn-fg: var(--ok-brand-fg);
-  --_btn-bd: transparent;
-  --_btn-bg-h: var(--ok-brand-2);
-  box-shadow: 0 1px 0 rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.18);
+
+/* ───── Variantes que sobreescriben el filled ────────────── */
+/* Outline: sin fondo, borde del color de variant */
+.btn.outline {
+  background: transparent;
+  border-color: var(--variant, var(--line-3));
+  color: var(--variant, var(--ink));
 }
-.ok-btn--secondary { /* default */ }
-.ok-btn--ghost {
-  --_btn-bg: transparent;
-  --_btn-bd: transparent;
-  --_btn-bg-h: var(--ok-bg-3);
-}
-.ok-btn--outline {
-  --_btn-bg: transparent;
-  --_btn-bd: var(--ok-line-3);
-  --_btn-bg-h: var(--ok-bg-3);
-}
-.ok-btn--danger {
-  --_btn-bg: var(--ok-danger);
-  --_btn-fg: var(--ok-danger-fg);
-  --_btn-bd: transparent;
-  --_btn-bg-h: color-mix(in oklch, var(--ok-danger) 80%, black);
-}
-.ok-btn--link {
-  --_btn-bg: transparent;
-  --_btn-bd: transparent;
-  --_btn-bg-h: transparent;
-  --_btn-fg: var(--ok-brand-3);
-  height: auto; padding: 0;
-  text-decoration: underline; text-underline-offset: 3px;
+.btn.outline:hover {
+  background: var(--variant-soft, var(--bg-3));
 }
 
-/* Sizes */
-.ok-btn--sm { --_btn-h: 26px; --_btn-px: 9px; --_btn-fz: var(--ok-text-sm); }
-.ok-btn--lg { --_btn-h: 38px; --_btn-px: 16px; --_btn-fz: var(--ok-text-base); }
+/* Ghost: sin fondo ni borde, solo color */
+.btn.ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--variant, var(--ink-2));
+}
+.btn.ghost:hover {
+  background: var(--variant-soft, var(--bg-3));
+  color: var(--variant, var(--ink));
+}
 
-.ok-btn--block { width: 100%; }
-.ok-btn--icon { padding: 0; width: var(--_btn-h); }
+/* Soft: fondo blando del variant, texto del variant */
+.btn.soft {
+  background: var(--variant-soft, var(--bg-3));
+  color: var(--variant, var(--ink));
+  border-color: transparent;
+}
+.btn.soft:hover {
+  background: var(--variant-soft, var(--bg-4));
+  filter: brightness(1.1);
+}
 
-.ok-btn__icon {
-  width: 14px; height: 14px;
+/* Link: solo texto, comportamiento de enlace */
+.btn.link {
+  height: auto;
+  padding: var(--space-0);
+  background: transparent;
+  border: 0;
+  color: var(--variant, var(--accent));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.btn.link:hover { background: transparent; }
+
+/* Icon: cuadrado, padding 0, ancho = altura */
+.btn.icon {
+  padding-inline: var(--space-0);
+  width: var(--size, var(--size-md));
+  aspect-ratio: 1 / 1;
+}
+
+/* Block: ocupa ancho completo */
+.btn.block { width: 100%; }
+
+
+/* ───── Realce sutil del filled primary (luz interior) ──── */
+.btn.primary:not(.outline):not(.ghost):not(.link):not(.soft),
+.btn.danger:not(.outline):not(.ghost):not(.link):not(.soft),
+.btn.success:not(.outline):not(.ghost):not(.link):not(.soft),
+.btn.brand:not(.outline):not(.ghost):not(.link):not(.soft),
+.btn.accent:not(.outline):not(.ghost):not(.link):not(.soft) {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.20),
+              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+
+/* ───── Icono interior (svg / iconify-icon hijo) ─────────── */
+.btn-icon {
+  width:  var(--icon, var(--icon-sm));
+  height: var(--icon, var(--icon-sm));
   flex-shrink: 0;
 }
 
-/* Button group */
-.ok-btn-group {
+
+/* ───── Button group (segmentado) ────────────────────────── */
+.btn-group {
   display: inline-flex;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  padding: 2px;
-  gap: 1px;
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--border-w-2);
+  gap: var(--border-w);
 }
-.ok-btn-group > .ok-btn,
-.ok-btn-group > button {
-  height: 26px;
-  padding: 0 10px;
-  font-size: var(--ok-text-sm);
+.btn-group > .btn,
+.btn-group > button {
+  height: calc(var(--size-sm) - 2px);
+  padding-inline: var(--space-3);
+  font-size: var(--text-sm);
   background: transparent;
-  border: none;
-  border-radius: 5px;
-  color: var(--ok-ink-3);
-  font-weight: 500;
+  border: 0;
+  border-radius: var(--radius-sm);
+  color: var(--ink-3);
+  font-weight: var(--weight-medium);
 }
-.ok-btn-group > .ok-btn:hover,
-.ok-btn-group > button:hover { color: var(--ok-ink); }
-.ok-btn-group > [aria-pressed="true"],
-.ok-btn-group > [aria-pressed=""],
-.ok-btn-group > [data-active="true"] {
-  background: var(--ok-bg-1);
-  color: var(--ok-ink);
-  box-shadow: var(--ok-shadow-xs);
+.btn-group > .btn:hover,
+.btn-group > button:hover { color: var(--ink); }
+.btn-group > [aria-pressed="true"],
+.btn-group > [aria-pressed=""],
+.btn-group > [data-active="true"] {
+  background: var(--bg-1);
+  color: var(--ink);
+  box-shadow: var(--shadow-xs);
 }
+
+

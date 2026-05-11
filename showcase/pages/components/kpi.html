@@ -51,8 +51,8 @@
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/kpi.jinja" import kpi %}
 {% set spark_svg %}
-<svg class="ok-kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
-  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--ok-leaf)" stroke-width="1.5"/>
+<svg class="kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
+  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--leaf)" stroke-width="1.5"/>
 </svg>
 {% endset %}
 {{ kpi(
@@ -61,8 +61,8 @@
   sparkline=spark_svg
 ) }}{% endraw %}{% endset %}
 {% set _src_jinjax_4 %}{% raw %}{% set spark_svg %}
-<svg class="ok-kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
-  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--ok-leaf)" stroke-width="1.5"/>
+<svg class="kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
+  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--leaf)" stroke-width="1.5"/>
 </svg>
 {% endset %}
 <Kpi label="Ventas 7d" delta="+12,4%" delta_dir="up" sparkline="spark_svg" />{% endraw %}{% endset %}
@@ -71,8 +71,8 @@
     jinja_src=_src_jinja_4,
     jinjax_src=_src_jinjax_4) %}
 {% set spark_svg %}
-<svg class="ok-kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
-  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--ok-leaf)" stroke-width="1.5"/>
+<svg class="kpi__sparkline" viewBox="0 0 80 32" preserveAspectRatio="none">
+  <polyline points="0,28 10,24 20,26 30,18 40,20 50,12 60,14 70,8 80,4" fill="none" stroke="var(--leaf)" stroke-width="1.5"/>
 </svg>
 {% endset %}
 {{ kpi(
@@ -83,7 +83,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>label</code></td><td>str</td><td>—</td><td>Etiqueta superior (uppercase tracking).</td></tr>

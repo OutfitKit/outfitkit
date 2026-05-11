@@ -10,228 +10,228 @@
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/kanban.jinja" import kanban %}
 {% call kanban(attrs={"style": "height: 540px"}) %}
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--info"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot info"></span>
       Nuevo
     </div>
-    <span class="ok-kanban__col-count">8</span>
+    <span class="kanban__col-count">8</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--med"></span>
-      <div class="ok-kcard__tags">
-        <span class="ok-kcard__tag ok-kcard__tag--info"></span>
-        <span class="ok-kcard__tag ok-kcard__tag--brand"></span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--med"></span>
+      <div class="kcard__tags">
+        <span class="kcard__tag kcard__tag--info"></span>
+        <span class="kcard__tag kcard__tag--brand"></span>
       </div>
-      <h5 class="ok-kcard__title">Distribuidora Ibérica · catálogo Q2</h5>
-      <p class="ok-kcard__desc">Demo del módulo de inventario y compras antes del 28 de mayo.</p>
-      <div class="ok-kcard__meta">
-        <div class="ok-kcard__meta-l">
-          <span class="ok-kcard__icon">28 may</span>
-          <span class="ok-kcard__icon">3 msg</span>
+      <h5 class="kcard__title">Distribuidora Ibérica · catálogo Q2</h5>
+      <p class="kcard__desc">Demo del módulo de inventario y compras antes del 28 de mayo.</p>
+      <div class="kcard__meta">
+        <div class="kcard__meta-l">
+          <span class="kcard__icon">28 may</span>
+          <span class="kcard__icon">3 msg</span>
         </div>
       </div>
     </article>
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Panadería Marisol · 2 puntos de venta</h5>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon">€ 4.200 / año</span>
+    <article class="kcard">
+      <h5 class="kcard__title">Panadería Marisol · 2 puntos de venta</h5>
+      <div class="kcard__meta">
+        <span class="kcard__icon">€ 4.200 / año</span>
       </div>
     </article>
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--low"></span>
-      <h5 class="ok-kcard__title">Restaurante Vega</h5>
-      <p class="ok-kcard__desc">Sin POS actualmente, viene de hojas de cálculo.</p>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon ok-kcard__icon--due-soon">en 2 días</span>
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--low"></span>
+      <h5 class="kcard__title">Restaurante Vega</h5>
+      <p class="kcard__desc">Sin POS actualmente, viene de hojas de cálculo.</p>
+      <div class="kcard__meta">
+        <span class="kcard__icon kcard__icon--due-soon">en 2 días</span>
       </div>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir tarjeta</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir tarjeta</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--warn"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot warning"></span>
       Cualificado
     </div>
-    <span class="ok-kanban__col-count">5</span>
+    <span class="kanban__col-count">5</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--high"></span>
-      <div class="ok-kcard__tags">
-        <span class="ok-kcard__tag ok-kcard__tag--brand"></span>
-        <span class="ok-kcard__tag ok-kcard__tag--warn"></span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--high"></span>
+      <div class="kcard__tags">
+        <span class="kcard__tag kcard__tag--brand"></span>
+        <span class="kcard__tag kcard__tag--warn"></span>
       </div>
-      <h5 class="ok-kcard__title">Cadena Café Norte · 12 locales</h5>
-      <p class="ok-kcard__desc">Reunión cerrada para el martes con CFO.</p>
-      <div class="ok-kcard__meta">
-        <div class="ok-kcard__meta-l">
-          <span class="ok-kcard__icon">€ 18.000 / año</span>
+      <h5 class="kcard__title">Cadena Café Norte · 12 locales</h5>
+      <p class="kcard__desc">Reunión cerrada para el martes con CFO.</p>
+      <div class="kcard__meta">
+        <div class="kcard__meta-l">
+          <span class="kcard__icon">€ 18.000 / año</span>
         </div>
       </div>
     </article>
-    <article class="ok-kcard ok-kcard--dragging">
-      <h5 class="ok-kcard__title">Bodega Pérez · Q3</h5>
+    <article class="kcard dragging">
+      <h5 class="kcard__title">Bodega Pérez · Q3</h5>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--brand"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot brand"></span>
       Propuesta
     </div>
-    <span class="ok-kanban__col-count">3</span>
+    <span class="kanban__col-count">3</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Olé Restaurantes · onboarding</h5>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon">€ 8.400 / año</span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <h5 class="kcard__title">Olé Restaurantes · onboarding</h5>
+      <div class="kcard__meta">
+        <span class="kcard__icon">€ 8.400 / año</span>
       </div>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--leaf"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot success"></span>
       Cerrado
     </div>
-    <span class="ok-kanban__col-count">12</span>
+    <span class="kanban__col-count">12</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Café Tuña · activo desde abr 26</h5>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <h5 class="kcard__title">Café Tuña · activo desde abr 26</h5>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Kanban style="height: 540px">
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--info"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot info"></span>
       Nuevo
     </div>
-    <span class="ok-kanban__col-count">8</span>
+    <span class="kanban__col-count">8</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--med"></span>
-      <div class="ok-kcard__tags">
-        <span class="ok-kcard__tag ok-kcard__tag--info"></span>
-        <span class="ok-kcard__tag ok-kcard__tag--brand"></span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--med"></span>
+      <div class="kcard__tags">
+        <span class="kcard__tag kcard__tag--info"></span>
+        <span class="kcard__tag kcard__tag--brand"></span>
       </div>
-      <h5 class="ok-kcard__title">Distribuidora Ibérica · catálogo Q2</h5>
-      <p class="ok-kcard__desc">Demo del módulo de inventario y compras antes del 28 de mayo.</p>
-      <div class="ok-kcard__meta">
-        <div class="ok-kcard__meta-l">
-          <span class="ok-kcard__icon">28 may</span>
-          <span class="ok-kcard__icon">3 msg</span>
+      <h5 class="kcard__title">Distribuidora Ibérica · catálogo Q2</h5>
+      <p class="kcard__desc">Demo del módulo de inventario y compras antes del 28 de mayo.</p>
+      <div class="kcard__meta">
+        <div class="kcard__meta-l">
+          <span class="kcard__icon">28 may</span>
+          <span class="kcard__icon">3 msg</span>
         </div>
       </div>
     </article>
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Panadería Marisol · 2 puntos de venta</h5>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon">€ 4.200 / año</span>
+    <article class="kcard">
+      <h5 class="kcard__title">Panadería Marisol · 2 puntos de venta</h5>
+      <div class="kcard__meta">
+        <span class="kcard__icon">€ 4.200 / año</span>
       </div>
     </article>
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--low"></span>
-      <h5 class="ok-kcard__title">Restaurante Vega</h5>
-      <p class="ok-kcard__desc">Sin POS actualmente, viene de hojas de cálculo.</p>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon ok-kcard__icon--due-soon">en 2 días</span>
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--low"></span>
+      <h5 class="kcard__title">Restaurante Vega</h5>
+      <p class="kcard__desc">Sin POS actualmente, viene de hojas de cálculo.</p>
+      <div class="kcard__meta">
+        <span class="kcard__icon kcard__icon--due-soon">en 2 días</span>
       </div>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir tarjeta</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir tarjeta</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--warn"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot warning"></span>
       Cualificado
     </div>
-    <span class="ok-kanban__col-count">5</span>
+    <span class="kanban__col-count">5</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--high"></span>
-      <div class="ok-kcard__tags">
-        <span class="ok-kcard__tag ok-kcard__tag--brand"></span>
-        <span class="ok-kcard__tag ok-kcard__tag--warn"></span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--high"></span>
+      <div class="kcard__tags">
+        <span class="kcard__tag kcard__tag--brand"></span>
+        <span class="kcard__tag kcard__tag--warn"></span>
       </div>
-      <h5 class="ok-kcard__title">Cadena Café Norte · 12 locales</h5>
-      <p class="ok-kcard__desc">Reunión cerrada para el martes con CFO.</p>
-      <div class="ok-kcard__meta">
-        <div class="ok-kcard__meta-l">
-          <span class="ok-kcard__icon">€ 18.000 / año</span>
+      <h5 class="kcard__title">Cadena Café Norte · 12 locales</h5>
+      <p class="kcard__desc">Reunión cerrada para el martes con CFO.</p>
+      <div class="kcard__meta">
+        <div class="kcard__meta-l">
+          <span class="kcard__icon">€ 18.000 / año</span>
         </div>
       </div>
     </article>
-    <article class="ok-kcard ok-kcard--dragging">
-      <h5 class="ok-kcard__title">Bodega Pérez · Q3</h5>
+    <article class="kcard dragging">
+      <h5 class="kcard__title">Bodega Pérez · Q3</h5>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--brand"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot brand"></span>
       Propuesta
     </div>
-    <span class="ok-kanban__col-count">3</span>
+    <span class="kanban__col-count">3</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Olé Restaurantes · onboarding</h5>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon">€ 8.400 / año</span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <h5 class="kcard__title">Olé Restaurantes · onboarding</h5>
+      <div class="kcard__meta">
+        <span class="kcard__icon">€ 8.400 / año</span>
       </div>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--leaf"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot success"></span>
       Cerrado
     </div>
-    <span class="ok-kanban__col-count">12</span>
+    <span class="kanban__col-count">12</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Café Tuña · activo desde abr 26</h5>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <h5 class="kcard__title">Café Tuña · activo desde abr 26</h5>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
 </Kanban>{% endraw %}{% endset %}
@@ -240,122 +240,122 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call kanban(attrs={"style": "height: 540px"}) %}
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--info"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot info"></span>
       Nuevo
     </div>
-    <span class="ok-kanban__col-count">8</span>
+    <span class="kanban__col-count">8</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--med"></span>
-      <div class="ok-kcard__tags">
-        <span class="ok-kcard__tag ok-kcard__tag--info"></span>
-        <span class="ok-kcard__tag ok-kcard__tag--brand"></span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--med"></span>
+      <div class="kcard__tags">
+        <span class="kcard__tag kcard__tag--info"></span>
+        <span class="kcard__tag kcard__tag--brand"></span>
       </div>
-      <h5 class="ok-kcard__title">Distribuidora Ibérica · catálogo Q2</h5>
-      <p class="ok-kcard__desc">Demo del módulo de inventario y compras antes del 28 de mayo.</p>
-      <div class="ok-kcard__meta">
-        <div class="ok-kcard__meta-l">
-          <span class="ok-kcard__icon">28 may</span>
-          <span class="ok-kcard__icon">3 msg</span>
+      <h5 class="kcard__title">Distribuidora Ibérica · catálogo Q2</h5>
+      <p class="kcard__desc">Demo del módulo de inventario y compras antes del 28 de mayo.</p>
+      <div class="kcard__meta">
+        <div class="kcard__meta-l">
+          <span class="kcard__icon">28 may</span>
+          <span class="kcard__icon">3 msg</span>
         </div>
       </div>
     </article>
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Panadería Marisol · 2 puntos de venta</h5>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon">€ 4.200 / año</span>
+    <article class="kcard">
+      <h5 class="kcard__title">Panadería Marisol · 2 puntos de venta</h5>
+      <div class="kcard__meta">
+        <span class="kcard__icon">€ 4.200 / año</span>
       </div>
     </article>
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--low"></span>
-      <h5 class="ok-kcard__title">Restaurante Vega</h5>
-      <p class="ok-kcard__desc">Sin POS actualmente, viene de hojas de cálculo.</p>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon ok-kcard__icon--due-soon">en 2 días</span>
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--low"></span>
+      <h5 class="kcard__title">Restaurante Vega</h5>
+      <p class="kcard__desc">Sin POS actualmente, viene de hojas de cálculo.</p>
+      <div class="kcard__meta">
+        <span class="kcard__icon kcard__icon--due-soon">en 2 días</span>
       </div>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir tarjeta</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir tarjeta</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--warn"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot warning"></span>
       Cualificado
     </div>
-    <span class="ok-kanban__col-count">5</span>
+    <span class="kanban__col-count">5</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <span class="ok-kcard__priority ok-kcard__priority--high"></span>
-      <div class="ok-kcard__tags">
-        <span class="ok-kcard__tag ok-kcard__tag--brand"></span>
-        <span class="ok-kcard__tag ok-kcard__tag--warn"></span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <span class="kcard__priority kcard__priority--high"></span>
+      <div class="kcard__tags">
+        <span class="kcard__tag kcard__tag--brand"></span>
+        <span class="kcard__tag kcard__tag--warn"></span>
       </div>
-      <h5 class="ok-kcard__title">Cadena Café Norte · 12 locales</h5>
-      <p class="ok-kcard__desc">Reunión cerrada para el martes con CFO.</p>
-      <div class="ok-kcard__meta">
-        <div class="ok-kcard__meta-l">
-          <span class="ok-kcard__icon">€ 18.000 / año</span>
+      <h5 class="kcard__title">Cadena Café Norte · 12 locales</h5>
+      <p class="kcard__desc">Reunión cerrada para el martes con CFO.</p>
+      <div class="kcard__meta">
+        <div class="kcard__meta-l">
+          <span class="kcard__icon">€ 18.000 / año</span>
         </div>
       </div>
     </article>
-    <article class="ok-kcard ok-kcard--dragging">
-      <h5 class="ok-kcard__title">Bodega Pérez · Q3</h5>
+    <article class="kcard dragging">
+      <h5 class="kcard__title">Bodega Pérez · Q3</h5>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--brand"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot brand"></span>
       Propuesta
     </div>
-    <span class="ok-kanban__col-count">3</span>
+    <span class="kanban__col-count">3</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Olé Restaurantes · onboarding</h5>
-      <div class="ok-kcard__meta">
-        <span class="ok-kcard__icon">€ 8.400 / año</span>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <h5 class="kcard__title">Olé Restaurantes · onboarding</h5>
+      <div class="kcard__meta">
+        <span class="kcard__icon">€ 8.400 / año</span>
       </div>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
-<section class="ok-kanban__col">
-  <header class="ok-kanban__col-head">
-    <div class="ok-kanban__col-title">
-      <span class="ok-kanban__col-dot ok-kanban__col-dot--leaf"></span>
+<section class="kanban__col">
+  <header class="kanban__col-head">
+    <div class="kanban__col-title">
+      <span class="kanban__col-dot success"></span>
       Cerrado
     </div>
-    <span class="ok-kanban__col-count">12</span>
+    <span class="kanban__col-count">12</span>
   </header>
-  <div class="ok-kanban__col-body">
-    <article class="ok-kcard">
-      <h5 class="ok-kcard__title">Café Tuña · activo desde abr 26</h5>
+  <div class="kanban__col-body">
+    <article class="kcard">
+      <h5 class="kcard__title">Café Tuña · activo desde abr 26</h5>
     </article>
   </div>
-  <footer class="ok-kanban__col-foot">
-    <button class="ok-kanban__add">＋ Añadir</button>
+  <footer class="kanban__col-foot">
+    <button class="kanban__add">＋ Añadir</button>
   </footer>
 </section>
 {% endcall %}
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (p.ej. <code>style="height:560px"</code>).</td></tr>

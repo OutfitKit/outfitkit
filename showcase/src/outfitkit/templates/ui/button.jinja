@@ -1,10 +1,10 @@
-{#def label, variant="secondary", size="md", icon=false, block=false, disabled=false, type="button", attrs=None #}
+{#def label, variant="", size="md", icon=false, block=false, disabled=false, type="button", attrs=None #}
 
-{% macro button(label, variant="secondary", size="md", icon=false, block=false, disabled=false, type="button", attrs=None) -%}
+{% macro button(label, variant="", size="md", icon=false, block=false, disabled=false, type="button", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <button
   type="{{ type }}"
-  class="{{ ok_prefix }}btn {{ ok_prefix }}btn--{{ variant }}{% if size != 'md' %} {{ ok_prefix }}btn--{{ size }}{% endif %}{% if block %} {{ ok_prefix }}btn--block{% endif %}{% if icon %} {{ ok_prefix }}btn--icon{% endif %}"
+  class="{{ ok_prefix }}btn {{ variant }}{% if size != 'md' %} {{ size }}{% endif %}{% if block %} block{% endif %}{% if icon %} icon{% endif %}"
   {% if disabled %}disabled aria-disabled="true"{% endif %}
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>{{ label }}</button>
 {%- endmacro %}

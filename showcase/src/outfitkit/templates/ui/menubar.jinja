@@ -10,7 +10,7 @@
 #}
 {% macro menubar(app_name=None, variant=None, compact=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<nav class="{{ ok_prefix }}menubar{% if variant %} {{ ok_prefix }}menubar--{{ variant }}{% endif %}{% if compact %} {{ ok_prefix }}menubar--compact{% endif %}"
+<nav class="{{ ok_prefix }}menubar{% if variant %} {{ variant }}{% endif %}{% if compact %} compact{% endif %}"
   data-signals="{ open: '' }"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if app_name %}<span class="{{ ok_prefix }}menubar__app-name">{{ app_name }}</span><span class="{{ ok_prefix }}menubar__divider"></span>{% endif %}

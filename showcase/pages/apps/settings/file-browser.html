@@ -4,138 +4,138 @@
 {% block page_title %}File browser{% endblock %}
 
 {% block content %}
-<div class="ok-app" id="app" data-tabbar="bottom"
+<div class="app" id="app" data-tabbar="bottom"
      data-signals='{"sidebar": false, "fb": {"dir": "invoices", "view": "grid"}}'
      data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">CR</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="ok-sidebar__brand-meta">Hub · v0.0.9</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">CR</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="sidebar__brand-meta">Hub · v0.0.9</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Plataforma</div>
-      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="ok-sidebar__label">Configuración</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Plataforma</div>
+      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="sidebar__label">Configuración</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Joan Castell</div>
-          <div class="ok-sidebar__user-meta">joan@larambla.es</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">JC</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Joan Castell</div>
+          <div class="sidebar__user-meta">joan@larambla.es</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <nav class="ok-tabs ok-tabs-scroll" aria-label="Sub-secciones de ajustes">
-      <a class="ok-tab" href="preferences.html">Preferencias</a>
-      <a class="ok-tab" href="hub.html">Hub</a>
-      <a class="ok-tab" href="hub-config.html">Config</a>
-      <a class="ok-tab" href="compliance.html">Cumplimiento</a>
-      <a class="ok-tab" href="devices.html">Dispositivos</a>
-      <a class="ok-tab" href="printers.html">Impresoras</a>
-      <a class="ok-tab" href="backup.html">Backup</a>
-      <a class="ok-tab" href="files.html">Archivos</a>
-      <a class="ok-tab" href="tax-classes.html">Tax</a>
-      <a class="ok-tab" href="help.html">Ayuda</a>
-      <a class="ok-tab" href="scheduled-tasks.html">Tareas</a>
-      <a class="ok-tab" href="file-browser.html" aria-current="page">File browser</a>
+    <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
+      <a class="tab" href="preferences.html">Preferencias</a>
+      <a class="tab" href="hub.html">Hub</a>
+      <a class="tab" href="hub-config.html">Config</a>
+      <a class="tab" href="compliance.html">Cumplimiento</a>
+      <a class="tab" href="devices.html">Dispositivos</a>
+      <a class="tab" href="printers.html">Impresoras</a>
+      <a class="tab" href="backup.html">Backup</a>
+      <a class="tab" href="files.html">Archivos</a>
+      <a class="tab" href="tax-classes.html">Tax</a>
+      <a class="tab" href="help.html">Ayuda</a>
+      <a class="tab" href="scheduled-tasks.html">Tareas</a>
+      <a class="tab" href="file-browser.html" aria-current="page">File browser</a>
     </nav>
 
-    <div class="ok-app__body">
+    <div class="app__body">
 
-      <div class="ok-page-header" style="border-bottom:1px solid var(--ok-line);margin-bottom:18px;">
-        <div class="ok-page-header__title">
+      <div class="page-header" style="border-bottom:1px solid var(--line);margin-bottom:18px;">
+        <div class="page-header__title">
           <h1>Archivos del Hub</h1>
-          <div class="ok-page-header__sub">Almacenamiento del tenant · 1,8 GB de 5 GB usados</div>
+          <div class="page-header__sub">Almacenamiento del tenant · 1,8 GB de 5 GB usados</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--ghost ok-btn--sm">Importar</button>
-          <button class="ok-btn ok-btn--primary ok-btn--sm">+ Subir archivo</button>
+        <div class="page-header__actions">
+          <button class="btn ghost sm">Importar</button>
+          <button class="btn primary sm">+ Subir archivo</button>
         </div>
       </div>
 
       <!-- Layout: tree sidebar + main grid -->
-      <div class="ok-row">
+      <div class="row">
 
         <!-- Tree sidebar -->
-        <aside class="ok-col-md-4 ok-col-lg-3 ok-col-sticky" style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:14px;padding:12px;height:fit-content;">
-          <div class="ok-eyebrow" style="padding:4px 8px 6px;">Carpetas</div>
-          <div class="ok-tree" role="tree">
-            <div class="ok-tree__node" data-signals='{"open": true}' data-attr:data-state="$open ? 'open' : 'closed'">
-              <div class="ok-tree__row">
-                <span class="ok-tree__caret" data-on:click="$open = !$open" data-attr:aria-expanded="$open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
-                <span class="ok-tree__icon ok-tree__icon--folder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
-                <span class="ok-tree__label">tenant-rambla</span>
+        <aside class="col-md-4 col-lg-3 col-sticky" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:12px;height:fit-content;">
+          <div class="eyebrow" style="padding:4px 8px 6px;">Carpetas</div>
+          <div class="tree" role="tree">
+            <div class="tree__node" data-signals='{"open": true}' data-attr:data-state="$open ? 'open' : 'closed'">
+              <div class="tree__row">
+                <span class="tree__caret" data-on:click="$open = !$open" data-attr:aria-expanded="$open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+                <span class="tree__icon tree__icon--folder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+                <span class="tree__label">tenant-rambla</span>
               </div>
-              <div class="ok-tree__children" data-show="$open">
-                <div class="ok-tree__node">
-                  <div class="ok-tree__row" data-on:click="$fb.dir = 'invoices'" data-attr:aria-selected="$fb.dir === 'invoices'">
-                    <span class="ok-tree__caret ok-tree__caret--leaf"></span>
-                    <span class="ok-tree__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></span>
-                    <span class="ok-tree__label">facturas</span>
-                    <span class="ok-tree__meta">142</span>
+              <div class="tree__children" data-show="$open">
+                <div class="tree__node">
+                  <div class="tree__row" data-on:click="$fb.dir = 'invoices'" data-attr:aria-selected="$fb.dir === 'invoices'">
+                    <span class="tree__caret tree__caret--leaf"></span>
+                    <span class="tree__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></span>
+                    <span class="tree__label">facturas</span>
+                    <span class="tree__meta">142</span>
                   </div>
                 </div>
-                <div class="ok-tree__node">
-                  <div class="ok-tree__row" data-on:click="$fb.dir = 'tickets'" data-attr:aria-selected="$fb.dir === 'tickets'">
-                    <span class="ok-tree__caret ok-tree__caret--leaf"></span>
-                    <span class="ok-tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span>
-                    <span class="ok-tree__label">tickets</span>
-                    <span class="ok-tree__meta">3.412</span>
+                <div class="tree__node">
+                  <div class="tree__row" data-on:click="$fb.dir = 'tickets'" data-attr:aria-selected="$fb.dir === 'tickets'">
+                    <span class="tree__caret tree__caret--leaf"></span>
+                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span>
+                    <span class="tree__label">tickets</span>
+                    <span class="tree__meta">3.412</span>
                   </div>
                 </div>
-                <div class="ok-tree__node">
-                  <div class="ok-tree__row" data-on:click="$fb.dir = 'exports'" data-attr:aria-selected="$fb.dir === 'exports'">
-                    <span class="ok-tree__caret ok-tree__caret--leaf"></span>
-                    <span class="ok-tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span>
-                    <span class="ok-tree__label">exports</span>
-                    <span class="ok-tree__meta">28</span>
+                <div class="tree__node">
+                  <div class="tree__row" data-on:click="$fb.dir = 'exports'" data-attr:aria-selected="$fb.dir === 'exports'">
+                    <span class="tree__caret tree__caret--leaf"></span>
+                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span>
+                    <span class="tree__label">exports</span>
+                    <span class="tree__meta">28</span>
                   </div>
                 </div>
-                <div class="ok-tree__node">
-                  <div class="ok-tree__row" data-on:click="$fb.dir = 'logs'" data-attr:aria-selected="$fb.dir === 'logs'">
-                    <span class="ok-tree__caret ok-tree__caret--leaf"></span>
-                    <span class="ok-tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span>
-                    <span class="ok-tree__label">logs</span>
-                    <span class="ok-tree__meta">7</span>
+                <div class="tree__node">
+                  <div class="tree__row" data-on:click="$fb.dir = 'logs'" data-attr:aria-selected="$fb.dir === 'logs'">
+                    <span class="tree__caret tree__caret--leaf"></span>
+                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span>
+                    <span class="tree__label">logs</span>
+                    <span class="tree__meta">7</span>
                   </div>
                 </div>
-                <div class="ok-tree__node">
-                  <div class="ok-tree__row" data-on:click="$fb.dir = 'media'" data-attr:aria-selected="$fb.dir === 'media'">
-                    <span class="ok-tree__caret ok-tree__caret--leaf"></span>
-                    <span class="ok-tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>
-                    <span class="ok-tree__label">multimedia</span>
-                    <span class="ok-tree__meta">86</span>
+                <div class="tree__node">
+                  <div class="tree__row" data-on:click="$fb.dir = 'media'" data-attr:aria-selected="$fb.dir === 'media'">
+                    <span class="tree__caret tree__caret--leaf"></span>
+                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>
+                    <span class="tree__label">multimedia</span>
+                    <span class="tree__meta">86</span>
                   </div>
                 </div>
-                <div class="ok-tree__node">
-                  <div class="ok-tree__row" data-on:click="$fb.dir = 'backups'" data-attr:aria-selected="$fb.dir === 'backups'">
-                    <span class="ok-tree__caret ok-tree__caret--leaf"></span>
-                    <span class="ok-tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
-                    <span class="ok-tree__label">backups</span>
-                    <span class="ok-tree__meta">14</span>
+                <div class="tree__node">
+                  <div class="tree__row" data-on:click="$fb.dir = 'backups'" data-attr:aria-selected="$fb.dir === 'backups'">
+                    <span class="tree__caret tree__caret--leaf"></span>
+                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
+                    <span class="tree__label">backups</span>
+                    <span class="tree__meta">14</span>
                   </div>
                 </div>
               </div>
@@ -143,139 +143,139 @@
           </div>
 
           <!-- Storage usage -->
-          <div style="margin-top:12px;padding:10px 8px;border-top:1px solid var(--ok-line);">
-            <div class="ok-eyebrow ok-mb-1">Espacio</div>
-            <div class="ok-progress"><div class="ok-progress__bar" style="width:36%;"></div></div>
-            <div style="font-size:11px;color:var(--ok-ink-3);margin-top:6px;display:flex;justify-content:space-between;">
+          <div style="margin-top:12px;padding:10px 8px;border-top:1px solid var(--line);">
+            <div class="eyebrow mb-1">Espacio</div>
+            <div class="progress"><div class="progress__bar" style="width:36%;"></div></div>
+            <div style="font-size:11px;color:var(--ink-3);margin-top:6px;display:flex;justify-content:space-between;">
               <span>1,8 GB usados</span><span>5 GB</span>
             </div>
           </div>
         </aside>
 
         <!-- Main browser -->
-        <section class="ok-col-md-8 ok-col-lg-9" style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:14px;overflow:hidden;">
+        <section class="col-md-8 col-lg-9" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;overflow:hidden;">
 
           <!-- Toolbar -->
-          <div class="ok-dt-toolbar" style="padding:12px;border-bottom:1px solid var(--ok-line);">
-            <nav style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ok-ink-3);flex:1 1 200px;">
-              <a href="#" style="color:var(--ok-brand);text-decoration:none;">tenant-rambla</a>
+          <div class="dt-toolbar" style="padding:12px;border-bottom:1px solid var(--line);">
+            <nav style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-3);flex:1 1 200px;">
+              <a href="#" style="color:var(--brand);text-decoration:none;">tenant-rambla</a>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg>
-              <span style="color:var(--ok-ink);font-weight:500;" data-text="$fb.dir"></span>
+              <span style="color:var(--ink);font-weight:500;" data-text="$fb.dir"></span>
             </nav>
 
-            <div class="ok-search" style="flex:0 1 240px;">
-              <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-              <input class="ok-input ok-input--sm" placeholder="Buscar archivo…"/>
+            <div class="search" style="flex:0 1 240px;">
+              <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <input class="input sm" placeholder="Buscar archivo…"/>
             </div>
 
-            <div class="ok-dt-toolbar__divider"></div>
+            <div class="dt-toolbar__divider"></div>
 
-            <div class="ok-view-toggle" role="tablist" aria-label="Vista">
-              <button class="ok-view-toggle__btn" data-on:click="$fb.view = 'list'" data-attr:aria-pressed="$fb.view === 'list'" title="Lista">
+            <div class="view-toggle" role="tablist" aria-label="Vista">
+              <button class="view-toggle__btn" data-on:click="$fb.view = 'list'" data-attr:aria-pressed="$fb.view === 'list'" title="Lista">
                 <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
               </button>
-              <button class="ok-view-toggle__btn" data-on:click="$fb.view = 'grid'" data-attr:aria-pressed="$fb.view === 'grid'" title="Cuadrícula">
+              <button class="view-toggle__btn" data-on:click="$fb.view = 'grid'" data-attr:aria-pressed="$fb.view === 'grid'" title="Cuadrícula">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
               </button>
             </div>
 
-            <button class="ok-icon-btn" title="Filtrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
-            <button class="ok-icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+            <button class="icon-btn" title="Filtrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
+            <button class="icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
           </div>
 
           <!-- Grid view -->
-          <div class="ok-dt-grid" data-show="$fb.view === 'grid'" style="padding:14px;">
+          <div class="dt-grid" data-show="$fb.view === 'grid'" style="padding:14px;">
 
-            <article class="ok-dt-card">
-              <div class="ok-dt-card__head">
-                <div class="ok-dt-card__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
-                <div class="ok-dt-card__title">FAC-2026-00142.pdf</div>
-                <button class="ok-row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+            <article class="dt-card">
+              <div class="dt-card__head">
+                <div class="dt-card__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
+                <div class="dt-card__title">FAC-2026-00142.pdf</div>
+                <button class="row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
               </div>
-              <div class="ok-text-xs ok-c-ink-3">218 KB · 2026-05-08 09:14</div>
+              <div class="text-xs c-ink-3">218 KB · 2026-05-08 09:14</div>
             </article>
 
-            <article class="ok-dt-card">
-              <div class="ok-dt-card__head">
-                <div class="ok-dt-card__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
-                <div class="ok-dt-card__title">FAC-2026-00141.pdf</div>
-                <button class="ok-row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+            <article class="dt-card">
+              <div class="dt-card__head">
+                <div class="dt-card__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
+                <div class="dt-card__title">FAC-2026-00141.pdf</div>
+                <button class="row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
               </div>
-              <div class="ok-text-xs ok-c-ink-3">204 KB · 2026-05-08 08:42</div>
+              <div class="text-xs c-ink-3">204 KB · 2026-05-08 08:42</div>
             </article>
 
-            <article class="ok-dt-card">
-              <div class="ok-dt-card__head">
-                <div class="ok-dt-card__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
-                <div class="ok-dt-card__title">FAC-2026-00140.pdf</div>
-                <button class="ok-row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+            <article class="dt-card">
+              <div class="dt-card__head">
+                <div class="dt-card__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
+                <div class="dt-card__title">FAC-2026-00140.pdf</div>
+                <button class="row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
               </div>
-              <div class="ok-text-xs ok-c-ink-3">196 KB · 2026-05-07 18:55</div>
+              <div class="text-xs c-ink-3">196 KB · 2026-05-07 18:55</div>
             </article>
 
-            <article class="ok-dt-card">
-              <div class="ok-dt-card__head">
-                <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
-                <div class="ok-dt-card__title">logo-rambla.png</div>
-                <button class="ok-row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+            <article class="dt-card">
+              <div class="dt-card__head">
+                <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></div>
+                <div class="dt-card__title">logo-rambla.png</div>
+                <button class="row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
               </div>
-              <div class="ok-text-xs ok-c-ink-3">84 KB · 2026-04-30 11:02</div>
+              <div class="text-xs c-ink-3">84 KB · 2026-04-30 11:02</div>
             </article>
 
-            <article class="ok-dt-card">
-              <div class="ok-dt-card__head">
-                <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-                <div class="ok-dt-card__title">ventas-2026-04.csv</div>
-                <button class="ok-row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+            <article class="dt-card">
+              <div class="dt-card__head">
+                <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+                <div class="dt-card__title">ventas-2026-04.csv</div>
+                <button class="row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
               </div>
-              <div class="ok-text-xs ok-c-ink-3">1,2 MB · 2026-05-01 03:00</div>
+              <div class="text-xs c-ink-3">1,2 MB · 2026-05-01 03:00</div>
             </article>
 
-            <article class="ok-dt-card">
-              <div class="ok-dt-card__head">
-                <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg></div>
-                <div class="ok-dt-card__title">backup-2026-05-08.tar.gz</div>
-                <button class="ok-row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+            <article class="dt-card">
+              <div class="dt-card__head">
+                <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/></svg></div>
+                <div class="dt-card__title">backup-2026-05-08.tar.gz</div>
+                <button class="row-action" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
               </div>
-              <div class="ok-text-xs ok-c-ink-3">142 MB · 2026-05-08 03:00</div>
+              <div class="text-xs c-ink-3">142 MB · 2026-05-08 03:00</div>
             </article>
 
           </div>
 
           <!-- List view -->
-          <div data-show="$fb.view === 'list'" class="ok-table-scroll">
-            <table class="ok-table">
+          <div data-show="$fb.view === 'list'" class="table-scroll">
+            <table class="table">
               <thead>
                 <tr>
-                  <th style="width:36px;"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
-                  <th class="ok-th--sortable">Nombre</th>
-                  <th class="ok-th--sortable ok-td--right">Tamaño</th>
-                  <th class="ok-th--sortable">Modificado</th>
+                  <th style="width:36px;"><label class="check"><input type="checkbox"/><span class="check__box"></span></label></th>
+                  <th class="th sortable">Nombre</th>
+                  <th class="th sortable td right">Tamaño</th>
+                  <th class="th sortable">Modificado</th>
                   <th style="width:120px;text-align:right;">Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                  <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
                   <td>FAC-2026-00142.pdf</td>
-                  <td class="ok-td--num">218 KB</td>
-                  <td class="ok-td--muted">2026-05-08 09:14</td>
+                  <td class="td num">218 KB</td>
+                  <td class="td muted">2026-05-08 09:14</td>
                   <td>
-                    <div class="ok-row-actions ok-justify-end">
-                      <button class="ok-row-action" title="Ver"><iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon></button>
-                      <button class="ok-row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
+                    <div class="row-actions justify-end">
+                      <button class="row-action" title="Ver"><iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon></button>
+                      <button class="row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
                     </div>
                   </td>
                 </tr>
                 <tr>
-                  <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
+                  <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
                   <td>logo-rambla.png</td>
-                  <td class="ok-td--num">84 KB</td>
-                  <td class="ok-td--muted">2026-04-30 11:02</td>
+                  <td class="td num">84 KB</td>
+                  <td class="td muted">2026-04-30 11:02</td>
                   <td>
-                    <div class="ok-row-actions ok-justify-end">
-                      <button class="ok-row-action" title="Ver"><iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon></button>
-                      <button class="ok-row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
+                    <div class="row-actions justify-end">
+                      <button class="row-action" title="Ver"><iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon></button>
+                      <button class="row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
                     </div>
                   </td>
                 </tr>
@@ -289,12 +289,12 @@
 
     </div>
   </div>
-  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Inicio</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Facturas</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Perfil</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% macro stepper(orientation="horizontal", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<ol class="{{ ok_prefix }}stepper{% if orientation == 'vertical' %} {{ ok_prefix }}stepper--vertical{% endif %}" style="list-style:none;padding:0;margin:0"
+<ol class="{{ ok_prefix }}stepper{% if orientation == 'vertical' %} vertical{% endif %}" style="list-style:none;padding:0;margin:0"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </ol>

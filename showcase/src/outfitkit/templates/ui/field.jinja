@@ -2,7 +2,7 @@
 
 {% macro field(label, required=false, hint="", error="", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}field{% if error %} {{ ok_prefix }}field--error{% endif %}"
+<div class="{{ ok_prefix }}field{% if error %} error{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   <label class="{{ ok_prefix }}field__label">
     {{ label }}{% if required %} <span class="{{ ok_prefix }}field__required" aria-label="obligatorio">*</span>{% endif %}

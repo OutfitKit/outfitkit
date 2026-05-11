@@ -1,215 +1,970 @@
 /* ============================================================
    OutfitKit · Design Tokens
-   Sistema oscuro y sobrio, acento terracota, tipografía Inter.
-   Todas las variables son CSS puras — sin dependencia de Tailwind.
+   Variables CSS sin prefijo. Todo el sistema visual nace aquí.
+   Cualquier .css de la librería SOLO consume estas variables —
+   ningún literal numérico permitido fuera de este fichero.
    ============================================================ */
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root,
 [data-theme="erplora"] {
-  /* ---------- Tipografía ---------- */
-  --ok-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --ok-font-display: "Inter Tight", "Inter", system-ui, sans-serif;
-  --ok-font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  /* Escala tipográfica (densa, dashboard) */
-  --ok-text-2xs: 10.5px;
-  --ok-text-xs:  11.5px;
-  --ok-text-sm:  12.5px;
-  --ok-text-md:  13.5px;
-  --ok-text-base:14px;
-  --ok-text-lg:  16px;
-  --ok-text-xl:  19px;
-  --ok-text-2xl: 24px;
-  --ok-text-3xl: 32px;
-  --ok-text-4xl: 44px;
-  --ok-text-5xl: 60px;
+  /* ───── Tipografía · familias ──────────────────────────── */
+  --font-sans:    "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
-  --ok-leading-tight: 1.15;
-  --ok-leading-snug: 1.3;
-  --ok-leading-normal: 1.5;
+  /* ───── Tipografía · escala (densa, dashboard) ────────── */
+  --text-2xs:  10.5px;
+  --text-xs:   11.5px;
+  --text-sm:   12.5px;
+  --text-md:   13.5px;
+  --text-base: 14px;
+  --text-lg:   16px;
+  --text-xl:   19px;
+  --text-2xl:  24px;
+  --text-3xl:  32px;
+  --text-4xl:  44px;
+  --text-5xl:  60px;
 
-  --ok-tracking-tight: -0.015em;
-  --ok-tracking-tighter: -0.03em;
-  --ok-tracking-display: -0.04em;
-  --ok-tracking-wide: 0.06em;
-  --ok-tracking-mono: -0.005em;
+  --leading-flat:   1;       /* botones, badges, pills */
+  --leading-tight:  1.15;
+  --leading-snug:   1.30;
+  --leading-base:   1.40;    /* default reading */
+  --leading-normal: 1.50;
+  --leading-loose:  1.70;
 
-  /* ---------- Paleta neutra (oscuro por defecto) ---------- */
-  --ok-bg:        #0B0A09;       /* canvas */
-  --ok-bg-1:      #131210;       /* nivel 1 — sidebar / topbar */
-  --ok-bg-2:      #1A1815;       /* nivel 2 — cards */
-  --ok-bg-3:      #221F1B;       /* nivel 3 — hover / inputs */
-  --ok-bg-4:      #2B2722;       /* nivel 4 — pressed / chips */
+  --tracking-tightest: -0.04em;
+  --tracking-tighter:  -0.03em;
+  --tracking-tight:    -0.015em;
+  --tracking-near:     -0.02em;   /* labels compactas */
+  --tracking-snug:     -0.01em;
+  --tracking-normal:    0;
+  --tracking-wide:      0.06em;
+  --tracking-wider:     0.08em;
+  --tracking-display:  -0.04em;
+  --tracking-mono:     -0.005em;
 
-  --ok-line:      rgba(255, 255, 255, 0.06);
-  --ok-line-2:    rgba(255, 255, 255, 0.10);
-  --ok-line-3:    rgba(255, 255, 255, 0.16);
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
 
-  --ok-ink:       #F5F1EA;       /* texto principal */
-  --ok-ink-2:     #C4BCB0;       /* texto secundario */
-  --ok-ink-3:     #8A8378;       /* texto terciario / muted */
-  --ok-ink-4:     #5C564D;       /* placeholder / disabled */
+  /* ───── Espaciado · escala 4px (con medios para densidad UI) ── */
+  --space-0:    0;
+  --space-1:    4px;
+  --space-1-5:  6px;     /* medio paso · gap fino, dot, badge */
+  --space-2:    8px;
+  --space-2-5:  10px;    /* medio paso · paddings de chips */
+  --space-3:    12px;
+  --space-3-5:  14px;    /* medio paso · padding intermedio */
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-7:    32px;
+  --space-8:    40px;
+  --space-9:    56px;
+  --space-10:   72px;
 
-  /* ---------- Acentos ---------- */
-  --ok-brand:     #E8552A;       /* terracota — primario */
-  --ok-brand-2:   #B83A12;       /* terracota oscuro — hover/pressed */
-  --ok-brand-3:   #FF7A4D;       /* terracota claro — focus ring */
-  --ok-brand-fg:  #FFFFFF;
-  --ok-brand-soft: color-mix(in oklch, var(--ok-brand) 18%, transparent);
+  /* ───── Sizing · alturas semánticas (interactivos) ────── */
+  --size-xs: 22px;
+  --size-sm: 28px;
+  --size-md: 36px;
+  --size-lg: 44px;
+  --size-xl: 52px;
 
-  /* Accent alias — canonical theme accent. Defaults to brand; themes can
-     override either `--ok-brand` (cascades to logo, sidebar rail, tabs, badges)
-     or just `--ok-accent` for a finer-grained, non-branding accent. */
-  --ok-accent:      var(--ok-brand);
-  --ok-accent-soft: var(--ok-brand-soft);
-  --ok-accent-fg:   var(--ok-brand-fg);
+  /* Padding por tamaño — los componentes consumen --pad-x/--pad-y */
+  --pad-xs-x: var(--space-2);
+  --pad-xs-y: var(--space-1);
+  --pad-sm-x: var(--space-3);
+  --pad-sm-y: var(--space-1);
+  --pad-md-x: var(--space-4);
+  --pad-md-y: var(--space-2);
+  --pad-lg-x: var(--space-5);
+  --pad-lg-y: var(--space-3);
+  --pad-xl-x: var(--space-6);
+  --pad-xl-y: var(--space-4);
 
-  --ok-leaf:      #4F9D6E;       /* éxito */
-  --ok-leaf-soft: color-mix(in oklch, var(--ok-leaf) 18%, transparent);
-  --ok-leaf-fg:   #FFFFFF;
+  /* Iconografía */
+  --icon-2xs: 10px;
+  --icon-xs:  12px;
+  --icon-sm:  14px;
+  --icon-md:  18px;
+  --icon-lg:  22px;
+  --icon-xl:  28px;
+  --icon-2xl: 36px;
 
-  --ok-warn:      #D8A23A;       /* aviso */
-  --ok-warn-soft: color-mix(in oklch, var(--ok-warn) 18%, transparent);
-  --ok-warn-fg:   #1A1815;
+  /* Avatares */
+  --avatar-2xs: 18px;
+  --avatar-xs:  22px;
+  --avatar-sm:  28px;
+  --avatar-md:  36px;
+  --avatar-lg:  48px;
+  --avatar-xl:  64px;
+  --avatar-2xl: 96px;
 
-  --ok-danger:    #D8553F;       /* error */
-  --ok-danger-soft: color-mix(in oklch, var(--ok-danger) 18%, transparent);
-  --ok-danger-fg: #FFFFFF;
+  /* Touch target mínimo accesible */
+  --touch-target: 44px;
 
-  --ok-info:      #5B8CD9;       /* información */
-  --ok-info-soft: color-mix(in oklch, var(--ok-info) 18%, transparent);
-  --ok-info-fg:   #FFFFFF;
+  /* ───── Dots (status indicators) ───────────────────────── */
+  --dot-2xs: 3px;
+  --dot-xs:  5px;
+  --dot-sm:  6px;
+  --dot-md:  8px;
+  --dot-lg:  9px;
+  --dot-xl:  12px;
 
-  /* ---------- Espaciado (escala 4px) ---------- */
-  --ok-space-0: 0;
-  --ok-space-1: 4px;
-  --ok-space-2: 8px;
-  --ok-space-3: 12px;
-  --ok-space-4: 16px;
-  --ok-space-5: 20px;
-  --ok-space-6: 24px;
-  --ok-space-7: 32px;
-  --ok-space-8: 40px;
-  --ok-space-9: 56px;
-  --ok-space-10: 72px;
+  /* ───── Dimensiones específicas por componente ─────────── */
+  --sparkline-w:    80px;
+  --sparkline-h:    32px;
+  --kpi-min-h:      96px;
+  --empty-max-w:    380px;
+  --cmdk-max-w:     580px;
+  --chat-min-h:     480px;
+  --menu-w:         240px;
+  --card-max-w:     380px;
+  --actions-w:      280px;
+  --calendar-w:     240px;
+  --calendar-cell:  36px;
+  --chart-pie:      140px;
+  --avatar-bubble-h:78px;
 
-  /* ---------- Radios ---------- */
-  --ok-radius-xs: 4px;
-  --ok-radius-sm: 6px;
-  --ok-radius-md: 8px;
-  --ok-radius-lg: 10px;
-  --ok-radius-xl: 14px;
-  --ok-radius-2xl: 18px;
-  --ok-radius-pill: 9999px;
+  /* POS */
+  --pos-min-h:        600px;
+  --pos-aside-w:      380px;
+  --pos-fab-size:     60px;
+  --pos-fab-offset:   18px;
+  --pos-numpad-gap:   6px;
+  --pos-numpad-btn-h: 56px;
+  --pos-numpad-fz:    22px;
+  --pos-cat-card-h:   96px;
+  --pos-cat-card-w:   160px;
+  --pos-cat-rail-pad: 14px;
+  --pos-cart-total-fz: 38px;
+  --pos-cart-line-h:  56px;
+  --pos-tile-img-h:   96px;
 
-  /* ---------- Sombras ---------- */
-  --ok-shadow-xs: 0 1px 0 rgba(0,0,0,0.4);
-  --ok-shadow-sm: 0 2px 6px rgba(0,0,0,0.35);
-  --ok-shadow-md: 0 8px 20px rgba(0,0,0,0.4);
-  --ok-shadow-lg: 0 20px 40px rgba(0,0,0,0.5);
-  --ok-shadow-glow: 0 0 0 3px color-mix(in oklch, var(--ok-brand) 35%, transparent);
+  /* Manufacturing */
+  --mfg-bom-col-w:    90px;
+  --mfg-bom-indent-1: 0px;
+  --mfg-bom-indent-2: var(--space-6);
+  --mfg-bom-indent-3: 48px;
+  --mfg-bom-row-fz:   var(--text-md);
+  --mfg-bom-caret-size: var(--tree-icon-size);
+  --mfg-sku-fz:       11px;
+  --mfg-oee-gauge-w:  180px;
+  --mfg-oee-gauge-h:  100px;
+  --mfg-oee-pct-fz:   18px;
+  --mfg-oee-metric-label-fz: 10px;
+  --mfg-scanner-h:    160px;
+  --mfg-scanner-pad:  var(--modal-header-pad);
+  --mfg-scanner-result-pad-x: var(--space-3-5);
+  --mfg-scanner-result-pad-y: var(--space-3);
+  --mfg-scanner-icon: var(--size-md);
+  --mfg-scanner-title-fz: var(--text-md);
+  --mfg-bar-h:        60px;
+  --mfg-gantt-label-w: 200px;
+  --mfg-gantt-row-h:  22px;
+  --mfg-gantt-row-min-h: var(--size-lg);
+  --mfg-gantt-pad:    var(--space-2-5);
+  --mfg-gantt-bar-fz: 11px;
+  --mfg-gantt-head-fz: var(--text-2xs);
+  --mfg-gantt-head-pad: var(--space-2-5);
+  --mfg-gantt-head-time-fz: 10px;
+  --mfg-wo-pad:       var(--modal-header-pad);
+  --mfg-wo-id-fz:     var(--text-md);
+  --mfg-wo-title-fz:  15px;
+  --mfg-wo-sub-fz:    var(--text-sm);
+  --mfg-wo-progress-fz: var(--text-sm);
+  --mfg-wo-pct-fz:    18px;
+  --mfg-wo-bar-h:     var(--hr-bar-h);
+  --mfg-wo-step-grid: 32px;
+  --mfg-wo-step-num-size: 26px;
+  --mfg-wo-step-num-fz: var(--text-sm);
+  --mfg-wo-step-name-fz: var(--text-md);
+  --mfg-machine-badge-gap: var(--space-1-5);
+  --mfg-machine-badge-pad-x: var(--space-2);
+  --mfg-machine-badge-pad-y: 3px;
+  --mfg-machine-state-dot: var(--space-1-5);
+  --mfg-machine-id-mt: 2px;
+  --mfg-machine-metric-gap: 2px;
+  --mfg-machine-progress-gap: var(--space-1-5);
+  --mfg-machine-progress-h: var(--hr-bar-h);
+  --mfg-machine-alerts-gap: var(--space-1-5);
+  --mfg-machine-alert-pad-x: var(--space-2);
+  --mfg-machine-alert-pad-y: 2px;
+  --mfg-prodline-station-w: 96px;
+  --mfg-prodline-station-gap: var(--space-1-5);
+  --mfg-prodline-station-icon: var(--size-md);
+  --mfg-prodline-connector-h: var(--slider-track-h);
+  --mfg-prodline-connector-v: 32px;
+  --mfg-qc-check-size: 24px;
+  --mfg-qc-check-dense: 18px;
+  --mfg-qc-check-insp: 32px;
+  --mfg-qc-check-icon: var(--icon-sm);
+  --mfg-qc-check-icon-dense: 11px;
+  --mfg-qc-check-icon-insp: var(--icon-md);
+  --mfg-qc-inspector-avatar: var(--size-xs);
+  --mfg-qc-notes-border-l: var(--border-w-4);
+  --mfg-qc-inspector-gap: var(--space-1-5);
+  --mfg-qc-sub-mt: 2px;
+  --mfg-qc-stat-gap: 2px;
+  --mfg-batch-id-pad-x: var(--menu-item-pad-x);
+  --mfg-batch-id-pad-y: var(--space-1-5);
+  --mfg-batch-gap: 2px;
+  --mfg-batch-badge-pad-x: var(--menu-item-pad-x);
+  --mfg-batch-badge-pad-y: var(--slider-track-h);
+  --mfg-batch-badge-gap: var(--space-1-5);
+  --mfg-batch-chain-dot: 14px;
+  --mfg-batch-chain-col: 24px;
+  --mfg-batch-chain-step-left: 11px;
+  --mfg-track-line-w: var(--border-w-2);
 
-  /* ---------- Layout ---------- */
-  --ok-sidebar-w: 232px;
-  --ok-sidebar-w-collapsed: 60px;
-  --ok-topbar-h: 52px;
-  --ok-page-pad: 22px;
-  --ok-page-max: 1440px;
+  /* States / Skeleton */
+  --skel-text-h:      12px;
+  --skel-title-h:     18px;
+  --skel-btn-h:       32px;
+  --skel-btn-w:       96px;
+  --skel-chip-h:      22px;
+  --skel-chip-w:      72px;
+  --skel-card-h:      120px;
+  --skel-chart-h:     180px;
+  --skel-table-pad-y: 14px;
+  --spinner-size-sm:  14px;
+  --spinner-size-md:  18px;
+  --spinner-size-lg:  28px;
+  --spinner-size-xl:  44px;
+  --loadbar-h:        2px;
+  --progress-h:       6px;
+  --progress-h-sm:    4px;
+  --progress-h-lg:    10px;
+  --error-icon-size:  56px;
+  --error-min-h:      240px;
+  --error-page-inner-max-w: 560px;
+  --error-page-illu-size:   96px;
+  --error-diag-icon-size:   18px;
+  --bootstrap-icon-size:    40px;
 
-  /* ---------- Motion ---------- */
-  --ok-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ok-ease-spring: cubic-bezier(0.28, 0.84, 0.42, 1);
-  --ok-dur-fast: 120ms;
-  --ok-dur-base: 180ms;
-  --ok-dur-slow: 280ms;
+  /* Overlays (modal/drawer/toast/tooltip/menu) */
+  --modal-max-w-sm:   var(--empty-max-w);
+  --modal-max-w-md:   480px;
+  --modal-max-w-lg:   640px;
+  --modal-max-w-xl:   880px;
+  --modal-header-pad: 18px;
+  --modal-title-fz:   17px;
+  --drawer-default-max-w: 420px;
+  --drawer-default-blur:  22px;
+  --drawer-handle-h:  4px;
+  --toast-icon-size:  22px;
+  --tooltip-pad-x:    8px;
+  --tooltip-pad-y:    5px;
+  --tooltip-arrow:    8px;
+  --popover-max-w:    320px;
+  --popover-pad-x:    12px;
+  --popover-pad-y:    10px;
+  --popover-footer-pad-y: 8px;
+  --menu-min-w:       200px;
+  --menu-sm-w:        160px;
+  --menu-lg-w:        240px;
+  --menu-item-pad-x:  10px;
+  --menu-item-pad-y:  7px;
+  --menu-item-icon-w: 14px;
+  --menu-item-gap:    10px;
+  --menu-divider-my:  6px;
+  --menu-label-pad-b: 4px;
+  --menu-check-left:  10px;
+  --menu-check-size:  12px;
+  --menu-sub-pad:     6px;
+  --menu-sub-min-w:   200px;
+  --menu-userblock-pad: 10px;
+  --menu-userblock-mb: 4px;
+  --menu-section-fz:  10.5px;
+  --ctx-menu-pad:     5px;
+  --ctx-menu-item-gap: 10px;
+  --ctx-menu-item-pad-x: 10px;
+  --ctx-menu-item-pad-y: 6px;
+  --ctx-menu-icon-w:  16px;
+  --ctx-menu-min-w:   200px;
+  --ctx-menu-divider-my: 4px;
+  --ctx-menu-label-pad-b: 4px;
+  --hover-card-w:     280px;
+  --hover-card-pad:   14px;
+  --hover-card-avatar: 38px;
+  --hover-card-avatar-fz: 13px;
+  --hover-card-gap:   10px;
+  --hover-card-stats-gap: 14px;
+  --hover-card-stats-mt: 10px;
+  --hover-card-footer-gap: 6px;
+  --hover-card-footer-mt: 10px;
+  --hover-card-action-h: 28px;
+  --ctx-notification-w: 280px;
+  --ctx-notification-icon: 38px;
 
-  /* ---------- Z-index ---------- */
-  --ok-z-base: 1;
-  --ok-z-sticky: 100;
-  --ok-z-drawer: 200;
-  --ok-z-modal: 300;
-  --ok-z-toast: 400;
-  --ok-z-tooltip: 500;
+  /* Commerce (receipt/invoice/product/ticket) */
+  --receipt-w:        340px;
+  --receipt-h:        210px;
+  --receipt-h-sm:     172px;
+  --receipt-w-lg:     400px;
+  --receipt-h-lg:     250px;
+  --invoice-w:        280px;
+  --invoice-totals-sum-w: 280px;
+  --invoice-logo-fz:  var(--mfg-oee-pct-fz);
+  --invoice-title-fz: var(--text-2xl);
+  --invoice-sub-fz:   var(--text-sm);
+  --invoice-sec-fz:   var(--text-sm);
+  --invoice-pad:      var(--modal-header-pad);
+  --invoice-h4-fz:    var(--mfg-oee-metric-label-fz);
+  --invoice-lines-fz: var(--text-md);
+  --invoice-sum-fz:   var(--text-md);
+  --invoice-total-fz: var(--mfg-oee-pct-fz);
+  --sign-pad:         var(--modal-header-pad);
+  --sign-viewport-h:  var(--mfg-scanner-h);
+  --sign-label-fz:    var(--mfg-sku-fz);
+  --loyalty-chip-h:   26px;
+  --loyalty-sm-w:     280px;
+  --loyalty-sm-h:     172px;
+  --loyalty-lg-w:     400px;
+  --loyalty-lg-h:     250px;
+  --ticket-w:         var(--invoice-w);
+  --ticket-badge-pad-y: 3px;
+  --event-date-min-w: 64px;
+  --event-avatar-size: var(--size-xs);
+  --event-avatar-overlap: var(--space-1-5);
+  --event-icon-size:  12px;
+  --event-avatar-fz:  9px;
+  --event-sm-date-pad-y: 2px;
+  --event-now-border-l: var(--border-w-4);
+  --product-cta-h:    38px;
+  --product-cta-fz:   var(--text-sm);
+  --product-cta-icon: var(--icon-sm);
+  --product-cta-gap:  var(--space-1-5);
+  --product-thumb-w:  140px;
+  --product-wishlist-size: 32px;
+  --product-wishlist-icon: 16px;
+  --product-wishlist-blur: 8px;
+  --product-rating-icon: 12px;
+  --product-rating-mt: 2px;
+  --product-badge-pad-y: 3px;
+  --product-brand-ls: 0.1em;
+  --product-badge-ls: 0.08em;
+  --product-sold-out-blur: 2px;
+  --product-sold-out-ls: 0.12em;
+  --product-compact-cta-h: 32px;
+  --pdp-gallery-hero-r: var(--radius-2xl);
+  --pdp-gallery-nav: var(--size-md);
+  --pdp-gallery-nav-blur: 8px;
+  --pdp-gallery-thumb: 72px;
+  --pdp-qty-h:        48px;
+  --pdp-qty-btn-w:    48px;
+  --pdp-qty-value-w:  56px;
+  --pdp-qty-fz:       20px;
+  --pdp-qty-sm-h:     36px;
+  --pdp-qty-sm-btn-w: 36px;
+  --pdp-qty-sm-fz:    var(--text-lg);
+  --pdp-qty-sm-value-w: 44px;
+  --pdp-qty-sm-value-fz: var(--text-base);
 
-  /* ---------- Overlays (media UI on top of photo/video content) ---------- */
-  /* These default to neutral black/white because media content can be any
-     colour. Override only if your app demands a tinted overlay. */
-  --ok-overlay-strong: rgba(0, 0, 0, 0.70);
-  --ok-overlay-medium: rgba(0, 0, 0, 0.50);
-  --ok-overlay-soft:   rgba(0, 0, 0, 0.25);
-  --ok-overlay-faint:  rgba(0, 0, 0, 0.15);
-  --ok-overlay-glass:  rgba(255, 255, 255, 0.10);
-  --ok-overlay-glass-2: rgba(255, 255, 255, 0.18);
-  --ok-overlay-glass-3: rgba(255, 255, 255, 0.40);
-  --ok-overlay-glass-4: rgba(255, 255, 255, 0.92);
-  --ok-overlay-fade-bottom: linear-gradient(180deg, transparent, var(--ok-overlay-strong));
-  --ok-overlay-fade-top:    linear-gradient(180deg, var(--ok-overlay-medium), transparent);
+  /* Navigation */
+  --crumb-icon-size:  13px;
+  --crumb-sep-size:   11px;
+  --crumb-max-w:      220px;
+  --navbar-logo-size: 26px;
+  --navbar-logo-r:    7px;
+  --navbar-item-h:    30px;
+  --list-icon-size:   15px;
+  --tree-indent:      18px;
+  --tree-caret-size:  11px;
+  --tree-icon-size:   16px;
+  --mbar-h:           32px;
+  --mbar-h-compact:   26px;
+  --mbar-pad-x:       10px;
+  --mbar-panel-min-w: 220px;
 
-  /* Media surfaces (always neutral — video letterbox / lightbox bg) */
-  --ok-media-bg:       #000;
-  --ok-media-bg-soft:  rgba(0, 0, 0, 0.92);
-  --ok-media-fg:       #FFFFFF;
-  --ok-media-fg-soft:  rgba(255, 255, 255, 0.70);
+  /* Chat */
+  --chat-msg-fz:      12.5px;
+  --chat-meta-fz:     10.5px;
+  --chat-avatar-size: 32px;
+  --chat-badge-size:  18px;
+  --chat-badge-h:     18px;
+  --chat-status-dot:  6px;
+  --chat-typing-dot:  6px;
 
-  /* ---------- Paper / receipt (printed look — always light regardless of theme) */
-  --ok-paper-bg:    #FAFAF6;
-  --ok-paper-ink:   #1A1815;
-  --ok-paper-ink-2: #5C564D;
-  --ok-paper-line:  #888888;
+  /* Tab-bar */
+  --tabbar-icon-size: 24px;
+  --tabbar-badge-size: 16px;
+  --tabbar-dot-size:  8px;
+  --tabbar-fab-size:  52px;
+  --tabbar-fab-border: 4px;
+  --tabbar-indicator-h: 3px;
+  --tabbar-tabs-h:    38px;
+  --tabbar-pills-h:   28px;
 
-  /* ---------- Loyalty / membership tier gradients ---------- */
-  --ok-tier-silver-a:  #6E6E74;
-  --ok-tier-silver-b:  #B4B6BB;
-  --ok-tier-silver-fg: #1A1A1C;
-  --ok-tier-gold-a:    #8A6418;
-  --ok-tier-gold-b:    #E6C159;
-  --ok-tier-gold-fg:   #2A1D05;
-  --ok-tier-platinum-a: #1F2024;
-  --ok-tier-platinum-b: #4A4D56;
-  --ok-tier-platinum-fg: #F0F1F3;
+  /* HR (human resources) */
+  --hr-card-avatar-size: 18px;
+  --hr-chart-h:       180px;
+  --hr-bar-h:         8px;
+  --hr-perf-dot:      6px;
 
-  /* ---------- POS category card gradients ---------- */
-  --ok-cat-coffee-a:  #6B4226; --ok-cat-coffee-b:  #2A1810;
-  --ok-cat-tea-a:     #4A7D4A; --ok-cat-tea-b:     #1F3A1F;
-  --ok-cat-bakery-a:  #C89568; --ok-cat-bakery-b:  #6B4423;
-  --ok-cat-cold-a:    #4A7DA8; --ok-cat-cold-b:    #1F3A55;
-  --ok-cat-menu-a:    #A85A3A; --ok-cat-menu-b:    #5A2818;
-  --ok-cat-dessert-a: #B87A9D; --ok-cat-dessert-b: #5A2C4A;
-  --ok-cat-snacks-a:  #D8A23A; --ok-cat-snacks-b:  #6B4F1A;
-  --ok-cat-all-a:     #555555; --ok-cat-all-b:     #1A1A1A;
+  /* Multimedia */
+  --audio-h:          60px;
+  --audio-h-compact:  52px;
+  --audio-h-full:     76px;
+  --audio-btn:        38px;
+  --audio-progress-h: 4px;
+  --audio-progress-w: 140px;
+  --audio-thumb-w:    80px;
+  --video-play-size:  72px;
+  --video-ctrl-size:  32px;
+  --video-progress-h: 4px;
+  --gallery-nav-w:    50px;
+  --gallery-dot-size: 8px;
+  --cropper-handle:   8px;
+
+  /* System overlays / CMDk */
+  --cmdk-item-icon:   38px;
+
+  /* Forms advanced (OTP, slider, etc.) */
+  --slider-track-h:   4px;
+  --slider-thumb:     16px;
+  --otp-cell-h:       44px;
+
+  /* Editors (richtext) */
+  --editor-toolbar-h: 38px;
+
+  /* Layout-extra / page structures */
+  --page-loading-min-h: 240px;
+  --section-max-w:    720px;
+
+  /* ───── Radios ─────────────────────────────────────────── */
+  --radius-xs:   4px;
+  --radius-sm:   6px;
+  --radius-md:   8px;
+  --radius-lg:   10px;
+  --radius-xl:   14px;
+  --radius-2xl:  18px;
+  --radius-3xl:  24px;
+  --radius-pill: 9999px;
+  --radius-circle: 50%;
+
+  /* ───── Bordes ─────────────────────────────────────────── */
+  --border-w:   1px;
+  --border-w-2: 2px;
+  --border-w-4: 4px;
+
+  /* ───── Paleta neutra · oscuro (default) ───────────────── */
+  --bg:    #0B0A09;     /* canvas */
+  --bg-1:  #131210;     /* sidebar / topbar */
+  --bg-2:  #1A1815;     /* cards */
+  --bg-3:  #221F1B;     /* hover / inputs */
+  --bg-4:  #2B2722;     /* pressed / chips */
+
+  --line:   rgba(255, 255, 255, 0.06);
+  --line-2: rgba(255, 255, 255, 0.10);
+  --line-3: rgba(255, 255, 255, 0.16);
+
+  --ink:   #F5F1EA;     /* texto principal */
+  --ink-2: #C4BCB0;     /* secundario */
+  --ink-3: #8A8378;     /* terciario / muted */
+  --ink-4: #5C564D;     /* placeholder / disabled */
+
+  /* ───── Acento marca (terracota) ───────────────────────── */
+  --brand:      #E8552A;
+  --brand-2:    #B83A12;     /* hover/pressed */
+  --brand-3:    #FF7A4D;     /* focus ring claro */
+  --brand-fg:   #FFFFFF;
+  --brand-soft: color-mix(in oklch, var(--brand) 18%, transparent);
+
+  /* Alias accent — themes pueden sobreescribir solo accent sin tocar brand */
+  --accent:      var(--brand);
+  --accent-2:    var(--brand-2);
+  --accent-3:    var(--brand-3);
+  --accent-fg:   var(--brand-fg);
+  --accent-soft: var(--brand-soft);
+
+  /* ───── Acentos semánticos ─────────────────────────────── */
+  --leaf:        #4F9D6E;     /* éxito */
+  --leaf-2:      color-mix(in oklch, var(--leaf) 80%, black);
+  --leaf-fg:     #FFFFFF;
+  --leaf-soft:   color-mix(in oklch, var(--leaf) 18%, transparent);
+
+  --warn:        #D8A23A;     /* aviso */
+  --warn-2:      color-mix(in oklch, var(--warn) 80%, black);
+  --warn-fg:     #1A1815;
+  --warn-soft:   color-mix(in oklch, var(--warn) 18%, transparent);
+
+  --danger:      #D8553F;     /* error */
+  --danger-2:    color-mix(in oklch, var(--danger) 80%, black);
+  --danger-fg:   #FFFFFF;
+  --danger-soft: color-mix(in oklch, var(--danger) 18%, transparent);
+
+  --info:        #5B8CD9;     /* información */
+  --info-2:      color-mix(in oklch, var(--info) 80%, black);
+  --info-fg:     #FFFFFF;
+  --info-soft:   color-mix(in oklch, var(--info) 18%, transparent);
+
+
+  /* ============================================================
+     Schema Ionic-like · API canónica de colores
+     ─────────────────────────────────────────────────────────────
+     Cada color expone 6 variables: base, rgb, contrast,
+     contrast-rgb, shade (10-12% más oscuro), tint (10% más claro).
+     Cualquier consumidor puede override una sola variable sin
+     conocer el resto.
+     ============================================================ */
+
+  /* Primary — alias semántico del color de marca */
+  --color-primary:              var(--brand);
+  --color-primary-rgb:          232, 85, 42;
+  --color-primary-contrast:     var(--brand-fg);
+  --color-primary-contrast-rgb: 255, 255, 255;
+  --color-primary-shade:        var(--brand-2);
+  --color-primary-tint:         var(--brand-3);
+
+  /* Secondary — accent (themes pueden override sin tocar primary) */
+  --color-secondary:              var(--accent);
+  --color-secondary-rgb:          232, 85, 42;
+  --color-secondary-contrast:     var(--accent-fg);
+  --color-secondary-contrast-rgb: 255, 255, 255;
+  --color-secondary-shade:        var(--accent-2);
+  --color-secondary-tint:         var(--accent-3);
+
+  /* Tertiary — útil para badges/highlights extra (default info) */
+  --color-tertiary:              var(--info);
+  --color-tertiary-rgb:          91, 140, 217;
+  --color-tertiary-contrast:     var(--info-fg);
+  --color-tertiary-contrast-rgb: 255, 255, 255;
+  --color-tertiary-shade:        var(--info-2);
+  --color-tertiary-tint:         color-mix(in oklch, var(--info) 88%, white);
+
+  /* Success */
+  --color-success:              var(--leaf);
+  --color-success-rgb:          79, 157, 110;
+  --color-success-contrast:     var(--leaf-fg);
+  --color-success-contrast-rgb: 255, 255, 255;
+  --color-success-shade:        var(--leaf-2);
+  --color-success-tint:         color-mix(in oklch, var(--leaf) 88%, white);
+
+  /* Warning */
+  --color-warning:              var(--warn);
+  --color-warning-rgb:          216, 162, 58;
+  --color-warning-contrast:     var(--warn-fg);
+  --color-warning-contrast-rgb: 26, 24, 21;
+  --color-warning-shade:        var(--warn-2);
+  --color-warning-tint:         color-mix(in oklch, var(--warn) 88%, white);
+
+  /* Danger */
+  --color-danger:              var(--danger);
+  --color-danger-rgb:          216, 85, 63;
+  --color-danger-contrast:     var(--danger-fg);
+  --color-danger-contrast-rgb: 255, 255, 255;
+  --color-danger-shade:        var(--danger-2);
+  --color-danger-tint:         color-mix(in oklch, var(--danger) 88%, white);
+
+  /* Info — alias de tertiary */
+  --color-info:              var(--info);
+  --color-info-rgb:          91, 140, 217;
+  --color-info-contrast:     var(--info-fg);
+  --color-info-contrast-rgb: 255, 255, 255;
+  --color-info-shade:        var(--info-2);
+  --color-info-tint:         color-mix(in oklch, var(--info) 88%, white);
+
+  /* Medium — neutro (usado por buttons sin variante, badges sin color) */
+  --color-medium:              var(--bg-3);
+  --color-medium-rgb:          34, 31, 27;
+  --color-medium-contrast:     var(--ink);
+  --color-medium-contrast-rgb: 245, 241, 234;
+  --color-medium-shade:        var(--bg-4);
+  --color-medium-tint:         var(--bg-2);
+
+  /* Light — para fondos sutiles */
+  --color-light:              var(--bg-2);
+  --color-light-rgb:          26, 24, 21;
+  --color-light-contrast:     var(--ink);
+  --color-light-contrast-rgb: 245, 241, 234;
+  --color-light-shade:        var(--bg-3);
+  --color-light-tint:         var(--bg-1);
+
+  /* Dark — para texto/cabeceras enfáticas en light theme; bg oscuro en dark */
+  --color-dark:              var(--ink);
+  --color-dark-rgb:          245, 241, 234;
+  --color-dark-contrast:     var(--bg);
+  --color-dark-contrast-rgb: 11, 10, 9;
+  --color-dark-shade:        var(--ink-2);
+  --color-dark-tint:         var(--bg-1);
+
+
+  /* ============================================================
+     Color steps (gradaciones)
+     ─────────────────────────────────────────────────────────────
+     50..950 — útil para tablas, listas, separadores, fondos
+     alternativos. En tema oscuro empiezan en el canvas y se
+     vuelven más claros. Themes light invierten el sentido.
+     ============================================================ */
+  --color-step-50:   color-mix(in oklch, var(--bg) 95%, var(--ink));
+  --color-step-100:  color-mix(in oklch, var(--bg) 90%, var(--ink));
+  --color-step-150:  color-mix(in oklch, var(--bg) 85%, var(--ink));
+  --color-step-200:  color-mix(in oklch, var(--bg) 80%, var(--ink));
+  --color-step-250:  color-mix(in oklch, var(--bg) 75%, var(--ink));
+  --color-step-300:  color-mix(in oklch, var(--bg) 70%, var(--ink));
+  --color-step-350:  color-mix(in oklch, var(--bg) 65%, var(--ink));
+  --color-step-400:  color-mix(in oklch, var(--bg) 60%, var(--ink));
+  --color-step-450:  color-mix(in oklch, var(--bg) 55%, var(--ink));
+  --color-step-500:  color-mix(in oklch, var(--bg) 50%, var(--ink));
+  --color-step-550:  color-mix(in oklch, var(--bg) 45%, var(--ink));
+  --color-step-600:  color-mix(in oklch, var(--bg) 40%, var(--ink));
+  --color-step-650:  color-mix(in oklch, var(--bg) 35%, var(--ink));
+  --color-step-700:  color-mix(in oklch, var(--bg) 30%, var(--ink));
+  --color-step-750:  color-mix(in oklch, var(--bg) 25%, var(--ink));
+  --color-step-800:  color-mix(in oklch, var(--bg) 20%, var(--ink));
+  --color-step-850:  color-mix(in oklch, var(--bg) 15%, var(--ink));
+  --color-step-900:  color-mix(in oklch, var(--bg) 10%, var(--ink));
+  --color-step-950:  color-mix(in oklch, var(--bg) 5%,  var(--ink));
+
+
+  /* ============================================================
+     Globales (Ionic-like)
+     ─────────────────────────────────────────────────────────────
+     APIs canónicas que cualquier consumidor puede override una
+     vez para cambiar el aspecto de toda la app.
+     ============================================================ */
+  --background-color:     var(--bg);
+  --background-color-rgb: 11, 10, 9;
+  --text-color:           var(--ink);
+  --text-color-rgb:       245, 241, 234;
+
+  --font-family:          var(--font-sans);
+  --font-family-display:  var(--font-display);
+  --font-family-mono:     var(--font-mono);
+
+
+  /* ============================================================
+     Safe area insets (notch / home bar handling)
+     ─────────────────────────────────────────────────────────────
+     Útil para PWAs en iOS/Android — los componentes fijos los
+     consumen automáticamente cuando aplica.
+     ============================================================ */
+  --safe-area-top:    env(safe-area-inset-top,    0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left:   env(safe-area-inset-left,   0px);
+  --safe-area-right:  env(safe-area-inset-right,  0px);
+
+
+  /* ───── Sombras ────────────────────────────────────────── */
+  --shadow-xs:   0 1px 0 rgba(0, 0, 0, 0.40);
+  --shadow-sm:   0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-md:   0 8px 20px rgba(0, 0, 0, 0.40);
+  --shadow-lg:   0 20px 40px rgba(0, 0, 0, 0.50);
+  --shadow-xl:   0 32px 64px rgba(0, 0, 0, 0.55);
+  --shadow-glow: 0 0 0 3px color-mix(in oklch, var(--brand) 35%, transparent);
+  --shadow-focus: 0 0 0 3px color-mix(in oklch, var(--accent) 28%, transparent);
+
+  /* ───── Layout · alturas y anchos del shell ────────────── */
+  --sidebar-w:           232px;
+  --sidebar-w-collapsed: 60px;
+  --sidebar-w-mobile:    288px;       /* drawer offcanvas */
+
+  --topbar-h:    52px;
+  --tabbar-h:    58px;
+  --bottombar-h: 64px;
+
+  --page-pad:    22px;                 /* padding lateral del body */
+  --page-max:    1440px;
+
+  /* ───── Containers (Bootstrap-style) ───────────────────── */
+  --container-narrow:  720px;
+  --container-reading: 880px;
+  --container:         1200px;
+  --container-wide:    1440px;
+  --container-full:    100%;
+
+  /* ───── Breakpoints (custom-prop, referencia) ──────────── */
+  --bp-sm: 640px;
+  --bp-md: 768px;
+  --bp-lg: 1024px;
+  --bp-xl: 1200px;
+  --bp-2xl: 1440px;
+
+  /* ───── Motion · easing y duración ─────────────────────── */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in:     cubic-bezier(0.4, 0, 1, 1);
+  --ease-inout:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.28, 0.84, 0.42, 1);
+
+  --dur-instant: 80ms;
+  --dur-fast:    120ms;
+  --dur-base:    180ms;
+  --dur-slow:    280ms;
+  --dur-slower:  400ms;
+
+  /* ───── Z-index ────────────────────────────────────────── */
+  --z-base:    1;
+  --z-dropdown: 50;
+  --z-sticky:  100;
+  --z-drawer:  200;
+  --z-modal:   300;
+  --z-toast:   400;
+  --z-tooltip: 500;
+  --z-popover: 600;
+
+  /* ───── Overlays (UI sobre media) ─────────────────────── */
+  --overlay-strong: rgba(0, 0, 0, 0.70);
+  --overlay-medium: rgba(0, 0, 0, 0.50);
+  --overlay-soft:   rgba(0, 0, 0, 0.25);
+  --overlay-faint:  rgba(0, 0, 0, 0.15);
+
+  --overlay-glass:   rgba(255, 255, 255, 0.10);
+  --overlay-glass-2: rgba(255, 255, 255, 0.18);
+  --overlay-glass-3: rgba(255, 255, 255, 0.40);
+  --overlay-glass-4: rgba(255, 255, 255, 0.92);
+
+  --overlay-fade-bottom: linear-gradient(180deg, transparent, var(--overlay-strong));
+  --overlay-fade-top:    linear-gradient(180deg, var(--overlay-medium), transparent);
+
+  /* ───── Glass / blur (componentes traslúcidos) ────────── */
+  --glass-blur:        14px;
+  --glass-blur-strong: 22px;
+  --glass-blur-soft:   10px;
+  --glass-saturate:        140%;
+  --glass-saturate-strong: 160%;
+  --glass-saturate-soft:   120%;
+
+  /* ───── Media surfaces (siempre neutro) ────────────────── */
+  --media-bg:      #000000;
+  --media-bg-soft: rgba(0, 0, 0, 0.92);
+  --media-fg:      #FFFFFF;
+  --media-fg-soft: rgba(255, 255, 255, 0.70);
+
+  /* ───── Paper / receipt (impreso, siempre claro) ──────── */
+  --paper-bg:    #FAFAF6;
+  --paper-ink:   #1A1815;
+  --paper-ink-2: #5C564D;
+  --paper-line:  #888888;
+
+  /* ───── Tier gradients (loyalty / membership) ──────────── */
+  --tier-silver-a:   #6E6E74;
+  --tier-silver-b:   #B4B6BB;
+  --tier-silver-fg:  #1A1A1C;
+  --tier-gold-a:     #8A6418;
+  --tier-gold-b:     #E6C159;
+  --tier-gold-fg:    #2A1D05;
+  --tier-platinum-a: #1F2024;
+  --tier-platinum-b: #4A4D56;
+  --tier-platinum-fg:#F0F1F3;
+
+  /* ───── POS category gradients ─────────────────────────── */
+  --cat-coffee-a:  #6B4226; --cat-coffee-b:  #2A1810;
+  --cat-tea-a:     #4A7D4A; --cat-tea-b:     #1F3A1F;
+  --cat-bakery-a:  #C89568; --cat-bakery-b:  #6B4423;
+  --cat-cold-a:    #4A7DA8; --cat-cold-b:    #1F3A55;
+  --cat-menu-a:    #A85A3A; --cat-menu-b:    #5A2818;
+  --cat-dessert-a: #B87A9D; --cat-dessert-b: #5A2C4A;
+  --cat-snacks-a:  #D8A23A; --cat-snacks-b:  #6B4F1A;
+  --cat-all-a:     #555555; --cat-all-b:     #1A1A1A;
 
   color-scheme: dark;
 }
 
-/* ---------- Tema claro ---------- */
+
+/* ============================================================
+   Tema claro · sobrescribe solo lo que cambia
+   ============================================================ */
 [data-theme="erplora-light"] {
-  --ok-bg:        #FAF8F4;
-  --ok-bg-1:      #FFFFFF;
-  --ok-bg-2:      #FFFFFF;
-  --ok-bg-3:      #F2EEE8;
-  --ok-bg-4:      #E6E1D8;
+  --bg:    #FAF8F4;
+  --bg-1:  #FFFFFF;
+  --bg-2:  #FFFFFF;
+  --bg-3:  #F2EEE8;
+  --bg-4:  #E6E1D8;
 
-  --ok-line:      rgba(20, 14, 8, 0.07);
-  --ok-line-2:    rgba(20, 14, 8, 0.13);
-  --ok-line-3:    rgba(20, 14, 8, 0.22);
+  --line:   rgba(20, 14, 8, 0.07);
+  --line-2: rgba(20, 14, 8, 0.13);
+  --line-3: rgba(20, 14, 8, 0.22);
 
-  --ok-ink:       #1A1612;
-  --ok-ink-2:     #524C44;
-  --ok-ink-3:     #837B70;
-  --ok-ink-4:     #B5AEA3;
+  --ink:   #1A1612;
+  --ink-2: #524C44;
+  --ink-3: #837B70;
+  --ink-4: #B5AEA3;
 
-  --ok-brand-soft:  color-mix(in oklch, var(--ok-brand) 14%, white);
-  --ok-leaf-soft:   color-mix(in oklch, var(--ok-leaf) 14%, white);
-  --ok-warn-soft:   color-mix(in oklch, var(--ok-warn) 18%, white);
-  --ok-danger-soft: color-mix(in oklch, var(--ok-danger) 14%, white);
-  --ok-info-soft:   color-mix(in oklch, var(--ok-info) 14%, white);
+  --brand-soft:  color-mix(in oklch, var(--brand)  14%, white);
+  --leaf-soft:   color-mix(in oklch, var(--leaf)   14%, white);
+  --warn-soft:   color-mix(in oklch, var(--warn)   18%, white);
+  --danger-soft: color-mix(in oklch, var(--danger) 14%, white);
+  --info-soft:   color-mix(in oklch, var(--info)   14%, white);
 
-  --ok-shadow-xs: 0 1px 0 rgba(20,14,8,0.04);
-  --ok-shadow-sm: 0 1px 3px rgba(20,14,8,0.08);
-  --ok-shadow-md: 0 8px 20px rgba(20,14,8,0.10);
-  --ok-shadow-lg: 0 20px 40px rgba(20,14,8,0.12);
+  --shadow-xs: 0 1px 0  rgba(20, 14, 8, 0.04);
+  --shadow-sm: 0 1px 3px rgba(20, 14, 8, 0.08);
+  --shadow-md: 0 8px 20px rgba(20, 14, 8, 0.10);
+  --shadow-lg: 0 20px 40px rgba(20, 14, 8, 0.12);
+  --shadow-xl: 0 32px 64px rgba(20, 14, 8, 0.14);
 
   color-scheme: light;
+}
+
+
+/* ============================================================
+   COMPATIBILIDAD TEMPORAL · alias --ok-* → variables nuevas
+   ─────────────────────────────────────────────────────────────
+   Bloque transicional. Permite que los componentes/themes que
+   todavía consumen `var(--ok-*)` sigan funcionando mientras
+   migramos cada fichero al naming sin prefijo. SE ELIMINA al
+   cerrar el rebuild — cualquier referencia a --ok-* es deuda.
+   ============================================================ */
+:root,
+[data-theme="erplora"],
+[data-theme="erplora-light"] {
+  /* Tipografía */
+  --ok-font-sans:    var(--font-sans);
+  --ok-font-display: var(--font-display);
+  --ok-font-mono:    var(--font-mono);
+  --ok-text-2xs:     var(--text-2xs);
+  --ok-text-xs:      var(--text-xs);
+  --ok-text-sm:      var(--text-sm);
+  --ok-text-md:      var(--text-md);
+  --ok-text-base:    var(--text-base);
+  --ok-text-lg:      var(--text-lg);
+  --ok-text-xl:      var(--text-xl);
+  --ok-text-2xl:     var(--text-2xl);
+  --ok-text-3xl:     var(--text-3xl);
+  --ok-text-4xl:     var(--text-4xl);
+  --ok-text-5xl:     var(--text-5xl);
+  --ok-leading-tight:  var(--leading-tight);
+  --ok-leading-snug:   var(--leading-snug);
+  --ok-leading-normal: var(--leading-normal);
+  --ok-tracking-tight:   var(--tracking-tight);
+  --ok-tracking-tighter: var(--tracking-tighter);
+  --ok-tracking-display: var(--tracking-display);
+  --ok-tracking-wide:    var(--tracking-wide);
+  --ok-tracking-mono:    var(--tracking-mono);
+
+  /* Paleta */
+  --ok-bg:    var(--bg);
+  --ok-bg-1:  var(--bg-1);
+  --ok-bg-2:  var(--bg-2);
+  --ok-bg-3:  var(--bg-3);
+  --ok-bg-4:  var(--bg-4);
+  --ok-line:    var(--line);
+  --ok-line-2:  var(--line-2);
+  --ok-line-3:  var(--line-3);
+  --ok-ink:   var(--ink);
+  --ok-ink-2: var(--ink-2);
+  --ok-ink-3: var(--ink-3);
+  --ok-ink-4: var(--ink-4);
+
+  /* Acentos */
+  --ok-brand:      var(--brand);
+  --ok-brand-2:    var(--brand-2);
+  --ok-brand-3:    var(--brand-3);
+  --ok-brand-fg:   var(--brand-fg);
+  --ok-brand-soft: var(--brand-soft);
+  --ok-accent:      var(--accent);
+  --ok-accent-soft: var(--accent-soft);
+  --ok-accent-fg:   var(--accent-fg);
+
+  --ok-leaf:       var(--leaf);
+  --ok-leaf-soft:  var(--leaf-soft);
+  --ok-leaf-fg:    var(--leaf-fg);
+  --ok-warn:       var(--warn);
+  --ok-warn-soft:  var(--warn-soft);
+  --ok-warn-fg:    var(--warn-fg);
+  --ok-danger:     var(--danger);
+  --ok-danger-soft:var(--danger-soft);
+  --ok-danger-fg:  var(--danger-fg);
+  --ok-info:       var(--info);
+  --ok-info-soft:  var(--info-soft);
+  --ok-info-fg:    var(--info-fg);
+
+  /* Espaciado */
+  --ok-space-0:  var(--space-0);
+  --ok-space-1:  var(--space-1);
+  --ok-space-2:  var(--space-2);
+  --ok-space-3:  var(--space-3);
+  --ok-space-4:  var(--space-4);
+  --ok-space-5:  var(--space-5);
+  --ok-space-6:  var(--space-6);
+  --ok-space-7:  var(--space-7);
+  --ok-space-8:  var(--space-8);
+  --ok-space-9:  var(--space-9);
+  --ok-space-10: var(--space-10);
+
+  /* Radios */
+  --ok-radius-xs:   var(--radius-xs);
+  --ok-radius-sm:   var(--radius-sm);
+  --ok-radius-md:   var(--radius-md);
+  --ok-radius-lg:   var(--radius-lg);
+  --ok-radius-xl:   var(--radius-xl);
+  --ok-radius-2xl:  var(--radius-2xl);
+  --ok-radius-pill: var(--radius-pill);
+
+  /* Sombras */
+  --ok-shadow-xs:   var(--shadow-xs);
+  --ok-shadow-sm:   var(--shadow-sm);
+  --ok-shadow-md:   var(--shadow-md);
+  --ok-shadow-lg:   var(--shadow-lg);
+  --ok-shadow-glow: var(--shadow-glow);
+
+  /* Layout */
+  --ok-sidebar-w:           var(--sidebar-w);
+  --ok-sidebar-w-collapsed: var(--sidebar-w-collapsed);
+  --ok-topbar-h:            var(--topbar-h);
+  --ok-tabbar-h:            var(--tabbar-h);
+  --ok-page-pad:            var(--page-pad);
+  --ok-page-max:            var(--page-max);
+
+  /* Motion */
+  --ok-ease-out:    var(--ease-out);
+  --ok-ease-spring: var(--ease-spring);
+  --ok-dur-fast:    var(--dur-fast);
+  --ok-dur-base:    var(--dur-base);
+  --ok-dur-slow:    var(--dur-slow);
+
+  /* Z-index */
+  --ok-z-base:    var(--z-base);
+  --ok-z-sticky:  var(--z-sticky);
+  --ok-z-drawer:  var(--z-drawer);
+  --ok-z-modal:   var(--z-modal);
+  --ok-z-toast:   var(--z-toast);
+  --ok-z-tooltip: var(--z-tooltip);
+
+  /* Overlays */
+  --ok-overlay-strong: var(--overlay-strong);
+  --ok-overlay-medium: var(--overlay-medium);
+  --ok-overlay-soft:   var(--overlay-soft);
+  --ok-overlay-faint:  var(--overlay-faint);
+  --ok-overlay-glass:   var(--overlay-glass);
+  --ok-overlay-glass-2: var(--overlay-glass-2);
+  --ok-overlay-glass-3: var(--overlay-glass-3);
+  --ok-overlay-glass-4: var(--overlay-glass-4);
+  --ok-overlay-fade-bottom: var(--overlay-fade-bottom);
+  --ok-overlay-fade-top:    var(--overlay-fade-top);
+
+  /* Media + paper */
+  --ok-media-bg:      var(--media-bg);
+  --ok-media-bg-soft: var(--media-bg-soft);
+  --ok-media-fg:      var(--media-fg);
+  --ok-media-fg-soft: var(--media-fg-soft);
+  --ok-paper-bg:    var(--paper-bg);
+  --ok-paper-ink:   var(--paper-ink);
+  --ok-paper-ink-2: var(--paper-ink-2);
+  --ok-paper-line:  var(--paper-line);
+
+  /* Tier gradients */
+  --ok-tier-silver-a:  var(--tier-silver-a);
+  --ok-tier-silver-b:  var(--tier-silver-b);
+  --ok-tier-silver-fg: var(--tier-silver-fg);
+  --ok-tier-gold-a:    var(--tier-gold-a);
+  --ok-tier-gold-b:    var(--tier-gold-b);
+  --ok-tier-gold-fg:   var(--tier-gold-fg);
+  --ok-tier-platinum-a: var(--tier-platinum-a);
+  --ok-tier-platinum-b: var(--tier-platinum-b);
+  --ok-tier-platinum-fg: var(--tier-platinum-fg);
+
+  /* POS category gradients */
+  --ok-cat-coffee-a:  var(--cat-coffee-a);  --ok-cat-coffee-b:  var(--cat-coffee-b);
+  --ok-cat-tea-a:     var(--cat-tea-a);     --ok-cat-tea-b:     var(--cat-tea-b);
+  --ok-cat-bakery-a:  var(--cat-bakery-a);  --ok-cat-bakery-b:  var(--cat-bakery-b);
+  --ok-cat-cold-a:    var(--cat-cold-a);    --ok-cat-cold-b:    var(--cat-cold-b);
+  --ok-cat-menu-a:    var(--cat-menu-a);    --ok-cat-menu-b:    var(--cat-menu-b);
+  --ok-cat-dessert-a: var(--cat-dessert-a); --ok-cat-dessert-b: var(--cat-dessert-b);
+  --ok-cat-snacks-a:  var(--cat-snacks-a);  --ok-cat-snacks-b:  var(--cat-snacks-b);
+  --ok-cat-all-a:     var(--cat-all-a);     --ok-cat-all-b:     var(--cat-all-b);
 }

@@ -11,250 +11,250 @@
 {% block page_title %}Hub installed{% endblock %}
 
 {% block content %}
-<div class="ok-app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">LR</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="ok-sidebar__brand-meta">8 módulos activos</div>
+<div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">LR</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="sidebar__brand-meta">8 módulos activos</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Inicio</span></a>
-      <a class="ok-sidebar__item" href="#"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span class="ok-sidebar__label">Empleados</span></a>
-      <a class="ok-sidebar__item" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Roles</span></a>
-      <a class="ok-sidebar__item" aria-current="page" href="#"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Módulos</span><span class="ok-sidebar__badge">8</span></a>
+    <div class="sidebar__body">
+      <a class="sidebar__item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Inicio</span></a>
+      <a class="sidebar__item" href="#"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span class="sidebar__label">Empleados</span></a>
+      <a class="sidebar__item" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="sidebar__label">Roles</span></a>
+      <a class="sidebar__item" aria-current="page" href="#"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span><span class="sidebar__badge">8</span></a>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <div class="ok-app__body" data-signals='{"tab": "active", "q": ""}'>
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body" data-signals='{"tab": "active", "q": ""}'>
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Módulos del Hub</h1>
-          <div class="ok-page-header__sub">8 instalados · 2 desactivados · 1 con error</div>
+          <div class="page-header__sub">8 instalados · 2 desactivados · 1 con error</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--secondary ok-btn--sm">Subir paquete</button>
-          <a class="ok-btn ok-btn--primary ok-btn--sm" href="#">Ir al Marketplace</a>
+        <div class="page-header__actions">
+          <button class="btn secondary sm">Subir paquete</button>
+          <a class="btn primary sm" href="#">Ir al Marketplace</a>
         </div>
       </div>
 
       <!-- CTA Marketplace -->
-      <div class="ok-banner ok-banner--brand ok-banner--inline ok-mb-4">
-        <span class="ok-banner__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 8H5L3 3z"/><path d="M5 11v9h14v-9"/></svg></span>
-        <div class="ok-banner__body">
-          <div class="ok-banner__title">Explora más módulos en el Marketplace</div>
-          <div class="ok-banner__desc">Inventario avanzado, e-commerce, RRHH, contabilidad… 96 módulos disponibles para tu sector.</div>
+      <div class="banner brand inline mb-4">
+        <span class="banner__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 8H5L3 3z"/><path d="M5 11v9h14v-9"/></svg></span>
+        <div class="banner__body">
+          <div class="banner__title">Explora más módulos en el Marketplace</div>
+          <div class="banner__desc">Inventario avanzado, e-commerce, RRHH, contabilidad… 96 módulos disponibles para tu sector.</div>
         </div>
-        <div class="ok-banner__actions">
-          <button class="ok-banner__action ok-banner__action--primary">Ver Marketplace</button>
+        <div class="banner__actions">
+          <button class="banner__action banner__action--primary">Ver Marketplace</button>
         </div>
       </div>
 
       <!-- Tabbar interno -->
-      <div class="ok-tabs ok-mb-5" role="tablist">
-        <button class="ok-tab" data-on:click="$tab = 'active'" data-attr:aria-selected="$tab === 'active'">
+      <div class="tabs mb-5" role="tablist">
+        <button class="tab" data-on:click="$tab = 'active'" data-attr:aria-selected="$tab === 'active'">
           <iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>
-          Activos <span class="ok-tab-badge">8</span>
+          Activos <span class="tab-badge">8</span>
         </button>
-        <button class="ok-tab" data-on:click="$tab = 'inactive'" data-attr:aria-selected="$tab === 'inactive'">
-          <svg class="ok-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
-          Desactivados <span class="ok-tab-badge">2</span>
+        <button class="tab" data-on:click="$tab = 'inactive'" data-attr:aria-selected="$tab === 'inactive'">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+          Desactivados <span class="tab-badge">2</span>
         </button>
-        <button class="ok-tab" data-on:click="$tab = 'available'" data-attr:aria-selected="$tab === 'available'">
-          <svg class="ok-tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Disponibles <span class="ok-tab-badge">88</span>
+        <button class="tab" data-on:click="$tab = 'available'" data-attr:aria-selected="$tab === 'available'">
+          <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Disponibles <span class="tab-badge">88</span>
         </button>
       </div>
 
       <!-- Buscador -->
       <div style="margin-bottom:18px;max-width:380px;">
-        <div class="ok-search">
-          <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-          <input class="ok-input" placeholder="Buscar módulo (sales, pos, verifactu…)" data-bind:q/>
+        <div class="search">
+          <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input class="input" placeholder="Buscar módulo (sales, pos, verifactu…)" data-bind:q/>
         </div>
       </div>
 
       <!-- Grid de módulos -->
-      <div class="ok-grid-3" data-show="$tab === 'active'">
-        <article class="ok-card">
-          <div class="ok-card__body">
-            <div class="ok-flex ok-items-start ok-gap-3">
-              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 18%, transparent);color:var(--ok-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <div class="grid-3" data-show="$tab === 'active'">
+        <article class="card">
+          <div class="card__body">
+            <div class="flex items-start gap-3">
+              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--brand) 18%, transparent);color:var(--brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 12H5L3 3z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <h3 style="font-family:var(--ok-font-display);font-size:15px;font-weight:600;margin:0;">Sales</h3>
-                <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:2px;">ERPlora · v2.4.1</div>
-                <span class="ok-badge ok-badge--ok ok-mt-1"><span class="ok-badge__dot"></span>Activo</span>
+              <div class="flex-1">
+                <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;margin:0;">Sales</h3>
+                <div style="font-size:11.5px;color:var(--ink-3);margin-top:2px;">ERPlora · v2.4.1</div>
+                <span class="badge success mt-1"><span class="badge__dot"></span>Activo</span>
               </div>
-              <label class="ok-toggle ok-toggle--sm">
+              <label class="toggle sm">
                 <input type="checkbox" checked/>
-                <span class="ok-toggle__track"></span>
+                <span class="toggle__track"></span>
               </label>
             </div>
-            <p style="font-size:13px;color:var(--ok-ink-3);margin:14px 0 0;line-height:1.45;">Motor universal de ventas. Tickets, pedidos, devoluciones, descuentos, tarifas.</p>
+            <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;line-height:1.45;">Motor universal de ventas. Tickets, pedidos, devoluciones, descuentos, tarifas.</p>
           </div>
-          <footer class="ok-card__actions">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Configurar</button>
-            <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Desinstalar</button>
+          <footer class="card__actions">
+            <button class="btn ghost sm">Configurar</button>
+            <button class="btn ghost sm c-danger">Desinstalar</button>
           </footer>
         </article>
 
-        <article class="ok-card">
-          <div class="ok-card__body">
-            <div class="ok-flex ok-items-start ok-gap-3">
-              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--ok-info) 18%, transparent);color:var(--ok-info);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <article class="card">
+          <div class="card__body">
+            <div class="flex items-start gap-3">
+              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--info) 18%, transparent);color:var(--info);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M8 13h8M8 17h5"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <h3 style="font-family:var(--ok-font-display);font-size:15px;font-weight:600;margin:0;">POS</h3>
-                <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:2px;">ERPlora · v1.9.3</div>
-                <span class="ok-badge ok-badge--ok ok-mt-1"><span class="ok-badge__dot"></span>Activo</span>
+              <div class="flex-1">
+                <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;margin:0;">POS</h3>
+                <div style="font-size:11.5px;color:var(--ink-3);margin-top:2px;">ERPlora · v1.9.3</div>
+                <span class="badge success mt-1"><span class="badge__dot"></span>Activo</span>
               </div>
-              <label class="ok-toggle ok-toggle--sm"><input type="checkbox" checked/><span class="ok-toggle__track"></span></label>
+              <label class="toggle sm"><input type="checkbox" checked/><span class="toggle__track"></span></label>
             </div>
-            <p style="font-size:13px;color:var(--ok-ink-3);margin:14px 0 0;line-height:1.45;">Terminal punto de venta para hostelería y retail. KDS, comandero, caja.</p>
+            <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;line-height:1.45;">Terminal punto de venta para hostelería y retail. KDS, comandero, caja.</p>
           </div>
-          <footer class="ok-card__actions">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Configurar</button>
-            <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Desinstalar</button>
+          <footer class="card__actions">
+            <button class="btn ghost sm">Configurar</button>
+            <button class="btn ghost sm c-danger">Desinstalar</button>
           </footer>
         </article>
 
-        <article class="ok-card">
-          <div class="ok-card__body">
-            <div class="ok-flex ok-items-start ok-gap-3">
-              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--ok-leaf) 18%, transparent);color:var(--ok-leaf);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <article class="card">
+          <div class="card__body">
+            <div class="flex items-start gap-3">
+              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--leaf) 18%, transparent);color:var(--leaf);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <h3 style="font-family:var(--ok-font-display);font-size:15px;font-weight:600;margin:0;">Employees</h3>
-                <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:2px;">ERPlora · v1.4.0 · system</div>
-                <span class="ok-badge ok-badge--ok ok-mt-1"><span class="ok-badge__dot"></span>Activo</span>
+              <div class="flex-1">
+                <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;margin:0;">Employees</h3>
+                <div style="font-size:11.5px;color:var(--ink-3);margin-top:2px;">ERPlora · v1.4.0 · system</div>
+                <span class="badge success mt-1"><span class="badge__dot"></span>Activo</span>
               </div>
-              <label class="ok-toggle ok-toggle--sm"><input type="checkbox" checked disabled/><span class="ok-toggle__track"></span></label>
+              <label class="toggle sm"><input type="checkbox" checked disabled/><span class="toggle__track"></span></label>
             </div>
-            <p style="font-size:13px;color:var(--ok-ink-3);margin:14px 0 0;line-height:1.45;">Gestión de empleados, fichajes, turnos, vacaciones. Módulo del sistema.</p>
+            <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;line-height:1.45;">Gestión de empleados, fichajes, turnos, vacaciones. Módulo del sistema.</p>
           </div>
-          <footer class="ok-card__actions">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Configurar</button>
-            <span class="ok-pill" style="margin-left:auto;">Sistema</span>
+          <footer class="card__actions">
+            <button class="btn ghost sm">Configurar</button>
+            <span class="pill" style="margin-left:auto;">Sistema</span>
           </footer>
         </article>
 
-        <article class="ok-card">
-          <div class="ok-card__body">
-            <div class="ok-flex ok-items-start ok-gap-3">
-              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 18%, transparent);color:var(--ok-brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <article class="card">
+          <div class="card__body">
+            <div class="flex items-start gap-3">
+              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--brand) 18%, transparent);color:var(--brand);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <h3 style="font-family:var(--ok-font-display);font-size:15px;font-weight:600;margin:0;">Verifactu ES</h3>
-                <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:2px;">ERPlora · v0.8.2</div>
-                <span class="ok-badge ok-badge--ok ok-mt-1"><span class="ok-badge__dot"></span>Activo</span>
+              <div class="flex-1">
+                <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;margin:0;">Verifactu ES</h3>
+                <div style="font-size:11.5px;color:var(--ink-3);margin-top:2px;">ERPlora · v0.8.2</div>
+                <span class="badge success mt-1"><span class="badge__dot"></span>Activo</span>
               </div>
-              <label class="ok-toggle ok-toggle--sm"><input type="checkbox" checked/><span class="ok-toggle__track"></span></label>
+              <label class="toggle sm"><input type="checkbox" checked/><span class="toggle__track"></span></label>
             </div>
-            <p style="font-size:13px;color:var(--ok-ink-3);margin:14px 0 0;line-height:1.45;">Cumplimiento Verifactu / AEAT. Remisión automática de facturas a Hacienda.</p>
+            <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;line-height:1.45;">Cumplimiento Verifactu / AEAT. Remisión automática de facturas a Hacienda.</p>
           </div>
-          <footer class="ok-card__actions">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Configurar</button>
-            <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Desinstalar</button>
+          <footer class="card__actions">
+            <button class="btn ghost sm">Configurar</button>
+            <button class="btn ghost sm c-danger">Desinstalar</button>
           </footer>
         </article>
 
-        <article class="ok-card">
-          <div class="ok-card__body">
-            <div class="ok-flex ok-items-start ok-gap-3">
-              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--ok-warn) 18%, transparent);color:var(--ok-warn);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <article class="card">
+          <div class="card__body">
+            <div class="flex items-start gap-3">
+              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--warn) 18%, transparent);color:var(--warn);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <iconify-icon icon="lucide:package" width="22" height="22"></iconify-icon>
               </div>
-              <div class="ok-flex-1">
-                <h3 style="font-family:var(--ok-font-display);font-size:15px;font-weight:600;margin:0;">Inventory</h3>
-                <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:2px;">ERPlora · v3.0.0-beta.4</div>
-                <span class="ok-badge ok-badge--danger ok-mt-1"><span class="ok-badge__dot"></span>Error de migración</span>
+              <div class="flex-1">
+                <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;margin:0;">Inventory</h3>
+                <div style="font-size:11.5px;color:var(--ink-3);margin-top:2px;">ERPlora · v3.0.0-beta.4</div>
+                <span class="badge danger mt-1"><span class="badge__dot"></span>Error de migración</span>
               </div>
-              <label class="ok-toggle ok-toggle--sm"><input type="checkbox" checked/><span class="ok-toggle__track"></span></label>
+              <label class="toggle sm"><input type="checkbox" checked/><span class="toggle__track"></span></label>
             </div>
-            <p style="font-size:13px;color:var(--ok-ink-3);margin:14px 0 0;line-height:1.45;">Stock, almacenes, lotes y trazabilidad. <b class="ok-c-danger">Falta migración 3.0.0.</b></p>
+            <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;line-height:1.45;">Stock, almacenes, lotes y trazabilidad. <b class="c-danger">Falta migración 3.0.0.</b></p>
           </div>
-          <footer class="ok-card__actions">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver log</button>
-            <button class="ok-btn ok-btn--primary ok-btn--sm">Reintentar migración</button>
+          <footer class="card__actions">
+            <button class="btn ghost sm">Ver log</button>
+            <button class="btn primary sm">Reintentar migración</button>
           </footer>
         </article>
 
-        <article class="ok-card">
-          <div class="ok-card__body">
-            <div class="ok-flex ok-items-start ok-gap-3">
-              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--ok-info) 18%, transparent);color:var(--ok-info);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <article class="card">
+          <div class="card__body">
+            <div class="flex items-start gap-3">
+              <div style="width:44px;height:44px;border-radius:10px;background:color-mix(in oklch, var(--info) 18%, transparent);color:var(--info);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <iconify-icon icon="lucide:menu" width="22" height="22"></iconify-icon>
               </div>
-              <div class="ok-flex-1">
-                <h3 style="font-family:var(--ok-font-display);font-size:15px;font-weight:600;margin:0;">Orders</h3>
-                <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:2px;">ERPlora · v1.2.5</div>
-                <span class="ok-badge ok-badge--ok ok-mt-1"><span class="ok-badge__dot"></span>Activo</span>
+              <div class="flex-1">
+                <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;margin:0;">Orders</h3>
+                <div style="font-size:11.5px;color:var(--ink-3);margin-top:2px;">ERPlora · v1.2.5</div>
+                <span class="badge success mt-1"><span class="badge__dot"></span>Activo</span>
               </div>
-              <label class="ok-toggle ok-toggle--sm"><input type="checkbox" checked/><span class="ok-toggle__track"></span></label>
+              <label class="toggle sm"><input type="checkbox" checked/><span class="toggle__track"></span></label>
             </div>
-            <p style="font-size:13px;color:var(--ok-ink-3);margin:14px 0 0;line-height:1.45;">Pedidos web, delivery, recogida y reservas integradas con sales.</p>
+            <p style="font-size:13px;color:var(--ink-3);margin:14px 0 0;line-height:1.45;">Pedidos web, delivery, recogida y reservas integradas con sales.</p>
           </div>
-          <footer class="ok-card__actions">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Configurar</button>
-            <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Desinstalar</button>
+          <footer class="card__actions">
+            <button class="btn ghost sm">Configurar</button>
+            <button class="btn ghost sm c-danger">Desinstalar</button>
           </footer>
         </article>
       </div>
 
-      <div class="ok-grid-3 ok-hidden" data-show="$tab === 'inactive'">
-        <article class="ok-card ok-opacity-70">
-          <div class="ok-card__body">
-            <div class="ok-flex ok-items-start ok-gap-3">
-              <div style="width:44px;height:44px;border-radius:10px;background:var(--ok-bg-3);color:var(--ok-ink-3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+      <div class="grid-3 hidden" data-show="$tab === 'inactive'">
+        <article class="card opacity-70">
+          <div class="card__body">
+            <div class="flex items-start gap-3">
+              <div style="width:44px;height:44px;border-radius:10px;background:var(--bg-3);color:var(--ink-3);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l18-6-3 18-6-7-9-5z"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <h3 style="font-family:var(--ok-font-display);font-size:15px;font-weight:600;margin:0;">WhatsApp Inbox</h3>
-                <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:2px;">ERPlora · v0.5.1</div>
-                <span class="ok-badge ok-mt-1"><span class="ok-badge__dot"></span>Desactivado</span>
+              <div class="flex-1">
+                <h3 style="font-family:var(--font-display);font-size:15px;font-weight:600;margin:0;">WhatsApp Inbox</h3>
+                <div style="font-size:11.5px;color:var(--ink-3);margin-top:2px;">ERPlora · v0.5.1</div>
+                <span class="badge mt-1"><span class="badge__dot"></span>Desactivado</span>
               </div>
-              <label class="ok-toggle ok-toggle--sm"><input type="checkbox"/><span class="ok-toggle__track"></span></label>
+              <label class="toggle sm"><input type="checkbox"/><span class="toggle__track"></span></label>
             </div>
           </div>
         </article>
       </div>
 
       <div data-show="$tab === 'available'" style="display:none;text-align:center;padding:40px;">
-        <p class="ok-c-ink-3">Ir al Marketplace para instalar nuevos módulos.</p>
-        <button class="ok-btn ok-btn--primary ok-mt-3">Abrir Marketplace</button>
+        <p class="c-ink-3">Ir al Marketplace para instalar nuevos módulos.</p>
+        <button class="btn primary mt-3">Abrir Marketplace</button>
       </div>
     </div>
   </div>
 
-  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="ok-tabbar-label">Inicio</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="ok-tabbar-label">Empleados</span></a>
-    <a class="ok-tabbar-item" aria-current="page" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="ok-tabbar-label">Facturas</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="tabbar-label">Inicio</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="tabbar-label">Empleados</span></a>
+    <a class="tabbar-item" aria-current="page" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="tabbar-label">Facturas</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

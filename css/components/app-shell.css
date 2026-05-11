@@ -4,49 +4,57 @@
    En mobile: sidebar se convierte en drawer con backdrop, tab-bar inferior aparece como nav principal
    ============================================================ */
 
-.ok-app {
+.app {
+  /* API canónica de override */
+  --app-background:        var(--bg);
+  --app-sidebar-width:     var(--sidebar-w);
+  --app-body-pad-x:        var(--page-pad);
+  --app-body-pad-top:      var(--space-5);
+  --app-body-pad-bottom:   var(--space-9);
+
   display: grid;
-  grid-template-columns: var(--ok-sidebar-w) 1fr;
+  grid-template-columns: var(--app-sidebar-width) 1fr;
   min-height: 100vh;
   min-height: 100dvh;
-  background: var(--ok-bg);
+  background: var(--app-background);
   position: relative;
 }
 
-.ok-app[data-sidebar="collapsed"] {
-  grid-template-columns: var(--ok-sidebar-w-collapsed) 1fr;
+.app[data-sidebar="collapsed"] {
+  --app-sidebar-width: var(--sidebar-w-collapsed);
 }
 
-.ok-app[data-sidebar="hidden"] {
+.app[data-sidebar="hidden"] {
+  --app-sidebar-width: 0px;
   grid-template-columns: 1fr;
 }
 
-.ok-app__main {
+.app__main {
   min-width: 0;
   display: flex;
   flex-direction: column;
 }
 
-.ok-app__body {
+.app__body {
   flex: 1 1 auto;
   min-width: 0;
-  padding: var(--ok-space-5) var(--ok-page-pad) var(--ok-space-9);
+  padding: var(--app-body-pad-top) var(--app-body-pad-x) var(--app-body-pad-bottom);
 }
 
 /* Tab-bar inferior en el shell (oculto en desktop) */
-.ok-app__tabbar {
+.app__tabbar {
   display: none;
 }
 
 /* Backdrop del sidebar drawer (oculto en desktop) */
-.ok-app__sidebar-overlay {
+.app__sidebar-overlay {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.5);
-  z-index: calc(var(--ok-z-drawer) - 1);
+  z-index: calc(var(--z-drawer) - 1);
   opacity: 0;
-  transition: opacity var(--ok-dur-base) var(--ok-ease-out);
+  transition: opacity var(--dur-base) var(--ease-out);
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
@@ -55,39 +63,39 @@
    Mobile (<768px)
    ============================================================ */
 @media (max-width: 767px) {
-  .ok-app,
-  .ok-app[data-sidebar="collapsed"],
-  .ok-app[data-sidebar="hidden"] {
+  .app,
+  .app[data-sidebar="collapsed"],
+  .app[data-sidebar="hidden"] {
     grid-template-columns: 1fr;
   }
 
   /* Sidebar como drawer offcanvas */
-  .ok-app .ok-sidebar {
+  .app .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     width: min(288px, 85vw);
     transform: translateX(-100%);
-    z-index: var(--ok-z-drawer);
-    box-shadow: var(--ok-shadow-lg);
-    transition: transform var(--ok-dur-base) var(--ok-ease-out);
+    z-index: var(--z-drawer);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--dur-base) var(--ease-out);
   }
 
-  .ok-app[data-sidebar="open"] .ok-sidebar {
+  .app[data-sidebar="open"] .sidebar {
     transform: translateX(0);
   }
 
-  .ok-app[data-sidebar="open"] .ok-app__sidebar-overlay {
+  .app[data-sidebar="open"] .app__sidebar-overlay {
     display: block;
     opacity: 1;
   }
 
   /* Tab-bar fijo abajo, visible solo en mobile.
-     Includes the dimensions that .ok-tabbar carries — pages may attach
-     just .ok-app__tabbar without .ok-tabbar so we cannot rely on the
+     Includes the dimensions that .tabbar carries — pages may attach
+     just .app__tabbar without .tabbar so we cannot rely on the
      latter's height/padding rules. */
-  .ok-app__tabbar {
+  .app__tabbar {
     display: flex;
     align-items: stretch;
     justify-content: space-around;
@@ -97,50 +105,50 @@
     right: 0;
     height: calc(58px + env(safe-area-inset-bottom));
     padding: 4px 8px env(safe-area-inset-bottom);
-    background: color-mix(in oklch, var(--ok-bg-1) 92%, transparent);
+    background: color-mix(in oklch, var(--bg-1) 92%, transparent);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-top: 1px solid var(--ok-line);
-    z-index: var(--ok-z-sticky);
+    border-top: var(--border-w) solid var(--line);
+    z-index: var(--z-sticky);
   }
 
   /* Reservar espacio para el tab-bar */
-  .ok-app[data-tabbar] .ok-app__body {
-    padding-bottom: calc(58px + env(safe-area-inset-bottom) + var(--ok-space-5));
+  .app[data-tabbar] .app__body {
+    padding-bottom: calc(58px + env(safe-area-inset-bottom) + var(--space-5));
   }
 }
 
 /* ============================================================
-   Page shell — el contenedor por módulo dentro de .ok-app__main
+   Page shell — el contenedor por módulo dentro de .app__main
    ============================================================
    Se usa para el módulo activo cargado al hacer click en el menú
    izquierdo. Contiene un topbar (título + back btn + menu_btn),
    un content shell central swappable, y un tabbar de navegación
    secundaria pegado al fondo del propio page_shell (no del viewport).
 */
-.ok-page-shell {
+.page-shell {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 0;
   flex: 1 1 auto;
   min-width: 0;
-  background: var(--ok-bg);
+  background: var(--bg);
 }
 
-.ok-page-shell > .ok-topbar {
+.page-shell > .topbar {
   position: sticky;
   top: 0;
-  z-index: var(--ok-z-sticky);
+  z-index: var(--z-sticky);
 }
 
 /* Content shell — donde se carga el contenido dinámico al cambiar
    de tab. Datastar `@get(..., {target: '#content'})` reemplaza el
    innerHTML de este div sin tocar el sidebar ni el page_shell. */
-.ok-content-shell {
+.content-shell {
   flex: 1 1 auto;
   min-width: 0;
   min-height: 0;
-  padding: var(--ok-space-5) var(--ok-page-pad) var(--ok-space-5);
+  padding: var(--space-5) var(--page-pad) var(--space-5);
   overflow-y: auto;
   scroll-behavior: smooth;
 }
@@ -148,7 +156,7 @@
 /* El tabbar dentro del page_shell sustituye a la posición `fixed`
    del tabbar mobile-only — en page_shell la nav secundaria es
    relevante también en desktop. */
-.ok-page-shell > .ok-tabbar {
+.page-shell > .tabbar {
   position: relative;
-  border-top: 1px solid var(--ok-line);
+  border-top: var(--border-w) solid var(--line);
 }

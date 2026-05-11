@@ -12,10 +12,10 @@
   .mobile-shell-stage {
     width: 375px;
     margin-inline: auto;
-    border: 1px solid var(--ok-line-2);
+    border: 1px solid var(--line-2);
     border-radius: 28px;
     padding: 12px;
-    background: var(--ok-bg);
+    background: var(--bg);
     box-shadow: 0 24px 60px rgba(0,0,0,0.18);
   }
   .mobile-shell-stage__inner {
@@ -24,7 +24,7 @@
     flex-direction: column;
     border-radius: 18px;
     overflow: hidden;
-    background: var(--ok-bg);
+    background: var(--bg);
   }
   .mobile-shell-kpis {
     display: grid;
@@ -44,33 +44,33 @@
   <div class="mobile-shell-stage__inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
-<div class="ok-sidebar__brand">
-  <div class="ok-sidebar__logo">EX</div>
-  <div class="ok-sidebar__brand-text">
-    <div class="ok-sidebar__brand-name">La Rambla</div>
-    <div class="ok-sidebar__brand-meta">3 sedes</div>
+<div class="sidebar__brand">
+  <div class="sidebar__logo">EX</div>
+  <div class="sidebar__brand-text">
+    <div class="sidebar__brand-name">La Rambla</div>
+    <div class="sidebar__brand-meta">3 sedes</div>
   </div>
 </div>
-<div class="ok-sidebar__body">
-  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span></button>
+<div class="sidebar__body">
+  <button class="sidebar__item" aria-current="page"><span class="sidebar__label">Vista general</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Terminales</span></button>
 </div>
 {% endcall %}
-<div class="ok-app__main">
+<div class="app__main">
   {% call topbar(page_title="Vista general") %}{% endcall %}
-  <div class="ok-app__body" style="padding:16px">
+  <div class="app__body" style="padding:16px">
     <div class="mobile-shell-kpis">
       {{ kpi(label="Ventas hoy", value="2.481 €") }}
       {{ kpi(label="Tickets", value="184") }}
     </div>
   </div>
 </div>
-<nav class="ok-tabbar ok-app__tabbar">
-  <a class="ok-tabbar-item" aria-current="page"><span class="ok-tabbar-label">Inicio</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Cobros</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Ventas</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Equipo</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Más</span></a>
+<nav class="tabbar app__tabbar">
+  <a class="tabbar-item" aria-current="page"><span class="tabbar-label">Inicio</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Cobros</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Ventas</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Equipo</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Más</span></a>
 </nav>
 {% endcall %}
   </div>
@@ -79,33 +79,33 @@
   <div class="mobile-shell-stage__inner">
 <mobile_shell>
 <sidebar_nav>
-<div class="ok-sidebar__brand">
-  <div class="ok-sidebar__logo">EX</div>
-  <div class="ok-sidebar__brand-text">
-    <div class="ok-sidebar__brand-name">La Rambla</div>
-    <div class="ok-sidebar__brand-meta">3 sedes</div>
+<div class="sidebar__brand">
+  <div class="sidebar__logo">EX</div>
+  <div class="sidebar__brand-text">
+    <div class="sidebar__brand-name">La Rambla</div>
+    <div class="sidebar__brand-meta">3 sedes</div>
   </div>
 </div>
-<div class="ok-sidebar__body">
-  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span></button>
+<div class="sidebar__body">
+  <button class="sidebar__item" aria-current="page"><span class="sidebar__label">Vista general</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Terminales</span></button>
 </div>
 </sidebar_nav>
-<div class="ok-app__main">
+<div class="app__main">
   <Topbar page_title="Vista general"></Topbar>
-  <div class="ok-app__body" style="padding:16px">
+  <div class="app__body" style="padding:16px">
     <div class="mobile-shell-kpis">
       <Kpi label="Ventas hoy" value="2.481 €" />
       <Kpi label="Tickets" value="184" />
     </div>
   </div>
 </div>
-<nav class="ok-tabbar ok-app__tabbar">
-  <a class="ok-tabbar-item" aria-current="page"><span class="ok-tabbar-label">Inicio</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Cobros</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Ventas</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Equipo</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Más</span></a>
+<nav class="tabbar app__tabbar">
+  <a class="tabbar-item" aria-current="page"><span class="tabbar-label">Inicio</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Cobros</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Ventas</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Equipo</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Más</span></a>
 </nav>
 </mobile_shell>
   </div>
@@ -118,33 +118,33 @@
   <div class="mobile-shell-stage__inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
-<div class="ok-sidebar__brand">
-  <div class="ok-sidebar__logo">EX</div>
-  <div class="ok-sidebar__brand-text">
-    <div class="ok-sidebar__brand-name">La Rambla</div>
-    <div class="ok-sidebar__brand-meta">3 sedes</div>
+<div class="sidebar__brand">
+  <div class="sidebar__logo">EX</div>
+  <div class="sidebar__brand-text">
+    <div class="sidebar__brand-name">La Rambla</div>
+    <div class="sidebar__brand-meta">3 sedes</div>
   </div>
 </div>
-<div class="ok-sidebar__body">
-  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span></button>
+<div class="sidebar__body">
+  <button class="sidebar__item" aria-current="page"><span class="sidebar__label">Vista general</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Terminales</span></button>
 </div>
 {% endcall %}
-<div class="ok-app__main">
+<div class="app__main">
   {% call topbar(page_title="Vista general") %}{% endcall %}
-  <div class="ok-app__body" style="padding:16px">
+  <div class="app__body" style="padding:16px">
     <div class="mobile-shell-kpis">
       {{ kpi(label="Ventas hoy", value="2.481 €") }}
       {{ kpi(label="Tickets", value="184") }}
     </div>
   </div>
 </div>
-<nav class="ok-tabbar ok-app__tabbar">
-  <a class="ok-tabbar-item" aria-current="page"><span class="ok-tabbar-label">Inicio</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Cobros</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Ventas</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Equipo</span></a>
-  <a class="ok-tabbar-item"><span class="ok-tabbar-label">Más</span></a>
+<nav class="tabbar app__tabbar">
+  <a class="tabbar-item" aria-current="page"><span class="tabbar-label">Inicio</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Cobros</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Ventas</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Equipo</span></a>
+  <a class="tabbar-item"><span class="tabbar-label">Más</span></a>
 </nav>
 {% endcall %}
   </div>
@@ -152,7 +152,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (data-signals para Datastar).</td></tr>

@@ -10,84 +10,84 @@
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/chat.jinja" import chat, chat_composer %}
 {% call chat(attrs={"style": "height: 520px"}) %}
-<aside class="ok-chat__list">
-  <div class="ok-chat__search">
+<aside class="chat__list">
+  <div class="chat__search">
     <input type="text" placeholder="Buscar conversación…"/>
   </div>
-  <div class="ok-chat__convs">
-    <div class="ok-chat__conv ok-chat__conv--active">
-      <div class="ok-chat__conv-avatar ok-chat__conv-online">OP</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Operaciones</div>
-        <div class="ok-chat__conv-preview">Lucía: Acabo de cerrar arqueo</div>
+  <div class="chat__convs">
+    <div class="chat__conv chat__conv--active">
+      <div class="chat__conv-avatar chat__conv-online">OP</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Operaciones</div>
+        <div class="chat__conv-preview">Lucía: Acabo de cerrar arqueo</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">14:32</span>
-      </div>
-    </div>
-    <div class="ok-chat__conv ok-chat__conv--unread">
-      <div class="ok-chat__conv-avatar">EM</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Elena Marín</div>
-        <div class="ok-chat__conv-preview">¿Has revisado la propuesta?</div>
-      </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">13:48</span>
-        <span class="ok-chat__conv-badge">3</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">14:32</span>
       </div>
     </div>
-    <div class="ok-chat__conv">
-      <div class="ok-chat__conv-avatar ok-chat__conv-online">JR</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Javi Ruiz</div>
-        <div class="ok-chat__conv-preview">Tú: Perfecto, gracias</div>
+    <div class="chat__conv chat__conv--unread">
+      <div class="chat__conv-avatar">EM</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Elena Marín</div>
+        <div class="chat__conv-preview">¿Has revisado la propuesta?</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">12:20</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">13:48</span>
+        <span class="chat__conv-badge">3</span>
       </div>
     </div>
-    <div class="ok-chat__conv">
-      <div class="ok-chat__conv-avatar">CN</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Café Norte</div>
-        <div class="ok-chat__conv-preview">Confirmado: vamos con plan Pro</div>
+    <div class="chat__conv">
+      <div class="chat__conv-avatar chat__conv-online">JR</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Javi Ruiz</div>
+        <div class="chat__conv-preview">Tú: Perfecto, gracias</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">lun</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">12:20</span>
+      </div>
+    </div>
+    <div class="chat__conv">
+      <div class="chat__conv-avatar">CN</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Café Norte</div>
+        <div class="chat__conv-preview">Confirmado: vamos con plan Pro</div>
+      </div>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">lun</span>
       </div>
     </div>
   </div>
 </aside>
-<section class="ok-chat__thread">
-  <header class="ok-chat__head">
-    <div class="ok-chat__head-avatar">OP</div>
-    <div class="ok-chat__head-info">
-      <div class="ok-chat__head-name">Operaciones</div>
-      <div class="ok-chat__head-status ok-chat__head-status--online">7 miembros · 3 en línea</div>
+<section class="chat__thread">
+  <header class="chat__head">
+    <div class="chat__head-avatar">OP</div>
+    <div class="chat__head-info">
+      <div class="chat__head-name">Operaciones</div>
+      <div class="chat__head-status online">7 miembros · 3 en línea</div>
     </div>
   </header>
-  <div class="ok-chat__messages">
-    <div class="ok-chat__day">Hoy</div>
-    <div class="ok-chat__msg">
-      <div class="ok-chat__msg-avatar">LP</div>
+  <div class="chat__messages">
+    <div class="chat__day">Hoy</div>
+    <div class="chat__msg">
+      <div class="chat__msg-avatar">LP</div>
       <div>
-        <div class="ok-chat__msg-name">Lucía Peña</div>
-        <div class="ok-chat__bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
-        <div class="ok-chat__msg-time">14:32</div>
+        <div class="chat__msg-name">Lucía Peña</div>
+        <div class="chat__bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
+        <div class="chat__msg-time">14:32</div>
       </div>
     </div>
-    <div class="ok-chat__msg ok-chat__msg--mine">
+    <div class="chat__msg chat__msg--mine">
       <div>
-        <div class="ok-chat__bubble">Genial, gracias Lucía 🙌</div>
-        <div class="ok-chat__msg-time">14:33</div>
+        <div class="chat__bubble">Genial, gracias Lucía 🙌</div>
+        <div class="chat__msg-time">14:33</div>
       </div>
     </div>
-    <div class="ok-chat__msg">
-      <div class="ok-chat__msg-avatar">JR</div>
+    <div class="chat__msg">
+      <div class="chat__msg-avatar">JR</div>
       <div>
-        <div class="ok-chat__msg-name">Javi Ruiz</div>
-        <div class="ok-chat__bubble">¿Habéis recibido la entrega de Marisol?</div>
-        <div class="ok-chat__msg-time">14:40</div>
+        <div class="chat__msg-name">Javi Ruiz</div>
+        <div class="chat__bubble">¿Habéis recibido la entrega de Marisol?</div>
+        <div class="chat__msg-time">14:40</div>
       </div>
     </div>
   </div>
@@ -95,84 +95,84 @@
 </section>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Chat style="height: 520px">
-<aside class="ok-chat__list">
-  <div class="ok-chat__search">
+<aside class="chat__list">
+  <div class="chat__search">
     <input type="text" placeholder="Buscar conversación…"/>
   </div>
-  <div class="ok-chat__convs">
-    <div class="ok-chat__conv ok-chat__conv--active">
-      <div class="ok-chat__conv-avatar ok-chat__conv-online">OP</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Operaciones</div>
-        <div class="ok-chat__conv-preview">Lucía: Acabo de cerrar arqueo</div>
+  <div class="chat__convs">
+    <div class="chat__conv chat__conv--active">
+      <div class="chat__conv-avatar chat__conv-online">OP</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Operaciones</div>
+        <div class="chat__conv-preview">Lucía: Acabo de cerrar arqueo</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">14:32</span>
-      </div>
-    </div>
-    <div class="ok-chat__conv ok-chat__conv--unread">
-      <div class="ok-chat__conv-avatar">EM</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Elena Marín</div>
-        <div class="ok-chat__conv-preview">¿Has revisado la propuesta?</div>
-      </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">13:48</span>
-        <span class="ok-chat__conv-badge">3</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">14:32</span>
       </div>
     </div>
-    <div class="ok-chat__conv">
-      <div class="ok-chat__conv-avatar ok-chat__conv-online">JR</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Javi Ruiz</div>
-        <div class="ok-chat__conv-preview">Tú: Perfecto, gracias</div>
+    <div class="chat__conv chat__conv--unread">
+      <div class="chat__conv-avatar">EM</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Elena Marín</div>
+        <div class="chat__conv-preview">¿Has revisado la propuesta?</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">12:20</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">13:48</span>
+        <span class="chat__conv-badge">3</span>
       </div>
     </div>
-    <div class="ok-chat__conv">
-      <div class="ok-chat__conv-avatar">CN</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Café Norte</div>
-        <div class="ok-chat__conv-preview">Confirmado: vamos con plan Pro</div>
+    <div class="chat__conv">
+      <div class="chat__conv-avatar chat__conv-online">JR</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Javi Ruiz</div>
+        <div class="chat__conv-preview">Tú: Perfecto, gracias</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">lun</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">12:20</span>
+      </div>
+    </div>
+    <div class="chat__conv">
+      <div class="chat__conv-avatar">CN</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Café Norte</div>
+        <div class="chat__conv-preview">Confirmado: vamos con plan Pro</div>
+      </div>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">lun</span>
       </div>
     </div>
   </div>
 </aside>
-<section class="ok-chat__thread">
-  <header class="ok-chat__head">
-    <div class="ok-chat__head-avatar">OP</div>
-    <div class="ok-chat__head-info">
-      <div class="ok-chat__head-name">Operaciones</div>
-      <div class="ok-chat__head-status ok-chat__head-status--online">7 miembros · 3 en línea</div>
+<section class="chat__thread">
+  <header class="chat__head">
+    <div class="chat__head-avatar">OP</div>
+    <div class="chat__head-info">
+      <div class="chat__head-name">Operaciones</div>
+      <div class="chat__head-status online">7 miembros · 3 en línea</div>
     </div>
   </header>
-  <div class="ok-chat__messages">
-    <div class="ok-chat__day">Hoy</div>
-    <div class="ok-chat__msg">
-      <div class="ok-chat__msg-avatar">LP</div>
+  <div class="chat__messages">
+    <div class="chat__day">Hoy</div>
+    <div class="chat__msg">
+      <div class="chat__msg-avatar">LP</div>
       <div>
-        <div class="ok-chat__msg-name">Lucía Peña</div>
-        <div class="ok-chat__bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
-        <div class="ok-chat__msg-time">14:32</div>
+        <div class="chat__msg-name">Lucía Peña</div>
+        <div class="chat__bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
+        <div class="chat__msg-time">14:32</div>
       </div>
     </div>
-    <div class="ok-chat__msg ok-chat__msg--mine">
+    <div class="chat__msg chat__msg--mine">
       <div>
-        <div class="ok-chat__bubble">Genial, gracias Lucía 🙌</div>
-        <div class="ok-chat__msg-time">14:33</div>
+        <div class="chat__bubble">Genial, gracias Lucía 🙌</div>
+        <div class="chat__msg-time">14:33</div>
       </div>
     </div>
-    <div class="ok-chat__msg">
-      <div class="ok-chat__msg-avatar">JR</div>
+    <div class="chat__msg">
+      <div class="chat__msg-avatar">JR</div>
       <div>
-        <div class="ok-chat__msg-name">Javi Ruiz</div>
-        <div class="ok-chat__bubble">¿Habéis recibido la entrega de Marisol?</div>
-        <div class="ok-chat__msg-time">14:40</div>
+        <div class="chat__msg-name">Javi Ruiz</div>
+        <div class="chat__bubble">¿Habéis recibido la entrega de Marisol?</div>
+        <div class="chat__msg-time">14:40</div>
       </div>
     </div>
   </div>
@@ -184,84 +184,84 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call chat(attrs={"style": "height: 520px"}) %}
-<aside class="ok-chat__list">
-  <div class="ok-chat__search">
+<aside class="chat__list">
+  <div class="chat__search">
     <input type="text" placeholder="Buscar conversación…"/>
   </div>
-  <div class="ok-chat__convs">
-    <div class="ok-chat__conv ok-chat__conv--active">
-      <div class="ok-chat__conv-avatar ok-chat__conv-online">OP</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Operaciones</div>
-        <div class="ok-chat__conv-preview">Lucía: Acabo de cerrar arqueo</div>
+  <div class="chat__convs">
+    <div class="chat__conv chat__conv--active">
+      <div class="chat__conv-avatar chat__conv-online">OP</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Operaciones</div>
+        <div class="chat__conv-preview">Lucía: Acabo de cerrar arqueo</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">14:32</span>
-      </div>
-    </div>
-    <div class="ok-chat__conv ok-chat__conv--unread">
-      <div class="ok-chat__conv-avatar">EM</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Elena Marín</div>
-        <div class="ok-chat__conv-preview">¿Has revisado la propuesta?</div>
-      </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">13:48</span>
-        <span class="ok-chat__conv-badge">3</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">14:32</span>
       </div>
     </div>
-    <div class="ok-chat__conv">
-      <div class="ok-chat__conv-avatar ok-chat__conv-online">JR</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Javi Ruiz</div>
-        <div class="ok-chat__conv-preview">Tú: Perfecto, gracias</div>
+    <div class="chat__conv chat__conv--unread">
+      <div class="chat__conv-avatar">EM</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Elena Marín</div>
+        <div class="chat__conv-preview">¿Has revisado la propuesta?</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">12:20</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">13:48</span>
+        <span class="chat__conv-badge">3</span>
       </div>
     </div>
-    <div class="ok-chat__conv">
-      <div class="ok-chat__conv-avatar">CN</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Café Norte</div>
-        <div class="ok-chat__conv-preview">Confirmado: vamos con plan Pro</div>
+    <div class="chat__conv">
+      <div class="chat__conv-avatar chat__conv-online">JR</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Javi Ruiz</div>
+        <div class="chat__conv-preview">Tú: Perfecto, gracias</div>
       </div>
-      <div class="ok-chat__conv-meta">
-        <span class="ok-chat__conv-time">lun</span>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">12:20</span>
+      </div>
+    </div>
+    <div class="chat__conv">
+      <div class="chat__conv-avatar">CN</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Café Norte</div>
+        <div class="chat__conv-preview">Confirmado: vamos con plan Pro</div>
+      </div>
+      <div class="chat__conv-meta">
+        <span class="chat__conv-time">lun</span>
       </div>
     </div>
   </div>
 </aside>
-<section class="ok-chat__thread">
-  <header class="ok-chat__head">
-    <div class="ok-chat__head-avatar">OP</div>
-    <div class="ok-chat__head-info">
-      <div class="ok-chat__head-name">Operaciones</div>
-      <div class="ok-chat__head-status ok-chat__head-status--online">7 miembros · 3 en línea</div>
+<section class="chat__thread">
+  <header class="chat__head">
+    <div class="chat__head-avatar">OP</div>
+    <div class="chat__head-info">
+      <div class="chat__head-name">Operaciones</div>
+      <div class="chat__head-status online">7 miembros · 3 en línea</div>
     </div>
   </header>
-  <div class="ok-chat__messages">
-    <div class="ok-chat__day">Hoy</div>
-    <div class="ok-chat__msg">
-      <div class="ok-chat__msg-avatar">LP</div>
+  <div class="chat__messages">
+    <div class="chat__day">Hoy</div>
+    <div class="chat__msg">
+      <div class="chat__msg-avatar">LP</div>
       <div>
-        <div class="ok-chat__msg-name">Lucía Peña</div>
-        <div class="ok-chat__bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
-        <div class="ok-chat__msg-time">14:32</div>
+        <div class="chat__msg-name">Lucía Peña</div>
+        <div class="chat__bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
+        <div class="chat__msg-time">14:32</div>
       </div>
     </div>
-    <div class="ok-chat__msg ok-chat__msg--mine">
+    <div class="chat__msg chat__msg--mine">
       <div>
-        <div class="ok-chat__bubble">Genial, gracias Lucía 🙌</div>
-        <div class="ok-chat__msg-time">14:33</div>
+        <div class="chat__bubble">Genial, gracias Lucía 🙌</div>
+        <div class="chat__msg-time">14:33</div>
       </div>
     </div>
-    <div class="ok-chat__msg">
-      <div class="ok-chat__msg-avatar">JR</div>
+    <div class="chat__msg">
+      <div class="chat__msg-avatar">JR</div>
       <div>
-        <div class="ok-chat__msg-name">Javi Ruiz</div>
-        <div class="ok-chat__bubble">¿Habéis recibido la entrega de Marisol?</div>
-        <div class="ok-chat__msg-time">14:40</div>
+        <div class="chat__msg-name">Javi Ruiz</div>
+        <div class="chat__bubble">¿Habéis recibido la entrega de Marisol?</div>
+        <div class="chat__msg-time">14:40</div>
       </div>
     </div>
   </div>
@@ -273,42 +273,42 @@
 {% set _src_jinja_2 %}{% raw %}{% from "ui/chat.jinja" import chat %}
 <div data-signals="{ active: 'op' }">
 {% call chat(attrs={"style": "height: 360px"}) %}
-<aside class="ok-chat__list">
-  <div class="ok-chat__convs">
-    <div class="ok-chat__conv"
+<aside class="chat__list">
+  <div class="chat__convs">
+    <div class="chat__conv"
          data-on:click="$active = 'op'"
          data-class-ok-chat__conv--active="$active === 'op'">
-      <div class="ok-chat__conv-avatar">OP</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Operaciones</div>
-        <div class="ok-chat__conv-preview">Lucía cerró arqueo</div>
+      <div class="chat__conv-avatar">OP</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Operaciones</div>
+        <div class="chat__conv-preview">Lucía cerró arqueo</div>
       </div>
     </div>
-    <div class="ok-chat__conv"
+    <div class="chat__conv"
          data-on:click="$active = 'em'"
          data-class-ok-chat__conv--active="$active === 'em'">
-      <div class="ok-chat__conv-avatar">EM</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Elena Marín</div>
-        <div class="ok-chat__conv-preview">¿Has revisado…?</div>
+      <div class="chat__conv-avatar">EM</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Elena Marín</div>
+        <div class="chat__conv-preview">¿Has revisado…?</div>
       </div>
     </div>
   </div>
 </aside>
-<section class="ok-chat__thread">
-  <header class="ok-chat__head">
-    <div class="ok-chat__head-info">
-      <div class="ok-chat__head-name" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
+<section class="chat__thread">
+  <header class="chat__head">
+    <div class="chat__head-info">
+      <div class="chat__head-name" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
     </div>
   </header>
-  <div class="ok-chat__messages">
-    <div class="ok-chat__msg" data-show="$active === 'op'">
-      <div class="ok-chat__msg-avatar">LP</div>
-      <div><div class="ok-chat__bubble">Cuadra al céntimo.</div></div>
+  <div class="chat__messages">
+    <div class="chat__msg" data-show="$active === 'op'">
+      <div class="chat__msg-avatar">LP</div>
+      <div><div class="chat__bubble">Cuadra al céntimo.</div></div>
     </div>
-    <div class="ok-chat__msg" data-show="$active === 'em'">
-      <div class="ok-chat__msg-avatar">EM</div>
-      <div><div class="ok-chat__bubble">¿Has revisado la propuesta?</div></div>
+    <div class="chat__msg" data-show="$active === 'em'">
+      <div class="chat__msg-avatar">EM</div>
+      <div><div class="chat__bubble">¿Has revisado la propuesta?</div></div>
     </div>
   </div>
 </section>
@@ -316,42 +316,42 @@
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<div data-signals="{ active: 'op' }">
 <Chat style="height: 360px">
-<aside class="ok-chat__list">
-  <div class="ok-chat__convs">
-    <div class="ok-chat__conv"
+<aside class="chat__list">
+  <div class="chat__convs">
+    <div class="chat__conv"
          data-on:click="$active = 'op'"
          data-class-ok-chat__conv--active="$active === 'op'">
-      <div class="ok-chat__conv-avatar">OP</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Operaciones</div>
-        <div class="ok-chat__conv-preview">Lucía cerró arqueo</div>
+      <div class="chat__conv-avatar">OP</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Operaciones</div>
+        <div class="chat__conv-preview">Lucía cerró arqueo</div>
       </div>
     </div>
-    <div class="ok-chat__conv"
+    <div class="chat__conv"
          data-on:click="$active = 'em'"
          data-class-ok-chat__conv--active="$active === 'em'">
-      <div class="ok-chat__conv-avatar">EM</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Elena Marín</div>
-        <div class="ok-chat__conv-preview">¿Has revisado…?</div>
+      <div class="chat__conv-avatar">EM</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Elena Marín</div>
+        <div class="chat__conv-preview">¿Has revisado…?</div>
       </div>
     </div>
   </div>
 </aside>
-<section class="ok-chat__thread">
-  <header class="ok-chat__head">
-    <div class="ok-chat__head-info">
-      <div class="ok-chat__head-name" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
+<section class="chat__thread">
+  <header class="chat__head">
+    <div class="chat__head-info">
+      <div class="chat__head-name" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
     </div>
   </header>
-  <div class="ok-chat__messages">
-    <div class="ok-chat__msg" data-show="$active === 'op'">
-      <div class="ok-chat__msg-avatar">LP</div>
-      <div><div class="ok-chat__bubble">Cuadra al céntimo.</div></div>
+  <div class="chat__messages">
+    <div class="chat__msg" data-show="$active === 'op'">
+      <div class="chat__msg-avatar">LP</div>
+      <div><div class="chat__bubble">Cuadra al céntimo.</div></div>
     </div>
-    <div class="ok-chat__msg" data-show="$active === 'em'">
-      <div class="ok-chat__msg-avatar">EM</div>
-      <div><div class="ok-chat__bubble">¿Has revisado la propuesta?</div></div>
+    <div class="chat__msg" data-show="$active === 'em'">
+      <div class="chat__msg-avatar">EM</div>
+      <div><div class="chat__bubble">¿Has revisado la propuesta?</div></div>
     </div>
   </div>
 </section>
@@ -363,42 +363,42 @@
     jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ active: 'op' }">
 {% call chat(attrs={"style": "height: 360px"}) %}
-<aside class="ok-chat__list">
-  <div class="ok-chat__convs">
-    <div class="ok-chat__conv"
+<aside class="chat__list">
+  <div class="chat__convs">
+    <div class="chat__conv"
          data-on:click="$active = 'op'"
          data-class-ok-chat__conv--active="$active === 'op'">
-      <div class="ok-chat__conv-avatar">OP</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Operaciones</div>
-        <div class="ok-chat__conv-preview">Lucía cerró arqueo</div>
+      <div class="chat__conv-avatar">OP</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Operaciones</div>
+        <div class="chat__conv-preview">Lucía cerró arqueo</div>
       </div>
     </div>
-    <div class="ok-chat__conv"
+    <div class="chat__conv"
          data-on:click="$active = 'em'"
          data-class-ok-chat__conv--active="$active === 'em'">
-      <div class="ok-chat__conv-avatar">EM</div>
-      <div class="ok-chat__conv-body">
-        <div class="ok-chat__conv-name">Elena Marín</div>
-        <div class="ok-chat__conv-preview">¿Has revisado…?</div>
+      <div class="chat__conv-avatar">EM</div>
+      <div class="chat__conv-body">
+        <div class="chat__conv-name">Elena Marín</div>
+        <div class="chat__conv-preview">¿Has revisado…?</div>
       </div>
     </div>
   </div>
 </aside>
-<section class="ok-chat__thread">
-  <header class="ok-chat__head">
-    <div class="ok-chat__head-info">
-      <div class="ok-chat__head-name" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
+<section class="chat__thread">
+  <header class="chat__head">
+    <div class="chat__head-info">
+      <div class="chat__head-name" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
     </div>
   </header>
-  <div class="ok-chat__messages">
-    <div class="ok-chat__msg" data-show="$active === 'op'">
-      <div class="ok-chat__msg-avatar">LP</div>
-      <div><div class="ok-chat__bubble">Cuadra al céntimo.</div></div>
+  <div class="chat__messages">
+    <div class="chat__msg" data-show="$active === 'op'">
+      <div class="chat__msg-avatar">LP</div>
+      <div><div class="chat__bubble">Cuadra al céntimo.</div></div>
     </div>
-    <div class="ok-chat__msg" data-show="$active === 'em'">
-      <div class="ok-chat__msg-avatar">EM</div>
-      <div><div class="ok-chat__bubble">¿Has revisado la propuesta?</div></div>
+    <div class="chat__msg" data-show="$active === 'em'">
+      <div class="chat__msg-avatar">EM</div>
+      <div><div class="chat__bubble">¿Has revisado la propuesta?</div></div>
     </div>
   </div>
 </section>
@@ -407,7 +407,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (p.ej. <code>style</code> para fijar altura).</td></tr>

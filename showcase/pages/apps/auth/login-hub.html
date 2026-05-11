@@ -15,75 +15,75 @@
 
 {% block content %}
 <style>
-body { background: var(--ok-bg); margin: 0; }
+body { background: var(--bg); margin: 0; }
   .hub-auth {
     min-height: 100dvh;
     display: grid;
     place-items: center;
-    padding: var(--ok-space-6) var(--ok-space-4);
+    padding: var(--space-6) var(--space-4);
     background:
-      radial-gradient(ellipse 80% 60% at 70% 10%, color-mix(in oklch, var(--ok-brand) 18%, transparent) 0%, transparent 60%),
-      radial-gradient(ellipse 70% 50% at 20% 90%, color-mix(in oklch, var(--ok-info) 14%, transparent) 0%, transparent 60%),
-      var(--ok-bg);
+      radial-gradient(ellipse 80% 60% at 70% 10%, color-mix(in oklch, var(--brand) 18%, transparent) 0%, transparent 60%),
+      radial-gradient(ellipse 70% 50% at 20% 90%, color-mix(in oklch, var(--info) 14%, transparent) 0%, transparent 60%),
+      var(--bg);
   }
-  .hub-auth__card { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: var(--ok-space-4); }
+  .hub-auth__card { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: var(--space-4); }
   .hub-auth__brand {
     display: flex; flex-direction: column; align-items: center;
-    gap: 10px; margin-bottom: var(--ok-space-2);
+    gap: 10px; margin-bottom: var(--space-2);
   }
   .hub-auth__logo {
     width: 56px; height: 56px; border-radius: 14px;
-    background: linear-gradient(135deg, var(--ok-brand), var(--ok-brand-2));
-    color: var(--ok-brand-fg);
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    color: var(--brand-fg);
     display: grid; place-items: center;
-    font-family: var(--ok-font-display);
+    font-family: var(--font-display);
     font-weight: 700; font-size: 22px; letter-spacing: -0.04em;
-    box-shadow: var(--ok-shadow-md);
+    box-shadow: var(--shadow-md);
   }
-  .hub-auth__name { font-family: var(--ok-font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ok-ink); }
-  .hub-auth__sub { font-size: var(--ok-text-xs); color: var(--ok-ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .hub-auth__name { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .hub-auth__sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
 
   /* Employee grid */
   .hub-employees {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: var(--ok-space-3);
+    gap: var(--space-3);
   }
   .hub-employee {
     display: flex; flex-direction: column; align-items: center;
-    gap: var(--ok-space-2);
-    padding: var(--ok-space-4) var(--ok-space-3);
-    background: var(--ok-bg-2);
-    border: 1px solid var(--ok-line);
-    border-radius: var(--ok-radius-lg);
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-3);
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: transform var(--ok-dur-fast), border-color var(--ok-dur-fast);
+    transition: transform var(--dur-fast), border-color var(--dur-fast);
   }
-  .hub-employee:hover { transform: translateY(-2px); border-color: var(--ok-line-2); }
-  .hub-employee__name { font-size: var(--ok-text-sm); font-weight: 500; color: var(--ok-ink); text-align: center; }
+  .hub-employee:hover { transform: translateY(-2px); border-color: var(--line-2); }
+  .hub-employee__name { font-size: var(--text-sm); font-weight: 500; color: var(--ink); text-align: center; }
 
   .hub-pinpad-frame {
     display: flex; flex-direction: column; align-items: center;
-    gap: var(--ok-space-3);
+    gap: var(--space-3);
   }
-  .hub-pinpad-title { font-family: var(--ok-font-display); font-size: 18px; font-weight: 600; margin: 0; color: var(--ok-ink); }
-  .hub-pinpad-label { font-size: var(--ok-text-sm); color: var(--ok-ink-3); margin: 0; }
+  .hub-pinpad-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0; color: var(--ink); }
+  .hub-pinpad-label { font-size: var(--text-sm); color: var(--ink-3); margin: 0; }
 
-  .hub-pin-dots { display: flex; gap: 14px; margin: var(--ok-space-2) 0; }
+  .hub-pin-dots { display: flex; gap: 14px; margin: var(--space-2) 0; }
   .hub-pin-dot {
     width: 14px; height: 14px; border-radius: 50%;
     background: transparent;
-    border: 1.5px solid var(--ok-line-2);
-    transition: background var(--ok-dur-fast), border-color var(--ok-dur-fast);
+    border: 1.5px solid var(--line-2);
+    transition: background var(--dur-fast), border-color var(--dur-fast);
   }
-  .hub-pin-dot.is-filled { background: var(--ok-brand); border-color: var(--ok-brand); }
-  .hub-pin-dot.is-error { background: var(--ok-danger); border-color: var(--ok-danger); }
-  .hub-pin-dot.is-success { background: var(--ok-leaf); border-color: var(--ok-leaf); }
+  .hub-pin-dot.is-filled { background: var(--brand); border-color: var(--brand); }
+  .hub-pin-dot.is-error { background: var(--danger); border-color: var(--danger); }
+  .hub-pin-dot.is-success { background: var(--leaf); border-color: var(--leaf); }
 
-  .hub-pin-error { color: var(--ok-danger); font-size: var(--ok-text-sm); margin: 0; }
-  .hub-pin-confirm { color: var(--ok-brand); font-size: var(--ok-text-sm); font-weight: 500; margin: 0; }
+  .hub-pin-error { color: var(--danger); font-size: var(--text-sm); margin: 0; }
+  .hub-pin-confirm { color: var(--brand); font-size: var(--text-sm); font-weight: 500; margin: 0; }
 
-  .hub-foot { text-align: center; font-size: var(--ok-text-xs); color: var(--ok-ink-4); }
+  .hub-foot { text-align: center; font-size: var(--text-xs); color: var(--ink-4); }
 </style>
 
 <main class="hub-auth"
@@ -115,13 +115,13 @@ body { background: var(--ok-bg); margin: 0; }
       <div class="hub-auth__sub">Business Management System</div>
     </div>
 
-    <article class="ok-card">
-      <div class="ok-card__body">
+    <article class="card">
+      <div class="card__body">
 
         <!-- Tabs PIN / Email -->
-        <div class="ok-toggle-group ok-toggle-group--block" role="tablist" style="margin-bottom: var(--ok-space-5);">
+        <div class="toggle-group block" role="tablist" style="margin-bottom: var(--space-5);">
           <button type="button"
-                  class="ok-toggle-group__option"
+                  class="toggle-group__option"
                   data-class:is-selected="$login.mode === 'local'"
                   data-attr:aria-pressed="$login.mode === 'local'"
                   data-on:click="$login.mode = 'local'">
@@ -129,7 +129,7 @@ body { background: var(--ok-bg); margin: 0; }
             <span>PIN</span>
           </button>
           <button type="button"
-                  class="ok-toggle-group__option"
+                  class="toggle-group__option"
                   data-class:is-selected="$login.mode === 'cloud'"
                   data-attr:aria-pressed="$login.mode === 'cloud'"
                   data-on:click="$login.mode = 'cloud'">
@@ -140,34 +140,34 @@ body { background: var(--ok-bg); margin: 0; }
 
         <!-- LOCAL: Employee Selection -->
         <div data-show="$login.mode === 'local' && !$login.selectedEmployee">
-          <p style="text-align:center;font-size:var(--ok-text-sm);color:var(--ok-ink-3);margin:0 0 var(--ok-space-4);">
+          <p style="text-align:center;font-size:var(--text-sm);color:var(--ink-3);margin:0 0 var(--space-4);">
             Selecciona tu perfil
           </p>
           <div class="hub-employees">
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 1, name: 'Joan Castell', initials: 'JC', role: 'Encargado'}">
-              <span class="ok-avatar ok-avatar--lg ok-avatar--brand">JC</span>
+              <span class="avatar lg brand">JC</span>
               <span class="hub-employee__name">Joan Castell</span>
-              <span class="ok-tag ok-tag--sm ok-tag--neutral">Encargado</span>
+              <span class="tag sm neutral">Encargado</span>
             </div>
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 2, name: 'Marta Soler', initials: 'MS', role: 'Camarera'}">
-              <span class="ok-avatar ok-avatar--lg">MS</span>
+              <span class="avatar lg">MS</span>
               <span class="hub-employee__name">Marta Soler</span>
-              <span class="ok-tag ok-tag--sm ok-tag--neutral">Camarera</span>
+              <span class="tag sm neutral">Camarera</span>
             </div>
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 3, name: 'Carles Vila', initials: 'CV', role: 'Cocina'}">
-              <span class="ok-avatar ok-avatar--lg">CV</span>
+              <span class="avatar lg">CV</span>
               <span class="hub-employee__name">Carles Vila</span>
-              <span class="ok-tag ok-tag--sm ok-tag--neutral">Cocina</span>
+              <span class="tag sm neutral">Cocina</span>
             </div>
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 4, name: 'Aina Roig', initials: 'AR', role: 'Camarera'}">
-              <span class="ok-avatar ok-avatar--lg">AR</span>
+              <span class="avatar lg">AR</span>
               <span class="hub-employee__name">Aina Roig</span>
-              <span class="ok-tag ok-tag--sm ok-tag--neutral">Camarera</span>
+              <span class="tag sm neutral">Camarera</span>
             </div>
           </div>
 
-          <div data-show="$login.deviceTrusted" style="text-align:center;margin-top: var(--ok-space-4);">
-            <button type="button" class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$login.mode = 'cloud'">
+          <div data-show="$login.deviceTrusted" style="text-align:center;margin-top: var(--space-4);">
+            <button type="button" class="btn ghost sm" data-on:click="$login.mode = 'cloud'">
               Usar otra cuenta
             </button>
           </div>
@@ -175,7 +175,7 @@ body { background: var(--ok-bg); margin: 0; }
 
         <!-- LOCAL: PIN Entry -->
         <div data-show="$login.mode === 'local' && $login.selectedEmployee" class="hub-pinpad-frame">
-          <span class="ok-avatar ok-avatar--xl ok-avatar--brand" data-text="$login.selectedEmployee?.initials">JC</span>
+          <span class="avatar xl brand" data-text="$login.selectedEmployee?.initials">JC</span>
           <h2 class="hub-pinpad-title" data-text="$login.selectedEmployee?.name">Joan Castell</h2>
           <p class="hub-pinpad-label">Introduce tu PIN</p>
 
@@ -188,21 +188,21 @@ body { background: var(--ok-bg); margin: 0; }
 
           <p class="hub-pin-error" data-show="$login.pinError">PIN incorrecto</p>
 
-          <div class="ok-pinpad">
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '1').slice(0,4)">1</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '2').slice(0,4)">2</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '3').slice(0,4)">3</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '4').slice(0,4)">4</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '5').slice(0,4)">5</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '6').slice(0,4)">6</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '7').slice(0,4)">7</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '8').slice(0,4)">8</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '9').slice(0,4)">9</button>
-            <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$login.selectedEmployee = null; $login.pinInput = ''; $login.pinError = false">
+          <div class="pinpad">
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '1').slice(0,4)">1</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '2').slice(0,4)">2</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '3').slice(0,4)">3</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '4').slice(0,4)">4</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '5').slice(0,4)">5</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '6').slice(0,4)">6</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '7').slice(0,4)">7</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '8').slice(0,4)">8</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '9').slice(0,4)">9</button>
+            <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$login.selectedEmployee = null; $login.pinInput = ''; $login.pinError = false">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
             </button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '0').slice(0,4)">0</button>
-            <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$login.pinInput = $login.pinInput.slice(0,-1); $login.pinError = false">
+            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '0').slice(0,4)">0</button>
+            <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$login.pinInput = $login.pinInput.slice(0,-1); $login.pinError = false">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM18 9l-6 6M12 9l6 6"/></svg>
             </button>
           </div>
@@ -210,11 +210,11 @@ body { background: var(--ok-bg); margin: 0; }
 
         <!-- CLOUD: Email + Password -->
         <form data-show="$login.mode === 'cloud'" data-on:submit__prevent="$login.cloudLoading = true">
-          <div class="ok-form">
-            <div class="ok-field">
-              <label class="ok-field__label ok-field__label--req" for="cloud-email">Email</label>
+          <div class="form">
+            <div class="field">
+              <label class="field__label field__label--req" for="cloud-email">Email</label>
               <input id="cloud-email"
-                     class="ok-input"
+                     class="input"
                      type="email"
                      data-bind:login.cloudEmail
                      placeholder="tu@email.com"
@@ -223,34 +223,34 @@ body { background: var(--ok-bg); margin: 0; }
                      required/>
             </div>
 
-            <div class="ok-field">
-              <label class="ok-field__label ok-field__label--req" for="cloud-password">Contraseña</label>
-              <div class="ok-input-group ok-input-group--with-right">
+            <div class="field">
+              <label class="field__label field__label--req" for="cloud-password">Contraseña</label>
+              <div class="input-group with-right">
                 <input id="cloud-password"
-                       class="ok-input"
+                       class="input"
                        data-bind:login.cloudPassword
                        data-attr:type="$login.showPassword ? 'text' : 'password'"
                        placeholder="••••••••"
                        autocomplete="current-password"
                        required/>
                 <button type="button"
-                        class="ok-input-group__icon ok-input-group__icon--right"
+                        class="input-group__icon input-group__icon--right"
                         data-on:click="$login.showPassword = !$login.showPassword"
-                        style="background:transparent;border:none;cursor:pointer;color:var(--ok-ink-3);">
+                        style="background:transparent;border:none;cursor:pointer;color:var(--ink-3);">
                   <iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon>
                   <svg data-show="$login.showPassword" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
                 </button>
               </div>
             </div>
 
-            <div style="display: flex; align-items: center; gap: var(--ok-space-2); margin-block: var(--ok-space-2);">
-              <label class="ok-check">
+            <div style="display: flex; align-items: center; gap: var(--space-2); margin-block: var(--space-2);">
+              <label class="check">
                 <input type="checkbox" data-bind:login.trustDevice/>
-                <span class="ok-check__box"></span>
+                <span class="check__box"></span>
                 <span>Confiar en este dispositivo</span>
               </label>
               <button type="button"
-                      class="ok-icon-btn"
+                      class="icon-btn"
                       aria-label="Más información"
                       data-on:click="$login.showTrustInfo = true">
                 <iconify-icon icon="lucide:info" width="14" height="14"></iconify-icon>
@@ -258,11 +258,11 @@ body { background: var(--ok-bg); margin: 0; }
             </div>
 
             <button type="submit"
-                    class="ok-btn ok-btn--primary ok-btn--lg ok-btn--block"
+                    class="btn primary lg block"
                     data-attr:disabled="$login.cloudLoading">
               <span data-show="!$login.cloudLoading">Iniciar sesión</span>
-              <span data-show="$login.cloudLoading" style="display:inline-flex;align-items:center;gap:var(--ok-space-2);">
-                <span class="ok-spinner ok-spinner--sm"></span>
+              <span data-show="$login.cloudLoading" style="display:inline-flex;align-items:center;gap:var(--space-2);">
+                <span class="spinner sm"></span>
                 Entrando…
               </span>
             </button>
@@ -276,22 +276,22 @@ body { background: var(--ok-bg); margin: 0; }
   </div>
 
   <!-- Modal: Setup PIN -->
-  <div class="ok-modal-root"
+  <div class="modal-root"
        data-attr:data-state="$login.showPinSetup ? 'open' : 'closed'"
        data-show="$login.showPinSetup">
-    <div class="ok-backdrop" data-on:click="$login.showPinSetup = false"></div>
-    <div class="ok-modal ok-modal--sm">
-      <div class="ok-modal__header">
-        <div class="ok-modal__icon ok-modal__icon--brand">
+    <div class="backdrop" data-on:click="$login.showPinSetup = false"></div>
+    <div class="modal sm">
+      <div class="modal__header">
+        <div class="modal__icon modal__icon--brand">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777z"/></svg>
         </div>
-        <div class="ok-modal__heading">
-          <h3 class="ok-modal__title">Configura tu PIN</h3>
-          <p class="ok-modal__sub">Bienvenido, Joan Castell · Crea un PIN de 4 dígitos</p>
+        <div class="modal__heading">
+          <h3 class="modal__title">Configura tu PIN</h3>
+          <p class="modal__sub">Bienvenido, Joan Castell · Crea un PIN de 4 dígitos</p>
         </div>
-        <button class="ok-modal__close" data-on:click="$login.showPinSetup = false" aria-label="Cerrar">✕</button>
+        <button class="modal__close" data-on:click="$login.showPinSetup = false" aria-label="Cerrar">✕</button>
       </div>
-      <div class="ok-modal__body">
+      <div class="modal__body">
         <div class="hub-pinpad-frame">
           <div class="hub-pin-dots">
             <div class="hub-pin-dot"
@@ -315,19 +315,19 @@ body { background: var(--ok-bg); margin: 0; }
           <p class="hub-pin-confirm" data-show="$login.setupPinConfirm">Confirma tu PIN</p>
           <p class="hub-pin-error" data-show="$login.setupPinError">Los PINs no coinciden</p>
 
-          <div class="ok-pinpad">
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '1').slice(0,4)">1</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '2').slice(0,4)">2</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '3').slice(0,4)">3</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '4').slice(0,4)">4</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '5').slice(0,4)">5</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '6').slice(0,4)">6</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '7').slice(0,4)">7</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '8').slice(0,4)">8</button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '9').slice(0,4)">9</button>
-            <button type="button" class="ok-pinpad__key ok-pinpad__key--action" disabled style="visibility:hidden;"></button>
-            <button type="button" class="ok-pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '0').slice(0,4)">0</button>
-            <button type="button" class="ok-pinpad__key ok-pinpad__key--action" data-on:click="$login.setupPinInput = $login.setupPinInput.slice(0,-1); $login.setupPinError = false">
+          <div class="pinpad">
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '1').slice(0,4)">1</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '2').slice(0,4)">2</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '3').slice(0,4)">3</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '4').slice(0,4)">4</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '5').slice(0,4)">5</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '6').slice(0,4)">6</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '7').slice(0,4)">7</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '8').slice(0,4)">8</button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '9').slice(0,4)">9</button>
+            <button type="button" class="pinpad__key pinpad__key--action" disabled style="visibility:hidden;"></button>
+            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '0').slice(0,4)">0</button>
+            <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$login.setupPinInput = $login.setupPinInput.slice(0,-1); $login.setupPinError = false">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM18 9l-6 6M12 9l6 6"/></svg>
             </button>
           </div>
@@ -337,34 +337,34 @@ body { background: var(--ok-bg); margin: 0; }
   </div>
 
   <!-- Modal: Trust device info -->
-  <div class="ok-modal-root"
+  <div class="modal-root"
        data-attr:data-state="$login.showTrustInfo ? 'open' : 'closed'"
        data-show="$login.showTrustInfo">
-    <div class="ok-backdrop" data-on:click="$login.showTrustInfo = false"></div>
-    <div class="ok-modal ok-modal--sm">
-      <div class="ok-modal__header">
-        <div class="ok-modal__icon ok-modal__icon--brand">
+    <div class="backdrop" data-on:click="$login.showTrustInfo = false"></div>
+    <div class="modal sm">
+      <div class="modal__header">
+        <div class="modal__icon modal__icon--brand">
           <iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon>
         </div>
-        <div class="ok-modal__heading">
-          <h3 class="ok-modal__title">Confiar en este dispositivo</h3>
-          <p class="ok-modal__sub">Acceso rápido con PIN</p>
+        <div class="modal__heading">
+          <h3 class="modal__title">Confiar en este dispositivo</h3>
+          <p class="modal__sub">Acceso rápido con PIN</p>
         </div>
-        <button class="ok-modal__close" data-on:click="$login.showTrustInfo = false" aria-label="Cerrar">✕</button>
+        <button class="modal__close" data-on:click="$login.showTrustInfo = false" aria-label="Cerrar">✕</button>
       </div>
-      <div class="ok-modal__body">
-        <p style="color:var(--ok-ink-2); font-size: var(--ok-text-sm); margin: 0 0 var(--ok-space-3);">
+      <div class="modal__body">
+        <p style="color:var(--ink-2); font-size: var(--text-sm); margin: 0 0 var(--space-3);">
           Cuando marcas un dispositivo como de confianza, puedes iniciar sesión rápidamente con tu PIN — sin escribir email y contraseña cada vez.
         </p>
-        <p style="color:var(--ok-ink-2); font-size: var(--ok-text-sm); margin: 0 0 var(--ok-space-3);">
+        <p style="color:var(--ink-2); font-size: var(--text-sm); margin: 0 0 var(--space-3);">
           Si no es de confianza, siempre necesitarás email y contraseña para acceder a este Hub.
         </p>
-        <p style="color:var(--ok-ink-3); font-size: var(--ok-text-xs); margin: 0;">
+        <p style="color:var(--ink-3); font-size: var(--text-xs); margin: 0;">
           Confía solo dispositivos que te pertenecen y controlas. No confíes ordenadores compartidos o públicos. La confianza expira tras 90 días sin actividad.
         </p>
       </div>
-      <div class="ok-modal__footer">
-        <button class="ok-btn ok-btn--primary" data-on:click="$login.showTrustInfo = false">Entendido</button>
+      <div class="modal__footer">
+        <button class="btn primary" data-on:click="$login.showTrustInfo = false">Entendido</button>
       </div>
     </div>
   </div>

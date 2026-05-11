@@ -39,7 +39,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>length</code></td><td>int</td><td>6</td><td>Número de celdas.</td></tr>
@@ -57,7 +57,7 @@
    `numeric` → only digits; `text` (alphanumeric) → A-Z + 0-9, uppercased.
    The macro itself ships markup only (no JS), so this lives in the showcase. #}
 <script>
-document.querySelectorAll('.ok-otp').forEach(function (group) {
+document.querySelectorAll('.otp').forEach(function (group) {
   var inputs = group.querySelectorAll('input');
   var firstInput = inputs[0];
   var isAlpha = firstInput && firstInput.getAttribute('inputmode') === 'text';

@@ -8,151 +8,151 @@
 
    Three layout primitives:
 
-   1. .ok-container          — content max-width by breakpoint
-   2. .ok-row + .ok-col-{N}  — 12-col responsive grid (`md` / `lg` variants)
-   3. .ok-grid-auto          — auto-fit minmax grid (for card galleries)
+   1. .container          — content max-width by breakpoint
+   2. .row + .col-{N}  — 12-col responsive grid (`md` / `lg` variants)
+   3. .grid-auto          — auto-fit minmax grid (for card galleries)
 
-   Plus the existing .ok-grid-2/3/4/6 fixed grids in page.css.
+   Plus the existing .grid-2/3/4/6 fixed grids in page.css.
    ============================================================ */
 
 /* ---------- 1. Container ---------- */
-.ok-container {
+.container {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: var(--ok-space-4);
-  padding-right: var(--ok-space-4);
-  max-width: var(--ok-page-max);
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+  max-width: var(--page-max);
 }
-.ok-container--narrow { max-width: 720px; }
-.ok-container--reading { max-width: 880px; }       /* doc/article width */
-.ok-container--wide { max-width: 1440px; }
-.ok-container--full { max-width: 100%; padding-inline: var(--ok-space-3); }
-.ok-container--flush { padding-inline: 0; }
+.container.narrow { max-width: 720px; }
+.container.reading { max-width: 880px; }       /* doc/article width */
+.container.wide { max-width: 1440px; }
+.container.full { max-width: 100%; padding-inline: var(--space-3); }
+.container.flush { padding-inline: var(--space-0); }
 
 @media (max-width: 767px) {
-  .ok-container { padding-left: var(--ok-space-3); padding-right: var(--ok-space-3); }
+  .container { padding-left: var(--space-3); padding-right: var(--space-3); }
 }
 
 /* ---------- 2. 12-column responsive grid ---------- */
 
-/* .ok-row is a 12-col CSS grid, sized via gap variables. Children pick a span
-   class (.ok-col-{1..12}) — when no span is set, items fall to default
+/* .row is a 12-col CSS grid, sized via gap variables. Children pick a span
+   class (.col-{1..12}) — when no span is set, items fall to default
    `auto`-fit for backwards compat. */
-.ok-row {
+.row {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--ok-space-4);
+  gap: var(--space-4);
 }
-.ok-row--gap-sm { gap: var(--ok-space-2); }
-.ok-row--gap-lg { gap: var(--ok-space-6); }
-.ok-row--gap-0 { gap: 0; }
+.row.gap-sm { gap: var(--space-2); }
+.row.gap-lg { gap: var(--space-6); }
+.row.gap-0 { gap: 0; }
 
 /* Stack utility — forces column flow regardless of viewport */
-.ok-row--stack { grid-template-columns: 1fr; }
+.row.stack { grid-template-columns: 1fr; }
 
 /* Span helpers — base (mobile-first: span N columns from 1 / span N) */
-.ok-col-1  { grid-column: span 1; }
-.ok-col-2  { grid-column: span 2; }
-.ok-col-3  { grid-column: span 3; }
-.ok-col-4  { grid-column: span 4; }
-.ok-col-5  { grid-column: span 5; }
-.ok-col-6  { grid-column: span 6; }
-.ok-col-7  { grid-column: span 7; }
-.ok-col-8  { grid-column: span 8; }
-.ok-col-9  { grid-column: span 9; }
-.ok-col-10 { grid-column: span 10; }
-.ok-col-11 { grid-column: span 11; }
-.ok-col-12 { grid-column: span 12; }
-.ok-col-full { grid-column: 1 / -1; }
-.ok-col-auto { grid-column: auto; }
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+.col-full { grid-column: 1 / -1; }
+.col-auto { grid-column: auto; }
 
 /* On mobile (≤767), default to full-width unless an explicit `sm` span is set.
    This is the safest default for cards/forms in cramped viewports. */
 @media (max-width: 767px) {
-  .ok-row > [class*="ok-col-"]:not([class*="ok-col-sm-"]) { grid-column: 1 / -1; }
+  .row > [class*="ok-col-"]:not([class*="ok-col-sm-"]) { grid-column: 1 / -1; }
 }
 
 /* Tablet override (≥768px) */
 @media (min-width: 768px) {
-  .ok-col-md-1  { grid-column: span 1; }
-  .ok-col-md-2  { grid-column: span 2; }
-  .ok-col-md-3  { grid-column: span 3; }
-  .ok-col-md-4  { grid-column: span 4; }
-  .ok-col-md-5  { grid-column: span 5; }
-  .ok-col-md-6  { grid-column: span 6; }
-  .ok-col-md-7  { grid-column: span 7; }
-  .ok-col-md-8  { grid-column: span 8; }
-  .ok-col-md-9  { grid-column: span 9; }
-  .ok-col-md-10 { grid-column: span 10; }
-  .ok-col-md-11 { grid-column: span 11; }
-  .ok-col-md-12 { grid-column: span 12; }
-  .ok-col-md-full { grid-column: 1 / -1; }
+  .col-md-1  { grid-column: span 1; }
+  .col-md-2  { grid-column: span 2; }
+  .col-md-3  { grid-column: span 3; }
+  .col-md-4  { grid-column: span 4; }
+  .col-md-5  { grid-column: span 5; }
+  .col-md-6  { grid-column: span 6; }
+  .col-md-7  { grid-column: span 7; }
+  .col-md-8  { grid-column: span 8; }
+  .col-md-9  { grid-column: span 9; }
+  .col-md-10 { grid-column: span 10; }
+  .col-md-11 { grid-column: span 11; }
+  .col-md-12 { grid-column: span 12; }
+  .col-md-full { grid-column: 1 / -1; }
 }
 
 /* Desktop override (≥1200px) */
 @media (min-width: 1200px) {
-  .ok-col-lg-1  { grid-column: span 1; }
-  .ok-col-lg-2  { grid-column: span 2; }
-  .ok-col-lg-3  { grid-column: span 3; }
-  .ok-col-lg-4  { grid-column: span 4; }
-  .ok-col-lg-5  { grid-column: span 5; }
-  .ok-col-lg-6  { grid-column: span 6; }
-  .ok-col-lg-7  { grid-column: span 7; }
-  .ok-col-lg-8  { grid-column: span 8; }
-  .ok-col-lg-9  { grid-column: span 9; }
-  .ok-col-lg-10 { grid-column: span 10; }
-  .ok-col-lg-11 { grid-column: span 11; }
-  .ok-col-lg-12 { grid-column: span 12; }
-  .ok-col-lg-full { grid-column: 1 / -1; }
+  .col-lg-1  { grid-column: span 1; }
+  .col-lg-2  { grid-column: span 2; }
+  .col-lg-3  { grid-column: span 3; }
+  .col-lg-4  { grid-column: span 4; }
+  .col-lg-5  { grid-column: span 5; }
+  .col-lg-6  { grid-column: span 6; }
+  .col-lg-7  { grid-column: span 7; }
+  .col-lg-8  { grid-column: span 8; }
+  .col-lg-9  { grid-column: span 9; }
+  .col-lg-10 { grid-column: span 10; }
+  .col-lg-11 { grid-column: span 11; }
+  .col-lg-12 { grid-column: span 12; }
+  .col-lg-full { grid-column: 1 / -1; }
 }
 
 /* Small (≤767px) explicit overrides — for the rare case you want a ≠12 layout
    on mobile (e.g. a 4-icon dock that stays 2x2 on phone). */
 @media (max-width: 767px) {
-  .ok-col-sm-1  { grid-column: span 1; }
-  .ok-col-sm-2  { grid-column: span 2; }
-  .ok-col-sm-3  { grid-column: span 3; }
-  .ok-col-sm-4  { grid-column: span 4; }
-  .ok-col-sm-5  { grid-column: span 5; }
-  .ok-col-sm-6  { grid-column: span 6; }
-  .ok-col-sm-7  { grid-column: span 7; }
-  .ok-col-sm-8  { grid-column: span 8; }
-  .ok-col-sm-9  { grid-column: span 9; }
-  .ok-col-sm-10 { grid-column: span 10; }
-  .ok-col-sm-11 { grid-column: span 11; }
-  .ok-col-sm-12 { grid-column: span 12; }
-  .ok-col-sm-full { grid-column: 1 / -1; }
+  .col-sm-1  { grid-column: span 1; }
+  .col-sm-2  { grid-column: span 2; }
+  .col-sm-3  { grid-column: span 3; }
+  .col-sm-4  { grid-column: span 4; }
+  .col-sm-5  { grid-column: span 5; }
+  .col-sm-6  { grid-column: span 6; }
+  .col-sm-7  { grid-column: span 7; }
+  .col-sm-8  { grid-column: span 8; }
+  .col-sm-9  { grid-column: span 9; }
+  .col-sm-10 { grid-column: span 10; }
+  .col-sm-11 { grid-column: span 11; }
+  .col-sm-12 { grid-column: span 12; }
+  .col-sm-full { grid-column: 1 / -1; }
 }
 
 /* ---------- 3. Auto-fit grid (cards, gallery) ---------- */
 
 /* Cards reflow themselves: each cell at least 240px wide, fills available room. */
-.ok-grid-auto {
+.grid-auto {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(var(--_min, 240px), 1fr));
-  gap: var(--ok-space-4);
+  gap: var(--space-4);
 }
-.ok-grid-auto--xs { --_min: 140px; }
-.ok-grid-auto--sm { --_min: 180px; }
-.ok-grid-auto--md { --_min: 240px; }   /* default */
-.ok-grid-auto--lg { --_min: 320px; }
-.ok-grid-auto--xl { --_min: 400px; }
+.grid-auto.xs { --_min: 140px; }
+.grid-auto.sm { --_min: 180px; }
+.grid-auto.md { --_min: 240px; }   /* default */
+.grid-auto.lg { --_min: 320px; }
+.grid-auto.xl { --_min: 400px; }
 
 /* ---------- Gap responsive helpers ---------- */
 @media (min-width: 768px) {
-  .ok-gap-md-2 { gap: var(--ok-space-2); }
-  .ok-gap-md-3 { gap: var(--ok-space-3); }
-  .ok-gap-md-4 { gap: var(--ok-space-4); }
-  .ok-gap-md-5 { gap: var(--ok-space-5); }
-  .ok-gap-md-6 { gap: var(--ok-space-6); }
+  .gap-md-2 { gap: var(--space-2); }
+  .gap-md-3 { gap: var(--space-3); }
+  .gap-md-4 { gap: var(--space-4); }
+  .gap-md-5 { gap: var(--space-5); }
+  .gap-md-6 { gap: var(--space-6); }
 }
 @media (min-width: 1200px) {
-  .ok-gap-lg-2 { gap: var(--ok-space-2); }
-  .ok-gap-lg-3 { gap: var(--ok-space-3); }
-  .ok-gap-lg-4 { gap: var(--ok-space-4); }
-  .ok-gap-lg-5 { gap: var(--ok-space-5); }
-  .ok-gap-lg-6 { gap: var(--ok-space-6); }
+  .gap-lg-2 { gap: var(--space-2); }
+  .gap-lg-3 { gap: var(--space-3); }
+  .gap-lg-4 { gap: var(--space-4); }
+  .gap-lg-5 { gap: var(--space-5); }
+  .gap-lg-6 { gap: var(--space-6); }
 }
 
 /* ============================================================
@@ -160,91 +160,91 @@
    ============================================================ */
 
 /* ---------- 4. Container queries ----------
-   `.ok-cq` makes the element a query container so descendants can adapt to
+   `.cq` makes the element a query container so descendants can adapt to
    the PARENT'S width instead of the viewport. Best for components that may
    live in a sidebar, drawer, modal, or main column at different widths. */
-.ok-cq         { container-type: inline-size; container-name: ok; }
-.ok-cq-block   { container-type: size; container-name: ok; }      /* width + height */
-.ok-cq-normal  { container-type: normal; }
+.cq         { container-type: inline-size; container-name: ok; }
+.cq-block   { container-type: size; container-name: ok; }      /* width + height */
+.cq-normal  { container-type: normal; }
 
 /* Container-query variants of the 12-col grid:
-   - .ok-col-cq-{N} on a child of .ok-cq applies when its container is ≥ 480px
-   - .ok-col-cq-lg-{N} when container ≥ 720px
+   - .col-cq-{N} on a child of .cq applies when its container is ≥ 480px
+   - .col-cq-lg-{N} when container ≥ 720px
    Use these instead of viewport `md` / `lg` when the component might be in
    a narrow sidebar even on desktop viewports. */
 @container ok (min-width: 480px) {
-  .ok-col-cq-1  { grid-column: span 1; }
-  .ok-col-cq-2  { grid-column: span 2; }
-  .ok-col-cq-3  { grid-column: span 3; }
-  .ok-col-cq-4  { grid-column: span 4; }
-  .ok-col-cq-6  { grid-column: span 6; }
-  .ok-col-cq-8  { grid-column: span 8; }
-  .ok-col-cq-12 { grid-column: span 12; }
+  .col-cq-1  { grid-column: span 1; }
+  .col-cq-2  { grid-column: span 2; }
+  .col-cq-3  { grid-column: span 3; }
+  .col-cq-4  { grid-column: span 4; }
+  .col-cq-6  { grid-column: span 6; }
+  .col-cq-8  { grid-column: span 8; }
+  .col-cq-12 { grid-column: span 12; }
 }
 @container ok (min-width: 720px) {
-  .ok-col-cq-lg-1  { grid-column: span 1; }
-  .ok-col-cq-lg-2  { grid-column: span 2; }
-  .ok-col-cq-lg-3  { grid-column: span 3; }
-  .ok-col-cq-lg-4  { grid-column: span 4; }
-  .ok-col-cq-lg-6  { grid-column: span 6; }
-  .ok-col-cq-lg-8  { grid-column: span 8; }
-  .ok-col-cq-lg-12 { grid-column: span 12; }
+  .col-cq-lg-1  { grid-column: span 1; }
+  .col-cq-lg-2  { grid-column: span 2; }
+  .col-cq-lg-3  { grid-column: span 3; }
+  .col-cq-lg-4  { grid-column: span 4; }
+  .col-cq-lg-6  { grid-column: span 6; }
+  .col-cq-lg-8  { grid-column: span 8; }
+  .col-cq-lg-12 { grid-column: span 12; }
 }
 @container ok (min-width: 480px) {
-  .ok-show-cq-md { display: revert; }
-  .ok-hide-cq-md { display: none; }
+  .show-cq-md { display: revert; }
+  .hide-cq-md { display: none; }
 }
 @container ok (max-width: 479.98px) {
-  .ok-show-cq-md { display: none; }
+  .show-cq-md { display: none; }
 }
 
 /* ---------- 5. Subgrid ----------
    Nested grids that align to the parent's track sizing. Use when an inner
-   `.ok-row` should share its parent's 12 columns instead of declaring its own. */
-.ok-row--subgrid {
+   `.row` should share its parent's 12 columns instead of declaring its own. */
+.row.subgrid {
   grid-template-columns: subgrid;
 }
-.ok-row--subgrid-rows {
+.row.subgrid-rows {
   grid-template-rows: subgrid;
 }
 
 /* ---------- 6. Masonry-like dense flow ----------
    Cards with varying heights pack tightly without leaving gaps. */
-.ok-grid-auto--dense,
-.ok-row--dense {
+.grid-auto.dense,
+.row.dense {
   grid-auto-flow: row dense;
 }
 
 /* ---------- 7. Fluid container — uses clamp() for organic widths ---------- */
-.ok-container--fluid {
+.container.fluid {
   width: 100%;
   margin-inline: auto;
-  padding-inline: clamp(var(--ok-space-3), 4vw, var(--ok-space-7));
+  padding-inline: clamp(var(--space-3), 4vw, var(--space-7));
   max-width: clamp(320px, 100%, 1440px);
 }
 
 /* ---------- 8. Aspect-ratio cells ----------
    Useful for thumbnail / hero / video cells inside the grid. */
-.ok-cell-square   { aspect-ratio: 1 / 1; }
-.ok-cell-video    { aspect-ratio: 16 / 9; }
-.ok-cell-portrait { aspect-ratio: 3 / 4; }
-.ok-cell-photo    { aspect-ratio: 4 / 3; }
-.ok-cell-wide     { aspect-ratio: 21 / 9; }
+.cell-square   { aspect-ratio: 1 / 1; }
+.cell-video    { aspect-ratio: 16 / 9; }
+.cell-portrait { aspect-ratio: 3 / 4; }
+.cell-photo    { aspect-ratio: 4 / 3; }
+.cell-wide     { aspect-ratio: 21 / 9; }
 
 /* ---------- 9. Sticky helper for col items ---------- */
-.ok-col-sticky {
+.col-sticky {
   position: sticky;
-  top: calc(var(--ok-topbar-h) + var(--ok-space-3));
+  top: calc(var(--topbar-h) + var(--space-3));
   align-self: start;
 }
 
 /* ---------- 10. Logical-property-aware spacing helpers ----------
    Match the writing direction; safer for RTL or vertical languages. */
-.ok-px-3 { padding-inline: var(--ok-space-3); }
-.ok-px-4 { padding-inline: var(--ok-space-4); }
-.ok-px-6 { padding-inline: var(--ok-space-6); }
-.ok-py-3 { padding-block: var(--ok-space-3); }
-.ok-py-4 { padding-block: var(--ok-space-4); }
-.ok-py-6 { padding-block: var(--ok-space-6); }
-.ok-mx-auto { margin-inline: auto; }
-.ok-my-auto { margin-block: auto; }
+.px-3 { padding-inline: var(--space-3); }
+.px-4 { padding-inline: var(--space-4); }
+.px-6 { padding-inline: var(--space-6); }
+.py-3 { padding-block: var(--space-3); }
+.py-4 { padding-block: var(--space-4); }
+.py-6 { padding-block: var(--space-6); }
+.mx-auto { margin-inline: auto; }
+.my-auto { margin-block: auto; }

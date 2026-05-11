@@ -2,7 +2,7 @@
 
 {% macro panel(title=None, sub=None, variant=None, size=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}panel{% if variant %} {{ ok_prefix }}panel--{{ variant }}{% endif %}{% if size %} {{ ok_prefix }}panel--{{ size }}{% endif %}"
+<div class="{{ ok_prefix }}panel{% if variant %} {{ variant }}{% endif %}{% if size %} {{ size }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if title or sub %}
   <header class="{{ ok_prefix }}panel__head">

@@ -8,147 +8,147 @@
    Surface block (more structural than card, less rounded)
    ============================================================ */
 
-.ok-panel {
-  --_pad-y: var(--ok-space-4);
-  --_pad-x: var(--ok-space-4);
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
+.panel {
+  --_pad-y: var(--space-4);
+  --_pad-x: var(--space-4);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
   display: flex;
   flex-direction: column;
   min-width: 0;
 }
 
-.ok-panel__head {
+.panel__head {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--ok-space-3);
+  gap: var(--space-3);
   padding: var(--_pad-y) var(--_pad-x);
-  border-bottom: 1px solid var(--ok-line);
+  border-bottom: var(--border-w) solid var(--line);
 }
 
-.ok-panel__head-text {
+.panel__head-text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--border-w-2);
   min-width: 0;
   flex: 1;
 }
 
-.ok-panel__title {
-  font-family: var(--ok-font-display);
-  font-size: var(--ok-text-md);
+.panel__title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
   font-weight: 600;
-  letter-spacing: var(--ok-tracking-tight);
-  color: var(--ok-ink);
-  margin: 0;
+  letter-spacing: var(--tracking-tight);
+  color: var(--ink);
+  margin: var(--space-0);
 }
 
-.ok-panel__sub {
-  font-size: var(--ok-text-xs);
-  color: var(--ok-ink-3);
-  margin: 0;
+.panel__sub {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin: var(--space-0);
 }
 
-.ok-panel__actions {
+.panel__actions {
   display: flex;
   align-items: center;
-  gap: var(--ok-space-2);
+  gap: var(--space-2);
   flex-shrink: 0;
 }
 
-.ok-panel__body {
+.panel__body {
   padding: var(--_pad-y) var(--_pad-x);
   flex: 1;
   min-width: 0;
 }
 
-.ok-panel__footer {
+.panel__footer {
   padding: var(--_pad-y) var(--_pad-x);
-  border-top: 1px solid var(--ok-line);
-  background: var(--ok-bg-1);
+  border-top: var(--border-w) solid var(--line);
+  background: var(--bg-1);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ok-space-3);
+  gap: var(--space-3);
 }
 
 /* Variants */
-.ok-panel--ghost {
+.panel.ghost {
   background: transparent;
-  border-color: var(--ok-line);
+  border-color: var(--line);
 }
-.ok-panel--ghost .ok-panel__footer { background: transparent; }
+.panel.ghost .panel__footer { background: transparent; }
 
-.ok-panel--bordered {
+.panel.bordered {
   background: transparent;
-  border-color: var(--ok-line-2);
+  border-color: var(--line-2);
 }
-.ok-panel--bordered .ok-panel__footer { background: transparent; }
+.panel.bordered .panel__footer { background: transparent; }
 
-.ok-panel--flush .ok-panel__body {
-  padding: 0;
+.panel.flush .panel__body {
+  padding: var(--space-0);
 }
 
-.ok-panel--sticky-head .ok-panel__head {
+.panel.sticky-head .panel__head {
   position: sticky;
   top: 0;
-  z-index: var(--ok-z-sticky);
-  background: var(--ok-bg-2);
+  z-index: var(--z-sticky);
+  background: var(--bg-2);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 /* Sizes */
-.ok-panel--sm {
-  --_pad-y: var(--ok-space-2);
-  --_pad-x: var(--ok-space-3);
+.panel.sm {
+  --_pad-y: var(--space-2);
+  --_pad-x: var(--space-3);
 }
-.ok-panel--sm .ok-panel__title { font-size: var(--ok-text-sm); }
+.panel.sm .panel__title { font-size: var(--text-sm); }
 
-.ok-panel--lg {
-  --_pad-y: var(--ok-space-5);
-  --_pad-x: var(--ok-space-6);
+.panel.lg {
+  --_pad-y: var(--space-5);
+  --_pad-x: var(--space-6);
 }
-.ok-panel--lg .ok-panel__title { font-size: var(--ok-text-lg); }
+.panel.lg .panel__title { font-size: var(--text-lg); }
 
 /* ============================================================
    2. MASONRY
    Column-based masonry layout (pure CSS columns)
    ============================================================ */
 
-.ok-masonry {
+.masonry {
   --_cols: 3;
   column-count: var(--_cols);
-  column-gap: var(--ok-space-4);
+  column-gap: var(--space-4);
 }
 
-.ok-masonry__item {
+.masonry__item {
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
-  margin-bottom: var(--ok-space-4);
+  margin-bottom: var(--space-4);
   display: block;
 }
 
-.ok-masonry--2 { --_cols: 2; }
-.ok-masonry--3 { --_cols: 3; }
-.ok-masonry--4 { --_cols: 4; }
-.ok-masonry--5 { --_cols: 5; }
+.masonry--2 { --_cols: 2; }
+.masonry--3 { --_cols: 3; }
+.masonry--4 { --_cols: 4; }
+.masonry--5 { --_cols: 5; }
 
 @media (max-width: 768px) {
-  .ok-masonry,
-  .ok-masonry--3,
-  .ok-masonry--4,
-  .ok-masonry--5 { --_cols: 2; }
+  .masonry,
+  .masonry--3,
+  .masonry--4,
+  .masonry--5 { --_cols: 2; }
 }
 @media (max-width: 480px) {
-  .ok-masonry,
-  .ok-masonry--2,
-  .ok-masonry--3,
-  .ok-masonry--4,
-  .ok-masonry--5 { --_cols: 1; }
+  .masonry,
+  .masonry--2,
+  .masonry--3,
+  .masonry--4,
+  .masonry--5 { --_cols: 1; }
 }
 
 /* ============================================================
@@ -156,90 +156,90 @@
    Sidebar list + detail layout
    ============================================================ */
 
-.ok-master-detail {
+.master-detail {
   --_master-w: 280px;
   display: grid;
   grid-template-columns: var(--_master-w) 1fr;
   min-height: 100%;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-.ok-master-detail__master {
+.master-detail__master {
   display: flex;
   flex-direction: column;
   min-height: 0;
-  border-right: 1px solid var(--ok-line);
-  background: var(--ok-bg-1);
+  border-right: var(--border-w) solid var(--line);
+  background: var(--bg-1);
 }
 
-.ok-master-detail__master-head {
-  padding: var(--ok-space-3) var(--ok-space-4);
-  border-bottom: 1px solid var(--ok-line);
+.master-detail__master-head {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-w) solid var(--line);
   flex-shrink: 0;
-  font-family: var(--ok-font-display);
-  font-size: var(--ok-text-sm);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
   font-weight: 600;
-  color: var(--ok-ink);
+  color: var(--ink);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ok-space-2);
+  gap: var(--space-2);
 }
 
-.ok-master-detail__master-body {
+.master-detail__master-body {
   flex: 1 1 auto;
   overflow-y: auto;
-  padding: var(--ok-space-2);
+  padding: var(--space-2);
   display: flex;
   flex-direction: column;
   gap: 2px;
   min-height: 0;
 }
 
-.ok-master-detail__master-footer {
-  padding: var(--ok-space-2) var(--ok-space-3);
-  border-top: 1px solid var(--ok-line);
+.master-detail__master-footer {
+  padding: var(--space-2) var(--space-3);
+  border-top: var(--border-w) solid var(--line);
   flex-shrink: 0;
 }
 
-.ok-master-detail__detail {
+.master-detail__detail {
   display: flex;
   flex-direction: column;
   min-width: 0;
   min-height: 0;
 }
 
-.ok-master-detail__detail-head {
-  padding: var(--ok-space-3) var(--ok-space-4);
-  border-bottom: 1px solid var(--ok-line);
+.master-detail__detail-head {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-w) solid var(--line);
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ok-space-3);
+  gap: var(--space-3);
 }
 
-.ok-master-detail__detail-body {
+.master-detail__detail-body {
   flex: 1;
-  padding: var(--ok-space-5);
+  padding: var(--space-5);
   overflow: auto;
   min-height: 0;
 }
 
 /* Variants */
-.ok-master-detail--compact { --_master-w: 220px; }
-.ok-master-detail--wide { --_master-w: 360px; }
+.master-detail.compact { --_master-w: 220px; }
+.master-detail.wide { --_master-w: 360px; }
 
 @media (max-width: 768px) {
-  .ok-master-detail--mobile-detail { grid-template-columns: 1fr; }
-  .ok-master-detail--mobile-detail .ok-master-detail__master { display: none; }
-  .ok-master-detail--mobile-detail.is-master-visible {
+  .master-detail.mobile-detail { grid-template-columns: 1fr; }
+  .master-detail.mobile-detail .master-detail__master { display: none; }
+  .master-detail.mobile-detail.is-master-visible {
     grid-template-columns: var(--_master-w) 1fr;
   }
-  .ok-master-detail--mobile-detail.is-master-visible .ok-master-detail__master {
+  .master-detail.mobile-detail.is-master-visible .master-detail__master {
     display: flex;
   }
 }
@@ -249,52 +249,52 @@
    Styled scrollable container with custom scrollbar
    ============================================================ */
 
-.ok-scroll {
+.scroll {
   position: relative;
   overflow: auto;
   scrollbar-width: thin;
-  scrollbar-color: var(--ok-line-3) var(--ok-bg-3);
+  scrollbar-color: var(--line-3) var(--bg-3);
 }
 
-.ok-scroll::-webkit-scrollbar {
+.scroll::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-.ok-scroll::-webkit-scrollbar-track {
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-pill);
+.scroll::-webkit-scrollbar-track {
+  background: var(--bg-3);
+  border-radius: var(--radius-pill);
 }
-.ok-scroll::-webkit-scrollbar-thumb {
-  background: var(--ok-line-3);
-  border-radius: var(--ok-radius-pill);
-  transition: background var(--ok-dur-fast) var(--ok-ease-out);
+.scroll::-webkit-scrollbar-thumb {
+  background: var(--line-3);
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-fast) var(--ease-out);
 }
-.ok-scroll::-webkit-scrollbar-thumb:hover {
-  background: var(--ok-ink-3);
+.scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-3);
 }
-.ok-scroll::-webkit-scrollbar-corner {
+.scroll::-webkit-scrollbar-corner {
   background: transparent;
 }
 
 /* Variants */
-.ok-scroll--y { overflow-x: hidden; overflow-y: auto; }
-.ok-scroll--x { overflow-x: auto; overflow-y: hidden; }
-.ok-scroll--both { overflow: auto; }
+.scroll.y { overflow-x: hidden; overflow-y: auto; }
+.scroll.x { overflow-x: auto; overflow-y: hidden; }
+.scroll.both { overflow: auto; }
 
-.ok-scroll--invisible {
+.scroll.invisible {
   scrollbar-color: transparent transparent;
 }
-.ok-scroll--invisible::-webkit-scrollbar-thumb { background: transparent; }
-.ok-scroll--invisible::-webkit-scrollbar-track { background: transparent; }
-.ok-scroll--invisible:hover {
-  scrollbar-color: var(--ok-line-3) var(--ok-bg-3);
+.scroll.invisible::-webkit-scrollbar-thumb { background: transparent; }
+.scroll.invisible::-webkit-scrollbar-track { background: transparent; }
+.scroll.invisible:hover {
+  scrollbar-color: var(--line-3) var(--bg-3);
 }
-.ok-scroll--invisible:hover::-webkit-scrollbar-thumb { background: var(--ok-line-3); }
-.ok-scroll--invisible:hover::-webkit-scrollbar-track { background: var(--ok-bg-3); }
+.scroll.invisible:hover::-webkit-scrollbar-thumb { background: var(--line-3); }
+.scroll.invisible:hover::-webkit-scrollbar-track { background: var(--bg-3); }
 
 /* Sentinels (visual aid for fade detection) */
-.ok-scroll__sentinel-top,
-.ok-scroll__sentinel-bottom {
+.scroll__sentinel-top,
+.scroll__sentinel-bottom {
   height: 1px;
   width: 100%;
   pointer-events: none;
@@ -302,12 +302,12 @@
 }
 
 /* Fade gradients (mask top/bottom) */
-.ok-scroll--fade {
+.scroll.fade {
   -webkit-mask-image: linear-gradient(to bottom, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
   mask-image: linear-gradient(to bottom, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
 }
 
-.ok-scroll--fade.ok-scroll--x {
+.scroll.fade.scroll.x {
   -webkit-mask-image: linear-gradient(to right, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
   mask-image: linear-gradient(to right, transparent 0, black 12px, black calc(100% - 12px), transparent 100%);
 }
@@ -317,31 +317,31 @@
    Flex spacer (and fixed-size variants)
    ============================================================ */
 
-.ok-spacer {
+.spacer {
   flex: 1 1 auto;
   align-self: stretch;
 }
 
-.ok-spacer--xs { flex: 0 0 auto; width: var(--ok-space-1); height: var(--ok-space-1); }
-.ok-spacer--sm { flex: 0 0 auto; width: var(--ok-space-2); height: var(--ok-space-2); }
-.ok-spacer--md { flex: 0 0 auto; width: var(--ok-space-4); height: var(--ok-space-4); }
-.ok-spacer--lg { flex: 0 0 auto; width: var(--ok-space-6); height: var(--ok-space-6); }
-.ok-spacer--xl { flex: 0 0 auto; width: var(--ok-space-8); height: var(--ok-space-8); }
+.spacer.xs { flex: 0 0 auto; width: var(--space-1); height: var(--space-1); }
+.spacer.sm { flex: 0 0 auto; width: var(--space-2); height: var(--space-2); }
+.spacer.md { flex: 0 0 auto; width: var(--space-4); height: var(--space-4); }
+.spacer.lg { flex: 0 0 auto; width: var(--space-6); height: var(--space-6); }
+.spacer.xl { flex: 0 0 auto; width: var(--space-8); height: var(--space-8); }
 
-.ok-spacer--block {
+.spacer.block {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: var(--ok-space-4);
+  margin-top: var(--space-4);
   flex: 0 0 auto;
 }
 
-.ok-spacer--divider {
+.spacer.divider {
   display: block;
   width: 100%;
   height: 1px;
-  background: var(--ok-line);
-  margin: var(--ok-space-3) 0;
+  background: var(--line);
+  margin: var(--space-3) 0;
   flex: 0 0 auto;
 }
 
@@ -350,7 +350,7 @@
    Resizable container (CSS native resize)
    ============================================================ */
 
-.ok-resize {
+.resize {
   --_min-w: 120px;
   --_min-h: 80px;
   --_max-w: 100%;
@@ -358,29 +358,29 @@
   position: relative;
   resize: both;
   overflow: auto;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  padding: var(--ok-space-3);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
   min-width: var(--_min-w);
   min-height: var(--_min-h);
   max-width: var(--_max-w);
   max-height: var(--_max-h);
 }
 
-.ok-resize--x { resize: horizontal; }
-.ok-resize--y { resize: vertical; }
+.resize.x { resize: horizontal; }
+.resize.y { resize: vertical; }
 
-.ok-resize__handle {
+.resize__handle {
   position: absolute;
   bottom: 0;
   right: 0;
   width: 14px;
   height: 14px;
   pointer-events: none;
-  color: var(--ok-ink-4);
+  color: var(--ink-4);
 }
-.ok-resize__handle::after {
+.resize__handle::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -389,92 +389,92 @@
   opacity: 0.7;
 }
 
-.ok-resize:hover .ok-resize__handle { color: var(--ok-ink-3); }
+.resize:hover .resize__handle { color: var(--ink-3); }
 
 /* ============================================================
    7. SPLIT
    Split-pane layout
    ============================================================ */
 
-.ok-split {
+.split {
   display: flex;
   flex-direction: row;
   height: 100%;
   min-height: 0;
   width: 100%;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
   overflow: hidden;
 }
 
-.ok-split__pane {
+.split__pane {
   flex: 1 1 0;
   min-width: 0;
   min-height: 0;
-  padding: var(--ok-space-4);
+  padding: var(--space-4);
   overflow: hidden;
 }
 
-.ok-split__pane--fixed {
+.split__pane--fixed {
   flex: 0 0 auto;
 }
 
-.ok-split__pane--scroll {
+.split__pane--scroll {
   overflow: auto;
 }
 
-.ok-split__divider {
+.split__divider {
   flex: 0 0 6px;
-  background: var(--ok-bg-1);
-  border-left: 1px solid var(--ok-line);
-  border-right: 1px solid var(--ok-line);
+  background: var(--bg-1);
+  border-left: var(--border-w) solid var(--line);
+  border-right: var(--border-w) solid var(--line);
   cursor: col-resize;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--ok-dur-fast) var(--ok-ease-out);
+  transition: background var(--dur-fast) var(--ease-out);
 }
-.ok-split__divider:hover {
-  background: var(--ok-bg-3);
+.split__divider:hover {
+  background: var(--bg-3);
 }
-.ok-split__divider::before {
+.split__divider::before {
   content: "";
   width: 2px;
   height: 18px;
   background:
-    radial-gradient(circle, var(--ok-ink-4) 1px, transparent 1.5px) 0 0 / 2px 5px repeat-y;
-  border-radius: var(--ok-radius-pill);
+    radial-gradient(circle, var(--ink-4) 1px, transparent 1.5px) 0 0 / 2px 5px repeat-y;
+  border-radius: var(--radius-pill);
 }
 
 /* Vertical split */
-.ok-split--vertical {
+.split.vertical {
   flex-direction: column;
 }
-.ok-split--vertical .ok-split__divider {
+.split.vertical .split__divider {
   flex: 0 0 6px;
   border-left: none;
   border-right: none;
-  border-top: 1px solid var(--ok-line);
-  border-bottom: 1px solid var(--ok-line);
+  border-top: var(--border-w) solid var(--line);
+  border-bottom: var(--border-w) solid var(--line);
   cursor: row-resize;
   width: 100%;
 }
-.ok-split--vertical .ok-split__divider::before {
+.split.vertical .split__divider::before {
   width: 18px;
   height: 2px;
   background:
-    radial-gradient(circle, var(--ok-ink-4) 1px, transparent 1.5px) 0 0 / 5px 2px repeat-x;
+    radial-gradient(circle, var(--ink-4) 1px, transparent 1.5px) 0 0 / 5px 2px repeat-x;
 }
 
 /* Collapsed states */
-.ok-split--collapsed-left .ok-split__pane:first-child,
-.ok-split--collapsed-left .ok-split__divider {
+.split.collapsed-left .split__pane:first-child,
+.split.collapsed-left .split__divider {
   display: none;
 }
-.ok-split--collapsed-right .ok-split__pane:last-child,
-.ok-split--collapsed-right .ok-split__divider {
+.split.collapsed-right .split__pane:last-child,
+.split.collapsed-right .split__divider {
   display: none;
 }
 
@@ -483,87 +483,87 @@
    Horizontal action bar
    ============================================================ */
 
-.ok-toolbar {
-  --_pad-y: var(--ok-space-2);
-  --_pad-x: var(--ok-space-3);
+.toolbar {
+  --_pad-y: var(--space-2);
+  --_pad-x: var(--space-3);
   display: flex;
   align-items: center;
-  gap: var(--ok-space-2);
+  gap: var(--space-2);
   padding: var(--_pad-y) var(--_pad-x);
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-lg);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
   min-height: 40px;
   flex-wrap: wrap;
 }
 
-.ok-toolbar__title {
-  font-family: var(--ok-font-display);
-  font-size: var(--ok-text-2xs);
+.toolbar__title {
+  font-family: var(--font-display);
+  font-size: var(--text-2xs);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: var(--ok-tracking-wide);
-  color: var(--ok-ink-3);
-  margin-right: var(--ok-space-2);
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-3);
+  margin-right: var(--space-2);
   flex-shrink: 0;
 }
 
-.ok-toolbar__group {
+.toolbar__group {
   display: flex;
   align-items: center;
-  gap: var(--ok-space-1);
-  border-right: 1px solid var(--ok-line);
-  padding-right: var(--ok-space-2);
+  gap: var(--space-1);
+  border-right: var(--border-w) solid var(--line);
+  padding-right: var(--space-2);
 }
-.ok-toolbar__group:last-child {
+.toolbar__group:last-child {
   border-right: none;
   padding-right: 0;
 }
 
-.ok-toolbar__divider {
+.toolbar__divider {
   width: 1px;
   height: 20px;
-  background: var(--ok-line);
+  background: var(--line);
   flex-shrink: 0;
-  margin: 0 var(--ok-space-1);
+  margin: 0 var(--space-1);
 }
 
-.ok-toolbar__spacer {
+.toolbar__spacer {
   flex: 1 1 auto;
 }
 
 /* Variants */
-.ok-toolbar--floating {
+.toolbar.floating {
   border-radius: 0;
-  box-shadow: var(--ok-shadow-md);
+  box-shadow: var(--shadow-md);
   border-left: none;
   border-right: none;
 }
 
-.ok-toolbar--ghost {
+.toolbar.ghost {
   background: transparent;
   border-color: transparent;
 }
 
 /* Sizes */
-.ok-toolbar--sm {
-  --_pad-y: var(--ok-space-1);
-  --_pad-x: var(--ok-space-2);
+.toolbar.sm {
+  --_pad-y: var(--space-1);
+  --_pad-x: var(--space-2);
   min-height: 32px;
-  font-size: var(--ok-text-xs);
+  font-size: var(--text-xs);
 }
-.ok-toolbar--sm .ok-toolbar__divider { height: 16px; }
+.toolbar.sm .toolbar__divider { height: 16px; }
 
-.ok-toolbar--lg {
-  --_pad-y: var(--ok-space-3);
-  --_pad-x: var(--ok-space-4);
+.toolbar.lg {
+  --_pad-y: var(--space-3);
+  --_pad-x: var(--space-4);
   min-height: 52px;
 }
-.ok-toolbar--lg .ok-toolbar__divider { height: 24px; }
+.toolbar.lg .toolbar__divider { height: 24px; }
 
 /* Sticky helper */
-.ok-toolbar--sticky {
+.toolbar.sticky {
   position: sticky;
   top: 0;
-  z-index: var(--ok-z-sticky);
+  z-index: var(--z-sticky);
 }

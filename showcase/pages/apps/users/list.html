@@ -15,125 +15,125 @@
 
 {% block content %}
 <style>
-body { background: var(--ok-bg); margin: 0; }
+body { background: var(--bg); margin: 0; }
 </style>
 
-<div class="ok-app" data-signals='{"sidebar": false, "selected": [], "hover": "", "q": "", "hubFilter": "all", "roleFilter": "all", "statusFilter": "all", "lastConnFilter": "all", "allChecked": false, "openMenu": null}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="app" data-signals='{"sidebar": false, "selected": [], "hover": "", "q": "", "hubFilter": "all", "roleFilter": "all", "statusFilter": "all", "lastConnFilter": "all", "allChecked": false, "openMenu": null}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">EC</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">acme · ES</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">EC</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">acme · ES</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Hubs</span></button>
-      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="ok-sidebar__label">Usuarios</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">142</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span></button>
+      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="sidebar__label">Usuarios</span><span class="sidebar__badge sidebar__badge--brand">142</span></button>
 
-      <div class="ok-sidebar__group">Facturación</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="ok-sidebar__label">Facturas</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="ok-sidebar__label">Suscripciones</span></button>
+      <div class="sidebar__group">Facturación</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="sidebar__label">Facturas</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="sidebar__label">Suscripciones</span></button>
 
-      <div class="ok-sidebar__group">Desarrollador</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="ok-sidebar__label">Repositorios</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Módulos</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Stripe Connect</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="ok-sidebar__label">Payouts</span></button>
+      <div class="sidebar__group">Desarrollador</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="sidebar__label">Repositorios</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Stripe Connect</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="sidebar__label">Payouts</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">IB</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">Usuarios de hubs</h1>
+        <h1 class="topbar__page-title">Usuarios de hubs</h1>
         
-        <div class="ok-topbar__search">
+        <div class="topbar__search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar usuarios, hubs…"/>
-        <span class="ok-topbar__kbd">⌘K</span>
+        <span class="topbar__kbd">⌘K</span>
       </div>
         
-        <div class="ok-topbar__actions">
-          <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="topbar__actions">
+          <span class="avatar sm brand">IB</span>
         </div>
       </header>
 
-    <div class="ok-app__body">
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Usuarios de hubs</h1>
-          <div class="ok-page-header__sub">Vista global · todos los usuarios con acceso a uno o más hubs de la organización</div>
+          <div class="page-header__sub">Vista global · todos los usuarios con acceso a uno o más hubs de la organización</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--ghost">Exportar CSV</button>
-          <a href="invite-hub-user.html" class="ok-btn ok-btn--primary ok-no-decoration">+ Invitar a hubs</a>
+        <div class="page-header__actions">
+          <button class="btn ghost">Exportar CSV</button>
+          <a href="invite-hub-user.html" class="btn primary no-decoration">+ Invitar a hubs</a>
         </div>
       </div>
 
       <!-- KPIs -->
-      <div class="ok-grid-4 ok-mb-4">
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Total usuarios</div>
-          <div class="ok-kpi__value">142</div>
-          <span class="ok-badge"><span class="ok-badge__dot"></span>+8 este mes</span>
+      <div class="grid-4 mb-4">
+        <div class="kpi">
+          <div class="kpi__label">Total usuarios</div>
+          <div class="kpi__value">142</div>
+          <span class="badge"><span class="badge__dot"></span>+8 este mes</span>
         </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Activos hoy</div>
-          <div class="ok-kpi__value">89</div>
-          <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>62%</span>
+        <div class="kpi">
+          <div class="kpi__label">Activos hoy</div>
+          <div class="kpi__value">89</div>
+          <span class="badge success"><span class="badge__dot"></span>62%</span>
         </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Pendientes</div>
-          <div class="ok-kpi__value ok-c-warn">5</div>
-          <span class="ok-badge ok-badge--warn"><span class="ok-badge__dot"></span>invitación enviada</span>
+        <div class="kpi">
+          <div class="kpi__label">Pendientes</div>
+          <div class="kpi__value c-warn">5</div>
+          <span class="badge warning"><span class="badge__dot"></span>invitación enviada</span>
         </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Suspendidos</div>
-          <div class="ok-kpi__value ok-c-danger">3</div>
-          <span class="ok-badge ok-badge--danger"><span class="ok-badge__dot"></span>baja temporal</span>
+        <div class="kpi">
+          <div class="kpi__label">Suspendidos</div>
+          <div class="kpi__value c-danger">3</div>
+          <span class="badge danger"><span class="badge__dot"></span>baja temporal</span>
         </div>
       </div>
 
       <!-- Toolbar with multi filters -->
-      <div class="ok-toolbar ok-mb-3">
-        <div class="ok-search" style="flex:1;min-width:240px;max-width:360px;">
-          <span class="ok-search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
-          <input class="ok-input ok-input--sm" placeholder="Buscar por nombre o email…" data-bind:q/>
+      <div class="toolbar mb-3">
+        <div class="search" style="flex:1;min-width:240px;max-width:360px;">
+          <span class="search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
+          <input class="input sm" placeholder="Buscar por nombre o email…" data-bind:q/>
         </div>
-        <div class="ok-toolbar__spacer"></div>
-        <select class="ok-select ok-select--sm" style="width:auto;min-width:140px;" data-bind:hub-filter>
+        <div class="toolbar__spacer"></div>
+        <select class="select sm" style="width:auto;min-width:140px;" data-bind:hub-filter>
           <option value="all">Todos los hubs</option>
           <option value="acme-prod">acme-prod</option>
           <option value="bodegas-casadejus">bodegas-casadejus</option>
           <option value="mariola-tienda-1">mariola-tienda-1</option>
           <option value="ferreteria-puig">ferreteria-puig</option>
         </select>
-        <select class="ok-select ok-select--sm ok-w-auto" data-bind:role-filter>
+        <select class="select sm w-auto" data-bind:role-filter>
           <option value="all">Todos los roles</option>
           <option value="admin">Admin</option>
           <option value="editor">Editor</option>
@@ -141,14 +141,14 @@ body { background: var(--ok-bg); margin: 0; }
           <option value="pos">Solo POS</option>
           <option value="pendiente">Pendiente</option>
         </select>
-        <select class="ok-select ok-select--sm ok-w-auto" data-bind:status-filter>
+        <select class="select sm w-auto" data-bind:status-filter>
           <option value="all">Cualquier estado</option>
           <option value="active">Activo</option>
           <option value="inactive">Inactivo</option>
           <option value="pending">Pendiente</option>
           <option value="suspended">Suspendido</option>
         </select>
-        <select class="ok-select ok-select--sm ok-w-auto" data-bind:last-conn-filter>
+        <select class="select sm w-auto" data-bind:last-conn-filter>
           <option value="all">Última conexión: cualquier</option>
           <option value="today">Hoy</option>
           <option value="week">Última semana</option>
@@ -158,30 +158,30 @@ body { background: var(--ok-bg); margin: 0; }
       </div>
 
       <!-- Bulk actions slide-in (Datastar) -->
-      <div data-show="$selected.length > 0" style="margin-bottom:12px;background:color-mix(in oklch, var(--ok-brand) 8%, var(--ok-bg-2));border:1px solid color-mix(in oklch, var(--ok-brand) 35%, var(--ok-line));border-radius:var(--ok-radius-md);padding:10px 14px;display:flex;align-items:center;gap:12px;">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ok-brand-3)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
-        <span style="font-size:13px;color:var(--ok-ink);"><b data-text="$selected.length">3</b> usuarios seleccionados</span>
-        <div class="ok-flex-1"></div>
-        <button class="ok-btn ok-btn--secondary ok-btn--sm">Cambiar rol</button>
-        <button class="ok-btn ok-btn--secondary ok-btn--sm">Suspender</button>
-        <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Eliminar acceso</button>
-        <button class="ok-btn ok-btn--ghost ok-btn--sm">Exportar CSV</button>
-        <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$selected = []">Cancelar</button>
+      <div data-show="$selected.length > 0" style="margin-bottom:12px;background:color-mix(in oklch, var(--brand) 8%, var(--bg-2));border:1px solid color-mix(in oklch, var(--brand) 35%, var(--line));border-radius:var(--radius-md);padding:10px 14px;display:flex;align-items:center;gap:12px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--brand-3)" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+        <span style="font-size:13px;color:var(--ink);"><b data-text="$selected.length">3</b> usuarios seleccionados</span>
+        <div class="flex-1"></div>
+        <button class="btn secondary sm">Cambiar rol</button>
+        <button class="btn secondary sm">Suspender</button>
+        <button class="btn ghost sm c-danger">Eliminar acceso</button>
+        <button class="btn ghost sm">Exportar CSV</button>
+        <button class="btn ghost sm" data-on:click="$selected = []">Cancelar</button>
       </div>
 
       <!-- Users datatable -->
-      <div class="ok-table-wrap">
-        <div class="ok-table-toolbar">
-          <span class="ok-table-toolbar__title">Usuarios</span>
-          <span class="ok-table-toolbar__count">142</span>
-          <div class="ok-table-toolbar__spacer"></div>
-          <span class="ok-text-xs ok-c-ink-3">Mostrando 18 · ordenado por última conexión</span>
+      <div class="table-wrap">
+        <div class="table-toolbar">
+          <span class="table-toolbar__title">Usuarios</span>
+          <span class="table-toolbar__count">142</span>
+          <div class="table-toolbar__spacer"></div>
+          <span class="text-xs c-ink-3">Mostrando 18 · ordenado por última conexión</span>
         </div>
-        <div class="ok-table-scroll">
-          <table class="ok-table">
+        <div class="table-scroll">
+          <table class="table">
             <thead>
               <tr>
-                <th style="width:32px;"><input type="checkbox" class="ok-check"
+                <th style="width:32px;"><input type="checkbox" class="check"
                   data-on:click="$allChecked = !$allChecked; $selected = $allChecked ? ['u1','u2','u3','u4','u5','u6','u7','u8','u9','u10','u11','u12','u13','u14','u15','u16','u17','u18'] : []"
                   data-attr:checked="$allChecked"/></th>
                 <th>Usuario</th>
@@ -194,430 +194,430 @@ body { background: var(--ok-bg); margin: 0; }
             </thead>
             <tbody>
               <tr data-show="($q === '' || 'juan garcía garcia juan.garcia@acme.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'acme-prod' || $hubFilter === 'bodegas-casadejus' || $hubFilter === 'mariola-tienda-1') && ($roleFilter === 'all' || $roleFilter === 'admin') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u1') ? $selected.filter(x=>x!=='u1') : [...$selected,'u1']"
                   data-attr:checked="$selected.includes('u1')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JG</span>
-                    <div><div class="ok-font-medium">Juan García</div><div class="ok-text-xs ok-c-ink-3">juan.garcia@acme.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm brand">JG</span>
+                    <div><div class="font-medium">Juan García</div><div class="text-xs c-ink-3">juan.garcia@acme.com</div></div>
                   </div>
                 </td>
                 <td>
-                  <span class="ok-tag ok-tag--neutral ok-tag--sm" data-on:mouseenter="$hover = 'u1'" data-on:mouseleave="$hover = ''" style="cursor:help;position:relative;">3 hubs
-                    <span data-show="$hover === 'u1'" style="position:absolute;top:calc(100% + 6px);left:0;background:var(--ok-bg-1);border:1px solid var(--ok-line);border-radius:var(--ok-radius-md);padding:8px 10px;z-index:20;white-space:nowrap;font-size:12px;box-shadow:var(--ok-shadow-md);">
+                  <span class="tag neutral sm" data-on:mouseenter="$hover = 'u1'" data-on:mouseleave="$hover = ''" style="cursor:help;position:relative;">3 hubs
+                    <span data-show="$hover === 'u1'" style="position:absolute;top:calc(100% + 6px);left:0;background:var(--bg-1);border:1px solid var(--line);border-radius:var(--radius-md);padding:8px 10px;z-index:20;white-space:nowrap;font-size:12px;box-shadow:var(--shadow-md);">
                       acme-prod · bodegas-casadejus · mariola-tienda-1
                     </span>
                   </span>
                 </td>
-                <td><span class="ok-tag ok-tag--brand ok-tag--sm">Admin</span></td>
-                <td class="ok-td--muted">hace 2 min</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u1'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag brand sm">Admin</span></td>
+                <td class="td muted">hace 2 min</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u1'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'maría lópez maria lopez maria.lopez@bodegas-casadejus.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'bodegas-casadejus') && ($roleFilter === 'all' || $roleFilter === 'editor') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u2') ? $selected.filter(x=>x!=='u2') : [...$selected,'u2']"
                   data-attr:checked="$selected.includes('u2')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#7B3F2A;color:#fff;">ML</span>
-                    <div><div class="ok-font-medium">María López</div><div class="ok-text-xs ok-c-ink-3">maria.lopez@bodegas-casadejus.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#7B3F2A;color:#fff;">ML</span>
+                    <div><div class="font-medium">María López</div><div class="text-xs c-ink-3">maria.lopez@bodegas-casadejus.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--info ok-tag--sm">Editor</span></td>
-                <td class="ok-td--muted">hace 14 min</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u2' ? null : 'u2'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u2'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag info sm">Editor</span></td>
+                <td class="td muted">hace 14 min</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u2' ? null : 'u2'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u2'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'carlos ruiz c.ruiz@logistica-peninsular.es'.includes($q.toLowerCase())) && ($hubFilter === 'all') && ($roleFilter === 'all' || $roleFilter === 'admin') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u3') ? $selected.filter(x=>x!=='u3') : [...$selected,'u3']"
                   data-attr:checked="$selected.includes('u3')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#2A6B7B;color:#fff;">CR</span>
-                    <div><div class="ok-font-medium">Carlos Ruiz</div><div class="ok-text-xs ok-c-ink-3">c.ruiz@logistica-peninsular.es</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#2A6B7B;color:#fff;">CR</span>
+                    <div><div class="font-medium">Carlos Ruiz</div><div class="text-xs c-ink-3">c.ruiz@logistica-peninsular.es</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">2 hubs</span></td>
-                <td><span class="ok-tag ok-tag--brand ok-tag--sm">Admin</span></td>
-                <td class="ok-td--muted">hace 32 min</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u3' ? null : 'u3'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u3'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">2 hubs</span></td>
+                <td><span class="tag brand sm">Admin</span></td>
+                <td class="td muted">hace 32 min</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u3' ? null : 'u3'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u3'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'ana martín martin ana.martin@mariola.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'mariola-tienda-1') && ($roleFilter === 'all' || $roleFilter === 'pos') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u4') ? $selected.filter(x=>x!=='u4') : [...$selected,'u4']"
                   data-attr:checked="$selected.includes('u4')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#C7407A;color:#fff;">AM</span>
-                    <div><div class="ok-font-medium">Ana Martín</div><div class="ok-text-xs ok-c-ink-3">ana.martin@mariola.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#C7407A;color:#fff;">AM</span>
+                    <div><div class="font-medium">Ana Martín</div><div class="text-xs c-ink-3">ana.martin@mariola.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">Solo POS</span></td>
-                <td class="ok-td--muted">hace 1 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u4' ? null : 'u4'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u4'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag neutral sm">Solo POS</span></td>
+                <td class="td muted">hace 1 h</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u4' ? null : 'u4'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u4'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'sergi puig sergi@ferreteria-puig.cat'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'ferreteria-puig') && ($roleFilter === 'all' || $roleFilter === 'admin') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u5') ? $selected.filter(x=>x!=='u5') : [...$selected,'u5']"
                   data-attr:checked="$selected.includes('u5')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#3a7d44;color:#fff;">SP</span>
-                    <div><div class="ok-font-medium">Sergi Puig</div><div class="ok-text-xs ok-c-ink-3">sergi@ferreteria-puig.cat</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#3a7d44;color:#fff;">SP</span>
+                    <div><div class="font-medium">Sergi Puig</div><div class="text-xs c-ink-3">sergi@ferreteria-puig.cat</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--brand ok-tag--sm">Admin</span></td>
-                <td class="ok-td--muted">hace 1 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u5' ? null : 'u5'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u5'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag brand sm">Admin</span></td>
+                <td class="td muted">hace 1 h</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u5' ? null : 'u5'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u5'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'núria roca nuria nuria.roca@vinos-roca.es'.includes($q.toLowerCase())) && ($hubFilter === 'all') && ($roleFilter === 'all' || $roleFilter === 'editor') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u6') ? $selected.filter(x=>x!=='u6') : [...$selected,'u6']"
                   data-attr:checked="$selected.includes('u6')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#8a3b9b;color:#fff;">NR</span>
-                    <div><div class="ok-font-medium">Núria Roca</div><div class="ok-text-xs ok-c-ink-3">nuria.roca@vinos-roca.es</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#8a3b9b;color:#fff;">NR</span>
+                    <div><div class="font-medium">Núria Roca</div><div class="text-xs c-ink-3">nuria.roca@vinos-roca.es</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">2 hubs</span></td>
-                <td><span class="ok-tag ok-tag--info ok-tag--sm">Editor</span></td>
-                <td class="ok-td--muted">hace 2 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u6' ? null : 'u6'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u6'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">2 hubs</span></td>
+                <td><span class="tag info sm">Editor</span></td>
+                <td class="td muted">hace 2 h</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u6' ? null : 'u6'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u6'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'javier castaño castano j.castano@acme.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'acme-prod') && ($roleFilter === 'all' || $roleFilter === 'admin') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u7') ? $selected.filter(x=>x!=='u7') : [...$selected,'u7']"
                   data-attr:checked="$selected.includes('u7')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#bd6620;color:#fff;">JC</span>
-                    <div><div class="ok-font-medium">Javier Castaño</div><div class="ok-text-xs ok-c-ink-3">j.castano@acme.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#bd6620;color:#fff;">JC</span>
+                    <div><div class="font-medium">Javier Castaño</div><div class="text-xs c-ink-3">j.castano@acme.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">4 hubs</span></td>
-                <td><span class="ok-tag ok-tag--brand ok-tag--sm">Admin</span></td>
-                <td class="ok-td--muted">hace 3 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u7' ? null : 'u7'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u7'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">4 hubs</span></td>
+                <td><span class="tag brand sm">Admin</span></td>
+                <td class="td muted">hace 3 h</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u7' ? null : 'u7'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u7'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'elena ferrer elena.ferrer@bodegas-casadejus.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'bodegas-casadejus') && ($roleFilter === 'all' || $roleFilter === 'viewer') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u8') ? $selected.filter(x=>x!=='u8') : [...$selected,'u8']"
                   data-attr:checked="$selected.includes('u8')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#4f6a8d;color:#fff;">EF</span>
-                    <div><div class="ok-font-medium">Elena Ferrer</div><div class="ok-text-xs ok-c-ink-3">elena.ferrer@bodegas-casadejus.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#4f6a8d;color:#fff;">EF</span>
+                    <div><div class="font-medium">Elena Ferrer</div><div class="text-xs c-ink-3">elena.ferrer@bodegas-casadejus.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">Viewer</span></td>
-                <td class="ok-td--muted">hace 5 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u8' ? null : 'u8'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u8'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag neutral sm">Viewer</span></td>
+                <td class="td muted">hace 5 h</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u8' ? null : 'u8'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u8'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'marta vidal marta.vidal@mariola.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'mariola-tienda-1') && ($roleFilter === 'all' || $roleFilter === 'pos') && ($statusFilter === 'all' || $statusFilter === 'active') && ($lastConnFilter === 'all' || $lastConnFilter === 'today')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u9') ? $selected.filter(x=>x!=='u9') : [...$selected,'u9']"
                   data-attr:checked="$selected.includes('u9')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#a8324c;color:#fff;">MV</span>
-                    <div><div class="ok-font-medium">Marta Vidal</div><div class="ok-text-xs ok-c-ink-3">marta.vidal@mariola.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#a8324c;color:#fff;">MV</span>
+                    <div><div class="font-medium">Marta Vidal</div><div class="text-xs c-ink-3">marta.vidal@mariola.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">Solo POS</span></td>
-                <td class="ok-td--muted">hace 7 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span> Activo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u9' ? null : 'u9'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u9'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag neutral sm">Solo POS</span></td>
+                <td class="td muted">hace 7 h</td>
+                <td><span class="status-dot online"></span> Activo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u9' ? null : 'u9'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u9'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'pau bonet pau.bonet@logistica-peninsular.es'.includes($q.toLowerCase())) && ($hubFilter === 'all') && ($roleFilter === 'all' || $roleFilter === 'editor') && ($statusFilter === 'all' || $statusFilter === 'inactive') && ($lastConnFilter === 'all' || $lastConnFilter === 'week')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u10') ? $selected.filter(x=>x!=='u10') : [...$selected,'u10']"
                   data-attr:checked="$selected.includes('u10')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#6a4f8a;color:#fff;">PB</span>
-                    <div><div class="ok-font-medium">Pau Bonet</div><div class="ok-text-xs ok-c-ink-3">pau.bonet@logistica-peninsular.es</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#6a4f8a;color:#fff;">PB</span>
+                    <div><div class="font-medium">Pau Bonet</div><div class="text-xs c-ink-3">pau.bonet@logistica-peninsular.es</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">3 hubs</span></td>
-                <td><span class="ok-tag ok-tag--info ok-tag--sm">Editor</span></td>
-                <td class="ok-td--muted">hace 1 d</td>
-                <td><span class="ok-status-dot"></span> Inactivo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u10' ? null : 'u10'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u10'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">3 hubs</span></td>
+                <td><span class="tag info sm">Editor</span></td>
+                <td class="td muted">hace 1 d</td>
+                <td><span class="status-dot"></span> Inactivo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u10' ? null : 'u10'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u10'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'cristina ortiz c.ortiz@vinos-roca.es'.includes($q.toLowerCase())) && ($hubFilter === 'all') && ($roleFilter === 'all' || $roleFilter === 'admin') && ($statusFilter === 'all' || $statusFilter === 'inactive') && ($lastConnFilter === 'all' || $lastConnFilter === 'week')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u11') ? $selected.filter(x=>x!=='u11') : [...$selected,'u11']"
                   data-attr:checked="$selected.includes('u11')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#207a72;color:#fff;">CO</span>
-                    <div><div class="ok-font-medium">Cristina Ortiz</div><div class="ok-text-xs ok-c-ink-3">c.ortiz@vinos-roca.es</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#207a72;color:#fff;">CO</span>
+                    <div><div class="font-medium">Cristina Ortiz</div><div class="text-xs c-ink-3">c.ortiz@vinos-roca.es</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--brand ok-tag--sm">Admin</span></td>
-                <td class="ok-td--muted">hace 1 d</td>
-                <td><span class="ok-status-dot"></span> Inactivo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u11' ? null : 'u11'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u11'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag brand sm">Admin</span></td>
+                <td class="td muted">hace 1 d</td>
+                <td><span class="status-dot"></span> Inactivo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u11' ? null : 'u11'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u11'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'david iglesias david.iglesias@ferreteria-puig.cat'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'ferreteria-puig') && ($roleFilter === 'all' || $roleFilter === 'viewer') && ($statusFilter === 'all' || $statusFilter === 'inactive') && ($lastConnFilter === 'all' || $lastConnFilter === 'week')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u12') ? $selected.filter(x=>x!=='u12') : [...$selected,'u12']"
                   data-attr:checked="$selected.includes('u12')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#7c5b2a;color:#fff;">DI</span>
-                    <div><div class="ok-font-medium">David Iglesias</div><div class="ok-text-xs ok-c-ink-3">david.iglesias@ferreteria-puig.cat</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#7c5b2a;color:#fff;">DI</span>
+                    <div><div class="font-medium">David Iglesias</div><div class="text-xs c-ink-3">david.iglesias@ferreteria-puig.cat</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">Viewer</span></td>
-                <td class="ok-td--muted">hace 2 d</td>
-                <td><span class="ok-status-dot"></span> Inactivo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u12' ? null : 'u12'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u12'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag neutral sm">Viewer</span></td>
+                <td class="td muted">hace 2 d</td>
+                <td><span class="status-dot"></span> Inactivo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u12' ? null : 'u12'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u12'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'rocío mendoza rocio rocio.mendoza@acme.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'acme-prod') && ($roleFilter === 'all' || $roleFilter === 'editor') && ($statusFilter === 'all' || $statusFilter === 'inactive') && ($lastConnFilter === 'all' || $lastConnFilter === 'week')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u13') ? $selected.filter(x=>x!=='u13') : [...$selected,'u13']"
                   data-attr:checked="$selected.includes('u13')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#506c87;color:#fff;">RM</span>
-                    <div><div class="ok-font-medium">Rocío Mendoza</div><div class="ok-text-xs ok-c-ink-3">rocio.mendoza@acme.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#506c87;color:#fff;">RM</span>
+                    <div><div class="font-medium">Rocío Mendoza</div><div class="text-xs c-ink-3">rocio.mendoza@acme.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">2 hubs</span></td>
-                <td><span class="ok-tag ok-tag--info ok-tag--sm">Editor</span></td>
-                <td class="ok-td--muted">hace 4 d</td>
-                <td><span class="ok-status-dot"></span> Inactivo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u13' ? null : 'u13'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u13'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">2 hubs</span></td>
+                <td><span class="tag info sm">Editor</span></td>
+                <td class="td muted">hace 4 d</td>
+                <td><span class="status-dot"></span> Inactivo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u13' ? null : 'u13'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u13'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'andrés tovar andres a.tovar@bodegas-casadejus.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'bodegas-casadejus') && ($roleFilter === 'all' || $roleFilter === 'pendiente') && ($statusFilter === 'all' || $statusFilter === 'pending') && ($lastConnFilter === 'all' || $lastConnFilter === 'older')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u14') ? $selected.filter(x=>x!=='u14') : [...$selected,'u14']"
                   data-attr:checked="$selected.includes('u14')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#9d4838;color:#fff;">AT</span>
-                    <div><div class="ok-font-medium">Andrés Tovar</div><div class="ok-text-xs ok-c-ink-3">a.tovar@bodegas-casadejus.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#9d4838;color:#fff;">AT</span>
+                    <div><div class="font-medium">Andrés Tovar</div><div class="text-xs c-ink-3">a.tovar@bodegas-casadejus.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--warn ok-tag--sm">Pendiente</span></td>
-                <td class="ok-td--muted">—</td>
-                <td><span class="ok-badge ok-badge--warn"><span class="ok-badge__dot"></span>Pendiente</span></td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u14' ? null : 'u14'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u14'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Reenviar invitación</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Cancelar invitación</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag warning sm">Pendiente</span></td>
+                <td class="td muted">—</td>
+                <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u14' ? null : 'u14'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u14'">
+                    <button class="btn ghost sm w-full justify-start">Reenviar invitación</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Cancelar invitación</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'laura pérez perez laura.perez@mariola.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'mariola-tienda-1') && ($roleFilter === 'all' || $roleFilter === 'pendiente') && ($statusFilter === 'all' || $statusFilter === 'pending') && ($lastConnFilter === 'all' || $lastConnFilter === 'older')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u15') ? $selected.filter(x=>x!=='u15') : [...$selected,'u15']"
                   data-attr:checked="$selected.includes('u15')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#5b8e5e;color:#fff;">LP</span>
-                    <div><div class="ok-font-medium">Laura Pérez</div><div class="ok-text-xs ok-c-ink-3">laura.perez@mariola.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#5b8e5e;color:#fff;">LP</span>
+                    <div><div class="font-medium">Laura Pérez</div><div class="text-xs c-ink-3">laura.perez@mariola.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--warn ok-tag--sm">Pendiente</span></td>
-                <td class="ok-td--muted">—</td>
-                <td><span class="ok-badge ok-badge--warn"><span class="ok-badge__dot"></span>Pendiente</span></td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u15' ? null : 'u15'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u15'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Reenviar invitación</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Cancelar invitación</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag warning sm">Pendiente</span></td>
+                <td class="td muted">—</td>
+                <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u15' ? null : 'u15'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u15'">
+                    <button class="btn ghost sm w-full justify-start">Reenviar invitación</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Cancelar invitación</button>
                   </div>
                 </td>
               </tr>
               <tr data-show="($q === '' || 'xavi fontana xavi@vinos-roca.es'.includes($q.toLowerCase())) && ($hubFilter === 'all') && ($roleFilter === 'all' || $roleFilter === 'editor') && ($statusFilter === 'all' || $statusFilter === 'inactive') && ($lastConnFilter === 'all' || $lastConnFilter === 'month')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u16') ? $selected.filter(x=>x!=='u16') : [...$selected,'u16']"
                   data-attr:checked="$selected.includes('u16')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#a07033;color:#fff;">XF</span>
-                    <div><div class="ok-font-medium">Xavi Fontana</div><div class="ok-text-xs ok-c-ink-3">xavi@vinos-roca.es</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#a07033;color:#fff;">XF</span>
+                    <div><div class="font-medium">Xavi Fontana</div><div class="text-xs c-ink-3">xavi@vinos-roca.es</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">3 hubs</span></td>
-                <td><span class="ok-tag ok-tag--info ok-tag--sm">Editor</span></td>
-                <td class="ok-td--muted">hace 14 d</td>
-                <td><span class="ok-status-dot"></span> Inactivo</td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u16' ? null : 'u16'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u16'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Suspender</button>
+                <td><span class="tag neutral sm">3 hubs</span></td>
+                <td><span class="tag info sm">Editor</span></td>
+                <td class="td muted">hace 14 d</td>
+                <td><span class="status-dot"></span> Inactivo</td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u16' ? null : 'u16'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u16'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Suspender</button>
                   </div>
                 </td>
               </tr>
               <tr style="opacity:0.6;" data-show="($q === '' || 'sara moreno sara.moreno@acme.com'.includes($q.toLowerCase())) && ($hubFilter === 'all' || $hubFilter === 'acme-prod') && ($roleFilter === 'all' || $roleFilter === 'viewer') && ($statusFilter === 'all' || $statusFilter === 'suspended') && ($lastConnFilter === 'all' || $lastConnFilter === 'older')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u17') ? $selected.filter(x=>x!=='u17') : [...$selected,'u17']"
                   data-attr:checked="$selected.includes('u17')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#666;color:#fff;">SM</span>
-                    <div><div class="ok-font-medium">Sara Moreno</div><div class="ok-text-xs ok-c-ink-3">sara.moreno@acme.com</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#666;color:#fff;">SM</span>
+                    <div><div class="font-medium">Sara Moreno</div><div class="text-xs c-ink-3">sara.moreno@acme.com</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">1 hub</span></td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">Viewer</span></td>
-                <td class="ok-td--muted">hace 31 d</td>
-                <td><span class="ok-badge ok-badge--danger"><span class="ok-badge__dot"></span>Suspendido</span></td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u17' ? null : 'u17'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u17'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Reactivar</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar acceso</button>
+                <td><span class="tag neutral sm">1 hub</span></td>
+                <td><span class="tag neutral sm">Viewer</span></td>
+                <td class="td muted">hace 31 d</td>
+                <td><span class="badge danger"><span class="badge__dot"></span>Suspendido</span></td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u17' ? null : 'u17'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u17'">
+                    <button class="btn ghost sm w-full justify-start">Reactivar</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar acceso</button>
                   </div>
                 </td>
               </tr>
               <tr style="opacity:0.6;" data-show="($q === '' || 'manuel ortega manuel.ortega@logistica-peninsular.es'.includes($q.toLowerCase())) && ($hubFilter === 'all') && ($roleFilter === 'all' || $roleFilter === 'pos') && ($statusFilter === 'all' || $statusFilter === 'suspended') && ($lastConnFilter === 'all' || $lastConnFilter === 'older')">
-                <td><input type="checkbox" class="ok-check"
+                <td><input type="checkbox" class="check"
                   data-on:click="$selected = $selected.includes('u18') ? $selected.filter(x=>x!=='u18') : [...$selected,'u18']"
                   data-attr:checked="$selected.includes('u18')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm" style="background:#666;color:#fff;">MO</span>
-                    <div><div class="ok-font-medium">Manuel Ortega</div><div class="ok-text-xs ok-c-ink-3">manuel.ortega@logistica-peninsular.es</div></div>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm" style="background:#666;color:#fff;">MO</span>
+                    <div><div class="font-medium">Manuel Ortega</div><div class="text-xs c-ink-3">manuel.ortega@logistica-peninsular.es</div></div>
                   </div>
                 </td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">2 hubs</span></td>
-                <td><span class="ok-tag ok-tag--neutral ok-tag--sm">Solo POS</span></td>
-                <td class="ok-td--muted">hace 42 d</td>
-                <td><span class="ok-badge ok-badge--danger"><span class="ok-badge__dot"></span>Suspendido</span></td>
-                <td class="ok-relative">
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$openMenu = $openMenu === 'u18' ? null : 'u18'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u18'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Reactivar</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar acceso</button>
+                <td><span class="tag neutral sm">2 hubs</span></td>
+                <td><span class="tag neutral sm">Solo POS</span></td>
+                <td class="td muted">hace 42 d</td>
+                <td><span class="badge danger"><span class="badge__dot"></span>Suspendido</span></td>
+                <td class="relative">
+                  <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u18' ? null : 'u18'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u18'">
+                    <button class="btn ghost sm w-full justify-start">Reactivar</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar acceso</button>
                   </div>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div class="ok-table-footer" style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ok-ink-3);">
+        <div class="table-footer" style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-3);">
           <span>Mostrando 1–18 de 142 usuarios</span>
-          <div class="ok-pager">
-            <button class="ok-pager__btn" disabled>‹</button>
-            <span class="ok-pager__info">Página 1 de 8</span>
-            <button class="ok-pager__btn">›</button>
+          <div class="pager">
+            <button class="pager__btn" disabled>‹</button>
+            <span class="pager__info">Página 1 de 8</span>
+            <button class="pager__btn">›</button>
           </div>
         </div>
       </div>
@@ -627,28 +627,28 @@ body { background: var(--ok-bg); margin: 0; }
 
 
   <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="#" aria-current="page">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="#" aria-current="page">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Hubs</span>
-        <span class="ok-tabbar-badge">7</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Hubs</span>
+        <span class="tabbar-badge">7</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Equipo</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Equipo</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

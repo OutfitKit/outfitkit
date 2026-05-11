@@ -11,218 +11,218 @@
 {% set _src_jinja_1 %}{% raw %}{% from "ui/datatable.jinja" import datatable %}
 {% call datatable(attrs={"data-signals": "{view: 'table'}"}) %}
   <!-- Toolbar única: búsqueda · filtros · rango fechas · spacer · page-size · view-toggle · io · acción primaria -->
-  <div class="ok-dt-toolbar">
-    <div class="ok-search" style="flex:1 1 220px;max-width:300px">
-      <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input class="ok-input ok-input--sm" placeholder="Buscar pedido o cliente…"/>
+  <div class="dt-toolbar">
+    <div class="search" style="flex:1 1 220px;max-width:300px">
+      <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input class="input sm" placeholder="Buscar pedido o cliente…"/>
     </div>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:140px">
+    <select class="select sm" style="width:auto;min-width:140px">
       <option>Todos los Estados</option>
       <option>Pagado</option>
       <option>Procesando</option>
       <option>Reembolso</option>
     </select>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:130px">
+    <select class="select sm" style="width:auto;min-width:130px">
       <option>Todos los tipos</option>
       <option>POS · Local</option>
       <option>Web</option>
       <option>App</option>
     </select>
 
-    <label class="ok-date-range" title="Rango de fechas">
+    <label class="date-range" title="Rango de fechas">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
       <span>01/10/25</span>
-      <span class="ok-date-range__sep">→</span>
+      <span class="date-range__sep">→</span>
       <span>18/10/25</span>
     </label>
 
-    <div class="ok-dt-toolbar__spacer"></div>
+    <div class="dt-toolbar__spacer"></div>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:64px" title="Por página">
+    <select class="select sm" style="width:auto;min-width:64px" title="Por página">
       <option>10</option><option selected>25</option><option>50</option><option>100</option>
     </select>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
     <!-- View toggle: tabla / grid -->
-    <div class="ok-view-toggle" role="tablist" aria-label="Vista">
-      <button class="ok-view-toggle__btn" data-on:click="$view = 'table'" data-attr:aria-pressed="$view === 'table'" title="Vista tabla">
+    <div class="view-toggle" role="tablist" aria-label="Vista">
+      <button class="view-toggle__btn" data-on:click="$view = 'table'" data-attr:aria-pressed="$view === 'table'" title="Vista tabla">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
-      <button class="ok-view-toggle__btn" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'" title="Vista cuadrícula">
+      <button class="view-toggle__btn" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'" title="Vista cuadrícula">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       </button>
     </div>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
     <!-- IO icons sin texto -->
-    <button class="ok-icon-btn" title="Importar">
+    <button class="icon-btn" title="Importar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     </button>
-    <button class="ok-icon-btn" title="Exportar">
+    <button class="icon-btn" title="Exportar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
     </button>
-    <button class="ok-icon-btn" title="Más opciones">
+    <button class="icon-btn" title="Más opciones">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
     </button>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
-    <button class="ok-btn ok-btn--primary ok-btn--sm">+ Nuevo</button>
+    <button class="btn primary sm">+ Nuevo</button>
   </div>
 
   <!-- Vista tabla -->
-  <div id="view-table" class="ok-table-scroll" data-show="$view === 'table'">
-    <table class="ok-table">
+  <div id="view-table" class="table-scroll" data-show="$view === 'table'">
+    <table class="table">
       <thead>
         <tr>
-          <th style="width:36px"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
-          <th class="ok-th--sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
-          <th class="ok-th--sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
-          <th class="ok-th--sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
-          <th class="ok-th--sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
+          <th style="width:36px"><label class="check"><input type="checkbox"/><span class="check__box"></span></label></th>
+          <th class="th sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
+          <th class="th sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
+          <th class="th sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
+          <th class="th sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
           <th>Tendencia 7d</th>
-          <th class="ok-th--sortable ok-td--right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
-          <th class="ok-th--sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
+          <th class="th sortable td right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
+          <th class="th sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
           <th style="width:120px;text-align:right">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2041</td>
+          <td><label class="check"><input type="checkbox" checked/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2041</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="brand">MR</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Marina Ribó</span>
-                <span class="ok-cell-rich__sub">Habitual · 24 pedidos</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="brand">MR</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Marina Ribó</span>
+                <span class="cell-rich__sub">Habitual · 24 pedidos</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">POS · Local</span></td>
-          <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span></td>
-          <td><svg class="ok-spark ok-spark--up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,16 10,14 20,15 30,10 40,11 50,8 60,7 70,5 80,4"/></svg></td>
-          <td class="ok-td--num">€324,50</td>
-          <td class="ok-td--muted">Hoy · 14:22</td>
+          <td><span class="badge">POS · Local</span></td>
+          <td><span class="pill success"><span class="pill__dot"></span>Pagado</span></td>
+          <td><svg class="spark up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,16 10,14 20,15 30,10 40,11 50,8 60,7 70,5 80,4"/></svg></td>
+          <td class="td num">€324,50</td>
+          <td class="td muted">Hoy · 14:22</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr aria-selected="true">
-          <td><label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2040</td>
+          <td><label class="check"><input type="checkbox" checked/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2040</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="info">JG</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Joaquín Gómez</span>
-                <span class="ok-cell-rich__sub">Nuevo</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="info">JG</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Joaquín Gómez</span>
+                <span class="cell-rich__sub">Nuevo</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Web</span></td>
-          <td><span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Procesando</span></td>
+          <td><span class="badge info"><span class="badge__dot"></span>Web</span></td>
+          <td><span class="pill warning"><span class="pill__dot"></span>Procesando</span></td>
           <td>
-            <span class="ok-spark-bars ok-spark-bars--brand">
-              <span class="ok-spark-bars__bar" style="height:30%"></span>
-              <span class="ok-spark-bars__bar" style="height:55%"></span>
-              <span class="ok-spark-bars__bar" style="height:42%"></span>
-              <span class="ok-spark-bars__bar" style="height:75%"></span>
-              <span class="ok-spark-bars__bar" style="height:60%"></span>
-              <span class="ok-spark-bars__bar" style="height:85%"></span>
-              <span class="ok-spark-bars__bar ok-h-full"></span>
+            <span class="spark-bars brand">
+              <span class="spark-bars__bar" style="height:30%"></span>
+              <span class="spark-bars__bar" style="height:55%"></span>
+              <span class="spark-bars__bar" style="height:42%"></span>
+              <span class="spark-bars__bar" style="height:75%"></span>
+              <span class="spark-bars__bar" style="height:60%"></span>
+              <span class="spark-bars__bar" style="height:85%"></span>
+              <span class="spark-bars__bar h-full"></span>
             </span>
           </td>
-          <td class="ok-td--num">€186,00</td>
-          <td class="ok-td--muted">Hoy · 13:48</td>
+          <td class="td num">€186,00</td>
+          <td class="td muted">Hoy · 13:48</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2039</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2039</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="ok">EL</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Eva Linares</span>
-                <span class="ok-cell-rich__sub">VIP · 5 años</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="ok">EL</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Eva Linares</span>
+                <span class="cell-rich__sub">VIP · 5 años</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">App</span></td>
-          <td><span class="ok-pill ok-pill--danger"><span class="ok-pill__dot"></span>Reembolso</span></td>
-          <td><svg class="ok-spark ok-spark--down" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,17"/></svg></td>
-          <td class="ok-td--num ok-c-danger">−€42,00</td>
-          <td class="ok-td--muted">Ayer · 18:02</td>
+          <td><span class="badge">App</span></td>
+          <td><span class="pill danger"><span class="pill__dot"></span>Reembolso</span></td>
+          <td><svg class="spark down" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,17"/></svg></td>
+          <td class="td num c-danger">−€42,00</td>
+          <td class="td muted">Ayer · 18:02</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2038</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2038</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="warn">RP</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Roberto Pinto</span>
-                <span class="ok-cell-rich__sub">Habitual</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="warn">RP</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Roberto Pinto</span>
+                <span class="cell-rich__sub">Habitual</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Web</span></td>
-          <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span></td>
-          <td><svg class="ok-spark ok-spark--up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,18 10,16 20,14 30,15 40,11 50,9 60,10 70,6 80,4"/></svg></td>
-          <td class="ok-td--num">€312,80</td>
-          <td class="ok-td--muted">Ayer · 12:30</td>
+          <td><span class="badge info"><span class="badge__dot"></span>Web</span></td>
+          <td><span class="pill success"><span class="pill__dot"></span>Pagado</span></td>
+          <td><svg class="spark up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,18 10,16 20,14 30,15 40,11 50,9 60,10 70,6 80,4"/></svg></td>
+          <td class="td num">€312,80</td>
+          <td class="td muted">Ayer · 12:30</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2037</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2037</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm">SC</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Sara Caamaño</span>
-                <span class="ok-cell-rich__sub">Nuevo</span>
+            <div class="cell-rich">
+              <div class="avatar sm">SC</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Sara Caamaño</span>
+                <span class="cell-rich__sub">Nuevo</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">POS · Local</span></td>
-          <td><span class="ok-pill ok-pill--info"><span class="ok-pill__dot"></span>Pendiente envío</span></td>
-          <td><span class="ok-trend ok-trend--up">+12%</span></td>
-          <td class="ok-td--num">€68,00</td>
-          <td class="ok-td--muted">Lun · 09:14</td>
+          <td><span class="badge">POS · Local</span></td>
+          <td><span class="pill info"><span class="pill__dot"></span>Pendiente envío</span></td>
+          <td><span class="trend up">+12%</span></td>
+          <td class="td num">€68,00</td>
+          <td class="td muted">Lun · 09:14</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
@@ -231,397 +231,397 @@
   </div>
 
   <!-- Vista grid (oculta por defecto) -->
-  <div id="view-grid" class="ok-dt-grid" data-show="$view === 'grid'">
-    <article class="ok-dt-card" aria-selected="true">
-      <header class="ok-dt-card__head">
+  <div id="view-grid" class="dt-grid" data-show="$view === 'grid'">
+    <article class="dt-card" aria-selected="true">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Marina Ribó</div>
-            <div class="ok-dt-card__sub">#PED-2041</div>
+            <div class="dt-card__title">Marina Ribó</div>
+            <div class="dt-card__sub">#PED-2041</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€324,50</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Hoy · 14:22</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+18%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€324,50</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Hoy · 14:22</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+18%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox" checked/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Joaquín Gómez</div>
-            <div class="ok-dt-card__sub">#PED-2040</div>
+            <div class="dt-card__title">Joaquín Gómez</div>
+            <div class="dt-card__sub">#PED-2040</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Procesando</span>
+        <span class="pill warning"><span class="pill__dot"></span>Procesando</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€186,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>Web</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Hoy · 13:48</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+24%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€186,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>Web</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Hoy · 13:48</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+24%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Eva Linares</div>
-            <div class="ok-dt-card__sub">#PED-2039</div>
+            <div class="dt-card__title">Eva Linares</div>
+            <div class="dt-card__sub">#PED-2039</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--danger"><span class="ok-pill__dot"></span>Reembolso</span>
+        <span class="pill danger"><span class="pill__dot"></span>Reembolso</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong class="ok-c-danger">−€42,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>App</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Ayer · 18:02</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--down">−8%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong class="c-danger">−€42,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>App</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Ayer · 18:02</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend down">−8%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Roberto Pinto</div>
-            <div class="ok-dt-card__sub">#PED-2038</div>
+            <div class="dt-card__title">Roberto Pinto</div>
+            <div class="dt-card__sub">#PED-2038</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€312,80</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>Web</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Ayer · 12:30</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+15%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€312,80</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>Web</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Ayer · 12:30</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+15%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Sara Caamaño</div>
-            <div class="ok-dt-card__sub">#PED-2037</div>
+            <div class="dt-card__title">Sara Caamaño</div>
+            <div class="dt-card__sub">#PED-2037</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--info"><span class="ok-pill__dot"></span>Pendiente</span>
+        <span class="pill info"><span class="pill__dot"></span>Pendiente</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€68,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Lun · 09:14</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+12%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€68,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Lun · 09:14</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+12%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Pablo Núñez</div>
-            <div class="ok-dt-card__sub">#PED-2036</div>
+            <div class="dt-card__title">Pablo Núñez</div>
+            <div class="dt-card__sub">#PED-2036</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€152,40</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>App</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Lun · 08:02</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+5%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€152,40</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>App</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Lun · 08:02</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+5%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
   </div>
 
-  <div class="ok-table-footer">
+  <div class="table-footer">
     <div>Mostrando 1–25 de 1.284 registros</div>
-    <nav class="ok-pagination" aria-label="Paginación">
-      <button class="ok-pagination__btn" disabled>‹</button>
-      <button class="ok-pagination__btn" aria-current="page">1</button>
-      <button class="ok-pagination__btn">2</button>
-      <button class="ok-pagination__btn">3</button>
-      <span class="ok-pagination__ellipsis">…</span>
-      <button class="ok-pagination__btn">52</button>
-      <button class="ok-pagination__btn">›</button>
+    <nav class="pagination" aria-label="Paginación">
+      <button class="pagination__btn" disabled>‹</button>
+      <button class="pagination__btn" aria-current="page">1</button>
+      <button class="pagination__btn">2</button>
+      <button class="pagination__btn">3</button>
+      <span class="pagination__ellipsis">…</span>
+      <button class="pagination__btn">52</button>
+      <button class="pagination__btn">›</button>
     </nav>
   </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Datatable :attrs="{'data-signals': '{\"view\": \"table\"}'}">
   <!-- Toolbar única: búsqueda · filtros · rango fechas · spacer · page-size · view-toggle · io · acción primaria -->
-  <div class="ok-dt-toolbar">
-    <div class="ok-search" style="flex:1 1 220px;max-width:300px">
-      <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input class="ok-input ok-input--sm" placeholder="Buscar pedido o cliente…"/>
+  <div class="dt-toolbar">
+    <div class="search" style="flex:1 1 220px;max-width:300px">
+      <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input class="input sm" placeholder="Buscar pedido o cliente…"/>
     </div>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:140px">
+    <select class="select sm" style="width:auto;min-width:140px">
       <option>Todos los Estados</option>
       <option>Pagado</option>
       <option>Procesando</option>
       <option>Reembolso</option>
     </select>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:130px">
+    <select class="select sm" style="width:auto;min-width:130px">
       <option>Todos los tipos</option>
       <option>POS · Local</option>
       <option>Web</option>
       <option>App</option>
     </select>
 
-    <label class="ok-date-range" title="Rango de fechas">
+    <label class="date-range" title="Rango de fechas">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
       <span>01/10/25</span>
-      <span class="ok-date-range__sep">→</span>
+      <span class="date-range__sep">→</span>
       <span>18/10/25</span>
     </label>
 
-    <div class="ok-dt-toolbar__spacer"></div>
+    <div class="dt-toolbar__spacer"></div>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:64px" title="Por página">
+    <select class="select sm" style="width:auto;min-width:64px" title="Por página">
       <option>10</option><option selected>25</option><option>50</option><option>100</option>
     </select>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
     <!-- View toggle: tabla / grid -->
-    <div class="ok-view-toggle" role="tablist" aria-label="Vista">
-      <button class="ok-view-toggle__btn" data-on:click="$view = 'table'" data-attr:aria-pressed="$view === 'table'" title="Vista tabla">
+    <div class="view-toggle" role="tablist" aria-label="Vista">
+      <button class="view-toggle__btn" data-on:click="$view = 'table'" data-attr:aria-pressed="$view === 'table'" title="Vista tabla">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
-      <button class="ok-view-toggle__btn" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'" title="Vista cuadrícula">
+      <button class="view-toggle__btn" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'" title="Vista cuadrícula">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       </button>
     </div>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
     <!-- IO icons sin texto -->
-    <button class="ok-icon-btn" title="Importar">
+    <button class="icon-btn" title="Importar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     </button>
-    <button class="ok-icon-btn" title="Exportar">
+    <button class="icon-btn" title="Exportar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
     </button>
-    <button class="ok-icon-btn" title="Más opciones">
+    <button class="icon-btn" title="Más opciones">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
     </button>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
-    <button class="ok-btn ok-btn--primary ok-btn--sm">+ Nuevo</button>
+    <button class="btn primary sm">+ Nuevo</button>
   </div>
 
   <!-- Vista tabla -->
-  <div id="view-table" class="ok-table-scroll" data-show="$view === 'table'">
-    <table class="ok-table">
+  <div id="view-table" class="table-scroll" data-show="$view === 'table'">
+    <table class="table">
       <thead>
         <tr>
-          <th style="width:36px"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
-          <th class="ok-th--sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
-          <th class="ok-th--sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
-          <th class="ok-th--sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
-          <th class="ok-th--sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
+          <th style="width:36px"><label class="check"><input type="checkbox"/><span class="check__box"></span></label></th>
+          <th class="th sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
+          <th class="th sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
+          <th class="th sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
+          <th class="th sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
           <th>Tendencia 7d</th>
-          <th class="ok-th--sortable ok-td--right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
-          <th class="ok-th--sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
+          <th class="th sortable td right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
+          <th class="th sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
           <th style="width:120px;text-align:right">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2041</td>
+          <td><label class="check"><input type="checkbox" checked/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2041</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="brand">MR</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Marina Ribó</span>
-                <span class="ok-cell-rich__sub">Habitual · 24 pedidos</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="brand">MR</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Marina Ribó</span>
+                <span class="cell-rich__sub">Habitual · 24 pedidos</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">POS · Local</span></td>
-          <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span></td>
-          <td><svg class="ok-spark ok-spark--up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,16 10,14 20,15 30,10 40,11 50,8 60,7 70,5 80,4"/></svg></td>
-          <td class="ok-td--num">€324,50</td>
-          <td class="ok-td--muted">Hoy · 14:22</td>
+          <td><span class="badge">POS · Local</span></td>
+          <td><span class="pill success"><span class="pill__dot"></span>Pagado</span></td>
+          <td><svg class="spark up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,16 10,14 20,15 30,10 40,11 50,8 60,7 70,5 80,4"/></svg></td>
+          <td class="td num">€324,50</td>
+          <td class="td muted">Hoy · 14:22</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr aria-selected="true">
-          <td><label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2040</td>
+          <td><label class="check"><input type="checkbox" checked/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2040</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="info">JG</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Joaquín Gómez</span>
-                <span class="ok-cell-rich__sub">Nuevo</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="info">JG</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Joaquín Gómez</span>
+                <span class="cell-rich__sub">Nuevo</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Web</span></td>
-          <td><span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Procesando</span></td>
+          <td><span class="badge info"><span class="badge__dot"></span>Web</span></td>
+          <td><span class="pill warning"><span class="pill__dot"></span>Procesando</span></td>
           <td>
-            <span class="ok-spark-bars ok-spark-bars--brand">
-              <span class="ok-spark-bars__bar" style="height:30%"></span>
-              <span class="ok-spark-bars__bar" style="height:55%"></span>
-              <span class="ok-spark-bars__bar" style="height:42%"></span>
-              <span class="ok-spark-bars__bar" style="height:75%"></span>
-              <span class="ok-spark-bars__bar" style="height:60%"></span>
-              <span class="ok-spark-bars__bar" style="height:85%"></span>
-              <span class="ok-spark-bars__bar ok-h-full"></span>
+            <span class="spark-bars brand">
+              <span class="spark-bars__bar" style="height:30%"></span>
+              <span class="spark-bars__bar" style="height:55%"></span>
+              <span class="spark-bars__bar" style="height:42%"></span>
+              <span class="spark-bars__bar" style="height:75%"></span>
+              <span class="spark-bars__bar" style="height:60%"></span>
+              <span class="spark-bars__bar" style="height:85%"></span>
+              <span class="spark-bars__bar h-full"></span>
             </span>
           </td>
-          <td class="ok-td--num">€186,00</td>
-          <td class="ok-td--muted">Hoy · 13:48</td>
+          <td class="td num">€186,00</td>
+          <td class="td muted">Hoy · 13:48</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2039</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2039</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="ok">EL</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Eva Linares</span>
-                <span class="ok-cell-rich__sub">VIP · 5 años</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="ok">EL</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Eva Linares</span>
+                <span class="cell-rich__sub">VIP · 5 años</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">App</span></td>
-          <td><span class="ok-pill ok-pill--danger"><span class="ok-pill__dot"></span>Reembolso</span></td>
-          <td><svg class="ok-spark ok-spark--down" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,17"/></svg></td>
-          <td class="ok-td--num ok-c-danger">−€42,00</td>
-          <td class="ok-td--muted">Ayer · 18:02</td>
+          <td><span class="badge">App</span></td>
+          <td><span class="pill danger"><span class="pill__dot"></span>Reembolso</span></td>
+          <td><svg class="spark down" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,17"/></svg></td>
+          <td class="td num c-danger">−€42,00</td>
+          <td class="td muted">Ayer · 18:02</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2038</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2038</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="warn">RP</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Roberto Pinto</span>
-                <span class="ok-cell-rich__sub">Habitual</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="warn">RP</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Roberto Pinto</span>
+                <span class="cell-rich__sub">Habitual</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Web</span></td>
-          <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span></td>
-          <td><svg class="ok-spark ok-spark--up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,18 10,16 20,14 30,15 40,11 50,9 60,10 70,6 80,4"/></svg></td>
-          <td class="ok-td--num">€312,80</td>
-          <td class="ok-td--muted">Ayer · 12:30</td>
+          <td><span class="badge info"><span class="badge__dot"></span>Web</span></td>
+          <td><span class="pill success"><span class="pill__dot"></span>Pagado</span></td>
+          <td><svg class="spark up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,18 10,16 20,14 30,15 40,11 50,9 60,10 70,6 80,4"/></svg></td>
+          <td class="td num">€312,80</td>
+          <td class="td muted">Ayer · 12:30</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2037</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2037</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm">SC</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Sara Caamaño</span>
-                <span class="ok-cell-rich__sub">Nuevo</span>
+            <div class="cell-rich">
+              <div class="avatar sm">SC</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Sara Caamaño</span>
+                <span class="cell-rich__sub">Nuevo</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">POS · Local</span></td>
-          <td><span class="ok-pill ok-pill--info"><span class="ok-pill__dot"></span>Pendiente envío</span></td>
-          <td><span class="ok-trend ok-trend--up">+12%</span></td>
-          <td class="ok-td--num">€68,00</td>
-          <td class="ok-td--muted">Lun · 09:14</td>
+          <td><span class="badge">POS · Local</span></td>
+          <td><span class="pill info"><span class="pill__dot"></span>Pendiente envío</span></td>
+          <td><span class="trend up">+12%</span></td>
+          <td class="td num">€68,00</td>
+          <td class="td muted">Lun · 09:14</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
@@ -630,180 +630,180 @@
   </div>
 
   <!-- Vista grid (oculta por defecto) -->
-  <div id="view-grid" class="ok-dt-grid" data-show="$view === 'grid'">
-    <article class="ok-dt-card" aria-selected="true">
-      <header class="ok-dt-card__head">
+  <div id="view-grid" class="dt-grid" data-show="$view === 'grid'">
+    <article class="dt-card" aria-selected="true">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Marina Ribó</div>
-            <div class="ok-dt-card__sub">#PED-2041</div>
+            <div class="dt-card__title">Marina Ribó</div>
+            <div class="dt-card__sub">#PED-2041</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€324,50</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Hoy · 14:22</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+18%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€324,50</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Hoy · 14:22</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+18%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox" checked/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Joaquín Gómez</div>
-            <div class="ok-dt-card__sub">#PED-2040</div>
+            <div class="dt-card__title">Joaquín Gómez</div>
+            <div class="dt-card__sub">#PED-2040</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Procesando</span>
+        <span class="pill warning"><span class="pill__dot"></span>Procesando</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€186,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>Web</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Hoy · 13:48</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+24%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€186,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>Web</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Hoy · 13:48</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+24%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Eva Linares</div>
-            <div class="ok-dt-card__sub">#PED-2039</div>
+            <div class="dt-card__title">Eva Linares</div>
+            <div class="dt-card__sub">#PED-2039</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--danger"><span class="ok-pill__dot"></span>Reembolso</span>
+        <span class="pill danger"><span class="pill__dot"></span>Reembolso</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong class="ok-c-danger">−€42,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>App</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Ayer · 18:02</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--down">−8%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong class="c-danger">−€42,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>App</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Ayer · 18:02</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend down">−8%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Roberto Pinto</div>
-            <div class="ok-dt-card__sub">#PED-2038</div>
+            <div class="dt-card__title">Roberto Pinto</div>
+            <div class="dt-card__sub">#PED-2038</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€312,80</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>Web</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Ayer · 12:30</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+15%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€312,80</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>Web</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Ayer · 12:30</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+15%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Sara Caamaño</div>
-            <div class="ok-dt-card__sub">#PED-2037</div>
+            <div class="dt-card__title">Sara Caamaño</div>
+            <div class="dt-card__sub">#PED-2037</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--info"><span class="ok-pill__dot"></span>Pendiente</span>
+        <span class="pill info"><span class="pill__dot"></span>Pendiente</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€68,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Lun · 09:14</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+12%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€68,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Lun · 09:14</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+12%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Pablo Núñez</div>
-            <div class="ok-dt-card__sub">#PED-2036</div>
+            <div class="dt-card__title">Pablo Núñez</div>
+            <div class="dt-card__sub">#PED-2036</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€152,40</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>App</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Lun · 08:02</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+5%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€152,40</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>App</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Lun · 08:02</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+5%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
   </div>
 
-  <div class="ok-table-footer">
+  <div class="table-footer">
     <div>Mostrando 1–25 de 1.284 registros</div>
-    <nav class="ok-pagination" aria-label="Paginación">
-      <button class="ok-pagination__btn" disabled>‹</button>
-      <button class="ok-pagination__btn" aria-current="page">1</button>
-      <button class="ok-pagination__btn">2</button>
-      <button class="ok-pagination__btn">3</button>
-      <span class="ok-pagination__ellipsis">…</span>
-      <button class="ok-pagination__btn">52</button>
-      <button class="ok-pagination__btn">›</button>
+    <nav class="pagination" aria-label="Paginación">
+      <button class="pagination__btn" disabled>‹</button>
+      <button class="pagination__btn" aria-current="page">1</button>
+      <button class="pagination__btn">2</button>
+      <button class="pagination__btn">3</button>
+      <span class="pagination__ellipsis">…</span>
+      <button class="pagination__btn">52</button>
+      <button class="pagination__btn">›</button>
     </nav>
   </div>
 </Datatable>{% endraw %}{% endset %}
@@ -813,218 +813,218 @@
     jinjax_src=_src_jinjax_1) %}
 {% call datatable(attrs={"data-signals": "{view: 'table'}"}) %}
   <!-- Toolbar única: búsqueda · filtros · rango fechas · spacer · page-size · view-toggle · io · acción primaria -->
-  <div class="ok-dt-toolbar">
-    <div class="ok-search" style="flex:1 1 220px;max-width:300px">
-      <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-      <input class="ok-input ok-input--sm" placeholder="Buscar pedido o cliente…"/>
+  <div class="dt-toolbar">
+    <div class="search" style="flex:1 1 220px;max-width:300px">
+      <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input class="input sm" placeholder="Buscar pedido o cliente…"/>
     </div>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:140px">
+    <select class="select sm" style="width:auto;min-width:140px">
       <option>Todos los Estados</option>
       <option>Pagado</option>
       <option>Procesando</option>
       <option>Reembolso</option>
     </select>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:130px">
+    <select class="select sm" style="width:auto;min-width:130px">
       <option>Todos los tipos</option>
       <option>POS · Local</option>
       <option>Web</option>
       <option>App</option>
     </select>
 
-    <label class="ok-date-range" title="Rango de fechas">
+    <label class="date-range" title="Rango de fechas">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
       <span>01/10/25</span>
-      <span class="ok-date-range__sep">→</span>
+      <span class="date-range__sep">→</span>
       <span>18/10/25</span>
     </label>
 
-    <div class="ok-dt-toolbar__spacer"></div>
+    <div class="dt-toolbar__spacer"></div>
 
-    <select class="ok-select ok-select--sm" style="width:auto;min-width:64px" title="Por página">
+    <select class="select sm" style="width:auto;min-width:64px" title="Por página">
       <option>10</option><option selected>25</option><option>50</option><option>100</option>
     </select>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
     <!-- View toggle: tabla / grid -->
-    <div class="ok-view-toggle" role="tablist" aria-label="Vista">
-      <button class="ok-view-toggle__btn" data-on:click="$view = 'table'" data-attr:aria-pressed="$view === 'table'" title="Vista tabla">
+    <div class="view-toggle" role="tablist" aria-label="Vista">
+      <button class="view-toggle__btn" data-on:click="$view = 'table'" data-attr:aria-pressed="$view === 'table'" title="Vista tabla">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
-      <button class="ok-view-toggle__btn" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'" title="Vista cuadrícula">
+      <button class="view-toggle__btn" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'" title="Vista cuadrícula">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       </button>
     </div>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
     <!-- IO icons sin texto -->
-    <button class="ok-icon-btn" title="Importar">
+    <button class="icon-btn" title="Importar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
     </button>
-    <button class="ok-icon-btn" title="Exportar">
+    <button class="icon-btn" title="Exportar">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
     </button>
-    <button class="ok-icon-btn" title="Más opciones">
+    <button class="icon-btn" title="Más opciones">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
     </button>
 
-    <div class="ok-dt-toolbar__divider"></div>
+    <div class="dt-toolbar__divider"></div>
 
-    <button class="ok-btn ok-btn--primary ok-btn--sm">+ Nuevo</button>
+    <button class="btn primary sm">+ Nuevo</button>
   </div>
 
   <!-- Vista tabla -->
-  <div id="view-table" class="ok-table-scroll" data-show="$view === 'table'">
-    <table class="ok-table">
+  <div id="view-table" class="table-scroll" data-show="$view === 'table'">
+    <table class="table">
       <thead>
         <tr>
-          <th style="width:36px"><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></th>
-          <th class="ok-th--sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
-          <th class="ok-th--sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
-          <th class="ok-th--sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
-          <th class="ok-th--sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
+          <th style="width:36px"><label class="check"><input type="checkbox"/><span class="check__box"></span></label></th>
+          <th class="th sortable" data-sort-key="pedido" data-sort-col="1">Pedido</th>
+          <th class="th sortable" data-sort-key="cliente" data-sort-col="2">Cliente</th>
+          <th class="th sortable" data-sort-key="canal" data-sort-col="3">Canal</th>
+          <th class="th sortable" data-sort-key="estado" data-sort-col="4">Estado</th>
           <th>Tendencia 7d</th>
-          <th class="ok-th--sortable ok-td--right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
-          <th class="ok-th--sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
+          <th class="th sortable td right" data-sort-key="total" data-sort-col="6" data-sort-type="num" aria-sort="descending">Total</th>
+          <th class="th sortable" data-sort-key="fecha" data-sort-col="7">Fecha</th>
           <th style="width:120px;text-align:right">Acciones</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2041</td>
+          <td><label class="check"><input type="checkbox" checked/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2041</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="brand">MR</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Marina Ribó</span>
-                <span class="ok-cell-rich__sub">Habitual · 24 pedidos</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="brand">MR</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Marina Ribó</span>
+                <span class="cell-rich__sub">Habitual · 24 pedidos</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">POS · Local</span></td>
-          <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span></td>
-          <td><svg class="ok-spark ok-spark--up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,16 10,14 20,15 30,10 40,11 50,8 60,7 70,5 80,4"/></svg></td>
-          <td class="ok-td--num">€324,50</td>
-          <td class="ok-td--muted">Hoy · 14:22</td>
+          <td><span class="badge">POS · Local</span></td>
+          <td><span class="pill success"><span class="pill__dot"></span>Pagado</span></td>
+          <td><svg class="spark up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,16 10,14 20,15 30,10 40,11 50,8 60,7 70,5 80,4"/></svg></td>
+          <td class="td num">€324,50</td>
+          <td class="td muted">Hoy · 14:22</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr aria-selected="true">
-          <td><label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2040</td>
+          <td><label class="check"><input type="checkbox" checked/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2040</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="info">JG</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Joaquín Gómez</span>
-                <span class="ok-cell-rich__sub">Nuevo</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="info">JG</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Joaquín Gómez</span>
+                <span class="cell-rich__sub">Nuevo</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Web</span></td>
-          <td><span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Procesando</span></td>
+          <td><span class="badge info"><span class="badge__dot"></span>Web</span></td>
+          <td><span class="pill warning"><span class="pill__dot"></span>Procesando</span></td>
           <td>
-            <span class="ok-spark-bars ok-spark-bars--brand">
-              <span class="ok-spark-bars__bar" style="height:30%"></span>
-              <span class="ok-spark-bars__bar" style="height:55%"></span>
-              <span class="ok-spark-bars__bar" style="height:42%"></span>
-              <span class="ok-spark-bars__bar" style="height:75%"></span>
-              <span class="ok-spark-bars__bar" style="height:60%"></span>
-              <span class="ok-spark-bars__bar" style="height:85%"></span>
-              <span class="ok-spark-bars__bar ok-h-full"></span>
+            <span class="spark-bars brand">
+              <span class="spark-bars__bar" style="height:30%"></span>
+              <span class="spark-bars__bar" style="height:55%"></span>
+              <span class="spark-bars__bar" style="height:42%"></span>
+              <span class="spark-bars__bar" style="height:75%"></span>
+              <span class="spark-bars__bar" style="height:60%"></span>
+              <span class="spark-bars__bar" style="height:85%"></span>
+              <span class="spark-bars__bar h-full"></span>
             </span>
           </td>
-          <td class="ok-td--num">€186,00</td>
-          <td class="ok-td--muted">Hoy · 13:48</td>
+          <td class="td num">€186,00</td>
+          <td class="td muted">Hoy · 13:48</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2039</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2039</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="ok">EL</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Eva Linares</span>
-                <span class="ok-cell-rich__sub">VIP · 5 años</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="ok">EL</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Eva Linares</span>
+                <span class="cell-rich__sub">VIP · 5 años</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">App</span></td>
-          <td><span class="ok-pill ok-pill--danger"><span class="ok-pill__dot"></span>Reembolso</span></td>
-          <td><svg class="ok-spark ok-spark--down" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,17"/></svg></td>
-          <td class="ok-td--num ok-c-danger">−€42,00</td>
-          <td class="ok-td--muted">Ayer · 18:02</td>
+          <td><span class="badge">App</span></td>
+          <td><span class="pill danger"><span class="pill__dot"></span>Reembolso</span></td>
+          <td><svg class="spark down" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,4 10,6 20,5 30,9 40,11 50,14 60,15 70,18 80,17"/></svg></td>
+          <td class="td num c-danger">−€42,00</td>
+          <td class="td muted">Ayer · 18:02</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2038</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2038</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm" data-tone="warn">RP</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Roberto Pinto</span>
-                <span class="ok-cell-rich__sub">Habitual</span>
+            <div class="cell-rich">
+              <div class="avatar sm" data-tone="warn">RP</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Roberto Pinto</span>
+                <span class="cell-rich__sub">Habitual</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>Web</span></td>
-          <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span></td>
-          <td><svg class="ok-spark ok-spark--up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,18 10,16 20,14 30,15 40,11 50,9 60,10 70,6 80,4"/></svg></td>
-          <td class="ok-td--num">€312,80</td>
-          <td class="ok-td--muted">Ayer · 12:30</td>
+          <td><span class="badge info"><span class="badge__dot"></span>Web</span></td>
+          <td><span class="pill success"><span class="pill__dot"></span>Pagado</span></td>
+          <td><svg class="spark up" viewBox="0 0 80 22" preserveAspectRatio="none"><polyline points="0,18 10,16 20,14 30,15 40,11 50,9 60,10 70,6 80,4"/></svg></td>
+          <td class="td num">€312,80</td>
+          <td class="td muted">Ayer · 12:30</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
         <tr>
-          <td><label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label></td>
-          <td class="ok-td--mono">#PED-2037</td>
+          <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+          <td class="td mono">#PED-2037</td>
           <td>
-            <div class="ok-cell-rich">
-              <div class="ok-avatar ok-avatar--sm">SC</div>
-              <div class="ok-cell-rich__main">
-                <span class="ok-cell-rich__title">Sara Caamaño</span>
-                <span class="ok-cell-rich__sub">Nuevo</span>
+            <div class="cell-rich">
+              <div class="avatar sm">SC</div>
+              <div class="cell-rich__main">
+                <span class="cell-rich__title">Sara Caamaño</span>
+                <span class="cell-rich__sub">Nuevo</span>
               </div>
             </div>
           </td>
-          <td><span class="ok-badge">POS · Local</span></td>
-          <td><span class="ok-pill ok-pill--info"><span class="ok-pill__dot"></span>Pendiente envío</span></td>
-          <td><span class="ok-trend ok-trend--up">+12%</span></td>
-          <td class="ok-td--num">€68,00</td>
-          <td class="ok-td--muted">Lun · 09:14</td>
+          <td><span class="badge">POS · Local</span></td>
+          <td><span class="pill info"><span class="pill__dot"></span>Pendiente envío</span></td>
+          <td><span class="trend up">+12%</span></td>
+          <td class="td num">€68,00</td>
+          <td class="td muted">Lun · 09:14</td>
           <td>
-            <div class="ok-row-actions ok-justify-end">
-              <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-              <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-              <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
+            <div class="row-actions justify-end">
+              <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+              <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+              <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg></button>
             </div>
           </td>
         </tr>
@@ -1033,180 +1033,180 @@
   </div>
 
   <!-- Vista grid (oculta por defecto) -->
-  <div id="view-grid" class="ok-dt-grid" data-show="$view === 'grid'">
-    <article class="ok-dt-card" aria-selected="true">
-      <header class="ok-dt-card__head">
+  <div id="view-grid" class="dt-grid" data-show="$view === 'grid'">
+    <article class="dt-card" aria-selected="true">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Marina Ribó</div>
-            <div class="ok-dt-card__sub">#PED-2041</div>
+            <div class="dt-card__title">Marina Ribó</div>
+            <div class="dt-card__sub">#PED-2041</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€324,50</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Hoy · 14:22</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+18%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€324,50</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Hoy · 14:22</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+18%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox" checked/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox" checked/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Joaquín Gómez</div>
-            <div class="ok-dt-card__sub">#PED-2040</div>
+            <div class="dt-card__title">Joaquín Gómez</div>
+            <div class="dt-card__sub">#PED-2040</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Procesando</span>
+        <span class="pill warning"><span class="pill__dot"></span>Procesando</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€186,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>Web</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Hoy · 13:48</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+24%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€186,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>Web</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Hoy · 13:48</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+24%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Eva Linares</div>
-            <div class="ok-dt-card__sub">#PED-2039</div>
+            <div class="dt-card__title">Eva Linares</div>
+            <div class="dt-card__sub">#PED-2039</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--danger"><span class="ok-pill__dot"></span>Reembolso</span>
+        <span class="pill danger"><span class="pill__dot"></span>Reembolso</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong class="ok-c-danger">−€42,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>App</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Ayer · 18:02</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--down">−8%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong class="c-danger">−€42,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>App</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Ayer · 18:02</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend down">−8%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Roberto Pinto</div>
-            <div class="ok-dt-card__sub">#PED-2038</div>
+            <div class="dt-card__title">Roberto Pinto</div>
+            <div class="dt-card__sub">#PED-2038</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€312,80</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>Web</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Ayer · 12:30</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+15%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€312,80</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>Web</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Ayer · 12:30</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+15%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18l-2 13H5L3 3z"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Sara Caamaño</div>
-            <div class="ok-dt-card__sub">#PED-2037</div>
+            <div class="dt-card__title">Sara Caamaño</div>
+            <div class="dt-card__sub">#PED-2037</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--info"><span class="ok-pill__dot"></span>Pendiente</span>
+        <span class="pill info"><span class="pill__dot"></span>Pendiente</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€68,00</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Lun · 09:14</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+12%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€68,00</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>POS · Local</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Lun · 09:14</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+12%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
 
-    <article class="ok-dt-card">
-      <header class="ok-dt-card__head">
+    <article class="dt-card">
+      <header class="dt-card__head">
         <div style="display:flex;gap:10px;align-items:center">
-          <div class="ok-dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
+          <div class="dt-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
           <div>
-            <div class="ok-dt-card__title">Pablo Núñez</div>
-            <div class="ok-dt-card__sub">#PED-2036</div>
+            <div class="dt-card__title">Pablo Núñez</div>
+            <div class="dt-card__sub">#PED-2036</div>
           </div>
         </div>
-        <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Pagado</span>
+        <span class="pill success"><span class="pill__dot"></span>Pagado</span>
       </header>
-      <div class="ok-dt-card__body">
-        <div class="ok-dt-card__field"><span>Total</span><strong>€152,40</strong></div>
-        <div class="ok-dt-card__field"><span>Canal</span><strong>App</strong></div>
-        <div class="ok-dt-card__field"><span>Fecha</span><strong>Lun · 08:02</strong></div>
-        <div class="ok-dt-card__field"><span>Tendencia</span><span class="ok-trend ok-trend--up">+5%</span></div>
+      <div class="dt-card__body">
+        <div class="dt-card__field"><span>Total</span><strong>€152,40</strong></div>
+        <div class="dt-card__field"><span>Canal</span><strong>App</strong></div>
+        <div class="dt-card__field"><span>Fecha</span><strong>Lun · 08:02</strong></div>
+        <div class="dt-card__field"><span>Tendencia</span><span class="trend up">+5%</span></div>
       </div>
-      <footer class="ok-dt-card__footer">
-        <label class="ok-check"><input type="checkbox"/><span class="ok-check__box"></span></label>
-        <div class="ok-row-actions">
-          <button class="ok-row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="ok-row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-          <button class="ok-row-action ok-row-action--danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
+      <footer class="dt-card__footer">
+        <label class="check"><input type="checkbox"/><span class="check__box"></span></label>
+        <div class="row-actions">
+          <button class="row-action" title="Ver"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+          <button class="row-action" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+          <button class="row-action danger" title="Eliminar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-2 14a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2L5 6"/></svg></button>
         </div>
       </footer>
     </article>
   </div>
 
-  <div class="ok-table-footer">
+  <div class="table-footer">
     <div>Mostrando 1–25 de 1.284 registros</div>
-    <nav class="ok-pagination" aria-label="Paginación">
-      <button class="ok-pagination__btn" disabled>‹</button>
-      <button class="ok-pagination__btn" aria-current="page">1</button>
-      <button class="ok-pagination__btn">2</button>
-      <button class="ok-pagination__btn">3</button>
-      <span class="ok-pagination__ellipsis">…</span>
-      <button class="ok-pagination__btn">52</button>
-      <button class="ok-pagination__btn">›</button>
+    <nav class="pagination" aria-label="Paginación">
+      <button class="pagination__btn" disabled>‹</button>
+      <button class="pagination__btn" aria-current="page">1</button>
+      <button class="pagination__btn">2</button>
+      <button class="pagination__btn">3</button>
+      <span class="pagination__ellipsis">…</span>
+      <button class="pagination__btn">52</button>
+      <button class="pagination__btn">›</button>
     </nav>
   </div>
 {% endcall %}
@@ -1214,32 +1214,32 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/datatable.jinja" import datatable %}
 {% call datatable() %}
-<div class="ok-dt-toolbar">
-  <div class="ok-search" style="flex:1 1 220px;max-width:300px">
-    <span class="ok-search__icon">🔍</span>
-    <input class="ok-input ok-input--sm" value="zzz-no-match" placeholder="Buscar…"/>
+<div class="dt-toolbar">
+  <div class="search" style="flex:1 1 220px;max-width:300px">
+    <span class="search__icon">🔍</span>
+    <input class="input sm" value="zzz-no-match" placeholder="Buscar…"/>
   </div>
-  <div class="ok-dt-toolbar__spacer"></div>
-  <button class="ok-btn ok-btn--ghost ok-btn--sm">Limpiar</button>
+  <div class="dt-toolbar__spacer"></div>
+  <button class="btn ghost sm">Limpiar</button>
 </div>
-<div style="padding:48px;text-align:center;color:var(--ok-ink-3)">
+<div style="padding:48px;text-align:center;color:var(--ink-3)">
   <div style="font-size:32px;margin-bottom:8px">📭</div>
-  <div style="font-weight:500;color:var(--ok-ink);margin-bottom:4px">Sin resultados</div>
+  <div style="font-weight:500;color:var(--ink);margin-bottom:4px">Sin resultados</div>
   <div style="font-size:13px">No hay pedidos que coincidan con "zzz-no-match".</div>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Datatable>
-<div class="ok-dt-toolbar">
-  <div class="ok-search" style="flex:1 1 220px;max-width:300px">
-    <span class="ok-search__icon">🔍</span>
-    <input class="ok-input ok-input--sm" value="zzz-no-match" placeholder="Buscar…"/>
+<div class="dt-toolbar">
+  <div class="search" style="flex:1 1 220px;max-width:300px">
+    <span class="search__icon">🔍</span>
+    <input class="input sm" value="zzz-no-match" placeholder="Buscar…"/>
   </div>
-  <div class="ok-dt-toolbar__spacer"></div>
-  <button class="ok-btn ok-btn--ghost ok-btn--sm">Limpiar</button>
+  <div class="dt-toolbar__spacer"></div>
+  <button class="btn ghost sm">Limpiar</button>
 </div>
-<div style="padding:48px;text-align:center;color:var(--ok-ink-3)">
+<div style="padding:48px;text-align:center;color:var(--ink-3)">
   <div style="font-size:32px;margin-bottom:8px">📭</div>
-  <div style="font-weight:500;color:var(--ok-ink);margin-bottom:4px">Sin resultados</div>
+  <div style="font-weight:500;color:var(--ink);margin-bottom:4px">Sin resultados</div>
   <div style="font-size:13px">No hay pedidos que coincidan con "zzz-no-match".</div>
 </div>
 </Datatable>{% endraw %}{% endset %}
@@ -1248,24 +1248,24 @@
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call datatable() %}
-<div class="ok-dt-toolbar">
-  <div class="ok-search" style="flex:1 1 220px;max-width:300px">
-    <span class="ok-search__icon">🔍</span>
-    <input class="ok-input ok-input--sm" value="zzz-no-match" placeholder="Buscar…"/>
+<div class="dt-toolbar">
+  <div class="search" style="flex:1 1 220px;max-width:300px">
+    <span class="search__icon">🔍</span>
+    <input class="input sm" value="zzz-no-match" placeholder="Buscar…"/>
   </div>
-  <div class="ok-dt-toolbar__spacer"></div>
-  <button class="ok-btn ok-btn--ghost ok-btn--sm">Limpiar</button>
+  <div class="dt-toolbar__spacer"></div>
+  <button class="btn ghost sm">Limpiar</button>
 </div>
-<div style="padding:48px;text-align:center;color:var(--ok-ink-3)">
+<div style="padding:48px;text-align:center;color:var(--ink-3)">
   <div style="font-size:32px;margin-bottom:8px">📭</div>
-  <div style="font-weight:500;color:var(--ok-ink);margin-bottom:4px">Sin resultados</div>
+  <div style="font-weight:500;color:var(--ink);margin-bottom:4px">Sin resultados</div>
   <div style="font-size:13px">No hay pedidos que coincidan con "zzz-no-match".</div>
 </div>
 {% endcall %}
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (incluyendo <code>data-signals</code> de Datastar para el view toggle).</td></tr>

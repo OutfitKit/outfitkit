@@ -4,117 +4,117 @@
 {% block page_title %}Compliance{% endblock %}
 
 {% block content %}
-<div class="ok-app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">LR</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="ok-sidebar__brand-meta">Cumplimiento</div>
+<div class="app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">LR</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="sidebar__brand-meta">Cumplimiento</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <a class="ok-sidebar__item" href="#"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="ok-sidebar__label">Inicio</span></a>
-      <a class="ok-sidebar__item" href="#"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="ok-sidebar__label">Ajustes</span></a>
-      <a class="ok-sidebar__item" aria-current="page" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Cumplimiento</span></a>
+    <div class="sidebar__body">
+      <a class="sidebar__item" href="#"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="sidebar__label">Inicio</span></a>
+      <a class="sidebar__item" href="#"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="sidebar__label">Ajustes</span></a>
+      <a class="sidebar__item" aria-current="page" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="sidebar__label">Cumplimiento</span></a>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <nav class="ok-tabs ok-tabs-scroll" aria-label="Sub-secciones de ajustes">
-      <a class="ok-tab" href="preferences.html">Preferencias</a>
-      <a class="ok-tab" href="hub.html">Hub</a>
-      <a class="ok-tab" href="hub-config.html">Config</a>
-      <a class="ok-tab" href="compliance.html" aria-current="page">Cumplimiento</a>
-      <a class="ok-tab" href="devices.html">Dispositivos</a>
-      <a class="ok-tab" href="printers.html">Impresoras</a>
-      <a class="ok-tab" href="backup.html">Backup</a>
-      <a class="ok-tab" href="files.html">Archivos</a>
-      <a class="ok-tab" href="tax-classes.html">Tax</a>
-      <a class="ok-tab" href="help.html">Ayuda</a>
-      <a class="ok-tab" href="scheduled-tasks.html">Tareas</a>
-      <a class="ok-tab" href="file-browser.html">File browser</a>
+    <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
+      <a class="tab" href="preferences.html">Preferencias</a>
+      <a class="tab" href="hub.html">Hub</a>
+      <a class="tab" href="hub-config.html">Config</a>
+      <a class="tab" href="compliance.html" aria-current="page">Cumplimiento</a>
+      <a class="tab" href="devices.html">Dispositivos</a>
+      <a class="tab" href="printers.html">Impresoras</a>
+      <a class="tab" href="backup.html">Backup</a>
+      <a class="tab" href="files.html">Archivos</a>
+      <a class="tab" href="tax-classes.html">Tax</a>
+      <a class="tab" href="help.html">Ayuda</a>
+      <a class="tab" href="scheduled-tasks.html">Tareas</a>
+      <a class="tab" href="file-browser.html">File browser</a>
     </nav>
 
-    <div class="ok-app__body">
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Cumplimiento legal</h1>
-          <div class="ok-page-header__sub">Configura los requisitos fiscales y legales de tu negocio</div>
+          <div class="page-header__sub">Configura los requisitos fiscales y legales de tu negocio</div>
         </div>
       </div>
 
       <!-- España -->
-      <article class="ok-card ok-mb-4">
-        <header class="ok-card__header">
-          <h3 class="ok-card__title">
-            <span class="ok-inline-flex ok-items-center ok-gap-2">
+      <article class="card mb-4">
+        <header class="card__header">
+          <h3 class="card__title">
+            <span class="inline-flex items-center gap-2">
               <span style="font-size:18px;">🇪🇸</span>
               España
             </span>
           </h3>
-          <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span>
+          <span class="badge success"><span class="badge__dot"></span>Activo</span>
         </header>
-        <div class="ok-card__body">
+        <div class="card__body">
 
-          <div class="ok-toggle-row">
-            <div class="ok-toggle-row__text">
-              <span class="ok-toggle-row__label">Verifactu (AEAT)</span>
-              <span class="ok-toggle-row__desc">Remisión automática de facturas a Hacienda según RD 1007/2023.</span>
+          <div class="toggle-row">
+            <div class="toggle-row__text">
+              <span class="toggle-row__label">Verifactu (AEAT)</span>
+              <span class="toggle-row__desc">Remisión automática de facturas a Hacienda según RD 1007/2023.</span>
             </div>
-            <label class="ok-toggle">
+            <label class="toggle">
               <input type="checkbox" checked/>
-              <span class="ok-toggle__track"></span>
+              <span class="toggle__track"></span>
             </label>
           </div>
 
-          <div class="ok-toggle-row">
-            <div class="ok-toggle-row__text">
-              <span class="ok-toggle-row__label">SII (IVA)</span>
-              <span class="ok-toggle-row__desc">Suministro Inmediato de Información de IVA. Solo grandes empresas.</span>
+          <div class="toggle-row">
+            <div class="toggle-row__text">
+              <span class="toggle-row__label">SII (IVA)</span>
+              <span class="toggle-row__desc">Suministro Inmediato de Información de IVA. Solo grandes empresas.</span>
             </div>
-            <label class="ok-toggle">
+            <label class="toggle">
               <input type="checkbox"/>
-              <span class="ok-toggle__track"></span>
+              <span class="toggle__track"></span>
             </label>
           </div>
 
-          <div class="ok-toggle-row" style="border-bottom:none;">
-            <div class="ok-toggle-row__text">
-              <span class="ok-toggle-row__label">Modelo 347</span>
-              <span class="ok-toggle-row__desc">Declaración anual de operaciones con terceros &gt; 3.005,06 €.</span>
+          <div class="toggle-row" style="border-bottom:none;">
+            <div class="toggle-row__text">
+              <span class="toggle-row__label">Modelo 347</span>
+              <span class="toggle-row__desc">Declaración anual de operaciones con terceros &gt; 3.005,06 €.</span>
             </div>
-            <label class="ok-toggle">
+            <label class="toggle">
               <input type="checkbox" checked/>
-              <span class="ok-toggle__track"></span>
+              <span class="toggle__track"></span>
             </label>
           </div>
 
-          <hr style="border:0;border-top:1px solid var(--ok-line);margin:16px 0;"/>
+          <hr style="border:0;border-top:1px solid var(--line);margin:16px 0;"/>
 
-          <div class="ok-form-row">
-            <div class="ok-field">
-              <label class="ok-field__label ok-field__label--req">CIF / NIF empresa</label>
-              <input class="ok-input" value="B-65432109"/>
+          <div class="form-row">
+            <div class="field">
+              <label class="field__label field__label--req">CIF / NIF empresa</label>
+              <input class="input" value="B-65432109"/>
             </div>
-            <div class="ok-field">
-              <label class="ok-field__label">Modelo de IVA</label>
-              <select class="ok-select">
+            <div class="field">
+              <label class="field__label">Modelo de IVA</label>
+              <select class="select">
                 <option selected>Régimen general</option>
                 <option>Recargo de equivalencia</option>
                 <option>Régimen simplificado</option>
@@ -123,112 +123,112 @@
             </div>
           </div>
 
-          <div class="ok-field ok-mt-3">
-            <label class="ok-field__label">Certificado digital (.p12 / FNMT)</label>
-            <div style="display:flex;align-items:center;gap:10px;background:var(--ok-bg-3);border:1px solid var(--ok-line);border-radius:10px;padding:10px 12px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ok-c-leaf"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-              <div class="ok-flex-1">
+          <div class="field mt-3">
+            <label class="field__label">Certificado digital (.p12 / FNMT)</label>
+            <div style="display:flex;align-items:center;gap:10px;background:var(--bg-3);border:1px solid var(--line);border-radius:10px;padding:10px 12px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="c-leaf"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              <div class="flex-1">
                 <div style="font-size:13px;font-weight:500;">cafeteria-larambla-fnmt.p12</div>
-                <div class="ok-text-xs ok-c-ink-3">Caduca el 14/03/2027 · 2.4 KB</div>
+                <div class="text-xs c-ink-3">Caduca el 14/03/2027 · 2.4 KB</div>
               </div>
-              <button class="ok-btn ok-btn--ghost ok-btn--sm">Reemplazar</button>
+              <button class="btn ghost sm">Reemplazar</button>
             </div>
-            <span class="ok-field__hint">Necesario para firmar las remisiones a la AEAT.</span>
+            <span class="field__hint">Necesario para firmar las remisiones a la AEAT.</span>
           </div>
 
-          <hr style="border:0;border-top:1px solid var(--ok-line);margin:16px 0;"/>
+          <hr style="border:0;border-top:1px solid var(--line);margin:16px 0;"/>
 
-          <div class="ok-grid-auto ok-grid-auto--sm">
+          <div class="grid-auto sm">
             <div>
-              <div class="ok-eyebrow">Conexión AEAT</div>
+              <div class="eyebrow">Conexión AEAT</div>
               <div style="display:flex;align-items:center;gap:6px;margin-top:4px;">
-                <span class="ok-status-dot ok-status-dot--ok"></span>
-                <span class="ok-font-medium ok-text-md">Operativa</span>
+                <span class="status-dot success"></span>
+                <span class="font-medium text-md">Operativa</span>
               </div>
             </div>
             <div>
-              <div class="ok-eyebrow">Última remisión OK</div>
+              <div class="eyebrow">Última remisión OK</div>
               <div style="font-size:13px;font-weight:500;margin-top:4px;">Hoy 14:23 · #INV-3217</div>
             </div>
             <div>
-              <div class="ok-eyebrow">Pendientes</div>
-              <div style="font-size:13px;font-weight:500;margin-top:4px;color:var(--ok-warn);">2 facturas</div>
+              <div class="eyebrow">Pendientes</div>
+              <div style="font-size:13px;font-weight:500;margin-top:4px;color:var(--warn);">2 facturas</div>
             </div>
             <div>
-              <div class="ok-eyebrow">Errores 30 días</div>
+              <div class="eyebrow">Errores 30 días</div>
               <div style="font-size:13px;font-weight:500;margin-top:4px;">0</div>
             </div>
           </div>
         </div>
-        <footer class="ok-card__actions">
-          <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver log AEAT</button>
-          <button class="ok-btn ok-btn--secondary ok-btn--sm">Probar conexión</button>
+        <footer class="card__actions">
+          <button class="btn ghost sm">Ver log AEAT</button>
+          <button class="btn secondary sm">Probar conexión</button>
         </footer>
       </article>
 
       <!-- Portugal -->
-      <article class="ok-card ok-mb-4">
-        <header class="ok-card__header">
-          <h3 class="ok-card__title">
-            <span class="ok-inline-flex ok-items-center ok-gap-2">
+      <article class="card mb-4">
+        <header class="card__header">
+          <h3 class="card__title">
+            <span class="inline-flex items-center gap-2">
               <span style="font-size:18px;">🇵🇹</span>
               Portugal
             </span>
           </h3>
-          <span class="ok-badge"><span class="ok-badge__dot"></span>No activo</span>
+          <span class="badge"><span class="badge__dot"></span>No activo</span>
         </header>
-        <div class="ok-card__body">
-          <p style="font-size:13px;color:var(--ok-ink-3);margin:0 0 14px;">No tienes operaciones registradas en Portugal. Activa los requisitos si vendes a clientes portugueses.</p>
+        <div class="card__body">
+          <p style="font-size:13px;color:var(--ink-3);margin:0 0 14px;">No tienes operaciones registradas en Portugal. Activa los requisitos si vendes a clientes portugueses.</p>
 
-          <div class="ok-toggle-row">
-            <div class="ok-toggle-row__text">
-              <span class="ok-toggle-row__label">SAF-T (PT)</span>
-              <span class="ok-toggle-row__desc">Fichero de auditoría estándar exigido por la Autoridade Tributária.</span>
+          <div class="toggle-row">
+            <div class="toggle-row__text">
+              <span class="toggle-row__label">SAF-T (PT)</span>
+              <span class="toggle-row__desc">Fichero de auditoría estándar exigido por la Autoridade Tributária.</span>
             </div>
-            <label class="ok-toggle">
+            <label class="toggle">
               <input type="checkbox"/>
-              <span class="ok-toggle__track"></span>
+              <span class="toggle__track"></span>
             </label>
           </div>
 
-          <div class="ok-toggle-row" style="border-bottom:none;">
-            <div class="ok-toggle-row__text">
-              <span class="ok-toggle-row__label">Comunicação de Faturas</span>
-              <span class="ok-toggle-row__desc">Envío mensual a la AT (e-Fatura).</span>
+          <div class="toggle-row" style="border-bottom:none;">
+            <div class="toggle-row__text">
+              <span class="toggle-row__label">Comunicação de Faturas</span>
+              <span class="toggle-row__desc">Envío mensual a la AT (e-Fatura).</span>
             </div>
-            <label class="ok-toggle">
+            <label class="toggle">
               <input type="checkbox"/>
-              <span class="ok-toggle__track"></span>
+              <span class="toggle__track"></span>
             </label>
           </div>
         </div>
       </article>
 
       <!-- Alertas dismissed -->
-      <article class="ok-card">
-        <header class="ok-card__header">
-          <h3 class="ok-card__title">Alertas descartadas</h3>
+      <article class="card">
+        <header class="card__header">
+          <h3 class="card__title">Alertas descartadas</h3>
         </header>
-        <div class="ok-card__body">
-          <p style="font-size:13px;color:var(--ok-ink-3);margin:0 0 12px;">Alertas de cumplimiento que descartaste y se pueden recuperar.</p>
-          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--ok-bg-3);border-radius:8px;">
-            <div class="ok-flex ok-items-center ok-gap-2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="ok-c-ink-3"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <div class="card__body">
+          <p style="font-size:13px;color:var(--ink-3);margin:0 0 12px;">Alertas de cumplimiento que descartaste y se pueden recuperar.</p>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-3);border-radius:8px;">
+            <div class="flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="c-ink-3"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
               <span style="font-size:13px;font-weight:500;">SII de IVA recomendado</span>
             </div>
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Recuperar</button>
+            <button class="btn ghost sm">Recuperar</button>
           </div>
         </div>
       </article>
     </div>
   </div>
 
-  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="ok-tabbar-label">Inicio</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="ok-tabbar-label">Empleados</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="ok-tabbar-label">Facturas</span></a>
-    <a class="ok-tabbar-item" aria-current="page" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Cumplim.</span></a>
+  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="tabbar-label">Inicio</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="tabbar-label">Empleados</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="tabbar-label">Facturas</span></a>
+    <a class="tabbar-item" aria-current="page" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Cumplim.</span></a>
   </nav>
 </div>
 {% endblock %}

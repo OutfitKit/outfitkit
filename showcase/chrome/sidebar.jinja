@@ -269,24 +269,24 @@ $q !== '' && !(
 {% macro sidebar(current="") -%}
 {% set _base = base_path | default("") %}
 {% for group_name, items in NAV %}
-  <div class="ok-sidebar__group" data-show="{{ _group_match_expr(items) | trim }}">
-    <div class="ok-sidebar__section">{{ group_name }}</div>
+  <div class="sidebar__group" data-show="{{ _group_match_expr(items) | trim }}">
+    <div class="sidebar__section">{{ group_name }}</div>
     {% for href, label, icon, badge in items %}
       {%- set is_active = current.endswith(href.lstrip('/')) and href != '/' or (href == '/' and current.endswith('index.html')) -%}
       {%- set full_href = (_base + "/") if href == "/" else (_base + href) -%}
       <a href="{{ full_href }}"
-         class="ok-sidebar__item"
+         class="sidebar__item"
          {% if is_active %}aria-current="page"{% endif %}
          data-route-active="{{ 'true' if is_active else 'false' }}"
          data-show="{{ _match_expr(label) | trim }}">
-        <iconify-icon icon="{{ icon }}" width="16" height="16" class="ok-sidebar__icon"></iconify-icon>
-        <span class="ok-sidebar__label">{{ label }}</span>
-        {% if badge -%}<span class="ok-sidebar__badge ok-sidebar__badge--{{ badge }}">{{ badge }}</span>{%- endif %}
+        <iconify-icon icon="{{ icon }}" width="16" height="16" class="sidebar__icon"></iconify-icon>
+        <span class="sidebar__label">{{ label }}</span>
+        {% if badge -%}<span class="sidebar__badge sidebar__badge--{{ badge }}">{{ badge }}</span>{%- endif %}
       </a>
     {% endfor %}
   </div>
 {% endfor %}
-<div class="ok-sidebar__empty" data-show="{{ _empty_match_expr(NAV) | trim }}">
+<div class="sidebar__empty" data-show="{{ _empty_match_expr(NAV) | trim }}">
   Sin resultados
 </div>
 {%- endmacro %}

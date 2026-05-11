@@ -3,33 +3,36 @@
    Barra superior — breadcrumb + acciones + user
    ============================================================ */
 
-.ok-topbar {
+.topbar {
+  /* API canónica de override */
+  --topbar-background:   color-mix(in oklch, var(--bg) 72%, transparent);
+  --topbar-color:         var(--ink);
+  --topbar-border-color:  var(--topbar-border, color-mix(in oklch, var(--line) 80%, transparent));
+  --topbar-height:        var(--topbar-h);
+  --topbar-pad-x:         var(--page-pad);
+  --topbar-gap:           var(--space-3);
+  --topbar-z:             calc(var(--z-sticky) - 1);
+  --topbar-blur:          18px;
+  --topbar-saturate:      150%;
+
   position: sticky;
   top: 0;
-  z-index: calc(var(--ok-z-sticky) - 1);
-  height: var(--ok-topbar-h);
+  z-index: var(--topbar-z);
+  height: var(--topbar-height);
   display: flex;
   align-items: center;
-  gap: var(--ok-space-3);
-  padding: 0 var(--ok-page-pad);
-  /* Glass surface — readable over any content */
-  background: color-mix(in oklch, var(--ok-bg) 72%, transparent);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
-  /* Isolate the stacking context so when the page below also uses
-     backdrop-filter (cards in glass / glass-mono themes) the two
-     blurs don't "tear" against each other when scrolling. */
+  gap: var(--topbar-gap);
+  padding-inline: var(--topbar-pad-x);
+  background: var(--topbar-background);
+  color: var(--topbar-color);
+  backdrop-filter: blur(var(--topbar-blur)) saturate(var(--topbar-saturate));
+  -webkit-backdrop-filter: blur(var(--topbar-blur)) saturate(var(--topbar-saturate));
   isolation: isolate;
-  /* Themes can override --ok-topbar-border to strengthen this line
-     when --ok-line alone is too low contrast (Mono is the case). */
-  border-bottom: 1px solid var(--ok-topbar-border, color-mix(in oklch, var(--ok-line) 80%, transparent));
-  /* Soft shadow underneath so when content scrolls under the sticky
-     topbar there's a subtle sense of depth. Always-on (acceptable for
-     documentation pages). */
-  box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--ok-shadow-color, black) 30%, transparent);
+  border-bottom: var(--border-w) solid var(--topbar-border-color);
+  box-shadow: 0 4px 16px -4px color-mix(in oklch, var(--shadow-color, black) 30%, transparent);
 }
 @supports not (backdrop-filter: blur(1px)) {
-  .ok-topbar { background: var(--ok-bg-1); }
+  .topbar { background: var(--bg-1); }
 }
 
 /* Ionic-style layout:  [ back ]   ─   title   ─   [ burger ]  +  actions
@@ -40,128 +43,128 @@
 */
 
 /* Generic icon button used by back & burger. */
-.ok-topbar__menu-btn,
-.ok-topbar__back-btn {
+.topbar__menu-btn,
+.topbar__back-btn {
   display: inline-flex;
   width: 36px; height: 36px;
-  border-radius: var(--ok-radius-md);
+  border-radius: var(--radius-md);
   align-items: center;
   justify-content: center;
-  color: var(--ok-ink-2);
+  color: var(--ink-2);
   background: transparent;
-  border: 1px solid transparent;
+  border: var(--border-w) solid transparent;
   flex-shrink: 0;
   cursor: pointer;
-  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+  transition: background var(--dur-fast), color var(--dur-fast);
 }
-.ok-topbar__menu-btn:hover,
-.ok-topbar__back-btn:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
-.ok-topbar__menu-btn svg,
-.ok-topbar__back-btn svg { width: 18px; height: 18px; }
-.ok-topbar__back-btn:disabled,
-.ok-topbar__back-btn[aria-disabled="true"] { opacity: 0.35; pointer-events: none; }
+.topbar__menu-btn:hover,
+.topbar__back-btn:hover { background: var(--bg-3); color: var(--ink); }
+.topbar__menu-btn svg,
+.topbar__back-btn svg { width: 18px; height: 18px; }
+.topbar__back-btn:disabled,
+.topbar__back-btn[aria-disabled="true"] { opacity: 0.35; pointer-events: none; }
 
 /* Center page title — visible on every viewport, dominant */
-.ok-topbar__page-title {
+.topbar__page-title {
   flex: 1;
   min-width: 0;
   margin: 0;
-  font-size: var(--ok-text-md);
+  font-size: var(--text-md);
   font-weight: 600;
-  color: var(--ok-ink);
+  color: var(--ink);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-  letter-spacing: var(--ok-tracking-tight);
+  letter-spacing: var(--tracking-tight);
 }
 
 /* Breadcrumbs — kept for backwards-compat, hidden by default in new layout.
-   Pages can opt-in by adding ok-topbar--with-crumb on the .ok-topbar. */
-.ok-topbar__crumb {
+   Pages can opt-in by adding ok-topbar--with-crumb on the .topbar. */
+.topbar__crumb {
   display: none;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   flex: 1;
   min-width: 0;
-  font-size: var(--ok-text-md);
+  font-size: var(--text-md);
   font-weight: 500;
-  color: var(--ok-ink-2);
+  color: var(--ink-2);
   overflow: hidden;
 }
-.ok-topbar--with-crumb .ok-topbar__crumb { display: flex; }
-.ok-topbar--with-crumb .ok-topbar__page-title { display: none; }
-.ok-topbar__crumb-item {
+.topbar.with-crumb .topbar__crumb { display: flex; }
+.topbar.with-crumb .topbar__page-title { display: none; }
+.topbar__crumb-item {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.ok-topbar__crumb-item:last-child { color: var(--ok-ink); }
-.ok-topbar__crumb-sep { color: var(--ok-ink-4); flex-shrink: 0; }
+.topbar__crumb-item:last-child { color: var(--ink); }
+.topbar__crumb-sep { color: var(--ink-4); flex-shrink: 0; }
 
 /* (Legacy) left cluster — kept renderable, now empty in the new layout. */
-.ok-topbar__left {
+.topbar__left {
   display: inline-flex;
   align-items: center;
-  gap: var(--ok-space-1);
+  gap: var(--space-1);
   flex-shrink: 0;
 }
 
 /* Hide the search box on smaller viewports to leave room for title + buttons. */
 @media (max-width: 1023px) {
-  .ok-topbar__search { display: none; }
+  .topbar__search { display: none; }
 }
-.ok-topbar__crumb-item {
+.topbar__crumb-item {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.ok-topbar__crumb-item:last-child { color: var(--ok-ink); }
-.ok-topbar__crumb-sep {
-  color: var(--ok-ink-4);
+.topbar__crumb-item:last-child { color: var(--ink); }
+.topbar__crumb-sep {
+  color: var(--ink-4);
   flex-shrink: 0;
 }
 
-.ok-topbar__search {
+.topbar__search {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-2);
   height: 32px;
   padding: 0 10px;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  color: var(--ok-ink-3);
-  font-size: var(--ok-text-sm);
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  color: var(--ink-3);
+  font-size: var(--text-sm);
   width: 240px;
-  transition: border-color var(--ok-dur-fast);
+  transition: border-color var(--dur-fast);
 }
-.ok-topbar__search:focus-within { border-color: var(--ok-line-3); }
-.ok-topbar__search input {
+.topbar__search:focus-within { border-color: var(--line-3); }
+.topbar__search input {
   background: transparent;
   border: none;
   outline: none;
   flex: 1;
   min-width: 0;
-  color: var(--ok-ink);
+  color: var(--ink);
 }
-.ok-topbar__search input::placeholder { color: var(--ok-ink-3); }
-.ok-topbar__kbd {
-  font-family: var(--ok-font-mono);
-  font-size: var(--ok-text-2xs);
+.topbar__search input::placeholder { color: var(--ink-3); }
+.topbar__kbd {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
   padding: 1px 5px;
-  border: 1px solid var(--ok-line-2);
-  border-radius: var(--ok-radius-xs);
-  color: var(--ok-ink-3);
+  border: var(--border-w) solid var(--line-2);
+  border-radius: var(--radius-xs);
+  color: var(--ink-3);
 }
 
-.ok-topbar__actions {
+.topbar__actions {
   display: flex;
   align-items: center;
-  gap: var(--ok-space-2);
+  gap: var(--space-2);
   flex-shrink: 0;
 }
 
 @media (max-width: 767px) {
-  .ok-topbar__search { display: none; }
+  .topbar__search { display: none; }
 }

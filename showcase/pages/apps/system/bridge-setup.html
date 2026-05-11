@@ -4,167 +4,167 @@
 {% block page_title %}Bridge setup{% endblock %}
 
 {% block content %}
-<div class="ok-app" id="app" data-tabbar="bottom"
+<div class="app" id="app" data-tabbar="bottom"
      data-signals='{"sidebar": false, "w": {"step": 3, "port": 9100, "scanning": false, "found": 4}}'
      data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">CR</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="ok-sidebar__brand-meta">Hub · v0.0.9</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">CR</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="sidebar__brand-meta">Hub · v0.0.9</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Plataforma</div>
-      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/></svg><span class="ok-sidebar__label">Sistema</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Plataforma</div>
+      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/></svg><span class="sidebar__label">Sistema</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Joan Castell</div>
-          <div class="ok-sidebar__user-meta">joan@larambla.es</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">JC</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Joan Castell</div>
+          <div class="sidebar__user-meta">joan@larambla.es</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <div class="ok-app__body">
+    <div class="app__body">
 
-      <div class="ok-page-header" style="border-bottom:1px solid var(--ok-line);margin-bottom:22px;">
-        <div class="ok-page-header__title">
+      <div class="page-header" style="border-bottom:1px solid var(--line);margin-bottom:22px;">
+        <div class="page-header__title">
           <h1>Configurar ERPlora Bridge</h1>
-          <div class="ok-page-header__sub">Asistente paso a paso para conectar impresoras y periféricos</div>
+          <div class="page-header__sub">Asistente paso a paso para conectar impresoras y periféricos</div>
         </div>
-        <div class="ok-page-header__actions">
-          <a class="ok-btn ok-btn--ghost ok-btn--sm" href="index.html">Cancelar</a>
+        <div class="page-header__actions">
+          <a class="btn ghost sm" href="index.html">Cancelar</a>
         </div>
       </div>
 
       <!-- Wizard layout: stepper on top + body card -->
-      <div class="ok-wizard" style="max-width:920px;margin:0 auto;">
+      <div class="wizard" style="max-width:920px;margin:0 auto;">
 
-        <div class="ok-wizard__steps">
-          <div class="ok-wizard__step"
-               data-class="{'ok-wizard__step--done': $w.step > 1, 'ok-wizard__step--active': $w.step === 1}">
-            <span class="ok-wizard__step-num" data-text="$w.step > 1 ? '✓' : '1'"></span>
+        <div class="wizard__steps">
+          <div class="wizard__step"
+               data-class="{'wizard__step--done': $w.step > 1, 'wizard__step--active': === 1}">
+            <span class="wizard__step-num" data-text="$w.step > 1 ? '✓' : '1'"></span>
             <div>
-              <div class="ok-wizard__step-name">Descargar Bridge</div>
-              <div class="ok-wizard__step-sub">Windows · macOS · Linux</div>
+              <div class="wizard__step-name">Descargar Bridge</div>
+              <div class="wizard__step-sub">Windows · macOS · Linux</div>
             </div>
           </div>
-          <div class="ok-wizard__step"
-               data-class="{'ok-wizard__step--done': $w.step > 2, 'ok-wizard__step--active': $w.step === 2}">
-            <span class="ok-wizard__step-num" data-text="$w.step > 2 ? '✓' : '2'"></span>
+          <div class="wizard__step"
+               data-class="{'wizard__step--done': $w.step > 2, 'wizard__step--active': === 2}">
+            <span class="wizard__step-num" data-text="$w.step > 2 ? '✓' : '2'"></span>
             <div>
-              <div class="ok-wizard__step-name">Instalar y arrancar</div>
-              <div class="ok-wizard__step-sub">Servicio en puerto local</div>
+              <div class="wizard__step-name">Instalar y arrancar</div>
+              <div class="wizard__step-sub">Servicio en puerto local</div>
             </div>
           </div>
-          <div class="ok-wizard__step"
-               data-class="{'ok-wizard__step--done': $w.step > 3, 'ok-wizard__step--active': $w.step === 3}">
-            <span class="ok-wizard__step-num" data-text="$w.step > 3 ? '✓' : '3'"></span>
+          <div class="wizard__step"
+               data-class="{'wizard__step--done': $w.step > 3, 'wizard__step--active': === 3}">
+            <span class="wizard__step-num" data-text="$w.step > 3 ? '✓' : '3'"></span>
             <div>
-              <div class="ok-wizard__step-name">Detectar dispositivos</div>
-              <div class="ok-wizard__step-sub">Escaneo automático</div>
+              <div class="wizard__step-name">Detectar dispositivos</div>
+              <div class="wizard__step-sub">Escaneo automático</div>
             </div>
           </div>
-          <div class="ok-wizard__step"
-               data-class="{'ok-wizard__step--active': $w.step === 4}">
-            <span class="ok-wizard__step-num">4</span>
+          <div class="wizard__step"
+               data-class="{'wizard__step--active': $w.step === 4}">
+            <span class="wizard__step-num">4</span>
             <div>
-              <div class="ok-wizard__step-name">Asignar funciones</div>
-              <div class="ok-wizard__step-sub">Tickets, cocina, etiquetas…</div>
+              <div class="wizard__step-name">Asignar funciones</div>
+              <div class="wizard__step-sub">Tickets, cocina, etiquetas…</div>
             </div>
           </div>
         </div>
 
         <!-- STEP 1 -->
-        <div class="ok-wizard__body" data-show="$w.step === 1">
-          <h2 class="ok-wizard__title">Descarga ERPlora Bridge</h2>
-          <p class="ok-wizard__sub">El Bridge es un pequeño servicio que se ejecuta en el ordenador del TPV. Conecta el navegador con tus periféricos USB, serie y red local sin instalar drivers.</p>
+        <div class="wizard__body" data-show="$w.step === 1">
+          <h2 class="wizard__title">Descarga ERPlora Bridge</h2>
+          <p class="wizard__sub">El Bridge es un pequeño servicio que se ejecuta en el ordenador del TPV. Conecta el navegador con tus periféricos USB, serie y red local sin instalar drivers.</p>
 
-          <div class="ok-grid-3" style="gap:14px;margin-top:18px;">
-            <a class="ok-card ok-card--interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge.exe">
-              <div class="ok-card__body ok-text-center">
-                <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--ok-info) 14%, transparent);color:var(--ok-info);display:grid;place-items:center;margin:0 auto 10px;">
+          <div class="grid-3" style="gap:14px;margin-top:18px;">
+            <a class="card interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge.exe">
+              <div class="card__body text-center">
+                <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--info) 14%, transparent);color:var(--info);display:grid;place-items:center;margin:0 auto 10px;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5l8-1v8H3V5zm0 9h8v8l-8-1v-7zm9-10l9-1v9h-9V4zm0 10h9v9l-9-1v-8z"/></svg>
                 </div>
-                <div class="ok-font-semibold">Windows</div>
-                <div class="ok-text-xs ok-c-ink-3">erplora-bridge.exe · 28 MB</div>
-                <button class="ok-btn ok-btn--secondary ok-btn--sm ok-mt-2">Descargar</button>
+                <div class="font-semibold">Windows</div>
+                <div class="text-xs c-ink-3">erplora-bridge.exe · 28 MB</div>
+                <button class="btn secondary sm mt-2">Descargar</button>
               </div>
             </a>
-            <a class="ok-card ok-card--interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge-macos.dmg">
-              <div class="ok-card__body ok-text-center">
-                <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--ok-ink-2) 14%, transparent);color:var(--ok-ink);display:grid;place-items:center;margin:0 auto 10px;">
+            <a class="card interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge-macos.dmg">
+              <div class="card__body text-center">
+                <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--ink-2) 14%, transparent);color:var(--ink);display:grid;place-items:center;margin:0 auto 10px;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 1.5c0 1.4-.6 2.7-1.6 3.6-1.1 1.1-2.3 1.6-3.6 1.5-.1-1.4.5-2.7 1.5-3.7C13.9 1.9 15.2 1.4 16.5 1.5zm4.4 16.4c-.4 1-.9 2-1.6 2.9-.9 1.2-1.6 2-2 2.4-.7.6-1.5 1-2.4 1-.6 0-1.4-.2-2.3-.5-.9-.4-1.7-.5-2.5-.5-.8 0-1.6.2-2.6.5-.9.3-1.7.5-2.3.5-.8 0-1.6-.4-2.4-1-.4-.4-1.1-1.2-2.1-2.5-1-1.4-1.9-3-2.5-4.8-.7-2-1.1-3.9-1.1-5.7 0-2.1.5-3.9 1.4-5.4.7-1.2 1.7-2.1 2.9-2.8 1.2-.7 2.5-1 3.9-1 .7 0 1.5.2 2.6.6 1 .4 1.7.6 2 .6.2 0 1-.2 2.2-.7 1.2-.4 2.2-.6 3-.5 2.2.2 3.9 1 5 2.6-2 1.2-3 2.9-3 5 0 1.7.6 3.1 1.7 4.2 1 1 2.1 1.6 3.4 2-.4 1.4-.9 2.4-1.3 3z"/></svg>
                 </div>
-                <div class="ok-font-semibold">macOS</div>
-                <div class="ok-text-xs ok-c-ink-3">erplora-bridge.dmg · 32 MB</div>
-                <button class="ok-btn ok-btn--secondary ok-btn--sm ok-mt-2">Descargar</button>
+                <div class="font-semibold">macOS</div>
+                <div class="text-xs c-ink-3">erplora-bridge.dmg · 32 MB</div>
+                <button class="btn secondary sm mt-2">Descargar</button>
               </div>
             </a>
-            <a class="ok-card ok-card--interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge-linux">
-              <div class="ok-card__body ok-text-center">
-                <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--ok-warn) 14%, transparent);color:var(--ok-warn);display:grid;place-items:center;margin:0 auto 10px;">
+            <a class="card interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge-linux">
+              <div class="card__body text-center">
+                <div style="width:48px;height:48px;border-radius:14px;background:color-mix(in oklch, var(--warn) 14%, transparent);color:var(--warn);display:grid;place-items:center;margin:0 auto 10px;">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="9" r="6"/><path d="M7 15l-2 6h14l-2-6"/></svg>
                 </div>
-                <div class="ok-font-semibold">Linux</div>
-                <div class="ok-text-xs ok-c-ink-3">erplora-bridge · 24 MB · AMD64</div>
-                <button class="ok-btn ok-btn--secondary ok-btn--sm ok-mt-2">Descargar</button>
+                <div class="font-semibold">Linux</div>
+                <div class="text-xs c-ink-3">erplora-bridge · 24 MB · AMD64</div>
+                <button class="btn secondary sm mt-2">Descargar</button>
               </div>
             </a>
           </div>
         </div>
 
         <!-- STEP 2 -->
-        <div class="ok-wizard__body" data-show="$w.step === 2">
-          <h2 class="ok-wizard__title">Instala y arranca el Bridge</h2>
-          <p class="ok-wizard__sub">Ejecuta el instalador y deja el Bridge abierto. Quedará escuchando en localhost en el puerto que configures.</p>
+        <div class="wizard__body" data-show="$w.step === 2">
+          <h2 class="wizard__title">Instala y arranca el Bridge</h2>
+          <p class="wizard__sub">Ejecuta el instalador y deja el Bridge abierto. Quedará escuchando en localhost en el puerto que configures.</p>
 
           <ol style="display:grid;gap:14px;margin-top:18px;padding:0;list-style:none;counter-reset:n;">
-            <li style="display:flex;gap:14px;background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;">
-              <div style="width:32px;height:32px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 14%, transparent);color:var(--ok-brand);display:grid;place-items:center;font-weight:600;flex:none;">1</div>
+            <li style="display:flex;gap:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px;">
+              <div style="width:32px;height:32px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;font-weight:600;flex:none;">1</div>
               <div>
-                <div class="ok-font-medium">Ejecuta el instalador</div>
-                <div class="ok-text-xs ok-c-ink-3">Doble-click en <code class="ok-code--inline">erplora-bridge.exe</code> (Windows) o monta el <code class="ok-code--inline">.dmg</code> y arrastra a Aplicaciones (macOS).</div>
+                <div class="font-medium">Ejecuta el instalador</div>
+                <div class="text-xs c-ink-3">Doble-click en <code class="code inline">erplora-bridge.exe</code> (Windows) o monta el <code class="code inline">.dmg</code> y arrastra a Aplicaciones (macOS).</div>
               </div>
             </li>
-            <li style="display:flex;gap:14px;background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;">
-              <div style="width:32px;height:32px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 14%, transparent);color:var(--ok-brand);display:grid;place-items:center;font-weight:600;flex:none;">2</div>
+            <li style="display:flex;gap:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px;">
+              <div style="width:32px;height:32px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;font-weight:600;flex:none;">2</div>
               <div>
-                <div class="ok-font-medium">Permite acceso a la red local</div>
-                <div class="ok-text-xs ok-c-ink-3">El sistema operativo te pedirá autorización para que el Bridge use el puerto local. Acepta para que el Hub pueda comunicarse.</div>
+                <div class="font-medium">Permite acceso a la red local</div>
+                <div class="text-xs c-ink-3">El sistema operativo te pedirá autorización para que el Bridge use el puerto local. Acepta para que el Hub pueda comunicarse.</div>
               </div>
             </li>
-            <li style="display:flex;gap:14px;background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;">
-              <div style="width:32px;height:32px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 14%, transparent);color:var(--ok-brand);display:grid;place-items:center;font-weight:600;flex:none;">3</div>
+            <li style="display:flex;gap:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px;">
+              <div style="width:32px;height:32px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;font-weight:600;flex:none;">3</div>
               <div>
-                <div class="ok-font-medium">Verifica el puerto</div>
-                <div style="font-size:12px;color:var(--ok-ink-3);margin-bottom:8px;">Por defecto 9100. Cambia si tu firewall lo bloquea.</div>
-                <div class="ok-form-row" style="grid-template-columns:160px 1fr;">
-                  <input class="ok-input ok-input--sm" type="number" min="1024" max="65535" data-bind="w.port"/>
-                  <span class="ok-pill ok-pill--ok" style="align-self:center;justify-self:start;"><span class="ok-pill__dot"></span>Bridge detectado</span>
+                <div class="font-medium">Verifica el puerto</div>
+                <div style="font-size:12px;color:var(--ink-3);margin-bottom:8px;">Por defecto 9100. Cambia si tu firewall lo bloquea.</div>
+                <div class="form-row" style="grid-template-columns:160px 1fr;">
+                  <input class="input sm" type="number" min="1024" max="65535" data-bind="w.port"/>
+                  <span class="pill success" style="align-self:center;justify-self:start;"><span class="pill__dot"></span>Bridge detectado</span>
                 </div>
               </div>
             </li>
@@ -172,16 +172,16 @@
         </div>
 
         <!-- STEP 3 -->
-        <div class="ok-wizard__body" data-show="$w.step === 3">
-          <h2 class="ok-wizard__title">Detectar dispositivos</h2>
-          <p class="ok-wizard__sub">El Bridge escanea la red local (subred actual) y los puertos USB/serie del equipo.</p>
+        <div class="wizard__body" data-show="$w.step === 3">
+          <h2 class="wizard__title">Detectar dispositivos</h2>
+          <p class="wizard__sub">El Bridge escanea la red local (subred actual) y los puertos USB/serie del equipo.</p>
 
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding:14px;background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;">
             <div>
-              <div class="ok-font-medium">Escaneo en curso · 192.168.1.0/24</div>
-              <div data-text="$w.found + ' dispositivos detectados · escaneo finalizado en 4,2 s'" class="ok-text-xs ok-c-ink-3"></div>
+              <div class="font-medium">Escaneo en curso · 192.168.1.0/24</div>
+              <div data-text="$w.found + ' dispositivos detectados · escaneo finalizado en 4,2 s'" class="text-xs c-ink-3"></div>
             </div>
-            <button class="ok-btn ok-btn--secondary ok-btn--sm"
+            <button class="btn secondary sm"
               data-on:click="$w.scanning = true; setTimeout(() => $w.scanning = false, 1500)"
               data-attr:disabled="$w.scanning">
               <span data-show="!$w.scanning">↻ Volver a escanear</span>
@@ -190,128 +190,128 @@
           </div>
 
           <div style="display:grid;gap:8px;margin-top:14px;">
-            <label class="ok-card ok-card--interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
+            <label class="card interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
               <input type="checkbox" checked/>
-              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 14%, transparent);color:var(--ok-brand);display:grid;place-items:center;flex:none;">
+              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;flex:none;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <div class="ok-font-medium">Epson TM-T20III</div>
-                <div class="ok-text-xs ok-c-ink-3 ok-font-mono">192.168.1.220 · 64:eb:8c:11:22:33</div>
+              <div class="flex-1">
+                <div class="font-medium">Epson TM-T20III</div>
+                <div class="text-xs c-ink-3 font-mono">192.168.1.220 · 64:eb:8c:11:22:33</div>
               </div>
-              <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Lista</span>
+              <span class="pill success"><span class="pill__dot"></span>Lista</span>
             </label>
-            <label class="ok-card ok-card--interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
+            <label class="card interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
               <input type="checkbox" checked/>
-              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--ok-leaf) 14%, transparent);color:var(--ok-leaf);display:grid;place-items:center;flex:none;">
+              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--leaf) 14%, transparent);color:var(--leaf);display:grid;place-items:center;flex:none;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <div class="ok-font-medium">Star TSP143</div>
-                <div class="ok-text-xs ok-c-ink-3 ok-font-mono">192.168.1.221 · 00:11:62:aa:bb:cc</div>
+              <div class="flex-1">
+                <div class="font-medium">Star TSP143</div>
+                <div class="text-xs c-ink-3 font-mono">192.168.1.221 · 00:11:62:aa:bb:cc</div>
               </div>
-              <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Lista</span>
+              <span class="pill success"><span class="pill__dot"></span>Lista</span>
             </label>
-            <label class="ok-card ok-card--interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
+            <label class="card interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
               <input type="checkbox" checked/>
-              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--ok-info) 14%, transparent);color:var(--ok-info);display:grid;place-items:center;flex:none;">
+              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--info) 14%, transparent);color:var(--info);display:grid;place-items:center;flex:none;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h2v14H3zM7 5h1v14H7zM10 5h2v14h-2zM14 5h1v14h-1zM17 5h1v14h-1zM20 5h1v14h-1z"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <div class="ok-font-medium">Honeywell Voyager 1450g</div>
-                <div class="ok-text-xs ok-c-ink-3 ok-font-mono">USB HID · /dev/hidraw1</div>
+              <div class="flex-1">
+                <div class="font-medium">Honeywell Voyager 1450g</div>
+                <div class="text-xs c-ink-3 font-mono">USB HID · /dev/hidraw1</div>
               </div>
-              <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Lista</span>
+              <span class="pill success"><span class="pill__dot"></span>Lista</span>
             </label>
-            <label class="ok-card ok-card--interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
+            <label class="card interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
               <input type="checkbox"/>
-              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--ok-warn) 14%, transparent);color:var(--ok-warn);display:grid;place-items:center;flex:none;">
+              <div style="width:34px;height:34px;border-radius:10px;background:color-mix(in oklch, var(--warn) 14%, transparent);color:var(--warn);display:grid;place-items:center;flex:none;">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18l-2 12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L3 7z"/></svg>
               </div>
-              <div class="ok-flex-1">
-                <div class="ok-font-medium">Mettler ICS425</div>
-                <div class="ok-text-xs ok-c-ink-3 ok-font-mono">/dev/ttyUSB0 · 9600 8N1</div>
+              <div class="flex-1">
+                <div class="font-medium">Mettler ICS425</div>
+                <div class="text-xs c-ink-3 font-mono">/dev/ttyUSB0 · 9600 8N1</div>
               </div>
-              <span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Sin firmware</span>
+              <span class="pill warning"><span class="pill__dot"></span>Sin firmware</span>
             </label>
           </div>
         </div>
 
         <!-- STEP 4 -->
-        <div class="ok-wizard__body" data-show="$w.step === 4">
-          <h2 class="ok-wizard__title">Asigna roles a cada dispositivo</h2>
-          <p class="ok-wizard__sub">Indica para qué se usará cada impresora detectada. Después podrás cambiar la asignación en Configuración → Impresoras.</p>
+        <div class="wizard__body" data-show="$w.step === 4">
+          <h2 class="wizard__title">Asigna roles a cada dispositivo</h2>
+          <p class="wizard__sub">Indica para qué se usará cada impresora detectada. Después podrás cambiar la asignación en Configuración → Impresoras.</p>
 
           <div style="display:grid;gap:10px;margin-top:18px;">
 
-            <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;display:grid;grid-template-columns:auto 1fr 200px 200px;gap:12px;align-items:center;">
-              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ok-brand) 14%, transparent);color:var(--ok-brand);display:grid;place-items:center;">
+            <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:auto 1fr 200px 200px;gap:12px;align-items:center;">
+              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--brand) 14%, transparent);color:var(--brand);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
               </div>
               <div>
-                <div class="ok-font-medium">Epson TM-T20III</div>
-                <div class="ok-text-xs ok-c-ink-3 ok-font-mono">192.168.1.220</div>
+                <div class="font-medium">Epson TM-T20III</div>
+                <div class="text-xs c-ink-3 font-mono">192.168.1.220</div>
               </div>
-              <select class="ok-select ok-select--sm">
+              <select class="select sm">
                 <option selected>Tickets (mostrador)</option>
                 <option>Cocina</option>
                 <option>Bebidas / Barra</option>
                 <option>Etiquetas</option>
               </select>
-              <select class="ok-select ok-select--sm">
+              <select class="select sm">
                 <option>80 mm</option>
                 <option>58 mm</option>
               </select>
             </div>
 
-            <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;display:grid;grid-template-columns:auto 1fr 200px 200px;gap:12px;align-items:center;">
-              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ok-leaf) 14%, transparent);color:var(--ok-leaf);display:grid;place-items:center;">
+            <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:auto 1fr 200px 200px;gap:12px;align-items:center;">
+              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--leaf) 14%, transparent);color:var(--leaf);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>
               </div>
               <div>
-                <div class="ok-font-medium">Star TSP143</div>
-                <div class="ok-text-xs ok-c-ink-3 ok-font-mono">192.168.1.221</div>
+                <div class="font-medium">Star TSP143</div>
+                <div class="text-xs c-ink-3 font-mono">192.168.1.221</div>
               </div>
-              <select class="ok-select ok-select--sm">
+              <select class="select sm">
                 <option>Tickets (mostrador)</option>
                 <option selected>Cocina</option>
                 <option>Bebidas / Barra</option>
                 <option>Etiquetas</option>
               </select>
-              <select class="ok-select ok-select--sm">
+              <select class="select sm">
                 <option selected>80 mm</option>
                 <option>58 mm</option>
               </select>
             </div>
 
-            <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:12px;padding:14px;display:grid;grid-template-columns:auto 1fr 200px 200px;gap:12px;align-items:center;">
-              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--ok-info) 14%, transparent);color:var(--ok-info);display:grid;place-items:center;">
+            <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:auto 1fr 200px 200px;gap:12px;align-items:center;">
+              <div style="width:36px;height:36px;border-radius:10px;background:color-mix(in oklch, var(--info) 14%, transparent);color:var(--info);display:grid;place-items:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h2v14H3zM7 5h1v14H7zM10 5h2v14h-2zM14 5h1v14h-1z"/></svg>
               </div>
               <div>
-                <div class="ok-font-medium">Honeywell Voyager 1450g</div>
-                <div class="ok-text-xs ok-c-ink-3">Scanner de barras</div>
+                <div class="font-medium">Honeywell Voyager 1450g</div>
+                <div class="text-xs c-ink-3">Scanner de barras</div>
               </div>
-              <select class="ok-select ok-select--sm" disabled>
+              <select class="select sm" disabled>
                 <option>POS</option>
               </select>
-              <span class="ok-pill ok-pill--ok" style="justify-self:start;"><span class="ok-pill__dot"></span>Listo</span>
+              <span class="pill success" style="justify-self:start;"><span class="pill__dot"></span>Listo</span>
             </div>
 
           </div>
         </div>
 
         <!-- Footer (común) -->
-        <div class="ok-wizard__foot">
-          <span class="ok-wizard__foot-meta" data-text="'Paso ' + $w.step + ' de 4'"></span>
-          <div class="ok-wizard__foot-actions">
-            <button class="ok-btn ok-btn--ghost"
+        <div class="wizard__foot">
+          <span class="wizard__foot-meta" data-text="'Paso ' + $w.step + ' de 4'"></span>
+          <div class="wizard__foot-actions">
+            <button class="btn ghost"
               data-on:click="$w.step = Math.max(1, $w.step - 1)"
               data-attr:disabled="$w.step === 1">← Atrás</button>
-            <button class="ok-btn ok-btn--primary"
+            <button class="btn primary"
               data-show="$w.step < 4"
               data-on:click="$w.step = $w.step + 1">Continuar →</button>
-            <button class="ok-btn ok-btn--primary"
+            <button class="btn primary"
               data-show="$w.step === 4">Guardar configuración</button>
           </div>
         </div>
@@ -320,12 +320,12 @@
 
     </div>
   </div>
-  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Inicio</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Facturas</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Perfil</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

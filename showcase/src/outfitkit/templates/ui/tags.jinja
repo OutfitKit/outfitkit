@@ -11,9 +11,9 @@
 {% macro tag(label, variant=None, size=None, solid=False, removable=False, remove_action="", attrs=None) -%}
 {%- set _tattrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <span class="{{ ok_prefix }}tag
-  {%- if solid %} {{ ok_prefix }}tag--solid{% endif %}
-  {%- if variant %} {{ ok_prefix }}tag--{{ variant }}{% endif %}
-  {%- if size %} {{ ok_prefix }}tag--{{ size }}{% endif %}
+  {%- if solid %} solid{% endif %}
+  {%- if variant %} {{ variant }}{% endif %}
+  {%- if size %} {{ size }}{% endif %}
   {%- if removable %} is-removable{% endif %}"
   {%- for k, v in _tattrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ label }}

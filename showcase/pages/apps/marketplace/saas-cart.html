@@ -14,47 +14,47 @@
 
 {% block content %}
 <style>
-  body { background: var(--ok-bg); margin: 0; }
-  .cart-stepper-wrap { padding: 14px 18px; background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-lg); margin-bottom: 18px; }
+  body { background: var(--bg); margin: 0; }
+  .cart-stepper-wrap { padding: 14px 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); margin-bottom: 18px; }
 
   .cart-line {
     display: grid; grid-template-columns: 80px 1fr auto; gap: 16px;
     padding: 14px; align-items: center;
-    background: var(--ok-bg-2); border: 1px solid var(--ok-line);
-    border-radius: var(--ok-radius-lg);
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
   }
   .cart-line + .cart-line { margin-top: 10px; }
   .cart-line__thumb {
-    width: 80px; height: 80px; border-radius: var(--ok-radius-md);
+    width: 80px; height: 80px; border-radius: var(--radius-md);
     display: grid; place-items: center;
-    color: var(--ok-ink-3); font-family: var(--ok-font-mono); font-size: 10px;
+    color: var(--ink-3); font-family: var(--font-mono); font-size: 10px;
   }
   .cart-line__thumb--a { background: linear-gradient(135deg, #2a1a14, #4a2818); }
   .cart-line__thumb--b { background: linear-gradient(135deg, #1a2a3a, #2a3a4a); }
   .cart-line__thumb--c { background: linear-gradient(135deg, #1a2a1a, #2a3a25); }
   .cart-line__thumb--d { background: linear-gradient(135deg, #2a1a2a, #3a2548); }
   .cart-line__info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-  .cart-line__name { font-family: var(--ok-font-display); font-size: 15px; font-weight: 600; color: var(--ok-ink); }
-  .cart-line__meta { font-size: 12px; color: var(--ok-ink-3); }
+  .cart-line__name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .cart-line__meta { font-size: 12px; color: var(--ink-3); }
   .cart-line__bottom { display: flex; gap: 16px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
   .cart-line__price-block { text-align: right; min-width: 90px; }
-  .cart-line__unit { font-size: 11px; color: var(--ok-ink-3); }
-  .cart-line__total { font-family: var(--ok-font-display); font-size: 18px; font-weight: 700; color: var(--ok-ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .cart-line__unit { font-size: 11px; color: var(--ink-3); }
+  .cart-line__total { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 
-  .summary-card { background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-lg); padding: 18px; }
-  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; color: var(--ok-ink-2); font-variant-numeric: tabular-nums; }
-  .summary-row b { color: var(--ok-ink); font-weight: 500; }
-  .summary-divider { border: none; border-top: 1px dashed var(--ok-line); margin: 10px 0; }
+  .summary-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .summary-row b { color: var(--ink); font-weight: 500; }
+  .summary-divider { border: none; border-top: 1px dashed var(--line); margin: 10px 0; }
   .summary-total { display: flex; justify-content: space-between; align-items: baseline; margin: 4px 0 14px; }
-  .summary-total__label { font-size: 13px; color: var(--ok-ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
-  .summary-total__value { font-family: var(--ok-font-display); font-size: 28px; font-weight: 700; color: var(--ok-ink); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+  .summary-total__label { font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .summary-total__value { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
 
   .pay-icons { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
-  .pay-icon { width: 36px; height: 24px; border-radius: 4px; background: var(--ok-bg-3); border: 1px solid var(--ok-line); display: grid; place-items: center; font-family: var(--ok-font-mono); font-size: 8px; font-weight: 700; color: var(--ok-ink-2); letter-spacing: 0.06em; }
-  .trust-line { font-size: 11.5px; color: var(--ok-ink-3); margin-top: 10px; display: flex; gap: 6px; align-items: center; }
+  .pay-icon { width: 36px; height: 24px; border-radius: 4px; background: var(--bg-3); border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-mono); font-size: 8px; font-weight: 700; color: var(--ink-2); letter-spacing: 0.06em; }
+  .trust-line { font-size: 11.5px; color: var(--ink-3); margin-top: 10px; display: flex; gap: 6px; align-items: center; }
 
   .related-section { margin-top: 32px; }
-  .prod-art { width:100%; height:100%; display:grid; place-items:center; color: var(--ok-ink-3); font-family: var(--ok-font-mono); font-size: 10px; }
+  .prod-art { width:100%; height:100%; display:grid; place-items:center; color: var(--ink-3); font-family: var(--font-mono); font-size: 10px; }
   .prod-art--a { background: linear-gradient(135deg, #2a1a14, #4a2818); }
   .prod-art--b { background: linear-gradient(135deg, #1a2a3a, #2a3a4a); }
   .prod-art--c { background: linear-gradient(135deg, #1a2a1a, #2a3a25); }
@@ -63,90 +63,90 @@
   .prod-art--f { background: linear-gradient(135deg, #1a2422, #283a36); }
 </style>
 
-<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">EX</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">Acme Industries</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">EX</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">Acme Industries</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
-      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="ok-sidebar__label">Equipamiento</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
+      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="sidebar__label">Equipamiento</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
 
-      <div class="ok-sidebar__group">Facturación</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="ok-sidebar__label">Facturas</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Suscripciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Pagos</span></button>
+      <div class="sidebar__group">Facturación</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="sidebar__label">Facturas</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="sidebar__label">Suscripciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Pagos</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">IB</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">Carrito</h1>
+        <h1 class="topbar__page-title">Carrito</h1>
         
-        <div class="ok-topbar__search">
+        <div class="topbar__search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar terminales, lectores…"/>
-        <span class="ok-topbar__kbd">⌘K</span>
+        <span class="topbar__kbd">⌘K</span>
       </div>
         
-        <div class="ok-topbar__actions">
-          <button class="ok-icon-btn ok-relative" aria-label="Carrito">
+        <div class="topbar__actions">
+          <button class="icon-btn relative" aria-label="Carrito">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
-          <span class="ok-qty-badge ok-qty-badge--sm ok-qty-badge--brand ok-qty-badge--floating">5</span>
+          <span class="qty-badge sm brand floating">5</span>
         </button>
-        <button class="ok-icon-btn" aria-label="Notificaciones"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <button class="icon-btn" aria-label="Notificaciones"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></button>
+        <span class="avatar sm brand">IB</span>
         </div>
       </header>
 
-    <nav class="ok-tabs" aria-label="Sub-secciones del marketplace SaaS">
-      <a class="ok-tab" href="saas-shop.html">Tienda</a>
-      <a class="ok-tab" href="saas-cart.html" aria-current="page">Carrito</a>
-      <a class="ok-tab" href="saas-checkout.html">Checkout</a>
-      <a class="ok-tab" href="saas-success.html">Confirmación</a>
+    <nav class="tabs" aria-label="Sub-secciones del marketplace SaaS">
+      <a class="tab" href="saas-shop.html">Tienda</a>
+      <a class="tab" href="saas-cart.html" aria-current="page">Carrito</a>
+      <a class="tab" href="saas-checkout.html">Checkout</a>
+      <a class="tab" href="saas-success.html">Confirmación</a>
     </nav>
 
-    <div class="ok-app__body">
+    <div class="app__body">
 
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Tu carrito</h1>
-          <div class="ok-page-header__sub">5 artículos · subtotal €2 049</div>
+          <div class="page-header__sub">5 artículos · subtotal €2 049</div>
         </div>
-        <div class="ok-page-header__actions">
-          <span class="ok-tag ok-tag--neutral">Paso 1 de 3</span>
-          <button class="ok-btn ok-btn--ghost">
-            <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        <div class="page-header__actions">
+          <span class="tag neutral">Paso 1 de 3</span>
+          <button class="btn ghost">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
             Seguir comprando
           </button>
         </div>
@@ -154,42 +154,42 @@
 
       <!-- Stepper progress -->
       <div class="cart-stepper-wrap">
-        <div class="ok-stepper">
-          <div class="ok-stepper__step" data-state="active">
-            <div class="ok-stepper__bullet"><span>1</span></div>
-            <div class="ok-stepper__label">
-              <span class="ok-stepper__title">Carrito</span>
-              <span class="ok-stepper__sub">Revisa los artículos</span>
+        <div class="stepper">
+          <div class="stepper__step" data-state="active">
+            <div class="stepper__bullet"><span>1</span></div>
+            <div class="stepper__label">
+              <span class="stepper__title">Carrito</span>
+              <span class="stepper__sub">Revisa los artículos</span>
             </div>
           </div>
-          <div class="ok-stepper__step">
-            <div class="ok-stepper__bullet"><span>2</span></div>
-            <div class="ok-stepper__label">
-              <span class="ok-stepper__title">Envío</span>
-              <span class="ok-stepper__sub">Dirección y entrega</span>
+          <div class="stepper__step">
+            <div class="stepper__bullet"><span>2</span></div>
+            <div class="stepper__label">
+              <span class="stepper__title">Envío</span>
+              <span class="stepper__sub">Dirección y entrega</span>
             </div>
           </div>
-          <div class="ok-stepper__step">
-            <div class="ok-stepper__bullet"><span>3</span></div>
-            <div class="ok-stepper__label">
-              <span class="ok-stepper__title">Pago</span>
-              <span class="ok-stepper__sub">Tarjeta o transferencia</span>
+          <div class="stepper__step">
+            <div class="stepper__bullet"><span>3</span></div>
+            <div class="stepper__label">
+              <span class="stepper__title">Pago</span>
+              <span class="stepper__sub">Tarjeta o transferencia</span>
             </div>
           </div>
-          <div class="ok-stepper__step">
-            <div class="ok-stepper__bullet"><span>4</span></div>
-            <div class="ok-stepper__label">
-              <span class="ok-stepper__title">Confirmación</span>
-              <span class="ok-stepper__sub">Resumen del pedido</span>
+          <div class="stepper__step">
+            <div class="stepper__bullet"><span>4</span></div>
+            <div class="stepper__label">
+              <span class="stepper__title">Confirmación</span>
+              <span class="stepper__sub">Resumen del pedido</span>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Two column: items + summary -->
-      <div class="ok-row">
+      <div class="row">
 
-        <main class="ok-col-md-7 ok-col-lg-8">
+        <main class="col-md-7 col-lg-8">
           <!-- Line 1 -->
           <article class="cart-line">
             <div class="cart-line__thumb cart-line__thumb--a">[TPV Modelo X]</div>
@@ -197,18 +197,18 @@
               <div class="cart-line__name">Terminal POS Modelo X Pro</div>
               <div class="cart-line__meta">SKU: ERP-TPV-X-PRO · Color: negro · Garantía 2 años</div>
               <div class="cart-line__bottom">
-                <div class="ok-qty-stepper ok-qty-stepper--sm">
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--minus" data-on:click="$q1 = Math.max(1, $q1 - 1)" aria-label="Quitar"></button>
-                  <input class="ok-qty-stepper__input" type="number" data-bind:q1 value="2"/>
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--plus" data-on:click="$q1 = $q1 + 1" aria-label="Añadir"></button>
+                <div class="qty-stepper sm">
+                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q1 = Math.max(1, $q1 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper__input" type="number" data-bind:q1 value="2"/>
+                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q1 = $q1 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="ok-stock ok-stock--in-stock"><span class="ok-stock__dot"></span><span class="ok-stock__label">En stock</span></span>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">
-                  <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
+                <span class="stock in-stock"><span class="stock__dot"></span><span class="stock__label">En stock</span></span>
+                <button class="btn ghost sm">
+                  <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
                   Quitar
                 </button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">
-                  <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                <button class="btn ghost sm">
+                  <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                   Guardar
                 </button>
               </div>
@@ -226,13 +226,13 @@
               <div class="cart-line__name">Lector SumUp Air contactless</div>
               <div class="cart-line__meta">SKU: SUMUP-AIR-EU · Bluetooth + 4G</div>
               <div class="cart-line__bottom">
-                <div class="ok-qty-stepper ok-qty-stepper--sm">
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--minus" data-on:click="$q2 = Math.max(1, $q2 - 1)" aria-label="Quitar"></button>
-                  <input class="ok-qty-stepper__input" type="number" data-bind:q2 value="1"/>
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--plus" data-on:click="$q2 = $q2 + 1" aria-label="Añadir"></button>
+                <div class="qty-stepper sm">
+                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q2 = Math.max(1, $q2 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper__input" type="number" data-bind:q2 value="1"/>
+                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q2 = $q2 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="ok-stock ok-stock--in-stock"><span class="ok-stock__dot"></span><span class="ok-stock__label">Llega en 24h</span></span>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Quitar</button>
+                <span class="stock in-stock"><span class="stock__dot"></span><span class="stock__label">Llega en 24h</span></span>
+                <button class="btn ghost sm">Quitar</button>
               </div>
             </div>
             <div class="cart-line__price-block">
@@ -248,13 +248,13 @@
               <div class="cart-line__name">Impresora térmica Star TSP143 III</div>
               <div class="cart-line__meta">SKU: STAR-TSP143-III · USB + Ethernet · Cable incluido</div>
               <div class="cart-line__bottom">
-                <div class="ok-qty-stepper ok-qty-stepper--sm">
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--minus" data-on:click="$q3 = Math.max(1, $q3 - 1)" aria-label="Quitar"></button>
-                  <input class="ok-qty-stepper__input" type="number" data-bind:q3 value="1"/>
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--plus" data-on:click="$q3 = $q3 + 1" aria-label="Añadir"></button>
+                <div class="qty-stepper sm">
+                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q3 = Math.max(1, $q3 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper__input" type="number" data-bind:q3 value="1"/>
+                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q3 = $q3 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="ok-stock ok-stock--low"><span class="ok-stock__dot"></span><span class="ok-stock__label">Quedan 4</span></span>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Quitar</button>
+                <span class="stock low"><span class="stock__dot"></span><span class="stock__label">Quedan 4</span></span>
+                <button class="btn ghost sm">Quitar</button>
               </div>
             </div>
             <div class="cart-line__price-block">
@@ -270,13 +270,13 @@
               <div class="cart-line__name">Bundle accesorios POS · 8 piezas</div>
               <div class="cart-line__meta">SKU: ERP-ACC-BUNDLE-8 · Cables, soportes, rollos térmicos</div>
               <div class="cart-line__bottom">
-                <div class="ok-qty-stepper ok-qty-stepper--sm">
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--minus" data-on:click="$q4 = Math.max(1, $q4 - 1)" aria-label="Quitar"></button>
-                  <input class="ok-qty-stepper__input" type="number" data-bind:q4 value="1"/>
-                  <button class="ok-qty-stepper__btn ok-qty-stepper__btn--plus" data-on:click="$q4 = $q4 + 1" aria-label="Añadir"></button>
+                <div class="qty-stepper sm">
+                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q4 = Math.max(1, $q4 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper__input" type="number" data-bind:q4 value="1"/>
+                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q4 = $q4 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="ok-stock ok-stock--in-stock"><span class="ok-stock__dot"></span><span class="ok-stock__label">En stock</span></span>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Quitar</button>
+                <span class="stock in-stock"><span class="stock__dot"></span><span class="stock__label">En stock</span></span>
+                <button class="btn ghost sm">Quitar</button>
               </div>
             </div>
             <div class="cart-line__price-block">
@@ -288,22 +288,22 @@
         </main>
 
         <!-- Sticky summary -->
-        <aside class="ok-col-md-5 ok-col-lg-4 ok-col-sticky">
+        <aside class="col-md-5 col-lg-4 col-sticky">
           <div class="summary-card">
-            <h3 style="margin:0 0 10px;font-family:var(--ok-font-display);font-size:16px;font-weight:600;color:var(--ok-ink);">Resumen del pedido</h3>
+            <h3 style="margin:0 0 10px;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--ink);">Resumen del pedido</h3>
 
             <div class="summary-row"><span>Subtotal (5 artículos)</span><b data-text="`€${(($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)).toLocaleString('es-ES')}`">€2 133</b></div>
             <div class="summary-row"><span>IVA 21%</span><b data-text="`€${(((($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)) * 0.21).toFixed(0))}`">€448</b></div>
             <div class="summary-row">
               <span>Envío</span>
-              <span class="ok-tag ok-tag--leaf ok-tag--sm">Gratis · desde €200</span>
+              <span class="tag success sm">Gratis · desde €200</span>
             </div>
 
             <hr class="summary-divider"/>
 
-            <div class="ok-flex ok-gap-1">
-              <input class="ok-input ok-input--sm ok-flex-1" placeholder="Código de cupón" data-bind:coupon/>
-              <button class="ok-btn ok-btn--secondary ok-btn--sm">Aplicar</button>
+            <div class="flex gap-1">
+              <input class="input sm flex-1" placeholder="Código de cupón" data-bind:coupon/>
+              <button class="btn secondary sm">Aplicar</button>
             </div>
 
             <hr class="summary-divider"/>
@@ -313,9 +313,9 @@
               <span class="summary-total__value" data-text="`€${(((($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)) * 1.21).toFixed(0)).toLocaleString('es-ES')}`">€2 581</span>
             </div>
 
-            <button class="ok-btn ok-btn--primary ok-btn--lg ok-btn--block">
+            <button class="btn primary lg block">
               Continuar al envío
-              <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </button>
 
             <div class="pay-icons">
@@ -328,7 +328,7 @@
             </div>
 
             <div class="trust-line">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ok-leaf)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--leaf)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
               Compra segura · 30 días para devolver · Soporte 24/7
             </div>
           </div>
@@ -337,63 +337,63 @@
 
       <!-- Related rail -->
       <section class="related-section">
-        <div class="ok-section ok-mb-3">
-          <h2 style="font-family:var(--ok-font-display);font-size:18px;font-weight:600;color:var(--ok-ink);margin:0;">También te puede interesar</h2>
-          <div style="font-size:12.5px;color:var(--ok-ink-3);margin-top:2px;">Productos comprados juntos por clientes con configuraciones parecidas</div>
+        <div class="section mb-3">
+          <h2 style="font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--ink);margin:0;">También te puede interesar</h2>
+          <div style="font-size:12.5px;color:var(--ink-3);margin-top:2px;">Productos comprados juntos por clientes con configuraciones parecidas</div>
         </div>
-        <div class="ok-grid-auto ok-grid-auto--md">
+        <div class="grid-auto md">
 
-          <article class="ok-product ok-product--compact">
-            <div class="ok-product__media"><div class="prod-art prod-art--b">[Pantalla 7'']</div></div>
-            <div class="ok-product__body">
-              <h3 class="ok-product__name">Pantalla cliente 7''</h3>
-              <div class="ok-product__price-row"><span class="ok-product__price">€189</span></div>
-              <div class="ok-product__actions"><button class="ok-product__cta">+ Añadir</button></div>
+          <article class="product compact">
+            <div class="product__media"><div class="prod-art b">[Pantalla 7'']</div></div>
+            <div class="product__body">
+              <h3 class="product__name">Pantalla cliente 7''</h3>
+              <div class="product__price-row"><span class="product__price">€189</span></div>
+              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
             </div>
           </article>
 
-          <article class="ok-product ok-product--compact">
-            <div class="ok-product__media"><div class="prod-art prod-art--c">[Cajón]</div></div>
-            <div class="ok-product__body">
-              <h3 class="ok-product__name">Cajón monedero RJ11</h3>
-              <div class="ok-product__price-row"><span class="ok-product__price">€85</span></div>
-              <div class="ok-product__actions"><button class="ok-product__cta">+ Añadir</button></div>
+          <article class="product compact">
+            <div class="product__media"><div class="prod-art c">[Cajón]</div></div>
+            <div class="product__body">
+              <h3 class="product__name">Cajón monedero RJ11</h3>
+              <div class="product__price-row"><span class="product__price">€85</span></div>
+              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
             </div>
           </article>
 
-          <article class="ok-product ok-product--compact">
-            <div class="ok-product__media"><div class="prod-art prod-art--e">[Scanner]</div></div>
-            <div class="ok-product__body">
-              <h3 class="ok-product__name">Scanner Voyager 1602g</h3>
-              <div class="ok-product__price-row"><span class="ok-product__price">€129</span></div>
-              <div class="ok-product__actions"><button class="ok-product__cta">+ Añadir</button></div>
+          <article class="product compact">
+            <div class="product__media"><div class="prod-art e">[Scanner]</div></div>
+            <div class="product__body">
+              <h3 class="product__name">Scanner Voyager 1602g</h3>
+              <div class="product__price-row"><span class="product__price">€129</span></div>
+              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
             </div>
           </article>
 
-          <article class="ok-product ok-product--compact">
-            <div class="ok-product__media"><div class="prod-art prod-art--d">[Brother QL]</div></div>
-            <div class="ok-product__body">
-              <h3 class="ok-product__name">Brother QL-820NWB</h3>
-              <div class="ok-product__price-row"><span class="ok-product__price">€340</span></div>
-              <div class="ok-product__actions"><button class="ok-product__cta">+ Añadir</button></div>
+          <article class="product compact">
+            <div class="product__media"><div class="prod-art d">[Brother QL]</div></div>
+            <div class="product__body">
+              <h3 class="product__name">Brother QL-820NWB</h3>
+              <div class="product__price-row"><span class="product__price">€340</span></div>
+              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
             </div>
           </article>
 
-          <article class="ok-product ok-product--compact">
-            <div class="ok-product__media"><div class="prod-art prod-art--a">[Soporte]</div></div>
-            <div class="ok-product__body">
-              <h3 class="ok-product__name">Soporte tablet metálico</h3>
-              <div class="ok-product__price-row"><span class="ok-product__price">€89</span></div>
-              <div class="ok-product__actions"><button class="ok-product__cta">+ Añadir</button></div>
+          <article class="product compact">
+            <div class="product__media"><div class="prod-art a">[Soporte]</div></div>
+            <div class="product__body">
+              <h3 class="product__name">Soporte tablet metálico</h3>
+              <div class="product__price-row"><span class="product__price">€89</span></div>
+              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
             </div>
           </article>
 
-          <article class="ok-product ok-product--compact">
-            <div class="ok-product__media"><div class="prod-art prod-art--f">[Rollos x10]</div></div>
-            <div class="ok-product__body">
-              <h3 class="ok-product__name">Pack 10 rollos térmicos 80mm</h3>
-              <div class="ok-product__price-row"><span class="ok-product__price">€18</span></div>
-              <div class="ok-product__actions"><button class="ok-product__cta">+ Añadir</button></div>
+          <article class="product compact">
+            <div class="product__media"><div class="prod-art f">[Rollos x10]</div></div>
+            <div class="product__body">
+              <h3 class="product__name">Pack 10 rollos térmicos 80mm</h3>
+              <div class="product__price-row"><span class="product__price">€18</span></div>
+              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
             </div>
           </article>
 
@@ -405,28 +405,28 @@
 
 
   <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="#" aria-current="page">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="#" aria-current="page">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Hubs</span>
-        <span class="ok-tabbar-badge">7</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Hubs</span>
+        <span class="tabbar-badge">7</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Equipo</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Equipo</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

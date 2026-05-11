@@ -2,7 +2,7 @@
 
 {% macro breadcrumbs(items, variant=None, separator="chevron", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<nav class="{{ ok_prefix }}crumbs{% if variant %} {{ ok_prefix }}crumbs--{{ variant }}{% endif %}" aria-label="breadcrumb"
+<nav class="{{ ok_prefix }}crumbs{% if variant %} {{ variant }}{% endif %}" aria-label="breadcrumb"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {%- for item in items -%}
     {%- set is_last = loop.last -%}

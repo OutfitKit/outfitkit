@@ -33,12 +33,12 @@
 {% endcall %}
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/modal.jinja" import modal %}
-<div class="modal-stage modal-stage--md" data-signals="{open: true}">
+<div class="modal-stage md" data-signals="{open: true}">
   {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open", attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
     <p>Aquí va un formulario con razón social, NIF, email...</p>
   {% endcall %}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_2 %}{% raw %}<div class="modal-stage modal-stage--md" data-signals="{open: true}">
+{% set _src_jinjax_2 %}{% raw %}<div class="modal-stage md" data-signals="{open: true}">
   <Modal title="Nuevo proveedor" subtitle="Datos básicos para empezar a registrar compras." size="md" state="open" data-attr:data-state="$open ? 'open' : 'closed'">
     <p>Aquí va un formulario con razón social, NIF, email...</p>
 
@@ -48,7 +48,7 @@
 {% call demo_frame("Estado abierto · md",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
-<div class="modal-stage modal-stage--md" data-signals="{open: true}">
+<div class="modal-stage md" data-signals="{open: true}">
   {% call modal(title="Nuevo proveedor", subtitle="Datos básicos para empezar a registrar compras.", size="md", state="open", attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
     <p>Aquí va un formulario con razón social, NIF, email...</p>
   {% endcall %}
@@ -92,21 +92,21 @@
 .modal-stage {
   position: relative;
   height: 360px;
-  background: var(--ok-bg-1);
-  border: 1px solid var(--ok-line);
+  background: var(--bg-1);
+  border: 1px solid var(--line);
   border-radius: 14px;
   overflow: hidden;
   flex: 1 1 100%;
 }
-.modal-stage .ok-modal-root,
-.modal-stage .ok-backdrop {
+.modal-stage .modal-root,
+.modal-stage .backdrop {
   position: absolute;
 }
 .modal-stage--md { height: 460px; }
 </style>
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>title</code></td><td>str</td><td>—</td><td>Título del modal.</td></tr>

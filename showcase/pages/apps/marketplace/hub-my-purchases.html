@@ -14,46 +14,46 @@
 
 {% block content %}
 <style>
-  body { padding: 22px; background: var(--ok-bg); min-height: 100vh; }
+  body { padding: 22px; background: var(--bg); min-height: 100vh; }
   .pur-list { display: flex; flex-direction: column; gap: 12px; }
-  .pur-item { background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-xl); padding: 16px 18px; display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 16px; align-items: center; }
+  .pur-item { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 16px 18px; display: grid; grid-template-columns: auto 1fr auto auto auto; gap: 16px; align-items: center; }
   @media (max-width: 720px) { .pur-item { grid-template-columns: auto 1fr; } .pur-item__price, .pur-item__next, .pur-item__actions { grid-column: 2; justify-self: start; } }
-  .pur-item__icon { width: 44px; height: 44px; border-radius: var(--ok-radius-md); background: var(--ok-bg-3); color: var(--ok-ink-2); display: grid; place-items: center; flex-shrink: 0; }
+  .pur-item__icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--bg-3); color: var(--ink-2); display: grid; place-items: center; flex-shrink: 0; }
   .pur-item__icon svg { width: 22px; height: 22px; }
   .pur-item__info { min-width: 0; }
-  .pur-item__name { font-family: var(--ok-font-display); font-size: 15px; font-weight: 600; color: var(--ok-ink); margin: 0; }
-  .pur-item__meta { font-size: 12px; color: var(--ok-ink-3); margin-top: 2px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .pur-item__name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin: 0; }
+  .pur-item__meta { font-size: 12px; color: var(--ink-3); margin-top: 2px; display: flex; gap: 10px; flex-wrap: wrap; }
   .pur-item__meta span { display: flex; gap: 4px; align-items: center; }
   .pur-item__price { text-align: right; }
-  .pur-item__price-amount { font-family: var(--ok-font-display); font-size: 16px; font-weight: 600; color: var(--ok-ink); font-variant-numeric: tabular-nums; }
-  .pur-item__price-unit { font-size: 11px; color: var(--ok-ink-3); }
-  .pur-item__next { text-align: right; font-size: 12px; color: var(--ok-ink-3); }
-  .pur-item__next b { display: block; color: var(--ok-ink); font-size: 13px; }
+  .pur-item__price-amount { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .pur-item__price-unit { font-size: 11px; color: var(--ink-3); }
+  .pur-item__next { text-align: right; font-size: 12px; color: var(--ink-3); }
+  .pur-item__next b { display: block; color: var(--ink); font-size: 13px; }
   .pur-item__actions { display: flex; gap: 6px; }
 </style>
 
-<div class="ok-container">
+<div class="container">
 
   <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-    <a href="index.html" class="ok-btn ok-btn--ghost ok-btn--sm">
+    <a href="index.html" class="btn ghost sm">
       <iconify-icon icon="lucide:arrow-left" width="14" height="14"></iconify-icon>
       Marketplace
     </a>
-    <span class="ok-text-xs ok-c-ink-3">/</span>
-    <span class="ok-text-xs ok-c-ink-3">Mis compras</span>
+    <span class="text-xs c-ink-3">/</span>
+    <span class="text-xs c-ink-3">Mis compras</span>
   </div>
 
-  <div class="ok-page-header ok-mb-5">
-    <div class="ok-page-header__title">
+  <div class="page-header mb-5">
+    <div class="page-header__title">
       <h1>Mis compras</h1>
-      <div class="ok-page-header__sub">Gestiona suscripciones, ve facturas y descarga recibos</div>
+      <div class="page-header__sub">Gestiona suscripciones, ve facturas y descarga recibos</div>
     </div>
-    <div class="ok-page-header__actions">
-      <button class="ok-btn ok-btn--ghost ok-btn--sm">
+    <div class="page-header__actions">
+      <button class="btn ghost sm">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         Ver todas las facturas
       </button>
-      <button class="ok-btn ok-btn--secondary ok-btn--sm">
+      <button class="btn secondary sm">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
         Métodos de pago
       </button>
@@ -61,26 +61,26 @@
   </div>
 
   <!-- Resumen -->
-  <div class="ok-grid-auto ok-grid-auto--sm ok-mb-5">
-    <div class="ok-kpi">
-      <div class="ok-kpi__label">Suscripciones activas</div>
-      <div class="ok-kpi__value">3</div>
-      <span class="ok-badge"><span class="ok-badge__dot"></span>2 mensuales · 1 anual</span>
+  <div class="grid-auto sm mb-5">
+    <div class="kpi">
+      <div class="kpi__label">Suscripciones activas</div>
+      <div class="kpi__value">3</div>
+      <span class="badge"><span class="badge__dot"></span>2 mensuales · 1 anual</span>
     </div>
-    <div class="ok-kpi ok-kpi--brand">
-      <div class="ok-kpi__label">Coste mensual</div>
-      <div class="ok-kpi__value">€89,96<span class="ok-kpi__value-unit">/mes</span></div>
-      <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Sin cargos extras</span>
+    <div class="kpi brand">
+      <div class="kpi__label">Coste mensual</div>
+      <div class="kpi__value">€89,96<span class="kpi__value-unit">/mes</span></div>
+      <span class="badge success"><span class="badge__dot"></span>Sin cargos extras</span>
     </div>
-    <div class="ok-kpi">
-      <div class="ok-kpi__label">Próximo cobro</div>
-      <div class="ok-kpi__value">23<span class="ok-kpi__value-unit"> may</span></div>
-      <span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>en 15 días</span>
+    <div class="kpi">
+      <div class="kpi__label">Próximo cobro</div>
+      <div class="kpi__value">23<span class="kpi__value-unit"> may</span></div>
+      <span class="badge info"><span class="badge__dot"></span>en 15 días</span>
     </div>
-    <div class="ok-kpi">
-      <div class="ok-kpi__label">Compras únicas</div>
-      <div class="ok-kpi__value">1</div>
-      <span class="ok-badge"><span class="ok-badge__dot"></span>Formación</span>
+    <div class="kpi">
+      <div class="kpi__label">Compras únicas</div>
+      <div class="kpi__value">1</div>
+      <span class="badge"><span class="badge__dot"></span>Formación</span>
     </div>
   </div>
 
@@ -94,7 +94,7 @@
         <div class="pur-item__meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Plan mensual</span>
           <span>Comprado el 02 abr 2026</span>
-          <span class="ok-badge ok-badge--ok ok-badge--sm">Activo</span>
+          <span class="badge success sm">Activo</span>
         </div>
       </div>
       <div class="pur-item__price">
@@ -106,8 +106,8 @@
         <b>23 may 2026</b>
       </div>
       <div class="pur-item__actions">
-        <button class="ok-icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
-        <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Cancelar</button>
+        <button class="icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
+        <button class="btn ghost sm c-danger">Cancelar</button>
       </div>
     </article>
 
@@ -118,7 +118,7 @@
         <div class="pur-item__meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Plan mensual</span>
           <span>Comprado el 18 abr 2026</span>
-          <span class="ok-badge ok-badge--info ok-badge--sm">En periodo de prueba</span>
+          <span class="badge info sm">En periodo de prueba</span>
         </div>
       </div>
       <div class="pur-item__price">
@@ -130,8 +130,8 @@
         <b>03 may 2026</b>
       </div>
       <div class="pur-item__actions">
-        <button class="ok-icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
-        <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Cancelar</button>
+        <button class="icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
+        <button class="btn ghost sm c-danger">Cancelar</button>
       </div>
     </article>
 
@@ -142,8 +142,8 @@
         <div class="pur-item__meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Plan anual</span>
           <span>Comprado el 12 ene 2026</span>
-          <span class="ok-badge ok-badge--ok ok-badge--sm">Activo</span>
-          <span class="ok-badge ok-badge--brand ok-badge--sm">Pro</span>
+          <span class="badge success sm">Activo</span>
+          <span class="badge brand sm">Pro</span>
         </div>
       </div>
       <div class="pur-item__price">
@@ -155,8 +155,8 @@
         <b>12 ene 2027</b>
       </div>
       <div class="pur-item__actions">
-        <button class="ok-icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
-        <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Cancelar</button>
+        <button class="icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
+        <button class="btn ghost sm c-danger">Cancelar</button>
       </div>
     </article>
 
@@ -167,7 +167,7 @@
         <div class="pur-item__meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Plan mensual</span>
           <span>Comprado el 05 mar 2026</span>
-          <span class="ok-badge ok-badge--warn ok-badge--sm">Pago pendiente</span>
+          <span class="badge warning sm">Pago pendiente</span>
         </div>
       </div>
       <div class="pur-item__price">
@@ -179,7 +179,7 @@
         <b>10 may 2026</b>
       </div>
       <div class="pur-item__actions">
-        <button class="ok-btn ok-btn--primary ok-btn--sm">Actualizar pago</button>
+        <button class="btn primary sm">Actualizar pago</button>
       </div>
     </article>
 
@@ -190,7 +190,7 @@
         <div class="pur-item__meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Plan mensual</span>
           <span>Cancelado el 28 feb 2026</span>
-          <span class="ok-badge ok-badge--danger ok-badge--sm">Cancelado</span>
+          <span class="badge danger sm">Cancelado</span>
         </div>
       </div>
       <div class="pur-item__price">
@@ -202,7 +202,7 @@
         <b>28 mar 2026</b>
       </div>
       <div class="pur-item__actions">
-        <button class="ok-btn ok-btn--secondary ok-btn--sm">Reactivar</button>
+        <button class="btn secondary sm">Reactivar</button>
       </div>
     </article>
 
@@ -213,7 +213,7 @@
         <div class="pur-item__meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Pago único</span>
           <span>Comprado el 22 ene 2026</span>
-          <span class="ok-badge ok-badge--ok ok-badge--sm">Completado</span>
+          <span class="badge success sm">Completado</span>
         </div>
       </div>
       <div class="pur-item__price">
@@ -225,7 +225,7 @@
         <b>4 / 4</b>
       </div>
       <div class="pur-item__actions">
-        <button class="ok-icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
+        <button class="icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
       </div>
     </article>
 
@@ -236,7 +236,7 @@
         <div class="pur-item__meta">
           <span><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/></svg>Plan mensual</span>
           <span>Comprado el 14 abr 2026</span>
-          <span class="ok-badge ok-badge--ok ok-badge--sm">Activo</span>
+          <span class="badge success sm">Activo</span>
         </div>
       </div>
       <div class="pur-item__price">
@@ -248,19 +248,19 @@
         <b>14 may 2026</b>
       </div>
       <div class="pur-item__actions">
-        <button class="ok-icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
-        <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Cancelar</button>
+        <button class="icon-btn" title="Ver factura"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></button>
+        <button class="btn ghost sm c-danger">Cancelar</button>
       </div>
     </article>
 
   </div>
 
-  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Inicio</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Facturas</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Perfil</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

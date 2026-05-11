@@ -2,7 +2,7 @@
 
 {% macro topbar(page_title=None, back=false, with_crumb=false, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<header class="{{ ok_prefix }}topbar{% if with_crumb %} {{ ok_prefix }}topbar--with-crumb{% endif %}"
+<header class="{{ ok_prefix }}topbar{% if with_crumb %} with-crumb{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {% if back %}
   <div class="{{ ok_prefix }}topbar__left">

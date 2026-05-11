@@ -1,300 +1,397 @@
 /* ============================================================
-   OutfitKit · Card
-   Contenedor base con header/body/footer opcionales
+   OutfitKit · Card / KPI / Stat / Stats / Empty / Panel
+   ─────────────────────────────────────────────────────────────
+   Uso:
+     <article class="card">…</article>
+     <article class="card primary elevated">…</article>
+     <article class="card glass interactive">…</article>
+
+   Modificadores universales que usa: primary, danger, success...
+     elevated, flat, glass, interactive, lg, sm
+   Expone (override por consumidor):
+     --card-background, --card-color, --card-border-color,
+     --card-border-radius, --card-padding
    ============================================================ */
 
-.ok-card {
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-xl);
+.card {
+  --card-background:    var(--bg-2);
+  --card-color:         var(--ink);
+  --card-border-color:  var(--line);
+  --card-border-radius: var(--radius-xl);
+  --card-padding:       var(--space-4);
+  --card-gap:           var(--space-3);
+
+  background: var(--card-background);
+  color: var(--card-color);
+  border: var(--border-w) solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.ok-card--flat {
-  background: transparent;
-  border-color: var(--ok-line);
+/* Variante .primary/.danger/etc en card: tinte sutil del variant en el fondo */
+.card.primary, .card.secondary, .card.tertiary, .card.success, .card.warning,
+.card.warn,    .card.danger,    .card.info,     .card.brand,   .card.accent {
+  --card-background:    color-mix(in oklch, var(--variant) 8%, var(--bg-2));
+  --card-border-color:  color-mix(in oklch, var(--variant) 25%, var(--line));
 }
 
-.ok-card--elevated {
-  box-shadow: var(--ok-shadow-md);
-  border-color: transparent;
+/* Variante .filled: card sólido del color del variant */
+.card.filled {
+  --card-background:   var(--variant, var(--bg-3));
+  --card-color:        var(--variant-contrast, var(--ink));
+  --card-border-color: transparent;
 }
 
-.ok-card--glass {
-  background: color-mix(in oklch, var(--ok-bg-2) 55%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-color: color-mix(in oklch, var(--ok-line) 60%, transparent);
+/* Variante .flat: sin fondo (solo borde) */
+.card.flat {
+  --card-background:   transparent;
+  --card-border-color: var(--line);
 }
 
-.ok-card--interactive {
+/* Interactive: cursor + hover lift */
+.card.interactive {
   cursor: pointer;
-  transition: border-color var(--ok-dur-fast), transform var(--ok-dur-fast);
+  transition: border-color var(--dur-fast) var(--ease-out),
+              transform    var(--dur-fast) var(--ease-out),
+              box-shadow   var(--dur-fast) var(--ease-out);
 }
-.ok-card--interactive:hover {
-  border-color: var(--ok-line-2);
+.card.interactive:hover {
+  --card-border-color: var(--line-2);
   transform: translateY(-1px);
 }
-.ok-card--interactive:focus-visible {
-  outline: 2px solid var(--ok-brand);
+.card.interactive:focus-visible {
+  outline: var(--border-w-2) solid var(--variant, var(--color-primary));
   outline-offset: 2px;
 }
 
-.ok-card__header {
+
+/* Sub-elementos BEM (mantenemos `__` para elementos hijos) */
+.card__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--ok-space-3);
-  padding: 16px 18px 12px;
+  gap: var(--card-gap);
+  padding: var(--card-padding) var(--card-padding) var(--space-3);
 }
 
-.ok-card__title {
-  font-family: var(--ok-font-display);
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--ok-ink);
-  letter-spacing: -0.02em;
-  margin: 0;
+.card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--ink);
+  letter-spacing: var(--tracking-near);
+  margin: var(--space-0);
 }
 
-.ok-card__sub {
-  font-size: var(--ok-text-sm);
-  color: var(--ok-ink-3);
-  margin-top: 2px;
+.card__sub {
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+  margin-top: var(--border-w-2);
 }
 
-.ok-card__actions {
+.card__actions {
   display: flex;
-  gap: 6px;
+  gap: var(--space-2);
   flex-shrink: 0;
 }
 
-.ok-card__body {
-  padding: 12px 18px 16px;
+.card__body {
+  padding: var(--space-3) var(--card-padding) var(--card-padding);
   flex: 1;
 }
-.ok-card__header + .ok-card__body { padding-top: 0; }
+.card__header + .card__body { padding-top: var(--space-0); }
 
-.ok-card__footer {
-  padding: 12px 18px;
-  border-top: 1px solid var(--ok-line);
+.card__footer {
+  padding: var(--space-3) var(--card-padding);
+  border-top: var(--border-w) solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--ok-space-3);
-  background: var(--ok-bg-1);
+  gap: var(--space-3);
+  background: var(--bg-1);
 }
 
-.ok-card__divider {
-  height: 1px;
-  background: var(--ok-line);
-  margin: 0;
+.card__divider {
+  height: var(--border-w);
+  background: var(--line);
+  margin: var(--space-0);
 }
+
+/* Sizes */
+.card.sm { --card-padding: var(--space-3); --card-border-radius: var(--radius-lg); }
+.card.lg { --card-padding: var(--space-5); --card-border-radius: var(--radius-2xl); }
+
 
 /* ============================================================
-   KPI Card — métrica destacada
+   KPI · métrica destacada
+   ─────────────────────────────────────────────────────────────
+   Surface compacta para dashboards. Etiqueta + valor + delta
+   opcional + sparkline opcional.
    ============================================================ */
 
-.ok-kpi {
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-xl);
-  padding: 16px 18px;
+.kpi {
+  --kpi-background:   var(--bg-2);
+  --kpi-border-color: var(--line);
+  --kpi-min-height:   96px;
+
+  background: var(--kpi-background);
+  border: var(--border-w) solid var(--kpi-border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 6px;
-  min-height: 96px;
+  gap: var(--space-2);
+  min-height: var(--kpi-min-height);
   position: relative;
   overflow: hidden;
 }
 
-.ok-kpi__label {
-  font-size: var(--ok-text-2xs);
-  font-weight: 500;
-  color: var(--ok-ink-3);
+/* Variante con tinte de variant */
+.kpi.primary, .kpi.secondary, .kpi.success, .kpi.warning, .kpi.warn,
+.kpi.danger,  .kpi.info,      .kpi.brand,   .kpi.accent {
+  --kpi-background:   color-mix(in oklch, var(--variant) 10%, var(--bg-2));
+  --kpi-border-color: color-mix(in oklch, var(--variant) 30%, var(--line));
+}
+.kpi.primary .kpi__value, .kpi.brand .kpi__value, .kpi.accent .kpi__value {
+  color: var(--variant-tint, var(--color-primary-tint));
+}
+
+.kpi__label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  color: var(--ink-3);
   text-transform: uppercase;
-  letter-spacing: var(--ok-tracking-wide);
+  letter-spacing: var(--tracking-wide);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-2);
 }
 
-.ok-kpi__icon {
-  width: 14px;
-  height: 14px;
-  color: var(--ok-ink-4);
+.kpi__icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  color: var(--ink-4);
 }
 
-.ok-kpi__value {
-  font-family: var(--ok-font-display);
+.kpi__value {
+  font-family: var(--font-display);
   font-size: 30px;
-  font-weight: 600;
-  letter-spacing: -0.04em;
-  color: var(--ok-ink);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-display);
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
   line-height: 1.05;
 }
-.ok-kpi__value-unit {
-  font-size: 16px;
-  color: var(--ok-ink-3);
-  font-weight: 500;
-  margin-left: 4px;
+.kpi__value-unit {
+  font-size: var(--text-lg);
+  color: var(--ink-3);
+  font-weight: var(--weight-medium);
+  margin-left: var(--space-1);
 }
 
-.ok-kpi__delta {
+.kpi__delta {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: var(--ok-text-sm);
-  font-weight: 500;
-  color: var(--ok-ink-3);
+  gap: var(--space-1);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
-.ok-kpi__delta--up { color: var(--ok-leaf); }
-.ok-kpi__delta--down { color: var(--ok-danger); }
-.ok-kpi__delta-arrow { width: 12px; height: 12px; }
+.kpi__delta.up,
+.kpi__delta--up   { color: var(--color-success); }
+.kpi__delta.down,
+.kpi__delta--down { color: var(--color-danger); }
+.kpi__delta-arrow {
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+}
 
-.ok-kpi__sparkline {
+.kpi__sparkline {
   position: absolute;
-  bottom: 0; right: 0;
-  width: 80px; height: 32px;
+  bottom: 0;
+  right: 0;
+  width: var(--sparkline-w);
+  height: var(--avatar-sm);
   opacity: 0.6;
   pointer-events: none;
 }
 
-.ok-kpi--brand {
-  background: linear-gradient(135deg, var(--ok-brand-soft), transparent);
-  border-color: color-mix(in oklch, var(--ok-brand) 30%, var(--ok-line));
-}
-.ok-kpi--brand .ok-kpi__value { color: var(--ok-brand-3); }
-
-.ok-kpi--glass {
-  background: color-mix(in oklch, var(--ok-bg-2) 55%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-color: color-mix(in oklch, var(--ok-line) 60%, transparent);
-}
 
 /* ============================================================
-   Stats — fila compacta de métricas
+   Stats · fila compacta de métricas
    ============================================================ */
 
-.ok-stats {
+.stats {
+  --stats-background:   var(--bg-2);
+  --stats-border-color: var(--line);
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 0;
-  background: var(--ok-bg-2);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-xl);
+  gap: var(--space-0);
+  background: var(--stats-background);
+  border: var(--border-w) solid var(--stats-border-color);
+  border-radius: var(--radius-xl);
   overflow: hidden;
-  /* Take full row width when nested in a flex/inline parent so the
-     auto-fit grid actually has space to lay out columns. */
   width: 100%;
 }
 
-.ok-stats--glass {
-  background: color-mix(in oklch, var(--ok-bg-2) 55%, transparent);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-color: color-mix(in oklch, var(--ok-line) 60%, transparent);
-}
+.stat {
+  --stat-padding: var(--space-3) var(--space-4);
 
-.ok-stat {
-  padding: 14px 18px;
-  border-right: 1px solid var(--ok-line);
+  padding: var(--stat-padding);
+  border-right: var(--border-w) solid var(--line);
 }
-.ok-stat:last-child { border-right: none; }
+.stat:last-child { border-right: none; }
 
-.ok-stat__label {
-  font-size: var(--ok-text-2xs);
-  font-weight: 500;
-  color: var(--ok-ink-3);
+.stat__label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  color: var(--ink-3);
   text-transform: uppercase;
-  letter-spacing: var(--ok-tracking-wide);
-  margin-bottom: 4px;
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: var(--space-1);
 }
-.ok-stat__value {
-  font-family: var(--ok-font-display);
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  color: var(--ok-ink);
+.stat__value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-tighter);
+  color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.ok-stat__delta {
-  font-size: 11px;
-  color: var(--ok-ink-3);
-  margin-top: 2px;
-  font-weight: 500;
+.stat__delta {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin-top: var(--border-w-2);
+  font-weight: var(--weight-medium);
   font-variant-numeric: tabular-nums;
 }
-.ok-stat__delta--up { color: var(--ok-leaf); }
-.ok-stat__delta--down { color: oklch(55% 0.18 25); }
+.stat__delta.up,
+.stat__delta--up   { color: var(--color-success); }
+.stat__delta.down,
+.stat__delta--down { color: var(--color-danger); }
 
 @media (max-width: 640px) {
-  .ok-stat { border-right: none; border-bottom: 1px solid var(--ok-line); }
-  .ok-stat:last-child { border-bottom: none; }
+  .stat {
+    border-right: none;
+    border-bottom: var(--border-w) solid var(--line);
+  }
+  .stat:last-child { border-bottom: none; }
 }
 
+
 /* ============================================================
-   Empty state
+   Empty state — sin contenido
    ============================================================ */
 
-.ok-empty {
+.empty {
+  --empty-background:   var(--bg-2);
+  --empty-border-color: var(--line-2);
+  --empty-padding:      var(--space-8) var(--space-6);
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 48px 24px;
-  gap: 14px;
-  background: var(--ok-bg-2);
-  border: 1px dashed var(--ok-line-2);
-  border-radius: var(--ok-radius-xl);
+  padding: var(--empty-padding);
+  gap: var(--space-3);
+  background: var(--empty-background);
+  border: var(--border-w) dashed var(--empty-border-color);
+  border-radius: var(--radius-xl);
 }
 
-.ok-empty__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: var(--ok-bg-3);
-  color: var(--ok-ink-3);
+.empty__icon {
+  width: var(--icon-2xl);
+  height: var(--icon-2xl);
+  border-radius: var(--radius-xl);
+  background: var(--bg-3);
+  color: var(--variant, var(--ink-3));
   display: grid;
   place-items: center;
 }
-.ok-empty__icon svg { width: 28px; height: 28px; }
+.empty__icon svg {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
 
-.ok-empty__title {
-  font-family: var(--ok-font-display);
-  font-size: 17px;
-  font-weight: 600;
+.empty__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
   letter-spacing: -0.02em;
-  color: var(--ok-ink);
+  color: var(--ink);
   margin: 0;
 }
 
-.ok-empty__desc {
-  font-size: var(--ok-text-md);
-  color: var(--ok-ink-3);
+.empty__desc {
+  font-size: var(--text-md);
+  color: var(--ink-3);
   max-width: 380px;
-  line-height: 1.5;
+  line-height: var(--leading-normal);
   margin: 0;
 }
 
-.ok-empty__actions {
+.empty__actions {
   display: flex;
-  gap: 8px;
-  margin-top: 4px;
+  gap: var(--space-2);
+  margin-top: var(--space-1);
 }
 
-.ok-empty--compact {
-  padding: 28px 18px;
-  gap: 10px;
+/* Variante compacta */
+.empty.compact {
+  --empty-padding: var(--space-5) var(--space-4);
+  gap: var(--space-2);
 }
-.ok-empty--compact .ok-empty__icon { width: 40px; height: 40px; border-radius: 10px; }
-.ok-empty--compact .ok-empty__icon svg { width: 20px; height: 20px; }
-.ok-empty--compact .ok-empty__title { font-size: 14px; }
-.ok-empty--compact .ok-empty__desc { font-size: 12.5px; }
+.empty.compact .empty__icon {
+  width: var(--icon-xl);
+  height: var(--icon-xl);
+  border-radius: var(--radius-lg);
+}
+.empty.compact .empty__icon svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+.empty.compact .empty__title { font-size: var(--text-base); }
+.empty.compact .empty__desc  { font-size: var(--text-sm); }
+
+
+/* ============================================================
+   Panel — surface más simple que card (sin header/footer/borders)
+   ─────────────────────────────────────────────────────────────
+   Útil para bloques de contenido contenidos en un layout más
+   grande, donde card sería demasiado pesado.
+   ============================================================ */
+
+.panel {
+  --panel-background:   var(--bg-2);
+  --panel-color:        var(--ink);
+  --panel-padding:      var(--space-4);
+  --panel-border-radius: var(--radius-lg);
+
+  background: var(--panel-background);
+  color: var(--panel-color);
+  padding: var(--panel-padding);
+  border-radius: var(--panel-border-radius);
+}
+
+.panel.primary, .panel.secondary, .panel.success, .panel.warning, .panel.warn,
+.panel.danger,  .panel.info,      .panel.brand {
+  --panel-background: color-mix(in oklch, var(--variant) 12%, var(--bg-2));
+}
+.panel.filled {
+  --panel-background: var(--variant, var(--bg-3));
+  --panel-color:      var(--variant-contrast, var(--ink));
+}
+.panel.flat {
+  --panel-background: transparent;
+}
+.panel.bordered {
+  border: var(--border-w) solid var(--line);
+}
+.panel.sm { --panel-padding: var(--space-3); }
+.panel.lg { --panel-padding: var(--space-5); }

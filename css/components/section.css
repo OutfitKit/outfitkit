@@ -6,64 +6,64 @@
    </Section>
    ============================================================ */
 
-.ok-section {
+.section {
   display: block;
   width: 100%;
 }
 
-.ok-section--padded {
+.section.padded {
   padding-block: clamp(48px, 7vw, 96px);
 }
 
 /* Header alignment */
-.ok-section--center .ok-section__header { text-align: center; }
-.ok-section--left   .ok-section__header { text-align: left; }
+.section.center .section__header { text-align: center; }
+.section.left   .section__header { text-align: left; }
 
-.ok-section__header {
+.section__header {
   display: flex;
   flex-direction: column;
-  gap: var(--ok-space-3);
+  gap: var(--space-3);
   max-width: 720px;
-  margin: 0 auto var(--ok-space-7);
+  margin: var(--space-0) auto var(--space-7);
 }
-.ok-section--left .ok-section__header { margin-inline: 0; max-width: 880px; }
+.section.left .section__header { margin-inline: var(--space-0); max-width: 880px; }
 
 /* Decorative icon disc */
-.ok-section__icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--ok-radius-2xl);
+.section__icon {
+  width: var(--icon-2xl);
+  height: var(--icon-2xl);
+  border-radius: var(--radius-2xl);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--ok-space-1);
+  margin-bottom: var(--space-1);
 }
-.ok-section--center .ok-section__icon { margin-inline: auto; }
-.ok-section__icon .iconify { font-size: 28px; }
+.section.center .section__icon { margin-inline: auto; }
+.section__icon .iconify { font-size: 28px; }
 
 /* Icon variants pull tokens from OutfitKit */
-.ok-section__icon--brand   { background: var(--ok-brand-soft);   color: var(--ok-brand-3); }
-.ok-section__icon--leaf    { background: var(--ok-leaf-soft);    color: var(--ok-leaf); }
-.ok-section__icon--warn    { background: var(--ok-warn-soft);    color: var(--ok-warn); }
-.ok-section__icon--danger  { background: var(--ok-danger-soft);  color: var(--ok-danger); }
-.ok-section__icon--info    { background: var(--ok-info-soft);    color: var(--ok-info); }
-.ok-section__icon--neutral { background: var(--ok-bg-3);         color: var(--ok-ink-2); }
+.section__icon--brand   { background: var(--brand-soft);   color: var(--brand-3); }
+.section__icon--leaf    { background: var(--leaf-soft);    color: var(--leaf); }
+.section__icon--warn    { background: var(--warn-soft);    color: var(--warn); }
+.section__icon--danger  { background: var(--danger-soft);  color: var(--danger); }
+.section__icon--info    { background: var(--info-soft);    color: var(--info); }
+.section__icon--neutral { background: var(--bg-3);         color: var(--ink-2); }
 
-.ok-section__title {
-  font-family: var(--ok-font-display);
+.section__title {
+  font-family: var(--font-display);
   font-size: clamp(28px, 4vw, 44px);
   font-weight: 700;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  color: var(--ok-ink);
-  margin: 0;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-near);
+  color: var(--ink);
+  margin: var(--space-0);
 }
 
-.ok-section__subtitle {
+.section__subtitle {
   font-size: clamp(16px, 1.4vw, 19px);
   line-height: 1.55;
-  color: var(--ok-ink-2);
-  margin: 0;
+  color: var(--ink-2);
+  margin: var(--space-0);
 }
 
-.ok-section__body { width: 100%; }
+.section__body { width: 100%; }

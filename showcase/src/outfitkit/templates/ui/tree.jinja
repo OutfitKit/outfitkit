@@ -2,7 +2,7 @@
 
 {% macro tree(variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}tree{% if variant != 'default' %} {{ ok_prefix }}tree--{{ variant }}{% endif %}" role="tree"
+<div class="{{ ok_prefix }}tree{% if variant != 'default' %} {{ variant }}{% endif %}" role="tree"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </div>
@@ -48,7 +48,7 @@
           data-attr:aria-expanded="${{ _ns }}.open"
           data-attr:data-rotated="${{ _ns }}.open">▸</span>
     {%- if icon %}
-    <span class="{{ ok_prefix }}tree__icon {{ ok_prefix }}tree__icon--{{ icon_kind }}">{{ icon }}</span>
+    <span class="{{ ok_prefix }}tree__icon {{ icon_kind }}">{{ icon }}</span>
     {%- endif %}
     <span class="{{ ok_prefix }}tree__label">{{ label|safe }}</span>
     {%- if meta %}
@@ -79,9 +79,9 @@
        {%- if value is not none %} data-on:click="$sel = '{{ value }}'" data-attr:aria-selected="$sel === '{{ value }}'"{%- endif %}
        {%- if selected %} aria-selected="true"{%- endif %}
        {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-    <span class="{{ ok_prefix }}tree__caret {{ ok_prefix }}tree__caret--leaf"></span>
+    <span class="{{ ok_prefix }}tree__caret leaf"></span>
     {%- if icon %}
-    <span class="{{ ok_prefix }}tree__icon {{ ok_prefix }}tree__icon--file">{{ icon }}</span>
+    <span class="{{ ok_prefix }}tree__icon file">{{ icon }}</span>
     {%- endif %}
     <span class="{{ ok_prefix }}tree__label">{{ label|safe }}</span>
     {%- if meta %}

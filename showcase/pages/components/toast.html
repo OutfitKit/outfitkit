@@ -9,13 +9,13 @@
 <p class="showcase__lead">Notificación efímera con icono, título y descripción opcional. Variantes <code>info</code>, <code>ok</code>, <code>warn</code>, <code>danger</code>, <code>brand</code>. Se renderiza dentro de <code>.ok-toast-region[data-pos]</code> para gestionar la posición y el stack.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/toast.jinja" import toast %}
-<div class="ok-toast-region" data-pos="top-right" style="position:relative;width:340px">
+<div class="toast-region" data-pos="top-right" style="position:relative;width:340px">
   {{ toast("Pedido pagado", description="PED-2041 — €124,50 vía tarjeta", variant="ok", dismissible=True) }}
   {{ toast("Sincronizando inventario", description="3 SKU pendientes — finalizará en 30s.", variant="info") }}
   {{ toast("Stock crítico", description="Leche desnatada — quedan 1 unidad.", variant="warn", dismissible=True) }}
   {{ toast("Pago rechazado", description="El TPV devolvió «fondos insuficientes».", variant="danger", dismissible=True) }}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_1 %}{% raw %}<div class="ok-toast-region" data-pos="top-right" style="position:relative;width:340px">
+{% set _src_jinjax_1 %}{% raw %}<div class="toast-region" data-pos="top-right" style="position:relative;width:340px">
   <Toast label="Pedido pagado" description="PED-2041 — €124,50 vía tarjeta" variant="ok" dismissible />
   <Toast label="Sincronizando inventario" description="3 SKU pendientes — finalizará en 30s." variant="info" />
   <Toast label="Stock crítico" description="Leche desnatada — quedan 1 unidad." variant="warn" dismissible />
@@ -25,7 +25,7 @@
 {% call demo_frame("Stack en top-right",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
-<div class="ok-toast-region" data-pos="top-right" style="position:relative;width:340px">
+<div class="toast-region" data-pos="top-right" style="position:relative;width:340px">
   {{ toast("Pedido pagado", description="PED-2041 — €124,50 vía tarjeta", variant="ok", dismissible=True) }}
   {{ toast("Sincronizando inventario", description="3 SKU pendientes — finalizará en 30s.", variant="info") }}
   {{ toast("Stock crítico", description="Leche desnatada — quedan 1 unidad.", variant="warn", dismissible=True) }}
@@ -54,7 +54,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>title</code></td><td>str</td><td>—</td><td>Título principal.</td></tr>

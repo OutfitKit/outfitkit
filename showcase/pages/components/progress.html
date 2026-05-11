@@ -107,8 +107,8 @@
 {% set _src_jinja_6 %}{% raw %}{% from "ui/progress.jinja" import progress %}
 {% from "ui/button.jinja" import button %}
 <div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
-  <div class="ok-progress" data-attr:style="'--ok-progress-value:' + $pct + '%'">
-    <div class="ok-progress__bar"></div>
+  <div class="progress" data-attr:style="'--progress-value:' + $pct + '%'">
+    <div class="progress__bar"></div>
   </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     {{ button("−10", variant="ghost", size="sm", attrs={"data-on:click": "$pct = Math.max(0, $pct - 10)"}) }}
@@ -117,8 +117,8 @@
   </div>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_6 %}{% raw %}<div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
-  <div class="ok-progress" data-attr:style="'--ok-progress-value:' + $pct + '%'">
-    <div class="ok-progress__bar"></div>
+  <div class="progress" data-attr:style="'--progress-value:' + $pct + '%'">
+    <div class="progress__bar"></div>
   </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     <Button label="−10" variant="ghost" size="sm" data-on:click="$pct = Math.max(0, $pct - 10)" />
@@ -131,8 +131,8 @@
     jinja_src=_src_jinja_6,
     jinjax_src=_src_jinjax_6) %}
 <div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
-  <div class="ok-progress" data-attr:style="'--ok-progress-value:' + $pct + '%'">
-    <div class="ok-progress__bar"></div>
+  <div class="progress" data-attr:style="'--progress-value:' + $pct + '%'">
+    <div class="progress__bar"></div>
   </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     {{ button("−10", variant="ghost", size="sm", attrs={"data-on:click": "$pct = Math.max(0, $pct - 10)"}) }}
@@ -143,7 +143,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>value</code></td><td>int</td><td>0</td><td>Porcentaje 0..100.</td></tr>

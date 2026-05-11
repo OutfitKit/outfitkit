@@ -9,13 +9,13 @@
 <p class="showcase__lead">Métrica compacta para fila comparativa. Se compone dentro del wrapper <code>.ok-stats</code> que aplica grid + bordes verticales entre items.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/stat.jinja" import stat %}
-<div class="ok-stats" style="width: 100%;">
+<div class="stats" style="width: 100%;">
   {{ stat("Pedidos", "1.284", delta="+6,2%", delta_dir="up") }}
   {{ stat("Facturación", "€48.210", delta="+9,1%", delta_dir="up") }}
   {{ stat("Devoluciones", "12", delta="−4 vs mes", delta_dir="down") }}
   {{ stat("Clientes nuevos", "38", delta="igual que mes") }}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_1 %}{% raw %}<div class="ok-stats" style="width: 100%;">
+{% set _src_jinjax_1 %}{% raw %}<div class="stats" style="width: 100%;">
   <Stat label="Pedidos" delta="+6,2%" delta_dir="up" />
   <Stat label="Facturación" delta="+9,1%" delta_dir="up" />
   <Stat label="Devoluciones" delta="−4 vs mes" delta_dir="down" />
@@ -25,7 +25,7 @@
 {% call demo_frame("Fila de 4",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
-<div class="ok-stats" style="width: 100%;">
+<div class="stats" style="width: 100%;">
   {{ stat("Pedidos", "1.284", delta="+6,2%", delta_dir="up") }}
   {{ stat("Facturación", "€48.210", delta="+9,1%", delta_dir="up") }}
   {{ stat("Devoluciones", "12", delta="−4 vs mes", delta_dir="down") }}
@@ -34,12 +34,12 @@
 {% endcall %}
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/stat.jinja" import stat %}
-<div class="ok-stats" style="width: 100%;">
+<div class="stats" style="width: 100%;">
   {{ stat("Stock crítico", "7 SKU") }}
   {{ stat("En tránsito", "23") }}
   {{ stat("Almacenes", "4") }}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_2 %}{% raw %}<div class="ok-stats" style="width: 100%;">
+{% set _src_jinjax_2 %}{% raw %}<div class="stats" style="width: 100%;">
   <Stat label="Stock crítico" />
   <Stat label="En tránsito" />
   <Stat label="Almacenes" />
@@ -48,7 +48,7 @@
 {% call demo_frame("Fila de 3 sin delta",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
-<div class="ok-stats" style="width: 100%;">
+<div class="stats" style="width: 100%;">
   {{ stat("Stock crítico", "7 SKU") }}
   {{ stat("En tránsito", "23") }}
   {{ stat("Almacenes", "4") }}
@@ -66,7 +66,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>label</code></td><td>str</td><td>—</td><td>Etiqueta uppercase superior.</td></tr>

@@ -19,12 +19,12 @@
 {% endcall %}
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/checkbox.jinja" import checkbox %}
-<div class="ok-check-group">
+<div class="check-group">
   {{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}
   {{ checkbox("Mostrar precios con IVA incluido", name="vat") }}
   {{ checkbox("Permitir descuentos manuales", name="discount") }}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_2 %}{% raw %}<div class="ok-check-group">
+{% set _src_jinjax_2 %}{% raw %}<div class="check-group">
   <Checkbox label="Aceptar pedidos a domicilio" name="delivery" checked />
   <Checkbox label="Mostrar precios con IVA incluido" name="vat" />
   <Checkbox label="Permitir descuentos manuales" name="discount" />
@@ -33,7 +33,7 @@
 {% call demo_frame("Grupo",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
-<div class="ok-check-group">
+<div class="check-group">
   {{ checkbox("Aceptar pedidos a domicilio", name="delivery", checked=True) }}
   {{ checkbox("Mostrar precios con IVA incluido", name="vat") }}
   {{ checkbox("Permitir descuentos manuales", name="discount") }}
@@ -41,13 +41,13 @@
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/checkbox.jinja" import checkbox %}
-<div class="ok-check-group">
+<div class="check-group">
   {{ checkbox("Activo", name="a", checked=True) }}
   {{ checkbox("Sin marcar", name="b") }}
   {{ checkbox("Deshabilitado", name="c", disabled=True) }}
   {{ checkbox("Deshabilitado + checked", name="d", checked=True, disabled=True) }}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_3 %}{% raw %}<div class="ok-check-group">
+{% set _src_jinjax_3 %}{% raw %}<div class="check-group">
   <Checkbox label="Activo" name="a" checked />
   <Checkbox label="Sin marcar" name="b" />
   <Checkbox label="Deshabilitado" name="c" disabled />
@@ -57,7 +57,7 @@
 {% call demo_frame("Estados",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
-<div class="ok-check-group">
+<div class="check-group">
   {{ checkbox("Activo", name="a", checked=True) }}
   {{ checkbox("Sin marcar", name="b") }}
   {{ checkbox("Deshabilitado", name="c", disabled=True) }}
@@ -91,7 +91,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>label</code></td><td>str</td><td>—</td><td>Texto inline.</td></tr>

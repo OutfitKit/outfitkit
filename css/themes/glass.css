@@ -7,90 +7,90 @@
 
 [data-template="glass"] {
   /* Tipografía — display tight, fluid */
-  --ok-font-display: "Inter Tight", "Inter", system-ui, sans-serif;
-  --ok-tracking-display: -0.045em;
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --tracking-display: -0.045em;
 
   /* Acento vibrante — magenta/violet */
-  --ok-brand:      #C026D3;       /* fuchsia-600 */
-  --ok-brand-2:    #A21CAF;
-  --ok-brand-3:    #E879F9;
-  --ok-brand-fg:   #FFFFFF;
-  --ok-brand-soft: color-mix(in oklch, var(--ok-brand) 22%, transparent);
+  --brand:      #C026D3;       /* fuchsia-600 */
+  --brand-2:    #A21CAF;
+  --brand-3:    #E879F9;
+  --brand-fg:   #FFFFFF;
+  --brand-soft: color-mix(in oklch, var(--brand) 22%, transparent);
 
   /* Estados con saturación alta */
-  --ok-leaf:    #14B8A6;          /* teal */
-  --ok-warn:    #F59E0B;
-  --ok-danger:  #F43F5E;          /* rose */
-  --ok-info:    #818CF8;          /* indigo-violet */
+  --leaf:    #14B8A6;          /* teal */
+  --warn:    #F59E0B;
+  --danger:  #F43F5E;          /* rose */
+  --info:    #818CF8;          /* indigo-violet */
 
   /* Sombras suaves de glassmorphism */
-  --ok-shadow-xs: 0 1px 2px rgba(192, 38, 211, 0.06);
-  --ok-shadow-sm: 0 4px 16px rgba(192, 38, 211, 0.08);
-  --ok-shadow-md: 0 12px 40px rgba(192, 38, 211, 0.14);
-  --ok-shadow-lg: 0 32px 80px rgba(192, 38, 211, 0.20);
-  --ok-shadow-glow: 0 0 0 4px color-mix(in oklch, var(--ok-brand) 30%, transparent);
+  --shadow-xs: 0 1px 2px rgba(192, 38, 211, 0.06);
+  --shadow-sm: 0 4px 16px rgba(192, 38, 211, 0.08);
+  --shadow-md: 0 12px 40px rgba(192, 38, 211, 0.14);
+  --shadow-lg: 0 32px 80px rgba(192, 38, 211, 0.20);
+  --shadow-glow: 0 0 0 4px color-mix(in oklch, var(--brand) 30%, transparent);
 
   /* Radios más grandes — pillows */
-  --ok-radius-md: 10px;
-  --ok-radius-lg: 14px;
-  --ok-radius-xl: 20px;
-  --ok-radius-2xl: 28px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-2xl: 28px;
 
-  --ok-page-pad: 24px;
-  --ok-topbar-h: 60px;
+  --page-pad: 24px;
+  --topbar-h: 60px;
 }
 
 /* Glass · light */
 [data-template="glass"][data-theme="erplora-light"] {
-  --ok-bg:    #FDF4FF;            /* fuchsia-50 — tinted canvas */
-  --ok-bg-1:  rgba(255, 255, 255, 0.72);  /* glass card / topbar */
-  --ok-bg-2:  rgba(255, 255, 255, 0.65);
-  --ok-bg-3:  rgba(252, 232, 255, 0.80);
-  --ok-bg-4:  rgba(245, 208, 254, 0.85);
+  --bg:    #FDF4FF;            /* fuchsia-50 — tinted canvas */
+  --bg-1:  rgba(255, 255, 255, 0.72);  /* glass card / topbar */
+  --bg-2:  rgba(255, 255, 255, 0.65);
+  --bg-3:  rgba(252, 232, 255, 0.80);
+  --bg-4:  rgba(245, 208, 254, 0.85);
 
-  --ok-line:   rgba(168, 85, 247, 0.12);
-  --ok-line-2: rgba(168, 85, 247, 0.20);
-  --ok-line-3: rgba(168, 85, 247, 0.32);
+  --line:   rgba(168, 85, 247, 0.12);
+  --line-2: rgba(168, 85, 247, 0.20);
+  --line-3: rgba(168, 85, 247, 0.32);
 
-  --ok-ink:    #4A044E;           /* fuchsia-950 */
-  --ok-ink-2:  #701A75;           /* fuchsia-900 */
-  --ok-ink-3:  #86198F;           /* fuchsia-800 */
-  --ok-ink-4:  #A855F7;
+  --ink:    #4A044E;           /* fuchsia-950 */
+  --ink-2:  #701A75;           /* fuchsia-900 */
+  --ink-3:  #86198F;           /* fuchsia-800 */
+  --ink-4:  #A855F7;
 
   color-scheme: light;
 }
 
 /* Glass · dark */
 [data-template="glass"][data-theme="erplora"] {
-  --ok-bg:    #1E0B36;            /* deep purple canvas */
-  --ok-bg-1:  rgba(60, 25, 95, 0.55);     /* glass card / topbar */
-  --ok-bg-2:  rgba(60, 25, 95, 0.45);
-  --ok-bg-3:  rgba(78, 32, 120, 0.55);
-  --ok-bg-4:  rgba(96, 40, 145, 0.60);
+  --bg:    #1E0B36;            /* deep purple canvas */
+  --bg-1:  rgba(60, 25, 95, 0.55);     /* glass card / topbar */
+  --bg-2:  rgba(60, 25, 95, 0.45);
+  --bg-3:  rgba(78, 32, 120, 0.55);
+  --bg-4:  rgba(96, 40, 145, 0.60);
 
-  --ok-line:   rgba(232, 121, 249, 0.10);
-  --ok-line-2: rgba(232, 121, 249, 0.18);
-  --ok-line-3: rgba(232, 121, 249, 0.32);
+  --line:   rgba(232, 121, 249, 0.10);
+  --line-2: rgba(232, 121, 249, 0.18);
+  --line-3: rgba(232, 121, 249, 0.32);
 
-  --ok-ink:    #FAE8FF;           /* fuchsia-100 */
-  --ok-ink-2:  #F0ABFC;           /* fuchsia-300 */
-  --ok-ink-3:  #C084FC;
-  --ok-ink-4:  #9333EA;
+  --ink:    #FAE8FF;           /* fuchsia-100 */
+  --ink-2:  #F0ABFC;           /* fuchsia-300 */
+  --ink-3:  #C084FC;
+  --ink-4:  #9333EA;
 
   color-scheme: dark;
 }
 
 /* Glass: añade blur a las superficies clave.
    Solo aplica cuando el theme está activo, así no penaliza el render. */
-[data-template="glass"] .ok-card,
-[data-template="glass"] .ok-app__topbar,
-[data-template="glass"] .ok-topbar,
-[data-template="glass"] .ok-sidebar,
-[data-template="glass"] .ok-modal,
-[data-template="glass"] .ok-drawer,
-[data-template="glass"] .ok-popover,
-[data-template="glass"] .ok-toast,
-[data-template="glass"] .ok-table-wrap {
+[data-template="glass"] .card,
+[data-template="glass"] .app__topbar,
+[data-template="glass"] .topbar,
+[data-template="glass"] .sidebar,
+[data-template="glass"] .modal,
+[data-template="glass"] .drawer,
+[data-template="glass"] .popover,
+[data-template="glass"] .toast,
+[data-template="glass"] .table-wrap {
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
 }

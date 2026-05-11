@@ -14,317 +14,317 @@
 
 {% block content %}
 <style>
-  body { background: var(--ok-bg); margin: 0; }
+  body { background: var(--bg); margin: 0; }
 </style>
 
-<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">EX</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">Developer portal</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">EX</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">Developer portal</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
 
-      <div class="ok-sidebar__group">Facturación</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Facturas</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Suscripciones</span></button>
+      <div class="sidebar__group">Facturación</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="sidebar__label">Facturas</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="sidebar__label">Suscripciones</span></button>
 
-      <div class="ok-sidebar__group is-active">Developer</div>
-      <button class="ok-sidebar__item" aria-current="page"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Módulos</span><span class="ok-sidebar__badge">12</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span class="ok-sidebar__label">Repositorios</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2 2 7l10 5 10-5z"/></svg><span class="ok-sidebar__label">Stripe Connect</span><span class="ok-sidebar__badge ok-sidebar__badge--leaf">OK</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span class="ok-sidebar__label">Documentación</span></button>
+      <div class="sidebar__group is-active">Developer</div>
+      <button class="sidebar__item" aria-current="page"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span><span class="sidebar__badge">12</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span class="sidebar__label">Repositorios</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2 2 7l10 5 10-5z"/></svg><span class="sidebar__label">Stripe Connect</span><span class="sidebar__badge sidebar__badge--leaf">OK</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span class="sidebar__label">Documentación</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">developer · @ioanb</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">IB</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">developer · @ioanb</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">Colaboradores del módulo</h1>
+        <h1 class="topbar__page-title">Colaboradores del módulo</h1>
         
         
-        <div class="ok-topbar__actions">
-          <button class="ok-icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="topbar__actions">
+          <button class="icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
+        <span class="avatar sm brand">IB</span>
         </div>
       </header>
 
-    <div class="ok-app__body">
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Colaboradores: POS Caja Registradora Pro</h1>
-          <div class="ok-page-header__sub">4 colaboradores activos · 2 invitaciones pendientes · €1 480 / mes a repartir</div>
+          <div class="page-header__sub">4 colaboradores activos · 2 invitaciones pendientes · €1 480 / mes a repartir</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--primary">+ Invitar colaborador</button>
+        <div class="page-header__actions">
+          <button class="btn primary">+ Invitar colaborador</button>
         </div>
       </div>
 
-      <div class="ok-callout ok-callout--info ok-mb-4">
-        <div class="ok-callout__icon">
+      <div class="callout info mb-4">
+        <div class="callout__icon">
           <iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon>
         </div>
-        <div class="ok-callout__body">
-          <div class="ok-callout__title">Reparto de ingresos</div>
-          <div class="ok-callout__desc">Los colaboradores reciben porcentaje de ingresos según su rol. Configura las divisiones en <a href="#" class="ok-c-info">Pago &gt; Reparto</a>. Stripe Connect distribuye los payouts automáticamente cada 15 días.</div>
+        <div class="callout__body">
+          <div class="callout__title">Reparto de ingresos</div>
+          <div class="callout__desc">Los colaboradores reciben porcentaje de ingresos según su rol. Configura las divisiones en <a href="#" class="c-info">Pago &gt; Reparto</a>. Stripe Connect distribuye los payouts automáticamente cada 15 días.</div>
         </div>
       </div>
 
-      <div class="ok-section ok-mb-6">
+      <div class="section mb-6">
         <header style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
           <h2 style="font-size:16px;margin:0;">Colaboradores activos</h2>
-          <span class="ok-text-sm ok-c-ink-3">4 personas · 100% repartido</span>
+          <span class="text-sm c-ink-3">4 personas · 100% repartido</span>
         </header>
-        <div class="ok-grid-2">
-          <article class="ok-card">
-            <header class="ok-card__header">
+        <div class="grid-2">
+          <article class="card">
+            <header class="card__header">
               <div style="display:flex;gap:12px;align-items:center;">
-                <span class="ok-avatar ok-avatar--xl ok-avatar--brand">IB</span>
+                <span class="avatar xl brand">IB</span>
                 <div>
-                  <div class="ok-card__title">Ioan Beilic <span class="ok-badge ok-badge--brand">Owner</span></div>
-                  <div class="ok-card__sub">ioan@erplora.dev · @ioanb</div>
+                  <div class="card__title">Ioan Beilic <span class="badge brand">Owner</span></div>
+                  <div class="card__sub">ioan@erplora.dev · @ioanb</div>
                 </div>
               </div>
-              <button class="ok-icon-btn ok-icon-btn--sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
+              <button class="icon-btn sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
             </header>
-            <div class="ok-card__body">
-              <div class="ok-stats">
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Reparto</div>
-                  <div class="ok-stat__value ok-c-brand">60%</div>
+            <div class="card__body">
+              <div class="stats">
+                <div class="stat">
+                  <div class="stat__label">Reparto</div>
+                  <div class="stat__value c-brand">60%</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Desde</div>
-                  <div class="ok-stat__value ok-text-base">22 ene 2026</div>
+                <div class="stat">
+                  <div class="stat__label">Desde</div>
+                  <div class="stat__value text-base">22 ene 2026</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Última act.</div>
-                  <div class="ok-stat__value ok-text-base">hoy 14:32</div>
+                <div class="stat">
+                  <div class="stat__label">Última act.</div>
+                  <div class="stat__value text-base">hoy 14:32</div>
                 </div>
               </div>
             </div>
-            <footer class="ok-card__footer">
-              <span class="ok-text-xs ok-c-ink-3">Pago acumulado: €5 360</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--ghost ok-btn--sm" disabled>Cambiar rol</button>
+            <footer class="card__footer">
+              <span class="text-xs c-ink-3">Pago acumulado: €5 360</span>
+              <div class="flex gap-1">
+                <button class="btn ghost sm" disabled>Cambiar rol</button>
               </div>
             </footer>
           </article>
 
-          <article class="ok-card">
-            <header class="ok-card__header">
+          <article class="card">
+            <header class="card__header">
               <div style="display:flex;gap:12px;align-items:center;">
-                <span class="ok-avatar ok-avatar--xl" style="background:#2A6B7B;color:#fff;">LD</span>
+                <span class="avatar xl" style="background:#2A6B7B;color:#fff;">LD</span>
                 <div>
-                  <div class="ok-card__title">Lucía Domínguez <span class="ok-badge ok-badge--info">Co-author</span></div>
-                  <div class="ok-card__sub">lucia.dominguez@erplora.dev · @luciad</div>
+                  <div class="card__title">Lucía Domínguez <span class="badge info">Co-author</span></div>
+                  <div class="card__sub">lucia.dominguez@erplora.dev · @luciad</div>
                 </div>
               </div>
-              <button class="ok-icon-btn ok-icon-btn--sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
+              <button class="icon-btn sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
             </header>
-            <div class="ok-card__body">
-              <div class="ok-stats">
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Reparto</div>
-                  <div class="ok-stat__value ok-c-info">25%</div>
+            <div class="card__body">
+              <div class="stats">
+                <div class="stat">
+                  <div class="stat__label">Reparto</div>
+                  <div class="stat__value c-info">25%</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Desde</div>
-                  <div class="ok-stat__value ok-text-base">10 mar 2026</div>
+                <div class="stat">
+                  <div class="stat__label">Desde</div>
+                  <div class="stat__value text-base">10 mar 2026</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Última act.</div>
-                  <div class="ok-stat__value ok-text-base">ayer 18:42</div>
+                <div class="stat">
+                  <div class="stat__label">Última act.</div>
+                  <div class="stat__value text-base">ayer 18:42</div>
                 </div>
               </div>
             </div>
-            <footer class="ok-card__footer">
-              <span class="ok-text-xs ok-c-ink-3">Pago acumulado: €1 480</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Cambiar rol</button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Editar %</button>
+            <footer class="card__footer">
+              <span class="text-xs c-ink-3">Pago acumulado: €1 480</span>
+              <div class="flex gap-1">
+                <button class="btn ghost sm">Cambiar rol</button>
+                <button class="btn ghost sm">Editar %</button>
               </div>
             </footer>
           </article>
 
-          <article class="ok-card">
-            <header class="ok-card__header">
+          <article class="card">
+            <header class="card__header">
               <div style="display:flex;gap:12px;align-items:center;">
-                <span class="ok-avatar ok-avatar--xl" style="background:#4F9D6E;color:#fff;">ME</span>
+                <span class="avatar xl" style="background:#4F9D6E;color:#fff;">ME</span>
                 <div>
-                  <div class="ok-card__title">Marcos Estévez <span class="ok-badge ok-badge--ok">Editor</span></div>
-                  <div class="ok-card__sub">marcos.estevez@erplora.dev · @marcose</div>
+                  <div class="card__title">Marcos Estévez <span class="badge success">Editor</span></div>
+                  <div class="card__sub">marcos.estevez@erplora.dev · @marcose</div>
                 </div>
               </div>
-              <button class="ok-icon-btn ok-icon-btn--sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
+              <button class="icon-btn sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
             </header>
-            <div class="ok-card__body">
-              <div class="ok-stats">
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Reparto</div>
-                  <div class="ok-stat__value ok-c-leaf">10%</div>
+            <div class="card__body">
+              <div class="stats">
+                <div class="stat">
+                  <div class="stat__label">Reparto</div>
+                  <div class="stat__value c-leaf">10%</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Desde</div>
-                  <div class="ok-stat__value ok-text-base">05 abr 2026</div>
+                <div class="stat">
+                  <div class="stat__label">Desde</div>
+                  <div class="stat__value text-base">05 abr 2026</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Última act.</div>
-                  <div class="ok-stat__value ok-text-base">hace 3 d</div>
+                <div class="stat">
+                  <div class="stat__label">Última act.</div>
+                  <div class="stat__value text-base">hace 3 d</div>
                 </div>
               </div>
             </div>
-            <footer class="ok-card__footer">
-              <span class="ok-text-xs ok-c-ink-3">Pago acumulado: €420</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Cambiar rol</button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Editar %</button>
+            <footer class="card__footer">
+              <span class="text-xs c-ink-3">Pago acumulado: €420</span>
+              <div class="flex gap-1">
+                <button class="btn ghost sm">Cambiar rol</button>
+                <button class="btn ghost sm">Editar %</button>
               </div>
             </footer>
           </article>
 
-          <article class="ok-card">
-            <header class="ok-card__header">
+          <article class="card">
+            <header class="card__header">
               <div style="display:flex;gap:12px;align-items:center;">
-                <span class="ok-avatar ok-avatar--xl" style="background:#D8A23A;color:#fff;">RC</span>
+                <span class="avatar xl" style="background:#D8A23A;color:#fff;">RC</span>
                 <div>
-                  <div class="ok-card__title">Raquel Cano <span class="ok-badge">Viewer</span></div>
-                  <div class="ok-card__sub">raquel.cano@erplora.dev · @raquelc</div>
+                  <div class="card__title">Raquel Cano <span class="badge">Viewer</span></div>
+                  <div class="card__sub">raquel.cano@erplora.dev · @raquelc</div>
                 </div>
               </div>
-              <button class="ok-icon-btn ok-icon-btn--sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
+              <button class="icon-btn sm"><iconify-icon icon="lucide:more-vertical" width="18" height="18"></iconify-icon></button>
             </header>
-            <div class="ok-card__body">
-              <div class="ok-stats">
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Reparto</div>
-                  <div class="ok-stat__value ok-c-warn">5%</div>
+            <div class="card__body">
+              <div class="stats">
+                <div class="stat">
+                  <div class="stat__label">Reparto</div>
+                  <div class="stat__value c-warn">5%</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Desde</div>
-                  <div class="ok-stat__value ok-text-base">18 abr 2026</div>
+                <div class="stat">
+                  <div class="stat__label">Desde</div>
+                  <div class="stat__value text-base">18 abr 2026</div>
                 </div>
-                <div class="ok-stat">
-                  <div class="ok-stat__label">Última act.</div>
-                  <div class="ok-stat__value ok-text-base">hace 7 d</div>
+                <div class="stat">
+                  <div class="stat__label">Última act.</div>
+                  <div class="stat__value text-base">hace 7 d</div>
                 </div>
               </div>
             </div>
-            <footer class="ok-card__footer">
-              <span class="ok-text-xs ok-c-ink-3">Pago acumulado: €120</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Cambiar rol</button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm ok-btn--danger">Eliminar</button>
+            <footer class="card__footer">
+              <span class="text-xs c-ink-3">Pago acumulado: €120</span>
+              <div class="flex gap-1">
+                <button class="btn ghost sm">Cambiar rol</button>
+                <button class="btn ghost sm danger">Eliminar</button>
               </div>
             </footer>
           </article>
         </div>
       </div>
 
-      <article class="ok-card ok-mb-6">
-        <header class="ok-card__header">
+      <article class="card mb-6">
+        <header class="card__header">
           <div>
-            <div class="ok-card__title">Reparto de ingresos</div>
-            <div class="ok-card__sub">Visualización del split actual · 100% asignado</div>
+            <div class="card__title">Reparto de ingresos</div>
+            <div class="card__sub">Visualización del split actual · 100% asignado</div>
           </div>
-          <button class="ok-btn ok-btn--outline ok-btn--sm">Editar reparto</button>
+          <button class="btn outline sm">Editar reparto</button>
         </header>
-        <div class="ok-card__body">
-          <div style="display:flex;height:42px;border-radius:10px;overflow:hidden;border:1px solid var(--ok-line);">
-            <div style="width:60%;background:var(--ok-brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;">Ioan Beilic · 60%</div>
-            <div style="width:25%;background:var(--ok-info);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;">Lucía D. · 25%</div>
-            <div style="width:10%;background:var(--ok-leaf);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">M.E. 10%</div>
-            <div style="width:5%;background:var(--ok-warn);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;">5%</div>
+        <div class="card__body">
+          <div style="display:flex;height:42px;border-radius:10px;overflow:hidden;border:1px solid var(--line);">
+            <div style="width:60%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;">Ioan Beilic · 60%</div>
+            <div style="width:25%;background:var(--info);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;">Lucía D. · 25%</div>
+            <div style="width:10%;background:var(--leaf);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;">M.E. 10%</div>
+            <div style="width:5%;background:var(--warn);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;">5%</div>
           </div>
-          <div class="ok-grid-auto ok-grid-auto--sm" style="margin-top:18px;">
+          <div class="grid-auto sm" style="margin-top:18px;">
             <div>
-              <div class="ok-overline">Owner</div>
+              <div class="overline">Owner</div>
               <div style="font-size:14px;font-weight:500;">Ioan Beilic</div>
-              <div style="font-size:18px;font-weight:600;color:var(--ok-brand);">€888 / mes</div>
+              <div style="font-size:18px;font-weight:600;color:var(--brand);">€888 / mes</div>
             </div>
             <div>
-              <div class="ok-overline">Co-author</div>
+              <div class="overline">Co-author</div>
               <div style="font-size:14px;font-weight:500;">Lucía Domínguez</div>
-              <div style="font-size:18px;font-weight:600;color:var(--ok-info);">€370 / mes</div>
+              <div style="font-size:18px;font-weight:600;color:var(--info);">€370 / mes</div>
             </div>
             <div>
-              <div class="ok-overline">Editor</div>
+              <div class="overline">Editor</div>
               <div style="font-size:14px;font-weight:500;">Marcos Estévez</div>
-              <div style="font-size:18px;font-weight:600;color:var(--ok-leaf);">€148 / mes</div>
+              <div style="font-size:18px;font-weight:600;color:var(--leaf);">€148 / mes</div>
             </div>
             <div>
-              <div class="ok-overline">Viewer</div>
+              <div class="overline">Viewer</div>
               <div style="font-size:14px;font-weight:500;">Raquel Cano</div>
-              <div style="font-size:18px;font-weight:600;color:var(--ok-warn);">€74 / mes</div>
+              <div style="font-size:18px;font-weight:600;color:var(--warn);">€74 / mes</div>
             </div>
           </div>
         </div>
-        <footer class="ok-card__footer">
-          <span class="ok-text-xs ok-c-ink-3">Próximo payout: 15 may 2026 · Stripe Connect</span>
-          <span style="font-size:12px;color:var(--ok-ink);"><strong>Total:</strong> €1 480 / mes</span>
+        <footer class="card__footer">
+          <span class="text-xs c-ink-3">Próximo payout: 15 may 2026 · Stripe Connect</span>
+          <span style="font-size:12px;color:var(--ink);"><strong>Total:</strong> €1 480 / mes</span>
         </footer>
       </article>
 
-      <article class="ok-card ok-mb-6">
-        <header class="ok-card__header">
+      <article class="card mb-6">
+        <header class="card__header">
           <div>
-            <div class="ok-card__title">Invitaciones pendientes</div>
-            <div class="ok-card__sub">2 invitaciones · expiran en 7 días</div>
+            <div class="card__title">Invitaciones pendientes</div>
+            <div class="card__sub">2 invitaciones · expiran en 7 días</div>
           </div>
         </header>
-        <div class="ok-card__body ok-p-0">
-          <table class="ok-table">
+        <div class="card__body p-0">
+          <table class="table">
             <thead><tr><th>Email</th><th>Rol propuesto</th><th>Reparto</th><th>Enviado</th><th>Expira</th><th></th></tr></thead>
             <tbody>
               <tr>
                 <td><strong>diego.morales@nordenbikes.es</strong></td>
-                <td><span class="ok-badge ok-badge--ok">Editor</span></td>
+                <td><span class="badge success">Editor</span></td>
                 <td>5%</td>
                 <td>02 may 2026</td>
-                <td><span class="ok-c-warn">en 4 días</span></td>
+                <td><span class="c-warn">en 4 días</span></td>
                 <td>
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm">Reenviar</button>
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Cancelar</button>
+                  <button class="btn ghost sm">Reenviar</button>
+                  <button class="btn ghost sm c-danger">Cancelar</button>
                 </td>
               </tr>
               <tr>
                 <td><strong>laura.fernandez@designstudio.com</strong></td>
-                <td><span class="ok-badge">Viewer</span></td>
+                <td><span class="badge">Viewer</span></td>
                 <td>0%</td>
                 <td>05 may 2026</td>
-                <td><span class="ok-c-ink-3">en 7 días</span></td>
+                <td><span class="c-ink-3">en 7 días</span></td>
                 <td>
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm">Reenviar</button>
-                  <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Cancelar</button>
+                  <button class="btn ghost sm">Reenviar</button>
+                  <button class="btn ghost sm c-danger">Cancelar</button>
                 </td>
               </tr>
             </tbody>
@@ -332,71 +332,71 @@
         </div>
       </article>
 
-      <article class="ok-card">
-        <header class="ok-card__header">
-          <div class="ok-card__title">Actividad de colaboradores</div>
-          <a href="#" style="font-size:12.5px;color:var(--ok-info);">Ver registro completo →</a>
+      <article class="card">
+        <header class="card__header">
+          <div class="card__title">Actividad de colaboradores</div>
+          <a href="#" style="font-size:12.5px;color:var(--info);">Ver registro completo →</a>
         </header>
-        <div class="ok-card__body">
-          <ul class="ok-timeline ok-timeline--dense">
-            <li class="ok-timeline__item">
-              <span class="ok-timeline__dot ok-timeline__dot--leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
-              <div class="ok-timeline__body">
-                <div class="ok-timeline__head">
-                  <div class="ok-timeline__title"><strong>Raquel Cano</strong> aceptó la invitación como <em>Viewer</em></div>
-                  <span class="ok-timeline__time">hace 7 d · 18 abr 2026</span>
+        <div class="card__body">
+          <ul class="timeline dense">
+            <li class="timeline__item">
+              <span class="timeline__dot timeline__dot--leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__title"><strong>Raquel Cano</strong> aceptó la invitación como <em>Viewer</em></div>
+                  <span class="timeline__time">hace 7 d · 18 abr 2026</span>
                 </div>
-                <div class="ok-timeline__desc">Reparto asignado: 5% · invitada por @ioanb</div>
+                <div class="timeline__desc">Reparto asignado: 5% · invitada por @ioanb</div>
               </div>
             </li>
-            <li class="ok-timeline__item">
-              <span class="ok-timeline__dot ok-timeline__dot--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-              <div class="ok-timeline__body">
-                <div class="ok-timeline__head">
-                  <div class="ok-timeline__title">Payout abril · <strong>€1 260</strong> distribuido a 4 colaboradores</div>
-                  <span class="ok-timeline__time">15 abr 2026</span>
+            <li class="timeline__item">
+              <span class="timeline__dot timeline__dot--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__title">Payout abril · <strong>€1 260</strong> distribuido a 4 colaboradores</div>
+                  <span class="timeline__time">15 abr 2026</span>
                 </div>
-                <div class="ok-timeline__desc">Stripe Connect · transferencia ID po_3OqL··· · sin incidencias</div>
+                <div class="timeline__desc">Stripe Connect · transferencia ID po_3OqL··· · sin incidencias</div>
               </div>
             </li>
-            <li class="ok-timeline__item">
-              <span class="ok-timeline__dot ok-timeline__dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
-              <div class="ok-timeline__body">
-                <div class="ok-timeline__head">
-                  <div class="ok-timeline__title"><strong>Marcos Estévez</strong> contribuyó · <em>v3.1.4 · fix cajón monedas</em></div>
-                  <span class="ok-timeline__time">05 abr 2026</span>
+            <li class="timeline__item">
+              <span class="timeline__dot timeline__dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__title"><strong>Marcos Estévez</strong> contribuyó · <em>v3.1.4 · fix cajón monedas</em></div>
+                  <span class="timeline__time">05 abr 2026</span>
                 </div>
-                <div class="ok-timeline__desc">Pull request #84 · 3 archivos cambiados · revisado y mergeado</div>
+                <div class="timeline__desc">Pull request #84 · 3 archivos cambiados · revisado y mergeado</div>
               </div>
             </li>
-            <li class="ok-timeline__item">
-              <span class="ok-timeline__dot ok-timeline__dot--leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
-              <div class="ok-timeline__body">
-                <div class="ok-timeline__head">
-                  <div class="ok-timeline__title"><strong>Marcos Estévez</strong> aceptó la invitación como <em>Editor</em></div>
-                  <span class="ok-timeline__time">05 abr 2026</span>
+            <li class="timeline__item">
+              <span class="timeline__dot timeline__dot--leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__title"><strong>Marcos Estévez</strong> aceptó la invitación como <em>Editor</em></div>
+                  <span class="timeline__time">05 abr 2026</span>
                 </div>
-                <div class="ok-timeline__desc">Reparto asignado: 10% · invitado por @luciad</div>
+                <div class="timeline__desc">Reparto asignado: 10% · invitado por @luciad</div>
               </div>
             </li>
-            <li class="ok-timeline__item">
-              <span class="ok-timeline__dot ok-timeline__dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
-              <div class="ok-timeline__body">
-                <div class="ok-timeline__head">
-                  <div class="ok-timeline__title"><strong>Lucía Domínguez</strong> contribuyó · <em>v3.1.0 · turnos múltiples</em></div>
-                  <span class="ok-timeline__time">10 mar 2026</span>
+            <li class="timeline__item">
+              <span class="timeline__dot timeline__dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__title"><strong>Lucía Domínguez</strong> contribuyó · <em>v3.1.0 · turnos múltiples</em></div>
+                  <span class="timeline__time">10 mar 2026</span>
                 </div>
-                <div class="ok-timeline__desc">PR #61 · 18 archivos cambiados · feature mayor</div>
+                <div class="timeline__desc">PR #61 · 18 archivos cambiados · feature mayor</div>
               </div>
             </li>
-            <li class="ok-timeline__item">
-              <span class="ok-timeline__dot ok-timeline__dot--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-              <div class="ok-timeline__body">
-                <div class="ok-timeline__head">
-                  <div class="ok-timeline__title">Payout marzo · <strong>€980</strong> distribuido a 2 colaboradores</div>
-                  <span class="ok-timeline__time">15 mar 2026</span>
+            <li class="timeline__item">
+              <span class="timeline__dot timeline__dot--brand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+              <div class="timeline__body">
+                <div class="timeline__head">
+                  <div class="timeline__title">Payout marzo · <strong>€980</strong> distribuido a 2 colaboradores</div>
+                  <span class="timeline__time">15 mar 2026</span>
                 </div>
-                <div class="ok-timeline__desc">Stripe Connect · transferencia ID po_3NnK··· · sin incidencias</div>
+                <div class="timeline__desc">Stripe Connect · transferencia ID po_3NnK··· · sin incidencias</div>
               </div>
             </li>
           </ul>
@@ -407,28 +407,28 @@
 
 
   <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="#" aria-current="page">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="#" aria-current="page">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Hubs</span>
-        <span class="ok-tabbar-badge">7</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Hubs</span>
+        <span class="tabbar-badge">7</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Equipo</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Equipo</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

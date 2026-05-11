@@ -2,7 +2,7 @@
 
 {% macro toast(title, description="", variant="info", dismissible=false, icon=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}toast{% if variant %} {{ ok_prefix }}toast--{{ variant }}{% endif %}"
+<div class="{{ ok_prefix }}toast{% if variant %} {{ variant }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   <span class="{{ ok_prefix }}toast__icon" aria-hidden="true">
     {%- if icon -%}

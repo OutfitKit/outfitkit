@@ -6,13 +6,13 @@
     "{}container".format(ok_prefix) if container == "default" else
     "{}container {}container--{}".format(ok_prefix, ok_prefix, container)
 ) -%}
-<section class="{{ ok_prefix }}section{% if padded %} {{ ok_prefix }}section--padded{% endif %} {{ ok_prefix }}section--{{ align }}"
+<section class="{{ ok_prefix }}section{% if padded %} padded{% endif %} {{ align }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {% if _container_class %}<div class="{{ _container_class }}">{% endif %}
     {% if icon or title or subtitle %}
     <header class="{{ ok_prefix }}section__header">
       {% if icon %}
-      <div class="{{ ok_prefix }}section__icon {{ ok_prefix }}section__icon--{{ icon_variant }}" aria-hidden="true">
+      <div class="{{ ok_prefix }}section__icon {{ icon_variant }}" aria-hidden="true">
         <span class="iconify" data-icon="{{ icon }}"></span>
       </div>
       {% endif %}

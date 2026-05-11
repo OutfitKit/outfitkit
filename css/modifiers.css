@@ -1,0 +1,421 @@
+/* ============================================================
+   OutfitKit · Modifiers
+   ─────────────────────────────────────────────────────────────
+   Modificadores universales y composables. Patrón Bulma v1 +
+   schema Ionic. Cada clase setea variables CSS que cualquier
+   componente consume vía:
+     · var(--variant)              (color base)
+     · var(--variant-rgb)          (rgb del color base)
+     · var(--variant-contrast)     (texto sobre variant)
+     · var(--variant-contrast-rgb)
+     · var(--variant-shade)        (10-12% más oscuro · hover)
+     · var(--variant-tint)         (10% más claro · focus)
+     · var(--size)                 (altura semántica)
+     · var(--pad-x)/--pad-y        (padding por tamaño)
+     · var(--text)                 (font-size por tamaño)
+     · var(--icon)                 (tamaño del icono)
+     · var(--radius)               (radio por tamaño)
+
+   Uso típico:
+     <button class="btn primary lg">Save</button>
+     <span   class="badge danger">Off</span>
+     <article class="card primary glass elevated">…</article>
+
+   Reglas:
+   - Cada modificador es una clase global, sin prefijo.
+   - Solo asigna variables o flags estructurales mínimos.
+   - El componente decide cómo consumir cada variable.
+   - Composables libremente: primary + lg + outline + block.
+   ============================================================ */
+
+
+/* ============================================================
+   Variantes de color (schema Ionic — 6 vars por variante)
+   ============================================================ */
+
+.primary {
+  --variant:              var(--color-primary);
+  --variant-rgb:          var(--color-primary-rgb);
+  --variant-contrast:     var(--color-primary-contrast);
+  --variant-contrast-rgb: var(--color-primary-contrast-rgb);
+  --variant-shade:        var(--color-primary-shade);
+  --variant-tint:         var(--color-primary-tint);
+}
+
+/* .secondary → neutral (gris) por compat con design systems clásicos
+   (Bootstrap, Tailwind UI, shadcn): "secondary" significa "variante
+   visual atenuada", NO "segundo color". Para el segundo color de marca
+   usa .accent o referencia directa a var(--color-secondary). */
+.secondary {
+  --variant:              var(--color-medium);
+  --variant-rgb:          var(--color-medium-rgb);
+  --variant-contrast:     var(--color-medium-contrast);
+  --variant-contrast-rgb: var(--color-medium-contrast-rgb);
+  --variant-shade:        var(--color-medium-shade);
+  --variant-tint:         var(--color-medium-tint);
+}
+
+.tertiary {
+  --variant:              var(--color-tertiary);
+  --variant-rgb:          var(--color-tertiary-rgb);
+  --variant-contrast:     var(--color-tertiary-contrast);
+  --variant-contrast-rgb: var(--color-tertiary-contrast-rgb);
+  --variant-shade:        var(--color-tertiary-shade);
+  --variant-tint:         var(--color-tertiary-tint);
+}
+
+.success {
+  --variant:              var(--color-success);
+  --variant-rgb:          var(--color-success-rgb);
+  --variant-contrast:     var(--color-success-contrast);
+  --variant-contrast-rgb: var(--color-success-contrast-rgb);
+  --variant-shade:        var(--color-success-shade);
+  --variant-tint:         var(--color-success-tint);
+}
+
+.warning,
+.warn {
+  --variant:              var(--color-warning);
+  --variant-rgb:          var(--color-warning-rgb);
+  --variant-contrast:     var(--color-warning-contrast);
+  --variant-contrast-rgb: var(--color-warning-contrast-rgb);
+  --variant-shade:        var(--color-warning-shade);
+  --variant-tint:         var(--color-warning-tint);
+}
+
+.danger {
+  --variant:              var(--color-danger);
+  --variant-rgb:          var(--color-danger-rgb);
+  --variant-contrast:     var(--color-danger-contrast);
+  --variant-contrast-rgb: var(--color-danger-contrast-rgb);
+  --variant-shade:        var(--color-danger-shade);
+  --variant-tint:         var(--color-danger-tint);
+}
+
+.info {
+  --variant:              var(--color-info);
+  --variant-rgb:          var(--color-info-rgb);
+  --variant-contrast:     var(--color-info-contrast);
+  --variant-contrast-rgb: var(--color-info-contrast-rgb);
+  --variant-shade:        var(--color-info-shade);
+  --variant-tint:         var(--color-info-tint);
+}
+
+.medium,
+.neutral {
+  --variant:              var(--color-medium);
+  --variant-rgb:          var(--color-medium-rgb);
+  --variant-contrast:     var(--color-medium-contrast);
+  --variant-contrast-rgb: var(--color-medium-contrast-rgb);
+  --variant-shade:        var(--color-medium-shade);
+  --variant-tint:         var(--color-medium-tint);
+}
+
+.light {
+  --variant:              var(--color-light);
+  --variant-rgb:          var(--color-light-rgb);
+  --variant-contrast:     var(--color-light-contrast);
+  --variant-contrast-rgb: var(--color-light-contrast-rgb);
+  --variant-shade:        var(--color-light-shade);
+  --variant-tint:         var(--color-light-tint);
+}
+
+.dark {
+  --variant:              var(--color-dark);
+  --variant-rgb:          var(--color-dark-rgb);
+  --variant-contrast:     var(--color-dark-contrast);
+  --variant-contrast-rgb: var(--color-dark-contrast-rgb);
+  --variant-shade:        var(--color-dark-shade);
+  --variant-tint:         var(--color-dark-tint);
+}
+
+/* Alias semánticos (compat con naming heredado) */
+.brand  { /* alias de .primary */
+  --variant:              var(--color-primary);
+  --variant-rgb:          var(--color-primary-rgb);
+  --variant-contrast:     var(--color-primary-contrast);
+  --variant-contrast-rgb: var(--color-primary-contrast-rgb);
+  --variant-shade:        var(--color-primary-shade);
+  --variant-tint:         var(--color-primary-tint);
+}
+.accent { /* alias de .secondary */
+  --variant:              var(--color-secondary);
+  --variant-rgb:          var(--color-secondary-rgb);
+  --variant-contrast:     var(--color-secondary-contrast);
+  --variant-contrast-rgb: var(--color-secondary-contrast-rgb);
+  --variant-shade:        var(--color-secondary-shade);
+  --variant-tint:         var(--color-secondary-tint);
+}
+.ok     { /* alias heredado de .success */
+  --variant:              var(--color-success);
+  --variant-rgb:          var(--color-success-rgb);
+  --variant-contrast:     var(--color-success-contrast);
+  --variant-contrast-rgb: var(--color-success-contrast-rgb);
+  --variant-shade:        var(--color-success-shade);
+  --variant-tint:         var(--color-success-tint);
+}
+.leaf   { /* alias heredado de .success */
+  --variant:              var(--color-success);
+  --variant-rgb:          var(--color-success-rgb);
+  --variant-contrast:     var(--color-success-contrast);
+  --variant-contrast-rgb: var(--color-success-contrast-rgb);
+  --variant-shade:        var(--color-success-shade);
+  --variant-tint:         var(--color-success-tint);
+}
+
+
+/* ============================================================
+   Tamaños (sizing semántico — controlan size/padding/text/icon/radius)
+   ============================================================ */
+
+.xs {
+  --size:   var(--size-xs);
+  --pad-x:  var(--pad-xs-x);
+  --pad-y:  var(--pad-xs-y);
+  --text:   var(--text-xs);
+  --icon:   var(--icon-xs);
+  --radius: var(--radius-sm);
+}
+
+.sm {
+  --size:   var(--size-sm);
+  --pad-x:  var(--pad-sm-x);
+  --pad-y:  var(--pad-sm-y);
+  --text:   var(--text-sm);
+  --icon:   var(--icon-sm);
+  --radius: var(--radius-sm);
+}
+
+.md {
+  --size:   var(--size-md);
+  --pad-x:  var(--pad-md-x);
+  --pad-y:  var(--pad-md-y);
+  --text:   var(--text-md);
+  --icon:   var(--icon-md);
+  --radius: var(--radius-md);
+}
+
+.lg {
+  --size:   var(--size-lg);
+  --pad-x:  var(--pad-lg-x);
+  --pad-y:  var(--pad-lg-y);
+  --text:   var(--text-lg);
+  --icon:   var(--icon-lg);
+  --radius: var(--radius-lg);
+}
+
+.xl {
+  --size:   var(--size-xl);
+  --pad-x:  var(--pad-xl-x);
+  --pad-y:  var(--pad-xl-y);
+  --text:   var(--text-xl);
+  --icon:   var(--icon-xl);
+  --radius: var(--radius-lg);
+}
+
+
+/* ============================================================
+   Estilos visuales (filled / outline / ghost / soft / link)
+   ─────────────────────────────────────────────────────────────
+   Por defecto los componentes asumen "filled" (fondo --variant).
+   Estos modificadores cambian la presentación SIN cambiar el
+   color (que sigue viniendo del modificador .primary / .danger).
+   ============================================================ */
+
+.outline {
+  --bg-mode:     transparent;
+  --color-mode:  var(--variant, var(--text-color));
+  --border-mode: var(--variant, var(--line-3));
+  --border-w-mode: var(--border-w);
+}
+
+.ghost {
+  --bg-mode:     transparent;
+  --color-mode:  var(--variant, var(--ink-2));
+  --border-mode: transparent;
+  --border-w-mode: 0;
+}
+
+.soft {
+  --bg-mode:    color-mix(in oklch, var(--variant, var(--ink-2)) 18%, transparent);
+  --color-mode: var(--variant, var(--text-color));
+  --border-mode: transparent;
+  --border-w-mode: 0;
+}
+
+.link {
+  --bg-mode: transparent;
+  --color-mode: var(--variant, var(--color-primary));
+  --border-mode: transparent;
+  --border-w-mode: 0;
+}
+
+
+/* ============================================================
+   Forma y disposición
+   ============================================================ */
+
+.block {
+  display: block;
+  width: 100%;
+}
+
+.pill,
+.rounded {
+  --radius: var(--radius-pill);
+  border-radius: var(--radius-pill);
+}
+
+.icon {
+  --pad-x: 0;
+  aspect-ratio: 1 / 1;
+  justify-content: center;
+}
+
+.circle {
+  --radius: var(--radius-circle);
+  border-radius: var(--radius-circle);
+}
+
+
+/* ============================================================
+   Posicionamiento (útil para tabbars, footers, overlays)
+   ============================================================ */
+
+.fixed   { position: fixed; }
+.sticky  { position: sticky; top: 0; }
+.inset   { position: relative; }   /* fluye normal (anti-fixed) */
+.bottom  { bottom: 0; left: 0; right: 0; }
+.top     { top: 0; left: 0; right: 0; }
+
+
+/* ============================================================
+   Estados visuales (no interactivos)
+   ============================================================ */
+
+.is-active,
+.is-current {
+  --bg-mode:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
+  --color-mode: var(--variant, var(--text-color));
+}
+
+.is-disabled,
+[aria-disabled="true"]:not(:disabled),
+:disabled {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.is-loading {
+  cursor: progress;
+}
+
+.is-selected {
+  --bg-mode:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
+  --color-mode: var(--variant, var(--text-color));
+}
+
+
+/* ============================================================
+   Densidad
+   ============================================================ */
+
+.dense {
+  --pad-x: var(--space-2);
+  --pad-y: var(--space-1);
+  --gap:   var(--space-1);
+}
+
+.comfortable {
+  --pad-x: var(--space-5);
+  --pad-y: var(--space-3);
+  --gap:   var(--space-3);
+}
+
+
+/* ============================================================
+   Glass (translúcido + blur)
+   ─────────────────────────────────────────────────────────────
+   Aplicable a cualquier superficie (card, topbar, sidebar,
+   modal, drawer, tabbar). Composable con variantes y estados.
+   ============================================================ */
+
+.glass {
+  background: color-mix(in oklch, var(--bg-2) 65%, transparent);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: var(--border-w) solid color-mix(in oklch, var(--line-2) 75%, transparent);
+}
+.glass.strong {
+  background: color-mix(in oklch, var(--bg-1) 70%, transparent);
+  backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-saturate-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong)) saturate(var(--glass-saturate-strong));
+  border: var(--border-w) solid color-mix(in oklch, var(--line-2) 80%, transparent);
+}
+.glass.soft {
+  background: color-mix(in oklch, var(--bg-2) 50%, transparent);
+  backdrop-filter: blur(var(--glass-blur-soft)) saturate(var(--glass-saturate-soft));
+  -webkit-backdrop-filter: blur(var(--glass-blur-soft)) saturate(var(--glass-saturate-soft));
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .glass, .glass.strong, .glass.soft { background: var(--bg-2); }
+}
+
+
+/* ============================================================
+   Elevación (sombras semánticas)
+   ============================================================ */
+
+.elevated      { box-shadow: var(--shadow-md); }
+.elevated.xs   { box-shadow: var(--shadow-xs); }
+.elevated.sm   { box-shadow: var(--shadow-sm); }
+.elevated.lg   { box-shadow: var(--shadow-lg); }
+.elevated.xl   { box-shadow: var(--shadow-xl); }
+.flat          { box-shadow: none; }
+
+
+/* ============================================================
+   Bordes (decorativos)
+   ============================================================ */
+
+.bordered   { border: var(--border-w) solid var(--variant, var(--line)); }
+.divided    { border-top: var(--border-w) solid var(--line); }
+.borderless { border: 0; }
+
+
+/* ============================================================
+   Safe-area helpers (PWA mobile-first)
+   ============================================================ */
+
+.pt-safe { padding-top:    var(--safe-area-top); }
+.pb-safe { padding-bottom: var(--safe-area-bottom); }
+.pl-safe { padding-left:   var(--safe-area-left); }
+.pr-safe { padding-right:  var(--safe-area-right); }
+.p-safe  {
+  padding-top:    var(--safe-area-top);
+  padding-bottom: var(--safe-area-bottom);
+  padding-left:   var(--safe-area-left);
+  padding-right:  var(--safe-area-right);
+}
+
+
+/* ============================================================
+   Indicador de notificación (puntito)
+   ─────────────────────────────────────────────────────────────
+   Aplicable a cualquier componente — añade un dot top-right
+   que indica "hay algo nuevo".
+   ============================================================ */
+
+.has-dot { position: relative; }
+.has-dot::after {
+  content: "";
+  position: absolute;
+  top: var(--space-1);
+  right: var(--space-1);
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-circle);
+  background: var(--variant, var(--color-danger));
+  box-shadow: 0 0 0 var(--border-w-2) var(--background-color);
+}

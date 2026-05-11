@@ -1,32 +1,47 @@
 /* ============================================================
-   OutfitKit · Avatar
+   OutfitKit · Avatar, Pill, Icon-button, Divider
+   ─────────────────────────────────────────────────────────────
+   Uso:
+     <span class="avatar">JC</span>
+     <span class="avatar primary lg">IB</span>
+     <span class="avatar success xl"><img src="..."/></span>
+
+   Consume: --variant, --variant-contrast, --size, --text, --icon
+   Expone:  --avatar-bg, --avatar-color, --avatar-size, --avatar-text
    ============================================================ */
 
-.ok-avatar {
+.avatar {
+  --avatar-bg:     var(--variant, var(--bg-4));
+  --avatar-color:  var(--variant-contrast, var(--ink-2));
+  --avatar-size:   var(--size, var(--avatar-md));
+  --avatar-text:   var(--text, var(--text-xs));
+  --avatar-border: var(--line);
+
   position: relative;
   display: inline-grid;
   place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--ok-bg-4);
-  color: var(--ok-ink-2);
-  font-size: var(--ok-text-xs);
-  font-weight: 600;
-  font-family: var(--ok-font-display);
-  letter-spacing: -0.02em;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: var(--radius-circle);
+  background: var(--avatar-bg);
+  color: var(--avatar-color);
+  font-size: var(--avatar-text);
+  font-weight: var(--weight-semibold);
+  font-family: var(--font-display);
+  letter-spacing: var(--tracking-near);
   overflow: hidden;
   flex-shrink: 0;
-  border: 1px solid var(--ok-line);
+  border: var(--border-w) solid var(--avatar-border);
 }
-.ok-avatar__initials {
+
+.avatar__initials {
   position: relative;
   z-index: 0;
   display: inline-grid;
   place-items: center;
-  line-height: 1;
+  line-height: var(--leading-flat);
 }
-.ok-avatar img {
+.avatar img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -36,78 +51,142 @@
   z-index: 1;
 }
 
-.ok-avatar--xs { width: 20px; height: 20px; font-size: 9px; }
-.ok-avatar--sm { width: 24px; height: 24px; font-size: 10px; }
-.ok-avatar--lg { width: 36px; height: 36px; font-size: var(--ok-text-sm); }
-.ok-avatar--xl { width: 48px; height: 48px; font-size: var(--ok-text-base); }
+/* Sizes — usan tokens semánticos --avatar-* */
+.avatar.xs  { --avatar-size: var(--avatar-xs);  --avatar-text: 9px; }
+.avatar.sm  { --avatar-size: var(--avatar-sm);  --avatar-text: 10px; }
+.avatar.md  { --avatar-size: var(--avatar-md);  --avatar-text: var(--text-xs); }
+.avatar.lg  { --avatar-size: var(--avatar-lg);  --avatar-text: var(--text-sm); }
+.avatar.xl  { --avatar-size: var(--avatar-xl);  --avatar-text: var(--text-base); }
 
-.ok-avatar--brand { background: var(--ok-brand); color: var(--ok-brand-fg); border-color: transparent; }
-
-.ok-avatar--more {
-  background: var(--ok-bg-3);
-  color: var(--ok-ink-2);
-  border-color: var(--ok-line);
+/* Cuando hay variante (.primary etc.), el borde desaparece */
+.avatar.primary, .avatar.secondary, .avatar.success, .avatar.warning, .avatar.warn,
+.avatar.danger,  .avatar.info,      .avatar.tertiary, .avatar.brand,
+.avatar.accent {
+  --avatar-border: transparent;
 }
 
-/* Avatar stack */
-.ok-avatar-stack {
+/* Variante "more" (mostrar +N) */
+.avatar.more {
+  --avatar-bg:     var(--bg-3);
+  --avatar-color:  var(--ink-2);
+  --avatar-border: var(--line);
+}
+
+
+/* Avatar stack — solapados */
+.avatar-stack {
   display: inline-flex;
 }
-.ok-avatar-stack > .ok-avatar:not(:first-child) {
-  margin-left: -8px;
-  box-shadow: 0 0 0 2px var(--ok-bg-2);
+.avatar-stack > .avatar:not(:first-child) {
+  margin-left: calc(var(--space-2) * -1);
+  box-shadow: 0 0 0 var(--border-w-2) var(--bg-2);
 }
 
-/* Divider */
-.ok-divider {
-  height: 1px;
-  background: var(--ok-line);
+
+/* ============================================================
+   Divider — separador horizontal/vertical
+   ============================================================ */
+.divider {
+  height: var(--border-w);
+  background: var(--line);
   border: none;
-  margin: var(--ok-space-4) 0;
+  margin-block: var(--space-4);
 }
-.ok-divider--vert {
-  width: 1px; height: auto;
+.divider.vertical,
+.divider.vert {
+  width: var(--border-w);
+  height: auto;
   align-self: stretch;
-  margin: 0 var(--ok-space-3);
+  margin-block: var(--space-0);
+  margin-inline: var(--space-3);
 }
 
-/* Icon button (square ghost) */
-.ok-icon-btn {
+
+/* ============================================================
+   Icon button — botón cuadrado para iconos
+   ─────────────────────────────────────────────────────────────
+   Variante simplificada del .btn cuando solo lleva un icono.
+   Para más control usar .btn.icon directamente.
+   ============================================================ */
+
+.icon-btn {
+  --icon-btn-size:   30px;
+  --icon-btn-bg:     transparent;
+  --icon-btn-color:  var(--variant, var(--ink-2));
+  --icon-btn-border: transparent;
+
   display: inline-grid;
   place-items: center;
-  width: 30px; height: 30px;
-  border-radius: var(--ok-radius-md);
-  background: transparent;
-  color: var(--ok-ink-2);
-  border: 1px solid transparent;
-  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+  width: var(--icon-btn-size);
+  height: var(--icon-btn-size);
+  border-radius: var(--radius-md);
+  background: var(--icon-btn-bg);
+  color: var(--icon-btn-color);
+  border: var(--border-w) solid var(--icon-btn-border);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out);
 }
-.ok-icon-btn:hover { background: var(--ok-bg-3); color: var(--ok-ink); }
-.ok-icon-btn[aria-pressed="true"] { background: var(--ok-bg-3); color: var(--ok-ink); }
-.ok-icon-btn--sm { width: 24px; height: 24px; }
-.ok-icon-btn--lg { width: 36px; height: 36px; }
+.icon-btn:hover {
+  --icon-btn-bg:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
+  --icon-btn-color: var(--variant, var(--ink));
+}
+.icon-btn[aria-pressed="true"],
+.icon-btn[data-active="true"],
+.icon-btn.is-active {
+  --icon-btn-bg:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
+  --icon-btn-color: var(--variant, var(--ink));
+}
 
-/* Pill (status with leading dot) */
-.ok-pill {
+.icon-btn.sm { --icon-btn-size: 24px; }
+.icon-btn.md { --icon-btn-size: 30px; }
+.icon-btn.lg { --icon-btn-size: 36px; }
+
+/* Solid: relleno con --variant */
+.icon-btn.solid {
+  --icon-btn-bg:    var(--variant, var(--bg-3));
+  --icon-btn-color: var(--variant-contrast, var(--ink));
+}
+
+/* Outline */
+.icon-btn.outline {
+  --icon-btn-bg:     transparent;
+  --icon-btn-border: var(--variant, var(--line-3));
+  --icon-btn-color:  var(--variant, var(--ink));
+}
+
+
+/* ============================================================
+   Pill — status indicator con dot
+   ─────────────────────────────────────────────────────────────
+   <span class="pill success"><span class="pill__dot"></span>En línea</span>
+   ============================================================ */
+
+.pill {
+  --pill-bg:           var(--bg-3);
+  --pill-color:        var(--ink-2);
+  --pill-border-color: var(--line);
+
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 22px;
-  padding: 0 9px 0 7px;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line);
-  border-radius: 999px;
-  font-size: var(--ok-text-2xs);
-  font-weight: 500;
-  color: var(--ok-ink-2);
+  gap: var(--space-2);
+  height: var(--size-xs);
+  padding-inline: var(--space-2);
+  background: var(--pill-bg);
+  border: var(--border-w) solid var(--pill-border-color);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-medium);
+  color: var(--pill-color);
 }
-.ok-pill__dot {
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: var(--ok-ink-3);
+.pill__dot {
+  width: var(--dot-sm);
+  height: var(--dot-sm);
+  border-radius: var(--radius-circle);
+  background: var(--variant, var(--ink-3));
+  flex-shrink: 0;
 }
-.ok-pill--ok     .ok-pill__dot { background: var(--ok-leaf); box-shadow: 0 0 0 2px color-mix(in oklch, var(--ok-leaf) 25%, transparent); }
-.ok-pill--warn   .ok-pill__dot { background: var(--ok-warn); }
-.ok-pill--danger .ok-pill__dot { background: var(--ok-danger); }
-.ok-pill--brand  .ok-pill__dot { background: var(--ok-brand); }
-.ok-pill--info   .ok-pill__dot { background: var(--ok-info); }
+.pill.success .pill__dot,
+.pill.ok      .pill__dot {
+  box-shadow: 0 0 0 var(--border-w-2) color-mix(in oklch, var(--color-success) 25%, transparent);
+}

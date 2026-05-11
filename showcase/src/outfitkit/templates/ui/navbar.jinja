@@ -2,7 +2,7 @@
 
 {% macro navbar(sticky=True, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<nav class="{{ ok_prefix }}navbar{% if sticky %} {{ ok_prefix }}navbar--sticky{% endif %}"
+<nav class="{{ ok_prefix }}navbar{% if sticky %} sticky{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   {{ caller() }}
 </nav>

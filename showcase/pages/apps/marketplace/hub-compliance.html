@@ -14,44 +14,44 @@
 
 {% block content %}
 <style>
-  body { padding: 22px; background: var(--ok-bg); min-height: 100vh; }
+  body { padding: 22px; background: var(--bg); min-height: 100vh; }
   .wrap { max-width: 1100px; margin: 0 auto; }
   .country-section { margin-bottom: 22px; }
-  .country-section__head { display: flex; gap: 12px; align-items: center; padding: 12px 16px; background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: var(--ok-radius-md) var(--ok-radius-md) 0 0; border-bottom: none; }
+  .country-section__head { display: flex; gap: 12px; align-items: center; padding: 12px 16px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-md) var(--radius-md) 0 0; border-bottom: none; }
   .country-flag { font-size: 24px; line-height: 1; }
-  .country-name { font-family: var(--ok-font-display); font-size: 16px; font-weight: 600; margin: 0; color: var(--ok-ink); }
-  .country-section__head .ok-badge { margin-left: auto; }
-  .req-table { width: 100%; border-collapse: collapse; background: var(--ok-bg-2); border: 1px solid var(--ok-line); border-radius: 0 0 var(--ok-radius-md) var(--ok-radius-md); overflow: hidden; }
-  .req-table th { text-align: left; padding: 10px 14px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ok-ink-3); font-weight: 500; border-bottom: 1px solid var(--ok-line); background: var(--ok-bg-1); }
-  .req-table td { padding: 12px 14px; border-bottom: 1px solid var(--ok-line); font-size: 13.5px; vertical-align: top; }
+  .country-name { font-family: var(--font-display); font-size: 16px; font-weight: 600; margin: 0; color: var(--ink); }
+  .country-section__head .badge { margin-left: auto; }
+  .req-table { width: 100%; border-collapse: collapse; background: var(--bg-2); border: 1px solid var(--line); border-radius: 0 0 var(--radius-md) var(--radius-md); overflow: hidden; }
+  .req-table th { text-align: left; padding: 10px 14px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); font-weight: 500; border-bottom: 1px solid var(--line); background: var(--bg-1); }
+  .req-table td { padding: 12px 14px; border-bottom: 1px solid var(--line); font-size: 13.5px; vertical-align: top; }
   .req-table tr:last-child td { border-bottom: none; }
-  .req-name { font-weight: 500; color: var(--ok-ink); display: block; margin-bottom: 2px; }
-  .req-desc { font-size: 12px; color: var(--ok-ink-3); }
+  .req-name { font-weight: 500; color: var(--ink); display: block; margin-bottom: 2px; }
+  .req-desc { font-size: 12px; color: var(--ink-3); }
 </style>
 
 <div class="wrap">
 
   <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px;">
-    <a href="index.html" class="ok-btn ok-btn--ghost ok-btn--sm">
+    <a href="index.html" class="btn ghost sm">
       <iconify-icon icon="lucide:arrow-left" width="14" height="14"></iconify-icon>
       Marketplace
     </a>
-    <span class="ok-text-xs ok-c-ink-3">/</span>
-    <span class="ok-text-xs ok-c-ink-3">Cumplimiento</span>
+    <span class="text-xs c-ink-3">/</span>
+    <span class="text-xs c-ink-3">Cumplimiento</span>
   </div>
 
-  <div class="ok-page-header ok-mb-5">
-    <div class="ok-page-header__title">
+  <div class="page-header mb-5">
+    <div class="page-header__title">
       <h1>Cumplimiento legal</h1>
-      <div class="ok-page-header__sub">Módulos obligatorios y recomendados según el país de operación</div>
+      <div class="page-header__sub">Módulos obligatorios y recomendados según el país de operación</div>
     </div>
   </div>
 
-  <div class="ok-alert ok-alert--info ok-mb-5">
-    <div class="ok-alert__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
-    <div class="ok-alert__body">
-      <div class="ok-alert__title">¿Necesitas ayuda con el cumplimiento?</div>
-      <div class="ok-alert__desc">Contacta con nuestro equipo para una evaluación gratuita de las obligaciones fiscales en tu país.</div>
+  <div class="alert info mb-5">
+    <div class="alert__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
+    <div class="alert__body">
+      <div class="alert__title">¿Necesitas ayuda con el cumplimiento?</div>
+      <div class="alert__desc">Contacta con nuestro equipo para una evaluación gratuita de las obligaciones fiscales en tu país.</div>
     </div>
   </div>
 
@@ -60,7 +60,7 @@
     <div class="country-section__head">
       <span class="country-flag">🇪🇸</span>
       <h2 class="country-name">España</h2>
-      <span class="ok-badge ok-badge--warn"><span class="ok-badge__dot"></span>2 sin instalar</span>
+      <span class="badge warning"><span class="badge__dot"></span>2 sin instalar</span>
     </div>
     <table class="req-table">
       <thead>
@@ -77,54 +77,54 @@
             <span class="req-name">VeriFactu — facturación verificable</span>
             <span class="req-desc">Sistema obligatorio de registro y firma de facturas para AEAT desde julio 2026.</span>
           </td>
-          <td><a href="detail.html" class="ok-badge ok-badge--brand">verifactu</a></td>
+          <td><a href="detail.html" class="badge brand">verifactu</a></td>
           <td><span class="req-desc">desde 01/07/2026</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--warn">No instalado</span></td>
+          <td class="text-right"><span class="badge warning">No instalado</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">Modelo 303 — IVA trimestral</span>
             <span class="req-desc">Declaración trimestral del Impuesto sobre el Valor Añadido.</span>
           </td>
-          <td><a href="#" class="ok-badge">fiscal_es</a></td>
+          <td><a href="#" class="badge">fiscal_es</a></td>
           <td><span class="req-desc">trimestral</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--ok">Instalado</span></td>
+          <td class="text-right"><span class="badge success">Instalado</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">Modelo 347 — operaciones &gt;3.005,06 €</span>
             <span class="req-desc">Declaración anual de operaciones con terceras personas.</span>
           </td>
-          <td><a href="#" class="ok-badge">fiscal_es</a></td>
+          <td><a href="#" class="badge">fiscal_es</a></td>
           <td><span class="req-desc">anual · marzo</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--ok">Instalado</span></td>
+          <td class="text-right"><span class="badge success">Instalado</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">SII — Suministro Inmediato Información</span>
             <span class="req-desc">Solo para grandes empresas y exportadores. Envío de libros registro IVA en 4 días.</span>
           </td>
-          <td><a href="#" class="ok-badge">fiscal_es</a></td>
+          <td><a href="#" class="badge">fiscal_es</a></td>
           <td><span class="req-desc">4 días desde emisión</span></td>
-          <td class="ok-text-right"><span class="ok-badge">Opcional</span></td>
+          <td class="text-right"><span class="badge">Opcional</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">Modelo 111 — retenciones IRPF nóminas</span>
             <span class="req-desc">Declaración trimestral de retenciones practicadas a empleados.</span>
           </td>
-          <td><a href="#" class="ok-badge">payroll_es</a></td>
+          <td><a href="#" class="badge">payroll_es</a></td>
           <td><span class="req-desc">trimestral</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--warn">No instalado</span></td>
+          <td class="text-right"><span class="badge warning">No instalado</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">RGPD — Reglamento Protección de Datos</span>
             <span class="req-desc">Tratamiento de datos personales. Incluido en el Hub por defecto.</span>
           </td>
-          <td><span class="ok-badge ok-badge--solid">Hub core</span></td>
+          <td><span class="badge solid">Hub core</span></td>
           <td><span class="req-desc">permanente</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--ok">Cumple</span></td>
+          <td class="text-right"><span class="badge success">Cumple</span></td>
         </tr>
       </tbody>
     </table>
@@ -135,7 +135,7 @@
     <div class="country-section__head">
       <span class="country-flag">🇵🇹</span>
       <h2 class="country-name">Portugal</h2>
-      <span class="ok-badge"><span class="ok-badge__dot"></span>Sin operaciones</span>
+      <span class="badge"><span class="badge__dot"></span>Sin operaciones</span>
     </div>
     <table class="req-table">
       <thead>
@@ -152,18 +152,18 @@
             <span class="req-name">SAF-T (PT) — fichero fiscal mensual</span>
             <span class="req-desc">Envío del fichero SAF-T a la Autoridade Tributária todos los meses.</span>
           </td>
-          <td><span class="ok-badge ok-badge--info">fiscal_pt · próximamente</span></td>
+          <td><span class="badge info">fiscal_pt · próximamente</span></td>
           <td><span class="req-desc">mensual</span></td>
-          <td class="ok-text-right"><span class="ok-badge">Próximamente</span></td>
+          <td class="text-right"><span class="badge">Próximamente</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">ATCUD + QR en facturas</span>
             <span class="req-desc">Código único validado y QR obligatorio en todas las facturas emitidas.</span>
           </td>
-          <td><span class="ok-badge ok-badge--info">fiscal_pt · próximamente</span></td>
+          <td><span class="badge info">fiscal_pt · próximamente</span></td>
           <td><span class="req-desc">desde 2023</span></td>
-          <td class="ok-text-right"><span class="ok-badge">Próximamente</span></td>
+          <td class="text-right"><span class="badge">Próximamente</span></td>
         </tr>
       </tbody>
     </table>
@@ -174,7 +174,7 @@
     <div class="country-section__head">
       <span class="country-flag">🇫🇷</span>
       <h2 class="country-name">Francia</h2>
-      <span class="ok-badge"><span class="ok-badge__dot"></span>Sin operaciones</span>
+      <span class="badge"><span class="badge__dot"></span>Sin operaciones</span>
     </div>
     <table class="req-table">
       <thead>
@@ -191,18 +191,18 @@
             <span class="req-name">Facturación electrónica B2B</span>
             <span class="req-desc">Obligatoria desde septiembre 2026. PDP/PPF certificada para envío.</span>
           </td>
-          <td><span class="ok-badge ok-badge--info">fiscal_fr · próximamente</span></td>
+          <td><span class="badge info">fiscal_fr · próximamente</span></td>
           <td><span class="req-desc">desde 09/2026</span></td>
-          <td class="ok-text-right"><span class="ok-badge">Próximamente</span></td>
+          <td class="text-right"><span class="badge">Próximamente</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">Logiciel certifié NF525</span>
             <span class="req-desc">Software de caja registradora certificado anti-fraude.</span>
           </td>
-          <td><span class="ok-badge ok-badge--info">pos · certificación pendiente</span></td>
+          <td><span class="badge info">pos · certificación pendiente</span></td>
           <td><span class="req-desc">permanente</span></td>
-          <td class="ok-text-right"><span class="ok-badge">Próximamente</span></td>
+          <td class="text-right"><span class="badge">Próximamente</span></td>
         </tr>
       </tbody>
     </table>
@@ -213,7 +213,7 @@
     <div class="country-section__head">
       <span class="country-flag">🇪🇺</span>
       <h2 class="country-name">Unión Europea</h2>
-      <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Cumple</span>
+      <span class="badge success"><span class="badge__dot"></span>Cumple</span>
     </div>
     <table class="req-table">
       <thead>
@@ -230,38 +230,38 @@
             <span class="req-name">RGPD / GDPR</span>
             <span class="req-desc">Protección de datos personales en todos los Estados miembros.</span>
           </td>
-          <td><span class="ok-badge ok-badge--solid">Hub core</span></td>
+          <td><span class="badge solid">Hub core</span></td>
           <td><span class="req-desc">permanente</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--ok">Cumple</span></td>
+          <td class="text-right"><span class="badge success">Cumple</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">VIES — verificación VAT comunitario</span>
             <span class="req-desc">Validación del número IVA de clientes intracomunitarios en tiempo real.</span>
           </td>
-          <td><a href="#" class="ok-badge">customers</a></td>
+          <td><a href="#" class="badge">customers</a></td>
           <td><span class="req-desc">por operación</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--ok">Activo</span></td>
+          <td class="text-right"><span class="badge success">Activo</span></td>
         </tr>
         <tr>
           <td>
             <span class="req-name">Modelo 349 — operaciones intracomunitarias</span>
             <span class="req-desc">Declaración mensual o trimestral de entregas y adquisiciones intracomunitarias.</span>
           </td>
-          <td><a href="#" class="ok-badge">fiscal_es</a></td>
+          <td><a href="#" class="badge">fiscal_es</a></td>
           <td><span class="req-desc">mensual / trimestral</span></td>
-          <td class="ok-text-right"><span class="ok-badge ok-badge--ok">Instalado</span></td>
+          <td class="text-right"><span class="badge success">Instalado</span></td>
         </tr>
       </tbody>
     </table>
   </section>
 
-  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Inicio</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Facturas</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Perfil</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

@@ -14,193 +14,193 @@
 
 {% block content %}
 <style>
-  body { background: var(--ok-bg); margin: 0; }
+  body { background: var(--bg); margin: 0; }
 </style>
 
-<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">EX</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">Developer portal</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">EX</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">Developer portal</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
 
-      <div class="ok-sidebar__group">Facturación</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Facturas</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Suscripciones</span></button>
+      <div class="sidebar__group">Facturación</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="sidebar__label">Facturas</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="sidebar__label">Suscripciones</span></button>
 
-      <div class="ok-sidebar__group is-active">Developer</div>
-      <button class="ok-sidebar__item" aria-current="page"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Módulos</span><span class="ok-sidebar__badge">12</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span class="ok-sidebar__label">Repositorios</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2 2 7l10 5 10-5z"/></svg><span class="ok-sidebar__label">Stripe Connect</span><span class="ok-sidebar__badge ok-sidebar__badge--leaf">OK</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span class="ok-sidebar__label">Documentación</span></button>
+      <div class="sidebar__group is-active">Developer</div>
+      <button class="sidebar__item" aria-current="page"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span><span class="sidebar__badge">12</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg><span class="sidebar__label">Repositorios</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2 2 7l10 5 10-5z"/></svg><span class="sidebar__label">Stripe Connect</span><span class="sidebar__badge sidebar__badge--leaf">OK</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8"/></svg><span class="sidebar__label">Documentación</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">developer · @ioanb</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">IB</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">developer · @ioanb</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">Subir nuevo módulo</h1>
+        <h1 class="topbar__page-title">Subir nuevo módulo</h1>
         
         
-        <div class="ok-topbar__actions">
-          <button class="ok-icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="topbar__actions">
+          <button class="icon-btn" aria-label="Notificaciones"><iconify-icon icon="lucide:bell" width="14" height="14"></iconify-icon></button>
+        <span class="avatar sm brand">IB</span>
         </div>
       </header>
 
-    <div class="ok-app__body">
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Subir nuevo módulo</h1>
-          <div class="ok-page-header__sub">Publica un módulo en el marketplace de ERPlora · disponible para 1 240 hubs</div>
+          <div class="page-header__sub">Publica un módulo en el marketplace de ERPlora · disponible para 1 240 hubs</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--ghost">Cancelar</button>
-        </div>
-      </div>
-
-      <div class="ok-wizard ok-mb-4">
-        <div class="ok-wizard__steps">
-          <div class="ok-wizard__step ok-wizard__step--active">
-            <span class="ok-wizard__step-num">1</span>
-            <div>
-              <div class="ok-wizard__step-name">Origen</div>
-              <div class="ok-wizard__step-sub">ZIP · GitHub · marketplace</div>
-            </div>
-          </div>
-          <div class="ok-wizard__step">
-            <span class="ok-wizard__step-num">2</span>
-            <div>
-              <div class="ok-wizard__step-name">Información</div>
-              <div class="ok-wizard__step-sub">Nombre, slug, categoría</div>
-            </div>
-          </div>
-          <div class="ok-wizard__step">
-            <span class="ok-wizard__step-num">3</span>
-            <div>
-              <div class="ok-wizard__step-name">Detalles</div>
-              <div class="ok-wizard__step-sub">Descripción, screenshots</div>
-            </div>
-          </div>
-          <div class="ok-wizard__step">
-            <span class="ok-wizard__step-num">4</span>
-            <div>
-              <div class="ok-wizard__step-name">Precio</div>
-              <div class="ok-wizard__step-sub">Plan & comisión Stripe</div>
-            </div>
-          </div>
-          <div class="ok-wizard__step">
-            <span class="ok-wizard__step-num">5</span>
-            <div>
-              <div class="ok-wizard__step-name">Revisión</div>
-              <div class="ok-wizard__step-sub">Confirmar y publicar</div>
-            </div>
-          </div>
+        <div class="page-header__actions">
+          <button class="btn ghost">Cancelar</button>
         </div>
       </div>
 
-      <div class="ok-row">
-        <div class="ok-col-md-7 ok-col-lg-8">
-          <article class="ok-card">
-            <header class="ok-card__header">
+      <div class="wizard mb-4">
+        <div class="wizard__steps">
+          <div class="wizard__step wizard__step--active">
+            <span class="wizard__step-num">1</span>
+            <div>
+              <div class="wizard__step-name">Origen</div>
+              <div class="wizard__step-sub">ZIP · GitHub · marketplace</div>
+            </div>
+          </div>
+          <div class="wizard__step">
+            <span class="wizard__step-num">2</span>
+            <div>
+              <div class="wizard__step-name">Información</div>
+              <div class="wizard__step-sub">Nombre, slug, categoría</div>
+            </div>
+          </div>
+          <div class="wizard__step">
+            <span class="wizard__step-num">3</span>
+            <div>
+              <div class="wizard__step-name">Detalles</div>
+              <div class="wizard__step-sub">Descripción, screenshots</div>
+            </div>
+          </div>
+          <div class="wizard__step">
+            <span class="wizard__step-num">4</span>
+            <div>
+              <div class="wizard__step-name">Precio</div>
+              <div class="wizard__step-sub">Plan & comisión Stripe</div>
+            </div>
+          </div>
+          <div class="wizard__step">
+            <span class="wizard__step-num">5</span>
+            <div>
+              <div class="wizard__step-name">Revisión</div>
+              <div class="wizard__step-sub">Confirmar y publicar</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7 col-lg-8">
+          <article class="card">
+            <header class="card__header">
               <div>
-                <div class="ok-card__title">Origen del módulo</div>
-                <div class="ok-card__sub">Elige cómo quieres importar tu módulo</div>
+                <div class="card__title">Origen del módulo</div>
+                <div class="card__sub">Elige cómo quieres importar tu módulo</div>
               </div>
             </header>
-            <div class="ok-card__body" style="display:grid;grid-template-columns:1fr;gap:10px;">
-              <label class="ok-radio-card">
+            <div class="card__body" style="display:grid;grid-template-columns:1fr;gap:10px;">
+              <label class="radio-card">
                 <input type="radio" name="src" data-on:change="$source = 'zip'"/>
-                <div class="ok-flex ok-items-start ok-gap-3">
-                  <span class="ok-app-icon ok-app-icon--info" aria-hidden="true">
+                <div class="flex items-start gap-3">
+                  <span class="app-icon info" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
                   </span>
                   <div>
-                    <div class="ok-font-medium">Subir ZIP</div>
-                    <div class="ok-text-sm ok-c-ink-3">Sube un archivo ZIP que contenga el manifest.yml, el código fuente y los assets. Tamaño máximo 50 MB.</div>
+                    <div class="font-medium">Subir ZIP</div>
+                    <div class="text-sm c-ink-3">Sube un archivo ZIP que contenga el manifest.yml, el código fuente y los assets. Tamaño máximo 50 MB.</div>
                   </div>
                 </div>
               </label>
 
-              <label class="ok-radio-card" style="border-color:var(--ok-brand);background:var(--ok-brand-soft);">
+              <label class="radio-card" style="border-color:var(--brand);background:var(--brand-soft);">
                 <input type="radio" name="src" checked data-on:change="$source = 'github'"/>
-                <div class="ok-flex ok-items-start ok-gap-3">
-                  <span class="ok-app-icon ok-app-icon--brand" aria-hidden="true">
+                <div class="flex items-start gap-3">
+                  <span class="app-icon brand" aria-hidden="true">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                   </span>
                   <div>
-                    <div class="ok-font-medium">Conectar GitHub <span class="ok-badge ok-badge--brand ok-badge--sm">Recomendado</span></div>
-                    <div class="ok-text-sm ok-c-ink-3">Sincroniza desde un repositorio. Cada push a la rama configurada genera una versión automática.</div>
+                    <div class="font-medium">Conectar GitHub <span class="badge brand sm">Recomendado</span></div>
+                    <div class="text-sm c-ink-3">Sincroniza desde un repositorio. Cada push a la rama configurada genera una versión automática.</div>
                   </div>
                 </div>
               </label>
 
-              <label class="ok-radio-card">
+              <label class="radio-card">
                 <input type="radio" name="src" data-on:change="$source = 'mp'"/>
-                <div class="ok-flex ok-items-start ok-gap-3">
-                  <span class="ok-app-icon ok-app-icon--leaf" aria-hidden="true">
+                <div class="flex items-start gap-3">
+                  <span class="app-icon success" aria-hidden="true">
                     <iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon>
                   </span>
                   <div>
-                    <div class="ok-font-medium">Importar desde marketplace existente</div>
-                    <div class="ok-text-sm ok-c-ink-3">Clona un módulo público del marketplace como punto de partida. Puedes modificarlo y publicarlo bajo tu marca.</div>
+                    <div class="font-medium">Importar desde marketplace existente</div>
+                    <div class="text-sm c-ink-3">Clona un módulo público del marketplace como punto de partida. Puedes modificarlo y publicarlo bajo tu marca.</div>
                   </div>
                 </div>
               </label>
             </div>
           </article>
 
-          <article class="ok-card ok-mt-3" data-show="$source === 'github'">
-            <header class="ok-card__header">
+          <article class="card mt-3" data-show="$source === 'github'">
+            <header class="card__header">
               <div>
-                <div class="ok-card__title">Conectar repositorio GitHub</div>
-                <div class="ok-card__sub">Acceso instalado · ERPlora-app · 3 repos sincronizados</div>
+                <div class="card__title">Conectar repositorio GitHub</div>
+                <div class="card__sub">Acceso instalado · ERPlora-app · 3 repos sincronizados</div>
               </div>
-              <a href="#" style="font-size:12.5px;color:var(--ok-info);">Ya conectado: 3 repos →</a>
+              <a href="#" style="font-size:12.5px;color:var(--info);">Ya conectado: 3 repos →</a>
             </header>
-            <div class="ok-card__body">
-              <div class="ok-form-row">
-                <label class="ok-field">
-                  <span class="ok-field__label">Organización / usuario</span>
-                  <select class="ok-select">
+            <div class="card__body">
+              <div class="form-row">
+                <label class="field">
+                  <span class="field__label">Organización / usuario</span>
+                  <select class="select">
                     <option>ioanb</option>
                     <option>erplora-developer</option>
                     <option>nordenbikes</option>
                   </select>
                 </label>
-                <label class="ok-field">
-                  <span class="ok-field__label">Repositorio</span>
-                  <select class="ok-select">
+                <label class="field">
+                  <span class="field__label">Repositorio</span>
+                  <select class="select">
                     <option>pos-caja-pro</option>
                     <option>contabilidad-plus</option>
                     <option>sepa-recon</option>
@@ -208,165 +208,165 @@
                   </select>
                 </label>
               </div>
-              <div class="ok-form-row ok-mt-2">
-                <label class="ok-field">
-                  <span class="ok-field__label">Rama</span>
-                  <select class="ok-select">
+              <div class="form-row mt-2">
+                <label class="field">
+                  <span class="field__label">Rama</span>
+                  <select class="select">
                     <option>main</option>
                     <option>release</option>
                     <option>v3.x</option>
                   </select>
                 </label>
-                <label class="ok-field">
-                  <span class="ok-field__label">Ruta del manifest</span>
-                  <input class="ok-input" value="/erplora.yml"/>
+                <label class="field">
+                  <span class="field__label">Ruta del manifest</span>
+                  <input class="input" value="/erplora.yml"/>
                 </label>
               </div>
               <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
-                <label class="ok-toggle-row">
+                <label class="toggle-row">
                   <span>
                     <strong>Auto-sync on push</strong>
-                    <div class="ok-text-xs ok-c-ink-3">Genera una nueva versión cuando llegue un push a <code>main</code>.</div>
+                    <div class="text-xs c-ink-3">Genera una nueva versión cuando llegue un push a <code>main</code>.</div>
                   </span>
-                  <span class="ok-toggle"><input type="checkbox" checked/><span class="ok-toggle__track"><span class="ok-toggle__thumb"></span></span></span>
+                  <span class="toggle"><input type="checkbox" checked/><span class="toggle__track"><span class="toggle__thumb"></span></span></span>
                 </label>
-                <label class="ok-toggle-row">
+                <label class="toggle-row">
                   <span>
                     <strong>Crear release como pre-release</strong>
-                    <div class="ok-text-xs ok-c-ink-3">Visible solo para hubs con beta-channel activado.</div>
+                    <div class="text-xs c-ink-3">Visible solo para hubs con beta-channel activado.</div>
                   </span>
-                  <span class="ok-toggle"><input type="checkbox"/><span class="ok-toggle__track"><span class="ok-toggle__thumb"></span></span></span>
+                  <span class="toggle"><input type="checkbox"/><span class="toggle__track"><span class="toggle__thumb"></span></span></span>
                 </label>
-                <label class="ok-toggle-row">
+                <label class="toggle-row">
                   <span>
                     <strong>Verificar firma GPG</strong>
-                    <div class="ok-text-xs ok-c-ink-3">Solo permite tags firmados.</div>
+                    <div class="text-xs c-ink-3">Solo permite tags firmados.</div>
                   </span>
-                  <span class="ok-toggle"><input type="checkbox" checked/><span class="ok-toggle__track"><span class="ok-toggle__thumb"></span></span></span>
+                  <span class="toggle"><input type="checkbox" checked/><span class="toggle__track"><span class="toggle__thumb"></span></span></span>
                 </label>
               </div>
-              <div class="ok-callout ok-callout--ok ok-callout--compact ok-mt-3">
-                <div class="ok-callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
-                <div class="ok-callout__body">
-                  <div class="ok-callout__title">Manifest detectado</div>
-                  <div class="ok-callout__desc">erplora.yml válido · v3.2.1 · POS · 14 archivos · 2.1 MB</div>
+              <div class="callout success compact mt-3">
+                <div class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                <div class="callout__body">
+                  <div class="callout__title">Manifest detectado</div>
+                  <div class="callout__desc">erplora.yml válido · v3.2.1 · POS · 14 archivos · 2.1 MB</div>
                 </div>
               </div>
-              <div style="margin-top:10px;font-size:12px;color:var(--ok-ink-3);display:flex;gap:14px;">
-                <span>Última sincronización: <strong class="ok-c-ink-2">hace 4 min</strong></span>
-                <span>Commit: <code class="ok-c-info">a8b2f1c</code></span>
-                <span>Autor: <strong class="ok-c-ink-2">@ioanb</strong></span>
+              <div style="margin-top:10px;font-size:12px;color:var(--ink-3);display:flex;gap:14px;">
+                <span>Última sincronización: <strong class="c-ink-2">hace 4 min</strong></span>
+                <span>Commit: <code class="c-info">a8b2f1c</code></span>
+                <span>Autor: <strong class="c-ink-2">@ioanb</strong></span>
               </div>
             </div>
           </article>
 
-          <article class="ok-card ok-mt-3" data-show="$source === 'zip'" data-style="display:none;">
-            <header class="ok-card__header">
-              <div class="ok-card__title">Subir archivo ZIP</div>
+          <article class="card mt-3" data-show="$source === 'zip'" data-style="display:none;">
+            <header class="card__header">
+              <div class="card__title">Subir archivo ZIP</div>
             </header>
-            <div class="ok-card__body">
-              <div class="ok-dropzone">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:32px;height:32px;color:var(--ok-ink-3);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            <div class="card__body">
+              <div class="dropzone">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:32px;height:32px;color:var(--ink-3);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
                 <div style="font-weight:500;margin-top:8px;">Arrastra el archivo aquí o haz clic para seleccionar</div>
-                <div class="ok-text-xs ok-c-ink-3">ZIP · máx 50 MB · debe contener erplora.yml</div>
-                <button class="ok-btn ok-btn--outline ok-btn--sm ok-mt-2">Seleccionar archivo</button>
+                <div class="text-xs c-ink-3">ZIP · máx 50 MB · debe contener erplora.yml</div>
+                <button class="btn outline sm mt-2">Seleccionar archivo</button>
               </div>
             </div>
           </article>
 
-          <article class="ok-card ok-mt-3" data-show="$source === 'mp'" data-style="display:none;">
-            <header class="ok-card__header">
-              <div class="ok-card__title">Importar desde marketplace</div>
+          <article class="card mt-3" data-show="$source === 'mp'" data-style="display:none;">
+            <header class="card__header">
+              <div class="card__title">Importar desde marketplace</div>
             </header>
-            <div class="ok-card__body">
-              <div class="ok-search">
-                <svg class="ok-search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-                <input class="ok-input" placeholder="Buscar módulos públicos…"/>
+            <div class="card__body">
+              <div class="search">
+                <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+                <input class="input" placeholder="Buscar módulos públicos…"/>
               </div>
-              <div style="margin-top:14px;color:var(--ok-ink-3);font-size:13px;">Selecciona un módulo de la lista para clonarlo bajo tu cuenta.</div>
+              <div style="margin-top:14px;color:var(--ink-3);font-size:13px;">Selecciona un módulo de la lista para clonarlo bajo tu cuenta.</div>
             </div>
           </article>
         </div>
 
-        <div class="ok-col-md-5 ok-col-lg-4 ok-col-sticky">
-          <article class="ok-card">
-            <header class="ok-card__header">
+        <div class="col-md-5 col-lg-4 col-sticky">
+          <article class="card">
+            <header class="card__header">
               <div>
-                <div class="ok-card__title">Vista previa</div>
-                <div class="ok-card__sub">Cómo se verá en el marketplace</div>
+                <div class="card__title">Vista previa</div>
+                <div class="card__sub">Cómo se verá en el marketplace</div>
               </div>
-              <span class="ok-badge">Borrador</span>
+              <span class="badge">Borrador</span>
             </header>
-            <div class="ok-card__body">
-              <div style="border:1px dashed var(--ok-line);border-radius:12px;padding:16px;background:var(--ok-bg-1);">
+            <div class="card__body">
+              <div style="border:1px dashed var(--line);border-radius:12px;padding:16px;background:var(--bg-1);">
                 <div style="display:flex;gap:12px;align-items:center;margin-bottom:10px;">
-                  <span class="ok-avatar ok-avatar--xl" style="background:#7B3F2A;color:#fff;border-radius:14px;">P</span>
+                  <span class="avatar xl" style="background:#7B3F2A;color:#fff;border-radius:14px;">P</span>
                   <div>
                     <div style="font-weight:600;font-size:16px;">POS Caja Registradora Pro</div>
-                    <div class="ok-text-xs ok-c-ink-3">@ioanb · POS · v3.2.1</div>
+                    <div class="text-xs c-ink-3">@ioanb · POS · v3.2.1</div>
                   </div>
                 </div>
-                <div style="font-size:13px;color:var(--ok-ink-2);line-height:1.55;">
+                <div style="font-size:13px;color:var(--ink-2);line-height:1.55;">
                   TPV completo con caja registradora, gestión de turnos, integración con cajón de monedas, impresora térmica ESC/POS y facturación electrónica TicketBAI / Verifactu.
                 </div>
                 <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;">
-                  <span class="ok-tag ok-tag--neutral ok-tag--sm">tpv</span>
-                  <span class="ok-tag ok-tag--neutral ok-tag--sm">caja</span>
-                  <span class="ok-tag ok-tag--neutral ok-tag--sm">verifactu</span>
-                  <span class="ok-tag ok-tag--neutral ok-tag--sm">ticketbai</span>
+                  <span class="tag neutral sm">tpv</span>
+                  <span class="tag neutral sm">caja</span>
+                  <span class="tag neutral sm">verifactu</span>
+                  <span class="tag neutral sm">ticketbai</span>
                 </div>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--ok-line);">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);">
                   <div>
-                    <div class="ok-overline">Precio</div>
-                    <div style="font-size:18px;font-weight:600;">€29 <span style="font-size:11px;font-weight:400;color:var(--ok-ink-3);">/mes</span></div>
+                    <div class="overline">Precio</div>
+                    <div style="font-size:18px;font-weight:600;">€29 <span style="font-size:11px;font-weight:400;color:var(--ink-3);">/mes</span></div>
                   </div>
-                  <button class="ok-btn ok-btn--primary ok-btn--sm">Instalar</button>
+                  <button class="btn primary sm">Instalar</button>
                 </div>
               </div>
-              <div style="font-size:11.5px;color:var(--ok-ink-3);margin-top:10px;text-align:center;">
+              <div style="font-size:11.5px;color:var(--ink-3);margin-top:10px;text-align:center;">
                 La vista previa se actualizará automáticamente cuando completes los pasos 2 y 3.
               </div>
             </div>
-            <footer class="ok-card__footer">
-              <span class="ok-text-xs ok-c-ink-3">Borrador autoguardado · 14:32</span>
-              <button class="ok-btn ok-btn--ghost ok-btn--sm">Guardar borrador</button>
+            <footer class="card__footer">
+              <span class="text-xs c-ink-3">Borrador autoguardado · 14:32</span>
+              <button class="btn ghost sm">Guardar borrador</button>
             </footer>
           </article>
         </div>
       </div>
 
-      <div class="ok-toolbar ok-toolbar--sticky" style="margin-top:18px;justify-content:flex-end;gap:8px;">
-        <span style="font-size:12px;color:var(--ok-ink-3);margin-right:auto;">Paso 1 de 5 · Origen</span>
-        <button class="ok-btn ok-btn--ghost" disabled>Atrás</button>
-        <button class="ok-btn ok-btn--primary">Siguiente →</button>
+      <div class="toolbar sticky" style="margin-top:18px;justify-content:flex-end;gap:8px;">
+        <span style="font-size:12px;color:var(--ink-3);margin-right:auto;">Paso 1 de 5 · Origen</span>
+        <button class="btn ghost" disabled>Atrás</button>
+        <button class="btn primary">Siguiente →</button>
       </div>
     </div>
   </div>
 
 
   <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="#" aria-current="page">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="#" aria-current="page">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Hubs</span>
-        <span class="ok-tabbar-badge">7</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Hubs</span>
+        <span class="tabbar-badge">7</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Equipo</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Equipo</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

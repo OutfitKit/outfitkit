@@ -13,65 +13,65 @@
 {% set _src_jinja_1 %}{% raw %}{% from "ui/app_shell.jinja" import app_shell %}
 {% from "ui/sidebar_nav.jinja" import sidebar_nav %}
 {% from "ui/topbar.jinja" import topbar %}
-<div style="height:480px;border:1px solid var(--ok-line);border-radius:8px;overflow:hidden">
+<div style="height:480px;border:1px solid var(--line);border-radius:8px;overflow:hidden">
 {% call app_shell() %}
 {% call sidebar_nav() %}
-<div class="ok-sidebar__brand">
-  <div class="ok-sidebar__logo">EX</div>
-  <div class="ok-sidebar__brand-text">
-    <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-    <div class="ok-sidebar__brand-meta">3 sedes</div>
+<div class="sidebar__brand">
+  <div class="sidebar__logo">EX</div>
+  <div class="sidebar__brand-text">
+    <div class="sidebar__brand-name">Cafetería La Rambla</div>
+    <div class="sidebar__brand-meta">3 sedes</div>
   </div>
 </div>
-<div class="ok-sidebar__body">
-  <div class="ok-sidebar__group">Operación</div>
-  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span><span class="ok-sidebar__badge">12</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Facturación</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span></button>
-  <div class="ok-sidebar__group">Plataforma</div>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Configuración</span></button>
+<div class="sidebar__body">
+  <div class="sidebar__group">Operación</div>
+  <button class="sidebar__item" aria-current="page"><span class="sidebar__label">Vista general</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Terminales</span><span class="sidebar__badge">12</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Facturación</span><span class="sidebar__badge sidebar__badge--brand">3</span></button>
+  <div class="sidebar__group">Plataforma</div>
+  <button class="sidebar__item"><span class="sidebar__label">Configuración</span></button>
 </div>
 {% endcall %}
-<div class="ok-app__main">
+<div class="app__main">
   {% call topbar(page_title="Terminales") %}
-  <div class="ok-topbar__actions">
-    <button class="ok-btn ok-btn--primary ok-btn--sm">Nuevo terminal</button>
+  <div class="topbar__actions">
+    <button class="btn primary sm">Nuevo terminal</button>
   </div>
   {% endcall %}
-  <div class="ok-app__body" style="padding:24px">
-    <p style="margin:0;color:var(--ok-ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
+  <div class="app__body" style="padding:24px">
+    <p style="margin:0;color:var(--ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
   </div>
 </div>
 {% endcall %}
 </div>{% endraw %}{% endset %}
-{% set _src_jinjax_1 %}{% raw %}<div style="height:480px;border:1px solid var(--ok-line);border-radius:8px;overflow:hidden">
+{% set _src_jinjax_1 %}{% raw %}<div style="height:480px;border:1px solid var(--line);border-radius:8px;overflow:hidden">
 <app_shell>
 <sidebar_nav>
-<div class="ok-sidebar__brand">
-  <div class="ok-sidebar__logo">EX</div>
-  <div class="ok-sidebar__brand-text">
-    <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-    <div class="ok-sidebar__brand-meta">3 sedes</div>
+<div class="sidebar__brand">
+  <div class="sidebar__logo">EX</div>
+  <div class="sidebar__brand-text">
+    <div class="sidebar__brand-name">Cafetería La Rambla</div>
+    <div class="sidebar__brand-meta">3 sedes</div>
   </div>
 </div>
-<div class="ok-sidebar__body">
-  <div class="ok-sidebar__group">Operación</div>
-  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span><span class="ok-sidebar__badge">12</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Facturación</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span></button>
-  <div class="ok-sidebar__group">Plataforma</div>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Configuración</span></button>
+<div class="sidebar__body">
+  <div class="sidebar__group">Operación</div>
+  <button class="sidebar__item" aria-current="page"><span class="sidebar__label">Vista general</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Terminales</span><span class="sidebar__badge">12</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Facturación</span><span class="sidebar__badge sidebar__badge--brand">3</span></button>
+  <div class="sidebar__group">Plataforma</div>
+  <button class="sidebar__item"><span class="sidebar__label">Configuración</span></button>
 </div>
 </sidebar_nav>
-<div class="ok-app__main">
+<div class="app__main">
   <Topbar page_title="Terminales">
-  <div class="ok-topbar__actions">
-    <button class="ok-btn ok-btn--primary ok-btn--sm">Nuevo terminal</button>
+  <div class="topbar__actions">
+    <button class="btn primary sm">Nuevo terminal</button>
   </div>
   
 </Topbar>
-  <div class="ok-app__body" style="padding:24px">
-    <p style="margin:0;color:var(--ok-ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
+  <div class="app__body" style="padding:24px">
+    <p style="margin:0;color:var(--ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
   </div>
 </div>
 </app_shell>
@@ -80,33 +80,33 @@
 {% call demo_frame("App shell · sidebar + topbar + body",
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
-<div style="height:480px;border:1px solid var(--ok-line);border-radius:8px;overflow:hidden">
+<div style="height:480px;border:1px solid var(--line);border-radius:8px;overflow:hidden">
 {% call app_shell() %}
 {% call sidebar_nav() %}
-<div class="ok-sidebar__brand">
-  <div class="ok-sidebar__logo">EX</div>
-  <div class="ok-sidebar__brand-text">
-    <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-    <div class="ok-sidebar__brand-meta">3 sedes</div>
+<div class="sidebar__brand">
+  <div class="sidebar__logo">EX</div>
+  <div class="sidebar__brand-text">
+    <div class="sidebar__brand-name">Cafetería La Rambla</div>
+    <div class="sidebar__brand-meta">3 sedes</div>
   </div>
 </div>
-<div class="ok-sidebar__body">
-  <div class="ok-sidebar__group">Operación</div>
-  <button class="ok-sidebar__item" aria-current="page"><span class="ok-sidebar__label">Vista general</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Terminales</span><span class="ok-sidebar__badge">12</span></button>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Facturación</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span></button>
-  <div class="ok-sidebar__group">Plataforma</div>
-  <button class="ok-sidebar__item"><span class="ok-sidebar__label">Configuración</span></button>
+<div class="sidebar__body">
+  <div class="sidebar__group">Operación</div>
+  <button class="sidebar__item" aria-current="page"><span class="sidebar__label">Vista general</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Terminales</span><span class="sidebar__badge">12</span></button>
+  <button class="sidebar__item"><span class="sidebar__label">Facturación</span><span class="sidebar__badge sidebar__badge--brand">3</span></button>
+  <div class="sidebar__group">Plataforma</div>
+  <button class="sidebar__item"><span class="sidebar__label">Configuración</span></button>
 </div>
 {% endcall %}
-<div class="ok-app__main">
+<div class="app__main">
   {% call topbar(page_title="Terminales") %}
-  <div class="ok-topbar__actions">
-    <button class="ok-btn ok-btn--primary ok-btn--sm">Nuevo terminal</button>
+  <div class="topbar__actions">
+    <button class="btn primary sm">Nuevo terminal</button>
   </div>
   {% endcall %}
-  <div class="ok-app__body" style="padding:24px">
-    <p style="margin:0;color:var(--ok-ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
+  <div class="app__body" style="padding:24px">
+    <p style="margin:0;color:var(--ink-3);font-size:14px">Zona principal — el consumidor compone aquí cards, KPIs, tablas, etc.</p>
   </div>
 </div>
 {% endcall %}
@@ -114,7 +114,7 @@
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>tabbar</code></td><td>"bottom"|None</td><td>None</td><td>Activa el slot inferior para tab-bar móvil.</td></tr>

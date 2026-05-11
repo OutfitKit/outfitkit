@@ -2,13 +2,13 @@
 
 {% macro audio_player(title="", artist="", duration="00:00", current="00:00", progress=0, cover="", variant="default", playing=False, speed="×1.0", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}audio{% if variant != 'default' %} {{ ok_prefix }}audio--{{ variant }}{% endif %}{% if playing %} is-playing{% endif %}"
+<div class="{{ ok_prefix }}audio{% if variant != 'default' %} {{ variant }}{% endif %}{% if playing %} is-playing{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   <button type="button" class="{{ ok_prefix }}audio__play" aria-label="Play/Pause">
-    <span class="{{ ok_prefix }}audio__icon {{ ok_prefix }}audio__icon--play">
+    <span class="{{ ok_prefix }}audio__icon play">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
     </span>
-    <span class="{{ ok_prefix }}audio__icon {{ ok_prefix }}audio__icon--pause">
+    <span class="{{ ok_prefix }}audio__icon pause">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
     </span>
   </button>

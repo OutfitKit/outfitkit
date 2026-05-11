@@ -3,7 +3,7 @@
 {% macro otp(length=6, value="", size="md", mode="numeric", separator_at=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- set _is_alpha = (mode == 'alphanumeric') -%}
-<div class="{{ ok_prefix }}otp{% if size == 'sm' %} {{ ok_prefix }}otp--sm{% elif size == 'lg' %} {{ ok_prefix }}otp--lg{% endif %}"
+<div class="{{ ok_prefix }}otp{% if size == 'sm' %} sm{% elif size == 'lg' %} lg{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- for i in range(length) %}
     {%- if separator_at is not none and i == separator_at %}

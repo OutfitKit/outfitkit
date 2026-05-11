@@ -1,78 +1,156 @@
 /* ============================================================
-   OutfitKit · Badge / Pill / Chip
+   OutfitKit · Badge / Chip
+   ─────────────────────────────────────────────────────────────
+   Uso:
+     <span class="badge">3</span>                  ← neutral
+     <span class="badge primary">Nuevo</span>      ← tonal soft
+     <span class="badge danger solid">Off</span>   ← filled
+     <span class="badge success outline sm">OK</span>
+
+   Consume:
+     --variant, --variant-shade, --variant-tint
+     --size, --pad-x, --pad-y, --text
+   Expone (override por consumidor):
+     --background, --color, --border-color, --border-radius
    ============================================================ */
 
-.ok-badge {
+
+.badge {
+  /* API canónica de override */
+  --badge-background:    color-mix(in oklch, var(--variant, var(--ink-3)) 18%, transparent);
+  --badge-color:         var(--variant, var(--ink-2));
+  --badge-border-color:  transparent;
+  --badge-border-radius: var(--radius-pill);
+  --badge-height:        20px;
+  --badge-pad-x:         var(--pad-x, var(--space-2));
+  --badge-text:          var(--text, var(--text-2xs));
+  --badge-gap:           var(--space-1);
+
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  height: 20px;
-  padding: 0 8px;
-  font-size: var(--ok-text-2xs);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  color: var(--ok-ink-2);
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line);
-  border-radius: 999px;
+  gap: var(--badge-gap);
+  height: var(--badge-height);
+  padding-inline: var(--badge-pad-x);
+  font-size: var(--badge-text);
+  font-weight: var(--weight-medium);
+  line-height: var(--leading-flat);
+  letter-spacing: var(--tracking-snug);
+  color: var(--badge-color);
+  background: var(--badge-background);
+  border: var(--border-w) solid var(--badge-border-color);
+  border-radius: var(--badge-border-radius);
   white-space: nowrap;
 }
-.ok-badge__dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: var(--ok-ink-3);
+
+/* Default sin variante: fondo bg-3 + texto ink-2 + borde line */
+.badge:not(.primary):not(.secondary):not(.tertiary):not(.success):not(.warning):not(.warn):not(.danger):not(.info):not(.medium):not(.neutral):not(.light):not(.dark):not(.brand):not(.accent):not(.ok):not(.leaf) {
+  --badge-background:   var(--bg-3);
+  --badge-color:        var(--ink-2);
+  --badge-border-color: var(--line);
 }
 
-/* Tonal variants */
-.ok-badge--brand   { background: var(--ok-brand-soft);  color: var(--ok-brand-3);  border-color: transparent; }
-.ok-badge--brand   .ok-badge__dot { background: var(--ok-brand); }
-.ok-badge--ok      { background: var(--ok-leaf-soft);   color: var(--ok-leaf);     border-color: transparent; }
-.ok-badge--ok      .ok-badge__dot { background: var(--ok-leaf); }
-.ok-badge--warn    { background: var(--ok-warn-soft);   color: var(--ok-warn);     border-color: transparent; }
-.ok-badge--warn    .ok-badge__dot { background: var(--ok-warn); }
-.ok-badge--danger  { background: var(--ok-danger-soft); color: var(--ok-danger);   border-color: transparent; }
-.ok-badge--danger  .ok-badge__dot { background: var(--ok-danger); }
-.ok-badge--info    { background: var(--ok-info-soft);   color: var(--ok-info);     border-color: transparent; }
-.ok-badge--info    .ok-badge__dot { background: var(--ok-info); }
+/* Solid (filled) — fondo --variant sólido, texto --variant-contrast */
+.badge.solid {
+  --badge-background:   var(--variant, var(--bg-4));
+  --badge-color:        var(--variant-contrast, var(--ink));
+  --badge-border-color: transparent;
+}
 
-/* Solid variant (filled) */
-.ok-badge--solid       { background: var(--ok-bg-4); color: var(--ok-ink); border-color: transparent; }
-.ok-badge--solid-brand { background: var(--ok-brand); color: var(--ok-brand-fg); }
+/* Outline — sin fondo, borde + texto --variant */
+.badge.outline {
+  --badge-background:   transparent;
+  --badge-color:        var(--variant, var(--ink-2));
+  --badge-border-color: var(--variant, var(--line-3));
+}
 
-/* Size */
-.ok-badge--sm { height: 17px; padding: 0 6px; font-size: 10px; }
+/* Ghost — sin fondo ni borde */
+.badge.ghost {
+  --badge-background:   transparent;
+  --badge-border-color: transparent;
+}
+
+/* Sizes */
+.badge.xs { --badge-height: 16px; --badge-pad-x: var(--space-1); --badge-text: var(--text-2xs); }
+.badge.sm { --badge-height: 17px; --badge-pad-x: var(--space-2); --badge-text: var(--text-2xs); }
+.badge.md { --badge-height: 22px; --badge-pad-x: var(--space-2); --badge-text: var(--text-xs); }
+.badge.lg { --badge-height: 26px; --badge-pad-x: var(--space-3); --badge-text: var(--text-sm); }
+
+
+/* Punto interno (estado online/offline, etc.) */
+.badge__dot {
+  width: var(--dot-xs);
+  height: var(--dot-xs);
+  border-radius: var(--radius-circle);
+  background: var(--variant, var(--ink-3));
+  flex-shrink: 0;
+}
+
 
 /* ============================================================
-   Chip — input-like, removable
+   Chip — input-like, removable, clickable
+   ─────────────────────────────────────────────────────────────
+   Uso:
+     <button class="chip">Filtro</button>
+     <button class="chip primary">Activo</button>
+     <button class="chip" aria-pressed="true">Seleccionado</button>
    ============================================================ */
 
-.ok-chip {
+.chip {
+  --chip-background:    var(--bg-3);
+  --chip-color:         var(--ink-2);
+  --chip-border-color:  var(--line-2);
+  --chip-height:        26px;
+  --chip-pad-x:         var(--space-3);
+
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  height: 26px;
-  padding: 0 10px;
-  background: var(--ok-bg-3);
-  border: 1px solid var(--ok-line-2);
-  border-radius: 999px;
-  font-size: var(--ok-text-sm);
-  color: var(--ok-ink-2);
+  gap: var(--space-2);
+  height: var(--chip-height);
+  padding-inline: var(--chip-pad-x);
+  background: var(--chip-background);
+  border: var(--border-w) solid var(--chip-border-color);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  color: var(--chip-color);
   cursor: pointer;
-  transition: background var(--ok-dur-fast), color var(--ok-dur-fast);
+  transition: background var(--dur-fast) var(--ease-out),
+              color var(--dur-fast) var(--ease-out),
+              border-color var(--dur-fast) var(--ease-out);
 }
-.ok-chip:hover { background: var(--ok-bg-4); color: var(--ok-ink); }
-.ok-chip[aria-pressed="true"],
-.ok-chip[aria-pressed=""],
-.ok-chip[data-active="true"] {
-  background: var(--ok-brand-soft);
-  border-color: transparent;
-  color: var(--ok-brand-3);
+.chip:hover {
+  --chip-background: var(--bg-4);
+  --chip-color:      var(--ink);
 }
-.ok-chip__remove {
-  width: 14px; height: 14px;
-  display: inline-grid; place-items: center;
-  border-radius: 50%;
-  color: var(--ok-ink-3);
+
+.chip[aria-pressed="true"],
+.chip[aria-pressed=""],
+.chip[data-active="true"],
+.chip.is-active {
+  --chip-background:   color-mix(in oklch, var(--variant, var(--color-primary)) 18%, transparent);
+  --chip-border-color: transparent;
+  --chip-color:        var(--variant, var(--color-primary));
 }
-.ok-chip__remove:hover { background: var(--ok-line-2); color: var(--ok-ink); }
+
+/* Si tiene variante color directa */
+.chip.primary, .chip.secondary, .chip.success, .chip.warning, .chip.warn,
+.chip.danger,  .chip.info,      .chip.tertiary {
+  --chip-background:   color-mix(in oklch, var(--variant) 14%, transparent);
+  --chip-border-color: transparent;
+  --chip-color:        var(--variant);
+}
+
+.chip.sm { --chip-height: 22px; --chip-pad-x: var(--space-2); font-size: var(--text-xs); }
+.chip.lg { --chip-height: 32px; --chip-pad-x: var(--space-4); font-size: var(--text-md); }
+
+.chip__remove {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--radius-circle);
+  color: var(--ink-3);
+}
+.chip__remove:hover {
+  background: var(--line-2);
+  color: var(--ink);
+}

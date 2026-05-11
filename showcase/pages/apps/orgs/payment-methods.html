@@ -13,327 +13,327 @@
 
 {% block content %}
 <style>
-  body { background: var(--ok-bg); margin: 0; }
+  body { background: var(--bg); margin: 0; }
 </style>
-<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">EX</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">Panel global</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">EX</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">Panel global</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
-      <button class="ok-sidebar__item" aria-current="page"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Equipamiento</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
+      <button class="sidebar__item" aria-current="page"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="sidebar__label">Equipamiento</span></button>
 
-      <div class="ok-sidebar__group">Facturación</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="ok-sidebar__label">Facturas</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Suscripciones</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="ok-sidebar__label">Pagos</span></button>
+      <div class="sidebar__group">Facturación</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="sidebar__label">Facturas</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="sidebar__label">Suscripciones</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="sidebar__label">Pagos</span></button>
 
-      <div class="ok-sidebar__group">Desarrollador</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Módulos</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="ok-sidebar__label">Repositorios</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5"/></svg><span class="ok-sidebar__label">Stripe Connect</span></button>
+      <div class="sidebar__group">Desarrollador</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="sidebar__label">Repositorios</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 17l10 5 10-5"/></svg><span class="sidebar__label">Stripe Connect</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">IB</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">Métodos de pago</h1>
+        <h1 class="topbar__page-title">Métodos de pago</h1>
         
-        <div class="ok-topbar__search">
+        <div class="topbar__search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar cobros…"/>
-        <span class="ok-topbar__kbd">⌘K</span>
+        <span class="topbar__kbd">⌘K</span>
       </div>
         
-        <div class="ok-topbar__actions">
-          <button class="ok-icon-btn" aria-label="Notificaciones"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></button>
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="topbar__actions">
+          <button class="icon-btn" aria-label="Notificaciones"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></button>
+        <span class="avatar sm brand">IB</span>
         </div>
       </header>
 
-    <div class="ok-app__body">
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Métodos de pago</h1>
-          <div class="ok-page-header__sub">Cobros recurrentes y bajo demanda · Acme Industries SL</div>
+          <div class="page-header__sub">Cobros recurrentes y bajo demanda · Acme Industries SL</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--ghost">Conectar Stripe</button>
-          <button class="ok-btn ok-btn--primary" data-on:click="$addOpen = true">+ Añadir método</button>
-        </div>
-      </div>
-
-      <div class="ok-grid-3 ok-mb-5">
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Total cobrado · mayo</div>
-          <div class="ok-kpi__value">€18 240</div>
-          <div class="ok-kpi__delta ok-kpi__delta--up">+9,2% vs abril</div>
-        </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Próximo cobro</div>
-          <div class="ok-kpi__value">€890</div>
-          <div class="ok-kpi__delta">15 may 2026 · Visa •• 4242</div>
-        </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Métodos activos</div>
-          <div class="ok-kpi__value">3<span class="ok-kpi__value-unit">/4</span></div>
-          <div class="ok-kpi__delta ok-kpi__delta--down">1 expirado</div>
+        <div class="page-header__actions">
+          <button class="btn ghost">Conectar Stripe</button>
+          <button class="btn primary" data-on:click="$addOpen = true">+ Añadir método</button>
         </div>
       </div>
 
-      <div class="ok-section">
-        <div class="ok-section__head">
+      <div class="grid-3 mb-5">
+        <div class="kpi">
+          <div class="kpi__label">Total cobrado · mayo</div>
+          <div class="kpi__value">€18 240</div>
+          <div class="kpi__delta kpi__delta--up">+9,2% vs abril</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__label">Próximo cobro</div>
+          <div class="kpi__value">€890</div>
+          <div class="kpi__delta">15 may 2026 · Visa •• 4242</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi__label">Métodos activos</div>
+          <div class="kpi__value">3<span class="kpi__value-unit">/4</span></div>
+          <div class="kpi__delta kpi__delta--down">1 expirado</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section__head">
           <div>
-            <div class="ok-section__title">Tarjetas y cuentas guardadas</div>
-            <div class="ok-section__sub">Pulsa una tarjeta para gestionarla</div>
+            <div class="section__title">Tarjetas y cuentas guardadas</div>
+            <div class="section__sub">Pulsa una tarjeta para gestionarla</div>
           </div>
         </div>
-        <div class="ok-grid-2" style="gap:18px;">
-          <div class="ok-flex ok-col ok-gap-2">
-            <div class="ok-loyalty" style="--_w:100%;">
-              <div class="ok-loyalty__head">
-                <span class="ok-loyalty__brand">Visa</span>
-                <span class="ok-loyalty__tier-badge">Predeterminada</span>
+        <div class="grid-2" style="gap:18px;">
+          <div class="flex col gap-2">
+            <div class="loyalty" style="--_w:100%;">
+              <div class="loyalty__head">
+                <span class="loyalty__brand">Visa</span>
+                <span class="loyalty__tier-badge">Predeterminada</span>
               </div>
-              <div class="ok-loyalty__chip"></div>
-              <div class="ok-loyalty__num">•••• •••• •••• 4242</div>
-              <div class="ok-loyalty__row">
+              <div class="loyalty__chip"></div>
+              <div class="loyalty__num">•••• •••• •••• 4242</div>
+              <div class="loyalty__row">
                 <div>
-                  <div class="ok-loyalty__name">ANNA CALVET</div>
-                  <div class="ok-loyalty__points-label">Cuenta principal · facturas</div>
+                  <div class="loyalty__name">ANNA CALVET</div>
+                  <div class="loyalty__points-label">Cuenta principal · facturas</div>
                 </div>
-                <div class="ok-loyalty__expires">VENCE<b>09/27</b></div>
+                <div class="loyalty__expires">VENCE<b>09/27</b></div>
               </div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
-              <span class="ok-text-xs ok-c-ink-3">Añadida 12 ene 2025 · Stripe</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Editar</button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Eliminar</button>
+              <span class="text-xs c-ink-3">Añadida 12 ene 2025 · Stripe</span>
+              <div class="flex gap-1">
+                <button class="btn ghost sm">Editar</button>
+                <button class="btn ghost sm c-danger">Eliminar</button>
               </div>
             </div>
           </div>
 
-          <div class="ok-flex ok-col ok-gap-2">
-            <div class="ok-loyalty ok-loyalty--platinum" style="--_w:100%;">
-              <div class="ok-loyalty__head">
-                <span class="ok-loyalty__brand">Amex</span>
-                <span class="ok-loyalty__tier-badge">Backup</span>
+          <div class="flex col gap-2">
+            <div class="loyalty platinum" style="--_w:100%;">
+              <div class="loyalty__head">
+                <span class="loyalty__brand">Amex</span>
+                <span class="loyalty__tier-badge">Backup</span>
               </div>
-              <div class="ok-loyalty__chip"></div>
-              <div class="ok-loyalty__num">•••• •••• 7012</div>
-              <div class="ok-loyalty__row">
+              <div class="loyalty__chip"></div>
+              <div class="loyalty__num">•••• •••• 7012</div>
+              <div class="loyalty__row">
                 <div>
-                  <div class="ok-loyalty__name">IOAN BEILIC</div>
-                  <div class="ok-loyalty__points-label">Empresarial · gastos</div>
+                  <div class="loyalty__name">IOAN BEILIC</div>
+                  <div class="loyalty__points-label">Empresarial · gastos</div>
                 </div>
-                <div class="ok-loyalty__expires">VENCE<b>04/28</b></div>
+                <div class="loyalty__expires">VENCE<b>04/28</b></div>
               </div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
-              <span class="ok-text-xs ok-c-ink-3">Añadida 03 mar 2026 · Stripe</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--outline ok-btn--sm">Marcar predeterminada</button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Editar</button>
+              <span class="text-xs c-ink-3">Añadida 03 mar 2026 · Stripe</span>
+              <div class="flex gap-1">
+                <button class="btn outline sm">Marcar predeterminada</button>
+                <button class="btn ghost sm">Editar</button>
               </div>
             </div>
           </div>
 
-          <div class="ok-flex ok-col ok-gap-2">
-            <div class="ok-loyalty ok-loyalty--silver" style="--_w:100%;">
-              <div class="ok-loyalty__head">
-                <span class="ok-loyalty__brand">SEPA · Caixa</span>
-                <span class="ok-loyalty__tier-badge">Negocio</span>
+          <div class="flex col gap-2">
+            <div class="loyalty silver" style="--_w:100%;">
+              <div class="loyalty__head">
+                <span class="loyalty__brand">SEPA · Caixa</span>
+                <span class="loyalty__tier-badge">Negocio</span>
               </div>
-              <div class="ok-loyalty__chip"></div>
-              <div class="ok-loyalty__num">ES76 •••• •••• 7890</div>
-              <div class="ok-loyalty__row">
+              <div class="loyalty__chip"></div>
+              <div class="loyalty__num">ES76 •••• •••• 7890</div>
+              <div class="loyalty__row">
                 <div>
-                  <div class="ok-loyalty__name">ACME INDUSTRIES SL</div>
-                  <div class="ok-loyalty__points-label">Domiciliación · cuotas</div>
+                  <div class="loyalty__name">ACME INDUSTRIES SL</div>
+                  <div class="loyalty__points-label">Domiciliación · cuotas</div>
                 </div>
-                <div class="ok-loyalty__expires">MANDATO<b>2024-09</b></div>
+                <div class="loyalty__expires">MANDATO<b>2024-09</b></div>
               </div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
-              <span class="ok-text-xs ok-c-ink-3">Mandato verificado · GoCardless</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver mandato</button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Editar</button>
+              <span class="text-xs c-ink-3">Mandato verificado · GoCardless</span>
+              <div class="flex gap-1">
+                <button class="btn ghost sm">Ver mandato</button>
+                <button class="btn ghost sm">Editar</button>
               </div>
             </div>
           </div>
 
           <div style="display:flex;flex-direction:column;gap:10px;opacity:0.6;">
-            <div class="ok-loyalty ok-loyalty--gold is-disabled" style="--_w:100%;filter:grayscale(0.5);">
-              <div class="ok-loyalty__head">
-                <span class="ok-loyalty__brand">Mastercard</span>
-                <span class="ok-loyalty__tier-badge" style="background:var(--ok-danger-soft);color:var(--ok-danger);">Expirada</span>
+            <div class="loyalty gold is-disabled" style="--_w:100%;filter:grayscale(0.5);">
+              <div class="loyalty__head">
+                <span class="loyalty__brand">Mastercard</span>
+                <span class="loyalty__tier-badge" style="background:var(--danger-soft);color:var(--danger);">Expirada</span>
               </div>
-              <div class="ok-loyalty__chip"></div>
-              <div class="ok-loyalty__num">•••• •••• •••• 0091</div>
-              <div class="ok-loyalty__row">
+              <div class="loyalty__chip"></div>
+              <div class="loyalty__num">•••• •••• •••• 0091</div>
+              <div class="loyalty__row">
                 <div>
-                  <div class="ok-loyalty__name">MARÍA ROVIRA</div>
-                  <div class="ok-loyalty__points-label">Caducó hace 2 meses</div>
+                  <div class="loyalty__name">MARÍA ROVIRA</div>
+                  <div class="loyalty__points-label">Caducó hace 2 meses</div>
                 </div>
-                <div class="ok-loyalty__expires">VENCIÓ<b>03/26</b></div>
+                <div class="loyalty__expires">VENCIÓ<b>03/26</b></div>
               </div>
             </div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
-              <span class="ok-text-xs ok-c-danger">Esta tarjeta no se puede cobrar</span>
-              <div class="ok-flex ok-gap-1">
-                <button class="ok-btn ok-btn--ghost ok-btn--sm">Renovar</button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Eliminar</button>
+              <span class="text-xs c-danger">Esta tarjeta no se puede cobrar</span>
+              <div class="flex gap-1">
+                <button class="btn ghost sm">Renovar</button>
+                <button class="btn ghost sm c-danger">Eliminar</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="ok-section">
-        <div class="ok-section__head">
+      <div class="section">
+        <div class="section__head">
           <div>
-            <div class="ok-section__title">Historial de cobros</div>
-            <div class="ok-section__sub">Últimos 8 movimientos · ene–may 2026</div>
+            <div class="section__title">Historial de cobros</div>
+            <div class="section__sub">Últimos 8 movimientos · ene–may 2026</div>
           </div>
-          <div class="ok-flex ok-gap-2">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Filtrar</button>
-            <button class="ok-btn ok-btn--secondary ok-btn--sm">Exportar CSV</button>
+          <div class="flex gap-2">
+            <button class="btn ghost sm">Filtrar</button>
+            <button class="btn secondary sm">Exportar CSV</button>
           </div>
         </div>
 
-        <div class="ok-table-wrap">
-          <div class="ok-table-scroll">
-            <table class="ok-table">
+        <div class="table-wrap">
+          <div class="table-scroll">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Fecha</th>
                   <th>Concepto</th>
                   <th>Hub / Org</th>
                   <th>Método</th>
-                  <th class="ok-td--right">Importe</th>
+                  <th class="td right">Importe</th>
                   <th>Estado</th>
-                  <th class="ok-text-right">Factura</th>
+                  <th class="text-right">Factura</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td class="ok-td--mono">02 may 2026</td>
+                  <td class="td mono">02 may 2026</td>
                   <td>Suscripción Business · mayo</td>
                   <td>Acme Industries SL</td>
-                  <td><span class="ok-tag ok-tag--info ok-tag--sm">Visa •• 4242</span></td>
-                  <td class="ok-td--num">€890,00</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagado</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0512</a></td>
+                  <td><span class="tag info sm">Visa •• 4242</span></td>
+                  <td class="td num">€890,00</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Pagado</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0512</a></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">28 abr 2026</td>
+                  <td class="td mono">28 abr 2026</td>
                   <td>Add-on: 3 terminales extra</td>
                   <td>Hub Cornellà</td>
-                  <td><span class="ok-tag ok-tag--info ok-tag--sm">Visa •• 4242</span></td>
-                  <td class="ok-td--num">€135,00</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagado</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0498</a></td>
+                  <td><span class="tag info sm">Visa •• 4242</span></td>
+                  <td class="td num">€135,00</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Pagado</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0498</a></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">15 abr 2026</td>
+                  <td class="td mono">15 abr 2026</td>
                   <td>Suscripción Business · abril</td>
                   <td>Acme Industries SL</td>
-                  <td><span class="ok-tag ok-tag--info ok-tag--sm">Visa •• 4242</span></td>
-                  <td class="ok-td--num">€890,00</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagado</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0411</a></td>
+                  <td><span class="tag info sm">Visa •• 4242</span></td>
+                  <td class="td num">€890,00</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Pagado</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0411</a></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">10 abr 2026</td>
+                  <td class="td mono">10 abr 2026</td>
                   <td>Servicio onboarding (1 vez)</td>
                   <td>Acme Industries SL</td>
-                  <td><span class="ok-tag ok-tag--neutral ok-tag--sm">SEPA Caixa</span></td>
-                  <td class="ok-td--num">€450,00</td>
-                  <td><span class="ok-badge ok-badge--warn"><span class="ok-badge__dot"></span>Reintento</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0398</a></td>
+                  <td><span class="tag neutral sm">SEPA Caixa</span></td>
+                  <td class="td num">€450,00</td>
+                  <td><span class="badge warning"><span class="badge__dot"></span>Reintento</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0398</a></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">02 abr 2026</td>
+                  <td class="td mono">02 abr 2026</td>
                   <td>Hub Manresa · staging</td>
                   <td>Hub Manresa</td>
-                  <td><span class="ok-tag ok-tag--info ok-tag--sm">Visa •• 4242</span></td>
-                  <td class="ok-td--num">€220,00</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagado</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0367</a></td>
+                  <td><span class="tag info sm">Visa •• 4242</span></td>
+                  <td class="td num">€220,00</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Pagado</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0367</a></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">15 mar 2026</td>
+                  <td class="td mono">15 mar 2026</td>
                   <td>Suscripción Business · marzo</td>
                   <td>Acme Industries SL</td>
-                  <td><span class="ok-tag ok-tag--info ok-tag--sm">Visa •• 4242</span></td>
-                  <td class="ok-td--num">€890,00</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagado</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0312</a></td>
+                  <td><span class="tag info sm">Visa •• 4242</span></td>
+                  <td class="td num">€890,00</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Pagado</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0312</a></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">28 feb 2026</td>
+                  <td class="td mono">28 feb 2026</td>
                   <td>Soporte premium · febrero</td>
                   <td>Acme Industries SL</td>
-                  <td><span class="ok-tag ok-tag--neutral ok-tag--sm">Mastercard •• 0091</span></td>
-                  <td class="ok-td--num">€180,00</td>
-                  <td><span class="ok-badge ok-badge--danger"><span class="ok-badge__dot"></span>Fallido</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0244</a></td>
+                  <td><span class="tag neutral sm">Mastercard •• 0091</span></td>
+                  <td class="td num">€180,00</td>
+                  <td><span class="badge danger"><span class="badge__dot"></span>Fallido</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0244</a></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">15 feb 2026</td>
+                  <td class="td mono">15 feb 2026</td>
                   <td>Suscripción Business · febrero</td>
                   <td>Acme Industries SL</td>
-                  <td><span class="ok-tag ok-tag--info ok-tag--sm">Visa •• 4242</span></td>
-                  <td class="ok-td--num">€890,00</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Pagado</span></td>
-                  <td class="ok-text-right"><a class="ok-btn ok-btn--link" href="#">F-2026-0218</a></td>
+                  <td><span class="tag info sm">Visa •• 4242</span></td>
+                  <td class="td num">€890,00</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Pagado</span></td>
+                  <td class="text-right"><a class="btn link" href="#">F-2026-0218</a></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div class="ok-table-footer">
+          <div class="table-footer">
             <span>8 de 47 movimientos</span>
-            <div class="ok-pagination">
-              <button class="ok-pagination__btn">‹</button>
-              <button class="ok-pagination__btn" aria-current="page">1</button>
-              <button class="ok-pagination__btn">2</button>
-              <button class="ok-pagination__btn">3</button>
-              <span class="ok-pagination__ellipsis">…</span>
-              <button class="ok-pagination__btn">6</button>
-              <button class="ok-pagination__btn">›</button>
+            <div class="pagination">
+              <button class="pagination__btn">‹</button>
+              <button class="pagination__btn" aria-current="page">1</button>
+              <button class="pagination__btn">2</button>
+              <button class="pagination__btn">3</button>
+              <span class="pagination__ellipsis">…</span>
+              <button class="pagination__btn">6</button>
+              <button class="pagination__btn">›</button>
             </div>
           </div>
         </div>
@@ -342,28 +342,28 @@
   </div>
 
   <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="#" aria-current="page">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="#" aria-current="page">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Hubs</span>
-        <span class="ok-tabbar-badge">7</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Hubs</span>
+        <span class="tabbar-badge">7</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Equipo</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Equipo</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

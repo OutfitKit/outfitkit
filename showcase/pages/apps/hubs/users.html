@@ -15,109 +15,109 @@
 {% block content %}
 
 <style>
-  body { background: var(--ok-bg); margin: 0; }
+  body { background: var(--bg); margin: 0; }
 </style>
-<div class="ok-app" data-signals='{"sidebar": false, "tab": "active", "q": "", "roleFilter": "all", "accessFilter": "all", "selected": [], "allChecked": false, "openMenu": null}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="app" data-signals='{"sidebar": false, "tab": "active", "q": "", "roleFilter": "all", "accessFilter": "all", "selected": [], "allChecked": false, "openMenu": null}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">EC</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">acme · ES</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">EC</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">acme · ES</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
-      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg><span class="ok-sidebar__label">Hubs</span><span class="ok-sidebar__badge">7</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
+      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg><span class="sidebar__label">Hubs</span><span class="sidebar__badge">7</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
 
-      <div class="ok-sidebar__group">Facturación</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="ok-sidebar__label">Facturas</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">3</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83"/></svg><span class="ok-sidebar__label">Planes</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0"/></svg><span class="ok-sidebar__label">Uso y consumo</span></button>
+      <div class="sidebar__group">Facturación</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="sidebar__label">Facturas</span><span class="sidebar__badge sidebar__badge--brand">3</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83"/></svg><span class="sidebar__label">Planes</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0"/></svg><span class="sidebar__label">Uso y consumo</span></button>
 
-      <div class="ok-sidebar__group">Desarrollador</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="ok-sidebar__label">API Tokens</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16"/></svg><span class="ok-sidebar__label">Logs</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="ok-sidebar__label">Webhooks</span></button>
+      <div class="sidebar__group">Desarrollador</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="sidebar__label">API Tokens</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16"/></svg><span class="sidebar__label">Logs</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="sidebar__label">Webhooks</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">IB</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">acme-prod · Usuarios</h1>
+        <h1 class="topbar__page-title">acme-prod · Usuarios</h1>
         
-        <div class="ok-topbar__search">
+        <div class="topbar__search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar usuarios…"/>
-        <span class="ok-topbar__kbd">⌘K</span>
+        <span class="topbar__kbd">⌘K</span>
       </div>
         
-        <div class="ok-topbar__actions">
-          <button class="ok-icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></button>
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="topbar__actions">
+          <button class="icon-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></button>
+        <span class="avatar sm brand">IB</span>
         </div>
       </header>
 
-    <div class="ok-app__body">
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>acme-prod · Usuarios del hub</h1>
-          <div class="ok-page-header__sub">12 usuarios activos · 16 plazas contratadas</div>
+          <div class="page-header__sub">12 usuarios activos · 16 plazas contratadas</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--secondary ok-btn--sm">Exportar CSV</button>
-          <button class="ok-btn ok-btn--primary ok-btn--sm">+ Invitar usuario</button>
+        <div class="page-header__actions">
+          <button class="btn secondary sm">Exportar CSV</button>
+          <button class="btn primary sm">+ Invitar usuario</button>
         </div>
       </div>
 
       <!-- Tabs -->
-      <div class="ok-tabs ok-mb-4" role="tablist">
-        <button class="ok-tab" data-on:click="$tab = 'active'" data-class:is-active="$tab === 'active'" data-attr:aria-selected="$tab === 'active'">
-          Activos <span class="ok-tab-badge">12</span>
+      <div class="tabs mb-4" role="tablist">
+        <button class="tab" data-on:click="$tab = 'active'" data-class:is-active="$tab === 'active'" data-attr:aria-selected="$tab === 'active'">
+          Activos <span class="tab-badge">12</span>
         </button>
-        <button class="ok-tab" data-on:click="$tab = 'pending'" data-class:is-active="$tab === 'pending'" data-attr:aria-selected="$tab === 'pending'">
-          Pendientes <span class="ok-tab-badge">3</span>
+        <button class="tab" data-on:click="$tab = 'pending'" data-class:is-active="$tab === 'pending'" data-attr:aria-selected="$tab === 'pending'">
+          Pendientes <span class="tab-badge">3</span>
         </button>
-        <button class="ok-tab" data-on:click="$tab = 'suspended'" data-class:is-active="$tab === 'suspended'" data-attr:aria-selected="$tab === 'suspended'">
-          Suspendidos <span class="ok-tab-badge">1</span>
+        <button class="tab" data-on:click="$tab = 'suspended'" data-class:is-active="$tab === 'suspended'" data-attr:aria-selected="$tab === 'suspended'">
+          Suspendidos <span class="tab-badge">1</span>
         </button>
       </div>
 
       <!-- Toolbar -->
-      <div class="ok-toolbar ok-mb-3">
-        <div class="ok-toolbar__group" style="flex:1;min-width:240px;">
-          <div class="ok-search ok-w-full">
-            <span class="ok-search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
-            <input class="ok-input ok-input--sm" placeholder="Buscar por nombre o email…" data-bind:q/>
+      <div class="toolbar mb-3">
+        <div class="toolbar__group" style="flex:1;min-width:240px;">
+          <div class="search w-full">
+            <span class="search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
+            <input class="input sm" placeholder="Buscar por nombre o email…" data-bind:q/>
           </div>
         </div>
-        <div class="ok-toolbar__group">
-          <select class="ok-select ok-select--sm" style="min-width:140px;" data-bind:role-filter>
+        <div class="toolbar__group">
+          <select class="select sm" style="min-width:140px;" data-bind:role-filter>
             <option value="all">Todos los roles</option>
             <option value="admin">Admin</option>
             <option value="manager">Manager</option>
@@ -125,38 +125,38 @@
             <option value="viewer">Viewer</option>
           </select>
         </div>
-        <div class="ok-toolbar__group">
-          <select class="ok-select ok-select--sm" style="min-width:160px;" data-bind:access-filter>
+        <div class="toolbar__group">
+          <select class="select sm" style="min-width:160px;" data-bind:access-filter>
             <option value="all">Cualquier acceso</option>
             <option value="full">Todo el hub</option>
             <option value="pos">Solo POS</option>
             <option value="back">Solo backoffice</option>
           </select>
         </div>
-        <div class="ok-toolbar__spacer"></div>
+        <div class="toolbar__spacer"></div>
       </div>
 
       <!-- Bulk action bar (slides in when at least one user selected) -->
-      <div class="ok-toolbar" data-show="$selected.length > 0" style="margin-bottom:14px;background:var(--ok-bg-2);border:1px solid var(--ok-brand);border-radius:8px;padding:10px 14px;">
-        <div class="ok-toolbar__group">
-          <span style="font-size:12px;color:var(--ok-ink);font-weight:500;" data-text="$selected.length + ' seleccionados'"></span>
-          <button class="ok-btn ok-btn--ghost ok-btn--sm" data-on:click="$selected = []; $allChecked = false">Limpiar</button>
+      <div class="toolbar" data-show="$selected.length > 0" style="margin-bottom:14px;background:var(--bg-2);border:1px solid var(--brand);border-radius:8px;padding:10px 14px;">
+        <div class="toolbar__group">
+          <span style="font-size:12px;color:var(--ink);font-weight:500;" data-text="$selected.length + ' seleccionados'"></span>
+          <button class="btn ghost sm" data-on:click="$selected = []; $allChecked = false">Limpiar</button>
         </div>
-        <div class="ok-toolbar__spacer"></div>
-        <div class="ok-toolbar__group">
-          <button class="ok-btn ok-btn--ghost ok-btn--sm">Cambiar rol</button>
-          <button class="ok-btn ok-btn--ghost ok-btn--sm">Suspender</button>
-          <button class="ok-btn ok-btn--ghost ok-btn--sm ok-c-danger">Eliminar</button>
+        <div class="toolbar__spacer"></div>
+        <div class="toolbar__group">
+          <button class="btn ghost sm">Cambiar rol</button>
+          <button class="btn ghost sm">Suspender</button>
+          <button class="btn ghost sm c-danger">Eliminar</button>
         </div>
       </div>
 
       <!-- Datatable -->
-      <div class="ok-table-wrap" data-show="$tab === 'active'">
-        <div class="ok-table-scroll">
-          <table class="ok-table">
+      <div class="table-wrap" data-show="$tab === 'active'">
+        <div class="table-scroll">
+          <table class="table">
             <thead>
               <tr>
-                <th style="width:32px;"><input type="checkbox" class="ok-check__box ok-m-0"
+                <th style="width:32px;"><input type="checkbox" class="check__box m-0"
                   data-on:click="$allChecked = !$allChecked; $selected = $allChecked ? ['u1','u2','u3','u4','u5','u6','u7','u8','u9','u10','u11','u12'] : []"
                   data-attr:checked="$allChecked"/></th>
                 <th>Usuario</th>
@@ -169,325 +169,325 @@
             </thead>
             <tbody>
               <tr data-show="($q === '' || 'ioan beilic ioan@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'admin') && ($accessFilter === 'all' || $accessFilter === 'full')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u1') ? $selected.filter(id => id !== 'u1') : [...$selected, 'u1']"
                   data-attr:checked="$selected.includes('u1')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm brand">IB</span>
                     <div>
-                      <div style="display:flex;align-items:center;gap:6px;font-weight:500;color:var(--ok-ink);">Ioan Beilic <span class="ok-badge ok-badge--brand ok-badge--sm">Tú</span></div>
-                      <div class="ok-text-2xs ok-c-ink-3">ioan@acme.com</div>
+                      <div style="display:flex;align-items:center;gap:6px;font-weight:500;color:var(--ink);">Ioan Beilic <span class="badge brand sm">Tú</span></div>
+                      <div class="text-2xs c-ink-3">ioan@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip ok-chip--brand">Admin</span></td>
+                <td><span class="chip brand">Admin</span></td>
                 <td>Todo el hub</td>
-                <td><span class="ok-c-leaf">en línea</span></td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u1'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="c-leaf">en línea</span></td>
+                <td><span class="status-dot online"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u1'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'marina casals marina@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'manager') && ($accessFilter === 'all' || $accessFilter === 'full')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u2') ? $selected.filter(id => id !== 'u2') : [...$selected, 'u2']"
                   data-attr:checked="$selected.includes('u2')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">MC</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">MC</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Marina Casals</div>
-                      <div class="ok-text-2xs ok-c-ink-3">marina@acme.com</div>
+                      <div class="font-medium c-ink">Marina Casals</div>
+                      <div class="text-2xs c-ink-3">marina@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip ok-chip--info">Manager</span></td>
+                <td><span class="chip info">Manager</span></td>
                 <td>Todo el hub</td>
                 <td>hace 12 min</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u2' ? null : 'u2'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u2'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot online"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u2' ? null : 'u2'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u2'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'jordi roca jordi@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'manager') && ($accessFilter === 'all' || $accessFilter === 'back')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u3') ? $selected.filter(id => id !== 'u3') : [...$selected, 'u3']"
                   data-attr:checked="$selected.includes('u3')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">JR</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">JR</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Jordi Roca</div>
-                      <div class="ok-text-2xs ok-c-ink-3">jordi@acme.com</div>
+                      <div class="font-medium c-ink">Jordi Roca</div>
+                      <div class="text-2xs c-ink-3">jordi@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip ok-chip--info">Manager</span></td>
+                <td><span class="chip info">Manager</span></td>
                 <td>Solo backoffice</td>
                 <td>hace 2 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u3' ? null : 'u3'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u3'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot online"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u3' ? null : 'u3'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u3'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'paula vives paula@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'operador') && ($accessFilter === 'all' || $accessFilter === 'pos')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u4') ? $selected.filter(id => id !== 'u4') : [...$selected, 'u4']"
                   data-attr:checked="$selected.includes('u4')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">PV</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">PV</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Paula Vives</div>
-                      <div class="ok-text-2xs ok-c-ink-3">paula@acme.com</div>
+                      <div class="font-medium c-ink">Paula Vives</div>
+                      <div class="text-2xs c-ink-3">paula@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Operador</span></td>
+                <td><span class="chip">Operador</span></td>
                 <td>Solo POS</td>
                 <td>hace 5 min</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u4' ? null : 'u4'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u4'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot online"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u4' ? null : 'u4'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u4'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'xavier puig xavier@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'operador') && ($accessFilter === 'all' || $accessFilter === 'pos')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u5') ? $selected.filter(id => id !== 'u5') : [...$selected, 'u5']"
                   data-attr:checked="$selected.includes('u5')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">XP</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">XP</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Xavier Puig</div>
-                      <div class="ok-text-2xs ok-c-ink-3">xavier@acme.com</div>
+                      <div class="font-medium c-ink">Xavier Puig</div>
+                      <div class="text-2xs c-ink-3">xavier@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Operador</span></td>
+                <td><span class="chip">Operador</span></td>
                 <td>Solo POS</td>
                 <td>hace 28 min</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u5' ? null : 'u5'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u5'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot online"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u5' ? null : 'u5'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u5'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'laia soler laia@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'operador') && ($accessFilter === 'all' || $accessFilter === 'pos')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u6') ? $selected.filter(id => id !== 'u6') : [...$selected, 'u6']"
                   data-attr:checked="$selected.includes('u6')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">LS</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">LS</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Laia Soler</div>
-                      <div class="ok-text-2xs ok-c-ink-3">laia@acme.com</div>
+                      <div class="font-medium c-ink">Laia Soler</div>
+                      <div class="text-2xs c-ink-3">laia@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Operador</span></td>
+                <td><span class="chip">Operador</span></td>
                 <td>Solo POS</td>
                 <td>ayer · 18:42</td>
-                <td><span class="ok-status-dot ok-status-dot--offline"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u6' ? null : 'u6'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u6'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot offline"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u6' ? null : 'u6'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u6'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'albert mateu albert@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'operador') && ($accessFilter === 'all' || $accessFilter === 'pos')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u7') ? $selected.filter(id => id !== 'u7') : [...$selected, 'u7']"
                   data-attr:checked="$selected.includes('u7')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">AM</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">AM</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Albert Mateu</div>
-                      <div class="ok-text-2xs ok-c-ink-3">albert@acme.com</div>
+                      <div class="font-medium c-ink">Albert Mateu</div>
+                      <div class="text-2xs c-ink-3">albert@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Operador</span></td>
+                <td><span class="chip">Operador</span></td>
                 <td>Solo POS</td>
                 <td>hace 3 d</td>
-                <td><span class="ok-status-dot ok-status-dot--offline"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u7' ? null : 'u7'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u7'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot offline"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u7' ? null : 'u7'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u7'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'núria ferrer nuria ferrer nuria@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'manager') && ($accessFilter === 'all' || $accessFilter === 'back')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u8') ? $selected.filter(id => id !== 'u8') : [...$selected, 'u8']"
                   data-attr:checked="$selected.includes('u8')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">NF</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">NF</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Núria Ferrer</div>
-                      <div class="ok-text-2xs ok-c-ink-3">nuria@acme.com</div>
+                      <div class="font-medium c-ink">Núria Ferrer</div>
+                      <div class="text-2xs c-ink-3">nuria@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip ok-chip--info">Manager</span></td>
+                <td><span class="chip info">Manager</span></td>
                 <td>Solo backoffice</td>
                 <td>hace 4 h</td>
-                <td><span class="ok-status-dot ok-status-dot--busy"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u8' ? null : 'u8'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u8'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot busy"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u8' ? null : 'u8'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u8'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'carles riba carles@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'viewer') && ($accessFilter === 'all' || $accessFilter === 'back')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u9') ? $selected.filter(id => id !== 'u9') : [...$selected, 'u9']"
                   data-attr:checked="$selected.includes('u9')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">CR</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">CR</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Carles Riba</div>
-                      <div class="ok-text-2xs ok-c-ink-3">carles@acme.com</div>
+                      <div class="font-medium c-ink">Carles Riba</div>
+                      <div class="text-2xs c-ink-3">carles@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Viewer</span></td>
+                <td><span class="chip">Viewer</span></td>
                 <td>Solo backoffice</td>
                 <td>hace 1 d</td>
-                <td><span class="ok-status-dot ok-status-dot--offline"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u9' ? null : 'u9'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u9'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot offline"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u9' ? null : 'u9'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u9'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'eva vidal eva@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'operador') && ($accessFilter === 'all' || $accessFilter === 'pos')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u10') ? $selected.filter(id => id !== 'u10') : [...$selected, 'u10']"
                   data-attr:checked="$selected.includes('u10')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">EV</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">EV</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Eva Vidal</div>
-                      <div class="ok-text-2xs ok-c-ink-3">eva@acme.com</div>
+                      <div class="font-medium c-ink">Eva Vidal</div>
+                      <div class="text-2xs c-ink-3">eva@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Operador</span></td>
+                <td><span class="chip">Operador</span></td>
                 <td>Solo POS</td>
                 <td>hace 16 min</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u10' ? null : 'u10'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u10'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot online"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u10' ? null : 'u10'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u10'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'roger torra roger@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'viewer') && ($accessFilter === 'all' || $accessFilter === 'full')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u11') ? $selected.filter(id => id !== 'u11') : [...$selected, 'u11']"
                   data-attr:checked="$selected.includes('u11')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">RT</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">RT</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Roger Torra</div>
-                      <div class="ok-text-2xs ok-c-ink-3">roger@acme.com</div>
+                      <div class="font-medium c-ink">Roger Torra</div>
+                      <div class="text-2xs c-ink-3">roger@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Viewer</span></td>
+                <td><span class="chip">Viewer</span></td>
                 <td>Todo el hub</td>
                 <td>hace 6 d</td>
-                <td><span class="ok-status-dot ok-status-dot--offline"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u11' ? null : 'u11'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u11'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot offline"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u11' ? null : 'u11'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u11'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
 
               <tr data-show="($q === '' || 'berta massó berta masso berta@acme.com'.includes($q.toLowerCase())) && ($roleFilter === 'all' || $roleFilter === 'operador') && ($accessFilter === 'all' || $accessFilter === 'pos')">
-                <td><input type="checkbox" class="ok-check__box"
+                <td><input type="checkbox" class="check__box"
                   data-on:click="$selected = $selected.includes('u12') ? $selected.filter(id => id !== 'u12') : [...$selected, 'u12']"
                   data-attr:checked="$selected.includes('u12')"/></td>
                 <td>
-                  <div class="ok-flex ok-items-center ok-gap-2">
-                    <span class="ok-avatar ok-avatar--sm">BM</span>
+                  <div class="flex items-center gap-2">
+                    <span class="avatar sm">BM</span>
                     <div>
-                      <div class="ok-font-medium ok-c-ink">Berta Massó</div>
-                      <div class="ok-text-2xs ok-c-ink-3">berta@acme.com</div>
+                      <div class="font-medium c-ink">Berta Massó</div>
+                      <div class="text-2xs c-ink-3">berta@acme.com</div>
                     </div>
                   </div>
                 </td>
-                <td><span class="ok-chip">Operador</span></td>
+                <td><span class="chip">Operador</span></td>
                 <td>Solo POS</td>
                 <td>hace 2 h</td>
-                <td><span class="ok-status-dot ok-status-dot--online"></span></td>
-                <td class="ok-text-right ok-relative">
-                  <button class="ok-icon-btn" data-on:click="$openMenu = $openMenu === 'u12' ? null : 'u12'">⋯</button>
-                  <div class="ok-menu ok-menu--anchor-br ok-menu--sm ok-menu--block" data-show="$openMenu === 'u12'">
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Ver perfil</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start">Cambiar rol</button>
-                    <button class="ok-btn ok-btn--ghost ok-btn--sm ok-w-full ok-justify-start ok-c-danger">Eliminar</button>
+                <td><span class="status-dot online"></span></td>
+                <td class="text-right relative">
+                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u12' ? null : 'u12'">⋯</button>
+                  <div class="menu anchor-br sm block" data-show="$openMenu === 'u12'">
+                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
+                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
+                    <button class="btn ghost sm w-full justify-start c-danger">Eliminar</button>
                   </div>
                 </td>
               </tr>
@@ -495,10 +495,10 @@
             </tbody>
           </table>
         </div>
-        <div class="ok-table-toolbar" style="border-top:1px solid var(--ok-line);padding:10px 14px;">
-          <span class="ok-table-toolbar__count">Mostrando 12 de 12 usuarios activos</span>
-          <span class="ok-table-toolbar__spacer"></span>
-          <select class="ok-select ok-select--sm" style="width:auto;min-width:90px;">
+        <div class="table-toolbar" style="border-top:1px solid var(--line);padding:10px 14px;">
+          <span class="table-toolbar__count">Mostrando 12 de 12 usuarios activos</span>
+          <span class="table-toolbar__spacer"></span>
+          <select class="select sm" style="width:auto;min-width:90px;">
             <option>25 / pág</option>
             <option>50 / pág</option>
           </select>
@@ -506,13 +506,13 @@
       </div>
 
       <!-- Pendientes empty state -->
-      <div class="ok-table-wrap" data-show="$tab === 'pending'" style="padding:48px;text-align:center;">
-        <div style="color:var(--ok-ink-2);font-size:13px;">3 invitaciones pendientes — no hay actividad en este preview.</div>
+      <div class="table-wrap" data-show="$tab === 'pending'" style="padding:48px;text-align:center;">
+        <div style="color:var(--ink-2);font-size:13px;">3 invitaciones pendientes — no hay actividad en este preview.</div>
       </div>
 
       <!-- Suspendidos empty state -->
-      <div class="ok-table-wrap" data-show="$tab === 'suspended'" style="padding:48px;text-align:center;">
-        <div style="color:var(--ok-ink-2);font-size:13px;">1 usuario suspendido — no hay actividad en este preview.</div>
+      <div class="table-wrap" data-show="$tab === 'suspended'" style="padding:48px;text-align:center;">
+        <div style="color:var(--ink-2);font-size:13px;">1 usuario suspendido — no hay actividad en este preview.</div>
       </div>
 
       <div style="height:32px;"></div>
@@ -521,28 +521,28 @@
 
 
   <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="#" aria-current="page">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="#" aria-current="page">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Hubs</span>
-        <span class="ok-tabbar-badge">7</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Hubs</span>
+        <span class="tabbar-badge">7</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Equipo</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Equipo</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

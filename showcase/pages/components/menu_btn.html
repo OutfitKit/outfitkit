@@ -24,11 +24,11 @@
 {% set _src_jinja_2 %}{% raw %}{% from "ui/menu_btn.jinja" import menu_btn %}
 <div data-signals="{ menu: false }">
   {{ menu_btn(attrs={"data-attr:aria-expanded": "$menu", "data-on:click": "$menu = !$menu"}) }}
-  <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ok-ink-3);">Cerrado</span>
+  <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ink-3);">Cerrado</span>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<div data-signals="{ menu: false }">
   <menu_btn data-attr:aria-expanded="$menu" data-on:click="$menu = !$menu" />
-  <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ok-ink-3);">Cerrado</span>
+  <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ink-3);">Cerrado</span>
 </div>{% endraw %}{% endset %}
 
 {% call demo_frame("Datastar — toggle",
@@ -36,25 +36,25 @@
     jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ menu: false }">
   {{ menu_btn(attrs={"data-attr:aria-expanded": "$menu", "data-on:click": "$menu = !$menu"}) }}
-  <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ok-ink-3);">Cerrado</span>
+  <span data-text="$menu ? 'Abierto' : 'Cerrado'" style="margin-left: 14px; color: var(--ink-3);">Cerrado</span>
 </div>
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/menu_btn.jinja" import menu_btn %}
 {{ menu_btn(mobile_only=True) }}
-<span style="margin-left: 12px; color: var(--ok-ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
+<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<menu_btn mobile_only />
-<span style="margin-left: 12px; color: var(--ok-ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
+<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
 
 {% call demo_frame("Solo en mobile (oculto ≥768px)",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {{ menu_btn(mobile_only=True) }}
-<span style="margin-left: 12px; color: var(--ok-ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>
+<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>
 {% endcall %}
 
 <h2>API</h2>
-<table class="ok-table">
+<table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>label</code></td><td>str</td><td>"Menú"</td><td>aria-label.</td></tr>

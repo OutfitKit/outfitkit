@@ -6,388 +6,388 @@
    ============================================================ */
 
 /* ---------- Sidebar badge variants ---------- */
-.ok-sidebar__badge--leaf  { background: var(--ok-leaf-soft);   color: var(--ok-leaf); }
-.ok-sidebar__badge--warn  { background: var(--ok-warn-soft);   color: var(--ok-warn); }
-.ok-sidebar__badge--info  { background: var(--ok-info-soft);   color: var(--ok-info); }
-.ok-sidebar__badge--danger{ background: var(--ok-danger-soft); color: var(--ok-danger); }
+.sidebar__badge--leaf  { background: var(--leaf-soft);   color: var(--leaf); }
+.sidebar__badge--warn  { background: var(--warn-soft);   color: var(--warn); }
+.sidebar__badge--info  { background: var(--info-soft);   color: var(--info); }
+.sidebar__badge--danger{ background: var(--danger-soft); color: var(--danger); }
 
 /* ---------- Avatar size + composition ---------- */
-.ok-avatar--md {
-  width: var(--ok-space-7);
-  height: var(--ok-space-7);
-  font-size: var(--ok-text-md);
+.avatar.md {
+  width: var(--space-7);
+  height: var(--space-7);
+  font-size: var(--text-md);
 }
-.ok-avatar--more {
-  background: var(--ok-bg-3);
-  color: var(--ok-ink-2);
-  border: 1px dashed var(--ok-line-2);
+.avatar.more {
+  background: var(--bg-3);
+  color: var(--ink-2);
+  border: 1px dashed var(--line-2);
 }
 
 /* ---------- Card danger variant ---------- */
-.ok-card--danger {
-  border-color: color-mix(in oklch, var(--ok-danger) 35%, var(--ok-line));
-  background: color-mix(in oklch, var(--ok-danger) 6%, var(--ok-bg-2));
+.card.danger {
+  border-color: color-mix(in oklch, var(--danger) 35%, var(--line));
+  background: color-mix(in oklch, var(--danger) 6%, var(--bg-2));
 }
-.ok-card--warn {
-  border-color: color-mix(in oklch, var(--ok-warn) 35%, var(--ok-line));
-  background: color-mix(in oklch, var(--ok-warn) 6%, var(--ok-bg-2));
+.card.warn {
+  border-color: color-mix(in oklch, var(--warn) 35%, var(--line));
+  background: color-mix(in oklch, var(--warn) 6%, var(--bg-2));
 }
-.ok-card--ok {
-  border-color: color-mix(in oklch, var(--ok-leaf) 35%, var(--ok-line));
-  background: color-mix(in oklch, var(--ok-leaf) 6%, var(--ok-bg-2));
+.card.ok {
+  border-color: color-mix(in oklch, var(--leaf) 35%, var(--line));
+  background: color-mix(in oklch, var(--leaf) 6%, var(--bg-2));
 }
 
 /* ---------- Status dot ---------- */
-.ok-status-dot {
+.status-dot {
   display: inline-block;
-  width: var(--ok-space-2);
-  height: var(--ok-space-2);
-  border-radius: var(--ok-radius-pill);
-  background: var(--ok-ink-4);
+  width: var(--space-2);
+  height: var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--ink-4);
   flex-shrink: 0;
 }
-.ok-status-dot--ok    { background: var(--ok-leaf); }
-.ok-status-dot--warn  { background: var(--ok-warn); }
-.ok-status-dot--danger{ background: var(--ok-danger); }
-.ok-status-dot--info  { background: var(--ok-info); }
-.ok-status-dot--off   { background: var(--ok-ink-4); }
+.status-dot.ok    { background: var(--leaf); }
+.status-dot.warn  { background: var(--warn); }
+.status-dot.danger{ background: var(--danger); }
+.status-dot.info  { background: var(--info); }
+.status-dot.off   { background: var(--ink-4); }
 
 /* ---------- Generic label ---------- */
-.ok-label {
+.label {
   display: block;
-  font-size: var(--ok-text-sm);
+  font-size: var(--text-sm);
   font-weight: 500;
-  color: var(--ok-ink-2);
-  margin-bottom: var(--ok-space-1);
+  color: var(--ink-2);
+  margin-bottom: var(--space-1);
 }
-.ok-label--req::after {
+.label.req::after {
   content: " *";
-  color: var(--ok-danger);
+  color: var(--danger);
 }
 
 /* ---------- Check row (form layout for checkboxes/radios in row) ---------- */
-.ok-check-row {
+.check-row {
   display: flex;
   align-items: flex-start;
-  gap: var(--ok-space-3);
-  padding: var(--ok-space-3);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background var(--ok-dur-base) var(--ok-ease-out, ease);
+  transition: background var(--dur-base) var(--ease-out, ease);
 }
-.ok-check-row:hover {
-  background: var(--ok-bg-3);
+.check-row:hover {
+  background: var(--bg-3);
 }
-.ok-check-row.is-checked,
-.ok-check-row[data-checked="true"] {
-  background: var(--ok-brand-soft);
-  border-color: var(--ok-brand);
+.check-row.is-checked,
+.check-row[data-checked="true"] {
+  background: var(--brand-soft);
+  border-color: var(--brand);
 }
 
 /* ---------- Pager button ---------- */
-.ok-pager__btn {
+.pager__btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: var(--ok-space-7);
-  height: var(--ok-space-7);
-  padding: 0 var(--ok-space-3);
-  border: 1px solid var(--ok-line);
-  border-radius: var(--ok-radius-md);
-  background: var(--ok-bg-2);
-  color: var(--ok-ink-2);
-  font-size: var(--ok-text-sm);
+  min-width: var(--space-7);
+  height: var(--space-7);
+  padding: var(--space-0) var(--space-3);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--bg-2);
+  color: var(--ink-2);
+  font-size: var(--text-sm);
   cursor: pointer;
   font-family: inherit;
 }
-.ok-pager__btn:hover {
-  background: var(--ok-bg-3);
-  color: var(--ok-ink);
+.pager__btn:hover {
+  background: var(--bg-3);
+  color: var(--ink);
 }
-.ok-pager__btn[aria-current="page"],
-.ok-pager__btn.is-active {
-  background: var(--ok-brand-soft);
-  border-color: var(--ok-brand);
-  color: var(--ok-brand-3);
+.pager__btn[aria-current="page"],
+.pager__btn.is-active {
+  background: var(--brand-soft);
+  border-color: var(--brand);
+  color: var(--brand-3);
 }
-.ok-pager__btn:disabled {
+.pager__btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* ---------- Toggle internal parts ---------- */
-.ok-toggle__input {
+.toggle__input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
-.ok-toggle__thumb {
+.toggle__thumb {
   position: absolute;
   top: 50%;
   left: 2px;
-  width: calc(var(--ok-space-4) - 2px);
-  height: calc(var(--ok-space-4) - 2px);
-  border-radius: var(--ok-radius-pill);
-  background: var(--ok-ink);
+  width: calc(var(--space-4) - 2px);
+  height: calc(var(--space-4) - 2px);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
   transform: translateY(-50%);
-  transition: transform var(--ok-dur-base) var(--ok-ease-out, ease);
+  transition: transform var(--dur-base) var(--ease-out, ease);
 }
-.ok-toggle.is-on .ok-toggle__thumb,
-.ok-toggle[aria-checked="true"] .ok-toggle__thumb,
-.ok-toggle[aria-checked=""] .ok-toggle__thumb {
+.toggle.is-on .toggle__thumb,
+.toggle[aria-checked="true"] .toggle__thumb,
+.toggle[aria-checked=""] .toggle__thumb {
   transform: translateY(-50%) translateX(100%);
 }
 
 /* ---------- Table numeric column ---------- */
-.ok-th--num,
-.ok-td--num {
+.th.num,
+.td.num {
   text-align: right;
   font-variant-numeric: tabular-nums;
-  font-family: var(--ok-font-mono);
+  font-family: var(--font-mono);
 }
 
 /* ---------- Banner ---------- */
-.ok-banner__msg {
+.banner__msg {
   flex: 1;
   min-width: 0;
 }
-.ok-banner--leaf {
-  border-color: color-mix(in oklch, var(--ok-leaf) 35%, var(--ok-line));
-  background: color-mix(in oklch, var(--ok-leaf) 8%, var(--ok-bg-2));
-  color: var(--ok-leaf);
+.banner.leaf {
+  border-color: color-mix(in oklch, var(--leaf) 35%, var(--line));
+  background: color-mix(in oklch, var(--leaf) 8%, var(--bg-2));
+  color: var(--leaf);
 }
 
 /* ---------- Badge leaf ---------- */
-.ok-badge--leaf {
-  background: var(--ok-leaf-soft);
-  color: var(--ok-leaf);
+.badge.leaf {
+  background: var(--leaf-soft);
+  color: var(--leaf);
 }
 
 /* ---------- Audio icon ---------- */
-.ok-audio__icon {
+.audio__icon {
   display: inline-grid;
   place-items: center;
-  width: var(--ok-space-7);
-  height: var(--ok-space-7);
-  border-radius: var(--ok-radius-pill);
-  background: var(--ok-bg-3);
-  color: var(--ok-brand);
+  width: var(--space-7);
+  height: var(--space-7);
+  border-radius: var(--radius-pill);
+  background: var(--bg-3);
+  color: var(--brand);
 }
 
 /* ---------- Menu item text ---------- */
-.ok-menu__item-text {
+.menu__item-text {
   flex: 1;
   min-width: 0;
   text-align: left;
 }
 
 /* ---------- Chip close ---------- */
-.ok-chip__close {
+.chip__close {
   display: inline-grid;
   place-items: center;
-  width: var(--ok-space-4);
-  height: var(--ok-space-4);
-  margin-left: var(--ok-space-1);
+  width: var(--space-4);
+  height: var(--space-4);
+  margin-left: var(--space-1);
   border: none;
-  border-radius: var(--ok-radius-pill);
+  border-radius: var(--radius-pill);
   background: transparent;
   color: inherit;
   cursor: pointer;
-  font-size: var(--ok-text-md);
-  line-height: 1;
+  font-size: var(--text-md);
+  line-height: var(--leading-flat);
   opacity: 0.7;
 }
-.ok-chip__close:hover {
+.chip__close:hover {
   background: color-mix(in oklch, currentColor 15%, transparent);
   opacity: 1;
 }
 
 /* ---------- Input variant ---------- */
-.ok-input--select {
-  background-image: linear-gradient(45deg, transparent 50%, var(--ok-ink-3) 50%),
-                    linear-gradient(135deg, var(--ok-ink-3) 50%, transparent 50%);
+.input.select {
+  background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%),
+                    linear-gradient(135deg, var(--ink-3) 50%, transparent 50%);
   background-position: calc(100% - 16px) 50%, calc(100% - 11px) 50%;
   background-size: 5px 5px;
   background-repeat: no-repeat;
-  padding-right: var(--ok-space-7);
+  padding-right: var(--space-7);
   appearance: none;
 }
 
 /* ---------- Permissions matrix cells ---------- */
-.ok-pmatrix__td--hi   { background: color-mix(in oklch, var(--ok-leaf) 18%, transparent);   color: var(--ok-leaf); }
-.ok-pmatrix__td--mid  { background: color-mix(in oklch, var(--ok-warn) 18%, transparent);   color: var(--ok-warn); }
-.ok-pmatrix__td--lo   { background: color-mix(in oklch, var(--ok-danger) 14%, transparent); color: var(--ok-danger); }
+.pmatrix__td--hi   { background: color-mix(in oklch, var(--leaf) 18%, transparent);   color: var(--leaf); }
+.pmatrix__td--mid  { background: color-mix(in oklch, var(--warn) 18%, transparent);   color: var(--warn); }
+.pmatrix__td--lo   { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
 
 /* ---------- Definition-list / stack ----------
    Used in detail views to render label/value pairs */
-.ok-stack {
+.stack {
   display: grid;
-  gap: var(--ok-space-3);
-  margin: 0;
+  gap: var(--space-3);
+  margin: var(--space-0);
 }
-.ok-stack__row {
+.stack__row {
   display: grid;
   grid-template-columns: minmax(120px, 30%) 1fr;
-  gap: var(--ok-space-3);
+  gap: var(--space-3);
   align-items: baseline;
 }
-.ok-stack__label {
-  font-size: var(--ok-text-sm);
-  color: var(--ok-ink-3);
-  margin: 0;
+.stack__label {
+  font-size: var(--text-sm);
+  color: var(--ink-3);
+  margin: var(--space-0);
 }
-.ok-stack__value {
-  font-size: var(--ok-text-md);
-  color: var(--ok-ink);
-  margin: 0;
+.stack__value {
+  font-size: var(--text-md);
+  color: var(--ink);
+  margin: var(--space-0);
 }
 
 /* ---------- List content layout ---------- */
-.ok-list__content {
+.list__content {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: var(--border-w-2);
 }
-.ok-list__meta {
-  font-size: var(--ok-text-xs);
-  color: var(--ok-ink-3);
+.list__meta {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
 }
 
 /* ---------- Tabbar item (alias) ---------- */
-.ok-tabbar__item {
+.tabbar__item {
   display: inline-flex;
   align-items: center;
-  gap: var(--ok-space-2);
-  padding: var(--ok-space-2) var(--ok-space-3);
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
   background: transparent;
   border: none;
-  color: var(--ok-ink-3);
+  color: var(--ink-3);
   cursor: pointer;
-  font-size: var(--ok-text-sm);
+  font-size: var(--text-sm);
   font-family: inherit;
   text-decoration: none;
-  border-radius: var(--ok-radius-md);
+  border-radius: var(--radius-md);
 }
-.ok-tabbar__item:hover {
-  color: var(--ok-ink-2);
+.tabbar__item:hover {
+  color: var(--ink-2);
 }
-.ok-tabbar__item[aria-current="page"],
-.ok-tabbar__item.is-active {
-  color: var(--ok-brand);
-  background: var(--ok-brand-soft);
+.tabbar__item[aria-current="page"],
+.tabbar__item.is-active {
+  color: var(--brand);
+  background: var(--brand-soft);
 }
 
 /* ---------- Icon tile ---------- */
-.ok-icon-tile {
+.icon-tile {
   display: inline-grid;
   place-items: center;
-  width: var(--ok-space-7);
-  height: var(--ok-space-7);
-  border-radius: var(--ok-radius-md);
-  background: var(--ok-bg-3);
-  color: var(--ok-ink-2);
+  width: var(--space-7);
+  height: var(--space-7);
+  border-radius: var(--radius-md);
+  background: var(--bg-3);
+  color: var(--ink-2);
   flex-shrink: 0;
 }
-.ok-icon-tile--brand  { background: var(--ok-brand-soft);  color: var(--ok-brand-3); }
-.ok-icon-tile--leaf   { background: var(--ok-leaf-soft);   color: var(--ok-leaf); }
-.ok-icon-tile--warn   { background: var(--ok-warn-soft);   color: var(--ok-warn); }
-.ok-icon-tile--danger { background: var(--ok-danger-soft); color: var(--ok-danger); }
-.ok-icon-tile--info   { background: var(--ok-info-soft);   color: var(--ok-info); }
-.ok-icon-tile--lg {
-  width: var(--ok-space-8);
-  height: var(--ok-space-8);
+.icon-tile.brand  { background: var(--brand-soft);  color: var(--brand-3); }
+.icon-tile.leaf   { background: var(--leaf-soft);   color: var(--leaf); }
+.icon-tile.warn   { background: var(--warn-soft);   color: var(--warn); }
+.icon-tile.danger { background: var(--danger-soft); color: var(--danger); }
+.icon-tile.info   { background: var(--info-soft);   color: var(--info); }
+.icon-tile.lg {
+  width: var(--space-8);
+  height: var(--space-8);
 }
 
 /* ---------- Chip variants ---------- */
-.ok-chip--brand {
-  background: var(--ok-brand-soft);
-  color: var(--ok-brand-3);
-  border-color: color-mix(in oklch, var(--ok-brand) 30%, transparent);
+.chip.brand {
+  background: var(--brand-soft);
+  color: var(--brand-3);
+  border-color: color-mix(in oklch, var(--brand) 30%, transparent);
 }
-.ok-chip--info {
-  background: var(--ok-info-soft);
-  color: var(--ok-info);
-  border-color: color-mix(in oklch, var(--ok-info) 30%, transparent);
+.chip.info {
+  background: var(--info-soft);
+  color: var(--info);
+  border-color: color-mix(in oklch, var(--info) 30%, transparent);
 }
 
 /* ---------- Badge success (alias for leaf) ---------- */
-.ok-badge--success {
-  background: var(--ok-leaf-soft);
-  color: var(--ok-leaf);
+.badge.success {
+  background: var(--leaf-soft);
+  color: var(--leaf);
 }
 
 /* ---------- Toggle slider ---------- */
-.ok-toggle__slider {
+.toggle__slider {
   position: relative;
   display: inline-block;
-  width: calc(var(--ok-space-7) + var(--ok-space-1));
-  height: var(--ok-space-5);
-  background: var(--ok-bg-3);
-  border-radius: var(--ok-radius-pill);
+  width: calc(var(--space-7) + var(--space-1));
+  height: var(--space-5);
+  background: var(--bg-3);
+  border-radius: var(--radius-pill);
   cursor: pointer;
-  transition: background var(--ok-dur-base) var(--ok-ease-out, ease);
+  transition: background var(--dur-base) var(--ease-out, ease);
 }
-.ok-toggle__slider::after {
+.toggle__slider::after {
   content: '';
   position: absolute;
   top: 2px;
   left: 2px;
-  width: calc(var(--ok-space-5) - 4px);
-  height: calc(var(--ok-space-5) - 4px);
-  border-radius: var(--ok-radius-pill);
-  background: var(--ok-ink);
-  transition: transform var(--ok-dur-base) var(--ok-ease-out, ease);
+  width: calc(var(--space-5) - 4px);
+  height: calc(var(--space-5) - 4px);
+  border-radius: var(--radius-pill);
+  background: var(--ink);
+  transition: transform var(--dur-base) var(--ease-out, ease);
 }
-.ok-toggle.is-on .ok-toggle__slider,
-.ok-toggle[aria-checked="true"] .ok-toggle__slider,
-.ok-toggle[aria-checked=""] .ok-toggle__slider,
-[aria-checked="true"] > .ok-toggle__slider,
-[aria-checked=""] > .ok-toggle__slider {
-  background: var(--ok-brand);
+.toggle.is-on .toggle__slider,
+.toggle[aria-checked="true"] .toggle__slider,
+.toggle[aria-checked=""] .toggle__slider,
+[aria-checked="true"] > .toggle__slider,
+[aria-checked=""] > .toggle__slider {
+  background: var(--brand);
 }
-.ok-toggle.is-on .ok-toggle__slider::after,
-.ok-toggle[aria-checked="true"] .ok-toggle__slider::after,
-.ok-toggle[aria-checked=""] .ok-toggle__slider::after,
-[aria-checked="true"] > .ok-toggle__slider::after,
-[aria-checked=""] > .ok-toggle__slider::after {
-  transform: translateX(calc(var(--ok-space-5) - 4px));
+.toggle.is-on .toggle__slider::after,
+.toggle[aria-checked="true"] .toggle__slider::after,
+.toggle[aria-checked=""] .toggle__slider::after,
+[aria-checked="true"] > .toggle__slider::after,
+[aria-checked=""] > .toggle__slider::after {
+  transform: translateX(calc(var(--space-5) - 4px));
 }
 
 /* ---------- Form actions row ---------- */
-.ok-form-actions {
+.form-actions {
   display: flex;
-  gap: var(--ok-space-3);
+  gap: var(--space-3);
   align-items: center;
   justify-content: flex-end;
-  padding-top: var(--ok-space-4);
-  border-top: 1px solid var(--ok-line);
-  margin-top: var(--ok-space-5);
+  padding-top: var(--space-4);
+  border-top: var(--border-w) solid var(--line);
+  margin-top: var(--space-5);
 }
-.ok-form-actions--start { justify-content: flex-start; }
-.ok-form-actions--between { justify-content: space-between; }
+.form-actions.start { justify-content: flex-start; }
+.form-actions.between { justify-content: space-between; }
 
 /* ---------- Input group addon as button ---------- */
-.ok-input-group__addon--btn {
+.input-group__addon--btn {
   cursor: pointer;
   border: none;
-  background: var(--ok-bg-3);
-  color: var(--ok-ink-2);
+  background: var(--bg-3);
+  color: var(--ink-2);
   font-family: inherit;
-  font-size: var(--ok-text-md);
-  padding: 0 var(--ok-space-3);
-  transition: background var(--ok-dur-base) var(--ok-ease-out, ease);
+  font-size: var(--text-md);
+  padding: var(--space-0) var(--space-3);
+  transition: background var(--dur-base) var(--ease-out, ease);
 }
-.ok-input-group__addon--btn:hover {
-  background: var(--ok-bg-4);
-  color: var(--ok-ink);
+.input-group__addon--btn:hover {
+  background: var(--bg-4);
+  color: var(--ink);
 }
 
 /* ---------- Timeline sub ---------- */
-.ok-timeline__sub {
-  font-size: var(--ok-text-xs);
-  color: var(--ok-ink-3);
-  margin-top: 2px;
+.timeline__sub {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  margin-top: var(--border-w-2);
 }

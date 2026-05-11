@@ -4,75 +4,75 @@
 {% block page_title %}Backup{% endblock %}
 
 {% block content %}
-<div class="ok-app" id="app" data-tabbar="bottom"
+<div class="app" id="app" data-tabbar="bottom"
      data-signals='{"sidebar": false, "bk": {"creating": false, "autoEnabled": true}}'
      data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">CR</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">Cafetería La Rambla</div>
-        <div class="ok-sidebar__brand-meta">Hub · v0.0.9</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">CR</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">Cafetería La Rambla</div>
+        <div class="sidebar__brand-meta">Hub · v0.0.9</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Plataforma</div>
-      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="ok-sidebar__label">Configuración</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Plataforma</div>
+      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="sidebar__label">Configuración</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">JC</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Joan Castell</div>
-          <div class="ok-sidebar__user-meta">joan@larambla.es</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">JC</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Joan Castell</div>
+          <div class="sidebar__user-meta">joan@larambla.es</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
+        <h1 class="topbar__page-title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <nav class="ok-tabs ok-tabs-scroll" aria-label="Sub-secciones de ajustes">
-      <a class="ok-tab" href="preferences.html">Preferencias</a>
-      <a class="ok-tab" href="hub.html">Hub</a>
-      <a class="ok-tab" href="hub-config.html">Config</a>
-      <a class="ok-tab" href="compliance.html">Cumplimiento</a>
-      <a class="ok-tab" href="devices.html">Dispositivos</a>
-      <a class="ok-tab" href="printers.html">Impresoras</a>
-      <a class="ok-tab" href="backup.html" aria-current="page">Backup</a>
-      <a class="ok-tab" href="files.html">Archivos</a>
-      <a class="ok-tab" href="tax-classes.html">Tax</a>
-      <a class="ok-tab" href="help.html">Ayuda</a>
-      <a class="ok-tab" href="scheduled-tasks.html">Tareas</a>
-      <a class="ok-tab" href="file-browser.html">File browser</a>
+    <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
+      <a class="tab" href="preferences.html">Preferencias</a>
+      <a class="tab" href="hub.html">Hub</a>
+      <a class="tab" href="hub-config.html">Config</a>
+      <a class="tab" href="compliance.html">Cumplimiento</a>
+      <a class="tab" href="devices.html">Dispositivos</a>
+      <a class="tab" href="printers.html">Impresoras</a>
+      <a class="tab" href="backup.html" aria-current="page">Backup</a>
+      <a class="tab" href="files.html">Archivos</a>
+      <a class="tab" href="tax-classes.html">Tax</a>
+      <a class="tab" href="help.html">Ayuda</a>
+      <a class="tab" href="scheduled-tasks.html">Tareas</a>
+      <a class="tab" href="file-browser.html">File browser</a>
     </nav>
 
-    <div class="ok-app__body">
+    <div class="app__body">
 
-      <div class="ok-page-header" style="border-bottom:1px solid var(--ok-line);margin-bottom:22px;">
-        <div class="ok-page-header__title">
+      <div class="page-header" style="border-bottom:1px solid var(--line);margin-bottom:22px;">
+        <div class="page-header__title">
           <h1>Backup &amp; restauración</h1>
-          <div class="ok-page-header__sub">Snapshots automáticos del Hub almacenados cifrados en S3</div>
+          <div class="page-header__sub">Snapshots automáticos del Hub almacenados cifrados en S3</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--secondary ok-btn--sm">Subir backup externo</button>
-          <button class="ok-btn ok-btn--primary ok-btn--sm"
+        <div class="page-header__actions">
+          <button class="btn secondary sm">Subir backup externo</button>
+          <button class="btn primary sm"
                   data-on:click="$bk.creating = true; setTimeout(() => $bk.creating = false, 2200)"
                   data-attr:disabled="$bk.creating">
             <span data-show="!$bk.creating">+ Backup ahora</span>
@@ -82,91 +82,91 @@
       </div>
 
       <!-- KPIs -->
-      <div class="ok-grid-4" style="gap:14px;margin-bottom:22px;">
-        <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:14px;padding:14px;">
-          <div class="ok-eyebrow">Último backup</div>
-          <div style="font-family:var(--ok-font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Hoy · 03:00</div>
-          <span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>Completado</span>
+      <div class="grid-4" style="gap:14px;margin-bottom:22px;">
+        <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
+          <div class="eyebrow">Último backup</div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Hoy · 03:00</div>
+          <span class="pill success"><span class="pill__dot"></span>Completado</span>
         </div>
-        <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:14px;padding:14px;">
-          <div class="ok-eyebrow">Próximo automático</div>
-          <div style="font-family:var(--ok-font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Mañana · 03:00</div>
-          <span class="ok-pill"><span class="ok-pill__dot"></span>Diario</span>
+        <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
+          <div class="eyebrow">Próximo automático</div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Mañana · 03:00</div>
+          <span class="pill"><span class="pill__dot"></span>Diario</span>
         </div>
-        <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:14px;padding:14px;">
-          <div class="ok-eyebrow">Espacio usado</div>
-          <div style="font-family:var(--ok-font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;font-variant-numeric:tabular-nums;">1,8 GB <span style="color:var(--ok-ink-3);font-size:14px;">/ 5 GB</span></div>
-          <div class="ok-progress ok-mt-2"><div class="ok-progress__bar" style="width:36%;"></div></div>
+        <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
+          <div class="eyebrow">Espacio usado</div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;font-variant-numeric:tabular-nums;">1,8 GB <span style="color:var(--ink-3);font-size:14px;">/ 5 GB</span></div>
+          <div class="progress mt-2"><div class="progress__bar" style="width:36%;"></div></div>
         </div>
-        <div style="background:var(--ok-bg-2);border:1px solid var(--ok-line);border-radius:14px;padding:14px;">
-          <div class="ok-eyebrow">Backups guardados</div>
-          <div style="font-family:var(--ok-font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">14<span style="color:var(--ok-ink-3);font-size:14px;">/14</span></div>
-          <span class="ok-pill"><span class="ok-pill__dot"></span>Retención 14 días</span>
+        <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
+          <div class="eyebrow">Backups guardados</div>
+          <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">14<span style="color:var(--ink-3);font-size:14px;">/14</span></div>
+          <span class="pill"><span class="pill__dot"></span>Retención 14 días</span>
         </div>
       </div>
 
       <!-- Configuración auto-backup -->
-      <article class="ok-card ok-mb-5">
-        <header class="ok-card__header">
+      <article class="card mb-5">
+        <header class="card__header">
           <div>
-            <h3 class="ok-card__title">Backup automático</h3>
-            <p class="ok-card__sub">Programación, intervalo y retención.</p>
+            <h3 class="card__title">Backup automático</h3>
+            <p class="card__sub">Programación, intervalo y retención.</p>
           </div>
         </header>
-        <div class="ok-card__body">
-          <div class="ok-toggle-row">
-            <div class="ok-toggle-row__text">
-              <span class="ok-toggle-row__label">Activar backups automáticos</span>
-              <span class="ok-toggle-row__desc">Snapshot cifrado con AES-256 subido a S3 cada intervalo.</span>
+        <div class="card__body">
+          <div class="toggle-row">
+            <div class="toggle-row__text">
+              <span class="toggle-row__label">Activar backups automáticos</span>
+              <span class="toggle-row__desc">Snapshot cifrado con AES-256 subido a S3 cada intervalo.</span>
             </div>
-            <label class="ok-toggle"><input type="checkbox" data-bind="bk.autoEnabled"/><span class="ok-toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" data-bind="bk.autoEnabled"/><span class="toggle__track"></span></label>
           </div>
-          <div class="ok-form-row" style="padding-top:14px;" data-show="$bk.autoEnabled">
-            <div class="ok-field">
-              <label class="ok-field__label">Intervalo</label>
-              <select class="ok-select">
+          <div class="form-row" style="padding-top:14px;" data-show="$bk.autoEnabled">
+            <div class="field">
+              <label class="field__label">Intervalo</label>
+              <select class="select">
                 <option selected>Diario · 03:00</option>
                 <option>Cada 6 horas</option>
                 <option>Semanal · domingo</option>
               </select>
             </div>
-            <div class="ok-field">
-              <label class="ok-field__label">Retención</label>
-              <select class="ok-select">
+            <div class="field">
+              <label class="field__label">Retención</label>
+              <select class="select">
                 <option>7 días</option>
                 <option selected>14 días</option>
                 <option>30 días</option>
                 <option>90 días</option>
               </select>
             </div>
-            <div class="ok-field">
-              <label class="ok-field__label">Cifrado</label>
-              <select class="ok-select">
+            <div class="field">
+              <label class="field__label">Cifrado</label>
+              <select class="select">
                 <option selected>AES-256 (S3 SSE-KMS)</option>
                 <option>AES-256 (cliente)</option>
               </select>
             </div>
           </div>
           <div style="display:flex;justify-content:flex-end;padding-top:12px;">
-            <button class="ok-btn ok-btn--secondary ok-btn--sm">Guardar ajustes</button>
+            <button class="btn secondary sm">Guardar ajustes</button>
           </div>
         </div>
       </article>
 
       <!-- Histórico -->
-      <article class="ok-card">
-        <header class="ok-card__header">
+      <article class="card">
+        <header class="card__header">
           <div>
-            <h3 class="ok-card__title">Historial</h3>
-            <p class="ok-card__sub">Últimos 14 backups</p>
+            <h3 class="card__title">Historial</h3>
+            <p class="card__sub">Últimos 14 backups</p>
           </div>
-          <div class="ok-flex ok-gap-1">
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Filtrar</button>
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Exportar CSV</button>
+          <div class="flex gap-1">
+            <button class="btn ghost sm">Filtrar</button>
+            <button class="btn ghost sm">Exportar CSV</button>
           </div>
         </header>
-        <div class="ok-table-scroll">
-          <table class="ok-table">
+        <div class="table-scroll">
+          <table class="table">
             <thead>
               <tr>
                 <th>Fecha</th>
@@ -174,72 +174,72 @@
                 <th>Tamaño</th>
                 <th>Estado</th>
                 <th>Origen</th>
-                <th class="ok-td--right" style="width:160px;">Acciones</th>
+                <th class="td right" style="width:160px;">Acciones</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="ok-td--mono">2026-05-08 03:00</td>
-                <td><span class="ok-badge">Auto</span></td>
-                <td class="ok-td--num">142 MB</td>
-                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>OK</span></td>
-                <td class="ok-td--muted">eu-west-1</td>
+                <td class="td mono">2026-05-08 03:00</td>
+                <td><span class="badge">Auto</span></td>
+                <td class="td num">142 MB</td>
+                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td class="td muted">eu-west-1</td>
                 <td>
-                  <div class="ok-row-actions ok-justify-end">
-                    <button class="ok-row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
-                    <button class="ok-row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+                  <div class="row-actions justify-end">
+                    <button class="row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
+                    <button class="row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="ok-td--mono">2026-05-07 18:42</td>
-                <td><span class="ok-badge ok-badge--brand">Manual</span></td>
-                <td class="ok-td--num">141 MB</td>
-                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>OK</span></td>
-                <td class="ok-td--muted">Joan C.</td>
+                <td class="td mono">2026-05-07 18:42</td>
+                <td><span class="badge brand">Manual</span></td>
+                <td class="td num">141 MB</td>
+                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td class="td muted">Joan C.</td>
                 <td>
-                  <div class="ok-row-actions ok-justify-end">
-                    <button class="ok-row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
-                    <button class="ok-row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+                  <div class="row-actions justify-end">
+                    <button class="row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
+                    <button class="row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="ok-td--mono">2026-05-07 03:00</td>
-                <td><span class="ok-badge">Auto</span></td>
-                <td class="ok-td--num">140 MB</td>
-                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>OK</span></td>
-                <td class="ok-td--muted">eu-west-1</td>
+                <td class="td mono">2026-05-07 03:00</td>
+                <td><span class="badge">Auto</span></td>
+                <td class="td num">140 MB</td>
+                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td class="td muted">eu-west-1</td>
                 <td>
-                  <div class="ok-row-actions ok-justify-end">
-                    <button class="ok-row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
-                    <button class="ok-row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+                  <div class="row-actions justify-end">
+                    <button class="row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
+                    <button class="row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="ok-td--mono">2026-05-06 03:00</td>
-                <td><span class="ok-badge">Auto</span></td>
-                <td class="ok-td--num">138 MB</td>
-                <td><span class="ok-pill ok-pill--warn"><span class="ok-pill__dot"></span>Parcial</span></td>
-                <td class="ok-td--muted">eu-west-1</td>
+                <td class="td mono">2026-05-06 03:00</td>
+                <td><span class="badge">Auto</span></td>
+                <td class="td num">138 MB</td>
+                <td><span class="pill warning"><span class="pill__dot"></span>Parcial</span></td>
+                <td class="td muted">eu-west-1</td>
                 <td>
-                  <div class="ok-row-actions ok-justify-end">
-                    <button class="ok-row-action" title="Ver log"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></button>
-                    <button class="ok-row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+                  <div class="row-actions justify-end">
+                    <button class="row-action" title="Ver log"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></button>
+                    <button class="row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td class="ok-td--mono">2026-05-05 03:00</td>
-                <td><span class="ok-badge">Auto</span></td>
-                <td class="ok-td--num">137 MB</td>
-                <td><span class="ok-pill ok-pill--ok"><span class="ok-pill__dot"></span>OK</span></td>
-                <td class="ok-td--muted">eu-west-1</td>
+                <td class="td mono">2026-05-05 03:00</td>
+                <td><span class="badge">Auto</span></td>
+                <td class="td num">137 MB</td>
+                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td class="td muted">eu-west-1</td>
                 <td>
-                  <div class="ok-row-actions ok-justify-end">
-                    <button class="ok-row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
-                    <button class="ok-row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
+                  <div class="row-actions justify-end">
+                    <button class="row-action" title="Descargar"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></button>
+                    <button class="row-action" title="Restaurar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><polyline points="3 3 3 8 8 8"/></svg></button>
                   </div>
                 </td>
               </tr>
@@ -250,12 +250,12 @@
 
     </div>
   </div>
-  <nav class="ok-tabbar ok-app__tabbar" aria-label="Navegación principal">
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Inicio</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Módulos</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Facturas</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="ok-tabbar-label">Perfil</span></a>
-    <a class="ok-tabbar-item" href="#"><span class="ok-tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="ok-tabbar-label">Más</span></a>
+  <nav class="tabbar app__tabbar" aria-label="Navegación principal">
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
+    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

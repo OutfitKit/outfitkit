@@ -4,7 +4,7 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <select
   name="{{ name }}"
-  class="{{ ok_prefix }}select{% if size != 'md' %} {{ ok_prefix }}select--{{ size }}{% endif %}{% if invalid %} {{ ok_prefix }}select--invalid{% endif %}"
+  class="{{ ok_prefix }}select{% if size != 'md' %} {{ size }}{% endif %}{% if invalid %} invalid{% endif %}"
   {% if disabled %}disabled{% endif %}
   {% if required %}required{% endif %}
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>

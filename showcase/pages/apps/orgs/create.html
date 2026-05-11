@@ -13,96 +13,96 @@
 
 {% block content %}
 <style>
-  body { background: var(--ok-bg); margin: 0; }
+  body { background: var(--bg); margin: 0; }
   .preview-card {
-    background: var(--ok-bg-2); border: 1px solid var(--ok-line);
-    border-radius: var(--ok-radius-xl); padding: 22px;
+    background: var(--bg-2); border: 1px solid var(--line);
+    border-radius: var(--radius-xl); padding: 22px;
   }
   .preview-card__org {
     display: flex; align-items: center; gap: 12px;
-    padding: 14px; border-radius: var(--ok-radius-lg);
-    background: var(--ok-bg-3); border: 1px solid var(--ok-line);
+    padding: 14px; border-radius: var(--radius-lg);
+    background: var(--bg-3); border: 1px solid var(--line);
   }
   .preview-card__logo {
-    width: 44px; height: 44px; border-radius: var(--ok-radius-md);
-    background: var(--ok-brand); color: var(--ok-brand-fg);
+    width: 44px; height: 44px; border-radius: var(--radius-md);
+    background: var(--brand); color: var(--brand-fg);
     display: grid; place-items: center; font-weight: 700; font-size: 16px;
-    flex-shrink: 0; font-family: var(--ok-font-display);
+    flex-shrink: 0; font-family: var(--font-display);
   }
-  .preview-card__name { font-weight: 600; color: var(--ok-ink); font-size: 14px; }
-  .preview-card__url  { font-family: var(--ok-font-mono); font-size: 11.5px; color: var(--ok-ink-3); margin-top: 2px; }
-  .what-it-is { font-size: 12.5px; color: var(--ok-ink-3); line-height: 1.55; }
-  .what-it-is strong { color: var(--ok-ink-2); font-weight: 500; }
+  .preview-card__name { font-weight: 600; color: var(--ink); font-size: 14px; }
+  .preview-card__url  { font-family: var(--font-mono); font-size: 11.5px; color: var(--ink-3); margin-top: 2px; }
+  .what-it-is { font-size: 12.5px; color: var(--ink-3); line-height: 1.55; }
+  .what-it-is strong { color: var(--ink-2); font-weight: 500; }
 </style>
-<div class="ok-app"
+<div class="app"
      data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
   <!-- ============ Sidebar ============ -->
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo" style="background: var(--ok-brand); color: var(--ok-brand-fg); display:grid; place-items:center; font-weight:700; font-size:13px;">EX</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">Nueva organización</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo" style="background: var(--brand); color: var(--brand-fg); display:grid; place-items:center; font-weight:700; font-size:13px;">EX</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">Nueva organización</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <a class="ok-sidebar__item" href="../dashboard/saas.html">
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <a class="sidebar__item" href="../dashboard/saas.html">
         <iconify-icon icon="lucide:home" width="16" height="16"></iconify-icon>
-        <span class="ok-sidebar__label">Overview</span>
+        <span class="sidebar__label">Overview</span>
       </a>
-      <a class="ok-sidebar__item" href="list.html" data-route-active="true">
-        <svg class="ok-sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg>
-        <span class="ok-sidebar__label">Organizations</span>
+      <a class="sidebar__item" href="list.html" data-route-active="true">
+        <svg class="sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg>
+        <span class="sidebar__label">Organizations</span>
       </a>
-      <a class="ok-sidebar__item" href="../hubs/active.html">
-        <svg class="ok-sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg>
-        <span class="ok-sidebar__label">Hubs</span>
-        <span class="ok-sidebar__badge ok-sidebar__badge--brand">7</span>
+      <a class="sidebar__item" href="../hubs/active.html">
+        <svg class="sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg>
+        <span class="sidebar__label">Hubs</span>
+        <span class="sidebar__badge sidebar__badge--brand">7</span>
       </a>
-      <a class="ok-sidebar__item" href="../users/list.html">
-        <svg class="ok-sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/></svg>
-        <span class="ok-sidebar__label">Users</span>
+      <a class="sidebar__item" href="../users/list.html">
+        <svg class="sidebar__icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/></svg>
+        <span class="sidebar__label">Users</span>
       </a>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <div class="ok-avatar ok-avatar--sm">IB</div>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <div class="avatar sm">IB</div>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
   </aside>
 
   <!-- ============ Main ============ -->
-  <main class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <main class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
           data-on:click="$sidebar = !$sidebar"
           data-attr:aria-expanded="$sidebar">
           <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
         </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">Nueva organización</h1>
-        <div class="ok-topbar__actions">
-          <a class="ok-btn ok-btn--ghost ok-btn--sm" href="list.html">Cancelar</a>
+        <h1 class="topbar__page-title">Nueva organización</h1>
+        <div class="topbar__actions">
+          <a class="btn ghost sm" href="list.html">Cancelar</a>
         </div>
       </header>
 
-    <div class="ok-app__body" style="padding: 26px 22px 80px;">
+    <div class="app__body" style="padding: 26px 22px 80px;">
 
       <!-- Intro -->
-      <div class="ok-container ok-container--reading" style="margin-bottom: 22px; padding-inline: 0;">
-        <h1 style="font-family: var(--ok-font-display); font-size: 28px; font-weight: 600; letter-spacing: -.04em; color: var(--ok-ink); margin: 0 0 6px;">
+      <div class="container reading" style="margin-bottom: 22px; padding-inline: 0;">
+        <h1 style="font-family: var(--font-display); font-size: 28px; font-weight: 600; letter-spacing: -.04em; color: var(--ink); margin: 0 0 6px;">
           Crear una organización
         </h1>
         <p class="what-it-is" style="margin: 0; max-width: 640px;">
@@ -113,37 +113,37 @@
       </div>
 
       <!-- Form + preview -->
-      <div class="ok-container ok-container--reading ok-row" style="padding-inline:0;">
+      <div class="container reading row" style="padding-inline:0;">
 
-        <form class="ok-card ok-col-md-7 ok-col-lg-8" data-on:submit="event.preventDefault(); location.href='detail.html'">
-          <div class="ok-card__body">
+        <form class="card col-md-7 col-lg-8" data-on:submit="event.preventDefault(); location.href='detail.html'">
+          <div class="card__body">
 
-            <div class="ok-field">
-              <label class="ok-field__label ok-field__label--req" for="org-name">Nombre</label>
-              <input class="ok-input" id="org-name" type="text"
+            <div class="field">
+              <label class="field__label field__label--req" for="org-name">Nombre</label>
+              <input class="input" id="org-name" type="text"
                 placeholder="Acme Industries SL"
                 required
                 data-bind:name
                 data-on:input="$slug = $name.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)"/>
-              <span class="ok-field__hint">Cómo verás esta organización en la cabecera y la sidebar.</span>
+              <span class="field__hint">Cómo verás esta organización en la cabecera y la sidebar.</span>
             </div>
 
-            <div class="ok-field ok-mt-4">
-              <label class="ok-field__label ok-field__label--req" for="org-slug">URL</label>
-              <div class="ok-input-group">
-                <span class="ok-input-group__addon">erplora.com/o/</span>
-                <input class="ok-input" id="org-slug" type="text"
+            <div class="field mt-4">
+              <label class="field__label field__label--req" for="org-slug">URL</label>
+              <div class="input-group">
+                <span class="input-group__addon">erplora.com/o/</span>
+                <input class="input" id="org-slug" type="text"
                   placeholder="acme"
                   required
                   pattern="[a-z0-9-]+"
                   data-bind:slug/>
               </div>
-              <span class="ok-field__hint">Solo minúsculas, números y guiones. Se usa en URLs y APIs internas. No se puede cambiar después.</span>
+              <span class="field__hint">Solo minúsculas, números y guiones. Se usa en URLs y APIs internas. No se puede cambiar después.</span>
             </div>
 
-            <div class="ok-field ok-mt-4">
-              <label class="ok-field__label" for="org-sector">Sector <span style="color: var(--ok-ink-3); font-weight: 400;">(opcional)</span></label>
-              <select class="ok-select" id="org-sector" data-bind:sector>
+            <div class="field mt-4">
+              <label class="field__label" for="org-sector">Sector <span style="color: var(--ink-3); font-weight: 400;">(opcional)</span></label>
+              <select class="select" id="org-sector" data-bind:sector>
                 <option value="">— Seleccionar —</option>
                 <option value="retail">Retail / comercio</option>
                 <option value="hospitality">Hostelería / restauración</option>
@@ -154,30 +154,30 @@
                 <option value="logistics">Logística / transporte</option>
                 <option value="other">Otro</option>
               </select>
-              <span class="ok-field__hint">Solo se usa para sugerirte plantillas y módulos relevantes — no cambia el plan ni precio.</span>
+              <span class="field__hint">Solo se usa para sugerirte plantillas y módulos relevantes — no cambia el plan ni precio.</span>
             </div>
 
-            <div class="ok-field ok-mt-4">
-              <label class="ok-field__label">Color de marca</label>
-              <div class="ok-toggle-group">
-                <button type="button" class="ok-toggle-group__option" data-on:click="$logoColor = 'brand'"
+            <div class="field mt-4">
+              <label class="field__label">Color de marca</label>
+              <div class="toggle-group">
+                <button type="button" class="toggle-group__option" data-on:click="$logoColor = 'brand'"
                   data-class:is-selected="$logoColor === 'brand'">Terracota</button>
-                <button type="button" class="ok-toggle-group__option" data-on:click="$logoColor = 'leaf'"
+                <button type="button" class="toggle-group__option" data-on:click="$logoColor = 'leaf'"
                   data-class:is-selected="$logoColor === 'leaf'">Verde</button>
-                <button type="button" class="ok-toggle-group__option" data-on:click="$logoColor = 'info'"
+                <button type="button" class="toggle-group__option" data-on:click="$logoColor = 'info'"
                   data-class:is-selected="$logoColor === 'info'">Azul</button>
-                <button type="button" class="ok-toggle-group__option" data-on:click="$logoColor = 'warn'"
+                <button type="button" class="toggle-group__option" data-on:click="$logoColor = 'warn'"
                   data-class:is-selected="$logoColor === 'warn'">Ámbar</button>
-                <button type="button" class="ok-toggle-group__option" data-on:click="$logoColor = 'danger'"
+                <button type="button" class="toggle-group__option" data-on:click="$logoColor = 'danger'"
                   data-class:is-selected="$logoColor === 'danger'">Rojo</button>
               </div>
-              <span class="ok-field__hint">Solo cosmético. Lo cambias cuando quieras.</span>
+              <span class="field__hint">Solo cosmético. Lo cambias cuando quieras.</span>
             </div>
 
           </div>
-          <footer class="ok-card__footer ok-card__actions" style="display: flex; gap: 10px; justify-content: flex-end;">
-            <a class="ok-btn ok-btn--ghost" href="list.html">Cancelar</a>
-            <button class="ok-btn ok-btn--primary" type="submit"
+          <footer class="card__footer card__actions" style="display: flex; gap: 10px; justify-content: flex-end;">
+            <a class="btn ghost" href="list.html">Cancelar</a>
+            <button class="btn primary" type="submit"
               data-attr:disabled="$name.length === 0 || $slug.length === 0">
               Crear organización
             </button>
@@ -185,12 +185,12 @@
         </form>
 
         <!-- Live preview -->
-        <aside class="preview-card ok-col-md-5 ok-col-lg-4 ok-col-sticky">
-          <div class="ok-c-ink-3" style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:12px;">Vista previa</div>
+        <aside class="preview-card col-md-5 col-lg-4 col-sticky">
+          <div class="c-ink-3" style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:12px;">Vista previa</div>
 
           <div class="preview-card__org">
             <div class="preview-card__logo"
-              data-style-background="$logoColor === 'brand' ? 'var(--ok-brand)' : $logoColor === 'leaf' ? 'var(--ok-leaf)' : $logoColor === 'info' ? 'var(--ok-info)' : $logoColor === 'warn' ? 'var(--ok-warn)' : 'var(--ok-danger)'"
+              data-style-background="$logoColor === 'brand' ? 'var(--brand)' : $logoColor === 'leaf' ? 'var(--leaf)' : $logoColor === 'info' ? 'var(--info)' : $logoColor === 'warn' ? 'var(--warn)' : 'var(--danger)'"
               data-text="($name || 'AC').slice(0,2).toUpperCase()">AC</div>
             <div>
               <div class="preview-card__name" data-text="$name || 'Tu organización'"></div>
@@ -198,33 +198,33 @@
             </div>
           </div>
 
-          <hr style="border:0; border-top: 1px solid var(--ok-line); margin: 18px 0;"/>
+          <hr style="border:0; border-top: 1px solid var(--line); margin: 18px 0;"/>
 
-          <div class="ok-c-ink-3" style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;">Tras crearla podrás</div>
-          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 13px; color: var(--ok-ink-2);">
+          <div class="c-ink-3" style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:10px;">Tras crearla podrás</div>
+          <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 13px; color: var(--ink-2);">
             <li style="display: flex; gap: 10px; align-items: center;">
-              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--ok-leaf) 18%, transparent); color: var(--ok-leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
+              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--leaf) 18%, transparent); color: var(--leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
               Crear hubs (cada hub = una tienda/punto de venta)
             </li>
             <li style="display: flex; gap: 10px; align-items: center;">
-              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--ok-leaf) 18%, transparent); color: var(--ok-leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
+              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--leaf) 18%, transparent); color: var(--leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
               Invitar miembros del equipo
             </li>
             <li style="display: flex; gap: 10px; align-items: center;">
-              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--ok-leaf) 18%, transparent); color: var(--ok-leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
+              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--leaf) 18%, transparent); color: var(--leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
               Configurar facturación, datos fiscales y direcciones
             </li>
             <li style="display: flex; gap: 10px; align-items: center;">
-              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--ok-leaf) 18%, transparent); color: var(--ok-leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
+              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--leaf) 18%, transparent); color: var(--leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
               Elegir plan y suscripciones por hub
             </li>
             <li style="display: flex; gap: 10px; align-items: center;">
-              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--ok-leaf) 18%, transparent); color: var(--ok-leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
+              <span style="width:18px; height:18px; border-radius:50%; background: color-mix(in oklch, var(--leaf) 18%, transparent); color: var(--leaf); display:grid; place-items:center; font-weight:700; font-size:11px; flex-shrink:0;">✓</span>
               Comprar equipo y añadir métodos de pago
             </li>
           </ul>
-          <p class="ok-c-ink-3" style="font-size: 11.5px; line-height: 1.5; margin: 14px 0 0;">
-            Empiezas en plan <strong class="ok-c-ink-2">Trial</strong> sin cobro durante 14 días.
+          <p class="c-ink-3" style="font-size: 11.5px; line-height: 1.5; margin: 14px 0 0;">
+            Empiezas en plan <strong class="c-ink-2">Trial</strong> sin cobro durante 14 días.
           </p>
         </aside>
       </div>
@@ -233,27 +233,27 @@
   </main>
 
   <!-- Bottom tab bar — mobile only -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="../dashboard/saas.html">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="../dashboard/saas.html">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="../hubs/active.html">
-        <span class="ok-tabbar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg></span>
-        <span class="ok-tabbar-label">Hubs</span>
+      <a class="tabbar-item" href="../hubs/active.html">
+        <span class="tabbar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/></svg></span>
+        <span class="tabbar-label">Hubs</span>
       </a>
-      <a class="ok-tabbar-item" href="list.html" aria-current="page">
-        <span class="ok-tabbar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg></span>
-        <span class="ok-tabbar-label">Orgs</span>
+      <a class="tabbar-item" href="list.html" aria-current="page">
+        <span class="tabbar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14"/></svg></span>
+        <span class="tabbar-label">Orgs</span>
       </a>
-      <a class="ok-tabbar-item" href="../users/list.html">
-        <span class="ok-tabbar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/></svg></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="../users/list.html">
+        <span class="tabbar-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8"/></svg></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

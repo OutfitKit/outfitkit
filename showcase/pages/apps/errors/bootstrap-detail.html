@@ -12,41 +12,41 @@
 {% block page_title %}Bootstrap (detalle){% endblock %}
 
 {% block content %}
-<main class="ok-error-page ok-error-page--danger">
-  <div class="ok-error-page__inner">
-    <div class="ok-error-page__illu">
+<main class="error-page danger">
+  <div class="error-page__inner">
+    <div class="error-page__illu">
       <iconify-icon icon="lucide:code" width="44" height="44"></iconify-icon>
     </div>
-    <div class="ok-error-page__code">Bootstrap failure · technical detail</div>
-    <h1 class="ok-error-page__title">Detalle del error de arranque</h1>
-    <p class="ok-error-page__msg">Información completa del fallo en la inicialización del Hub. Comparte estos datos con soporte si el reintento automático no resuelve el problema.</p>
+    <div class="error-page__code">Bootstrap failure · technical detail</div>
+    <h1 class="error-page__title">Detalle del error de arranque</h1>
+    <p class="error-page__msg">Información completa del fallo en la inicialización del Hub. Comparte estos datos con soporte si el reintento automático no resuelve el problema.</p>
 
-    <ul class="ok-error-page__diagnosis">
-      <li class="ok-error-page__diagnosis-item is-ok">
-        <span class="ok-error-page__diagnosis-icon">✓</span>
+    <ul class="error-page__diagnosis">
+      <li class="error-page__diagnosis-item is-ok">
+        <span class="error-page__diagnosis-icon">✓</span>
         <span>Sistema de archivos · permisos OK</span>
-        <span class="ok-error-page__diagnosis-time">12 ms</span>
+        <span class="error-page__diagnosis-time">12 ms</span>
       </li>
-      <li class="ok-error-page__diagnosis-item is-ok">
-        <span class="ok-error-page__diagnosis-icon">✓</span>
+      <li class="error-page__diagnosis-item is-ok">
+        <span class="error-page__diagnosis-icon">✓</span>
         <span>Base de datos · 3.6 GB · íntegra</span>
-        <span class="ok-error-page__diagnosis-time">142 ms</span>
+        <span class="error-page__diagnosis-time">142 ms</span>
       </li>
-      <li class="ok-error-page__diagnosis-item is-warn">
-        <span class="ok-error-page__diagnosis-icon">!</span>
+      <li class="error-page__diagnosis-item is-warn">
+        <span class="error-page__diagnosis-icon">!</span>
         <span>Resolución DNS para acme.erplora.cloud</span>
-        <span class="ok-error-page__diagnosis-time">5.4 s</span>
+        <span class="error-page__diagnosis-time">5.4 s</span>
       </li>
-      <li class="ok-error-page__diagnosis-item is-fail">
-        <span class="ok-error-page__diagnosis-icon">✗</span>
+      <li class="error-page__diagnosis-item is-fail">
+        <span class="error-page__diagnosis-icon">✗</span>
         <span>TLS handshake con cloud (timeout 30 s)</span>
-        <span class="ok-error-page__diagnosis-time">timeout</span>
+        <span class="error-page__diagnosis-time">timeout</span>
       </li>
     </ul>
 
-    <details class="ok-error-page__details" open>
+    <details class="error-page__details" open>
       <summary>Stack trace completo</summary>
-      <pre class="ok-error-page__trace">Traceback (most recent call last):
+      <pre class="error-page__trace">Traceback (most recent call last):
   File "/opt/erplora/hub/bootstrap.py", line 142, in main
     sync_client.connect(timeout=30)
   File "/opt/erplora/hub/cloud_sync/client.py", line 87, in connect
@@ -72,13 +72,13 @@ Last 5 successful syncs:
   2026-05-08T09:42:00Z  ok  (rtt 121 ms)</pre>
     </details>
 
-    <div class="ok-error-page__actions">
-      <button class="ok-btn ok-btn--ghost" data-on:click="navigator.clipboard?.writeText('4f2a-bootstrap-3b81-9c2e')">Copiar trace</button>
-      <a class="ok-btn ok-btn--ghost" href="/errors/bootstrap.html">← Volver al diagnóstico</a>
-      <button class="ok-btn ok-btn--primary" data-on:click="location.reload()">Reintentar ahora</button>
+    <div class="error-page__actions">
+      <button class="btn ghost" data-on:click="navigator.clipboard?.writeText('4f2a-bootstrap-3b81-9c2e')">Copiar trace</button>
+      <a class="btn ghost" href="/errors/bootstrap.html">← Volver al diagnóstico</a>
+      <button class="btn primary" data-on:click="location.reload()">Reintentar ahora</button>
     </div>
 
-    <div class="ok-error-page__meta">trace · 4f2a-bootstrap-3b81-9c2e · build v2.2.0 · 2026-05-08 14:33 UTC</div>
+    <div class="error-page__meta">trace · 4f2a-bootstrap-3b81-9c2e · build v2.2.0 · 2026-05-08 14:33 UTC</div>
   </div>
 </main>
 {% endblock %}

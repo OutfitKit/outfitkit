@@ -2,7 +2,7 @@
 
 {% macro stats(variant=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}stats{% if variant %} {{ ok_prefix }}stats--{{ variant }}{% endif %}"
+<div class="{{ ok_prefix }}stats{% if variant %} {{ variant }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ caller() }}
 </div>

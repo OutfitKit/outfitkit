@@ -80,6 +80,17 @@ def _css_url() -> str:
     return "https://cdn.jsdelivr.net/gh/OutfitKit/outfitkit@main/css/outfitkit.css"
 
 
+def _local_mode() -> bool:
+    """True when running in fully-local mode (no external CDN dependencies).
+
+    Set ``OUTFITKIT_CSS=local`` to enable. In local mode the layout skips
+    Google Fonts preload and loads themes from the local build instead of
+    jsDelivr, so Playwright and offline environments don't hang waiting for
+    external resources.
+    """
+    return os.environ.get("OUTFITKIT_CSS") == "local"
+
+
 def make_site() -> ShowcaseSite:
     site = ShowcaseSite.make_site(
         searchpath=str(PAGES),
@@ -89,10 +100,12 @@ def make_site() -> ShowcaseSite:
         env_globals={
             "css_url": _css_url(),
             "base_path": _base_path(),
+            # When True: skip Google Fonts preload + load themes locally.
+            "local_mode": _local_mode(),
             # Default class-name prefix used by every macro. The showcase
             # itself loads the prefixed CSS bundle, so it stays "ok-".
             # Consumers that want the unprefixed bundle pass "" instead.
-            "ok_prefix": "ok-",
+            "ok_prefix": "",
         },
     )
 

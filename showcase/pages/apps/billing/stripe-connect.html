@@ -13,159 +13,159 @@
 
 {% block content %}
 <style>
-  body { background: var(--ok-bg); margin: 0; }
+  body { background: var(--bg); margin: 0; }
 </style>
-<div class="ok-app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
-  <div class="ok-app__sidebar-overlay" data-on:click="$sidebar = false"></div>
+<div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
+  <div class="app__sidebar-overlay" data-on:click="$sidebar = false"></div>
 
-  <aside class="ok-sidebar">
-    <div class="ok-sidebar__brand">
-      <div class="ok-sidebar__logo">EC</div>
-      <div class="ok-sidebar__brand-text">
-        <div class="ok-sidebar__brand-name">ERPlora Cloud</div>
-        <div class="ok-sidebar__brand-meta">acme · ES</div>
+  <aside class="sidebar">
+    <div class="sidebar__brand">
+      <div class="sidebar__logo">EC</div>
+      <div class="sidebar__brand-text">
+        <div class="sidebar__brand-name">ERPlora Cloud</div>
+        <div class="sidebar__brand-meta">acme · ES</div>
       </div>
     </div>
-    <div class="ok-sidebar__body">
-      <div class="ok-sidebar__group">Principal</div>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Vista general</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Organizaciones</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Hubs</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Usuarios</span></button>
+    <div class="sidebar__body">
+      <div class="sidebar__group">Principal</div>
+      <button class="sidebar__item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="sidebar__label">Vista general</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="sidebar__label">Organizaciones</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="sidebar__label">Hubs</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="sidebar__label">Usuarios</span></button>
 
-      <div class="ok-sidebar__group">Facturación</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="ok-sidebar__label">Facturas</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="ok-sidebar__label">Suscripciones</span></button>
+      <div class="sidebar__group">Facturación</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="sidebar__label">Facturas</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="sidebar__label">Suscripciones</span></button>
 
-      <div class="ok-sidebar__group">Desarrollador</div>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="ok-sidebar__label">Repositorios</span></button>
-      <button class="ok-sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="ok-sidebar__label">Módulos</span></button>
-      <button class="ok-sidebar__item" aria-current="page"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="ok-sidebar__label">Stripe Connect</span><span class="ok-sidebar__badge ok-sidebar__badge--brand">●</span></button>
-      <button class="ok-sidebar__item"><svg class="ok-sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="ok-sidebar__label">Payouts</span></button>
+      <div class="sidebar__group">Desarrollador</div>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="sidebar__label">Repositorios</span></button>
+      <button class="sidebar__item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="sidebar__label">Módulos</span></button>
+      <button class="sidebar__item" aria-current="page"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="sidebar__label">Stripe Connect</span><span class="sidebar__badge sidebar__badge--brand">●</span></button>
+      <button class="sidebar__item"><svg class="sidebar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="sidebar__label">Payouts</span></button>
     </div>
-    <div class="ok-sidebar__footer">
-      <div class="ok-sidebar__user">
-        <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
-        <div class="ok-sidebar__user-info">
-          <div class="ok-sidebar__user-name">Ioan Beilic</div>
-          <div class="ok-sidebar__user-meta">ioan@acme.com</div>
+    <div class="sidebar__footer">
+      <div class="sidebar__user">
+        <span class="avatar sm brand">IB</span>
+        <div class="sidebar__user-info">
+          <div class="sidebar__user-name">Ioan Beilic</div>
+          <div class="sidebar__user-meta">ioan@acme.com</div>
         </div>
       </div>
     </div>
   </aside>
 
-  <div class="ok-app__main">
-    <header class="ok-topbar">
-        <div class="ok-topbar__left">
-          <button class="ok-topbar__menu-btn" aria-label="Menú"
+  <div class="app__main">
+    <header class="topbar">
+        <div class="topbar__left">
+          <button class="topbar__menu-btn" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="ok-topbar__back-btn" aria-label="Volver"
+          <button class="topbar__back-btn" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
-        <h1 class="ok-topbar__page-title">Stripe Connect</h1>
+        <h1 class="topbar__page-title">Stripe Connect</h1>
         
-        <div class="ok-topbar__search">
+        <div class="topbar__search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar…"/>
-        <span class="ok-topbar__kbd">⌘K</span>
+        <span class="topbar__kbd">⌘K</span>
       </div>
         
-        <div class="ok-topbar__actions">
-          <span class="ok-avatar ok-avatar--sm ok-avatar--brand">IB</span>
+        <div class="topbar__actions">
+          <span class="avatar sm brand">IB</span>
         </div>
       </header>
 
-    <div class="ok-app__body">
-      <div class="ok-page-header">
-        <div class="ok-page-header__title">
+    <div class="app__body">
+      <div class="page-header">
+        <div class="page-header__title">
           <h1>Stripe Connect</h1>
-          <div class="ok-page-header__sub">Cobra ventas del marketplace de módulos directamente en tu cuenta</div>
+          <div class="page-header__sub">Cobra ventas del marketplace de módulos directamente en tu cuenta</div>
         </div>
-        <div class="ok-page-header__actions">
-          <button class="ok-btn ok-btn--outline">
+        <div class="page-header__actions">
+          <button class="btn outline">
             Visitar dashboard Stripe
-            <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px;margin-right:0;"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px;margin-right:0;"><path d="M7 17 17 7M7 7h10v10"/></svg>
           </button>
         </div>
       </div>
 
       <!-- Status hero card -->
-      <article class="ok-card ok-mb-4" data-attr:style="$connected ? 'margin-bottom:18px;border-left:3px solid var(--ok-leaf);' : 'margin-bottom:18px;border-left:3px solid var(--ok-danger);'">
-        <div class="ok-card__body" style="display:flex;align-items:center;gap:18px;padding:24px;">
-          <div data-attr:style="$connected ? 'width:64px;height:64px;border-radius:var(--ok-radius-lg);background:var(--ok-leaf-soft);color:var(--ok-leaf);display:grid;place-items:center;flex-shrink:0;' : 'width:64px;height:64px;border-radius:var(--ok-radius-lg);background:var(--ok-danger-soft);color:var(--ok-danger);display:grid;place-items:center;flex-shrink:0;'">
+      <article class="card mb-4" data-attr:style="$connected ? 'margin-bottom:18px;border-left:3px solid var(--leaf);' : 'margin-bottom:18px;border-left:3px solid var(--danger);'">
+        <div class="card__body" style="display:flex;align-items:center;gap:18px;padding:24px;">
+          <div data-attr:style="$connected ? 'width:64px;height:64px;border-radius:var(--radius-lg);background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;flex-shrink:0;' : 'width:64px;height:64px;border-radius:var(--radius-lg);background:var(--danger-soft);color:var(--danger);display:grid;place-items:center;flex-shrink:0;'">
             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
           </div>
-          <div class="ok-flex-1">
+          <div class="flex-1">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px;">
-              <h2 style="margin:0;font-size:20px;font-family:var(--ok-font-display);font-weight:600;letter-spacing:-0.02em;" data-text="$connected ? 'Cuenta conectada y verificada' : 'Cuenta desconectada'">Cuenta conectada y verificada</h2>
-              <span class="ok-badge ok-badge--ok" data-show="$connected"><span class="ok-badge__dot"></span>Verified</span>
-              <span class="ok-badge ok-badge--danger" data-show="!$connected"><span class="ok-badge__dot"></span>Desconectada</span>
+              <h2 style="margin:0;font-size:20px;font-family:var(--font-display);font-weight:600;letter-spacing:-0.02em;" data-text="$connected ? 'Cuenta conectada y verificada' : 'Cuenta desconectada'">Cuenta conectada y verificada</h2>
+              <span class="badge success" data-show="$connected"><span class="badge__dot"></span>Verified</span>
+              <span class="badge danger" data-show="!$connected"><span class="badge__dot"></span>Desconectada</span>
             </div>
-            <div style="font-size:14px;color:var(--ok-ink-2);line-height:1.5;">
+            <div style="font-size:14px;color:var(--ink-2);line-height:1.5;">
               <span data-show="$connected">Tu cuenta está lista para recibir pagos. Configurada el 12 mar 2026.<br/></span>
               <span data-show="!$connected">Los cobros del marketplace están <b>detenidos</b>. Reconecta para reanudar.<br/></span>
-              <span class="ok-c-ink-3">acct_1ABC12345 · Express · capability: card_payments + transfers</span>
+              <span class="c-ink-3">acct_1ABC12345 · Express · capability: card_payments + transfers</span>
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
-            <button class="ok-btn ok-btn--primary ok-btn--sm" data-show="!$connected" data-on:click="$connected = true">Reconectar</button>
+            <button class="btn primary sm" data-show="!$connected" data-on:click="$connected = true">Reconectar</button>
           </div>
         </div>
       </article>
 
       <!-- KPI strip -->
-      <div class="ok-grid-4 ok-mb-6">
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Saldo Stripe</div>
-          <div class="ok-kpi__value">€1 480</div>
-          <span class="ok-badge"><span class="ok-badge__dot"></span>liquidable</span>
+      <div class="grid-4 mb-6">
+        <div class="kpi">
+          <div class="kpi__label">Saldo Stripe</div>
+          <div class="kpi__value">€1 480</div>
+          <span class="badge"><span class="badge__dot"></span>liquidable</span>
         </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Próximo payout</div>
-          <div class="ok-kpi__value" style="font-size:22px;">lun 13 may</div>
-          <span class="ok-badge ok-badge--info"><span class="ok-badge__dot"></span>5 días</span>
+        <div class="kpi">
+          <div class="kpi__label">Próximo payout</div>
+          <div class="kpi__value" style="font-size:22px;">lun 13 may</div>
+          <span class="badge info"><span class="badge__dot"></span>5 días</span>
         </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Pagos recibidos</div>
-          <div class="ok-kpi__value">47</div>
-          <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>+12 este mes</span>
+        <div class="kpi">
+          <div class="kpi__label">Pagos recibidos</div>
+          <div class="kpi__value">47</div>
+          <span class="badge success"><span class="badge__dot"></span>+12 este mes</span>
         </div>
-        <div class="ok-kpi">
-          <div class="ok-kpi__label">Disputas</div>
-          <div class="ok-kpi__value ok-c-leaf">0</div>
-          <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>limpio</span>
+        <div class="kpi">
+          <div class="kpi__label">Disputas</div>
+          <div class="kpi__value c-leaf">0</div>
+          <span class="badge success"><span class="badge__dot"></span>limpio</span>
         </div>
       </div>
 
       <!-- Información de la cuenta -->
-      <section class="ok-section ok-mb-6">
-        <div class="ok-mb-2">
-          <h3 style="margin:0;font-family:var(--ok-font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Información de la cuenta</h3>
-          <p style="margin:4px 0 0;font-size:13px;color:var(--ok-ink-3);">Datos de la cuenta Stripe Express</p>
+      <section class="section mb-6">
+        <div class="mb-2">
+          <h3 style="margin:0;font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Información de la cuenta</h3>
+          <p style="margin:4px 0 0;font-size:13px;color:var(--ink-3);">Datos de la cuenta Stripe Express</p>
         </div>
-        <article class="ok-card">
-          <div class="ok-card__body">
-            <div class="ok-grid-4">
+        <article class="card">
+          <div class="card__body">
+            <div class="grid-4">
               <div>
-                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ok-ink-3);margin-bottom:4px;">Tipo de cuenta</div>
-                <div class="ok-font-medium">Express</div>
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:4px;">Tipo de cuenta</div>
+                <div class="font-medium">Express</div>
               </div>
               <div>
-                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ok-ink-3);margin-bottom:4px;">País</div>
-                <div class="ok-font-medium">🇪🇸 España</div>
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:4px;">País</div>
+                <div class="font-medium">🇪🇸 España</div>
               </div>
               <div>
-                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ok-ink-3);margin-bottom:4px;">Moneda</div>
-                <div class="ok-font-medium">EUR</div>
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:4px;">Moneda</div>
+                <div class="font-medium">EUR</div>
               </div>
               <div>
-                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ok-ink-3);margin-bottom:4px;">Fee structure</div>
-                <div class="ok-font-medium">1.4% + €0,25</div>
+                <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin-bottom:4px;">Fee structure</div>
+                <div class="font-medium">1.4% + €0,25</div>
               </div>
             </div>
           </div>
@@ -173,128 +173,128 @@
       </section>
 
       <!-- Cuenta bancaria -->
-      <section class="ok-section ok-mb-6">
-        <div class="ok-mb-2">
-          <h3 style="margin:0;font-family:var(--ok-font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Cuenta bancaria</h3>
-          <p style="margin:4px 0 0;font-size:13px;color:var(--ok-ink-3);">Destino de las transferencias automáticas</p>
+      <section class="section mb-6">
+        <div class="mb-2">
+          <h3 style="margin:0;font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Cuenta bancaria</h3>
+          <p style="margin:4px 0 0;font-size:13px;color:var(--ink-3);">Destino de las transferencias automáticas</p>
         </div>
         <div style="display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;">
-          <div class="ok-loyalty">
-            <div class="ok-loyalty__head">
-              <span class="ok-loyalty__brand">Banco Sabadell</span>
-              <span class="ok-loyalty__chip"></span>
+          <div class="loyalty">
+            <div class="loyalty__head">
+              <span class="loyalty__brand">Banco Sabadell</span>
+              <span class="loyalty__chip"></span>
             </div>
-            <div class="ok-loyalty__num">ES•• •••• •••• •••• 5547</div>
-            <div class="ok-loyalty__row">
-              <span class="ok-loyalty__name">Acme Industries SL</span>
-              <span class="ok-loyalty__expires">SWIFT<b>BSABESBB</b></span>
+            <div class="loyalty__num">ES•• •••• •••• •••• 5547</div>
+            <div class="loyalty__row">
+              <span class="loyalty__name">Acme Industries SL</span>
+              <span class="loyalty__expires">SWIFT<b>BSABESBB</b></span>
             </div>
             <div style="display:flex;justify-content:flex-end;">
-              <span class="ok-loyalty__tier-badge">SEPA Instant</span>
+              <span class="loyalty__tier-badge">SEPA Instant</span>
             </div>
           </div>
           <div>
-            <div style="font-size:14px;line-height:1.6;color:var(--ok-ink-2);margin-bottom:14px;">
-              Las transferencias se realizan vía <b class="ok-c-ink">SEPA Instant</b> y suelen llegar en menos de 60 segundos.<br/>
-              Titular verificado el <b class="ok-c-ink">12 mar 2026</b>. Última micro-validación: 6 may 2026.
+            <div style="font-size:14px;line-height:1.6;color:var(--ink-2);margin-bottom:14px;">
+              Las transferencias se realizan vía <b class="c-ink">SEPA Instant</b> y suelen llegar en menos de 60 segundos.<br/>
+              Titular verificado el <b class="c-ink">12 mar 2026</b>. Última micro-validación: 6 may 2026.
             </div>
-            <button class="ok-btn ok-btn--outline ok-btn--sm">Cambiar cuenta bancaria</button>
-            <button class="ok-btn ok-btn--ghost ok-btn--sm">Ver historial</button>
+            <button class="btn outline sm">Cambiar cuenta bancaria</button>
+            <button class="btn ghost sm">Ver historial</button>
           </div>
         </div>
       </section>
 
       <!-- Documentos -->
-      <section class="ok-section ok-mb-6">
-        <div class="ok-mb-2">
-          <h3 style="margin:0;font-family:var(--ok-font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Documentos</h3>
-          <p style="margin:4px 0 0;font-size:13px;color:var(--ok-ink-3);">Verificación de identidad y compliance</p>
+      <section class="section mb-6">
+        <div class="mb-2">
+          <h3 style="margin:0;font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Documentos</h3>
+          <p style="margin:4px 0 0;font-size:13px;color:var(--ink-3);">Verificación de identidad y compliance</p>
         </div>
-        <article class="ok-card">
-          <div class="ok-list">
-            <div class="ok-list__item ok-cursor-pointer" data-on:click="$docOpen = $docOpen === 'nif' ? null : 'nif'">
-              <span style="width:32px;height:32px;border-radius:var(--ok-radius-sm);background:var(--ok-leaf-soft);color:var(--ok-leaf);display:grid;place-items:center;">
+        <article class="card">
+          <div class="list">
+            <div class="list__item cursor-pointer" data-on:click="$docOpen = $docOpen === 'nif' ? null : 'nif'">
+              <span style="width:32px;height:32px;border-radius:var(--radius-sm);background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
               </span>
-              <div class="ok-list__body">
-                <div class="ok-list__title">NIF de la empresa</div>
-                <div class="ok-list__desc">B-12345678 · Acme Industries SL</div>
+              <div class="list__body">
+                <div class="list__title">NIF de la empresa</div>
+                <div class="list__desc">B-12345678 · Acme Industries SL</div>
               </div>
-              <div class="ok-list__aside">
-                <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Verificado</span>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm" data-attr:aria-expanded="$docOpen === 'nif'">
+              <div class="list__aside">
+                <span class="badge success"><span class="badge__dot"></span>Verificado</span>
+                <button class="btn ghost sm" data-attr:aria-expanded="$docOpen === 'nif'">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-attr:style="$docOpen === 'nif' ? 'transform:rotate(180deg);' : ''"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
               </div>
             </div>
-            <div data-show="$docOpen === 'nif'" style="padding:12px 16px;background:var(--ok-bg-2);border-bottom:1px solid var(--ok-line);font-size:13px;color:var(--ok-ink-2);line-height:1.6;">
+            <div data-show="$docOpen === 'nif'" style="padding:12px 16px;background:var(--bg-2);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2);line-height:1.6;">
               <div><b>Verificado por:</b> Stripe Identity · 14 mar 2026</div>
               <div><b>Documento:</b> Acme_Industries_NIF.pdf</div>
               <div><b>Próxima revisión:</b> 14 mar 2027</div>
             </div>
 
-            <div class="ok-list__item ok-cursor-pointer" data-on:click="$docOpen = $docOpen === 'dni' ? null : 'dni'">
-              <span style="width:32px;height:32px;border-radius:var(--ok-radius-sm);background:var(--ok-leaf-soft);color:var(--ok-leaf);display:grid;place-items:center;">
+            <div class="list__item cursor-pointer" data-on:click="$docOpen = $docOpen === 'dni' ? null : 'dni'">
+              <span style="width:32px;height:32px;border-radius:var(--radius-sm);background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
               </span>
-              <div class="ok-list__body">
-                <div class="ok-list__title">DNI representante legal</div>
-                <div class="ok-list__desc">Ioan Beilic · DNI verificado vía Onfido</div>
+              <div class="list__body">
+                <div class="list__title">DNI representante legal</div>
+                <div class="list__desc">Ioan Beilic · DNI verificado vía Onfido</div>
               </div>
-              <div class="ok-list__aside">
-                <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Verificado</span>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm" data-attr:aria-expanded="$docOpen === 'dni'">
+              <div class="list__aside">
+                <span class="badge success"><span class="badge__dot"></span>Verificado</span>
+                <button class="btn ghost sm" data-attr:aria-expanded="$docOpen === 'dni'">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-attr:style="$docOpen === 'dni' ? 'transform:rotate(180deg);' : ''"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
               </div>
             </div>
-            <div data-show="$docOpen === 'dni'" style="padding:12px 16px;background:var(--ok-bg-2);border-bottom:1px solid var(--ok-line);font-size:13px;color:var(--ok-ink-2);line-height:1.6;">
+            <div data-show="$docOpen === 'dni'" style="padding:12px 16px;background:var(--bg-2);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink-2);line-height:1.6;">
               <div><b>Proveedor:</b> Onfido (KYC)</div>
               <div><b>Verificado:</b> 12 mar 2026</div>
               <div><b>DNI:</b> ••••••07X</div>
             </div>
 
-            <div class="ok-list__item" style="background:color-mix(in oklch, var(--ok-warn) 6%, transparent);">
-              <span style="width:32px;height:32px;border-radius:var(--ok-radius-sm);background:var(--ok-warn-soft);color:var(--ok-warn);display:grid;place-items:center;">
+            <div class="list__item" style="background:color-mix(in oklch, var(--warn) 6%, transparent);">
+              <span style="width:32px;height:32px;border-radius:var(--radius-sm);background:var(--warn-soft);color:var(--warn);display:grid;place-items:center;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
               </span>
-              <div class="ok-list__body">
-                <div class="ok-list__title">Certificado IRS / W-8BEN-E</div>
-                <div class="ok-list__desc" data-show="!$uploading && $uploadPct < 100">Necesario para ventas a residentes en EE.UU. · Vence: pendiente de subir</div>
-                <div class="ok-list__desc" data-show="$uploading && $uploadPct < 100">Subiendo W-8BEN-E.pdf …</div>
-                <div class="ok-list__desc" data-show="$uploadPct >= 100">Subido y en revisión por Stripe</div>
-                <div data-show="$uploading || $uploadPct > 0" style="margin-top:8px;height:6px;background:var(--ok-bg-3);border-radius:4px;overflow:hidden;max-width:280px;">
-                  <div style="height:100%;background:var(--ok-warn);transition:width 200ms ease;" data-attr:style="'width:' + $uploadPct + '%;height:100%;background:var(--ok-warn);transition:width 200ms ease;'"></div>
+              <div class="list__body">
+                <div class="list__title">Certificado IRS / W-8BEN-E</div>
+                <div class="list__desc" data-show="!$uploading && $uploadPct < 100">Necesario para ventas a residentes en EE.UU. · Vence: pendiente de subir</div>
+                <div class="list__desc" data-show="$uploading && $uploadPct < 100">Subiendo W-8BEN-E.pdf …</div>
+                <div class="list__desc" data-show="$uploadPct >= 100">Subido y en revisión por Stripe</div>
+                <div data-show="$uploading || $uploadPct > 0" style="margin-top:8px;height:6px;background:var(--bg-3);border-radius:4px;overflow:hidden;max-width:280px;">
+                  <div style="height:100%;background:var(--warn);transition:width 200ms ease;" data-attr:style="'width:' + $uploadPct + '%;height:100%;background:var(--warn);transition:width 200ms ease;'"></div>
                 </div>
               </div>
-              <div class="ok-list__aside">
-                <span class="ok-badge ok-badge--warn" data-show="$uploadPct < 100"><span class="ok-badge__dot"></span><span data-text="$uploading ? 'Subiendo…' : 'Pendiente'">Pendiente</span></span>
-                <span class="ok-badge ok-badge--ok" data-show="$uploadPct >= 100"><span class="ok-badge__dot"></span>En revisión</span>
-                <button class="ok-btn ok-btn--primary ok-btn--sm"
+              <div class="list__aside">
+                <span class="badge warning" data-show="$uploadPct < 100"><span class="badge__dot"></span><span data-text="$uploading ? 'Subiendo…' : 'Pendiente'">Pendiente</span></span>
+                <span class="badge success" data-show="$uploadPct >= 100"><span class="badge__dot"></span>En revisión</span>
+                <button class="btn primary sm"
                         data-show="!$uploading && $uploadPct < 100"
                         data-on:click="$uploading = true; $uploadPct = 25; setTimeout(() => $uploadPct = 60, 600); setTimeout(() => $uploadPct = 100, 1200); setTimeout(() => $uploading = false, 1400)">
                   Subir documento
                 </button>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm" data-show="$uploadPct >= 100" data-on:click="$uploadPct = 0">Reemplazar</button>
+                <button class="btn ghost sm" data-show="$uploadPct >= 100" data-on:click="$uploadPct = 0">Reemplazar</button>
               </div>
             </div>
 
-            <div class="ok-list__item ok-cursor-pointer" data-on:click="$docOpen = $docOpen === 'iae' ? null : 'iae'">
-              <span style="width:32px;height:32px;border-radius:var(--ok-radius-sm);background:var(--ok-leaf-soft);color:var(--ok-leaf);display:grid;place-items:center;">
+            <div class="list__item cursor-pointer" data-on:click="$docOpen = $docOpen === 'iae' ? null : 'iae'">
+              <span style="width:32px;height:32px;border-radius:var(--radius-sm);background:var(--leaf-soft);color:var(--leaf);display:grid;place-items:center;">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
               </span>
-              <div class="ok-list__body">
-                <div class="ok-list__title">Justificante de actividad</div>
-                <div class="ok-list__desc">Modelo 036 · IAE 631 · subido 14 mar 2026</div>
+              <div class="list__body">
+                <div class="list__title">Justificante de actividad</div>
+                <div class="list__desc">Modelo 036 · IAE 631 · subido 14 mar 2026</div>
               </div>
-              <div class="ok-list__aside">
-                <span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Verificado</span>
-                <button class="ok-btn ok-btn--ghost ok-btn--sm" data-attr:aria-expanded="$docOpen === 'iae'">
+              <div class="list__aside">
+                <span class="badge success"><span class="badge__dot"></span>Verificado</span>
+                <button class="btn ghost sm" data-attr:aria-expanded="$docOpen === 'iae'">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-attr:style="$docOpen === 'iae' ? 'transform:rotate(180deg);' : ''"><path d="m6 9 6 6 6-6"/></svg>
                 </button>
               </div>
             </div>
-            <div data-show="$docOpen === 'iae'" style="padding:12px 16px;background:var(--ok-bg-2);font-size:13px;color:var(--ok-ink-2);line-height:1.6;">
+            <div data-show="$docOpen === 'iae'" style="padding:12px 16px;background:var(--bg-2);font-size:13px;color:var(--ink-2);line-height:1.6;">
               <div><b>IAE:</b> 631 — Comercio al por menor</div>
               <div><b>Subido:</b> 14 mar 2026</div>
               <div><b>Validez:</b> indefinida (mientras no varíe la actividad)</div>
@@ -304,35 +304,35 @@
       </section>
 
       <!-- Webhooks -->
-      <section class="ok-section ok-mb-6">
+      <section class="section mb-6">
         <div style="margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;">
           <div>
-            <h3 style="margin:0;font-family:var(--ok-font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Webhooks</h3>
-            <p style="margin:4px 0 0;font-size:13px;color:var(--ok-ink-3);">Endpoints de Stripe configurados en tu cuenta</p>
+            <h3 style="margin:0;font-family:var(--font-display);font-size:16px;font-weight:600;letter-spacing:-0.01em;">Webhooks</h3>
+            <p style="margin:4px 0 0;font-size:13px;color:var(--ink-3);">Endpoints de Stripe configurados en tu cuenta</p>
           </div>
-          <div class="ok-flex ok-gap-2">
-            <button class="ok-btn ok-btn--secondary ok-btn--sm" data-on:click="$testing = 'global'" data-attr:disabled="$testing !== null">
+          <div class="flex gap-2">
+            <button class="btn secondary sm" data-on:click="$testing = 'global'" data-attr:disabled="$testing !== null">
               <span data-show="$testing !== 'global'">Probar webhook</span>
-              <span data-show="$testing === 'global'"><span class="ok-spinner ok-spinner--sm" style="margin-right:4px;"></span>Enviando…</span>
+              <span data-show="$testing === 'global'"><span class="spinner sm" style="margin-right:4px;"></span>Enviando…</span>
             </button>
-            <button class="ok-btn ok-btn--secondary ok-btn--sm">+ Añadir endpoint</button>
+            <button class="btn secondary sm">+ Añadir endpoint</button>
           </div>
         </div>
-        <div data-show="$testing === 'global'" class="ok-mb-2">
-          <div class="ok-callout ok-callout--info">
-            <span class="ok-callout__icon"><iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon></span>
-            <div class="ok-callout__body">
-              <div class="ok-callout__title">Test event enviado</div>
-              <div class="ok-callout__desc">Esperando respuesta del endpoint…</div>
-              <div class="ok-callout__actions">
-                <a href="#" class="ok-callout__link" data-on:click="$testing = null">Cerrar</a>
+        <div data-show="$testing === 'global'" class="mb-2">
+          <div class="callout info">
+            <span class="callout__icon"><iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon></span>
+            <div class="callout__body">
+              <div class="callout__title">Test event enviado</div>
+              <div class="callout__desc">Esperando respuesta del endpoint…</div>
+              <div class="callout__actions">
+                <a href="#" class="callout__link" data-on:click="$testing = null">Cerrar</a>
               </div>
             </div>
           </div>
         </div>
-        <div class="ok-table-wrap">
-          <div class="ok-table-scroll">
-            <table class="ok-table">
+        <div class="table-wrap">
+          <div class="table-scroll">
+            <table class="table">
               <thead>
                 <tr>
                   <th>Endpoint</th>
@@ -344,32 +344,32 @@
               </thead>
               <tbody>
                 <tr>
-                  <td class="ok-td--mono">https://api.erplora.cloud/stripe/payment.succeeded</td>
-                  <td><span class="ok-tag ok-tag--neutral ok-tag--sm">payment_intent.succeeded</span></td>
-                  <td class="ok-td--muted">hace 8 min · 200 OK</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></td>
-                  <td><button class="ok-btn ok-btn--ghost ok-btn--sm">⋯</button></td>
+                  <td class="td mono">https://api.erplora.cloud/stripe/payment.succeeded</td>
+                  <td><span class="tag neutral sm">payment_intent.succeeded</span></td>
+                  <td class="td muted">hace 8 min · 200 OK</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Activo</span></td>
+                  <td><button class="btn ghost sm">⋯</button></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">https://api.erplora.cloud/stripe/transfer.created</td>
-                  <td><span class="ok-tag ok-tag--neutral ok-tag--sm">transfer.created</span></td>
-                  <td class="ok-td--muted">hace 2 h · 200 OK</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></td>
-                  <td><button class="ok-btn ok-btn--ghost ok-btn--sm">⋯</button></td>
+                  <td class="td mono">https://api.erplora.cloud/stripe/transfer.created</td>
+                  <td><span class="tag neutral sm">transfer.created</span></td>
+                  <td class="td muted">hace 2 h · 200 OK</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Activo</span></td>
+                  <td><button class="btn ghost sm">⋯</button></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">https://api.erplora.cloud/stripe/payout.paid</td>
-                  <td><span class="ok-tag ok-tag--neutral ok-tag--sm">payout.paid + payout.failed</span></td>
-                  <td class="ok-td--muted">hace 18 h · 200 OK</td>
-                  <td><span class="ok-badge ok-badge--ok"><span class="ok-badge__dot"></span>Activo</span></td>
-                  <td><button class="ok-btn ok-btn--ghost ok-btn--sm">⋯</button></td>
+                  <td class="td mono">https://api.erplora.cloud/stripe/payout.paid</td>
+                  <td><span class="tag neutral sm">payout.paid + payout.failed</span></td>
+                  <td class="td muted">hace 18 h · 200 OK</td>
+                  <td><span class="badge success"><span class="badge__dot"></span>Activo</span></td>
+                  <td><button class="btn ghost sm">⋯</button></td>
                 </tr>
                 <tr>
-                  <td class="ok-td--mono">https://api.erplora.cloud/stripe/charge.dispute.created</td>
-                  <td><span class="ok-tag ok-tag--neutral ok-tag--sm">charge.dispute.* (3)</span></td>
-                  <td class="ok-td--muted">nunca ejecutado</td>
-                  <td><span class="ok-badge"><span class="ok-badge__dot"></span>Listo</span></td>
-                  <td><button class="ok-btn ok-btn--ghost ok-btn--sm">⋯</button></td>
+                  <td class="td mono">https://api.erplora.cloud/stripe/charge.dispute.created</td>
+                  <td><span class="tag neutral sm">charge.dispute.* (3)</span></td>
+                  <td class="td muted">nunca ejecutado</td>
+                  <td><span class="badge"><span class="badge__dot"></span>Listo</span></td>
+                  <td><button class="btn ghost sm">⋯</button></td>
                 </tr>
               </tbody>
             </table>
@@ -378,9 +378,9 @@
       </section>
 
       <!-- Disconnect button -->
-      <div style="display:flex;justify-content:flex-end;padding:14px 0;border-top:1px solid var(--ok-line);">
-        <button class="ok-btn ok-btn--ghost ok-c-danger" data-on:click="$confirmDisconnect = true">
-          <svg class="ok-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>
+      <div style="display:flex;justify-content:flex-end;padding:14px 0;border-top:1px solid var(--line);">
+        <button class="btn ghost c-danger" data-on:click="$confirmDisconnect = true">
+          <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0M12 2v10"/></svg>
           Desconectar Stripe
         </button>
       </div>
@@ -390,58 +390,58 @@
 </div>
 
 <!-- Confirmation modal -->
-<div class="ok-modal-root ok-hidden" data-show="$confirmDisconnect">
-  <div class="ok-backdrop" data-on:click="$confirmDisconnect = false"></div>
-  <div class="ok-modal" style="max-width:480px;">
-    <header class="ok-modal__header">
+<div class="modal-root hidden" data-show="$confirmDisconnect">
+  <div class="backdrop" data-on:click="$confirmDisconnect = false"></div>
+  <div class="modal" style="max-width:480px;">
+    <header class="modal__header">
       <h3 style="margin:0;display:flex;align-items:center;gap:8px;">
-        <span style="width:28px;height:28px;border-radius:50%;background:var(--ok-danger-soft);color:var(--ok-danger);display:grid;place-items:center;">
+        <span style="width:28px;height:28px;border-radius:50%;background:var(--danger-soft);color:var(--danger);display:grid;place-items:center;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
         </span>
         Desconectar Stripe Connect
       </h3>
     </header>
-    <div class="ok-modal__body">
-      <p style="margin:0 0 12px;color:var(--ok-ink-2);line-height:1.5;">
+    <div class="modal__body">
+      <p style="margin:0 0 12px;color:var(--ink-2);line-height:1.5;">
         Esta acción <b>detendrá todos los cobros</b> del marketplace de módulos. Las ventas en curso quedarán pendientes hasta reconectar.
       </p>
-      <div class="ok-callout ok-callout--warn">
-        <span class="ok-callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span>
-        <div class="ok-callout__body">
-          <div class="ok-callout__title">Se preservará</div>
-          <div class="ok-callout__desc">Historial de payouts, recibos y certificados. La cuenta queda archivada.</div>
+      <div class="callout warning">
+        <span class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span>
+        <div class="callout__body">
+          <div class="callout__title">Se preservará</div>
+          <div class="callout__desc">Historial de payouts, recibos y certificados. La cuenta queda archivada.</div>
         </div>
       </div>
     </div>
-    <footer class="ok-modal__footer">
-      <button class="ok-btn ok-btn--ghost" data-on:click="$confirmDisconnect = false">Cancelar</button>
-      <button class="ok-btn ok-btn--danger" data-on:click="$connected = false; $confirmDisconnect = false">Desconectar</button>
+    <footer class="modal__footer">
+      <button class="btn ghost" data-on:click="$confirmDisconnect = false">Cancelar</button>
+      <button class="btn danger" data-on:click="$connected = false; $confirmDisconnect = false">Desconectar</button>
     </footer>
   </div>
 
   <!-- Bottom tab bar — mobile only via .ok-app__tabbar slot -->
-  <nav class="ok-app__tabbar" aria-label="Navegación principal">
-    <div class="ok-tabbar ok-tabbar--fixed ok-tabbar--icons">
-      <a class="ok-tabbar-item" href="#" aria-current="page">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Inicio</span>
+  <nav class="app__tabbar" aria-label="Navegación principal">
+    <div class="tabbar fixed icons">
+      <a class="tabbar-item" href="#" aria-current="page">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Inicio</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Hubs</span>
-        <span class="ok-tabbar-badge">7</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Hubs</span>
+        <span class="tabbar-badge">7</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Usuarios</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Usuarios</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Equipo</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Equipo</span>
       </a>
-      <a class="ok-tabbar-item" href="#">
-        <span class="ok-tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="ok-tabbar-label">Perfil</span>
+      <a class="tabbar-item" href="#">
+        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="tabbar-label">Perfil</span>
       </a>
     </div>
   </nav>

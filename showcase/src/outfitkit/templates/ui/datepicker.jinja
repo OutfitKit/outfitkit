@@ -2,7 +2,7 @@
 
 {% macro datepicker(title="", range=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="{{ ok_prefix }}datepicker{% if range %} {{ ok_prefix }}datepicker--range{% endif %}"
+<div class="{{ ok_prefix }}datepicker{% if range %} range{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- if title %}
   <div class="{{ ok_prefix }}datepicker__head">
