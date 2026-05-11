@@ -2,6 +2,12 @@
    OutfitKit · Chat
    Mensajería interna y comentarios. Lista + thread + composer.
 
+   Variantes globales soportadas (mismo contrato que .btn / .card / .badge):
+     <div class="chat primary">…</div>
+     <div class="chat danger">…</div>
+     <div class="chat success">…</div>
+   Consume `--variant`, `--variant-contrast`, `--variant-shade`.
+
    Composición universal:
      <div class="chat">
        <aside class="chat-list">
@@ -44,17 +50,24 @@
    ============================================================ */
 
 .chat {
-  /* API canónica de override */
+  /* API canónica de override.
+     Color de acento del chat (burbuja mía, badges, send, hover activo,
+     foco del composer) sale del contrato global de variantes:
+     `class="chat primary"`, `chat danger`, `chat success`, etc.
+     setean `--variant` y todo se ajusta automáticamente.
+     Si no hay variante, cae a brand. */
   --background:           var(--bg-2);
   --border-color:         var(--line);
   --radius:               var(--radius-xl);
   --chat-sidebar-bg:      var(--bg-1);
   --chat-bubble-bg:       var(--bg-3);
   --chat-bubble-color:    var(--ink);
-  --chat-mine-bg:         var(--brand);
-  --chat-mine-color:      var(--brand-fg);
-  --chat-accent:          var(--brand);
-  --chat-accent-fg:       var(--brand-fg);
+  --chat-mine-bg:         var(--variant, var(--brand));
+  --chat-mine-color:      var(--variant-contrast, var(--brand-fg));
+  --chat-mine-bg-hover:   var(--variant-shade, var(--brand-2));
+  --chat-accent:          var(--variant, var(--brand));
+  --chat-accent-fg:       var(--variant-contrast, var(--brand-fg));
+  --chat-accent-hover:    var(--variant-shade, var(--brand-2));
   --chat-composer-bg:     var(--bg-1);
   --chat-sidebar-width:   280px;
 
@@ -298,9 +311,9 @@
   place-items: center;
   color: var(--ink-2);
 }
-.chat-msg--mine .chat-msg-attach-icon { background: var(--overlay-glass-2); color: var(--brand-fg); }
+.chat-msg--mine .chat-msg-attach-icon { background: var(--overlay-glass-2); color: var(--chat-mine-color); }
 .chat-msg--mine .chat-msg-attach-name,
-.chat-msg--mine .chat-msg-attach-meta { color: var(--brand-fg); opacity: 0.9; }
+.chat-msg--mine .chat-msg-attach-meta { color: var(--chat-mine-color); opacity: 0.9; }
 
 .chat-reactions {
   display: inline-flex;
@@ -409,6 +422,6 @@
   cursor: pointer;
   transition: background var(--dur-fast);
 }
-.chat-composer-send:hover { background: var(--brand-2); }
+.chat-composer-send:hover { background: var(--chat-accent-hover); }
 .chat-composer-send:disabled { background: var(--bg-3); color: var(--ink-4); cursor: not-allowed; }
 .chat-composer-send svg { width: var(--icon-sm); height: var(--icon-sm); }

@@ -4,7 +4,80 @@ All notable changes to OutfitKit are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/).
 
-## [1.5.0] — 2026-05-10
+## [1.0.0] — 2026-05-11
+
+**Versioning reset.** All previous tags (v1.0.0..v1.5.0 + pypi-v1.1.1..pypi-v1.5.0)
+have been deleted from GitHub. This v1.0.0 is the new public baseline for the
+universal composition system. From here on, all changes are minor versions
+(bug fixes and incremental improvements).
+
+### Architecture
+
+- **Universal composition system.** Components compose with universal classes
+  (`.title`, `.sub`, `.label`, `.value`, `.meta`, `.heading`, `.head`, `.body`,
+  `.foot`, `.content`, `.scroll`, `.row`, `.col`, `.actions`, `.divider`,
+  `.item`, `.icon`, `.icon-disc`, `.close`, `.line-input`) and effect
+  modifiers (`.blur`, `.saturate`, `.glass`, `.elevated`, `.brightness`,
+  `.dim`). The pattern replaces per-component BEM children.
+- **App shell** uses `.app + .page + .content + .scroll` (no more
+  `.app__main/.app__body/.app__tabbar/.app__sidebar-overlay`).
+- **No CSS class prefix.** Single canonical bundle `dist/outfitkit.min.css`
+  emits classes like `.btn`, `.card`, `.modal`. The legacy prefixed bundle
+  `dist/outfitkit.ok.css` is retained as a frozen snapshot of the v1.5
+  era for consumers that need the `ok-` prefix.
+- **No BEM `--variant` modifiers.** Components compose with multi-class
+  modifiers Bulma-style: `<button class="btn primary lg">`.
+
+### Tokens
+
+- Ionic-like color schema: each variant (primary, secondary, success, warning,
+  danger, info, light, medium, dark) exposes 6 sub-properties (base, rgb,
+  contrast, contrast-rgb, shade, tint).
+- 5 themes: `default` (erplora dark, the default), `corporate`, `glass`,
+  `glass-mono`, `mono`.
+- Total tokens: 655 (down from 970 at peak after universalising many
+  component-scoped vars).
+- Defaults of effect modifiers live in tokens: `--blur-default: 24px`,
+  `--saturate: 140%` (with `--saturate-soft: 120%` and `--saturate-strong:
+  160%`), `--brightness-default: 1.1`, etc.
+
+### Jinja / JinjaX macros
+
+- 79 dual-mode macros (vanilla `{% from "ui/x.jinja" import x %}` AND JinjaX
+  `<X />` from the same file). All emit unprefixed universal classes.
+- `register_globals(env)` is now a no-op placeholder (the v1 `ok_prefix`
+  argument is gone).
+- `css_url()` returns the canonical bundle URL with no `prefix` parameter.
+
+### Removed (breaking vs the deleted v1.5)
+
+- `--ok-` class prefix (default bundle).
+- `--ok-*` tokens in source CSS (a retro-compat alias block remains in
+  `tokens.css` so external code reading `var(--ok-brand)` still works).
+- BEM `--variant` modifier syntax.
+- The `ok_prefix` argument and `DEFAULT_OK_PREFIX` symbol in the Python
+  package.
+- 80+ component-namespaced tokens (`--*-fz`, `--*-pad`, `--*-icon-size`,
+  `--*-blur`, `--*-saturate`) that duplicated the universal modifier API.
+
+### Showcase
+
+- 161 pages, all using universal class composition.
+- Viewport switcher (`▢ Desktop / ▭ Tablet / ▯ Mobile`) and theme toggle
+  driven by Datastar signals.
+- Local-mode build flag (`OUTFITKIT_CSS=local`) for offline development.
+
+### Historical context
+
+Prior to this versioning reset, the library shipped tags v1.0.0..v1.5.0
+between January and May 2026. Those tags were deleted from GitHub on
+2026-05-11 along with the corresponding PyPI publish markers
+(pypi-v1.1.1..pypi-v1.5.0). The git history is preserved (commit log
+intact); only the tag/release labels were reset.
+
+---
+
+## [1.5.0] — 2026-05-10  (superseded — see 1.0.0 reset above)
 
 ### Changed
 
