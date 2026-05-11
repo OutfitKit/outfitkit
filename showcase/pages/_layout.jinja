@@ -342,16 +342,14 @@
     })();
   </script>
 
-  {# Iconify web component (lazy-loads icon sets from api.iconify.design). #}
-  {% if not local_mode %}
+  {# Iconify web component (lazy-loads icon sets from api.iconify.design).
+     Always loaded — local_mode only avoids Google Fonts preload, not JS libs. #}
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2/dist/iconify-icon.min.js" defer></script>
-  {% endif %}
 
-  {# Datastar (async ESM module). #}
-  {% if not local_mode %}
+  {# Datastar (async ESM module). Always loaded — required for theme toggle,
+     viewport switcher, sidebar drawer, and every reactive component. #}
   <script type="module"
     src="https://cdn.jsdelivr.net/gh/starfederation/datastar@main/bundles/datastar.js"></script>
-  {% endif %}
 </head>
 <body>
   <div class="app" data-docs
