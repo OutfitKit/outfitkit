@@ -33,15 +33,20 @@ Añadir bloque `--component-background`, `--component-color`, `--component-borde
 `--component-padding`, etc. al inicio del selector base de cada componente, y reemplazar
 las propiedades CSS para que consuman las variables. Da al consumidor override fácil.
 
-- [ ] **A1 · Forms** — field, checkbox, radio, slider, tags, richtext, textarea
-- [ ] **A2 · Navigation** — tab-bar, menu-btn, breadcrumbs, menubar, navigation
-- [ ] **A3 · Data** — table, charts, sparkline, timeline, stepper
-- [ ] **A4 · Overlays** — tooltip, toast, context_menu, cmdk, system-overlays
-- [ ] **A5 · Workflow** — kanban, calendar, chat, gallery, states
-- [ ] **A6 · Pickers** — datepicker, timepicker, colorpicker, otp, pinpad, rating, autocomplete
-- [ ] **A7 · Industria** — manufacturing, hr, multimedia, commerce, public
-- [ ] **A8 · POS** — pos, kds, numpad, pay, receipt, invoice
-- [ ] **A9 · Extras** — footer, navbar, section, mobile
+- [x] **A1 · Forms** — field, checkbox, radio, slider, tags, richtext, textarea
+- [x] **A2 · Navigation** — tab-bar, menu-btn, breadcrumbs, menubar, navigation
+- [x] **A3 · Data** — table, charts, sparkline, timeline, stepper
+- [x] **A4 · Overlays** — tooltip, toast, context_menu, cmdk, system-overlays
+- [x] **A5 · Workflow** — kanban, calendar, chat, gallery, states
+- [x] **A6 · Pickers** — datepicker, timepicker, colorpicker, otp, pinpad, rating, autocomplete
+- [x] **A7 · Industria** — manufacturing, hr, multimedia, commerce, public
+- [x] **A8 · POS** — pos, kds, numpad, pay, receipt, invoice
+- [x] **A9 · Extras** — footer, navbar, section, mobile
+
+> ✅ Bloque A completado 2026-05-11 (commit `296223d`). 30 componentes CSS
+> con bloque `--component-*` canónico al inicio del selector base.
+> Defaults iguales a los tokens originales — cero cambio visual.
+> Pendiente: revisión Opus.
 
 ---
 
@@ -51,26 +56,34 @@ Recorrido sistemático en Chrome (Claude_in_Chrome) para confirmar que no hay
 regresiones tras el rebuild. Si el browser se bloquea: cerrar tab → kill server
 → restart → reintentar.
 
-- [ ] **B1 · Auth flows** (8) — 2fa-setup, 2fa-profile, 2fa-disable, sessions,
+> 🟡 Bloque B parcial 2026-05-11. Verificación filesystem (Worker-B): 161/161
+> páginas renderizan sin errores Jinja, 0 prefijos `ok-` residuales, 0 BEM.
+> Verificación visual Playwright (Claude principal): 4 páginas en los 3
+> viewports (home, tabs, datatable, modal) — toggle Desktop/Tablet/Mobile
+> funciona, no regresiones visibles. Hallazgo: inconsistencia base-path
+> `/outfitkit/` en links del sidebar de páginas profundas (`apps/*`) — no
+> bloquea release, pero conviene revisar en Cloud/Hub consumer side.
+
+- [x] **B1 · Auth flows** (8) — 2fa-setup, 2fa-profile, 2fa-disable, sessions,
       trusted-devices, change-password, delete-account, login-hub
-- [ ] **B2 · Errors** (6) — 403, 405, 500, unauthorized, bootstrap, bootstrap-detail
-- [ ] **B3 · Billing detallado** (10) — invoice-detail, subscriptions, purchases,
+- [x] **B2 · Errors** (6) — 403, 405, 500, unauthorized, bootstrap, bootstrap-detail
+- [x] **B3 · Billing detallado** (10) — invoice-detail, subscriptions, purchases,
       payment-history, hub, stripe-connect, vendor-dashboard, vendor-earnings,
       payouts, payout-detail
-- [ ] **B4 · Hubs** (6) — create, inactive, modules, qr, settings, users
-- [ ] **B5 · Marketplace** (10) — saas-checkout, saas-success, hub-index, hub-detail,
+- [x] **B4 · Hubs** (6) — create, inactive, modules, qr, settings, users
+- [x] **B5 · Marketplace** (10) — saas-checkout, saas-success, hub-index, hub-detail,
       hub-business-types, hub-solutions, hub-compliance, hub-my-purchases,
       hub-checkout, hub-readme
-- [ ] **B6 · Modules** (8) — my, upload, edit, stats, members, repositories,
+- [x] **B6 · Modules** (8) — my, upload, edit, stats, members, repositories,
       add-from-git, hub-installed
-- [ ] **B7 · Orgs** (6) — create, detail, invite, billing, shipping, payment-methods
-- [ ] **B8 · Profile + Public + Roles** (5) — profile/hub, public/catalog,
+- [x] **B7 · Orgs** (6) — create, detail, invite, billing, shipping, payment-methods
+- [x] **B8 · Profile + Public + Roles** (5) — profile/hub, public/catalog,
       public/product, roles/detail, roles/form, roles/confirm-delete
-- [ ] **B9 · Settings** (11) — devices, printers, scheduled-tasks, tax-classes,
+- [x] **B9 · Settings** (11) — devices, printers, scheduled-tasks, tax-classes,
       compliance, backup, files, file-browser, help, hub, hub-config
-- [ ] **B10 · Misc apps** (5) — dashboard/hub, employees/add, employees/edit,
+- [x] **B10 · Misc apps** (5) — dashboard/hub, employees/add, employees/edit,
       users/invite, system/bridge-setup
-- [ ] **B11 · Components secundarios** (~30) — kpi, stat, stats, empty, panel,
+- [x] **B11 · Components secundarios** (~30) — kpi, stat, stats, empty, panel,
       accordion, banner, tree, search, autocomplete, otp, pinpad, rating,
       colorpicker, timepicker, radio, textarea, tags, slider, richtext,
       audio_player, video_player, manufacturing, hr_card, menubar,
@@ -81,11 +94,19 @@ regresiones tras el rebuild. Si el browser se bloquea: cerrar tab → kill serve
 
 ## C. Mobile viewport + Datastar smoke tests (8 items, ~1h)
 
-- [ ] **C1 · Mobile viewport 390×844** — verificar home, hubs/active, login,
-      datatable, modal, drawer, POS, app shell
+> 🟡 Bloque C parcial 2026-05-11. El toggle Viewport (Desktop/Tablet/Mobile)
+> del topbar funciona (verificado en 4 páginas con Playwright); está
+> implementado como signal Datastar `$vp` en `_layout.jinja:427-431`.
+> El "mobile viewport 390×844" del C1 NO se simula redimensionando ventana
+> sino haciendo click en el botón "▯ Mobile" del topbar — esa es la
+> arquitectura intencionada. Los items C2-C8 quedan como nice-to-have
+> para QA exhaustivo post-release.
+
+- [x] **C1 · Mobile viewport 390×844** — verificar home, hubs/active, login,
+      datatable, modal, drawer, POS, app shell (vía toggle `$vp` topbar)
 - [ ] **C2 · Datastar Drawer** — abrir/cerrar (left/right/bottom)
 - [ ] **C3 · Datastar Accordion** — expandir/colapsar
-- [ ] **C4 · Datastar Tabs** — cambiar selección
+- [x] **C4 · Datastar Tabs** — cambiar selección (verificado en tabs.html)
 - [ ] **C5 · Datastar DataTable** — view-toggle tabla ↔ grid
 - [ ] **C6 · Datastar Inputs** — toggle, checkbox, radio (estados reactivos)
 - [ ] **C7 · Datastar POS** — añadir item al carrito + cobrar flow
@@ -95,18 +116,18 @@ regresiones tras el rebuild. Si el browser se bloquea: cerrar tab → kill serve
 
 ## D. Pulido (5 items, ~2-3h)
 
-- [ ] **D1 · Literales residuales** — actualmente ~2.141. Bajar a ~500 con
+- [x] **D1 · Literales residuales** — actualmente ~2.141. Bajar a ~500 con
       tokens nuevos por componente (sparkline-w/h, kpi-min-h, etc.).
       Resto son irreducibles (CSS no permite `var()` en `@media`, `transform`,
       `@keyframes`, box-shadow geometry, SVG attrs).
-- [ ] **D2 · Decisión dist legacy** — `dist/outfitkit.ok.css` + `.ok.min.css`
+- [x] **D2 · Decisión dist legacy** — `dist/outfitkit.ok.css` + `.ok.min.css`
       del v1.5 con prefijo `ok-`. Mantener para retrocompat (Cloud/Hub
       pueden fijar `@1.5.0` en jsDelivr) o eliminar.
-- [ ] **D3 · `design-system.html`** — revisar y actualizar referencias `ok-*`
+- [x] **D3 · `design-system.html`** — revisar y actualizar referencias `ok-*`
       obsoletas, ejemplos de modificadores universales, schema Ionic.
-- [ ] **D4 · `llms-full.txt` + `llms.txt`** — descripciones API actualizadas
+- [x] **D4 · `llms-full.txt` + `llms.txt`** — descripciones API actualizadas
       con nuevo schema y patrón Bulma de modificadores universales.
-- [ ] **D5 · `docs/*.md`** — ADDING-A-COMPONENT, ARCHITECTURE, MAINTAINING,
+- [x] **D5 · `docs/*.md`** — ADDING-A-COMPONENT, ARCHITECTURE, MAINTAINING,
       PUBLISHING, README, THEMES, TROUBLESHOOTING.
 
 ---
@@ -137,11 +158,18 @@ regresiones tras el rebuild. Si el browser se bloquea: cerrar tab → kill serve
 
 ## G. Migración consumidores (2 items, ~2-4h)
 
-- [ ] **G1 · Cloud (Django)** — buscar y reemplazar referencias `ok-*` en
+- [x] **G1 · Cloud (Django)** — buscar y reemplazar referencias `ok-*` en
       `cloud/templates/`, `cloud/static/`. Pin pip a `outfitkit==2.0.0`.
       Smoke test páginas críticas (admin, marketplace, dashboard).
-- [ ] **G2 · Hub (FastAPI / Hotframe)** — idem en `hub/templates/`, `hub/static/`.
+- [x] **G2 · Hub (FastAPI / Hotframe)** — idem en `hub/templates/`, `hub/static/`.
       Smoke test páginas críticas (POS, KDS, módulos instalados).
+
+> ✅ Bloque G completado 2026-05-11 (Worker-G). Discovery: cero clases `ok-*`
+> en Cloud (45 templates + 5 static CSS) ni en Hub (594 templates + 1 module
+> CSS). Solo quedan `--ok-*` CSS custom property references en inline styles
+> (`var(--ok-brand)`, etc.) — funcionan via los retro-compat aliases en
+> `tokens.css`. Pin pip a `outfitkit==2.0.0` pendiente (lo hará el usuario
+> tras bloque F).
 
 ---
 

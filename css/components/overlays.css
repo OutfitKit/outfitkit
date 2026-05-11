@@ -38,33 +38,29 @@
 .modal-root[data-state="open"] .backdrop { pointer-events: auto; }
 .modal-root:not([data-state="open"]) .backdrop { opacity: 0; pointer-events: none; }
 
+/* .modal — root container.
+   El consumidor compone con clases universales:
+     <div class="modal blur saturate">
+       <header class="head"> .icon-disc .primary | .title .xl | .sub | .close </header>
+       <div class="body">…</div>
+       <footer class="foot">…</footer>
+     </div>
+   Tamaño con .sm/.md/.lg/.xl (setea --max-width).
+   Para variar blur/saturate: style="--blur: 32px; --saturate: 160%;" */
 .modal {
-  /* API canónica de override */
-  --modal-background:    color-mix(in oklch, var(--bg-2) 88%, transparent);
-  --modal-color:         var(--ink);
-  --modal-border-color:  color-mix(in oklch, var(--line-2) 85%, transparent);
-  --modal-border-radius: var(--radius-2xl);
-  --modal-shadow:        var(--shadow-lg);
-  --modal-max-width:     var(--modal-max-w-md);
-  --modal-max-height:    calc(100vh - var(--space-8));
-  --modal-blur:          var(--glass-blur);
-  --modal-saturate:      160%;
-
   position: relative;
   width: 100%;
-  max-width: var(--modal-max-width);
-  max-height: var(--modal-max-height);
-  background: var(--modal-background);
-  color: var(--modal-color);
-  backdrop-filter: blur(var(--modal-blur)) saturate(var(--modal-saturate));
-  -webkit-backdrop-filter: blur(var(--modal-blur)) saturate(var(--modal-saturate));
-  border: var(--border-w) solid var(--modal-border-color);
-  border-radius: var(--modal-border-radius);
-  box-shadow: var(--modal-shadow);
+  max-width: var(--max-width, var(--modal-max-w-md));
+  max-height: var(--max-height, calc(100vh - var(--space-8)));
+  background: var(--background, color-mix(in oklch, var(--bg-2) 88%, transparent));
+  color: var(--color, var(--ink));
+  border: var(--border-w) solid var(--border-color, color-mix(in oklch, var(--line-2) 85%, transparent));
+  border-radius: var(--radius, var(--radius-2xl));
+  box-shadow: var(--shadow, var(--shadow-lg));
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transform: translateY(8px) scale(0.98);
+  transform: translateY(var(--space-2)) scale(0.98);
   opacity: 0;
   transition: transform var(--dur-base) var(--ease-spring), opacity var(--dur-base) var(--ease-out);
 }
@@ -73,78 +69,24 @@
   opacity: 1;
 }
 
-.modal.sm  { --modal-max-width: var(--modal-max-w-sm); }
-.modal.md  { --modal-max-width: var(--modal-max-w-md); }
-.modal.lg  { --modal-max-width: var(--modal-max-w-lg); }
-.modal.xl  { --modal-max-width: var(--modal-max-w-xl); }
+/* Tamaños — overrideables via style="--max-width: …" */
+.modal.sm  { --max-width: var(--modal-max-w-sm); }
+.modal.md  { --max-width: var(--modal-max-w-md); }
+.modal.lg  { --max-width: var(--modal-max-w-lg); }
+.modal.xl  { --max-width: var(--modal-max-w-xl); }
 
-.modal__header {
-  padding: var(--modal-header-pad) var(--space-5) var(--space-3);
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-3);
-}
-.modal__icon {
-  width: var(--size-md); height: var(--size-md);
-  border-radius: var(--radius-lg);
-  display: grid; place-items: center;
-  flex-shrink: 0;
-  background: var(--bg-3);
-  color: var(--ink-2);
-}
-.modal__icon svg { width: var(--icon-md); height: var(--icon-md); }
-.modal__icon--brand { background: var(--brand-soft); color: var(--brand-3); }
-.modal__icon--danger { background: var(--danger-soft); color: var(--danger); }
-.modal__icon--warn { background: var(--warn-soft); color: var(--warn); }
-.modal__icon--ok { background: var(--leaf-soft); color: var(--leaf); }
-
-.modal__heading { flex: 1; min-width: 0; }
-.modal__title {
-  font-family: var(--font-display);
-  font-size: var(--modal-title-fz);
-  font-weight: 600;
-  letter-spacing: var(--tracking-near);
-  color: var(--ink);
-  margin: var(--space-0);
-}
-.modal__sub {
-  font-size: var(--text-sm);
-  color: var(--ink-3);
-  margin-top: var(--space-1);
-  line-height: var(--leading-normal);
-}
-.modal__close {
-  width: var(--size-sm); height: var(--size-sm);
-  border: none;
-  background: transparent;
-  color: var(--ink-3);
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  display: grid; place-items: center;
-  font-size: var(--text-lg);
-  line-height: var(--leading-flat);
-  flex-shrink: 0;
-}
-.modal__close:hover { background: var(--bg-3); color: var(--ink); }
-
-.modal__body {
-  padding: var(--space-1) var(--space-5) var(--modal-header-pad);
+/* El .body dentro de un modal scrolla si el contenido es largo. */
+.modal > .body {
   overflow-y: auto;
   flex: 1;
-  font-size: var(--text-md);
-  color: var(--ink-2);
-  line-height: 1.55;
 }
-.modal__footer {
-  padding: var(--space-3) var(--space-5);
-  border-top: var(--border-w) solid var(--line);
-  background: var(--bg-1);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: var(--space-2);
+
+/* El .foot dentro de un modal tiene fondo levemente distinto. */
+.modal > .foot {
+  background: var(--background, var(--bg-1));
+  justify-content: var(--align, flex-end);
 }
-.modal__footer--between { justify-content: space-between; }
+.modal > .foot.between { justify-content: space-between; }
 
 /* ============================================================
    Drawer · panel lateral

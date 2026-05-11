@@ -3,209 +3,55 @@
    Invoice/quote builder · pricing matrix · signature pad
    ============================================================ */
 
-/* ---------- Invoice / quote document ---------- */
+/* ---------- Invoice / quote document ----------
+   El consumidor compone con clases universales:
+     <article class="invoice">
+       <header class="head row" style="--gap: var(--space-6)">
+         <div class="col">
+           <h1 class="title 2xl">Mi Empresa S.L.</h1>
+           <p class="sub">Calle Mayor 1, 28013 Madrid</p>
+         </div>
+         <div class="meta col">
+           <span class="row" style="--gap: var(--space-4)">Factura <b>#A-2025-0042</b></span>
+           …
+         </div>
+       </header>
+       <section class="body row" style="--gap: var(--space-6)">
+         <div class="col"> <span class="label">Facturar a</span> <span class="value">Cliente</span> </div>
+         <div class="col"> <span class="label">Enviar a</span>   <span class="value">…</span> </div>
+       </section>
+       <table class="table">
+         <thead><tr><th>Concepto</th><th>Cant.</th><th>Precio</th><th>Total</th></tr></thead>
+         <tbody><tr><td><input class="line-input" value="…"></td>…</tr></tbody>
+       </table>
+       <button class="btn link sm">+ Añadir línea</button>
+       <section class="body row" style="--gap: var(--space-6)">
+         <div class="meta col"> <span class="label">Notas</span> <p>…</p> </div>
+         <div class="col">
+           <div class="row"><span>Subtotal</span><span>1.000 €</span></div>
+           …
+           <div class="row title lg" style="border-top: var(--border-w) solid var(--line)">
+             <span>Total</span><span>1.210 €</span>
+           </div>
+         </div>
+       </section>
+     </article>
+*/
 .invoice {
-  /* API canónica de override */
-  --invoice-background:    var(--bg-2);
-  --invoice-border-color:  var(--line);
-  --invoice-border-radius: var(--radius-xl);
-  --invoice-accent:        var(--brand);
-
-  background: var(--invoice-background);
-  border: var(--border-w) solid var(--invoice-border-color);
-  border-radius: var(--invoice-border-radius);
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line));
+  border-radius: var(--radius, var(--radius-xl));
   overflow: hidden;
   font-variant-numeric: tabular-nums;
 }
-.invoice__head {
-  padding: var(--space-6);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-6);
-  align-items: flex-start;
-  border-bottom: var(--border-w) solid var(--line);
+/* invoice usa .table en su mesa de líneas, pero la tabla NO debe heredar
+   el border-radius del wrapper porque ya estamos dentro de un container
+   con overflow:hidden. Reseteamos por si la tabla añade el suyo propio. */
+.invoice > .table {
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
 }
-.invoice__logo {
-  font-family: var(--font-display);
-  font-size: var(--invoice-logo-fz);
-  font-weight: 700;
-  letter-spacing: var(--tracking-near);
-  color: var(--ink);
-  margin-bottom: var(--space-1);
-}
-.invoice__from {
-  font-size: var(--text-xs);
-  color: var(--ink-3);
-  line-height: var(--leading-normal);
-}
-
-.invoice__meta {
-  text-align: right;
-  font-family: var(--font-mono);
-  font-size: var(--text-xs);
-  color: var(--ink-3);
-}
-.invoice__meta-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-4);
-  padding: var(--border-w-2) var(--space-0);
-}
-.invoice__meta-row b {
-  color: var(--ink);
-  font-weight: 500;
-}
-.invoice__title {
-  font-family: var(--font-display);
-  font-size: var(--invoice-title-fz);
-  font-weight: 600;
-  letter-spacing: var(--tracking-near);
-  color: var(--ink);
-  margin-bottom: var(--space-2);
-}
-
-.invoice__bill {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-6);
-  padding: var(--invoice-pad) var(--space-6);
-  border-bottom: var(--border-w) solid var(--line);
-}
-.invoice__bill h4 {
-  font-family: var(--font-mono);
-  font-size: var(--invoice-h4-fz);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wider);
-  color: var(--ink-3);
-  margin: var(--space-0) var(--space-0) var(--space-1-5);
-  font-weight: 500;
-}
-.invoice__bill-name {
-  font-family: var(--font-display);
-  font-size: var(--text-base);
-  font-weight: 600;
-  color: var(--ink);
-}
-.invoice__bill-info {
-  font-size: var(--invoice-sub-fz);
-  color: var(--ink-2);
-  line-height: var(--leading-normal);
-  margin-top: var(--space-1);
-}
-
-.invoice__lines {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: var(--invoice-lines-fz);
-}
-.invoice__lines thead {
-  background: var(--bg-3);
-}
-.invoice__lines th {
-  font-family: var(--font-mono);
-  font-size: var(--invoice-h4-fz);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--ink-3);
-  padding: var(--space-2-5) var(--space-3);
-  text-align: left;
-  font-weight: 500;
-  border-bottom: var(--border-w) solid var(--line);
-}
-.invoice__lines th:nth-child(n+2),
-.invoice__lines td:nth-child(n+2) { text-align: right; }
-.invoice__lines td {
-  padding: var(--space-2-5) var(--space-3);
-  border-bottom: var(--border-w) solid var(--line);
-  color: var(--ink-2);
-}
-.invoice__lines td:first-child { color: var(--ink); }
-.invoice__lines td:last-child  { color: var(--ink); font-weight: 500; }
-.invoice__lines tr:hover td { background: color-mix(in oklch, var(--bg-3) 50%, transparent); }
-.invoice__lines td small {
-  display: block;
-  color: var(--ink-3);
-  font-size: var(--text-xs);
-  margin-top: var(--border-w-2);
-}
-
-.invoice__line-input {
-  background: transparent;
-  border: none;
-  border-bottom: var(--border-w) dashed transparent;
-  padding: var(--border-w) var(--space-1);
-  font: inherit;
-  color: inherit;
-  outline: none;
-  width: 100%;
-  text-align: inherit;
-}
-.invoice__line-input:hover { border-bottom-color: var(--line-2); }
-.invoice__line-input:focus { border-bottom-color: var(--brand); }
-
-.invoice__totals {
-  padding: var(--invoice-pad) var(--space-6);
-  border-top: var(--border-w) solid var(--line);
-  display: grid;
-  grid-template-columns: 1fr var(--invoice-totals-sum-w);
-  gap: var(--space-6);
-}
-.invoice__notes {
-  font-size: var(--invoice-sub-fz);
-  color: var(--ink-3);
-  line-height: 1.55;
-}
-.invoice__notes h5 {
-  font-family: var(--font-mono);
-  font-size: var(--invoice-h4-fz);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  color: var(--ink-3);
-  margin: var(--space-0) var(--space-0) var(--space-1);
-  font-weight: 500;
-}
-.invoice__sum {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-.invoice__sum-row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-4);
-  padding: var(--space-1) var(--space-0);
-  font-size: var(--invoice-sum-fz);
-}
-.invoice__sum-row span:first-child { color: var(--ink-3); }
-.invoice__sum-row span:last-child { color: var(--ink); }
-.invoice__sum-total {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: var(--space-4);
-  padding: var(--space-3) var(--space-0) var(--space-0);
-  margin-top: var(--space-1-5);
-  border-top: var(--border-w) solid var(--line);
-  font-family: var(--font-display);
-  font-size: var(--invoice-total-fz);
-  font-weight: 600;
-  letter-spacing: var(--tracking-near);
-  color: var(--ink);
-}
-
-.invoice__add-line {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1-5);
-  padding: var(--space-2) var(--space-6);
-  font-size: var(--text-sm);
-  color: var(--brand);
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-display);
-  font-weight: 500;
-}
-.invoice__add-line:hover { color: var(--brand-hover); }
 
 /* ---------- Pricing/tax matrix ---------- */
 .pmatrix {

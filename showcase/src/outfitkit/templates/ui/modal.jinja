@@ -5,10 +5,10 @@
 <div class="{{ ok_prefix }}modal-root" data-state="{{ state }}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   <div class="{{ ok_prefix }}backdrop"></div>
-  <div class="{{ ok_prefix }}modal {{ size }}">
-    <div class="{{ ok_prefix }}modal__header">
+  <div class="{{ ok_prefix }}modal {{ ok_prefix }}blur {{ ok_prefix }}saturate {{ size }}">
+    <header class="{{ ok_prefix }}head">
       {% if icon_variant %}
-      <div class="{{ ok_prefix }}modal__icon {{ icon_variant }}" aria-hidden="true">
+      <div class="{{ ok_prefix }}icon-disc {{ icon_variant }}" aria-hidden="true">
         {%- if icon_variant == "warn" -%}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
         {%- elif icon_variant == "danger" -%}
@@ -22,13 +22,13 @@
         {%- endif -%}
       </div>
       {% endif %}
-      <div class="{{ ok_prefix }}modal__heading">
-        <h3 class="{{ ok_prefix }}modal__title">{{ title }}</h3>
-        {% if subtitle %}<p class="{{ ok_prefix }}modal__sub">{{ subtitle }}</p>{% endif %}
+      <div class="{{ ok_prefix }}heading">
+        <h3 class="{{ ok_prefix }}title {{ ok_prefix }}lg">{{ title }}</h3>
+        {% if subtitle %}<p class="{{ ok_prefix }}sub">{{ subtitle }}</p>{% endif %}
       </div>
-      <button class="{{ ok_prefix }}modal__close" aria-label="Cerrar" data-on:click="$open = false">✕</button>
-    </div>
-    <div class="{{ ok_prefix }}modal__body">{{ caller() }}</div>
+      <button class="{{ ok_prefix }}close" aria-label="Cerrar" data-on:click="$open = false">✕</button>
+    </header>
+    <div class="{{ ok_prefix }}body">{{ caller() }}</div>
   </div>
 </div>
 {%- endmacro %}

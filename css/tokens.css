@@ -252,7 +252,6 @@
   --modal-max-w-lg:   640px;
   --modal-max-w-xl:   880px;
   --modal-header-pad: 18px;
-  --modal-title-fz:   17px;
   --drawer-default-max-w: 420px;
   --drawer-default-blur:  22px;
   --drawer-handle-h:  4px;
@@ -309,15 +308,6 @@
   --receipt-h-lg:     250px;
   --invoice-w:        280px;
   --invoice-totals-sum-w: 280px;
-  --invoice-logo-fz:  var(--mfg-oee-pct-fz);
-  --invoice-title-fz: var(--text-2xl);
-  --invoice-sub-fz:   var(--text-sm);
-  --invoice-sec-fz:   var(--text-sm);
-  --invoice-pad:      var(--modal-header-pad);
-  --invoice-h4-fz:    var(--mfg-oee-metric-label-fz);
-  --invoice-lines-fz: var(--text-md);
-  --invoice-sum-fz:   var(--text-md);
-  --invoice-total-fz: var(--mfg-oee-pct-fz);
   --sign-pad:         var(--modal-header-pad);
   --sign-viewport-h:  var(--mfg-scanner-h);
   --sign-label-fz:    var(--mfg-sku-fz);
@@ -728,6 +718,18 @@
   --glass-saturate:        140%;
   --glass-saturate-strong: 160%;
   --glass-saturate-soft:   120%;
+
+  /* ───── Defaults de modificadores universales de efecto ───
+     Consumidos por .blur, .saturate, .elevated, .brightness, .dim
+     en modifiers.css. Override por elemento via style="--blur: …". */
+  --blur-default:    24px;
+  --blur-sm:         8px;
+  --blur-lg:         32px;
+  --saturate:        140%;
+  --saturate-strong: 160%;
+  --saturate-soft:   120%;
+  --brightness-default: 1.1;
+  --brightness-dim:     0.6;
 
   /* ───── Media surfaces (siempre neutro) ────────────────── */
   --media-bg:      #000000;
