@@ -9,13 +9,13 @@
   .cloud-shell { min-height: 100vh; }
   .hub-row { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--line); }
   .hub-row:last-child { border-bottom: none; }
-  .hub-row__name { font-size: var(--text-md); font-weight: 500; color: var(--ink); }
-  .hub-row__meta { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; }
-  .hub-row__sync { font-size: var(--text-xs); color: var(--ink-3); font-variant-numeric: tabular-nums; text-align: right; }
-  .hub-row__sync strong { color: var(--ink-2); display: block; font-weight: 500; }
+  .hub-row > .name { font-size: var(--text-md); font-weight: 500; color: var(--ink); }
+  .hub-row > .meta { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; }
+  .hub-row > .sync { font-size: var(--text-xs); color: var(--ink-3); font-variant-numeric: tabular-nums; text-align: right; }
+  .hub-row > .sync strong { color: var(--ink-2); display: block; font-weight: 500; }
   .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--leaf); flex-shrink: 0; box-shadow: 0 0 0 3px color-mix(in oklch, var(--leaf) 18%, transparent); }
-  .status-dot--warn { background: var(--warn); box-shadow: 0 0 0 3px color-mix(in oklch, var(--warn) 18%, transparent); }
-  .status-dot--idle { background: var(--ink-4); box-shadow: none; }
+  .status-dot.warn { background: var(--warn); box-shadow: 0 0 0 3px color-mix(in oklch, var(--warn) 18%, transparent); }
+  .status-dot.idle { background: var(--ink-4); box-shadow: none; }
   .num { font-variant-numeric: tabular-nums; }
 </style>
 <div class="app cloud-shell" data-attr:data-sidebar="$sidebar ? 'open' : ''">
@@ -23,32 +23,32 @@
 
 <aside class="sidebar">
   <div class="head">
-    <div class="sidebar-logo">EX</div>
-    <div class="sidebar-brand-text">
+    <div class="logo">EX</div>
+    <div class="text">
       <div class="title md">ERPlora Cloud</div>
       <div class="meta">Acme Industries</div>
     </div>
   </div>
   <div class="content scroll">
     <div class="label">Principal</div>
-    <a class="item" href="#" aria-current="page"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Resumen</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span><span class="badge">3</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge badge brand">7</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg><span class="item-label">Usuarios</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:layers" width="18" height="18"></iconify-icon><span class="item-label">Equipamiento</span></a>
+    <a class="item" href="#" aria-current="page"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Resumen</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span><span class="badge">3</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="text">Hubs</span><span class="badge brand">7</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg><span class="text">Usuarios</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:layers" width="18" height="18"></iconify-icon><span class="text">Equipamiento</span></a>
     <div class="label">Facturación</div>
-    <a class="item" href="#"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Facturas</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:refresh-ccw" width="18" height="18"></iconify-icon><span class="item-label">Suscripciones</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Pagos</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="text">Facturas</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:refresh-ccw" width="18" height="18"></iconify-icon><span class="text">Suscripciones</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg><span class="text">Pagos</span></a>
     <div class="label">Desarrollador</div>
-    <a class="item" href="#"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="item-label">Módulos</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:list" width="18" height="18"></iconify-icon><span class="item-label">Repositorios</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M14 6V4M10 6V4M6 18v2M14 18v2"/></svg><span class="item-label">Stripe Connect</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="text">Módulos</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:list" width="18" height="18"></iconify-icon><span class="text">Repositorios</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M14 6V4M10 6V4M6 18v2M14 18v2"/></svg><span class="text">Stripe Connect</span></a>
   </div>
   <div class="foot">
-    <div class="sidebar-user">
+    <div class="user">
       <span class="avatar sm brand">IB</span>
-      <div class="sidebar-user-info">
+      <div class="text">
         <div class="title sm">Ioan Beilic</div>
         <div class="meta">ioan@acme.com</div>
       </div>
@@ -59,23 +59,23 @@
 <div class="page">
 
   <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Resumen general</h1>
         
-        <div class="topbar-search">
-      <span class="search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+        <div class="search">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
       <input type="search" placeholder="Buscar hubs, módulos, facturas…" data-bind:q/>
-      <span class="topbar-kbd">⌘K</span>
+      <span class="shortcut">⌘K</span>
     </div>
         
         <div class="actions">
@@ -86,10 +86,10 @@
 
   <div class="content scroll body">
 
-    <header class="page-header">
-      <div class="page-header-title">
+    <header class="head">
+      <div class="title">
         <h1>Resumen general</h1>
-        <p class="page-header-sub">Estado de tus organizaciones, hubs y facturación a fecha de 8 mayo 2026.</p>
+        <p class="sub">Estado de tus organizaciones, hubs y facturación a fecha de 8 mayo 2026.</p>
       </div>
       <div class="actions">
         <div class="btn-group">
@@ -99,7 +99,7 @@
           <button data-on:click="$range = 'year'" data-attr:data-active="$range === 'year' ? 'true' : null">Año</button>
         </div>
         <button class="btn outline">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
           Exportar
         </button>
         <button class="btn primary">
@@ -113,52 +113,52 @@
     <section class="grid-4" style="margin-bottom: var(--space-6);">
 
       <button class="kpi" type="button" data-on:click="$drillDown = $drillDown === 'hubs' ? null : 'hubs'" data-attr:aria-pressed="$drillDown === 'hubs'" style="text-align:left;cursor:pointer;font-family:inherit;border:1px solid var(--line);background:var(--bg-2);">
-        <div class="kpi__label">
+        <div class="label">
           <iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon>
           Hubs activos
         </div>
-        <div class="kpi__value num" data-text="$range === 'today' ? '7' : $range === '7d' ? '7' : $range === '30d' ? '7' : '9'">7</div>
-        <div class="kpi__delta kpi__delta--up">
-          <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17l10-10M7 7h10v10"/></svg>
+        <div class="value num" data-text="$range === 'today' ? '7' : $range === '7d' ? '7' : $range === '30d' ? '7' : '9'">7</div>
+        <div class="delta up">
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17l10-10M7 7h10v10"/></svg>
           <span data-text="$range === 'today' ? '+1 hoy' : $range === '7d' ? '+2 esta semana' : $range === '30d' ? '+2 este mes' : '+5 este año'">+2 este mes</span>
         </div>
       </button>
 
       <button class="kpi" type="button" data-on:click="$drillDown = $drillDown === 'invoices' ? null : 'invoices'" data-attr:aria-pressed="$drillDown === 'invoices'" style="text-align:left;cursor:pointer;font-family:inherit;border:1px solid var(--line);background:var(--bg-2);">
-        <div class="kpi__label">
+        <div class="label">
           <iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon>
           <span data-text="$range === 'today' ? 'Facturas hoy' : $range === '7d' ? 'Facturas 7d' : $range === '30d' ? 'Facturas mes' : 'Facturas año'">Facturas mes</span>
         </div>
-        <div class="kpi__value num" data-text="$range === 'today' ? '2' : $range === '7d' ? '5' : $range === '30d' ? '14' : '167'">14</div>
-        <div class="kpi__delta"
-             data-class:kpi__delta--up="$range === 'year'"
-             data-class:kpi__delta--down="$range !== 'year'">
-          <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" data-show="$range !== 'year'"><path d="M17 7l-10 10M17 17H7V7"/></svg>
-          <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" data-show="$range === 'year'"><path d="M7 17l10-10M7 7h10v10"/></svg>
+        <div class="value num" data-text="$range === 'today' ? '2' : $range === '7d' ? '5' : $range === '30d' ? '14' : '167'">14</div>
+        <div class="delta"
+             data-class:up="$range === 'year'"
+             data-class:down="$range !== 'year'">
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" data-show="$range !== 'year'"><path d="M17 7l-10 10M17 17H7V7"/></svg>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" data-show="$range === 'year'"><path d="M7 17l10-10M7 7h10v10"/></svg>
           <span data-text="$range === 'today' ? '−1 vs ayer' : $range === '7d' ? '−2 vs sem. ant.' : $range === '30d' ? '−1 vs abril' : '+18 vs 2025'">−1 vs abril</span>
         </div>
       </button>
 
       <button class="kpi brand" type="button" data-on:click="$drillDown = $drillDown === 'pending' ? null : 'pending'" data-attr:aria-pressed="$drillDown === 'pending'" style="text-align:left;cursor:pointer;font-family:inherit;border:1px solid var(--line);">
-        <div class="kpi__label">
+        <div class="label">
           <iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon>
           Compras pendientes
         </div>
-        <div class="kpi__value num" data-text="$range === 'today' ? '€340' : $range === '7d' ? '€1 240' : $range === '30d' ? '€4 280,50' : '€48 920'">€4 280<span class="kpi__value-unit">,50</span></div>
-        <div class="kpi__delta kpi__delta--up">
-          <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17l10-10M7 7h10v10"/></svg>
+        <div class="value num" data-text="$range === 'today' ? '€340' : $range === '7d' ? '€1 240' : $range === '30d' ? '€4 280,50' : '€48 920'">€4 280<span class="unit">,50</span></div>
+        <div class="delta up">
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17l10-10M7 7h10v10"/></svg>
           <span data-text="$range === 'today' ? '+€120 vs ayer' : $range === '7d' ? '+€480 vs sem.' : $range === '30d' ? '+€1 200 vs abril' : '+€8 200 vs 2025'">+€1 200 vs abril</span>
         </div>
       </button>
 
       <button class="kpi" type="button" data-on:click="$drillDown = $drillDown === 'users' ? null : 'users'" data-attr:aria-pressed="$drillDown === 'users'" style="text-align:left;cursor:pointer;font-family:inherit;border:1px solid var(--line);background:var(--bg-2);">
-        <div class="kpi__label">
-          <svg class="kpi__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg>
+        <div class="label">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg>
           Usuarios totales
         </div>
-        <div class="kpi__value num" data-text="$range === 'today' ? '142' : $range === '7d' ? '142' : $range === '30d' ? '142' : '142'">142</div>
-        <div class="kpi__delta kpi__delta--up">
-          <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17l10-10M7 7h10v10"/></svg>
+        <div class="value num" data-text="$range === 'today' ? '142' : $range === '7d' ? '142' : $range === '30d' ? '142' : '142'">142</div>
+        <div class="delta up">
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M7 17l10-10M7 7h10v10"/></svg>
           <span data-text="$range === 'today' ? '+1 hoy' : $range === '7d' ? '+4 nuevos' : $range === '30d' ? '+12 nuevos' : '+86 este año'">+12 nuevos</span>
         </div>
       </button>
@@ -175,7 +175,7 @@
         <div class="meta" data-text="$drillDown === 'hubs' ? 'Mostrando los 7 hubs en producción · pulsa para abrir.' : $drillDown === 'invoices' ? 'Próximas 14 facturas con vencimiento próximo.' : $drillDown === 'pending' ? '5 compras pendientes de pago · €4 280,50 total.' : $drillDown === 'users' ? '142 usuarios distribuidos en 3 organizaciones.' : ''"></div>
       </div>
       <div class="actions">
-        <button class="banner__action" data-on:click="$drillDown = null">Cerrar</button>
+        <button class="action" data-on:click="$drillDown = null">Cerrar</button>
       </div>
     </div>
 
@@ -195,18 +195,18 @@
         </div>
         <div class="body">
           <div class="filter-chips mb-3">
-            <button class="filter-chip" data-on:click="$activityFilter = 'all'" data-class:is-active="$activityFilter === 'all'"><span class="filter-chip__label">Todo</span></button>
-            <button class="filter-chip" data-on:click="$activityFilter = 'hubs'" data-class:is-active="$activityFilter === 'hubs'"><span class="filter-chip__label">Hubs</span></button>
-            <button class="filter-chip" data-on:click="$activityFilter = 'invoices'" data-class:is-active="$activityFilter === 'invoices'"><span class="filter-chip__label">Facturas</span></button>
-            <button class="filter-chip" data-on:click="$activityFilter = 'users'" data-class:is-active="$activityFilter === 'users'"><span class="filter-chip__label">Usuarios</span></button>
-            <button class="filter-chip" data-on:click="$activityFilter = 'system'" data-class:is-active="$activityFilter === 'system'"><span class="filter-chip__label">Sistema</span></button>
+            <button class="filter-chip" data-on:click="$activityFilter = 'all'" data-class:is-active="$activityFilter === 'all'"><span class="label">Todo</span></button>
+            <button class="filter-chip" data-on:click="$activityFilter = 'hubs'" data-class:is-active="$activityFilter === 'hubs'"><span class="label">Hubs</span></button>
+            <button class="filter-chip" data-on:click="$activityFilter = 'invoices'" data-class:is-active="$activityFilter === 'invoices'"><span class="label">Facturas</span></button>
+            <button class="filter-chip" data-on:click="$activityFilter = 'users'" data-class:is-active="$activityFilter === 'users'"><span class="label">Usuarios</span></button>
+            <button class="filter-chip" data-on:click="$activityFilter = 'system'" data-class:is-active="$activityFilter === 'system'"><span class="label">Sistema</span></button>
           </div>
           <div class="timeline">
 
-            <div class="timeline__item" data-show="$activityFilter === 'all' || $activityFilter === 'hubs'">
-              <span class="timeline__dot timeline__dot--leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></span>
-              <div class="timeline__body">
-                <div class="timeline__head">
+            <div class="item" data-show="$activityFilter === 'all' || $activityFilter === 'hubs'">
+              <span class="dot leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg></span>
+              <div class="body">
+                <div class="head">
                   <p class="title sm">Hub <strong>POS Madrid Centro</strong> creado por María Lozano</p>
                   <span class="meta">hace 32 min</span>
                 </div>
@@ -214,10 +214,10 @@
               </div>
             </div>
 
-            <div class="timeline__item" data-show="$activityFilter === 'all' || $activityFilter === 'hubs' || $activityFilter === 'system'">
-              <span class="timeline__dot timeline__dot--brand"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon></span>
-              <div class="timeline__body">
-                <div class="timeline__head">
+            <div class="item" data-show="$activityFilter === 'all' || $activityFilter === 'hubs' || $activityFilter === 'system'">
+              <span class="dot brand"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon></span>
+              <div class="body">
+                <div class="head">
                   <p class="title sm">Módulo <strong>warehouse@1.4.2</strong> instalado en hub <strong>Almacén Vallecas</strong></p>
                   <span class="meta">hace 1 h</span>
                 </div>
@@ -225,10 +225,10 @@
               </div>
             </div>
 
-            <div class="timeline__item" data-show="$activityFilter === 'all' || $activityFilter === 'invoices'">
-              <span class="timeline__dot timeline__dot--leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg></span>
-              <div class="timeline__body">
-                <div class="timeline__head">
+            <div class="item" data-show="$activityFilter === 'all' || $activityFilter === 'invoices'">
+              <span class="dot leaf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg></span>
+              <div class="body">
+                <div class="head">
                   <p class="title sm">Factura <strong>F-2026-0314</strong> pagada · €1 248,00</p>
                   <span class="meta">hace 2 h</span>
                 </div>
@@ -236,10 +236,10 @@
               </div>
             </div>
 
-            <div class="timeline__item" data-show="$activityFilter === 'all' || $activityFilter === 'users'">
-              <span class="timeline__dot timeline__dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg></span>
-              <div class="timeline__body">
-                <div class="timeline__head">
+            <div class="item" data-show="$activityFilter === 'all' || $activityFilter === 'users'">
+              <span class="dot info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg></span>
+              <div class="body">
+                <div class="head">
                   <p class="title sm">12 usuarios añadidos a <strong>Acme Industries</strong> desde CSV</p>
                   <span class="meta">hace 4 h</span>
                 </div>
@@ -247,10 +247,10 @@
               </div>
             </div>
 
-            <div class="timeline__item" data-show="$activityFilter === 'all' || $activityFilter === 'invoices'">
-              <span class="timeline__dot timeline__dot--warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.86l-8.52 14.7A2 2 0 0 0 3.5 22h17a2 2 0 0 0 1.72-3.45L13.7 3.86a2 2 0 0 0-3.4 0z"/></svg></span>
-              <div class="timeline__body">
-                <div class="timeline__head">
+            <div class="item" data-show="$activityFilter === 'all' || $activityFilter === 'invoices'">
+              <span class="dot warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.86l-8.52 14.7A2 2 0 0 0 3.5 22h17a2 2 0 0 0 1.72-3.45L13.7 3.86a2 2 0 0 0-3.4 0z"/></svg></span>
+              <div class="body">
+                <div class="head">
                   <p class="title sm">Suscripción <strong>Pro Annual</strong> renovará en 7 días</p>
                   <span class="meta">ayer 21:14</span>
                 </div>
@@ -258,10 +258,10 @@
               </div>
             </div>
 
-            <div class="timeline__item" data-show="$activityFilter === 'all' || $activityFilter === 'system'">
-              <span class="timeline__dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33"/></svg></span>
-              <div class="timeline__body">
-                <div class="timeline__head">
+            <div class="item" data-show="$activityFilter === 'all' || $activityFilter === 'system'">
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33"/></svg></span>
+              <div class="body">
+                <div class="head">
                   <p class="title sm">Webhook <strong>stripe.invoice.paid</strong> reactivado</p>
                   <span class="meta">ayer 15:02</span>
                 </div>
@@ -289,10 +289,10 @@
           <div class="hub-row">
             <span class="status-dot"></span>
             <div>
-              <div class="hub-row__name">POS Madrid Centro</div>
-              <div class="hub-row__meta">Acme Restaurantes · 4 módulos</div>
+              <div class="name">POS Madrid Centro</div>
+              <div class="meta">Acme Restaurantes · 4 módulos</div>
             </div>
-            <div class="hub-row__sync">
+            <div class="sync">
               <strong>en línea</strong>
               hace 12 s
             </div>
@@ -301,10 +301,10 @@
           <div class="hub-row">
             <span class="status-dot"></span>
             <div>
-              <div class="hub-row__name">Almacén Vallecas</div>
-              <div class="hub-row__meta">Acme Industries · 6 módulos</div>
+              <div class="name">Almacén Vallecas</div>
+              <div class="meta">Acme Industries · 6 módulos</div>
             </div>
-            <div class="hub-row__sync">
+            <div class="sync">
               <strong>en línea</strong>
               hace 1 min
             </div>
@@ -313,22 +313,22 @@
           <div class="hub-row">
             <span class="status-dot"></span>
             <div>
-              <div class="hub-row__name">Boutique Marina · Valencia</div>
-              <div class="hub-row__meta">Boutique Marina · 3 módulos</div>
+              <div class="name">Boutique Marina · Valencia</div>
+              <div class="meta">Boutique Marina · 3 módulos</div>
             </div>
-            <div class="hub-row__sync">
+            <div class="sync">
               <strong>en línea</strong>
               hace 4 min
             </div>
           </div>
 
           <div class="hub-row">
-            <span class="status-dot warning"></span>
+            <span class="status-dot warn"></span>
             <div>
-              <div class="hub-row__name">Taller Norte · Bilbao</div>
-              <div class="hub-row__meta">Acme Industries · 5 módulos</div>
+              <div class="name">Taller Norte · Bilbao</div>
+              <div class="meta">Acme Industries · 5 módulos</div>
             </div>
-            <div class="hub-row__sync">
+            <div class="sync">
               <strong class="text-warn">latencia alta</strong>
               hace 14 min
             </div>
@@ -337,10 +337,10 @@
           <div class="hub-row">
             <span class="status-dot idle"></span>
             <div>
-              <div class="hub-row__name">Pop-up Sevilla Feria</div>
-              <div class="hub-row__meta">Boutique Marina · 2 módulos</div>
+              <div class="name">Pop-up Sevilla Feria</div>
+              <div class="meta">Boutique Marina · 2 módulos</div>
             </div>
-            <div class="hub-row__sync">
+            <div class="sync">
               <strong class="text-ink-3">offline</strong>
               hace 2 días
             </div>
@@ -365,11 +365,11 @@
       </div>
 
       <div class="filter-chips mb-3">
-        <button class="filter-chip" data-on:click="$invoiceStatus = 'all'" data-class:is-active="$invoiceStatus === 'all'"><span class="filter-chip__label">Todas</span><span class="filter-chip__count">5</span></button>
-        <button class="filter-chip" data-on:click="$invoiceStatus = 'due'" data-class:is-active="$invoiceStatus === 'due'"><span class="filter-chip__label">Por vencer</span><span class="filter-chip__count">1</span></button>
-        <button class="filter-chip" data-on:click="$invoiceStatus = 'pending'" data-class:is-active="$invoiceStatus === 'pending'"><span class="filter-chip__label">Pendientes</span><span class="filter-chip__count">2</span></button>
-        <button class="filter-chip" data-on:click="$invoiceStatus = 'draft'" data-class:is-active="$invoiceStatus === 'draft'"><span class="filter-chip__label">Borrador</span><span class="filter-chip__count">1</span></button>
-        <button class="filter-chip" data-on:click="$invoiceStatus = 'scheduled'" data-class:is-active="$invoiceStatus === 'scheduled'"><span class="filter-chip__label">Programadas</span><span class="filter-chip__count">1</span></button>
+        <button class="filter-chip" data-on:click="$invoiceStatus = 'all'" data-class:is-active="$invoiceStatus === 'all'"><span class="label">Todas</span><span class="count">5</span></button>
+        <button class="filter-chip" data-on:click="$invoiceStatus = 'due'" data-class:is-active="$invoiceStatus === 'due'"><span class="label">Por vencer</span><span class="count">1</span></button>
+        <button class="filter-chip" data-on:click="$invoiceStatus = 'pending'" data-class:is-active="$invoiceStatus === 'pending'"><span class="label">Pendientes</span><span class="count">2</span></button>
+        <button class="filter-chip" data-on:click="$invoiceStatus = 'draft'" data-class:is-active="$invoiceStatus === 'draft'"><span class="label">Borrador</span><span class="count">1</span></button>
+        <button class="filter-chip" data-on:click="$invoiceStatus = 'scheduled'" data-class:is-active="$invoiceStatus === 'scheduled'"><span class="label">Programadas</span><span class="count">1</span></button>
       </div>
 
       <div class="table-wrap">
@@ -399,7 +399,7 @@
                 <td><span class="num">POS Madrid Centro</span></td>
                 <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:500;">€2 480,00</td>
                 <td><span class="num">10 may 2026</span></td>
-                <td><span class="badge warning"><span class="badge__dot"></span>En 2 días</span></td>
+                <td><span class="badge warning"><span class="dot"></span>En 2 días</span></td>
                 <td class="text-right"><button class="btn ghost sm">Pagar</button></td>
               </tr>
               <tr data-show="($invoiceStatus === 'all' || $invoiceStatus === 'pending') && ($q === '' || 'boutique marina valencia f-2026-0318'.includes($q.toLowerCase()))">
@@ -415,7 +415,7 @@
                 <td><span class="num">Boutique Valencia</span></td>
                 <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:500;">€1 248,00</td>
                 <td><span class="num">12 may 2026</span></td>
-                <td><span class="badge info"><span class="badge__dot"></span>Pendiente</span></td>
+                <td><span class="badge info"><span class="dot"></span>Pendiente</span></td>
                 <td class="text-right"><button class="btn ghost sm">Pagar</button></td>
               </tr>
               <tr data-show="($invoiceStatus === 'all' || $invoiceStatus === 'pending') && ($q === '' || 'acme industries almacén vallecas f-2026-0319'.includes($q.toLowerCase()))">
@@ -431,7 +431,7 @@
                 <td><span class="num">Almacén Vallecas</span></td>
                 <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:500;">€552,30</td>
                 <td><span class="num">15 may 2026</span></td>
-                <td><span class="badge info"><span class="badge__dot"></span>Pendiente</span></td>
+                <td><span class="badge info"><span class="dot"></span>Pendiente</span></td>
                 <td class="text-right"><button class="btn ghost sm">Pagar</button></td>
               </tr>
               <tr data-show="($invoiceStatus === 'all' || $invoiceStatus === 'draft') && ($q === '' || 'acme restaurantes cocinas centrales f-2026-0320 borrador'.includes($q.toLowerCase()))">
@@ -447,7 +447,7 @@
                 <td><span class="num">Cocinas Centrales</span></td>
                 <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:500;">€890,00</td>
                 <td><span class="num">18 may 2026</span></td>
-                <td><span class="badge"><span class="badge__dot"></span>Borrador</span></td>
+                <td><span class="badge"><span class="dot"></span>Borrador</span></td>
                 <td class="text-right"><button class="btn ghost sm">Editar</button></td>
               </tr>
               <tr data-show="($invoiceStatus === 'all' || $invoiceStatus === 'scheduled') && ($q === '' || 'acme industries taller norte bilbao f-2026-0321'.includes($q.toLowerCase()))">
@@ -463,7 +463,7 @@
                 <td><span class="num">Taller Norte Bilbao</span></td>
                 <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:500;">€3 120,00</td>
                 <td><span class="num">22 may 2026</span></td>
-                <td><span class="badge success"><span class="badge__dot"></span>Programada</span></td>
+                <td><span class="badge success"><span class="dot"></span>Programada</span></td>
                 <td class="text-right"><button class="btn ghost sm">Ver</button></td>
               </tr>
             </tbody>
@@ -475,29 +475,29 @@
   </div>
 </div>
 
-  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <!-- Bottom tab bar — mobile only via .tabbar slot -->
   <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
-      <a class="tabbar-item" href="#" aria-current="page">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Inicio</span>
+      <a class="item" href="#" aria-current="page">
+        <span class="icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="label">Inicio</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Hubs</span>
-        <span class="tabbar-badge">7</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="label">Hubs</span>
+        <span class="badge">7</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Usuarios</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="label">Usuarios</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Equipo</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="label">Equipo</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Perfil</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="label">Perfil</span>
       </a>
     </div>
   </nav>

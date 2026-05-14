@@ -26,7 +26,7 @@
   }
   var KNOWN_TEMPLATES = {
     '': 1, 'default': 1, 'corporate': 1, 'glass': 1,
-    'glass-mono': 1, 'mono': 1,
+    'glass-mono': 1, 'mono': 1, 'vivid': 1,
   };
   function normTemplate(v) {
     return KNOWN_TEMPLATES[v] ? v : '';

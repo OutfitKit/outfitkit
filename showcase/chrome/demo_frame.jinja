@@ -20,9 +20,9 @@
   data-signals="{ tab_{{ _uid }}: 'preview' }"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
 
-  <header class="demo-frame__header">
-    <h3 class="demo-frame__title">{{ title }}</h3>
-    <div class="demo-frame__tabs" role="tablist">
+  <header class="head">
+    <h3 class="title">{{ title }}</h3>
+    <div class="tabs" role="tablist">
       <button type="button" data-on:click="$tab_{{ _uid }} = 'preview'"
               data-attr:aria-selected="$tab_{{ _uid }} === 'preview'">Preview</button>
       <button type="button" data-on:click="$tab_{{ _uid }} = 'html'"
@@ -36,36 +36,36 @@
     </div>
   </header>
 
-  <div class="demo-frame__panel" data-show="$tab_{{ _uid }} === 'preview'">
-    <div class="demo-frame__render">{{ body|safe }}</div>
+  <div class="panel" data-show="$tab_{{ _uid }} === 'preview'">
+    <div class="render">{{ body|safe }}</div>
   </div>
 
-  <div class="demo-frame__panel" data-show="$tab_{{ _uid }} === 'html'" style="display:none;">
-    <div class="demo-frame__code">
-      <button class="demo-frame__copy" type="button"
+  <div class="panel" data-show="$tab_{{ _uid }} === 'html'" style="display:none;">
+    <div class="code">
+      <button class="copy" type="button"
               data-on:click="navigator.clipboard.writeText(evt.currentTarget.nextElementSibling.textContent)">Copy</button>
       <pre><code>{{ body|string|trim|e }}</code></pre>
     </div>
   </div>
 
-  <div class="demo-frame__panel" data-show="$tab_{{ _uid }} === 'jinja'" style="display:none;">
-    <div class="demo-frame__code">
-      <button class="demo-frame__copy" type="button"
+  <div class="panel" data-show="$tab_{{ _uid }} === 'jinja'" style="display:none;">
+    <div class="code">
+      <button class="copy" type="button"
               data-on:click="navigator.clipboard.writeText(evt.currentTarget.nextElementSibling.textContent)">Copy</button>
       <pre><code>{{ jinja_src or "(no Jinja source provided yet)" }}</code></pre>
     </div>
   </div>
 
-  <div class="demo-frame__panel" data-show="$tab_{{ _uid }} === 'jinjax'" style="display:none;">
-    <div class="demo-frame__code">
-      <button class="demo-frame__copy" type="button"
+  <div class="panel" data-show="$tab_{{ _uid }} === 'jinjax'" style="display:none;">
+    <div class="code">
+      <button class="copy" type="button"
               data-on:click="navigator.clipboard.writeText(evt.currentTarget.nextElementSibling.textContent)">Copy</button>
       <pre><code>{{ jinjax_src or "(no JinjaX source provided yet)" }}</code></pre>
     </div>
   </div>
 
-  <div class="demo-frame__panel" data-show="$tab_{{ _uid }} === 'usage'" style="display:none;">
-    <div class="demo-frame__usage">
+  <div class="panel" data-show="$tab_{{ _uid }} === 'usage'" style="display:none;">
+    <div class="usage">
       {% if usage %}{{ usage|safe }}{% else %}
         <p>Install the Jinja addon and import the component:</p>
         <pre><code>pip install outfitkit</code></pre>
@@ -80,13 +80,13 @@
 </section>
 <style>
   .demo-frame { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 24px; overflow: visible; background: var(--bg-2); }
-  .demo-frame__render { overflow: visible; }
-  .demo-frame__header { padding: 12px 16px 0; border-bottom: 1px solid var(--line); background: var(--bg-3); display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .demo-frame__title { margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); font-weight: 500; }
-  .demo-frame__tabs { display: flex; gap: 2px; }
+  .demo-frame .render { overflow: visible; }
+  .demo-frame .head { padding: 12px 16px 0; border-bottom: 1px solid var(--line); background: var(--bg-3); display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .demo-frame .title { margin: 0 0 12px; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); font-weight: 500; }
+  .demo-frame .tabs { display: flex; gap: 2px; }
   /* Reset any inherited button border so underline thickness is identical
      across all demo pages (some component pages style raw <button>). */
-  .demo-frame__tabs button {
+  .demo-frame .tabs button {
     background: transparent;
     border: 0;
     border-bottom: 2px solid transparent;
@@ -103,22 +103,22 @@
     font-weight: 500;
     box-shadow: none;
   }
-  .demo-frame__tabs button:hover { color: var(--ink); background: transparent; }
-  .demo-frame__tabs button[aria-selected="true"],
-  .demo-frame__tabs button[aria-selected=""] {
+  .demo-frame .tabs button:hover { color: var(--ink); background: transparent; }
+  .demo-frame .tabs button[aria-selected="true"],
+  .demo-frame .tabs button[aria-selected=""] {
     color: var(--ink);
     border-bottom-color: var(--brand);
     background: transparent;
   }
-  .demo-frame__panel { background: var(--bg-2); }
-  .demo-frame__render { padding: 24px 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .demo-frame__code { position: relative; background: var(--bg-1); border-top: 1px solid var(--line); }
-  .demo-frame__code pre { margin: 0; padding: 16px 18px; padding-right: 80px; color: var(--ink-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; overflow-x: auto; white-space: pre; }
-  .demo-frame__copy { position: absolute; top: 10px; right: 10px; padding: 4px 10px; font-size: 11px; font-weight: 500; color: var(--ink-2); background: var(--bg-3); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; font-family: inherit; }
-  .demo-frame__copy:hover { color: var(--ink); border-color: var(--line-2); }
-  .demo-frame__copy:active { transform: translateY(1px); }
-  .demo-frame__usage { padding: 18px; color: var(--ink-2); font-size: 13.5px; line-height: 1.6; }
-  .demo-frame__usage pre { background: var(--bg-1); border: 1px solid var(--line); border-radius: 6px; padding: 12px; margin: 8px 0; overflow-x: auto; }
+  .demo-frame .panel { background: var(--bg-2); }
+  .demo-frame .render { padding: 24px 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .demo-frame .code { position: relative; background: var(--bg-1); border-top: 1px solid var(--line); }
+  .demo-frame .code pre { margin: 0; padding: 16px 18px; padding-right: 80px; color: var(--ink-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; overflow-x: auto; white-space: pre; }
+  .demo-frame .copy { position: absolute; top: 10px; right: 10px; padding: 4px 10px; font-size: 11px; font-weight: 500; color: var(--ink-2); background: var(--bg-3); border: 1px solid var(--line); border-radius: 4px; cursor: pointer; font-family: inherit; }
+  .demo-frame .copy:hover { color: var(--ink); border-color: var(--line-2); }
+  .demo-frame .copy:active { transform: translateY(1px); }
+  .demo-frame .usage { padding: 18px; color: var(--ink-2); font-size: 13.5px; line-height: 1.6; }
+  .demo-frame .usage pre { background: var(--bg-1); border: 1px solid var(--line); border-radius: 6px; padding: 12px; margin: 8px 0; overflow-x: auto; }
 </style>
 {%- endmacro %}
 

@@ -20,33 +20,33 @@
 
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">EC</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">EC</div>
+      <div class="text">
         <div class="title md">ERPlora Cloud</div>
         <div class="meta">acme · Madrid</div>
       </div>
     </div>
     <div class="content scroll">
       <div class="label">Main</div>
-      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
-      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span><span class="badge">4</span></button>
-      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="item-label">Mi perfil</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="item-label">Seguridad</span></button>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span><span class="badge">4</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="text">Mi perfil</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="text">Seguridad</span></button>
 
       <div class="label">Billing</div>
-      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Plan & facturación</span></button>
-      <button class="item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Facturas</span><span class="badge badge brand">2</span></button>
-      <button class="item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="item-label">Uso & cuotas</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="text">Plan & facturación</span></button>
+      <button class="item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="text">Facturas</span><span class="badge brand">2</span></button>
+      <button class="item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="text">Uso & cuotas</span></button>
 
       <div class="label">Developer</div>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="item-label">API & tokens</span></button>
-      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Webhooks</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="item-label">Audit log</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="text">API & tokens</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="text">Webhooks</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="text">Audit log</span></button>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Ioan Beilic</div>
           <div class="meta">ioan@acme.com</div>
         </div>
@@ -56,23 +56,23 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Eliminar cuenta</h1>
         
-        <div class="topbar-search">
+        <div class="search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar en cuenta…"/>
-        <span class="topbar-kbd">⌘K</span>
+        <span class="shortcut">⌘K</span>
       </div>
         
         <div class="actions">
@@ -89,23 +89,23 @@
     </nav>
 
     <div class="content scroll body">
-      <div class="page-header" style="border-bottom-color:color-mix(in oklch, var(--danger) 30%, var(--line));">
-        <div class="page-header-title">
+      <div class="head" style="border-bottom-color:color-mix(in oklch, var(--danger) 30%, var(--line));">
+        <div class="title">
           <h1 style="color:var(--danger);display:flex;align-items:center;gap:10px;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
             Eliminar cuenta
           </h1>
-          <div class="page-header-sub">Esta acción cierra tu cuenta de ERPlora Cloud. Las facturas y registros legales se conservan 7 años por obligación fiscal.</div>
+          <div class="sub">Esta acción cierra tu cuenta de ERPlora Cloud. Las facturas y registros legales se conservan 7 años por obligación fiscal.</div>
         </div>
       </div>
 
       <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:18px;">
 
         <div class="callout danger">
-          <span class="callout__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></span>
-          <div class="callout__body">
-            <div class="callout__title">Esta acción es irreversible</div>
-            <div class="callout__desc">Una vez confirmada, la eliminación se procesa de forma inmediata y no podemos restaurar tu cuenta ni los datos asociados.</div>
+          <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></span>
+          <div class="body">
+            <div class="title">Esta acción es irreversible</div>
+            <div class="desc">Una vez confirmada, la eliminación se procesa de forma inmediata y no podemos restaurar tu cuenta ni los datos asociados.</div>
           </div>
         </div>
 
@@ -166,19 +166,19 @@
           <div class="body flex col gap-4">
 
             <label class="field">
-              <span class="field__label field__label--req">Tu contraseña</span>
+              <span class="label req">Tu contraseña</span>
               <div class="input-group with-right">
                 <input class="input" data-attr:type="$showPwd ? 'text' : 'password'" placeholder="Contraseña actual" data-bind:pwd autocomplete="current-password"/>
-                <button class="input-group__icon input-group__icon--right" type="button" aria-label="Mostrar/ocultar" data-on:click="$showPwd = !$showPwd" style="background:transparent;border:0;cursor:pointer;color:var(--ink-3);pointer-events:auto;">
+                <button class="icon right" type="button" aria-label="Mostrar/ocultar" data-on:click="$showPwd = !$showPwd" style="background:transparent;border:0;cursor:pointer;color:var(--ink-3);pointer-events:auto;">
                   <iconify-icon icon="lucide:eye" width="16" height="16"></iconify-icon>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-show="$showPwd"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24M1 1l22 22"/></svg>
                 </button>
               </div>
-              <span class="field__hint">Verificamos tu identidad antes de eliminar nada.</span>
+              <span class="hint">Verificamos tu identidad antes de eliminar nada.</span>
             </label>
 
             <label class="field">
-              <span class="field__label field__label--req">Escribe <code style="background:var(--bg-3);padding:1px 6px;border-radius:4px;color:var(--danger);font-family:var(--font-mono);font-size:12px;">ELIMINAR MI CUENTA</code> para confirmar</span>
+              <span class="label req">Escribe <code style="background:var(--bg-3);padding:1px 6px;border-radius:4px;color:var(--danger);font-family:var(--font-mono);font-size:12px;">ELIMINAR MI CUENTA</code> para confirmar</span>
               <input class="input" data-bind:confirm placeholder="ELIMINAR MI CUENTA" data-class:input--invalid="$confirm.length > 0 && $confirm !== 'ELIMINAR MI CUENTA'" autocomplete="off"/>
               <div data-show="$confirm === 'ELIMINAR MI CUENTA'" style="display:flex;gap:6px;align-items:center;color:var(--leaf);font-size:var(--text-xs);">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 7"/></svg>

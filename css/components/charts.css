@@ -24,7 +24,7 @@
 }
 .chart.flat { background: transparent; border: none; padding: var(--space-0); }
 
-/* .chart__head → use universal .head (or .row when no border is needed) */
+/* use universal .head (or .row when no border is needed) */
 .chart > .head {
   border-bottom: none;
   padding: var(--space-0) var(--space-0) var(--space-2);
@@ -32,11 +32,11 @@
   justify-content: space-between;
 }
 
-/* .chart__title → use universal .title sm */
-/* .chart__sub   → use universal .sub sm  */
+/* use universal .title sm */
+/* use universal .sub sm  */
 
 /* Big display number inside a chart header */
-.chart__big {
+.chart .big {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
@@ -46,28 +46,28 @@
   line-height: var(--leading-flat);
 }
 /* Delta trend line below the big number */
-.chart__delta {
+.chart .delta {
   font-size: var(--text-xs);
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   margin-top: var(--space-1);
 }
-.chart__delta--up { color: var(--leaf); }
-.chart__delta--down { color: var(--danger); }
+.chart .delta.up { color: var(--leaf); }
+.chart .delta.down { color: var(--danger); }
 
-.chart__legend {
+.chart .legend {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
   font-size: var(--text-xs);
   color: var(--ink-2);
 }
-.chart__legend-item {
+.chart .legend .item {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
 }
-.chart__legend-dot {
+.chart .legend .dot {
   width: var(--dot-md); height: var(--dot-md);
   border-radius: 2px;
   background: var(--brand);
@@ -75,7 +75,7 @@
 }
 /* Dashed indicator for legend entries that map to dashed lines in the SVG.
    Renders a 2px tall double-segment that visually matches stroke-dasharray="4 4". */
-.chart__legend-dash {
+.chart .legend .dash {
   width: var(--icon-md); height: var(--border-w-2);
   flex-shrink: 0;
   background-image: linear-gradient(
@@ -88,7 +88,7 @@
 }
 
 /* SVG canvas */
-.chart__svg {
+.chart .svg {
   width: 100%;
   height: auto;
   display: block;
@@ -98,34 +98,35 @@
 }
 
 /* axis & grid */
-.chart__grid line { stroke: var(--line); stroke-width: 1; shape-rendering: crispEdges; }
-.chart__axis text { fill: var(--ink-3); font-size: 10px; font-variant-numeric: tabular-nums; }
-.chart__axis line { stroke: var(--line-2); stroke-width: 1; }
+.chart .grid line { stroke: var(--line); stroke-width: 1; shape-rendering: crispEdges; }
+.chart .axis text { fill: var(--ink-3); font-size: 10px; font-variant-numeric: tabular-nums; }
+.chart .axis line { stroke: var(--line-2); stroke-width: 1; }
 
 /* series colors — palette tokens kept distinct from chart background.
    --mute uses ink-2 (mid-grey on dark bg) so trailing categories like
    "Otros" stay readable instead of collapsing into --bg-4. */
-.chart__bar       { fill: var(--brand); }
-.chart__bar--leaf { fill: var(--leaf); }
-.chart__bar--warn { fill: var(--warn); }
-.chart__bar--info { fill: var(--info); }
-.chart__bar--ink2 { fill: var(--ink-2); }
-.chart__bar--mute { fill: var(--ink-2); }
-.chart__bar:hover { filter: brightness(1.15); }
+.chart .bar       { fill: var(--brand); }
+.chart .bar.leaf { fill: var(--leaf); }
+.chart .bar.warn { fill: var(--warn); }
+.chart .bar.info { fill: var(--info); }
+.chart .bar.ink2 { fill: var(--ink-2); }
+.chart .bar.mute { fill: var(--ink-2); }
+.chart .bar:hover { filter: brightness(1.15); }
 
-.chart__line       { stroke: var(--brand); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.chart__line--leaf { stroke: var(--leaf); }
-.chart__line--info { stroke: var(--info); }
+.chart .line       { stroke: var(--brand); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.chart .line.leaf { stroke: var(--leaf); }
+.chart .line.info { stroke: var(--info); }
 /* Mute / projected line: dashed + lighter ink so it stays visible on dark bg. */
-.chart__line--mute { stroke: var(--ink-2); stroke-dasharray: 4 4; stroke-width: 1.5; }
+.chart .line.mute { stroke: var(--ink-2); stroke-dasharray: 4 4; stroke-width: 1.5; }
 
-.chart__area       { fill: url(#ok-area-grad); }
-.chart__area-leaf  { fill: url(#ok-area-grad-leaf); }
+.chart .area       { fill: url(#ok-area-grad); }
+.chart .area.leaf  { fill: url(#ok-area-grad-leaf); }
 
-.chart__dot { fill: var(--brand); stroke: var(--bg-2); stroke-width: 2; }
-.chart__dot--leaf { fill: var(--leaf); }
+.chart .dot { fill: var(--brand); stroke: var(--bg-2); stroke-width: 2; }
+.chart .dot.leaf { fill: var(--leaf); }
 
-.chart__label-value {
+/* Value annotation label on SVG bars ("tag" avoids collision with universal .label/.value) */
+.chart .tag {
   fill: var(--ink);
   font-family: var(--font-display);
   font-weight: 600;
@@ -133,11 +134,12 @@
   font-variant-numeric: tabular-nums;
 }
 
-.chart__hover {
+/* Invisible hit-area rect per column; sibling .hl becomes opaque on hover */
+.chart .hover {
   fill: transparent;
   cursor: pointer;
 }
-.chart__hover:hover ~ .chart__hover-bar { opacity: 1; }
+.chart .hover:hover ~ .hl { opacity: 1; }
 
 /* ---------- Donut ---------- */
 .donut {
@@ -146,43 +148,43 @@
   gap: var(--space-4);   /* TOKEN-MISSING: 18px had no token, approximated to --space-4 */
   align-items: center;
 }
-.donut__svg {
+.donut .svg {
   width: var(--chart-pie); height: var(--chart-pie);
 }
-.donut__track { fill: none; stroke: var(--bg-3); stroke-width: 16; }
-.donut__slice { fill: none; stroke-width: 16; transform: rotate(-90deg); transform-origin: center; transition: stroke-dasharray var(--dur-slow) var(--ease-out); }
-.donut__slice--brand { stroke: var(--brand); }
-.donut__slice--leaf  { stroke: var(--leaf); }
-.donut__slice--warn  { stroke: var(--warn); }
-.donut__slice--info  { stroke: var(--info); }
-.donut__slice--mute  { stroke: var(--bg-4); }
-.donut__center {
+.donut .track { fill: none; stroke: var(--bg-3); stroke-width: 16; }
+.donut .slice { fill: none; stroke-width: 16; transform: rotate(-90deg); transform-origin: center; transition: stroke-dasharray var(--dur-slow) var(--ease-out); }
+.donut .slice.brand { stroke: var(--brand); }
+.donut .slice.leaf  { stroke: var(--leaf); }
+.donut .slice.warn  { stroke: var(--warn); }
+.donut .slice.info  { stroke: var(--info); }
+.donut .slice.mute  { stroke: var(--bg-4); }
+.donut .center {
   font-family: var(--font-display);
   fill: var(--ink);
   text-anchor: middle;
 }
-.donut__center-value { font-size: 22px; font-weight: 600; letter-spacing: var(--tracking-display); }
-.donut__center-label { font-size: 9px; fill: var(--ink-3); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+.donut .center .value { font-size: 22px; font-weight: 600; letter-spacing: var(--tracking-display); }
+.donut .center .label { font-size: 9px; fill: var(--ink-3); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
 
-.donut__legend {
+.donut .legend {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
   font-size: var(--text-sm);
 }
-.donut__legend-row {
+.donut .legend .row {
   display: grid;
   grid-template-columns: 10px 1fr auto;
   gap: var(--space-2);
   align-items: center;
   color: var(--ink-2);
 }
-.donut__legend-row b {
+.donut .legend .row b {
   color: var(--ink);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
-.donut__legend-dot {
+.donut .legend .dot {
   width: var(--icon-2xs); height: var(--icon-2xs);
   border-radius: 3px;
   background: var(--brand);
@@ -201,30 +203,30 @@
   align-items: center;
   font-size: var(--text-sm);
 }
-.hbar__label {
+.hbar .label {
   color: var(--ink-2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.hbar__track {
+.hbar .track {
   height: 8px;
   background: var(--bg-3);
   border-radius: var(--radius-xs);
   overflow: hidden;
   position: relative;
 }
-.hbar__fill {
+.hbar .fill {
   height: 100%;
   background: var(--brand);
   border-radius: var(--radius-xs);
   transition: width var(--dur-slow) var(--ease-out);
 }
-.hbar__fill--leaf  { background: var(--leaf); }
-.hbar__fill--warn  { background: var(--warn); }
-.hbar__fill--info  { background: var(--info); }
-.hbar__fill--danger{ background: var(--danger); }
-.hbar__value {
+.hbar .fill.leaf  { background: var(--leaf); }
+.hbar .fill.warn  { background: var(--warn); }
+.hbar .fill.info  { background: var(--info); }
+.hbar .fill.danger{ background: var(--danger); }
+.hbar .value {
   text-align: right;
   font-variant-numeric: tabular-nums;
   color: var(--ink);
@@ -238,15 +240,15 @@
   grid-template-rows: repeat(7, 1fr);
   gap: 3px;
 }
-.heat__cell {
+.heat .cell {
   width: var(--icon-xs); height: var(--icon-xs);
   border-radius: 2px;
   background: var(--bg-3);
 }
-.heat__cell[data-v="1"] { background: color-mix(in oklch, var(--brand) 25%, var(--bg-3)); }
-.heat__cell[data-v="2"] { background: color-mix(in oklch, var(--brand) 50%, var(--bg-3)); }
-.heat__cell[data-v="3"] { background: color-mix(in oklch, var(--brand) 75%, var(--bg-3)); }
-.heat__cell[data-v="4"] { background: var(--brand); }
+.heat .cell[data-v="1"] { background: color-mix(in oklch, var(--brand) 25%, var(--bg-3)); }
+.heat .cell[data-v="2"] { background: color-mix(in oklch, var(--brand) 50%, var(--bg-3)); }
+.heat .cell[data-v="3"] { background: color-mix(in oklch, var(--brand) 75%, var(--bg-3)); }
+.heat .cell[data-v="4"] { background: var(--brand); }
 
 /* ---------- Funnel ---------- */
 .funnel {
@@ -254,13 +256,13 @@
   flex-direction: column;
   gap: var(--space-1);
 }
-.funnel__step {
+.funnel .step {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-3);
   align-items: center;
 }
-.funnel__bar {
+.funnel .bar {
   height: var(--avatar-sm);
   background: linear-gradient(90deg, var(--brand), color-mix(in oklch, var(--brand) 60%, var(--bg-3)));
   border-radius: var(--radius-sm);
@@ -272,13 +274,13 @@
   font-weight: var(--weight-medium);
   min-width: 0;
 }
-.funnel__bar--leaf { background: linear-gradient(90deg, var(--leaf), color-mix(in oklch, var(--leaf) 60%, var(--bg-3))); }
-.funnel__bar--warn { background: linear-gradient(90deg, var(--warn), color-mix(in oklch, var(--warn) 60%, var(--bg-3))); color: var(--warn-fg); }
-.funnel__bar--mute { background: var(--bg-3); color: var(--ink-2); }
-.funnel__meta {
+.funnel .bar.leaf { background: linear-gradient(90deg, var(--leaf), color-mix(in oklch, var(--leaf) 60%, var(--bg-3))); }
+.funnel .bar.warn { background: linear-gradient(90deg, var(--warn), color-mix(in oklch, var(--warn) 60%, var(--bg-3))); color: var(--warn-fg); }
+.funnel .bar.mute { background: var(--bg-3); color: var(--ink-2); }
+.funnel .meta {
   font-size: var(--text-xs);
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
-.funnel__meta b { color: var(--ink); font-weight: 500; }
+.funnel .meta b { color: var(--ink); font-weight: 500; }

@@ -6,87 +6,87 @@
 
 {% block content %}
 <h1>Chat</h1>
-<p class="showcase__lead">Layout de mensajería con barra lateral de conversaciones y vista principal de hilo. Compón <code>.chat-list</code> (sidebar), <code>.chat-thread</code> (viewport), y dentro <code>.chat-conv</code>, <code>.chat-msg</code>, <code>.chat-bubble</code>. Usa <code>.title.sm</code> + <code>.sub</code> dentro de <code>.chat-conv-body</code> y <code>.heading</code> dentro del <code>.head</code> del thread.</p>
+<p class="lead">Layout de mensajería con barra lateral de conversaciones y vista principal de hilo. Compón <code>.list</code> (sidebar), <code>.thread</code> (viewport), y dentro <code>.conv</code>, <code>.msg</code>, <code>.bubble</code>. Usa <code>.title.sm</code> + <code>.sub</code> dentro de <code>.body</code> y <code>.heading</code> dentro del <code>.head</code> del thread.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/chat.jinja" import chat, chat_composer %}
 {% call chat(attrs={"style": "height: 520px"}) %}
-<aside class="chat-list">
-  <div class="chat-search">
+<aside class="list">
+  <div class="search">
     <input type="text" placeholder="Buscar conversación…"/>
   </div>
-  <div class="chat-convs">
-    <div class="chat-conv chat-conv--active">
-      <div class="chat-conv-avatar chat-conv-online">OP</div>
-      <div class="chat-conv-body">
+  <div class="convs">
+    <div class="conv active">
+      <div class="avatar online">OP</div>
+      <div class="body">
         <div class="title sm">Operaciones</div>
         <div class="sub">Lucía: Acabo de cerrar arqueo</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">14:32</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar">EM</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar">EM</div>
+      <div class="body">
         <div class="title sm">Elena Marín</div>
         <div class="sub">¿Has revisado la propuesta?</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">13:48</span>
-        <span class="chat-conv-badge">3</span>
+        <span class="badge">3</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar chat-conv-online">JR</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar online">JR</div>
+      <div class="body">
         <div class="title sm">Javi Ruiz</div>
         <div class="sub">Tú: Perfecto, gracias</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">12:20</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar">CN</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar">CN</div>
+      <div class="body">
         <div class="title sm">Café Norte</div>
         <div class="sub">Confirmado: vamos con plan Pro</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">lun</span>
       </div>
     </div>
   </div>
 </aside>
-<section class="chat-thread">
+<section class="thread">
   <header class="head">
-    <div class="chat-head-avatar">OP</div>
+    <div class="avatar">OP</div>
     <div class="heading">
       <div class="title sm">Operaciones</div>
-      <div class="chat-head-status chat-head-status--online">7 miembros · 3 en línea</div>
+      <div class="status online">7 miembros · 3 en línea</div>
     </div>
   </header>
-  <div class="chat-messages">
-    <div class="chat-day">Hoy</div>
-    <div class="chat-msg">
-      <div class="chat-msg-avatar">LP</div>
+  <div class="messages">
+    <div class="day">Hoy</div>
+    <div class="msg">
+      <div class="avatar">LP</div>
       <div>
         <div class="meta">Lucía Peña</div>
-        <div class="chat-bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
+        <div class="bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
         <div class="meta">14:32</div>
       </div>
     </div>
-    <div class="chat-msg chat-msg--mine">
+    <div class="msg mine">
       <div>
-        <div class="chat-bubble">Genial, gracias Lucía 🙌</div>
+        <div class="bubble">Genial, gracias Lucía 🙌</div>
         <div class="meta">14:33</div>
       </div>
     </div>
-    <div class="chat-msg">
-      <div class="chat-msg-avatar">JR</div>
+    <div class="msg">
+      <div class="avatar">JR</div>
       <div>
         <div class="meta">Javi Ruiz</div>
-        <div class="chat-bubble">¿Habéis recibido la entrega de Marisol?</div>
+        <div class="bubble">¿Habéis recibido la entrega de Marisol?</div>
         <div class="meta">14:40</div>
       </div>
     </div>
@@ -95,83 +95,83 @@
 </section>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Chat style="height: 520px">
-<aside class="chat-list">
-  <div class="chat-search">
+<aside class="list">
+  <div class="search">
     <input type="text" placeholder="Buscar conversación…"/>
   </div>
-  <div class="chat-convs">
-    <div class="chat-conv chat-conv--active">
-      <div class="chat-conv-avatar chat-conv-online">OP</div>
-      <div class="chat-conv-body">
+  <div class="convs">
+    <div class="conv active">
+      <div class="avatar online">OP</div>
+      <div class="body">
         <div class="title sm">Operaciones</div>
         <div class="sub">Lucía: Acabo de cerrar arqueo</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">14:32</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar">EM</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar">EM</div>
+      <div class="body">
         <div class="title sm">Elena Marín</div>
         <div class="sub">¿Has revisado la propuesta?</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">13:48</span>
-        <span class="chat-conv-badge">3</span>
+        <span class="badge">3</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar chat-conv-online">JR</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar online">JR</div>
+      <div class="body">
         <div class="title sm">Javi Ruiz</div>
         <div class="sub">Tú: Perfecto, gracias</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">12:20</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar">CN</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar">CN</div>
+      <div class="body">
         <div class="title sm">Café Norte</div>
         <div class="sub">Confirmado: vamos con plan Pro</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">lun</span>
       </div>
     </div>
   </div>
 </aside>
-<section class="chat-thread">
+<section class="thread">
   <header class="head">
-    <div class="chat-head-avatar">OP</div>
+    <div class="avatar">OP</div>
     <div class="heading">
       <div class="title sm">Operaciones</div>
-      <div class="chat-head-status chat-head-status--online">7 miembros · 3 en línea</div>
+      <div class="status online">7 miembros · 3 en línea</div>
     </div>
   </header>
-  <div class="chat-messages">
-    <div class="chat-day">Hoy</div>
-    <div class="chat-msg">
-      <div class="chat-msg-avatar">LP</div>
+  <div class="messages">
+    <div class="day">Hoy</div>
+    <div class="msg">
+      <div class="avatar">LP</div>
       <div>
         <div class="meta">Lucía Peña</div>
-        <div class="chat-bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
+        <div class="bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
         <div class="meta">14:32</div>
       </div>
     </div>
-    <div class="chat-msg chat-msg--mine">
+    <div class="msg mine">
       <div>
-        <div class="chat-bubble">Genial, gracias Lucía 🙌</div>
+        <div class="bubble">Genial, gracias Lucía 🙌</div>
         <div class="meta">14:33</div>
       </div>
     </div>
-    <div class="chat-msg">
-      <div class="chat-msg-avatar">JR</div>
+    <div class="msg">
+      <div class="avatar">JR</div>
       <div>
         <div class="meta">Javi Ruiz</div>
-        <div class="chat-bubble">¿Habéis recibido la entrega de Marisol?</div>
+        <div class="bubble">¿Habéis recibido la entrega de Marisol?</div>
         <div class="meta">14:40</div>
       </div>
     </div>
@@ -184,83 +184,83 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call chat(attrs={"style": "height: 520px"}) %}
-<aside class="chat-list">
-  <div class="chat-search">
+<aside class="list">
+  <div class="search">
     <input type="text" placeholder="Buscar conversación…"/>
   </div>
-  <div class="chat-convs">
-    <div class="chat-conv chat-conv--active">
-      <div class="chat-conv-avatar chat-conv-online">OP</div>
-      <div class="chat-conv-body">
+  <div class="convs">
+    <div class="conv active">
+      <div class="avatar online">OP</div>
+      <div class="body">
         <div class="title sm">Operaciones</div>
         <div class="sub">Lucía: Acabo de cerrar arqueo</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">14:32</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar">EM</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar">EM</div>
+      <div class="body">
         <div class="title sm">Elena Marín</div>
         <div class="sub">¿Has revisado la propuesta?</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">13:48</span>
-        <span class="chat-conv-badge">3</span>
+        <span class="badge">3</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar chat-conv-online">JR</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar online">JR</div>
+      <div class="body">
         <div class="title sm">Javi Ruiz</div>
         <div class="sub">Tú: Perfecto, gracias</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">12:20</span>
       </div>
     </div>
-    <div class="chat-conv">
-      <div class="chat-conv-avatar">CN</div>
-      <div class="chat-conv-body">
+    <div class="conv">
+      <div class="avatar">CN</div>
+      <div class="body">
         <div class="title sm">Café Norte</div>
         <div class="sub">Confirmado: vamos con plan Pro</div>
       </div>
-      <div class="chat-conv-meta">
+      <div class="meta">
         <span class="meta">lun</span>
       </div>
     </div>
   </div>
 </aside>
-<section class="chat-thread">
+<section class="thread">
   <header class="head">
-    <div class="chat-head-avatar">OP</div>
+    <div class="avatar">OP</div>
     <div class="heading">
       <div class="title sm">Operaciones</div>
-      <div class="chat-head-status chat-head-status--online">7 miembros · 3 en línea</div>
+      <div class="status online">7 miembros · 3 en línea</div>
     </div>
   </header>
-  <div class="chat-messages">
-    <div class="chat-day">Hoy</div>
-    <div class="chat-msg">
-      <div class="chat-msg-avatar">LP</div>
+  <div class="messages">
+    <div class="day">Hoy</div>
+    <div class="msg">
+      <div class="avatar">LP</div>
       <div>
         <div class="meta">Lucía Peña</div>
-        <div class="chat-bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
+        <div class="bubble">Acabo de cerrar arqueo de caja 2. Cuadra al céntimo.</div>
         <div class="meta">14:32</div>
       </div>
     </div>
-    <div class="chat-msg chat-msg--mine">
+    <div class="msg mine">
       <div>
-        <div class="chat-bubble">Genial, gracias Lucía 🙌</div>
+        <div class="bubble">Genial, gracias Lucía 🙌</div>
         <div class="meta">14:33</div>
       </div>
     </div>
-    <div class="chat-msg">
-      <div class="chat-msg-avatar">JR</div>
+    <div class="msg">
+      <div class="avatar">JR</div>
       <div>
         <div class="meta">Javi Ruiz</div>
-        <div class="chat-bubble">¿Habéis recibido la entrega de Marisol?</div>
+        <div class="bubble">¿Habéis recibido la entrega de Marisol?</div>
         <div class="meta">14:40</div>
       </div>
     </div>
@@ -273,42 +273,42 @@
 {% set _src_jinja_2 %}{% raw %}{% from "ui/chat.jinja" import chat %}
 <div data-signals="{ active: 'op' }">
 {% call chat(attrs={"style": "height: 360px"}) %}
-<aside class="chat-list">
-  <div class="chat-convs">
-    <div class="chat-conv"
+<aside class="list">
+  <div class="convs">
+    <div class="conv"
          data-on:click="$active = 'op'"
          data-class-chat-conv--active="$active === 'op'">
-      <div class="chat-conv-avatar">OP</div>
-      <div class="chat-conv-body">
+      <div class="avatar">OP</div>
+      <div class="body">
         <div class="title sm">Operaciones</div>
         <div class="sub">Lucía cerró arqueo</div>
       </div>
     </div>
-    <div class="chat-conv"
+    <div class="conv"
          data-on:click="$active = 'em'"
          data-class-chat-conv--active="$active === 'em'">
-      <div class="chat-conv-avatar">EM</div>
-      <div class="chat-conv-body">
+      <div class="avatar">EM</div>
+      <div class="body">
         <div class="title sm">Elena Marín</div>
         <div class="sub">¿Has revisado…?</div>
       </div>
     </div>
   </div>
 </aside>
-<section class="chat-thread">
+<section class="thread">
   <header class="head">
     <div class="heading">
       <div class="title sm" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
     </div>
   </header>
-  <div class="chat-messages">
-    <div class="chat-msg" data-show="$active === 'op'">
-      <div class="chat-msg-avatar">LP</div>
-      <div><div class="chat-bubble">Cuadra al céntimo.</div></div>
+  <div class="messages">
+    <div class="msg" data-show="$active === 'op'">
+      <div class="avatar">LP</div>
+      <div><div class="bubble">Cuadra al céntimo.</div></div>
     </div>
-    <div class="chat-msg" data-show="$active === 'em'">
-      <div class="chat-msg-avatar">EM</div>
-      <div><div class="chat-bubble">¿Has revisado la propuesta?</div></div>
+    <div class="msg" data-show="$active === 'em'">
+      <div class="avatar">EM</div>
+      <div><div class="bubble">¿Has revisado la propuesta?</div></div>
     </div>
   </div>
 </section>
@@ -316,42 +316,42 @@
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<div data-signals="{ active: 'op' }">
 <Chat style="height: 360px">
-<aside class="chat-list">
-  <div class="chat-convs">
-    <div class="chat-conv"
+<aside class="list">
+  <div class="convs">
+    <div class="conv"
          data-on:click="$active = 'op'"
          data-class-chat-conv--active="$active === 'op'">
-      <div class="chat-conv-avatar">OP</div>
-      <div class="chat-conv-body">
+      <div class="avatar">OP</div>
+      <div class="body">
         <div class="title sm">Operaciones</div>
         <div class="sub">Lucía cerró arqueo</div>
       </div>
     </div>
-    <div class="chat-conv"
+    <div class="conv"
          data-on:click="$active = 'em'"
          data-class-chat-conv--active="$active === 'em'">
-      <div class="chat-conv-avatar">EM</div>
-      <div class="chat-conv-body">
+      <div class="avatar">EM</div>
+      <div class="body">
         <div class="title sm">Elena Marín</div>
         <div class="sub">¿Has revisado…?</div>
       </div>
     </div>
   </div>
 </aside>
-<section class="chat-thread">
+<section class="thread">
   <header class="head">
     <div class="heading">
       <div class="title sm" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
     </div>
   </header>
-  <div class="chat-messages">
-    <div class="chat-msg" data-show="$active === 'op'">
-      <div class="chat-msg-avatar">LP</div>
-      <div><div class="chat-bubble">Cuadra al céntimo.</div></div>
+  <div class="messages">
+    <div class="msg" data-show="$active === 'op'">
+      <div class="avatar">LP</div>
+      <div><div class="bubble">Cuadra al céntimo.</div></div>
     </div>
-    <div class="chat-msg" data-show="$active === 'em'">
-      <div class="chat-msg-avatar">EM</div>
-      <div><div class="chat-bubble">¿Has revisado la propuesta?</div></div>
+    <div class="msg" data-show="$active === 'em'">
+      <div class="avatar">EM</div>
+      <div><div class="bubble">¿Has revisado la propuesta?</div></div>
     </div>
   </div>
 </section>
@@ -363,42 +363,42 @@
     jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ active: 'op' }">
 {% call chat(attrs={"style": "height: 360px"}) %}
-<aside class="chat-list">
-  <div class="chat-convs">
-    <div class="chat-conv"
+<aside class="list">
+  <div class="convs">
+    <div class="conv"
          data-on:click="$active = 'op'"
          data-class-chat-conv--active="$active === 'op'">
-      <div class="chat-conv-avatar">OP</div>
-      <div class="chat-conv-body">
+      <div class="avatar">OP</div>
+      <div class="body">
         <div class="title sm">Operaciones</div>
         <div class="sub">Lucía cerró arqueo</div>
       </div>
     </div>
-    <div class="chat-conv"
+    <div class="conv"
          data-on:click="$active = 'em'"
          data-class-chat-conv--active="$active === 'em'">
-      <div class="chat-conv-avatar">EM</div>
-      <div class="chat-conv-body">
+      <div class="avatar">EM</div>
+      <div class="body">
         <div class="title sm">Elena Marín</div>
         <div class="sub">¿Has revisado…?</div>
       </div>
     </div>
   </div>
 </aside>
-<section class="chat-thread">
+<section class="thread">
   <header class="head">
     <div class="heading">
       <div class="title sm" data-text="$active === 'op' ? 'Operaciones' : 'Elena Marín'">Operaciones</div>
     </div>
   </header>
-  <div class="chat-messages">
-    <div class="chat-msg" data-show="$active === 'op'">
-      <div class="chat-msg-avatar">LP</div>
-      <div><div class="chat-bubble">Cuadra al céntimo.</div></div>
+  <div class="messages">
+    <div class="msg" data-show="$active === 'op'">
+      <div class="avatar">LP</div>
+      <div><div class="bubble">Cuadra al céntimo.</div></div>
     </div>
-    <div class="chat-msg" data-show="$active === 'em'">
-      <div class="chat-msg-avatar">EM</div>
-      <div><div class="chat-bubble">¿Has revisado la propuesta?</div></div>
+    <div class="msg" data-show="$active === 'em'">
+      <div class="avatar">EM</div>
+      <div><div class="bubble">¿Has revisado la propuesta?</div></div>
     </div>
   </div>
 </section>
@@ -411,7 +411,7 @@
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (p.ej. <code>style</code> para fijar altura).</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Compón <code>.chat-list</code> (sidebar) y <code>.chat-thread</code> (viewport). Sub-clases: <code>.chat-conv</code>, <code>.head</code> + <code>.heading</code>, <code>.chat-messages</code>, <code>.chat-msg</code>, <code>.chat-bubble</code>. Usa <code>.title.sm</code> + <code>.sub</code> dentro de <code>.chat-conv-body</code> y <code>.heading</code> dentro del <code>.head</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Compón <code>.list</code> (sidebar) y <code>.thread</code> (viewport). Sub-clases: <code>.conv</code>, <code>.head</code> + <code>.heading</code>, <code>.messages</code>, <code>.msg</code>, <code>.bubble</code>. Usa <code>.title.sm</code> + <code>.sub</code> dentro de <code>.body</code> y <code>.heading</code> dentro del <code>.head</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

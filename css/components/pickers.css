@@ -22,14 +22,14 @@
   font-family: var(--font-body);
   user-select: none;
 }
-.datepicker__head {
+.datepicker > .head {
   display: flex; align-items: center; justify-content: space-between;
   margin-bottom: var(--space-3);
 }
-.datepicker__nav {
+.datepicker .nav {
   display: inline-flex; gap: var(--border-w-2);
 }
-.datepicker__nav-btn {
+.datepicker .nav > .btn {
   width: var(--size-sm); height: var(--size-sm);
   border-radius: var(--radius-sm);
   background: transparent; border: 0;
@@ -37,18 +37,18 @@
   display: inline-grid; place-items: center;
   cursor: pointer;
 }
-.datepicker__nav-btn:hover { background: var(--bg-3); color: var(--ink); }
-.datepicker__nav-btn svg { width: var(--icon-sm); height: var(--icon-sm); }
-.datepicker__grid {
+.datepicker .nav > .btn:hover { background: var(--bg-3); color: var(--ink); }
+.datepicker .nav > .btn svg { width: var(--icon-sm); height: var(--icon-sm); }
+.datepicker .grid {
   display: grid; grid-template-columns: repeat(7, 1fr); gap: var(--border-w);
 }
-.datepicker__dow {
+.datepicker .dow {
   font-size: var(--text-2xs);
   color: var(--ink-4);
   text-align: center; padding: var(--space-1) var(--space-0);
   text-transform: uppercase; letter-spacing: var(--tracking-wide);
 }
-.datepicker__day {
+.datepicker .day {
   height: var(--avatar-sm); border-radius: var(--radius-sm);
   background: transparent; border: 0;
   font-size: var(--text-sm);
@@ -58,37 +58,37 @@
   font-variant-numeric: tabular-nums;
   position: relative;
 }
-.datepicker__day:hover { background: var(--bg-3); color: var(--ink); }
-.datepicker__day--muted { color: var(--ink-4); }
-.datepicker__day--today { color: var(--datepicker-accent-text); font-weight: 600; }
-.datepicker__day--today::after {
+.datepicker .day:hover { background: var(--bg-3); color: var(--ink); }
+.datepicker .day.muted { color: var(--ink-4); }
+.datepicker .day.today { color: var(--datepicker-accent-text); font-weight: 600; }
+.datepicker .day.today::after {
   content: ""; position: absolute; bottom: var(--space-1); left: 50%; transform: translateX(-50%);
   width: 3px; height: 3px; border-radius: var(--radius-circle); background: var(--datepicker-accent-text);
 }
-.datepicker__day--selected {
+.datepicker .day.is-selected {
   background: var(--datepicker-accent) !important;
   color: var(--datepicker-accent-fg) !important;
   font-weight: 600;
 }
-.datepicker__day--selected.datepicker__day--today::after { display: none; }
-.datepicker__day--in-range {
+.datepicker .day.is-selected.today::after { display: none; }
+.datepicker .day.in-range {
   background: var(--datepicker-accent-soft);
   color: var(--datepicker-accent-text);
   border-radius: 0;
 }
-.datepicker__day--range-start { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
-.datepicker__day--range-end   { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
-.datepicker__day:disabled { opacity: 0.3; cursor: not-allowed; }
-.datepicker__footer {
+.datepicker .day.range-start { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.datepicker .day.range-end   { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.datepicker .day:disabled { opacity: 0.3; cursor: not-allowed; }
+.datepicker > .foot {
   margin-top: var(--space-2-5); padding-top: var(--space-2-5);
   border-top: var(--border-w) solid var(--datepicker-border-color);
   display: flex; justify-content: space-between; gap: var(--space-2);
 }
-.datepicker__shortcuts {
+.datepicker .shortcuts {
   display: flex; flex-wrap: wrap; gap: var(--space-1);
   margin-top: var(--space-2-5);
 }
-.datepicker__shortcut {
+.datepicker .shortcut {
   font-size: var(--text-2xs);
   padding: var(--space-1) var(--space-2);
   background: var(--bg-3);
@@ -97,7 +97,7 @@
   color: var(--ink-2);
   cursor: pointer;
 }
-.datepicker__shortcut:hover { background: var(--bg-4); color: var(--ink); }
+.datepicker .shortcut:hover { background: var(--bg-4); color: var(--ink); }
 
 /* Range picker = dos meses lado a lado */
 .datepicker.range {
@@ -106,8 +106,8 @@
   grid-template-columns: 1fr 1fr;
   gap: var(--space-6);
 }
-.datepicker.range > .datepicker__head { grid-column: 1 / -1; }
-.datepicker.range > .datepicker__footer { grid-column: 1 / -1; }
+.datepicker.range > .head { grid-column: 1 / -1; }
+.datepicker.range > .foot { grid-column: 1 / -1; }
 
 /* ============================================================
    Time picker
@@ -126,7 +126,7 @@
   border-radius: var(--timepicker-border-radius);
   overflow: hidden;
 }
-.timepicker__col {
+.timepicker .col {
   display: flex; flex-direction: column;
   height: 240px;
   overflow-y: auto;
@@ -148,8 +148,8 @@
   /* Pad column so first/last items can snap to the centred active row */
   padding-block: calc(50% - var(--space-4));
 }
-.timepicker__col:last-child { border-right: 0; }
-.timepicker__opt {
+.timepicker .col:last-child { border-right: 0; }
+.timepicker .opt {
   padding: var(--space-1-5) var(--space-4);
   font-size: var(--text-sm);
   font-variant-numeric: tabular-nums;
@@ -160,9 +160,9 @@
   scroll-snap-align: center;
   scroll-snap-stop: always;
 }
-.timepicker__opt:hover { background: var(--bg-3); color: var(--ink); }
-.timepicker__opt[aria-selected="true"],
-.timepicker__opt[aria-selected=""] {
+.timepicker .opt:hover { background: var(--bg-3); color: var(--ink); }
+.timepicker .opt[aria-selected="true"],
+.timepicker .opt[aria-selected=""] {
   background: var(--timepicker-accent-soft); color: var(--timepicker-accent); font-weight: 600;
 }
 
@@ -184,7 +184,7 @@
   border: var(--border-w) solid var(--colorpicker-border-color);
   border-radius: var(--colorpicker-border-radius);
 }
-.colorpicker__swatch {
+.colorpicker .swatch {
   width: var(--avatar-2xs); height: var(--avatar-2xs);
   border-radius: var(--radius-sm);
   border: var(--border-w) solid rgba(255,255,255,0.08);
@@ -192,13 +192,13 @@
   transition: transform var(--dur-fast);
   position: relative;
 }
-.colorpicker__swatch:hover { transform: scale(1.12); }
+.colorpicker .swatch:hover { transform: scale(1.12); }
 /* Active swatch: ring-style selection that always sits within the picker's
    bounds (avoids the previous absolutely-positioned check overflowing on
    small/pastel swatches). The outline frames the swatch without affecting
    layout, and is offset for clear separation against any palette colour. */
-.colorpicker__swatch[aria-pressed="true"],
-.colorpicker__swatch[aria-pressed=""] {
+.colorpicker .swatch[aria-pressed="true"],
+.colorpicker .swatch[aria-pressed=""] {
   outline: var(--border-w-2) solid var(--colorpicker-accent);
   outline-offset: var(--border-w-2);
 }
@@ -217,7 +217,7 @@
 
   display: inline-flex; gap: var(--space-2);
 }
-.otp__cell {
+.otp .cell {
   /* md (default) */
   width: var(--touch-target); height: var(--topbar-h);
   font-size: var(--text-lg);
@@ -231,22 +231,22 @@
   outline: 0;
   transition: border-color var(--dur-fast);
 }
-.otp__cell:focus {
+.otp .cell:focus {
   border-color: var(--otp-accent);
   box-shadow: 0 0 0 3px var(--otp-accent-soft);
 }
-.otp__cell:disabled { opacity: 0.5; }
-.otp__sep {
+.otp .cell:disabled { opacity: 0.5; }
+.otp .sep {
   align-self: center;
   color: var(--ink-4);
 }
 /* sm — compact, for inline confirmations */
-.otp.sm .otp__cell {
+.otp.sm .cell {
   width: var(--size-md); height: var(--touch-target);
   font-size: var(--text-md);
 }
 /* lg — hero/auth screens; the "OTP feel" with letter-spacing + bold */
-.otp.lg .otp__cell {
+.otp.lg .cell {
   width: var(--icon-2xl); height: 68px; /* TOKEN-MISSING: --otp-cell-lg-h */
   font-size: var(--text-2xl);
   font-weight: 600;
@@ -269,7 +269,7 @@
   border: var(--border-w) solid var(--pinpad-border-color);
   border-radius: var(--pinpad-border-radius);
 }
-.pinpad__key {
+.pinpad .key {
   width: var(--avatar-xl); height: var(--avatar-xl);
   background: var(--pinpad-key-bg);
   border: var(--border-w) solid var(--pinpad-border-color);
@@ -282,15 +282,15 @@
   font-variant-numeric: tabular-nums;
   transition: background var(--dur-fast), transform var(--dur-fast), border-color var(--dur-fast);
 }
-.pinpad__key:hover {
+.pinpad .key:hover {
   background: var(--bg-3);
   border-color: var(--line-2);
 }
-.pinpad__key:active {
+.pinpad .key:active {
   background: var(--bg-4);
   transform: scale(0.97);
 }
-.pinpad__key--action {
+.pinpad .key.action {
   background: var(--bg-3);
   color: var(--ink-2);
   font-size: var(--text-lg);
@@ -307,24 +307,24 @@
   display: inline-flex; gap: var(--border-w-2);
   align-items: center;
 }
-.rating__star {
+.rating .star {
   width: var(--icon-md); height: var(--icon-md);
   color: var(--rating-color);
   cursor: pointer;
   transition: color var(--dur-fast), transform var(--dur-fast);
 }
-.rating__star:hover { transform: scale(1.15); }
-.rating__star--filled { color: var(--rating-color-filled); }
+.rating .star:hover { transform: scale(1.15); }
+.rating .star.filled { color: var(--rating-color-filled); }
 /* .rating .label and .rating .meta: use universal compositives */
 .rating > .label,
 .rating > .meta {
   font-variant-numeric: tabular-nums;
   margin-left: var(--space-1-5);
 }
-.rating.lg .rating__star { width: var(--avatar-2xs); height: var(--avatar-2xs); }
-.rating.sm .rating__star { width: var(--icon-sm); height: var(--icon-sm); }
-.rating.readonly .rating__star { cursor: default; }
-.rating.readonly .rating__star:hover { transform: none; }
+.rating.lg .star { width: var(--avatar-2xs); height: var(--avatar-2xs); }
+.rating.sm .star { width: var(--icon-sm); height: var(--icon-sm); }
+.rating.readonly .star { cursor: default; }
+.rating.readonly .star:hover { transform: none; }
 
 /* ============================================================
    Autocomplete · Combobox
@@ -338,7 +338,7 @@
 
   position: relative;
 }
-.autocomplete__list {
+.autocomplete .list {
   position: absolute; top: calc(100% + 4px); left: 0; right: 0;
   background: var(--background);
   border: var(--border-w) solid var(--border-color);
@@ -348,7 +348,7 @@
   padding: var(--space-1);
   z-index: var(--z-popover);
 }
-.autocomplete__opt {
+.autocomplete .opt {
   display: flex; align-items: center; gap: var(--space-2-5);
   padding: 7px var(--space-2-5); /* TOKEN-MISSING: no hay token para 7px */
   border-radius: var(--radius-sm);
@@ -357,35 +357,35 @@
   cursor: pointer;
   background: transparent; border: 0; width: 100%; text-align: left;
 }
-.autocomplete__opt:hover,
-.autocomplete__opt[aria-selected="true"],
-.autocomplete__opt[aria-selected=""] {
+.autocomplete .opt:hover,
+.autocomplete .opt[aria-selected="true"],
+.autocomplete .opt[aria-selected=""] {
   background: var(--bg-3); color: var(--ink);
 }
-.autocomplete__opt-meta {
+.autocomplete .opt .meta {
   margin-left: auto;
   font-size: var(--text-2xs);
   color: var(--ink-4);
   font-family: var(--font-mono);
 }
-.autocomplete__opt-icon {
+.autocomplete .opt > .icon {
   width: var(--icon-md); height: var(--icon-md);
   flex-shrink: 0;
   color: var(--ink-3);
 }
-.autocomplete__opt mark {
+.autocomplete .opt mark {
   background: transparent;
   color: var(--autocomplete-accent);
   font-weight: 600;
 }
-.autocomplete__group {
+.autocomplete .group {
   font-size: var(--text-2xs);
   color: var(--ink-4);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   padding: var(--space-2) var(--space-2-5) var(--space-1);
 }
-.autocomplete__empty {
+.autocomplete .empty {
   padding: 18px; /* TOKEN-MISSING: no hay token para 18px */
   text-align: center;
   font-size: var(--text-sm);

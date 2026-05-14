@@ -11,20 +11,20 @@
 
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">CR</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">CR</div>
+      <div class="text">
         <div class="title md">Cafetería La Rambla</div>
         <div class="meta">Hub · v0.0.9</div>
       </div>
     </div>
     <div class="content scroll">
       <div class="label">Plataforma</div>
-      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="item-label">Configuración</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83"/></svg><span class="text">Configuración</span></button>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <span class="avatar sm brand">JC</span>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Joan Castell</div>
           <div class="meta">joan@larambla.es</div>
         </div>
@@ -34,13 +34,13 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
@@ -48,7 +48,7 @@
         <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
+    <nav class="tabs-scroll" aria-label="Sub-secciones de ajustes">
       <a class="tab" href="preferences.html">Preferencias</a>
       <a class="tab" href="hub.html">Hub</a>
       <a class="tab" href="hub-config.html">Config</a>
@@ -65,10 +65,10 @@
 
     <div class="content scroll body">
 
-      <div class="page-header" style="border-bottom:1px solid var(--line);margin-bottom:22px;">
-        <div class="page-header-title">
+      <div class="head" style="border-bottom:1px solid var(--line);margin-bottom:22px;">
+        <div class="title">
           <h1>Backup &amp; restauración</h1>
-          <div class="page-header-sub">Snapshots automáticos del Hub almacenados cifrados en S3</div>
+          <div class="sub">Snapshots automáticos del Hub almacenados cifrados en S3</div>
         </div>
         <div class="actions">
           <button class="btn secondary sm">Subir backup externo</button>
@@ -86,22 +86,22 @@
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Último backup</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Hoy · 03:00</div>
-          <span class="pill success"><span class="pill__dot"></span>Completado</span>
+          <span class="pill success"><span class="dot"></span>Completado</span>
         </div>
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Próximo automático</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Mañana · 03:00</div>
-          <span class="pill"><span class="pill__dot"></span>Diario</span>
+          <span class="pill"><span class="dot"></span>Diario</span>
         </div>
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Espacio usado</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;font-variant-numeric:tabular-nums;">1,8 GB <span style="color:var(--ink-3);font-size:14px;">/ 5 GB</span></div>
-          <div class="progress mt-2"><div class="progress__bar" style="width:36%;"></div></div>
+          <div class="progress mt-2"><div class="bar" style="width:36%;"></div></div>
         </div>
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Backups guardados</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">14<span style="color:var(--ink-3);font-size:14px;">/14</span></div>
-          <span class="pill"><span class="pill__dot"></span>Retención 14 días</span>
+          <span class="pill"><span class="dot"></span>Retención 14 días</span>
         </div>
       </div>
 
@@ -115,15 +115,15 @@
         </header>
         <div class="body">
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Activar backups automáticos</span>
-              <span class="toggle-row__desc">Snapshot cifrado con AES-256 subido a S3 cada intervalo.</span>
+            <div class="text">
+              <span class="label">Activar backups automáticos</span>
+              <span class="sub">Snapshot cifrado con AES-256 subido a S3 cada intervalo.</span>
             </div>
-            <label class="toggle"><input type="checkbox" data-bind="bk.autoEnabled"/><span class="toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" data-bind="bk.autoEnabled"/><span class="track"></span></label>
           </div>
           <div class="form-row" style="padding-top:14px;" data-show="$bk.autoEnabled">
             <div class="field">
-              <label class="field__label">Intervalo</label>
+              <label class="label">Intervalo</label>
               <select class="select">
                 <option selected>Diario · 03:00</option>
                 <option>Cada 6 horas</option>
@@ -131,7 +131,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Retención</label>
+              <label class="label">Retención</label>
               <select class="select">
                 <option>7 días</option>
                 <option selected>14 días</option>
@@ -140,7 +140,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Cifrado</label>
+              <label class="label">Cifrado</label>
               <select class="select">
                 <option selected>AES-256 (S3 SSE-KMS)</option>
                 <option>AES-256 (cliente)</option>
@@ -182,7 +182,7 @@
                 <td class="td mono">2026-05-08 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">142 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="dot"></span>OK</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -195,7 +195,7 @@
                 <td class="td mono">2026-05-07 18:42</td>
                 <td><span class="badge brand">Manual</span></td>
                 <td class="td num">141 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="dot"></span>OK</span></td>
                 <td class="td muted">Joan C.</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -208,7 +208,7 @@
                 <td class="td mono">2026-05-07 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">140 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="dot"></span>OK</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -221,7 +221,7 @@
                 <td class="td mono">2026-05-06 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">138 MB</td>
-                <td><span class="pill warning"><span class="pill__dot"></span>Parcial</span></td>
+                <td><span class="pill warning"><span class="dot"></span>Parcial</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -234,7 +234,7 @@
                 <td class="td mono">2026-05-05 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">137 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="dot"></span>OK</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -251,11 +251,11 @@
     </div>
   </div>
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="label">Facturas</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="label">Perfil</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

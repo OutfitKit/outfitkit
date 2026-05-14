@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>OTP</h1>
-<p class="showcase__lead">Inputs para códigos de un solo uso (verificación 2FA, recuperación de contraseña). Uno por dígito, con auto-foco entre celdas.</p>
+<p class="lead">Inputs para códigos de un solo uso (verificación 2FA, recuperación de contraseña). Uno por dígito, con auto-foco entre celdas.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/otp.jinja" import otp %}
 {{ otp(length=6, value="392", separator_at=3) }}{% endraw %}{% endset %}
@@ -51,7 +51,7 @@
   </tbody>
 </table>
 
-{# Demo wiring — make all .ok-otp groups on this page interactive: typing
+{# Demo wiring — make all .otp groups on this page interactive: typing
    auto-advances focus, backspace on empty cell goes back, paste distributes
    chars across cells. The filter respects each cell's `inputmode`:
    `numeric` → only digits; `text` (alphanumeric) → A-Z + 0-9, uppercased.

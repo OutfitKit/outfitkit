@@ -1,0 +1,93 @@
+/* ============================================================
+   Theme: Vivid · Logo Tri-Color on Neutral
+   Superficies neutras — blanco puro en light, negro en dark, sin
+   tinte. Las tres familias del logo de OutfitKit se usan a través
+   de los tokens semánticos:
+     · verde  → marca (--brand) + éxito (--leaf)
+     · azul   → información (--info)
+     · naranja→ aviso (--warn)
+   Tipografía Inter Tight ceñida: moderno pero profesional.
+   Activate with `data-template="vivid"` on <html> or <body>.
+   ============================================================ */
+
+[data-template="vivid"] {
+  /* Tipografía — limpia y moderna, tracking ceñido */
+  --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+  --tracking-display: -0.04em;
+
+  /* Acento — verde vivo del logo */
+  --brand:      #2DA134;       /* verde medio del logo */
+  --brand-2:    #078839;       /* verde oscuro del logo — hover/pressed */
+  --brand-3:    #4FB130;       /* verde claro del logo — focus ring */
+  --brand-fg:   #FFFFFF;
+  --brand-soft: color-mix(in oklch, var(--brand) 16%, transparent);
+
+  /* Degradado de marca — naranja→verde→azul, las tres familias
+     del logo. Disponible para cualquier consumidor que lo use. */
+  --brand-gradient: linear-gradient(135deg, #F56416 0%, #2DA134 50%, #0478C7 100%);
+
+  /* Anillo de foco vivo (más claro que la marca) */
+  --focus: var(--brand-3);
+
+  /* Estados — todos del logo salvo el rojo (el logo no trae rojo) */
+  --leaf:    #089238;          /* verde profundo del logo — éxito */
+  --warn:    #FC9C0D;          /* ámbar del logo — aviso */
+  --info:    #0478C7;          /* azul del logo — información */
+  --danger:  #E5484D;          /* rojo — error (derivado) */
+
+  /* Sombras neutras — profesional, sin tinte de color */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.14);
+  --shadow-glow: 0 0 0 4px color-mix(in oklch, var(--brand) 28%, transparent);
+
+  /* Radios moderados — moderno sin ser blando */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+
+  --page-pad: 24px;
+  --topbar-h: 56px;
+}
+
+/* Vivid · light — blanco puro, grises neutros */
+[data-template="vivid"][data-theme="erplora-light"] {
+  --bg:    #FFFFFF;            /* canvas blanco */
+  --bg-1:  #F7F7F8;            /* topbar / sidebar */
+  --bg-2:  #FFFFFF;            /* cards */
+  --bg-3:  #F1F1F3;            /* hover / inputs */
+  --bg-4:  #E4E4E7;            /* pressed / chips */
+
+  --line:   rgba(0, 0, 0, 0.07);
+  --line-2: rgba(0, 0, 0, 0.12);
+  --line-3: rgba(0, 0, 0, 0.22);
+
+  --ink:    #18181B;           /* casi negro, neutro */
+  --ink-2:  #3F3F46;
+  --ink-3:  #71717A;
+  --ink-4:  #A1A1AA;
+
+  color-scheme: light;
+}
+
+/* Vivid · dark — negro, grises neutros */
+[data-template="vivid"][data-theme="erplora"] {
+  --bg:    #0A0A0A;            /* canvas negro */
+  --bg-1:  #131314;            /* topbar / sidebar */
+  --bg-2:  #161618;            /* cards */
+  --bg-3:  #1F1F22;            /* hover / inputs */
+  --bg-4:  #2A2A2E;            /* pressed / chips */
+
+  --line:   rgba(255, 255, 255, 0.07);
+  --line-2: rgba(255, 255, 255, 0.12);
+  --line-3: rgba(255, 255, 255, 0.22);
+
+  --ink:    #FAFAFA;
+  --ink-2:  #D4D4D8;
+  --ink-3:  #A1A1AA;
+  --ink-4:  #52525B;
+
+  color-scheme: dark;
+}

@@ -82,10 +82,9 @@
   background: var(--bg-1);
 }
 
-/* card__header / card__title / card__sub / card__actions / card__body /
-   card__footer / card__divider — eliminados en v2. Los consumidores
-   usan las clases universales: .head, .title, .sub, .actions, .body,
-   .foot, .divider directamente dentro del .card. */
+/* card no define elementos propios: usa las clases universales
+   .head .title .sub .actions .body .foot .divider directamente
+   dentro del .card (composición con contexto). */
 
 
 /* ============================================================
@@ -94,7 +93,7 @@
    Composición interna v2:
      <div class="label">VENTAS HOY</div>
      <div class="value">€2.847<span class="unit">€</span></div>
-     <div class="kpi__delta up">▲ +12%</div>
+     <div class="delta up">▲ +12%</div>
    ============================================================ */
 
 .kpi {
@@ -123,9 +122,8 @@
   color: var(--variant-tint, var(--color-primary-tint));
 }
 
-/* .label and .value consumed from universal classes in modifiers.css.
-   kpi__label / kpi__value are kept as aliases for backward compat. */
-.kpi__label,
+/* .label/.value/.icon/.unit from universal classes; .kpi scopes its
+   own overrides via descendant selectors. */
 .kpi .label {
   font-size: var(--text-2xs);
   font-weight: var(--weight-medium);
@@ -137,14 +135,12 @@
   gap: var(--space-2);
 }
 
-.kpi__icon,
 .kpi .icon {
   width: var(--icon-sm);
   height: var(--icon-sm);
   color: var(--ink-4);
 }
 
-.kpi__value,
 .kpi .value {
   font-family: var(--font-display);
   font-size: var(--text-3xl, var(--text-2xl));
@@ -155,7 +151,6 @@
   line-height: 1.05;
 }
 
-.kpi__value-unit,
 .kpi .unit {
   font-size: var(--text-lg);
   color: var(--ink-3);
@@ -163,7 +158,7 @@
   margin-left: var(--space-1);
 }
 
-.kpi__delta {
+.kpi .delta {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -172,16 +167,14 @@
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
-.kpi__delta.up,
-.kpi__delta--up   { color: var(--color-success); }
-.kpi__delta.down,
-.kpi__delta--down { color: var(--color-danger); }
-.kpi__delta-arrow {
+.kpi .delta.up   { color: var(--color-success); }
+.kpi .delta.down { color: var(--color-danger); }
+.kpi .delta .arrow {
   width: var(--icon-xs);
   height: var(--icon-xs);
 }
 
-.kpi__sparkline {
+.kpi .sparkline {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -213,8 +206,7 @@
 }
 .stat:last-child { border-right: none; }
 
-/* .label and .value come from universal classes. Aliases kept for compat. */
-.stat__label,
+/* .label/.value from universal classes; .stat scopes its overrides. */
 .stat .label {
   font-size: var(--text-2xs);
   font-weight: var(--weight-medium);
@@ -223,7 +215,6 @@
   letter-spacing: var(--tracking-wide);
   margin-bottom: var(--space-1);
 }
-.stat__value,
 .stat .value {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
@@ -232,17 +223,15 @@
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.stat__delta {
+.stat .delta {
   font-size: var(--text-xs);
   color: var(--ink-3);
   margin-top: var(--border-w-2);
   font-weight: var(--weight-medium);
   font-variant-numeric: tabular-nums;
 }
-.stat__delta.up,
-.stat__delta--up   { color: var(--color-success); }
-.stat__delta.down,
-.stat__delta--down { color: var(--color-danger); }
+.stat .delta.up   { color: var(--color-success); }
+.stat .delta.down { color: var(--color-danger); }
 
 @media (max-width: 640px) {
   .stat {
@@ -276,8 +265,8 @@
   border-radius: var(--radius, var(--radius-xl));
 }
 
-/* .icon-disc composes with .lg/.xl + color modifier (from modifiers.css) */
-.empty__icon {
+/* empty's icon disc — overrides universal .icon-disc sizing */
+.empty .icon-disc {
   width: var(--icon-2xl);
   height: var(--icon-2xl);
   border-radius: var(--radius-xl);
@@ -286,13 +275,12 @@
   display: grid;
   place-items: center;
 }
-.empty__icon svg {
+.empty .icon-disc svg {
   width: var(--icon-lg);
   height: var(--icon-lg);
 }
 
-/* .title and .sub come from universal classes. Aliases kept for compat. */
-.empty__title,
+/* .title/.sub/.actions from universal classes; .empty scopes overrides. */
 .empty .title {
   font-family: var(--font-display);
   font-size: var(--text, var(--text-lg));
@@ -302,7 +290,6 @@
   margin: 0;
 }
 
-.empty__desc,
 .empty .sub {
   font-size: var(--text, var(--text-md));
   color: var(--ink-3);
@@ -311,8 +298,6 @@
   margin: 0;
 }
 
-/* .actions comes from universal class */
-.empty__actions,
 .empty .actions {
   margin-top: var(--space-1);
 }
@@ -323,12 +308,12 @@
   --pad-x: var(--space-4);
   --gap:   var(--space-2);
 }
-.empty.compact .empty__icon {
+.empty.compact .icon-disc {
   width: var(--icon-xl);
   height: var(--icon-xl);
   border-radius: var(--radius-lg);
 }
-.empty.compact .empty__icon svg {
+.empty.compact .icon-disc svg {
   width: var(--icon-md);
   height: var(--icon-md);
 }

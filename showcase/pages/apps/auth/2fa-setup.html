@@ -35,18 +35,18 @@
     justify-content: space-between;
     gap: 8px;
   }
-  .cloud-code__num { color: var(--ink-4); font-size: var(--text-xs); }
+  .cloud-code .num { color: var(--ink-4); font-size: var(--text-xs); }
   .cloud-instructions { display: flex; flex-direction: column; gap: 14px; }
   .cloud-step { display: grid; grid-template-columns: 28px 1fr; gap: 12px; }
-  .cloud-step__num {
+  .cloud-step > .num {
     width: 26px; height: 26px; border-radius: 50%;
     background: var(--brand-soft); color: var(--brand-3);
     display: grid; place-items: center;
     font-family: var(--font-display);
     font-weight: 600; font-size: 13px;
   }
-  .cloud-step__title { font-weight: 500; color: var(--ink); font-size: var(--text-md); }
-  .cloud-step__desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
+  .cloud-step .title { font-weight: 500; color: var(--ink); font-size: var(--text-md); }
+  .cloud-step .desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
   .cloud-secret {
     margin-top: 8px; padding: 8px 10px;
     background: var(--bg-1);
@@ -66,31 +66,31 @@
 
 <aside class="sidebar">
   <div class="head">
-    <div class="sidebar-logo">EX</div>
-    <div class="sidebar-brand-text">
+    <div class="logo">EX</div>
+    <div class="text">
       <div class="title md">ERPlora Cloud</div>
       <div class="meta">Acme Industries</div>
     </div>
   </div>
   <div class="content scroll">
     <div class="label">Principal</div>
-    <a class="item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Resumen</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg><span class="item-label">Usuarios</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:layers" width="18" height="18"></iconify-icon><span class="item-label">Equipamiento</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Resumen</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="text">Hubs</span><span class="badge">7</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg><span class="text">Usuarios</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:layers" width="18" height="18"></iconify-icon><span class="text">Equipamiento</span></a>
     <div class="label">Facturación</div>
-    <a class="item" href="#"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Facturas</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:refresh-ccw" width="18" height="18"></iconify-icon><span class="item-label">Suscripciones</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Pagos</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="text">Facturas</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:refresh-ccw" width="18" height="18"></iconify-icon><span class="text">Suscripciones</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg><span class="text">Pagos</span></a>
     <div class="label">Cuenta</div>
-    <a class="item" href="#" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg><span class="item-label">Seguridad</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="item-label">Mi perfil</span></a>
+    <a class="item" href="#" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg><span class="text">Seguridad</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="text">Mi perfil</span></a>
   </div>
   <div class="foot">
-    <div class="sidebar-user">
+    <div class="user">
       <span class="avatar sm brand">IB</span>
-      <div class="sidebar-user-info">
+      <div class="text">
         <div class="title sm">Ioan Beilic</div>
         <div class="meta">ioan@acme.com</div>
       </div>
@@ -101,23 +101,23 @@
 <div class="page">
 
   <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Activar 2FA</h1>
         
-        <div class="topbar-search">
-      <span class="search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+        <div class="search">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
       <input type="search" placeholder="Buscar hubs, módulos, facturas…"/>
-      <span class="topbar-kbd">⌘K</span>
+      <span class="shortcut">⌘K</span>
     </div>
         
         <div class="actions">
@@ -136,21 +136,21 @@
 
     <!-- Stepper -->
     <div class="stepper-progress" style="margin-bottom: var(--space-5);">
-      <span class="stepper-progress__label" data-text="'Paso ' + $step + ' de 4'">Paso 2 de 4</span>
-      <div class="stepper-progress__bar">
-        <div class="stepper-progress__seg" data-class:stepper-progress__seg--done="$step > 1" data-class:stepper-progress__seg--active="$step === 1"></div>
-        <div class="stepper-progress__seg" data-class:stepper-progress__seg--done="$step > 2" data-class:stepper-progress__seg--active="$step === 2"></div>
-        <div class="stepper-progress__seg" data-class:stepper-progress__seg--done="$step > 3" data-class:stepper-progress__seg--active="$step === 3"></div>
-        <div class="stepper-progress__seg" data-class:stepper-progress__seg--done="$step > 4" data-class:stepper-progress__seg--active="$step === 4"></div>
+      <span class="label" data-text="'Paso ' + $step + ' de 4'">Paso 2 de 4</span>
+      <div class="bar">
+        <div class="seg" data-class:seg done="$step > 1" data-class:seg active="$step === 1"></div>
+        <div class="seg" data-class:seg done="$step > 2" data-class:seg active="$step === 2"></div>
+        <div class="seg" data-class:seg done="$step > 3" data-class:seg active="$step === 3"></div>
+        <div class="seg" data-class:seg done="$step > 4" data-class:seg active="$step === 4"></div>
       </div>
-      <span class="stepper-progress__step" data-text="$step === 1 ? 'Instalar app · QR escaneado · Verificado · Códigos guardados' : ($step === 2 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : ($step === 3 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : 'Activado · QR escaneado · Verificado · Códigos guardados'))">Activado · <strong class="text-ink">QR escaneado</strong> · Verificado · Códigos guardados</span>
+      <span class="step" data-text="$step === 1 ? 'Instalar app · QR escaneado · Verificado · Códigos guardados' : ($step === 2 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : ($step === 3 ? 'Activado · QR escaneado · Verificado · Códigos guardados' : 'Activado · QR escaneado · Verificado · Códigos guardados'))">Activado · <strong class="text-ink">QR escaneado</strong> · Verificado · Códigos guardados</span>
     </div>
 
     <!-- Header -->
-    <header class="page-header">
-      <div class="page-header-title">
+    <header class="head">
+      <div class="title">
         <h1>Activar verificación en dos pasos</h1>
-        <p class="page-header-sub">Añade una capa extra de seguridad a tu cuenta de ERPlora Cloud.</p>
+        <p class="sub">Añade una capa extra de seguridad a tu cuenta de ERPlora Cloud.</p>
       </div>
       <div class="actions">
         <button class="btn ghost" data-show="$step <= 1">Cancelar</button>
@@ -162,11 +162,11 @@
           data-on:click="$step = Math.min(4, $step + 1)"
           data-show="$step < 4">
           Continuar
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </button>
         <button class="btn primary" data-show="$step === 4" data-attr:disabled="!$codesSaved">
           Activar 2FA
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
         </button>
       </div>
     </header>
@@ -183,10 +183,10 @@
         <div class="body">
           <p style="margin:0 0 12px;color:var(--ink-2);">Recomendamos cualquiera de estas opciones gratuitas:</p>
           <ul class="list">
-            <li class="list__item"><div class="list__body"><div class="list__title">Google Authenticator</div><div class="list__desc">iOS y Android</div></div></li>
-            <li class="list__item"><div class="list__body"><div class="list__title">1Password</div><div class="list__desc">Multiplataforma</div></div></li>
-            <li class="list__item"><div class="list__body"><div class="list__title">Authy</div><div class="list__desc">iOS, Android y Desktop</div></div></li>
-            <li class="list__item"><div class="list__body"><div class="list__title">Microsoft Authenticator</div><div class="list__desc">iOS y Android</div></div></li>
+            <li class="item"><div class="body"><div class="title">Google Authenticator</div><div class="meta">iOS y Android</div></div></li>
+            <li class="item"><div class="body"><div class="title">1Password</div><div class="meta">Multiplataforma</div></div></li>
+            <li class="item"><div class="body"><div class="title">Authy</div><div class="meta">iOS, Android y Desktop</div></div></li>
+            <li class="item"><div class="body"><div class="title">Microsoft Authenticator</div><div class="meta">iOS y Android</div></div></li>
           </ul>
         </div>
       </div>
@@ -202,12 +202,12 @@
             <p class="sub">Apunta tu app autenticadora al QR</p>
           </div>
           <div class="actions">
-            <span class="badge brand"><span class="badge__dot"></span>TOTP</span>
+            <span class="badge brand"><span class="dot"></span>TOTP</span>
           </div>
         </div>
         <div class="body" style="display:grid;place-items:center;padding:24px;">
           <div class="qr lg bordered">
-            <div class="qr__img">
+            <div class="frame">
               <svg class="qr-pattern" viewBox="0 0 25 25" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
                 <!-- Position markers -->
                 <rect x="0" y="0" width="7" height="7"/>
@@ -245,12 +245,12 @@
                 <rect x="9" y="24" width="1" height="1"/><rect x="10" y="24" width="1" height="1"/><rect x="13" y="24" width="1" height="1"/><rect x="15" y="24" width="1" height="1"/><rect x="17" y="24" width="1" height="1"/><rect x="20" y="24" width="1" height="1"/><rect x="22" y="24" width="1" height="1"/><rect x="23" y="24" width="1" height="1"/>
               </svg>
             </div>
-            <span class="qr__label">ERPlora Cloud · ioan@acme.com</span>
+            <span class="label">ERPlora Cloud · ioan@acme.com</span>
           </div>
         </div>
         <div class="footer" style="flex-direction:column;align-items:stretch;gap:8px;">
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
-            <span class="field__hint">¿No puedes escanear?</span>
+            <span class="hint">¿No puedes escanear?</span>
             <button class="btn outline sm" data-on:click="$showSecret = !$showSecret" data-text="$showSecret ? 'Ocultar clave manual' : 'Mostrar clave manual'">Mostrar clave manual</button>
           </div>
           <div class="cloud-secret mt-1" data-show="$showSecret">
@@ -271,18 +271,18 @@
           <div class="cloud-instructions">
 
             <div class="cloud-step">
-              <div class="cloud-step__num">1</div>
+              <div class="num">1</div>
               <div>
-                <div class="cloud-step__title">Instala una app autenticadora</div>
-                <div class="cloud-step__desc">Recomendamos <strong>Google Authenticator</strong>, <strong>1Password</strong>, <strong>Authy</strong> o <strong>Microsoft Authenticator</strong>. Disponibles en iOS y Android.</div>
+                <div class="title">Instala una app autenticadora</div>
+                <div class="desc">Recomendamos <strong>Google Authenticator</strong>, <strong>1Password</strong>, <strong>Authy</strong> o <strong>Microsoft Authenticator</strong>. Disponibles en iOS y Android.</div>
               </div>
             </div>
 
             <div class="cloud-step">
-              <div class="cloud-step__num">2</div>
+              <div class="num">2</div>
               <div>
-                <div class="cloud-step__title">Escanea el código QR</div>
-                <div class="cloud-step__desc">Abre la app y toca el botón <strong>+</strong> para añadir una nueva cuenta. Apunta la cámara al QR de la izquierda.</div>
+                <div class="title">Escanea el código QR</div>
+                <div class="desc">Abre la app y toca el botón <strong>+</strong> para añadir una nueva cuenta. Apunta la cámara al QR de la izquierda.</div>
                 <div class="cloud-secret">
                   <span>JBSW Y3DP EHPK 3PXP K7AB QXFR</span>
                   <button class="btn ghost sm">Copiar</button>
@@ -307,13 +307,13 @@
         </div>
         <div class="body">
           <div class="otp" role="group" aria-label="Código de verificación">
-            <input class="otp__cell" maxlength="1" inputmode="numeric"/>
-            <input class="otp__cell" maxlength="1" inputmode="numeric"/>
-            <input class="otp__cell" maxlength="1" inputmode="numeric"/>
-            <span class="otp__sep">·</span>
-            <input class="otp__cell" maxlength="1" inputmode="numeric"/>
-            <input class="otp__cell" maxlength="1" inputmode="numeric"/>
-            <input class="otp__cell" maxlength="1" inputmode="numeric"/>
+            <input class="cell" maxlength="1" inputmode="numeric"/>
+            <input class="cell" maxlength="1" inputmode="numeric"/>
+            <input class="cell" maxlength="1" inputmode="numeric"/>
+            <span class="sep">·</span>
+            <input class="cell" maxlength="1" inputmode="numeric"/>
+            <input class="cell" maxlength="1" inputmode="numeric"/>
+            <input class="cell" maxlength="1" inputmode="numeric"/>
           </div>
         </div>
       </div>
@@ -336,43 +336,43 @@
           </div>
           <div class="actions">
             <button class="btn outline sm">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
               Descargar TXT
             </button>
             <button class="btn outline sm">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               Copiar todos
             </button>
           </div>
         </div>
         <div class="body">
           <div class="cloud-codes">
-            <div class="cloud-code"><span class="cloud-code__num">01</span> 4F8K-X29Q-7HRT</div>
-            <div class="cloud-code"><span class="cloud-code__num">02</span> 9ZJP-LW3M-BV62</div>
-            <div class="cloud-code"><span class="cloud-code__num">03</span> RT4N-EXC8-K15D</div>
-            <div class="cloud-code"><span class="cloud-code__num">04</span> H72S-FY4B-WP3X</div>
-            <div class="cloud-code"><span class="cloud-code__num">05</span> Q83V-NM2L-YK57</div>
-            <div class="cloud-code"><span class="cloud-code__num">06</span> 6CGT-AP9R-EZ41</div>
-            <div class="cloud-code"><span class="cloud-code__num">07</span> S5BX-J8DH-T2VW</div>
-            <div class="cloud-code"><span class="cloud-code__num">08</span> 1ULM-K9NE-PR84</div>
+            <div class="cloud-code"><span class="num">01</span> 4F8K-X29Q-7HRT</div>
+            <div class="cloud-code"><span class="num">02</span> 9ZJP-LW3M-BV62</div>
+            <div class="cloud-code"><span class="num">03</span> RT4N-EXC8-K15D</div>
+            <div class="cloud-code"><span class="num">04</span> H72S-FY4B-WP3X</div>
+            <div class="cloud-code"><span class="num">05</span> Q83V-NM2L-YK57</div>
+            <div class="cloud-code"><span class="num">06</span> 6CGT-AP9R-EZ41</div>
+            <div class="cloud-code"><span class="num">07</span> S5BX-J8DH-T2VW</div>
+            <div class="cloud-code"><span class="num">08</span> 1ULM-K9NE-PR84</div>
           </div>
         </div>
       </div>
 
       <div style="margin-top: var(--space-3);">
         <div class="callout warning">
-          <span class="callout__icon">
+          <span class="icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.86l-8.52 14.7A2 2 0 0 0 3.5 22h17a2 2 0 0 0 1.72-3.45L13.7 3.86a2 2 0 0 0-3.4 0z"/></svg>
           </span>
-          <div class="callout__body">
-            <p class="callout__title">Guarda estos códigos antes de continuar</p>
-            <p class="callout__desc">Si pierdes el acceso a tu app autenticadora <strong>y</strong> a estos códigos, perderás permanentemente el acceso a tu cuenta de ERPlora Cloud. No podemos recuperarlos.</p>
+          <div class="body">
+            <p class="title">Guarda estos códigos antes de continuar</p>
+            <p class="desc">Si pierdes el acceso a tu app autenticadora <strong>y</strong> a estos códigos, perderás permanentemente el acceso a tu cuenta de ERPlora Cloud. No podemos recuperarlos.</p>
             <label style="display:flex;align-items:center;gap:8px;margin-top:10px;font-size:var(--text-sm);color:var(--ink-2);cursor:pointer;">
               <input type="checkbox" data-bind:codes-saved/>
               He copiado y guardado mis códigos de respaldo en un lugar seguro
             </label>
-            <div class="callout__actions">
-              <a href="#" class="callout__link">Más información sobre 2FA</a>
+            <div class="actions">
+              <a href="#" class="link">Más información sobre 2FA</a>
             </div>
           </div>
         </div>

@@ -10,19 +10,19 @@
 {%- endif %}
 <div class="numpad"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  <button type="button" class="numpad__btn">1</button>
-  <button type="button" class="numpad__btn">2</button>
-  <button type="button" class="numpad__btn">3</button>
-  <button type="button" class="numpad__btn">4</button>
-  <button type="button" class="numpad__btn">5</button>
-  <button type="button" class="numpad__btn">6</button>
-  <button type="button" class="numpad__btn">7</button>
-  <button type="button" class="numpad__btn">8</button>
-  <button type="button" class="numpad__btn">9</button>
-  <button type="button" class="numpad__btn ghost">{{ decimal }}</button>
-  <button type="button" class="numpad__btn">0</button>
+  <button type="button" class="btn">1</button>
+  <button type="button" class="btn">2</button>
+  <button type="button" class="btn">3</button>
+  <button type="button" class="btn">4</button>
+  <button type="button" class="btn">5</button>
+  <button type="button" class="btn">6</button>
+  <button type="button" class="btn">7</button>
+  <button type="button" class="btn">8</button>
+  <button type="button" class="btn">9</button>
+  <button type="button" class="btn ghost">{{ decimal }}</button>
+  <button type="button" class="btn">0</button>
   {%- if show_backspace %}
-  <button type="button" class="numpad__btn ghost" aria-label="Borrar">⌫</button>
+  <button type="button" class="btn ghost" aria-label="Borrar">⌫</button>
   {%- endif %}
 </div>
 {%- endmacro %}

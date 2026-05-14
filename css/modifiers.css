@@ -425,7 +425,7 @@
    Elementos compositivos universales (NUEVOS · v2.0)
    ─────────────────────────────────────────────────────────────
    Clases que cualquier componente puede usar para sus elementos
-   internos. Reemplazan al patrón BEM `.componente__elemento`.
+   internos. Reemplazan al patrón BEM `.componente .elemento`.
 
    Cada clase consume las variables que setea su modificador
    (`.lg`, `.primary`, etc.) y cae a un default-token si no hay
@@ -592,7 +592,7 @@
 /* ───── Item (clickable / list-row) ─────────────────────── */
 /* `.item` es deliberadamente sencillo. Componentes con
    necesidades específicas (kanban card, cart line, etc.) las
-   mantienen como BEM legítimo (ej. `.kanban__card`). */
+   mantienen como BEM legítimo (composición con contexto). */
 
 .item {
   display: flex;
@@ -690,6 +690,36 @@
 .close:hover {
   background: var(--background-hover, color-mix(in oklch, var(--ink) 8%, transparent));
   color: var(--color-hover, var(--ink));
+}
+
+/* ───── Menu (superficie de dropdown / lista de acciones) ─ */
+/* Contenedor flex-column para `.item`s: context menu, menubar
+   panel, command palette, select dropdown. El posicionamiento
+   (absolute + anchor a su trigger) lo pone el componente; `.menu`
+   solo aporta la superficie. */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap, var(--border-w));
+  min-width: var(--min-w, 200px);
+  padding: var(--pad, var(--space-1));
+  background: var(--background, var(--bg-2));
+  border: var(--border-w) solid var(--border-color, var(--line-2));
+  border-radius: var(--radius, var(--radius-md));
+  box-shadow: var(--shadow, var(--shadow-md));
+  font-size: var(--text, var(--text-sm));
+  color: var(--color, var(--ink));
+}
+
+/* ───── Atajo de teclado ────────────────────────────────── */
+/* Texto monoespaciado para combinaciones (Ctrl+N). Universal para
+   menubar, context menu, command palette, search, tooltips. */
+.shortcut {
+  font-family: var(--font, var(--font-mono));
+  font-size: var(--text, var(--text-2xs));
+  color: var(--color, var(--ink-3));
+  letter-spacing: var(--tracking, var(--tracking-mono));
+  font-variant-numeric: tabular-nums;
 }
 
 

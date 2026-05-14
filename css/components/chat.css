@@ -4,41 +4,41 @@
 
    Composición universal:
      <div class="chat">
-       <aside class="chat-list">
-         <div class="chat-search">…</div>
-         <div class="chat-convs">
-           <div class="chat-conv chat-conv--active">
-             <div class="chat-conv-avatar">OP</div>
-             <div class="chat-conv-body">
+       <aside class="list">
+         <div class="search">…</div>
+         <div class="convs">
+           <div class="conv active">
+             <div class="avatar">OP</div>
+             <div class="body">
                <div class="title sm">Operaciones</div>
                <div class="sub">Lucía: Acabo de cerrar…</div>
              </div>
-             <div class="chat-conv-meta">
+             <div class="meta">
                <span class="meta">14:32</span>
              </div>
            </div>
          </div>
        </aside>
-       <section class="chat-thread">
+       <section class="thread">
          <header class="head">
-           <div class="chat-head-avatar">OP</div>
+           <div class="avatar">OP</div>
            <div class="heading">
              <div class="title sm">Operaciones</div>
              <div class="sub">3 en línea</div>
            </div>
            <div class="actions">…</div>
          </header>
-         <div class="chat-messages">
-           <div class="chat-msg">
-             <div class="chat-msg-avatar">LP</div>
+         <div class="messages">
+           <div class="msg">
+             <div class="avatar">LP</div>
              <div>
                <div class="meta">Lucía Peña</div>
-               <div class="chat-bubble">Texto del mensaje</div>
+               <div class="bubble">Texto del mensaje</div>
                <div class="meta">14:32</div>
              </div>
            </div>
          </div>
-         <div class="chat-composer">…</div>
+         <div class="composer">…</div>
        </section>
      </div>
    ============================================================ */
@@ -69,21 +69,25 @@
 }
 @media (max-width: 720px) {
   .chat { grid-template-columns: 1fr; }
-  .chat-list { display: none; }
+  .chat > .list { display: none; }
 }
 
-.chat-list {
+/* ── Conversation list sidebar ── */
+/* Use <aside class="list"> as direct child of .chat */
+.chat > .list {
   background: var(--chat-sidebar-bg);
   border-right: var(--border-w) solid var(--border-color);
   display: flex;
   flex-direction: column;
   min-height: 0;
 }
-.chat-search {
+
+/* Search bar at top of conv list — use <div class="search"> inside .list */
+.chat .search {
   padding: var(--space-2-5) var(--space-3);
   border-bottom: var(--border-w) solid var(--border-color);
 }
-.chat-search input {
+.chat .search input {
   width: 100%;
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
@@ -93,14 +97,17 @@
   font: inherit;
   font-size: var(--text-xs);
 }
-.chat-convs {
+
+/* Scrollable list of conversations — use <div class="convs"> inside .list */
+.chat .convs {
   flex: 1;
   overflow-y: auto;
   padding: var(--space-1);
 }
 
-/* Conv item: place .title .sm and .sub inside .chat-conv-body */
-.chat-conv {
+/* Conv item: place .title .sm and .sub inside .conv > .body */
+/* Use <div class="conv"> inside .convs */
+.chat .conv {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-2);
@@ -110,11 +117,15 @@
   align-items: center;
   transition: background var(--dur-fast);
 }
-.chat-conv:hover { background: var(--bg-3); }
-.chat-conv--active {
+.chat .conv:hover { background: var(--bg-3); }
+
+/* Active conversation highlight — add .active to .conv */
+.chat .conv.active {
   background: color-mix(in oklch, var(--chat-accent) 12%, transparent);
 }
-.chat-conv-avatar {
+
+/* Conv avatar — use <div class="avatar"> as direct child of .conv */
+.chat .conv > .avatar {
   width: var(--chat-avatar-size); height: var(--chat-avatar-size);
   border-radius: var(--radius-circle);
   background: var(--bg-3);
@@ -128,7 +139,9 @@
   position: relative;
   flex-shrink: 0;
 }
-.chat-conv-online::after {
+
+/* Online status dot on conv avatar — add .online to the .avatar element */
+.chat .conv > .avatar.online::after {
   content: "";
   position: absolute;
   bottom: 0; right: 0;
@@ -137,8 +150,13 @@
   background: var(--leaf);
   border: var(--border-w-2) solid var(--bg-1);
 }
-.chat-conv-body { min-width: 0; }
-.chat-conv-meta {
+
+/* Conv body (name + preview) — use <div class="body"> as direct child of .conv */
+.chat .conv > .body { min-width: 0; }
+
+/* Conv meta column (timestamp + badge) — use <div class="meta"> as direct child of .conv */
+/* Use > to scope only the conv's direct meta col, not nested .meta in messages */
+.chat .conv > .meta {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -148,7 +166,9 @@
   align-self: stretch;
   padding-top: var(--border-w-2);
 }
-.chat-conv-badge {
+
+/* Unread count badge — use <span class="badge"> inside .conv > .meta */
+.chat .conv .badge {
   background: var(--chat-accent);
   color: var(--chat-accent-fg);
   border-radius: var(--radius-pill);
@@ -163,20 +183,23 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Thread ---------- */
-.chat-thread {
+/* ── Thread ── */
+/* Use <section class="thread"> as direct child of .chat */
+.chat > .thread {
   display: flex;
   flex-direction: column;
   min-height: 0;
 }
 
 /* Thread head: universal .head with chat-specific overrides */
-.chat-thread > .head {
+.chat .thread > .head {
   --pad-x: var(--space-4);
   --pad-y: var(--space-3);
   background: var(--chat-sidebar-bg);
 }
-.chat-head-avatar {
+
+/* Thread head avatar — use <div class="avatar"> as direct child of .head */
+.chat .head > .avatar {
   width: var(--chat-avatar-size); height: var(--chat-avatar-size);
   border-radius: var(--radius-circle);
   background: var(--bg-3);
@@ -189,23 +212,28 @@
   color: var(--ink);
   flex-shrink: 0;
 }
-/* Inline status dot for head (online indicator) */
-.chat-head-status {
+
+/* Inline status text for thread head — use <span class="status"> inside .head */
+.chat .head .status {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
 }
-.chat-head-status::before {
+.chat .head .status::before {
   content: "";
   width: var(--chat-status-dot); height: var(--chat-status-dot);
   border-radius: var(--radius-circle);
   background: var(--ink-4);
 }
-.chat-head-status--online::before { background: var(--leaf); }
 
-.chat-messages {
+/* Online variant — add .online to .status */
+.chat .head .status.online::before { background: var(--leaf); }
+
+/* ── Messages area ── */
+/* Use <div class="messages"> inside .thread */
+.chat .messages {
   flex: 1;
   overflow-y: auto;
   padding: var(--space-4);
@@ -215,7 +243,8 @@
   background: var(--background);
 }
 
-.chat-day {
+/* Day separator pill — use <div class="day"> inside .messages */
+.chat .day {
   text-align: center;
   font-size: var(--text-2xs);
   text-transform: uppercase;
@@ -228,17 +257,22 @@
   margin: var(--space-1) 0;
 }
 
-.chat-msg {
+/* Message row — use <div class="msg"> inside .messages */
+.chat .msg {
   display: flex;
   gap: var(--space-2-5);
   max-width: 78%;
   align-items: flex-end;
 }
-.chat-msg--mine {
+
+/* Outgoing message — add .mine to .msg */
+.chat .msg.mine {
   align-self: flex-end;
   flex-direction: row-reverse;
 }
-.chat-msg-avatar {
+
+/* Message avatar — use <div class="avatar"> as direct child of .msg */
+.chat .msg > .avatar {
   width: 28px; height: 28px;  /* TODO: token */
   border-radius: var(--radius-circle);
   background: var(--bg-3);
@@ -251,7 +285,9 @@
   color: var(--ink);
   flex-shrink: 0;
 }
-.chat-bubble {
+
+/* Message bubble — use <div class="bubble"> inside .msg content wrapper */
+.chat .bubble {
   background: var(--chat-bubble-bg);
   border: var(--border-w) solid var(--border-color);
   border-radius: var(--radius-xl);
@@ -262,12 +298,14 @@
   word-break: break-word;
   text-wrap: pretty;
 }
-.chat-msg--mine .chat-bubble {
+.chat .msg.mine .bubble {
   background: var(--chat-mine-bg);
   color: var(--chat-mine-color);
   border-color: transparent;
 }
-.chat-bubble--system {
+
+/* System / event bubble — add .system to .bubble */
+.chat .bubble.system {
   background: transparent;
   border: var(--border-w) dashed var(--line-2);
   color: var(--ink-3);
@@ -275,7 +313,8 @@
   font-style: italic;
 }
 
-.chat-msg-attach {
+/* File attachment card — use <div class="attach"> inside .msg content wrapper */
+.chat .msg .attach {
   display: grid;
   grid-template-columns: 36px 1fr auto;  /* TODO: token */
   gap: var(--space-2-5);
@@ -286,11 +325,13 @@
   margin-top: var(--space-1-5);
   align-items: center;
 }
-.chat-msg--mine .chat-msg-attach {
+.chat .msg.mine .attach {
   background: rgba(255,255,255,0.12);   /* TODO: token */
   border-color: rgba(255,255,255,0.18); /* TODO: token */
 }
-.chat-msg-attach-icon {
+
+/* Attachment type icon — use <div class="icon"> as direct child of .attach */
+.chat .msg .attach > .icon {
   width: 36px; height: 36px;  /* TODO: token */
   border-radius: var(--radius-sm);
   background: var(--bg-3);
@@ -298,16 +339,22 @@
   place-items: center;
   color: var(--ink-2);
 }
-.chat-msg--mine .chat-msg-attach-icon { background: var(--overlay-glass-2); color: var(--brand-fg); }
-.chat-msg--mine .chat-msg-attach-name,
-.chat-msg--mine .chat-msg-attach-meta { color: var(--brand-fg); opacity: 0.9; }
+.chat .msg.mine .attach > .icon { background: var(--overlay-glass-2); color: var(--brand-fg); }
 
-.chat-reactions {
+/* Attachment filename and file size — use <span class="name"> and <span class="meta"> inside .attach */
+.chat .msg.mine .attach > .name,
+.chat .msg.mine .attach > .meta { color: var(--brand-fg); opacity: 0.9; }
+
+/* ── Reactions ── */
+/* Use <div class="reactions"> below a .bubble */
+.chat .reactions {
   display: inline-flex;
   gap: var(--space-1);
   margin-top: var(--space-1);
 }
-.chat-reaction {
+
+/* Individual reaction pill — use <button class="reaction"> inside .reactions */
+.chat .reaction {
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-pill);
@@ -319,16 +366,22 @@
   gap: var(--space-1);
   cursor: pointer;
 }
-.chat-reaction--mine {
+
+/* Reacted-by-me highlight — add .mine to .reaction */
+.chat .reaction.mine {
   background: color-mix(in oklch, var(--chat-accent) 18%, transparent);
   border-color: var(--chat-accent);
 }
-.chat-reaction-count {
+
+/* Reaction count — use <span class="count"> inside .reaction */
+.chat .reaction .count {
   font-variant-numeric: tabular-nums;
   color: var(--ink-3);
 }
 
-.chat-typing {
+/* ── Typing indicator ── */
+/* Use <div class="typing"> inside .messages */
+.chat .typing {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -337,21 +390,22 @@
   border-radius: var(--radius-xl);
   align-self: flex-start;
 }
-.chat-typing span {
+.chat .typing span {
   width: var(--chat-typing-dot); height: var(--chat-typing-dot);
   border-radius: var(--radius-circle);
   background: var(--ink-3);
   animation: ok-chat-typing 1.2s infinite ease-in-out;
 }
-.chat-typing span:nth-child(2) { animation-delay: 0.15s; }
-.chat-typing span:nth-child(3) { animation-delay: 0.3s; }
+.chat .typing span:nth-child(2) { animation-delay: 0.15s; }
+.chat .typing span:nth-child(3) { animation-delay: 0.3s; }
 @keyframes ok-chat-typing {
   0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
   30% { transform: translateY(-4px); opacity: 1; }
 }
 
-/* ---------- Composer ---------- */
-.chat-composer {
+/* ── Composer ── */
+/* Use <div class="composer"> as last child of .thread */
+.chat > .thread > .composer {
   border-top: var(--border-w) solid var(--border-color);
   padding: var(--space-2-5) var(--space-3);
   display: grid;
@@ -360,11 +414,15 @@
   align-items: end;
   background: var(--chat-composer-bg);
 }
-.chat-composer-tools {
+
+/* Toolbar of attachment/emoji action buttons — use <div class="tools"> inside .composer */
+.chat .composer > .tools {
   display: flex;
   gap: var(--border-w-2);
 }
-.chat-composer-tool {
+
+/* Individual toolbar button — use <button class="tool"> inside .tools */
+.chat .composer .tool {
   width: var(--size-sm); height: var(--size-sm);
   border-radius: var(--radius-md);
   background: transparent;
@@ -376,10 +434,11 @@
   cursor: pointer;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
-.chat-composer-tool:hover { background: var(--bg-3); color: var(--ink); }
-.chat-composer-tool svg { width: var(--icon-sm); height: var(--icon-sm); }
+.chat .composer .tool:hover { background: var(--bg-3); color: var(--ink); }
+.chat .composer .tool svg { width: var(--icon-sm); height: var(--icon-sm); }
 
-.chat-composer-input {
+/* Message text area — use <textarea class="input"> inside .composer */
+.chat .composer > .input {
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-lg);
@@ -392,12 +451,13 @@
   max-height: 120px;  /* TODO: token */
   font-family: var(--font-sans);
 }
-.chat-composer-input:focus {
+.chat .composer > .input:focus {
   outline: none;
   border-color: var(--chat-accent);
 }
 
-.chat-composer-send {
+/* Send button — use <button class="send"> inside .composer */
+.chat .composer > .send {
   width: var(--size-md); height: var(--size-md);
   border-radius: var(--radius-md);
   background: var(--chat-accent);
@@ -409,6 +469,6 @@
   cursor: pointer;
   transition: background var(--dur-fast);
 }
-.chat-composer-send:hover { background: var(--brand-2); }
-.chat-composer-send:disabled { background: var(--bg-3); color: var(--ink-4); cursor: not-allowed; }
-.chat-composer-send svg { width: var(--icon-sm); height: var(--icon-sm); }
+.chat .composer > .send:hover { background: var(--brand-2); }
+.chat .composer > .send:disabled { background: var(--bg-3); color: var(--ink-4); cursor: not-allowed; }
+.chat .composer > .send svg { width: var(--icon-sm); height: var(--icon-sm); }

@@ -17,20 +17,20 @@
 
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">CR</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">CR</div>
+      <div class="text">
         <div class="title md">Cafetería La Rambla</div>
         <div class="meta">Hub · v0.0.9</div>
       </div>
     </div>
     <div class="content scroll">
       <div class="label">Plataforma</div>
-      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg><span class="item-label">Configuración</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4"/></svg><span class="text">Configuración</span></button>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <span class="avatar sm brand">JC</span>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Joan Castell</div>
           <div class="meta">joan@larambla.es</div>
         </div>
@@ -40,13 +40,13 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
@@ -61,10 +61,10 @@
 
     <div class="content scroll body">
 
-      <div class="page-header" style="border-bottom:1px solid var(--line);margin-bottom:22px;">
-        <div class="page-header-title">
+      <div class="head" style="border-bottom:1px solid var(--line);margin-bottom:22px;">
+        <div class="title">
           <h1>Perfil del negocio</h1>
-          <div class="page-header-sub">Datos fiscales, contacto y preferencias regionales</div>
+          <div class="sub">Datos fiscales, contacto y preferencias regionales</div>
         </div>
         <div class="actions">
           <a class="btn ghost sm" href="index.html">Volver</a>
@@ -75,23 +75,23 @@
             data-signals='{"profile": {"country": "ES", "currency": "EUR", "logoUrl": ""}}'>
 
         <div class="form-section">
-          <h3 class="form-section__title">Datos fiscales</h3>
-          <p class="form-section__desc">Aparecen en facturas, tickets y verifactu (AEAT).</p>
+          <h3 class="title">Datos fiscales</h3>
+          <p class="sub">Aparecen en facturas, tickets y verifactu (AEAT).</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Razón social</label>
+              <label class="label req">Razón social</label>
               <input class="input" value="Cafetería La Rambla SL"/>
             </div>
             <div class="field">
-              <label class="field__label field__label--req">CIF / NIF</label>
+              <label class="label req">CIF / NIF</label>
               <input class="input" value="ES B12345678"/>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Régimen fiscal</label>
+              <label class="label">Régimen fiscal</label>
               <select class="select">
                 <option selected>General</option>
                 <option>Recargo de equivalencia</option>
@@ -100,39 +100,39 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Sub-región</label>
+              <label class="label">Sub-región</label>
               <input class="input" value="ES-CT" maxlength="10" placeholder="ej. ES-CT"/>
-              <span class="field__hint">Déjalo en blanco si aplica todo el país.</span>
+              <span class="hint">Déjalo en blanco si aplica todo el país.</span>
             </div>
           </div>
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Dirección</h3>
-          <p class="form-section__desc">Domicilio fiscal y de operación principal.</p>
+          <h3 class="title">Dirección</h3>
+          <p class="sub">Domicilio fiscal y de operación principal.</p>
 
           <div class="field">
-            <label class="field__label field__label--req">Calle y número</label>
+            <label class="label req">Calle y número</label>
             <input class="input" value="Calle Major 12"/>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Código postal</label>
+              <label class="label req">Código postal</label>
               <input class="input" value="08001"/>
             </div>
             <div class="field">
-              <label class="field__label field__label--req">Ciudad</label>
+              <label class="label req">Ciudad</label>
               <input class="input" value="Barcelona"/>
             </div>
             <div class="field">
-              <label class="field__label">Provincia</label>
+              <label class="label">Provincia</label>
               <input class="input" value="Barcelona"/>
             </div>
           </div>
 
           <div class="field">
-            <label class="field__label field__label--req">País</label>
+            <label class="label req">País</label>
             <select class="select" data-bind="profile.country">
               <option value="ES" selected>España</option>
               <option value="PT">Portugal</option>
@@ -143,27 +143,27 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Contacto</h3>
-          <p class="form-section__desc">Cómo se pondrán en contacto tus clientes y proveedores.</p>
+          <h3 class="title">Contacto</h3>
+          <p class="sub">Cómo se pondrán en contacto tus clientes y proveedores.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Email de contacto</label>
+              <label class="label req">Email de contacto</label>
               <input class="input" type="email" value="hola@larambla.es"/>
             </div>
             <div class="field">
-              <label class="field__label">Teléfono</label>
+              <label class="label">Teléfono</label>
               <input class="input" type="tel" value="+34 933 456 789"/>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Web</label>
+              <label class="label">Web</label>
               <input class="input" type="url" value="https://larambla.es"/>
             </div>
             <div class="field">
-              <label class="field__label">Idioma de la interfaz</label>
+              <label class="label">Idioma de la interfaz</label>
               <select class="select">
                 <option selected>Español (es)</option>
                 <option>Català (ca)</option>
@@ -174,8 +174,8 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Identidad visual</h3>
-          <p class="form-section__desc">Logo que aparece en tickets, facturas y la cabecera del Hub.</p>
+          <h3 class="title">Identidad visual</h3>
+          <p class="sub">Logo que aparece en tickets, facturas y la cabecera del Hub.</p>
 
           <div class="form-row" style="grid-template-columns: 96px 1fr; align-items:center; gap:16px;">
             <div style="width:96px;height:96px;border-radius:14px;background:var(--bg-3);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-3);font-family:var(--font-display);font-size:32px;font-weight:600;">CR</div>
@@ -187,21 +187,21 @@
                 data-on:dragleave="$drag = false"
                 data-on:drop__prevent="$drag = false">
                 <input type="file" hidden accept="image/png,image/jpeg,image/svg+xml"/>
-                <span class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
-                <div class="dropzone__title">Arrastra o <b>elige el logo</b></div>
-                <div class="dropzone__hint">PNG, JPG o SVG · máximo 2 MB · cuadrado recomendado 512×512</div>
+                <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
+                <div class="title">Arrastra o <b>elige el logo</b></div>
+                <div class="hint">PNG, JPG o SVG · máximo 2 MB · cuadrado recomendado 512×512</div>
               </label>
             </div>
           </div>
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Moneda y formato</h3>
-          <p class="form-section__desc">Cómo se muestran los precios en POS y facturas.</p>
+          <h3 class="title">Moneda y formato</h3>
+          <p class="sub">Cómo se muestran los precios en POS y facturas.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Moneda</label>
+              <label class="label">Moneda</label>
               <select class="select" data-bind="profile.currency">
                 <option value="EUR" selected>EUR — Euro</option>
                 <option value="USD">USD — Dólar</option>
@@ -209,7 +209,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Zona horaria</label>
+              <label class="label">Zona horaria</label>
               <select class="select">
                 <option selected>Europe/Madrid (UTC+1)</option>
                 <option>Europe/Lisbon</option>
@@ -217,7 +217,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Formato fecha</label>
+              <label class="label">Formato fecha</label>
               <select class="select">
                 <option selected>DD/MM/YYYY</option>
                 <option>YYYY-MM-DD</option>
@@ -228,20 +228,20 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Tipo de venta</h3>
+          <h3 class="title">Tipo de venta</h3>
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Vendo a empresas (B2B)</span>
-              <span class="toggle-row__desc">Emites facturas a otras empresas o profesionales.</span>
+            <div class="text">
+              <span class="label">Vendo a empresas (B2B)</span>
+              <span class="sub">Emites facturas a otras empresas o profesionales.</span>
             </div>
-            <label class="toggle"><input type="checkbox" checked/><span class="toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" checked/><span class="track"></span></label>
           </div>
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Vendo a consumidores (B2C)</span>
-              <span class="toggle-row__desc">Tickets a cliente final en POS.</span>
+            <div class="text">
+              <span class="label">Vendo a consumidores (B2C)</span>
+              <span class="sub">Tickets a cliente final en POS.</span>
             </div>
-            <label class="toggle"><input type="checkbox" checked/><span class="toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" checked/><span class="track"></span></label>
           </div>
         </div>
 
@@ -255,11 +255,11 @@
     </div>
   </div>
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="label">Facturas</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="label">Perfil</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

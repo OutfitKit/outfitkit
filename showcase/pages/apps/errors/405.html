@@ -13,29 +13,29 @@
 
 {% block content %}
 <main class="error-page warning">
-  <div class="error-page__inner">
-    <div class="error-page__illu">
+  <div class="inner">
+    <div class="illu">
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M9 9 4.5 4.5M15 9l4.5-4.5M9 15l-4.5 4.5M15 15l4.5 4.5"/><circle cx="12" cy="12" r="9"/></svg>
     </div>
-    <div class="error-page__code">405 · Method Not Allowed</div>
-    <h1 class="error-page__title">Operación no permitida en este recurso</h1>
-    <p class="error-page__msg">El recurso al que estás intentando acceder no admite esta acción. Si llegaste aquí desde un enlace, vuelve atrás y prueba de nuevo.</p>
+    <div class="code">405 · Method Not Allowed</div>
+    <h1 class="title">Operación no permitida en este recurso</h1>
+    <p class="msg">El recurso al que estás intentando acceder no admite esta acción. Si llegaste aquí desde un enlace, vuelve atrás y prueba de nuevo.</p>
 
-    <details class="error-page__details">
+    <details class="details">
       <summary>Detalles técnicos</summary>
-      <pre class="error-page__trace">Method:    POST
+      <pre class="trace">Method:    POST
 Resource:  /api/v1/invoices/INV-2026-0142
 Allowed:   GET, PATCH, DELETE
 Origin:    https://acme.erplora.cloud
 Trace ID:  9c81-4f2a-3b81</pre>
     </details>
 
-    <div class="error-page__actions">
+    <div class="actions">
       <button class="btn ghost" data-on:click="history.back()">← Atrás</button>
       <a class="btn primary" href="/">Volver al inicio</a>
     </div>
 
-    <div class="error-page__meta">trace · 9c81-4f2a-3b81 · 2026-05-08 14:32 UTC</div>
+    <div class="meta">trace · 9c81-4f2a-3b81 · 2026-05-08 14:32 UTC</div>
   </div>
 </main>
 {% endblock %}

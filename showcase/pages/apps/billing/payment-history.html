@@ -19,7 +19,7 @@
   .table-wrap { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
 
   .pay-method-cell { display: inline-flex; align-items: center; gap: 8px; }
-  .pay-method-cell__icon {
+  .pay-method-cell .icon {
     width: 28px; height: 18px;
     border-radius: 3px;
     background: var(--bg-3);
@@ -28,42 +28,42 @@
     font-family: var(--font-mono); font-size: 8px;
     font-weight: 700; color: var(--ink-2); letter-spacing: 0.06em;
   }
-  .pay-method-cell__icon--visa { background: linear-gradient(135deg, #1a1f71, #2a3593); color: #fff; }
-  .pay-method-cell__icon--mc   { background: linear-gradient(135deg, #b30100, #f9a000); color: #fff; }
-  .pay-method-cell__icon--amex { background: linear-gradient(135deg, #2671b8, #0a2d6e); color: #fff; }
-  .pay-method-cell__icon--sepa { background: var(--info-soft); color: var(--info); }
+  .pay-method-cell .icon.visa { background: linear-gradient(135deg, #1a1f71, #2a3593); color: #fff; }
+  .pay-method-cell .icon.mc   { background: linear-gradient(135deg, #b30100, #f9a000); color: #fff; }
+  .pay-method-cell .icon.amex { background: linear-gradient(135deg, #2671b8, #0a2d6e); color: #fff; }
+  .pay-method-cell .icon.sepa { background: var(--info-soft); color: var(--info); }
 
   .donut-wrap { padding: 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); }
-  .donut-wrap__title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin: 0 0 14px; }
+  .donut-wrap .title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin: 0 0 14px; }
 </style>
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
 
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">EX</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">EX</div>
+      <div class="text">
         <div class="title md">ERPlora Cloud</div>
         <div class="meta">Acme Industries</div>
       </div>
     </div>
     <div class="content scroll">
       <div class="label">Principal</div>
-      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
-      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
-      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></button>
-      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Equipamiento</span></button>
-      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="text">Hubs</span><span class="badge">7</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg><span class="text">Equipamiento</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="text">Usuarios</span></button>
 
       <div class="label">Facturación</div>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="item-label">Facturas</span></button>
-      <button class="item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="item-label">Suscripciones</span></button>
-      <button class="item" aria-current="page"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Pagos</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg><span class="text">Facturas</span></button>
+      <button class="item"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon><span class="text">Suscripciones</span></button>
+      <button class="item" aria-current="page"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="text">Pagos</span></button>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Ioan Beilic</div>
           <div class="meta">ioan@acme.com</div>
         </div>
@@ -73,23 +73,23 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Historial de pagos</h1>
         
-        <div class="topbar-search">
+        <div class="search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar por concepto, ID, importe…"/>
-        <span class="topbar-kbd">⌘K</span>
+        <span class="shortcut">⌘K</span>
       </div>
         
         <div class="actions">
@@ -111,18 +111,18 @@
 
     <div class="content scroll body">
 
-      <div class="page-header">
-        <div class="page-header-title">
+      <div class="head">
+        <div class="title">
           <h1>Historial de pagos</h1>
-          <div class="page-header-sub">Movimientos de tu cuenta · suscripciones, pedidos y reembolsos</div>
+          <div class="sub">Movimientos de tu cuenta · suscripciones, pedidos y reembolsos</div>
         </div>
         <div class="actions">
           <button class="btn ghost">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
             Exportar CSV
           </button>
           <button class="btn secondary">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
             8 abr - 8 may 2026
           </button>
         </div>
@@ -131,35 +131,35 @@
       <!-- KPI strip -->
       <div class="grid-4 mb-4">
         <div class="kpi">
-          <div class="kpi__label">Total pagado</div>
-          <div class="kpi__value">€18 240,50</div>
-          <div class="kpi__delta kpi__delta--up">+€2 286 último pedido</div>
+          <div class="label">Total pagado</div>
+          <div class="value">€18 240,50</div>
+          <div class="delta up">+€2 286 último pedido</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Cobros este mes</div>
-          <div class="kpi__value">8</div>
-          <div class="kpi__delta">5 suscrip. · 3 pedidos</div>
+          <div class="label">Cobros este mes</div>
+          <div class="value">8</div>
+          <div class="delta">5 suscrip. · 3 pedidos</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Métodos usados</div>
-          <div class="kpi__value">3</div>
-          <div class="kpi__delta">VISA · SEPA · Amex</div>
+          <div class="label">Métodos usados</div>
+          <div class="value">3</div>
+          <div class="delta">VISA · SEPA · Amex</div>
         </div>
         <div class="kpi brand">
-          <div class="kpi__label">Última transacción</div>
-          <div class="kpi__value">hace 12h</div>
-          <div class="kpi__delta">PED-2026-0142 · €2 286</div>
+          <div class="label">Última transacción</div>
+          <div class="value">hace 12h</div>
+          <div class="delta">PED-2026-0142 · €2 286</div>
         </div>
       </div>
 
       <!-- Filter chips toolbar -->
       <div class="ph-toolbar">
         <div class="toggle-group sm">
-          <button class="toggle-group__option" data-on:click="$status = 'all'" data-class:is-selected="$status === 'all'">Todos <span class="qty-badge xs" style="margin-left:6px;">14</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'paid'" data-class:is-selected="$status === 'paid'">Cobrados <span class="qty-badge xs success" style="margin-left:6px;">11</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'pending'" data-class:is-selected="$status === 'pending'">Procesando <span class="qty-badge xs warning" style="margin-left:6px;">1</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'failed'" data-class:is-selected="$status === 'failed'">Fallidos <span class="qty-badge xs danger" style="margin-left:6px;">1</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'refund'" data-class:is-selected="$status === 'refund'">Reembolsos <span class="qty-badge xs info" style="margin-left:6px;">1</span></button>
+          <button class="option" data-on:click="$status = 'all'" data-class:is-selected="$status === 'all'">Todos <span class="qty-badge xs" style="margin-left:6px;">14</span></button>
+          <button class="option" data-on:click="$status = 'paid'" data-class:is-selected="$status === 'paid'">Cobrados <span class="qty-badge xs success" style="margin-left:6px;">11</span></button>
+          <button class="option" data-on:click="$status = 'pending'" data-class:is-selected="$status === 'pending'">Procesando <span class="qty-badge xs warning" style="margin-left:6px;">1</span></button>
+          <button class="option" data-on:click="$status = 'failed'" data-class:is-selected="$status === 'failed'">Fallidos <span class="qty-badge xs danger" style="margin-left:6px;">1</span></button>
+          <button class="option" data-on:click="$status = 'refund'" data-class:is-selected="$status === 'refund'">Reembolsos <span class="qty-badge xs info" style="margin-left:6px;">1</span></button>
         </div>
         <div class="flex-1"></div>
         <div class="search" style="min-width:240px;max-width:280px;">
@@ -196,7 +196,7 @@
                 <td>8 may · 14:32</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pedido #PED-2026-0142</span>
                       <span class="meta">5 artículos · TPV Modelo X + accesorios</span>
                     </div>
@@ -204,7 +204,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="icon visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -218,7 +218,7 @@
                 <td>6 may · 09:15</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Suscripción acme-prod · mayo</span>
                       <span class="meta">Plan Business · 12 usuarios</span>
                     </div>
@@ -226,7 +226,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="icon sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -240,7 +240,7 @@
                 <td>5 may · 18:42</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pedido #PED-2026-0138</span>
                       <span class="meta">Pack 10 rollos térmicos · ×3</span>
                     </div>
@@ -248,7 +248,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="icon visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -262,7 +262,7 @@
                 <td>3 may · 11:08</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pago variable · uso API</span>
                       <span class="meta">428 200 calls · abril</span>
                     </div>
@@ -270,7 +270,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="icon amex">AMEX</span>
                     <span class="font-mono text-xs text-ink-2">••1004</span>
                   </span>
                 </td>
@@ -284,7 +284,7 @@
                 <td>1 may · 06:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Suscripción acme-prod · abril</span>
                       <span class="meta">Plan Business · 11 usuarios</span>
                     </div>
@@ -292,7 +292,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="icon sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -306,7 +306,7 @@
                 <td>28 abr · 22:14</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pedido #PED-2026-0131</span>
                       <span class="meta">Reembolso · pantalla cliente devuelta</span>
                     </div>
@@ -314,7 +314,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="icon visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -328,7 +328,7 @@
                 <td>26 abr · 14:55</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pedido #PED-2026-0128</span>
                       <span class="meta">Brother QL-820NWB · ×2</span>
                     </div>
@@ -336,7 +336,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="icon visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -350,7 +350,7 @@
                 <td>22 abr · 09:31</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Add-on Reporting Pro</span>
                       <span class="meta">Suscripción mensual</span>
                     </div>
@@ -358,7 +358,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="icon sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -372,7 +372,7 @@
                 <td>19 abr · 17:08</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pedido #PED-2026-0119</span>
                       <span class="meta">Caja CR-7 · 3 ud</span>
                     </div>
@@ -380,7 +380,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="icon visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -394,7 +394,7 @@
                 <td>17 abr · 11:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pedido #PED-2026-0117</span>
                       <span class="meta">Bundle Tienda Básica · ×1</span>
                     </div>
@@ -402,7 +402,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="icon amex">AMEX</span>
                     <span class="font-mono text-xs text-ink-2">••1004</span>
                   </span>
                 </td>
@@ -416,7 +416,7 @@
                 <td>14 abr · 06:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Add-on Multitienda · marzo</span>
                       <span class="meta">3 tiendas · ajuste prorrateado</span>
                     </div>
@@ -424,7 +424,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="icon sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -438,7 +438,7 @@
                 <td>10 abr · 19:48</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Pedido #PED-2026-0106</span>
                       <span class="meta">Lectores SumUp Air · ×6</span>
                     </div>
@@ -446,7 +446,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="icon visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -460,7 +460,7 @@
                 <td>5 abr · 13:22</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Suscripción acme-stage · marzo</span>
                       <span class="meta">Plan Pro · entorno staging</span>
                     </div>
@@ -468,7 +468,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="icon amex">AMEX</span>
                     <span class="font-mono text-xs text-ink-2">••1004</span>
                   </span>
                 </td>
@@ -482,7 +482,7 @@
                 <td>1 abr · 06:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="main">
                       <span class="title sm">Suscripción acme-prod · marzo</span>
                       <span class="meta">Plan Business · 11 usuarios</span>
                     </div>
@@ -490,7 +490,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="icon sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -505,52 +505,52 @@
 
         <!-- Table footer with pagination -->
         <div class="table-footer">
-          <div class="pager__info">Mostrando <b class="text-ink-2">1-14</b> de <b class="text-ink-2">87</b> transacciones</div>
+          <div class="meta">Mostrando <b class="text-ink-2">1-14</b> de <b class="text-ink-2">87</b> transacciones</div>
           <div class="paginator">
-            <button class="paginator__btn" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
-            <button class="paginator__btn" aria-current="page">1</button>
-            <button class="paginator__btn">2</button>
-            <button class="paginator__btn">3</button>
-            <span class="paginator__gap">…</span>
-            <button class="paginator__btn">7</button>
-            <button class="paginator__btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+            <button class="btn" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="btn" aria-current="page">1</button>
+            <button class="btn">2</button>
+            <button class="btn">3</button>
+            <span class="gap">…</span>
+            <button class="btn">7</button>
+            <button class="btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
           </div>
         </div>
       </div>
 
       <!-- Donut by method -->
       <section class="donut-wrap" style="margin-top:18px;">
-        <h3 class="donut-wrap__title">Distribución por método de pago</h3>
+        <h3 class="title">Distribución por método de pago</h3>
         <div class="donut">
-          <svg class="donut__svg" viewBox="0 0 120 120">
-            <circle class="donut__track" cx="60" cy="60" r="48"/>
+          <svg class="svg" viewBox="0 0 120 120">
+            <circle class="track" cx="60" cy="60" r="48"/>
             <!-- Visa 64% -->
-            <circle class="donut__slice donut__slice--brand" cx="60" cy="60" r="48"
+            <circle class="slice brand" cx="60" cy="60" r="48"
                     stroke-dasharray="193 302" stroke-dashoffset="0"/>
             <!-- SEPA 22% -->
-            <circle class="donut__slice donut__slice--info" cx="60" cy="60" r="48"
+            <circle class="slice info" cx="60" cy="60" r="48"
                     stroke-dasharray="66 302" stroke-dashoffset="-193"/>
             <!-- Amex 14% -->
-            <circle class="donut__slice donut__slice--warn" cx="60" cy="60" r="48"
+            <circle class="slice warn" cx="60" cy="60" r="48"
                     stroke-dasharray="42 302" stroke-dashoffset="-259"/>
-            <text class="donut__center" x="60" y="58">
-              <tspan class="donut__center-value" x="60" dy="0">€18,2k</tspan>
-              <tspan class="donut__center-label" x="60" dy="14">PAGADO 2026</tspan>
+            <text class="center" x="60" y="58">
+              <tspan class="value" x="60" dy="0">€18,2k</tspan>
+              <tspan class="label" x="60" dy="14">PAGADO 2026</tspan>
             </text>
           </svg>
-          <div class="donut__legend">
-            <div class="donut__legend-row">
-              <span class="donut__legend-dot" style="background:var(--brand);"></span>
+          <div class="legend">
+            <div class="row">
+              <span class="dot" style="background:var(--brand);"></span>
               <span>Visa ••4242</span>
               <b>64% · €11 674</b>
             </div>
-            <div class="donut__legend-row">
-              <span class="donut__legend-dot" style="background:var(--info);"></span>
+            <div class="row">
+              <span class="dot" style="background:var(--info);"></span>
               <span>SEPA ES12••9012</span>
               <b>22% · €4 013</b>
             </div>
-            <div class="donut__legend-row">
-              <span class="donut__legend-dot" style="background:var(--warn);"></span>
+            <div class="row">
+              <span class="dot" style="background:var(--warn);"></span>
               <span>Amex ••1004</span>
               <b>14% · €2 553</b>
             </div>
@@ -561,29 +561,29 @@
     </div>
   </div>
 
-  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <!-- Bottom tab bar — mobile only via .tabbar slot -->
   <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
-      <a class="tabbar-item" href="#" aria-current="page">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Inicio</span>
+      <a class="item" href="#" aria-current="page">
+        <span class="icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="label">Inicio</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Hubs</span>
-        <span class="tabbar-badge">7</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="label">Hubs</span>
+        <span class="badge">7</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Usuarios</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="label">Usuarios</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Equipo</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="label">Equipo</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Perfil</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="label">Perfil</span>
       </a>
     </div>
   </nav>

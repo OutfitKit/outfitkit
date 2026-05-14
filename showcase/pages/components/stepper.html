@@ -6,56 +6,56 @@
 
 {% block content %}
 <h1>Stepper</h1>
-<p class="showcase__lead">Progreso por pasos. Compón los <code>.stepper__step</code> con estado <code>--done</code> / <code>--active</code> y <code>.stepper__bullet</code> + universal <code>.label</code> (texto del paso) y <code>.meta</code> (sub-texto).</p>
+<p class="lead">Progreso por pasos. Compón los <code>.step</code> con estado <code>--done</code> / <code>--active</code> y <code>.bullet</code> + universal <code>.label</code> (texto del paso) y <code>.meta</code> (sub-texto).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/stepper.jinja" import stepper %}
 {% call stepper() %}
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
   <div class="label">Carrito</div>
   <div class="meta">3 productos</div>
 </li>
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
   <div class="label">Cliente</div>
   <div class="meta">Marisol G.</div>
 </li>
-<li class="stepper__step stepper__step--active">
-  <div class="stepper__bullet">3</div>
+<li class="step active">
+  <div class="bullet">3</div>
   <div class="label">Pago</div>
   <div class="meta">en curso</div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">4</div>
+<li class="step">
+  <div class="bullet">4</div>
   <div class="label">Ticket</div>
 </li>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Stepper>
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
   <div class="label">Carrito</div>
   <div class="meta">3 productos</div>
 </li>
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
   <div class="label">Cliente</div>
   <div class="meta">Marisol G.</div>
 </li>
-<li class="stepper__step stepper__step--active">
-  <div class="stepper__bullet">3</div>
+<li class="step active">
+  <div class="bullet">3</div>
   <div class="label">Pago</div>
   <div class="meta">en curso</div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">4</div>
+<li class="step">
+  <div class="bullet">4</div>
   <div class="label">Ticket</div>
 </li>
 </Stepper>{% endraw %}{% endset %}
@@ -64,27 +64,27 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call stepper() %}
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
   <div class="label">Carrito</div>
   <div class="meta">3 productos</div>
 </li>
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
   <div class="label">Cliente</div>
   <div class="meta">Marisol G.</div>
 </li>
-<li class="stepper__step stepper__step--active">
-  <div class="stepper__bullet">3</div>
+<li class="step active">
+  <div class="bullet">3</div>
   <div class="label">Pago</div>
   <div class="meta">en curso</div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">4</div>
+<li class="step">
+  <div class="bullet">4</div>
   <div class="label">Ticket</div>
 </li>
 {% endcall %}
@@ -92,81 +92,81 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/stepper.jinja" import stepper %}
 {% call stepper(orientation="vertical") %}
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <div class="stepper__body">
+  <div class="body">
     <div class="label">Datos fiscales</div>
-    <div class="stepper__desc">CIF B12345678 verificado en agencia tributaria.</div>
+    <div class="desc">CIF B12345678 verificado en agencia tributaria.</div>
   </div>
 </li>
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <div class="stepper__body">
+  <div class="body">
     <div class="label">Catálogo importado</div>
-    <div class="stepper__desc">142 productos · 18 categorías.</div>
+    <div class="desc">142 productos · 18 categorías.</div>
   </div>
 </li>
-<li class="stepper__step stepper__step--active">
-  <div class="stepper__bullet">3</div>
-  <div class="stepper__body">
+<li class="step active">
+  <div class="bullet">3</div>
+  <div class="body">
     <div class="label">Configuración de impuestos</div>
-    <div class="stepper__desc">Define los tipos de IVA aplicables y zonas de envío.</div>
+    <div class="desc">Define los tipos de IVA aplicables y zonas de envío.</div>
   </div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">4</div>
-  <div class="stepper__body">
+<li class="step">
+  <div class="bullet">4</div>
+  <div class="body">
     <div class="label">Conectar TPV físico</div>
-    <div class="stepper__desc">Empareja tu impresora y cajón portamonedas.</div>
+    <div class="desc">Empareja tu impresora y cajón portamonedas.</div>
   </div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">5</div>
-  <div class="stepper__body">
+<li class="step">
+  <div class="bullet">5</div>
+  <div class="body">
     <div class="label">Equipo y permisos</div>
   </div>
 </li>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Stepper orientation="vertical">
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <div class="stepper__body">
+  <div class="body">
     <div class="label">Datos fiscales</div>
-    <div class="stepper__desc">CIF B12345678 verificado en agencia tributaria.</div>
+    <div class="desc">CIF B12345678 verificado en agencia tributaria.</div>
   </div>
 </li>
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <div class="stepper__body">
+  <div class="body">
     <div class="label">Catálogo importado</div>
-    <div class="stepper__desc">142 productos · 18 categorías.</div>
+    <div class="desc">142 productos · 18 categorías.</div>
   </div>
 </li>
-<li class="stepper__step stepper__step--active">
-  <div class="stepper__bullet">3</div>
-  <div class="stepper__body">
+<li class="step active">
+  <div class="bullet">3</div>
+  <div class="body">
     <div class="label">Configuración de impuestos</div>
-    <div class="stepper__desc">Define los tipos de IVA aplicables y zonas de envío.</div>
+    <div class="desc">Define los tipos de IVA aplicables y zonas de envío.</div>
   </div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">4</div>
-  <div class="stepper__body">
+<li class="step">
+  <div class="bullet">4</div>
+  <div class="body">
     <div class="label">Conectar TPV físico</div>
-    <div class="stepper__desc">Empareja tu impresora y cajón portamonedas.</div>
+    <div class="desc">Empareja tu impresora y cajón portamonedas.</div>
   </div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">5</div>
-  <div class="stepper__body">
+<li class="step">
+  <div class="bullet">5</div>
+  <div class="body">
     <div class="label">Equipo y permisos</div>
   </div>
 </li>
@@ -176,41 +176,41 @@
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call stepper(orientation="vertical") %}
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <div class="stepper__body">
+  <div class="body">
     <div class="label">Datos fiscales</div>
-    <div class="stepper__desc">CIF B12345678 verificado en agencia tributaria.</div>
+    <div class="desc">CIF B12345678 verificado en agencia tributaria.</div>
   </div>
 </li>
-<li class="stepper__step stepper__step--done">
-  <div class="stepper__bullet">
+<li class="step done">
+  <div class="bullet">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <div class="stepper__body">
+  <div class="body">
     <div class="label">Catálogo importado</div>
-    <div class="stepper__desc">142 productos · 18 categorías.</div>
+    <div class="desc">142 productos · 18 categorías.</div>
   </div>
 </li>
-<li class="stepper__step stepper__step--active">
-  <div class="stepper__bullet">3</div>
-  <div class="stepper__body">
+<li class="step active">
+  <div class="bullet">3</div>
+  <div class="body">
     <div class="label">Configuración de impuestos</div>
-    <div class="stepper__desc">Define los tipos de IVA aplicables y zonas de envío.</div>
+    <div class="desc">Define los tipos de IVA aplicables y zonas de envío.</div>
   </div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">4</div>
-  <div class="stepper__body">
+<li class="step">
+  <div class="bullet">4</div>
+  <div class="body">
     <div class="label">Conectar TPV físico</div>
-    <div class="stepper__desc">Empareja tu impresora y cajón portamonedas.</div>
+    <div class="desc">Empareja tu impresora y cajón portamonedas.</div>
   </div>
 </li>
-<li class="stepper__step">
-  <div class="stepper__bullet">5</div>
-  <div class="stepper__body">
+<li class="step">
+  <div class="bullet">5</div>
+  <div class="body">
     <div class="label">Equipo y permisos</div>
   </div>
 </li>
@@ -223,7 +223,7 @@
   <tbody>
     <tr><td><code>orientation</code></td><td>"horizontal"|"vertical"</td><td>"horizontal"</td><td>Disposición de los pasos.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.stepper__step</code> con estado <code>--done</code> / <code>--active</code>. Texto con <code>.label</code>, sub con <code>.meta</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.step</code> con estado <code>--done</code> / <code>--active</code>. Texto con <code>.label</code>, sub con <code>.meta</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

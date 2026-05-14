@@ -41,7 +41,8 @@
   background: var(--bg-2);
 }
 
-.currency__symbol {
+/* currency symbol chip — left side */
+.currency .symbol {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +57,8 @@
   user-select: none;
 }
 
-.currency__input {
+/* native number input — the editable amount field */
+.currency .line-input {
   flex: 1;
   min-width: 0;
   height: 100%;
@@ -73,14 +75,15 @@
   appearance: textfield;
   -moz-appearance: textfield;
 }
-.currency__input::-webkit-outer-spin-button,
-.currency__input::-webkit-inner-spin-button {
+.currency .line-input::-webkit-outer-spin-button,
+.currency .line-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: var(--space-0);
 }
-.currency__input::placeholder { color: var(--ink-4); }
+.currency .line-input::placeholder { color: var(--ink-4); }
 
-.currency__currency-select {
+/* currency code picker — right-side select for choosing currency */
+.currency .picker {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -106,7 +109,7 @@
   outline: none;
   transition: background-color var(--dur-fast), color var(--dur-fast);
 }
-.currency__currency-select:hover {
+.currency .picker:hover {
   background-color: var(--bg-4);
   color: var(--ink);
 }
@@ -118,8 +121,8 @@
   --_pad: 8px;
   --_fz: var(--text-sm);
 }
-.currency.sm .currency__symbol { min-width: 26px; padding: var(--space-0) var(--space-2); }
-.currency.sm .currency__currency-select {
+.currency.sm .symbol { min-width: 26px; padding: var(--space-0) var(--space-2); }
+.currency.sm .picker {
   font-size: var(--text-xs);
   padding: var(--space-0) 22px var(--space-0) var(--space-2);
 }
@@ -130,8 +133,8 @@
   --_pad: 14px;
   --_fz: var(--text-base);
 }
-.currency.lg .currency__symbol { min-width: var(--size-md); padding: var(--space-0) var(--space-3); }
-.currency.lg .currency__currency-select { font-size: var(--text-md); padding: var(--space-0) 26px var(--space-0) var(--space-3); }
+.currency.lg .symbol { min-width: var(--size-md); padding: var(--space-0) var(--space-3); }
+.currency.lg .picker { font-size: var(--text-md); padding: var(--space-0) 26px var(--space-0) var(--space-3); }
 
 /* Invalid */
 .currency.invalid { border-color: var(--danger); }
@@ -150,8 +153,8 @@
   border-color: var(--line);
   color: var(--ink-3);
 }
-.currency:has(input:disabled) .currency__input,
-.currency.disabled .currency__input {
+.currency:has(input:disabled) .line-input,
+.currency.disabled .line-input {
   cursor: not-allowed;
   color: var(--ink-3);
 }
@@ -193,7 +196,8 @@
   background: var(--bg-2);
 }
 
-.phone__country {
+/* country selector button — left chip with flag + dial code */
+.phone .country {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
@@ -212,8 +216,8 @@
   transition: background var(--dur-fast), color var(--dur-fast);
   user-select: none;
 }
-.phone__country:hover { background: var(--bg-4); color: var(--ink); }
-.phone__country::after {
+.phone .country:hover { background: var(--bg-4); color: var(--ink); }
+.phone .country::after {
   content: "";
   width: 6px; height: 6px;
   border-right: 1.5px solid var(--ink-3);
@@ -222,17 +226,20 @@
   margin-left: var(--border-w-2);
 }
 
-.phone__flag {
+/* emoji flag glyph */
+.phone .flag {
   display: inline-flex;
   font-size: var(--text-base);
   line-height: var(--leading-flat);
 }
-.phone__dial {
+/* dial code text (+1, +44, …) */
+.phone .dial {
   font-variant-numeric: tabular-nums;
   color: var(--ink-2);
 }
 
-.phone__input {
+/* native tel input — the editable phone number field */
+.phone .line-input {
   flex: 1;
   min-width: 0;
   height: 100%;
@@ -247,10 +254,10 @@
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--tracking-snug);
 }
-.phone__input::placeholder { color: var(--ink-4); }
+.phone .line-input::placeholder { color: var(--ink-4); }
 
 /* Country dropdown menu */
-.phone__country-menu {
+.phone .menu {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
@@ -264,12 +271,13 @@
   overflow: hidden;
   display: none;
 }
-.phone__country-menu[data-open="true"],
-.phone__country-menu.is-open {
+.phone .menu[data-open="true"],
+.phone .menu.is-open {
   display: block;
 }
 
-.phone__country-list {
+/* scrollable list inside the dropdown */
+.phone .list {
   max-height: 280px;
   overflow-y: auto;
   padding: var(--space-1);
@@ -278,7 +286,8 @@
   gap: var(--border-w);
 }
 
-.phone__country-item {
+/* individual country row inside the dropdown */
+.phone .item {
   display: grid;
   grid-template-columns: 20px 1fr auto;
   align-items: center;
@@ -294,21 +303,21 @@
   text-align: left;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
-.phone__country-item:hover {
+.phone .item:hover {
   background: var(--bg-3);
   color: var(--ink);
 }
-.phone__country-item .phone__flag { font-size: 15px; }
-.phone__country-item .phone__dial {
+.phone .item .flag { font-size: 15px; }
+.phone .item .dial {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--ink-3);
 }
-.phone__country-item.is-selected {
+.phone .item.is-selected {
   background: var(--brand-soft);
   color: var(--ink);
 }
-.phone__country-item.is-selected .phone__dial { color: var(--brand-3); }
+.phone .item.is-selected .dial { color: var(--brand-3); }
 
 /* Sizes */
 .phone.sm {
@@ -317,7 +326,7 @@
   --_pad: 8px;
   --_fz: var(--text-sm);
 }
-.phone.sm .phone__country { padding: var(--space-0) var(--space-2); gap: var(--space-1); }
+.phone.sm .country { padding: var(--space-0) var(--space-2); gap: var(--space-1); }
 
 .phone.lg {
   --_h: 40px;
@@ -325,7 +334,7 @@
   --_pad: 14px;
   --_fz: var(--text-base);
 }
-.phone.lg .phone__country { padding: var(--space-0) var(--space-3); gap: var(--space-2); }
+.phone.lg .country { padding: var(--space-0) var(--space-3); gap: var(--space-2); }
 
 /* Invalid */
 .phone.invalid { border-color: var(--danger); }
@@ -344,8 +353,8 @@
   border-color: var(--line);
   color: var(--ink-3);
 }
-.phone:has(input:disabled) .phone__input,
-.phone.disabled .phone__input {
+.phone:has(input:disabled) .line-input,
+.phone.disabled .line-input {
   cursor: not-allowed;
   color: var(--ink-3);
 }
@@ -385,7 +394,8 @@
   box-shadow: 0 0 0 3px var(--qty-stepper-accent-soft);
 }
 
-.qty-stepper__btn {
+/* increment / decrement button */
+.qty-stepper .btn {
   width: var(--_btn-w);
   height: 100%;
   display: inline-flex;
@@ -402,25 +412,27 @@
   transition: background var(--dur-fast), color var(--dur-fast);
   flex-shrink: 0;
 }
-.qty-stepper__btn:hover {
+.qty-stepper .btn:hover {
   background: var(--bg-4);
   color: var(--ink);
 }
-.qty-stepper__btn:active { background: color-mix(in oklch, var(--bg-4) 70%, var(--brand) 10%); }
-.qty-stepper__btn:disabled,
-.qty-stepper__btn[disabled] {
+.qty-stepper .btn:active { background: color-mix(in oklch, var(--bg-4) 70%, var(--brand) 10%); }
+.qty-stepper .btn:disabled,
+.qty-stepper .btn[disabled] {
   opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.qty-stepper__btn--minus::before { content: "−"; }
-.qty-stepper__btn--plus::before  { content: "+"; }
-.qty-stepper__btn--minus:not(:empty)::before,
-.qty-stepper__btn--plus:not(:empty)::before { content: none; }
+/* minus / plus pseudo-content — BEM modifiers become multi-class */
+.qty-stepper .btn.minus::before { content: "−"; }
+.qty-stepper .btn.plus::before  { content: "+"; }
+.qty-stepper .btn.minus:not(:empty)::before,
+.qty-stepper .btn.plus:not(:empty)::before { content: none; }
 
-.qty-stepper__input,
-.qty-stepper__value {
+/* editable input or static value display */
+.qty-stepper .line-input,
+.qty-stepper .value {
   width: var(--avatar-lg);
   min-width: 0;
   height: 100%;
@@ -442,8 +454,8 @@
   align-items: center;
   justify-content: center;
 }
-.qty-stepper__input::-webkit-outer-spin-button,
-.qty-stepper__input::-webkit-inner-spin-button {
+.qty-stepper .line-input::-webkit-outer-spin-button,
+.qty-stepper .line-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: var(--space-0);
 }
@@ -455,8 +467,8 @@
   --_btn-w: 26px;
   --_fz: var(--text-sm);
 }
-.qty-stepper.sm .qty-stepper__input,
-.qty-stepper.sm .qty-stepper__value { width: var(--avatar-md); }
+.qty-stepper.sm .line-input,
+.qty-stepper.sm .value { width: var(--avatar-md); }
 
 .qty-stepper.lg {
   --_h: 40px;
@@ -464,8 +476,8 @@
   --_btn-w: 40px;
   --_fz: var(--text-base);
 }
-.qty-stepper.lg .qty-stepper__input,
-.qty-stepper.lg .qty-stepper__value { width: var(--icon-2xl); }
+.qty-stepper.lg .line-input,
+.qty-stepper.lg .value { width: var(--icon-2xl); }
 
 /* Variants */
 .qty-stepper.ghost {
@@ -477,13 +489,13 @@
   border-color: transparent;
   box-shadow: none;
 }
-.qty-stepper.ghost .qty-stepper__btn {
+.qty-stepper.ghost .btn {
   background: var(--bg-3);
   border-radius: var(--_r);
 }
-.qty-stepper.ghost .qty-stepper__btn:hover { background: var(--bg-4); }
-.qty-stepper.ghost .qty-stepper__input,
-.qty-stepper.ghost .qty-stepper__value {
+.qty-stepper.ghost .btn:hover { background: var(--bg-4); }
+.qty-stepper.ghost .line-input,
+.qty-stepper.ghost .value {
   border-left: none;
   border-right: none;
 }
@@ -492,8 +504,8 @@
   display: flex;
   width: 100%;
 }
-.qty-stepper.block .qty-stepper__input,
-.qty-stepper.block .qty-stepper__value {
+.qty-stepper.block .line-input,
+.qty-stepper.block .value {
   flex: 1;
   width: auto;
 }

@@ -15,28 +15,28 @@
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">LR</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">LR</div>
+      <div class="text">
         <div class="title md">Cafetería La Rambla</div>
         <div class="meta">5 empleados</div>
       </div>
     </div>
     <div class="content scroll">
-      <a class="item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Inicio</span></a>
-      <a class="item" aria-current="page" href="./employees-list.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="item-label">Empleados</span></a>
-      <a class="item" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="item-label">Roles</span></a>
+      <a class="item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Inicio</span></a>
+      <a class="item" aria-current="page" href="./employees-list.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="text">Empleados</span></a>
+      <a class="item" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="text">Roles</span></a>
     </div>
   </aside>
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
@@ -45,10 +45,10 @@
         </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
+      <div class="head">
+        <div class="title">
           <h1>Añadir empleado</h1>
-          <div class="page-header-sub">Crea una cuenta con PIN para que el equipo entre al Hub</div>
+          <div class="sub">Crea una cuenta con PIN para que el equipo entre al Hub</div>
         </div>
         <div class="actions">
           <a class="btn ghost sm" href="./employees-list.html">Cancelar</a>
@@ -59,24 +59,24 @@
       <form class="form" id="emp-add" data-on:submit="event.preventDefault()" style="max-width:760px;">
 
         <div class="form-section">
-          <h3 class="form-section__title">Información personal</h3>
-          <p class="form-section__desc">Datos visibles para el equipo y registros internos.</p>
+          <h3 class="title">Información personal</h3>
+          <p class="sub">Datos visibles para el equipo y registros internos.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Nombre completo</label>
+              <label class="label req">Nombre completo</label>
               <input class="input" placeholder="Joan Castell" autofocus/>
             </div>
             <div class="field">
-              <label class="field__label field__label--req">Email</label>
+              <label class="label req">Email</label>
               <input class="input" type="email" placeholder="joan@larambla.es"/>
-              <span class="field__hint">Se usará para iniciar sesión y recibir códigos de verificación.</span>
+              <span class="hint">Se usará para iniciar sesión y recibir códigos de verificación.</span>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Foto de perfil</label>
+              <label class="label">Foto de perfil</label>
               <div class="flex items-center gap-3">
                 <span class="avatar lg">+</span>
                 <label class="btn secondary sm">
@@ -85,23 +85,23 @@
                   <input type="file" accept="image/*" hidden/>
                 </label>
               </div>
-              <span class="field__hint">JPG o PNG · max 2 MB</span>
+              <span class="hint">JPG o PNG · max 2 MB</span>
             </div>
           </div>
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Acceso al Hub</h3>
-          <p class="form-section__desc">PIN de 4 cifras para acceso rápido en TPV y dispositivos del local.</p>
+          <h3 class="title">Acceso al Hub</h3>
+          <p class="sub">PIN de 4 cifras para acceso rápido en TPV y dispositivos del local.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">PIN inicial</label>
+              <label class="label req">PIN inicial</label>
               <input class="input" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="••••"/>
-              <span class="field__hint">El empleado podrá cambiarlo desde su perfil.</span>
+              <span class="hint">El empleado podrá cambiarlo desde su perfil.</span>
             </div>
             <div class="field">
-              <label class="field__label">Idioma de la interfaz</label>
+              <label class="label">Idioma de la interfaz</label>
               <select class="select">
                 <option>Català</option>
                 <option selected>Español</option>
@@ -115,46 +115,46 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Rol y permisos</h3>
-          <p class="form-section__desc">El rol determina qué módulos y acciones puede ejecutar.</p>
+          <h3 class="title">Rol y permisos</h3>
+          <p class="sub">El rol determina qué módulos y acciones puede ejecutar.</p>
 
           <div class="row">
             <label class="radio-card col-md-6">
               <input type="radio" name="role"/>
-              <span class="radio__dot mt-1"></span>
+              <span class="dot mt-1"></span>
               <div>
                 <div class="radio-title">Admin</div>
-                <div class="radio-card__desc">Acceso total al Hub, módulos, facturación y empleados.</div>
+                <div class="sub">Acceso total al Hub, módulos, facturación y empleados.</div>
               </div>
             </label>
             <label class="radio-card col-md-6">
               <input type="radio" name="role" checked/>
-              <span class="radio__dot mt-1"></span>
+              <span class="dot mt-1"></span>
               <div>
                 <div class="radio-title">Manager</div>
-                <div class="radio-card__desc">Ventas, inventario, empleados (sin facturación ni configuración crítica).</div>
+                <div class="sub">Ventas, inventario, empleados (sin facturación ni configuración crítica).</div>
               </div>
             </label>
             <label class="radio-card col-md-6">
               <input type="radio" name="role"/>
-              <span class="radio__dot mt-1"></span>
+              <span class="dot mt-1"></span>
               <div>
                 <div class="radio-title">Cajero</div>
-                <div class="radio-card__desc">POS, tickets y caja. Sin acceso a costes ni stock.</div>
+                <div class="sub">POS, tickets y caja. Sin acceso a costes ni stock.</div>
               </div>
             </label>
             <label class="radio-card col-md-6">
               <input type="radio" name="role"/>
-              <span class="radio__dot mt-1"></span>
+              <span class="dot mt-1"></span>
               <div>
                 <div class="radio-title">Cocinero</div>
-                <div class="radio-card__desc">Solo KDS y comandas. Sin acceso a precios ni clientes.</div>
+                <div class="sub">Solo KDS y comandas. Sin acceso a precios ni clientes.</div>
               </div>
             </label>
           </div>
         </div>
 
-        <div class="form-actions" style="display:flex;gap:8px;justify-content:flex-end;padding-top:6px;">
+        <div class="actions form" style="display:flex;gap:8px;justify-content:flex-end;padding-top:6px;">
           <a class="btn ghost" href="./employees-list.html">Cancelar</a>
           <button class="btn primary" type="submit">Crear empleado</button>
         </div>
@@ -163,11 +163,11 @@
   </div>
 
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/></svg></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" aria-current="page" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span><span class="tabbar-label">Empleados</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/></svg></span><span class="label">Inicio</span></a>
+    <a class="item" aria-current="page" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></span><span class="label">Empleados</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="label">Facturas</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

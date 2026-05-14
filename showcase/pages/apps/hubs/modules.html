@@ -23,33 +23,33 @@
 
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">EC</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">EC</div>
+      <div class="text">
         <div class="title md">ERPlora Cloud</div>
         <div class="meta">acme · ES</div>
       </div>
     </div>
     <div class="content scroll">
       <div class="label">Principal</div>
-      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
-      <button class="item" aria-current="page"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></button>
-      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
-      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="item-label">Usuarios</span></button>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Vista general</span></button>
+      <button class="item" aria-current="page"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="text">Hubs</span><span class="badge">7</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon><span class="text">Usuarios</span></button>
 
       <div class="label">Facturación</div>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="item-label">Facturas</span><span class="badge badge brand">3</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4"/></svg><span class="item-label">Planes</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0"/></svg><span class="item-label">Uso y consumo</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="text">Facturas</span><span class="badge brand">3</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4"/></svg><span class="text">Planes</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0"/></svg><span class="text">Uso y consumo</span></button>
 
       <div class="label">Desarrollador</div>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="item-label">API Tokens</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16"/></svg><span class="item-label">Logs</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="item-label">Webhooks</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="text">API Tokens</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16"/></svg><span class="text">Logs</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="text">Webhooks</span></button>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Ioan Beilic</div>
           <div class="meta">ioan@acme.com</div>
         </div>
@@ -59,20 +59,20 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">acme-prod · Módulos</h1>
         
-        <div class="topbar-search">
+        <div class="search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar módulos…" data-bind:q/>
       </div>
@@ -83,10 +83,10 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
+      <div class="head">
+        <div class="title">
           <h1>acme-prod · Módulos</h1>
-          <div class="page-header-sub">14 instalados · 87 disponibles en el marketplace</div>
+          <div class="sub">14 instalados · 87 disponibles en el marketplace</div>
         </div>
         <div class="actions">
           <button class="btn secondary sm">Marketplace</button>
@@ -97,37 +97,37 @@
       <!-- KPIs -->
       <div class="grid-4 mb-4">
         <div class="kpi">
-          <div class="kpi__label">Total instalados</div>
-          <div class="kpi__value">14</div>
-          <span class="badge"><span class="badge__dot"></span>+2 últimos 30 d</span>
+          <div class="label">Total instalados</div>
+          <div class="value">14</div>
+          <span class="badge"><span class="dot"></span>+2 últimos 30 d</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Activos</div>
-          <div class="kpi__value">12</div>
-          <span class="badge success"><span class="badge__dot"></span>2 desactivados</span>
+          <div class="label">Activos</div>
+          <div class="value">12</div>
+          <span class="badge success"><span class="dot"></span>2 desactivados</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Actualizaciones</div>
-          <div class="kpi__value">3</div>
-          <span class="badge warning"><span class="badge__dot"></span>disponibles</span>
+          <div class="label">Actualizaciones</div>
+          <div class="value">3</div>
+          <span class="badge warning"><span class="dot"></span>disponibles</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Espacio usado</div>
-          <div class="kpi__value">1,4<span style="font-size:18px;color:var(--ink-3);"> GB</span></div>
-          <span class="badge"><span class="badge__dot"></span>de 10 GB</span>
+          <div class="label">Espacio usado</div>
+          <div class="value">1,4<span style="font-size:18px;color:var(--ink-3);"> GB</span></div>
+          <span class="badge"><span class="dot"></span>de 10 GB</span>
         </div>
       </div>
 
       <!-- Tabs -->
       <div class="tabs mb-3" role="tablist">
         <button class="tab" data-on:click="$tab = 'installed'" data-class:is-active="$tab === 'installed'" data-attr:aria-selected="$tab === 'installed' ? 'true' : 'false'">
-          Instalados <span class="tab-badge">14</span>
+          Instalados <span class="badge">14</span>
         </button>
         <button class="tab" data-on:click="$tab = 'available'" data-class:is-active="$tab === 'available'" data-attr:aria-selected="$tab === 'available' ? 'true' : 'false'">
-          Disponibles <span class="tab-badge">87</span>
+          Disponibles <span class="badge">87</span>
         </button>
         <button class="tab" data-on:click="$tab = 'updates'" data-class:is-active="$tab === 'updates'" data-attr:aria-selected="$tab === 'updates' ? 'true' : 'false'">
-          Actualizaciones <span class="tab-badge">3</span>
+          Actualizaciones <span class="badge">3</span>
         </button>
       </div>
 
@@ -152,14 +152,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Punto de venta</h3>
-                  <span class="badge success"><span class="badge__dot"></span>Instalado</span>
+                  <span class="badge success"><span class="dot"></span>Instalado</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v3.4.1 · ERPlora Core</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Caja registradora completa con soporte de turnos, devoluciones y reportes en tiempo real.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-pos checked/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-pos checked/><span class="track"></span></label>
               <button class="btn ghost sm">Configurar</button>
             </div>
           </div>
@@ -175,14 +175,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Inventario y stock</h3>
-                  <span class="badge success"><span class="badge__dot"></span>Instalado</span>
+                  <span class="badge success"><span class="dot"></span>Instalado</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v2.8.0 · ERPlora Core</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Control multi-almacén, transferencias, lotes y caducidades con alertas configurables.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-stock checked/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-stock checked/><span class="track"></span></label>
               <button class="btn ghost sm">Configurar</button>
             </div>
           </div>
@@ -198,14 +198,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Contabilidad</h3>
-                  <span class="badge warning"><span class="badge__dot"></span>Actualización</span>
+                  <span class="badge warning"><span class="dot"></span>Actualización</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v4.1.2 → 4.2.0 · ERPlora Core</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Plan general adaptado a España. Modelo 303, 390 e integración con la AEAT.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-contabilidad checked/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-contabilidad checked/><span class="track"></span></label>
               <button class="btn secondary sm">Actualizar</button>
             </div>
           </div>
@@ -221,14 +221,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Facturación electrónica</h3>
-                  <span class="badge success"><span class="badge__dot"></span>Instalado</span>
+                  <span class="badge success"><span class="dot"></span>Instalado</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v1.9.4 · ERPlora Core</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Verifactu, Facturae y SII. Validación XML automática y archivo legal 5 años.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-fac checked/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-fac checked/><span class="track"></span></label>
               <button class="btn ghost sm">Configurar</button>
             </div>
           </div>
@@ -244,14 +244,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Recursos humanos</h3>
-                  <span class="badge success"><span class="badge__dot"></span>Instalado</span>
+                  <span class="badge success"><span class="dot"></span>Instalado</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v2.3.0 · ERPlora Verticales</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Fichaje, vacaciones, nóminas y organigrama. Integración con A3 y Sage.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-rrhh checked/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-rrhh checked/><span class="track"></span></label>
               <button class="btn ghost sm">Configurar</button>
             </div>
           </div>
@@ -267,14 +267,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Manufactura</h3>
-                  <span class="badge warning"><span class="badge__dot"></span>Actualización</span>
+                  <span class="badge warning"><span class="dot"></span>Actualización</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v1.6.0 → 1.7.1 · ERPlora Verticales</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Órdenes de fabricación, BOM, OEE y planificación con Gantt.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-manuf checked/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-manuf checked/><span class="track"></span></label>
               <button class="btn secondary sm">Actualizar</button>
             </div>
           </div>
@@ -290,14 +290,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Kitchen Display (KDS)</h3>
-                  <span class="badge success"><span class="badge__dot"></span>Instalado</span>
+                  <span class="badge success"><span class="dot"></span>Instalado</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v2.0.3 · ERPlora Verticales</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Pantalla para cocina con tickets en tiempo real, prioridades y tiempos de servicio.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-kds checked/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-kds checked/><span class="track"></span></label>
               <button class="btn ghost sm">Configurar</button>
             </div>
           </div>
@@ -313,14 +313,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">CRM Premium</h3>
-                  <span class="badge brand"><span class="badge__dot"></span>Premium</span>
+                  <span class="badge brand"><span class="dot"></span>Premium</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v3.0.0 · ERPlora Sales</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Pipeline de oportunidades, segmentación de clientes y campañas con IA. <b>+19,90 €/mes</b>.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-crm/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-crm/><span class="track"></span></label>
               <button class="btn primary sm">Instalar</button>
             </div>
           </div>
@@ -336,14 +336,14 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <h3 class="m-0 font-display text-base font-semibold">Reservas y citas</h3>
-                  <span class="badge success"><span class="badge__dot"></span>Instalado</span>
+                  <span class="badge success"><span class="dot"></span>Instalado</span>
                 </div>
                 <div class="text-2xs text-ink-3 mt-1">v1.4.7 · ERPlora Core</div>
               </div>
             </div>
             <p class="text-sm text-ink-2 leading-normal m-0">Calendario de reservas, confirmaciones por SMS y bloqueos automáticos.</p>
             <div class="flex justify-between items-center">
-              <label class="toggle"><input type="checkbox" data-bind:mod-reservas/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:mod-reservas/><span class="track"></span></label>
               <button class="btn ghost sm">Configurar</button>
             </div>
           </div>
@@ -356,29 +356,29 @@
   </div>
 
 
-  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <!-- Bottom tab bar — mobile only via .tabbar slot -->
   <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
-      <a class="tabbar-item" href="#" aria-current="page">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Inicio</span>
+      <a class="item" href="#" aria-current="page">
+        <span class="icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="label">Inicio</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Hubs</span>
-        <span class="tabbar-badge">7</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="label">Hubs</span>
+        <span class="badge">7</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Usuarios</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="label">Usuarios</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Equipo</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="label">Equipo</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Perfil</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="label">Perfil</span>
       </a>
     </div>
   </nav>

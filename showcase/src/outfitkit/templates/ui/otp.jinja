@@ -9,7 +9,7 @@
     {%- if separator_at is not none and i == separator_at %}
     <span class="divider">—</span>
     {%- endif %}
-    <input type="text" class="otp__cell" maxlength="1"
+    <input type="text" class="cell" maxlength="1"
       {% if value and i < value|length %}value="{{ value[i] }}"{% endif %}
       {% if _is_alpha %}inputmode="text" pattern="[A-Za-z0-9]"{% else %}inputmode="numeric" pattern="[0-9]"{% endif %}
       autocomplete="one-time-code"/>

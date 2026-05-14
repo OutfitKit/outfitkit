@@ -28,8 +28,8 @@
 }
 .section.left > .head { margin-inline: var(--space-0); max-width: 880px; }
 
-/* Decorative icon disc */
-.section-icon {
+/* Decorative icon disc — use <div class="icon-disc"> inside .section */
+.section .icon-disc {
   width: var(--icon-2xl);
   height: var(--icon-2xl);
   border-radius: var(--radius-2xl);
@@ -38,16 +38,16 @@
   justify-content: center;
   margin-bottom: var(--space-1);
 }
-.section.center .section-icon { margin-inline: auto; }
-.section-icon .iconify { font-size: 28px; }
+.section.center .icon-disc { margin-inline: auto; }
+.section .icon-disc .iconify { font-size: 28px; }
 
-/* Icon variants pull tokens from OutfitKit */
-.section-icon.brand   { background: var(--brand-soft);   color: var(--brand-3); }
-.section-icon.leaf    { background: var(--leaf-soft);    color: var(--leaf); }
-.section-icon.warn    { background: var(--warn-soft);    color: var(--warn); }
-.section-icon.danger  { background: var(--danger-soft);  color: var(--danger); }
-.section-icon.info    { background: var(--info-soft);    color: var(--info); }
-.section-icon.neutral { background: var(--bg-3);         color: var(--ink-2); }
+/* Icon disc variants pull tokens from OutfitKit */
+.section .icon-disc.brand   { background: var(--brand-soft);   color: var(--brand-3); }
+.section .icon-disc.leaf    { background: var(--leaf-soft);    color: var(--leaf); }
+.section .icon-disc.warn    { background: var(--warn-soft);    color: var(--warn); }
+.section .icon-disc.danger  { background: var(--danger-soft);  color: var(--danger); }
+.section .icon-disc.info    { background: var(--info-soft);    color: var(--info); }
+.section .icon-disc.neutral { background: var(--bg-3);         color: var(--ink-2); }
 
 /* Marketing section title: uses .title universal with clamp override */
 .section > .head > .title {

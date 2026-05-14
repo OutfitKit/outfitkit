@@ -16,11 +16,11 @@
 {% block content %}
 <style>
   .preview-mock { background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 22px; }
-  .preview-mock--light { background: #fefefe; color: #1a1612; }
-  .preview-mock__sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-  .preview-mock__from { font-size: var(--text-sm); color: var(--ink-2); margin-bottom: 16px; }
-  .preview-mock--light .preview-mock__from { color: #524C44; }
-  .preview-mock--light .preview-mock__sub { color: #837B70; }
+  .preview-mock.light { background: #fefefe; color: #1a1612; }
+  .preview-mock .sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .preview-mock .from { font-size: var(--text-sm); color: var(--ink-2); margin-bottom: 16px; }
+  .preview-mock.light .from { color: #524C44; }
+  .preview-mock.light .sub { color: #837B70; }
   .preview-mock h2 { font-family: var(--font-display); font-size: 22px; margin: 0 0 12px; letter-spacing: var(--tracking-tight); }
   .preview-mock p { font-size: var(--text-md); line-height: 1.55; margin: 10px 0; }
   .perm-grid { display: grid; grid-template-columns: 1fr; gap: 4px; padding-top: var(--space-3); }
@@ -32,8 +32,8 @@
   <!-- =================== SIDEBAR =================== -->
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo" style="background: var(--brand); color: var(--brand-fg); display:grid; place-items:center; font-weight:700; font-size:13px;">EX</div>
-      <div class="sidebar-brand-text">
+      <div class="logo" style="background: var(--brand); color: var(--brand-fg); display:grid; place-items:center; font-weight:700; font-size:13px;">EX</div>
+      <div class="text">
         <div class="title md">ERPlora Cloud</div>
         <div class="meta">Acme Industries</div>
       </div>
@@ -42,38 +42,38 @@
       <div class="label">Principal</div>
       <a class="item" href="#">
         <iconify-icon icon="lucide:home" width="16" height="16"></iconify-icon>
-        <span class="item-label">Overview</span>
+        <span class="text">Overview</span>
       </a>
       <a class="item" href="#">
         <svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9h1m4 0h1M9 13h1m4 0h1M9 17h1m4 0h1"/></svg>
-        <span class="item-label">Organizations</span>
+        <span class="text">Organizations</span>
       </a>
       <a class="item" href="#">
         <iconify-icon icon="lucide:credit-card" width="16" height="16"></iconify-icon>
-        <span class="item-label">Hubs</span>
-        <span class="badge badge brand">7</span>
+        <span class="text">Hubs</span>
+        <span class="badge brand">7</span>
       </a>
       <a class="item" href="#" data-route-active="true">
         <iconify-icon icon="lucide:users" width="16" height="16"></iconify-icon>
-        <span class="item-label">Users</span>
+        <span class="text">Users</span>
       </a>
       <a class="item" href="#">
         <iconify-icon icon="lucide:store" width="16" height="16"></iconify-icon>
-        <span class="item-label">Equipment</span>
+        <span class="text">Equipment</span>
       </a>
       <div class="label">Facturación</div>
-      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg><span class="item-label">Invoices</span></a>
-      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M9 9h6v6H9z"/></svg><span class="item-label">Subscriptions</span></a>
-      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg><span class="item-label">Payments</span></a>
+      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg><span class="text">Invoices</span></a>
+      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M9 9h6v6H9z"/></svg><span class="text">Subscriptions</span></a>
+      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg><span class="text">Payments</span></a>
       <div class="label">Desarrollador</div>
-      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7L13 2.4a2 2 0 0 0-2 0L4 6.3A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span class="item-label">Modules</span></a>
-      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3M15 22v-4a4 4 0 0 0-1-3c5-.5 9-2 9-9a7 7 0 0 0-2-5c.4-1 .5-3-.2-4 0 0-2 0-4 1.5a13 13 0 0 0-7 0C7.8.5 5.8.5 5.8.5c-.7 1-.6 3-.2 4a7 7 0 0 0-2 5c0 7 4 8.5 9 9-.6.6-1 1.5-1 3v4"/></svg><span class="item-label">Repositories</span></a>
-      <a class="item" href="#"><iconify-icon icon="lucide:clock" width="16" height="16"></iconify-icon><span class="item-label">Stripe Connect</span></a>
+      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.7L13 2.4a2 2 0 0 0-2 0L4 6.3A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><span class="text">Modules</span></a>
+      <a class="item" href="#"><svg class="icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3M15 22v-4a4 4 0 0 0-1-3c5-.5 9-2 9-9a7 7 0 0 0-2-5c.4-1 .5-3-.2-4 0 0-2 0-4 1.5a13 13 0 0 0-7 0C7.8.5 5.8.5 5.8.5c-.7 1-.6 3-.2 4a7 7 0 0 0-2 5c0 7 4 8.5 9 9-.6.6-1 1.5-1 3v4"/></svg><span class="text">Repositories</span></a>
+      <a class="item" href="#"><iconify-icon icon="lucide:clock" width="16" height="16"></iconify-icon><span class="text">Stripe Connect</span></a>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <div class="avatar sm">IB</div>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Ioan Beilic</div>
           <div class="meta">ioan@acme.com</div>
         </div>
@@ -84,24 +84,24 @@
   <!-- =================== MAIN =================== -->
   <main class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Invitar usuarios a hubs</h1>
         
-        <div class="topbar-search">
         <div class="search">
-          <span class="search__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+        <div class="search">
+          <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
           <input type="search" placeholder="Buscar hubs, módulos, facturas…"/>
-          <span class="search__kbd"><kbd class="kbd">⌘</kbd><kbd class="kbd">K</kbd></span>
+          <span class="shortcut"><kbd class="kbd">⌘</kbd><kbd class="kbd">K</kbd></span>
         </div>
       </div>
         
@@ -112,18 +112,18 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
+      <div class="head">
         <div>
-          <h1 class="page-header-title">Invitar usuarios a hubs</h1>
-          <p class="page-header-sub">Envía invitaciones a una o varias personas para que accedan a uno o varios hubs.</p>
+          <h1 class="title">Invitar usuarios a hubs</h1>
+          <p class="sub">Envía invitaciones a una o varias personas para que accedan a uno o varios hubs.</p>
         </div>
       </div>
 
       <div class="callout info mb-5">
-        <span class="callout__icon"><iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon></span>
-        <div class="callout__body">
-          <div class="callout__title">Las invitaciones se envían inmediatamente</div>
-          <div class="callout__desc">Los invitados recibirán un email con un enlace seguro. Deben aceptar antes de la fecha de caducidad o el enlace dejará de funcionar.</div>
+        <span class="icon"><iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon></span>
+        <div class="body">
+          <div class="title">Las invitaciones se envían inmediatamente</div>
+          <div class="desc">Los invitados recibirán un email con un enlace seguro. Deben aceptar antes de la fecha de caducidad o el enlace dejará de funcionar.</div>
         </div>
       </div>
 
@@ -139,19 +139,19 @@
 
             <!-- Emails -->
             <div class="field mb-4">
-              <label class="field__label field__label--req">Emails de invitados</label>
+              <label class="label req">Emails de invitados</label>
               <div class="tag-input">
                 <span class="tag" data-show="$emails.includes('ana.martin@bodegas-casadejus.com')">
                   ana.martin@bodegas-casadejus.com
-                  <button class="tag__remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'ana.martin@bodegas-casadejus.com')">×</button>
+                  <button class="remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'ana.martin@bodegas-casadejus.com')">×</button>
                 </span>
                 <span class="tag" data-show="$emails.includes('sergi.puig@acme.com')">
                   sergi.puig@acme.com
-                  <button class="tag__remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'sergi.puig@acme.com')">×</button>
+                  <button class="remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'sergi.puig@acme.com')">×</button>
                 </span>
                 <span class="tag" data-show="$emails.includes('nuria.roca@mariola.es')">
                   nuria.roca@mariola.es
-                  <button class="tag__remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'nuria.roca@mariola.es')">×</button>
+                  <button class="remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'nuria.roca@mariola.es')">×</button>
                 </span>
                 <input
                   type="email"
@@ -160,89 +160,89 @@
                   data-on:keydown="if (evt.key === 'Enter' &amp;&amp; $newEmail.includes('@')) { $emails = [...$emails, $newEmail]; $newEmail = ''; }"
                   style="flex: 1; min-width: 200px; background: transparent; border: 0; outline: 0; color: var(--ink); font-size: var(--text-md); padding: 4px 6px;"/>
               </div>
-              <span class="field__hint"><span data-text="$emails.length"></span> destinatarios · pulsa Enter para añadir</span>
+              <span class="hint"><span data-text="$emails.length"></span> destinatarios · pulsa Enter para añadir</span>
             </div>
 
             <!-- Hubs multiselect -->
             <div class="field mb-4">
-              <label class="field__label field__label--req">Hubs</label>
+              <label class="label req">Hubs</label>
               <div class="filter-chips">
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('acme-prod') ? $hubs.filter(h =&gt; h !== 'acme-prod') : [...$hubs, 'acme-prod']"
                   data-class:is-active="$hubs.includes('acme-prod')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">acme-prod</span>
-                  <span class="filter-chip__count">12</span>
+                  <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="label">acme-prod</span>
+                  <span class="count">12</span>
                 </button>
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('bodegas-casadejus') ? $hubs.filter(h =&gt; h !== 'bodegas-casadejus') : [...$hubs, 'bodegas-casadejus']"
                   data-class:is-active="$hubs.includes('bodegas-casadejus')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">bodegas-casadejus</span>
-                  <span class="filter-chip__count">8</span>
+                  <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="label">bodegas-casadejus</span>
+                  <span class="count">8</span>
                 </button>
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('mariola-tienda-1') ? $hubs.filter(h =&gt; h !== 'mariola-tienda-1') : [...$hubs, 'mariola-tienda-1']"
                   data-class:is-active="$hubs.includes('mariola-tienda-1')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">mariola-tienda-1</span>
-                  <span class="filter-chip__count">4</span>
+                  <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="label">mariola-tienda-1</span>
+                  <span class="count">4</span>
                 </button>
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('vinos-roca-staging') ? $hubs.filter(h =&gt; h !== 'vinos-roca-staging') : [...$hubs, 'vinos-roca-staging']"
                   data-class:is-active="$hubs.includes('vinos-roca-staging')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">vinos-roca-staging</span>
-                  <span class="filter-chip__count">3</span>
+                  <span class="check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="label">vinos-roca-staging</span>
+                  <span class="count">3</span>
                 </button>
               </div>
-              <span class="field__hint">Seleccionados: <span data-text="$hubs.length"></span> hub<span data-text="$hubs.length === 1 ? '' : 's'"></span></span>
+              <span class="hint">Seleccionados: <span data-text="$hubs.length"></span> hub<span data-text="$hubs.length === 1 ? '' : 's'"></span></span>
             </div>
 
             <!-- Role -->
             <div class="field mb-4">
-              <label class="field__label field__label--req">Rol por hub</label>
+              <label class="label req">Rol por hub</label>
               <div class="radio-group row" style="gap: 10px;">
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'admin'">
                   <input type="radio" name="role" value="admin" data-on:click="$role = 'admin'" hidden/>
                   <span class="radio-title">Admin</span>
-                  <span class="radio-card__desc">Acceso total · gestiona usuarios y configuración del hub.</span>
+                  <span class="sub">Acceso total · gestiona usuarios y configuración del hub.</span>
                 </label>
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'editor'">
                   <input type="radio" name="role" value="editor" data-on:click="$role = 'editor'" checked hidden/>
                   <span class="radio-title">Editor</span>
-                  <span class="radio-card__desc">Edita catálogo, pedidos y operaciones diarias. Sin facturación.</span>
+                  <span class="sub">Edita catálogo, pedidos y operaciones diarias. Sin facturación.</span>
                 </label>
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'viewer'">
                   <input type="radio" name="role" value="viewer" data-on:click="$role = 'viewer'" hidden/>
                   <span class="radio-title">Viewer</span>
-                  <span class="radio-card__desc">Solo lectura · ve métricas, reportes e historial.</span>
+                  <span class="sub">Solo lectura · ve métricas, reportes e historial.</span>
                 </label>
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'pos'">
                   <input type="radio" name="role" value="pos" data-on:click="$role = 'pos'" hidden/>
                   <span class="radio-title">Solo POS</span>
-                  <span class="radio-card__desc">Atiende caja en terminales POS. Sin acceso a backoffice.</span>
+                  <span class="sub">Atiende caja en terminales POS. Sin acceso a backoffice.</span>
                 </label>
               </div>
             </div>
 
             <!-- Mensaje -->
             <div class="field mb-4">
-              <label class="field__label">Mensaje opcional</label>
+              <label class="label">Mensaje opcional</label>
               <textarea class="textarea" rows="3" maxlength="500"
                 placeholder="Hola, te invito a colaborar en el hub de Acme. Tu rol será Editor…"
                 data-bind:msg></textarea>
-              <span class="field__hint"><span data-text="$msg.length"></span> / 500 caracteres</span>
+              <span class="hint"><span data-text="$msg.length"></span> / 500 caracteres</span>
             </div>
 
             <!-- Caducidad -->
             <div class="field mb-4">
-              <label class="field__label">Caducidad de la invitación</label>
+              <label class="label">Caducidad de la invitación</label>
               <div class="toggle-group block">
-                <button class="toggle-group__option" data-on:click="$expiry = '24h'" data-class:is-selected="$expiry === '24h'">24 h</button>
-                <button class="toggle-group__option" data-on:click="$expiry = '7d'" data-class:is-selected="$expiry === '7d'">7 días</button>
-                <button class="toggle-group__option" data-on:click="$expiry = '30d'" data-class:is-selected="$expiry === '30d'">30 días</button>
-                <button class="toggle-group__option" data-on:click="$expiry = 'none'" data-class:is-selected="$expiry === 'none'">Sin caducidad</button>
+                <button class="option" data-on:click="$expiry = '24h'" data-class:is-selected="$expiry === '24h'">24 h</button>
+                <button class="option" data-on:click="$expiry = '7d'" data-class:is-selected="$expiry === '7d'">7 días</button>
+                <button class="option" data-on:click="$expiry = '30d'" data-class:is-selected="$expiry === '30d'">30 días</button>
+                <button class="option" data-on:click="$expiry = 'none'" data-class:is-selected="$expiry === 'none'">Sin caducidad</button>
               </div>
             </div>
 
@@ -260,23 +260,23 @@
               </button>
               <div class="perm-grid" data-show="$showPerms">
                 <label class="toggle-row">
-                  <span class="toggle-row__text">
-                    <span class="toggle-row__label">Puede invitar a otros usuarios</span>
-                    <span class="toggle-row__desc">Permite reenviar invitaciones desde su cuenta.</span>
+                  <span class="text">
+                    <span class="label">Puede invitar a otros usuarios</span>
+                    <span class="sub">Permite reenviar invitaciones desde su cuenta.</span>
                   </span>
                   <input type="checkbox" class="toggle" data-bind:canInvite/>
                 </label>
                 <label class="toggle-row">
-                  <span class="toggle-row__text">
-                    <span class="toggle-row__label">Ve facturación e informes financieros</span>
-                    <span class="toggle-row__desc">Acceso a facturas, pagos y reportes mensuales.</span>
+                  <span class="text">
+                    <span class="label">Ve facturación e informes financieros</span>
+                    <span class="sub">Acceso a facturas, pagos y reportes mensuales.</span>
                   </span>
                   <input type="checkbox" class="toggle" data-bind:canBilling/>
                 </label>
                 <label class="toggle-row">
-                  <span class="toggle-row__text">
-                    <span class="toggle-row__label">Ve listado de usuarios del hub</span>
-                    <span class="toggle-row__desc">Ver miembros y sus roles, sin permitir cambios.</span>
+                  <span class="text">
+                    <span class="label">Ve listado de usuarios del hub</span>
+                    <span class="sub">Ver miembros y sus roles, sin permitir cambios.</span>
                   </span>
                   <input type="checkbox" class="toggle" data-bind:canUsers/>
                 </label>
@@ -302,19 +302,19 @@
                 <p class="sub">Esto recibirá cada invitado.</p>
               </div>
               <div class="segment sm">
-                <button class="segment__opt" data-on:click="$previewMode = 'dark'" data-attr:aria-pressed="$previewMode === 'dark'">🌙</button>
-                <button class="segment__opt" data-on:click="$previewMode = 'light'" data-attr:aria-pressed="$previewMode === 'light'">☀</button>
+                <button class="opt" data-on:click="$previewMode = 'dark'" data-attr:aria-pressed="$previewMode === 'dark'">🌙</button>
+                <button class="opt" data-on:click="$previewMode = 'light'" data-attr:aria-pressed="$previewMode === 'light'">☀</button>
               </div>
             </header>
             <div class="body">
 
-              <div class="preview-mock" data-class="$previewMode === 'light' ? 'preview-mock light' : ''">
-                <div class="preview-mock__sub">Asunto</div>
+              <div class="preview-mock" data-class="$previewMode === 'light' ? 'light' : ''">
+                <div class="sub">Asunto</div>
                 <p style="font-weight: 600; font-size: var(--text-md); margin: 0 0 16px;">
                   Te invitamos a unirte a <span data-text="$hubs.length === 1 ? $hubs[0] : $hubs.length + ' hubs'"></span> en ERPlora Cloud
                 </p>
 
-                <div class="preview-mock__from">De: Ioan Beilic · Acme Industries · ioan@acme.com</div>
+                <div class="from">De: Ioan Beilic · Acme Industries · joan@acme.com</div>
                 <hr style="border: 0; border-top: 1px solid var(--line); margin: 16px 0;"/>
 
                 <h2>Hola 👋</h2>
@@ -380,29 +380,29 @@
   </main>
 
 
-  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <!-- Bottom tab bar — mobile only via .tabbar slot -->
   <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
-      <a class="tabbar-item" href="#" aria-current="page">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Inicio</span>
+      <a class="item" href="#" aria-current="page">
+        <span class="icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="label">Inicio</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Hubs</span>
-        <span class="tabbar-badge">7</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="label">Hubs</span>
+        <span class="badge">7</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Usuarios</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="label">Usuarios</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Equipo</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="label">Equipo</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Perfil</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="label">Perfil</span>
       </a>
     </div>
   </nav>

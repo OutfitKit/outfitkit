@@ -8,28 +8,28 @@
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">LR</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">LR</div>
+      <div class="text">
         <div class="title md">Cafetería La Rambla</div>
         <div class="meta">4 roles</div>
       </div>
     </div>
     <div class="content scroll">
-      <a class="item" href="../dashboard.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="item-label">Inicio</span></a>
-      <a class="item" href="./employees-list.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="item-label">Empleados</span></a>
-      <a class="item" aria-current="page" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="item-label">Roles</span><span class="badge">4</span></a>
+      <a class="item" href="../dashboard.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="text">Inicio</span></a>
+      <a class="item" href="./employees-list.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg><span class="text">Empleados</span></a>
+      <a class="item" aria-current="page" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="text">Roles</span><span class="badge">4</span></a>
     </div>
   </aside>
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
@@ -45,10 +45,10 @@
       </header>
 
     <div class="content scroll body">
-      <section class="page-header">
-        <div class="page-header-title">
+      <section class="head">
+        <div class="title">
           <h1>Manager</h1>
-          <div class="page-header-sub">Acceso completo a operaciones de tienda · 3 usuarios asignados</div>
+          <div class="sub">Acceso completo a operaciones de tienda · 3 usuarios asignados</div>
         </div>
       </section>
 
@@ -57,12 +57,12 @@
           <header class="head"><h3 class="title">Información</h3></header>
           <div class="body">
             <dl class="stack">
-              <div class="stack__row"><dt class="stack__label">Nombre</dt><dd class="stack__value">Manager</dd></div>
-              <div class="stack__row"><dt class="stack__label">Slug</dt><dd class="stack__value"><code class="code">manager</code></dd></div>
-              <div class="stack__row"><dt class="stack__label">Descripción</dt><dd class="stack__value">Encargado de turno con acceso a ventas, inventario y empleados, sin permisos de configuración fiscal ni facturación.</dd></div>
-              <div class="stack__row"><dt class="stack__label">Tipo</dt><dd class="stack__value"><span class="badge info">Personalizado</span></dd></div>
-              <div class="stack__row"><dt class="stack__label">Creado</dt><dd class="stack__value">12 abr 2026 · Joan Castell</dd></div>
-              <div class="stack__row"><dt class="stack__label">Última modificación</dt><dd class="stack__value">28 abr 2026 · Joan Castell</dd></div>
+              <div class="row"><dt class="label">Nombre</dt><dd class="value">Manager</dd></div>
+              <div class="row"><dt class="label">Slug</dt><dd class="value"><code class="code">manager</code></dd></div>
+              <div class="row"><dt class="label">Descripción</dt><dd class="value">Encargado de turno con acceso a ventas, inventario y empleados, sin permisos de configuración fiscal ni facturación.</dd></div>
+              <div class="row"><dt class="label">Tipo</dt><dd class="value"><span class="badge info">Personalizado</span></dd></div>
+              <div class="row"><dt class="label">Creado</dt><dd class="value">12 abr 2026 · Joan Castell</dd></div>
+              <div class="row"><dt class="label">Última modificación</dt><dd class="value">28 abr 2026 · Joan Castell</dd></div>
             </dl>
           </div>
         </article>
@@ -74,29 +74,29 @@
           </header>
           <div class="body">
             <ul class="list">
-              <li class="list__item">
+              <li class="item">
                 <span class="avatar sm brand">MS</span>
-                <div class="list__content">
-                  <div class="list__title">Marta Soler</div>
-                  <div class="list__meta">marta@larambla.es · Activo</div>
+                <div class="content">
+                  <div class="title">Marta Soler</div>
+                  <div class="meta">marta@larambla.es · Activo</div>
                 </div>
-                <span class="status-dot success"></span>
+                <span class="status dot success"></span>
               </li>
-              <li class="list__item">
+              <li class="item">
                 <span class="avatar sm">CV</span>
-                <div class="list__content">
-                  <div class="list__title">Carles Vila</div>
-                  <div class="list__meta">carles@larambla.es · Activo</div>
+                <div class="content">
+                  <div class="title">Carles Vila</div>
+                  <div class="meta">carles@larambla.es · Activo</div>
                 </div>
-                <span class="status-dot success"></span>
+                <span class="status dot success"></span>
               </li>
-              <li class="list__item">
+              <li class="item">
                 <span class="avatar sm">AR</span>
-                <div class="list__content">
-                  <div class="list__title">Aina Roig</div>
-                  <div class="list__meta">aina@larambla.es · Inactivo</div>
+                <div class="content">
+                  <div class="title">Aina Roig</div>
+                  <div class="meta">aina@larambla.es · Inactivo</div>
                 </div>
-                <span class="status-dot off"></span>
+                <span class="status dot off"></span>
               </li>
             </ul>
           </div>
@@ -136,10 +136,10 @@
     </div>
 
     <nav class="tabbar" data-position="bottom">
-      <a class="tabbar-item" href="../dashboard.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/></svg><span>Inicio</span></a>
-      <a class="tabbar-item" href="./employees-list.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span>Empleados</span></a>
-      <a class="tabbar-item is-active" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="20" height="20"></iconify-icon><span>Roles</span></a>
-      <a class="tabbar-item" href="./settings.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span>Más</span></a>
+      <a class="item" href="../dashboard.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9"/><path d="M5 10v10h14V10"/></svg><span>Inicio</span></a>
+      <a class="item" href="./employees-list.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg><span>Empleados</span></a>
+      <a class="item is-active" href="./roles-list.html"><iconify-icon icon="lucide:shield" width="20" height="20"></iconify-icon><span>Roles</span></a>
+      <a class="item" href="./settings.html"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span>Más</span></a>
     </nav>
   </div>
 </div>
@@ -158,7 +158,7 @@
       </div>
       <p>Esta acción no se puede deshacer.</p>
       <label class="field">
-        <span class="field__label">Escribe <strong>manager</strong> para confirmar</span>
+        <span class="label">Escribe <strong>manager</strong> para confirmar</span>
         <input class="input" type="text" data-bind="confirmText" placeholder="manager"/>
       </label>
     </div>
@@ -168,11 +168,11 @@
     </footer>
   </div>
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="label">Facturas</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="label">Perfil</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

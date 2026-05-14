@@ -1,19 +1,19 @@
 /* ============================================================
    OutfitKit · Command palette ⌘K (standalone)
    Composición universal:
-     <div class="cmdk-backdrop">
+     <div class="backdrop">
        <div class="cmdk">
          <header class="head">
            <svg class="icon">…</svg>
-           <input class="cmdk__input" …>
-           <span class="cmdk__hint">…</span>
+           <input class="input" …>
+           <span class="hint">…</span>
          </header>
          <div class="content scroll body">…</div>
          <footer class="foot">…</footer>
        </div>
      </div>
    ============================================================ */
-.cmdk-backdrop {
+.backdrop {
   position: fixed; inset: 0;
   background: rgba(0,0,0,0.55);
   backdrop-filter: blur(4px);
@@ -42,7 +42,7 @@
   flex-wrap: nowrap;
 }
 
-.cmdk__input {
+.cmdk .input {
   flex: 1;
   background: transparent;
   border: 0; outline: 0;
@@ -50,13 +50,13 @@
   color: var(--ink);
   font-weight: 400;
 }
-.cmdk__input::placeholder { color: var(--ink-4); }
-.cmdk__hint {
+.cmdk .input::placeholder { color: var(--ink-4); }
+.cmdk .hint {
   font-size: var(--text-2xs);
   color: var(--ink-4);
   display: inline-flex; gap: var(--space-1);
 }
-.cmdk__hint kbd {
+.cmdk .hint kbd {
   font-family: var(--font-mono);
   padding: var(--border-w) 5px;
   background: var(--bg-3);
@@ -66,14 +66,14 @@
 }
 
 /* Body uses .content.scroll.body — padding and overflow handled universally */
-.cmdk__group {
+.cmdk .group {
   font-size: var(--text-2xs);
   color: var(--ink-4);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   padding: var(--space-2-5) var(--space-2-5) var(--space-1);
 }
-.cmdk__item {
+.cmdk .item {
   display: flex; align-items: center; gap: var(--space-3);
   width: 100%;
   padding: 9px var(--space-2-5);
@@ -84,7 +84,7 @@
   cursor: pointer;
   text-align: left;
 }
-.cmdk__item-icon {
+.cmdk .item > .icon-disc {
   width: var(--size-sm); height: var(--size-sm);
   border-radius: var(--radius-sm);
   background: var(--bg-3);
@@ -92,23 +92,23 @@
   color: var(--ink-3);
   flex-shrink: 0;
 }
-.cmdk__item-icon svg { width: var(--icon-sm); height: var(--icon-sm); }
-.cmdk__item-text {
+.cmdk .item > .icon-disc svg { width: var(--icon-sm); height: var(--icon-sm); }
+.cmdk .item > .text {
   flex: 1;
   display: flex; flex-direction: column;
   min-width: 0;
 }
-.cmdk__item-title { color: var(--ink); font-weight: 450; }
-.cmdk__item-sub { font-size: var(--text-sm); color: var(--ink-3); }
-.cmdk__item-meta {
+.cmdk .item > .text > .name { color: var(--ink); font-weight: 450; }
+.cmdk .item > .text > .sub { font-size: var(--text-sm); color: var(--ink-3); }
+.cmdk .item > .text > .meta {
   font-size: var(--text-2xs);
   color: var(--ink-4);
   font-family: var(--font-mono);
 }
-.cmdk__item-shortcut {
+.cmdk .item > .keys {
   display: inline-flex; gap: 3px;
 }
-.cmdk__item-shortcut kbd {
+.cmdk .item > .keys kbd {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   padding: var(--border-w) 5px;
@@ -117,27 +117,27 @@
   border-radius: var(--radius-xs);
   color: var(--ink-3);
 }
-.cmdk__item:hover,
-.cmdk__item[aria-selected="true"],
-.cmdk__item[aria-selected=""] {
+.cmdk .item:hover,
+.cmdk .item[aria-selected="true"],
+.cmdk .item[aria-selected=""] {
   background: var(--bg-3);
 }
-.cmdk__item[aria-selected="true"],
-.cmdk__item[aria-selected=""] {
+.cmdk .item[aria-selected="true"],
+.cmdk .item[aria-selected=""] {
   outline: 1px solid var(--line-2);
 }
-.cmdk__item mark {
+.cmdk .item mark {
   background: transparent;
   color: var(--brand-3);
   font-weight: 600;
 }
 
-.cmdk__empty {
+.cmdk .empty {
   padding: var(--space-8) var(--space-5);
   text-align: center;
   color: var(--ink-4);
 }
-.cmdk__empty-icon {
+.cmdk .empty > .icon-disc {
   display: inline-grid; place-items: center;
   width: var(--avatar-md); height: var(--avatar-md);
   border-radius: var(--radius-circle);
@@ -145,8 +145,8 @@
   color: var(--ink-3);
   margin-bottom: var(--space-3);
 }
-.cmdk__empty-text { font-size: var(--text-md); color: var(--ink-2); }
-.cmdk__empty-sub  { font-size: var(--text-sm); color: var(--ink-4); margin-top: var(--space-1); }
+.cmdk .empty > .text { font-size: var(--text-md); color: var(--ink-2); }
+.cmdk .empty > .sub  { font-size: var(--text-sm); color: var(--ink-4); margin-top: var(--space-1); }
 
 /* Footer — uses universal .foot; extra: space-between */
 .cmdk > .foot {
@@ -155,8 +155,7 @@
   flex-shrink: 0;
   justify-content: space-between;
 }
-.cmdk > .foot kbd,
-.cmdk__footer kbd {
+.cmdk > .foot kbd {
   font-family: var(--font-mono);
   font-size: 10px;
   padding: var(--border-w) var(--space-1);

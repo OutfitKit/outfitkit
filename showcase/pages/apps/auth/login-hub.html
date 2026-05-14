@@ -25,12 +25,12 @@
       radial-gradient(ellipse 70% 50% at 20% 90%, color-mix(in oklch, var(--info) 14%, transparent) 0%, transparent 60%),
       var(--bg);
   }
-  .hub-auth__card { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: var(--space-4); }
-  .hub-auth__brand {
+  .hub-auth > .col { width: 100%; max-width: 420px; display: flex; flex-direction: column; gap: var(--space-4); }
+  .hub-auth .identity {
     display: flex; flex-direction: column; align-items: center;
     gap: 10px; margin-bottom: var(--space-2);
   }
-  .hub-auth__logo {
+  .hub-auth .logo {
     width: 56px; height: 56px; border-radius: 14px;
     background: linear-gradient(135deg, var(--brand), var(--brand-2));
     color: var(--brand-fg);
@@ -39,8 +39,8 @@
     font-weight: 700; font-size: 22px; letter-spacing: -0.04em;
     box-shadow: var(--shadow-md);
   }
-  .hub-auth__name { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .hub-auth__sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .hub-auth .name { font-family: var(--font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .hub-auth .sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
 
   /* Employee grid */
   .hub-employees {
@@ -59,7 +59,7 @@
     transition: transform var(--dur-fast), border-color var(--dur-fast);
   }
   .hub-employee:hover { transform: translateY(-2px); border-color: var(--line-2); }
-  .hub-employee__name { font-size: var(--text-sm); font-weight: 500; color: var(--ink); text-align: center; }
+  .hub-employee > .name { font-size: var(--text-sm); font-weight: 500; color: var(--ink); text-align: center; }
 
   .hub-pinpad-frame {
     display: flex; flex-direction: column; align-items: center;
@@ -107,11 +107,11 @@
         }
       }'>
 
-  <div class="hub-auth__card">
-    <div class="hub-auth__brand">
-      <div class="hub-auth__logo">LR</div>
-      <div class="hub-auth__name">Cafetería La Rambla</div>
-      <div class="hub-auth__sub">Business Management System</div>
+  <div class="col">
+    <div class="identity">
+      <div class="logo">LR</div>
+      <div class="name">Cafetería La Rambla</div>
+      <div class="sub">Business Management System</div>
     </div>
 
     <article class="card">
@@ -120,7 +120,7 @@
         <!-- Tabs PIN / Email -->
         <div class="toggle-group block" role="tablist" style="margin-bottom: var(--space-5);">
           <button type="button"
-                  class="toggle-group__option"
+                  class="option"
                   data-class:is-selected="$login.mode === 'local'"
                   data-attr:aria-pressed="$login.mode === 'local'"
                   data-on:click="$login.mode = 'local'">
@@ -128,7 +128,7 @@
             <span>PIN</span>
           </button>
           <button type="button"
-                  class="toggle-group__option"
+                  class="option"
                   data-class:is-selected="$login.mode === 'cloud'"
                   data-attr:aria-pressed="$login.mode === 'cloud'"
                   data-on:click="$login.mode = 'cloud'">
@@ -145,22 +145,22 @@
           <div class="hub-employees">
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 1, name: 'Joan Castell', initials: 'JC', role: 'Encargado'}">
               <span class="avatar lg brand">JC</span>
-              <span class="hub-employee__name">Joan Castell</span>
+              <span class="name">Joan Castell</span>
               <span class="tag sm neutral">Encargado</span>
             </div>
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 2, name: 'Marta Soler', initials: 'MS', role: 'Camarera'}">
               <span class="avatar lg">MS</span>
-              <span class="hub-employee__name">Marta Soler</span>
+              <span class="name">Marta Soler</span>
               <span class="tag sm neutral">Camarera</span>
             </div>
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 3, name: 'Carles Vila', initials: 'CV', role: 'Cocina'}">
               <span class="avatar lg">CV</span>
-              <span class="hub-employee__name">Carles Vila</span>
+              <span class="name">Carles Vila</span>
               <span class="tag sm neutral">Cocina</span>
             </div>
             <div class="hub-employee" data-on:click="$login.selectedEmployee = {id: 4, name: 'Aina Roig', initials: 'AR', role: 'Camarera'}">
               <span class="avatar lg">AR</span>
-              <span class="hub-employee__name">Aina Roig</span>
+              <span class="name">Aina Roig</span>
               <span class="tag sm neutral">Camarera</span>
             </div>
           </div>
@@ -188,20 +188,20 @@
           <p class="hub-pin-error" data-show="$login.pinError">PIN incorrecto</p>
 
           <div class="pinpad">
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '1').slice(0,4)">1</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '2').slice(0,4)">2</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '3').slice(0,4)">3</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '4').slice(0,4)">4</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '5').slice(0,4)">5</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '6').slice(0,4)">6</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '7').slice(0,4)">7</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '8').slice(0,4)">8</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '9').slice(0,4)">9</button>
-            <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$login.selectedEmployee = null; $login.pinInput = ''; $login.pinError = false">
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '1').slice(0,4)">1</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '2').slice(0,4)">2</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '3').slice(0,4)">3</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '4').slice(0,4)">4</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '5').slice(0,4)">5</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '6').slice(0,4)">6</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '7').slice(0,4)">7</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '8').slice(0,4)">8</button>
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '9').slice(0,4)">9</button>
+            <button type="button" class="key action" data-on:click="$login.selectedEmployee = null; $login.pinInput = ''; $login.pinError = false">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
             </button>
-            <button type="button" class="pinpad__key" data-on:click="$login.pinInput = ($login.pinInput + '0').slice(0,4)">0</button>
-            <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$login.pinInput = $login.pinInput.slice(0,-1); $login.pinError = false">
+            <button type="button" class="key" data-on:click="$login.pinInput = ($login.pinInput + '0').slice(0,4)">0</button>
+            <button type="button" class="key action" data-on:click="$login.pinInput = $login.pinInput.slice(0,-1); $login.pinError = false">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM18 9l-6 6M12 9l6 6"/></svg>
             </button>
           </div>
@@ -211,7 +211,7 @@
         <form data-show="$login.mode === 'cloud'" data-on:submit__prevent="$login.cloudLoading = true">
           <div class="form">
             <div class="field">
-              <label class="field__label field__label--req" for="cloud-email">Email</label>
+              <label class="label req" for="cloud-email">Email</label>
               <input id="cloud-email"
                      class="input"
                      type="email"
@@ -223,7 +223,7 @@
             </div>
 
             <div class="field">
-              <label class="field__label field__label--req" for="cloud-password">Contraseña</label>
+              <label class="label req" for="cloud-password">Contraseña</label>
               <div class="input-group with-right">
                 <input id="cloud-password"
                        class="input"
@@ -233,7 +233,7 @@
                        autocomplete="current-password"
                        required/>
                 <button type="button"
-                        class="input-group__icon input-group__icon--right"
+                        class="icon right"
                         data-on:click="$login.showPassword = !$login.showPassword"
                         style="background:transparent;border:none;cursor:pointer;color:var(--ink-3);">
                   <iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon>
@@ -245,7 +245,7 @@
             <div style="display: flex; align-items: center; gap: var(--space-2); margin-block: var(--space-2);">
               <label class="check">
                 <input type="checkbox" data-bind:login.trustDevice/>
-                <span class="check__box"></span>
+                <span class="box"></span>
                 <span>Confiar en este dispositivo</span>
               </label>
               <button type="button"
@@ -315,18 +315,18 @@
           <p class="hub-pin-error" data-show="$login.setupPinError">Los PINs no coinciden</p>
 
           <div class="pinpad">
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '1').slice(0,4)">1</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '2').slice(0,4)">2</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '3').slice(0,4)">3</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '4').slice(0,4)">4</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '5').slice(0,4)">5</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '6').slice(0,4)">6</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '7').slice(0,4)">7</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '8').slice(0,4)">8</button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '9').slice(0,4)">9</button>
-            <button type="button" class="pinpad__key pinpad__key--action" disabled style="visibility:hidden;"></button>
-            <button type="button" class="pinpad__key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '0').slice(0,4)">0</button>
-            <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$login.setupPinInput = $login.setupPinInput.slice(0,-1); $login.setupPinError = false">
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '1').slice(0,4)">1</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '2').slice(0,4)">2</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '3').slice(0,4)">3</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '4').slice(0,4)">4</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '5').slice(0,4)">5</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '6').slice(0,4)">6</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '7').slice(0,4)">7</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '8').slice(0,4)">8</button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '9').slice(0,4)">9</button>
+            <button type="button" class="key action" disabled style="visibility:hidden;"></button>
+            <button type="button" class="key" data-on:click="$login.setupPinInput = ($login.setupPinInput + '0').slice(0,4)">0</button>
+            <button type="button" class="key action" data-on:click="$login.setupPinInput = $login.setupPinInput.slice(0,-1); $login.setupPinError = false">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 4H8l-7 8 7 8h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM18 9l-6 6M12 9l6 6"/></svg>
             </button>
           </div>

@@ -18,7 +18,7 @@
     background: var(--bg);
     box-shadow: 0 24px 60px rgba(0,0,0,0.18);
   }
-  .mobile-shell-stage__inner {
+  .mobile-shell-stage .inner {
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -34,26 +34,26 @@
 </style>
 
 <h1>Mobile shell</h1>
-<p class="showcase__lead">Variante del app shell preconfigurada para mobile (<code>data-tabbar="bottom"</code>): el sidebar pasa a drawer off-canvas, el topbar pierde la búsqueda y aparece la tab-bar inferior como nav principal.</p>
+<p class="lead">Variante del app shell preconfigurada para mobile (<code>data-tabbar="bottom"</code>): el sidebar pasa a drawer off-canvas, el topbar pierde la búsqueda y aparece la tab-bar inferior como nav principal.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/mobile_shell.jinja" import mobile_shell %}
 {% from "ui/sidebar_nav.jinja" import sidebar_nav %}
 {% from "ui/topbar.jinja" import topbar %}
 {% from "ui/kpi.jinja" import kpi %}
 <div class="mobile-shell-stage">
-  <div class="mobile-shell-stage__inner">
+  <div class="inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
 <div class="head">
-  <div class="sidebar-logo">EX</div>
-  <div class="sidebar-brand-text">
+  <div class="logo">EX</div>
+  <div class="text">
     <div class="title md">La Rambla</div>
     <div class="meta">3 sedes</div>
   </div>
 </div>
 <div class="content scroll">
-  <button class="item" aria-current="page"><span class="item-label">Vista general</span></button>
-  <button class="item"><span class="item-label">Terminales</span></button>
+  <button class="item" aria-current="page"><span class="text">Vista general</span></button>
+  <button class="item"><span class="text">Terminales</span></button>
 </div>
 {% endcall %}
 <div class="page">
@@ -66,29 +66,29 @@
   </div>
 </div>
 <nav class="tabbar">
-  <a class="tabbar-item" aria-current="page"><span class="tabbar-label">Inicio</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Cobros</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Ventas</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Equipo</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Más</span></a>
+  <a class="item" aria-current="page"><span class="label">Inicio</span></a>
+  <a class="item"><span class="label">Cobros</span></a>
+  <a class="item"><span class="label">Ventas</span></a>
+  <a class="item"><span class="label">Equipo</span></a>
+  <a class="item"><span class="label">Más</span></a>
 </nav>
 {% endcall %}
   </div>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<div class="mobile-shell-stage">
-  <div class="mobile-shell-stage__inner">
+  <div class="inner">
 <mobile_shell>
 <sidebar_nav>
 <div class="head">
-  <div class="sidebar-logo">EX</div>
-  <div class="sidebar-brand-text">
+  <div class="logo">EX</div>
+  <div class="text">
     <div class="title md">La Rambla</div>
     <div class="meta">3 sedes</div>
   </div>
 </div>
 <div class="content scroll">
-  <button class="item" aria-current="page"><span class="item-label">Vista general</span></button>
-  <button class="item"><span class="item-label">Terminales</span></button>
+  <button class="item" aria-current="page"><span class="text">Vista general</span></button>
+  <button class="item"><span class="text">Terminales</span></button>
 </div>
 </sidebar_nav>
 <div class="page">
@@ -101,11 +101,11 @@
   </div>
 </div>
 <nav class="tabbar">
-  <a class="tabbar-item" aria-current="page"><span class="tabbar-label">Inicio</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Cobros</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Ventas</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Equipo</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Más</span></a>
+  <a class="item" aria-current="page"><span class="label">Inicio</span></a>
+  <a class="item"><span class="label">Cobros</span></a>
+  <a class="item"><span class="label">Ventas</span></a>
+  <a class="item"><span class="label">Equipo</span></a>
+  <a class="item"><span class="label">Más</span></a>
 </nav>
 </mobile_shell>
   </div>
@@ -115,19 +115,19 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 <div class="mobile-shell-stage">
-  <div class="mobile-shell-stage__inner">
+  <div class="inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
 <div class="head">
-  <div class="sidebar-logo">EX</div>
-  <div class="sidebar-brand-text">
+  <div class="logo">EX</div>
+  <div class="text">
     <div class="title md">La Rambla</div>
     <div class="meta">3 sedes</div>
   </div>
 </div>
 <div class="content scroll">
-  <button class="item" aria-current="page"><span class="item-label">Vista general</span></button>
-  <button class="item"><span class="item-label">Terminales</span></button>
+  <button class="item" aria-current="page"><span class="text">Vista general</span></button>
+  <button class="item"><span class="text">Terminales</span></button>
 </div>
 {% endcall %}
 <div class="page">
@@ -140,11 +140,11 @@
   </div>
 </div>
 <nav class="tabbar">
-  <a class="tabbar-item" aria-current="page"><span class="tabbar-label">Inicio</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Cobros</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Ventas</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Equipo</span></a>
-  <a class="tabbar-item"><span class="tabbar-label">Más</span></a>
+  <a class="item" aria-current="page"><span class="label">Inicio</span></a>
+  <a class="item"><span class="label">Cobros</span></a>
+  <a class="item"><span class="label">Ventas</span></a>
+  <a class="item"><span class="label">Equipo</span></a>
+  <a class="item"><span class="label">Más</span></a>
 </nav>
 {% endcall %}
   </div>

@@ -1,16 +1,16 @@
 /* ============================================================
    OutfitKit · Actions Extra
    Componentes:
-     · ok-back-btn   — botón de retroceso con chevron + label
-     · ok-split-btn  — botón compuesto acción + caret dropdown
-     · ok-calc       — calculadora visual (display + teclado)
-     · ok-app-icon   — tile cuadrado lanzador de app + galería
+     · .btn.back    — botón de retroceso con chevron + label
+     · .btn.split   — botón compuesto acción + caret dropdown
+     · .calc        — calculadora visual (display + teclado)
+     · .app-icon    — tile cuadrado lanzador de app + galería
    ============================================================ */
 
 /* ============================================================
    Back button
    ============================================================ */
-.back-btn {
+.btn.back {
   --_bb-h: 32px;
   --_bb-px: 10px;
   --_bb-fz: var(--text-md);
@@ -39,46 +39,46 @@
     border-color var(--dur-fast),
     transform var(--dur-fast);
 }
-.back-btn:hover {
+.btn.back:hover {
   background: var(--bg-4);
   color: var(--ink);
   border-color: var(--line-2);
 }
-.back-btn:active { transform: scale(0.98); }
-.back-btn:focus-visible {
+.btn.back:active { transform: scale(0.98); }
+.btn.back:focus-visible {
   outline: none;
   box-shadow: var(--shadow-glow);
 }
-.back-btn:disabled,
-.back-btn.is-disabled,
-.back-btn[aria-disabled="true"] {
+.btn.back:disabled,
+.btn.back.is-disabled,
+.btn.back[aria-disabled="true"] {
   opacity: 0.5;
   pointer-events: none;
 }
 
-.back-btn__icon {
+.btn.back .icon {
   width: var(--_bb-icon);
   height: var(--_bb-icon);
   flex-shrink: 0;
   transition: transform var(--dur-base) var(--ease-out);
 }
-.back-btn:hover .back-btn__icon { transform: translateX(-2px); }
+.btn.back:hover .icon { transform: translateX(-2px); }
 
-.back-btn__label {
+.btn.back .label {
   display: inline-block;
 }
 
 /* Sizes */
-.back-btn.sm { --_bb-h: 28px; --_bb-px: 8px; --_bb-fz: var(--text-sm); --_bb-icon: 12px; }
-.back-btn.lg { --_bb-h: 40px; --_bb-px: 14px; --_bb-fz: var(--text-base); --_bb-icon: 16px; }
+.btn.back.sm { --_bb-h: 28px; --_bb-px: 8px; --_bb-fz: var(--text-sm); --_bb-icon: 12px; }
+.btn.back.lg { --_bb-h: 40px; --_bb-px: 14px; --_bb-fz: var(--text-base); --_bb-icon: 16px; }
 
-/* Icon-only variant (when only __icon child is present) */
-.back-btn.icon { width: var(--_bb-h); padding: var(--space-0); justify-content: center; }
+/* Icon-only variant (when only .icon child is present) */
+.btn.back.icon { width: var(--_bb-h); padding: var(--space-0); justify-content: center; }
 
 /* ============================================================
    Split button — acción principal + caret dropdown
    ============================================================ */
-.split-btn {
+.btn.split {
   --_sb-bg: var(--bg-3);
   --_sb-fg: var(--ink);
   --_sb-bd: var(--line-2);
@@ -105,8 +105,8 @@
   user-select: none;
 }
 
-.split-btn__main,
-.split-btn__caret {
+.btn.split .main,
+.btn.split .caret {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -118,54 +118,54 @@
   cursor: pointer;
   transition: background var(--dur-fast), transform var(--dur-fast);
 }
-.split-btn__main {
+.btn.split .main {
   gap: var(--space-1-5);
   padding: var(--space-0) var(--_sb-px);
   border-top-left-radius: calc(var(--_sb-r) - 1px);
   border-bottom-left-radius: calc(var(--_sb-r) - 1px);
 }
-.split-btn__caret {
+.btn.split .caret {
   width: calc(var(--_sb-h) - 4px);
   padding: var(--space-0);
   border-top-right-radius: calc(var(--_sb-r) - 1px);
   border-bottom-right-radius: calc(var(--_sb-r) - 1px);
 }
-.split-btn__main:hover,
-.split-btn__caret:hover { background: var(--_sb-bg-h); }
-.split-btn__main:active,
-.split-btn__caret:active { transform: scale(0.98); }
-.split-btn__main:focus-visible,
-.split-btn__caret:focus-visible {
+.btn.split .main:hover,
+.btn.split .caret:hover { background: var(--_sb-bg-h); }
+.btn.split .main:active,
+.btn.split .caret:active { transform: scale(0.98); }
+.btn.split .main:focus-visible,
+.btn.split .caret:focus-visible {
   outline: none;
   box-shadow: var(--shadow-glow);
   z-index: 1;
 }
 
-.split-btn__sep {
+.btn.split .sep {
   width: var(--border-w);
   align-self: stretch;
   background: var(--_sb-sep);
   flex-shrink: 0;
 }
 
-.split-btn__icon {
+.btn.split .icon {
   width: var(--icon-sm);
   height: var(--icon-sm);
   flex-shrink: 0;
 }
-.split-btn__caret-icon {
+.btn.split .caret > .icon {
   width: var(--icon-xs);
   height: var(--icon-xs);
   transition: transform var(--dur-fast);
 }
-.split-btn.is-open .split-btn__caret-icon,
-.split-btn[aria-expanded="true"] .split-btn__caret-icon,
-.split-btn[aria-expanded=""] .split-btn__caret-icon {
+.btn.split.is-open .caret > .icon,
+.btn.split[aria-expanded="true"] .caret > .icon,
+.btn.split[aria-expanded=""] .caret > .icon {
   transform: rotate(180deg);
 }
 
 /* Variants */
-.split-btn.primary {
+.btn.split.primary {
   --_sb-bg: var(--brand);
   --_sb-fg: var(--brand-fg);
   --_sb-bd: transparent;
@@ -173,8 +173,8 @@
   --_sb-sep: color-mix(in oklch, var(--brand-fg) 25%, transparent);
   box-shadow: 0 1px 0 rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.18);
 }
-.split-btn.secondary { /* default */ }
-.split-btn.danger {
+.btn.split.secondary { /* default */ }
+.btn.split.danger {
   --_sb-bg: var(--danger);
   --_sb-fg: var(--danger-fg);
   --_sb-bd: transparent;
@@ -183,12 +183,12 @@
 }
 
 /* Sizes */
-.split-btn.sm { --_sb-h: 26px; --_sb-px: 9px; --_sb-fz: var(--text-sm); --_sb-r: var(--radius-md); }
-.split-btn.lg { --_sb-h: 38px; --_sb-px: 16px; --_sb-fz: var(--text-base); }
+.btn.split.sm { --_sb-h: 26px; --_sb-px: 9px; --_sb-fz: var(--text-sm); --_sb-r: var(--radius-md); }
+.btn.split.lg { --_sb-h: 38px; --_sb-px: 16px; --_sb-fz: var(--text-base); }
 
-.split-btn:disabled,
-.split-btn.is-disabled,
-.split-btn[aria-disabled="true"] {
+.btn.split:disabled,
+.btn.split.is-disabled,
+.btn.split[aria-disabled="true"] {
   opacity: 0.5;
   pointer-events: none;
 }
@@ -209,7 +209,7 @@
   font-family: var(--font-display);
 }
 
-.calc__display {
+.calc .display {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -225,7 +225,7 @@
   overflow: hidden;
 }
 
-.calc__display-prev {
+.calc .display .prev {
   width: 100%;
   font-size: var(--text-sm);
   color: var(--ink-3);
@@ -237,7 +237,7 @@
   min-height: var(--icon-sm);
 }
 
-.calc__display-value {
+.calc .display .value {
   width: 100%;
   font-size: var(--text-3xl);
   font-weight: 600;
@@ -249,13 +249,13 @@
   text-overflow: ellipsis;
 }
 
-.calc__keys {
+.calc .keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-1-5);
 }
 
-.calc__key {
+.calc .key {
   height: var(--avatar-lg);
   display: inline-flex;
   align-items: center;
@@ -273,36 +273,36 @@
   user-select: none;
   transition: background var(--dur-fast), transform var(--dur-fast);
 }
-.calc__key:hover { background: var(--bg-4); }
-.calc__key:active { transform: scale(0.96); }
-.calc__key:focus-visible {
+.calc .key:hover { background: var(--bg-4); }
+.calc .key:active { transform: scale(0.96); }
+.calc .key:focus-visible {
   outline: none;
   box-shadow: var(--shadow-glow);
 }
 
-.calc__key--op {
+.calc .key.op {
   background: color-mix(in oklch, var(--warn) 22%, var(--bg-3));
   color: var(--warn);
   border-color: color-mix(in oklch, var(--warn) 30%, transparent);
 }
-.calc__key--op:hover {
+.calc .key.op:hover {
   background: color-mix(in oklch, var(--warn) 32%, var(--bg-3));
 }
-.calc__key--op.is-active {
+.calc .key.op.is-active {
   background: var(--warn);
   color: var(--warn-fg);
   border-color: transparent;
 }
 
-.calc__key--equals {
+.calc .key.equals {
   background: var(--brand);
   color: var(--brand-fg);
   border-color: transparent;
   box-shadow: 0 1px 0 rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.18);
 }
-.calc__key--equals:hover { background: var(--brand-2); }
+.calc .key.equals:hover { background: var(--brand-2); }
 
-.calc__key--fn {
+.calc .key.fn {
   background: transparent;
   color: var(--ink-2);
   font-size: var(--text-md);
@@ -311,9 +311,9 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
 }
-.calc__key--fn:hover { background: var(--bg-3); color: var(--ink); }
+.calc .key.fn:hover { background: var(--bg-3); color: var(--ink); }
 
-.calc__key--wide  { grid-column: span 2; }
+.calc .key.wide  { grid-column: span 2; }
 
 /* ============================================================
    App Icon — tile cuadrado lanzador
@@ -340,7 +340,7 @@
   color: inherit;
 }
 
-.app-icon__icon {
+.app-icon .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -356,25 +356,25 @@
     box-shadow var(--dur-base);
   flex-shrink: 0;
 }
-.app-icon__icon svg,
-.app-icon__icon img {
+.app-icon .icon svg,
+.app-icon .icon img {
   width: var(--_ai-icon);
   height: var(--_ai-icon);
 }
 
-.app-icon:hover .app-icon__icon {
+.app-icon:hover .icon {
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
-.app-icon:active .app-icon__icon { transform: scale(0.96); }
+.app-icon:active .icon { transform: scale(0.96); }
 .app-icon:focus-visible {
   outline: none;
 }
-.app-icon:focus-visible .app-icon__icon {
+.app-icon:focus-visible .icon {
   box-shadow: var(--shadow-glow);
 }
 
-.app-icon__label {
+.app-icon .label {
   font-size: var(--text-xs);
   color: var(--ink-2);
   font-weight: 500;

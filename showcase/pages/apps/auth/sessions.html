@@ -20,33 +20,33 @@
 
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">EC</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">EC</div>
+      <div class="text">
         <div class="title md">ERPlora Cloud</div>
         <div class="meta">acme · Madrid</div>
       </div>
     </div>
     <div class="content scroll">
       <div class="label">Main</div>
-      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
-      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span><span class="badge">4</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="item-label">Mi perfil</span></button>
-      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="item-label">Seguridad</span></button>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span><span class="badge">4</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg><span class="text">Mi perfil</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><span class="text">Seguridad</span></button>
 
       <div class="label">Billing</div>
-      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Plan & facturación</span></button>
-      <button class="item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Facturas</span><span class="badge badge brand">2</span></button>
-      <button class="item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="item-label">Uso & cuotas</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="text">Plan & facturación</span></button>
+      <button class="item"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="text">Facturas</span><span class="badge brand">2</span></button>
+      <button class="item"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon><span class="text">Uso & cuotas</span></button>
 
       <div class="label">Developer</div>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="item-label">API & tokens</span></button>
-      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Webhooks</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="item-label">Audit log</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg><span class="text">API & tokens</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="text">Webhooks</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 17v-6a4 4 0 0 1 4-4h12M20 7l-3-3M20 7l-3 3"/></svg><span class="text">Audit log</span></button>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Ioan Beilic</div>
           <div class="meta">ioan@acme.com</div>
         </div>
@@ -56,23 +56,23 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Sesiones activas</h1>
         
-        <div class="topbar-search">
+        <div class="search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar en cuenta…"/>
-        <span class="topbar-kbd">⌘K</span>
+        <span class="shortcut">⌘K</span>
       </div>
         
         <div class="actions">
@@ -89,10 +89,10 @@
     </nav>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
+      <div class="head">
+        <div class="title">
           <h1>Sesiones activas</h1>
-          <div class="page-header-sub">Revisa y revoca cualquier sesión que no reconozcas. Las sesiones inactivas más de 30 días caducan automáticamente.</div>
+          <div class="sub">Revisa y revoca cualquier sesión que no reconozcas. Las sesiones inactivas más de 30 días caducan automáticamente.</div>
         </div>
         <div class="actions">
           <button class="btn outline danger">
@@ -104,24 +104,24 @@
 
       <div class="stats mb-6">
         <div class="stat">
-          <div class="stat__label">Sesiones activas</div>
-          <div class="stat__value">5</div>
-          <span class="badge info"><span class="badge__dot"></span>2 sin actividad 24h</span>
+          <div class="label">Sesiones activas</div>
+          <div class="value">5</div>
+          <span class="badge info"><span class="dot"></span>2 sin actividad 24h</span>
         </div>
         <div class="stat">
-          <div class="stat__label">Países</div>
-          <div class="stat__value">2</div>
-          <span class="badge warning"><span class="badge__dot"></span>España · Alemania</span>
+          <div class="label">Países</div>
+          <div class="value">2</div>
+          <span class="badge warning"><span class="dot"></span>España · Alemania</span>
         </div>
         <div class="stat">
-          <div class="stat__label">Último login</div>
-          <div class="stat__value" style="font-size:18px;">hace 12 min</div>
-          <span class="badge"><span class="badge__dot"></span>Madrid · 91.117.x.x</span>
+          <div class="label">Último login</div>
+          <div class="value" style="font-size:18px;">hace 12 min</div>
+          <span class="badge"><span class="dot"></span>Madrid · 91.117.x.x</span>
         </div>
         <div class="stat">
-          <div class="stat__label">Dispositivos confiables</div>
-          <div class="stat__value">3</div>
-          <span class="badge success"><span class="badge__dot"></span>Todos en orden</span>
+          <div class="label">Dispositivos confiables</div>
+          <div class="value">3</div>
+          <span class="badge success"><span class="dot"></span>Todos en orden</span>
         </div>
       </div>
 
@@ -132,10 +132,10 @@
             <div class="meta">5 sesiones · ordenadas por última actividad</div>
           </div>
           <div class="toggle-group sm" role="tablist">
-            <button class="toggle-group__option" data-on:click="$deviceFilter = 'all'" data-class:is-selected="$deviceFilter === 'all'">Todos</button>
-            <button class="toggle-group__option" data-on:click="$deviceFilter = 'desktop'" data-class:is-selected="$deviceFilter === 'desktop'">Escritorio</button>
-            <button class="toggle-group__option" data-on:click="$deviceFilter = 'mobile'" data-class:is-selected="$deviceFilter === 'mobile'">Móvil</button>
-            <button class="toggle-group__option" data-on:click="$deviceFilter = 'tablet'" data-class:is-selected="$deviceFilter === 'tablet'">Tablet</button>
+            <button class="option" data-on:click="$deviceFilter = 'all'" data-class:is-selected="$deviceFilter === 'all'">Todos</button>
+            <button class="option" data-on:click="$deviceFilter = 'desktop'" data-class:is-selected="$deviceFilter === 'desktop'">Escritorio</button>
+            <button class="option" data-on:click="$deviceFilter = 'mobile'" data-class:is-selected="$deviceFilter === 'mobile'">Móvil</button>
+            <button class="option" data-on:click="$deviceFilter = 'tablet'" data-class:is-selected="$deviceFilter === 'tablet'">Tablet</button>
           </div>
         </div>
 
@@ -149,7 +149,7 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <strong class="text-md">MacBook Pro M4 · oficina</strong>
-                  <span class="badge brand"><span class="badge__dot"></span>Esta sesión</span>
+                  <span class="badge brand"><span class="dot"></span>Esta sesión</span>
                 </div>
                 <div style="color:var(--ink-3);font-size:var(--text-sm);margin-top:2px;">Chrome 142 · macOS 15.4 · Madrid, ES · 91.117.x.x</div>
                 <div style="color:var(--ink-4);font-size:var(--text-xs);margin-top:4px;font-family:var(--font-mono);">Iniciada 8 may 2026, 09:14 · Última actividad: ahora</div>
@@ -166,7 +166,7 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <strong class="text-md">iPhone 16 Pro · personal</strong>
-                  <span class="badge success"><span class="badge__dot"></span>Activa</span>
+                  <span class="badge success"><span class="dot"></span>Activa</span>
                 </div>
                 <div style="color:var(--ink-3);font-size:var(--text-sm);margin-top:2px;">ERPlora App 4.8.2 · iOS 18.4 · Madrid, ES · 81.40.x.x</div>
                 <div style="color:var(--ink-4);font-size:var(--text-xs);margin-top:4px;font-family:var(--font-mono);">Iniciada 6 may 2026, 18:22 · Última actividad: hace 12 min</div>
@@ -183,7 +183,7 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <strong class="text-md">ThinkPad X1 · viaje</strong>
-                  <span class="badge warning"><span class="badge__dot"></span>Nueva ubicación</span>
+                  <span class="badge warning"><span class="dot"></span>Nueva ubicación</span>
                 </div>
                 <div style="color:var(--ink-3);font-size:var(--text-sm);margin-top:2px;">Firefox 130 · Ubuntu 24.04 · Berlin, DE · 89.245.x.x</div>
                 <div style="color:var(--warn);font-size:var(--text-xs);margin-top:4px;display:flex;align-items:center;gap:4px;">
@@ -203,7 +203,7 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <strong class="text-md">iPad Air · sofá</strong>
-                  <span class="badge warning"><span class="badge__dot"></span>Inactiva 24h</span>
+                  <span class="badge warning"><span class="dot"></span>Inactiva 24h</span>
                 </div>
                 <div style="color:var(--ink-3);font-size:var(--text-sm);margin-top:2px;">Safari 18 · iPadOS 18.3 · Valencia, ES · 80.58.x.x</div>
                 <div style="color:var(--ink-4);font-size:var(--text-xs);margin-top:4px;font-family:var(--font-mono);">Iniciada 28 abr 2026, 21:08 · Última actividad: hace 2 días</div>
@@ -220,7 +220,7 @@
               <div class="flex-1">
                 <div class="flex wrap items-center gap-2">
                   <strong class="text-md">Pixel 9 · backup</strong>
-                  <span class="badge warning"><span class="badge__dot"></span>Inactiva 24h</span>
+                  <span class="badge warning"><span class="dot"></span>Inactiva 24h</span>
                 </div>
                 <div style="color:var(--ink-3);font-size:var(--text-sm);margin-top:2px;">ERPlora App 4.7.0 · Android 15 · Bilbao, ES · 88.7.x.x</div>
                 <div style="color:var(--ink-4);font-size:var(--text-xs);margin-top:4px;font-family:var(--font-mono);">Iniciada 21 abr 2026, 11:43 · Última actividad: hace 4 días</div>
@@ -256,16 +256,16 @@
               <th>Estado</th>
             </tr></thead>
             <tbody>
-              <tr><td class="font-mono text-xs">2026-05-08 09:14:22</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="badge__dot"></span>Éxito</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-08 08:51:03</td><td>Madrid, ES</td><td class="font-mono text-xs">81.40.119.244</td><td>iPhone 16 Pro · iOS App</td><td><span class="badge success"><span class="badge__dot"></span>Éxito</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-07 22:08:44</td><td>Berlin, DE</td><td class="font-mono text-xs">89.245.71.12</td><td>ThinkPad X1 · Firefox 130</td><td><span class="badge warning"><span class="badge__dot"></span>2FA reto</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-07 22:07:51</td><td>Berlin, DE</td><td class="font-mono text-xs">89.245.71.12</td><td>ThinkPad X1 · Firefox 130</td><td><span class="badge success"><span class="badge__dot"></span>Éxito</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-07 16:32:18</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="badge__dot"></span>Éxito</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-06 11:04:09</td><td>Sevilla, ES</td><td class="font-mono text-xs">37.11.88.201</td><td>desconocido · Chrome 141</td><td><span class="badge danger"><span class="badge__dot"></span>Fallido</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-06 11:03:48</td><td>Sevilla, ES</td><td class="font-mono text-xs">37.11.88.201</td><td>desconocido · Chrome 141</td><td><span class="badge danger"><span class="badge__dot"></span>Fallido</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-06 09:18:32</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="badge__dot"></span>Éxito</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-04 19:22:04</td><td>Barcelona, ES</td><td class="font-mono text-xs">85.49.214.9</td><td>iPhone 16 Pro · iOS App</td><td><span class="badge success"><span class="badge__dot"></span>Éxito</span></td></tr>
-              <tr><td class="font-mono text-xs">2026-05-03 08:44:11</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="badge__dot"></span>Éxito</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-08 09:14:22</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="dot"></span>Éxito</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-08 08:51:03</td><td>Madrid, ES</td><td class="font-mono text-xs">81.40.119.244</td><td>iPhone 16 Pro · iOS App</td><td><span class="badge success"><span class="dot"></span>Éxito</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-07 22:08:44</td><td>Berlin, DE</td><td class="font-mono text-xs">89.245.71.12</td><td>ThinkPad X1 · Firefox 130</td><td><span class="badge warning"><span class="dot"></span>2FA reto</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-07 22:07:51</td><td>Berlin, DE</td><td class="font-mono text-xs">89.245.71.12</td><td>ThinkPad X1 · Firefox 130</td><td><span class="badge success"><span class="dot"></span>Éxito</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-07 16:32:18</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="dot"></span>Éxito</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-06 11:04:09</td><td>Sevilla, ES</td><td class="font-mono text-xs">37.11.88.201</td><td>desconocido · Chrome 141</td><td><span class="badge danger"><span class="dot"></span>Fallido</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-06 11:03:48</td><td>Sevilla, ES</td><td class="font-mono text-xs">37.11.88.201</td><td>desconocido · Chrome 141</td><td><span class="badge danger"><span class="dot"></span>Fallido</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-06 09:18:32</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="dot"></span>Éxito</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-04 19:22:04</td><td>Barcelona, ES</td><td class="font-mono text-xs">85.49.214.9</td><td>iPhone 16 Pro · iOS App</td><td><span class="badge success"><span class="dot"></span>Éxito</span></td></tr>
+              <tr><td class="font-mono text-xs">2026-05-03 08:44:11</td><td>Madrid, ES</td><td class="font-mono text-xs">91.117.42.8</td><td>MacBook Pro M4 · Chrome 142</td><td><span class="badge success"><span class="dot"></span>Éxito</span></td></tr>
             </tbody>
           </table>
         </div>

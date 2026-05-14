@@ -20,33 +20,33 @@
 
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">EC</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">EC</div>
+      <div class="text">
         <div class="title md">ERPlora Cloud</div>
         <div class="meta">acme · ES</div>
       </div>
     </div>
     <div class="content scroll">
       <div class="label">Principal</div>
-      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Vista general</span></button>
-      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></button>
-      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span></button>
-      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="item-label">Usuarios</span><span class="badge badge brand">142</span></button>
+      <button class="item"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Vista general</span></button>
+      <button class="item"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span></button>
+      <button class="item"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon><span class="text">Hubs</span></button>
+      <button class="item" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span class="text">Usuarios</span><span class="badge brand">142</span></button>
 
       <div class="label">Facturación</div>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="item-label">Facturas</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="item-label">Suscripciones</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg><span class="text">Facturas</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M5 9h14"/></svg><span class="text">Suscripciones</span></button>
 
       <div class="label">Desarrollador</div>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="item-label">Repositorios</span></button>
-      <button class="item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="item-label">Módulos</span></button>
-      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Stripe Connect</span></button>
-      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="item-label">Payouts</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3"/></svg><span class="text">Repositorios</span></button>
+      <button class="item"><iconify-icon icon="lucide:code" width="18" height="18"></iconify-icon><span class="text">Módulos</span></button>
+      <button class="item"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="text">Stripe Connect</span></button>
+      <button class="item"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg><span class="text">Payouts</span></button>
     </div>
     <div class="foot">
-      <div class="sidebar-user">
+      <div class="user">
         <span class="avatar sm brand">IB</span>
-        <div class="sidebar-user-info">
+        <div class="text">
           <div class="title sm">Ioan Beilic</div>
           <div class="meta">ioan@acme.com</div>
         </div>
@@ -56,23 +56,23 @@
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Usuarios de hubs</h1>
         
-        <div class="topbar-search">
+        <div class="search">
         <iconify-icon icon="lucide:search" width="14" height="14"></iconify-icon>
         <input placeholder="Buscar usuarios, hubs…"/>
-        <span class="topbar-kbd">⌘K</span>
+        <span class="shortcut">⌘K</span>
       </div>
         
         <div class="actions">
@@ -81,10 +81,10 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
+      <div class="head">
+        <div class="title">
           <h1>Usuarios de hubs</h1>
-          <div class="page-header-sub">Vista global · todos los usuarios con acceso a uno o más hubs de la organización</div>
+          <div class="sub">Vista global · todos los usuarios con acceso a uno o más hubs de la organización</div>
         </div>
         <div class="actions">
           <button class="btn ghost">Exportar CSV</button>
@@ -95,34 +95,34 @@
       <!-- KPIs -->
       <div class="grid-4 mb-4">
         <div class="kpi">
-          <div class="kpi__label">Total usuarios</div>
-          <div class="kpi__value">142</div>
-          <span class="badge"><span class="badge__dot"></span>+8 este mes</span>
+          <div class="label">Total usuarios</div>
+          <div class="value">142</div>
+          <span class="badge"><span class="dot"></span>+8 este mes</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Activos hoy</div>
-          <div class="kpi__value">89</div>
-          <span class="badge success"><span class="badge__dot"></span>62%</span>
+          <div class="label">Activos hoy</div>
+          <div class="value">89</div>
+          <span class="badge success"><span class="dot"></span>62%</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Pendientes</div>
-          <div class="kpi__value text-warn">5</div>
-          <span class="badge warning"><span class="badge__dot"></span>invitación enviada</span>
+          <div class="label">Pendientes</div>
+          <div class="value text-warn">5</div>
+          <span class="badge warning"><span class="dot"></span>invitación enviada</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Suspendidos</div>
-          <div class="kpi__value text-danger">3</div>
-          <span class="badge danger"><span class="badge__dot"></span>baja temporal</span>
+          <div class="label">Suspendidos</div>
+          <div class="value text-danger">3</div>
+          <span class="badge danger"><span class="dot"></span>baja temporal</span>
         </div>
       </div>
 
       <!-- Toolbar with multi filters -->
       <div class="toolbar mb-3">
         <div class="search" style="flex:1;min-width:240px;max-width:360px;">
-          <span class="search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
+          <span class="icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
           <input class="input sm" placeholder="Buscar por nombre o email…" data-bind:q/>
         </div>
-        <div class="toolbar__spacer"></div>
+        <div class="gap"></div>
         <select class="select sm" style="width:auto;min-width:140px;" data-bind:hub-filter>
           <option value="all">Todos los hubs</option>
           <option value="acme-prod">acme-prod</option>
@@ -170,8 +170,8 @@
       <div class="table-wrap">
         <div class="table-toolbar">
           <span class="title">Usuarios</span>
-          <span class="table-toolbar__count">142</span>
-          <div class="table-toolbar__spacer"></div>
+          <span class="count">142</span>
+          <div class="spacer"></div>
           <span class="text-xs text-ink-3">Mostrando 18 · ordenado por última conexión</span>
         </div>
         <div class="table-scroll">
@@ -209,7 +209,7 @@
                 </td>
                 <td><span class="tag brand sm">Admin</span></td>
                 <td class="td muted">hace 2 min</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u1'">
@@ -232,7 +232,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag info sm">Editor</span></td>
                 <td class="td muted">hace 14 min</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u2' ? null : 'u2'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u2'">
@@ -255,7 +255,7 @@
                 <td><span class="tag neutral sm">2 hubs</span></td>
                 <td><span class="tag brand sm">Admin</span></td>
                 <td class="td muted">hace 32 min</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u3' ? null : 'u3'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u3'">
@@ -278,7 +278,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag neutral sm">Solo POS</span></td>
                 <td class="td muted">hace 1 h</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u4' ? null : 'u4'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u4'">
@@ -301,7 +301,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag brand sm">Admin</span></td>
                 <td class="td muted">hace 1 h</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u5' ? null : 'u5'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u5'">
@@ -324,7 +324,7 @@
                 <td><span class="tag neutral sm">2 hubs</span></td>
                 <td><span class="tag info sm">Editor</span></td>
                 <td class="td muted">hace 2 h</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u6' ? null : 'u6'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u6'">
@@ -347,7 +347,7 @@
                 <td><span class="tag neutral sm">4 hubs</span></td>
                 <td><span class="tag brand sm">Admin</span></td>
                 <td class="td muted">hace 3 h</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u7' ? null : 'u7'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u7'">
@@ -370,7 +370,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag neutral sm">Viewer</span></td>
                 <td class="td muted">hace 5 h</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u8' ? null : 'u8'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u8'">
@@ -393,7 +393,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag neutral sm">Solo POS</span></td>
                 <td class="td muted">hace 7 h</td>
-                <td><span class="status-dot online"></span> Activo</td>
+                <td><span class="status dot online"></span> Activo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u9' ? null : 'u9'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u9'">
@@ -416,7 +416,7 @@
                 <td><span class="tag neutral sm">3 hubs</span></td>
                 <td><span class="tag info sm">Editor</span></td>
                 <td class="td muted">hace 1 d</td>
-                <td><span class="status-dot"></span> Inactivo</td>
+                <td><span class="status dot"></span> Inactivo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u10' ? null : 'u10'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u10'">
@@ -439,7 +439,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag brand sm">Admin</span></td>
                 <td class="td muted">hace 1 d</td>
-                <td><span class="status-dot"></span> Inactivo</td>
+                <td><span class="status dot"></span> Inactivo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u11' ? null : 'u11'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u11'">
@@ -462,7 +462,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag neutral sm">Viewer</span></td>
                 <td class="td muted">hace 2 d</td>
-                <td><span class="status-dot"></span> Inactivo</td>
+                <td><span class="status dot"></span> Inactivo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u12' ? null : 'u12'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u12'">
@@ -485,7 +485,7 @@
                 <td><span class="tag neutral sm">2 hubs</span></td>
                 <td><span class="tag info sm">Editor</span></td>
                 <td class="td muted">hace 4 d</td>
-                <td><span class="status-dot"></span> Inactivo</td>
+                <td><span class="status dot"></span> Inactivo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u13' ? null : 'u13'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u13'">
@@ -508,7 +508,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag warning sm">Pendiente</span></td>
                 <td class="td muted">—</td>
-                <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                <td><span class="badge warning"><span class="dot"></span>Pendiente</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u14' ? null : 'u14'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u14'">
@@ -530,7 +530,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag warning sm">Pendiente</span></td>
                 <td class="td muted">—</td>
-                <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                <td><span class="badge warning"><span class="dot"></span>Pendiente</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u15' ? null : 'u15'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u15'">
@@ -552,7 +552,7 @@
                 <td><span class="tag neutral sm">3 hubs</span></td>
                 <td><span class="tag info sm">Editor</span></td>
                 <td class="td muted">hace 14 d</td>
-                <td><span class="status-dot"></span> Inactivo</td>
+                <td><span class="status dot"></span> Inactivo</td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u16' ? null : 'u16'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u16'">
@@ -575,7 +575,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag neutral sm">Viewer</span></td>
                 <td class="td muted">hace 31 d</td>
-                <td><span class="badge danger"><span class="badge__dot"></span>Suspendido</span></td>
+                <td><span class="badge danger"><span class="dot"></span>Suspendido</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u17' ? null : 'u17'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u17'">
@@ -597,7 +597,7 @@
                 <td><span class="tag neutral sm">2 hubs</span></td>
                 <td><span class="tag neutral sm">Solo POS</span></td>
                 <td class="td muted">hace 42 d</td>
-                <td><span class="badge danger"><span class="badge__dot"></span>Suspendido</span></td>
+                <td><span class="badge danger"><span class="dot"></span>Suspendido</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u18' ? null : 'u18'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u18'">
@@ -612,9 +612,9 @@
         <div class="table-footer" style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-3);">
           <span>Mostrando 1–18 de 142 usuarios</span>
           <div class="pager">
-            <button class="pager__btn" disabled>‹</button>
-            <span class="pager__info">Página 1 de 8</span>
-            <button class="pager__btn">›</button>
+            <button class="btn" disabled>‹</button>
+            <span class="meta">Página 1 de 8</span>
+            <button class="btn">›</button>
           </div>
         </div>
       </div>
@@ -623,29 +623,29 @@
   </div>
 
 
-  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <!-- Bottom tab bar — mobile only via .tabbar slot -->
   <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
-      <a class="tabbar-item" href="#" aria-current="page">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Inicio</span>
+      <a class="item" href="#" aria-current="page">
+        <span class="icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="label">Inicio</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Hubs</span>
-        <span class="tabbar-badge">7</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="label">Hubs</span>
+        <span class="badge">7</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Usuarios</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="label">Usuarios</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Equipo</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="label">Equipo</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Perfil</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="label">Perfil</span>
       </a>
     </div>
   </nav>

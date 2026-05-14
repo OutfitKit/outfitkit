@@ -8,7 +8,7 @@
 
 {% block content %}
 <h1>App shell</h1>
-<p class="showcase__lead">Contenedor outer <code>.ok-app</code> con grid sidebar + main + (opcional) tab-bar inferior. Slot libre — el consumidor compone <code>&lt;SidebarNav /&gt;</code>, <code>&lt;Topbar /&gt;</code> y la zona <code>.ok-content scroll body</code> con su propio contenido.</p>
+<p class="lead">Contenedor outer <code>.app</code> con grid sidebar + main + (opcional) tab-bar inferior. Slot libre — el consumidor compone <code>&lt;SidebarNav /&gt;</code>, <code>&lt;Topbar /&gt;</code> y la zona <code>.content scroll body</code> con su propio contenido.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/app_shell.jinja" import app_shell %}
 {% from "ui/sidebar_nav.jinja" import sidebar_nav %}
@@ -17,19 +17,19 @@
 {% call app_shell() %}
 {% call sidebar_nav() %}
 <div class="head">
-  <div class="sidebar-logo">EX</div>
-  <div class="sidebar-brand-text">
+  <div class="logo">EX</div>
+  <div class="text">
     <div class="title md">Cafetería La Rambla</div>
     <div class="meta">3 sedes</div>
   </div>
 </div>
 <div class="content scroll">
   <div class="label">Operación</div>
-  <button class="item" aria-current="page"><span class="item-label">Vista general</span></button>
-  <button class="item"><span class="item-label">Terminales</span><span class="badge">12</span></button>
-  <button class="item"><span class="item-label">Facturación</span><span class="badge badge brand">3</span></button>
+  <button class="item" aria-current="page"><span class="text">Vista general</span></button>
+  <button class="item"><span class="text">Terminales</span><span class="badge">12</span></button>
+  <button class="item"><span class="text">Facturación</span><span class="badge brand">3</span></button>
   <div class="label">Plataforma</div>
-  <button class="item"><span class="item-label">Configuración</span></button>
+  <button class="item"><span class="text">Configuración</span></button>
 </div>
 {% endcall %}
 <div class="page">
@@ -48,19 +48,19 @@
 <app_shell>
 <sidebar_nav>
 <div class="head">
-  <div class="sidebar-logo">EX</div>
-  <div class="sidebar-brand-text">
+  <div class="logo">EX</div>
+  <div class="text">
     <div class="title md">Cafetería La Rambla</div>
     <div class="meta">3 sedes</div>
   </div>
 </div>
 <div class="content scroll">
   <div class="label">Operación</div>
-  <button class="item" aria-current="page"><span class="item-label">Vista general</span></button>
-  <button class="item"><span class="item-label">Terminales</span><span class="badge">12</span></button>
-  <button class="item"><span class="item-label">Facturación</span><span class="badge badge brand">3</span></button>
+  <button class="item" aria-current="page"><span class="text">Vista general</span></button>
+  <button class="item"><span class="text">Terminales</span><span class="badge">12</span></button>
+  <button class="item"><span class="text">Facturación</span><span class="badge brand">3</span></button>
   <div class="label">Plataforma</div>
-  <button class="item"><span class="item-label">Configuración</span></button>
+  <button class="item"><span class="text">Configuración</span></button>
 </div>
 </sidebar_nav>
 <div class="page">
@@ -84,19 +84,19 @@
 {% call app_shell() %}
 {% call sidebar_nav() %}
 <div class="head">
-  <div class="sidebar-logo">EX</div>
-  <div class="sidebar-brand-text">
+  <div class="logo">EX</div>
+  <div class="text">
     <div class="title md">Cafetería La Rambla</div>
     <div class="meta">3 sedes</div>
   </div>
 </div>
 <div class="content scroll">
   <div class="label">Operación</div>
-  <button class="item" aria-current="page"><span class="item-label">Vista general</span></button>
-  <button class="item"><span class="item-label">Terminales</span><span class="badge">12</span></button>
-  <button class="item"><span class="item-label">Facturación</span><span class="badge badge brand">3</span></button>
+  <button class="item" aria-current="page"><span class="text">Vista general</span></button>
+  <button class="item"><span class="text">Terminales</span><span class="badge">12</span></button>
+  <button class="item"><span class="text">Facturación</span><span class="badge brand">3</span></button>
   <div class="label">Plataforma</div>
-  <button class="item"><span class="item-label">Configuración</span></button>
+  <button class="item"><span class="text">Configuración</span></button>
 </div>
 {% endcall %}
 <div class="page">

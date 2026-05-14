@@ -34,9 +34,9 @@
 
 /* Ionic-style layout:  [ back ]   ─   title   ─   [ burger ]  +  actions */
 
-/* Generic icon button used by back & burger. */
-.topbar-menu-btn,
-.topbar-back-btn {
+/* Generic icon button used by back & menu. */
+.topbar .menu,
+.topbar .back {
   display: inline-flex;
   width: 36px; height: 36px;
   border-radius: var(--radius-md);
@@ -49,12 +49,12 @@
   cursor: pointer;
   transition: background var(--dur-fast), color var(--dur-fast);
 }
-.topbar-menu-btn:hover,
-.topbar-back-btn:hover { background: var(--bg-3); color: var(--ink); }
-.topbar-menu-btn svg,
-.topbar-back-btn svg { width: 18px; height: 18px; }
-.topbar-back-btn:disabled,
-.topbar-back-btn[aria-disabled="true"] { opacity: 0.35; pointer-events: none; }
+.topbar .menu:hover,
+.topbar .back:hover { background: var(--bg-3); color: var(--ink); }
+.topbar .menu svg,
+.topbar .back svg { width: 18px; height: 18px; }
+.topbar .back:disabled,
+.topbar .back[aria-disabled="true"] { opacity: 0.35; pointer-events: none; }
 
 /* Center page title — use <h1 class="title"> inside .topbar */
 .topbar > .title {
@@ -70,7 +70,7 @@
 }
 
 /* Left cluster (back btn wrapper) */
-.topbar-left {
+.topbar > .left {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -78,7 +78,7 @@
 }
 
 /* Breadcrumbs slot — hidden by default, opt-in via .with-crumb */
-.topbar-crumb {
+.topbar .crumb {
   display: none;
   align-items: center;
   gap: var(--space-2);
@@ -89,25 +89,25 @@
   color: var(--ink-2);
   overflow: hidden;
 }
-.topbar.with-crumb .topbar-crumb { display: flex; }
+.topbar.with-crumb .crumb { display: flex; }
 .topbar.with-crumb > .title { display: none; }
-.topbar-crumb-item {
+.topbar .crumb .item {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.topbar-crumb-item:last-child { color: var(--ink); }
-.topbar-crumb-sep { color: var(--ink-4); flex-shrink: 0; }
+.topbar .crumb .item:last-child { color: var(--ink); }
+.topbar .crumb .sep { color: var(--ink-4); flex-shrink: 0; }
 
-/* Search box — use <div class="topbar-search"> */
+/* Search box — use <div class="search"> inside .topbar */
 @media (max-width: 1023px) {
-  .topbar-search { display: none; }
+  .topbar .search { display: none; }
 }
 @media (max-width: 767px) {
-  .topbar-search { display: none; }
+  .topbar .search { display: none; }
 }
 
-.topbar-search {
+.topbar .search {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -121,8 +121,8 @@
   width: 240px;
   transition: border-color var(--dur-fast);
 }
-.topbar-search:focus-within { border-color: var(--line-3); }
-.topbar-search input {
+.topbar .search:focus-within { border-color: var(--line-3); }
+.topbar .search input {
   background: transparent;
   border: none;
   outline: none;
@@ -130,8 +130,8 @@
   min-width: 0;
   color: var(--ink);
 }
-.topbar-search input::placeholder { color: var(--ink-3); }
-.topbar-kbd {
+.topbar .search input::placeholder { color: var(--ink-3); }
+.topbar .shortcut {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   padding: 1px 5px;

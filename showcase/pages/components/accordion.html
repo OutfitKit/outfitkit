@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Accordion</h1>
-<p class="showcase__lead">Contenedor con paneles expandibles. Compón los items con la macro <code>accordion_item()</code> (recomendada) o manualmente con <code>.ok-accordion__item</code>, <code>.ok-accordion__trigger</code> y <code>.ok-accordion__panel</code>. La interactividad se enchufa con Datastar (<code>data-signals</code> + <code>data-on:click</code>).</p>
+<p class="lead">Contenedor con paneles expandibles. Compón los items con la macro <code>accordion_item()</code> (recomendada) o manualmente con <code>.item</code>, <code>.trigger</code> y <code>.panel</code>. La interactividad se enchufa con Datastar (<code>data-signals</code> + <code>data-on:click</code>).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/accordion.jinja" import accordion, accordion_item %}
 {% call accordion() %}
@@ -147,12 +147,12 @@
   <tbody>
     <tr><td><code>variant</code></td><td>"default"|"ghost"|"cards"</td><td>"default"</td><td>Estilo del contenedor.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.ok-accordion__item</code> compuestos por el consumidor (o, preferentemente, <code>accordion_item()</code>).</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Items <code>.item</code> compuestos por el consumidor (o, preferentemente, <code>accordion_item()</code>).</td></tr>
   </tbody>
 </table>
 
 <h2>API · accordion_item</h2>
-<p class="showcase__lead">Macro auxiliar que emite item + trigger + panel con todos los atributos ARIA correctos (<code>aria-expanded</code>, <code>aria-controls</code>, <code>aria-labelledby</code>, <code>role="region"</code>) y el toggle Datastar ya cableado. Importar con <code>{% raw %}{% from "ui/accordion.jinja" import accordion_item %}{% endraw %}</code>.</p>
+<p class="lead">Macro auxiliar que emite item + trigger + panel con todos los atributos ARIA correctos (<code>aria-expanded</code>, <code>aria-controls</code>, <code>aria-labelledby</code>, <code>role="region"</code>) y el toggle Datastar ya cableado. Importar con <code>{% raw %}{% from "ui/accordion.jinja" import accordion_item %}{% endraw %}</code>.</p>
 <table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>

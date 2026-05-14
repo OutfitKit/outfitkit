@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Toggle</h1>
-<p class="showcase__lead">Switch on/off. Render limpio: solo input + track. Las filas con descripción se componen con <code>.ok-toggle-row</code>.</p>
+<p class="lead">Switch on/off. Render limpio: solo input + track. Las filas con descripción se componen con <code>.toggle-row</code>.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
 {{ toggle("notif", checked=True) }}
@@ -34,15 +34,15 @@
     jinjax_src=_src_jinjax_2) %}
 <div class="showcase-variant">
   {{ toggle("a", size="sm", checked=True) }}
-  <small class="showcase-variant__caption">sm</small>
+  <small class="caption">sm</small>
 </div>
 <div class="showcase-variant">
   {{ toggle("b", checked=True) }}
-  <small class="showcase-variant__caption">md</small>
+  <small class="caption">md</small>
 </div>
 <div class="showcase-variant">
   {{ toggle("c", size="lg", checked=True) }}
-  <small class="showcase-variant__caption">lg</small>
+  <small class="caption">lg</small>
 </div>
 {% endcall %}
 
@@ -61,51 +61,51 @@
     jinjax_src=_src_jinjax_3) %}
 <div class="showcase-variant">
   {{ toggle("on", checked=True) }}
-  <small class="showcase-variant__caption">on</small>
+  <small class="caption">on</small>
 </div>
 <div class="showcase-variant">
   {{ toggle("off") }}
-  <small class="showcase-variant__caption">off</small>
+  <small class="caption">off</small>
 </div>
 <div class="showcase-variant">
   {{ toggle("dis-on", checked=True, disabled=True) }}
-  <small class="showcase-variant__caption">disabled-on</small>
+  <small class="caption">disabled-on</small>
 </div>
 <div class="showcase-variant">
   {{ toggle("dis-off", disabled=True) }}
-  <small class="showcase-variant__caption">disabled-off</small>
+  <small class="caption">disabled-off</small>
 </div>
 {% endcall %}
 
 {% set _src_jinja_4 %}{% raw %}{% from "ui/toggle.jinja" import toggle %}
 <div class="form-section" style="max-width:520px">
   <div class="toggle-row">
-    <div class="toggle-row__text">
-      <span class="toggle-row__label">Pedidos nuevos</span>
-      <span class="toggle-row__desc">Sonido + push al recibir un pedido en POS.</span>
+    <div class="text">
+      <span class="label">Pedidos nuevos</span>
+      <span class="sub">Sonido + push al recibir un pedido en POS.</span>
     </div>
     {{ toggle("orders", checked=True) }}
   </div>
   <div class="toggle-row">
-    <div class="toggle-row__text">
-      <span class="toggle-row__label">Stock crítico</span>
-      <span class="toggle-row__desc">Alerta cuando un SKU baja del umbral.</span>
+    <div class="text">
+      <span class="label">Stock crítico</span>
+      <span class="sub">Alerta cuando un SKU baja del umbral.</span>
     </div>
     {{ toggle("stock") }}
   </div>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_4 %}{% raw %}<div class="form-section" style="max-width:520px">
   <div class="toggle-row">
-    <div class="toggle-row__text">
-      <span class="toggle-row__label">Pedidos nuevos</span>
-      <span class="toggle-row__desc">Sonido + push al recibir un pedido en POS.</span>
+    <div class="text">
+      <span class="label">Pedidos nuevos</span>
+      <span class="sub">Sonido + push al recibir un pedido en POS.</span>
     </div>
     <Toggle label="orders" checked />
   </div>
   <div class="toggle-row">
-    <div class="toggle-row__text">
-      <span class="toggle-row__label">Stock crítico</span>
-      <span class="toggle-row__desc">Alerta cuando un SKU baja del umbral.</span>
+    <div class="text">
+      <span class="label">Stock crítico</span>
+      <span class="sub">Alerta cuando un SKU baja del umbral.</span>
     </div>
     <Toggle label="stock" />
   </div>
@@ -116,16 +116,16 @@
     jinjax_src=_src_jinjax_4) %}
 <div class="form-section" style="max-width:520px">
   <div class="toggle-row">
-    <div class="toggle-row__text">
-      <span class="toggle-row__label">Pedidos nuevos</span>
-      <span class="toggle-row__desc">Sonido + push al recibir un pedido en POS.</span>
+    <div class="text">
+      <span class="label">Pedidos nuevos</span>
+      <span class="sub">Sonido + push al recibir un pedido en POS.</span>
     </div>
     {{ toggle("orders", checked=True) }}
   </div>
   <div class="toggle-row">
-    <div class="toggle-row__text">
-      <span class="toggle-row__label">Stock crítico</span>
-      <span class="toggle-row__desc">Alerta cuando un SKU baja del umbral.</span>
+    <div class="text">
+      <span class="label">Stock crítico</span>
+      <span class="sub">Alerta cuando un SKU baja del umbral.</span>
     </div>
     {{ toggle("stock") }}
   </div>

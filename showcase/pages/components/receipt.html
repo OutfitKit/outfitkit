@@ -6,43 +6,43 @@
 
 {% block content %}
 <h1>Receipt</h1>
-<p class="showcase__lead">Ticket de caja con ancho fijo (mono). Compón <code>.ok-receipt__title</code>, <code>.ok-receipt__sub</code>, <code>.ok-receipt__line</code>, <code>.ok-receipt__divider</code>, <code>.ok-receipt__total</code> y <code>.ok-receipt__footer</code>.</p>
+<p class="lead">Ticket de caja con ancho fijo (mono). Compón <code>.title</code>, <code>.sub</code>, <code>.line</code>, <code>.divider</code>, <code>.total</code> y <code>.foot</code>.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/receipt.jinja" import receipt %}
 {% call receipt() %}
-<div class="receipt__title">Cafetería La Plaza</div>
-<div class="receipt__sub">C/ Mayor 12 · Madrid<br/>NIF B12345678</div>
-<hr class="receipt__divider"/>
+<div class="title">Cafetería La Plaza</div>
+<div class="sub">C/ Mayor 12 · Madrid<br/>NIF B12345678</div>
+<hr class="divider"/>
 <div style="font-size:10.5px;color:var(--ink-3)">PED-2041 · Mesa 4 · 14:22</div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span class="receipt__line-name">2× Café cortado</span><span class="receipt__line-price">3,20</span></div>
-<div class="receipt__line"><span class="receipt__line-name">1× Tostada salmón</span><span class="receipt__line-price">6,40</span></div>
-<div class="receipt__line"><span class="receipt__line-name">1× Zumo natural</span><span class="receipt__line-price">3,60</span></div>
-<div class="receipt__line"><span class="receipt__line-name">2× Croissant choco</span><span class="receipt__line-price">4,80</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Subtotal</span><span>17,64</span></div>
-<div class="receipt__line"><span>IVA 10%</span><span>1,76</span></div>
-<div class="receipt__total"><span>TOTAL</span><span>€19,40</span></div>
-<div class="receipt__footer">
+<hr class="divider"/>
+<div class="line"><span class="name">2× Café cortado</span><span class="price">3,20</span></div>
+<div class="line"><span class="name">1× Tostada salmón</span><span class="price">6,40</span></div>
+<div class="line"><span class="name">1× Zumo natural</span><span class="price">3,60</span></div>
+<div class="line"><span class="name">2× Croissant choco</span><span class="price">4,80</span></div>
+<hr class="divider"/>
+<div class="line"><span>Subtotal</span><span>17,64</span></div>
+<div class="line"><span>IVA 10%</span><span>1,76</span></div>
+<div class="total"><span>TOTAL</span><span>€19,40</span></div>
+<div class="foot">
   ¡Gracias por tu visita!<br/>
   Sello digital VeriFactu · ABCD-1234
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Receipt>
-<div class="receipt__title">Cafetería La Plaza</div>
-<div class="receipt__sub">C/ Mayor 12 · Madrid<br/>NIF B12345678</div>
-<hr class="receipt__divider"/>
+<div class="title">Cafetería La Plaza</div>
+<div class="sub">C/ Mayor 12 · Madrid<br/>NIF B12345678</div>
+<hr class="divider"/>
 <div style="font-size:10.5px;color:var(--ink-3)">PED-2041 · Mesa 4 · 14:22</div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span class="receipt__line-name">2× Café cortado</span><span class="receipt__line-price">3,20</span></div>
-<div class="receipt__line"><span class="receipt__line-name">1× Tostada salmón</span><span class="receipt__line-price">6,40</span></div>
-<div class="receipt__line"><span class="receipt__line-name">1× Zumo natural</span><span class="receipt__line-price">3,60</span></div>
-<div class="receipt__line"><span class="receipt__line-name">2× Croissant choco</span><span class="receipt__line-price">4,80</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Subtotal</span><span>17,64</span></div>
-<div class="receipt__line"><span>IVA 10%</span><span>1,76</span></div>
-<div class="receipt__total"><span>TOTAL</span><span>€19,40</span></div>
-<div class="receipt__footer">
+<hr class="divider"/>
+<div class="line"><span class="name">2× Café cortado</span><span class="price">3,20</span></div>
+<div class="line"><span class="name">1× Tostada salmón</span><span class="price">6,40</span></div>
+<div class="line"><span class="name">1× Zumo natural</span><span class="price">3,60</span></div>
+<div class="line"><span class="name">2× Croissant choco</span><span class="price">4,80</span></div>
+<hr class="divider"/>
+<div class="line"><span>Subtotal</span><span>17,64</span></div>
+<div class="line"><span>IVA 10%</span><span>1,76</span></div>
+<div class="total"><span>TOTAL</span><span>€19,40</span></div>
+<div class="foot">
   ¡Gracias por tu visita!<br/>
   Sello digital VeriFactu · ABCD-1234
 </div>
@@ -52,20 +52,20 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call receipt() %}
-<div class="receipt__title">Cafetería La Plaza</div>
-<div class="receipt__sub">C/ Mayor 12 · Madrid<br/>NIF B12345678</div>
-<hr class="receipt__divider"/>
+<div class="title">Cafetería La Plaza</div>
+<div class="sub">C/ Mayor 12 · Madrid<br/>NIF B12345678</div>
+<hr class="divider"/>
 <div style="font-size:10.5px;color:var(--ink-3)">PED-2041 · Mesa 4 · 14:22</div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span class="receipt__line-name">2× Café cortado</span><span class="receipt__line-price">3,20</span></div>
-<div class="receipt__line"><span class="receipt__line-name">1× Tostada salmón</span><span class="receipt__line-price">6,40</span></div>
-<div class="receipt__line"><span class="receipt__line-name">1× Zumo natural</span><span class="receipt__line-price">3,60</span></div>
-<div class="receipt__line"><span class="receipt__line-name">2× Croissant choco</span><span class="receipt__line-price">4,80</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Subtotal</span><span>17,64</span></div>
-<div class="receipt__line"><span>IVA 10%</span><span>1,76</span></div>
-<div class="receipt__total"><span>TOTAL</span><span>€19,40</span></div>
-<div class="receipt__footer">
+<hr class="divider"/>
+<div class="line"><span class="name">2× Café cortado</span><span class="price">3,20</span></div>
+<div class="line"><span class="name">1× Tostada salmón</span><span class="price">6,40</span></div>
+<div class="line"><span class="name">1× Zumo natural</span><span class="price">3,60</span></div>
+<div class="line"><span class="name">2× Croissant choco</span><span class="price">4,80</span></div>
+<hr class="divider"/>
+<div class="line"><span>Subtotal</span><span>17,64</span></div>
+<div class="line"><span>IVA 10%</span><span>1,76</span></div>
+<div class="total"><span>TOTAL</span><span>€19,40</span></div>
+<div class="foot">
   ¡Gracias por tu visita!<br/>
   Sello digital VeriFactu · ABCD-1234
 </div>
@@ -74,37 +74,37 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/receipt.jinja" import receipt %}
 {% call receipt() %}
-<div class="receipt__title">Cierre Z · 18 oct</div>
-<div class="receipt__sub">Turno 14:00–22:00 · Ana M.</div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Tickets emitidos</span><span>147</span></div>
-<div class="receipt__line"><span>Anulados</span><span>2</span></div>
-<div class="receipt__line"><span>Reembolsos</span><span>1</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Tarjeta</span><span>1.842,30</span></div>
-<div class="receipt__line"><span>Efectivo</span><span>684,50</span></div>
-<div class="receipt__line"><span>Bizum</span><span>312,80</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__total"><span>TOTAL</span><span>€2.839,60</span></div>
-<div class="receipt__footer">
+<div class="title">Cierre Z · 18 oct</div>
+<div class="sub">Turno 14:00–22:00 · Ana M.</div>
+<hr class="divider"/>
+<div class="line"><span>Tickets emitidos</span><span>147</span></div>
+<div class="line"><span>Anulados</span><span>2</span></div>
+<div class="line"><span>Reembolsos</span><span>1</span></div>
+<hr class="divider"/>
+<div class="line"><span>Tarjeta</span><span>1.842,30</span></div>
+<div class="line"><span>Efectivo</span><span>684,50</span></div>
+<div class="line"><span>Bizum</span><span>312,80</span></div>
+<hr class="divider"/>
+<div class="total"><span>TOTAL</span><span>€2.839,60</span></div>
+<div class="foot">
   Caja inicial: €100,00 · Final: €784,50<br/>
   Diferencia: ✓ cuadrada
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Receipt>
-<div class="receipt__title">Cierre Z · 18 oct</div>
-<div class="receipt__sub">Turno 14:00–22:00 · Ana M.</div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Tickets emitidos</span><span>147</span></div>
-<div class="receipt__line"><span>Anulados</span><span>2</span></div>
-<div class="receipt__line"><span>Reembolsos</span><span>1</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Tarjeta</span><span>1.842,30</span></div>
-<div class="receipt__line"><span>Efectivo</span><span>684,50</span></div>
-<div class="receipt__line"><span>Bizum</span><span>312,80</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__total"><span>TOTAL</span><span>€2.839,60</span></div>
-<div class="receipt__footer">
+<div class="title">Cierre Z · 18 oct</div>
+<div class="sub">Turno 14:00–22:00 · Ana M.</div>
+<hr class="divider"/>
+<div class="line"><span>Tickets emitidos</span><span>147</span></div>
+<div class="line"><span>Anulados</span><span>2</span></div>
+<div class="line"><span>Reembolsos</span><span>1</span></div>
+<hr class="divider"/>
+<div class="line"><span>Tarjeta</span><span>1.842,30</span></div>
+<div class="line"><span>Efectivo</span><span>684,50</span></div>
+<div class="line"><span>Bizum</span><span>312,80</span></div>
+<hr class="divider"/>
+<div class="total"><span>TOTAL</span><span>€2.839,60</span></div>
+<div class="foot">
   Caja inicial: €100,00 · Final: €784,50<br/>
   Diferencia: ✓ cuadrada
 </div>
@@ -114,19 +114,19 @@
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call receipt() %}
-<div class="receipt__title">Cierre Z · 18 oct</div>
-<div class="receipt__sub">Turno 14:00–22:00 · Ana M.</div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Tickets emitidos</span><span>147</span></div>
-<div class="receipt__line"><span>Anulados</span><span>2</span></div>
-<div class="receipt__line"><span>Reembolsos</span><span>1</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__line"><span>Tarjeta</span><span>1.842,30</span></div>
-<div class="receipt__line"><span>Efectivo</span><span>684,50</span></div>
-<div class="receipt__line"><span>Bizum</span><span>312,80</span></div>
-<hr class="receipt__divider"/>
-<div class="receipt__total"><span>TOTAL</span><span>€2.839,60</span></div>
-<div class="receipt__footer">
+<div class="title">Cierre Z · 18 oct</div>
+<div class="sub">Turno 14:00–22:00 · Ana M.</div>
+<hr class="divider"/>
+<div class="line"><span>Tickets emitidos</span><span>147</span></div>
+<div class="line"><span>Anulados</span><span>2</span></div>
+<div class="line"><span>Reembolsos</span><span>1</span></div>
+<hr class="divider"/>
+<div class="line"><span>Tarjeta</span><span>1.842,30</span></div>
+<div class="line"><span>Efectivo</span><span>684,50</span></div>
+<div class="line"><span>Bizum</span><span>312,80</span></div>
+<hr class="divider"/>
+<div class="total"><span>TOTAL</span><span>€2.839,60</span></div>
+<div class="foot">
   Caja inicial: €100,00 · Final: €784,50<br/>
   Diferencia: ✓ cuadrada
 </div>
@@ -138,7 +138,7 @@
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Líneas del ticket compuestas con <code>.ok-receipt__*</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Líneas del ticket compuestas con <code>.receipt .line</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

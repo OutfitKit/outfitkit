@@ -20,16 +20,16 @@
   .sol-head { display: flex; gap: 14px; align-items: flex-start; }
   .sol-icon { width: 56px; height: 56px; border-radius: var(--radius-lg); background: var(--brand-soft); color: var(--brand-3); display: grid; place-items: center; flex-shrink: 0; }
   .sol-icon svg { width: 28px; height: 28px; }
-  .sol-card__name { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0; color: var(--ink); }
+  .sol-card .name { font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.01em; margin: 0; color: var(--ink); }
   .sol-sub { font-size: 12px; color: var(--ink-3); margin-top: 3px; }
-  .sol-card__desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.55; margin: 0; }
+  .sol-card .desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.55; margin: 0; }
   .sol-modules { display: flex; flex-direction: column; gap: 6px; padding: 12px; background: var(--bg-1); border-radius: var(--radius-md); border: 1px solid var(--line); }
   .sol-mod-item { display: flex; gap: 8px; align-items: center; font-size: 12.5px; color: var(--ink-2); }
   .sol-mod-item svg { width: 12px; height: 12px; flex-shrink: 0; color: var(--leaf); }
   .sol-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
-  .sol-card__price { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .sol-card__price-unit { font-size: 12px; color: var(--ink-3); font-weight: 400; }
-  .sol-card__save { font-size: 11px; color: var(--leaf); margin-top: 2px; }
+  .sol-card .price { font-family: var(--font-display); font-size: 20px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .sol-card .price .unit { font-size: 12px; color: var(--ink-3); font-weight: 400; }
+  .sol-card .save { font-size: 11px; color: var(--leaf); margin-top: 2px; }
 </style>
 
 <div class="container">
@@ -43,10 +43,10 @@
     <span class="text-xs text-ink-3">Soluciones</span>
   </div>
 
-  <div class="page-header mb-5">
-    <div class="page-header-title">
+  <div class="head mb-5">
+    <div class="title">
       <h1>Soluciones por sector</h1>
-      <div class="page-header-sub">Packs de módulos pre-configurados para arrancar rápido en tu sector</div>
+      <div class="sub">Packs de módulos pre-configurados para arrancar rápido en tu sector</div>
     </div>
   </div>
 
@@ -57,12 +57,12 @@
       <div class="sol-head">
         <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11h18l-2 9H5z"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
         <div class="flex-1">
-          <h2 class="sol-card__name">Restaurante</h2>
+          <h2 class="name">Restaurante</h2>
           <div class="sol-sub">Bar · cafetería · restaurante</div>
         </div>
         <span class="badge info">Popular</span>
       </div>
-      <p class="sol-card__desc">Solución completa para hostelería: TPV en barra y mesa, cocina con KDS, inventario de bebidas y comida, y facturación cumpliendo VeriFactu.</p>
+      <p class="desc">Solución completa para hostelería: TPV en barra y mesa, cocina con KDS, inventario de bebidas y comida, y facturación cumpliendo VeriFactu.</p>
       <div class="sol-modules">
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>TPV / POS</div>
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Cocina (KDS)</div>
@@ -73,8 +73,8 @@
       </div>
       <div class="sol-foot">
         <div>
-          <div class="sol-card__price">€29,98<span class="sol-card__price-unit">/mes</span></div>
-          <div class="sol-card__save">Ahorras €5/mes vs. módulos sueltos</div>
+          <div class="price">€29,98<span class="unit">/mes</span></div>
+          <div class="save">Ahorras €5/mes vs. módulos sueltos</div>
         </div>
         <button class="btn primary sm">Activar pack</button>
       </div>
@@ -85,11 +85,11 @@
       <div class="sol-head">
         <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
         <div class="flex-1">
-          <h2 class="sol-card__name">Retail</h2>
+          <h2 class="name">Retail</h2>
           <div class="sol-sub">Tienda · multi-tienda</div>
         </div>
       </div>
-      <p class="sol-card__desc">Punto de venta moderno con catálogo unificado, gestión de stock por tienda y conexión opcional con tu eCommerce.</p>
+      <p class="desc">Punto de venta moderno con catálogo unificado, gestión de stock por tienda y conexión opcional con tu eCommerce.</p>
       <div class="sol-modules">
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>TPV / POS</div>
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Productos + Inventario</div>
@@ -100,8 +100,8 @@
       </div>
       <div class="sol-foot">
         <div>
-          <div class="sol-card__price">€57,97<span class="sol-card__price-unit">/mes</span></div>
-          <div class="sol-card__save">Ahorras €8/mes vs. módulos sueltos</div>
+          <div class="price">€57,97<span class="unit">/mes</span></div>
+          <div class="save">Ahorras €8/mes vs. módulos sueltos</div>
         </div>
         <button class="btn primary sm">Activar pack</button>
       </div>
@@ -112,11 +112,11 @@
       <div class="sol-head">
         <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.77 3.77z"/></svg></div>
         <div class="flex-1">
-          <h2 class="sol-card__name">Servicios profesionales</h2>
+          <h2 class="name">Servicios profesionales</h2>
           <div class="sol-sub">Consultoría · agencias · técnicos</div>
         </div>
       </div>
-      <p class="sol-card__desc">Para profesionales que facturan por horas o proyectos: presupuestos, partes de trabajo y facturación recurrente.</p>
+      <p class="desc">Para profesionales que facturan por horas o proyectos: presupuestos, partes de trabajo y facturación recurrente.</p>
       <div class="sol-modules">
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Ventas + Clientes</div>
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Facturación + VeriFactu</div>
@@ -127,8 +127,8 @@
       </div>
       <div class="sol-foot">
         <div>
-          <div class="sol-card__price">€78,96<span class="sol-card__price-unit">/mes</span></div>
-          <div class="sol-card__save">Ahorras €12/mes vs. módulos sueltos</div>
+          <div class="price">€78,96<span class="unit">/mes</span></div>
+          <div class="save">Ahorras €12/mes vs. módulos sueltos</div>
         </div>
         <button class="btn primary sm">Activar pack</button>
       </div>
@@ -139,12 +139,12 @@
       <div class="sol-head">
         <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
         <div class="flex-1">
-          <h2 class="sol-card__name">eCommerce</h2>
+          <h2 class="name">eCommerce</h2>
           <div class="sol-sub">Online + integraciones CMS</div>
         </div>
         <span class="badge brand">Premium</span>
       </div>
-      <p class="sol-card__desc">Sincronización bidireccional con Shopify, WooCommerce o Magento, gestión de pedidos online y trazabilidad de inventario.</p>
+      <p class="desc">Sincronización bidireccional con Shopify, WooCommerce o Magento, gestión de pedidos online y trazabilidad de inventario.</p>
       <div class="sol-modules">
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Productos + Inventario</div>
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Shopify Sync (1 incluido)</div>
@@ -155,8 +155,8 @@
       </div>
       <div class="sol-foot">
         <div>
-          <div class="sol-card__price">€89,95<span class="sol-card__price-unit">/mes</span></div>
-          <div class="sol-card__save">Ahorras €18/mes vs. módulos sueltos</div>
+          <div class="price">€89,95<span class="unit">/mes</span></div>
+          <div class="save">Ahorras €18/mes vs. módulos sueltos</div>
         </div>
         <button class="btn primary sm">Activar pack</button>
       </div>
@@ -167,11 +167,11 @@
       <div class="sol-head">
         <div class="sol-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M5 20V8l5 4V8l5 4V8l4 12"/></svg></div>
         <div class="flex-1">
-          <h2 class="sol-card__name">Industrial / B2B</h2>
+          <h2 class="name">Industrial / B2B</h2>
           <div class="sol-sub">Fabricantes · distribuidores</div>
         </div>
       </div>
-      <p class="sol-card__desc">Gestión de pedidos B2B con descuentos por volumen, multi-almacén, contabilidad analítica y cumplimiento fiscal completo.</p>
+      <p class="desc">Gestión de pedidos B2B con descuentos por volumen, multi-almacén, contabilidad analítica y cumplimiento fiscal completo.</p>
       <div class="sol-modules">
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Ventas + Compras + Clientes</div>
         <div class="sol-mod-item"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon>Productos + Inventario + Almacenes</div>
@@ -182,8 +182,8 @@
       </div>
       <div class="sol-foot">
         <div>
-          <div class="sol-card__price">€149,90<span class="sol-card__price-unit">/mes</span></div>
-          <div class="sol-card__save">Ahorras €32/mes vs. módulos sueltos</div>
+          <div class="price">€149,90<span class="unit">/mes</span></div>
+          <div class="save">Ahorras €32/mes vs. módulos sueltos</div>
         </div>
         <button class="btn primary sm">Activar pack</button>
       </div>
@@ -192,11 +192,11 @@
   </div>
 
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="label">Facturas</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="label">Perfil</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

@@ -62,8 +62,8 @@
 
 /* Removable */
 .tag.is-removable { padding-right: var(--space-1); }
-.tag__remove {
-  /* Visual size stays small; hit area expands to 24×24 via padding */
+.tag .remove {
+  /* Visual size stays small; hit area expands to 24x24 via padding */
   width: var(--avatar-2xs); height: var(--avatar-2xs);
   margin: -4px -6px -4px var(--border-w-2);
   padding: var(--space-0);
@@ -78,11 +78,11 @@
   line-height: var(--leading-flat);
   transition: background var(--dur-fast), opacity var(--dur-fast);
 }
-.tag__remove:hover {
+.tag .remove:hover {
   opacity: 1;
   background: color-mix(in oklch, currentColor 18%, transparent);
 }
-.tag__remove:focus-visible {
+.tag .remove:focus-visible {
   outline: var(--border-w-2) solid var(--brand);
   outline-offset: 1px;
 }
@@ -135,17 +135,17 @@
 }
 
 /* Children */
-.filter-chip__icon {
+.filter-chip .icon {
   width: 13px; height: 13px;
   display: inline-grid; place-items: center;
   flex-shrink: 0;
   opacity: 0.85;
 }
-.filter-chip__icon svg { width: 100%; height: 100%; }
+.filter-chip .icon svg { width: 100%; height: 100%; }
 
-.filter-chip__label { line-height: var(--leading-flat); }
+.filter-chip .label { line-height: var(--leading-flat); }
 
-.filter-chip__count {
+.filter-chip .count {
   display: inline-grid;
   place-items: center;
   min-width: var(--icon-md);
@@ -158,19 +158,19 @@
   background: var(--bg-4);
   color: var(--ink-2);
 }
-.filter-chip.is-active .filter-chip__count {
+.filter-chip.is-active .count {
   background: color-mix(in oklch, var(--brand) 30%, transparent);
   color: var(--brand-3);
 }
 
-.filter-chip__check {
+.filter-chip .check {
   width: var(--icon-xs); height: var(--icon-xs);
   display: none;
   color: var(--brand-3);
   flex-shrink: 0;
 }
-.filter-chip.is-active .filter-chip__check { display: inline-grid; place-items: center; }
-.filter-chip__check svg { width: 100%; height: 100%; }
+.filter-chip.is-active .check { display: inline-grid; place-items: center; }
+.filter-chip .check svg { width: 100%; height: 100%; }
 
 /* Size */
 .filter-chip.sm {
@@ -178,7 +178,7 @@
   --_fc-px: 9px;
   --_fc-fz: var(--text-xs);
 }
-.filter-chip.sm .filter-chip__count { min-width: 16px; height: var(--icon-sm); font-size: 10px; }
+.filter-chip.sm .count { min-width: 16px; height: var(--icon-sm); font-size: 10px; }
 
 /* ------------------------------------------------------------
    3) Toggle group — segmented buttons (more substantial)
@@ -197,7 +197,7 @@
   border-radius: var(--_tg-r);
 }
 
-.toggle-group__option {
+.toggle-group .option {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -216,9 +216,9 @@
   white-space: nowrap;
   transition: background var(--dur-fast), color var(--dur-fast), box-shadow var(--dur-fast);
 }
-.toggle-group__option:hover { color: var(--ink); }
+.toggle-group .option:hover { color: var(--ink); }
 
-.toggle-group__option.is-selected {
+.toggle-group .option.is-selected {
   background: var(--bg-1);
   color: var(--ink);
   box-shadow:
@@ -227,21 +227,21 @@
     0 1px 0 rgba(0,0,0,0.3);
 }
 
-.toggle-group__option:disabled,
-.toggle-group__option[aria-disabled="true"],
-.toggle-group__option.is-disabled {
+.toggle-group .option:disabled,
+.toggle-group .option[aria-disabled="true"],
+.toggle-group .option.is-disabled {
   opacity: 0.55;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.toggle-group__option svg { width: var(--icon-sm); height: var(--icon-sm); }
+.toggle-group .option svg { width: var(--icon-sm); height: var(--icon-sm); }
 
 /* Sizes */
 .toggle-group.sm  { --_tg-h: 26px; --_tg-fz: var(--text-xs); }
-.toggle-group.sm  .toggle-group__option { padding: var(--space-0) var(--space-2-5); }
+.toggle-group.sm  .option { padding: var(--space-0) var(--space-2-5); }
 .toggle-group.lg  { --_tg-h: 38px; --_tg-fz: var(--text-base); }
-.toggle-group.lg  .toggle-group__option { padding: var(--space-0) 18px; }
+.toggle-group.lg  .option { padding: var(--space-0) 18px; }
 
 /* Variants */
 .toggle-group.ghost {
@@ -250,12 +250,12 @@
   padding: var(--space-0);
   gap: var(--space-1);
 }
-.toggle-group.ghost .toggle-group__option {
+.toggle-group.ghost .option {
   height: var(--_tg-h);
   background: transparent;
 }
-.toggle-group.ghost .toggle-group__option:hover { background: var(--bg-3); }
-.toggle-group.ghost .toggle-group__option.is-selected {
+.toggle-group.ghost .option:hover { background: var(--bg-3); }
+.toggle-group.ghost .option.is-selected {
   background: var(--brand-soft);
   color: var(--brand-3);
   box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--brand) 40%, transparent);
@@ -265,7 +265,7 @@
   display: flex;
   width: 100%;
 }
-.toggle-group.block .toggle-group__option { flex: 1; }
+.toggle-group.block .option { flex: 1; }
 
 /* ------------------------------------------------------------
    4) Variant selector — color/size swatches
@@ -274,7 +274,7 @@
   display: grid;
   gap: var(--space-2);
 }
-.variants__head {
+.variants .head {
   display: flex;
   align-items: baseline;
   gap: var(--space-2);
@@ -284,14 +284,14 @@
   letter-spacing: var(--tracking-wide);
   font-weight: 500;
 }
-.variants__head b {
+.variants .head b {
   color: var(--ink);
   font-weight: 500;
   text-transform: none;
   letter-spacing: var(--tracking-normal);
   font-size: var(--text-sm);
 }
-.variants__opts {
+.variants .opts {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
@@ -312,7 +312,7 @@
 }
 .variant:hover { transform: translateY(-1px); }
 
-.variant__swatch {
+.variant .swatch {
   width: var(--avatar-2xs); height: var(--avatar-2xs);
   border-radius: var(--radius-circle);
   background: var(--_v-c);
@@ -323,7 +323,7 @@
   position: relative;
 }
 
-.variant__label {
+.variant .label {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   font-weight: 500;
@@ -331,20 +331,20 @@
 }
 
 /* Selected */
-.variant.is-selected .variant__swatch {
+.variant.is-selected .swatch {
   box-shadow:
     inset 0 0 0 1px var(--line-2),
     0 0 0 2px var(--bg-2),
     0 0 0 4px var(--brand);
 }
-.variant.is-selected .variant__label { color: var(--ink); }
+.variant.is-selected .label { color: var(--ink); }
 
 /* Disabled (unavailable) */
 .variant.is-disabled {
   opacity: 0.4;
   pointer-events: none;
 }
-.variant.is-disabled .variant__swatch {
+.variant.is-disabled .swatch {
   background-image: linear-gradient(
     135deg,
     transparent calc(50% - 1px),
@@ -355,13 +355,13 @@
 }
 
 /* Out of stock — text only crossed out */
-.variant.is-out .variant__label {
+.variant.is-out .label {
   text-decoration: line-through;
   color: var(--ink-4);
 }
 
 /* Size variant — rectangular swatch with text inside */
-.variant.size .variant__swatch {
+.variant.size .swatch {
   width: var(--size-md); height: var(--avatar-sm);
   border-radius: var(--radius-sm);
   background: var(--bg-3);
@@ -372,14 +372,14 @@
   color: var(--ink);
   letter-spacing: var(--tracking-tight);
 }
-.variant.size.is-selected .variant__swatch {
+.variant.size.is-selected .swatch {
   background: var(--bg-1);
   box-shadow:
     inset 0 0 0 1px var(--brand),
     0 0 0 2px var(--brand-soft);
   color: var(--brand-3);
 }
-.variant.size.is-disabled .variant__swatch {
+.variant.size.is-disabled .swatch {
   color: var(--ink-4);
 }
 

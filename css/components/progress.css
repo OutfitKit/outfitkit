@@ -2,7 +2,7 @@
    OutfitKit · Progress / Spinner / Pagination
    ─────────────────────────────────────────────────────────────
    Uso:
-     <div class="progress"><div class="progress__bar" style="--progress-value:60%"></div></div>
+     <div class="progress"><div class="bar" style="--progress-value:60%"></div></div>
      <div class="progress success indeterminate striped sm"><...></div>
      <span class="spinner primary lg"></span>
 
@@ -23,7 +23,7 @@
   overflow: hidden;
   position: relative;
 }
-.progress__bar {
+.progress .bar {
   height: 100%;
   width: var(--progress-value, 0%);
   background: var(--progress-fill);
@@ -39,7 +39,7 @@
 .progress.xl { --progress-height: 14px; }
 
 /* Indeterminate */
-.progress.indeterminate .progress__bar {
+.progress.indeterminate .bar {
   width: 35% !important;
   animation: ok-progress-indet 1.4s var(--ease-inout) infinite;
 }
@@ -49,7 +49,7 @@
 }
 
 /* Striped */
-.progress.striped .progress__bar {
+.progress.striped .bar {
   background-image: linear-gradient(45deg,
     rgba(255, 255, 255, 0.18) 25%, transparent 25%,
     transparent 50%, rgba(255, 255, 255, 0.18) 50%,
@@ -71,7 +71,7 @@
   gap: 3px;
   width: 100%;
 }
-.progress-segments__seg {
+.progress-segments .seg {
   flex: 1;
   height: 6px;
   background: var(--bg-3);
@@ -79,10 +79,10 @@
   position: relative;
   overflow: hidden;
 }
-.progress-segments__seg[data-state="done"] {
+.progress-segments .seg[data-state="done"] {
   background: var(--variant, var(--color-primary));
 }
-.progress-segments__seg[data-state="active"]::after {
+.progress-segments .seg[data-state="active"]::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -102,17 +102,17 @@
   display: grid;
   gap: var(--space-2);
 }
-.progress-block__head {
+.progress-block .head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   font-size: var(--text-sm);
 }
-.progress-block__label {
+.progress-block .label {
   color: var(--ink-2);
   font-weight: var(--weight-medium);
 }
-.progress-block__value {
+.progress-block .value {
   color: var(--ink-3);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -159,15 +159,15 @@
   gap: var(--space-1);
   align-items: center;
 }
-.dots__d {
+.dots .dot {
   width: 6px;
   height: 6px;
   border-radius: var(--radius-circle);
   background: var(--variant, var(--color-primary));
   animation: ok-dots-bounce 1.2s ease-in-out infinite;
 }
-.dots__d:nth-child(2) { animation-delay: 0.15s; }
-.dots__d:nth-child(3) { animation-delay: 0.3s; }
+.dots .dot:nth-child(2) { animation-delay: 0.15s; }
+.dots .dot:nth-child(3) { animation-delay: 0.3s; }
 @keyframes ok-dots-bounce {
   0%, 80%, 100% { opacity: 0.3; transform: scale(0.7); }
   40%           { opacity: 1;   transform: scale(1); }
@@ -194,19 +194,19 @@
 .circ.xl { --circ-size: 120px; --circ-stroke: 8; }
 
 .circ svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-.circ__track {
+.circ .track {
   fill: none;
   stroke: var(--circ-track);
   stroke-width: var(--circ-stroke);
 }
-.circ__bar {
+.circ .bar {
   fill: none;
   stroke: var(--circ-fill);
   stroke-width: var(--circ-stroke);
   stroke-linecap: round;
   transition: stroke-dashoffset var(--dur-slow) var(--ease-out);
 }
-.circ__label {
+.circ .label {
   position: absolute;
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
@@ -225,7 +225,7 @@
   gap: 2px;
   font-size: var(--text-sm);
 }
-.paginator__btn {
+.paginator .btn {
   --pag-bg:    transparent;
   --pag-color: var(--ink-2);
 
@@ -245,27 +245,27 @@
   transition: background var(--dur-fast) var(--ease-out),
               color var(--dur-fast) var(--ease-out);
 }
-.paginator__btn:hover {
+.paginator .btn:hover {
   --pag-bg:    var(--bg-3);
   --pag-color: var(--ink);
 }
-.paginator__btn[aria-current="page"],
-.paginator__btn[data-active="true"] {
+.paginator .btn[aria-current="page"],
+.paginator .btn[data-active="true"] {
   --pag-bg:    var(--variant, var(--color-primary));
   --pag-color: var(--variant-contrast, var(--color-primary-contrast));
   font-weight: var(--weight-medium);
 }
-.paginator__btn[disabled],
-.paginator__btn[aria-disabled="true"] {
+.paginator .btn[disabled],
+.paginator .btn[aria-disabled="true"] {
   opacity: 0.35;
   cursor: not-allowed;
   pointer-events: none;
 }
-.paginator__btn svg {
+.paginator .btn svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
 }
-.paginator__gap {
+.paginator .gap {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -283,7 +283,7 @@
   background: var(--bg-2);
   gap: 0;
 }
-.paginator.compact .paginator__btn {
+.paginator.compact .btn {
   border-radius: var(--radius-xs);
 }
 
@@ -298,19 +298,19 @@
   font-size: var(--text-sm);
   color: var(--ink-3);
 }
-.pager__info {
+.pager .meta {
   font-variant-numeric: tabular-nums;
 }
-.pager__info b {
+.pager .meta b {
   color: var(--ink-2);
   font-weight: var(--weight-medium);
 }
-.pager__pgsize {
+.pager .sizer {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
 }
-.pager__pgsize select {
+.pager .sizer select {
   height: var(--size-sm);
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);

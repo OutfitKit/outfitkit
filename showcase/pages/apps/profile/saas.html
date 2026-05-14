@@ -34,7 +34,7 @@
   .profile-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); margin: 0; }
   .profile-email { font-size: var(--text-sm); color: var(--ink-3); margin-top: 2px; }
   .security-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; }
-  .security-item__icon {
+  .security-item .icon {
     width: 36px; height: 36px;
     border-radius: var(--radius-md);
     background: var(--bg-3);
@@ -42,11 +42,11 @@
     display: grid; place-items: center;
     flex-shrink: 0;
   }
-  .security-item__icon svg { width: 16px; height: 16px; }
-  .security-item__icon--brand { background: var(--brand-soft); color: var(--brand-3); }
-  .security-item__icon--danger { background: var(--danger-soft); color: var(--danger); }
-  .security-item__title { font-size: var(--text-md); font-weight: 500; color: var(--ink); }
-  .security-item__desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
+  .security-item .icon svg { width: 16px; height: 16px; }
+  .security-item .icon.brand { background: var(--brand-soft); color: var(--brand-3); }
+  .security-item .icon.danger { background: var(--danger-soft); color: var(--danger); }
+  .security-item .title { font-size: var(--text-md); font-weight: 500; color: var(--ink); }
+  .security-item .desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
 </style>
 
 <div class="app cloud-shell" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
@@ -54,31 +54,31 @@
 
 <aside class="sidebar">
   <div class="head">
-    <div class="sidebar-logo">EX</div>
-    <div class="sidebar-brand-text">
+    <div class="logo">EX</div>
+    <div class="text">
       <div class="title md">ERPlora Cloud</div>
       <div class="meta">Acme Industries</div>
     </div>
   </div>
   <div class="content scroll">
     <div class="label">Principal</div>
-    <a class="item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="item-label">Resumen</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="item-label">Organizaciones</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="item-label">Hubs</span><span class="badge">7</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg><span class="item-label">Usuarios</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:layers" width="18" height="18"></iconify-icon><span class="item-label">Equipamiento</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon><span class="text">Resumen</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon><span class="text">Organizaciones</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon><span class="text">Hubs</span><span class="badge">7</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/></svg><span class="text">Usuarios</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:layers" width="18" height="18"></iconify-icon><span class="text">Equipamiento</span></a>
     <div class="label">Facturación</div>
-    <a class="item" href="#"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="item-label">Facturas</span></a>
-    <a class="item" href="#"><iconify-icon icon="lucide:refresh-ccw" width="18" height="18"></iconify-icon><span class="item-label">Suscripciones</span></a>
-    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg><span class="item-label">Pagos</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon><span class="text">Facturas</span></a>
+    <a class="item" href="#"><iconify-icon icon="lucide:refresh-ccw" width="18" height="18"></iconify-icon><span class="text">Suscripciones</span></a>
+    <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M2 10h20"/></svg><span class="text">Pagos</span></a>
     <div class="label">Cuenta</div>
-    <a class="item" href="2fa-profile.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg><span class="item-label">Seguridad</span></a>
-    <a class="item" href="#" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="item-label">Mi perfil</span></a>
+    <a class="item" href="2fa-profile.html"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg><span class="text">Seguridad</span></a>
+    <a class="item" href="#" aria-current="page"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="text">Mi perfil</span></a>
   </div>
   <div class="foot">
-    <div class="sidebar-user">
+    <div class="user">
       <span class="avatar sm brand">IB</span>
-      <div class="sidebar-user-info">
+      <div class="text">
         <div class="title sm">Ioan Beilic</div>
         <div class="meta">ioan@acme.com</div>
       </div>
@@ -89,23 +89,23 @@
 <div class="page">
 
   <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
         </div>
         <h1 class="title">Mi perfil</h1>
         
-        <div class="topbar-search">
-      <span class="search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+        <div class="search">
+      <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
       <input type="search" placeholder="Buscar hubs, módulos, facturas…"/>
-      <span class="topbar-kbd">⌘K</span>
+      <span class="shortcut">⌘K</span>
     </div>
         
         <div class="actions">
@@ -121,10 +121,10 @@
 
   <div class="content scroll body" data-signals='{"firstName":"Ioan", "lastName":"Beilic", "lang":"es", "tz":"Europe/Madrid", "themePref":"auto"}'>
 
-    <header class="page-header">
-      <div class="page-header-title">
+    <header class="head">
+      <div class="title">
         <h1>Mi perfil</h1>
-        <p class="page-header-sub">Datos personales, idioma y preferencias visuales de tu cuenta de ERPlora Cloud.</p>
+        <p class="sub">Datos personales, idioma y preferencias visuales de tu cuenta de ERPlora Cloud.</p>
       </div>
       <div class="actions">
         <button class="btn ghost">Cancelar</button>
@@ -153,7 +153,7 @@
           <div class="divider" style="width:100%;margin:8px 0;"></div>
           <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
             <button class="btn outline block">
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
               Cambiar foto
             </button>
             <button class="btn ghost block text-ink-3">
@@ -179,29 +179,29 @@
 
             <div class="form-row">
               <div class="field">
-                <label class="field__label" for="p-first">Nombre</label>
+                <label class="label" for="p-first">Nombre</label>
                 <input id="p-first" type="text" class="input" value="Ioan" data-bind:firstName/>
               </div>
               <div class="field">
-                <label class="field__label" for="p-last">Apellidos</label>
+                <label class="label" for="p-last">Apellidos</label>
                 <input id="p-last" type="text" class="input" value="Beilic" data-bind:lastName/>
               </div>
             </div>
 
             <div class="field">
-              <label class="field__label" for="p-email">Correo electrónico</label>
+              <label class="label" for="p-email">Correo electrónico</label>
               <div class="input-group with-left">
-                <span class="input-group__icon input-group__icon--left">
+                <span class="icon left">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
                 </span>
                 <input id="p-email" type="email" class="input" value="ioan@acme.com"/>
               </div>
-              <span class="field__hint">El cambio de email requerirá verificación en la nueva dirección.</span>
+              <span class="hint">El cambio de email requerirá verificación en la nueva dirección.</span>
             </div>
 
             <div class="form-row">
               <div class="field">
-                <label class="field__label" for="p-lang">Idioma</label>
+                <label class="label" for="p-lang">Idioma</label>
                 <select id="p-lang" class="select" data-bind:lang>
                   <option value="es" selected>Español (España)</option>
                   <option value="en">English (US)</option>
@@ -210,7 +210,7 @@
                 </select>
               </div>
               <div class="field">
-                <label class="field__label" for="p-tz">Zona horaria</label>
+                <label class="label" for="p-tz">Zona horaria</label>
                 <select id="p-tz" class="select" data-bind:tz>
                   <option value="Europe/Madrid" selected>Europe/Madrid (UTC+2)</option>
                   <option value="Europe/Lisbon">Europe/Lisbon (UTC+1)</option>
@@ -223,7 +223,7 @@
 
             <div class="form-row">
               <div class="field">
-                <label class="field__label" for="p-theme">Tema preferido</label>
+                <label class="label" for="p-theme">Tema preferido</label>
                 <select id="p-theme" class="select" data-bind:themePref>
                   <option value="auto" selected>Automático (sistema)</option>
                   <option value="dark">Oscuro · ERPlora</option>
@@ -233,7 +233,7 @@
                 </select>
               </div>
               <div class="field">
-                <label class="field__label" for="p-currency">Moneda</label>
+                <label class="label" for="p-currency">Moneda</label>
                 <select id="p-currency" class="select">
                   <option value="EUR" selected>EUR · Euro (€)</option>
                   <option value="USD">USD · Dólar ($)</option>
@@ -243,15 +243,15 @@
             </div>
 
             <div class="field">
-              <label class="field__label" for="p-bio">Biografía corta</label>
+              <label class="label" for="p-bio">Biografía corta</label>
               <textarea id="p-bio" class="textarea" placeholder="Cuéntanos brevemente tu rol en la organización…">Líder de plataforma en Acme Industries. Coordino la implantación de ERPlora Cloud en los 7 hubs operativos del grupo.</textarea>
-              <span class="field__hint">Visible para otros administradores de tu organización.</span>
+              <span class="hint">Visible para otros administradores de tu organización.</span>
             </div>
 
           </div>
         </div>
         <div class="footer">
-          <span class="field__hint">Guardado automático en cada cambio · última edición: hace 14 min</span>
+          <span class="hint">Guardado automático en cada cambio · última edición: hace 14 min</span>
           <button class="btn primary">Guardar cambios</button>
         </div>
       </div>
@@ -271,48 +271,48 @@
 
         <div class="card">
           <div class="security-item">
-            <div class="security-item__icon security-item__icon--brand">
+            <div class="icon brand">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>
             </div>
             <div class="flex-1">
-              <div class="security-item__title">Cambiar contraseña</div>
-              <div class="security-item__desc">Última actualización: 11 enero 2026 · 117 días</div>
+              <div class="title">Cambiar contraseña</div>
+              <div class="desc">Última actualización: 11 enero 2026 · 117 días</div>
             </div>
             <button class="btn ghost sm">
               Cambiar
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
             </button>
           </div>
         </div>
 
         <div class="card">
           <div class="security-item">
-            <div class="security-item__icon">
+            <div class="icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
             <div class="flex-1">
-              <div class="security-item__title">Sesiones activas</div>
-              <div class="security-item__desc">3 dispositivos · Madrid, Barcelona, Sevilla</div>
+              <div class="title">Sesiones activas</div>
+              <div class="desc">3 dispositivos · Madrid, Barcelona, Sevilla</div>
             </div>
             <button class="btn ghost sm">
               Ver detalles
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
             </button>
           </div>
         </div>
 
         <div class="card" style="border-color: color-mix(in oklch, var(--danger) 25%, var(--line));">
           <div class="security-item">
-            <div class="security-item__icon security-item__icon--danger">
+            <div class="icon danger">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
             </div>
             <div class="flex-1">
-              <div class="security-item__title text-danger">Eliminar cuenta</div>
-              <div class="security-item__desc">Borrado permanente · sin recuperación posible</div>
+              <div class="title text-danger">Eliminar cuenta</div>
+              <div class="desc">Borrado permanente · sin recuperación posible</div>
             </div>
             <button class="btn ghost sm text-danger">
               Eliminar
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
             </button>
           </div>
         </div>
@@ -321,12 +321,12 @@
 
       <div style="margin-top: var(--space-3);">
         <div class="callout info">
-          <span class="callout__icon">
+          <span class="icon">
             <iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon>
           </span>
-          <div class="callout__body">
-            <p class="callout__title">Recomendación de seguridad</p>
-            <p class="callout__desc">Activa la <a href="2fa-profile.html" class="text-brand-3">verificación en dos pasos</a> para proteger tu cuenta. Tienes 4 dispositivos autorizados y 3 sesiones activas en este momento.</p>
+          <div class="body">
+            <p class="title">Recomendación de seguridad</p>
+            <p class="desc">Activa la <a href="2fa-profile.html" class="text-brand-3">verificación en dos pasos</a> para proteger tu cuenta. Tienes 4 dispositivos autorizados y 3 sesiones activas en este momento.</p>
           </div>
         </div>
       </div>
@@ -336,29 +336,29 @@
 </div>
 
 
-  <!-- Bottom tab bar — mobile only via .ok-tabbar slot -->
+  <!-- Bottom tab bar — mobile only via .tabbar slot -->
   <nav class="tabbar" aria-label="Navegación principal">
     <div class="tabbar fixed icons">
-      <a class="tabbar-item" href="#" aria-current="page">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Inicio</span>
+      <a class="item" href="#" aria-current="page">
+        <span class="icon"><iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon></span>
+        <span class="label">Inicio</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Hubs</span>
-        <span class="tabbar-badge">7</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+        <span class="label">Hubs</span>
+        <span class="badge">7</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Usuarios</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:users" width="18" height="18"></iconify-icon></span>
+        <span class="label">Usuarios</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Equipo</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:store" width="18" height="18"></iconify-icon></span>
+        <span class="label">Equipo</span>
       </a>
-      <a class="tabbar-item" href="#">
-        <span class="tabbar-icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
-        <span class="tabbar-label">Perfil</span>
+      <a class="item" href="#">
+        <span class="icon"><iconify-icon icon="lucide:user-circle" width="18" height="18"></iconify-icon></span>
+        <span class="label">Perfil</span>
       </a>
     </div>
   </nav>

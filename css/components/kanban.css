@@ -3,24 +3,24 @@
    Tablero horizontal con columnas y tarjetas arrastrables.
 
    Composición universal:
-     <section class="kanban__col">
-       <header class="kanban__col-head">
-         <div class="kanban__col-title">
-           <span class="kanban__col-dot brand"></span>
+     <section class="kanban col">
+       <header class="head">
+         <div class="heading">
+           <span class="dot brand"></span>
            <span class="title sm">Nombre columna</span>
          </div>
-         <span class="meta">4</span>
+         <span class="count">4</span>
          <div class="actions">…</div>
        </header>
-       <div class="kanban__col-body">
+       <div class="body">
          <article class="kcard">
            <h5 class="title sm">Título tarea</h5>
            <p class="sub">Descripción breve.</p>
-           <div class="kcard__meta">…</div>
+           <div class="meta">…</div>
          </article>
        </div>
-       <footer class="kanban__col-foot">
-         <button class="kanban__add">＋ Añadir</button>
+       <footer class="foot">
+         <button class="add">＋ Añadir</button>
        </footer>
      </section>
    ============================================================ */
@@ -55,7 +55,8 @@
   border-radius: var(--radius-xs);
 }
 
-.kanban__col {
+/* col: universal column element reused as the kanban lane */
+.kanban .col {
   flex: 0 0 var(--kanban-col-width);
   min-width: var(--kanban-col-width);
   background: var(--kanban-col-bg);
@@ -68,9 +69,11 @@
   overflow: hidden;
   scroll-snap-align: start;
 }
-.kanban__col--wide { flex-basis: 320px; min-width: 320px; }
+/* wide: lane-width modifier */
+.kanban .col.wide { flex-basis: 320px; min-width: 320px; }
 
-.kanban__col-head {
+/* head: universal — direct child to avoid leaking into kcard regions */
+.kanban .col > .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -79,8 +82,8 @@
   gap: var(--space-2);
 }
 
-/* Column title wrapper: place .title .sm inside for text */
-.kanban__col-title {
+/* heading: universal wrapper for dot + title text */
+.kanban .col .heading {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -88,27 +91,29 @@
   min-width: 0;
 }
 
-.kanban__col-dot {
+/* dot: colored status indicator circle */
+.kanban .col .dot {
   width: var(--dot-md); height: var(--dot-md);
   border-radius: var(--radius-circle);
   background: var(--ink-3);
   flex-shrink: 0;
 }
-.kanban__col-dot--brand  { background: var(--brand); }
-.kanban__col-dot--leaf   { background: var(--leaf); }
-.kanban__col-dot--warn   { background: var(--warn); }
-.kanban__col-dot--danger { background: var(--danger); }
-.kanban__col-dot--info   { background: var(--info); }
+.kanban .col .dot.brand  { background: var(--brand); }
+.kanban .col .dot.leaf   { background: var(--leaf); }
+.kanban .col .dot.warn   { background: var(--warn); }
+.kanban .col .dot.danger { background: var(--danger); }
+.kanban .col .dot.info   { background: var(--info); }
 
-/* Count badge: use .meta inside .kanban__col-head for text  */
-.kanban__col-count {
+/* count: card-count badge in column head */
+.kanban .col .count {
   font-variant-numeric: tabular-nums;
   background: var(--bg-3);
   border-radius: var(--radius-pill);
   padding: var(--border-w-2) var(--space-2);
 }
 
-.kanban__col-body {
+/* body: universal — direct child to scope scroll area */
+.kanban .col > .body {
   flex: 1;
   overflow-y: auto;
   padding: var(--space-2-5);
@@ -117,18 +122,21 @@
   gap: var(--space-2);
   scrollbar-width: thin;
 }
-.kanban__col-body::-webkit-scrollbar { width: 6px; }
-.kanban__col-body::-webkit-scrollbar-thumb {
+.kanban .col > .body::-webkit-scrollbar { width: 6px; }
+.kanban .col > .body::-webkit-scrollbar-thumb {
   background: var(--line-2);
   border-radius: var(--radius-xs);
 }
 
-.kanban__col-foot {
+/* foot: universal — direct child to scope column footer */
+.kanban .col > .foot {
   padding: var(--space-2) var(--space-2-5);
   border-top: var(--border-w) solid var(--line);
   background: var(--bg);
 }
-.kanban__add {
+
+/* add: "add card" trigger button inside column foot */
+.kanban .col .add {
   width: 100%;
   background: transparent;
   border: var(--border-w) dashed var(--line-2);
@@ -145,12 +153,16 @@
   font-family: inherit;
   transition: border-color var(--dur-fast), color var(--dur-fast);
 }
-.kanban__add:hover {
+.kanban .col .add:hover {
   border-color: var(--brand);
   color: var(--ink);
 }
 
 /* ---------- Card ---------- */
+/* kcard kept as standalone component root: it has drag behavior,
+   custom token consumption, and distinct visual identity beyond
+   the base .card. Treating it as .card.kanban would silently apply
+   card.css elevation/radius overrides and create coupling. */
 .kcard {
   background: var(--kanban-card-bg);
   border: var(--border-w) solid var(--kanban-card-border);
@@ -174,7 +186,8 @@
   transform: rotate(2deg);
 }
 
-.kcard__cover {
+/* cover: optional image strip at top of card */
+.kcard .cover {
   height: 80px;
   background: var(--bg-3) center/cover;
   border-radius: var(--radius-md);
@@ -183,40 +196,48 @@
   border-top-right-radius: var(--radius-lg);
 }
 
-.kcard__tags {
+/* tags: flex row of colored tag strips */
+.kcard .tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
 }
-.kcard__tag {
+
+/* tag: single colored bar label */
+.kcard .tag {
   display: inline-block;
   height: 6px;
   width: var(--size-md);
   border-radius: var(--radius-xs);
   background: var(--ink-3);
 }
-.kcard__tag--brand  { background: var(--brand); }
-.kcard__tag--leaf   { background: var(--leaf); }
-.kcard__tag--warn   { background: var(--warn); }
-.kcard__tag--danger { background: var(--danger); }
-.kcard__tag--info   { background: var(--info); }
+.kcard .tag.brand  { background: var(--brand); }
+.kcard .tag.leaf   { background: var(--leaf); }
+.kcard .tag.warn   { background: var(--warn); }
+.kcard .tag.danger { background: var(--danger); }
+.kcard .tag.info   { background: var(--info); }
 
-/* kcard__meta: row layout for date/count/avatar strip
-   Use universal .meta or .icon inside for text elements. */
-.kcard__meta {
+/* meta: universal — bottom strip for date/count/avatar chips;
+   kcard scopes overrides via descendant selector. */
+.kcard .meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
 }
-.kcard__meta-l, .kcard__meta-r {
+
+/* start / end: left and right halves of the meta strip */
+.kcard .meta .start,
+.kcard .meta .end {
   display: flex;
   align-items: center;
   gap: var(--space-2);
 }
 
-/* kcard__icon: small inline meta chip (date, count, etc.) */
-.kcard__icon {
+/* chip: inline icon+text meta item (date, count, etc.)
+   "icon" is reserved as a universal for bare SVG icons;
+   this element pairs an icon with a text label, so "chip" is used. */
+.kcard .chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -224,16 +245,19 @@
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
-.kcard__icon svg { width: var(--icon-xs); height: var(--icon-xs); }
-.kcard__icon--due-soon { color: var(--warn); }
-.kcard__icon--overdue  { color: var(--danger); font-weight: var(--weight-medium); }
+.kcard .chip svg { width: var(--icon-xs); height: var(--icon-xs); }
+/* "due-soon" compound → .soon (temporal nearness; "due" alone is ambiguous) */
+.kcard .chip.soon    { color: var(--warn); }
+.kcard .chip.overdue { color: var(--danger); font-weight: var(--weight-medium); }
 
-.kcard__avatars {
+/* avatars: stacked avatar strip */
+.kcard .avatars {
   display: flex;
 }
-.kcard__avatars > * + * { margin-left: calc(var(--space-1-5) * -1); }
+.kcard .avatars > * + * { margin-left: calc(var(--space-1-5) * -1); }
 
-.kcard__priority {
+/* priority: vertical accent bar pinned to top of card */
+.kcard .priority {
   position: absolute;
   top: 0; left: var(--space-3);
   width: 4px;
@@ -242,9 +266,9 @@
   border-bottom-right-radius: var(--radius-xs);
   background: var(--ink-3);
 }
-.kcard__priority--high { background: var(--danger); }
-.kcard__priority--med  { background: var(--warn); }
-.kcard__priority--low  { background: var(--info); }
+.kcard .priority.high { background: var(--danger); }
+.kcard .priority.med  { background: var(--warn); }
+.kcard .priority.low  { background: var(--info); }
 
 .kcard.ghost {
   background: transparent;

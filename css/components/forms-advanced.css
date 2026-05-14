@@ -15,7 +15,7 @@
   position: relative;
   display: inline-block;
 }
-.datepicker__field {
+.datepicker .field {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -30,11 +30,11 @@
   min-width: 160px;
   transition: border-color var(--dur) var(--ease-out);
 }
-.datepicker__field:hover { border-color: var(--line-2); }
-.datepicker__field--open { border-color: var(--datepicker-accent); box-shadow: 0 0 0 3px var(--datepicker-accent-soft); }
-.datepicker__field svg { color: var(--ink-3); flex-shrink: 0; }
+.datepicker .field:hover { border-color: var(--line-2); }
+.datepicker .field.open { border-color: var(--datepicker-accent); box-shadow: 0 0 0 3px var(--datepicker-accent-soft); }
+.datepicker .field svg { color: var(--ink-3); flex-shrink: 0; }
 
-.datepicker__pop {
+.datepicker .pop {
   position: absolute;
   top: calc(100% + var(--space-1));
   left: 0;
@@ -46,18 +46,18 @@
   width: 280px;
   z-index: var(--z-popover);
 }
-.datepicker__head {
+.datepicker .head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--space-2);
 }
-/* .datepicker__title — removed; use <span class="title md"> */
-.datepicker__nav {
+/* .title inside .datepicker .head: use <span class="title md"> — no dedicated rule needed */
+.datepicker .nav {
   display: inline-flex;
   gap: var(--space-1);
 }
-.datepicker__nav button {
+.datepicker .nav button {
   width: var(--avatar-2xs); height: var(--avatar-2xs);
   border-radius: var(--radius-sm);
   background: transparent;
@@ -68,15 +68,15 @@
   align-items: center;
   justify-content: center;
 }
-.datepicker__nav button:hover { background: var(--bg-3); color: var(--ink); }
+.datepicker .nav button:hover { background: var(--bg-3); color: var(--ink); }
 
-.datepicker__week,
-.datepicker__grid {
+.datepicker .week,
+.datepicker .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: var(--border-w-2);
 }
-.datepicker__week {
+.datepicker .week {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   text-align: center;
@@ -84,7 +84,7 @@
   text-transform: uppercase;
   margin-bottom: var(--space-1);
 }
-.datepicker__day {
+.datepicker .day {
   aspect-ratio: 1;
   display: inline-flex;
   align-items: center;
@@ -96,16 +96,16 @@
   color: var(--ink);
   transition: background var(--dur) var(--ease-out);
 }
-.datepicker__day:hover { background: var(--bg-3); }
-.datepicker__day--out { color: var(--ink-4); }
-.datepicker__day--today { box-shadow: inset 0 0 0 1px var(--datepicker-accent); }
-.datepicker__day--sel  { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); font-weight: 600; }
-.datepicker__day--in-range { background: var(--datepicker-accent-soft); color: var(--datepicker-accent); border-radius: 0; }
-.datepicker__day--range-start { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); border-top-right-radius: 0; border-bottom-right-radius: 0; }
-.datepicker__day--range-end   { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); border-top-left-radius: 0; border-bottom-left-radius: 0; }
-.datepicker__day--disabled { color: var(--ink-4); cursor: not-allowed; opacity: 0.5; }
+.datepicker .day:hover { background: var(--bg-3); }
+.datepicker .day.out { color: var(--ink-4); }
+.datepicker .day.today { box-shadow: inset 0 0 0 1px var(--datepicker-accent); }
+.datepicker .day.sel  { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); font-weight: 600; }
+.datepicker .day.in-range { background: var(--datepicker-accent-soft); color: var(--datepicker-accent); border-radius: 0; }
+.datepicker .day.range-start { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.datepicker .day.range-end   { background: var(--datepicker-accent); color: var(--datepicker-accent-fg); border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.datepicker .day.disabled { color: var(--ink-4); cursor: not-allowed; opacity: 0.5; }
 
-.datepicker__presets {
+.datepicker .presets {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
@@ -113,7 +113,7 @@
   margin-top: var(--space-2-5);
   border-top: var(--border-w) solid var(--line);
 }
-.datepicker__preset {
+.datepicker .preset {
   font-size: var(--text-xs);
   padding: var(--space-1) var(--space-2);
   background: var(--bg-3);
@@ -123,8 +123,8 @@
   border: none;
   transition: background var(--dur) var(--ease-out);
 }
-.datepicker__preset:hover { background: var(--bg-4); color: var(--ink); }
-.datepicker__preset--active { background: var(--datepicker-accent-soft); color: var(--datepicker-accent); }
+.datepicker .preset:hover { background: var(--bg-4); color: var(--ink); }
+.datepicker .preset.is-active { background: var(--datepicker-accent-soft); color: var(--datepicker-accent); }
 
 /* ---------- Time picker ---------- */
 .timepicker {
@@ -169,7 +169,7 @@
   position: relative;
   width: 100%;
 }
-.combo__field {
+.combo .field {
   display: flex;
   align-items: center;
   gap: var(--space-1-5);
@@ -182,9 +182,10 @@
   cursor: text;
   transition: border-color var(--dur) var(--ease-out);
 }
-.combo__field--open { border-color: var(--combo-accent); box-shadow: 0 0 0 3px var(--combo-accent-soft); }
+.combo .field.open { border-color: var(--combo-accent); box-shadow: 0 0 0 3px var(--combo-accent-soft); }
 
-.combo__chip {
+/* combo chip — selected tag inside the field */
+.combo .chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
@@ -194,7 +195,8 @@
   font-size: 12px;
   color: var(--ink);
 }
-.combo__chip-x {
+/* chip-x (dismiss button) → .close (universal close/dismiss class); use > to scope directly */
+.combo .chip > .close {
   width: 16px; height: 16px;
   border-radius: 3px;
   background: transparent;
@@ -205,9 +207,10 @@
   align-items: center;
   justify-content: center;
 }
-.combo__chip-x:hover { background: var(--bg-4); color: var(--ink); }
+.combo .chip > .close:hover { background: var(--bg-4); color: var(--ink); }
 
-.combo__input {
+/* combo text entry inside the field; named .entry to avoid collision with <input> element selectors */
+.combo .entry {
   flex: 1;
   min-width: 80px;
   background: transparent;
@@ -218,16 +221,17 @@
   font-size: 13px;
   padding: var(--space-1) var(--space-0);
 }
-.combo__input::placeholder { color: var(--ink-4); }
+.combo .entry::placeholder { color: var(--ink-4); }
 
-.combo__caret {
+.combo .caret {
   color: var(--ink-3);
   transition: transform var(--dur) var(--ease-out);
   flex-shrink: 0;
 }
-.combo__field--open .combo__caret { transform: rotate(180deg); }
+/* no double-context: .combo .field.open already contains .combo */
+.combo .field.open .caret { transform: rotate(180deg); }
 
-.combo__menu {
+.combo .menu {
   position: absolute;
   top: calc(100% + 4px);
   left: 0; right: 0;
@@ -240,7 +244,7 @@
   overflow-y: auto;
   z-index: 20;
 }
-.combo__group {
+.combo .group {
   font-family: var(--font-mono);
   font-size: 10px;
   text-transform: uppercase;
@@ -248,7 +252,7 @@
   color: var(--ink-3);
   padding: var(--space-2) var(--space-2-5) var(--space-1);
 }
-.combo__option {
+.combo .option {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-2-5);
@@ -260,18 +264,19 @@
   cursor: pointer;
   transition: background var(--dur) var(--ease-out);
 }
-.combo__option:hover,
-.combo__option--active { background: var(--bg-3); }
-.combo__option--selected { background: var(--combo-accent-soft); color: var(--combo-accent); }
-.combo__option-meta { color: var(--ink-3); font-size: var(--text-xs); }
-.combo__option mark {
+.combo .option:hover,
+.combo .option.is-active { background: var(--bg-3); }
+.combo .option.is-selected { background: var(--combo-accent-soft); color: var(--combo-accent); }
+/* option meta: use > to scope directly under .option, not a deeper descendant */
+.combo .option > .meta { color: var(--ink-3); font-size: var(--text-xs); }
+.combo .option mark {
   background: color-mix(in oklch, var(--brand) 25%, transparent);
   color: inherit;
   border-radius: 2px;
   padding: var(--space-0) var(--border-w);
 }
 
-.combo__empty {
+.combo .empty {
   padding: var(--space-4) var(--space-3);
   text-align: center;
   color: var(--ink-3);
@@ -295,14 +300,15 @@
   border-radius: var(--wizard-border-radius);
   overflow: hidden;
 }
-.wizard__steps {
+/* step strip across the top */
+.wizard .steps {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
   background: var(--bg-3);
   border-bottom: var(--border-w) solid var(--line);
 }
-.wizard__step {
+.wizard .step {
   display: grid;
   grid-template-columns: 28px 1fr;
   gap: var(--space-2-5);
@@ -312,9 +318,10 @@
   cursor: default;
   border-right: var(--border-w) solid var(--line);
 }
-.wizard__step:last-child { border-right: none; }
+.wizard .step:last-child { border-right: none; }
 
-.wizard__step-num {
+/* step number badge — use > to prevent leaking into nested step body */
+.wizard .step > .num {
   width: 26px; height: 26px;
   border-radius: var(--radius-circle);
   background: var(--bg-2);
@@ -327,26 +334,32 @@
   font-size: 12px;
   font-weight: 600;
 }
-.wizard__step--done .wizard__step-num   { background: var(--leaf); border-color: var(--leaf); color: var(--bg); }
-.wizard__step--active .wizard__step-num { background: var(--wizard-accent); border-color: var(--wizard-accent); color: var(--wizard-accent-fg); }
+/* no double-context: .wizard .step.done already contains .wizard */
+.wizard .step.done > .num   { background: var(--leaf); border-color: var(--leaf); color: var(--bg); }
+.wizard .step.is-active > .num { background: var(--wizard-accent); border-color: var(--wizard-accent); color: var(--wizard-accent-fg); }
 
-.wizard__step-name {
+/* step label — use > to scope directly under step, not deeper */
+.wizard .step > .name {
   font-size: var(--text-sm);
   color: var(--ink-3);
   font-weight: 500;
 }
-.wizard__step--done .wizard__step-name   { color: var(--ink-2); }
-.wizard__step--active .wizard__step-name { color: var(--ink); }  /* intentional: always full-ink when active */
-.wizard__step-sub {
+.wizard .step.done > .name   { color: var(--ink-2); }
+.wizard .step.is-active > .name { color: var(--ink); }  /* intentional: always full-ink when active */
+
+/* step sub-label — use > to distinguish from .wizard .body .sub */
+.wizard .step > .sub {
   font-size: 11px;
   color: var(--ink-4);
   margin-top: var(--border-w);
 }
 
-.wizard__body {
+/* wizard body panel */
+.wizard .body {
   padding: var(--space-6);
 }
-.wizard__title {
+/* wizard panel title — reuses universal .title */
+.wizard .title {
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 600;
@@ -354,13 +367,15 @@
   margin: var(--space-0) var(--space-0) var(--space-1);
   color: var(--ink);
 }
-.wizard__sub {
+/* wizard panel sub-title — scoped under .body to avoid collision with .wizard .step > .sub */
+.wizard .body .sub {
   font-size: 13px;
   color: var(--ink-3);
   margin: var(--space-0) var(--space-0) 18px;
 }
 
-.wizard__foot {
+/* wizard footer */
+.wizard .foot {
   padding: var(--space-3-5) 18px;
   border-top: var(--border-w) solid var(--line);
   display: flex;
@@ -368,12 +383,14 @@
   align-items: center;
   background: var(--bg-2);
 }
-.wizard__foot-meta {
+/* foot meta text — use > to scope directly under foot */
+.wizard .foot > .meta {
   font-size: var(--text-xs);
   color: var(--ink-3);
   font-family: var(--font-mono);
 }
-.wizard__foot-actions {
+/* foot action buttons — use > to scope directly under foot */
+.wizard .foot > .actions {
   display: inline-flex;
   gap: var(--space-2);
 }

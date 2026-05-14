@@ -12,8 +12,8 @@
        <div class="body" contenteditable="true">…</div>
        <footer class="foot">…wordcount…</footer>
      </div>
-   Los elementos internos de toolbar (btn, select, divider, spacer)
-   conservan BEM pues son específicos de richtext.
+   Los elementos internos de toolbar (btn, sel, divider, spacer)
+   son clases genéricas con scope de richtext.
    ============================================================ */
 .richtext {
   /* API canónica de override — consume vars universales */
@@ -54,7 +54,7 @@
   min-height: var(--editor-toolbar-h, 38px);
 }
 
-.richtext__btn {
+.richtext .btn {
   width: var(--size-sm);
   height: var(--size-sm);
   display: inline-grid;
@@ -69,28 +69,27 @@
   transition: background var(--dur-fast) var(--ease-out),
               color var(--dur-fast) var(--ease-out);
 }
-.richtext__btn:hover {
+.richtext .btn:hover {
   background: var(--bg-3);
   color: var(--ink);
 }
-.richtext__btn:active { transform: scale(0.96); }
-.richtext__btn.is-active,
-.richtext__btn[aria-pressed="true"],
-.richtext__btn[aria-pressed=""] {
+.richtext .btn:active { transform: scale(0.96); }
+.richtext .btn.is-active,
+.richtext .btn[aria-pressed="true"],
+.richtext .btn[aria-pressed=""] {
   background: var(--brand-soft);
   color: var(--ink);
   box-shadow: inset 0 0 0 1px color-mix(in oklch, var(--brand) 30%, transparent);
 }
-.richtext__btn svg {
+.richtext .btn svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
   stroke-width: 2;
 }
 
-/* Vertical divider en toolbar — expresado como .divider.vertical con
-   override scoped. El consumidor puede usar <span class="richtext__divider">
-   o <hr class="divider vertical"> dentro de .richtext > .head. */
-.richtext__divider,
+/* Vertical divider in toolbar — use <span class="divider"> or
+   <hr class="divider vertical"> inside .richtext > .head. */
+.richtext .divider,
 .richtext > .head > .divider {
   width: var(--border-w);
   height: var(--icon-md);
@@ -98,7 +97,7 @@
   margin: var(--space-0) var(--space-1);
 }
 
-.richtext__select {
+.richtext .picker {
   height: 26px;
   padding: var(--space-0) var(--space-2);
   background: var(--bg-3);
@@ -109,10 +108,10 @@
   font-size: var(--text-xs);
   cursor: pointer;
 }
-.richtext__select:hover { background: var(--bg-4); }
-.richtext__select:focus { outline: var(--border-w-2) solid var(--brand-3); outline-offset: 1px; }
+.richtext .picker:hover { background: var(--bg-4); }
+.richtext .picker:focus { outline: var(--border-w-2) solid var(--brand-3); outline-offset: 1px; }
 
-.richtext__spacer { flex: 1; }
+.richtext .spacer { flex: 1; }
 
 /* Content area — universal .body override scoped to richtext.
    El consumidor usa <div class="body" contenteditable="true">. */
@@ -255,16 +254,16 @@
   --_rt-pad: var(--space-2);
   font-size: var(--text-xs);
 }
-.richtext.sm .richtext__btn { width: var(--avatar-2xs); height: var(--avatar-2xs); }
-.richtext.sm .richtext__btn svg { width: var(--icon-xs); height: var(--icon-xs); }
+.richtext.sm .btn { width: var(--avatar-2xs); height: var(--avatar-2xs); }
+.richtext.sm .btn svg { width: var(--icon-xs); height: var(--icon-xs); }
 .richtext.sm > .body { font-size: var(--text-sm); }
 
 .richtext.lg {
   --_rt-min-h: 320px;
   --_rt-pad: var(--space-5);
 }
-.richtext.lg .richtext__btn { width: var(--avatar-sm); height: var(--avatar-sm); }
-.richtext.lg .richtext__btn svg { width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px); }
+.richtext.lg .btn { width: var(--avatar-sm); height: var(--avatar-sm); }
+.richtext.lg .btn svg { width: var(--slider-thumb, 16px); height: var(--slider-thumb, 16px); }
 .richtext.lg > .body { font-size: var(--text-base); }
 
 /* Minimal — sin toolbar/footer, solo edición inline */
@@ -303,13 +302,13 @@
   padding: var(--space-0);
 }
 
-.keyboard__row {
+.keyboard .row {
   display: flex;
   gap: var(--_kb-gap);
   align-items: center;
 }
 
-.keyboard__key {
+.keyboard .key {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -328,11 +327,11 @@
   line-height: var(--leading-flat);
 }
 
-.keyboard__key--space {
+.keyboard .key.spacebar {
   min-width: calc(var(--_kb-key-min-w) * 5);
 }
 
-.keyboard__key--mod {
+.keyboard .key.modifier {
   background: var(--bg-4);
   color: var(--ink);
   font-weight: 600;
@@ -341,7 +340,7 @@
   font-size: 10px;
 }
 
-.keyboard__plus {
+.keyboard .plus {
   font-size: 10px;
   color: var(--ink-4);
   margin: var(--space-0) var(--border-w);
@@ -377,13 +376,13 @@
   font-family: var(--font-sans);
 }
 
-.osk__row {
+.osk .row {
   display: flex;
   gap: var(--_osk-gap);
   width: 100%;
 }
 
-.osk__key {
+.osk .key {
   flex: 1 1 var(--_osk-key-min-w);
   min-width: var(--_osk-key-min-w);
   height: var(--_osk-key-h);
@@ -404,31 +403,31 @@
               border-color var(--dur-fast) var(--ease-out);
   font-variant-numeric: tabular-nums;
 }
-.osk__key:hover { background: var(--bg-4); }
-.osk__key:active { transform: scale(0.97); }
-.osk__key:focus-visible {
+.osk .key:hover { background: var(--bg-4); }
+.osk .key:active { transform: scale(0.97); }
+.osk .key:focus-visible {
   outline: var(--border-w-2) solid var(--brand-3);
   outline-offset: 2px;
 }
 
-.osk__key--wide   { flex-grow: 1.5; }
-.osk__key--xwide  { flex-grow: 2; }
+.osk .key.wide   { flex-grow: 1.5; }
+.osk .key.xwide  { flex-grow: 2; }
 
-.osk__key--space  { flex-grow: 6; }
+.osk .key.spacebar  { flex-grow: 6; }
 
-.osk__key--enter {
+.osk .key.enter {
   background: var(--brand);
   color: var(--brand-fg);
   border-color: transparent;
   flex-grow: 1.6;
 }
-.osk__key--enter:hover { background: var(--brand-2); }
+.osk .key.enter:hover { background: var(--brand-2); }
 
-.osk__key--shift,
-.osk__key--del,
-.osk__key--num,
-.osk__key--tab,
-.osk__key--mod {
+.osk .key.shift,
+.osk .key.del,
+.osk .key.num,
+.osk .key.tab,
+.osk .key.modifier {
   background: var(--bg-4);
   color: var(--ink-2);
   font-size: var(--text-sm);
@@ -437,18 +436,18 @@
   text-transform: uppercase;
   flex-grow: 1.4;
 }
-.osk__key--shift:hover,
-.osk__key--del:hover,
-.osk__key--num:hover,
-.osk__key--tab:hover,
-.osk__key--mod:hover { background: var(--bg-3); color: var(--ink); }
+.osk .key.shift:hover,
+.osk .key.del:hover,
+.osk .key.num:hover,
+.osk .key.tab:hover,
+.osk .key.modifier:hover { background: var(--bg-3); color: var(--ink); }
 
-.osk.is-shift .osk__key--shift {
+.osk.is-shift .key.shift {
   background: var(--brand);
   color: var(--brand-fg);
   border-color: transparent;
 }
-.osk.is-shift .osk__key:not(.osk__key--shift):not(.osk__key--del):not(.osk__key--num):not(.osk__key--space):not(.osk__key--enter):not(.osk__key--tab):not(.osk__key--mod) {
+.osk.is-shift .key:not(.shift):not(.del):not(.num):not(.spacebar):not(.enter):not(.tab):not(.modifier) {
   text-transform: uppercase;
 }
 
@@ -483,10 +482,10 @@
   gap: var(--_osk-gap);
   max-width: 320px;
 }
-.osk.numeric .osk__row {
+.osk.numeric .row {
   display: contents;
 }
-.osk.numeric .osk__key {
+.osk.numeric .key {
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 600;
@@ -518,13 +517,13 @@
   max-width: 480px;
 }
 
-.vkb__row {
+.vkb .row {
   display: flex;
   gap: var(--_vkb-gap);
   width: 100%;
 }
 
-.vkb__key {
+.vkb .key {
   flex: 1 1 var(--_vkb-key-min-w);
   min-width: var(--_vkb-key-min-w);
   height: var(--_vkb-key-h);
@@ -545,26 +544,26 @@
   font-variant-numeric: tabular-nums;
   padding: var(--space-0) var(--border-w-2);
 }
-.vkb__key:hover  { background: var(--bg-4); }
-.vkb__key:active { transform: scale(0.96); }
+.vkb .key:hover  { background: var(--bg-4); }
+.vkb .key:active { transform: scale(0.96); }
 
-.vkb__key--wide   { flex-grow: 1.5; }
-.vkb__key--xwide  { flex-grow: 2; }
-.vkb__key--space  { flex-grow: 6; }
+.vkb .key.wide   { flex-grow: 1.5; }
+.vkb .key.xwide  { flex-grow: 2; }
+.vkb .key.spacebar  { flex-grow: 6; }
 
-.vkb__key--enter {
+.vkb .key.enter {
   background: var(--brand);
   color: var(--brand-fg);
   border-color: transparent;
   flex-grow: 1.4;
 }
-.vkb__key--enter:hover { background: var(--brand-2); }
+.vkb .key.enter:hover { background: var(--brand-2); }
 
-.vkb__key--shift,
-.vkb__key--del,
-.vkb__key--sym,
-.vkb__key--num,
-.vkb__key--mod {
+.vkb .key.shift,
+.vkb .key.del,
+.vkb .key.sym,
+.vkb .key.num,
+.vkb .key.modifier {
   background: var(--bg-4);
   color: var(--ink-2);
   font-size: var(--text-xs);
@@ -572,13 +571,13 @@
   letter-spacing: var(--tracking-wide);
   flex-grow: 1.3;
 }
-.vkb__key--shift:hover,
-.vkb__key--del:hover,
-.vkb__key--sym:hover,
-.vkb__key--num:hover,
-.vkb__key--mod:hover { background: var(--bg-3); color: var(--ink); }
+.vkb .key.shift:hover,
+.vkb .key.del:hover,
+.vkb .key.sym:hover,
+.vkb .key.num:hover,
+.vkb .key.modifier:hover { background: var(--bg-3); color: var(--ink); }
 
-.vkb.is-shift .vkb__key--shift {
+.vkb.is-shift .key.shift {
   background: var(--brand);
   color: var(--brand-fg);
   border-color: transparent;
@@ -592,10 +591,10 @@
   grid-template-columns: repeat(3, 1fr);
   max-width: 240px;
 }
-.vkb.numeric .vkb__row {
+.vkb.numeric .row {
   display: contents;
 }
-.vkb.numeric .vkb__key {
+.vkb.numeric .key {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
@@ -603,7 +602,7 @@
   flex: initial;
 }
 
-.vkb.symbol .vkb__key {
+.vkb.symbol .key {
   font-family: var(--font-mono);
   letter-spacing: var(--tracking-snug);
 }
@@ -632,23 +631,23 @@
   min-height: var(--size-md);
   font-variant-numeric: tabular-nums;
 }
-.osk-display__label,
-.vkb-display__label {
+.osk-display .label,
+.vkb-display .label {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   font-family: var(--font-sans);
 }
-.osk-display__value,
-.vkb-display__value {
+.osk-display .value,
+.vkb-display .value {
   flex: 1;
   color: var(--ink);
   letter-spacing: 0.05em;
   word-break: break-all;
 }
-.osk-display__value:empty::before,
-.vkb-display__value:empty::before {
+.osk-display .value:empty::before,
+.vkb-display .value:empty::before {
   content: "_";
   color: var(--ink-4);
   animation: ok-osk-blink 1s step-end infinite;

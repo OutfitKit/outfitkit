@@ -47,7 +47,7 @@
 @media (prefers-reduced-motion: reduce) {
   .skel,
   .skeleton,
-  .skel-chart__bar {
+  .skel.chart .bar {
     animation: none;
     background: var(--bg-3);
   }
@@ -64,13 +64,14 @@
 .skel.card   { height: var(--skel-card-h); border-radius: var(--radius-lg); }
 .skel.row    { height: var(--size-lg); border-radius: var(--radius-md); }
 
-.skel-line + .skel-line { margin-top: var(--space-1-5); }
-.skel-line:nth-child(2) { width: 92%; }
-.skel-line:nth-child(3) { width: 78%; }
-.skel-line:nth-child(4) { width: 60%; }
+/* .skel.line — shimmer line; adjacent siblings have smaller widths */
+.skel.line + .skel.line { margin-top: var(--space-1-5); }
+.skel.line:nth-child(2) { width: 92%; }
+.skel.line:nth-child(3) { width: 78%; }
+.skel.line:nth-child(4) { width: 60%; }
 
 /* Composite: stack de líneas */
-.skel-stack {
+.skel.stack {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
@@ -88,13 +89,14 @@
 }
 
 /* Skeleton table preset */
-.skel-table {
+.skel.table {
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-xl);
   padding: var(--space-1-5) var(--space-3-5);
 }
-.skel-table__row {
+/* .row inside .skel.table: a data row of the skeleton table */
+.skel.table .row {
   display: grid;
   grid-template-columns: 1.6fr 1fr 0.8fr 0.6fr;
   gap: var(--space-4);
@@ -102,11 +104,12 @@
   border-bottom: var(--border-w) solid var(--line);
   align-items: center;
 }
-.skel-table__row:last-child { border-bottom: none; }
-.skel-table__row--head .skel { opacity: 0.55; height: var(--text-2xs); }
+.skel.table .row:last-child { border-bottom: none; }
+/* .row.head — header row of the skeleton table (head is a universal modifier) */
+.skel.table .row.head .skel { opacity: 0.55; height: var(--text-2xs); }
 
 /* Skeleton chart (bars) */
-.skel-chart {
+.skel.chart {
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-xl);
@@ -116,7 +119,8 @@
   align-items: flex-end;
   gap: var(--space-1-5);
 }
-.skel-chart__bar {
+/* .bar inside .skel.chart: individual bar column of the chart skeleton */
+.skel.chart .bar {
   flex: 1;
   border-radius: var(--radius-xs);
   background: linear-gradient(180deg, var(--_skel-from) 0%, var(--_skel-to) 50%, var(--_skel-from) 100%);
@@ -162,19 +166,19 @@
 }
 
 /* Dots variant */
-.spinner-dots {
+.spinner.dots {
   display: inline-flex;
   gap: var(--space-1);
   align-items: center;
 }
-.spinner-dots span {
+.spinner.dots span {
   width: var(--dot-xs); height: var(--dot-xs);
   background: var(--ink-3);
   border-radius: var(--radius-circle);
   animation: ok-dots 1.2s ease-in-out infinite;
 }
-.spinner-dots span:nth-child(2) { animation-delay: 0.15s; }
-.spinner-dots span:nth-child(3) { animation-delay: 0.3s; }
+.spinner.dots span:nth-child(2) { animation-delay: 0.15s; }
+.spinner.dots span:nth-child(3) { animation-delay: 0.3s; }
 @keyframes ok-dots {
   0%, 60%, 100% { opacity: 0.25; transform: scale(0.85); }
   30%           { opacity: 1;    transform: scale(1.1); }
@@ -236,8 +240,8 @@
   padding: var(--space-8) 0;
 }
 
-/* Page-level loading overlay */
-.page-loading {
+/* Page-level loading overlay — .loading.page modifier */
+.loading.page {
   position: relative;
   min-height: var(--error-min-h);
   background: var(--bg-2);
@@ -267,7 +271,8 @@
   overflow: hidden;
   position: relative;
 }
-.progress__bar {
+/* .bar inside .progress: the filled portion of the progress bar */
+.progress .bar {
   height: 100%;
   background: var(--progress-accent);
   border-radius: var(--radius-xs);
@@ -275,10 +280,11 @@
 }
 .progress.sm { height: var(--progress-h-sm); }
 .progress.lg { height: var(--progress-h-lg); }
-.progress__bar--leaf { background: var(--leaf); }
-.progress__bar--warn { background: var(--warn); }
-.progress__bar--danger { background: var(--danger); }
-.progress.striped .progress__bar {
+/* Color modifier variants on .progress .bar — leaf/warn/danger used as color modifiers */
+.progress .bar.leaf   { background: var(--leaf); }
+.progress .bar.warn   { background: var(--warn); }
+.progress .bar.danger { background: var(--danger); }
+.progress.striped .bar {
   background-image: linear-gradient(45deg,
     rgba(255,255,255,0.18) 25%, transparent 25%,
     transparent 50%, rgba(255,255,255,0.18) 50%,
@@ -357,7 +363,7 @@
 
    Use universal classes inside:
      <div class="error-page">
-       <div class="error-page__inner">
+       <div class="inner">
          <div class="icon-disc brand xl">…svg…</div>
          <span class="meta">ERROR 404</span>
          <h1 class="title" style="font-size: clamp(1.75rem,4vw,2.5rem)">Título</h1>
@@ -396,7 +402,8 @@
   pointer-events: none;
   opacity: .6;
 }
-.error-page__inner {
+/* .inner — centered content well of the error page */
+.error-page .inner {
   position: relative;
   display: grid;
   gap: var(--space-5);
@@ -404,7 +411,8 @@
   max-width: var(--error-page-inner-max-w);
   width: 100%;
 }
-.error-page__illu {
+/* .illu — illustration disc of the error page */
+.error-page .illu {
   display: grid;
   place-items: center;
   width: var(--error-page-illu-size);
@@ -415,12 +423,13 @@
   color: var(--brand);
   border: var(--border-w) solid color-mix(in oklch, var(--brand) 25%, transparent);
 }
-.error-page.warn   .error-page__illu { background: color-mix(in oklch, var(--warn) 8%, var(--bg-2));   color: var(--warn);   border-color: color-mix(in oklch, var(--warn) 25%, transparent); }
-.error-page.info   .error-page__illu { background: color-mix(in oklch, var(--info) 8%, var(--bg-2));   color: var(--info);   border-color: color-mix(in oklch, var(--info) 25%, transparent); }
-.error-page.danger .error-page__illu { background: color-mix(in oklch, var(--danger) 8%, var(--bg-2)); color: var(--danger); border-color: color-mix(in oklch, var(--danger) 25%, transparent); }
+.error-page.warn   .illu { background: color-mix(in oklch, var(--warn) 8%, var(--bg-2));   color: var(--warn);   border-color: color-mix(in oklch, var(--warn) 25%, transparent); }
+.error-page.info   .illu { background: color-mix(in oklch, var(--info) 8%, var(--bg-2));   color: var(--info);   border-color: color-mix(in oklch, var(--info) 25%, transparent); }
+.error-page.danger .illu { background: color-mix(in oklch, var(--danger) 8%, var(--bg-2)); color: var(--danger); border-color: color-mix(in oklch, var(--danger) 25%, transparent); }
 
 /* ---------- Error page semantic children ---------- */
-.error-page__code {
+/* .code — machine error code label (e.g. "ERROR 404") */
+.error-page .code {
   position: relative;
   z-index: 1;
   font-family: var(--font-mono);
@@ -429,7 +438,8 @@
   color: var(--ink-3);
   letter-spacing: 0.04em;
 }
-.error-page__title {
+/* .title — universal heading class scoped to error-page */
+.error-page .title {
   position: relative;
   z-index: 1;
   font-size: var(--text-2xl);
@@ -437,7 +447,8 @@
   line-height: var(--leading-tight);
   color: var(--ink);
 }
-.error-page__msg {
+/* .msg — message / description paragraph */
+.error-page .msg {
   position: relative;
   z-index: 1;
   font-size: var(--text-sm);
@@ -446,7 +457,8 @@
   margin-inline: auto;
   line-height: var(--leading-relaxed);
 }
-.error-page__actions {
+/* .actions — universal actions row scoped to error-page */
+.error-page .actions {
   position: relative;
   z-index: 1;
   display: flex;
@@ -455,14 +467,16 @@
   justify-content: center;
   align-items: center;
 }
-.error-page__meta {
+/* .meta — universal meta label scoped to error-page */
+.error-page .meta {
   position: relative;
   z-index: 1;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--ink-4);
 }
-.error-page__shortcut-title {
+/* .shortcut .title — title inside a shortcut link card */
+.error-page .shortcut > .title {
   font-size: var(--text-sm);
   color: var(--ink);
   white-space: nowrap;
@@ -472,14 +486,16 @@
 }
 
 /* ---------- Error page sub-atoms ---------- */
-.error-page__search {
+/* .search — search input area of the error page */
+.error-page .search {
   position: relative;
   z-index: 1;
   max-width: var(--empty-max-w);
   margin: 0 auto var(--space-5);
 }
 
-.error-page__shortcuts {
+/* .shortcuts — grid of shortcut link cards */
+.error-page .shortcuts {
   position: relative;
   z-index: 1;
   display: grid;
@@ -488,7 +504,8 @@
   max-width: 520px;
   margin: var(--space-2) auto 0;
 }
-.error-page__shortcut {
+/* .shortcut — individual shortcut link card */
+.error-page .shortcut {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -502,13 +519,13 @@
   text-align: left;
   transition: border-color var(--dur-fast), background var(--dur-fast), transform var(--dur-fast);
 }
-.error-page__shortcut:hover {
+.error-page .shortcut:hover {
   border-color: var(--line-2);
   background: var(--bg-3);
   transform: translateY(-1px);
 }
-.error-page__shortcut > svg,
-.error-page__shortcut svg {
+.error-page .shortcut > svg,
+.error-page .shortcut svg {
   width: var(--error-diag-icon-size);
   height: var(--error-diag-icon-size);
   min-width: var(--error-diag-icon-size);
@@ -517,7 +534,8 @@
   flex-shrink: 0;
 }
 
-.error-page__details {
+/* .details — collapsible error details block */
+.error-page .details {
   position: relative;
   z-index: 1;
   margin: var(--space-4) auto 0;
@@ -526,7 +544,7 @@
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
-.error-page__details summary {
+.error-page .details summary {
   cursor: pointer;
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
@@ -537,20 +555,21 @@
   user-select: none;
   list-style: none;
 }
-.error-page__details summary::-webkit-details-marker { display: none; }
-.error-page__details summary::before {
+.error-page .details summary::-webkit-details-marker { display: none; }
+.error-page .details summary::before {
   content: "▸ ";
   display: inline-block;
   margin-right: var(--space-1);
   transition: transform var(--dur-fast);
 }
-.error-page__details[open] summary::before {
+.error-page .details[open] summary::before {
   transform: rotate(90deg);
 }
-.error-page__details summary:hover {
+.error-page .details summary:hover {
   border-color: var(--line-2);
 }
-.error-page__trace {
+/* .trace — pre-formatted stack trace inside .details */
+.error-page .trace {
   margin: var(--space-2) 0 0;
   padding: var(--space-3) var(--space-3-5);
   border-radius: var(--radius-md);
@@ -564,7 +583,8 @@
   overflow-x: auto;
 }
 
-.error-page__retry {
+/* .retry — auto-retry countdown banner */
+.error-page .retry {
   position: relative;
   z-index: 1;
   display: inline-flex;
@@ -578,14 +598,16 @@
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
-.error-page__retry-countdown {
+/* .countdown — numeric countdown inside .retry */
+.error-page .retry .countdown {
   font-family: var(--font-mono);
   font-weight: var(--weight-bold);
   color: var(--_err-accent);
   min-width: 1.5em;
   text-align: center;
 }
-.error-page__retry-bar {
+/* .bar inside .retry — thin progress rail for the countdown */
+.error-page .retry .bar {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -596,14 +618,16 @@
   background: var(--bg-3);
   overflow: hidden;
 }
-.error-page__retry-fill {
+/* .fill inside .retry .bar — animated fill of the countdown bar */
+.error-page .retry .fill {
   height: 100%;
   width: 100%;
   background: var(--_err-accent);
   transition: width var(--dur-base) linear;
 }
 
-.error-page__diagnosis {
+/* .diagnosis — network/service check list */
+.error-page .diagnosis {
   position: relative;
   z-index: 1;
   display: flex;
@@ -613,7 +637,8 @@
   max-width: 480px;
   text-align: left;
 }
-.error-page__diagnosis-item {
+/* .item inside .diagnosis — single check row */
+.error-page .diagnosis .item {
   display: grid;
   grid-template-columns: var(--error-diag-icon-size) 1fr auto;
   gap: var(--space-2-5);
@@ -625,32 +650,34 @@
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
-.error-page__diagnosis-icon {
+/* .icon inside .diagnosis .item — use > to avoid leaking into nested icon-disc */
+.error-page .diagnosis .item > .icon {
   width: var(--error-diag-icon-size);
   height: var(--error-diag-icon-size);
   display: grid;
   place-items: center;
   color: var(--ink-3);
 }
-.error-page__diagnosis-time {
+/* .time — timestamp inside .diagnosis .item */
+.error-page .diagnosis .item .time {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--ink-3);
 }
-.error-page__diagnosis-item.is-ok      .error-page__diagnosis-icon { color: var(--leaf); }
-.error-page__diagnosis-item.is-fail    { border-color: color-mix(in oklch, var(--danger) 30%, transparent); }
-.error-page__diagnosis-item.is-fail    .error-page__diagnosis-icon { color: var(--danger); }
-.error-page__diagnosis-item.is-warn    .error-page__diagnosis-icon { color: var(--warn); }
-.error-page__diagnosis-item.is-pending .error-page__diagnosis-icon { color: var(--info); }
-.error-page__diagnosis-item.is-skip    { opacity: 0.55; }
+.error-page .diagnosis .item.is-ok      > .icon { color: var(--leaf); }
+.error-page .diagnosis .item.is-fail    { border-color: color-mix(in oklch, var(--danger) 30%, transparent); }
+.error-page .diagnosis .item.is-fail    > .icon { color: var(--danger); }
+.error-page .diagnosis .item.is-warn    > .icon { color: var(--warn); }
+.error-page .diagnosis .item.is-pending > .icon { color: var(--info); }
+.error-page .diagnosis .item.is-skip    { opacity: 0.55; }
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
-  .error-page__illu {
+  .error-page .illu {
     width: 72px;
     height: 72px;
   }
-  .error-page__shortcuts {
+  .error-page .shortcuts {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -667,21 +694,24 @@
   background: var(--bg);
   color: var(--ink);
 }
-.bootstrap-error__panel {
+/* .panel — centered content panel */
+.bootstrap-error .panel {
   display: grid;
   gap: var(--space-4);
   max-width: var(--error-page-inner-max-w);
   width: 100%;
 }
 /* bootstrap-error head: use .icon-disc.danger + .heading inside */
-.bootstrap-error__head {
+/* .head — header area with icon and heading; use > to scope to direct child */
+.bootstrap-error > .head {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   padding-bottom: var(--space-3);
   border-bottom: var(--border-w) solid var(--line);
 }
-.bootstrap-error__icon {
+/* .icon — icon disc in the bootstrap-error head */
+.bootstrap-error .icon {
   width: var(--bootstrap-icon-size);
   height: var(--bootstrap-icon-size);
   display: grid;
@@ -691,14 +721,16 @@
   color: var(--danger);
   flex-shrink: 0;
 }
-.bootstrap-error__checks {
+/* .checks — list of health-check rows */
+.bootstrap-error .checks {
   display: grid;
   gap: var(--space-2);
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.bootstrap-error__check {
+/* .check — individual health-check row */
+.bootstrap-error .check {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -707,35 +739,39 @@
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
 }
-.bootstrap-error__check--ok    { border-color: color-mix(in oklch, var(--leaf)   25%, transparent); }
-.bootstrap-error__check--fail  { border-color: color-mix(in oklch, var(--danger) 35%, transparent); background: color-mix(in oklch, var(--danger) 4%, var(--bg-2)); }
-.bootstrap-error__check--pending { border-color: color-mix(in oklch, var(--warn) 25%, transparent); }
-.bootstrap-error__check-icon {
+/* State modifiers on .check */
+.bootstrap-error .check.ok      { border-color: color-mix(in oklch, var(--leaf)   25%, transparent); }
+.bootstrap-error .check.fail    { border-color: color-mix(in oklch, var(--danger) 35%, transparent); background: color-mix(in oklch, var(--danger) 4%, var(--bg-2)); }
+.bootstrap-error .check.pending { border-color: color-mix(in oklch, var(--warn) 25%, transparent); }
+/* .icon inside .check — status indicator icon; > to avoid leaking */
+.bootstrap-error .check > .icon {
   width: var(--size-xs);
   height: var(--size-xs);
   flex-shrink: 0;
 }
-.bootstrap-error__check--ok      .bootstrap-error__check-icon { color: var(--leaf); }
-.bootstrap-error__check--fail    .bootstrap-error__check-icon { color: var(--danger); }
-.bootstrap-error__check--pending .bootstrap-error__check-icon { color: var(--warn); }
-.bootstrap-error__check-body { flex: 1; min-width: 0; }
-.bootstrap-error__details {
+.bootstrap-error .check.ok      > .icon { color: var(--leaf); }
+.bootstrap-error .check.fail    > .icon { color: var(--danger); }
+.bootstrap-error .check.pending > .icon { color: var(--warn); }
+/* .body — text content of a health-check row (universal body class) */
+.bootstrap-error .check > .body { flex: 1; min-width: 0; }
+/* .details — collapsible pre block with error output */
+.bootstrap-error .details {
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
   padding: 0;
   font-size: var(--text-sm);
 }
-.bootstrap-error__details > summary {
+.bootstrap-error .details > summary {
   cursor: pointer;
   padding: var(--space-3);
   font-weight: var(--weight-medium);
   color: var(--ink-2);
   list-style: none;
 }
-.bootstrap-error__details > summary::-webkit-details-marker { display: none; }
-.bootstrap-error__details[open] > summary { border-bottom: var(--border-w) solid var(--line); }
-.bootstrap-error__details > pre {
+.bootstrap-error .details > summary::-webkit-details-marker { display: none; }
+.bootstrap-error .details[open] > summary { border-bottom: var(--border-w) solid var(--line); }
+.bootstrap-error .details > pre {
   margin: 0;
   padding: var(--space-3);
   font-family: var(--font-mono);
@@ -745,7 +781,8 @@
   word-break: break-word;
   overflow-x: auto;
 }
-.bootstrap-error__actions {
+/* .actions — button row at foot of bootstrap-error panel (universal actions class) */
+.bootstrap-error .actions {
   display: flex;
   gap: var(--space-2);
   justify-content: flex-end;

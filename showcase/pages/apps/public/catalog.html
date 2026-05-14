@@ -11,7 +11,7 @@
 
   .pub-shell { display: flex; flex-direction: column; min-height: 100dvh; }
 
-  /* Public navbar (TODO UX: no ok-public-nav yet) */
+  /* Public navbar (TODO UX: no public-nav yet) */
   .pub-nav {
     position: sticky; top: 0; z-index: 10;
     display: flex; align-items: center; justify-content: space-between;
@@ -21,19 +21,19 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
   }
-  .pub-nav__brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
-  .pub-nav__logo {
+  .pub-nav .brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+  .pub-nav .logo {
     width: 32px; height: 32px; border-radius: 9px;
     background: linear-gradient(135deg, var(--brand), var(--brand-2));
     color: var(--brand-fg);
     display: grid; place-items: center;
     font-family: var(--font-display); font-weight: 700; font-size: 14px;
   }
-  .pub-nav__name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
-  .pub-nav__cart {
+  .pub-nav .name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .pub-nav .cart {
     position: relative;
   }
-  .pub-nav__cart-count {
+  .pub-nav .cart .count {
     position: absolute; top: -6px; right: -6px;
     min-width: 18px; height: 18px; padding: 0 5px;
     border-radius: 999px;
@@ -43,7 +43,7 @@
   }
 
   /* Catalog header */
-  .cat-head__title {
+  .cat-head .title {
     font-family: var(--font-display);
     font-size: clamp(28px, 4vw, 36px);
     font-weight: 700;
@@ -51,7 +51,7 @@
     color: var(--ink);
     margin: 0 0 var(--space-2);
   }
-  .cat-head__sub { color: var(--ink-3); margin: 0 0 var(--space-4); font-size: var(--text-md); }
+  .cat-head .sub { color: var(--ink-3); margin: 0 0 var(--space-4); font-size: var(--text-md); }
 
   /* Sidebar — chips list of categories */
   .cat-title {
@@ -73,37 +73,37 @@
 
     <!-- Public navbar -->
     <nav class="pub-nav">
-      <a href="/" class="pub-nav__brand">
-        <span class="pub-nav__logo">L</span>
-        <span class="pub-nav__name">Cafetería La Rambla</span>
+      <a href="/" class="brand">
+        <span class="logo">L</span>
+        <span class="name">Cafetería La Rambla</span>
       </a>
-      <button class="btn ghost icon pub-nav__cart"
+      <button class="btn ghost icon cart"
               aria-label="Carrito"
               data-on:click="window.location.href = '/public/cart'">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
-        <span class="pub-nav__cart-count" data-text="$cartCount" data-show="$cartCount > 0">2</span>
+        <span class="count" data-text="$cartCount" data-show="$cartCount > 0">2</span>
       </button>
     </nav>
 
     <!-- Header -->
     <div class="container">
       <header class="cat-head" style="padding: var(--space-6) 0 var(--space-4);">
-        <h1 class="cat-head__title">Carta</h1>
-        <p class="cat-head__sub">42 productos · pedidos online listos en 10 min</p>
+        <h1 class="title">Carta</h1>
+        <p class="sub">42 productos · pedidos online listos en 10 min</p>
 
         <!-- Search -->
         <div class="search" style="max-width:480px">
-          <span class="search__icon">
+          <span class="icon">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/>
             </svg>
           </span>
           <input class="input" type="search" placeholder="Buscar en la carta…"
                  data-bind:q/>
-          <button class="search__clear" data-show="$q.length > 0" data-on:click="$q = ''" aria-label="Limpiar">
+          <button class="close" data-show="$q.length > 0" data-on:click="$q = ''" aria-label="Limpiar">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 6 6 18M6 6l12 12"/>
             </svg>
@@ -153,23 +153,23 @@
 
         <!-- Cortado -->
         <article class="product">
-          <div class="product__media">
+          <div class="media">
             <!-- TODO UX: no <img> placeholder helper — using gradient -->
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #6b4226, #2a1810); display:grid; place-items:center; color:#e8d5c0; font-family: var(--font-display); font-size: 32px;">☕</div>
-            <div class="product__badges">
-              <span class="product__badge product__badge--brand">Top</span>
+            <div class="badges">
+              <span class="badge brand">Top</span>
             </div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Cafés</div>
-            <a href="/public/products/cortado" class="product__name no-underline">
+          <div class="body">
+            <div class="make">Cafés</div>
+            <a href="/public/products/cortado" class="name no-underline">
               Cortado
             </a>
-            <div class="product__price-row">
-              <span class="product__price">€1,80</span>
+            <div class="pricing">
+              <span class="price">€1,80</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta"
+            <div class="actions">
+              <button class="cta"
                       data-on:click="$cartCount = $cartCount + 1">
                 <iconify-icon icon="lucide:plus" width="20" height="20"></iconify-icon>
                 Añadir
@@ -180,19 +180,19 @@
 
         <!-- Espresso -->
         <article class="product">
-          <div class="product__media">
+          <div class="media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #3a1f0e, #120804); display:grid; place-items:center; color:#d4a574; font-family: var(--font-display); font-size: 32px;">☕</div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Cafés</div>
-            <a href="/public/products/espresso" class="product__name no-underline">
+          <div class="body">
+            <div class="make">Cafés</div>
+            <a href="/public/products/espresso" class="name no-underline">
               Espresso
             </a>
-            <div class="product__price-row">
-              <span class="product__price">€1,40</span>
+            <div class="pricing">
+              <span class="price">€1,40</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta"
+            <div class="actions">
+              <button class="cta"
                       data-on:click="$cartCount = $cartCount + 1">
                 <iconify-icon icon="lucide:plus" width="20" height="20"></iconify-icon>
                 Añadir
@@ -203,22 +203,22 @@
 
         <!-- Croissant -->
         <article class="product">
-          <div class="product__media">
+          <div class="media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #c89568, #6b4423); display:grid; place-items:center; color:#fff8e8; font-family: var(--font-display); font-size: 32px;">🥐</div>
-            <div class="product__badges">
-              <span class="product__badge product__badge--new">Nuevo</span>
+            <div class="badges">
+              <span class="badge new">Nuevo</span>
             </div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Bollería</div>
-            <a href="/public/products/croissant" class="product__name no-underline">
+          <div class="body">
+            <div class="make">Bollería</div>
+            <a href="/public/products/croissant" class="name no-underline">
               Croissant artesano
             </a>
-            <div class="product__price-row">
-              <span class="product__price">€2,50</span>
+            <div class="pricing">
+              <span class="price">€2,50</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta"
+            <div class="actions">
+              <button class="cta"
                       data-on:click="$cartCount = $cartCount + 1">
                 <iconify-icon icon="lucide:plus" width="20" height="20"></iconify-icon>
                 Añadir
@@ -229,20 +229,20 @@
 
         <!-- Sandwich Ibérico -->
         <article class="product">
-          <div class="product__media">
+          <div class="media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #a85a3a, #5a2818); display:grid; place-items:center; color:#fff; font-family: var(--font-display); font-size: 32px;">🥪</div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Bocadillos</div>
-            <a href="/public/products/sandwich-iberico" class="product__name no-underline">
+          <div class="body">
+            <div class="make">Bocadillos</div>
+            <a href="/public/products/sandwich-iberico" class="name no-underline">
               Sandwich Ibérico con tomate
             </a>
-            <div class="product__price-row">
-              <span class="product__price">€5,90</span>
-              <span class="product__price-orig">€6,50</span>
+            <div class="pricing">
+              <span class="price">€5,90</span>
+              <span class="price orig">€6,50</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta"
+            <div class="actions">
+              <button class="cta"
                       data-on:click="$cartCount = $cartCount + 1">
                 <iconify-icon icon="lucide:plus" width="20" height="20"></iconify-icon>
                 Añadir
@@ -253,19 +253,19 @@
 
         <!-- Tortilla -->
         <article class="product">
-          <div class="product__media">
+          <div class="media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #d8a23a, #6b4f1a); display:grid; place-items:center; color:#fff; font-family: var(--font-display); font-size: 32px;">🍳</div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Bocadillos</div>
-            <a href="/public/products/tortilla" class="product__name no-underline">
+          <div class="body">
+            <div class="make">Bocadillos</div>
+            <a href="/public/products/tortilla" class="name no-underline">
               Pincho de tortilla
             </a>
-            <div class="product__price-row">
-              <span class="product__price">€2,80</span>
+            <div class="pricing">
+              <span class="price">€2,80</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta"
+            <div class="actions">
+              <button class="cta"
                       data-on:click="$cartCount = $cartCount + 1">
                 <iconify-icon icon="lucide:plus" width="20" height="20"></iconify-icon>
                 Añadir
@@ -276,19 +276,19 @@
 
         <!-- Zumo naranja -->
         <article class="product">
-          <div class="product__media">
+          <div class="media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #ff8c2a, #c84a14); display:grid; place-items:center; color:#fff; font-family: var(--font-display); font-size: 32px;">🍊</div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Bebidas frías</div>
-            <a href="/public/products/zumo-naranja" class="product__name no-underline">
+          <div class="body">
+            <div class="make">Bebidas frías</div>
+            <a href="/public/products/zumo-naranja" class="name no-underline">
               Zumo de naranja natural
             </a>
-            <div class="product__price-row">
-              <span class="product__price">€3,20</span>
+            <div class="pricing">
+              <span class="price">€3,20</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta"
+            <div class="actions">
+              <button class="cta"
                       data-on:click="$cartCount = $cartCount + 1">
                 <iconify-icon icon="lucide:plus" width="20" height="20"></iconify-icon>
                 Añadir
@@ -299,23 +299,23 @@
 
         <!-- Tarta zanahoria -->
         <article class="product is-on-sale">
-          <div class="product__media">
+          <div class="media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #b87a9d, #5a2c4a); display:grid; place-items:center; color:#fff; font-family: var(--font-display); font-size: 32px;">🍰</div>
-            <div class="product__badges">
-              <span class="product__badge product__badge--sale">−15%</span>
+            <div class="badges">
+              <span class="badge sale">−15%</span>
             </div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Postres</div>
-            <a href="/public/products/tarta-zanahoria" class="product__name no-underline">
+          <div class="body">
+            <div class="make">Postres</div>
+            <a href="/public/products/tarta-zanahoria" class="name no-underline">
               Tarta de zanahoria casera
             </a>
-            <div class="product__price-row">
-              <span class="product__price">€3,80</span>
-              <span class="product__price-orig">€4,50</span>
+            <div class="pricing">
+              <span class="price">€3,80</span>
+              <span class="price orig">€4,50</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta"
+            <div class="actions">
+              <button class="cta"
                       data-on:click="$cartCount = $cartCount + 1">
                 <iconify-icon icon="lucide:plus" width="20" height="20"></iconify-icon>
                 Añadir
@@ -326,17 +326,17 @@
 
         <!-- Té matcha (out) -->
         <article class="product is-out">
-          <div class="product__media">
+          <div class="media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #4a7d4a, #1f3a1f); display:grid; place-items:center; color:#fff; font-family: var(--font-display); font-size: 32px;">🍵</div>
           </div>
-          <div class="product__body">
-            <div class="product__brand">Bebidas frías</div>
-            <span class="product__name">Matcha latte helado</span>
-            <div class="product__price-row">
-              <span class="product__price">€4,20</span>
+          <div class="body">
+            <div class="make">Bebidas frías</div>
+            <span class="name">Matcha latte helado</span>
+            <div class="pricing">
+              <span class="price">€4,20</span>
             </div>
-            <div class="product__actions">
-              <button class="product__cta">Sin stock</button>
+            <div class="actions">
+              <button class="cta">Sin stock</button>
             </div>
           </div>
         </article>
@@ -348,11 +348,11 @@
     </div>
 
     <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="label">Facturas</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="label">Perfil</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

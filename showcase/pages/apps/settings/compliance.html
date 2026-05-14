@@ -7,28 +7,28 @@
 <div class="app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">LR</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">LR</div>
+      <div class="text">
         <div class="title md">Cafetería La Rambla</div>
         <div class="meta">Cumplimiento</div>
       </div>
     </div>
     <div class="content scroll">
-      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="item-label">Inicio</span></a>
-      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="item-label">Ajustes</span></a>
-      <a class="item" aria-current="page" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="item-label">Cumplimiento</span></a>
+      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="text">Inicio</span></a>
+      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/></svg><span class="text">Ajustes</span></a>
+      <a class="item" aria-current="page" href="#"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon><span class="text">Cumplimiento</span></a>
     </div>
   </aside>
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
@@ -36,7 +36,7 @@
         <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
+    <nav class="tabs-scroll" aria-label="Sub-secciones de ajustes">
       <a class="tab" href="preferences.html">Preferencias</a>
       <a class="tab" href="hub.html">Hub</a>
       <a class="tab" href="hub-config.html">Config</a>
@@ -52,10 +52,10 @@
     </nav>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
+      <div class="head">
+        <div class="title">
           <h1>Cumplimiento legal</h1>
-          <div class="page-header-sub">Configura los requisitos fiscales y legales de tu negocio</div>
+          <div class="sub">Configura los requisitos fiscales y legales de tu negocio</div>
         </div>
       </div>
 
@@ -68,40 +68,40 @@
               España
             </span>
           </h3>
-          <span class="badge success"><span class="badge__dot"></span>Activo</span>
+          <span class="badge success"><span class="dot"></span>Activo</span>
         </header>
         <div class="body">
 
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Verifactu (AEAT)</span>
-              <span class="toggle-row__desc">Remisión automática de facturas a Hacienda según RD 1007/2023.</span>
+            <div class="text">
+              <span class="label">Verifactu (AEAT)</span>
+              <span class="sub">Remisión automática de facturas a Hacienda según RD 1007/2023.</span>
             </div>
             <label class="toggle">
               <input type="checkbox" checked/>
-              <span class="toggle__track"></span>
+              <span class="track"></span>
             </label>
           </div>
 
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">SII (IVA)</span>
-              <span class="toggle-row__desc">Suministro Inmediato de Información de IVA. Solo grandes empresas.</span>
+            <div class="text">
+              <span class="label">SII (IVA)</span>
+              <span class="sub">Suministro Inmediato de Información de IVA. Solo grandes empresas.</span>
             </div>
             <label class="toggle">
               <input type="checkbox"/>
-              <span class="toggle__track"></span>
+              <span class="track"></span>
             </label>
           </div>
 
           <div class="toggle-row" style="border-bottom:none;">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Modelo 347</span>
-              <span class="toggle-row__desc">Declaración anual de operaciones con terceros &gt; 3.005,06 €.</span>
+            <div class="text">
+              <span class="label">Modelo 347</span>
+              <span class="sub">Declaración anual de operaciones con terceros &gt; 3.005,06 €.</span>
             </div>
             <label class="toggle">
               <input type="checkbox" checked/>
-              <span class="toggle__track"></span>
+              <span class="track"></span>
             </label>
           </div>
 
@@ -109,11 +109,11 @@
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">CIF / NIF empresa</label>
+              <label class="label req">CIF / NIF empresa</label>
               <input class="input" value="B-65432109"/>
             </div>
             <div class="field">
-              <label class="field__label">Modelo de IVA</label>
+              <label class="label">Modelo de IVA</label>
               <select class="select">
                 <option selected>Régimen general</option>
                 <option>Recargo de equivalencia</option>
@@ -124,7 +124,7 @@
           </div>
 
           <div class="field mt-3">
-            <label class="field__label">Certificado digital (.p12 / FNMT)</label>
+            <label class="label">Certificado digital (.p12 / FNMT)</label>
             <div style="display:flex;align-items:center;gap:10px;background:var(--bg-3);border:1px solid var(--line);border-radius:10px;padding:10px 12px;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-leaf"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
               <div class="flex-1">
@@ -133,7 +133,7 @@
               </div>
               <button class="btn ghost sm">Reemplazar</button>
             </div>
-            <span class="field__hint">Necesario para firmar las remisiones a la AEAT.</span>
+            <span class="hint">Necesario para firmar las remisiones a la AEAT.</span>
           </div>
 
           <hr style="border:0;border-top:1px solid var(--line);margin:16px 0;"/>
@@ -142,7 +142,7 @@
             <div>
               <div class="eyebrow">Conexión AEAT</div>
               <div style="display:flex;align-items:center;gap:6px;margin-top:4px;">
-                <span class="status-dot success"></span>
+                <span class="status dot success"></span>
                 <span class="font-medium text-md">Operativa</span>
               </div>
             </div>
@@ -175,30 +175,30 @@
               Portugal
             </span>
           </h3>
-          <span class="badge"><span class="badge__dot"></span>No activo</span>
+          <span class="badge"><span class="dot"></span>No activo</span>
         </header>
         <div class="body">
           <p style="font-size:13px;color:var(--ink-3);margin:0 0 14px;">No tienes operaciones registradas en Portugal. Activa los requisitos si vendes a clientes portugueses.</p>
 
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">SAF-T (PT)</span>
-              <span class="toggle-row__desc">Fichero de auditoría estándar exigido por la Autoridade Tributária.</span>
+            <div class="text">
+              <span class="label">SAF-T (PT)</span>
+              <span class="sub">Fichero de auditoría estándar exigido por la Autoridade Tributária.</span>
             </div>
             <label class="toggle">
               <input type="checkbox"/>
-              <span class="toggle__track"></span>
+              <span class="track"></span>
             </label>
           </div>
 
           <div class="toggle-row" style="border-bottom:none;">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Comunicação de Faturas</span>
-              <span class="toggle-row__desc">Envío mensual a la AT (e-Fatura).</span>
+            <div class="text">
+              <span class="label">Comunicação de Faturas</span>
+              <span class="sub">Envío mensual a la AT (e-Fatura).</span>
             </div>
             <label class="toggle">
               <input type="checkbox"/>
-              <span class="toggle__track"></span>
+              <span class="track"></span>
             </label>
           </div>
         </div>
@@ -224,11 +224,11 @@
   </div>
 
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="tabbar-label">Empleados</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" aria-current="page" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Cumplim.</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="label">Empleados</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="label">Facturas</span></a>
+    <a class="item" aria-current="page" href="#"><span class="icon"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon></span><span class="label">Cumplim.</span></a>
   </nav>
 </div>
 {% endblock %}

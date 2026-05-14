@@ -270,7 +270,7 @@ $q !== '' && !(
 {% set _base = base_path | default("") %}
 {% for group_name, items in NAV %}
   <div class="label" data-show="{{ _group_match_expr(items) | trim }}">
-    <div class="sidebar-section">{{ group_name }}</div>
+    <div class="section">{{ group_name }}</div>
     {% for href, label, icon, badge in items %}
       {%- set is_active = current.endswith(href.lstrip('/')) and href != '/' or (href == '/' and current.endswith('index.html')) -%}
       {%- set full_href = (_base + "/") if href == "/" else (_base + href) -%}
@@ -280,13 +280,13 @@ $q !== '' && !(
          data-route-active="{{ 'true' if is_active else 'false' }}"
          data-show="{{ _match_expr(label) | trim }}">
         <iconify-icon icon="{{ icon }}" width="16" height="16" class="icon"></iconify-icon>
-        <span class="item-label">{{ label }}</span>
-        {% if badge -%}<span class="badge badge--{{ badge }}">{{ badge }}</span>{%- endif %}
+        <span class="text">{{ label }}</span>
+        {% if badge -%}<span class="badge--{{ badge }}">{{ badge }}</span>{%- endif %}
       </a>
     {% endfor %}
   </div>
 {% endfor %}
-<div class="sidebar-empty" data-show="{{ _empty_match_expr(NAV) | trim }}">
+<div class="empty" data-show="{{ _empty_match_expr(NAV) | trim }}">
   Sin resultados
 </div>
 {%- endmacro %}

@@ -13,7 +13,8 @@
   gap: var(--space-1-5);
 }
 
-.field__label {
+/* .field .label — universal label class scoped to field */
+.field .label {
   font-size: var(--text-sm);
   font-weight: 500;
   color: var(--ink-2);
@@ -21,24 +22,28 @@
   align-items: center;
   gap: var(--space-1-5);
 }
-.field__label--req::after {
+/* .req modifier on .label triggers the required asterisk */
+.field .label.req::after {
   content: "*";
   color: var(--field-error-color);
 }
 
-.field__required {
+/* .req-mark — inline asterisk/marker element (distinct from the .req modifier on .label) */
+.field .req-mark {
   color: var(--field-error-color);
   font-weight: 500;
   margin-left: var(--border-w-2);
 }
 
-.field__control {
+/* .control — wrapper that positions the input and the error icon */
+.field .control {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.field__error-icon {
+/* .err-icon — absolutely-positioned icon shown in error state */
+.field .err-icon {
   color: var(--field-error-color);
   position: absolute;
   right: var(--space-2-5);
@@ -50,27 +55,30 @@
   justify-content: center;
 }
 
-.field.error .field__control > .input,
-.field.error .field__control > .select,
-.field.error .field__control > .textarea {
+/* No double context: .field already in ancestor — omit repetition */
+.field.error .control > .input,
+.field.error .control > .select,
+.field.error .control > .textarea {
   padding-right: 36px; /* TOKEN-MISSING: no hay token para 36px */
   border-color: var(--field-error-color);
 }
 
 /* Cuando el control es un textarea (multi-línea), el icono de error
    debe anclarse arriba, no centrarse verticalmente. */
-.field.error .field__control:has(> .textarea) .field__error-icon {
+.field.error .control:has(> .textarea) .err-icon {
   top: var(--space-2-5);
   transform: none;
 }
 
-.field__hint {
+/* .hint — universal hint/helper text below the control */
+.field .hint {
   font-size: var(--text-xs);
   color: var(--ink-3);
   line-height: var(--leading-base);
 }
 
-.field__error {
+/* .err — inline error message below the control */
+.field .err {
   font-size: var(--text-xs);
   color: var(--field-error-color);
   display: flex;
@@ -195,7 +203,8 @@
   border-radius: var(--radius-md);
 }
 
-.input-group__icon {
+/* .input-group .icon — universal icon class scoped to input-group */
+.input-group .icon {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -203,13 +212,14 @@
   width: var(--icon-md); height: var(--icon-md);
   pointer-events: none;
 }
-.input-group__icon--left { left: 11px; }  /* geometric offset: (height - icon) / 2 */
-.input-group__icon--right { right: 11px; }
+.input-group .icon.left  { left: 11px; }  /* geometric offset: (height - icon) / 2 */
+.input-group .icon.right { right: 11px; }
 
 .input-group.with-left  .input { padding-left: 34px; }
 .input-group.with-right .input { padding-right: 34px; }
 
-.input-group__addon {
+/* .addon — text/button appendage attached to the input edge */
+.input-group .addon {
   display: inline-flex;
   align-items: center;
   padding: var(--space-0) var(--space-3);
@@ -219,16 +229,16 @@
   font-size: var(--text-sm);
   white-space: nowrap;
 }
-.input-group__addon:first-child {
+.input-group .addon:first-child {
   border-right: none;
   border-radius: var(--radius-md) 0 0 var(--radius-md);
 }
-.input-group__addon:last-child {
+.input-group .addon:last-child {
   border-left: none;
   border-radius: 0 var(--radius-md) var(--radius-md) 0;
 }
-.input-group__addon + .input { border-top-left-radius: 0; border-bottom-left-radius: 0; }
-.input-group .input:has(+ .input-group__addon) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+.input-group .addon + .input { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.input-group .input:has(+ .addon) { border-top-right-radius: 0; border-bottom-right-radius: 0; }
 
 /* Search — input con lupa + botón clear */
 .search {
@@ -239,7 +249,8 @@
   padding-left: 34px;
   padding-right: 34px;
 }
-.search__icon {
+/* .search .icon — universal icon class (magnifier) scoped to search */
+.search .icon {
   position: absolute;
   left: 11px; /* geometric: (input-height - icon) / 2 offset */
   top: 50%;
@@ -248,7 +259,8 @@
   color: var(--ink-3);
   pointer-events: none;
 }
-.search__clear {
+/* .search .close — universal close class (clear button) scoped to search */
+.search .close {
   position: absolute;
   right: 8px;
   top: 50%;
@@ -265,11 +277,11 @@
   font-size: var(--text-2xs); /* was 11px literal; closest token is 10.5px */
   line-height: var(--leading-flat);
 }
-.search:has(input:not(:placeholder-shown)) .search__clear { display: grid; }
-.search__clear:hover { background: var(--line-3); color: var(--ink); }
+.search:has(input:not(:placeholder-shown)) .close { display: grid; }
+.search .close:hover { background: var(--line-3); color: var(--ink); }
 
-/* Kbd shortcut hint dentro de search */
-.search__kbd {
+/* .search .shortcut — universal shortcut class (kbd hint) scoped to search */
+.search .shortcut {
   position: absolute;
   right: 8px;
   top: 50%;
@@ -331,7 +343,8 @@
   position: absolute;
 }
 
-.toggle__track {
+/* .toggle .track — the pill-shaped track that slides the thumb */
+.toggle .track {
   position: absolute;
   inset: 0;
   background: var(--toggle-track-bg);
@@ -341,7 +354,7 @@
   cursor: pointer;
 }
 
-.toggle__track::before {
+.toggle .track::before {
   content: "";
   position: absolute;
   top: var(--_pad);
@@ -354,19 +367,19 @@
   box-shadow: var(--shadow-sm);
 }
 
-.toggle input:checked + .toggle__track {
+.toggle input:checked + .track {
   background: var(--toggle-accent);
   border-color: var(--toggle-accent);
 }
-.toggle input:checked + .toggle__track::before {
+.toggle input:checked + .track::before {
   transform: translateX(calc(var(--_w) - var(--_h)));
   background: var(--toggle-accent-fg);
 }
 
-.toggle input:focus-visible + .toggle__track {
+.toggle input:focus-visible + .track {
   box-shadow: 0 0 0 3px var(--brand-soft);
 }
-.toggle input:disabled + .toggle__track {
+.toggle input:disabled + .track {
   opacity: 0.55;
   cursor: not-allowed;
 }
@@ -389,9 +402,12 @@
   border-bottom: var(--border-w) solid var(--line);
 }
 .toggle-row:last-child { border-bottom: none; }
-.toggle-row__text { display: flex; flex-direction: column; gap: var(--border-w-2); }
-.toggle-row__label { font-size: var(--text-md); color: var(--ink); font-weight: 500; }
-.toggle-row__desc { font-size: var(--text-xs); color: var(--ink-3); line-height: var(--leading-base); }
+/* .toggle-row .text — flex column wrapping label + sub */
+.toggle-row .text { display: flex; flex-direction: column; gap: var(--border-w-2); }
+/* .toggle-row .label — universal label class scoped to toggle-row */
+.toggle-row .label { font-size: var(--text-md); color: var(--ink); font-weight: 500; }
+/* .toggle-row .sub — universal sub class (description line) scoped to toggle-row */
+.toggle-row .sub { font-size: var(--text-xs); color: var(--ink-3); line-height: var(--leading-base); }
 
 /* ============================================================
    Checkbox
@@ -416,7 +432,8 @@
   user-select: none;
 }
 
-.check__box {
+/* .check .box — the visible square indicator of the checkbox */
+.check .box {
   position: relative;
   width: var(--check-size);
   height: var(--check-size);
@@ -433,12 +450,12 @@
   width: 0; height: 0;
 }
 
-.check input:checked ~ .check__box {
+.check input:checked ~ .box {
   background: var(--check-accent);
   border-color: var(--check-accent);
 }
 
-.check input:checked ~ .check__box::after {
+.check input:checked ~ .box::after {
   content: "";
   position: absolute;
   top: 1px; left: 4px;
@@ -448,11 +465,11 @@
   transform: rotate(45deg);
 }
 
-.check input:indeterminate ~ .check__box {
+.check input:indeterminate ~ .box {
   background: var(--check-accent);
   border-color: var(--check-accent);
 }
-.check input:indeterminate ~ .check__box::after {
+.check input:indeterminate ~ .box::after {
   content: "";
   position: absolute;
   top: 6px; left: 3px;
@@ -461,11 +478,11 @@
   border-radius: var(--border-w); /* 1px */
 }
 
-.check input:focus-visible ~ .check__box {
+.check input:focus-visible ~ .box {
   box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
-.check input:disabled ~ .check__box {
+.check input:disabled ~ .box {
   opacity: 0.55;
   cursor: not-allowed;
   background: var(--bg-2);
@@ -499,7 +516,8 @@
   user-select: none;
 }
 
-.radio__dot {
+/* .radio .dot — the visible circular indicator of the radio button */
+.radio .dot {
   position: relative;
   width: var(--radio-size);
   height: var(--radio-size);
@@ -516,17 +534,17 @@
   width: 0; height: 0;
 }
 
-.radio input:checked ~ .radio__dot {
+.radio input:checked ~ .dot {
   border-color: var(--radio-accent);
   border-width: var(--border-w-4);
   background: var(--bg);
 }
 
-.radio input:focus-visible ~ .radio__dot {
+.radio input:focus-visible ~ .dot {
   box-shadow: 0 0 0 3px var(--brand-soft);
 }
 
-.radio input:disabled ~ .radio__dot {
+.radio input:disabled ~ .dot {
   opacity: 0.55;
   cursor: not-allowed;
   background: var(--bg-2);
@@ -534,7 +552,7 @@
   filter: grayscale(0.4);
 }
 /* Preserve checked-ring on disabled+checked so it doesn't look "Sin marcar" */
-.radio input:disabled:checked ~ .radio__dot {
+.radio input:disabled:checked ~ .dot {
   border-color: color-mix(in oklch, var(--brand) 55%, var(--ink-4));
   border-width: var(--border-w-4);
   background: var(--bg);
@@ -572,8 +590,10 @@ input[type="radio"]:disabled {
 .radio-card input {
   position: absolute; opacity: 0; pointer-events: none;
 }
-.radio-card__title { font-weight: 500; font-size: var(--text-md); color: var(--ink); }
-.radio-card__desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: var(--border-w-2); line-height: var(--leading-base); }
+/* .radio-card .title — universal title class scoped to radio-card */
+.radio-card .title { font-weight: 500; font-size: var(--text-md); color: var(--ink); }
+/* .radio-card .sub — universal sub class (description) scoped to radio-card */
+.radio-card .sub { font-size: var(--text-xs); color: var(--ink-3); margin-top: var(--border-w-2); line-height: var(--leading-base); }
 
 /* ============================================================
    Range slider
@@ -641,7 +661,8 @@ input[type="radio"]:disabled {
   border-radius: var(--radius-xl);
   padding: 18px; /* TOKEN-MISSING: no hay token para 18px (entre space-4:16px y space-5:20px) */
 }
-.form-section__title {
+/* .form-section .title — universal title class scoped to form-section */
+.form-section .title {
   font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 600;
@@ -649,7 +670,8 @@ input[type="radio"]:disabled {
   margin: var(--space-0) var(--space-0) var(--space-1);
   color: var(--ink);
 }
-.form-section__desc {
+/* .form-section .sub — universal sub class (description) scoped to form-section */
+.form-section .sub {
   font-size: var(--text-xs);
   color: var(--ink-3);
   margin: var(--space-0) var(--space-0) var(--space-3-5);

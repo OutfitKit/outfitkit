@@ -38,8 +38,8 @@
   outline-offset: 2px;
 }
 
-/* CSS Hamburger (3 lines → X) */
-.menu-btn-lines {
+/* CSS Hamburger (3 lines → X) — use <div class="lines"> as direct child */
+.menu-btn > .lines {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,7 +49,8 @@
   gap: var(--space-1);
   pointer-events: none;
 }
-.menu-btn-line {
+/* Use <span class="line"> for each individual bar inside .lines */
+.menu-btn .line {
   width: 100%;
   height: var(--border-w-2);
   background: currentColor;
@@ -60,20 +61,20 @@
 }
 
 /* Open state: animate to X */
-.menu-btn[aria-expanded="true"] .menu-btn-line:nth-child(1),
-.menu-btn[aria-expanded=""] .menu-btn-line:nth-child(1),
-.menu-btn[data-state="open"] .menu-btn-line:nth-child(1) {
+.menu-btn[aria-expanded="true"] .line:nth-child(1),
+.menu-btn[aria-expanded=""] .line:nth-child(1),
+.menu-btn[data-state="open"] .line:nth-child(1) {
   transform: translateY(6px) rotate(45deg);
 }
-.menu-btn[aria-expanded="true"] .menu-btn-line:nth-child(2),
-.menu-btn[aria-expanded=""] .menu-btn-line:nth-child(2),
-.menu-btn[data-state="open"] .menu-btn-line:nth-child(2) {
+.menu-btn[aria-expanded="true"] .line:nth-child(2),
+.menu-btn[aria-expanded=""] .line:nth-child(2),
+.menu-btn[data-state="open"] .line:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
-.menu-btn[aria-expanded="true"] .menu-btn-line:nth-child(3),
-.menu-btn[aria-expanded=""] .menu-btn-line:nth-child(3),
-.menu-btn[data-state="open"] .menu-btn-line:nth-child(3) {
+.menu-btn[aria-expanded="true"] .line:nth-child(3),
+.menu-btn[aria-expanded=""] .line:nth-child(3),
+.menu-btn[data-state="open"] .line:nth-child(3) {
   transform: translateY(-6px) rotate(-45deg);
 }
 
@@ -89,7 +90,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .menu-btn,
-  .menu-btn-line {
+  .menu-btn .line {
     transition: none;
   }
 }

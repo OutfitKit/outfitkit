@@ -6,201 +6,201 @@
 
 {% block content %}
 <h1>Calendar</h1>
-<p class="showcase__lead">Contenedor de calendario con vistas mensual y semanal. Compón cabecera (<code>.ok-cal__head</code>), barra de días (<code>.ok-cal__weekdays</code>), grid (<code>.ok-cal__grid</code>) y eventos (<code>.ok-cal__event</code>).</p>
+<p class="lead">Contenedor de calendario con vistas mensual y semanal. Compón cabecera (<code>.head</code>), barra de días (<code>.weekdays</code>), grid (<code>.grid</code>) y eventos (<code>.event</code>).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/calendar.jinja" import calendar %}
 {% call calendar() %}
-<header class="cal__head">
+<header class="head">
   <div class="title lg">Mayo 2026</div>
-  <div class="cal__nav">
-    <button class="cal__nav-btn">‹</button>
-    <button class="cal__today">Hoy</button>
-    <button class="cal__nav-btn">›</button>
+  <div class="nav">
+    <button class="btn">‹</button>
+    <button class="today">Hoy</button>
+    <button class="btn">›</button>
   </div>
 </header>
-<div class="cal__legend">
-  <span class="cal__legend-item"><span class="cal__legend-dot--today"></span>Hoy</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot--selected"></span>Seleccionado</span>
-  <span class="cal__legend-sep"></span>
-  <span class="cal__legend-item"><span class="cal__legend-dot danger"></span>Vencimiento</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot warning"></span>Recordatorio</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot info"></span>Informativo</span>
+<div class="legend">
+  <span class="item"><span class="dot today"></span>Hoy</span>
+  <span class="item"><span class="dot selected"></span>Seleccionado</span>
+  <span class="sep"></span>
+  <span class="item"><span class="dot danger"></span>Vencimiento</span>
+  <span class="item"><span class="dot warning"></span>Recordatorio</span>
+  <span class="item"><span class="dot info"></span>Informativo</span>
 </div>
-<div class="cal__weekdays">
-  <div class="cal__weekday">Lun</div>
-  <div class="cal__weekday">Mar</div>
-  <div class="cal__weekday">Mié</div>
-  <div class="cal__weekday">Jue</div>
-  <div class="cal__weekday">Vie</div>
-  <div class="cal__weekday">Sáb</div>
-  <div class="cal__weekday">Dom</div>
+<div class="weekdays">
+  <div class="weekday">Lun</div>
+  <div class="weekday">Mar</div>
+  <div class="weekday">Mié</div>
+  <div class="weekday">Jue</div>
+  <div class="weekday">Vie</div>
+  <div class="weekday">Sáb</div>
+  <div class="weekday">Dom</div>
 </div>
-<div class="cal__grid">
+<div class="grid">
   {# Row 1: Apr 27-30 (out) + May 1-3 #}
-  <div class="cal__cell cal__cell--out"><span class="cal__day">27</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">28</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">29</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">30</span></div>
-  <div class="cal__cell"><span class="cal__day">1</span>
-    <div class="cal__events"><div class="cal__event cal__event--info"><span class="cal__event-time">09:00</span> Festivo</div></div>
+  <div class="cell out"><span class="day">27</span></div>
+  <div class="cell out"><span class="day">28</span></div>
+  <div class="cell out"><span class="day">29</span></div>
+  <div class="cell out"><span class="day">30</span></div>
+  <div class="cell"><span class="day">1</span>
+    <div class="events"><div class="event info"><span class="time">09:00</span> Festivo</div></div>
   </div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">2</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">3</span></div>
+  <div class="cell weekend"><span class="day">2</span></div>
+  <div class="cell weekend"><span class="day">3</span></div>
   {# Row 2: May 4-10 #}
-  <div class="cal__cell"><span class="cal__day">4</span></div>
-  <div class="cal__cell"><span class="cal__day">5</span>
-    <div class="cal__events"><div class="cal__event cal__event--brand"><span class="cal__event-time">10:00</span> Demo Café Norte</div></div>
+  <div class="cell"><span class="day">4</span></div>
+  <div class="cell"><span class="day">5</span>
+    <div class="events"><div class="event brand"><span class="time">10:00</span> Demo Café Norte</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">6</span>
-    <div class="cal__events">
-      <div class="cal__event cal__event--leaf"><span class="cal__event-time">12:00</span> Inv. mensual</div>
-      <div class="cal__event cal__event--info">Cierre nóminas</div>
+  <div class="cell"><span class="day">6</span>
+    <div class="events">
+      <div class="event leaf"><span class="time">12:00</span> Inv. mensual</div>
+      <div class="event info">Cierre nóminas</div>
     </div>
   </div>
-  <div class="cal__cell cal__cell--today"><span class="cal__day">7</span>
-    <div class="cal__events">
-      <div class="cal__event cal__event--solid"><span class="cal__event-time">15:30</span> Reunión</div>
-      <div class="cal__event cal__event--warn"><span class="cal__event-time">17:00</span> Llamada</div>
-      <div class="cal__more">+ 3 más</div>
+  <div class="cell today"><span class="day">7</span>
+    <div class="events">
+      <div class="event solid"><span class="time">15:30</span> Reunión</div>
+      <div class="event warn"><span class="time">17:00</span> Llamada</div>
+      <div class="more">+ 3 más</div>
     </div>
   </div>
-  <div class="cal__cell"><span class="cal__day">8</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">9</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">10</span></div>
+  <div class="cell"><span class="day">8</span></div>
+  <div class="cell weekend"><span class="day">9</span></div>
+  <div class="cell weekend"><span class="day">10</span></div>
   {# Row 3: May 11-17 #}
-  <div class="cal__cell"><span class="cal__day">11</span></div>
-  <div class="cal__cell"><span class="cal__day">12</span>
-    <div class="cal__events"><div class="cal__event cal__event--danger">Vence factura</div></div>
+  <div class="cell"><span class="day">11</span></div>
+  <div class="cell"><span class="day">12</span>
+    <div class="events"><div class="event danger">Vence factura</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">13</span></div>
-  <div class="cal__cell cal__cell--selected"><span class="cal__day">14</span>
-    <div class="cal__events"><div class="cal__event cal__event--brand">All-hands</div></div>
+  <div class="cell"><span class="day">13</span></div>
+  <div class="cell selected"><span class="day">14</span>
+    <div class="events"><div class="event brand">All-hands</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">15</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">16</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">17</span></div>
+  <div class="cell"><span class="day">15</span></div>
+  <div class="cell weekend"><span class="day">16</span></div>
+  <div class="cell weekend"><span class="day">17</span></div>
   {# Row 4: May 18-24 #}
-  <div class="cal__cell"><span class="cal__day">18</span></div>
-  <div class="cal__cell"><span class="cal__day">19</span>
-    <div class="cal__events"><div class="cal__event cal__event--warn"><span class="cal__event-time">11:00</span> Recordatorio IVA</div></div>
+  <div class="cell"><span class="day">18</span></div>
+  <div class="cell"><span class="day">19</span>
+    <div class="events"><div class="event warn"><span class="time">11:00</span> Recordatorio IVA</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">20</span></div>
-  <div class="cal__cell"><span class="cal__day">21</span></div>
-  <div class="cal__cell"><span class="cal__day">22</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">23</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">24</span></div>
+  <div class="cell"><span class="day">20</span></div>
+  <div class="cell"><span class="day">21</span></div>
+  <div class="cell"><span class="day">22</span></div>
+  <div class="cell weekend"><span class="day">23</span></div>
+  <div class="cell weekend"><span class="day">24</span></div>
   {# Row 5: May 25-31 #}
-  <div class="cal__cell"><span class="cal__day">25</span></div>
-  <div class="cal__cell"><span class="cal__day">26</span></div>
-  <div class="cal__cell"><span class="cal__day">27</span></div>
-  <div class="cal__cell"><span class="cal__day">28</span>
-    <div class="cal__events"><div class="cal__event cal__event--danger">Vence factura Ibérica</div></div>
+  <div class="cell"><span class="day">25</span></div>
+  <div class="cell"><span class="day">26</span></div>
+  <div class="cell"><span class="day">27</span></div>
+  <div class="cell"><span class="day">28</span>
+    <div class="events"><div class="event danger">Vence factura Ibérica</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">29</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">30</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">31</span></div>
+  <div class="cell"><span class="day">29</span></div>
+  <div class="cell weekend"><span class="day">30</span></div>
+  <div class="cell weekend"><span class="day">31</span></div>
   {# Row 6: Jun 1-7 (out) #}
-  <div class="cal__cell cal__cell--out"><span class="cal__day">1</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">2</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">3</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">4</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">5</span></div>
-  <div class="cal__cell cal__cell--out cal__cell--weekend"><span class="cal__day">6</span></div>
-  <div class="cal__cell cal__cell--out cal__cell--weekend"><span class="cal__day">7</span></div>
+  <div class="cell out"><span class="day">1</span></div>
+  <div class="cell out"><span class="day">2</span></div>
+  <div class="cell out"><span class="day">3</span></div>
+  <div class="cell out"><span class="day">4</span></div>
+  <div class="cell out"><span class="day">5</span></div>
+  <div class="cell out cell weekend"><span class="day">6</span></div>
+  <div class="cell out cell weekend"><span class="day">7</span></div>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Calendar>
-<header class="cal__head">
+<header class="head">
   <div class="title lg">Mayo 2026</div>
-  <div class="cal__nav">
-    <button class="cal__nav-btn">‹</button>
-    <button class="cal__today">Hoy</button>
-    <button class="cal__nav-btn">›</button>
+  <div class="nav">
+    <button class="btn">‹</button>
+    <button class="today">Hoy</button>
+    <button class="btn">›</button>
   </div>
 </header>
-<div class="cal__legend">
-  <span class="cal__legend-item"><span class="cal__legend-dot--today"></span>Hoy</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot--selected"></span>Seleccionado</span>
-  <span class="cal__legend-sep"></span>
-  <span class="cal__legend-item"><span class="cal__legend-dot danger"></span>Vencimiento</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot warning"></span>Recordatorio</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot info"></span>Informativo</span>
+<div class="legend">
+  <span class="item"><span class="dot today"></span>Hoy</span>
+  <span class="item"><span class="dot selected"></span>Seleccionado</span>
+  <span class="sep"></span>
+  <span class="item"><span class="dot danger"></span>Vencimiento</span>
+  <span class="item"><span class="dot warning"></span>Recordatorio</span>
+  <span class="item"><span class="dot info"></span>Informativo</span>
 </div>
-<div class="cal__weekdays">
-  <div class="cal__weekday">Lun</div>
-  <div class="cal__weekday">Mar</div>
-  <div class="cal__weekday">Mié</div>
-  <div class="cal__weekday">Jue</div>
-  <div class="cal__weekday">Vie</div>
-  <div class="cal__weekday">Sáb</div>
-  <div class="cal__weekday">Dom</div>
+<div class="weekdays">
+  <div class="weekday">Lun</div>
+  <div class="weekday">Mar</div>
+  <div class="weekday">Mié</div>
+  <div class="weekday">Jue</div>
+  <div class="weekday">Vie</div>
+  <div class="weekday">Sáb</div>
+  <div class="weekday">Dom</div>
 </div>
-<div class="cal__grid">
-  <div class="cal__cell cal__cell--out"><span class="cal__day">27</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">28</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">29</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">30</span></div>
-  <div class="cal__cell"><span class="cal__day">1</span>
-    <div class="cal__events"><div class="cal__event cal__event--info"><span class="cal__event-time">09:00</span> Festivo</div></div>
+<div class="grid">
+  <div class="cell out"><span class="day">27</span></div>
+  <div class="cell out"><span class="day">28</span></div>
+  <div class="cell out"><span class="day">29</span></div>
+  <div class="cell out"><span class="day">30</span></div>
+  <div class="cell"><span class="day">1</span>
+    <div class="events"><div class="event info"><span class="time">09:00</span> Festivo</div></div>
   </div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">2</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">3</span></div>
-  <div class="cal__cell"><span class="cal__day">4</span></div>
-  <div class="cal__cell"><span class="cal__day">5</span>
-    <div class="cal__events"><div class="cal__event cal__event--brand"><span class="cal__event-time">10:00</span> Demo Café Norte</div></div>
+  <div class="cell weekend"><span class="day">2</span></div>
+  <div class="cell weekend"><span class="day">3</span></div>
+  <div class="cell"><span class="day">4</span></div>
+  <div class="cell"><span class="day">5</span>
+    <div class="events"><div class="event brand"><span class="time">10:00</span> Demo Café Norte</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">6</span>
-    <div class="cal__events">
-      <div class="cal__event cal__event--leaf"><span class="cal__event-time">12:00</span> Inv. mensual</div>
-      <div class="cal__event cal__event--info">Cierre nóminas</div>
+  <div class="cell"><span class="day">6</span>
+    <div class="events">
+      <div class="event leaf"><span class="time">12:00</span> Inv. mensual</div>
+      <div class="event info">Cierre nóminas</div>
     </div>
   </div>
-  <div class="cal__cell cal__cell--today"><span class="cal__day">7</span>
-    <div class="cal__events">
-      <div class="cal__event cal__event--solid"><span class="cal__event-time">15:30</span> Reunión</div>
-      <div class="cal__event cal__event--warn"><span class="cal__event-time">17:00</span> Llamada</div>
-      <div class="cal__more">+ 3 más</div>
+  <div class="cell today"><span class="day">7</span>
+    <div class="events">
+      <div class="event solid"><span class="time">15:30</span> Reunión</div>
+      <div class="event warn"><span class="time">17:00</span> Llamada</div>
+      <div class="more">+ 3 más</div>
     </div>
   </div>
-  <div class="cal__cell"><span class="cal__day">8</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">9</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">10</span></div>
-  <div class="cal__cell"><span class="cal__day">11</span></div>
-  <div class="cal__cell"><span class="cal__day">12</span>
-    <div class="cal__events"><div class="cal__event cal__event--danger">Vence factura</div></div>
+  <div class="cell"><span class="day">8</span></div>
+  <div class="cell weekend"><span class="day">9</span></div>
+  <div class="cell weekend"><span class="day">10</span></div>
+  <div class="cell"><span class="day">11</span></div>
+  <div class="cell"><span class="day">12</span>
+    <div class="events"><div class="event danger">Vence factura</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">13</span></div>
-  <div class="cal__cell cal__cell--selected"><span class="cal__day">14</span>
-    <div class="cal__events"><div class="cal__event cal__event--brand">All-hands</div></div>
+  <div class="cell"><span class="day">13</span></div>
+  <div class="cell selected"><span class="day">14</span>
+    <div class="events"><div class="event brand">All-hands</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">15</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">16</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">17</span></div>
-  <div class="cal__cell"><span class="cal__day">18</span></div>
-  <div class="cal__cell"><span class="cal__day">19</span>
-    <div class="cal__events"><div class="cal__event cal__event--warn"><span class="cal__event-time">11:00</span> Recordatorio IVA</div></div>
+  <div class="cell"><span class="day">15</span></div>
+  <div class="cell weekend"><span class="day">16</span></div>
+  <div class="cell weekend"><span class="day">17</span></div>
+  <div class="cell"><span class="day">18</span></div>
+  <div class="cell"><span class="day">19</span>
+    <div class="events"><div class="event warn"><span class="time">11:00</span> Recordatorio IVA</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">20</span></div>
-  <div class="cal__cell"><span class="cal__day">21</span></div>
-  <div class="cal__cell"><span class="cal__day">22</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">23</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">24</span></div>
-  <div class="cal__cell"><span class="cal__day">25</span></div>
-  <div class="cal__cell"><span class="cal__day">26</span></div>
-  <div class="cal__cell"><span class="cal__day">27</span></div>
-  <div class="cal__cell"><span class="cal__day">28</span>
-    <div class="cal__events"><div class="cal__event cal__event--danger">Vence factura Ibérica</div></div>
+  <div class="cell"><span class="day">20</span></div>
+  <div class="cell"><span class="day">21</span></div>
+  <div class="cell"><span class="day">22</span></div>
+  <div class="cell weekend"><span class="day">23</span></div>
+  <div class="cell weekend"><span class="day">24</span></div>
+  <div class="cell"><span class="day">25</span></div>
+  <div class="cell"><span class="day">26</span></div>
+  <div class="cell"><span class="day">27</span></div>
+  <div class="cell"><span class="day">28</span>
+    <div class="events"><div class="event danger">Vence factura Ibérica</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">29</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">30</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">31</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">1</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">2</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">3</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">4</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">5</span></div>
-  <div class="cal__cell cal__cell--out cal__cell--weekend"><span class="cal__day">6</span></div>
-  <div class="cal__cell cal__cell--out cal__cell--weekend"><span class="cal__day">7</span></div>
+  <div class="cell"><span class="day">29</span></div>
+  <div class="cell weekend"><span class="day">30</span></div>
+  <div class="cell weekend"><span class="day">31</span></div>
+  <div class="cell out"><span class="day">1</span></div>
+  <div class="cell out"><span class="day">2</span></div>
+  <div class="cell out"><span class="day">3</span></div>
+  <div class="cell out"><span class="day">4</span></div>
+  <div class="cell out"><span class="day">5</span></div>
+  <div class="cell out cell weekend"><span class="day">6</span></div>
+  <div class="cell out cell weekend"><span class="day">7</span></div>
 </div>
 </Calendar>{% endraw %}{% endset %}
 
@@ -208,171 +208,171 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call calendar() %}
-<header class="cal__head">
+<header class="head">
   <div class="title lg">Mayo 2026</div>
-  <div class="cal__nav">
-    <button class="cal__nav-btn">‹</button>
-    <button class="cal__today">Hoy</button>
-    <button class="cal__nav-btn">›</button>
+  <div class="nav">
+    <button class="btn">‹</button>
+    <button class="today">Hoy</button>
+    <button class="btn">›</button>
   </div>
 </header>
-<div class="cal__legend">
-  <span class="cal__legend-item"><span class="cal__legend-dot--today"></span>Hoy</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot--selected"></span>Seleccionado</span>
-  <span class="cal__legend-sep"></span>
-  <span class="cal__legend-item"><span class="cal__legend-dot danger"></span>Vencimiento</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot warning"></span>Recordatorio</span>
-  <span class="cal__legend-item"><span class="cal__legend-dot info"></span>Informativo</span>
+<div class="legend">
+  <span class="item"><span class="dot today"></span>Hoy</span>
+  <span class="item"><span class="dot selected"></span>Seleccionado</span>
+  <span class="sep"></span>
+  <span class="item"><span class="dot danger"></span>Vencimiento</span>
+  <span class="item"><span class="dot warning"></span>Recordatorio</span>
+  <span class="item"><span class="dot info"></span>Informativo</span>
 </div>
-<div class="cal__weekdays">
-  <div class="cal__weekday">Lun</div>
-  <div class="cal__weekday">Mar</div>
-  <div class="cal__weekday">Mié</div>
-  <div class="cal__weekday">Jue</div>
-  <div class="cal__weekday">Vie</div>
-  <div class="cal__weekday">Sáb</div>
-  <div class="cal__weekday">Dom</div>
+<div class="weekdays">
+  <div class="weekday">Lun</div>
+  <div class="weekday">Mar</div>
+  <div class="weekday">Mié</div>
+  <div class="weekday">Jue</div>
+  <div class="weekday">Vie</div>
+  <div class="weekday">Sáb</div>
+  <div class="weekday">Dom</div>
 </div>
-<div class="cal__grid">
+<div class="grid">
   {# Row 1: Apr 27-30 (out) + May 1-3 #}
-  <div class="cal__cell cal__cell--out"><span class="cal__day">27</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">28</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">29</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">30</span></div>
-  <div class="cal__cell"><span class="cal__day">1</span>
-    <div class="cal__events"><div class="cal__event cal__event--info"><span class="cal__event-time">09:00</span> Festivo</div></div>
+  <div class="cell out"><span class="day">27</span></div>
+  <div class="cell out"><span class="day">28</span></div>
+  <div class="cell out"><span class="day">29</span></div>
+  <div class="cell out"><span class="day">30</span></div>
+  <div class="cell"><span class="day">1</span>
+    <div class="events"><div class="event info"><span class="time">09:00</span> Festivo</div></div>
   </div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">2</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">3</span></div>
+  <div class="cell weekend"><span class="day">2</span></div>
+  <div class="cell weekend"><span class="day">3</span></div>
   {# Row 2: May 4-10 #}
-  <div class="cal__cell"><span class="cal__day">4</span></div>
-  <div class="cal__cell"><span class="cal__day">5</span>
-    <div class="cal__events"><div class="cal__event cal__event--brand"><span class="cal__event-time">10:00</span> Demo Café Norte</div></div>
+  <div class="cell"><span class="day">4</span></div>
+  <div class="cell"><span class="day">5</span>
+    <div class="events"><div class="event brand"><span class="time">10:00</span> Demo Café Norte</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">6</span>
-    <div class="cal__events">
-      <div class="cal__event cal__event--leaf"><span class="cal__event-time">12:00</span> Inv. mensual</div>
-      <div class="cal__event cal__event--info">Cierre nóminas</div>
+  <div class="cell"><span class="day">6</span>
+    <div class="events">
+      <div class="event leaf"><span class="time">12:00</span> Inv. mensual</div>
+      <div class="event info">Cierre nóminas</div>
     </div>
   </div>
-  <div class="cal__cell cal__cell--today"><span class="cal__day">7</span>
-    <div class="cal__events">
-      <div class="cal__event cal__event--solid"><span class="cal__event-time">15:30</span> Reunión</div>
-      <div class="cal__event cal__event--warn"><span class="cal__event-time">17:00</span> Llamada</div>
-      <div class="cal__more">+ 3 más</div>
+  <div class="cell today"><span class="day">7</span>
+    <div class="events">
+      <div class="event solid"><span class="time">15:30</span> Reunión</div>
+      <div class="event warn"><span class="time">17:00</span> Llamada</div>
+      <div class="more">+ 3 más</div>
     </div>
   </div>
-  <div class="cal__cell"><span class="cal__day">8</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">9</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">10</span></div>
+  <div class="cell"><span class="day">8</span></div>
+  <div class="cell weekend"><span class="day">9</span></div>
+  <div class="cell weekend"><span class="day">10</span></div>
   {# Row 3: May 11-17 #}
-  <div class="cal__cell"><span class="cal__day">11</span></div>
-  <div class="cal__cell"><span class="cal__day">12</span>
-    <div class="cal__events"><div class="cal__event cal__event--danger">Vence factura</div></div>
+  <div class="cell"><span class="day">11</span></div>
+  <div class="cell"><span class="day">12</span>
+    <div class="events"><div class="event danger">Vence factura</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">13</span></div>
-  <div class="cal__cell cal__cell--selected"><span class="cal__day">14</span>
-    <div class="cal__events"><div class="cal__event cal__event--brand">All-hands</div></div>
+  <div class="cell"><span class="day">13</span></div>
+  <div class="cell selected"><span class="day">14</span>
+    <div class="events"><div class="event brand">All-hands</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">15</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">16</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">17</span></div>
+  <div class="cell"><span class="day">15</span></div>
+  <div class="cell weekend"><span class="day">16</span></div>
+  <div class="cell weekend"><span class="day">17</span></div>
   {# Row 4: May 18-24 #}
-  <div class="cal__cell"><span class="cal__day">18</span></div>
-  <div class="cal__cell"><span class="cal__day">19</span>
-    <div class="cal__events"><div class="cal__event cal__event--warn"><span class="cal__event-time">11:00</span> Recordatorio IVA</div></div>
+  <div class="cell"><span class="day">18</span></div>
+  <div class="cell"><span class="day">19</span>
+    <div class="events"><div class="event warn"><span class="time">11:00</span> Recordatorio IVA</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">20</span></div>
-  <div class="cal__cell"><span class="cal__day">21</span></div>
-  <div class="cal__cell"><span class="cal__day">22</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">23</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">24</span></div>
+  <div class="cell"><span class="day">20</span></div>
+  <div class="cell"><span class="day">21</span></div>
+  <div class="cell"><span class="day">22</span></div>
+  <div class="cell weekend"><span class="day">23</span></div>
+  <div class="cell weekend"><span class="day">24</span></div>
   {# Row 5: May 25-31 #}
-  <div class="cal__cell"><span class="cal__day">25</span></div>
-  <div class="cal__cell"><span class="cal__day">26</span></div>
-  <div class="cal__cell"><span class="cal__day">27</span></div>
-  <div class="cal__cell"><span class="cal__day">28</span>
-    <div class="cal__events"><div class="cal__event cal__event--danger">Vence factura Ibérica</div></div>
+  <div class="cell"><span class="day">25</span></div>
+  <div class="cell"><span class="day">26</span></div>
+  <div class="cell"><span class="day">27</span></div>
+  <div class="cell"><span class="day">28</span>
+    <div class="events"><div class="event danger">Vence factura Ibérica</div></div>
   </div>
-  <div class="cal__cell"><span class="cal__day">29</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">30</span></div>
-  <div class="cal__cell cal__cell--weekend"><span class="cal__day">31</span></div>
+  <div class="cell"><span class="day">29</span></div>
+  <div class="cell weekend"><span class="day">30</span></div>
+  <div class="cell weekend"><span class="day">31</span></div>
   {# Row 6: Jun 1-7 (out) #}
-  <div class="cal__cell cal__cell--out"><span class="cal__day">1</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">2</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">3</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">4</span></div>
-  <div class="cal__cell cal__cell--out"><span class="cal__day">5</span></div>
-  <div class="cal__cell cal__cell--out cal__cell--weekend"><span class="cal__day">6</span></div>
-  <div class="cal__cell cal__cell--out cal__cell--weekend"><span class="cal__day">7</span></div>
+  <div class="cell out"><span class="day">1</span></div>
+  <div class="cell out"><span class="day">2</span></div>
+  <div class="cell out"><span class="day">3</span></div>
+  <div class="cell out"><span class="day">4</span></div>
+  <div class="cell out"><span class="day">5</span></div>
+  <div class="cell out cell weekend"><span class="day">6</span></div>
+  <div class="cell out cell weekend"><span class="day">7</span></div>
 </div>
 {% endcall %}
 {% endcall %}
 
 {% set _src_jinja_2 %}{% raw %}<div class="cal-mini">
-  <header class="cal-mini__head">
+  <header class="head">
     <div class="title sm">Mayo 2026</div>
-    <div class="cal__nav">
-      <button class="cal__nav-btn" style="width:22px;height:22px">‹</button>
-      <button class="cal__nav-btn" style="width:22px;height:22px">›</button>
+    <div class="nav">
+      <button class="btn" style="width:22px;height:22px">‹</button>
+      <button class="btn" style="width:22px;height:22px">›</button>
     </div>
   </header>
-  <div class="cal-mini__grid">
-    <div class="cal-mini__wd">L</div><div class="cal-mini__wd">M</div><div class="cal-mini__wd">X</div><div class="cal-mini__wd">J</div><div class="cal-mini__wd">V</div><div class="cal-mini__wd">S</div><div class="cal-mini__wd">D</div>
-    <button class="cal-mini__day cal-mini__day--out">28</button>
-    <button class="cal-mini__day cal-mini__day--out">29</button>
-    <button class="cal-mini__day cal-mini__day--out">30</button>
-    <button class="cal-mini__day cal-mini__day--has-event">1</button>
-    <button class="cal-mini__day">2</button>
-    <button class="cal-mini__day">3</button>
-    <button class="cal-mini__day">4</button>
-    <button class="cal-mini__day cal-mini__day--has-event">5</button>
-    <button class="cal-mini__day cal-mini__day--has-event">6</button>
-    <button class="cal-mini__day cal-mini__day--today cal-mini__day--has-event">7</button>
-    <button class="cal-mini__day cal-mini__day--has-event">8</button>
-    <button class="cal-mini__day">9</button>
-    <button class="cal-mini__day">10</button>
-    <button class="cal-mini__day">11</button>
-    <button class="cal-mini__day cal-mini__day--has-event">12</button>
-    <button class="cal-mini__day">13</button>
-    <button class="cal-mini__day cal-mini__day--selected cal-mini__day--has-event">14</button>
-    <button class="cal-mini__day cal-mini__day--has-event">15</button>
-    <button class="cal-mini__day">16</button>
-    <button class="cal-mini__day">17</button>
-    <button class="cal-mini__day">18</button>
+  <div class="grid">
+    <div class="wd">L</div><div class="wd">M</div><div class="wd">X</div><div class="wd">J</div><div class="wd">V</div><div class="wd">S</div><div class="wd">D</div>
+    <button class="day out">28</button>
+    <button class="day out">29</button>
+    <button class="day out">30</button>
+    <button class="day has-event">1</button>
+    <button class="day">2</button>
+    <button class="day">3</button>
+    <button class="day">4</button>
+    <button class="day has-event">5</button>
+    <button class="day has-event">6</button>
+    <button class="day today day has-event">7</button>
+    <button class="day has-event">8</button>
+    <button class="day">9</button>
+    <button class="day">10</button>
+    <button class="day">11</button>
+    <button class="day has-event">12</button>
+    <button class="day">13</button>
+    <button class="day selected day has-event">14</button>
+    <button class="day has-event">15</button>
+    <button class="day">16</button>
+    <button class="day">17</button>
+    <button class="day">18</button>
   </div>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<div class="cal-mini">
-  <header class="cal-mini__head">
+  <header class="head">
     <div class="title sm">Mayo 2026</div>
-    <div class="cal__nav">
-      <button class="cal__nav-btn" style="width:22px;height:22px">‹</button>
-      <button class="cal__nav-btn" style="width:22px;height:22px">›</button>
+    <div class="nav">
+      <button class="btn" style="width:22px;height:22px">‹</button>
+      <button class="btn" style="width:22px;height:22px">›</button>
     </div>
   </header>
-  <div class="cal-mini__grid">
-    <div class="cal-mini__wd">L</div><div class="cal-mini__wd">M</div><div class="cal-mini__wd">X</div><div class="cal-mini__wd">J</div><div class="cal-mini__wd">V</div><div class="cal-mini__wd">S</div><div class="cal-mini__wd">D</div>
-    <button class="cal-mini__day cal-mini__day--out">28</button>
-    <button class="cal-mini__day cal-mini__day--out">29</button>
-    <button class="cal-mini__day cal-mini__day--out">30</button>
-    <button class="cal-mini__day cal-mini__day--has-event">1</button>
-    <button class="cal-mini__day">2</button>
-    <button class="cal-mini__day">3</button>
-    <button class="cal-mini__day">4</button>
-    <button class="cal-mini__day cal-mini__day--has-event">5</button>
-    <button class="cal-mini__day cal-mini__day--has-event">6</button>
-    <button class="cal-mini__day cal-mini__day--today cal-mini__day--has-event">7</button>
-    <button class="cal-mini__day cal-mini__day--has-event">8</button>
-    <button class="cal-mini__day">9</button>
-    <button class="cal-mini__day">10</button>
-    <button class="cal-mini__day">11</button>
-    <button class="cal-mini__day cal-mini__day--has-event">12</button>
-    <button class="cal-mini__day">13</button>
-    <button class="cal-mini__day cal-mini__day--selected cal-mini__day--has-event">14</button>
-    <button class="cal-mini__day cal-mini__day--has-event">15</button>
-    <button class="cal-mini__day">16</button>
-    <button class="cal-mini__day">17</button>
-    <button class="cal-mini__day">18</button>
+  <div class="grid">
+    <div class="wd">L</div><div class="wd">M</div><div class="wd">X</div><div class="wd">J</div><div class="wd">V</div><div class="wd">S</div><div class="wd">D</div>
+    <button class="day out">28</button>
+    <button class="day out">29</button>
+    <button class="day out">30</button>
+    <button class="day has-event">1</button>
+    <button class="day">2</button>
+    <button class="day">3</button>
+    <button class="day">4</button>
+    <button class="day has-event">5</button>
+    <button class="day has-event">6</button>
+    <button class="day today day has-event">7</button>
+    <button class="day has-event">8</button>
+    <button class="day">9</button>
+    <button class="day">10</button>
+    <button class="day">11</button>
+    <button class="day has-event">12</button>
+    <button class="day">13</button>
+    <button class="day selected day has-event">14</button>
+    <button class="day has-event">15</button>
+    <button class="day">16</button>
+    <button class="day">17</button>
+    <button class="day">18</button>
   </div>
 </div>{% endraw %}{% endset %}
 
@@ -380,36 +380,36 @@
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 <div class="cal-mini">
-  <header class="cal-mini__head">
+  <header class="head">
     <div class="title sm">Mayo 2026</div>
-    <div class="cal__nav">
-      <button class="cal__nav-btn" style="width:22px;height:22px">‹</button>
-      <button class="cal__nav-btn" style="width:22px;height:22px">›</button>
+    <div class="nav">
+      <button class="btn" style="width:22px;height:22px">‹</button>
+      <button class="btn" style="width:22px;height:22px">›</button>
     </div>
   </header>
-  <div class="cal-mini__grid">
-    <div class="cal-mini__wd">L</div><div class="cal-mini__wd">M</div><div class="cal-mini__wd">X</div><div class="cal-mini__wd">J</div><div class="cal-mini__wd">V</div><div class="cal-mini__wd">S</div><div class="cal-mini__wd">D</div>
-    <button class="cal-mini__day cal-mini__day--out">28</button>
-    <button class="cal-mini__day cal-mini__day--out">29</button>
-    <button class="cal-mini__day cal-mini__day--out">30</button>
-    <button class="cal-mini__day cal-mini__day--has-event">1</button>
-    <button class="cal-mini__day">2</button>
-    <button class="cal-mini__day">3</button>
-    <button class="cal-mini__day">4</button>
-    <button class="cal-mini__day cal-mini__day--has-event">5</button>
-    <button class="cal-mini__day cal-mini__day--has-event">6</button>
-    <button class="cal-mini__day cal-mini__day--today cal-mini__day--has-event">7</button>
-    <button class="cal-mini__day cal-mini__day--has-event">8</button>
-    <button class="cal-mini__day">9</button>
-    <button class="cal-mini__day">10</button>
-    <button class="cal-mini__day">11</button>
-    <button class="cal-mini__day cal-mini__day--has-event">12</button>
-    <button class="cal-mini__day">13</button>
-    <button class="cal-mini__day cal-mini__day--selected cal-mini__day--has-event">14</button>
-    <button class="cal-mini__day cal-mini__day--has-event">15</button>
-    <button class="cal-mini__day">16</button>
-    <button class="cal-mini__day">17</button>
-    <button class="cal-mini__day">18</button>
+  <div class="grid">
+    <div class="wd">L</div><div class="wd">M</div><div class="wd">X</div><div class="wd">J</div><div class="wd">V</div><div class="wd">S</div><div class="wd">D</div>
+    <button class="day out">28</button>
+    <button class="day out">29</button>
+    <button class="day out">30</button>
+    <button class="day has-event">1</button>
+    <button class="day">2</button>
+    <button class="day">3</button>
+    <button class="day">4</button>
+    <button class="day has-event">5</button>
+    <button class="day has-event">6</button>
+    <button class="day today day has-event">7</button>
+    <button class="day has-event">8</button>
+    <button class="day">9</button>
+    <button class="day">10</button>
+    <button class="day">11</button>
+    <button class="day has-event">12</button>
+    <button class="day">13</button>
+    <button class="day selected day has-event">14</button>
+    <button class="day has-event">15</button>
+    <button class="day">16</button>
+    <button class="day">17</button>
+    <button class="day">18</button>
   </div>
 </div>
 {% endcall %}
@@ -420,7 +420,7 @@
   <tbody>
     <tr><td><code>variant</code></td><td>"month"|"week"|"day"</td><td>"month"</td><td>Vista lógica (informativa, el consumidor compone los hijos).</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Cabecera, weekdays, grid de celdas. Sub-clases: <code>.ok-cal__head</code>, <code>.ok-cal__weekdays</code>, <code>.ok-cal__grid</code>, <code>.ok-cal__cell</code>, <code>.ok-cal__event</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Cabecera, weekdays, grid de celdas. Sub-clases: <code>.head</code>, <code>.weekdays</code>, <code>.grid</code>, <code>.cell</code>, <code>.event</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

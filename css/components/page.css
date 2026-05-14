@@ -2,7 +2,7 @@
    OutfitKit · Page header & layout primitives
    ============================================================ */
 
-.page-header {
+.page .head {
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
@@ -12,11 +12,11 @@
   border-bottom: var(--border-w) solid var(--line);
 }
 
-.page-header-title {
+.page .head .title {
   flex: 1 1 240px;
   min-width: 0;
 }
-.page-header-title h1 {
+.page .head .title h1 {
   margin: var(--space-0);
   font-family: var(--font-display);
   font-size: var(--text-2xl);
@@ -24,25 +24,25 @@
   letter-spacing: var(--tracking-display);
   color: var(--ink);
 }
-.page-header-sub {
+.page .head .sub {
   margin-top: var(--space-1);
   font-size: var(--text-sm);
   color: var(--ink-3);
 }
 
-/* .page-header > .actions uses universal .actions */
+/* .page .head > .actions uses universal .actions */
 
 @media (max-width: 767px) {
-  .page-header {
+  .page .head {
     flex-direction: column;
     align-items: stretch;
   }
-  .page-header-title { flex: 1 1 auto; }
-  .page-header > .actions {
+  .page .head .title { flex: 1 1 auto; }
+  .page .head > .actions {
     flex-wrap: wrap;
     width: 100%;
   }
-  .page-header > .actions > * { flex: 0 1 auto; }
+  .page .head > .actions > * { flex: 0 1 auto; }
 }
 
 /* Section — app panel section (settings, detail pages) */

@@ -100,7 +100,8 @@
   column-gap: var(--space-4);
 }
 
-.masonry__item {
+/* masonry item — generic .item scoped under .masonry */
+.masonry .item {
   break-inside: avoid;
   -webkit-column-break-inside: avoid;
   page-break-inside: avoid;
@@ -108,23 +109,23 @@
   display: block;
 }
 
-.masonry--2 { --_cols: 2; }
-.masonry--3 { --_cols: 3; }
-.masonry--4 { --_cols: 4; }
-.masonry--5 { --_cols: 5; }
+.masonry.cols-2 { --_cols: 2; }
+.masonry.cols-3 { --_cols: 3; }
+.masonry.cols-4 { --_cols: 4; }
+.masonry.cols-5 { --_cols: 5; }
 
 @media (max-width: 768px) {
   .masonry,
-  .masonry--3,
-  .masonry--4,
-  .masonry--5 { --_cols: 2; }
+  .masonry.cols-3,
+  .masonry.cols-4,
+  .masonry.cols-5 { --_cols: 2; }
 }
 @media (max-width: 480px) {
   .masonry,
-  .masonry--2,
-  .masonry--3,
-  .masonry--4,
-  .masonry--5 { --_cols: 1; }
+  .masonry.cols-2,
+  .masonry.cols-3,
+  .masonry.cols-4,
+  .masonry.cols-5 { --_cols: 1; }
 }
 
 /* ============================================================
@@ -143,7 +144,8 @@
   overflow: hidden;
 }
 
-.master-detail__master {
+/* master pane — left column */
+.master-detail .master {
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -151,7 +153,8 @@
   background: var(--bg-1);
 }
 
-.master-detail__master-head {
+/* master head — direct child to prevent leaking into nested components */
+.master-detail .master > .head {
   padding: var(--space-3) var(--space-4);
   border-bottom: var(--border-w) solid var(--line);
   flex-shrink: 0;
@@ -165,7 +168,8 @@
   gap: var(--space-2);
 }
 
-.master-detail__master-body {
+/* master body — direct child, scrollable list area */
+.master-detail .master > .body {
   flex: 1 1 auto;
   overflow-y: auto;
   padding: var(--space-2);
@@ -175,20 +179,23 @@
   min-height: 0;
 }
 
-.master-detail__master-footer {
+/* master foot — direct child */
+.master-detail .master > .foot {
   padding: var(--space-2) var(--space-3);
   border-top: var(--border-w) solid var(--line);
   flex-shrink: 0;
 }
 
-.master-detail__detail {
+/* detail pane — right column */
+.master-detail .detail {
   display: flex;
   flex-direction: column;
   min-width: 0;
   min-height: 0;
 }
 
-.master-detail__detail-head {
+/* detail head — direct child to prevent leaking into nested components */
+.master-detail .detail > .head {
   padding: var(--space-3) var(--space-4);
   border-bottom: var(--border-w) solid var(--line);
   flex-shrink: 0;
@@ -198,7 +205,8 @@
   gap: var(--space-3);
 }
 
-.master-detail__detail-body {
+/* detail body — direct child */
+.master-detail .detail > .body {
   flex: 1;
   padding: var(--space-5);
   overflow: auto;
@@ -211,11 +219,11 @@
 
 @media (max-width: 768px) {
   .master-detail.mobile-detail { grid-template-columns: 1fr; }
-  .master-detail.mobile-detail .master-detail__master { display: none; }
+  .master-detail.mobile-detail .master { display: none; }
   .master-detail.mobile-detail.is-master-visible {
     grid-template-columns: var(--_master-w) 1fr;
   }
-  .master-detail.mobile-detail.is-master-visible .master-detail__master {
+  .master-detail.mobile-detail.is-master-visible .master {
     display: flex;
   }
 }
@@ -268,9 +276,9 @@
 .scroll.invisible:hover::-webkit-scrollbar-thumb { background: var(--line-3); }
 .scroll.invisible:hover::-webkit-scrollbar-track { background: var(--bg-3); }
 
-/* Sentinels (visual aid for fade detection) */
-.scroll__sentinel-top,
-.scroll__sentinel-bottom {
+/* Sentinels (visual aid for fade detection) — .sentinel.top / .sentinel.bottom */
+.scroll .sentinel.top,
+.scroll .sentinel.bottom {
   height: 1px;
   width: 100%;
   pointer-events: none;
@@ -347,7 +355,8 @@
 .resize.x { resize: horizontal; }
 .resize.y { resize: vertical; }
 
-.resize__handle {
+/* handle — corner grip icon */
+.resize .handle {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -356,7 +365,7 @@
   pointer-events: none;
   color: var(--ink-4);
 }
-.resize__handle::after {
+.resize .handle::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -365,7 +374,7 @@
   opacity: 0.7;
 }
 
-.resize:hover .resize__handle { color: var(--ink-3); }
+.resize:hover .handle { color: var(--ink-3); }
 
 /* ============================================================
    7. SPLIT
@@ -384,7 +393,8 @@
   overflow: hidden;
 }
 
-.split__pane {
+/* pane — flex child panel; use > to prevent leaking into nested splits */
+.split > .pane {
   flex: 1 1 0;
   min-width: 0;
   min-height: 0;
@@ -392,15 +402,19 @@
   overflow: hidden;
 }
 
-.split__pane--fixed {
+/* pane.fixed — non-stretching pane */
+.split > .pane.fixed {
   flex: 0 0 auto;
 }
 
-.split__pane--scroll {
+/* pane.scrollable — overflow-scroll pane
+   (not .scroll to avoid collision with the .scroll component root) */
+.split > .pane.scrollable {
   overflow: auto;
 }
 
-.split__divider {
+/* divider — drag handle between panes */
+.split .divider {
   flex: 0 0 6px;
   background: var(--bg-1);
   border-left: var(--border-w) solid var(--line);
@@ -412,10 +426,10 @@
   justify-content: center;
   transition: background var(--dur-fast) var(--ease-out);
 }
-.split__divider:hover {
+.split .divider:hover {
   background: var(--bg-3);
 }
-.split__divider::before {
+.split .divider::before {
   content: "";
   width: 2px;
   height: 18px;
@@ -428,7 +442,7 @@
 .split.vertical {
   flex-direction: column;
 }
-.split.vertical .split__divider {
+.split.vertical .divider {
   flex: 0 0 6px;
   border-left: none;
   border-right: none;
@@ -437,7 +451,7 @@
   cursor: row-resize;
   width: 100%;
 }
-.split.vertical .split__divider::before {
+.split.vertical .divider::before {
   width: 18px;
   height: 2px;
   background:
@@ -445,12 +459,12 @@
 }
 
 /* Collapsed states */
-.split.collapsed-left .split__pane:first-child,
-.split.collapsed-left .split__divider {
+.split.collapsed-left > .pane:first-child,
+.split.collapsed-left .divider {
   display: none;
 }
-.split.collapsed-right .split__pane:last-child,
-.split.collapsed-right .split__divider {
+.split.collapsed-right > .pane:last-child,
+.split.collapsed-right .divider {
   display: none;
 }
 
@@ -473,7 +487,8 @@
   flex-wrap: wrap;
 }
 
-.toolbar__title {
+/* title — label/heading for the toolbar section */
+.toolbar .title {
   font-family: var(--font-display);
   font-size: var(--text-2xs);
   font-weight: 600;
@@ -484,19 +499,21 @@
   flex-shrink: 0;
 }
 
-.toolbar__group {
+/* group — cluster of related toolbar actions */
+.toolbar .group {
   display: flex;
   align-items: center;
   gap: var(--space-1);
   border-right: var(--border-w) solid var(--line);
   padding-right: var(--space-2);
 }
-.toolbar__group:last-child {
+.toolbar .group:last-child {
   border-right: none;
   padding-right: 0;
 }
 
-.toolbar__divider {
+/* divider — thin separator line between groups */
+.toolbar .divider {
   width: 1px;
   height: 20px;
   background: var(--line);
@@ -504,7 +521,9 @@
   margin: 0 var(--space-1);
 }
 
-.toolbar__spacer {
+/* gap — flex spacer inside toolbar
+   (not .spacer to avoid collision with the .spacer component root) */
+.toolbar .gap {
   flex: 1 1 auto;
 }
 
@@ -528,14 +547,14 @@
   min-height: 32px;
   font-size: var(--text-xs);
 }
-.toolbar.sm .toolbar__divider { height: 16px; }
+.toolbar.sm .divider { height: 16px; }
 
 .toolbar.lg {
   --_pad-y: var(--space-3);
   --_pad-x: var(--space-4);
   min-height: 52px;
 }
-.toolbar.lg .toolbar__divider { height: 24px; }
+.toolbar.lg .divider { height: 24px; }
 
 /* Sticky helper */
 .toolbar.sticky {

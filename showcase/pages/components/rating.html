@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Rating</h1>
-<p class="showcase__lead">Estrellas para encuestas y reseñas. Soporta tamaños y modo solo lectura.</p>
+<p class="lead">Estrellas para encuestas y reseñas. Soporta tamaños y modo solo lectura.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/rating.jinja" import rating %}
 {{ rating(value=4, size="sm", label="3,1", readonly=True) }}
@@ -37,8 +37,8 @@
 {% set _src_jinja_3 %}{% raw %}<div data-signals="{ r: 4 }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
   <div class="rating lg">
     {% for i in range(1, 6) %}
-    <svg class="rating__star"
-      data-attr-class="'rating__star ' + ($r >= {{ i }} ? 'rating__star--filled' : '')"
+    <svg class="star"
+      data-attr-class="'star ' + ($r >= {{ i }} ? 'star filled' : '')"
       viewBox="0 0 24 24" fill="currentColor" data-on:click="$r = {{ i }}">
       <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
     </svg>
@@ -50,8 +50,8 @@
 {% set _src_jinjax_3 %}{% raw %}<div data-signals="{ r: 4 }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
   <div class="rating lg">
     {% for i in range(1, 6) %}
-    <svg class="rating__star"
-      data-attr-class="'rating__star ' + ($r >= {{ i }} ? 'rating__star--filled' : '')"
+    <svg class="star"
+      data-attr-class="'star ' + ($r >= {{ i }} ? 'star filled' : '')"
       viewBox="0 0 24 24" fill="currentColor" data-on:click="$r = {{ i }}">
       <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
     </svg>
@@ -67,8 +67,8 @@
 <div data-signals="{ r: 4 }" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
   <div class="rating lg">
     {% for i in range(1, 6) %}
-    <svg class="rating__star"
-      data-attr-class="'rating__star ' + ($r >= {{ i }} ? 'rating__star--filled' : '')"
+    <svg class="star"
+      data-attr-class="'star ' + ($r >= {{ i }} ? 'star filled' : '')"
       viewBox="0 0 24 24" fill="currentColor" data-on:click="$r = {{ i }}">
       <path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>
     </svg>

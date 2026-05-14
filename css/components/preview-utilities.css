@@ -13,7 +13,7 @@
 
 /* ---------- Demo section ----------
    Wrapper de sección dentro de un preview. Cada showcase está
-   compuesto por uno o varios `.demo` con su `.demo__hd`
+   compuesto por uno o varios `.demo` con su `.demo .head`
    indicando qué variante se muestra. */
 .demo {
   background: var(--bg-2);
@@ -25,7 +25,7 @@
 .demo.flush   { padding: var(--space-0); overflow: hidden; }
 .demo.center  { display: grid; place-items: center; }
 
-.demo__hd {
+.demo .head {
   font-family: var(--font-display);
   font-size: var(--text-2xs);
   color: var(--ink-3);
@@ -33,8 +33,8 @@
   letter-spacing: var(--tracking-wide);
   margin: var(--space-0) var(--space-0) var(--space-3);
 }
-.demo__hd--right { text-align: right; }
-.demo__hd code {
+.demo .head.right { text-align: right; }
+.demo .head code {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--ink-2);
@@ -45,11 +45,11 @@
   letter-spacing: var(--tracking-normal);
 }
 
-.demo__bd {
+.demo .body {
   padding: var(--space-4);
 }
-.demo__bd--sm { padding: var(--space-3); }
-.demo__bd--lg { padding: var(--space-5); }
+.demo .body.sm { padding: var(--space-3); }
+.demo .body.lg { padding: var(--space-5); }
 
 /* ---------- Stage ----------
    Centra un componente (modal, card, etc.) dentro de un viewport
@@ -127,7 +127,7 @@
   color: var(--_cr-ink-selected);
 }
 
-.conv-row__avatar {
+.conv-row .avatar {
   width: var(--space-7);
   height: var(--space-7);
   border-radius: var(--radius-pill);
@@ -141,7 +141,7 @@
   flex-shrink: 0;
 }
 
-.conv-row__name {
+.conv-row .name {
   flex: 1;
   min-width: 0;
   overflow: hidden;
@@ -149,7 +149,7 @@
   white-space: nowrap;
 }
 
-.conv-row__meta {
+.conv-row .meta {
   font-size: var(--text-xs);
   color: var(--ink-3);
   flex-shrink: 0;

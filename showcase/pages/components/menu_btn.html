@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Menu button</h1>
-<p class="showcase__lead">Botón hamburger con animación a X. Estado controlado por <code>aria-expanded</code>; click para alternar con Datastar.</p>
+<p class="lead">Botón hamburger con animación a X. Estado controlado por <code>aria-expanded</code>; click para alternar con Datastar.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/menu_btn.jinja" import menu_btn %}
 {{ menu_btn() }}
@@ -42,15 +42,15 @@
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/menu_btn.jinja" import menu_btn %}
 {{ menu_btn(mobile_only=True) }}
-<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
+<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<menu_btn mobile_only />
-<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
+<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.menu-btn--mobile-only</code></span>{% endraw %}{% endset %}
 
 {% call demo_frame("Solo en mobile (oculto ≥768px)",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {{ menu_btn(mobile_only=True) }}
-<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.ok-menu-btn--mobile-only</code></span>
+<span style="margin-left: 12px; color: var(--ink-3); font-size: 13px;">Aplica <code>.menu-btn--mobile-only</code></span>
 {% endcall %}
 
 <h2>API</h2>

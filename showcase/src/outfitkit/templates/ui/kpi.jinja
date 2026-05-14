@@ -7,11 +7,11 @@
   <div class="label">{{ label }}</div>
   <div class="value">{{ value }}{% if unit %}<span class="unit">{{ unit }}</span>{% endif %}</div>
   {%- if delta %}
-  <div class="kpi__delta{% if delta_dir %} {{ delta_dir }}{% endif %}">
+  <div class="delta{% if delta_dir %} {{ delta_dir }}{% endif %}">
     {%- if delta_dir == 'up' -%}
-      <iconify-icon class="kpi__delta-arrow" icon="lucide:arrow-up-right" width="14" height="14"></iconify-icon>
+      <iconify-icon class="arrow" icon="lucide:arrow-up-right" width="14" height="14"></iconify-icon>
     {%- elif delta_dir == 'down' -%}
-      <iconify-icon class="kpi__delta-arrow" icon="lucide:arrow-down-right" width="14" height="14"></iconify-icon>
+      <iconify-icon class="arrow" icon="lucide:arrow-down-right" width="14" height="14"></iconify-icon>
     {%- endif %}
     {{ delta }}
   </div>

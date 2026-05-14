@@ -7,27 +7,27 @@
 <div class="app" id="app" data-tabbar="bottom" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <aside class="sidebar">
     <div class="head">
-      <div class="sidebar-logo">LR</div>
-      <div class="sidebar-brand-text">
+      <div class="logo">LR</div>
+      <div class="text">
         <div class="title md">Cafetería La Rambla</div>
         <div class="meta">Centro de ayuda</div>
       </div>
     </div>
     <div class="content scroll">
-      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="item-label">Inicio</span></a>
-      <a class="item" aria-current="page" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span class="item-label">Ayuda</span></a>
+      <a class="item" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg><span class="text">Inicio</span></a>
+      <a class="item" aria-current="page" href="#"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span class="text">Ayuda</span></a>
     </div>
   </aside>
 
   <div class="page">
     <header class="topbar">
-        <div class="topbar-left">
-          <button class="topbar-menu-btn" aria-label="Menú"
+        <div class="left">
+          <button class="menu" aria-label="Menú"
             data-on:click="$sidebar = !$sidebar"
             data-attr:aria-expanded="$sidebar">
             <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
           </button>
-          <button class="topbar-back-btn" aria-label="Volver"
+          <button class="back" aria-label="Volver"
             data-on:click="history.length > 1 ? history.back() : null">
             <iconify-icon icon="lucide:arrow-left" width="18" height="18"></iconify-icon>
           </button>
@@ -35,7 +35,7 @@
         <h1 class="title">{% block topbar_title %}{{ self.page_title() }}{% endblock %}</h1>
         </header>
 
-    <nav class="tabs tabs-scroll" aria-label="Sub-secciones de ajustes">
+    <nav class="tabs-scroll" aria-label="Sub-secciones de ajustes">
       <a class="tab" href="preferences.html">Preferencias</a>
       <a class="tab" href="hub.html">Hub</a>
       <a class="tab" href="hub-config.html">Config</a>
@@ -56,9 +56,9 @@
         <h1 style="font-family:var(--font-display);font-size:28px;font-weight:600;letter-spacing:-0.04em;margin:0 0 6px;">¿En qué podemos ayudarte?</h1>
         <p style="font-size:14px;color:var(--ink-3);margin:0 0 22px;">Busca en la documentación, las FAQ y los tutoriales del Hub.</p>
         <div class="search" style="max-width:520px;margin:0 auto;">
-          <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
           <input class="input lg" placeholder="Buscar en la ayuda…" data-bind:help.q/>
-          <span class="search__kbd">⌘K</span>
+          <span class="shortcut">⌘K</span>
         </div>
       </div>
 
@@ -136,15 +136,15 @@
       <!-- FAQs accordion -->
       <h2 style="font-family:var(--font-display);font-size:18px;font-weight:600;margin:0 0 14px;">Preguntas frecuentes</h2>
       <div class="accordion" style="margin-bottom:26px;">
-        <div class="accordion__item" data-attr:data-state="$help.s1 ? 'open' : 'closed'">
-          <button class="accordion__trigger" data-attr:aria-expanded="$help.s1" data-on:click="$help.s1 = !$help.s1">
-            <span class="accordion__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/></svg></span>
-            <span class="accordion__title">¿Cómo configuro mi primer empleado?
-              <span class="accordion__sub">Crear cuenta, asignar PIN y rol</span>
+        <div class="item" data-attr:data-state="$help.s1 ? 'open' : 'closed'">
+          <button class="trigger" data-attr:aria-expanded="$help.s1" data-on:click="$help.s1 = !$help.s1">
+            <span class="icon-disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/></svg></span>
+            <span class="title">¿Cómo configuro mi primer empleado?
+              <span class="sub">Crear cuenta, asignar PIN y rol</span>
             </span>
-            <span class="accordion__caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span class="caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
-          <div class="accordion__panel">
+          <div class="panel">
             <p class="m-0 mb-2">Ve a <b>Empleados &rarr; + Añadir empleado</b>. Rellena nombre, email y un PIN de 4 cifras. Asigna un rol predefinido o crea uno custom desde la sección Roles.</p>
             <ol style="margin:0;padding-left:20px;font-size:13px;color:var(--ink-2);">
               <li>Click en "+ Añadir empleado"</li>
@@ -153,57 +153,57 @@
             </ol>
           </div>
         </div>
-        <div class="accordion__item" data-attr:data-state="$help.s2 ? 'open' : 'closed'">
-          <button class="accordion__trigger" data-attr:aria-expanded="$help.s2" data-on:click="$help.s2 = !$help.s2">
-            <span class="accordion__icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-            <span class="accordion__title">¿Cómo cambio mi plan o método de pago?
-              <span class="accordion__sub">Stripe Customer Portal</span>
+        <div class="item" data-attr:data-state="$help.s2 ? 'open' : 'closed'">
+          <button class="trigger" data-attr:aria-expanded="$help.s2" data-on:click="$help.s2 = !$help.s2">
+            <span class="icon-disc"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+            <span class="title">¿Cómo cambio mi plan o método de pago?
+              <span class="sub">Stripe Customer Portal</span>
             </span>
-            <span class="accordion__caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span class="caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
-          <div class="accordion__panel">
+          <div class="panel">
             Ve a <b>Facturación &rarr; Cambiar plan</b> o pulsa "Abrir portal Stripe" para gestionar tarjetas, dirección de facturación y cancelaciones.
           </div>
         </div>
-        <div class="accordion__item" data-attr:data-state="$help.s3 ? 'open' : 'closed'">
-          <button class="accordion__trigger" data-attr:aria-expanded="$help.s3" data-on:click="$help.s3 = !$help.s3">
-            <span class="accordion__icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span>
-            <span class="accordion__title">¿Cómo instalo un módulo del Marketplace?
-              <span class="accordion__sub">Verifactu, e-commerce, RRHH…</span>
+        <div class="item" data-attr:data-state="$help.s3 ? 'open' : 'closed'">
+          <button class="trigger" data-attr:aria-expanded="$help.s3" data-on:click="$help.s3 = !$help.s3">
+            <span class="icon-disc"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span>
+            <span class="title">¿Cómo instalo un módulo del Marketplace?
+              <span class="sub">Verifactu, e-commerce, RRHH…</span>
             </span>
-            <span class="accordion__caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+            <span class="caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
-          <div class="accordion__panel">
+          <div class="panel">
             Ve a <b>Módulos &rarr; Marketplace</b>, busca el módulo, pulsa "Instalar". El Hub descargará el paquete, ejecutará migraciones y lo activará automáticamente.
           </div>
         </div>
-        <div class="accordion__item" data-attr:data-state="$help.s4 ? 'open' : 'closed'">
-          <button class="accordion__trigger" data-attr:aria-expanded="$help.s4" data-on:click="$help.s4 = !$help.s4">
-            <span class="accordion__icon"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon></span>
-            <span class="accordion__title">¿Cómo activo Verifactu?</span>
-            <span class="accordion__caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+        <div class="item" data-attr:data-state="$help.s4 ? 'open' : 'closed'">
+          <button class="trigger" data-attr:aria-expanded="$help.s4" data-on:click="$help.s4 = !$help.s4">
+            <span class="icon-disc"><iconify-icon icon="lucide:shield" width="18" height="18"></iconify-icon></span>
+            <span class="title">¿Cómo activo Verifactu?</span>
+            <span class="caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
-          <div class="accordion__panel">
+          <div class="panel">
             Instala el módulo <b>Verifactu ES</b> desde el Marketplace, sube tu certificado digital FNMT en Cumplimiento &rarr; España y activa el toggle. Las facturas se enviarán automáticamente a la AEAT.
           </div>
         </div>
-        <div class="accordion__item" data-attr:data-state="$help.s5 ? 'open' : 'closed'">
-          <button class="accordion__trigger" data-attr:aria-expanded="$help.s5" data-on:click="$help.s5 = !$help.s5">
-            <span class="accordion__icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
-            <span class="accordion__title">Mi impresora no responde, ¿qué hago?</span>
-            <span class="accordion__caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+        <div class="item" data-attr:data-state="$help.s5 ? 'open' : 'closed'">
+          <button class="trigger" data-attr:aria-expanded="$help.s5" data-on:click="$help.s5 = !$help.s5">
+            <span class="icon-disc"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span>
+            <span class="title">Mi impresora no responde, ¿qué hago?</span>
+            <span class="caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
-          <div class="accordion__panel">
+          <div class="panel">
             Verifica que ERPlora Bridge está conectado (Ajustes &rarr; Bridge). Reinicia la impresora, comprueba el cable y prueba imprimir desde Bridge &rarr; Test.
           </div>
         </div>
-        <div class="accordion__item" data-attr:data-state="$help.s6 ? 'open' : 'closed'">
-          <button class="accordion__trigger" data-attr:aria-expanded="$help.s6" data-on:click="$help.s6 = !$help.s6">
-            <span class="accordion__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></span>
-            <span class="accordion__title">¿Cómo recupero un backup?</span>
-            <span class="accordion__caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
+        <div class="item" data-attr:data-state="$help.s6 ? 'open' : 'closed'">
+          <button class="trigger" data-attr:aria-expanded="$help.s6" data-on:click="$help.s6 = !$help.s6">
+            <span class="icon-disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></svg></span>
+            <span class="title">¿Cómo recupero un backup?</span>
+            <span class="caret"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></span>
           </button>
-          <div class="accordion__panel">
+          <div class="panel">
             Ve a <b>Ajustes &rarr; Backup &rarr; Histórico</b>, selecciona la fecha y pulsa "Restaurar". El proceso tarda 2-5 minutos y reinicia el Hub.
           </div>
         </div>
@@ -252,11 +252,11 @@
           <div class="content scroll body">
             <form class="form" data-on:submit="event.preventDefault(); $contact = false">
               <div class="field">
-                <label class="field__label field__label--req">Asunto</label>
+                <label class="label req">Asunto</label>
                 <input class="input" placeholder="¿De qué se trata?"/>
               </div>
               <div class="field mt-3">
-                <label class="field__label">Categoría</label>
+                <label class="label">Categoría</label>
                 <select class="select">
                   <option>Pregunta general</option>
                   <option>Error / bug</option>
@@ -265,7 +265,7 @@
                 </select>
               </div>
               <div class="field mt-3">
-                <label class="field__label field__label--req">Descripción</label>
+                <label class="label req">Descripción</label>
                 <textarea class="input" rows="5" placeholder="Cuéntanos qué pasa…"></textarea>
               </div>
             </form>
@@ -280,11 +280,11 @@
   </div>
 
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="tabbar-label">Empleados</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" aria-current="page" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg></span><span class="tabbar-label">Ayuda</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="label">Empleados</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="label">Facturas</span></a>
+    <a class="item" aria-current="page" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg></span><span class="label">Ayuda</span></a>
   </nav>
 </div>
 {% endblock %}

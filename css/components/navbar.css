@@ -30,8 +30,9 @@
   top: 0;
 }
 
-/* Brand: logo + name link */
-.navbar-brand {
+/* Brand: logo + name link — use <a class="logo"> as direct child of .navbar */
+/* "brand" is a reserved word; ".logo" follows the sidebar pattern */
+.navbar > .logo {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -43,10 +44,10 @@
   letter-spacing: var(--tracking-snug);
   flex-shrink: 0;
 }
-.navbar-brand img { width: var(--size-sm); height: var(--size-sm); }
+.navbar > .logo img { width: var(--size-sm); height: var(--size-sm); }
 
-/* Nav links group (desktop) */
-.navbar-nav {
+/* Nav links group (desktop) — use <nav class="nav"> inside .navbar */
+.navbar .nav {
   display: none;
   align-items: center;
   gap: var(--space-1);
@@ -54,10 +55,11 @@
   justify-content: center;
 }
 @media (min-width: 768px) {
-  .navbar-nav { display: flex; }
+  .navbar .nav { display: flex; }
 }
 
-.navbar-link {
+/* Individual nav link — use <a class="link"> inside .navbar .nav */
+.navbar .link {
   color: var(--ink-2);
   text-decoration: none;
   padding: 6px 12px;
@@ -66,21 +68,22 @@
   font-weight: 500;
   transition: color var(--dur-fast), background var(--dur-fast);
 }
-.navbar-link:hover {
+.navbar .link:hover {
   color: var(--ink);
   background: var(--bg-1);
 }
 
-/* End actions — use <div class="actions"> or .navbar-end */
-.navbar-end {
+/* End actions — use <div class="actions"> as direct child of .navbar */
+.navbar > .actions {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   flex-shrink: 0;
 }
 
-/* Mobile hamburger button (hidden on desktop) */
-.menu-button {
+/* Mobile hamburger button — use <button class="menu-button"> inside .navbar */
+/* .menu-button kept as sub-root: it is a self-contained toggle widget */
+.navbar .menu-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -92,24 +95,27 @@
   cursor: pointer;
   color: var(--ink);
 }
-.menu-button:hover { background: var(--bg-1); }
-@media (min-width: 768px) { .menu-button { display: none; } }
+.navbar .menu-button:hover { background: var(--bg-1); }
+@media (min-width: 768px) { .navbar .menu-button { display: none; } }
 
-.menu-button-lines {
+/* Hamburger lines container — use <span class="lines"> inside .menu-button */
+.navbar .menu-button .lines {
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
   width: 18px;
 }
-.menu-button-line {
+/* Individual hamburger line — use <span class="line"> inside .lines */
+.navbar .menu-button .line {
   height: 2px;
   background: currentColor;
   border-radius: 2px;
   transition: transform var(--dur-base);
 }
 
-/* Mobile menu */
-.navbar-mobile {
+/* Mobile menu — use <div class="navbar mobile"> or a sibling element */
+/* Kept as .navbar.mobile: responsive variant modifier of the navbar context */
+.navbar.mobile {
   display: none;
   flex-direction: column;
   gap: var(--space-1);
@@ -120,5 +126,5 @@
   border-bottom: var(--border-w) solid var(--line);
 }
 @media (min-width: 768px) {
-  .navbar-mobile { display: none !important; }
+  .navbar.mobile { display: none !important; }
 }

@@ -6,15 +6,15 @@
 {%- set _minutes = minutes or [0, 15, 30, 45] -%}
 <div class="timepicker"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <div class="timepicker__col">
+  <div class="col">
     {%- for h in _hours %}
-    <button type="button" class="timepicker__opt"
+    <button type="button" class="opt"
       {% if hour == h %}aria-selected="true"{% endif %}>{{ "%02d"|format(h) }}</button>
     {%- endfor %}
   </div>
-  <div class="timepicker__col">
+  <div class="col">
     {%- for m in _minutes %}
-    <button type="button" class="timepicker__opt"
+    <button type="button" class="opt"
       {% if minute == m %}aria-selected="true"{% endif %}>{{ "%02d"|format(m) }}</button>
     {%- endfor %}
   </div>

@@ -16,26 +16,26 @@
 <style>
   body { background: var(--bg); min-height: 100vh; }
   /* Modal expanded for README content */
-  .readme-modal { max-width: 720px; max-height: calc(100vh - 48px); }
-  .readme-tabs { padding: 0 20px; border-bottom: 1px solid var(--line); }
-  .readme-body { padding: 18px 20px; overflow-y: auto; max-height: 60vh; font-size: 14px; line-height: 1.65; color: var(--ink-2); }
-  .readme-body h1, .readme-body h2, .readme-body h3 { font-family: var(--font-display); color: var(--ink); letter-spacing: -0.01em; }
-  .readme-body h1 { font-size: 22px; font-weight: 600; margin: 0 0 8px; }
-  .readme-body h2 { font-size: 17px; font-weight: 600; margin: 22px 0 10px; }
-  .readme-body h3 { font-size: 14.5px; font-weight: 600; margin: 16px 0 8px; }
-  .readme-body p { margin: 8px 0; }
-  .readme-body code { background: var(--bg-3); padding: 1px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 12.5px; }
-  .readme-body pre { background: var(--bg-3); padding: 12px 14px; border-radius: var(--radius-md); overflow-x: auto; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.5; margin: 12px 0; }
-  .readme-body pre code { background: transparent; padding: 0; }
-  .readme-body ul, .readme-body ol { padding-left: 24px; margin: 8px 0; }
-  .readme-body li { margin: 4px 0; }
-  .readme-body blockquote { border-left: 3px solid var(--brand); padding: 6px 14px; margin: 12px 0; background: var(--brand-soft); color: var(--ink); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
-  .readme-body table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
-  .readme-body th, .readme-body td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; }
-  .readme-body th { font-weight: 600; color: var(--ink); background: var(--bg-1); }
-  .changelog-version { display: flex; gap: 10px; align-items: baseline; margin: 22px 0 8px; }
-  .changelog-version h3 { margin: 0; }
-  .changelog-version .badge { margin-left: 4px; }
+  .modal.readme { max-width: 720px; max-height: calc(100vh - 48px); }
+  .modal.readme > .tabs { padding: 0 20px; border-bottom: 1px solid var(--line); }
+  .modal.readme .body { padding: 18px 20px; overflow-y: auto; max-height: 60vh; font-size: 14px; line-height: 1.65; color: var(--ink-2); }
+  .modal.readme .body h1, .modal.readme .body h2, .modal.readme .body h3 { font-family: var(--font-display); color: var(--ink); letter-spacing: -0.01em; }
+  .modal.readme .body h1 { font-size: 22px; font-weight: 600; margin: 0 0 8px; }
+  .modal.readme .body h2 { font-size: 17px; font-weight: 600; margin: 22px 0 10px; }
+  .modal.readme .body h3 { font-size: 14.5px; font-weight: 600; margin: 16px 0 8px; }
+  .modal.readme .body p { margin: 8px 0; }
+  .modal.readme .body code { background: var(--bg-3); padding: 1px 6px; border-radius: 4px; font-family: var(--font-mono); font-size: 12.5px; }
+  .modal.readme .body pre { background: var(--bg-3); padding: 12px 14px; border-radius: var(--radius-md); overflow-x: auto; font-family: var(--font-mono); font-size: 12.5px; line-height: 1.5; margin: 12px 0; }
+  .modal.readme .body pre code { background: transparent; padding: 0; }
+  .modal.readme .body ul, .modal.readme .body ol { padding-left: 24px; margin: 8px 0; }
+  .modal.readme .body li { margin: 4px 0; }
+  .modal.readme .body blockquote { border-left: 3px solid var(--brand); padding: 6px 14px; margin: 12px 0; background: var(--brand-soft); color: var(--ink); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+  .modal.readme .body table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 13px; }
+  .modal.readme .body th, .modal.readme .body td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+  .modal.readme .body th { font-weight: 600; color: var(--ink); background: var(--bg-1); }
+  .modal.readme .version { display: flex; gap: 10px; align-items: baseline; margin: 22px 0 8px; }
+  .modal.readme .version h3 { margin: 0; }
+  .modal.readme .version .badge { margin-left: 4px; }
 </style>
 
 <div class="stage">
@@ -45,7 +45,7 @@
 <!-- Modal README -->
 <div class="modal-root" data-attr:data-state="$showReadme ? 'open' : 'closed'">
   <div class="backdrop" data-attr:data-state="$showReadme ? 'open' : 'closed'" data-on:click="$showReadme = false"></div>
-  <div class="modal readme-modal" role="dialog" aria-modal="true" aria-labelledby="readme-modal-title" data-on:click__stop="evt.stopPropagation()">
+  <div class="modal readme" role="dialog" aria-modal="true" aria-labelledby="readme-modal-title" data-on:click__stop="evt.stopPropagation()">
 
     <div class="head">
       <div class="icon-disc brand">
@@ -59,19 +59,19 @@
     </div>
 
     <!-- Tabs (README · Changelog) -->
-    <div class="tabs readme-tabs" role="tablist" style="margin-bottom: 0;">
+    <div class="tabs" role="tablist" style="margin-bottom: 0;">
       <button class="tab" data-attr:aria-selected="$activeTab === 'readme'" data-on:click="$activeTab = 'readme'">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         README
       </button>
       <button class="tab" data-attr:aria-selected="$activeTab === 'changelog'" data-on:click="$activeTab = 'changelog'">
-        <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         Changelog
       </button>
     </div>
 
     <!-- README panel -->
-    <div class="readme-body" data-show="$activeTab === 'readme'">
+    <div class="body" data-show="$activeTab === 'readme'">
       <h1>VeriFactu</h1>
       <p>Sistema verificable de facturación para la <b>Agencia Tributaria española</b>. Permite emitir, registrar y firmar facturas conforme al Real Decreto 1007/2023.</p>
 
@@ -111,12 +111,12 @@
     </div>
 
     <!-- Changelog panel -->
-    <div class="readme-body" data-show="$activeTab === 'changelog'">
+    <div class="body" data-show="$activeTab === 'changelog'">
       <h1>Historial de cambios</h1>
 
-      <div class="changelog-version">
+      <div class="version">
         <h3>v1.0.0</h3>
-        <span class="badge success"><span class="badge__dot"></span>actual</span>
+        <span class="badge success"><span class="dot"></span>actual</span>
         <span style="margin-left:auto;font-size:12px;color:var(--ink-3);">02 may 2026</span>
       </div>
       <ul>
@@ -126,9 +126,9 @@
         <li>Soporte para anulaciones y facturas rectificativas.</li>
       </ul>
 
-      <div class="changelog-version">
+      <div class="version">
         <h3>v0.9.2</h3>
-        <span class="badge"><span class="badge__dot"></span>beta</span>
+        <span class="badge"><span class="dot"></span>beta</span>
         <span style="margin-left:auto;font-size:12px;color:var(--ink-3);">14 abr 2026</span>
       </div>
       <ul>
@@ -137,9 +137,9 @@
         <li>Fix: encadenamiento se rompía si se borraba una factura anulada.</li>
       </ul>
 
-      <div class="changelog-version">
+      <div class="version">
         <h3>v0.9.0</h3>
-        <span class="badge"><span class="badge__dot"></span>beta</span>
+        <span class="badge"><span class="dot"></span>beta</span>
         <span style="margin-left:auto;font-size:12px;color:var(--ink-3);">28 mar 2026</span>
       </div>
       <ul>
@@ -148,9 +148,9 @@
         <li>i18n: ES, EN, CA, GL, EU.</li>
       </ul>
 
-      <div class="changelog-version">
+      <div class="version">
         <h3>v0.5.0</h3>
-        <span class="badge"><span class="badge__dot"></span>alpha</span>
+        <span class="badge"><span class="dot"></span>alpha</span>
         <span style="margin-left:auto;font-size:12px;color:var(--ink-3);">12 feb 2026</span>
       </div>
       <ul>
@@ -173,11 +173,11 @@
     </div>
   </div>
   <nav class="tabbar" aria-label="Navegación principal">
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
-    <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="label">Inicio</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="label">Módulos</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="label">Facturas</span></a>
+    <a class="item" href="#"><span class="icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="label">Perfil</span></a>
+    <a class="item" href="#"><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="label">Más</span></a>
   </nav>
 </div>
 {% endblock %}

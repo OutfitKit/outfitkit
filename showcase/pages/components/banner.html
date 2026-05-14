@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Banner</h1>
-<p class="showcase__lead">Aviso horizontal sobre la página o sección. Variantes semánticas (<code>info</code>, <code>ok</code>, <code>warn</code>, <code>danger</code>, <code>brand</code>). El slot acepta acciones (<code>.ok-banner__action</code>).</p>
+<p class="lead">Aviso horizontal sobre la página o sección. Variantes semánticas (<code>info</code>, <code>ok</code>, <code>warn</code>, <code>danger</code>, <code>brand</code>). El slot acepta acciones (<code>.action</code>).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/banner.jinja" import banner %}
 {% call banner(title="Mantenimiento programado", description="El sistema se actualizará el sábado 11 may de 02:00 a 04:00 (CEST). El POS seguirá funcionando offline.", variant="info", dismissible=True) %}{% endcall %}{% endraw %}{% endset %}
@@ -22,33 +22,33 @@
 
 {% set _src_jinja_2 %}{% raw %}{% from "ui/banner.jinja" import banner %}
 {% call banner(title="3 cuentas bancarias requieren reautenticación PSD2", description="Reconecta antes del 15 may para no interrumpir la conciliación automática.", variant="warn") %}
-<a class="banner__action" href="#">Reconectar →</a>
+<a class="action" href="#">Reconectar →</a>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Banner title="3 cuentas bancarias requieren reautenticación PSD2" description="Reconecta antes del 15 may para no interrumpir la conciliación automática." variant="warn">
-<a class="banner__action" href="#">Reconectar →</a>
+<a class="action" href="#">Reconectar →</a>
 </Banner>{% endraw %}{% endset %}
 
 {% call demo_frame("Warn con acción",
     jinja_src=_src_jinja_2,
     jinjax_src=_src_jinjax_2) %}
 {% call banner(title="3 cuentas bancarias requieren reautenticación PSD2", description="Reconecta antes del 15 may para no interrumpir la conciliación automática.", variant="warn") %}
-<a class="banner__action" href="#">Reconectar →</a>
+<a class="action" href="#">Reconectar →</a>
 {% endcall %}
 {% endcall %}
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/banner.jinja" import banner %}
 {% call banner(title="Stock crítico · 4 SKUs por debajo de mínimo", description="Café Brasil 1kg · Leche entera 1L · Croissant 60g · Servilletas 33×33.", variant="danger") %}
-<a class="banner__action" href="#">Generar OC</a>
+<a class="action" href="#">Generar OC</a>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Banner title="Stock crítico · 4 SKUs por debajo de mínimo" description="Café Brasil 1kg · Leche entera 1L · Croissant 60g · Servilletas 33×33." variant="danger">
-<a class="banner__action" href="#">Generar OC</a>
+<a class="action" href="#">Generar OC</a>
 </Banner>{% endraw %}{% endset %}
 
 {% call demo_frame("Danger con acción",
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {% call banner(title="Stock crítico · 4 SKUs por debajo de mínimo", description="Café Brasil 1kg · Leche entera 1L · Croissant 60g · Servilletas 33×33.", variant="danger") %}
-<a class="banner__action" href="#">Generar OC</a>
+<a class="action" href="#">Generar OC</a>
 {% endcall %}
 {% endcall %}
 
@@ -66,17 +66,17 @@
 
 {% set _src_jinja_5 %}{% raw %}{% from "ui/banner.jinja" import banner %}
 {% call banner(title="Nueva versión disponible", description="OutfitKit 1.4 trae un nuevo set de tokens y 8 componentes.", variant="brand") %}
-<a class="banner__action banner__action--primary" href="#">Ver changelog</a>
+<a class="action primary" href="#">Ver changelog</a>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_5 %}{% raw %}<Banner title="Nueva versión disponible" description="OutfitKit 1.4 trae un nuevo set de tokens y 8 componentes." variant="brand">
-<a class="banner__action banner__action--primary" href="#">Ver changelog</a>
+<a class="action primary" href="#">Ver changelog</a>
 </Banner>{% endraw %}{% endset %}
 
 {% call demo_frame("Brand",
     jinja_src=_src_jinja_5,
     jinjax_src=_src_jinjax_5) %}
 {% call banner(title="Nueva versión disponible", description="OutfitKit 1.4 trae un nuevo set de tokens y 8 componentes.", variant="brand") %}
-<a class="banner__action banner__action--primary" href="#">Ver changelog</a>
+<a class="action primary" href="#">Ver changelog</a>
 {% endcall %}
 {% endcall %}
 
@@ -89,7 +89,7 @@
     <tr><td><code>variant</code></td><td>"info"|"ok"|"warn"|"danger"|"brand"</td><td>"info"</td><td>Color semántico.</td></tr>
     <tr><td><code>dismissible</code></td><td>bool</td><td>false</td><td>Renderiza botón cerrar.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Acciones <code>.ok-banner__action</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Acciones <code>.action</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

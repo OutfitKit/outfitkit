@@ -18,7 +18,8 @@
   position: relative;
   font-size: var(--text-sm);
 }
-.segmented__option {
+/* .segmented .option — each selectable option within a segmented control */
+.segmented .option {
   flex: 1;
   padding: 7px var(--space-4);
   background: transparent;
@@ -33,7 +34,8 @@
   position: relative;
   z-index: 1;
 }
-.segmented__option--active {
+/* .segmented .option.active — currently selected option */
+.segmented .option.active {
   color: var(--ink);
   background: var(--bg-2);
   box-shadow: var(--shadow-sm);
@@ -41,7 +43,8 @@
 .segmented.full { display: flex; width: 100%; }
 
 /* ---------- Bottom sheet ---------- */
-.sheet-backdrop {
+/* .backdrop — standalone overlay element placed alongside .sheet in the DOM */
+.backdrop {
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.5);
@@ -64,7 +67,8 @@
   overflow: hidden;
   box-shadow: 0 -8px 32px rgba(0,0,0,0.35);
 }
-.sheet-handle {
+/* .sheet .handle — drag handle indicator at the top of the sheet */
+.sheet .handle {
   width: var(--size-md); height: 4px;
   background: var(--bg-4);
   border-radius: 2px;
@@ -83,8 +87,9 @@
   text-align: center;
   margin: var(--space-0);
 }
-.sheet-cancel,
-.sheet-done {
+/* .sheet .cancel / .sheet .done — action buttons in the sheet header */
+.sheet .cancel,
+.sheet .done {
   background: transparent;
   border: none;
   font: inherit;
@@ -92,14 +97,15 @@
   padding: var(--space-1);
   font-size: var(--text-base);
 }
-.sheet-cancel { color: var(--ink-2); }
-.sheet-done { color: var(--brand); font-weight: 600; }
+.sheet .cancel { color: var(--ink-2); }
+.sheet .done { color: var(--brand); font-weight: 600; }
 /* .sheet > .body uses universal .body */
 .sheet > .body {
   overflow-y: auto;
   flex: 1;
 }
-.sheet-actions {
+/* .sheet .actions — list of action rows inside the sheet */
+.sheet .actions {
   display: flex;
   flex-direction: column;
   gap: var(--border-w);
@@ -108,7 +114,8 @@
   overflow: hidden;
   margin: var(--space-0) var(--space-0) var(--space-3);
 }
-.sheet-action {
+/* .sheet .action — individual action row inside .sheet .actions */
+.sheet .action {
   background: var(--bg-2);
   border: none;
   padding: var(--space-3-5) var(--space-4);
@@ -122,11 +129,11 @@
   cursor: pointer;
   font: inherit;
 }
-.sheet-action:hover { background: var(--bg-3); }
-.sheet-action.danger { color: var(--danger); }
-.sheet-action svg:first-child { color: var(--ink-3); }
-.sheet-action.danger svg:first-child { color: var(--danger); }
-/* .sheet-action > .meta uses universal .meta */
+.sheet .action:hover { background: var(--bg-3); }
+.sheet .action.danger { color: var(--danger); }
+.sheet .action svg:first-child { color: var(--ink-3); }
+.sheet .action.danger svg:first-child { color: var(--danger); }
+/* .sheet .action > .meta uses universal .meta */
 
 /* ---------- Swipe-list ---------- */
 .swipe {
@@ -142,15 +149,17 @@
   overflow: hidden;
   border: var(--border-w) solid var(--swipe-border-color);
 }
-.swipe__item {
+/* .swipe .item — individual swipeable list entry */
+.swipe .item {
   position: relative;
   overflow: hidden;
   border-bottom: var(--border-w) solid var(--line);
   background: var(--bg-2);
 }
-.swipe__item:last-child { border-bottom: none; }
+.swipe .item:last-child { border-bottom: none; }
 
-.swipe__row {
+/* .swipe .row — content row that slides on swipe */
+.swipe .row {
   display: grid;
   grid-template-columns: 38px 1fr auto;
   gap: var(--space-3);
@@ -161,19 +170,23 @@
   background: var(--bg-2);
   transition: transform var(--dur) var(--ease-out);
 }
-.swipe__item--open .swipe__row { transform: translateX(-160px); }
+/* .swipe .item.open — item in revealed state; shifts .row left */
+.swipe .item.open .row { transform: translateX(-160px); }
 
-/* .swipe__row .title uses universal .title for name */
-/* .swipe__row .sub uses universal .sub for secondary text */
+/* .swipe .row .title uses universal .title for name */
+/* .swipe .row .sub uses universal .sub for secondary text */
 
-.swipe__actions {
+/* .swipe .actions — revealed action buttons container */
+.swipe .actions {
   position: absolute;
   inset: 0 0 0 auto;
   width: 160px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.swipe__btn {
+/* .swipe .actions > .btn — individual swipe action button
+   (> direct child prevents leaking into any nested .btn component) */
+.swipe .actions > .btn {
   border: none;
   font: inherit;
   font-size: var(--text-xs);
@@ -186,9 +199,9 @@
   cursor: pointer;
   color: white;
 }
-.swipe__btn--archive { background: var(--info); }
-.swipe__btn--del { background: var(--danger); }
-.swipe__btn--flag { background: var(--warn); color: var(--warn-fg); }
+.swipe .actions > .btn.archive { background: var(--info); }
+.swipe .actions > .btn.del { background: var(--danger); }
+.swipe .actions > .btn.flag { background: var(--warn); color: var(--warn-fg); }
 
 /* ---------- Pull-to-refresh ---------- */
 .ptr {
@@ -201,7 +214,8 @@
   color: var(--ink-3);
   font-family: var(--font-mono);
 }
-.ptr__spinner {
+/* .ptr .spinner — animated loading indicator */
+.ptr .spinner {
   width: var(--size-xs); height: var(--size-xs);
   border: var(--border-w-2) solid var(--bg-4);
   border-top-color: var(--brand);
@@ -220,7 +234,8 @@
   border-top: var(--border-w) solid var(--line);
   padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
 }
-.mtab__item {
+/* .mtab .item — individual tab button within the mobile tab bar */
+.mtab .item {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -235,5 +250,6 @@
   cursor: pointer;
   font-family: var(--font-display);
 }
-.mtab__item--active { color: var(--brand); }
-.mtab__item svg { width: 22px; height: 22px; }
+/* .mtab .item.active — currently selected tab */
+.mtab .item.active { color: var(--brand); }
+.mtab .item svg { width: 22px; height: 22px; }

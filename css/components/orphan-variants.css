@@ -38,7 +38,8 @@
 }
 
 /* ---------- Status dot ---------- */
-.status-dot {
+/* status-dot compound root → .status.dot (status indicator as a dot shape) */
+.status.dot {
   display: inline-block;
   width: var(--space-2);
   height: var(--space-2);
@@ -46,11 +47,11 @@
   background: var(--ink-4);
   flex-shrink: 0;
 }
-.status-dot.ok    { background: var(--leaf); }
-.status-dot.warn  { background: var(--warn); }
-.status-dot.danger{ background: var(--danger); }
-.status-dot.info  { background: var(--info); }
-.status-dot.off   { background: var(--ink-4); }
+.status.dot.ok    { background: var(--leaf); }
+.status.dot.warn  { background: var(--warn); }
+.status.dot.danger{ background: var(--danger); }
+.status.dot.info  { background: var(--info); }
+.status.dot.off   { background: var(--ink-4); }
 
 /* ---------- Generic label ---------- */
 .label {
@@ -66,7 +67,8 @@
 }
 
 /* ---------- Check row (form layout for checkboxes/radios in row) ---------- */
-.check-row {
+/* check-row compound root → .check.row (a check/radio control laid out as a row) */
+.check.row {
   display: flex;
   align-items: flex-start;
   gap: var(--space-3);
@@ -76,17 +78,18 @@
   cursor: pointer;
   transition: background var(--dur-base) var(--ease-out, ease);
 }
-.check-row:hover {
+.check.row:hover {
   background: var(--bg-3);
 }
-.check-row.is-checked,
-.check-row[data-checked="true"] {
+.check.row.is-checked,
+.check.row[data-checked="true"] {
   background: var(--brand-soft);
   border-color: var(--brand);
 }
 
 /* ---------- Pager button ---------- */
-.pager__btn {
+/* pager is the component root; btn is the element */
+.pager .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -101,28 +104,29 @@
   cursor: pointer;
   font-family: inherit;
 }
-.pager__btn:hover {
+.pager .btn:hover {
   background: var(--bg-3);
   color: var(--ink);
 }
-.pager__btn[aria-current="page"],
-.pager__btn.is-active {
+.pager .btn[aria-current="page"],
+.pager .btn.is-active {
   background: var(--brand-soft);
   border-color: var(--brand);
   color: var(--brand-3);
 }
-.pager__btn:disabled {
+.pager .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* ---------- Toggle internal parts ---------- */
-.toggle__input {
+/* toggle is the component root; input and thumb are its elements */
+.toggle .input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
-.toggle__thumb {
+.toggle .thumb {
   position: absolute;
   top: 50%;
   left: 2px;
@@ -133,9 +137,10 @@
   transform: translateY(-50%);
   transition: transform var(--dur-base) var(--ease-out, ease);
 }
-.toggle.is-on .toggle__thumb,
-.toggle[aria-checked="true"] .toggle__thumb,
-.toggle[aria-checked=""] .toggle__thumb {
+/* no double-context: .toggle already in ancestor, so .is-on/.attr variants stay scoped */
+.toggle.is-on .thumb,
+.toggle[aria-checked="true"] .thumb,
+.toggle[aria-checked=""] .thumb {
   transform: translateY(-50%) translateX(100%);
 }
 
@@ -148,7 +153,8 @@
 }
 
 /* ---------- Banner ---------- */
-.banner__msg {
+/* banner is the component root; msg is the element */
+.banner .msg {
   flex: 1;
   min-width: 0;
 }
@@ -165,7 +171,8 @@
 }
 
 /* ---------- Audio icon ---------- */
-.audio__icon {
+/* audio is the component root; icon is the element */
+.audio .icon {
   display: inline-grid;
   place-items: center;
   width: var(--space-7);
@@ -176,14 +183,16 @@
 }
 
 /* ---------- Menu item text ---------- */
-.menu__item-text {
+/* menu is component root; item and text are nested elements */
+.menu .item .text {
   flex: 1;
   min-width: 0;
   text-align: left;
 }
 
 /* ---------- Chip close ---------- */
-.chip__close {
+/* chip is the component root; close is the element */
+.chip .close {
   display: inline-grid;
   place-items: center;
   width: var(--space-4);
@@ -198,7 +207,7 @@
   line-height: var(--leading-flat);
   opacity: 0.7;
 }
-.chip__close:hover {
+.chip .close:hover {
   background: color-mix(in oklch, currentColor 15%, transparent);
   opacity: 1;
 }
@@ -215,49 +224,54 @@
 }
 
 /* ---------- Permissions matrix cells ---------- */
-.pmatrix__td--hi   { background: color-mix(in oklch, var(--leaf) 18%, transparent);   color: var(--leaf); }
-.pmatrix__td--mid  { background: color-mix(in oklch, var(--warn) 18%, transparent);   color: var(--warn); }
-.pmatrix__td--lo   { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
+/* pmatrix is component root; td is the element; hi/mid/lo are modifiers */
+.pmatrix .td.hi  { background: color-mix(in oklch, var(--leaf) 18%, transparent);   color: var(--leaf); }
+.pmatrix .td.mid { background: color-mix(in oklch, var(--warn) 18%, transparent);   color: var(--warn); }
+.pmatrix .td.lo  { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
 
 /* ---------- Definition-list / stack ----------
    Used in detail views to render label/value pairs */
+/* stack is the component root; row, label, value are its elements */
 .stack {
   display: grid;
   gap: var(--space-3);
   margin: var(--space-0);
 }
-.stack__row {
+.stack .row {
   display: grid;
   grid-template-columns: minmax(120px, 30%) 1fr;
   gap: var(--space-3);
   align-items: baseline;
 }
-.stack__label {
+.stack .label {
   font-size: var(--text-sm);
   color: var(--ink-3);
   margin: var(--space-0);
 }
-.stack__value {
+.stack .value {
   font-size: var(--text-md);
   color: var(--ink);
   margin: var(--space-0);
 }
 
 /* ---------- List content layout ---------- */
-.list__content {
+/* list is the component root; content and meta are its elements */
+.list .content {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--border-w-2);
 }
-.list__meta {
+.list .meta {
   font-size: var(--text-xs);
   color: var(--ink-3);
 }
 
-/* ---------- Tabbar item (standalone — no tabbar container) ---------- */
-.tabbar-item-standalone {
+/* ---------- Tab item (standalone — no tabbar container) ---------- */
+/* tabbar-item-standalone compound name → .tab.item.standalone
+   (a tab item that appears outside of a .tabbar container) */
+.tab.item.standalone {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -271,17 +285,18 @@
   text-decoration: none;
   border-radius: var(--radius-md);
 }
-.tabbar-item-standalone:hover {
+.tab.item.standalone:hover {
   color: var(--ink-2);
 }
-.tabbar-item-standalone[aria-current="page"],
-.tabbar-item-standalone.is-active {
+.tab.item.standalone[aria-current="page"],
+.tab.item.standalone.is-active {
   color: var(--brand);
   background: var(--brand-soft);
 }
 
 /* ---------- Icon tile ---------- */
-.icon-tile {
+/* icon-tile compound root → .icon.tile (an icon presented in a tile/box) */
+.icon.tile {
   display: inline-grid;
   place-items: center;
   width: var(--space-7);
@@ -291,12 +306,12 @@
   color: var(--ink-2);
   flex-shrink: 0;
 }
-.icon-tile.brand  { background: var(--brand-soft);  color: var(--brand-3); }
-.icon-tile.leaf   { background: var(--leaf-soft);   color: var(--leaf); }
-.icon-tile.warn   { background: var(--warn-soft);   color: var(--warn); }
-.icon-tile.danger { background: var(--danger-soft); color: var(--danger); }
-.icon-tile.info   { background: var(--info-soft);   color: var(--info); }
-.icon-tile.lg {
+.icon.tile.brand  { background: var(--brand-soft);  color: var(--brand-3); }
+.icon.tile.leaf   { background: var(--leaf-soft);   color: var(--leaf); }
+.icon.tile.warn   { background: var(--warn-soft);   color: var(--warn); }
+.icon.tile.danger { background: var(--danger-soft); color: var(--danger); }
+.icon.tile.info   { background: var(--info-soft);   color: var(--info); }
+.icon.tile.lg {
   width: var(--space-8);
   height: var(--space-8);
 }
@@ -320,7 +335,8 @@
 }
 
 /* ---------- Toggle slider ---------- */
-.toggle__slider {
+/* toggle is the component root; slider is the element */
+.toggle .slider {
   position: relative;
   display: inline-block;
   width: calc(var(--space-7) + var(--space-1));
@@ -330,7 +346,7 @@
   cursor: pointer;
   transition: background var(--dur-base) var(--ease-out, ease);
 }
-.toggle__slider::after {
+.toggle .slider::after {
   content: '';
   position: absolute;
   top: 2px;
@@ -341,23 +357,25 @@
   background: var(--ink);
   transition: transform var(--dur-base) var(--ease-out, ease);
 }
-.toggle.is-on .toggle__slider,
-.toggle[aria-checked="true"] .toggle__slider,
-.toggle[aria-checked=""] .toggle__slider,
-[aria-checked="true"] > .toggle__slider,
-[aria-checked=""] > .toggle__slider {
+/* no double-context: .toggle already in ancestor; attr-only selectors use > for directness */
+.toggle.is-on .slider,
+.toggle[aria-checked="true"] .slider,
+.toggle[aria-checked=""] .slider,
+[aria-checked="true"] > .slider,
+[aria-checked=""] > .slider {
   background: var(--brand);
 }
-.toggle.is-on .toggle__slider::after,
-.toggle[aria-checked="true"] .toggle__slider::after,
-.toggle[aria-checked=""] .toggle__slider::after,
-[aria-checked="true"] > .toggle__slider::after,
-[aria-checked=""] > .toggle__slider::after {
+.toggle.is-on .slider::after,
+.toggle[aria-checked="true"] .slider::after,
+.toggle[aria-checked=""] .slider::after,
+[aria-checked="true"] > .slider::after,
+[aria-checked=""] > .slider::after {
   transform: translateX(calc(var(--space-5) - 4px));
 }
 
 /* ---------- Form actions row ---------- */
-.form-actions {
+/* form-actions compound root → .actions.form (form-specific actions bar, variant of universal .actions) */
+.actions.form {
   display: flex;
   gap: var(--space-3);
   align-items: center;
@@ -366,11 +384,12 @@
   border-top: var(--border-w) solid var(--line);
   margin-top: var(--space-5);
 }
-.form-actions.start { justify-content: flex-start; }
-.form-actions.between { justify-content: space-between; }
+.actions.form.start { justify-content: flex-start; }
+.actions.form.between { justify-content: space-between; }
 
 /* ---------- Input group addon as button ---------- */
-.input-group__addon--btn {
+/* input-group is the component root (kept as compound root); addon is element; btn is modifier */
+.input-group .addon.btn {
   cursor: pointer;
   border: none;
   background: var(--bg-3);
@@ -380,13 +399,14 @@
   padding: var(--space-0) var(--space-3);
   transition: background var(--dur-base) var(--ease-out, ease);
 }
-.input-group__addon--btn:hover {
+.input-group .addon.btn:hover {
   background: var(--bg-4);
   color: var(--ink);
 }
 
 /* ---------- Timeline sub ---------- */
-.timeline__sub {
+/* timeline is the component root; sub is the element */
+.timeline .sub {
   font-size: var(--text-xs);
   color: var(--ink-3);
   margin-top: var(--border-w-2);

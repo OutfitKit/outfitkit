@@ -2,6 +2,8 @@
 
 > Estado tras la universalización completa (2026-05-11).
 > v2.0.0 listo para tag tras QA visual final.
+> **Fase H** (eliminación de elementos `__`, composición con contexto)
+> en ejecución desde 2026-05-14 — ver sección dedicada abajo.
 
 ## Estado actual ✅
 
@@ -69,6 +71,105 @@
 - [ ] **F3 · PyPI** — `python -m build && twine upload dist/*` desde
       `showcase/pyproject.toml` (ya está en 2.0.0).
 
+---
+
+## Fase H · Eliminación de elementos `__` (composición con contexto)
+
+> ✅ **COMPLETADA 2026-05-15.** Revierte la decisión cerrada #6.
+> Resultado verificado: **0 `__`** en todo `css/` y en los ~240 templates,
+> **0 modificadores `--` BEM** en componentes y bloques `<style>`,
+> build OK, smoke test 200 en 20 páginas representativas.
+> 246 ficheros tocados (+12.6k/−12.1k, neto equilibrado).
+> Pendiente: QA visual (tabbar desktop+mobile) — ver nota al final.
+
+**Objetivo.** Cero clases NO genéricas en CSS y templates — ni BEM `__`
+ni compuestas con guion. `.bom__head` → `.bom .head`,
+`.sidebar-brand-text` → `.sidebar > .head .text`: clases 100 % genéricas,
+el componente aporta el contexto vía selector descendiente.
+
+**Alcance (decidido 2026-05-14): máximo.** No solo nombres de elemento —
+también las raíces compuestas pasan a `base.modificador` cuando aplica
+(`.event-card` → `.card.event`).
+
+**Inventario.** 1.251 clases `__` únicas (2.361 ocurrencias) + ~209 clases
+compuestas con guion, en 47 CSS de componentes · ~350 templates. Más ~9
+stragglers de modificadores `--`.
+
+**Principio de migración.**
+- `.comp__el { … }` → `.comp .el { … }`. Usar `> .el` (hijo directo)
+  cuando haya componentes anidados que compartan nombre de elemento.
+- Sufijo ya universal (`head/title/body/label/value/icon/item/row/
+  actions/meta/sub/divider/foot/btn/list`) → reutilizar la clase
+  universal; la geometría específica se funde en `.comp .head { … }`.
+- Sufijo nuevo → clase genérica scoped. La promoción a universal en
+  `modifiers.css` se difiere a una pasada de optimización posterior.
+- Colisión con modificador reservado (`brand`, `info`, `link`, `block`,
+  `soft`, `light`…) → usar el siguiente sustantivo genérico (`.logo`).
+- Especificidad: `.comp .head` (0,2,0) gana siempre a `.head` universal
+  (0,1,0), y `modifiers.css` carga antes que `components/*` → cascada OK.
+- NO borrar la regla: el cuerpo no cambia, solo el selector.
+
+**Cubos de trabajo.**
+- [x] **H0 · Stragglers `--`** — `chat-*`, `masonry--N`, `kpi/stat__delta`,
+      `prod-art--*`, `hub-modcard--*`, etc. todos a multi-clase.
+- [x] **H1 · Remapeo trivial** — sufijos con universal existente, fundidos
+      en selector con contexto.
+- [x] **H2 · Compuestos con guion** — `.comp-area-thing` → `.comp .area
+      .thing`; raíces compuestas tipo `.event-card` → `.card.event` o
+      mantenidas como root cuando son identidad de componente.
+- [x] **H3 · Cola larga con contexto** — los ~990 restantes, fichero a
+      fichero vía workers Sonnet (60 CSS + 38 ficheros con `<style>`).
+- [ ] **H4 · (diferido) Promoción de universales** — deduplicar los
+      genéricos recurrentes (`bar name time track dot step cell…`) a
+      `modifiers.css`. Optimización post-release, no bloquea.
+
+**Orden de ataque** (por carga `__`, partición por fichero, sin solapes):
+- [x] Piloto 1: `card.css` (card+kpi+stat+empty) + 31 templates — patrón
+      `.comp__el` → `.comp .el` validado (build OK, 0 `__`).
+- [x] Piloto 2: `sidebar.css` + 76 templates — patrón compuestos
+      (`.sidebar-brand-text` → `.sidebar > .head .text`) validado.
+- [~] manufacturing (246) · navigation (241) · hr (178) · multimedia (149)
+      — wave 1 de workers Sonnet en curso
+- [ ] commerce (127) · pos (112) · data-extra (110) · calendar (88)
+- [ ] editors (82) · states (77) · charts (69) · forms-advanced (65)
+- [ ] pickers (62) · timeline (61) · forms-extra (61) · system-overlays (60)
+- [ ] forms-inputs (60) · forms (50) · kanban (49) · feedback-extra (46)
+- [ ] actions-extra (42) · table (41) · overlays (39) · orphan-variants (38)
+- [ ] selection (37) · layout-extra (34) · progress (29) · cmdk (27)
+- [ ] inline-feedback (24) · public (18) · mobile (18) · resto (<10)
+- [ ] Templates: barrido paralelo de los ~350 jinjax/pages. Verificar
+      que el ancestro lleva la clase de componente antes de quitar el
+      prefijo del hijo.
+
+**Workers.** Sonnet por fichero CSS (ownership exclusivo → sin contención).
+Cada worker emite su replacement map. Los templates se migran centralmente
+desde los maps reunidos (no se pueden partir por componente: una página usa
+muchos componentes). Claude para revisión por lote. Aviso operativo: no
+lanzar demasiados a la vez (se observó carrera de permisos) y dejarlos
+terminar — no matar al primer aviso.
+
+**Verificación.**
+- [ ] `grep -rE '__' css/components/` → 0 · ídem en templates.
+- [ ] Build showcase + smoke curl por familia.
+- [ ] Recorrido Playwright QA visual (se solapa con el QA del release).
+- [ ] Stylelint rule "cero `__`" (encaja con E1 del tooling pendiente).
+
+**Pregunta abierta — ¿bloquea v2.0.0?** Es un breaking change adicional.
+Recomendación: plegarlo dentro de v2.0.0 (el tag aún no está puesto).
+
+**Pendiente tras Fase H (no bloquea el grep, sí recomendable antes del tag):**
+- [ ] **QA visual** — recorrido en desktop + mobile; `.tabbar` es prioritario
+      (navegación de módulos en ambos viewports). Playwright/manual.
+- [ ] **Revisión de inconsistencias menores entre workers** — p.ej.
+      `pub-nav__cart-count` mapeado de 2 formas (catalog vs product);
+      `.empty` y `.cmdk` definidos en 2 ficheros (duplicados sin reconciliar);
+      `status-dot` reconciliado a `.status.dot`; algunos helpers compuestos
+      (`mp-head/mp-icon/mp-foot`, `help-icon`…) que los workers mantuvieron
+      como roots — revisar si encajan con el alcance "todo descompuesto".
+- [ ] **Commit** — 246 ficheros sin commitear; agrupar por fase/familia.
+
+---
+
 ## Pendiente post-release (nice-to-have)
 
 - [ ] **test_dual_mode.py rewrite** — los 574 lines de payloads asumen
@@ -129,7 +230,8 @@ la universalización de v2:
 | E. Tooling | 3 | 2-4h | Bajo (DX) |
 | F. Publicación | 3 | 1h | Alto (release) |
 | G. Migración | 2 | 2-4h | Alto (consumidores) |
-| **TOTAL** | **41** | **15-23h** | |
+| H. Eliminación `__` | ~13 | 18-26h | Alto (breaking) |
+| **TOTAL** | **54** | **33-49h** | |
 
 ## Cómo arrancar el showcase
 
@@ -154,7 +256,9 @@ OUTFITKIT_BASE="" OUTFITKIT_CSS=local .venv/bin/python serve.py
 3. Schema Ionic-like (color × 6 variantes, steps, globals, safe-area)
 4. Modificadores universales tipo Bulma (`class="btn primary lg"`)
 5. `.secondary` = neutral (compat Bootstrap/shadcn) · `.accent` para 2º color
-6. BEM elementos `__` mantenidos · modificadores `--` eliminados
+6. BEM eliminado por completo — modificadores `--` (universalización v2)
+   y elementos `__` (Fase H, 2026-05-14). Composición con contexto:
+   `.comp__el` → `.comp .el`, nombres de elemento siempre genéricos
 7. JinjaX templates con `{{ ok_prefix }}` configurable (default vacío)
 8. `tokens.css` mantiene alias `--ok-*` retro-compat para Cloud/Hub
 9. Dist en `dist/outfitkit.css` + `.min.css`

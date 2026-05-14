@@ -6,28 +6,28 @@
 
 {% block content %}
 <h1>Topbar</h1>
-<p class="showcase__lead">Barra superior <em>sticky</em> con backdrop blur. Contiene título de página opcional, búsqueda global, acciones rápidas (notificaciones, avatar) y, en móvil, botón menú. Slot libre para componer.</p>
+<p class="lead">Barra superior <em>sticky</em> con backdrop blur. Contiene título de página opcional, búsqueda global, acciones rápidas (notificaciones, avatar) y, en móvil, botón menú. Slot libre para componer.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/topbar.jinja" import topbar %}
 {% call topbar(page_title="Pedidos") %}
-<div class="topbar-search">
+<div class="search">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
   <input placeholder="Buscar tickets, productos…"/>
-  <span class="topbar-kbd">⌘K</span>
+  <span class="shortcut">⌘K</span>
 </div>
 <div class="actions">
-  <span class="pill success"><span class="pill__dot"></span>En línea</span>
+  <span class="pill success"><span class="dot"></span>En línea</span>
   <span class="avatar sm brand">JC</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Topbar page_title="Pedidos">
-<div class="topbar-search">
+<div class="search">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
   <input placeholder="Buscar tickets, productos…"/>
-  <span class="topbar-kbd">⌘K</span>
+  <span class="shortcut">⌘K</span>
 </div>
 <div class="actions">
-  <span class="pill success"><span class="pill__dot"></span>En línea</span>
+  <span class="pill success"><span class="dot"></span>En línea</span>
   <span class="avatar sm brand">JC</span>
 </div>
 </Topbar>{% endraw %}{% endset %}
@@ -36,13 +36,13 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call topbar(page_title="Pedidos") %}
-<div class="topbar-search">
+<div class="search">
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
   <input placeholder="Buscar tickets, productos…"/>
-  <span class="topbar-kbd">⌘K</span>
+  <span class="shortcut">⌘K</span>
 </div>
 <div class="actions">
-  <span class="pill success"><span class="pill__dot"></span>En línea</span>
+  <span class="pill success"><span class="dot"></span>En línea</span>
   <span class="avatar sm brand">JC</span>
 </div>
 {% endcall %}
@@ -75,17 +75,17 @@
 
 {% set _src_jinja_3 %}{% raw %}{% from "ui/topbar.jinja" import topbar %}
 {% call topbar(with_crumb=True) %}
-<div class="topbar-crumb">
-  <span class="topbar-crumb-item">Inventario</span>
-  <span class="topbar-crumb-sep">/</span>
-  <span class="topbar-crumb-item">SKUs</span>
+<div class="crumb">
+  <span class="item">Inventario</span>
+  <span class="sep">/</span>
+  <span class="item">SKUs</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Topbar with_crumb>
-<div class="topbar-crumb">
-  <span class="topbar-crumb-item">Inventario</span>
-  <span class="topbar-crumb-sep">/</span>
-  <span class="topbar-crumb-item">SKUs</span>
+<div class="crumb">
+  <span class="item">Inventario</span>
+  <span class="sep">/</span>
+  <span class="item">SKUs</span>
 </div>
 </Topbar>{% endraw %}{% endset %}
 
@@ -93,10 +93,10 @@
     jinja_src=_src_jinja_3,
     jinjax_src=_src_jinjax_3) %}
 {% call topbar(with_crumb=True) %}
-<div class="topbar-crumb">
-  <span class="topbar-crumb-item">Inventario</span>
-  <span class="topbar-crumb-sep">/</span>
-  <span class="topbar-crumb-item">SKUs</span>
+<div class="crumb">
+  <span class="item">Inventario</span>
+  <span class="sep">/</span>
+  <span class="item">SKUs</span>
 </div>
 {% endcall %}
 {% endcall %}

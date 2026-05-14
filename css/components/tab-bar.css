@@ -45,8 +45,8 @@
   position: relative;
 }
 
-/* Tab item */
-.tabbar-item {
+/* Tab item — use <button class="item"> or <a class="item"> inside .tabbar */
+.tabbar .item {
   flex: 1 1 0;
   min-width: 0;
   display: flex;
@@ -68,25 +68,25 @@
   touch-action: manipulation;
   transition: color var(--dur-fast), opacity var(--dur-fast), background var(--dur-fast);
 }
-.tabbar-item:hover { opacity: 0.9; color: var(--ink-2); }
-.tabbar-item:focus-visible {
+.tabbar .item:hover { opacity: 0.9; color: var(--ink-2); }
+.tabbar .item:focus-visible {
   outline: var(--border-w-2) solid var(--brand);
   outline-offset: -2px;
 }
 
 /* Active state */
-.tabbar-item[aria-current="page"],
-.tabbar-item[aria-selected="true"],
-.tabbar-item[aria-selected=""],
-.tabbar-item[data-active="true"],
-.tabbar-item.active,
-.tabbar-item.is-active {
+.tabbar .item[aria-current="page"],
+.tabbar .item[aria-selected="true"],
+.tabbar .item[aria-selected=""],
+.tabbar .item[data-active="true"],
+.tabbar .item.active,
+.tabbar .item.is-active {
   opacity: 1;
   color: var(--tabbar-accent);
 }
 
-/* Icon — use <span class="tabbar-icon"> or <svg class="icon"> */
-.tabbar-icon {
+/* Icon container — use <span class="icon"> or <svg class="icon"> */
+.tabbar .icon {
   width: var(--size-xs);
   height: var(--size-xs);
   flex-shrink: 0;
@@ -94,10 +94,10 @@
   display: grid;
   place-items: center;
 }
-.tabbar-icon svg { width: 100%; height: 100%; }
+.tabbar .icon svg { width: 100%; height: 100%; }
 
-/* Label */
-.tabbar-label {
+/* Label — use <span class="label"> */
+.tabbar .label {
   font-size: 10px;
   font-weight: 500;
   letter-spacing: var(--tracking-mono);
@@ -110,12 +110,12 @@
 
 /* Desktop: ligeramente más grande */
 @media (min-width: 768px) {
-  .tabbar-icon { width: 24px; height: 24px; }
-  .tabbar-label { font-size: 11px; }
+  .tabbar .icon { width: 24px; height: 24px; }
+  .tabbar .label { font-size: 11px; }
 }
 
-/* Badge sobre el icono */
-.tabbar-badge {
+/* Badge sobre el icono — use <span class="badge"> inside .icon */
+.tabbar .badge {
   position: absolute;
   top: -4px;
   right: -8px;
@@ -133,7 +133,7 @@
   place-items: center;
   line-height: 1;
 }
-.tabbar-badge.dot {
+.tabbar .badge.dot {
   min-width: var(--tabbar-dot-size, 8px);
   width: var(--tabbar-dot-size, 8px);
   height: var(--tabbar-dot-size, 8px);
@@ -144,9 +144,9 @@
 
 /* Variant: con indicator superior estilo iOS */
 .tabbar.indicator { padding-top: 7px; }
-.tabbar.indicator .tabbar-item[aria-current="page"]::before,
-.tabbar.indicator .tabbar-item[data-active="true"]::before,
-.tabbar.indicator .tabbar-item.is-active::before {
+.tabbar.indicator .item[aria-current="page"]::before,
+.tabbar.indicator .item[data-active="true"]::before,
+.tabbar.indicator .item.is-active::before {
   content: "";
   position: absolute;
   top: 2px;
@@ -159,22 +159,22 @@
 }
 
 /* Variant: pill background activo (Material) */
-.tabbar.pill .tabbar-item[aria-current="page"],
-.tabbar.pill .tabbar-item[data-active="true"] {
+.tabbar.pill .item[aria-current="page"],
+.tabbar.pill .item[data-active="true"] {
   background: var(--brand-soft);
   color: var(--brand);
 }
-.tabbar.pill .tabbar-item[aria-current="page"]::before,
-.tabbar.pill .tabbar-item[data-active="true"]::before {
+.tabbar.pill .item[aria-current="page"]::before,
+.tabbar.pill .item[data-active="true"]::before {
   display: none;
 }
 
 /* Variant: solo iconos */
-.tabbar.icons .tabbar-label { display: none; }
-.tabbar.icons .tabbar-item { gap: 0; padding: 10px; }
+.tabbar.icons .label { display: none; }
+.tabbar.icons .item { gap: 0; padding: 10px; }
 
-/* Variant: con FAB central (typical mobile pattern) */
-.tabbar-fab {
+/* Variant: con FAB central (typical mobile pattern) — use <button class="fab"> */
+.tabbar .fab {
   flex: 0 0 auto;
   width: var(--tabbar-fab-size, 52px);
   height: var(--tabbar-fab-size, 52px);
@@ -189,8 +189,8 @@
   cursor: pointer;
   transition: transform var(--dur-fast);
 }
-.tabbar-fab:hover { transform: translateY(-2px); }
-.tabbar-fab svg { width: 22px; height: 22px; }
+.tabbar .fab:hover { transform: translateY(-2px); }
+.tabbar .fab svg { width: 22px; height: 22px; }
 
 /* ============================================================
    2. TABS — Subnavegación dentro de un módulo
@@ -255,13 +255,15 @@
   border-radius: var(--radius-sm);
 }
 
-.tab-icon {
+/* Icon inside .tab — use <svg class="icon"> */
+.tab .icon {
   width: 14px;
   height: 14px;
   flex-shrink: 0;
 }
 
-.tab-badge {
+/* Badge inside .tab — use <span class="badge"> */
+.tab .badge {
   margin-left: 2px;
   min-width: 18px;
   height: 18px;
@@ -275,9 +277,9 @@
   place-items: center;
   font-variant-numeric: tabular-nums;
 }
-.tab[aria-selected="true"] .tab-badge,
-.tab[aria-selected=""] .tab-badge,
-.tab[data-active="true"] .tab-badge {
+.tab[aria-selected="true"] .badge,
+.tab[aria-selected=""] .badge,
+.tab[data-active="true"] .badge {
   background: var(--brand-soft);
   color: var(--brand);
 }
@@ -364,13 +366,14 @@
   color: var(--ink);
 }
 
-/* Variant: scrollable wrapper con flechas */
+/* Variant: scrollable wrapper con flechas — use <div class="tabs-scroll"> */
 .tabs-scroll {
   position: relative;
   display: flex;
   align-items: stretch;
 }
-.tabs-scroll__btn {
+/* Scroll arrow buttons — use <button class="btn"> inside .tabs-scroll */
+.tabs-scroll .btn {
   flex-shrink: 0;
   width: 28px;
   align-self: stretch;
@@ -382,14 +385,14 @@
   place-items: center;
   border-bottom: var(--border-w) solid var(--line);
 }
-.tabs-scroll__btn:hover { color: var(--ink); }
-.tabs-scroll__btn svg { width: 14px; height: 14px; }
-.tabs-scroll__btn--prev { box-shadow: 4px 0 8px var(--bg); }
-.tabs-scroll__btn--next { box-shadow: -4px 0 8px var(--bg); }
+.tabs-scroll .btn:hover { color: var(--ink); }
+.tabs-scroll .btn svg { width: 14px; height: 14px; }
+.tabs-scroll .btn.prev { box-shadow: 4px 0 8px var(--bg); }
+.tabs-scroll .btn.next { box-shadow: -4px 0 8px var(--bg); }
 .tabs-scroll .tabs { flex: 1; min-width: 0; }
 
-/* Variant: tabs con count + close (browser-tabs style) */
-.tab__close {
+/* Variant: tabs con count + close (browser-tabs style) — use <button class="close"> inside .tab */
+.tab .close {
   width: 16px; height: 16px;
   border: none;
   background: transparent;
@@ -401,11 +404,11 @@
   cursor: pointer;
   display: grid; place-items: center;
 }
-.tab__close:hover { background: var(--bg-3); color: var(--ink); }
+.tab .close:hover { background: var(--bg-3); color: var(--ink); }
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .tabbar-item,
+  .tabbar .item,
   .tab {
     transition: none;
   }
