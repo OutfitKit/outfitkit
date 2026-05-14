@@ -18,7 +18,7 @@
   .cloud-shell { min-height: 100vh; }
   .profile-grid { display: grid; grid-template-columns: 320px 1fr; gap: var(--space-4); align-items: start; }
   @media (max-width: 991px) { .profile-grid { grid-template-columns: 1fr; } }
-  .profile-avatar {
+  .profile-grid .avatar {
     width: 96px; height: 96px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--brand), var(--brand-2));
@@ -31,10 +31,10 @@
     box-shadow: var(--shadow-md);
     border: 4px solid var(--bg-2);
   }
-  .profile-name { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); margin: 0; }
-  .profile-email { font-size: var(--text-sm); color: var(--ink-3); margin-top: 2px; }
-  .security-item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; }
-  .security-item .icon {
+  .profile-grid .name { font-family: var(--font-display); font-size: 20px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); margin: 0; }
+  .profile-grid .email { font-size: var(--text-sm); color: var(--ink-3); margin-top: 2px; }
+  .grid-3 .item { display: flex; align-items: center; gap: 14px; padding: 14px 16px; }
+  .grid-3 .item .icon {
     width: 36px; height: 36px;
     border-radius: var(--radius-md);
     background: var(--bg-3);
@@ -42,11 +42,11 @@
     display: grid; place-items: center;
     flex-shrink: 0;
   }
-  .security-item .icon svg { width: 16px; height: 16px; }
-  .security-item .icon.brand { background: var(--brand-soft); color: var(--brand-3); }
-  .security-item .icon.danger { background: var(--danger-soft); color: var(--danger); }
-  .security-item .title { font-size: var(--text-md); font-weight: 500; color: var(--ink); }
-  .security-item .desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
+  .grid-3 .item .icon svg { width: 16px; height: 16px; }
+  .grid-3 .item .icon.brand { background: var(--brand-soft); color: var(--brand-3); }
+  .grid-3 .item .icon.danger { background: var(--danger-soft); color: var(--danger); }
+  .grid-3 .item .title { font-size: var(--text-md); font-weight: 500; color: var(--ink); }
+  .grid-3 .item .desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 2px; line-height: 1.5; }
 </style>
 
 <div class="app cloud-shell" data-signals='{"sidebar": false}' data-attr:data-sidebar="$sidebar ? 'open' : ''">
@@ -138,10 +138,10 @@
       <!-- Avatar card -->
       <div class="card">
         <div class="body" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;padding:24px 18px;">
-          <div class="profile-avatar">IB</div>
+          <div class="avatar">IB</div>
           <div>
-            <h2 class="profile-name">Ioan Beilic</h2>
-            <div class="profile-email">ioan@acme.com</div>
+            <h2 class="name">Ioan Beilic</h2>
+            <div class="email">ioan@acme.com</div>
             <div style="margin-top: 10px; display:flex; gap:6px; justify-content:center; flex-wrap:wrap;">
               <span class="chip" data-active="true">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -270,7 +270,7 @@
       <div class="grid-3">
 
         <div class="card">
-          <div class="security-item">
+          <div class="item">
             <div class="icon brand">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 1 1 8 0v4"/></svg>
             </div>
@@ -286,7 +286,7 @@
         </div>
 
         <div class="card">
-          <div class="security-item">
+          <div class="item">
             <div class="icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
             </div>
@@ -302,7 +302,7 @@
         </div>
 
         <div class="card" style="border-color: color-mix(in oklch, var(--danger) 25%, var(--line));">
-          <div class="security-item">
+          <div class="item">
             <div class="icon danger">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
             </div>

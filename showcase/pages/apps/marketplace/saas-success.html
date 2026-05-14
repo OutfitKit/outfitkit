@@ -29,7 +29,7 @@
     align-items: center;
     gap: 14px;
   }
-  .success-check {
+  .success-hero .check {
     width: 84px; height: 84px;
     border-radius: 50%;
     background: var(--leaf-soft);
@@ -37,14 +37,14 @@
     display: grid; place-items: center;
     box-shadow: 0 0 0 8px color-mix(in oklch, var(--leaf) 8%, transparent);
   }
-  .success-check svg { width: 42px; height: 42px; }
-  .success-title { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--ink); margin: 0; letter-spacing: -0.03em; }
-  .success-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; font-size: 13px; color: var(--ink-3); }
-  .success-meta b { font-family: var(--font-mono); color: var(--ink); font-weight: 600; }
+  .success-hero .check svg { width: 42px; height: 42px; }
+  .success-hero .title { font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--ink); margin: 0; letter-spacing: -0.03em; }
+  .success-hero .meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; font-size: 13px; color: var(--ink-3); }
+  .success-hero .meta b { font-family: var(--font-mono); color: var(--ink); font-weight: 600; }
 
   .success-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; display: flex; flex-direction: column; gap: 16px; }
-  .success-head { display: flex; justify-content: space-between; align-items: baseline; }
-  .success-head h2 { font-family: var(--font-display); font-size: 17px; font-weight: 600; margin: 0; color: var(--ink); }
+  .success-card .head { display: flex; justify-content: space-between; align-items: baseline; }
+  .success-card .head h2 { font-family: var(--font-display); font-size: 17px; font-weight: 600; margin: 0; color: var(--ink); }
 
   .mini-list { display: flex; flex-direction: column; gap: 10px; }
   .mini-line { display: grid; grid-template-columns: 44px 1fr auto; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px dashed var(--line); }
@@ -97,14 +97,14 @@
     transition: border-color var(--dur-fast), transform var(--dur-fast);
   }
   .help-card:hover { border-color: var(--line-2); transform: translateY(-1px); }
-  .help-icon {
+  .help-card .icon {
     width: 36px; height: 36px; flex-shrink: 0;
     background: var(--bg-3);
     border-radius: var(--radius-sm);
     display: grid; place-items: center;
     color: var(--ink-2);
   }
-  .help-title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
+  .help-card .title { font-size: 13.5px; font-weight: 600; color: var(--ink); }
   .help-card .desc  { font-size: 12px; color: var(--ink-3); margin-top: 2px; line-height: 1.4; }
 </style>
 
@@ -179,13 +179,13 @@
       <main class="success-wrap">
 
         <section class="success-hero">
-          <div class="success-check">
+          <div class="check">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M5 12.5l4.5 4.5L19 7.5"/>
             </svg>
           </div>
-          <h1 class="success-title">¡Pedido confirmado!</h1>
-          <div class="success-meta">
+          <h1 class="title">¡Pedido confirmado!</h1>
+          <div class="meta">
             <span>Pedido <b>#PED-2026-0142</b></span>
             <span class="text-ink-4">·</span>
             <span>Confirmación enviada a <b style="color:var(--ink-2);font-family:inherit;">ioan@acme.com</b></span>
@@ -194,7 +194,7 @@
         </section>
 
         <article class="success-card">
-          <div class="success-head">
+          <div class="head">
             <h2>Resumen del pedido</h2>
             <span class="text-xs text-ink-3 font-mono">5 artículos · €2 286 IVA inc.</span>
           </div>
@@ -281,29 +281,29 @@
           <h3 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:8px 0 12px;color:var(--ink);">Mientras esperas tu pedido</h3>
           <div class="help-section">
             <a class="help-card" href="#">
-              <div class="help-icon">
+              <div class="icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9"/></svg>
               </div>
               <div>
-                <div class="help-title">Configura tu hub</div>
+                <div class="title">Configura tu hub</div>
                 <div class="desc">Tutorial paso a paso para tener todo listo cuando llegue el equipo.</div>
               </div>
             </a>
             <a class="help-card" href="#">
-              <div class="help-icon">
+              <div class="icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
               </div>
               <div>
-                <div class="help-title">Vídeos del Modelo X</div>
+                <div class="title">Vídeos del Modelo X</div>
                 <div class="desc">12 vídeos cortos sobre primer arranque, atajos y operativa diaria.</div>
               </div>
             </a>
             <a class="help-card" href="#">
-              <div class="help-icon">
+              <div class="icon">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
               </div>
               <div>
-                <div class="help-title">Únete a la comunidad</div>
+                <div class="title">Únete a la comunidad</div>
                 <div class="desc">Foro y Slack con más de 2 400 comerciantes ERPlora.</div>
               </div>
             </a>

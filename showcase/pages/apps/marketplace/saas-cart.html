@@ -41,15 +41,15 @@
   .cart-line .total { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 
   .summary-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
-  .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
-  .summary-row b { color: var(--ink); font-weight: 500; }
-  .summary-divider { border: none; border-top: 1px dashed var(--line); margin: 10px 0; }
+  .summary-card .row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+  .summary-card .row b { color: var(--ink); font-weight: 500; }
+  .summary-card .divider { border: none; border-top: 1px dashed var(--line); margin: 10px 0; }
   .summary-total { display: flex; justify-content: space-between; align-items: baseline; margin: 4px 0 14px; }
   .summary-total .label { font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
   .summary-total .value { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
 
   .pay-icons { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
-  .pay-icon { width: 36px; height: 24px; border-radius: 4px; background: var(--bg-3); border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-mono); font-size: 8px; font-weight: 700; color: var(--ink-2); letter-spacing: 0.06em; }
+  .pay-icons .icon { width: 36px; height: 24px; border-radius: 4px; background: var(--bg-3); border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-mono); font-size: 8px; font-weight: 700; color: var(--ink-2); letter-spacing: 0.06em; }
   .trust-line { font-size: 11.5px; color: var(--ink-3); margin-top: 10px; display: flex; gap: 6px; align-items: center; }
 
   .related-section { margin-top: 32px; }
@@ -291,21 +291,21 @@
           <div class="summary-card">
             <h3 style="margin:0 0 10px;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--ink);">Resumen del pedido</h3>
 
-            <div class="summary-row"><span>Subtotal (5 artículos)</span><b data-text="`€${(($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)).toLocaleString('es-ES')}`">€2 133</b></div>
-            <div class="summary-row"><span>IVA 21%</span><b data-text="`€${(((($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)) * 0.21).toFixed(0))}`">€448</b></div>
-            <div class="summary-row">
+            <div class="row"><span>Subtotal (5 artículos)</span><b data-text="`€${(($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)).toLocaleString('es-ES')}`">€2 133</b></div>
+            <div class="row"><span>IVA 21%</span><b data-text="`€${(((($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)) * 0.21).toFixed(0))}`">€448</b></div>
+            <div class="row">
               <span>Envío</span>
               <span class="tag success sm">Gratis · desde €200</span>
             </div>
 
-            <hr class="summary-divider"/>
+            <hr class="divider"/>
 
             <div class="flex gap-1">
               <input class="input sm flex-1" placeholder="Código de cupón" data-bind:coupon/>
               <button class="btn secondary sm">Aplicar</button>
             </div>
 
-            <hr class="summary-divider"/>
+            <hr class="divider"/>
 
             <div class="summary-total">
               <span class="label">Total</span>
@@ -318,12 +318,12 @@
             </button>
 
             <div class="pay-icons">
-              <span class="pay-icon" title="Visa">VISA</span>
-              <span class="pay-icon" title="Mastercard">MC</span>
-              <span class="pay-icon" title="Amex">AMEX</span>
-              <span class="pay-icon" title="Apple Pay">APay</span>
-              <span class="pay-icon" title="Google Pay">GPay</span>
-              <span class="pay-icon" title="SEPA">SEPA</span>
+              <span class="icon" title="Visa">VISA</span>
+              <span class="icon" title="Mastercard">MC</span>
+              <span class="icon" title="Amex">AMEX</span>
+              <span class="icon" title="Apple Pay">APay</span>
+              <span class="icon" title="Google Pay">GPay</span>
+              <span class="icon" title="SEPA">SEPA</span>
             </div>
 
             <div class="trust-line">

@@ -22,7 +22,7 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
   }
-  .pub-nav .brand {
+  .pub-nav .nav-brand {
     display: inline-flex; align-items: center; gap: var(--space-3);
     text-decoration: none;
   }
@@ -40,16 +40,16 @@
     font-size: 16px; font-weight: 600;
     letter-spacing: -0.01em; color: var(--ink);
   }
-  .pub-nav .links {
+  .pub-nav .nav-links {
     display: inline-flex; gap: var(--space-2); align-items: center;
   }
-  .pub-nav .link {
+  .pub-nav .nav-link {
     padding: 6px var(--space-3);
     border-radius: var(--radius-md);
     font-size: var(--text-sm); color: var(--ink-2);
     text-decoration: none;
   }
-  .pub-nav .link:hover { color: var(--ink); background: var(--bg-2); }
+  .pub-nav .nav-link:hover { color: var(--ink); background: var(--bg-2); }
 
   /* Hero */
   .pub-hero {
@@ -136,8 +136,8 @@
     50%      { box-shadow: 0 4px 14px color-mix(in oklch, var(--brand) 50%, transparent), 0 0 0 14px color-mix(in oklch, var(--brand) 18%, transparent); }
   }
 
-  /* Footer */
-  .pub-foot {
+  /* Footer — element of .pub-shell, not a standalone component */
+  .pub-shell .foot {
     margin-top: auto;
     padding: var(--space-6) var(--space-5);
     border-top: 1px solid var(--line);
@@ -146,12 +146,12 @@
     gap: var(--space-4); flex-wrap: wrap;
     font-size: var(--text-sm); color: var(--ink-3);
   }
-  .pub-foot .legal { display: inline-flex; gap: var(--space-4); flex-wrap: wrap; }
-  .pub-foot .legal a { color: var(--ink-3); text-decoration: none; }
-  .pub-foot .legal a:hover { color: var(--ink); }
+  .pub-shell .foot .legal { display: inline-flex; gap: var(--space-4); flex-wrap: wrap; }
+  .pub-shell .foot .legal a { color: var(--ink-3); text-decoration: none; }
+  .pub-shell .foot .legal a:hover { color: var(--ink); }
 
   @media (max-width: 640px) {
-    .pub-nav .links { display: none; }
+    .pub-nav .nav-links { display: none; }
   }
 </style>
 
@@ -159,14 +159,14 @@
 
     <!-- Public navbar — TODO UX: no public-nav component yet -->
     <nav class="pub-nav">
-      <a href="/" class="brand">
+      <a href="/" class="nav-brand">
         <span class="logo">L</span>
         <span class="name">Cafetería La Rambla</span>
       </a>
-      <div class="links">
-        <a href="/public/catalog" class="link">Carta</a>
-        <a href="#contact" class="link">Contacto</a>
-        <a href="#hours" class="link">Horarios</a>
+      <div class="nav-links">
+        <a href="/public/catalog" class="nav-link">Carta</a>
+        <a href="#contact" class="nav-link">Contacto</a>
+        <a href="#hours" class="nav-link">Horarios</a>
         <a href="/login" class="btn secondary sm">Acceso staff</a>
       </div>
     </nav>
@@ -270,7 +270,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="pub-foot">
+    <footer class="foot">
       <div>© 2026 Cafetería La Rambla · Powered by ERPlora</div>
       <div class="legal">
         <a href="/legal/privacy">Privacidad</a>

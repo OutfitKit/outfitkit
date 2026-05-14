@@ -65,8 +65,8 @@
     display: flex; flex-direction: column; align-items: center;
     gap: var(--space-3);
   }
-  .hub-pinpad-title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0; color: var(--ink); }
-  .hub-pinpad-label { font-size: var(--text-sm); color: var(--ink-3); margin: 0; }
+  .hub-pinpad-frame .title { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin: 0; color: var(--ink); }
+  .hub-pinpad-frame .label { font-size: var(--text-sm); color: var(--ink-3); margin: 0; }
 
   .hub-pin-dots { display: flex; gap: 14px; margin: var(--space-2) 0; }
   .hub-pin-dot {
@@ -82,7 +82,7 @@
   .hub-pin-error { color: var(--danger); font-size: var(--text-sm); margin: 0; }
   .hub-pin-confirm { color: var(--brand); font-size: var(--text-sm); font-weight: 500; margin: 0; }
 
-  .hub-foot { text-align: center; font-size: var(--text-xs); color: var(--ink-4); }
+  .hub-auth .foot { text-align: center; font-size: var(--text-xs); color: var(--ink-4); }
 </style>
 
 <main class="hub-auth"
@@ -175,8 +175,8 @@
         <!-- LOCAL: PIN Entry -->
         <div data-show="$login.mode === 'local' && $login.selectedEmployee" class="hub-pinpad-frame">
           <span class="avatar xl brand" data-text="$login.selectedEmployee?.initials">JC</span>
-          <h2 class="hub-pinpad-title" data-text="$login.selectedEmployee?.name">Joan Castell</h2>
-          <p class="hub-pinpad-label">Introduce tu PIN</p>
+          <h2 class="title" data-text="$login.selectedEmployee?.name">Joan Castell</h2>
+          <p class="label">Introduce tu PIN</p>
 
           <div class="hub-pin-dots">
             <div class="hub-pin-dot" data-class:is-filled="$login.pinInput.length >= 1" data-class:is-error="$login.pinError"></div>
@@ -271,7 +271,7 @@
       </div>
     </article>
 
-    <p class="hub-foot">ERPlora Hub · v1.0</p>
+    <p class="foot">ERPlora Hub · v1.0</p>
   </div>
 
   <!-- Modal: Setup PIN -->
