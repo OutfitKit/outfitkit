@@ -22,8 +22,8 @@
   --background:    var(--bg-1);
   --border-color:  var(--line);
   --border-radius: var(--radius-md);
-  --row-height:    2.5rem;
-  --height:        22.5rem;
+  --row-height:    var(--size-lg);                /* 2.75rem · tap-friendly */
+  --height:        calc(var(--size-2xl) * 6.4);   /* ~22.5rem · viewport por defecto */
 
   position: relative;
   height: var(--height);
@@ -107,7 +107,7 @@
 
 /* ───── Modificadores ──────────────────────────────────── */
 .virtual-scroll.dense {
-  --row-height: 1.75rem;
+  --row-height: var(--size-sm);   /* 1.75rem — compacto desktop */
 }
 .virtual-scroll.dense .virtual-scroll-row {
   font-size: var(--text-xs);

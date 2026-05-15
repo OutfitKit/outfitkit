@@ -82,6 +82,12 @@
    --size-xl: 3.25rem;
    --size-2xl: 3.5rem;
 
+   /* Touch targets — alias semánticos. iOS HIG: 44 px mín, 48 px cómodo.
+      Cualquier elemento tappable debería referenciar --tap-min como suelo. */
+   --tap-min:     var(--size-lg);     /* 2.75rem · 44 px · iOS HIG mínimo */
+   --tap-comfort: var(--size-xl);     /* 3.25rem · 52 px · cómodo / sheets */
+   --tap-tight:   var(--size-md);     /* 2.25rem · 36 px · solo desktop pointer */
+
    /* Padding por tamaño — los componentes consumen --pad-x/--pad-y */
    --pad-xs-x: var(--space-2);
    --pad-xs-y: var(--space-1);

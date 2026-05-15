@@ -25,7 +25,7 @@
     return KNOWN_THEMES[v] ? v : 'erplora';
   }
   var KNOWN_TEMPLATES = {
-    '': 1, 'default': 1, 'corporate': 1, 'glass': 1,
+    '': 1, 'default': 1, 'glass': 1,
     'glass-mono': 1, 'mono': 1, 'erplora': 1,
   };
   function normTemplate(v) {

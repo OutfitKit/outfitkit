@@ -23,12 +23,13 @@
 }
 
 .drawer {
-  --background: color-mix(in oklch, var(--bg-1) 82%, transparent);
+  --background: var(--surface-glass, color-mix(in oklch, var(--bg-1) 82%, transparent));
   --color: var(--text-color);
   --border-color: color-mix(in oklch, var(--line-2) 85%, transparent);
   --border-radius: 0;
   --border-width: var(--border-w);
-  --shadow: var(--shadow-lg);
+  --shadow: var(--shadow-xl, var(--shadow-lg));
+  --backdrop-filter: blur(var(--glass-blur, 14px)) saturate(var(--glass-saturate, 150%));
   --width: 100%;
   --max-width: 26.25rem;
   --max-height: 80vh;
@@ -46,6 +47,8 @@
   display: flex;
   flex-direction: column;
   background: var(--background);
+  -webkit-backdrop-filter: var(--backdrop-filter);
+          backdrop-filter: var(--backdrop-filter);
   color: var(--color);
   border-left: var(--border-width) solid var(--border-color);
   box-shadow: var(--shadow);

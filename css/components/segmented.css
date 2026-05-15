@@ -4,8 +4,8 @@
    Control de selección horizontal — iOS UISegmentedControl /
    Android Material BottomNavigationView segmented.
 
-   Pensado para dispositivos táctiles: cada opción tiene al
-   menos 2.5rem de alto efectivo (touch target ≈ 40 px). En
+   Pensado para dispositivos táctiles: cada opción hereda
+   var(--tap-min) (44 px · iOS HIG mínimo). En
    desktop también es útil como "tab compactas" o filtros
    inline; por eso vive fuera de mobile.css.
 
@@ -24,14 +24,14 @@
 .segmented {
   --background:         var(--bg-3);
   --border-radius:      var(--radius, var(--radius-md));
-  --padding-y:          0.4375rem;
+  --padding-y:          var(--space-1-5);
   --padding-x:          var(--space-4);
-  --gap:                0.1875rem;
+  --gap:                var(--space-1);
   --font-size:          var(--text, var(--text-sm));
   --color:              var(--ink-2);
   --active-background:  var(--bg-2);
   --active-color:       var(--variant, var(--ink));
-  --min-tap-height:     2.5rem; /* 40 px — touch target */
+  --min-tap-height:     var(--tap-min);    /* iOS HIG */
 
   display: inline-flex;
   background: var(--background);
@@ -80,12 +80,13 @@
   width: 100%;
 }
 
-/* Variant: compacto */
+/* Variant: compacto · solo apto cuando el contexto garantiza puntero
+   (toolbars desktop). En mobile usa el tamaño por defecto. */
 .segmented.sm {
   --padding-y: var(--space-1);
   --padding-x: var(--space-2-5);
   --font-size: var(--text-xs);
-  --min-tap-height: 2rem;
+  --min-tap-height: var(--tap-tight);
 }
 
 /* Reduced motion */

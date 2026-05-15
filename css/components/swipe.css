@@ -32,9 +32,11 @@
   --background:    var(--bg-2);
   --border-color:  var(--line);
   --border-radius: var(--radius, var(--radius-lg));
-  --actions-width: 10rem;  /* ancho total revelado al deslizar */
+  --actions-width: calc(var(--size-2xl) * 2.85); /* ~10rem · 2 botones de 5rem */
   --row-padding-y: var(--space-3);
   --row-padding-x: var(--space-3-5);
+  --row-icon-col:  var(--size-md);
+  --action-min:    var(--tap-min);
 
   list-style: none;
   margin: var(--space-0);
@@ -56,7 +58,7 @@
 
 .swipe-row {
   display: grid;
-  grid-template-columns: 2.375rem 1fr auto;
+  grid-template-columns: var(--row-icon-col) 1fr auto;
   gap: var(--space-3);
   align-items: center;
   padding: var(--row-padding-y) var(--row-padding-x);
@@ -124,7 +126,7 @@
 }
 
 /* Variant: solo una acción (full width) */
-.swipe.single { --actions-width: 6rem; }
+.swipe.single { --actions-width: calc(var(--size-2xl) * 1.7); /* ~6rem */ }
 .swipe.single .swipe-actions { grid-template-columns: 1fr; }
 
 /* Reduced motion */

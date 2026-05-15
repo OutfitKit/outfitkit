@@ -29,7 +29,7 @@
 .action-sheet-root {
   position: fixed;
   inset: 0;
-  z-index: var(--z-drawer, 70);
+  z-index: var(--z-drawer);
   pointer-events: none;
   display: flex;
   align-items: flex-end;
@@ -53,26 +53,27 @@
 .action-sheet-root .backdrop {
   position: absolute;
   inset: 0;
-  background: var(--overlay-bg, color-mix(in oklch, black 50%, transparent));
-  -webkit-backdrop-filter: blur(2px);
-  backdrop-filter: blur(2px);
-  transition: opacity var(--dur-base, 200ms) var(--ease-out, ease-out);
+  background: var(--overlay-bg);
+  -webkit-backdrop-filter: blur(var(--glass-blur-soft));
+          backdrop-filter: blur(var(--glass-blur-soft));
+  transition: opacity var(--dur-base) var(--ease-out);
 }
 
 .action-sheet {
-  --background:    var(--bg-1);
-  --color:         var(--ink);
-  --border-color:  var(--line-2);
-  --border-radius: var(--radius-xl, 1rem);
-  --shadow:        var(--shadow-xl, 0 -10px 40px -10px rgb(0 0 0 / 0.3));
-  --width:         100%;
-  --max-width:     32rem;
-  --max-height:    85vh;
-  --padding-x:     var(--space-3, 0.75rem);
-  --padding-y:     var(--space-3, 0.75rem);
-  --gap:           var(--space-2, 0.5rem);
-  --handle-width:  2.5rem;
-  --handle-height: 0.25rem;
+  --background:        var(--surface-glass, var(--bg-1));
+  --color:             var(--ink);
+  --border-color:      var(--line-2);
+  --border-radius:     var(--radius-xl);
+  --shadow:            var(--shadow-xl, var(--shadow-lg));
+  --backdrop-filter:   blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  --width:             100%;
+  --max-width:         calc(var(--size-2xl) * 9.15);  /* ~32rem · ancho típico hoja */
+  --max-height:        85vh;
+  --padding-x:         var(--space-3);
+  --padding-y:         var(--space-3);
+  --gap:               var(--space-2);
+  --handle-width:      var(--space-8);   /* 2.5rem */
+  --handle-height:     var(--space-1);   /* 0.25rem */
 
   position: relative;
   width: var(--width);
@@ -84,12 +85,14 @@
   padding: var(--padding-y) var(--padding-x);
   padding-bottom: calc(var(--padding-y) + var(--safe-area-bottom, 0px));
   background: var(--background);
+  -webkit-backdrop-filter: var(--backdrop-filter);
+          backdrop-filter: var(--backdrop-filter);
   color: var(--color);
-  border-top: var(--border-w, 1px) solid var(--border-color);
+  border-top: var(--border-w) solid var(--border-color);
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   box-shadow: var(--shadow);
   transform: translateY(0);
-  transition: transform var(--dur-base, 200ms) var(--ease-out, ease-out);
+  transition: transform var(--dur-base) var(--ease-out);
 }
 
 .action-sheet-root:not([data-state="open"]) .action-sheet {
@@ -102,11 +105,11 @@
   }
   .action-sheet {
     border-radius: var(--border-radius);
-    border: var(--border-w, 1px) solid var(--border-color);
+    border: var(--border-w) solid var(--border-color);
     padding-bottom: var(--padding-y);
   }
   .action-sheet-root:not([data-state="open"]) .action-sheet {
-    transform: translateY(1rem);
+    transform: translateY(var(--space-4));
     opacity: 0;
   }
 }
@@ -115,9 +118,9 @@
 .action-sheet-handle {
   width: var(--handle-width);
   height: var(--handle-height);
-  margin: var(--space-1, 0.25rem) auto var(--space-2, 0.5rem);
+  margin: var(--space-1) auto var(--space-2);
   background: var(--line-2);
-  border-radius: var(--radius-pill, 999px);
+  border-radius: var(--radius-pill);
   flex-shrink: 0;
 }
 
@@ -127,25 +130,25 @@
 
 /* ───── Head: título + subtítulo ────────────────────────── */
 .action-sheet-head {
-  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  padding: var(--space-2) var(--space-3);
   text-align: center;
-  border-bottom: var(--border-w, 1px) solid var(--line);
-  margin-bottom: var(--space-1, 0.25rem);
+  border-bottom: var(--border-w) solid var(--line);
+  margin-bottom: var(--space-1);
 }
 
 .action-sheet-title {
-  font-size: var(--text-sm, 0.875rem);
-  font-weight: var(--weight-semibold, 600);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
   color: var(--ink-2);
   margin: 0;
-  letter-spacing: var(--tracking-near, -0.01em);
+  letter-spacing: var(--tracking-near);
 }
 
 .action-sheet-sub {
-  font-size: var(--text-xs, 0.75rem);
+  font-size: var(--text-xs);
   color: var(--ink-3);
-  margin: var(--space-1, 0.25rem) 0 0;
-  line-height: var(--leading-snug, 1.4);
+  margin: var(--space-1) 0 0;
+  line-height: var(--leading-snug);
 }
 
 /* ───── Actions list ────────────────────────────────────── */
@@ -161,20 +164,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-2, 0.5rem);
-  min-height: 3rem;
-  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  gap: var(--space-2);
+  min-height: var(--tap-comfort);   /* 3.25rem · 52px — iOS HIG generoso */
+  padding: var(--space-3) var(--space-4);
   font-family: inherit;
-  font-size: var(--text-base, 1rem);
-  font-weight: var(--weight-medium, 500);
+  font-size: var(--text-base);
+  font-weight: var(--weight-medium);
   color: var(--ink);
   background: transparent;
   border: 0;
-  border-bottom: var(--border-w, 1px) solid var(--line);
+  border-bottom: var(--border-w) solid var(--line);
   cursor: pointer;
-  transition: background var(--dur-fast, 120ms) var(--ease-out, ease-out);
+  transition: background var(--dur-fast) var(--ease-out);
   text-align: center;
   width: 100%;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .action-sheet-action:last-child {
@@ -182,16 +187,16 @@
 }
 
 .action-sheet-action:hover {
-  background: var(--bg-2);
+  background: color-mix(in oklch, var(--ink) 5%, transparent);
 }
 
 .action-sheet-action:active {
-  background: var(--bg-3);
+  background: color-mix(in oklch, var(--ink) 10%, transparent);
 }
 
 .action-sheet-action:focus-visible {
-  outline: var(--border-w-2, 2px) solid var(--brand, var(--color-primary));
-  outline-offset: -2px;
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: calc(-1 * var(--border-w-2));
 }
 
 .action-sheet-action:disabled,
@@ -203,25 +208,25 @@
 
 /* Acción destructiva (rojo, tipo "Eliminar") */
 .action-sheet-action.destructive {
-  color: var(--color-danger, var(--danger));
+  color: var(--danger);
 }
 
 /* Acción principal / resaltada */
 .action-sheet-action.primary {
-  color: var(--brand, var(--color-primary));
-  font-weight: var(--weight-semibold, 600);
+  color: var(--brand);
+  font-weight: var(--weight-semibold);
 }
 
 /* Icono opcional dentro del botón */
 .action-sheet-action .icon {
-  width: var(--icon-sm, 1.125rem);
-  height: var(--icon-sm, 1.125rem);
+  width: var(--icon-md);
+  height: var(--icon-md);
   flex-shrink: 0;
 }
 
 /* ───── Cancel button (separado del grupo principal) ───── */
 .action-sheet-cancel-wrap {
-  margin-top: var(--space-2, 0.5rem);
+  margin-top: var(--space-2);
   padding: 0;
 }
 
@@ -229,18 +234,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 3rem;
+  min-height: var(--tap-comfort);
   width: 100%;
-  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  padding: var(--space-3) var(--space-4);
   font-family: inherit;
-  font-size: var(--text-base, 1rem);
-  font-weight: var(--weight-semibold, 600);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
   color: var(--ink);
   background: var(--bg-2);
-  border: var(--border-w, 1px) solid var(--line);
-  border-radius: var(--radius-lg, 0.75rem);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
   cursor: pointer;
-  transition: background var(--dur-fast, 120ms) var(--ease-out, ease-out);
+  transition: background var(--dur-fast) var(--ease-out);
 }
 
 .action-sheet-cancel:hover {
@@ -252,8 +257,8 @@
 }
 
 .action-sheet-cancel:focus-visible {
-  outline: var(--border-w-2, 2px) solid var(--brand, var(--color-primary));
-  outline-offset: 2px;
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: var(--space-1);
 }
 
 /* ───── Bar header (Cancel/Title/Done) — picker / form sheets ─────
@@ -262,30 +267,29 @@
 .action-sheet-bar {
   display: grid;
   grid-template-columns: auto 1fr auto;
-  gap: var(--space-3, 0.75rem);
+  gap: var(--space-3);
   align-items: center;
-  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
-  border-bottom: var(--border-w, 1px) solid var(--line);
-  margin-bottom: var(--space-2, 0.5rem);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: var(--border-w) solid var(--line);
+  margin-bottom: var(--space-2);
   flex-shrink: 0;
 }
 
 .action-sheet-bar .action-sheet-title {
   text-align: center;
-  font-size: var(--text-base, 1rem);
+  font-size: var(--text-base);
   color: var(--ink);
 }
 
-/* Botones de texto integrados en la barra superior. Tap-target ≥44 px
-   (recomendación Apple HIG) — crítico para uso táctil. */
+/* Botones de texto integrados en la barra superior. Tap-target iOS HIG. */
 .action-sheet-bar-btn {
   --color: var(--ink-2);
   background: transparent;
   border: 0;
   font: inherit;
-  font-size: var(--text-base, 1rem);
-  padding: var(--space-2, 0.5rem) var(--space-1, 0.25rem);
-  min-height: 2.75rem;
+  font-size: var(--text-base);
+  padding: var(--space-2) var(--space-1);
+  min-height: var(--tap-min);
   cursor: pointer;
   color: var(--color);
   touch-action: manipulation;
@@ -294,31 +298,31 @@
 .action-sheet-bar-btn:hover { color: var(--ink); }
 .action-sheet-bar-btn.done,
 .action-sheet-bar-btn.primary {
-  --color: var(--brand, var(--color-primary));
-  font-weight: var(--weight-semibold, 600);
+  --color: var(--brand);
+  font-weight: var(--weight-semibold);
 }
 .action-sheet-bar-btn:focus-visible {
-  outline: var(--border-w-2, 2px) solid var(--brand, var(--color-primary));
-  outline-offset: 2px;
-  border-radius: var(--radius-sm, 0.25rem);
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: var(--space-1);
+  border-radius: var(--radius-sm);
 }
 
 /* ───── Row layout variant — icon · label · meta ─────────────────
    Para hojas tipo "menú contextual" con icono a la izquierda y
-   metadato/atajo a la derecha. Touch-friendly: alto mínimo 3rem. */
+   metadato/atajo a la derecha. Touch-friendly: hereda --tap-comfort. */
 .action-sheet-action.row {
   display: grid;
-  grid-template-columns: 1.375rem 1fr auto;
-  gap: var(--space-3, 0.75rem);
+  grid-template-columns: var(--size-xs) 1fr auto;
+  gap: var(--space-3);
   align-items: center;
   text-align: left;
   justify-content: start;
 }
 .action-sheet-action.row .icon { color: var(--ink-3); }
-.action-sheet-action.row.destructive .icon { color: var(--color-danger, var(--danger)); }
+.action-sheet-action.row.destructive .icon { color: var(--danger); }
 .action-sheet-action.row .meta {
   color: var(--ink-3);
-  font-size: var(--text-sm, 0.875rem);
+  font-size: var(--text-sm);
   font-variant-numeric: tabular-nums;
 }
 
@@ -328,6 +332,6 @@
 .action-sheet-body {
   flex: 1;
   overflow-y: auto;
-  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  padding: var(--space-2) var(--space-3);
   scrollbar-width: thin;
 }
