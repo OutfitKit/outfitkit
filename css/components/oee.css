@@ -15,7 +15,7 @@
   flex-direction: column;
   gap: var(--space-3-5);
 }
-.oee__title {
+.oee-title {
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: 500;
@@ -24,20 +24,20 @@
   color: var(--ink-3);
   margin: var(--space-0);
 }
-.oee__gauge {
+.oee-gauge {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.oee__gauge svg { width: var(--width); height: var(--height); }
-.oee__gauge-track { fill: none; stroke: var(--bg-3); stroke-width: 12; stroke-linecap: round; }
-.oee__gauge-fill  { fill: none; stroke-width: 12; stroke-linecap: round; transition: stroke-dasharray var(--dur-slow) var(--ease-out); }
-.oee__gauge-fill--good { stroke: var(--leaf); }
-.oee__gauge-fill--ok   { stroke: var(--brand); }
-.oee__gauge-fill--warn { stroke: var(--warn); }
-.oee__gauge-fill--bad  { stroke: var(--danger); }
-.oee__gauge-value {
+.oee-gauge svg { width: var(--width); height: var(--height); }
+.oee-gauge-track { fill: none; stroke: var(--bg-3); stroke-width: 12; stroke-linecap: round; }
+.oee-gauge-fill  { fill: none; stroke-width: 12; stroke-linecap: round; transition: stroke-dasharray var(--dur-slow) var(--ease-out); }
+.oee-gauge-fill--good { stroke: var(--leaf); }
+.oee-gauge-fill--ok   { stroke: var(--brand); }
+.oee-gauge-fill--warn { stroke: var(--warn); }
+.oee-gauge-fill--bad  { stroke: var(--danger); }
+.oee-gauge-value {
   position: absolute;
   bottom: var(--space-2);
   font-family: var(--font-display);
@@ -47,19 +47,19 @@
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.oee__gauge-value sup { font-size: var(--text-base); color: var(--ink-3); font-weight: 500; margin-left: var(--border-w-2); }
+.oee-gauge-value sup { font-size: var(--text-base); color: var(--ink-3); font-weight: 500; margin-left: var(--border-w-2); }
 
-.oee__breakdown {
+.oee-breakdown {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2-5);
   padding-top: var(--space-3);
   border-top: var(--border-w) solid var(--line);
 }
-.oee__metric {
+.oee-metric {
   text-align: center;
 }
-.oee__metric-label {
+.oee-metric-label {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   text-transform: uppercase;
@@ -67,7 +67,7 @@
   color: var(--ink-3);
   margin-bottom: var(--space-1);
 }
-.oee__metric-value {
+.oee-metric-value {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
@@ -75,4 +75,4 @@
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.oee__metric-value sup { font-size: var(--text-2xs); color: var(--ink-3); font-weight: 500; }
+.oee-metric-value sup { font-size: var(--text-2xs); color: var(--ink-3); font-weight: 500; }

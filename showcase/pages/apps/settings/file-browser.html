@@ -83,59 +83,59 @@
         <aside class="col-md-4 col-lg-3 col-sticky" style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:12px;height:fit-content;">
           <div class="eyebrow" style="padding:4px 8px 6px;">Carpetas</div>
           <div class="tree" role="tree">
-            <div class="tree__node" data-signals='{"open": true}' data-attr:data-state="$open ? 'open' : 'closed'">
-              <div class="tree__row">
-                <span class="tree__caret" data-on:click="$open = !$open" data-attr:aria-expanded="$open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
-                <span class="tree__icon tree__icon--folder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
-                <span class="tree__label">tenant-rambla</span>
+            <div class="tree-node" data-signals='{"open": true}' data-attr:data-state="$open ? 'open' : 'closed'">
+              <div class="tree-row">
+                <span class="tree-caret" data-on:click="$open = !$open" data-attr:aria-expanded="$open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 6 6 6-6 6"/></svg></span>
+                <span class="tree-icon tree-icon--folder"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg></span>
+                <span class="tree-label">tenant-rambla</span>
               </div>
-              <div class="tree__children" data-show="$open">
-                <div class="tree__node">
-                  <div class="tree__row" data-on:click="$fb.dir = 'invoices'" data-attr:aria-selected="$fb.dir === 'invoices'">
-                    <span class="tree__caret tree__caret--leaf"></span>
-                    <span class="tree__icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></span>
-                    <span class="tree__label">facturas</span>
-                    <span class="tree__meta">142</span>
+              <div class="tree-children" data-show="$open">
+                <div class="tree-node">
+                  <div class="tree-row" data-on:click="$fb.dir = 'invoices'" data-attr:aria-selected="$fb.dir === 'invoices'">
+                    <span class="tree-caret tree-caret--leaf"></span>
+                    <span class="tree-icon"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></span>
+                    <span class="tree-label">facturas</span>
+                    <span class="tree-meta">142</span>
                   </div>
                 </div>
-                <div class="tree__node">
-                  <div class="tree__row" data-on:click="$fb.dir = 'tickets'" data-attr:aria-selected="$fb.dir === 'tickets'">
-                    <span class="tree__caret tree__caret--leaf"></span>
-                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span>
-                    <span class="tree__label">tickets</span>
-                    <span class="tree__meta">3.412</span>
+                <div class="tree-node">
+                  <div class="tree-row" data-on:click="$fb.dir = 'tickets'" data-attr:aria-selected="$fb.dir === 'tickets'">
+                    <span class="tree-caret tree-caret--leaf"></span>
+                    <span class="tree-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18"/></svg></span>
+                    <span class="tree-label">tickets</span>
+                    <span class="tree-meta">3.412</span>
                   </div>
                 </div>
-                <div class="tree__node">
-                  <div class="tree__row" data-on:click="$fb.dir = 'exports'" data-attr:aria-selected="$fb.dir === 'exports'">
-                    <span class="tree__caret tree__caret--leaf"></span>
-                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span>
-                    <span class="tree__label">exports</span>
-                    <span class="tree__meta">28</span>
+                <div class="tree-node">
+                  <div class="tree-row" data-on:click="$fb.dir = 'exports'" data-attr:aria-selected="$fb.dir === 'exports'">
+                    <span class="tree-caret tree-caret--leaf"></span>
+                    <span class="tree-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></span>
+                    <span class="tree-label">exports</span>
+                    <span class="tree-meta">28</span>
                   </div>
                 </div>
-                <div class="tree__node">
-                  <div class="tree__row" data-on:click="$fb.dir = 'logs'" data-attr:aria-selected="$fb.dir === 'logs'">
-                    <span class="tree__caret tree__caret--leaf"></span>
-                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span>
-                    <span class="tree__label">logs</span>
-                    <span class="tree__meta">7</span>
+                <div class="tree-node">
+                  <div class="tree-row" data-on:click="$fb.dir = 'logs'" data-attr:aria-selected="$fb.dir === 'logs'">
+                    <span class="tree-caret tree-caret--leaf"></span>
+                    <span class="tree-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg></span>
+                    <span class="tree-label">logs</span>
+                    <span class="tree-meta">7</span>
                   </div>
                 </div>
-                <div class="tree__node">
-                  <div class="tree__row" data-on:click="$fb.dir = 'media'" data-attr:aria-selected="$fb.dir === 'media'">
-                    <span class="tree__caret tree__caret--leaf"></span>
-                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>
-                    <span class="tree__label">multimedia</span>
-                    <span class="tree__meta">86</span>
+                <div class="tree-node">
+                  <div class="tree-row" data-on:click="$fb.dir = 'media'" data-attr:aria-selected="$fb.dir === 'media'">
+                    <span class="tree-caret tree-caret--leaf"></span>
+                    <span class="tree-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg></span>
+                    <span class="tree-label">multimedia</span>
+                    <span class="tree-meta">86</span>
                   </div>
                 </div>
-                <div class="tree__node">
-                  <div class="tree__row" data-on:click="$fb.dir = 'backups'" data-attr:aria-selected="$fb.dir === 'backups'">
-                    <span class="tree__caret tree__caret--leaf"></span>
-                    <span class="tree__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
-                    <span class="tree__label">backups</span>
-                    <span class="tree__meta">14</span>
+                <div class="tree-node">
+                  <div class="tree-row" data-on:click="$fb.dir = 'backups'" data-attr:aria-selected="$fb.dir === 'backups'">
+                    <span class="tree-caret tree-caret--leaf"></span>
+                    <span class="tree-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span>
+                    <span class="tree-label">backups</span>
+                    <span class="tree-meta">14</span>
                   </div>
                 </div>
               </div>
@@ -145,7 +145,7 @@
           <!-- Storage usage -->
           <div style="margin-top:12px;padding:10px 8px;border-top:1px solid var(--line);">
             <div class="eyebrow mb-1">Espacio</div>
-            <div class="progress"><div class="progress__bar" style="width:36%;"></div></div>
+            <div class="progress"><div class="progress-bar" style="width:36%;"></div></div>
             <div style="font-size:11px;color:var(--ink-3);margin-top:6px;display:flex;justify-content:space-between;">
               <span>1,8 GB usados</span><span>5 GB</span>
             </div>
@@ -164,17 +164,17 @@
             </nav>
 
             <div class="search" style="flex:0 1 240px;">
-              <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
               <input class="input sm" placeholder="Buscar archivo…"/>
             </div>
 
-            <div class="dt-toolbar__divider"></div>
+            <div class="dt-toolbar-divider"></div>
 
             <div class="view-toggle" role="tablist" aria-label="Vista">
-              <button class="view-toggle__btn" data-on:click="$fb.view = 'list'" data-attr:aria-pressed="$fb.view === 'list'" title="Lista">
+              <button class="view-toggle-btn" data-on:click="$fb.view = 'list'" data-attr:aria-pressed="$fb.view === 'list'" title="Lista">
                 <iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon>
               </button>
-              <button class="view-toggle__btn" data-on:click="$fb.view = 'grid'" data-attr:aria-pressed="$fb.view === 'grid'" title="Cuadrícula">
+              <button class="view-toggle-btn" data-on:click="$fb.view = 'grid'" data-attr:aria-pressed="$fb.view === 'grid'" title="Cuadrícula">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
               </button>
             </div>
@@ -247,7 +247,7 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th style="width:36px;"><label class="check"><input type="checkbox"/><span class="check__box"></span></label></th>
+                  <th style="width:36px;"><label class="check"><input type="checkbox"/><span class="check-box"></span></label></th>
                   <th class="th sortable">Nombre</th>
                   <th class="th sortable td right">Tamaño</th>
                   <th class="th sortable">Modificado</th>
@@ -256,7 +256,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+                  <td><label class="check"><input type="checkbox"/><span class="check-box"></span></label></td>
                   <td>FAC-2026-00142.pdf</td>
                   <td class="td num">218 KB</td>
                   <td class="td muted">2026-05-08 09:14</td>
@@ -268,7 +268,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+                  <td><label class="check"><input type="checkbox"/><span class="check-box"></span></label></td>
                   <td>logo-rambla.png</td>
                   <td class="td num">84 KB</td>
                   <td class="td muted">2026-04-30 11:02</td>

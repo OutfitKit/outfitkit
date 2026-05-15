@@ -21,17 +21,17 @@
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
   }
-  .pub-nav__brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
-  .pub-nav__logo {
+  .pub-nav-brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; }
+  .pub-nav-logo {
     width: 32px; height: 32px; border-radius: 9px;
     background: linear-gradient(135deg, var(--brand), var(--brand-2));
     color: var(--brand-fg);
     display: grid; place-items: center;
     font-family: var(--font-display); font-weight: 700; font-size: 14px;
   }
-  .pub-nav__name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .pub-nav-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
 
-  .pub-nav__cart-count {
+  .pub-nav-cart-count {
     position: absolute; top: -6px; right: -6px;
     min-width: 18px; height: 18px; padding: 0 5px;
     border-radius: 999px;
@@ -44,7 +44,7 @@
   .pdp-gallery {
     display: flex; flex-direction: column; gap: var(--space-3);
   }
-  .pdp-gallery__main {
+  .pdp-gallery-main {
     aspect-ratio: 1 / 1;
     border-radius: var(--radius-xl);
     border: 1px solid var(--line);
@@ -55,16 +55,16 @@
     overflow: hidden;
     position: relative;
   }
-  .pdp-gallery__main::after {
+  .pdp-gallery-main::after {
     content: "";
     position: absolute; inset: 0;
     background: radial-gradient(circle at 30% 30%, color-mix(in oklch, white 12%, transparent) 0%, transparent 50%);
     pointer-events: none;
   }
-  .pdp-gallery__strip {
+  .pdp-gallery-strip {
     display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2);
   }
-  .pdp-gallery__thumb {
+  .pdp-gallery-thumb {
     aspect-ratio: 1 / 1;
     border-radius: var(--radius-md);
     border: 1px solid var(--line);
@@ -74,41 +74,41 @@
     font-size: 28px;
     transition: border-color var(--dur-fast);
   }
-  .pdp-gallery__thumb:hover { border-color: var(--line-2); }
-  .pdp-gallery__thumb.is-active { outline: 2px solid var(--brand); outline-offset: -2px; }
+  .pdp-gallery-thumb:hover { border-color: var(--line-2); }
+  .pdp-gallery-thumb.is-active { outline: 2px solid var(--brand); outline-offset: -2px; }
 
   /* Info column */
   .pdp-info { display: flex; flex-direction: column; gap: var(--space-4); }
-  .pdp-info__brand {
+  .pdp-info-brand {
     font-family: var(--font-mono); font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.1em;
     color: var(--ink-3);
   }
-  .pdp-info__name {
+  .pdp-info-name {
     font-family: var(--font-display);
     font-size: clamp(28px, 4vw, 36px);
     font-weight: 700; letter-spacing: var(--tracking-tight);
     color: var(--ink);
     margin: 4px 0 0; line-height: 1.1;
   }
-  .pdp-info__price-row {
+  .pdp-info-price-row {
     display: flex; align-items: baseline; gap: var(--space-3);
     margin-top: var(--space-2);
   }
-  .pdp-info__price {
+  .pdp-info-price {
     font-family: var(--font-display);
     font-size: 36px; font-weight: 700;
     letter-spacing: var(--tracking-tight);
     color: var(--ink);
     font-variant-numeric: tabular-nums;
   }
-  .pdp-info__price-orig {
+  .pdp-info-price-orig {
     font-size: var(--text-md);
     color: var(--ink-3);
     text-decoration: line-through;
     font-variant-numeric: tabular-nums;
   }
-  .pdp-info__desc {
+  .pdp-info-desc {
     color: var(--ink-2);
     line-height: var(--leading-relaxed);
     margin: 0;
@@ -116,13 +116,13 @@
 
   /* Variants */
   .pdp-variants { display: flex; flex-direction: column; gap: var(--space-3); }
-  .pdp-variants__group label {
+  .pdp-variants-group label {
     font-family: var(--font-mono); font-size: 11px;
     text-transform: uppercase; letter-spacing: 0.06em;
     color: var(--ink-3);
     display: block; margin-bottom: 6px;
   }
-  .pdp-variants__opts {
+  .pdp-variants-opts {
     display: flex; gap: 6px; flex-wrap: wrap;
   }
 
@@ -141,20 +141,20 @@
     border-radius: var(--radius-md);
     overflow: hidden;
   }
-  .pdp-qty__btn {
+  .pdp-qty-btn {
     width: 40px; height: 44px; border: none; cursor: pointer;
     background: var(--bg-2); color: var(--ink);
     font-size: 18px; line-height: 1;
   }
-  .pdp-qty__btn:hover { background: var(--bg-3); }
-  .pdp-qty__val {
+  .pdp-qty-btn:hover { background: var(--bg-3); }
+  .pdp-qty-val {
     min-width: 44px; text-align: center;
     font-family: var(--font-mono); font-weight: 600;
     color: var(--ink);
   }
 
   /* Related */
-  .pdp-related__title {
+  .pdp-related-title {
     font-family: var(--font-display);
     font-size: var(--text-xl); font-weight: 600;
     letter-spacing: var(--tracking-tight);
@@ -167,9 +167,9 @@
 
     <!-- Public navbar -->
     <nav class="pub-nav">
-      <a href="/" class="pub-nav__brand">
-        <span class="pub-nav__logo">L</span>
-        <span class="pub-nav__name">Cafetería La Rambla</span>
+      <a href="/" class="pub-nav-brand">
+        <span class="pub-nav-logo">L</span>
+        <span class="pub-nav-name">Cafetería La Rambla</span>
       </a>
       <button class="btn ghost icon relative" aria-label="Carrito"
               data-on:click="window.location.href = '/public/cart'"
@@ -178,7 +178,7 @@
           <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
           <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
-        <span class="pub-nav__cart-count" data-text="$cartCount" data-show="$cartCount > 0">2</span>
+        <span class="pub-nav-cart-count" data-text="$cartCount" data-show="$cartCount > 0">2</span>
       </button>
     </nav>
 
@@ -201,21 +201,21 @@
 
       <!-- Gallery -->
       <section class="col-md-6 pdp-gallery">
-        <div class="pdp-gallery__main" aria-label="Sandwich Ibérico">🥪</div>
-        <div class="pdp-gallery__strip">
-          <button class="pdp-gallery__thumb is-active"
+        <div class="pdp-gallery-main" aria-label="Sandwich Ibérico">🥪</div>
+        <div class="pdp-gallery-strip">
+          <button class="pdp-gallery-thumb is-active"
                   data-on:click="$gallery = 0"
                   data-class:is-active="$gallery === 0"
                   aria-label="Imagen 1">🥪</button>
-          <button class="pdp-gallery__thumb"
+          <button class="pdp-gallery-thumb"
                   data-on:click="$gallery = 1"
                   data-class:is-active="$gallery === 1"
                   aria-label="Imagen 2">🥖</button>
-          <button class="pdp-gallery__thumb"
+          <button class="pdp-gallery-thumb"
                   data-on:click="$gallery = 2"
                   data-class:is-active="$gallery === 2"
                   aria-label="Imagen 3">🍅</button>
-          <button class="pdp-gallery__thumb"
+          <button class="pdp-gallery-thumb"
                   data-on:click="$gallery = 3"
                   data-class:is-active="$gallery === 3"
                   aria-label="Imagen 4">🧀</button>
@@ -225,8 +225,8 @@
       <!-- Info -->
       <section class="col-md-6 pdp-info">
         <div>
-          <div class="pdp-info__brand">Bocadillos</div>
-          <h1 class="pdp-info__name">Sandwich Ibérico con tomate</h1>
+          <div class="pdp-info-brand">Bocadillos</div>
+          <h1 class="pdp-info-name">Sandwich Ibérico con tomate</h1>
         </div>
 
         <div style="display:flex; gap:6px; align-items:center; flex-wrap:wrap">
@@ -235,23 +235,23 @@
           <span class="pill">Veggie no</span>
         </div>
 
-        <p class="pdp-info__desc">
+        <p class="pdp-info-desc">
           Pan rústico de masa madre tostado, tomate rallado fresco, jamón ibérico de bellota
           curado 36 meses, AOVE arbequina y un toque de sal en escamas. Servido caliente.
         </p>
 
-        <div class="pdp-info__price-row">
-          <span class="pdp-info__price">€5,90</span>
-          <span class="pdp-info__price-orig">€6,50</span>
+        <div class="pdp-info-price-row">
+          <span class="pdp-info-price">€5,90</span>
+          <span class="pdp-info-price-orig">€6,50</span>
           <span class="badge danger">−9%</span>
         </div>
 
         <!-- Variants -->
         <div class="pdp-variants">
 
-          <div class="pdp-variants__group">
+          <div class="pdp-variants-group">
             <label>Tamaño</label>
-            <div class="pdp-variants__opts">
+            <div class="pdp-variants-opts">
               <button class="chip" data-on:click="$size = 'sm'"
                       data-attr:aria-pressed="$size === 'sm'">
                 Pequeño · €4,90
@@ -267,9 +267,9 @@
             </div>
           </div>
 
-          <div class="pdp-variants__group">
+          <div class="pdp-variants-group">
             <label>Pan</label>
-            <div class="pdp-variants__opts">
+            <div class="pdp-variants-opts">
               <button class="chip" data-on:click="$bread = 'rustic'"
                       data-attr:aria-pressed="$bread === 'rustic'">
                 Rústico
@@ -289,7 +289,7 @@
 
         <!-- Allergens -->
         <div>
-          <div class="pdp-info__brand mb-1">Alérgenos</div>
+          <div class="pdp-info-brand mb-1">Alérgenos</div>
           <div class="pdp-allergens">
             <span class="pill">Gluten</span>
             <span class="pill">Lácteos</span>
@@ -300,10 +300,10 @@
         <!-- CTA -->
         <div class="pdp-cta">
           <div class="pdp-qty">
-            <button class="pdp-qty__btn" aria-label="Restar"
+            <button class="pdp-qty-btn" aria-label="Restar"
                     data-on:click="$qty = Math.max(1, $qty - 1)">−</button>
-            <span class="pdp-qty__val" data-text="$qty">1</span>
-            <button class="pdp-qty__btn" aria-label="Sumar"
+            <span class="pdp-qty-val" data-text="$qty">1</span>
+            <button class="pdp-qty-btn" aria-label="Sumar"
                     data-on:click="$qty = $qty + 1">+</button>
           </div>
           <button class="btn primary lg block flex-1"
@@ -323,57 +323,57 @@
 
     <!-- Related -->
     <section class="container" style="padding-top: var(--space-2); padding-bottom: var(--space-10);">
-      <h2 class="pdp-related__title">También te puede gustar</h2>
+      <h2 class="pdp-related-title">También te puede gustar</h2>
       <div class="grid-auto sm">
 
         <article class="product compact">
-          <div class="product__media">
+          <div class="product-media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #6b4226, #2a1810); display:grid; place-items:center; color:#e8d5c0; font-size: 28px;">☕</div>
           </div>
-          <div class="product__body">
-            <a href="/public/products/cortado" class="product__name no-underline">Cortado</a>
-            <div class="product__price-row"><span class="product__price">€1,80</span></div>
-            <div class="product__actions">
-              <button class="product__cta">Añadir</button>
+          <div class="product-body">
+            <a href="/public/products/cortado" class="product-name no-underline">Cortado</a>
+            <div class="product-price-row"><span class="product-price">€1,80</span></div>
+            <div class="product-actions">
+              <button class="product-cta">Añadir</button>
             </div>
           </div>
         </article>
 
         <article class="product compact">
-          <div class="product__media">
+          <div class="product-media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #c89568, #6b4423); display:grid; place-items:center; color:#fff8e8; font-size: 28px;">🥐</div>
           </div>
-          <div class="product__body">
-            <a href="/public/products/croissant" class="product__name no-underline">Croissant artesano</a>
-            <div class="product__price-row"><span class="product__price">€2,50</span></div>
-            <div class="product__actions">
-              <button class="product__cta">Añadir</button>
+          <div class="product-body">
+            <a href="/public/products/croissant" class="product-name no-underline">Croissant artesano</a>
+            <div class="product-price-row"><span class="product-price">€2,50</span></div>
+            <div class="product-actions">
+              <button class="product-cta">Añadir</button>
             </div>
           </div>
         </article>
 
         <article class="product compact">
-          <div class="product__media">
+          <div class="product-media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #ff8c2a, #c84a14); display:grid; place-items:center; color:#fff; font-size: 28px;">🍊</div>
           </div>
-          <div class="product__body">
-            <a href="/public/products/zumo-naranja" class="product__name no-underline">Zumo naranja natural</a>
-            <div class="product__price-row"><span class="product__price">€3,20</span></div>
-            <div class="product__actions">
-              <button class="product__cta">Añadir</button>
+          <div class="product-body">
+            <a href="/public/products/zumo-naranja" class="product-name no-underline">Zumo naranja natural</a>
+            <div class="product-price-row"><span class="product-price">€3,20</span></div>
+            <div class="product-actions">
+              <button class="product-cta">Añadir</button>
             </div>
           </div>
         </article>
 
         <article class="product compact">
-          <div class="product__media">
+          <div class="product-media">
             <div style="width:100%; height:100%; background: linear-gradient(135deg, #b87a9d, #5a2c4a); display:grid; place-items:center; color:#fff; font-size: 28px;">🍰</div>
           </div>
-          <div class="product__body">
-            <a href="/public/products/tarta-zanahoria" class="product__name no-underline">Tarta zanahoria</a>
-            <div class="product__price-row"><span class="product__price">€3,80</span></div>
-            <div class="product__actions">
-              <button class="product__cta">Añadir</button>
+          <div class="product-body">
+            <a href="/public/products/tarta-zanahoria" class="product-name no-underline">Tarta zanahoria</a>
+            <div class="product-price-row"><span class="product-price">€3,80</span></div>
+            <div class="product-actions">
+              <button class="product-cta">Añadir</button>
             </div>
           </div>
         </article>

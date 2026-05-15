@@ -1,0 +1,15 @@
+{#def rows=[], row_height=40, buffer=5, height="22.5rem", dense=false, template_id=None, attrs=None #}
+
+{% macro virtual_scroll(rows=[], row_height=40, buffer=5, height="22.5rem", dense=false, template_id=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="virtual-scroll{% if dense %} dense{% endif %}"
+     data-vs-rows='{{ rows | tojson }}'
+     data-vs-height="{{ row_height }}"
+     data-vs-buffer="{{ buffer }}"
+     {%- if template_id %} data-vs-template="{{ template_id }}"{% endif %}
+     style="height: {{ height }};"
+     {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+</div>
+{%- endmacro %}
+
+{% if rows is defined %}{{ virtual_scroll(rows, row_height=row_height, buffer=buffer, height=height, dense=dense, template_id=template_id, attrs=attrs) }}{% endif %}

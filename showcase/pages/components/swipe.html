@@ -1,0 +1,108 @@
+{% extends "_layout.jinja" %}
+{% from "ui/swipe.jinja" import swipe %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Swipe list — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Swipe list</h1>
+<p class="showcase-lead">Lista con acciones reveladas por gesto horizontal — patrón iOS Mail / Apple Reminders. Touch-first: en pantallas táctiles desliza la fila a izquierda para revelar acciones. Click fuera o tap en la fila cierra.</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>En desktop</strong> (este demo se sirve normalmente desde un ratón), pasa <code>mouse=true</code> para activar el fallback de mouse-drag. Sin eso, el gesto solo responde a touch real. Las clases <code>.is-open</code> / <code>data-swipe-open="true"</code> también funcionan estáticamente sin JS.
+</div>
+
+{# ─── 1. Lista de emails (3 acciones) ──────────────────── #}
+{% set _emails = [
+  {"title": "Anna López",  "sub": "Re: oferta proveedor — confirmamos para…",                 "meta": "12:34"},
+  {"title": "Equipo ops",  "sub": "Backup nocturno completado · 0 errores",                    "meta": "11:08"},
+  {"title": "Newsletter",  "sub": "Resumen semanal · KPIs · 14 % de mejora en…",               "meta": "09:51"},
+  {"title": "Carlos Vega", "sub": "Factura adjunta — vencimiento 30 días",                     "meta": "Ayer"},
+] %}
+{% set _actions = [
+  {"label": "Archivar", "kind": "archive"},
+  {"label": "Borrar",   "kind": "danger"},
+] %}
+
+{% set _src_jinja_1 %}{% raw %}{% from "ui/swipe.jinja" import swipe %}
+{{ swipe(items=emails, actions=[
+  {"label": "Archivar", "kind": "archive"},
+  {"label": "Borrar",   "kind": "danger"},
+], mouse=true) }}{% endraw %}{% endset %}
+
+{% call demo_frame("Email list — desliza izquierda en la fila (mouse drag activado para demo)",
+    jinja_src=_src_jinja_1, jinjax_src=_src_jinja_1) %}
+{{ swipe(items=_emails, actions=_actions, mouse=true) }}
+{% endcall %}
+
+{# ─── 2. Una sola acción (full width) ──────────────────── #}
+{% set _tasks = [
+  {"title": "Comprar materia prima",     "sub": "Vencimiento mañana",     "meta": "·"},
+  {"title": "Revisar inventario almacén", "sub": "Pendiente desde el lunes", "meta": "·"},
+  {"title": "Llamar al transportista",    "sub": "Pedido #4421",           "meta": "·"},
+] %}
+
+{% set _src_jinja_2 %}{% raw %}{{ swipe(items=tasks, actions=[{"label": "Completar", "kind": "archive"}], single=true, mouse=true) }}{% endraw %}{% endset %}
+
+{% call demo_frame("Variante .single — una sola acción más ancha",
+    jinja_src=_src_jinja_2, jinjax_src=_src_jinja_2) %}
+{{ swipe(items=_tasks, actions=[{"label": "Completar", "kind": "archive"}], single=true, mouse=true) }}
+{% endcall %}
+
+{# ─── 3. Estático con is-open (sin JS) ─────────────────── #}
+{% set _src_jinja_3 %}{% raw %}{# El estado .is-open puede aplicarse vía servidor sin JS. #}
+<ul class="swipe">
+  <li class="swipe-item is-open">
+    <div class="swipe-row">
+      <span class="avatar">P</span>
+      <div><div class="title">Pedido #4421</div><div class="sub">Cliente · Ferretería Norte</div></div>
+      <span class="meta">·</span>
+    </div>
+    <div class="swipe-actions">
+      <button class="swipe-btn warn">Marcar</button>
+      <button class="swipe-btn danger">Cancelar</button>
+    </div>
+  </li>
+</ul>{% endraw %}{% endset %}
+
+{% call demo_frame("Estado pre-abierto con .is-open (server-rendered, sin JS)",
+    jinja_src=_src_jinja_3, jinjax_src=_src_jinja_3) %}
+<ul class="swipe">
+  <li class="swipe-item is-open">
+    <div class="swipe-row">
+      <span class="avatar">P</span>
+      <div><div class="title">Pedido #4421</div><div class="sub">Cliente · Ferretería Norte</div></div>
+      <span class="meta">·</span>
+    </div>
+    <div class="swipe-actions">
+      <button class="swipe-btn warn">Marcar</button>
+      <button class="swipe-btn danger">Cancelar</button>
+    </div>
+  </li>
+</ul>
+{% endcall %}
+
+<h2>API · macro <code>swipe()</code></h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>items</code></td><td>list[dict]</td><td><code>[]</code></td><td>Filas. Campos: <code>title</code>, <code>sub</code>, <code>meta</code>, <code>avatar</code>, <code>actions</code> (override por fila).</td></tr>
+    <tr><td><code>actions</code></td><td>list[dict]</td><td><code>None</code></td><td>Acciones por defecto para todas las filas. Cada dict: <code>{label, kind, icon?}</code>.</td></tr>
+    <tr><td><code>single</code></td><td>bool</td><td><code>false</code></td><td>Si <code>true</code>, una sola acción (full width, 6rem revelado).</td></tr>
+    <tr><td><code>mouse</code></td><td>bool</td><td><code>false</code></td><td>Activa el fallback de mouse drag (útil para demos en desktop).</td></tr>
+  </tbody>
+</table>
+
+<h3>Kinds (color semántico de la acción)</h3>
+<ul>
+  <li><code>archive</code> · info azul</li>
+  <li><code>danger</code> / <code>del</code> · rojo destructivo</li>
+  <li><code>warn</code> / <code>flag</code> · amarillo aviso</li>
+  <li>(sin kind) · medium gris</li>
+</ul>
+
+<h3>API JS — <code>window.OKSwipe</code></h3>
+<pre><code>OKSwipe.init(item)        // inicializa un .swipe-item
+OKSwipe.initAll(root)     // inicializa todos los .swipe-item bajo root
+OKSwipe.setOpen(item, b)  // abre/cierra programáticamente</code></pre>
+{% endblock %}

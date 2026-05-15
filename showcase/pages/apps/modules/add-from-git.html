@@ -88,40 +88,40 @@
       </div>
 
       <div class="wizard" style="margin-bottom:96px;">
-        <div class="wizard__steps">
-          <div class="wizard__step wizard__step--done">
-            <span class="wizard__step-num">✓</span>
+        <div class="wizard-steps">
+          <div class="wizard-step wizard-step--done">
+            <span class="wizard-step-num">✓</span>
             <div>
-              <div class="wizard__step-name">Autorizar GitHub</div>
-              <div class="wizard__step-sub">OAuth completado</div>
+              <div class="wizard-step-name">Autorizar GitHub</div>
+              <div class="wizard-step-sub">OAuth completado</div>
             </div>
           </div>
-          <div class="wizard__step wizard__step--active">
-            <span class="wizard__step-num">2</span>
+          <div class="wizard-step wizard-step--active">
+            <span class="wizard-step-num">2</span>
             <div>
-              <div class="wizard__step-name">Seleccionar repo</div>
-              <div class="wizard__step-sub">Elige el repositorio</div>
+              <div class="wizard-step-name">Seleccionar repo</div>
+              <div class="wizard-step-sub">Elige el repositorio</div>
             </div>
           </div>
-          <div class="wizard__step">
-            <span class="wizard__step-num">3</span>
+          <div class="wizard-step">
+            <span class="wizard-step-num">3</span>
             <div>
-              <div class="wizard__step-name">Detectar metadata</div>
-              <div class="wizard__step-sub">manifest.json + tests</div>
+              <div class="wizard-step-name">Detectar metadata</div>
+              <div class="wizard-step-sub">manifest.json + tests</div>
             </div>
           </div>
-          <div class="wizard__step">
-            <span class="wizard__step-num">4</span>
+          <div class="wizard-step">
+            <span class="wizard-step-num">4</span>
             <div>
-              <div class="wizard__step-name">Confirmar</div>
-              <div class="wizard__step-sub">Asignar a módulo</div>
+              <div class="wizard-step-name">Confirmar</div>
+              <div class="wizard-step-sub">Asignar a módulo</div>
             </div>
           </div>
         </div>
 
-        <div class="wizard__body">
-          <h3 class="wizard__title">Selecciona un repositorio de tu cuenta GitHub</h3>
-          <p class="wizard__sub">Solo se listan repos que contienen un <code class="code inline">erplora.module.json</code> en la raíz.</p>
+        <div class="wizard-body">
+          <h3 class="wizard-title">Selecciona un repositorio de tu cuenta GitHub</h3>
+          <p class="wizard-sub">Solo se listan repos que contienen un <code class="code inline">erplora.module.json</code> en la raíz.</p>
 
           <!-- GitHub user info card -->
           <article class="card mb-4">
@@ -133,220 +133,220 @@
                 <div style="font-weight:600;font-size:15px;">@acme-dev</div>
                 <div class="text-md text-ink-3">Conectado desde 12 mar 2026 · 47 repos accesibles</div>
               </div>
-              <span class="badge success"><span class="badge__dot"></span>OAuth válido</span>
+              <span class="badge success"><span class="badge-dot"></span>OAuth válido</span>
               <button class="btn secondary sm">Reautorizar</button>
             </div>
           </article>
 
           <!-- Search -->
           <div class="search mb-3">
-            <span class="search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
+            <span class="search-icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
             <input class="input" placeholder="Filtrar por nombre o descripción…" data-bind:q/>
           </div>
 
           <!-- Repo list -->
           <div class="list separated" style="border:1px solid var(--line);border-radius:var(--radius-md);background:var(--bg-2);">
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-pos-tablet <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">POS optimizado para tablet Android · checkout offline-first · sync en background.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-pos-tablet <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">POS optimizado para tablet Android · checkout offline-first · sync en background.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 12</span>
                   <span>Último commit · hace 3 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-pos-tablet'" data-class:is-active="$selected === 'erplora-pos-tablet'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-warehouse-mobile <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">App handheld para almacén · escaneo de barcode · gestión de albaranes.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-warehouse-mobile <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">App handheld para almacén · escaneo de barcode · gestión de albaranes.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 8</span>
                   <span>Último commit · hace 1 d</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn ghost sm" disabled>Ya conectado</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-public-docs <span class="tag success xs">público</span></div>
-                <div class="list__desc">Documentación abierta del módulo POS · Astro + MDX.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-public-docs <span class="tag success xs">público</span></div>
+                <div class="list-desc">Documentación abierta del módulo POS · Astro + MDX.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#f1e05a;"></span>JavaScript</span>
                   <span>★ 142</span>
                   <span>Último commit · hace 6 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-public-docs'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-financiero <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">Módulo de tesorería · conciliación bancaria · informes IRPF.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-financiero <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">Módulo de tesorería · conciliación bancaria · informes IRPF.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3572A5;"></span>Python</span>
                   <span>★ 4</span>
                   <span>Último commit · hace 2 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-financiero'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-loyalty-cards <span class="tag success xs">público</span></div>
-                <div class="list__desc">Sistema de tarjetas de fidelización · NFC · puntos por compra.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-loyalty-cards <span class="tag success xs">público</span></div>
+                <div class="list-desc">Sistema de tarjetas de fidelización · NFC · puntos por compra.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 38</span>
                   <span>Último commit · hace 4 d</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-loyalty-cards'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-rrhh-portal <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">Portal del empleado · vacaciones · nóminas · fichaje.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-rrhh-portal <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">Portal del empleado · vacaciones · nóminas · fichaje.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 6</span>
                   <span>Último commit · hace 12 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-rrhh-portal'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
               </span>
-              <div class="list__body">
-                <div class="list__title">bodegas-casadejus/inventario-vinos <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">Trazabilidad de barricas · DO Ribera del Duero · catas y notas.</div>
+              <div class="list-body">
+                <div class="list-title">bodegas-casadejus/inventario-vinos <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">Trazabilidad de barricas · DO Ribera del Duero · catas y notas.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 2</span>
                   <span>Último commit · hace 1 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn ghost sm" disabled>Ya conectado</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-restaurant-kds <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">Kitchen Display System · ticket routing por estación.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-restaurant-kds <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">Kitchen Display System · ticket routing por estación.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 17</span>
                   <span>Último commit · hace 9 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-restaurant-kds'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-marketplace-sdk <span class="tag success xs">público</span></div>
-                <div class="list__desc">SDK para publicar módulos en el marketplace de ERPlora · CLI incluida.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-marketplace-sdk <span class="tag success xs">público</span></div>
+                <div class="list-desc">SDK para publicar módulos en el marketplace de ERPlora · CLI incluida.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 287</span>
                   <span>Último commit · hace 2 d</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-marketplace-sdk'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
               </span>
-              <div class="list__body">
-                <div class="list__title">vinos-roca/etiquetas-ai <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">Reconocimiento de etiquetas con visión por IA · Tensorflow Lite.</div>
+              <div class="list-body">
+                <div class="list-title">vinos-roca/etiquetas-ai <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">Reconocimiento de etiquetas con visión por IA · Tensorflow Lite.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3572A5;"></span>Python</span>
                   <span>★ 11</span>
                   <span>Último commit · hace 6 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn ghost sm" disabled>Ya conectado</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <iconify-icon icon="lucide:lock" width="16" height="16"></iconify-icon>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-stock-alerts <span class="tag neutral xs">privado</span></div>
-                <div class="list__desc">Reglas de reorden y notificaciones de stock mínimo.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-stock-alerts <span class="tag neutral xs">privado</span></div>
+                <div class="list-desc">Reglas de reorden y notificaciones de stock mínimo.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3178c6;"></span>TypeScript</span>
                   <span>★ 3</span>
                   <span>Último commit · hace 5 h</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-stock-alerts'">Conectar</button>
               </div>
             </div>
-            <div class="list__item">
+            <div class="list-item">
               <span class="text-ink-3">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg>
               </span>
-              <div class="list__body">
-                <div class="list__title">acme-dev/erplora-data-pipelines <span class="tag success xs">público</span></div>
-                <div class="list__desc">ETLs y dashboards para BI · DuckDB + Metabase.</div>
+              <div class="list-body">
+                <div class="list-title">acme-dev/erplora-data-pipelines <span class="tag success xs">público</span></div>
+                <div class="list-desc">ETLs y dashboards para BI · DuckDB + Metabase.</div>
                 <div class="flex items-center gap-3 text-xs text-ink-3 mt-1">
                   <span class="inline-flex items-center gap-1"><span style="width:9px;height:9px;border-radius:50%;background:#3572A5;"></span>Python</span>
                   <span>★ 64</span>
                   <span>Último commit · hace 1 d</span>
                 </div>
               </div>
-              <div class="list__aside">
+              <div class="list-aside">
                 <button class="btn primary sm" data-on:click="$selected = 'erplora-data-pipelines'">Conectar</button>
               </div>
             </div>
@@ -356,16 +356,16 @@
           <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;font-size:13px;color:var(--ink-3);">
             <span>Mostrando 12 de 47 repos</span>
             <div class="pager">
-              <button class="pager__btn" disabled>‹</button>
-              <span class="pager__info">Página 1 de 7</span>
-              <button class="pager__btn">›</button>
+              <button class="pager-btn" disabled>‹</button>
+              <span class="pager-info">Página 1 de 7</span>
+              <button class="pager-btn">›</button>
             </div>
           </div>
         </div>
 
-        <div class="wizard__foot">
-          <span class="wizard__foot-meta">PASO 2 / 4 — <span data-text="$selected || 'ningún repo seleccionado'">ningún repo seleccionado</span></span>
-          <div class="wizard__foot-actions">
+        <div class="wizard-foot">
+          <span class="wizard-foot-meta">PASO 2 / 4 — <span data-text="$selected || 'ningún repo seleccionado'">ningún repo seleccionado</span></span>
+          <div class="wizard-foot-actions">
             <button class="btn ghost">Atrás</button>
             <button class="btn primary" data-attr:disabled="$selected === '' ? true : null">Continuar</button>
           </div>

@@ -1,0 +1,135 @@
+/* ============================================================
+   OutfitKit · Swipe-list
+   ─────────────────────────────────────────────────────────────
+   Lista con acciones reveladas por gesto horizontal — patrón
+   iOS Mail / Apple Reminders. Touch-first: pensado para
+   pantallas táctiles y tablets; en desktop funciona vía click
+   en un botón de "más acciones" (asume que el JS lo controla).
+
+   La traslación se aplica con .is-open (estado controlado por JS)
+   o vía data-swipe-open="true" si se prefiere un atributo.
+
+   Estructura:
+     <ul class="swipe">
+       <li class="swipe-item">
+         <div class="swipe-row">
+           <img class="avatar" …>
+           <div>
+             <div class="title">Nombre</div>
+             <div class="sub">Detalle</div>
+           </div>
+           <span class="meta">12:34</span>
+         </div>
+         <div class="swipe-actions">
+           <button class="swipe-btn archive">Archivar</button>
+           <button class="swipe-btn danger">Borrar</button>
+         </div>
+       </li>
+     </ul>
+   ============================================================ */
+
+.swipe {
+  --background:    var(--bg-2);
+  --border-color:  var(--line);
+  --border-radius: var(--radius, var(--radius-lg));
+  --actions-width: calc(var(--size-2xl) * 2.85); /* ~10rem · 2 botones de 5rem */
+  --row-padding-y: var(--space-3);
+  --row-padding-x: var(--space-3-5);
+  --row-icon-col:  var(--size-md);
+  --action-min:    var(--tap-min);
+
+  list-style: none;
+  margin: var(--space-0);
+  padding: var(--space-0);
+  background: var(--background);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: var(--border-w) solid var(--border-color);
+}
+
+.swipe-item {
+  position: relative;
+  overflow: hidden;
+  border-bottom: var(--border-w) solid var(--line);
+  background: var(--bg-2);
+  touch-action: pan-y; /* permite scroll vertical; el JS captura el horizontal */
+}
+.swipe-item:last-child { border-bottom: none; }
+
+.swipe-row {
+  display: grid;
+  grid-template-columns: var(--row-icon-col) 1fr auto;
+  gap: var(--space-3);
+  align-items: center;
+  padding: var(--row-padding-y) var(--row-padding-x);
+  position: relative;
+  z-index: 1;
+  background: var(--bg-2);
+  transition: transform var(--dur-base) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Estado abierto — soporta .is-open (canónico) y data-swipe-open="true". */
+.swipe-item.is-open .swipe-row,
+.swipe-item[data-swipe-open="true"] .swipe-row {
+  transform: translateX(calc(-1 * var(--actions-width)));
+}
+
+.swipe-actions {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: var(--actions-width);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.swipe-btn {
+  --background:        var(--variant, var(--color-medium));
+  --color:             var(--variant-contrast, var(--color-medium-contrast));
+  --min-tap-height:    100%; /* fila completa */
+
+  border: none;
+  font: inherit;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  cursor: pointer;
+  color: var(--color);
+  background: var(--background);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.swipe-btn:focus-visible {
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: -3px;
+}
+
+/* Variantes semánticas */
+.swipe-btn.archive {
+  --variant:          var(--color-info);
+  --variant-contrast: var(--color-info-contrast);
+}
+.swipe-btn.danger,
+.swipe-btn.del {
+  --variant:          var(--color-danger);
+  --variant-contrast: var(--color-danger-contrast);
+}
+.swipe-btn.warn,
+.swipe-btn.flag {
+  --variant:          var(--color-warning);
+  --variant-contrast: var(--color-warning-contrast);
+}
+
+/* Variant: solo una acción (full width) */
+.swipe.single { --actions-width: calc(var(--size-2xl) * 1.7); /* ~6rem */ }
+.swipe.single .swipe-actions { grid-template-columns: 1fr; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .swipe-row { transition: none; }
+}

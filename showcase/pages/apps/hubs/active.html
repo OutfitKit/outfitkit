@@ -95,45 +95,45 @@
       <!-- KPIs -->
       <div class="grid-4 mb-4">
         <div class="kpi">
-          <div class="kpi__label">Hubs activos</div>
-          <div class="kpi__value">7</div>
-          <span class="badge success"><span class="badge__dot"></span>+1 este mes</span>
+          <div class="kpi-label">Hubs activos</div>
+          <div class="kpi-value">7</div>
+          <span class="badge success"><span class="badge-dot"></span>+1 este mes</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Terminales totales</div>
-          <div class="kpi__value">24</div>
-          <span class="badge"><span class="badge__dot"></span>22 en línea</span>
+          <div class="kpi-label">Terminales totales</div>
+          <div class="kpi-value">24</div>
+          <span class="badge"><span class="badge-dot"></span>22 en línea</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Uptime mes</div>
-          <div class="kpi__value">99,84<span style="font-size:18px;color:var(--ink-3);">%</span></div>
-          <span class="badge success"><span class="badge__dot"></span>SLA 99,5</span>
+          <div class="kpi-label">Uptime mes</div>
+          <div class="kpi-value">99,84<span style="font-size:18px;color:var(--ink-3);">%</span></div>
+          <span class="badge success"><span class="badge-dot"></span>SLA 99,5</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Próximas renovaciones</div>
-          <div class="kpi__value">3</div>
-          <span class="badge warning"><span class="badge__dot"></span>30 días</span>
+          <div class="kpi-label">Próximas renovaciones</div>
+          <div class="kpi-value">3</div>
+          <span class="badge warning"><span class="badge-dot"></span>30 días</span>
         </div>
       </div>
 
       <!-- Toolbar -->
       <div class="toolbar mb-4">
-        <div class="toolbar__group" style="flex:1;min-width:240px;">
+        <div class="toolbar-group" style="flex:1;min-width:240px;">
           <div class="search w-full">
-            <span class="search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
+            <span class="search-icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
             <input class="input sm" placeholder="Buscar por nombre o subdominio…" data-bind:q/>
           </div>
         </div>
-        <div class="toolbar__group">
+        <div class="toolbar-group">
           <div class="filter-chips">
-            <button class="filter-chip is-active" data-on:click="$filter = 'all'" data-class:is-active="$filter === 'all'"><span class="filter-chip__label">Todos</span><span class="filter-chip__count">7</span></button>
-            <button class="filter-chip" data-on:click="$filter = 'prod'" data-class:is-active="$filter === 'prod'"><span class="filter-chip__label">Producción</span><span class="filter-chip__count">5</span></button>
-            <button class="filter-chip" data-on:click="$filter = 'test'" data-class:is-active="$filter === 'test'"><span class="filter-chip__label">Test</span><span class="filter-chip__count">1</span></button>
-            <button class="filter-chip" data-on:click="$filter = 'staging'" data-class:is-active="$filter === 'staging'"><span class="filter-chip__label">Staging</span><span class="filter-chip__count">1</span></button>
+            <button class="filter-chip is-active" data-on:click="$filter = 'all'" data-class:is-active="$filter === 'all'"><span class="filter-chip-label">Todos</span><span class="filter-chip-count">7</span></button>
+            <button class="filter-chip" data-on:click="$filter = 'prod'" data-class:is-active="$filter === 'prod'"><span class="filter-chip-label">Producción</span><span class="filter-chip-count">5</span></button>
+            <button class="filter-chip" data-on:click="$filter = 'test'" data-class:is-active="$filter === 'test'"><span class="filter-chip-label">Test</span><span class="filter-chip-count">1</span></button>
+            <button class="filter-chip" data-on:click="$filter = 'staging'" data-class:is-active="$filter === 'staging'"><span class="filter-chip-label">Staging</span><span class="filter-chip-count">1</span></button>
           </div>
         </div>
-        <div class="toolbar__spacer"></div>
-        <div class="toolbar__group">
+        <div class="toolbar-spacer"></div>
+        <div class="toolbar-group">
           <select class="select sm" style="min-width:170px;">
             <option>Última actividad</option>
             <option>Nombre A→Z</option>
@@ -141,10 +141,10 @@
             <option>Plan</option>
           </select>
         </div>
-        <div class="toolbar__group">
+        <div class="toolbar-group">
           <div class="view-toggle">
-            <button class="view-toggle__btn" aria-pressed="true" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
-            <button class="view-toggle__btn" data-on:click="$view = 'list'" data-attr:aria-pressed="$view === 'list'"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon></button>
+            <button class="view-toggle-btn" aria-pressed="true" data-on:click="$view = 'grid'" data-attr:aria-pressed="$view === 'grid'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+            <button class="view-toggle-btn" data-on:click="$view = 'list'" data-attr:aria-pressed="$view === 'list'"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon></button>
           </div>
         </div>
       </div>
@@ -161,7 +161,7 @@
               </div>
               <div class="sub">Acme Industries S.L.</div>
             </div>
-            <span class="badge success"><span class="badge__dot"></span>Running</span>
+            <span class="badge success"><span class="badge-dot"></span>Running</span>
           </header>
           <div class="body">
             <div class="grid-4" style="gap:8px;margin-bottom:12px;">
@@ -180,11 +180,11 @@
             <div class="relative">
               <button class="btn ghost sm" data-on:click="$m1 = !$m1">⋯</button>
               <div class="menu anchor-br-gap" data-show="$m1">
-                <button class="menu__item" data-on:click="$m1 = false">Reiniciar</button>
-                <button class="menu__item" data-on:click="$m1 = false">Actualizar</button>
-                <button class="menu__item" data-on:click="$m1 = false">Ver QR</button>
-                <div class="menu__divider"></div>
-                <button class="menu__item menu__item--danger" data-on:click="$m1 = false">Eliminar</button>
+                <button class="menu-item" data-on:click="$m1 = false">Reiniciar</button>
+                <button class="menu-item" data-on:click="$m1 = false">Actualizar</button>
+                <button class="menu-item" data-on:click="$m1 = false">Ver QR</button>
+                <div class="menu-divider"></div>
+                <button class="menu-item menu-item--danger" data-on:click="$m1 = false">Eliminar</button>
               </div>
             </div>
           </footer>
@@ -199,7 +199,7 @@
               </div>
               <div class="sub">Bodegas Casadejús S.A.</div>
             </div>
-            <span class="badge info"><span class="badge__dot"></span>Actualizando</span>
+            <span class="badge info"><span class="badge-dot"></span>Actualizando</span>
           </header>
           <div class="body">
             <div class="grid-4" style="gap:8px;margin-bottom:12px;">
@@ -208,7 +208,7 @@
               <div><div class="overline">Uptime</div><div class="font-display text-lg font-semibold tabular">99,76%</div></div>
               <div><div class="overline">Activ.</div><div style="font-family:var(--font-display);font-size:13px;font-weight:600;color:var(--leaf);">8 min</div></div>
             </div>
-            <div class="progress mb-1"><div class="progress__bar" style="width:62%;"></div></div>
+            <div class="progress mb-1"><div class="progress-bar" style="width:62%;"></div></div>
             <div class="text-2xs text-ink-3">Migrando a v2.1.0 · 62% completado</div>
           </div>
           <footer class="actions">
@@ -216,9 +216,9 @@
             <div class="relative">
               <button class="btn ghost sm" data-on:click="$m2 = !$m2">⋯</button>
               <div class="menu anchor-br-gap" data-show="$m2">
-                <button class="menu__item" data-on:click="$m2 = false">Cancelar update</button>
-                <button class="menu__item" data-on:click="$m2 = false">Ver logs</button>
-                <button class="menu__item" data-on:click="$m2 = false">Ver QR</button>
+                <button class="menu-item" data-on:click="$m2 = false">Cancelar update</button>
+                <button class="menu-item" data-on:click="$m2 = false">Ver logs</button>
+                <button class="menu-item" data-on:click="$m2 = false">Ver QR</button>
               </div>
             </div>
           </footer>
@@ -233,7 +233,7 @@
               </div>
               <div class="sub">Distribuciones Mariola</div>
             </div>
-            <span class="badge warning"><span class="badge__dot"></span>Renueva en 9 d</span>
+            <span class="badge warning"><span class="badge-dot"></span>Renueva en 9 d</span>
           </header>
           <div class="body">
             <div class="grid-4" style="gap:8px;margin-bottom:12px;">
@@ -261,7 +261,7 @@
               </div>
               <div class="sub">Vinos Roca · Staging</div>
             </div>
-            <span class="badge"><span class="badge__dot"></span>Staging</span>
+            <span class="badge"><span class="badge-dot"></span>Staging</span>
           </header>
           <div class="body">
             <div class="grid-4" style="gap:8px;margin-bottom:12px;">
@@ -279,11 +279,11 @@
             <div class="relative">
               <button class="btn ghost sm" data-on:click="$m4 = !$m4">⋯</button>
               <div class="menu anchor-br-gap" data-show="$m4">
-                <button class="menu__item" data-on:click="$m4 = false">Reiniciar</button>
-                <button class="menu__item" data-on:click="$m4 = false">Promover a producción</button>
-                <button class="menu__item" data-on:click="$m4 = false">Ver QR</button>
-                <div class="menu__divider"></div>
-                <button class="menu__item menu__item--danger" data-on:click="$m4 = false">Eliminar</button>
+                <button class="menu-item" data-on:click="$m4 = false">Reiniciar</button>
+                <button class="menu-item" data-on:click="$m4 = false">Promover a producción</button>
+                <button class="menu-item" data-on:click="$m4 = false">Ver QR</button>
+                <div class="menu-divider"></div>
+                <button class="menu-item menu-item--danger" data-on:click="$m4 = false">Eliminar</button>
               </div>
             </div>
           </footer>
@@ -298,7 +298,7 @@
               </div>
               <div class="sub">Ferretería Puig &amp; Hijos</div>
             </div>
-            <span class="badge success"><span class="badge__dot"></span>Running</span>
+            <span class="badge success"><span class="badge-dot"></span>Running</span>
           </header>
           <div class="body">
             <div class="grid-4" style="gap:8px;margin-bottom:12px;">
@@ -316,11 +316,11 @@
             <div class="relative">
               <button class="btn ghost sm" data-on:click="$m5 = !$m5">⋯</button>
               <div class="menu anchor-br-gap" data-show="$m5">
-                <button class="menu__item" data-on:click="$m5 = false">Reiniciar</button>
-                <button class="menu__item" data-on:click="$m5 = false">Actualizar</button>
-                <button class="menu__item" data-on:click="$m5 = false">Ver QR</button>
-                <div class="menu__divider"></div>
-                <button class="menu__item menu__item--danger" data-on:click="$m5 = false">Eliminar</button>
+                <button class="menu-item" data-on:click="$m5 = false">Reiniciar</button>
+                <button class="menu-item" data-on:click="$m5 = false">Actualizar</button>
+                <button class="menu-item" data-on:click="$m5 = false">Ver QR</button>
+                <div class="menu-divider"></div>
+                <button class="menu-item menu-item--danger" data-on:click="$m5 = false">Eliminar</button>
               </div>
             </div>
           </footer>
@@ -335,7 +335,7 @@
               </div>
               <div class="sub">Panadería Cabrera S.L.</div>
             </div>
-            <span class="badge success"><span class="badge__dot"></span>Running</span>
+            <span class="badge success"><span class="badge-dot"></span>Running</span>
           </header>
           <div class="body">
             <div class="grid-4" style="gap:8px;margin-bottom:12px;">
@@ -363,7 +363,7 @@
               </div>
               <div class="sub">Cafetería La Rambla · Test</div>
             </div>
-            <span class="badge info"><span class="badge__dot"></span>Test</span>
+            <span class="badge info"><span class="badge-dot"></span>Test</span>
           </header>
           <div class="body">
             <div class="grid-4" style="gap:8px;margin-bottom:12px;">

@@ -20,9 +20,9 @@
   .meta-card h4 { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin: 0; font-weight: 500; }
   .meta-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; font-size: 12.5px; padding: 4px 0; border-bottom: 1px solid var(--line); }
   .meta-row:last-child { border-bottom: none; }
-  .meta-row__key { color: var(--ink-3); }
-  .meta-row__val { color: var(--ink); font-variant-numeric: tabular-nums; }
-  .meta-row__val--mono { font-family: var(--font-mono); font-size: 11.5px; }
+  .meta-row-key { color: var(--ink-3); }
+  .meta-row-val { color: var(--ink); font-variant-numeric: tabular-nums; }
+  .meta-row-val--mono { font-family: var(--font-mono); font-size: 11.5px; }
 </style>
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -92,7 +92,7 @@
         <div class="page-header-title">
           <h1>Factura INV-2026-0142</h1>
           <div class="page-header-sub flex items-center gap-2">
-            <span class="badge success"><span class="badge__dot"></span>Pagada · 12 mar 2026</span>
+            <span class="badge success"><span class="badge-dot"></span>Pagada · 12 mar 2026</span>
             <span>·</span>
             <span>Acme Industries SL</span>
           </div>
@@ -232,50 +232,50 @@
 
             <div class="card" style="padding: 20px 22px;">
               <div class="timeline">
-                <div class="timeline__item">
-                  <div class="timeline__dot timeline__dot--brand"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
-                  <div class="timeline__body">
-                    <div class="timeline__head">
+                <div class="timeline-item">
+                  <div class="timeline-dot timeline-dot--brand"><iconify-icon icon="lucide:file-text" width="18" height="18"></iconify-icon></div>
+                  <div class="timeline-body">
+                    <div class="timeline-head">
                       <div class="title sm">Factura <strong>emitida</strong> por sistema</div>
                       <div class="meta">12/03/2026 · 12:00</div>
                     </div>
                     <p class="meta">Generada automáticamente al renovarse la suscripción Business · acme-prod.</p>
                   </div>
                 </div>
-                <div class="timeline__item">
-                  <div class="timeline__dot timeline__dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg></div>
-                  <div class="timeline__body">
-                    <div class="timeline__head">
+                <div class="timeline-item">
+                  <div class="timeline-dot timeline-dot--info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg></div>
+                  <div class="timeline-body">
+                    <div class="timeline-head">
                       <div class="title sm">Email enviado a <strong>cuentas@acme-industries.com</strong></div>
                       <div class="meta">12/03/2026 · 12:01</div>
                     </div>
                     <p class="meta">Asunto: «Tu factura ERPlora · marzo 2026 (4 178,43 €)».</p>
                   </div>
                 </div>
-                <div class="timeline__item">
-                  <div class="timeline__dot"><iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon></div>
-                  <div class="timeline__body">
-                    <div class="timeline__head">
+                <div class="timeline-item">
+                  <div class="timeline-dot"><iconify-icon icon="lucide:eye" width="18" height="18"></iconify-icon></div>
+                  <div class="timeline-body">
+                    <div class="timeline-head">
                       <div class="title sm">Factura <strong>vista</strong> por <strong>Ioan Beilic</strong></div>
                       <div class="meta">12/03/2026 · 12:03</div>
                     </div>
                     <p class="meta">Apertura desde IP 81.14.22.10 · Madrid · navegador Safari.</p>
                   </div>
                 </div>
-                <div class="timeline__item">
-                  <div class="timeline__dot timeline__dot--leaf"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon></div>
-                  <div class="timeline__body">
-                    <div class="timeline__head">
+                <div class="timeline-item">
+                  <div class="timeline-dot timeline-dot--leaf"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon></div>
+                  <div class="timeline-body">
+                    <div class="timeline-head">
                       <div class="title sm"><strong>Pagada</strong> vía Stripe · Visa **** 4242</div>
                       <div class="meta">12/03/2026 · 12:04</div>
                     </div>
                     <p class="meta">Cargo automático de 4 178,43 € procesado correctamente. Ref. ch_3PqW1kK8sJxYz.</p>
                   </div>
                 </div>
-                <div class="timeline__item">
-                  <div class="timeline__dot timeline__dot--leaf"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></div>
-                  <div class="timeline__body">
-                    <div class="timeline__head">
+                <div class="timeline-item">
+                  <div class="timeline-dot timeline-dot--leaf"><iconify-icon icon="lucide:download" width="18" height="18"></iconify-icon></div>
+                  <div class="timeline-body">
+                    <div class="timeline-head">
                       <div class="title sm">Recibo enviado a <strong>cuentas@acme-industries.com</strong></div>
                       <div class="meta">12/03/2026 · 12:05</div>
                     </div>
@@ -291,11 +291,11 @@
         <aside class="flex col gap-4">
           <div class="meta-card">
             <h4>Pago</h4>
-            <div class="meta-row"><span class="meta-row__key">Estado</span><span class="badge success"><span class="badge__dot"></span>Pagada</span></div>
-            <div class="meta-row"><span class="meta-row__key">Método</span><span class="meta-row__val">Stripe · Visa **** 4242</span></div>
-            <div class="meta-row"><span class="meta-row__key">Cargo</span><span class="meta-row__val">12 mar 2026 · 12:04</span></div>
-            <div class="meta-row"><span class="meta-row__key">Ref. transacción</span><span class="meta-row__val meta-row__val--mono">ch_3PqW1kK8s</span></div>
-            <div class="meta-row"><span class="meta-row__key">Total</span><span class="meta-row__val" style="font-weight: 600; font-size: 14px;">4 178,43 €</span></div>
+            <div class="meta-row"><span class="meta-row-key">Estado</span><span class="badge success"><span class="badge-dot"></span>Pagada</span></div>
+            <div class="meta-row"><span class="meta-row-key">Método</span><span class="meta-row-val">Stripe · Visa **** 4242</span></div>
+            <div class="meta-row"><span class="meta-row-key">Cargo</span><span class="meta-row-val">12 mar 2026 · 12:04</span></div>
+            <div class="meta-row"><span class="meta-row-key">Ref. transacción</span><span class="meta-row-val meta-row-val--mono">ch_3PqW1kK8s</span></div>
+            <div class="meta-row"><span class="meta-row-key">Total</span><span class="meta-row-val" style="font-weight: 600; font-size: 14px;">4 178,43 €</span></div>
           </div>
 
           <div class="meta-card">

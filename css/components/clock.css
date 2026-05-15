@@ -26,7 +26,7 @@
 .clock.is-clocked-in::before { background: var(--leaf); }
 .clock.is-on-break::before    { background: var(--warn); }
 
-.clock__display {
+.clock-display {
   font-family: var(--font-mono);
   font-size: var(--_time-size);
   font-weight: 600;
@@ -36,13 +36,13 @@
   line-height: var(--leading-flat);
   margin: var(--space-0);
 }
-.clock__date {
+.clock-date {
   font-size: var(--text-sm);
   color: var(--ink-3);
   margin-top: var(--space-1);
   font-variant-numeric: tabular-nums;
 }
-.clock__name {
+.clock-name {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
@@ -50,7 +50,7 @@
   color: var(--ink);
   margin: var(--space-0);
 }
-.clock__status {
+.clock-status {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
@@ -63,25 +63,25 @@
   border: var(--border-w) solid var(--line);
   align-self: flex-start;
 }
-.clock__status::before {
+.clock-status::before {
   content: "";
   width: 6px;
   height: 6px;
   border-radius: var(--radius-circle);
   background: currentColor;
 }
-.clock.is-clocked-in .clock__status {
+.clock.is-clocked-in .clock-status {
   background: var(--leaf-soft);
   color: var(--leaf);
   border-color: transparent;
 }
-.clock.is-on-break .clock__status {
+.clock.is-on-break .clock-status {
   background: var(--warn-soft);
   color: var(--warn);
   border-color: transparent;
 }
 
-.clock__elapsed {
+.clock-elapsed {
   font-family: var(--font-mono);
   font-size: var(--text-md);
   color: var(--ink-2);
@@ -90,16 +90,16 @@
   align-items: center;
   gap: var(--space-2);
 }
-.clock__elapsed::before {
+.clock-elapsed::before {
   content: "";
   width: 5px;
   height: 5px;
   border-radius: var(--radius-circle);
   background: var(--ink-3);
 }
-.clock.is-clocked-in .clock__elapsed::before { background: var(--leaf); }
+.clock.is-clocked-in .clock-elapsed::before { background: var(--leaf); }
 
-.clock__actions {
+.clock-actions {
   display: flex;
   gap: var(--space-3);
   margin-top: var(--space-2);
@@ -107,7 +107,7 @@
   border-top: var(--border-w) solid var(--line);
   flex-wrap: wrap;
 }
-.clock__btn {
+.clock-btn {
   flex: 1 1 auto;
   min-height: var(--avatar-lg);
   padding: var(--space-0) var(--space-5);
@@ -127,29 +127,29 @@
     border-color var(--dur-fast) var(--ease-out),
     transform var(--dur-fast) var(--ease-out);
 }
-.clock__btn:active { transform: translateY(1px); }
-.clock__btn--in {
+.clock-btn:active { transform: translateY(1px); }
+.clock-btn--in {
   background: var(--brand);
   color: var(--brand-fg);
 }
-.clock__btn--in:hover { background: var(--brand-2); }
-.clock__btn--out {
+.clock-btn--in:hover { background: var(--brand-2); }
+.clock-btn--out {
   background: var(--bg-3);
   color: var(--ink);
   border-color: var(--line-2);
 }
-.clock__btn--out:hover { background: var(--bg-4); border-color: var(--line-3); }
-.clock__btn--break {
+.clock-btn--out:hover { background: var(--bg-4); border-color: var(--line-3); }
+.clock-btn--break {
   background: transparent;
   color: var(--warn);
   border-color: color-mix(in oklch, var(--warn) 30%, transparent);
 }
-.clock__btn--break:hover { background: var(--warn-soft); }
+.clock-btn--break:hover { background: var(--warn-soft); }
 
 /* hide clock-in btn when working, hide clock-out + break when not working */
-.clock.is-clocked-in     .clock__btn--in    { display: none; }
-.clock:not(.is-clocked-in) .clock__btn--out { display: none; }
-.clock:not(.is-clocked-in) .clock__btn--break { display: none; }
+.clock.is-clocked-in     .clock-btn--in    { display: none; }
+.clock:not(.is-clocked-in) .clock-btn--out { display: none; }
+.clock:not(.is-clocked-in) .clock-btn--break { display: none; }
 
 /* compact variant */
 .clock.compact {
@@ -160,13 +160,13 @@
   align-items: center;
   gap: var(--space-4);
 }
-.clock.compact .clock__actions {
+.clock.compact .clock-actions {
   margin-top: var(--space-0);
   padding-top: var(--space-0);
   border-top: none;
   flex-direction: row;
 }
-.clock.compact .clock__btn {
+.clock.compact .clock-btn {
   min-height: 38px;
   font-size: var(--text-sm);
   padding: var(--space-0) var(--space-3);
@@ -179,12 +179,12 @@
   text-align: center;
   align-items: center;
 }
-.clock.kiosk .clock__display {
+.clock.kiosk .clock-display {
   font-size: var(--_time-size);
 }
-.clock.kiosk .clock__name { font-size: var(--text-xl); }
-.clock.kiosk .clock__date { font-size: var(--text-base); }
-.clock.kiosk .clock__btn {
+.clock.kiosk .clock-name { font-size: var(--text-xl); }
+.clock.kiosk .clock-date { font-size: var(--text-base); }
+.clock.kiosk .clock-btn {
   min-height: var(--avatar-xl);
   font-size: var(--text-lg);
 }

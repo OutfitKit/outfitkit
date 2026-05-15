@@ -71,8 +71,8 @@
           <div class="flex-1">
             <div class="flex items-center gap-2">
               <h3 style="font-family:var(--font-display);font-size:18px;font-weight:600;margin:0;">ERPlora Bridge</h3>
-              <span class="pill success" data-show="$bridge.connected"><span class="pill__dot"></span>Conectado</span>
-              <span class="pill danger" data-show="!$bridge.connected"><span class="pill__dot"></span>No detectado</span>
+              <span class="pill success" data-show="$bridge.connected"><span class="pill-dot"></span>Conectado</span>
+              <span class="pill danger" data-show="!$bridge.connected"><span class="pill-dot"></span>No detectado</span>
             </div>
             <p style="font-size:12px;color:var(--ink-3);margin:4px 0 0;">
               <span data-show="$bridge.connected">v1.4.2 · puerto <span data-text="$bridge.port"></span> · 5 dispositivos detectados · auto-print ON</span>
@@ -240,21 +240,21 @@
         <div class="body">
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Puerto local</label>
+              <label class="field-label">Puerto local</label>
               <input class="input" type="number" min="1024" max="65535" data-bind="bridge.port"/>
-              <span class="field__hint">Por defecto 9100. Reinicia el Bridge si cambias este valor.</span>
+              <span class="field-hint">Por defecto 9100. Reinicia el Bridge si cambias este valor.</span>
             </div>
             <div class="field">
-              <label class="field__label">Host del Bridge</label>
+              <label class="field-label">Host del Bridge</label>
               <input class="input" value="127.0.0.1"/>
             </div>
           </div>
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Auto-print de tickets</span>
-              <span class="toggle-row__desc">Al cobrar, imprime automáticamente en la impresora predeterminada.</span>
+            <div class="toggle-row-text">
+              <span class="toggle-row-label">Auto-print de tickets</span>
+              <span class="toggle-row-desc">Al cobrar, imprime automáticamente en la impresora predeterminada.</span>
             </div>
-            <label class="toggle"><input type="checkbox" data-bind="bridge.autoPrint"/><span class="toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" data-bind="bridge.autoPrint"/><span class="toggle-track"></span></label>
           </div>
           <div style="display:flex;justify-content:flex-end;padding-top:12px;">
             <button class="btn secondary sm">Guardar ajustes</button>

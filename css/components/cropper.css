@@ -14,7 +14,7 @@
   flex-direction: column;
   gap: var(--space-3);
 }
-.cropper__viewport {
+.cropper-viewport {
   position: relative;
   aspect-ratio: 4/3;
   background:
@@ -22,13 +22,13 @@
   border-radius: var(--radius-md);
   overflow: hidden;
 }
-.cropper__viewport::before {
+.cropper-viewport::before {
   content: "";
   position: absolute;
   inset: 0;
   background: var(--overlay-medium);
 }
-.cropper__crop {
+.cropper-crop {
   position: absolute;
   top: 18%; left: 14%;
   right: 14%; bottom: 18%;
@@ -37,34 +37,34 @@
   box-shadow: 0 0 0 9999px var(--overlay-medium);
   cursor: move;
 }
-.cropper__crop::before, .cropper__crop::after {
+.cropper-crop::before, .cropper-crop::after {
   content: "";
   position: absolute;
   inset: 0;
   border: var(--border-w) dashed var(--overlay-glass-3);
   pointer-events: none;
 }
-.cropper__crop::before {
+.cropper-crop::before {
   border-left: none; border-right: none;
   top: 33.33%; height: 33.33%;
 }
-.cropper__crop::after {
+.cropper-crop::after {
   border-top: none; border-bottom: none;
   left: 33.33%; width: 33.33%;
 }
-.cropper__handle {
+.cropper-handle {
   position: absolute;
   width: var(--width);
   height: var(--height);
   background: white;
   border-radius: var(--radius-xs);
 }
-.cropper__handle--tl { top: calc(var(--height) / -2); left: calc(var(--width) / -2); cursor: nwse-resize; }
-.cropper__handle--tr { top: calc(var(--height) / -2); right: calc(var(--width) / -2); cursor: nesw-resize; }
-.cropper__handle--bl { bottom: calc(var(--height) / -2); left: calc(var(--width) / -2); cursor: nesw-resize; }
-.cropper__handle--br { bottom: calc(var(--height) / -2); right: calc(var(--width) / -2); cursor: nwse-resize; }
+.cropper-handle--tl { top: calc(var(--height) / -2); left: calc(var(--width) / -2); cursor: nwse-resize; }
+.cropper-handle--tr { top: calc(var(--height) / -2); right: calc(var(--width) / -2); cursor: nesw-resize; }
+.cropper-handle--bl { bottom: calc(var(--height) / -2); left: calc(var(--width) / -2); cursor: nesw-resize; }
+.cropper-handle--br { bottom: calc(var(--height) / -2); right: calc(var(--width) / -2); cursor: nwse-resize; }
 
-.cropper__toolbar {
+.cropper-toolbar {
   display: flex;
   gap: var(--space-2);
   flex-wrap: wrap;

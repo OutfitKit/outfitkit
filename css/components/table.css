@@ -47,8 +47,8 @@
   border-bottom: var(--border-w) solid var(--border-color);
   background: var(--header-background);
 }
-/* .table-toolbar__title → use universal .title inside .table-toolbar */
-.table-toolbar__count {
+/* .table-toolbar-title → use universal .title inside .table-toolbar */
+.table-toolbar-count {
   font-size: var(--text-xs);
   color: var(--ink-3);
   background: var(--bg-3);
@@ -56,7 +56,7 @@
   padding: var(--border-w-2) 0.4375rem;
   border-radius: var(--radius-pill);
 }
-.table-toolbar__spacer { flex: 1; }
+.table-toolbar-spacer { flex: 1; }
 
 /* ============================================================
    Consolidated toolbar — search · filters · date · pagesize · view · io
@@ -73,8 +73,8 @@
 }
 .dt-toolbar > .search { flex: 1 1 15rem; min-width: 12.5rem; max-width: 20rem; }
 .dt-toolbar > .select { flex: 0 0 auto; width: auto; min-width: 9.375rem; }
-.dt-toolbar__spacer { flex: 1; }
-.dt-toolbar__divider {
+.dt-toolbar-spacer { flex: 1; }
+.dt-toolbar-divider {
   width: var(--border-w);
   height: var(--size-xs);
   background: var(--line);
@@ -106,7 +106,7 @@
 }
 .date-range:hover { --border-color: var(--line-2); }
 .date-range svg { width: var(--icon-sm); height: var(--icon-sm); color: var(--ink-3); }
-.date-range__sep { color: var(--ink-3); }
+.date-range-sep { color: var(--ink-3); }
 
 .table-toolbar .icon-btn,
 .dt-toolbar .icon-btn {
@@ -155,7 +155,7 @@
   padding: var(--border-w-2);
   min-height: var(--height);
 }
-.view-toggle__btn {
+.view-toggle-btn {
   width: 1.875rem;
   height: var(--size-sm);
   display: inline-flex;
@@ -168,10 +168,10 @@
   cursor: pointer;
   transition: all var(--dur-fast);
 }
-.view-toggle__btn:hover { color: var(--ink-2); }
-.view-toggle__btn svg { width: var(--icon-sm); height: var(--icon-sm); }
-.view-toggle__btn[aria-pressed="true"],
-.view-toggle__btn[aria-pressed=""] {
+.view-toggle-btn:hover { color: var(--ink-2); }
+.view-toggle-btn svg { width: var(--icon-sm); height: var(--icon-sm); }
+.view-toggle-btn[aria-pressed="true"],
+.view-toggle-btn[aria-pressed=""] {
   background: var(--bg-4);
   color: var(--ink);
   box-shadow: var(--shadow-xs);
@@ -237,13 +237,13 @@
   --border-color: var(--accent);
   --background: color-mix(in oklch, var(--accent) 6%, var(--bg-2));
 }
-.dt-card__head {
+.dt-card-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
 }
-.dt-card__icon {
+.dt-card-icon {
   width: var(--avatar-sm);
   height: var(--avatar-sm);
   border-radius: var(--radius-md);
@@ -253,28 +253,28 @@
   justify-content: center;
   color: var(--ink-2);
 }
-.dt-card__icon svg { width: var(--icon-sm); height: var(--icon-sm); }
-/* .dt-card__title → use universal .title sm inside .dt-card__head */
-/* .dt-card__sub   → use universal .meta (+ font-mono inline) inside .dt-card__head */
-.dt-card__head > .meta { font-family: var(--font-mono); }
-.dt-card__body {
+.dt-card-icon svg { width: var(--icon-sm); height: var(--icon-sm); }
+/* .dt-card-title → use universal .title sm inside .dt-card-head */
+/* .dt-card-sub   → use universal .meta (+ font-mono inline) inside .dt-card-head */
+.dt-card-head > .meta { font-family: var(--font-mono); }
+.dt-card-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-1-5) var(--space-3);
   font-size: var(--text-xs);
 }
-.dt-card__field {
+.dt-card-field {
   display: flex;
   justify-content: space-between;
   gap: var(--space-2);
   color: var(--ink-3);
 }
-.dt-card__field strong {
+.dt-card-field strong {
   color: var(--ink);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
-.dt-card__footer {
+.dt-card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -335,8 +335,8 @@
 
 /* Compact padding for row-action cells so the icon cluster keeps room when
    the table is narrower than its content. Detected either via class on the
-   td (`.dt__actions`) or because the cell hosts a `.row-actions` group. */
-.table tbody td.dt__actions,
+   td (`.dt-actions`) or because the cell hosts a `.row-actions` group. */
+.table tbody td.dt-actions,
 .table tbody td:has(> .row-actions) {
   padding: var(--space-2) var(--space-3);
 }
@@ -383,11 +383,11 @@
   align-items: center;
   gap: var(--space-2-5);
 }
-.cell-rich__main { display: flex; flex-direction: column; gap: var(--border-w); min-width: 0; }
-/* .cell-rich__title → use universal .title sm (or just strong/b) inside .cell-rich__main */
+.cell-rich-main { display: flex; flex-direction: column; gap: var(--border-w); min-width: 0; }
+/* .cell-rich-title → use universal .title sm (or just strong/b) inside .cell-rich-main */
 /* Override for ellipsis truncation on any .title inside a cell-rich */
-.cell-rich__main > .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/* .cell-rich__sub → use universal .meta inside .cell-rich__main */
+.cell-rich-main > .title { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* .cell-rich-sub → use universal .meta inside .cell-rich-main */
 
 /* Variantes */
 .table.zebra tbody tr:nth-child(even) {
@@ -425,7 +425,7 @@
   font-size: var(--text-sm);
 }
 
-.pagination__btn {
+.pagination-btn {
   min-width: var(--size-sm);
   height: var(--size-sm);
   padding: var(--space-0) var(--space-2);
@@ -441,20 +441,20 @@
   justify-content: center;
   transition: all var(--dur-fast);
 }
-.pagination__btn:hover:not(:disabled) {
+.pagination-btn:hover:not(:disabled) {
   border-color: var(--line-2);
   color: var(--ink);
 }
-.pagination__btn[aria-current="page"] {
+.pagination-btn[aria-current="page"] {
   background: var(--accent);
   border-color: var(--accent);
   color: var(--variant-contrast, var(--color-primary-contrast));
 }
-.pagination__btn:disabled {
+.pagination-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
-.pagination__ellipsis {
+.pagination-ellipsis {
   padding: var(--space-0) var(--space-1);
   color: var(--ink-3);
 }
@@ -503,7 +503,7 @@
 .spark.brand path, .spark.brand polyline,
 .spark.primary path, .spark.primary polyline { stroke: var(--variant, var(--color-primary)); }
 
-.spark__area {
+.spark-area {
   fill: currentColor;
   opacity: 0.12;
   stroke: none;
@@ -517,15 +517,15 @@
   height: var(--size-xs);
   vertical-align: middle;
 }
-.spark-bars__bar {
+.spark-bars-bar {
   width: 0.25rem;
   background: var(--ink-3);
   border-radius: 0.0625rem;
   transition: background var(--dur-fast);
 }
-.spark-bars.brand .spark-bars__bar,
-.spark-bars.primary .spark-bars__bar { background: var(--variant, var(--color-primary)); }
-.spark-bars.up    .spark-bars__bar { background: var(--leaf); }
+.spark-bars.brand .spark-bars-bar,
+.spark-bars.primary .spark-bars-bar { background: var(--variant, var(--color-primary)); }
+.spark-bars.up    .spark-bars-bar { background: var(--leaf); }
 
 /* Trend pill — pequeño indicador inline */
 .trend {
@@ -539,6 +539,6 @@
 }
 .trend.up { color: var(--leaf); }
 .trend.down { color: var(--danger); }
-/* .trend__arrow → use universal .icon inside .trend */
+/* .trend-arrow → use universal .icon inside .trend */
 .trend > svg,
 .trend > .icon { width: var(--icon-2xs); height: var(--icon-2xs); }

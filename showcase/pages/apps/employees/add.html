@@ -59,24 +59,24 @@
       <form class="form" id="emp-add" data-on:submit="event.preventDefault()" style="max-width:760px;">
 
         <div class="form-section">
-          <h3 class="form-section__title">Información personal</h3>
-          <p class="form-section__desc">Datos visibles para el equipo y registros internos.</p>
+          <h3 class="form-section-title">Información personal</h3>
+          <p class="form-section-desc">Datos visibles para el equipo y registros internos.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Nombre completo</label>
+              <label class="field-label field-label--req">Nombre completo</label>
               <input class="input" placeholder="Joan Castell" autofocus/>
             </div>
             <div class="field">
-              <label class="field__label field__label--req">Email</label>
+              <label class="field-label field-label--req">Email</label>
               <input class="input" type="email" placeholder="joan@larambla.es"/>
-              <span class="field__hint">Se usará para iniciar sesión y recibir códigos de verificación.</span>
+              <span class="field-hint">Se usará para iniciar sesión y recibir códigos de verificación.</span>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Foto de perfil</label>
+              <label class="field-label">Foto de perfil</label>
               <div class="flex items-center gap-3">
                 <span class="avatar lg">+</span>
                 <label class="btn secondary sm">
@@ -85,23 +85,23 @@
                   <input type="file" accept="image/*" hidden/>
                 </label>
               </div>
-              <span class="field__hint">JPG o PNG · max 2 MB</span>
+              <span class="field-hint">JPG o PNG · max 2 MB</span>
             </div>
           </div>
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Acceso al Hub</h3>
-          <p class="form-section__desc">PIN de 4 cifras para acceso rápido en TPV y dispositivos del local.</p>
+          <h3 class="form-section-title">Acceso al Hub</h3>
+          <p class="form-section-desc">PIN de 4 cifras para acceso rápido en TPV y dispositivos del local.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">PIN inicial</label>
+              <label class="field-label field-label--req">PIN inicial</label>
               <input class="input" type="password" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="••••"/>
-              <span class="field__hint">El empleado podrá cambiarlo desde su perfil.</span>
+              <span class="field-hint">El empleado podrá cambiarlo desde su perfil.</span>
             </div>
             <div class="field">
-              <label class="field__label">Idioma de la interfaz</label>
+              <label class="field-label">Idioma de la interfaz</label>
               <select class="select">
                 <option>Català</option>
                 <option selected>Español</option>
@@ -115,40 +115,40 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Rol y permisos</h3>
-          <p class="form-section__desc">El rol determina qué módulos y acciones puede ejecutar.</p>
+          <h3 class="form-section-title">Rol y permisos</h3>
+          <p class="form-section-desc">El rol determina qué módulos y acciones puede ejecutar.</p>
 
           <div class="row">
             <label class="radio-card col-md-6">
               <input type="radio" name="role"/>
-              <span class="radio__dot mt-1"></span>
+              <span class="radio-dot mt-1"></span>
               <div>
                 <div class="radio-title">Admin</div>
-                <div class="radio-card__desc">Acceso total al Hub, módulos, facturación y empleados.</div>
+                <div class="radio-card-desc">Acceso total al Hub, módulos, facturación y empleados.</div>
               </div>
             </label>
             <label class="radio-card col-md-6">
               <input type="radio" name="role" checked/>
-              <span class="radio__dot mt-1"></span>
+              <span class="radio-dot mt-1"></span>
               <div>
                 <div class="radio-title">Manager</div>
-                <div class="radio-card__desc">Ventas, inventario, empleados (sin facturación ni configuración crítica).</div>
+                <div class="radio-card-desc">Ventas, inventario, empleados (sin facturación ni configuración crítica).</div>
               </div>
             </label>
             <label class="radio-card col-md-6">
               <input type="radio" name="role"/>
-              <span class="radio__dot mt-1"></span>
+              <span class="radio-dot mt-1"></span>
               <div>
                 <div class="radio-title">Cajero</div>
-                <div class="radio-card__desc">POS, tickets y caja. Sin acceso a costes ni stock.</div>
+                <div class="radio-card-desc">POS, tickets y caja. Sin acceso a costes ni stock.</div>
               </div>
             </label>
             <label class="radio-card col-md-6">
               <input type="radio" name="role"/>
-              <span class="radio__dot mt-1"></span>
+              <span class="radio-dot mt-1"></span>
               <div>
                 <div class="radio-title">Cocinero</div>
-                <div class="radio-card__desc">Solo KDS y comandas. Sin acceso a precios ni clientes.</div>
+                <div class="radio-card-desc">Solo KDS y comandas. Sin acceso a precios ni clientes.</div>
               </div>
             </label>
           </div>

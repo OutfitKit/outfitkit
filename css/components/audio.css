@@ -32,11 +32,11 @@
 .audio:hover { border-color: var(--line-2); }
 
 .audio.compact { --height: 2.75rem; --width: var(--size-sm); --gap: var(--space-2); }
-.audio.compact .audio__cover { display: none; }
+.audio.compact .audio-cover { display: none; }
 
 .audio.full { --height: 4.5rem; --width: var(--size-lg); --padding-x: var(--space-4); }
 
-.audio__play {
+.audio-play {
   width: var(--width);
   height: var(--width);
   border-radius: var(--radius-circle);
@@ -50,14 +50,14 @@
   flex-shrink: 0;
   transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
 }
-.audio__play:hover { background: var(--accent-background-hover); }
-.audio__play:active { transform: scale(0.95); }
-.audio__play .audio__icon--pause { display: none; }
-.audio__play .audio__icon--play { display: inline-flex; }
-.audio.is-playing .audio__play .audio__icon--play { display: none; }
-.audio.is-playing .audio__play .audio__icon--pause { display: inline-flex; }
+.audio-play:hover { background: var(--accent-background-hover); }
+.audio-play:active { transform: scale(0.95); }
+.audio-play .audio-icon--pause { display: none; }
+.audio-play .audio-icon--play { display: inline-flex; }
+.audio.is-playing .audio-play .audio-icon--play { display: none; }
+.audio.is-playing .audio-play .audio-icon--pause { display: inline-flex; }
 
-.audio__cover {
+.audio-cover {
   width: var(--width);
   height: var(--width);
   border-radius: var(--radius-sm);
@@ -72,31 +72,31 @@
   0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklch, var(--accent-background) 40%, transparent); }
   50%      { box-shadow: 0 0 0 8px color-mix(in oklch, var(--accent-background) 0%, transparent); }
 }
-.audio__cover[data-playing="true"] {
+.audio-cover[data-playing="true"] {
   animation: ok-audio-pulse 1.6s ease-in-out infinite;
 }
-.audio.is-playing .audio__play {
+.audio.is-playing .audio-play {
   animation: ok-audio-pulse 1.6s ease-in-out infinite;
 }
 
-/* audio uses universal .title and .sub inside .audio__info */
-.audio__info {
+/* audio uses universal .title and .sub inside .audio-info */
+.audio-info {
   display: flex;
   flex-direction: column;
   gap: var(--border-w-2);
   min-width: 0;
 }
 
-.audio__progress {
+.audio-progress {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-2);
   align-items: center;
   min-width: var(--min-width);
 }
-.audio.full .audio__progress { min-width: 13.75rem; }
+.audio.full .audio-progress { min-width: 13.75rem; }
 
-.audio__bar {
+.audio-bar {
   position: relative;
   height: var(--track-height);
   background: var(--bg-3);
@@ -104,7 +104,7 @@
   cursor: pointer;
   overflow: visible;
 }
-.audio__fill {
+.audio-fill {
   position: absolute;
   inset: 0 auto 0 0;
   width: 30%;
@@ -112,7 +112,7 @@
   border-radius: var(--radius-pill);
   transition: width var(--dur-base) var(--ease-out);
 }
-.audio__handle {
+.audio-handle {
   position: absolute;
   top: 50%;
   right: 0;
@@ -126,7 +126,7 @@
   pointer-events: none;
 }
 
-.audio__time {
+.audio-time {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   color: var(--ink-3);
@@ -135,8 +135,8 @@
   white-space: nowrap;
 }
 
-.audio__vol,
-.audio__speed {
+.audio-vol,
+.audio-speed {
   height: var(--size-xs);
   min-width: var(--size-xs);
   padding: 0 var(--space-2);
@@ -153,5 +153,5 @@
   gap: var(--space-1);
   transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
-.audio__vol:hover,
-.audio__speed:hover { background: var(--bg-3); color: var(--ink); }
+.audio-vol:hover,
+.audio-speed:hover { background: var(--bg-3); color: var(--ink); }

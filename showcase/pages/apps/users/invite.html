@@ -17,10 +17,10 @@
 <style>
   .preview-mock { background: var(--bg-1); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 22px; }
   .preview-mock--light { background: #fefefe; color: #1a1612; }
-  .preview-mock__sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
-  .preview-mock__from { font-size: var(--text-sm); color: var(--ink-2); margin-bottom: 16px; }
-  .preview-mock--light .preview-mock__from { color: #524C44; }
-  .preview-mock--light .preview-mock__sub { color: #837B70; }
+  .preview-mock-sub { font-size: var(--text-xs); color: var(--ink-3); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 8px; }
+  .preview-mock-from { font-size: var(--text-sm); color: var(--ink-2); margin-bottom: 16px; }
+  .preview-mock--light .preview-mock-from { color: #524C44; }
+  .preview-mock--light .preview-mock-sub { color: #837B70; }
   .preview-mock h2 { font-family: var(--font-display); font-size: 22px; margin: 0 0 12px; letter-spacing: var(--tracking-tight); }
   .preview-mock p { font-size: var(--text-md); line-height: 1.55; margin: 10px 0; }
   .perm-grid { display: grid; grid-template-columns: 1fr; gap: 4px; padding-top: var(--space-3); }
@@ -99,9 +99,9 @@
         
         <div class="topbar-search">
         <div class="search">
-          <span class="search__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+          <span class="search-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
           <input type="search" placeholder="Buscar hubs, módulos, facturas…"/>
-          <span class="search__kbd"><kbd class="kbd">⌘</kbd><kbd class="kbd">K</kbd></span>
+          <span class="search-kbd"><kbd class="kbd">⌘</kbd><kbd class="kbd">K</kbd></span>
         </div>
       </div>
         
@@ -120,10 +120,10 @@
       </div>
 
       <div class="callout info mb-5">
-        <span class="callout__icon"><iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon></span>
-        <div class="callout__body">
-          <div class="callout__title">Las invitaciones se envían inmediatamente</div>
-          <div class="callout__desc">Los invitados recibirán un email con un enlace seguro. Deben aceptar antes de la fecha de caducidad o el enlace dejará de funcionar.</div>
+        <span class="callout-icon"><iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon></span>
+        <div class="callout-body">
+          <div class="callout-title">Las invitaciones se envían inmediatamente</div>
+          <div class="callout-desc">Los invitados recibirán un email con un enlace seguro. Deben aceptar antes de la fecha de caducidad o el enlace dejará de funcionar.</div>
         </div>
       </div>
 
@@ -139,19 +139,19 @@
 
             <!-- Emails -->
             <div class="field mb-4">
-              <label class="field__label field__label--req">Emails de invitados</label>
+              <label class="field-label field-label--req">Emails de invitados</label>
               <div class="tag-input">
                 <span class="tag" data-show="$emails.includes('ana.martin@bodegas-casadejus.com')">
                   ana.martin@bodegas-casadejus.com
-                  <button class="tag__remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'ana.martin@bodegas-casadejus.com')">×</button>
+                  <button class="tag-remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'ana.martin@bodegas-casadejus.com')">×</button>
                 </span>
                 <span class="tag" data-show="$emails.includes('sergi.puig@acme.com')">
                   sergi.puig@acme.com
-                  <button class="tag__remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'sergi.puig@acme.com')">×</button>
+                  <button class="tag-remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'sergi.puig@acme.com')">×</button>
                 </span>
                 <span class="tag" data-show="$emails.includes('nuria.roca@mariola.es')">
                   nuria.roca@mariola.es
-                  <button class="tag__remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'nuria.roca@mariola.es')">×</button>
+                  <button class="tag-remove" aria-label="Quitar" data-on:click="$emails = $emails.filter(e =&gt; e !== 'nuria.roca@mariola.es')">×</button>
                 </span>
                 <input
                   type="email"
@@ -160,89 +160,89 @@
                   data-on:keydown="if (evt.key === 'Enter' &amp;&amp; $newEmail.includes('@')) { $emails = [...$emails, $newEmail]; $newEmail = ''; }"
                   style="flex: 1; min-width: 200px; background: transparent; border: 0; outline: 0; color: var(--ink); font-size: var(--text-md); padding: 4px 6px;"/>
               </div>
-              <span class="field__hint"><span data-text="$emails.length"></span> destinatarios · pulsa Enter para añadir</span>
+              <span class="field-hint"><span data-text="$emails.length"></span> destinatarios · pulsa Enter para añadir</span>
             </div>
 
             <!-- Hubs multiselect -->
             <div class="field mb-4">
-              <label class="field__label field__label--req">Hubs</label>
+              <label class="field-label field-label--req">Hubs</label>
               <div class="filter-chips">
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('acme-prod') ? $hubs.filter(h =&gt; h !== 'acme-prod') : [...$hubs, 'acme-prod']"
                   data-class:is-active="$hubs.includes('acme-prod')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">acme-prod</span>
-                  <span class="filter-chip__count">12</span>
+                  <span class="filter-chip-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="filter-chip-label">acme-prod</span>
+                  <span class="filter-chip-count">12</span>
                 </button>
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('bodegas-casadejus') ? $hubs.filter(h =&gt; h !== 'bodegas-casadejus') : [...$hubs, 'bodegas-casadejus']"
                   data-class:is-active="$hubs.includes('bodegas-casadejus')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">bodegas-casadejus</span>
-                  <span class="filter-chip__count">8</span>
+                  <span class="filter-chip-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="filter-chip-label">bodegas-casadejus</span>
+                  <span class="filter-chip-count">8</span>
                 </button>
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('mariola-tienda-1') ? $hubs.filter(h =&gt; h !== 'mariola-tienda-1') : [...$hubs, 'mariola-tienda-1']"
                   data-class:is-active="$hubs.includes('mariola-tienda-1')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">mariola-tienda-1</span>
-                  <span class="filter-chip__count">4</span>
+                  <span class="filter-chip-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="filter-chip-label">mariola-tienda-1</span>
+                  <span class="filter-chip-count">4</span>
                 </button>
                 <button class="filter-chip"
                   data-on:click="$hubs = $hubs.includes('vinos-roca-staging') ? $hubs.filter(h =&gt; h !== 'vinos-roca-staging') : [...$hubs, 'vinos-roca-staging']"
                   data-class:is-active="$hubs.includes('vinos-roca-staging')">
-                  <span class="filter-chip__check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
-                  <span class="filter-chip__label">vinos-roca-staging</span>
-                  <span class="filter-chip__count">3</span>
+                  <span class="filter-chip-check"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg></span>
+                  <span class="filter-chip-label">vinos-roca-staging</span>
+                  <span class="filter-chip-count">3</span>
                 </button>
               </div>
-              <span class="field__hint">Seleccionados: <span data-text="$hubs.length"></span> hub<span data-text="$hubs.length === 1 ? '' : 's'"></span></span>
+              <span class="field-hint">Seleccionados: <span data-text="$hubs.length"></span> hub<span data-text="$hubs.length === 1 ? '' : 's'"></span></span>
             </div>
 
             <!-- Role -->
             <div class="field mb-4">
-              <label class="field__label field__label--req">Rol por hub</label>
+              <label class="field-label field-label--req">Rol por hub</label>
               <div class="radio-group row" style="gap: 10px;">
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'admin'">
                   <input type="radio" name="role" value="admin" data-on:click="$role = 'admin'" hidden/>
                   <span class="radio-title">Admin</span>
-                  <span class="radio-card__desc">Acceso total · gestiona usuarios y configuración del hub.</span>
+                  <span class="radio-card-desc">Acceso total · gestiona usuarios y configuración del hub.</span>
                 </label>
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'editor'">
                   <input type="radio" name="role" value="editor" data-on:click="$role = 'editor'" checked hidden/>
                   <span class="radio-title">Editor</span>
-                  <span class="radio-card__desc">Edita catálogo, pedidos y operaciones diarias. Sin facturación.</span>
+                  <span class="radio-card-desc">Edita catálogo, pedidos y operaciones diarias. Sin facturación.</span>
                 </label>
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'viewer'">
                   <input type="radio" name="role" value="viewer" data-on:click="$role = 'viewer'" hidden/>
                   <span class="radio-title">Viewer</span>
-                  <span class="radio-card__desc">Solo lectura · ve métricas, reportes e historial.</span>
+                  <span class="radio-card-desc">Solo lectura · ve métricas, reportes e historial.</span>
                 </label>
                 <label class="radio-card col-md-6" data-class:is-selected="$role === 'pos'">
                   <input type="radio" name="role" value="pos" data-on:click="$role = 'pos'" hidden/>
                   <span class="radio-title">Solo POS</span>
-                  <span class="radio-card__desc">Atiende caja en terminales POS. Sin acceso a backoffice.</span>
+                  <span class="radio-card-desc">Atiende caja en terminales POS. Sin acceso a backoffice.</span>
                 </label>
               </div>
             </div>
 
             <!-- Mensaje -->
             <div class="field mb-4">
-              <label class="field__label">Mensaje opcional</label>
+              <label class="field-label">Mensaje opcional</label>
               <textarea class="textarea" rows="3" maxlength="500"
                 placeholder="Hola, te invito a colaborar en el hub de Acme. Tu rol será Editor…"
                 data-bind:msg></textarea>
-              <span class="field__hint"><span data-text="$msg.length"></span> / 500 caracteres</span>
+              <span class="field-hint"><span data-text="$msg.length"></span> / 500 caracteres</span>
             </div>
 
             <!-- Caducidad -->
             <div class="field mb-4">
-              <label class="field__label">Caducidad de la invitación</label>
+              <label class="field-label">Caducidad de la invitación</label>
               <div class="toggle-group block">
-                <button class="toggle-group__option" data-on:click="$expiry = '24h'" data-class:is-selected="$expiry === '24h'">24 h</button>
-                <button class="toggle-group__option" data-on:click="$expiry = '7d'" data-class:is-selected="$expiry === '7d'">7 días</button>
-                <button class="toggle-group__option" data-on:click="$expiry = '30d'" data-class:is-selected="$expiry === '30d'">30 días</button>
-                <button class="toggle-group__option" data-on:click="$expiry = 'none'" data-class:is-selected="$expiry === 'none'">Sin caducidad</button>
+                <button class="toggle-group-option" data-on:click="$expiry = '24h'" data-class:is-selected="$expiry === '24h'">24 h</button>
+                <button class="toggle-group-option" data-on:click="$expiry = '7d'" data-class:is-selected="$expiry === '7d'">7 días</button>
+                <button class="toggle-group-option" data-on:click="$expiry = '30d'" data-class:is-selected="$expiry === '30d'">30 días</button>
+                <button class="toggle-group-option" data-on:click="$expiry = 'none'" data-class:is-selected="$expiry === 'none'">Sin caducidad</button>
               </div>
             </div>
 
@@ -260,23 +260,23 @@
               </button>
               <div class="perm-grid" data-show="$showPerms">
                 <label class="toggle-row">
-                  <span class="toggle-row__text">
-                    <span class="toggle-row__label">Puede invitar a otros usuarios</span>
-                    <span class="toggle-row__desc">Permite reenviar invitaciones desde su cuenta.</span>
+                  <span class="toggle-row-text">
+                    <span class="toggle-row-label">Puede invitar a otros usuarios</span>
+                    <span class="toggle-row-desc">Permite reenviar invitaciones desde su cuenta.</span>
                   </span>
                   <input type="checkbox" class="toggle" data-bind:canInvite/>
                 </label>
                 <label class="toggle-row">
-                  <span class="toggle-row__text">
-                    <span class="toggle-row__label">Ve facturación e informes financieros</span>
-                    <span class="toggle-row__desc">Acceso a facturas, pagos y reportes mensuales.</span>
+                  <span class="toggle-row-text">
+                    <span class="toggle-row-label">Ve facturación e informes financieros</span>
+                    <span class="toggle-row-desc">Acceso a facturas, pagos y reportes mensuales.</span>
                   </span>
                   <input type="checkbox" class="toggle" data-bind:canBilling/>
                 </label>
                 <label class="toggle-row">
-                  <span class="toggle-row__text">
-                    <span class="toggle-row__label">Ve listado de usuarios del hub</span>
-                    <span class="toggle-row__desc">Ver miembros y sus roles, sin permitir cambios.</span>
+                  <span class="toggle-row-text">
+                    <span class="toggle-row-label">Ve listado de usuarios del hub</span>
+                    <span class="toggle-row-desc">Ver miembros y sus roles, sin permitir cambios.</span>
                   </span>
                   <input type="checkbox" class="toggle" data-bind:canUsers/>
                 </label>
@@ -302,19 +302,19 @@
                 <p class="sub">Esto recibirá cada invitado.</p>
               </div>
               <div class="segment sm">
-                <button class="segment__opt" data-on:click="$previewMode = 'dark'" data-attr:aria-pressed="$previewMode === 'dark'">🌙</button>
-                <button class="segment__opt" data-on:click="$previewMode = 'light'" data-attr:aria-pressed="$previewMode === 'light'">☀</button>
+                <button class="segment-opt" data-on:click="$previewMode = 'dark'" data-attr:aria-pressed="$previewMode === 'dark'">🌙</button>
+                <button class="segment-opt" data-on:click="$previewMode = 'light'" data-attr:aria-pressed="$previewMode === 'light'">☀</button>
               </div>
             </header>
             <div class="body">
 
               <div class="preview-mock" data-class="$previewMode === 'light' ? 'preview-mock light' : ''">
-                <div class="preview-mock__sub">Asunto</div>
+                <div class="preview-mock-sub">Asunto</div>
                 <p style="font-weight: 600; font-size: var(--text-md); margin: 0 0 16px;">
                   Te invitamos a unirte a <span data-text="$hubs.length === 1 ? $hubs[0] : $hubs.length + ' hubs'"></span> en ERPlora Cloud
                 </p>
 
-                <div class="preview-mock__from">De: Ioan Beilic · Acme Industries · ioan@acme.com</div>
+                <div class="preview-mock-from">De: Ioan Beilic · Acme Industries · ioan@acme.com</div>
                 <hr style="border: 0; border-top: 1px solid var(--line); margin: 16px 0;"/>
 
                 <h2>Hola 👋</h2>

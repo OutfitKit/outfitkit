@@ -7,7 +7,7 @@
 
 {% block content %}
 <h1>Field</h1>
-<p class="showcase__lead">Wrapper para label + control + hint/error. Componente <em>slot-based</em>: el control va dentro.</p>
+<p class="showcase-lead">Wrapper para label + control + hint/error. Componente <em>slot-based</em>: el control va dentro.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/input.jinja" import input %}
 {% from "ui/field.jinja" import field %}
@@ -101,7 +101,7 @@
 </table>
 
 <h3>Accesibilidad</h3>
-<p class="showcase__lead">
+<p class="showcase-lead">
   El componente <code>Field</code> es <em>slot-based</em>: no renderiza el control interno, sólo el wrapper y el label.
   Por eso el consumidor es responsable de añadir <code>aria-required="true"</code> al <code>&lt;input&gt;</code>/<code>&lt;select&gt;</code>/<code>&lt;textarea&gt;</code>
   cuando <code>required=True</code>, así como <code>aria-invalid="true"</code> cuando <code>error</code> no está vacío.

@@ -6,62 +6,62 @@
 
 {% block content %}
 <h1>Menubar</h1>
-<p class="showcase__lead">Barra de menú estilo macOS/Windows: nombre de app + menús desplegables. Usa <code>menubar_item(id, label)</code> para los triggers y <code>menubar_panel(for_item)</code> para los paneles. La interactividad se cablea con Datastar a través de un signal compartido <code>open</code> en la barra (id del menú abierto, o cadena vacía).</p>
+<p class="showcase-lead">Barra de menú estilo macOS/Windows: nombre de app + menús desplegables. Usa <code>menubar_item(id, label)</code> para los triggers y <code>menubar_panel(for_item)</code> para los paneles. La interactividad se cablea con Datastar a través de un signal compartido <code>open</code> en la barra (id del menú abierto, o cadena vacía).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/menubar.jinja" import menubar, menubar_item, menubar_panel %}
 <div style="position:relative;width:100%;min-height:240px">
 {% call menubar(app_name="ERPlora") %}
   {{ menubar_item("file", "File") }}
   {% call menubar_panel("file", style="left:90px") %}
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>New document</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+N</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>New document</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+N</span>
     </button>
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Open…</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+O</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Open…</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+O</span>
     </button>
-    <div class="menubar__separator"></div>
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Print…</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+P</span>
+    <div class="menubar-separator"></div>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Print…</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+P</span>
     </button>
   {% endcall %}
   {{ menubar_item("edit", "Edit") }}
   {% call menubar_panel("edit", style="left:130px") %}
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Undo</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+Z</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Undo</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+Z</span>
     </button>
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Redo</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+Y</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Redo</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+Y</span>
     </button>
   {% endcall %}
   {{ menubar_item("view", "View") }}
   {{ menubar_item("window", "Window") }}
   {{ menubar_item("help", "Help") }}
-  <span class="menubar__version">v3.1.0</span>
+  <span class="menubar-version">v3.1.0</span>
 {% endcall %}
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<div style="position:relative;width:100%;min-height:240px">
 <Menubar app_name="ERPlora">
   <MenubarItem id="file" label="File" />
   <MenubarPanel for_item="file" style="left:90px">
-    <button class="menubar__item">…New document…</button>
-    <button class="menubar__item">…Open……</button>
-    <div class="menubar__separator"></div>
-    <button class="menubar__item">…Print……</button>
+    <button class="menubar-item">…New document…</button>
+    <button class="menubar-item">…Open……</button>
+    <div class="menubar-separator"></div>
+    <button class="menubar-item">…Print……</button>
   </MenubarPanel>
   <MenubarItem id="edit" label="Edit" />
   <MenubarPanel for_item="edit" style="left:130px">
-    <button class="menubar__item">…Undo…</button>
-    <button class="menubar__item">…Redo…</button>
+    <button class="menubar-item">…Undo…</button>
+    <button class="menubar-item">…Redo…</button>
   </MenubarPanel>
   <MenubarItem id="view" label="View" />
   <MenubarItem id="window" label="Window" />
   <MenubarItem id="help" label="Help" />
-  <span class="menubar__version">v3.1.0</span>
+  <span class="menubar-version">v3.1.0</span>
 </Menubar>
 </div>{% endraw %}{% endset %}
 
@@ -72,35 +72,35 @@
 {% call menubar(app_name="ERPlora") %}
   {{ menubar_item("file", "File") }}
   {% call menubar_panel("file", style="left:90px") %}
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>New document</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+N</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>New document</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+N</span>
     </button>
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Open…</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+O</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Open…</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+O</span>
     </button>
-    <div class="menubar__separator"></div>
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Print…</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+P</span>
+    <div class="menubar-separator"></div>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Print…</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+P</span>
     </button>
   {% endcall %}
   {{ menubar_item("edit", "Edit") }}
   {% call menubar_panel("edit", style="left:130px") %}
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Undo</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+Z</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Undo</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+Z</span>
     </button>
-    <button class="menubar__item">
-      <span class="menubar__item-icon"></span><span>Redo</span><span></span>
-      <span class="menubar__item-shortcut">Ctrl+Y</span>
+    <button class="menubar-item">
+      <span class="menubar-item-icon"></span><span>Redo</span><span></span>
+      <span class="menubar-item-shortcut">Ctrl+Y</span>
     </button>
   {% endcall %}
   {{ menubar_item("view", "View") }}
   {{ menubar_item("window", "Window") }}
   {{ menubar_item("help", "Help") }}
-  <span class="menubar__version">v3.1.0</span>
+  <span class="menubar-version">v3.1.0</span>
 {% endcall %}
 </div>
 {% endcall %}
@@ -136,46 +136,46 @@
 {% set _src_jinja_3 %}{% raw %}{% from "ui/menubar.jinja" import menubar %}
 <div style="position:relative;min-height:240px">
 {% call menubar(app_name="Demo") %}
-<button class="menubar__menu is-open">File</button>
-<div class="menubar__panel" style="left:60px;display:block">
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>New document</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+N</span>
+<button class="menubar-menu is-open">File</button>
+<div class="menubar-panel" style="left:60px;display:block">
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>New document</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+N</span>
   </button>
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>Open…</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+O</span>
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>Open…</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+O</span>
   </button>
-  <div class="menubar__separator"></div>
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>Print…</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+P</span>
+  <div class="menubar-separator"></div>
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>Print…</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+P</span>
   </button>
 </div>
-<button class="menubar__menu">Edit</button>
-<button class="menubar__menu">View</button>
+<button class="menubar-menu">Edit</button>
+<button class="menubar-menu">View</button>
 {% endcall %}
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<div style="position:relative;min-height:240px">
 <Menubar app_name="Demo">
-<button class="menubar__menu is-open">File</button>
-<div class="menubar__panel" style="left:60px;display:block">
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>New document</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+N</span>
+<button class="menubar-menu is-open">File</button>
+<div class="menubar-panel" style="left:60px;display:block">
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>New document</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+N</span>
   </button>
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>Open…</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+O</span>
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>Open…</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+O</span>
   </button>
-  <div class="menubar__separator"></div>
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>Print…</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+P</span>
+  <div class="menubar-separator"></div>
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>Print…</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+P</span>
   </button>
 </div>
-<button class="menubar__menu">Edit</button>
-<button class="menubar__menu">View</button>
+<button class="menubar-menu">Edit</button>
+<button class="menubar-menu">View</button>
 </Menubar>
 </div>{% endraw %}{% endset %}
 
@@ -184,24 +184,24 @@
     jinjax_src=_src_jinjax_3) %}
 <div style="position:relative;min-height:240px">
 {% call menubar(app_name="Demo") %}
-<button class="menubar__menu is-open">File</button>
-<div class="menubar__panel" style="left:60px;display:block">
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>New document</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+N</span>
+<button class="menubar-menu is-open">File</button>
+<div class="menubar-panel" style="left:60px;display:block">
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>New document</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+N</span>
   </button>
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>Open…</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+O</span>
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>Open…</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+O</span>
   </button>
-  <div class="menubar__separator"></div>
-  <button class="menubar__item">
-    <span class="menubar__item-icon"></span><span>Print…</span><span></span>
-    <span class="menubar__item-shortcut">Ctrl+P</span>
+  <div class="menubar-separator"></div>
+  <button class="menubar-item">
+    <span class="menubar-item-icon"></span><span>Print…</span><span></span>
+    <span class="menubar-item-shortcut">Ctrl+P</span>
   </button>
 </div>
-<button class="menubar__menu">Edit</button>
-<button class="menubar__menu">View</button>
+<button class="menubar-menu">Edit</button>
+<button class="menubar-menu">View</button>
 {% endcall %}
 </div>
 {% endcall %}
@@ -235,7 +235,7 @@
     <tr><td><code>for_item</code></td><td>str</td><td>—</td><td>Id del <code>menubar_item</code> que controla este panel.</td></tr>
     <tr><td><code>style</code></td><td>str</td><td>""</td><td>Estilos en línea (típicamente <code>left:&lt;px&gt;</code> para alinear con el trigger).</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido del panel (botones <code>.ok-menubar__item</code>, separadores).</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido del panel (botones <code>.ok-menubar-item</code>, separadores).</td></tr>
   </tbody>
 </table>
 {% endblock %}

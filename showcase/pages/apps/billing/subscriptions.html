@@ -16,19 +16,19 @@
   .sub-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 20px; display: flex; flex-direction: column; gap: 14px; transition: border-color var(--dur-fast); position: relative; }
   .sub-card:hover { border-color: var(--line-2); }
   .sub-card--reco { border-color: var(--brand); box-shadow: 0 0 0 3px color-mix(in oklch, var(--brand) 12%, transparent); }
-  .sub-card__ribbon { position: absolute; top: -10px; right: 16px; background: var(--brand); color: var(--brand-fg); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: var(--radius-sm); }
+  .sub-card-ribbon { position: absolute; top: -10px; right: 16px; background: var(--brand); color: var(--brand-fg); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: var(--radius-sm); }
   .sub-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
-  .sub-card__hub { font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
-  .sub-card__hub-meta { font-size: 12px; color: var(--ink-3); margin-top: 2px; font-family: var(--font-mono); }
-  .sub-card__price { display: flex; align-items: baseline; gap: 4px; padding: 8px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .sub-card__price-amt { font-family: var(--font-display); font-size: 32px; font-weight: 700; letter-spacing: -0.04em; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .sub-card__price-per { font-size: 13px; color: var(--ink-3); }
-  .sub-card__features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
-  .sub-card__features li { display: flex; gap: 8px; align-items: flex-start; }
-  .sub-card__features svg { width: 14px; height: 14px; color: var(--leaf); flex-shrink: 0; margin-top: 2px; }
-  .sub-card__renewal { font-size: 11.5px; color: var(--ink-3); display: flex; flex-direction: column; gap: 4px; }
-  .sub-card__renewal-bar { height: 6px; background: var(--bg-3); border-radius: 3px; overflow: hidden; }
-  .sub-card__renewal-fill { height: 100%; background: var(--brand); border-radius: 3px; }
+  .sub-card-hub { font-family: var(--font-display); font-size: 16px; font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .sub-card-hub-meta { font-size: 12px; color: var(--ink-3); margin-top: 2px; font-family: var(--font-mono); }
+  .sub-card-price { display: flex; align-items: baseline; gap: 4px; padding: 8px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .sub-card-price-amt { font-family: var(--font-display); font-size: 32px; font-weight: 700; letter-spacing: -0.04em; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .sub-card-price-per { font-size: 13px; color: var(--ink-3); }
+  .sub-card-features { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: 12.5px; color: var(--ink-2); }
+  .sub-card-features li { display: flex; gap: 8px; align-items: flex-start; }
+  .sub-card-features svg { width: 14px; height: 14px; color: var(--leaf); flex-shrink: 0; margin-top: 2px; }
+  .sub-card-renewal { font-size: 11.5px; color: var(--ink-3); display: flex; flex-direction: column; gap: 4px; }
+  .sub-card-renewal-bar { height: 6px; background: var(--bg-3); border-radius: 3px; overflow: hidden; }
+  .sub-card-renewal-fill { height: 100%; background: var(--brand); border-radius: 3px; }
   .sub-actions { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 4px; }
 </style>
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
@@ -116,22 +116,22 @@
       <!-- KPIs -->
       <div class="grid-3 mb-5">
         <div class="kpi">
-          <div class="kpi__label">Suscripciones activas</div>
-          <div class="kpi__value">5</div>
-          <div class="kpi__delta">3 anuales · 2 mensuales</div>
+          <div class="kpi-label">Suscripciones activas</div>
+          <div class="kpi-value">5</div>
+          <div class="kpi-delta">3 anuales · 2 mensuales</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">MRR · ingresos recurrentes mensuales</div>
-          <div class="kpi__value">1 240<span class="kpi__value-unit">€</span></div>
-          <div class="kpi__delta kpi__delta--up">
-            <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9-9M9 8h7v7"/></svg>
+          <div class="kpi-label">MRR · ingresos recurrentes mensuales</div>
+          <div class="kpi-value">1 240<span class="kpi-value-unit">€</span></div>
+          <div class="kpi-delta kpi-delta--up">
+            <svg class="kpi-delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9-9M9 8h7v7"/></svg>
             +180 € desde marzo
           </div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Próxima renovación</div>
-          <div class="kpi__value" style="font-size: 22px;">15 may · 890 €</div>
-          <div class="kpi__delta">acme-prod · Plan Business</div>
+          <div class="kpi-label">Próxima renovación</div>
+          <div class="kpi-value" style="font-size: 22px;">15 may · 890 €</div>
+          <div class="kpi-delta">acme-prod · Plan Business</div>
         </div>
       </div>
 
@@ -139,31 +139,31 @@
       <div class="grid-auto lg" style="margin-bottom: 28px;">
         <!-- Card 1 -->
         <article class="sub-card reco">
-          <span class="sub-card__ribbon">Plan recomendado</span>
+          <span class="sub-card-ribbon">Plan recomendado</span>
           <div class="sub-head">
             <div>
-              <div class="sub-card__hub">acme-prod</div>
-              <div class="sub-card__hub-meta">erplora.cloud/acme-prod</div>
+              <div class="sub-card-hub">acme-prod</div>
+              <div class="sub-card-hub-meta">erplora.cloud/acme-prod</div>
             </div>
             <span class="badge solid-brand">Business</span>
           </div>
-          <div class="sub-card__price">
-            <span class="sub-card__price-amt">890 €</span>
-            <span class="sub-card__price-per">/ mes · IVA no incl.</span>
+          <div class="sub-card-price">
+            <span class="sub-card-price-amt">890 €</span>
+            <span class="sub-card-price-per">/ mes · IVA no incl.</span>
           </div>
-          <ul class="sub-card__features">
+          <ul class="sub-card-features">
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Hubs ilimitados (5 activos)</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Soporte prioritario 24/7</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>500 GB almacenamiento</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>SSO + auditoría</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>SLA 99,95% con créditos</li>
           </ul>
-          <div class="sub-card__renewal">
+          <div class="sub-card-renewal">
             <div class="flex justify-between"><span>Renueva 15 may 2026</span><b class="text-ink">7 días</b></div>
-            <div class="sub-card__renewal-bar"><div class="sub-card__renewal-fill" style="width: 78%;"></div></div>
+            <div class="sub-card-renewal-bar"><div class="sub-card-renewal-fill" style="width: 78%;"></div></div>
           </div>
           <div style="display: flex; gap: 6px; align-items: center;">
-            <span class="badge success"><span class="badge__dot"></span>Activa</span>
+            <span class="badge success"><span class="badge-dot"></span>Activa</span>
             <span class="badge">Anual · 12/12</span>
           </div>
           <div class="sub-actions">
@@ -177,28 +177,28 @@
         <article class="sub-card">
           <div class="sub-head">
             <div>
-              <div class="sub-card__hub">mariola-prod</div>
-              <div class="sub-card__hub-meta">erplora.cloud/mariola-prod</div>
+              <div class="sub-card-hub">mariola-prod</div>
+              <div class="sub-card-hub-meta">erplora.cloud/mariola-prod</div>
             </div>
             <span class="badge solid">Pro</span>
           </div>
-          <div class="sub-card__price">
-            <span class="sub-card__price-amt">340,50 €</span>
-            <span class="sub-card__price-per">/ mes</span>
+          <div class="sub-card-price">
+            <span class="sub-card-price-amt">340,50 €</span>
+            <span class="sub-card-price-per">/ mes</span>
           </div>
-          <ul class="sub-card__features">
+          <ul class="sub-card-features">
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Hasta 3 hubs</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Soporte estándar</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>200 GB almacenamiento</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Módulo viñedos incluido</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Backups diarios 30 días</li>
           </ul>
-          <div class="sub-card__renewal">
+          <div class="sub-card-renewal">
             <div class="flex justify-between"><span>Renueva 02 jun 2026</span><b class="text-ink">25 días</b></div>
-            <div class="sub-card__renewal-bar"><div class="sub-card__renewal-fill" style="width: 17%;"></div></div>
+            <div class="sub-card-renewal-bar"><div class="sub-card-renewal-fill" style="width: 17%;"></div></div>
           </div>
           <div style="display: flex; gap: 6px; align-items: center;">
-            <span class="badge success"><span class="badge__dot"></span>Activa</span>
+            <span class="badge success"><span class="badge-dot"></span>Activa</span>
             <span class="badge">Mensual</span>
           </div>
           <div class="sub-actions">
@@ -212,28 +212,28 @@
         <article class="sub-card">
           <div class="sub-head">
             <div>
-              <div class="sub-card__hub">rambla-prod</div>
-              <div class="sub-card__hub-meta">erplora.cloud/rambla-prod</div>
+              <div class="sub-card-hub">rambla-prod</div>
+              <div class="sub-card-hub-meta">erplora.cloud/rambla-prod</div>
             </div>
             <span class="badge solid-brand">Business</span>
           </div>
-          <div class="sub-card__price">
-            <span class="sub-card__price-amt">890 €</span>
-            <span class="sub-card__price-per">/ mes</span>
+          <div class="sub-card-price">
+            <span class="sub-card-price-amt">890 €</span>
+            <span class="sub-card-price-per">/ mes</span>
           </div>
-          <ul class="sub-card__features">
+          <ul class="sub-card-features">
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Hubs ilimitados (3 activos)</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Módulo POS multi-sede</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>500 GB almacenamiento</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Integración TPV externos</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Soporte prioritario 24/7</li>
           </ul>
-          <div class="sub-card__renewal">
+          <div class="sub-card-renewal">
             <div class="flex justify-between"><span>Renueva 18 oct 2026</span><b class="text-ink">163 días</b></div>
-            <div class="sub-card__renewal-bar"><div class="sub-card__renewal-fill" style="width: 55%;"></div></div>
+            <div class="sub-card-renewal-bar"><div class="sub-card-renewal-fill" style="width: 55%;"></div></div>
           </div>
           <div style="display: flex; gap: 6px; align-items: center;">
-            <span class="badge success"><span class="badge__dot"></span>Activa</span>
+            <span class="badge success"><span class="badge-dot"></span>Activa</span>
             <span class="badge">Anual · 7/12</span>
           </div>
           <div class="sub-actions">
@@ -247,28 +247,28 @@
         <article class="sub-card">
           <div class="sub-head">
             <div>
-              <div class="sub-card__hub">norte-prod</div>
-              <div class="sub-card__hub-meta">erplora.cloud/norte-prod</div>
+              <div class="sub-card-hub">norte-prod</div>
+              <div class="sub-card-hub-meta">erplora.cloud/norte-prod</div>
             </div>
             <span class="badge info">Trial</span>
           </div>
-          <div class="sub-card__price">
-            <span class="sub-card__price-amt text-info">0 €</span>
-            <span class="sub-card__price-per">/ 14 días gratis</span>
+          <div class="sub-card-price">
+            <span class="sub-card-price-amt text-info">0 €</span>
+            <span class="sub-card-price-per">/ 14 días gratis</span>
           </div>
-          <ul class="sub-card__features">
+          <ul class="sub-card-features">
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Hasta 2 hubs</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Acceso completo a Pro</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>50 GB almacenamiento</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Onboarding 1:1</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Sin tarjeta requerida</li>
           </ul>
-          <div class="sub-card__renewal">
+          <div class="sub-card-renewal">
             <div class="flex justify-between"><span>Trial expira 22 may 2026</span><b class="text-warn">14 días</b></div>
-            <div class="sub-card__renewal-bar"><div class="sub-card__renewal-fill" style="width: 35%; background: var(--warn);"></div></div>
+            <div class="sub-card-renewal-bar"><div class="sub-card-renewal-fill" style="width: 35%; background: var(--warn);"></div></div>
           </div>
           <div style="display: flex; gap: 6px; align-items: center;">
-            <span class="badge info"><span class="badge__dot"></span>Trial</span>
+            <span class="badge info"><span class="badge-dot"></span>Trial</span>
             <span class="badge">Día 5/14</span>
           </div>
           <div class="sub-actions">
@@ -282,28 +282,28 @@
         <article class="sub-card">
           <div class="sub-head">
             <div>
-              <div class="sub-card__hub">lola-prod</div>
-              <div class="sub-card__hub-meta">erplora.cloud/lola-prod</div>
+              <div class="sub-card-hub">lola-prod</div>
+              <div class="sub-card-hub-meta">erplora.cloud/lola-prod</div>
             </div>
             <span class="badge solid">Starter</span>
           </div>
-          <div class="sub-card__price">
-            <span class="sub-card__price-amt">120 €</span>
-            <span class="sub-card__price-per">/ mes</span>
+          <div class="sub-card-price">
+            <span class="sub-card-price-amt">120 €</span>
+            <span class="sub-card-price-per">/ mes</span>
           </div>
-          <ul class="sub-card__features">
+          <ul class="sub-card-features">
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>1 hub</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>Soporte por email</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>20 GB almacenamiento</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>3 usuarios incluidos</li>
             <li><iconify-icon icon="lucide:check" width="16" height="16"></iconify-icon>API básica</li>
           </ul>
-          <div class="sub-card__renewal">
+          <div class="sub-card-renewal">
             <div class="flex justify-between"><span>Pausada hasta jun 2026</span><b class="text-warn">— días</b></div>
-            <div class="sub-card__renewal-bar"><div class="sub-card__renewal-fill" style="width: 100%; background: var(--warn);"></div></div>
+            <div class="sub-card-renewal-bar"><div class="sub-card-renewal-fill" style="width: 100%; background: var(--warn);"></div></div>
           </div>
           <div style="display: flex; gap: 6px; align-items: center;">
-            <span class="badge warning"><span class="badge__dot"></span>Pausada</span>
+            <span class="badge warning"><span class="badge-dot"></span>Pausada</span>
             <span class="badge">Mensual</span>
           </div>
           <div class="sub-actions">
@@ -341,7 +341,7 @@
               <tbody>
                 <tr>
                   <td><b>01 dic 2026</b></td>
-                  <td><div class="cell-rich"><span class="avatar xs">CR</span><div class="cell-rich__main"><div class="title sm">rambla-prod</div></div></div></td>
+                  <td><div class="cell-rich"><span class="avatar xs">CR</span><div class="cell-rich-main"><div class="title sm">rambla-prod</div></div></div></td>
                   <td><span class="badge warning">Downgrade</span></td>
                   <td>Business · 890 €</td>
                   <td>Pro · 340,50 €</td>
@@ -355,7 +355,7 @@
                 </tr>
                 <tr>
                   <td><b>15 ene 2027</b></td>
-                  <td><div class="cell-rich"><span class="avatar xs">DN</span><div class="cell-rich__main"><div class="title sm">norte-prod</div></div></div></td>
+                  <td><div class="cell-rich"><span class="avatar xs">DN</span><div class="cell-rich-main"><div class="title sm">norte-prod</div></div></div></td>
                   <td><span class="badge success">Upgrade</span></td>
                   <td>Trial · 0 €</td>
                   <td>Pro · 340,50 €</td>

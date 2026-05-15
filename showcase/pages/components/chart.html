@@ -6,8 +6,8 @@
 
 {% block content %}
 <h1>Chart</h1>
-<p class="showcase__lead">Contenedor genérico para gráficos. Compón cabecera con <code>.head</code>, SVG con <code>.chart__svg</code> y leyenda con <code>.chart__legend</code>. El SVG es responsabilidad del consumidor — usa <code>.chart__bar</code>, <code>.chart__line</code>, <code>.chart__area</code>, <code>.chart__dot</code>, etc.</p>
-<p class="showcase__lead"><b>Nota:</b> la serie <i>Proyectado</i> se dibuja con <code>stroke-dasharray="4 4"</code>; la leyenda usa <code>.chart__legend-dash</code> para reflejar el mismo patrón. Las <code>&lt;rect&gt;</code> y <code>&lt;polyline&gt;</code> de los demos llevan <code>&lt;title&gt;</code> hijo para tooltip nativo del navegador.</p>
+<p class="showcase-lead">Contenedor genérico para gráficos. Compón cabecera con <code>.head</code>, SVG con <code>.chart-svg</code> y leyenda con <code>.chart-legend</code>. El SVG es responsabilidad del consumidor — usa <code>.chart-bar</code>, <code>.chart-line</code>, <code>.chart-area</code>, <code>.chart-dot</code>, etc.</p>
+<p class="showcase-lead"><b>Nota:</b> la serie <i>Proyectado</i> se dibuja con <code>stroke-dasharray="4 4"</code>; la leyenda usa <code>.chart-legend-dash</code> para reflejar el mismo patrón. Las <code>&lt;rect&gt;</code> y <code>&lt;polyline&gt;</code> de los demos llevan <code>&lt;title&gt;</code> hijo para tooltip nativo del navegador.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/chart.jinja" import chart %}
 {% call chart() %}
@@ -17,37 +17,37 @@
     <p class="sub sm">Mensual · proyectado vs real</p>
   </div>
   <div style="text-align:right">
-    <div class="chart__big">€84,2k</div>
-    <div class="chart__delta chart__delta--up">▲ +12,4% vs 2025</div>
+    <div class="chart-big">€84,2k</div>
+    <div class="chart-delta chart-delta--up">▲ +12,4% vs 2025</div>
   </div>
 </header>
-<svg class="chart__svg" viewBox="0 0 600 200" preserveAspectRatio="none" style="height:200px">
+<svg class="chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none" style="height:200px">
   <defs>
     <linearGradient id="ok-area-grad" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0%"  stop-color="var(--brand)" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="var(--brand)" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <g class="chart__grid">
+  <g class="chart-grid">
     <line x1="40" x2="590" y1="20"  y2="20"/>
     <line x1="40" x2="590" y1="70"  y2="70"/>
     <line x1="40" x2="590" y1="120" y2="120"/>
     <line x1="40" x2="590" y1="170" y2="170"/>
   </g>
-  <g class="chart__axis">
+  <g class="chart-axis">
     <text x="34" y="24" text-anchor="end">100k</text>
     <text x="34" y="74" text-anchor="end">75k</text>
     <text x="34" y="124" text-anchor="end">50k</text>
     <text x="34" y="174" text-anchor="end">25k</text>
   </g>
-  <path class="chart__area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
-  <path class="chart__line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
-  <path class="chart__line chart__line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
-  <circle class="chart__dot" cx="500" cy="42" r="4"/>
+  <path class="chart-area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
+  <path class="chart-line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
+  <path class="chart-line chart-line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
+  <circle class="chart-dot" cx="500" cy="42" r="4"/>
 </svg>
-<div class="chart__legend">
-  <span class="chart__legend-item"><span class="chart__legend-dot"></span> Real</span>
-  <span class="chart__legend-item"><span class="chart__legend-dash"></span> Proyectado</span>
+<div class="chart-legend">
+  <span class="chart-legend-item"><span class="chart-legend-dot"></span> Real</span>
+  <span class="chart-legend-item"><span class="chart-legend-dash"></span> Proyectado</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Chart>
@@ -57,37 +57,37 @@
     <p class="sub sm">Mensual · proyectado vs real</p>
   </div>
   <div style="text-align:right">
-    <div class="chart__big">€84,2k</div>
-    <div class="chart__delta chart__delta--up">▲ +12,4% vs 2025</div>
+    <div class="chart-big">€84,2k</div>
+    <div class="chart-delta chart-delta--up">▲ +12,4% vs 2025</div>
   </div>
 </header>
-<svg class="chart__svg" viewBox="0 0 600 200" preserveAspectRatio="none" style="height:200px">
+<svg class="chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none" style="height:200px">
   <defs>
     <linearGradient id="ok-area-grad" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0%"  stop-color="var(--brand)" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="var(--brand)" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <g class="chart__grid">
+  <g class="chart-grid">
     <line x1="40" x2="590" y1="20"  y2="20"/>
     <line x1="40" x2="590" y1="70"  y2="70"/>
     <line x1="40" x2="590" y1="120" y2="120"/>
     <line x1="40" x2="590" y1="170" y2="170"/>
   </g>
-  <g class="chart__axis">
+  <g class="chart-axis">
     <text x="34" y="24" text-anchor="end">100k</text>
     <text x="34" y="74" text-anchor="end">75k</text>
     <text x="34" y="124" text-anchor="end">50k</text>
     <text x="34" y="174" text-anchor="end">25k</text>
   </g>
-  <path class="chart__area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
-  <path class="chart__line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
-  <path class="chart__line chart__line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
-  <circle class="chart__dot" cx="500" cy="42" r="4"/>
+  <path class="chart-area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
+  <path class="chart-line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
+  <path class="chart-line chart-line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
+  <circle class="chart-dot" cx="500" cy="42" r="4"/>
 </svg>
-<div class="chart__legend">
-  <span class="chart__legend-item"><span class="chart__legend-dot"></span> Real</span>
-  <span class="chart__legend-item"><span class="chart__legend-dash"></span> Proyectado</span>
+<div class="chart-legend">
+  <span class="chart-legend-item"><span class="chart-legend-dot"></span> Real</span>
+  <span class="chart-legend-item"><span class="chart-legend-dash"></span> Proyectado</span>
 </div>
 </Chart>{% endraw %}{% endset %}
 
@@ -101,37 +101,37 @@
     <p class="sub sm">Mensual · proyectado vs real</p>
   </div>
   <div style="text-align:right">
-    <div class="chart__big">€84,2k</div>
-    <div class="chart__delta chart__delta--up">▲ +12,4% vs 2025</div>
+    <div class="chart-big">€84,2k</div>
+    <div class="chart-delta chart-delta--up">▲ +12,4% vs 2025</div>
   </div>
 </header>
-<svg class="chart__svg" viewBox="0 0 600 200" preserveAspectRatio="none" style="height:200px">
+<svg class="chart-svg" viewBox="0 0 600 200" preserveAspectRatio="none" style="height:200px">
   <defs>
     <linearGradient id="ok-area-grad" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0%"  stop-color="var(--brand)" stop-opacity="0.5"/>
       <stop offset="100%" stop-color="var(--brand)" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <g class="chart__grid">
+  <g class="chart-grid">
     <line x1="40" x2="590" y1="20"  y2="20"/>
     <line x1="40" x2="590" y1="70"  y2="70"/>
     <line x1="40" x2="590" y1="120" y2="120"/>
     <line x1="40" x2="590" y1="170" y2="170"/>
   </g>
-  <g class="chart__axis">
+  <g class="chart-axis">
     <text x="34" y="24" text-anchor="end">100k</text>
     <text x="34" y="74" text-anchor="end">75k</text>
     <text x="34" y="124" text-anchor="end">50k</text>
     <text x="34" y="174" text-anchor="end">25k</text>
   </g>
-  <path class="chart__area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
-  <path class="chart__line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
-  <path class="chart__line chart__line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
-  <circle class="chart__dot" cx="500" cy="42" r="4"/>
+  <path class="chart-area" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42 L500,180 L50,180 Z"/>
+  <path class="chart-line" d="M50,140 L100,128 L150,118 L200,98 L250,108 L300,82 L350,68 L400,72 L450,54 L500,42"/>
+  <path class="chart-line chart-line--mute" stroke="currentColor" stroke-dasharray="4 4" d="M50,150 L100,138 L150,124 L200,108 L250,100 L300,90 L350,78 L400,68 L450,58 L500,48"><title>Proyectado · línea discontinua</title></path>
+  <circle class="chart-dot" cx="500" cy="42" r="4"/>
 </svg>
-<div class="chart__legend">
-  <span class="chart__legend-item"><span class="chart__legend-dot"></span> Real</span>
-  <span class="chart__legend-item"><span class="chart__legend-dash"></span> Proyectado</span>
+<div class="chart-legend">
+  <span class="chart-legend-item"><span class="chart-legend-dot"></span> Real</span>
+  <span class="chart-legend-item"><span class="chart-legend-dash"></span> Proyectado</span>
 </div>
 {% endcall %}
 {% endcall %}
@@ -140,41 +140,41 @@
 {% call chart() %}
 <header class="head">
   <h3 class="title sm">Ventas por canal</h3>
-  <span class="chart__big">€42,1k</span>
+  <span class="chart-big">€42,1k</span>
 </header>
-<svg class="chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
-  <rect class="chart__bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
-  <rect class="chart__bar chart__bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
-  <rect class="chart__bar chart__bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
-  <rect class="chart__bar chart__bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
-  <rect class="chart__bar chart__bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
+<svg class="chart-svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
+  <rect class="chart-bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
+  <rect class="chart-bar chart-bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
+  <rect class="chart-bar chart-bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
+  <rect class="chart-bar chart-bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
+  <rect class="chart-bar chart-bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
 </svg>
-<div class="chart__legend">
-  <span class="chart__legend-item"><span class="chart__legend-dot"></span> POS</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--leaf)"></span> Web</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--info)"></span> App</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--warn)"></span> Marketplace</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--ink-2)"></span> Otros</span>
+<div class="chart-legend">
+  <span class="chart-legend-item"><span class="chart-legend-dot"></span> POS</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--leaf)"></span> Web</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--info)"></span> App</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--warn)"></span> Marketplace</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--ink-2)"></span> Otros</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Chart>
 <header class="head">
   <h3 class="title sm">Ventas por canal</h3>
-  <span class="chart__big">€42,1k</span>
+  <span class="chart-big">€42,1k</span>
 </header>
-<svg class="chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
-  <rect class="chart__bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
-  <rect class="chart__bar chart__bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
-  <rect class="chart__bar chart__bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
-  <rect class="chart__bar chart__bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
-  <rect class="chart__bar chart__bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
+<svg class="chart-svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
+  <rect class="chart-bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
+  <rect class="chart-bar chart-bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
+  <rect class="chart-bar chart-bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
+  <rect class="chart-bar chart-bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
+  <rect class="chart-bar chart-bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
 </svg>
-<div class="chart__legend">
-  <span class="chart__legend-item"><span class="chart__legend-dot"></span> POS</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--leaf)"></span> Web</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--info)"></span> App</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--warn)"></span> Marketplace</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--ink-2)"></span> Otros</span>
+<div class="chart-legend">
+  <span class="chart-legend-item"><span class="chart-legend-dot"></span> POS</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--leaf)"></span> Web</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--info)"></span> App</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--warn)"></span> Marketplace</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--ink-2)"></span> Otros</span>
 </div>
 </Chart>{% endraw %}{% endset %}
 
@@ -184,21 +184,21 @@
 {% call chart() %}
 <header class="head">
   <h3 class="title sm">Ventas por canal</h3>
-  <span class="chart__big">€42,1k</span>
+  <span class="chart-big">€42,1k</span>
 </header>
-<svg class="chart__svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
-  <rect class="chart__bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
-  <rect class="chart__bar chart__bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
-  <rect class="chart__bar chart__bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
-  <rect class="chart__bar chart__bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
-  <rect class="chart__bar chart__bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
+<svg class="chart-svg" viewBox="0 0 320 160" preserveAspectRatio="none" style="height:160px">
+  <rect class="chart-bar"       x="20"  y="60"  width="40" height="80"><title>POS · €18,2k</title></rect>
+  <rect class="chart-bar chart-bar--leaf" x="80"  y="40"  width="40" height="100"><title>Web · €12,5k</title></rect>
+  <rect class="chart-bar chart-bar--info" x="140" y="80"  width="40" height="60"><title>App · €7,8k</title></rect>
+  <rect class="chart-bar chart-bar--warn" x="200" y="100" width="40" height="40"><title>Marketplace · €2,9k</title></rect>
+  <rect class="chart-bar chart-bar--ink2" x="260" y="120" width="40" height="20"><title>Otros · €0,7k</title></rect>
 </svg>
-<div class="chart__legend">
-  <span class="chart__legend-item"><span class="chart__legend-dot"></span> POS</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--leaf)"></span> Web</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--info)"></span> App</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--warn)"></span> Marketplace</span>
-  <span class="chart__legend-item"><span class="chart__legend-dot" style="background:var(--ink-2)"></span> Otros</span>
+<div class="chart-legend">
+  <span class="chart-legend-item"><span class="chart-legend-dot"></span> POS</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--leaf)"></span> Web</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--info)"></span> App</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--warn)"></span> Marketplace</span>
+  <span class="chart-legend-item"><span class="chart-legend-dot" style="background:var(--ink-2)"></span> Otros</span>
 </div>
 {% endcall %}
 {% endcall %}
@@ -207,19 +207,19 @@
 {% call chart(variant="flat") %}
 <header class="head">
   <h3 class="title sm">Tendencia 24h</h3>
-  <span class="chart__delta chart__delta--down">▼ −2,1%</span>
+  <span class="chart-delta chart-delta--down">▼ −2,1%</span>
 </header>
-<svg class="chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
-  <path class="chart__line chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
+<svg class="chart-svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
+  <path class="chart-line chart-line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
 </svg>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_3 %}{% raw %}<Chart variant="flat">
 <header class="head">
   <h3 class="title sm">Tendencia 24h</h3>
-  <span class="chart__delta chart__delta--down">▼ −2,1%</span>
+  <span class="chart-delta chart-delta--down">▼ −2,1%</span>
 </header>
-<svg class="chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
-  <path class="chart__line chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
+<svg class="chart-svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
+  <path class="chart-line chart-line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
 </svg>
 </Chart>{% endraw %}{% endset %}
 
@@ -229,10 +229,10 @@
 {% call chart(variant="flat") %}
 <header class="head">
   <h3 class="title sm">Tendencia 24h</h3>
-  <span class="chart__delta chart__delta--down">▼ −2,1%</span>
+  <span class="chart-delta chart-delta--down">▼ −2,1%</span>
 </header>
-<svg class="chart__svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
-  <path class="chart__line chart__line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
+<svg class="chart-svg" viewBox="0 0 240 80" preserveAspectRatio="none" style="height:80px">
+  <path class="chart-line chart-line--leaf" d="M0,40 L30,28 L60,32 L90,18 L120,24 L150,12 L180,20 L210,8 L240,16"><title>Tendencia 24h · −2,1%</title></path>
 </svg>
 {% endcall %}
 {% endcall %}
@@ -243,7 +243,7 @@
   <tbody>
     <tr><td><code>variant</code></td><td>"default"|"flat"</td><td>"default"</td><td>"flat" elimina fondo/borde para incrustar.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Compón <code>.head</code> (cabecera), <code>.chart__svg</code>, <code>.chart__legend</code>. SVG con sub-clases <code>.chart__bar</code>, <code>.chart__line</code>, <code>.chart__area</code>, <code>.chart__dot</code>, <code>.chart__grid</code>, <code>.chart__axis</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Compón <code>.head</code> (cabecera), <code>.chart-svg</code>, <code>.chart-legend</code>. SVG con sub-clases <code>.chart-bar</code>, <code>.chart-line</code>, <code>.chart-area</code>, <code>.chart-dot</code>, <code>.chart-grid</code>, <code>.chart-axis</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

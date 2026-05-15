@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Tree</h1>
-<p class="showcase__lead">Árbol jerárquico con nodos expandibles. Compón <code>.tree__node</code> con <code>.tree__row</code> (caret + icono + <code>.label</code> + <code>.meta</code>) y <code>.tree__children</code> recursivo. La interactividad se enchufa con Datastar.</p>
+<p class="showcase-lead">Árbol jerárquico con nodos expandibles. Compón <code>.tree-node</code> con <code>.tree-row</code> (caret + icono + <code>.label</code> + <code>.meta</code>) y <code>.tree-children</code> recursivo. La interactividad se enchufa con Datastar.</p>
 
 <div class="callout info">
   <strong>Importante · scope de signals.</strong> Datastar v1 trata todos los signals como globales. Si dos nodos declaran <code>data-signals="{open: false}"</code>, comparten el mismo <code>$open</code> y se abren/cierran a la vez. Cada nodo debe usar un namespace único: <code>data-signals="{n40: {open: false}}"</code> y referenciar <code>$n40.open</code>. El macro <code>tree_node</code> ya lo hace; pásale <code>node_id</code> explícito para garantizar unicidad.
@@ -27,78 +27,78 @@
   {% call tree_node(label="<b>7 ·</b> Ventas e ingresos", icon="📁", meta="41", node_id="n7") %}{% endcall %}
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Tree data-signals="{sel: '4-40-400'}">
-<div class="tree__node" data-signals="{n4: {open: true}}" data-attr:data-state="$n4.open ? 'open' : 'closed'">
-  <div class="tree__row">
-    <span class="tree__caret" data-on:click="$n4.open = !$n4.open" data-attr:aria-expanded="$n4.open" data-attr:data-rotated="$n4.open">▸</span>
-    <span class="tree__icon tree__icon--folder">📁</span>
+<div class="tree-node" data-signals="{n4: {open: true}}" data-attr:data-state="$n4.open ? 'open' : 'closed'">
+  <div class="tree-row">
+    <span class="tree-caret" data-on:click="$n4.open = !$n4.open" data-attr:aria-expanded="$n4.open" data-attr:data-rotated="$n4.open">▸</span>
+    <span class="tree-icon tree-icon--folder">📁</span>
     <span class="label"><b>4 ·</b> Acreedores y deudores</span>
     <span class="meta">142 cuentas</span>
   </div>
-  <div class="tree__children" data-show="$n4.open">
-    <div class="tree__node" data-signals="{n4_40: {open: true}}" data-attr:data-state="$n4_40.open ? 'open' : 'closed'">
-      <div class="tree__row">
-        <span class="tree__caret" data-on:click="$n4_40.open = !$n4_40.open" data-attr:aria-expanded="$n4_40.open" data-attr:data-rotated="$n4_40.open">▸</span>
-        <span class="tree__icon tree__icon--folder">📁</span>
+  <div class="tree-children" data-show="$n4.open">
+    <div class="tree-node" data-signals="{n4_40: {open: true}}" data-attr:data-state="$n4_40.open ? 'open' : 'closed'">
+      <div class="tree-row">
+        <span class="tree-caret" data-on:click="$n4_40.open = !$n4_40.open" data-attr:aria-expanded="$n4_40.open" data-attr:data-rotated="$n4_40.open">▸</span>
+        <span class="tree-icon tree-icon--folder">📁</span>
         <span class="label"><b>40 ·</b> Proveedores</span>
         <span class="meta">38</span>
       </div>
-      <div class="tree__children" data-show="$n4_40.open">
-        <div class="tree__node">
-          <div class="tree__row" data-on:click="$sel = '4-40-400'" data-attr:aria-selected="$sel === '4-40-400'">
-            <span class="tree__caret tree__caret--leaf"></span>
-            <span class="tree__icon tree__icon--file">📄</span>
+      <div class="tree-children" data-show="$n4_40.open">
+        <div class="tree-node">
+          <div class="tree-row" data-on:click="$sel = '4-40-400'" data-attr:aria-selected="$sel === '4-40-400'">
+            <span class="tree-caret tree-caret--leaf"></span>
+            <span class="tree-icon tree-icon--file">📄</span>
             <span class="label">400 — Proveedores</span>
             <span class="meta">−12.483,90 €</span>
           </div>
         </div>
-        <div class="tree__node">
-          <div class="tree__row" data-on:click="$sel = '4-40-401'" data-attr:aria-selected="$sel === '4-40-401'">
-            <span class="tree__caret tree__caret--leaf"></span>
-            <span class="tree__icon tree__icon--file">📄</span>
+        <div class="tree-node">
+          <div class="tree-row" data-on:click="$sel = '4-40-401'" data-attr:aria-selected="$sel === '4-40-401'">
+            <span class="tree-caret tree-caret--leaf"></span>
+            <span class="tree-icon tree-icon--file">📄</span>
             <span class="label">401 — Efectos comerciales a pagar</span>
             <span class="meta">−2.140,00 €</span>
           </div>
         </div>
-        <div class="tree__node">
-          <div class="tree__row" data-on:click="$sel = '4-40-410'" data-attr:aria-selected="$sel === '4-40-410'">
-            <span class="tree__caret tree__caret--leaf"></span>
-            <span class="tree__icon tree__icon--file">📄</span>
+        <div class="tree-node">
+          <div class="tree-row" data-on:click="$sel = '4-40-410'" data-attr:aria-selected="$sel === '4-40-410'">
+            <span class="tree-caret tree-caret--leaf"></span>
+            <span class="tree-icon tree-icon--file">📄</span>
             <span class="label">410 — Acreedores por servicios</span>
             <span class="meta">−864,32 €</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="tree__node" data-signals="{n4_43: {open: false}}" data-attr:data-state="$n4_43.open ? 'open' : 'closed'">
-      <div class="tree__row">
-        <span class="tree__caret" data-on:click="$n4_43.open = !$n4_43.open" data-attr:aria-expanded="$n4_43.open" data-attr:data-rotated="$n4_43.open">▸</span>
-        <span class="tree__icon tree__icon--folder">📁</span>
+    <div class="tree-node" data-signals="{n4_43: {open: false}}" data-attr:data-state="$n4_43.open ? 'open' : 'closed'">
+      <div class="tree-row">
+        <span class="tree-caret" data-on:click="$n4_43.open = !$n4_43.open" data-attr:aria-expanded="$n4_43.open" data-attr:data-rotated="$n4_43.open">▸</span>
+        <span class="tree-icon tree-icon--folder">📁</span>
         <span class="label"><b>43 ·</b> Clientes</span>
         <span class="meta">62</span>
       </div>
     </div>
   </div>
 </div>
-<div class="tree__node" data-signals="{n5: {open: false}}" data-attr:data-state="$n5.open ? 'open' : 'closed'">
-  <div class="tree__row">
-    <span class="tree__caret" data-on:click="$n5.open = !$n5.open" data-attr:aria-expanded="$n5.open" data-attr:data-rotated="$n5.open">▸</span>
-    <span class="tree__icon tree__icon--folder">📁</span>
+<div class="tree-node" data-signals="{n5: {open: false}}" data-attr:data-state="$n5.open ? 'open' : 'closed'">
+  <div class="tree-row">
+    <span class="tree-caret" data-on:click="$n5.open = !$n5.open" data-attr:aria-expanded="$n5.open" data-attr:data-rotated="$n5.open">▸</span>
+    <span class="tree-icon tree-icon--folder">📁</span>
     <span class="label"><b>5 ·</b> Cuentas financieras</span>
     <span class="meta">29</span>
   </div>
 </div>
-<div class="tree__node" data-signals="{n6: {open: false}}" data-attr:data-state="$n6.open ? 'open' : 'closed'">
-  <div class="tree__row">
-    <span class="tree__caret" data-on:click="$n6.open = !$n6.open" data-attr:aria-expanded="$n6.open" data-attr:data-rotated="$n6.open">▸</span>
-    <span class="tree__icon tree__icon--folder">📁</span>
+<div class="tree-node" data-signals="{n6: {open: false}}" data-attr:data-state="$n6.open ? 'open' : 'closed'">
+  <div class="tree-row">
+    <span class="tree-caret" data-on:click="$n6.open = !$n6.open" data-attr:aria-expanded="$n6.open" data-attr:data-rotated="$n6.open">▸</span>
+    <span class="tree-icon tree-icon--folder">📁</span>
     <span class="label"><b>6 ·</b> Compras y gastos</span>
     <span class="meta">88</span>
   </div>
 </div>
-<div class="tree__node" data-signals="{n7: {open: false}}" data-attr:data-state="$n7.open ? 'open' : 'closed'">
-  <div class="tree__row">
-    <span class="tree__caret" data-on:click="$n7.open = !$n7.open" data-attr:aria-expanded="$n7.open" data-attr:data-rotated="$n7.open">▸</span>
-    <span class="tree__icon tree__icon--folder">📁</span>
+<div class="tree-node" data-signals="{n7: {open: false}}" data-attr:data-state="$n7.open ? 'open' : 'closed'">
+  <div class="tree-row">
+    <span class="tree-caret" data-on:click="$n7.open = !$n7.open" data-attr:aria-expanded="$n7.open" data-attr:data-rotated="$n7.open">▸</span>
+    <span class="tree-icon tree-icon--folder">📁</span>
     <span class="label"><b>7 ·</b> Ventas e ingresos</span>
     <span class="meta">41</span>
   </div>
@@ -135,47 +135,47 @@
   {% endcall %}
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<Tree variant="dense">
-<div class="tree__node" data-signals="{d_root: {open: true}}" data-attr:data-state="$d_root.open ? 'open' : 'closed'">
-  <div class="tree__row">
-    <span class="tree__caret" data-on:click="$d_root.open = !$d_root.open" data-attr:aria-expanded="$d_root.open" data-attr:data-rotated="$d_root.open">▸</span>
-    <span class="tree__icon tree__icon--folder">📁</span>
+<div class="tree-node" data-signals="{d_root: {open: true}}" data-attr:data-state="$d_root.open ? 'open' : 'closed'">
+  <div class="tree-row">
+    <span class="tree-caret" data-on:click="$d_root.open = !$d_root.open" data-attr:aria-expanded="$d_root.open" data-attr:data-rotated="$d_root.open">▸</span>
+    <span class="tree-icon tree-icon--folder">📁</span>
     <span class="label">outfitkit</span>
   </div>
-  <div class="tree__children" data-show="$d_root.open">
-    <div class="tree__node" data-signals="{d_css: {open: true}}" data-attr:data-state="$d_css.open ? 'open' : 'closed'">
-      <div class="tree__row">
-        <span class="tree__caret" data-on:click="$d_css.open = !$d_css.open" data-attr:aria-expanded="$d_css.open" data-attr:data-rotated="$d_css.open">▸</span>
-        <span class="tree__icon tree__icon--folder">📁</span>
+  <div class="tree-children" data-show="$d_root.open">
+    <div class="tree-node" data-signals="{d_css: {open: true}}" data-attr:data-state="$d_css.open ? 'open' : 'closed'">
+      <div class="tree-row">
+        <span class="tree-caret" data-on:click="$d_css.open = !$d_css.open" data-attr:aria-expanded="$d_css.open" data-attr:data-rotated="$d_css.open">▸</span>
+        <span class="tree-icon tree-icon--folder">📁</span>
         <span class="label">css</span>
       </div>
-      <div class="tree__children" data-show="$d_css.open">
-        <div class="tree__node">
-          <div class="tree__row">
-            <span class="tree__caret tree__caret--leaf"></span>
-            <span class="tree__icon tree__icon--file">📄</span>
+      <div class="tree-children" data-show="$d_css.open">
+        <div class="tree-node">
+          <div class="tree-row">
+            <span class="tree-caret tree-caret--leaf"></span>
+            <span class="tree-icon tree-icon--file">📄</span>
             <span class="label">tokens.css</span>
           </div>
         </div>
-        <div class="tree__node">
-          <div class="tree__row" aria-selected="true">
-            <span class="tree__caret tree__caret--leaf"></span>
-            <span class="tree__icon tree__icon--file">📄</span>
+        <div class="tree-node">
+          <div class="tree-row" aria-selected="true">
+            <span class="tree-caret tree-caret--leaf"></span>
+            <span class="tree-icon tree-icon--file">📄</span>
             <span class="label">navigation.css</span>
           </div>
         </div>
-        <div class="tree__node">
-          <div class="tree__row">
-            <span class="tree__caret tree__caret--leaf"></span>
-            <span class="tree__icon tree__icon--file">📄</span>
+        <div class="tree-node">
+          <div class="tree-row">
+            <span class="tree-caret tree-caret--leaf"></span>
+            <span class="tree-icon tree-icon--file">📄</span>
             <span class="label">forms.css</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="tree__node">
-      <div class="tree__row">
-        <span class="tree__caret tree__caret--leaf"></span>
-        <span class="tree__icon tree__icon--file">📄</span>
+    <div class="tree-node">
+      <div class="tree-row">
+        <span class="tree-caret tree-caret--leaf"></span>
+        <span class="tree-icon tree-icon--file">📄</span>
         <span class="label">README.md</span>
       </div>
     </div>
@@ -204,12 +204,12 @@
   <tbody>
     <tr><td><code>variant</code></td><td>"default"|"dense"</td><td>"default"</td><td>Densidad reducida (rows 24px, etc).</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra (p.ej. <code>data-signals</code>).</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Nodos <code>.ok-tree__node</code> con <code>.ok-tree__row</code> y <code>.ok-tree__children</code> recursivo. Recomendado: usar <code>tree_node</code> y <code>tree_leaf</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Nodos <code>.ok-tree-node</code> con <code>.ok-tree-row</code> y <code>.ok-tree-children</code> recursivo. Recomendado: usar <code>tree_node</code> y <code>tree_leaf</code>.</td></tr>
   </tbody>
 </table>
 
 <h2>API · tree_node</h2>
-<p class="showcase__lead">Nodo expandible con toggle Datastar ya cableado: signal local <code>open</code> bajo namespace único <code>$&lt;node_id&gt;.open</code> (evita el leak global de signals en Datastar v1), <code>aria-expanded</code> y <code>data-state</code> reactivos, y caret con <code>data-rotated</code> para la animación de giro. Importar con <code>{% raw %}{% from "ui/tree.jinja" import tree_node, tree_leaf %}{% endraw %}</code>.</p>
+<p class="showcase-lead">Nodo expandible con toggle Datastar ya cableado: signal local <code>open</code> bajo namespace único <code>$&lt;node_id&gt;.open</code> (evita el leak global de signals en Datastar v1), <code>aria-expanded</code> y <code>data-state</code> reactivos, y caret con <code>data-rotated</code> para la animación de giro. Importar con <code>{% raw %}{% from "ui/tree.jinja" import tree_node, tree_leaf %}{% endraw %}</code>.</p>
 <table class="table">
   <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
   <tbody>
@@ -217,7 +217,7 @@
     <tr><td><code>icon</code></td><td>str</td><td>""</td><td>Icono (emoji o SVG inline).</td></tr>
     <tr><td><code>meta</code></td><td>str</td><td>""</td><td>Texto meta a la derecha.</td></tr>
     <tr><td><code>expanded</code></td><td>bool</td><td>False</td><td>Estado inicial.</td></tr>
-    <tr><td><code>icon_kind</code></td><td>"folder"|"file"</td><td>"folder"</td><td>Aplica <code>.ok-tree__icon--folder</code> o <code>--file</code>.</td></tr>
+    <tr><td><code>icon_kind</code></td><td>"folder"|"file"</td><td>"folder"</td><td>Aplica <code>.ok-tree-icon--folder</code> o <code>--file</code>.</td></tr>
     <tr><td><code>node_id</code></td><td>str|None</td><td>None</td><td><strong>Recomendado.</strong> Namespace único para el signal <code>open</code> (evita el leak global de Datastar v1). Si se omite, se genera uno aleatorio por render.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra en el nodo.</td></tr>
     <tr><td>(slot)</td><td>—</td><td>—</td><td>Hijos del nodo (recursivos).</td></tr>

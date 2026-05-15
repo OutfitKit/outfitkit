@@ -6,45 +6,45 @@
 
 {% block content %}
 <h1>Pay · Métodos de pago</h1>
-<p class="showcase__lead">Selector de método de pago para TPV. El consumidor compone botones <code>.ok-pay-method</code> dentro del slot. Cada botón muestra un icono, nombre y subtítulo.</p>
+<p class="showcase-lead">Selector de método de pago para TPV. El consumidor compone botones <code>.ok-pay-method</code> dentro del slot. Cada botón muestra un icono, nombre y subtítulo.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/pay.jinja" import pay %}
 <div style="max-width:480px;width:100%">
 {% call pay() %}
   <button class="pay-method" aria-pressed="true">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Tarjeta</div>
-      <div class="pay-method__sub">Visa · MC · Amex</div>
+      <div class="pay-method-name">Tarjeta</div>
+      <div class="pay-method-sub">Visa · MC · Amex</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Efectivo</div>
-      <div class="pay-method__sub">Cambio automático</div>
+      <div class="pay-method-name">Efectivo</div>
+      <div class="pay-method-sub">Cambio automático</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Bizum</div>
-      <div class="pay-method__sub">QR contactless</div>
+      <div class="pay-method-name">Bizum</div>
+      <div class="pay-method-sub">QR contactless</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22V8"/><path d="M3 8c0 4 4 8 9 8s9-4 9-8"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Mixto</div>
-      <div class="pay-method__sub">2+ métodos</div>
+      <div class="pay-method-name">Mixto</div>
+      <div class="pay-method-sub">2+ métodos</div>
     </div>
   </button>
 {% endcall %}
@@ -52,39 +52,39 @@
 {% set _src_jinjax_1 %}{% raw %}<div style="max-width:480px;width:100%">
 <Pay>
   <button class="pay-method" aria-pressed="true">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Tarjeta</div>
-      <div class="pay-method__sub">Visa · MC · Amex</div>
+      <div class="pay-method-name">Tarjeta</div>
+      <div class="pay-method-sub">Visa · MC · Amex</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Efectivo</div>
-      <div class="pay-method__sub">Cambio automático</div>
+      <div class="pay-method-name">Efectivo</div>
+      <div class="pay-method-sub">Cambio automático</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Bizum</div>
-      <div class="pay-method__sub">QR contactless</div>
+      <div class="pay-method-name">Bizum</div>
+      <div class="pay-method-sub">QR contactless</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22V8"/><path d="M3 8c0 4 4 8 9 8s9-4 9-8"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Mixto</div>
-      <div class="pay-method__sub">2+ métodos</div>
+      <div class="pay-method-name">Mixto</div>
+      <div class="pay-method-sub">2+ métodos</div>
     </div>
   </button>
 </Pay>
@@ -96,39 +96,39 @@
 <div style="max-width:480px;width:100%">
 {% call pay() %}
   <button class="pay-method" aria-pressed="true">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Tarjeta</div>
-      <div class="pay-method__sub">Visa · MC · Amex</div>
+      <div class="pay-method-name">Tarjeta</div>
+      <div class="pay-method-sub">Visa · MC · Amex</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Efectivo</div>
-      <div class="pay-method__sub">Cambio automático</div>
+      <div class="pay-method-name">Efectivo</div>
+      <div class="pay-method-sub">Cambio automático</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Bizum</div>
-      <div class="pay-method__sub">QR contactless</div>
+      <div class="pay-method-name">Bizum</div>
+      <div class="pay-method-sub">QR contactless</div>
     </div>
   </button>
   <button class="pay-method">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 22V8"/><path d="M3 8c0 4 4 8 9 8s9-4 9-8"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Mixto</div>
-      <div class="pay-method__sub">2+ métodos</div>
+      <div class="pay-method-name">Mixto</div>
+      <div class="pay-method-sub">2+ métodos</div>
     </div>
   </button>
 {% endcall %}
@@ -141,34 +141,34 @@
   <button class="pay-method"
           data-on:click="$method = 'card'"
           data-attr:aria-pressed="$method === 'card'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Tarjeta</div>
-      <div class="pay-method__sub">Visa · MC · Amex</div>
+      <div class="pay-method-name">Tarjeta</div>
+      <div class="pay-method-sub">Visa · MC · Amex</div>
     </div>
   </button>
   <button class="pay-method"
           data-on:click="$method = 'cash'"
           data-attr:aria-pressed="$method === 'cash'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Efectivo</div>
-      <div class="pay-method__sub">Cambio automático</div>
+      <div class="pay-method-name">Efectivo</div>
+      <div class="pay-method-sub">Cambio automático</div>
     </div>
   </button>
   <button class="pay-method"
           data-on:click="$method = 'bizum'"
           data-attr:aria-pressed="$method === 'bizum'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Bizum</div>
-      <div class="pay-method__sub">QR contactless</div>
+      <div class="pay-method-name">Bizum</div>
+      <div class="pay-method-sub">QR contactless</div>
     </div>
   </button>
 {% endcall %}
@@ -179,34 +179,34 @@
   <button class="pay-method"
           data-on:click="$method = 'card'"
           data-attr:aria-pressed="$method === 'card'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Tarjeta</div>
-      <div class="pay-method__sub">Visa · MC · Amex</div>
+      <div class="pay-method-name">Tarjeta</div>
+      <div class="pay-method-sub">Visa · MC · Amex</div>
     </div>
   </button>
   <button class="pay-method"
           data-on:click="$method = 'cash'"
           data-attr:aria-pressed="$method === 'cash'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Efectivo</div>
-      <div class="pay-method__sub">Cambio automático</div>
+      <div class="pay-method-name">Efectivo</div>
+      <div class="pay-method-sub">Cambio automático</div>
     </div>
   </button>
   <button class="pay-method"
           data-on:click="$method = 'bizum'"
           data-attr:aria-pressed="$method === 'bizum'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Bizum</div>
-      <div class="pay-method__sub">QR contactless</div>
+      <div class="pay-method-name">Bizum</div>
+      <div class="pay-method-sub">QR contactless</div>
     </div>
   </button>
 </Pay>
@@ -221,34 +221,34 @@
   <button class="pay-method"
           data-on:click="$method = 'card'"
           data-attr:aria-pressed="$method === 'card'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Tarjeta</div>
-      <div class="pay-method__sub">Visa · MC · Amex</div>
+      <div class="pay-method-name">Tarjeta</div>
+      <div class="pay-method-sub">Visa · MC · Amex</div>
     </div>
   </button>
   <button class="pay-method"
           data-on:click="$method = 'cash'"
           data-attr:aria-pressed="$method === 'cash'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Efectivo</div>
-      <div class="pay-method__sub">Cambio automático</div>
+      <div class="pay-method-name">Efectivo</div>
+      <div class="pay-method-sub">Cambio automático</div>
     </div>
   </button>
   <button class="pay-method"
           data-on:click="$method = 'bizum'"
           data-attr:aria-pressed="$method === 'bizum'">
-    <div class="pay-method__icon">
+    <div class="pay-method-icon">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
     </div>
     <div>
-      <div class="pay-method__name">Bizum</div>
-      <div class="pay-method__sub">QR contactless</div>
+      <div class="pay-method-name">Bizum</div>
+      <div class="pay-method-sub">QR contactless</div>
     </div>
   </button>
 {% endcall %}

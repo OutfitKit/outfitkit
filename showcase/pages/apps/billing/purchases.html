@@ -19,26 +19,26 @@
   .order-head:hover { background: var(--bg-3); }
   .order-icon { width: 38px; height: 38px; border-radius: var(--radius-md); background: var(--bg-3); display: grid; place-items: center; color: var(--ink-2); }
   .order-icon svg { width: 18px; height: 18px; }
-  .order-card__id { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-2); }
-  .order-card__name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-top: 2px; }
-  .order-card__date { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .order-card__total { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .order-card__caret { width: 28px; height: 28px; display: grid; place-items: center; color: var(--ink-3); transition: transform var(--dur-fast); }
-  .order-card__caret svg { width: 14px; height: 14px; }
-  .order-card__caret.is-open { transform: rotate(180deg); }
+  .order-card-id { font-family: var(--font-mono); font-size: 12.5px; color: var(--ink-2); }
+  .order-card-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); margin-top: 2px; }
+  .order-card-date { font-size: 12px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .order-card-total { font-family: var(--font-display); font-size: 17px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .order-card-caret { width: 28px; height: 28px; display: grid; place-items: center; color: var(--ink-3); transition: transform var(--dur-fast); }
+  .order-card-caret svg { width: 14px; height: 14px; }
+  .order-card-caret.is-open { transform: rotate(180deg); }
   .order-body { border-top: 1px solid var(--line); padding: 18px; display: grid; grid-template-columns: 1fr 280px; gap: 22px; background: var(--bg-1); }
-  .order-card__items { display: flex; flex-direction: column; gap: 10px; }
+  .order-card-items { display: flex; flex-direction: column; gap: 10px; }
   .order-item { display: grid; grid-template-columns: 60px 1fr auto auto; gap: 14px; align-items: center; padding: 10px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-md); }
-  .order-item__img { width: 60px; height: 60px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--bg-3), var(--bg-4)); display: grid; place-items: center; color: var(--ink-3); }
-  .order-item__img svg { width: 28px; height: 28px; }
-  .order-item__name { font-size: 13px; font-weight: 500; color: var(--ink); }
-  .order-item__sku { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); margin-top: 2px; }
-  .order-item__qty { font-size: 12px; color: var(--ink-2); }
-  .order-item__price { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .order-item-img { width: 60px; height: 60px; border-radius: var(--radius-sm); background: linear-gradient(135deg, var(--bg-3), var(--bg-4)); display: grid; place-items: center; color: var(--ink-3); }
+  .order-item-img svg { width: 28px; height: 28px; }
+  .order-item-name { font-size: 13px; font-weight: 500; color: var(--ink); }
+  .order-item-sku { font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+  .order-item-qty { font-size: 12px; color: var(--ink-2); }
+  .order-item-price { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
   .order-side { display: flex; flex-direction: column; gap: 14px; }
-  .order-side__block { padding: 12px 14px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-md); }
-  .order-side__block h4 { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin: 0 0 6px; font-weight: 500; }
-  .order-side__addr { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
+  .order-side-block { padding: 12px 14px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-md); }
+  .order-side-block h4 { font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin: 0 0 6px; font-weight: 500; }
+  .order-side-addr { font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
   .tracking-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: 12px; }
   .carrier { display: inline-flex; align-items: center; gap: 6px; padding: 3px 8px; background: var(--bg-3); border-radius: var(--radius-sm); font-size: 11px; color: var(--ink); font-weight: 500; }
   @media (max-width: 900px) {
@@ -136,22 +136,22 @@
       <!-- KPIs -->
       <div class="grid-3 mb-5">
         <div class="kpi">
-          <div class="kpi__label">Compras este año</div>
-          <div class="kpi__value">4 280<span class="kpi__value-unit">€</span></div>
-          <div class="kpi__delta kpi__delta--up">
-            <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9-9M9 8h7v7"/></svg>
+          <div class="kpi-label">Compras este año</div>
+          <div class="kpi-value">4 280<span class="kpi-value-unit">€</span></div>
+          <div class="kpi-delta kpi-delta--up">
+            <svg class="kpi-delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9-9M9 8h7v7"/></svg>
             +24% vs 2025
           </div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Pedidos</div>
-          <div class="kpi__value">12</div>
-          <div class="kpi__delta">9 recibidos · 2 en tránsito · 1 procesando</div>
+          <div class="kpi-label">Pedidos</div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-delta">9 recibidos · 2 en tránsito · 1 procesando</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Pendientes envío</div>
-          <div class="kpi__value text-warn">2</div>
-          <div class="kpi__delta">Llegada estimada esta semana</div>
+          <div class="kpi-label">Pendientes envío</div>
+          <div class="kpi-value text-warn">2</div>
+          <div class="kpi-delta">Llegada estimada esta semana</div>
         </div>
       </div>
 
@@ -179,56 +179,56 @@
           <div class="order-head" data-on:click="$open1 = !$open1">
             <div class="order-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
             <div>
-              <div class="order-card__id">PED-2026-0042</div>
-              <div class="order-card__name">Terminales POS · primer trimestre</div>
-              <div class="order-card__date">Realizado · 28 abr 2026</div>
+              <div class="order-card-id">PED-2026-0042</div>
+              <div class="order-card-name">Terminales POS · primer trimestre</div>
+              <div class="order-card-date">Realizado · 28 abr 2026</div>
             </div>
-            <span class="badge info"><span class="badge__dot"></span>En tránsito</span>
-            <div class="order-card__total">1 240,00 €</div>
+            <span class="badge info"><span class="badge-dot"></span>En tránsito</span>
+            <div class="order-card-total">1 240,00 €</div>
             <button class="btn ghost sm">Ver detalles</button>
-            <span class="order-card__caret" data-class:is-open="$open1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="order-card-caret" data-class:is-open="$open1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open1">
-            <div class="order-card__items">
+            <div class="order-card-items">
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h2"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h2"/></svg></div>
                 <div>
-                  <div class="order-item__name">Terminal POS Modelo X</div>
-                  <div class="order-item__sku">SKU TPV-MX-2026</div>
+                  <div class="order-item-name">Terminal POS Modelo X</div>
+                  <div class="order-item-sku">SKU TPV-MX-2026</div>
                 </div>
-                <div class="order-item__qty">2 uds × 410 €</div>
-                <div class="order-item__price">820,00 €</div>
+                <div class="order-item-qty">2 uds × 410 €</div>
+                <div class="order-item-price">820,00 €</div>
               </div>
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                 <div>
-                  <div class="order-item__name">Lector tarjetas SumUp Air</div>
-                  <div class="order-item__sku">SKU SU-AIR-001</div>
+                  <div class="order-item-name">Lector tarjetas SumUp Air</div>
+                  <div class="order-item-sku">SKU SU-AIR-001</div>
                 </div>
-                <div class="order-item__qty">1 ud × 120 €</div>
-                <div class="order-item__price">120,00 €</div>
+                <div class="order-item-qty">1 ud × 120 €</div>
+                <div class="order-item-price">120,00 €</div>
               </div>
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></div>
                 <div>
-                  <div class="order-item__name">Impresora térmica Star TSP143</div>
-                  <div class="order-item__sku">SKU STAR-TSP143-III</div>
+                  <div class="order-item-name">Impresora térmica Star TSP143</div>
+                  <div class="order-item-sku">SKU STAR-TSP143-III</div>
                 </div>
-                <div class="order-item__qty">1 ud × 300 €</div>
-                <div class="order-item__price">300,00 €</div>
+                <div class="order-item-qty">1 ud × 300 €</div>
+                <div class="order-item-price">300,00 €</div>
               </div>
             </div>
             <div class="order-side">
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Dirección de envío</h4>
-                <div class="order-side__addr">
+                <div class="order-side-addr">
                   <b>Acme Industries SL</b><br/>
                   Polígono Las Salinas, nave 14<br/>
                   03007 Alicante · España<br/>
                   T. +34 965 12 34 56
                 </div>
               </div>
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Seguimiento</h4>
                 <div class="tracking-row">
                   <span class="carrier">SEUR</span>
@@ -239,7 +239,7 @@
                   Ver seguimiento en SEUR
                 </button>
               </div>
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Documentación</h4>
                 <button class="btn ghost block sm justify-start">
                   <iconify-icon icon="lucide:file-text" width="14" height="14"></iconify-icon>
@@ -259,38 +259,38 @@
           <div class="order-head" data-on:click="$open2 = !$open2">
             <div class="order-icon"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon></div>
             <div>
-              <div class="order-card__id">PED-2026-0038</div>
-              <div class="order-card__name">Caja registradora compacta</div>
-              <div class="order-card__date">Recibido · 14 abr 2026</div>
+              <div class="order-card-id">PED-2026-0038</div>
+              <div class="order-card-name">Caja registradora compacta</div>
+              <div class="order-card-date">Recibido · 14 abr 2026</div>
             </div>
-            <span class="badge success"><span class="badge__dot"></span>Recibido</span>
-            <div class="order-card__total">540,00 €</div>
+            <span class="badge success"><span class="badge-dot"></span>Recibido</span>
+            <div class="order-card-total">540,00 €</div>
             <button class="btn ghost sm">Ver detalles</button>
-            <span class="order-card__caret" data-class:is-open="$open2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="order-card-caret" data-class:is-open="$open2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open2">
-            <div class="order-card__items">
+            <div class="order-card-items">
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M9 14h2M9 18h6"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M3 10h18M9 14h2M9 18h6"/></svg></div>
                 <div>
-                  <div class="order-item__name">Caja registradora compacta</div>
-                  <div class="order-item__sku">SKU CR-COMPACT-2026</div>
+                  <div class="order-item-name">Caja registradora compacta</div>
+                  <div class="order-item-sku">SKU CR-COMPACT-2026</div>
                 </div>
-                <div class="order-item__qty">1 ud × 540 €</div>
-                <div class="order-item__price">540,00 €</div>
+                <div class="order-item-qty">1 ud × 540 €</div>
+                <div class="order-item-price">540,00 €</div>
               </div>
             </div>
             <div class="order-side">
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Recibido en</h4>
-                <div class="order-side__addr">
+                <div class="order-side-addr">
                   <b>Cafetería La Rambla</b><br/>
                   Rambla de Catalunya 18<br/>
                   08007 Barcelona<br/>
                   Firmado por: Joan Castell
                 </div>
               </div>
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Documentación</h4>
                 <button class="btn ghost block sm justify-start">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
@@ -306,56 +306,56 @@
           <div class="order-head" data-on:click="$open3 = !$open3">
             <div class="order-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
             <div>
-              <div class="order-card__id">PED-2026-0031</div>
-              <div class="order-card__name">Equipamiento Bodegas Mariola</div>
-              <div class="order-card__date">Recibido · 28 mar 2026</div>
+              <div class="order-card-id">PED-2026-0031</div>
+              <div class="order-card-name">Equipamiento Bodegas Mariola</div>
+              <div class="order-card-date">Recibido · 28 mar 2026</div>
             </div>
-            <span class="badge success"><span class="badge__dot"></span>Recibido</span>
-            <div class="order-card__total">820,00 €</div>
+            <span class="badge success"><span class="badge-dot"></span>Recibido</span>
+            <div class="order-card-total">820,00 €</div>
             <button class="btn ghost sm">Ver detalles</button>
-            <span class="order-card__caret" data-class:is-open="$open3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="order-card-caret" data-class:is-open="$open3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open3">
-            <div class="order-card__items">
+            <div class="order-card-items">
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
                 <div>
-                  <div class="order-item__name">Terminal POS Modelo X</div>
-                  <div class="order-item__sku">SKU TPV-MX-2026</div>
+                  <div class="order-item-name">Terminal POS Modelo X</div>
+                  <div class="order-item-sku">SKU TPV-MX-2026</div>
                 </div>
-                <div class="order-item__qty">1 ud × 410 €</div>
-                <div class="order-item__price">410,00 €</div>
+                <div class="order-item-qty">1 ud × 410 €</div>
+                <div class="order-item-price">410,00 €</div>
               </div>
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
                 <div>
-                  <div class="order-item__name">Lector tarjetas SumUp Air</div>
-                  <div class="order-item__sku">SKU SU-AIR-001</div>
+                  <div class="order-item-name">Lector tarjetas SumUp Air</div>
+                  <div class="order-item-sku">SKU SU-AIR-001</div>
                 </div>
-                <div class="order-item__qty">1 ud × 120 €</div>
-                <div class="order-item__price">120,00 €</div>
+                <div class="order-item-qty">1 ud × 120 €</div>
+                <div class="order-item-price">120,00 €</div>
               </div>
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M7 10h10M7 14h6"/></svg></div>
                 <div>
-                  <div class="order-item__name">Impresora térmica Star TSP143</div>
-                  <div class="order-item__sku">SKU STAR-TSP143-III</div>
+                  <div class="order-item-name">Impresora térmica Star TSP143</div>
+                  <div class="order-item-sku">SKU STAR-TSP143-III</div>
                 </div>
-                <div class="order-item__qty">1 ud × 290 €</div>
-                <div class="order-item__price">290,00 €</div>
+                <div class="order-item-qty">1 ud × 290 €</div>
+                <div class="order-item-price">290,00 €</div>
               </div>
             </div>
             <div class="order-side">
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Recibido en</h4>
-                <div class="order-side__addr">
+                <div class="order-side-addr">
                   <b>Bodegas Mariola SL</b><br/>
                   Ctra. de Cocentaina km 3<br/>
                   03820 Cocentaina · Alicante<br/>
                   Firmado por: Marina Ribó
                 </div>
               </div>
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Seguimiento</h4>
                 <div class="tracking-row">
                   <span class="carrier">MRW</span>
@@ -363,7 +363,7 @@
                 </div>
                 <div class="text-xs text-ink-3">Entregado · <b class="text-leaf">28 mar 2026 · 11:42</b></div>
               </div>
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Documentación</h4>
                 <button class="btn ghost block sm justify-start">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
@@ -383,38 +383,38 @@
           <div class="order-head" data-on:click="$open4 = !$open4">
             <div class="order-icon"><iconify-icon icon="lucide:building-2" width="18" height="18"></iconify-icon></div>
             <div>
-              <div class="order-card__id">PED-2026-0029</div>
-              <div class="order-card__name">Mobiliario hub Distribuidora Norte</div>
-              <div class="order-card__date">Realizado · 22 abr 2026</div>
+              <div class="order-card-id">PED-2026-0029</div>
+              <div class="order-card-name">Mobiliario hub Distribuidora Norte</div>
+              <div class="order-card-date">Realizado · 22 abr 2026</div>
             </div>
-            <span class="badge info"><span class="badge__dot"></span>En tránsito</span>
-            <div class="order-card__total">1 080,00 €</div>
+            <span class="badge info"><span class="badge-dot"></span>En tránsito</span>
+            <div class="order-card-total">1 080,00 €</div>
             <button class="btn ghost sm">Ver detalles</button>
-            <span class="order-card__caret" data-class:is-open="$open4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="order-card-caret" data-class:is-open="$open4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open4">
-            <div class="order-card__items">
+            <div class="order-card-items">
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17h18M5 17v-7M19 17v-7M5 10h14"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 17h18M5 17v-7M19 17v-7M5 10h14"/></svg></div>
                 <div>
-                  <div class="order-item__name">Mostrador POS modular 1.6 m</div>
-                  <div class="order-item__sku">SKU MOST-1.6-MOD</div>
+                  <div class="order-item-name">Mostrador POS modular 1.6 m</div>
+                  <div class="order-item-sku">SKU MOST-1.6-MOD</div>
                 </div>
-                <div class="order-item__qty">1 ud × 720 €</div>
-                <div class="order-item__price">720,00 €</div>
+                <div class="order-item-qty">1 ud × 720 €</div>
+                <div class="order-item-price">720,00 €</div>
               </div>
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 17v4M21 17v4"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="14" rx="2"/><path d="M3 17v4M21 17v4"/></svg></div>
                 <div>
-                  <div class="order-item__name">Soporte tablet POS giratorio</div>
-                  <div class="order-item__sku">SKU SP-TAB-360</div>
+                  <div class="order-item-name">Soporte tablet POS giratorio</div>
+                  <div class="order-item-sku">SKU SP-TAB-360</div>
                 </div>
-                <div class="order-item__qty">3 uds × 120 €</div>
-                <div class="order-item__price">360,00 €</div>
+                <div class="order-item-qty">3 uds × 120 €</div>
+                <div class="order-item-price">360,00 €</div>
               </div>
             </div>
             <div class="order-side">
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Seguimiento</h4>
                 <div class="tracking-row">
                   <span class="carrier">DHL</span>
@@ -431,29 +431,29 @@
           <div class="order-head" data-on:click="$open5 = !$open5">
             <div class="order-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
             <div>
-              <div class="order-card__id">PED-2026-0026</div>
-              <div class="order-card__name">Add-ons soporte premium</div>
-              <div class="order-card__date">Realizado · 06 may 2026</div>
+              <div class="order-card-id">PED-2026-0026</div>
+              <div class="order-card-name">Add-ons soporte premium</div>
+              <div class="order-card-date">Realizado · 06 may 2026</div>
             </div>
-            <span class="badge warning"><span class="badge__dot"></span>Procesando</span>
-            <div class="order-card__total">240,00 €</div>
+            <span class="badge warning"><span class="badge-dot"></span>Procesando</span>
+            <div class="order-card-total">240,00 €</div>
             <button class="btn ghost sm">Ver detalles</button>
-            <span class="order-card__caret" data-class:is-open="$open5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="order-card-caret" data-class:is-open="$open5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open5">
-            <div class="order-card__items">
+            <div class="order-card-items">
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8z"/></svg></div>
                 <div>
-                  <div class="order-item__name">Soporte premium 8 h</div>
-                  <div class="order-item__sku">SKU ADDON-PRM-8H</div>
+                  <div class="order-item-name">Soporte premium 8 h</div>
+                  <div class="order-item-sku">SKU ADDON-PRM-8H</div>
                 </div>
-                <div class="order-item__qty">1 paquete</div>
-                <div class="order-item__price">240,00 €</div>
+                <div class="order-item-qty">1 paquete</div>
+                <div class="order-item-price">240,00 €</div>
               </div>
             </div>
             <div class="order-side">
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Estado</h4>
                 <div style="font-size: 12.5px; color: var(--ink-2); line-height: 1.5;">El equipo de éxito de cliente programará la sesión inicial en las próximas 24 h.</div>
               </div>
@@ -466,29 +466,29 @@
           <div class="order-head" data-on:click="$open6 = !$open6">
             <div class="order-icon"><iconify-icon icon="lucide:check" width="18" height="18"></iconify-icon></div>
             <div>
-              <div class="order-card__id">PED-2026-0019</div>
-              <div class="order-card__name">Lector de códigos Zebra DS2208</div>
-              <div class="order-card__date">Recibido · 18 feb 2026</div>
+              <div class="order-card-id">PED-2026-0019</div>
+              <div class="order-card-name">Lector de códigos Zebra DS2208</div>
+              <div class="order-card-date">Recibido · 18 feb 2026</div>
             </div>
-            <span class="badge success"><span class="badge__dot"></span>Recibido</span>
-            <div class="order-card__total">360,00 €</div>
+            <span class="badge success"><span class="badge-dot"></span>Recibido</span>
+            <div class="order-card-total">360,00 €</div>
             <button class="btn ghost sm">Ver detalles</button>
-            <span class="order-card__caret" data-class:is-open="$open6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
+            <span class="order-card-caret" data-class:is-open="$open6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open6">
-            <div class="order-card__items">
+            <div class="order-card-items">
               <div class="order-item">
-                <div class="order-item__img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7v10M8 7v10M12 7v10M16 7v10M20 7v10"/></svg></div>
+                <div class="order-item-img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7v10M8 7v10M12 7v10M16 7v10M20 7v10"/></svg></div>
                 <div>
-                  <div class="order-item__name">Lector códigos Zebra DS2208</div>
-                  <div class="order-item__sku">SKU ZEBRA-DS2208</div>
+                  <div class="order-item-name">Lector códigos Zebra DS2208</div>
+                  <div class="order-item-sku">SKU ZEBRA-DS2208</div>
                 </div>
-                <div class="order-item__qty">2 uds × 180 €</div>
-                <div class="order-item__price">360,00 €</div>
+                <div class="order-item-qty">2 uds × 180 €</div>
+                <div class="order-item-price">360,00 €</div>
               </div>
             </div>
             <div class="order-side">
-              <div class="order-side__block">
+              <div class="order-side-block">
                 <h4>Documentación</h4>
                 <button class="btn ghost block sm justify-start">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
@@ -503,10 +503,10 @@
 
       <div style="display: flex; justify-content: center; padding: 24px 0;">
         <div class="paginator">
-          <button class="paginator__btn" aria-disabled="true">‹</button>
-          <button class="paginator__btn" aria-current="page">1</button>
-          <button class="paginator__btn">2</button>
-          <button class="paginator__btn">›</button>
+          <button class="paginator-btn" aria-disabled="true">‹</button>
+          <button class="paginator-btn" aria-current="page">1</button>
+          <button class="paginator-btn">2</button>
+          <button class="paginator-btn">›</button>
         </div>
       </div>
     </div>

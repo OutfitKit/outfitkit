@@ -16,9 +16,9 @@
   .charts-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px; }
   @media (max-width: 1100px) { .charts-row { grid-template-columns: 1fr; } }
   .stripe-card { background: linear-gradient(135deg, color-mix(in oklch, var(--info) 12%, var(--bg-2)), var(--bg-2)); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 18px 22px; display: grid; grid-template-columns: 48px 1fr auto; gap: 16px; align-items: center; }
-  .stripe-card__logo { width: 48px; height: 48px; border-radius: var(--radius-md); background: #635BFF; color: white; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+  .stripe-card-logo { width: 48px; height: 48px; border-radius: var(--radius-md); background: #635BFF; color: white; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 18px; }
   .payout-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 22px; display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
-  .payout-card__amt { font-family: var(--font-display); font-size: 36px; font-weight: 700; letter-spacing: -0.04em; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .payout-card-amt { font-family: var(--font-display); font-size: 36px; font-weight: 700; letter-spacing: -0.04em; color: var(--ink); font-variant-numeric: tabular-nums; }
 </style>
 <div class="app" id="app" data-tabbar="bottom" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -101,27 +101,27 @@
       <!-- KPIs -->
       <div class="grid-4 mb-5">
         <div class="kpi brand">
-          <div class="kpi__label">Ingresos totales</div>
-          <div class="kpi__value">8 240<span class="kpi__value-unit">€</span></div>
-          <div class="kpi__delta">desde el inicio · 2024</div>
+          <div class="kpi-label">Ingresos totales</div>
+          <div class="kpi-value">8 240<span class="kpi-value-unit">€</span></div>
+          <div class="kpi-delta">desde el inicio · 2024</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Este mes</div>
-          <div class="kpi__value">1 480<span class="kpi__value-unit">€</span></div>
-          <div class="kpi__delta kpi__delta--up">
-            <svg class="kpi__delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9-9M9 8h7v7"/></svg>
+          <div class="kpi-label">Este mes</div>
+          <div class="kpi-value">1 480<span class="kpi-value-unit">€</span></div>
+          <div class="kpi-delta kpi-delta--up">
+            <svg class="kpi-delta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17l9-9M9 8h7v7"/></svg>
             +18% vs abril
           </div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Módulos activos</div>
-          <div class="kpi__value">12</div>
-          <div class="kpi__delta">3 publicados en 2026</div>
+          <div class="kpi-label">Módulos activos</div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-delta">3 publicados en 2026</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Descargas mes</div>
-          <div class="kpi__value">3 240</div>
-          <div class="kpi__delta kpi__delta--up">+412 vs abril</div>
+          <div class="kpi-label">Descargas mes</div>
+          <div class="kpi-value">3 240</div>
+          <div class="kpi-delta kpi-delta--up">+412 vs abril</div>
         </div>
       </div>
 
@@ -135,24 +135,24 @@
               <div class="sub sm">Net mensual tras comisiones</div>
             </div>
             <div>
-              <div class="chart__big">8 240 €</div>
-              <div class="chart__delta chart__delta--up">+18% YoY</div>
+              <div class="chart-big">8 240 €</div>
+              <div class="chart-delta chart-delta--up">+18% YoY</div>
             </div>
           </div>
-          <svg class="chart__svg" viewBox="0 0 600 220" preserveAspectRatio="none">
+          <svg class="chart-svg" viewBox="0 0 600 220" preserveAspectRatio="none">
             <defs>
               <linearGradient id="ok-area-grad" x1="0" x2="0" y1="0" y2="1">
                 <stop offset="0%" stop-color="var(--brand)" stop-opacity="0.35"/>
                 <stop offset="100%" stop-color="var(--brand)" stop-opacity="0"/>
               </linearGradient>
             </defs>
-            <g class="chart__grid">
+            <g class="chart-grid">
               <line x1="40" x2="590" y1="40" y2="40"/>
               <line x1="40" x2="590" y1="90" y2="90"/>
               <line x1="40" x2="590" y1="140" y2="140"/>
               <line x1="40" x2="590" y1="190" y2="190"/>
             </g>
-            <g class="chart__axis">
+            <g class="chart-axis">
               <text x="36" y="44" text-anchor="end">2 000</text>
               <text x="36" y="94" text-anchor="end">1 500</text>
               <text x="36" y="144" text-anchor="end">1 000</text>
@@ -170,20 +170,20 @@
               <text x="540" y="212">abr</text>
               <text x="580" y="212">may</text>
             </g>
-            <path class="chart__area" d="M60,170 L110,160 L160,150 L210,140 L260,120 L310,130 L360,110 L410,95 L460,80 L510,90 L540,70 L580,55 L580,200 L60,200 Z"/>
-            <path class="chart__line" d="M60,170 L110,160 L160,150 L210,140 L260,120 L310,130 L360,110 L410,95 L460,80 L510,90 L540,70 L580,55"/>
-            <circle class="chart__dot" cx="60"  cy="170" r="3"/>
-            <circle class="chart__dot" cx="110" cy="160" r="3"/>
-            <circle class="chart__dot" cx="160" cy="150" r="3"/>
-            <circle class="chart__dot" cx="210" cy="140" r="3"/>
-            <circle class="chart__dot" cx="260" cy="120" r="3"/>
-            <circle class="chart__dot" cx="310" cy="130" r="3"/>
-            <circle class="chart__dot" cx="360" cy="110" r="3"/>
-            <circle class="chart__dot" cx="410" cy="95"  r="3"/>
-            <circle class="chart__dot" cx="460" cy="80"  r="3"/>
-            <circle class="chart__dot" cx="510" cy="90"  r="3"/>
-            <circle class="chart__dot" cx="540" cy="70"  r="3"/>
-            <circle class="chart__dot" cx="580" cy="55"  r="3"/>
+            <path class="chart-area" d="M60,170 L110,160 L160,150 L210,140 L260,120 L310,130 L360,110 L410,95 L460,80 L510,90 L540,70 L580,55 L580,200 L60,200 Z"/>
+            <path class="chart-line" d="M60,170 L110,160 L160,150 L210,140 L260,120 L310,130 L360,110 L410,95 L460,80 L510,90 L540,70 L580,55"/>
+            <circle class="chart-dot" cx="60"  cy="170" r="3"/>
+            <circle class="chart-dot" cx="110" cy="160" r="3"/>
+            <circle class="chart-dot" cx="160" cy="150" r="3"/>
+            <circle class="chart-dot" cx="210" cy="140" r="3"/>
+            <circle class="chart-dot" cx="260" cy="120" r="3"/>
+            <circle class="chart-dot" cx="310" cy="130" r="3"/>
+            <circle class="chart-dot" cx="360" cy="110" r="3"/>
+            <circle class="chart-dot" cx="410" cy="95"  r="3"/>
+            <circle class="chart-dot" cx="460" cy="80"  r="3"/>
+            <circle class="chart-dot" cx="510" cy="90"  r="3"/>
+            <circle class="chart-dot" cx="540" cy="70"  r="3"/>
+            <circle class="chart-dot" cx="580" cy="55"  r="3"/>
           </svg>
         </div>
 
@@ -197,29 +197,29 @@
           </div>
           <div class="hbars">
             <div class="hbar">
-              <span class="hbar__label">contabilidad-pro</span>
-              <div class="hbar__track"><div class="hbar__fill" style="width: 92%;"></div></div>
-              <span class="hbar__value">1 240 €</span>
+              <span class="hbar-label">contabilidad-pro</span>
+              <div class="hbar-track"><div class="hbar-fill" style="width: 92%;"></div></div>
+              <span class="hbar-value">1 240 €</span>
             </div>
             <div class="hbar">
-              <span class="hbar__label">vinedos-erp</span>
-              <div class="hbar__track"><div class="hbar__fill hbar__fill--leaf" style="width: 68%;"></div></div>
-              <span class="hbar__value">920 €</span>
+              <span class="hbar-label">vinedos-erp</span>
+              <div class="hbar-track"><div class="hbar-fill hbar-fill--leaf" style="width: 68%;"></div></div>
+              <span class="hbar-value">920 €</span>
             </div>
             <div class="hbar">
-              <span class="hbar__label">facturae-export</span>
-              <div class="hbar__track"><div class="hbar__fill hbar__fill--info" style="width: 52%;"></div></div>
-              <span class="hbar__value">710 €</span>
+              <span class="hbar-label">facturae-export</span>
+              <div class="hbar-track"><div class="hbar-fill hbar-fill--info" style="width: 52%;"></div></div>
+              <span class="hbar-value">710 €</span>
             </div>
             <div class="hbar">
-              <span class="hbar__label">stock-multi-sede</span>
-              <div class="hbar__track"><div class="hbar__fill hbar__fill--warn" style="width: 38%;"></div></div>
-              <span class="hbar__value">520 €</span>
+              <span class="hbar-label">stock-multi-sede</span>
+              <div class="hbar-track"><div class="hbar-fill hbar-fill--warn" style="width: 38%;"></div></div>
+              <span class="hbar-value">520 €</span>
             </div>
             <div class="hbar">
-              <span class="hbar__label">pos-tickets-bono</span>
-              <div class="hbar__track"><div class="hbar__fill" style="width: 22%;"></div></div>
-              <span class="hbar__value">300 €</span>
+              <span class="hbar-label">pos-tickets-bono</span>
+              <div class="hbar-track"><div class="hbar-fill" style="width: 22%;"></div></div>
+              <span class="hbar-value">300 €</span>
             </div>
           </div>
         </div>
@@ -227,11 +227,11 @@
 
       <!-- Stripe Connect -->
       <div class="stripe-card mb-5">
-        <div class="stripe-card__logo">S</div>
+        <div class="stripe-card-logo">S</div>
         <div>
           <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 4px;">
             <div style="font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink);">Stripe Connect</div>
-            <span class="badge success"><span class="badge__dot"></span>Conectado</span>
+            <span class="badge success"><span class="badge-dot"></span>Conectado</span>
           </div>
           <div class="text-sm text-ink-3">
             Cuenta <span class="td mono">acct_••••••••3F2A</span> · IBAN <span class="td mono">ES•• •••• •••• ••42</span><br/>
@@ -248,11 +248,11 @@
       <div class="payout-card mb-5">
         <div>
           <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-weight: 500;">Próximo payout</div>
-          <div class="payout-card__amt mt-1">1 240,00 €</div>
+          <div class="payout-card-amt mt-1">1 240,00 €</div>
           <div style="font-size: 12.5px; color: var(--ink-3); margin-top: 4px;">Llegará el <b class="text-ink">13 may 2026</b> · 28 movimientos · <a href="#" class="text-brand-3">ver desglose</a></div>
         </div>
         <div style="display: flex; flex-direction: column; gap: 6px; align-items: flex-end;">
-          <span class="badge info"><span class="badge__dot"></span>Programado</span>
+          <span class="badge info"><span class="badge-dot"></span>Programado</span>
           <button class="btn primary sm">Adelantar payout</button>
         </div>
       </div>
@@ -284,98 +284,98 @@
                 <tr>
                   <td>06 may 2026 · 14:22</td>
                   <td><span class="badge success">Venta</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">contabilidad-pro</div><div class="meta td mono">tx_8721</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">contabilidad-pro</div><div class="meta td mono">tx_8721</div></div></div></td>
                   <td class="td muted">acme-prod</td>
                   <td class="td num text-leaf">+89,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
                 <tr>
                   <td>06 may 2026 · 11:08</td>
                   <td><span class="badge">Comisión</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">contabilidad-pro</div><div class="meta td mono">fee_8721</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">contabilidad-pro</div><div class="meta td mono">fee_8721</div></div></div></td>
                   <td class="td muted">acme-prod</td>
                   <td class="td num text-danger">−26,70 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
                 <tr>
                   <td>05 may 2026 · 18:44</td>
                   <td><span class="badge success">Venta</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">vinedos-erp</div><div class="meta td mono">tx_8714</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">vinedos-erp</div><div class="meta td mono">tx_8714</div></div></div></td>
                   <td class="td muted">mariola-prod</td>
                   <td class="td num text-leaf">+159,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
                 <tr>
                   <td>04 may 2026 · 09:12</td>
                   <td><span class="badge success">Venta</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">facturae-export</div><div class="meta td mono">tx_8702</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">facturae-export</div><div class="meta td mono">tx_8702</div></div></div></td>
                   <td class="td muted">norte-prod</td>
                   <td class="td num text-leaf">+49,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
                 <tr>
                   <td>02 may 2026 · 16:30</td>
                   <td><span class="badge info">Renovación</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">stock-multi-sede</div><div class="meta td mono">renew_8688</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">stock-multi-sede</div><div class="meta td mono">renew_8688</div></div></div></td>
                   <td class="td muted">rambla-prod</td>
                   <td class="td num text-leaf">+45,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
                 <tr>
                   <td>30 abr 2026 · 14:05</td>
                   <td><span class="badge info">Payout</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">Payout abril 2026</div><div class="meta td mono">po_4421</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">Payout abril 2026</div><div class="meta td mono">po_4421</div></div></div></td>
                   <td class="td muted">—</td>
                   <td class="td num text-info">−1 320,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Pagado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Pagado</span></td>
                 </tr>
                 <tr>
                   <td>28 abr 2026 · 11:14</td>
                   <td><span class="badge success">Venta</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">pos-tickets-bono</div><div class="meta td mono">tx_8612</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">pos-tickets-bono</div><div class="meta td mono">tx_8612</div></div></div></td>
                   <td class="td muted">rambla-prod</td>
                   <td class="td num text-leaf">+29,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
                 <tr>
                   <td>26 abr 2026 · 08:50</td>
                   <td><span class="badge success">Venta</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">contabilidad-pro</div><div class="meta td mono">tx_8580</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">contabilidad-pro</div><div class="meta td mono">tx_8580</div></div></div></td>
                   <td class="td muted">acme-prod</td>
                   <td class="td num text-leaf">+89,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
                 <tr>
                   <td>22 abr 2026 · 17:22</td>
                   <td><span class="badge warning">Reembolso</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">vinedos-erp</div><div class="meta td mono">refund_8501</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">vinedos-erp</div><div class="meta td mono">refund_8501</div></div></div></td>
                   <td class="td muted">lola-prod</td>
                   <td class="td num text-danger">−159,00 €</td>
-                  <td><span class="badge warning"><span class="badge__dot"></span>Procesado</span></td>
+                  <td><span class="badge warning"><span class="badge-dot"></span>Procesado</span></td>
                 </tr>
                 <tr>
                   <td>20 abr 2026 · 10:11</td>
                   <td><span class="badge success">Venta</span></td>
-                  <td><div class="cell-rich"><div class="cell-rich__main"><div class="title sm">facturae-export</div><div class="meta td mono">tx_8482</div></div></div></td>
+                  <td><div class="cell-rich"><div class="cell-rich-main"><div class="title sm">facturae-export</div><div class="meta td mono">tx_8482</div></div></div></td>
                   <td class="td muted">acme-prod</td>
                   <td class="td num text-leaf">+49,00 €</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Liquidado</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Liquidado</span></td>
                 </tr>
               </tbody>
             </table>
           </div>
           <div class="table-footer">
             <div class="pager">
-              <span class="pager__info">Mostrando <b>1–10</b> de <b>286</b> movimientos</span>
+              <span class="pager-info">Mostrando <b>1–10</b> de <b>286</b> movimientos</span>
             </div>
             <div class="paginator">
-              <button class="paginator__btn" aria-disabled="true">‹</button>
-              <button class="paginator__btn" aria-current="page">1</button>
-              <button class="paginator__btn">2</button>
-              <button class="paginator__btn">3</button>
-              <span class="paginator__gap">…</span>
-              <button class="paginator__btn">29</button>
-              <button class="paginator__btn">›</button>
+              <button class="paginator-btn" aria-disabled="true">‹</button>
+              <button class="paginator-btn" aria-current="page">1</button>
+              <button class="paginator-btn">2</button>
+              <button class="paginator-btn">3</button>
+              <span class="paginator-gap">…</span>
+              <button class="paginator-btn">29</button>
+              <button class="paginator-btn">›</button>
             </div>
           </div>
         </div>

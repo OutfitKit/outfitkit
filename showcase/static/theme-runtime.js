@@ -22,14 +22,21 @@
      else is treated as the default (dark). */
   var KNOWN_THEMES = { 'erplora': 1, 'erplora-light': 1 };
   function normTheme(v) {
-    return KNOWN_THEMES[v] ? v : 'erplora';
+    /* Default = LIGHT (erplora-light). El dark erplora se activa
+       explícitamente desde el selector / theme-toggle. */
+    return KNOWN_THEMES[v] ? v : 'erplora-light';
   }
+  /* Lista cerrada — empty string NO está aquí. Si el usuario tiene
+     '' o algo desconocido en localStorage, cae a 'erplora' que es
+     el único tema con paleta verdaderamente Erplora (cool/neutral).
+     Esto evita que se aplique solo el `data-theme` sin el
+     `data-template`, lo que dejaría visibles los tokens base warm/
+     brown de tokens.css (defaults). */
   var KNOWN_TEMPLATES = {
-    '': 1, 'default': 1, 'corporate': 1, 'glass': 1,
-    'glass-mono': 1, 'mono': 1,
+    'default': 1, 'glass': 1, 'glass-mono': 1, 'mono': 1, 'erplora': 1,
   };
   function normTemplate(v) {
-    return KNOWN_TEMPLATES[v] ? v : '';
+    return KNOWN_TEMPLATES[v] ? v : 'erplora';
   }
 
   var STATE = {

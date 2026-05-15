@@ -1,0 +1,110 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Chip + Pill — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Chip + Pill</h1>
+<p class="showcase-lead">Etiquetas inline para filtros, estados, tags y categorías. Distintos de <code>.badge</code> (contador/notificación) y de los inputs <code>.tag</code>. <code>.chip</code> = pastilla soft tintada · <code>.pill</code> = pequeña con borde.</p>
+
+{% set _src_1 %}{% raw %}<span class="chip">Default</span>
+<span class="chip success">Activo</span>
+<span class="chip warn">Trial</span>
+<span class="chip danger">Vencido</span>
+<span class="chip info">Beta</span>
+<span class="chip neutral">Neutral</span>{% endraw %}{% endset %}
+
+{% call demo_frame("Variantes semánticas · soft", jinja_src=_src_1, jinjax_src=_src_1) %}
+<div style="display:flex; flex-wrap:wrap; gap:.5rem">
+  <span class="chip">Default</span>
+  <span class="chip success">Activo</span>
+  <span class="chip warn">Trial</span>
+  <span class="chip danger">Vencido</span>
+  <span class="chip info">Beta</span>
+  <span class="chip neutral">Neutral</span>
+</div>
+{% endcall %}
+
+{% set _src_2 %}{% raw %}<span class="chip solid">Brand</span>
+<span class="chip solid success">Pagado</span>
+<span class="chip solid warn">Pendiente</span>
+<span class="chip solid danger">Error</span>{% endraw %}{% endset %}
+
+{% call demo_frame("Solid (fondo color, texto blanco)", jinja_src=_src_2, jinjax_src=_src_2) %}
+<div style="display:flex; flex-wrap:wrap; gap:.5rem">
+  <span class="chip solid">Brand</span>
+  <span class="chip solid success">Pagado</span>
+  <span class="chip solid warn">Pendiente</span>
+  <span class="chip solid danger">Error</span>
+  <span class="chip solid info">Procesando</span>
+</div>
+{% endcall %}
+
+{% set _src_3 %}{% raw %}{# Filtros toggle — outline cambia a active al pulsar #}
+<button class="chip outline">Todos</button>
+<button class="chip outline active">POS</button>
+<button class="chip outline">Inventory</button>
+<button class="chip outline">HR</button>{% endraw %}{% endset %}
+
+{% call demo_frame("Filtros / toggle · outline + active", jinja_src=_src_3, jinjax_src=_src_3) %}
+<div style="display:flex; flex-wrap:wrap; gap:.5rem">
+  <button class="chip outline">Todos</button>
+  <button class="chip outline active">POS</button>
+  <button class="chip outline">Inventory</button>
+  <button class="chip outline">HR</button>
+  <button class="chip outline">CRM</button>
+</div>
+{% endcall %}
+
+{% set _src_4 %}{% raw %}<span class="chip sm">Small</span>
+<span class="chip">Default</span>
+<span class="chip lg">Large</span>{% endraw %}{% endset %}
+
+{% call demo_frame("Tamaños · .sm / default / .lg", jinja_src=_src_4, jinjax_src=_src_4) %}
+<div style="display:flex; align-items:center; flex-wrap:wrap; gap:.5rem">
+  <span class="chip sm">Small</span>
+  <span class="chip">Default</span>
+  <span class="chip lg">Large</span>
+</div>
+{% endcall %}
+
+<h2>Pill — variante minimalista con borde</h2>
+
+{% set _src_5 %}{% raw %}<span class="pill">Borrador</span>
+<span class="pill success">Publicado</span>
+<span class="pill warn">Revisión</span>
+<span class="pill danger">Rechazado</span>
+<span class="pill info">Nuevo</span>{% endraw %}{% endset %}
+
+{% call demo_frame("Pills · estados discretos", jinja_src=_src_5, jinjax_src=_src_5) %}
+<div style="display:flex; flex-wrap:wrap; gap:.5rem">
+  <span class="pill">Borrador</span>
+  <span class="pill success">Publicado</span>
+  <span class="pill warn">Revisión</span>
+  <span class="pill danger">Rechazado</span>
+  <span class="pill info">Nuevo</span>
+</div>
+{% endcall %}
+
+<h2>Composición · uso en tarjetas</h2>
+
+<div class="card" style="padding:1.25rem; max-width:380px">
+  <div style="display:flex; justify-content:space-between; align-items:start; margin-bottom:.75rem">
+    <strong>Plan Pro</strong>
+    <span class="chip success sm">Activo</span>
+  </div>
+  <p style="margin:0; color:var(--ink-3); font-size:.875rem">Hub dedicado · 10 GB · soporte 24/5</p>
+  <div style="display:flex; gap:.5rem; margin-top:.75rem">
+    <span class="pill">Verifactu</span>
+    <span class="pill">SII</span>
+    <span class="pill info">Beta access</span>
+  </div>
+</div>
+
+<h3>Modificadores</h3>
+<ul>
+  <li><strong>Variantes:</strong> <code>.success</code> · <code>.warn</code> · <code>.danger</code> · <code>.info</code> · <code>.neutral</code> · <code>.outline</code> · <code>.solid</code></li>
+  <li><strong>Estado:</strong> <code>.active</code> / <code>[aria-pressed="true"]</code> / <code>[data-active="true"]</code></li>
+  <li><strong>Tamaños:</strong> <code>.sm</code> (alias <code>.chip-sm</code>) · default · <code>.lg</code></li>
+</ul>
+{% endblock %}

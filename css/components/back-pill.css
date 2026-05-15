@@ -1,0 +1,80 @@
+/* ============================================================
+   OutfitKit · Back pill
+   ─────────────────────────────────────────────────────────────
+   Botón flotante "volver" para páginas internas (legal, docs,
+   detalle de módulo, etc). Fixed top-right, pill con blur.
+   Distinto de:
+     - .back-btn   → botón inline (en topbar / header de página)
+     - .topbar-back-btn → botón icono dentro del topbar
+
+   Markup:
+     <a class="back-pill" href="/">
+       <svg>…</svg>
+       <span class="lbl">Volver</span>
+     </a>
+   ============================================================ */
+
+.back-pill {
+  --background:    color-mix(in oklch, var(--bg-2) 85%, transparent);
+  --color:         var(--ink);
+  --border-color:  var(--line);
+  --padding-y:     var(--space-2);
+  --padding-x:     var(--space-3-5);
+  --shadow:        var(--shadow-sm);
+  --top:           calc(var(--topbar-h) + var(--space-3));
+  --right:         var(--space-4);
+  --z:             40;
+
+  position: fixed;
+  top: var(--top);
+  right: var(--right);
+  z-index: var(--z);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: var(--padding-y) var(--padding-x);
+  border-radius: var(--radius-pill);
+  background: var(--background);
+  -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+          backdrop-filter: blur(var(--glass-blur-soft, 10px));
+  border: var(--border-w) solid var(--border-color);
+  color: var(--color);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+}
+
+.back-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.back-pill:active {
+  transform: translateY(0);
+}
+
+.back-pill:focus-visible {
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: var(--space-1);
+}
+
+.back-pill svg,
+.back-pill iconify-icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+/* Solo icono en mobile — el label se oculta */
+@media (max-width: 640px) {
+  .back-pill .lbl { display: none; }
+  .back-pill { --padding-x: var(--padding-y); }
+}
+
+/* Posición alternativa: top-left */
+.back-pill.left {
+  right: auto;
+  left: var(--right);
+}

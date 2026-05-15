@@ -63,45 +63,45 @@
       <!-- Wizard layout: stepper on top + body card -->
       <div class="wizard" style="max-width:920px;margin:0 auto;">
 
-        <div class="wizard__steps">
-          <div class="wizard__step"
-               data-class="{'wizard__step--done': $w.step > 1, 'wizard__step--active': === 1}">
-            <span class="wizard__step-num" data-text="$w.step > 1 ? '✓' : '1'"></span>
+        <div class="wizard-steps">
+          <div class="wizard-step"
+               data-class="{'wizard-step--done': $w.step > 1, 'wizard-step--active': === 1}">
+            <span class="wizard-step-num" data-text="$w.step > 1 ? '✓' : '1'"></span>
             <div>
-              <div class="wizard__step-name">Descargar Bridge</div>
-              <div class="wizard__step-sub">Windows · macOS · Linux</div>
+              <div class="wizard-step-name">Descargar Bridge</div>
+              <div class="wizard-step-sub">Windows · macOS · Linux</div>
             </div>
           </div>
-          <div class="wizard__step"
-               data-class="{'wizard__step--done': $w.step > 2, 'wizard__step--active': === 2}">
-            <span class="wizard__step-num" data-text="$w.step > 2 ? '✓' : '2'"></span>
+          <div class="wizard-step"
+               data-class="{'wizard-step--done': $w.step > 2, 'wizard-step--active': === 2}">
+            <span class="wizard-step-num" data-text="$w.step > 2 ? '✓' : '2'"></span>
             <div>
-              <div class="wizard__step-name">Instalar y arrancar</div>
-              <div class="wizard__step-sub">Servicio en puerto local</div>
+              <div class="wizard-step-name">Instalar y arrancar</div>
+              <div class="wizard-step-sub">Servicio en puerto local</div>
             </div>
           </div>
-          <div class="wizard__step"
-               data-class="{'wizard__step--done': $w.step > 3, 'wizard__step--active': === 3}">
-            <span class="wizard__step-num" data-text="$w.step > 3 ? '✓' : '3'"></span>
+          <div class="wizard-step"
+               data-class="{'wizard-step--done': $w.step > 3, 'wizard-step--active': === 3}">
+            <span class="wizard-step-num" data-text="$w.step > 3 ? '✓' : '3'"></span>
             <div>
-              <div class="wizard__step-name">Detectar dispositivos</div>
-              <div class="wizard__step-sub">Escaneo automático</div>
+              <div class="wizard-step-name">Detectar dispositivos</div>
+              <div class="wizard-step-sub">Escaneo automático</div>
             </div>
           </div>
-          <div class="wizard__step"
-               data-class="{'wizard__step--active': $w.step === 4}">
-            <span class="wizard__step-num">4</span>
+          <div class="wizard-step"
+               data-class="{'wizard-step--active': $w.step === 4}">
+            <span class="wizard-step-num">4</span>
             <div>
-              <div class="wizard__step-name">Asignar funciones</div>
-              <div class="wizard__step-sub">Tickets, cocina, etiquetas…</div>
+              <div class="wizard-step-name">Asignar funciones</div>
+              <div class="wizard-step-sub">Tickets, cocina, etiquetas…</div>
             </div>
           </div>
         </div>
 
         <!-- STEP 1 -->
-        <div class="wizard__body" data-show="$w.step === 1">
-          <h2 class="wizard__title">Descarga ERPlora Bridge</h2>
-          <p class="wizard__sub">El Bridge es un pequeño servicio que se ejecuta en el ordenador del TPV. Conecta el navegador con tus periféricos USB, serie y red local sin instalar drivers.</p>
+        <div class="wizard-body" data-show="$w.step === 1">
+          <h2 class="wizard-title">Descarga ERPlora Bridge</h2>
+          <p class="wizard-sub">El Bridge es un pequeño servicio que se ejecuta en el ordenador del TPV. Conecta el navegador con tus periféricos USB, serie y red local sin instalar drivers.</p>
 
           <div class="grid-3" style="gap:14px;margin-top:18px;">
             <a class="card interactive" href="https://erplora-downloads.s3.eu-west-1.amazonaws.com/bridge/latest/erplora-bridge.exe">
@@ -138,9 +138,9 @@
         </div>
 
         <!-- STEP 2 -->
-        <div class="wizard__body" data-show="$w.step === 2">
-          <h2 class="wizard__title">Instala y arranca el Bridge</h2>
-          <p class="wizard__sub">Ejecuta el instalador y deja el Bridge abierto. Quedará escuchando en localhost en el puerto que configures.</p>
+        <div class="wizard-body" data-show="$w.step === 2">
+          <h2 class="wizard-title">Instala y arranca el Bridge</h2>
+          <p class="wizard-sub">Ejecuta el instalador y deja el Bridge abierto. Quedará escuchando en localhost en el puerto que configures.</p>
 
           <ol style="display:grid;gap:14px;margin-top:18px;padding:0;list-style:none;counter-reset:n;">
             <li style="display:flex;gap:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;padding:14px;">
@@ -164,7 +164,7 @@
                 <div style="font-size:12px;color:var(--ink-3);margin-bottom:8px;">Por defecto 9100. Cambia si tu firewall lo bloquea.</div>
                 <div class="form-row" style="grid-template-columns:160px 1fr;">
                   <input class="input sm" type="number" min="1024" max="65535" data-bind="w.port"/>
-                  <span class="pill success" style="align-self:center;justify-self:start;"><span class="pill__dot"></span>Bridge detectado</span>
+                  <span class="pill success" style="align-self:center;justify-self:start;"><span class="pill-dot"></span>Bridge detectado</span>
                 </div>
               </div>
             </li>
@@ -172,9 +172,9 @@
         </div>
 
         <!-- STEP 3 -->
-        <div class="wizard__body" data-show="$w.step === 3">
-          <h2 class="wizard__title">Detectar dispositivos</h2>
-          <p class="wizard__sub">El Bridge escanea la red local (subred actual) y los puertos USB/serie del equipo.</p>
+        <div class="wizard-body" data-show="$w.step === 3">
+          <h2 class="wizard-title">Detectar dispositivos</h2>
+          <p class="wizard-sub">El Bridge escanea la red local (subred actual) y los puertos USB/serie del equipo.</p>
 
           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:18px;padding:14px;background:var(--bg-2);border:1px solid var(--line);border-radius:12px;">
             <div>
@@ -199,7 +199,7 @@
                 <div class="font-medium">Epson TM-T20III</div>
                 <div class="text-xs text-ink-3 font-mono">192.168.1.220 · 64:eb:8c:11:22:33</div>
               </div>
-              <span class="pill success"><span class="pill__dot"></span>Lista</span>
+              <span class="pill success"><span class="pill-dot"></span>Lista</span>
             </label>
             <label class="card interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
               <input type="checkbox" checked/>
@@ -210,7 +210,7 @@
                 <div class="font-medium">Star TSP143</div>
                 <div class="text-xs text-ink-3 font-mono">192.168.1.221 · 00:11:62:aa:bb:cc</div>
               </div>
-              <span class="pill success"><span class="pill__dot"></span>Lista</span>
+              <span class="pill success"><span class="pill-dot"></span>Lista</span>
             </label>
             <label class="card interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
               <input type="checkbox" checked/>
@@ -221,7 +221,7 @@
                 <div class="font-medium">Honeywell Voyager 1450g</div>
                 <div class="text-xs text-ink-3 font-mono">USB HID · /dev/hidraw1</div>
               </div>
-              <span class="pill success"><span class="pill__dot"></span>Lista</span>
+              <span class="pill success"><span class="pill-dot"></span>Lista</span>
             </label>
             <label class="card interactive" style="display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;">
               <input type="checkbox"/>
@@ -232,15 +232,15 @@
                 <div class="font-medium">Mettler ICS425</div>
                 <div class="text-xs text-ink-3 font-mono">/dev/ttyUSB0 · 9600 8N1</div>
               </div>
-              <span class="pill warning"><span class="pill__dot"></span>Sin firmware</span>
+              <span class="pill warning"><span class="pill-dot"></span>Sin firmware</span>
             </label>
           </div>
         </div>
 
         <!-- STEP 4 -->
-        <div class="wizard__body" data-show="$w.step === 4">
-          <h2 class="wizard__title">Asigna roles a cada dispositivo</h2>
-          <p class="wizard__sub">Indica para qué se usará cada impresora detectada. Después podrás cambiar la asignación en Configuración → Impresoras.</p>
+        <div class="wizard-body" data-show="$w.step === 4">
+          <h2 class="wizard-title">Asigna roles a cada dispositivo</h2>
+          <p class="wizard-sub">Indica para qué se usará cada impresora detectada. Después podrás cambiar la asignación en Configuración → Impresoras.</p>
 
           <div style="display:grid;gap:10px;margin-top:18px;">
 
@@ -295,16 +295,16 @@
               <select class="select sm" disabled>
                 <option>POS</option>
               </select>
-              <span class="pill success" style="justify-self:start;"><span class="pill__dot"></span>Listo</span>
+              <span class="pill success" style="justify-self:start;"><span class="pill-dot"></span>Listo</span>
             </div>
 
           </div>
         </div>
 
         <!-- Footer (común) -->
-        <div class="wizard__foot">
-          <span class="wizard__foot-meta" data-text="'Paso ' + $w.step + ' de 4'"></span>
-          <div class="wizard__foot-actions">
+        <div class="wizard-foot">
+          <span class="wizard-foot-meta" data-text="'Paso ' + $w.step + ' de 4'"></span>
+          <div class="wizard-foot-actions">
             <button class="btn ghost"
               data-on:click="$w.step = Math.max(1, $w.step - 1)"
               data-attr:disabled="$w.step === 1">← Atrás</button>

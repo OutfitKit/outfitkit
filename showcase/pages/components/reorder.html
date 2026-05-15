@@ -1,0 +1,86 @@
+{% extends "_layout.jinja" %}
+{% from "ui/reorder.jinja" import reorder %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Reorder — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Reorder</h1>
+<p class="showcase-lead">Lista drag-and-drop con handle — patrón <code>ion-reorder</code>. Soporta touch y mouse vía Pointer Events. Cada item necesita un <code>data-value</code> para que el evento <code>reorder:change</code> emita el nuevo orden.</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>Tip:</strong> el handle es <em>cualquier elemento</em> con clase <code>.reorder-handle</code>. Eso permite, por ejemplo, hacer el item entero arrastrable (basta con poner la clase en el <code>&lt;li&gt;</code> directamente, aunque el patrón Apple usa handle dedicado).
+</div>
+
+{# ─── 1. Lista básica ──────────────────────────────────── #}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/reorder.jinja" import reorder %}
+{{ reorder(items=[
+  {"value": "task-1", "label": "Confirmar pedido proveedor"},
+  {"value": "task-2", "label": "Revisar inventario almacén"},
+  {"value": "task-3", "label": "Preparar nómina del mes"},
+  {"value": "task-4", "label": "Llamar al transportista"},
+]) }}{% endraw %}{% endset %}
+
+{% call demo_frame("Lista de tareas — arrastra desde el handle",
+    jinja_src=_src_jinja_1, jinjax_src=_src_jinja_1) %}
+{{ reorder(items=[
+  {"value": "task-1", "label": "Confirmar pedido proveedor"},
+  {"value": "task-2", "label": "Revisar inventario almacén"},
+  {"value": "task-3", "label": "Preparar nómina del mes"},
+  {"value": "task-4", "label": "Llamar al transportista"},
+]) }}
+{% endcall %}
+
+{# ─── 2. Con índice + meta ─────────────────────────────── #}
+{% set _src_jinja_2 %}{% raw %}{{ reorder(items=[
+  {"value": "p1", "label": "Producto premium",    "meta": "299,00 €"},
+  {"value": "p2", "label": "Producto estándar",   "meta": "149,00 €"},
+  {"value": "p3", "label": "Producto básico",     "meta": "59,00 €"},
+], show_index=true) }}{% endraw %}{% endset %}
+
+{% call demo_frame("Con índice (loop.index) + columna meta",
+    jinja_src=_src_jinja_2, jinjax_src=_src_jinja_2) %}
+{{ reorder(items=[
+  {"value": "p1", "label": "Producto premium",  "meta": "299,00 €"},
+  {"value": "p2", "label": "Producto estándar", "meta": "149,00 €"},
+  {"value": "p3", "label": "Producto básico",   "meta": "59,00 €"},
+], show_index=true) }}
+{% endcall %}
+
+{# ─── 3. Con callback (Datastar) ───────────────────────── #}
+{% set _src_jinja_3 %}{% raw %}<div data-signals-order="''" data-on:reorder:change="$order = evt.detail.values.join(', ')">
+  {{ reorder(items=["Aragó", "Cataluña", "Madrid", "Valencia", "Andalucía"]) }}
+  <p>Orden actual: <code data-text="$order"></code></p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Con callback — escucha reorder:change",
+    jinja_src=_src_jinja_3, jinjax_src=_src_jinja_3) %}
+<div data-signals-order="''" data-on:reorder:change="$order = evt.detail.values.join(', ')">
+  {{ reorder(items=["Aragó", "Cataluña", "Madrid", "Valencia", "Andalucía"]) }}
+  <p style="margin-top:.75rem">Orden actual: <code data-text="$order"></code></p>
+</div>
+{% endcall %}
+
+<h2>API · macro <code>reorder()</code></h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>items</code></td><td>list[dict] | list[str]</td><td><code>[]</code></td><td>Items a reordenar. Dict campos: <code>value</code>, <code>label</code>, <code>meta</code>.</td></tr>
+    <tr><td><code>handle_icon</code></td><td>bool</td><td><code>true</code></td><td>Pinta el icono de 6 puntos en el handle.</td></tr>
+    <tr><td><code>show_index</code></td><td>bool</td><td><code>false</code></td><td>Muestra el índice numérico (1., 2., …) antes del label.</td></tr>
+  </tbody>
+</table>
+
+<h3>Evento</h3>
+<table>
+  <thead><tr><th>Evento</th><th>Detail</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>reorder:change</code></td><td><code>{values: string[], to: number, item: HTMLElement}</code></td><td>Disparado en <code>.reorder-list</code> cuando se completa un reorden. <code>values</code> contiene los <code>data-value</code> en el nuevo orden.</td></tr>
+  </tbody>
+</table>
+
+<h3>API JS · <code>window.OKReorder</code></h3>
+<pre><code>OKReorder.init(list)        // inicializa una .reorder-list
+OKReorder.initAll(root)     // inicializa todas en root
+OKReorder.collectValues(l)  // → string[] con orden actual</code></pre>
+{% endblock %}

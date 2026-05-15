@@ -1,0 +1,138 @@
+/* ============================================================
+   OutfitKit · Chip + Pill
+   ─────────────────────────────────────────────────────────────
+   Etiquetas inline para filtros, estados, tags, categorías.
+   Distintos de `.badge` (que es para contadores/notificaciones
+   en navegación). Distintos de `.tag` (que es input-tag).
+
+   .chip   — pastilla soft tintada, color semántico
+   .pill   — variante pequeña con borde (estado discreto)
+   ============================================================ */
+
+.chip {
+  --background:   var(--brand-soft);
+  --color:        var(--brand);
+  --padding-y:    var(--space-1-5);
+  --padding-x:    var(--space-3);
+  --font-size:    var(--text-xs);
+  --gap:          var(--space-1-5);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--font-size);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  background: var(--background);
+  color: var(--color);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  border: var(--border-w) solid transparent;
+}
+
+/* Variantes semánticas */
+.chip.success { --background: var(--leaf-soft);   --color: var(--leaf); }
+.chip.warn,
+.chip.warning { --background: var(--warn-soft);   --color: var(--warn); }
+.chip.danger  { --background: var(--danger-soft); --color: var(--danger); }
+.chip.info    { --background: var(--info-soft);   --color: var(--info); }
+
+/* Neutral · gris con borde */
+.chip.neutral {
+  --background: var(--bg-3);
+  --color:      var(--ink-2);
+  border-color: var(--line);
+}
+
+/* Outline · transparente + borde (toggle / filter inactivo) */
+.chip.outline {
+  --background: transparent;
+  --color:      var(--ink-2);
+  border-color: var(--line-2, var(--line));
+  cursor: pointer;
+  transition: border-color var(--dur-fast), color var(--dur-fast), background var(--dur-fast);
+}
+.chip.outline:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+/* Active · seleccionado (filter activo) */
+.chip.active,
+.chip[aria-pressed="true"],
+.chip[data-active="true"] {
+  --background: var(--brand);
+  --color:      var(--brand-fg);
+  border-color: var(--brand);
+}
+
+/* Solid · fondo de marca, texto blanco */
+.chip.solid           { --background: var(--brand);  --color: var(--brand-fg); }
+.chip.solid.success   { --background: var(--leaf);   --color: var(--leaf-fg,   white); }
+.chip.solid.warn      { --background: var(--warn);   --color: var(--warn-fg,   white); }
+.chip.solid.danger    { --background: var(--danger); --color: var(--danger-fg, white); }
+.chip.solid.info      { --background: var(--info);   --color: var(--info-fg,   white); }
+
+/* Tamaños */
+.chip.sm,
+.chip-sm {
+  --padding-y: var(--space-1);
+  --padding-x: var(--space-2);
+  --font-size: var(--text-2xs);
+}
+.chip.lg {
+  --padding-y: var(--space-2);
+  --padding-x: var(--space-4);
+  --font-size: var(--text-sm);
+}
+
+/* Iconos dentro de chip */
+.chip svg,
+.chip iconify-icon {
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+  flex-shrink: 0;
+}
+
+
+/* ───────────────────────────────────────────────────────────
+   PILL — variante minimalista con borde, status discreto
+   ─────────────────────────────────────────────────────────── */
+.pill {
+  --background:   var(--bg-3);
+  --color:        var(--ink-2);
+  --border-color: var(--line);
+  --padding-y:    var(--space-1);
+  --padding-x:    var(--space-2-5);
+  --font-size:    var(--text-2xs);
+  --gap:          var(--space-1-5);
+
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: var(--font-size);
+  font-weight: var(--weight-medium);
+  line-height: 1;
+  background: var(--background);
+  color: var(--color);
+  border: var(--border-w) solid var(--border-color);
+  white-space: nowrap;
+}
+
+.pill.success { --background: var(--leaf-soft);   --color: var(--leaf);   --border-color: transparent; }
+.pill.warn    { --background: var(--warn-soft);   --color: var(--warn);   --border-color: transparent; }
+.pill.danger  { --background: var(--danger-soft); --color: var(--danger); --border-color: transparent; }
+.pill.info    { --background: var(--info-soft);   --color: var(--info);   --border-color: transparent; }
+
+.pill svg,
+.pill iconify-icon {
+  width: var(--icon-2xs);
+  height: var(--icon-2xs);
+  flex-shrink: 0;
+}

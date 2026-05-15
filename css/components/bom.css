@@ -13,7 +13,7 @@
   border-radius: var(--border-radius);
   overflow: hidden;
 }
-.bom__head {
+.bom-head {
   display: grid;
   grid-template-columns: 1fr var(--column-width) var(--column-width) var(--column-width) var(--column-width);
   gap: var(--space-3);
@@ -27,9 +27,9 @@
   letter-spacing: var(--tracking-wide);
   color: var(--ink-3);
 }
-.bom__head > *:not(:first-child) { text-align: right; }
+.bom-head > *:not(:first-child) { text-align: right; }
 
-.bom__row {
+.bom-row {
   display: grid;
   grid-template-columns: 1fr var(--column-width) var(--column-width) var(--column-width) var(--column-width);
   gap: var(--space-3);
@@ -40,26 +40,26 @@
   font-variant-numeric: tabular-nums;
   transition: background var(--dur-base) var(--ease-out);
 }
-.bom__row:last-child { border-bottom: none; }
-.bom__row:hover { background: var(--bg-3); }
-.bom__row > *:not(:first-child) { text-align: right; color: var(--ink-2); }
+.bom-row:last-child { border-bottom: none; }
+.bom-row:hover { background: var(--bg-3); }
+.bom-row > *:not(:first-child) { text-align: right; color: var(--ink-2); }
 
-.bom__name {
+.bom-name {
   display: flex;
   align-items: center;
   gap: var(--space-2);
   min-width: 0;
   position: relative;
 }
-.bom__name--lvl-1 { padding-left: var(--space-0); }
-.bom__name--lvl-2 { padding-left: var(--space-6); color: var(--ink-2); font-size: var(--text-sm); }
-.bom__name--lvl-3 { padding-left: var(--indent-3); color: var(--ink-3); font-size: var(--text-sm); }
+.bom-name--lvl-1 { padding-left: var(--space-0); }
+.bom-name--lvl-2 { padding-left: var(--space-6); color: var(--ink-2); font-size: var(--text-sm); }
+.bom-name--lvl-3 { padding-left: var(--indent-3); color: var(--ink-3); font-size: var(--text-sm); }
 
 /* Tree connectors — vertical track + horizontal stub from parent to child.
    Conforms to the .track-line token (see bottom of file). Stepper, Timeline
    and BOM all use the same 2px line in var(--line). */
-.bom__name--lvl-2::before,
-.bom__name--lvl-3::before {
+.bom-name--lvl-2::before,
+.bom-name--lvl-3::before {
   content: "";
   position: absolute;
   top: -10px;
@@ -67,8 +67,8 @@
   width: var(--border-w-2);
   background: var(--line);
 }
-.bom__name--lvl-2::after,
-.bom__name--lvl-3::after {
+.bom-name--lvl-2::after,
+.bom-name--lvl-3::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -76,12 +76,12 @@
   width: 11px;
   background: var(--line);
 }
-.bom__name--lvl-2::before { left: 11px; }
-.bom__name--lvl-2::after  { left: 11px; }
-.bom__name--lvl-3::before { left: 35px; }
-.bom__name--lvl-3::after  { left: 35px; }
+.bom-name--lvl-2::before { left: 11px; }
+.bom-name--lvl-2::after  { left: 11px; }
+.bom-name--lvl-3::before { left: 35px; }
+.bom-name--lvl-3::after  { left: 35px; }
 
-.bom__caret {
+.bom-caret {
   width: var(--caret-size); height: var(--caret-size);
   display: inline-flex;
   align-items: center;
@@ -91,10 +91,10 @@
   transition: transform var(--dur-base) var(--ease-out);
   flex-shrink: 0;
 }
-.bom__caret--open { transform: rotate(90deg); }
-.bom__caret--leaf { visibility: hidden; }
+.bom-caret--open { transform: rotate(90deg); }
+.bom-caret--leaf { visibility: hidden; }
 
-.bom__sku {
+.bom-sku {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   color: var(--ink-3);
@@ -102,11 +102,11 @@
   padding: var(--border-w) var(--space-1-5);
   border-radius: var(--radius-xs);
 }
-.bom__row:hover .bom__sku { background: var(--bg-2); }
+.bom-row:hover .bom-sku { background: var(--bg-2); }
 
 /* Status pills — subtle/leaf pair (Lote 7) for legibility on dark bg.
    Adds a border so the badge holds its shape even when bg color-mix collapses. */
-.bom__pill {
+.bom-pill {
   display: inline-flex;
   padding: var(--border-w) var(--space-1-5);
   border-radius: var(--radius-xs);
@@ -116,12 +116,12 @@
   color: oklch(78% 0.15 145);
   border: var(--border-w) solid color-mix(in oklch, var(--leaf) 30%, transparent);
 }
-.bom__pill--low {
+.bom-pill--low {
   background: color-mix(in oklch, var(--warn) 18%, transparent);
   color: var(--warn);
   border-color: color-mix(in oklch, var(--warn) 30%, transparent);
 }
-.bom__pill--out {
+.bom-pill--out {
   background: color-mix(in oklch, var(--danger) 18%, transparent);
   color: var(--danger);
   border-color: color-mix(in oklch, var(--danger) 30%, transparent);

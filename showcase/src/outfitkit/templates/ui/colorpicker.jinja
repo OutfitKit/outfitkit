@@ -10,7 +10,7 @@
 <div class="colorpicker"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- for c in _palette %}
-  <button type="button" class="colorpicker__swatch"
+  <button type="button" class="colorpicker-swatch"
     style="background:{{ c }}"
     {% if selected == c %}aria-pressed="true"{% endif %}
     aria-label="{{ c }}"></button>

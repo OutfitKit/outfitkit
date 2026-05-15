@@ -18,7 +18,7 @@
     background: var(--bg);
     box-shadow: 0 24px 60px rgba(0,0,0,0.18);
   }
-  .mobile-shell-stage__inner {
+  .mobile-shell-stage-inner {
     height: 600px;
     display: flex;
     flex-direction: column;
@@ -34,14 +34,14 @@
 </style>
 
 <h1>Mobile shell</h1>
-<p class="showcase__lead">Variante del app shell preconfigurada para mobile (<code>data-tabbar="bottom"</code>): el sidebar pasa a drawer off-canvas, el topbar pierde la búsqueda y aparece la tab-bar inferior como nav principal.</p>
+<p class="showcase-lead">Variante del app shell preconfigurada para mobile (<code>data-tabbar="bottom"</code>): el sidebar pasa a drawer off-canvas, el topbar pierde la búsqueda y aparece la tab-bar inferior como nav principal.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/mobile_shell.jinja" import mobile_shell %}
 {% from "ui/sidebar_nav.jinja" import sidebar_nav %}
 {% from "ui/topbar.jinja" import topbar %}
 {% from "ui/kpi.jinja" import kpi %}
 <div class="mobile-shell-stage">
-  <div class="mobile-shell-stage__inner">
+  <div class="mobile-shell-stage-inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
 <div class="head">
@@ -76,7 +76,7 @@
   </div>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<div class="mobile-shell-stage">
-  <div class="mobile-shell-stage__inner">
+  <div class="mobile-shell-stage-inner">
 <mobile_shell>
 <sidebar_nav>
 <div class="head">
@@ -115,7 +115,7 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 <div class="mobile-shell-stage">
-  <div class="mobile-shell-stage__inner">
+  <div class="mobile-shell-stage-inner">
 {% call mobile_shell() %}
 {% call sidebar_nav() %}
 <div class="head">

@@ -78,3 +78,65 @@
 }
 
 .section > .body { width: 100%; }
+
+
+/* ───── .section-header — alias flat (sin anidar bajo .section) ─────
+   Patrón corto para landings: bloque centrado con eyebrow icon +
+   título + subtítulo. Equivalente a .section.center > .head pero
+   utilizable independientemente. */
+.section-header {
+  --max-width: 48rem;       /* ~780px */
+  --margin-bottom: var(--space-8);
+
+  text-align: center;
+  max-width: var(--max-width);
+  margin: 0 auto var(--margin-bottom);
+}
+
+.section-header > :is(h1, h2, h3) {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  font-size: clamp(1.75rem, 4vw, var(--text-4xl));
+  line-height: 1.15;
+  letter-spacing: var(--tracking-display);
+  margin: 0 0 var(--space-3);
+  color: var(--ink);
+}
+.section-header > h1 {
+  font-size: clamp(2.125rem, 5vw, var(--text-5xl));
+}
+
+.section-header > p {
+  font-size: var(--text-lg);
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0 auto;
+  max-width: 62ch;
+}
+
+/* Eyebrow icon dentro de .section-header — usa .icon-box.xl por
+   defecto si está disponible (feature-card.css). El alias .eyebrow-icon
+   se mantiene como sugar para retro-compatibilidad. */
+.section-header .eyebrow-icon,
+.eyebrow-icon {
+  width: var(--size-xl);
+  height: var(--size-xl);
+  border-radius: var(--radius-xl);
+  background: var(--brand-soft);
+  color: var(--brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-4);
+}
+.eyebrow-icon svg,
+.eyebrow-icon iconify-icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+}
+
+/* Variantes semánticas del eyebrow icon */
+.eyebrow-icon.success { background: var(--leaf-soft);   color: var(--leaf); }
+.eyebrow-icon.warn    { background: var(--warn-soft);   color: var(--warn); }
+.eyebrow-icon.danger  { background: var(--danger-soft); color: var(--danger); }
+.eyebrow-icon.info    { background: var(--info-soft);   color: var(--info); }

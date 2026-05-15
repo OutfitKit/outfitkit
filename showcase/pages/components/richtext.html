@@ -6,32 +6,32 @@
 
 {% block content %}
 <h1>Rich text</h1>
-<p class="showcase__lead">Editor con barra de herramientas y área editable. El componente provee el contenedor; el contenido es slot libre.</p>
+<p class="showcase-lead">Editor con barra de herramientas y área editable. El componente provee el contenedor; el contenido es slot libre.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/richtext.jinja" import richtext %}
 {% call richtext() %}
 <div class="head" role="toolbar" aria-label="Formato">
-  <select class="richtext__select" aria-label="Estilo">
+  <select class="richtext-select" aria-label="Estilo">
     <option value="p">Párrafo</option>
     <option value="h1">Título 1</option>
     <option value="h2">Título 2</option>
     <option value="h3">Título 3</option>
   </select>
-  <span class="richtext__divider"></span>
-  <button type="button" class="richtext__btn" aria-label="Negrita" title="Negrita (⌘B)">
+  <span class="richtext-divider"></span>
+  <button type="button" class="richtext-btn" aria-label="Negrita" title="Negrita (⌘B)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7zM7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Cursiva" title="Cursiva (⌘I)">
+  <button type="button" class="richtext-btn" aria-label="Cursiva" title="Cursiva (⌘I)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Lista" title="Lista con viñetas">
+  <button type="button" class="richtext-btn" aria-label="Lista" title="Lista con viñetas">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Enlace" title="Enlace (⌘K)">
+  <button type="button" class="richtext-btn" aria-label="Enlace" title="Enlace (⌘K)">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
   </button>
-  <span class="richtext__spacer"></span>
-  <button type="button" class="richtext__btn" aria-label="Deshacer" title="Deshacer (⌘Z)">
+  <span class="richtext-spacer"></span>
+  <button type="button" class="richtext-btn" aria-label="Deshacer" title="Deshacer (⌘Z)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 7 3 13 9 13"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>
   </button>
 </div>
@@ -51,27 +51,27 @@
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Richtext>
 <div class="head" role="toolbar" aria-label="Formato">
-  <select class="richtext__select" aria-label="Estilo">
+  <select class="richtext-select" aria-label="Estilo">
     <option value="p">Párrafo</option>
     <option value="h1">Título 1</option>
     <option value="h2">Título 2</option>
     <option value="h3">Título 3</option>
   </select>
-  <span class="richtext__divider"></span>
-  <button type="button" class="richtext__btn" aria-label="Negrita" title="Negrita (⌘B)">
+  <span class="richtext-divider"></span>
+  <button type="button" class="richtext-btn" aria-label="Negrita" title="Negrita (⌘B)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7zM7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Cursiva" title="Cursiva (⌘I)">
+  <button type="button" class="richtext-btn" aria-label="Cursiva" title="Cursiva (⌘I)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Lista" title="Lista con viñetas">
+  <button type="button" class="richtext-btn" aria-label="Lista" title="Lista con viñetas">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Enlace" title="Enlace (⌘K)">
+  <button type="button" class="richtext-btn" aria-label="Enlace" title="Enlace (⌘K)">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
   </button>
-  <span class="richtext__spacer"></span>
-  <button type="button" class="richtext__btn" aria-label="Deshacer" title="Deshacer (⌘Z)">
+  <span class="richtext-spacer"></span>
+  <button type="button" class="richtext-btn" aria-label="Deshacer" title="Deshacer (⌘Z)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 7 3 13 9 13"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>
   </button>
 </div>
@@ -95,27 +95,27 @@
     jinjax_src=_src_jinjax_1) %}
 {% call richtext() %}
 <div class="head" role="toolbar" aria-label="Formato">
-  <select class="richtext__select" aria-label="Estilo">
+  <select class="richtext-select" aria-label="Estilo">
     <option value="p">Párrafo</option>
     <option value="h1">Título 1</option>
     <option value="h2">Título 2</option>
     <option value="h3">Título 3</option>
   </select>
-  <span class="richtext__divider"></span>
-  <button type="button" class="richtext__btn" aria-label="Negrita" title="Negrita (⌘B)">
+  <span class="richtext-divider"></span>
+  <button type="button" class="richtext-btn" aria-label="Negrita" title="Negrita (⌘B)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7zM7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Cursiva" title="Cursiva (⌘I)">
+  <button type="button" class="richtext-btn" aria-label="Cursiva" title="Cursiva (⌘I)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="4" x2="10" y2="4"/><line x1="14" y1="20" x2="5" y2="20"/><line x1="15" y1="4" x2="9" y2="20"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Lista" title="Lista con viñetas">
+  <button type="button" class="richtext-btn" aria-label="Lista" title="Lista con viñetas">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
   </button>
-  <button type="button" class="richtext__btn" aria-label="Enlace" title="Enlace (⌘K)">
+  <button type="button" class="richtext-btn" aria-label="Enlace" title="Enlace (⌘K)">
     <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
   </button>
-  <span class="richtext__spacer"></span>
-  <button type="button" class="richtext__btn" aria-label="Deshacer" title="Deshacer (⌘Z)">
+  <span class="richtext-spacer"></span>
+  <button type="button" class="richtext-btn" aria-label="Deshacer" title="Deshacer (⌘Z)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 7 3 13 9 13"/><path d="M3 13a9 9 0 1 0 3-7"/></svg>
   </button>
 </div>
@@ -165,6 +165,6 @@
     <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra (data-signals, etc).</td></tr>
   </tbody>
 </table>
-<p class="showcase__lead">Slot: <code>.head</code> (toolbar, role=toolbar), <code>.body</code> (contenteditable) y <code>.foot</code> (wordcount) opcional.</p>
-<p class="showcase__lead">La toolbar es slot abierto: el consumidor compone los <code>.richtext__btn</code> que necesite (Negrita, Cursiva, Lista, Enlace, Encabezados, Código, Deshacer/Rehacer…). Cada botón debe llevar <code>aria-label</code> + <code>title</code> para accesibilidad y tooltip nativo.</p>
+<p class="showcase-lead">Slot: <code>.head</code> (toolbar, role=toolbar), <code>.body</code> (contenteditable) y <code>.foot</code> (wordcount) opcional.</p>
+<p class="showcase-lead">La toolbar es slot abierto: el consumidor compone los <code>.richtext-btn</code> que necesite (Negrita, Cursiva, Lista, Enlace, Encabezados, Código, Deshacer/Rehacer…). Cada botón debe llevar <code>aria-label</code> + <code>title</code> para accesibilidad y tooltip nativo.</p>
 {% endblock %}

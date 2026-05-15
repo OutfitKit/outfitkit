@@ -1,0 +1,76 @@
+/* ============================================================
+   OutfitKit · Theme toggle
+   ─────────────────────────────────────────────────────────────
+   Botón sol/luna para alternar dark/light. CSS-only — el icono
+   visible se decide vía [data-theme] del documento.
+
+   Markup:
+     <button class="theme-toggle" aria-label="Toggle theme">
+       <svg class="icon-sun">…</svg>
+       <svg class="icon-moon">…</svg>
+     </button>
+
+   Convención: SUN visible cuando el doc está en dark (clicas
+   para ir a light). MOON visible cuando el doc está en light.
+   Detecta automáticamente data-theme="erplora" (dark) vs
+   data-theme="erplora-light" / cualquier otro.
+   ============================================================ */
+
+.theme-toggle {
+  --background:    transparent;
+  --color:         var(--ink-2);
+  --border-color:  var(--line-2, var(--line));
+  --size:          var(--size-md);
+  --icon-size:     var(--icon-md);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  border-radius: var(--radius-pill);
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  color: var(--color);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-3);
+  color: var(--ink);
+}
+
+.theme-toggle:focus-visible {
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: var(--space-1);
+}
+
+.theme-toggle svg,
+.theme-toggle iconify-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+
+/* Visibilidad por defecto:
+   - en light mode  → muestra MOON (clic = ir a dark)
+   - en dark  mode  → muestra SUN  (clic = ir a light) */
+.theme-toggle .icon-sun  { display: none; }
+.theme-toggle .icon-moon { display: block; }
+
+/* Dark mode — selectors que cualquier tema OutfitKit usa para "dark" */
+[data-theme="erplora"] .theme-toggle .icon-sun  { display: block; }
+[data-theme="erplora"] .theme-toggle .icon-moon { display: none; }
+
+/* Variante con label (texto al lado del icono) */
+.theme-toggle.with-label {
+  --size: auto;
+  width: auto;
+  padding: var(--space-1) var(--space-3);
+  gap: var(--space-2);
+  border-radius: var(--radius-md);
+}

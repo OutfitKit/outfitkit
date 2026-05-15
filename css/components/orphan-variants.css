@@ -86,7 +86,7 @@
 }
 
 /* ---------- Pager button ---------- */
-.pager__btn {
+.pager-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -101,28 +101,28 @@
   cursor: pointer;
   font-family: inherit;
 }
-.pager__btn:hover {
+.pager-btn:hover {
   background: var(--bg-3);
   color: var(--ink);
 }
-.pager__btn[aria-current="page"],
-.pager__btn.is-active {
+.pager-btn[aria-current="page"],
+.pager-btn.is-active {
   background: var(--brand-soft);
   border-color: var(--brand);
   color: var(--brand-3);
 }
-.pager__btn:disabled {
+.pager-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 /* ---------- Toggle internal parts ---------- */
-.toggle__input {
+.toggle-input {
   position: absolute;
   opacity: 0;
   pointer-events: none;
 }
-.toggle__thumb {
+.toggle-thumb {
   position: absolute;
   top: 50%;
   left: 2px;
@@ -133,9 +133,9 @@
   transform: translateY(-50%);
   transition: transform var(--dur-base) var(--ease-out, ease);
 }
-.toggle.is-on .toggle__thumb,
-.toggle[aria-checked="true"] .toggle__thumb,
-.toggle[aria-checked=""] .toggle__thumb {
+.toggle.is-on .toggle-thumb,
+.toggle[aria-checked="true"] .toggle-thumb,
+.toggle[aria-checked=""] .toggle-thumb {
   transform: translateY(-50%) translateX(100%);
 }
 
@@ -148,7 +148,7 @@
 }
 
 /* ---------- Banner ---------- */
-.banner__msg {
+.banner-msg {
   flex: 1;
   min-width: 0;
 }
@@ -165,7 +165,7 @@
 }
 
 /* ---------- Audio icon ---------- */
-.audio__icon {
+.audio-icon {
   display: inline-grid;
   place-items: center;
   width: var(--space-7);
@@ -176,14 +176,14 @@
 }
 
 /* ---------- Menu item text ---------- */
-.menu__item-text {
+.menu-item-text {
   flex: 1;
   min-width: 0;
   text-align: left;
 }
 
 /* ---------- Chip close ---------- */
-.chip__close {
+.chip-close {
   display: inline-grid;
   place-items: center;
   width: var(--space-4);
@@ -198,7 +198,7 @@
   line-height: var(--leading-flat);
   opacity: 0.7;
 }
-.chip__close:hover {
+.chip-close:hover {
   background: color-mix(in oklch, currentColor 15%, transparent);
   opacity: 1;
 }
@@ -215,9 +215,9 @@
 }
 
 /* ---------- Permissions matrix cells ---------- */
-.pmatrix__td--hi   { background: color-mix(in oklch, var(--leaf) 18%, transparent);   color: var(--leaf); }
-.pmatrix__td--mid  { background: color-mix(in oklch, var(--warn) 18%, transparent);   color: var(--warn); }
-.pmatrix__td--lo   { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
+.pmatrix-td--hi   { background: color-mix(in oklch, var(--leaf) 18%, transparent);   color: var(--leaf); }
+.pmatrix-td--mid  { background: color-mix(in oklch, var(--warn) 18%, transparent);   color: var(--warn); }
+.pmatrix-td--lo   { background: color-mix(in oklch, var(--danger) 14%, transparent); color: var(--danger); }
 
 /* ---------- Definition-list / stack ----------
    Used in detail views to render label/value pairs */
@@ -226,32 +226,32 @@
   gap: var(--space-3);
   margin: var(--space-0);
 }
-.stack__row {
+.stack-row {
   display: grid;
   grid-template-columns: minmax(120px, 30%) 1fr;
   gap: var(--space-3);
   align-items: baseline;
 }
-.stack__label {
+.stack-label {
   font-size: var(--text-sm);
   color: var(--ink-3);
   margin: var(--space-0);
 }
-.stack__value {
+.stack-value {
   font-size: var(--text-md);
   color: var(--ink);
   margin: var(--space-0);
 }
 
 /* ---------- List content layout ---------- */
-.list__content {
+.list-content {
   flex: 1;
   min-width: 0;
   display: flex;
   flex-direction: column;
   gap: var(--border-w-2);
 }
-.list__meta {
+.list-meta {
   font-size: var(--text-xs);
   color: var(--ink-3);
 }
@@ -320,7 +320,7 @@
 }
 
 /* ---------- Toggle slider ---------- */
-.toggle__slider {
+.toggle-slider {
   position: relative;
   display: inline-block;
   width: calc(var(--space-7) + var(--space-1));
@@ -330,7 +330,7 @@
   cursor: pointer;
   transition: background var(--dur-base) var(--ease-out, ease);
 }
-.toggle__slider::after {
+.toggle-slider::after {
   content: '';
   position: absolute;
   top: 2px;
@@ -341,18 +341,18 @@
   background: var(--ink);
   transition: transform var(--dur-base) var(--ease-out, ease);
 }
-.toggle.is-on .toggle__slider,
-.toggle[aria-checked="true"] .toggle__slider,
-.toggle[aria-checked=""] .toggle__slider,
-[aria-checked="true"] > .toggle__slider,
-[aria-checked=""] > .toggle__slider {
+.toggle.is-on .toggle-slider,
+.toggle[aria-checked="true"] .toggle-slider,
+.toggle[aria-checked=""] .toggle-slider,
+[aria-checked="true"] > .toggle-slider,
+[aria-checked=""] > .toggle-slider {
   background: var(--brand);
 }
-.toggle.is-on .toggle__slider::after,
-.toggle[aria-checked="true"] .toggle__slider::after,
-.toggle[aria-checked=""] .toggle__slider::after,
-[aria-checked="true"] > .toggle__slider::after,
-[aria-checked=""] > .toggle__slider::after {
+.toggle.is-on .toggle-slider::after,
+.toggle[aria-checked="true"] .toggle-slider::after,
+.toggle[aria-checked=""] .toggle-slider::after,
+[aria-checked="true"] > .toggle-slider::after,
+[aria-checked=""] > .toggle-slider::after {
   transform: translateX(calc(var(--space-5) - 4px));
 }
 
@@ -370,7 +370,7 @@
 .form-actions.between { justify-content: space-between; }
 
 /* ---------- Input group addon as button ---------- */
-.input-group__addon--btn {
+.input-group-addon--btn {
   cursor: pointer;
   border: none;
   background: var(--bg-3);
@@ -380,13 +380,13 @@
   padding: var(--space-0) var(--space-3);
   transition: background var(--dur-base) var(--ease-out, ease);
 }
-.input-group__addon--btn:hover {
+.input-group-addon--btn:hover {
   background: var(--bg-4);
   color: var(--ink);
 }
 
 /* ---------- Timeline sub ---------- */
-.timeline__sub {
+.timeline-sub {
   font-size: var(--text-xs);
   color: var(--ink-3);
   margin-top: var(--border-w-2);

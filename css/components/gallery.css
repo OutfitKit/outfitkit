@@ -13,7 +13,7 @@
   gap: var(--gap);
   width: 100%;
 }
-.gallery__item {
+.gallery-item {
   position: relative;
   aspect-ratio: 1;
   background: var(--bg-3);
@@ -24,20 +24,20 @@
   transition: transform var(--dur-base) var(--ease-out);
   min-width: 0;
 }
-.gallery__item:hover { transform: scale(1.02); }
-.gallery__item img,
-.gallery__item picture,
-.gallery__item video {
+.gallery-item:hover { transform: scale(1.02); }
+.gallery-item img,
+.gallery-item picture,
+.gallery-item video {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
 }
-.gallery__item--ph {
+.gallery-item--ph {
   background: repeating-linear-gradient(45deg,
     var(--bg-3) 0 0.5rem,
     color-mix(in oklch, var(--bg-3) 50%, var(--bg-2)) 0.5rem 1rem);
 }
-.gallery__item--ph::after {
+.gallery-item--ph::after {
   content: attr(data-label);
   position: absolute;
   inset: 0;
@@ -50,7 +50,7 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
 }
-.gallery__caption {
+.gallery-caption {
   position: absolute;
   inset: auto 0 0 0;
   padding: var(--space-6) var(--space-2-5) var(--space-2);
@@ -61,9 +61,9 @@
   opacity: 0;
   transition: opacity var(--dur-base) var(--ease-out);
 }
-.gallery__item:hover .gallery__caption { opacity: 1; }
+.gallery-item:hover .gallery-caption { opacity: 1; }
 
-.gallery__select {
+.gallery-select {
   position: absolute;
   top: var(--space-2); right: var(--space-2);
   width: var(--size-xs); height: var(--size-xs);
@@ -77,10 +77,10 @@
   opacity: 0;
   transition: opacity var(--dur-base) var(--ease-out), background var(--dur-base) var(--ease-out);
 }
-.gallery__item:hover .gallery__select { opacity: 1; }
-.gallery__item--selected .gallery__select {
+.gallery-item:hover .gallery-select { opacity: 1; }
+.gallery-item--selected .gallery-select {
   opacity: 1;
   background: var(--accent-background);
   border-color: var(--accent-background);
 }
-.gallery__item--selected { outline: var(--border-w-2) solid var(--accent-background); outline-offset: -0.125rem; }
+.gallery-item--selected { outline: var(--border-w-2) solid var(--accent-background); outline-offset: -0.125rem; }

@@ -1,0 +1,30 @@
+{#def title="", subtitle="", state="closed", show_handle=true, cancel_label="Cancelar", attrs=None #}
+
+{% macro action_sheet(title="", subtitle="", state="closed", show_handle=true, cancel_label="Cancelar", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="action-sheet-root" data-state="{{ state }}"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <div class="backdrop"></div>
+  <div class="action-sheet" role="dialog" aria-modal="true"{% if title %} aria-labelledby="action-sheet-title"{% endif %}>
+    {% if show_handle %}<div class="action-sheet-handle" aria-hidden="true"></div>{% endif %}
+    {% if title or subtitle %}
+    <header class="action-sheet-head">
+      {% if title %}<h3 class="action-sheet-title" id="action-sheet-title">{{ title }}</h3>{% endif %}
+      {% if subtitle %}<p class="action-sheet-sub">{{ subtitle }}</p>{% endif %}
+    </header>
+    {% endif %}
+    <div class="action-sheet-actions">
+      {{ caller() }}
+    </div>
+    {% if cancel_label %}
+    <div class="action-sheet-cancel-wrap">
+      <button type="button" class="action-sheet-cancel" data-on:click="$open = false">{{ cancel_label }}</button>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{%- endmacro %}
+
+{% if title is defined %}
+  {% call action_sheet(title=title, subtitle=subtitle, state=state, show_handle=show_handle, cancel_label=cancel_label, attrs=attrs) %}{{ content }}{% endcall %}
+{% endif %}

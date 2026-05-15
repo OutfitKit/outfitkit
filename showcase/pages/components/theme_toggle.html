@@ -1,0 +1,49 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Theme toggle — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Theme toggle</h1>
+<p class="showcase-lead">Botón sol/luna para alternar dark/light. CSS-only — el icono visible se decide vía <code>[data-theme]</code> del documento.</p>
+
+{% set _src_1 %}{% raw %}<button class="theme-toggle" aria-label="Toggle theme"
+        data-on:click="window.okTheme.set(($el.closest('html') || document.documentElement).getAttribute('data-theme') === 'erplora' ? 'erplora-light' : 'erplora')">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+  </svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>{% endraw %}{% endset %}
+
+{% call demo_frame("Default · pulsa para alternar", jinja_src=_src_1, jinjax_src=_src_1) %}
+<button class="theme-toggle" aria-label="Toggle theme"
+        data-on:click="window.okTheme.set(document.documentElement.getAttribute('data-theme') === 'erplora' ? 'erplora-light' : 'erplora')">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+</button>
+{% endcall %}
+
+{% set _src_2 %}{% raw %}<button class="theme-toggle with-label">
+  <svg class="icon-moon">…</svg>
+  <span>Dark</span>
+</button>{% endraw %}{% endset %}
+
+{% call demo_frame(".with-label · con texto al lado", jinja_src=_src_2, jinjax_src=_src_2) %}
+<button class="theme-toggle with-label"
+        data-on:click="window.okTheme.set(document.documentElement.getAttribute('data-theme') === 'erplora' ? 'erplora-light' : 'erplora')">
+  <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path></svg>
+  <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+  <span>Tema</span>
+</button>
+{% endcall %}
+
+<h3>Cómo funciona</h3>
+<p>El CSS decide qué icono mostrar leyendo <code>html[data-theme]</code>. La lógica de switching la hace el JS del consumidor (en el showcase, <code>window.okTheme.set(...)</code>).</p>
+<ul>
+  <li>Si <code>html</code> tiene <code>data-theme="erplora"</code> → dark → muestra <code>.icon-sun</code> (clic = ir a light)</li>
+  <li>Si no → light → muestra <code>.icon-moon</code> (clic = ir a dark)</li>
+</ul>
+{% endblock %}

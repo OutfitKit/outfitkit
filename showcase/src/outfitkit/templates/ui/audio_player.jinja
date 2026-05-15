@@ -4,7 +4,7 @@
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="audio{% if variant != 'default' %} {{ variant }}{% endif %}{% if playing %} is-playing{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  <button type="button" class="audio__play" aria-label="Play/Pause">
+  <button type="button" class="audio-play" aria-label="Play/Pause">
     <span class="icon play">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg>
     </span>
@@ -13,23 +13,23 @@
     </span>
   </button>
   {%- if cover %}
-  <div class="audio__cover" data-playing="{{ 'true' if playing else 'false' }}" style="background-image:url('{{ cover }}');"></div>
+  <div class="audio-cover" data-playing="{{ 'true' if playing else 'false' }}" style="background-image:url('{{ cover }}');"></div>
   {%- endif %}
-  <div class="audio__info">
+  <div class="audio-info">
     <div class="title sm">{{ title }}</div>
     <div class="sub">{{ artist }}</div>
   </div>
-  <div class="audio__progress">
-    <span class="audio__time">{{ current }}</span>
-    <div class="audio__bar">
-      <div class="audio__fill" style="width:{{ progress }}%;"><span class="audio__handle"></span></div>
+  <div class="audio-progress">
+    <span class="audio-time">{{ current }}</span>
+    <div class="audio-bar">
+      <div class="audio-fill" style="width:{{ progress }}%;"><span class="audio-handle"></span></div>
     </div>
-    <span class="audio__time">{{ duration }}</span>
+    <span class="audio-time">{{ duration }}</span>
   </div>
-  <button type="button" class="audio__vol" aria-label="Volumen">
+  <button type="button" class="audio-vol" aria-label="Volumen">
     <iconify-icon icon="lucide:volume-2" width="14" height="14"></iconify-icon>
   </button>
-  <button type="button" class="audio__speed">{{ speed }}</button>
+  <button type="button" class="audio-speed">{{ speed }}</button>
 </div>
 {%- endmacro %}
 

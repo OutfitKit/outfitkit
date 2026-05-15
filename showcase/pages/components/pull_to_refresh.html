@@ -1,0 +1,114 @@
+{% extends "_layout.jinja" %}
+{% from "ui/pull_to_refresh.jinja" import pull_to_refresh %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Pull to refresh — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Pull to refresh</h1>
+<p class="showcase-lead">Indicador "tira hacia abajo para actualizar" — patrón estándar de pantallas táctiles. El gesto solo se activa cuando la lista está al tope (scrollTop = 0). El JS dispara un <code>CustomEvent("ptr:refresh", &#123;detail:&#123;done&#125;&#125;)</code> en el host; el consumidor llama <code>detail.done()</code> al terminar.</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>Touch-first.</strong> En desktop usa <code>mouse=true</code> para activar fallback de mouse drag. Sin gesto real, los demos abajo lo simulan así.
+</div>
+
+{# ─── 1. Demo básico ────────────────────────────────────── #}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/pull_to_refresh.jinja" import pull_to_refresh %}
+{% call pull_to_refresh(mouse=true) %}
+<div data-ptr-scroller style="max-height:280px; overflow:auto; background:var(--bg-1)">
+  <ul class="list">
+    <li>Mensaje 1 · hace 2 minutos</li>
+    <li>Mensaje 2 · hace 5 minutos</li>
+    <li>Mensaje 3 · hace 1 hora</li>
+    <li>Mensaje 4 · hace 3 horas</li>
+    <li>Mensaje 5 · hace 1 día</li>
+  </ul>
+</div>
+{% endcall %}{% endraw %}{% endset %}
+
+{% call demo_frame("Básico — pulsa y arrastra hacia abajo (mouse drag activo)",
+    jinja_src=_src_jinja_1, jinjax_src=_src_jinja_1) %}
+{% call pull_to_refresh(mouse=true) %}
+<div data-ptr-scroller style="max-height:280px; overflow:auto; background:var(--bg-1); border:var(--border-w) solid var(--line); border-radius:var(--radius-md)">
+  <ul class="list" style="margin:0">
+    <li>Mensaje 1 · hace 2 minutos</li>
+    <li>Mensaje 2 · hace 5 minutos</li>
+    <li>Mensaje 3 · hace 1 hora</li>
+    <li>Mensaje 4 · hace 3 horas</li>
+    <li>Mensaje 5 · hace 1 día</li>
+    <li>Mensaje 6 · ayer</li>
+    <li>Mensaje 7 · ayer</li>
+    <li>Mensaje 8 · hace 2 días</li>
+    <li>Mensaje 9 · hace 3 días</li>
+    <li>Mensaje 10 · hace 1 semana</li>
+  </ul>
+</div>
+{% endcall %}
+{% endcall %}
+
+{# ─── 2. Con callback real (Datastar) ──────────────────── #}
+{% set _src_jinja_2 %}{% raw %}<div data-signals-count="0" data-on:ptr:refresh="
+  $count = $count + 1;
+  setTimeout(() => evt.detail.done(), 1200);
+">
+  {% call pull_to_refresh(mouse=true, labels={"refreshing": "Fetching…", "ready": "¡Suelta!"}) %}
+    <div data-ptr-scroller style="max-height:200px; overflow:auto">
+      <p>Refrescos: <strong data-text="$count"></strong></p>
+    </div>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Con callback — incrementa contador en 1.2s",
+    jinja_src=_src_jinja_2, jinjax_src=_src_jinja_2) %}
+<div data-signals-count="0" data-on:ptr:refresh="
+  $count = $count + 1;
+  setTimeout(() => evt.detail.done(), 1200);
+">
+  {% call pull_to_refresh(mouse=true, labels={"refreshing": "Fetching…", "ready": "¡Suelta!"}) %}
+    <div data-ptr-scroller style="max-height:200px; overflow:auto; background:var(--bg-1); border:var(--border-w) solid var(--line); border-radius:var(--radius-md); padding:1rem">
+      <p style="margin:0">Refrescos completados: <strong data-text="$count">0</strong></p>
+      <p style="margin-top:.5rem; color:var(--ink-3)">Arrastra hacia abajo desde aquí.</p>
+    </div>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{# ─── 3. Estados estáticos ─────────────────────────────── #}
+{% set _src_jinja_3 %}{% raw %}<div class="ptr" data-state="refreshing">
+  <div class="ptr-spinner"></div>
+  <span class="ptr-label">Actualizando…</span>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estado .refreshing (spinner activo, sin gesto)",
+    jinja_src=_src_jinja_3, jinjax_src=_src_jinja_3) %}
+<div style="background:var(--bg-1); border:var(--border-w) solid var(--line); border-radius:var(--radius-md)">
+  <div class="ptr" data-state="refreshing">
+    <div class="ptr-spinner" aria-hidden="true"></div>
+    <span class="ptr-label">Actualizando…</span>
+  </div>
+</div>
+{% endcall %}
+
+<h2>API · macro <code>pull_to_refresh()</code></h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>state</code></td><td>"idle" | "pulling" | "ready" | "refreshing"</td><td><code>"idle"</code></td><td>Estado inicial.</td></tr>
+    <tr><td><code>mouse</code></td><td>bool</td><td><code>false</code></td><td>Habilita fallback de mouse drag (útil en desktop para demos).</td></tr>
+    <tr><td><code>labels</code></td><td>dict</td><td><code>{}</code></td><td>Override de textos por estado. Keys: <code>idle</code>, <code>pulling</code>, <code>ready</code>, <code>refreshing</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Contenido. Si quieres scroll independiente, envuelve en <code>&lt;div data-ptr-scroller&gt;</code>.</td></tr>
+  </tbody>
+</table>
+
+<h3>Evento</h3>
+<table>
+  <thead><tr><th>Evento</th><th>Detail</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>ptr:refresh</code></td><td><code>{done: () =&gt; void}</code></td><td>Disparado en el host <code>[data-ptr-host]</code> al soltar pasado el threshold. Llama <code>done()</code> al terminar; si no, se resetea solo en 3 s.</td></tr>
+  </tbody>
+</table>
+
+<h3>API JS · <code>window.OKPullToRefresh</code></h3>
+<pre><code>OKPullToRefresh.init(host)
+OKPullToRefresh.initAll(root)</code></pre>
+{% endblock %}

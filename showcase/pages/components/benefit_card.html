@@ -1,0 +1,77 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Benefit card — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Benefit card</h1>
+<p class="showcase-lead">Card de "beneficio destacado" — gradiente sutil + CTAs centrados. Diferente de <code>.feature-card</code> (uno de 3-4 en grid) y <code>.pricing-card</code> (planes). Para llamada a la acción única y prominente.</p>
+
+{% set _src_1 %}{% raw %}<aside class="benefit-card">
+  <h3>
+    <iconify-icon icon="lucide:zap"></iconify-icon>
+    Empieza gratis durante 30 días
+  </h3>
+  <p>Sin tarjeta de crédito. Cancela cuando quieras. Setup en menos de 5 minutos.</p>
+  <div class="ctas">
+    <a class="btn primary lg">Crear cuenta</a>
+    <a class="btn outline lg">Ver demo</a>
+  </div>
+</aside>{% endraw %}{% endset %}
+
+{% call demo_frame("Default · gradient brand-soft → leaf-soft", jinja_src=_src_1, jinjax_src=_src_1) %}
+<aside class="benefit-card">
+  <h3>
+    <iconify-icon icon="lucide:zap"></iconify-icon>
+    Empieza gratis durante 30 días
+  </h3>
+  <p>Sin tarjeta de crédito. Cancela cuando quieras. Setup en menos de 5 minutos.</p>
+  <div class="ctas">
+    <a class="btn primary lg">Crear cuenta</a>
+    <a class="btn outline lg">Ver demo</a>
+  </div>
+</aside>
+{% endcall %}
+
+{% set _src_2 %}{% raw %}<aside class="benefit-card info">
+  <h3>
+    <iconify-icon icon="lucide:info"></iconify-icon>
+    Nuevo: API webhook
+  </h3>
+  <p>Suscríbete a eventos en tiempo real. Disponible para todos los planes.</p>
+</aside>{% endraw %}{% endset %}
+
+{% call demo_frame(".info · variante de gradiente", jinja_src=_src_2, jinjax_src=_src_2) %}
+<aside class="benefit-card info">
+  <h3>
+    <iconify-icon icon="lucide:info"></iconify-icon>
+    Nuevo: API webhook
+  </h3>
+  <p>Suscríbete a eventos en tiempo real. Disponible para todos los planes.</p>
+</aside>
+{% endcall %}
+
+{% set _src_3 %}{% raw %}<aside class="benefit-card solid">
+  <h3>
+    <iconify-icon icon="lucide:rocket"></iconify-icon>
+    Lanza tu hub hoy mismo
+  </h3>
+  <p>Provisionamos tu instancia en AWS automáticamente.</p>
+  <div class="ctas">
+    <a class="btn lg" style="background:white; color:var(--brand)">Crear hub</a>
+  </div>
+</aside>{% endraw %}{% endset %}
+
+{% call demo_frame(".solid · fondo brand pleno", jinja_src=_src_3, jinjax_src=_src_3) %}
+<aside class="benefit-card solid">
+  <h3>
+    <iconify-icon icon="lucide:rocket"></iconify-icon>
+    Lanza tu hub hoy mismo
+  </h3>
+  <p>Provisionamos tu instancia en AWS automáticamente.</p>
+  <div class="ctas">
+    <a class="btn lg" style="background:white; color:var(--brand)">Crear hub</a>
+  </div>
+</aside>
+{% endcall %}
+{% endblock %}

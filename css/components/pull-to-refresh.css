@@ -1,0 +1,84 @@
+/* ============================================================
+   OutfitKit · Pull-to-refresh
+   ─────────────────────────────────────────────────────────────
+   Indicador de "tirar para refrescar" — patrón estándar en
+   pantallas táctiles. El layout se queda oculto sobre el área
+   scrollable y se muestra cuando el JS detecta el gesto.
+
+   Touch-first: aunque se puede invocar manualmente en desktop
+   (botón de refresh), su valor real está en pantallas táctiles
+   y tablets.
+
+   Estructura:
+     <div class="ptr" data-state="idle | pulling | refreshing">
+       <div class="ptr-spinner"></div>
+       <span class="ptr-label">Soltar para actualizar</span>
+     </div>
+
+   Estados controlados por el JS (data-state):
+     - idle        → oculto (display: none) o transparente
+     - pulling     → visible, spinner estático rotando con scroll
+     - refreshing  → visible, spinner animado infinito
+   ============================================================ */
+
+.ptr {
+  --color:        var(--ink-3);
+  --spinner-size: var(--size-xs);
+  --spinner-bg:   var(--bg-4);
+  --spinner-fg:   var(--variant, var(--color-primary));
+  --duration:     0.9s;
+
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-4) var(--space-0) var(--space-1-5);
+  font-size: var(--text-xs);
+  color: var(--color);
+  font-family: var(--font-mono);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.ptr-spinner {
+  width: var(--spinner-size);
+  height: var(--spinner-size);
+  border: var(--border-w-2) solid var(--spinner-bg);
+  border-top-color: var(--spinner-fg);
+  border-radius: var(--radius-circle);
+  margin-bottom: var(--space-1-5);
+  animation: ok-ptr-spin var(--duration) linear infinite;
+}
+
+/* Estado idle: el JS suele ocultarlo, pero si queda en DOM,
+   detenemos la animación para no malgastar GPU. */
+.ptr[data-state="idle"] .ptr-spinner {
+  animation-play-state: paused;
+  opacity: 0.4;
+}
+
+/* Estado pulling: la rotación responde al scroll vía CSS variable
+   --pull-progress (0 → 1), que el JS escribe en el estilo inline. */
+.ptr[data-state="pulling"] .ptr-spinner {
+  animation: none;
+  transform: rotate(calc(var(--pull-progress, 0) * 360deg));
+  transition: none;
+}
+
+.ptr-label {
+  letter-spacing: var(--tracking-mono, 0.02em);
+}
+
+@keyframes ok-ptr-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Reduced motion: sustituir spinner por punto pulsante */
+@media (prefers-reduced-motion: reduce) {
+  .ptr-spinner { animation: ok-ptr-pulse 1.4s ease-in-out infinite; }
+  @keyframes ok-ptr-pulse {
+    0%, 100% { opacity: 0.4; }
+    50%      { opacity: 1; }
+  }
+}

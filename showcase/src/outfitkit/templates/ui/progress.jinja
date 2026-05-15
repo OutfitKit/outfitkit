@@ -13,7 +13,7 @@
     aria-label="{{ label }}"
     aria-valuemin="0" aria-valuemax="100"{% if not indeterminate %} aria-valuenow="{{ value }}"{% endif %}
     {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-    <div class="progress__bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
+    <div class="progress-bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
   </div>
 </div>
 {%- else -%}
@@ -21,7 +21,7 @@
   role="progressbar"
   aria-valuemin="0" aria-valuemax="100"{% if not indeterminate %} aria-valuenow="{{ value }}"{% endif %}
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-  <div class="progress__bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
+  <div class="progress-bar"{% if not indeterminate %} style="width: {{ value }}%;"{% endif %}></div>
 </div>
 {%- endif %}
 {%- endmacro %}

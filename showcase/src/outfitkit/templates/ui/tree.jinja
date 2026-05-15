@@ -27,7 +27,7 @@
     icon     — single character / emoji / inline SVG for the row icon
     meta     — right-aligned meta string (counts, amounts, etc.)
     expanded — initial open state (default False)
-    icon_kind— "folder" or "file" (drives icon color via .tree__icon--*)
+    icon_kind— "folder" or "file" (drives icon color via .tree-icon--*)
     node_id  — unique signal namespace key (REQUIRED for interactive nodes
                sharing a page; if omitted, an auto id `_n<counter>` is used)
     attrs    — extra HTML attrs on the node
@@ -35,12 +35,12 @@
 {% macro tree_node(label="", icon="", meta="", expanded=false, icon_kind="folder", node_id=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 {%- set _ns = node_id if node_id else '_n' ~ range(100000, 999999) | random -%}
-<div class="tree__node"
+<div class="tree-node"
      data-signals="{ {{ _ns }}: { open: {{ 'true' if expanded else 'false' }} } }"
      data-attr:data-state="${{ _ns }}.open ? 'open' : 'closed'"
      {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   <div class="row">
-    <span class="tree__caret"
+    <span class="tree-caret"
           role="button"
           tabindex="0"
           data-on:click="${{ _ns }}.open = !${{ _ns }}.open"
@@ -55,7 +55,7 @@
     <span class="meta">{{ meta }}</span>
     {%- endif %}
   </div>
-  <div class="tree__children" data-show="${{ _ns }}.open" role="group">
+  <div class="tree-children" data-show="${{ _ns }}.open" role="group">
     {{ caller() }}
   </div>
 </div>
@@ -74,12 +74,12 @@
 #}
 {% macro tree_leaf(label="", icon="", meta="", selected=false, value=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="tree__node">
+<div class="tree-node">
   <div class="row"
        {%- if value is not none %} data-on:click="$sel = '{{ value }}'" data-attr:aria-selected="$sel === '{{ value }}'"{%- endif %}
        {%- if selected %} aria-selected="true"{%- endif %}
        {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-    <span class="tree__caret leaf"></span>
+    <span class="tree-caret leaf"></span>
     {%- if icon %}
     <span class="icon file">{{ icon }}</span>
     {%- endif %}

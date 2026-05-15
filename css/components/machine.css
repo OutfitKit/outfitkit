@@ -31,13 +31,13 @@
   border-radius: var(--radius-lg);
 }
 
-.machine__head {
+.machine-head {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-3);
   align-items: start;
 }
-.machine__name {
+.machine-name {
   font-family: var(--font-display);
   font-size: var(--text-md);
   font-weight: 600;
@@ -46,7 +46,7 @@
   margin: 0;
   line-height: 1.2;
 }
-.machine__id {
+.machine-id {
   display: inline-block;
   margin-top: 2px;
   font-family: var(--font-mono);
@@ -54,9 +54,9 @@
   color: var(--ink-3);
   letter-spacing: var(--tracking-wide);
 }
-.machine.sm .machine__name { font-size: var(--text-sm); }
+.machine.sm .machine-name { font-size: var(--text-sm); }
 
-.machine__state-badge {
+.machine-state-badge {
   align-self: start;
   display: inline-flex;
   align-items: center;
@@ -71,13 +71,13 @@
   background: color-mix(in oklch, var(--_accent) 15%, transparent);
   color: var(--_accent);
 }
-.machine__state-badge::before {
+.machine-state-badge::before {
   content: "";
   width: var(--space-1-5); height: var(--space-1-5);
   border-radius: var(--radius-circle);
   background: var(--_accent);
 }
-.machine.running .machine__state-badge::before {
+.machine.running .machine-state-badge::before {
   animation: ok-machine-pulse 1.6s ease-in-out infinite;
 }
 @keyframes ok-machine-pulse {
@@ -85,26 +85,26 @@
   50%      { opacity: 0.5; transform: scale(1.4); }
 }
 
-.machine__body {
+.machine-body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
   padding-top: var(--space-2);
   border-top: var(--border-w) solid var(--line);
 }
-.machine.sm .machine__body {
+.machine.sm .machine-body {
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-2);
 }
-.machine__metric { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.machine__metric-label {
+.machine-metric { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.machine-metric-label {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
   color: var(--ink-3);
 }
-.machine__metric-value {
+.machine-metric-value {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
@@ -112,54 +112,54 @@
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.machine__metric-value sup {
+.machine-metric-value sup {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   font-weight: 500;
   margin-left: 2px;
 }
-.machine.sm .machine__metric-value { font-size: var(--text-md); }
+.machine.sm .machine-metric-value { font-size: var(--text-md); }
 
-.machine__progress-row {
+.machine-progress-row {
   --track-height: var(--space-1);
 
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
 }
-.machine__progress-row-head {
+.machine-progress-row-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   font-size: var(--text-xs);
   color: var(--ink-2);
 }
-.machine__progress-row-head b {
+.machine-progress-row-head b {
   font-family: var(--font-mono);
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
-.machine__progress-row-bar {
+.machine-progress-row-bar {
   height: var(--track-height);
   background: var(--bg-3);
   border-radius: var(--radius-pill);
   overflow: hidden;
 }
-.machine__progress-row-fill {
+.machine-progress-row-fill {
   height: 100%;
   background: var(--_accent);
   border-radius: inherit;
   transition: width var(--dur-slow) var(--ease-out);
 }
 
-.machine__alerts {
+.machine-alerts {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1-5);
   padding-top: var(--space-2);
   border-top: var(--border-w) dashed var(--line);
 }
-.machine__alert-chip {
+.machine-alert-chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
@@ -170,5 +170,5 @@
   background: var(--danger-soft);
   color: var(--danger);
 }
-.machine__alert-chip--warn { background: var(--warn-soft); color: var(--warn); }
-.machine__alert-chip--info { background: var(--info-soft); color: var(--info); }
+.machine-alert-chip--warn { background: var(--warn-soft); color: var(--warn); }
+.machine-alert-chip--info { background: var(--info-soft); color: var(--info); }

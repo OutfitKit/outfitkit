@@ -17,7 +17,7 @@
 <style>
   .cloud-shell { min-height: 100vh; }
   .method-card { display: flex; flex-direction: column; gap: 12px; height: 100%; }
-  .method-card__top { display: flex; align-items: flex-start; gap: 12px; }
+  .method-card-top { display: flex; align-items: flex-start; gap: 12px; }
   .method-icon {
     width: 38px; height: 38px;
     border-radius: var(--radius-md);
@@ -29,7 +29,7 @@
   .method-icon svg { width: 18px; height: 18px; }
   .method-icon--brand { background: var(--brand-soft); color: var(--brand-3); }
   .method-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
-  .method-card__desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 4px; line-height: 1.5; }
+  .method-card-desc { font-size: var(--text-xs); color: var(--ink-3); margin-top: 4px; line-height: 1.5; }
   .method-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: auto; padding-top: 8px; border-top: 1px solid var(--line); }
   .device-meta { font-size: var(--text-xs); color: var(--ink-3); display: flex; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
   .device-meta span { display: inline-flex; align-items: center; gap: 4px; }
@@ -89,7 +89,7 @@
         <h1 class="title">Verificación en dos pasos</h1>
         
         <div class="topbar-search">
-      <span class="search__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
+      <span class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></span>
       <input type="search" placeholder="Buscar hubs, módulos, facturas…"/>
       <span class="topbar-kbd">⌘K</span>
     </div>
@@ -131,7 +131,7 @@
           <div style="flex:1;min-width:240px;">
             <div style="display:flex;align-items:center;gap:8px;font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.02em;">
               2FA activa
-              <span class="badge success"><span class="badge__dot"></span>Activa</span>
+              <span class="badge success"><span class="badge-dot"></span>Activa</span>
             </div>
             <div style="font-size:var(--text-sm);color:var(--ink-3);margin-top:4px;">
               Activada el <strong class="text-ink-2">12 marzo 2026</strong> · Última verificación: hoy a las 09:42 desde MacBook Pro M4
@@ -157,70 +157,70 @@
 
       <ul class="list">
 
-        <li class="list__item">
-          <span class="list__icon list__icon--brand">
+        <li class="list-item">
+          <span class="list-icon list-icon--brand">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
           </span>
-          <div class="list__body">
-            <div class="list__title">iPhone 16 Pro · Safari <span class="badge brand sm">Este dispositivo</span></div>
+          <div class="list-body">
+            <div class="list-title">iPhone 16 Pro · Safari <span class="badge brand sm">Este dispositivo</span></div>
             <div class="device-meta">
               <span>Madrid, ES</span>
               <span>· IP 81.34.142.18</span>
               <span>· hoy a las 09:42</span>
             </div>
           </div>
-          <div class="list__aside">
+          <div class="list-aside">
             <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'iphone-16-pro'">Revocar</button>
           </div>
         </li>
 
-        <li class="list__item">
-          <span class="list__icon">
+        <li class="list-item">
+          <span class="list-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </span>
-          <div class="list__body">
-            <div class="list__title">MacBook Pro M4 · Arc</div>
+          <div class="list-body">
+            <div class="list-title">MacBook Pro M4 · Arc</div>
             <div class="device-meta">
               <span>Madrid, ES</span>
               <span>· IP 81.34.142.18</span>
               <span>· ayer a las 18:21</span>
             </div>
           </div>
-          <div class="list__aside">
+          <div class="list-aside">
             <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'macbook-pro'">Revocar</button>
           </div>
         </li>
 
-        <li class="list__item">
-          <span class="list__icon">
+        <li class="list-item">
+          <span class="list-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
           </span>
-          <div class="list__body">
-            <div class="list__title">Mac Studio M2 · Firefox</div>
+          <div class="list-body">
+            <div class="list-title">Mac Studio M2 · Firefox</div>
             <div class="device-meta">
               <span>Barcelona, ES</span>
               <span>· IP 95.121.87.4</span>
               <span>· hace 3 días</span>
             </div>
           </div>
-          <div class="list__aside">
+          <div class="list-aside">
             <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'mac-studio'">Revocar</button>
           </div>
         </li>
 
-        <li class="list__item">
-          <span class="list__icon list__icon--warn">
+        <li class="list-item">
+          <span class="list-icon list-icon--warn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg>
           </span>
-          <div class="list__body">
-            <div class="list__title">Samsung Galaxy S24 · Chrome <span class="badge warning sm">Inactivo</span></div>
+          <div class="list-body">
+            <div class="list-title">Samsung Galaxy S24 · Chrome <span class="badge warning sm">Inactivo</span></div>
             <div class="device-meta">
               <span>Sevilla, ES</span>
               <span>· IP 213.98.21.155</span>
               <span>· hace 18 días</span>
             </div>
           </div>
-          <div class="list__aside">
+          <div class="list-aside">
             <button class="btn ghost sm text-danger" data-on:click="$confirmRevoke = 'samsung-s24'">Revocar</button>
           </div>
         </li>
@@ -242,20 +242,20 @@
         <div class="card" data-class:is-active="$authActive">
           <div class="body">
             <div class="method-card">
-              <div class="method-card__top">
+              <div class="method-card-top">
                 <div class="method-icon method-icon--brand">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><circle cx="12" cy="18" r="1"/></svg>
                 </div>
                 <div class="flex-1">
                   <div class="method-title">App autenticadora</div>
-                  <div class="method-card__desc">Genera códigos de un solo uso usando TOTP. Funciona sin conexión y es el método más seguro.</div>
+                  <div class="method-card-desc">Genera códigos de un solo uso usando TOTP. Funciona sin conexión y es el método más seguro.</div>
                 </div>
               </div>
               <div class="method-foot">
-                <span class="badge" data-class:badge--ok="$authActive"><span class="badge__dot"></span><span data-text="$authActive ? 'Activo' : 'Inactivo'">Activo</span></span>
+                <span class="badge" data-class:badge--ok="$authActive"><span class="badge-dot"></span><span data-text="$authActive ? 'Activo' : 'Inactivo'">Activo</span></span>
                 <label class="toggle">
-                  <input type="checkbox" data-bind:auth-active class="toggle__input"/>
-                  <span class="toggle__track"></span>
+                  <input type="checkbox" data-bind:auth-active class="toggle-input"/>
+                  <span class="toggle-track"></span>
                 </label>
               </div>
             </div>
@@ -265,20 +265,20 @@
         <div class="card" data-class:is-active="$smsActive">
           <div class="body">
             <div class="method-card">
-              <div class="method-card__top">
+              <div class="method-card-top">
                 <div class="method-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 </div>
                 <div class="flex-1">
                   <div class="method-title">SMS</div>
-                  <div class="method-card__desc">Recibe un código por mensaje de texto en tu número de teléfono verificado.</div>
+                  <div class="method-card-desc">Recibe un código por mensaje de texto en tu número de teléfono verificado.</div>
                 </div>
               </div>
               <div class="method-foot">
-                <span class="badge" data-class:badge--ok="$smsActive"><span class="badge__dot"></span><span data-text="$smsActive ? 'Activo' : 'No configurado'">No configurado</span></span>
+                <span class="badge" data-class:badge--ok="$smsActive"><span class="badge-dot"></span><span data-text="$smsActive ? 'Activo' : 'No configurado'">No configurado</span></span>
                 <label class="toggle">
-                  <input type="checkbox" data-bind:sms-active class="toggle__input"/>
-                  <span class="toggle__track"></span>
+                  <input type="checkbox" data-bind:sms-active class="toggle-input"/>
+                  <span class="toggle-track"></span>
                 </label>
               </div>
             </div>
@@ -288,20 +288,20 @@
         <div class="card" data-class:is-active="$emailActive">
           <div class="body">
             <div class="method-card">
-              <div class="method-card__top">
+              <div class="method-card-top">
                 <div class="method-icon">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
                 </div>
                 <div class="flex-1">
                   <div class="method-title">Correo electrónico</div>
-                  <div class="method-card__desc">Recibe un código en ioan@acme.com cada vez que inicies sesión en un dispositivo nuevo.</div>
+                  <div class="method-card-desc">Recibe un código en ioan@acme.com cada vez que inicies sesión en un dispositivo nuevo.</div>
                 </div>
               </div>
               <div class="method-foot">
-                <span class="badge" data-class:badge--ok="$emailActive"><span class="badge__dot"></span><span data-text="$emailActive ? 'Activo' : 'No configurado'">No configurado</span></span>
+                <span class="badge" data-class:badge--ok="$emailActive"><span class="badge-dot"></span><span data-text="$emailActive ? 'Activo' : 'No configurado'">No configurado</span></span>
                 <label class="toggle">
-                  <input type="checkbox" data-bind:email-active class="toggle__input"/>
-                  <span class="toggle__track"></span>
+                  <input type="checkbox" data-bind:email-active class="toggle-input"/>
+                  <span class="toggle-track"></span>
                 </label>
               </div>
             </div>
@@ -314,15 +314,15 @@
     <!-- Backup codes summary -->
     <section class="section">
       <div class="callout info">
-        <span class="callout__icon">
+        <span class="callout-icon">
           <iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon>
         </span>
-        <div class="callout__body">
-          <p class="callout__title">Te quedan <strong>6 de 8</strong> códigos de respaldo</p>
-          <p class="callout__desc">Si te quedan menos de 3 códigos, ERPlora Cloud te recomendará regenerarlos automáticamente.</p>
-          <div class="callout__actions">
-            <a href="#" class="callout__link">Ver códigos restantes</a>
-            <a href="#" class="callout__link" data-on:click="$regenOpen = true">Regenerar ahora</a>
+        <div class="callout-body">
+          <p class="callout-title">Te quedan <strong>6 de 8</strong> códigos de respaldo</p>
+          <p class="callout-desc">Si te quedan menos de 3 códigos, ERPlora Cloud te recomendará regenerarlos automáticamente.</p>
+          <div class="callout-actions">
+            <a href="#" class="callout-link">Ver códigos restantes</a>
+            <a href="#" class="callout-link" data-on:click="$regenOpen = true">Regenerar ahora</a>
           </div>
         </div>
       </div>
@@ -389,10 +389,10 @@
             Al regenerar, los <strong>códigos antiguos quedarán inválidos al instante</strong>. Asegúrate de descargar y guardar los nuevos en un lugar seguro.
           </p>
           <div class="callout warning">
-            <span class="callout__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span>
-            <div class="callout__body">
-              <div class="callout__title">Códigos actuales: 6 de 8 sin usar</div>
-              <div class="callout__desc">Si los pierdes podrías quedar bloqueado fuera de tu cuenta.</div>
+            <span class="callout-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></span>
+            <div class="callout-body">
+              <div class="callout-title">Códigos actuales: 6 de 8 sin usar</div>
+              <div class="callout-desc">Si los pierdes podrías quedar bloqueado fuera de tu cuenta.</div>
             </div>
           </div>
         </div>

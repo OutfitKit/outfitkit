@@ -4,15 +4,15 @@
 
    Composición universal:
      <div class="cal">
-       <header class="cal__head">
+       <header class="cal-head">
          <h2 class="title lg">Mayo 2026</h2>
-         <nav class="cal__nav">…</nav>
+         <nav class="cal-nav">…</nav>
        </header>
-       <div class="cal__grid">
-         <div class="cal__cell">
-           <span class="cal__day">1</span>
-           <div class="cal__events">
-             <div class="cal__event cal__event--brand">
+       <div class="cal-grid">
+         <div class="cal-cell">
+           <span class="cal-day">1</span>
+           <div class="cal-events">
+             <div class="cal-event cal-event--brand">
                <span class="meta">10:00</span> Reunión
              </div>
            </div>
@@ -40,7 +40,7 @@
 }
 
 /* Cal head: use universal .title .lg inside for month name */
-.cal__head {
+.cal-head {
   padding: var(--space-3) var(--space-4);
   border-bottom: var(--border-w) solid var(--border-color);
   display: flex;
@@ -50,12 +50,12 @@
   background: var(--bg-1);
 }
 
-.cal__nav {
+.cal-nav {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
 }
-.cal__nav-btn {
+.cal-nav-btn {
   width: var(--size-sm); height: var(--size-sm);
   border-radius: var(--radius-sm);
   background: var(--bg-3);
@@ -68,9 +68,9 @@
   font: inherit;
   transition: background var(--dur-fast);
 }
-.cal__nav-btn:hover { background: var(--bg-4); color: var(--ink); }
-.cal__nav-btn svg { width: var(--icon-sm); height: var(--icon-sm); }
-.cal__today {
+.cal-nav-btn:hover { background: var(--bg-4); color: var(--ink); }
+.cal-nav-btn svg { width: var(--icon-sm); height: var(--icon-sm); }
+.cal-today {
   padding: var(--space-1) var(--space-2-5);
   background: transparent;
   border: var(--border-w) solid var(--line-2);
@@ -81,10 +81,10 @@
   cursor: pointer;
   margin-left: var(--space-1);
 }
-.cal__today:hover { background: var(--bg-3); }
+.cal-today:hover { background: var(--bg-3); }
 
 /* ---------- Legend ---------- */
-.cal__legend {
+.cal-legend {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -95,12 +95,12 @@
   font-size: var(--text-2xs);
   color: var(--color-muted);
 }
-.cal__legend-item {
+.cal-legend-item {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
 }
-.cal__legend-dot {
+.cal-legend-dot {
   width: var(--dot-md);
   height: var(--dot-md);
   border-radius: var(--radius-circle);
@@ -108,27 +108,27 @@
   display: inline-block;
   flex-shrink: 0;
 }
-.cal__legend-dot--today    { background: var(--accent); }
-.cal__legend-dot--selected { background: color-mix(in oklch, var(--accent) 50%, var(--bg-4)); box-shadow: inset 0 0 0 1px var(--accent); }
-.cal__legend-dot--brand    { background: var(--brand); }
-.cal__legend-dot--leaf     { background: var(--leaf); }
-.cal__legend-dot--warn     { background: var(--warn); }
-.cal__legend-dot--danger   { background: var(--danger); }
-.cal__legend-dot--info     { background: var(--info); }
-.cal__legend-sep {
+.cal-legend-dot--today    { background: var(--accent); }
+.cal-legend-dot--selected { background: color-mix(in oklch, var(--accent) 50%, var(--bg-4)); box-shadow: inset 0 0 0 1px var(--accent); }
+.cal-legend-dot--brand    { background: var(--brand); }
+.cal-legend-dot--leaf     { background: var(--leaf); }
+.cal-legend-dot--warn     { background: var(--warn); }
+.cal-legend-dot--danger   { background: var(--danger); }
+.cal-legend-dot--info     { background: var(--info); }
+.cal-legend-sep {
   width: var(--border-w);
   height: var(--icon-xs);
   background: var(--line);
 }
 
 /* ---------- View · Month ---------- */
-.cal__weekdays {
+.cal-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   background: var(--bg-1);
   border-bottom: var(--border-w) solid var(--border-color);
 }
-.cal__weekday {
+.cal-weekday {
   padding: var(--space-2) var(--space-2-5);
   font-size: var(--text-2xs);
   text-transform: uppercase;
@@ -138,14 +138,14 @@
   text-align: left;
   border-right: var(--border-w) solid var(--border-color);
 }
-.cal__weekday:last-child { border-right: none; }
+.cal-weekday:last-child { border-right: none; }
 
-.cal__grid {
+.cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-auto-rows: minmax(var(--min-height), 1fr);
 }
-.cal__cell {
+.cal-cell {
   border-right: var(--border-w) solid var(--border-color);
   border-bottom: var(--border-w) solid var(--border-color);
   padding: var(--space-1-5) var(--space-2);
@@ -158,13 +158,13 @@
   cursor: pointer;
   transition: background var(--dur-fast);
 }
-.cal__cell:hover { background: var(--bg-3); }
-.cal__cell:nth-child(7n) { border-right: none; }
-.cal__cell--out {
+.cal-cell:hover { background: var(--bg-3); }
+.cal-cell:nth-child(7n) { border-right: none; }
+.cal-cell--out {
   background: var(--bg-1);
 }
-.cal__cell--out .cal__day { color: var(--ink-4); }
-.cal__cell--today .cal__day {
+.cal-cell--out .cal-day { color: var(--ink-4); }
+.cal-cell--today .cal-day {
   background: var(--accent);
   color: var(--accent-contrast);
   border-radius: var(--radius-circle);
@@ -173,13 +173,13 @@
   align-items: center;
   justify-content: center;
 }
-.cal__cell--weekend { background: color-mix(in oklch, var(--bg-1) 60%, var(--bg-2)); }
-.cal__cell--selected {
+.cal-cell--weekend { background: color-mix(in oklch, var(--bg-1) 60%, var(--bg-2)); }
+.cal-cell--selected {
   background: color-mix(in oklch, var(--accent) 8%, var(--background));
   box-shadow: inset 0 0 0 1px var(--accent);
 }
 
-.cal__day {
+.cal-day {
   font-family: var(--font-display);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
@@ -188,7 +188,7 @@
   align-self: flex-start;
 }
 
-.cal__events {
+.cal-events {
   display: flex;
   flex-direction: column;
   gap: var(--border-w-2);
@@ -198,7 +198,7 @@
 }
 
 /* Event: use universal .meta inside for time text */
-.cal__event {
+.cal-event {
   font-size: var(--text-2xs);
   padding: var(--border-w-2) var(--space-1-5);
   border-radius: var(--radius-xs);
@@ -214,32 +214,32 @@
   cursor: pointer;
   transition: background var(--dur-fast);
 }
-.cal__event:hover { background: var(--bg-4); }
-.cal__event-time {
+.cal-event:hover { background: var(--bg-4); }
+.cal-event-time {
   font-variant-numeric: tabular-nums;
   color: var(--ink-3);
   font-weight: var(--weight-medium);
   font-size: var(--text-2xs);
 }
-.cal__event--brand  { border-left-color: var(--brand);  background: color-mix(in oklch, var(--brand) 14%, var(--bg-2)); }
-.cal__event--leaf   { border-left-color: var(--leaf);   background: color-mix(in oklch, var(--leaf) 14%, var(--bg-2)); }
-.cal__event--warn   { border-left-color: var(--warn);   background: color-mix(in oklch, var(--warn) 14%, var(--bg-2)); }
-.cal__event--danger { border-left-color: var(--danger); background: color-mix(in oklch, var(--danger) 14%, var(--bg-2)); }
-.cal__event--info   { border-left-color: var(--info);   background: color-mix(in oklch, var(--info) 14%, var(--bg-2)); }
-.cal__event--solid {
+.cal-event--brand  { border-left-color: var(--brand);  background: color-mix(in oklch, var(--brand) 14%, var(--bg-2)); }
+.cal-event--leaf   { border-left-color: var(--leaf);   background: color-mix(in oklch, var(--leaf) 14%, var(--bg-2)); }
+.cal-event--warn   { border-left-color: var(--warn);   background: color-mix(in oklch, var(--warn) 14%, var(--bg-2)); }
+.cal-event--danger { border-left-color: var(--danger); background: color-mix(in oklch, var(--danger) 14%, var(--bg-2)); }
+.cal-event--info   { border-left-color: var(--info);   background: color-mix(in oklch, var(--info) 14%, var(--bg-2)); }
+.cal-event--solid {
   background: var(--brand);
   color: var(--brand-fg);
   border-left: none;
 }
-.cal__event--solid .cal__event-time { color: color-mix(in oklch, var(--brand-fg) 85%, transparent); }
+.cal-event--solid .cal-event-time { color: color-mix(in oklch, var(--brand-fg) 85%, transparent); }
 
-.cal__more {
+.cal-more {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   padding: var(--border-w) var(--space-1-5);
   cursor: pointer;
 }
-.cal__more:hover { color: var(--ink); }
+.cal-more:hover { color: var(--ink); }
 
 /* ---------- View · Week ---------- */
 .cal-week {
@@ -250,13 +250,13 @@
   overflow: auto;
   background: var(--background);
 }
-.cal-week__hours {
+.cal-week-hours {
   display: grid;
   grid-template-rows: repeat(12, var(--width));
   border-right: var(--border-w) solid var(--border-color);
   background: var(--bg-1);
 }
-.cal-week__hour {
+.cal-week-hour {
   font-size: var(--text-2xs);
   color: var(--color-muted);
   text-align: right;
@@ -265,23 +265,23 @@
   border-bottom: var(--border-w) solid var(--border-color);
 }
 
-.cal-week__days {
+.cal-week-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   position: relative;
 }
-.cal-week__day {
+.cal-week-day {
   border-right: var(--border-w) solid var(--border-color);
   position: relative;
   background-image:
     linear-gradient(to bottom, var(--border-color) 0, var(--border-color) 1px, transparent 1px, transparent 3.5rem);
   background-size: 100% 3.5rem;
 }
-.cal-week__day:last-child { border-right: none; }
-.cal-week__day--today { background-color: color-mix(in oklch, var(--accent) 5%, var(--background)); }
+.cal-week-day:last-child { border-right: none; }
+.cal-week-day--today { background-color: color-mix(in oklch, var(--accent) 5%, var(--background)); }
 
 /* Week header: use universal .title .sm inside head-cell-day */
-.cal-week__head {
+.cal-week-head {
   display: grid;
   grid-template-columns: var(--width) repeat(7, 1fr);
   background: var(--header-bg, var(--bg-1));
@@ -290,7 +290,7 @@
   top: 0;
   z-index: 2;
 }
-.cal-week__head-cell {
+.cal-week-head-cell {
   padding: var(--space-2) var(--space-2-5);
   border-right: var(--border-w) solid var(--border-color);
   font-size: var(--text-2xs);
@@ -299,8 +299,8 @@
   font-weight: var(--weight-medium);
   color: var(--color-muted);
 }
-.cal-week__head-cell:last-child { border-right: none; }
-.cal-week__head-cell-day {
+.cal-week-head-cell:last-child { border-right: none; }
+.cal-week-head-cell-day {
   font-family: var(--font-display);
   font-size: var(--text-xl);
   font-weight: var(--weight-semibold);
@@ -309,10 +309,10 @@
   letter-spacing: var(--tracking-near);
   margin-top: var(--border-w-2);
 }
-.cal-week__head-cell--today .cal-week__head-cell-day { color: var(--accent); }
+.cal-week-head-cell--today .cal-week-head-cell-day { color: var(--accent); }
 
 /* Week event: use .meta for time text */
-.cal-week__event {
+.cal-week-event {
   position: absolute;
   left: 0.25rem;
   right: 0.25rem;
@@ -326,24 +326,24 @@
   overflow: hidden;
   transition: background var(--dur-fast);
 }
-.cal-week__event:hover { background: color-mix(in oklch, var(--accent) 30%, var(--background)); }
-.cal-week__event-title {
+.cal-week-event:hover { background: color-mix(in oklch, var(--accent) 30%, var(--background)); }
+.cal-week-event-title {
   font-weight: var(--weight-medium);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.cal-week__event-time {
+.cal-week-event-time {
   font-size: var(--text-2xs);
   color: var(--color-muted);
   font-variant-numeric: tabular-nums;
 }
-.cal-week__event--leaf   { background: color-mix(in oklch, var(--leaf) 22%, var(--bg-2));   border-left-color: var(--leaf); }
-.cal-week__event--warn   { background: color-mix(in oklch, var(--warn) 22%, var(--bg-2));   border-left-color: var(--warn); }
-.cal-week__event--danger { background: color-mix(in oklch, var(--danger) 22%, var(--bg-2)); border-left-color: var(--danger); }
-.cal-week__event--info   { background: color-mix(in oklch, var(--info) 22%, var(--bg-2));   border-left-color: var(--info); }
+.cal-week-event--leaf   { background: color-mix(in oklch, var(--leaf) 22%, var(--bg-2));   border-left-color: var(--leaf); }
+.cal-week-event--warn   { background: color-mix(in oklch, var(--warn) 22%, var(--bg-2));   border-left-color: var(--warn); }
+.cal-week-event--danger { background: color-mix(in oklch, var(--danger) 22%, var(--bg-2)); border-left-color: var(--danger); }
+.cal-week-event--info   { background: color-mix(in oklch, var(--info) 22%, var(--bg-2));   border-left-color: var(--info); }
 
-.cal-week__now {
+.cal-week-now {
   position: absolute;
   left: 0; right: 0;
   height: 0;
@@ -351,7 +351,7 @@
   z-index: 3;
   pointer-events: none;
 }
-.cal-week__now::before {
+.cal-week-now::before {
   content: "";
   position: absolute;
   left: -0.25rem; top: -0.25rem;
@@ -368,19 +368,19 @@
   padding: var(--space-3);
   width: min(100%, 26rem);
 }
-.cal-mini__head {
+.cal-mini-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--space-2);
 }
 /* Mini title: use universal .title .sm inside */
-.cal-mini__grid {
+.cal-mini-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: var(--border-w-2);
 }
-.cal-mini__wd {
+.cal-mini-wd {
   font-size: var(--text-2xs);
   color: var(--color-muted);
   text-align: center;
@@ -388,7 +388,7 @@
   letter-spacing: var(--tracking-snug);
   padding: var(--space-1) var(--space-0);
 }
-.cal-mini__day {
+.cal-mini-day {
   aspect-ratio: 1;
   display: inline-flex;
   align-items: center;
@@ -404,19 +404,19 @@
   transition: background var(--dur-fast);
   position: relative;
 }
-.cal-mini__day:hover { background: var(--bg-3); }
-.cal-mini__day--out  { color: var(--ink-4); }
-.cal-mini__day--today {
+.cal-mini-day:hover { background: var(--bg-3); }
+.cal-mini-day--out  { color: var(--ink-4); }
+.cal-mini-day--today {
   background: var(--accent);
   color: var(--accent-contrast);
   font-weight: var(--weight-semibold);
 }
-.cal-mini__day--selected {
+.cal-mini-day--selected {
   background: var(--bg-4);
   color: var(--ink);
   font-weight: var(--weight-semibold);
 }
-.cal-mini__day--has-event::after {
+.cal-mini-day--has-event::after {
   content: "";
   position: absolute;
   bottom: 0.125rem;
@@ -424,4 +424,4 @@
   border-radius: var(--radius-circle);
   background: var(--accent);
 }
-.cal-mini__day--today.cal-mini__day--has-event::after { background: var(--accent-contrast); }
+.cal-mini-day--today.cal-mini-day--has-event::after { background: var(--accent-contrast); }

@@ -1,0 +1,112 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Pricing card — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Pricing card</h1>
+<p class="showcase-lead">Card de plan / tier para pricing tables. Variante <code>.featured</code> destaca el recomendado con borde + glow del brand. Patrón Stripe / Linear / Vercel.</p>
+
+{% set _src_1 %}{% raw %}<div class="grid-3 center-wide">
+  <article class="pricing-card">
+    <h3>Starter</h3>
+    <p class="lead">Para empezar a probar ERPlora</p>
+    <div class="price-row">
+      <span class="price">0 €<span class="per">/mes</span></span>
+    </div>
+    <ul>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 1 hub</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 2 GB storage</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Email support</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn outline">Empezar gratis</a>
+    </div>
+  </article>
+
+  <article class="pricing-card featured">
+    <span class="chip solid badge-top">Recomendado</span>
+    <h3>Pro</h3>
+    <p class="lead">Para equipos en producción</p>
+    <div class="price-row">
+      <span class="price">29 €<span class="per">/mes</span></span>
+    </div>
+    <ul>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 5 hubs</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 50 GB storage</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Priority support 24/5</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Custom domain</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn primary">Empezar trial · 14 días</a>
+    </div>
+  </article>
+
+  <article class="pricing-card">
+    <h3>Enterprise</h3>
+    <p class="lead">Escala sin límites</p>
+    <div class="price-row">
+      <span class="price">Custom<span class="per">/quote</span></span>
+    </div>
+    <ul>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Hubs ilimitados</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> SSO + audit logs</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Dedicated CSM</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> SLA 99.95%</li>
+    </ul>
+    <div class="ctas">
+      <a class="btn outline">Contactar ventas</a>
+    </div>
+  </article>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("3 planes con featured", jinja_src=_src_1, jinjax_src=_src_1) %}
+<div class="grid-3 center-wide">
+  <article class="pricing-card">
+    <h3>Starter</h3>
+    <p class="lead">Para empezar a probar ERPlora</p>
+    <div class="price-row"><span class="price">0 €<span class="per">/mes</span></span></div>
+    <ul>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 1 hub</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 2 GB storage</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Email support</li>
+    </ul>
+    <div class="ctas"><a class="btn outline">Empezar gratis</a></div>
+  </article>
+
+  <article class="pricing-card featured">
+    <span class="chip solid badge-top">Recomendado</span>
+    <h3>Pro</h3>
+    <p class="lead">Para equipos en producción</p>
+    <div class="price-row"><span class="price">29 €<span class="per">/mes</span></span></div>
+    <ul>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 5 hubs</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> 50 GB storage</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Priority support 24/5</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Custom domain</li>
+    </ul>
+    <div class="ctas"><a class="btn primary">Empezar trial · 14 días</a></div>
+  </article>
+
+  <article class="pricing-card">
+    <h3>Enterprise</h3>
+    <p class="lead">Escala sin límites</p>
+    <div class="price-row"><span class="price">Custom<span class="per">/quote</span></span></div>
+    <ul>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Hubs ilimitados</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> SSO + audit logs</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> Dedicated CSM</li>
+      <li><iconify-icon icon="lucide:check"></iconify-icon> SLA 99.95%</li>
+    </ul>
+    <div class="ctas"><a class="btn outline">Contactar ventas</a></div>
+  </article>
+</div>
+{% endcall %}
+
+<h3>Variantes / modificadores</h3>
+<ul>
+  <li><code>.featured</code> · borde + glow del brand para resaltar el plan recomendado</li>
+  <li><code>.compact</code> · menos padding y precio más pequeño (para listas densas)</li>
+  <li>Dentro: <code>.price</code>, <code>.per</code>, <code>.lead</code>, <code>.ctas</code>, <code>.badge-top</code> (chip absoluto)</li>
+</ul>
+{% endblock %}

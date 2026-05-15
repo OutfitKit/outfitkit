@@ -110,40 +110,40 @@
           <div class="body">
             <div class="form">
               <label class="field">
-                <span class="field__label field__label--req">Razón social</span>
+                <span class="field-label field-label--req">Razón social</span>
                 <input class="input" value="Acme Industries SL"/>
               </label>
               <div class="form-row">
                 <label class="field">
-                  <span class="field__label field__label--req">CIF / NIF</span>
+                  <span class="field-label field-label--req">CIF / NIF</span>
                   <input class="input" value="B-87654321"/>
                 </label>
                 <label class="field">
-                  <span class="field__label">IBAN para SEPA</span>
+                  <span class="field-label">IBAN para SEPA</span>
                   <input class="input" value="ES76 0049 1500 0512 3456 7890"/>
                 </label>
               </div>
               <label class="field">
-                <span class="field__label field__label--req">Dirección fiscal</span>
+                <span class="field-label field-label--req">Dirección fiscal</span>
                 <input class="input" value="C/ Industria 24, nave 7"/>
               </label>
               <div class="form-row">
                 <label class="field">
-                  <span class="field__label">Código postal</span>
+                  <span class="field-label">Código postal</span>
                   <input class="input" value="08940"/>
                 </label>
                 <label class="field">
-                  <span class="field__label">Ciudad</span>
+                  <span class="field-label">Ciudad</span>
                   <input class="input" value="Cornellà de Llobregat"/>
                 </label>
               </div>
               <div class="form-row">
                 <label class="field">
-                  <span class="field__label">Provincia</span>
+                  <span class="field-label">Provincia</span>
                   <input class="input" value="Barcelona"/>
                 </label>
                 <label class="field">
-                  <span class="field__label field__label--req">País</span>
+                  <span class="field-label field-label--req">País</span>
                   <select class="select">
                     <option selected>España</option>
                     <option>Portugal</option>
@@ -168,20 +168,20 @@
           <div class="body">
             <div class="form">
               <label class="field">
-                <span class="field__label field__label--req">Nombre completo</span>
+                <span class="field-label field-label--req">Nombre completo</span>
                 <input class="input" value="Anna Calvet i Roca"/>
               </label>
               <label class="field">
-                <span class="field__label field__label--req">Email</span>
+                <span class="field-label field-label--req">Email</span>
                 <input class="input" type="email" value="facturacion@acme.com"/>
-                <span class="field__hint">Recibirá las facturas en PDF y avisos de cobro fallidos.</span>
+                <span class="field-hint">Recibirá las facturas en PDF y avisos de cobro fallidos.</span>
               </label>
               <label class="field">
-                <span class="field__label">Teléfono</span>
+                <span class="field-label">Teléfono</span>
                 <input class="input" value="+34 933 21 04 87"/>
               </label>
               <label class="field">
-                <span class="field__label">Idioma de la factura</span>
+                <span class="field-label">Idioma de la factura</span>
                 <select class="select">
                   <option selected>Español (España)</option>
                   <option>Català</option>
@@ -191,11 +191,11 @@
                 </select>
               </label>
               <label class="toggle-row">
-                <div class="toggle-row__text">
-                  <span class="toggle-row__label">Enviar copia a contabilidad</span>
-                  <span class="toggle-row__desc">contabilidad@acme.com recibirá copia automáticamente</span>
+                <div class="toggle-row-text">
+                  <span class="toggle-row-label">Enviar copia a contabilidad</span>
+                  <span class="toggle-row-desc">contabilidad@acme.com recibirá copia automáticamente</span>
                 </div>
-                <span class="toggle"><input type="checkbox" checked/><span class="toggle__track"></span></span>
+                <span class="toggle"><input type="checkbox" checked/><span class="toggle-track"></span></span>
               </label>
             </div>
           </div>
@@ -238,7 +238,7 @@
           <div class="body">
             <div class="form">
               <label class="field">
-                <span class="field__label">Régimen de IVA</span>
+                <span class="field-label">Régimen de IVA</span>
                 <select class="select">
                   <option selected>General — 21%</option>
                   <option>Reducido — 10%</option>
@@ -248,42 +248,42 @@
                 </select>
               </label>
               <div class="field">
-                <span class="field__label">Régimen especial</span>
+                <span class="field-label">Régimen especial</span>
                 <div class="radio-group inline" style="gap:8px;">
                   <label class="radio-card flex-1">
                     <input type="radio" name="reg" data-on:click="$regimen = 'general'" checked/>
                     <div>
                       <div class="radio-title">Régimen general</div>
-                      <div class="radio-card__desc">El más común para PYMEs.</div>
+                      <div class="radio-card-desc">El más común para PYMEs.</div>
                     </div>
                   </label>
                   <label class="radio-card flex-1">
                     <input type="radio" name="reg" data-on:click="$regimen = 'rec'"/>
                     <div>
                       <div class="radio-title">Recargo de equivalencia</div>
-                      <div class="radio-card__desc">Solo comercio minorista persona física.</div>
+                      <div class="radio-card-desc">Solo comercio minorista persona física.</div>
                     </div>
                   </label>
                   <label class="radio-card flex-1">
                     <input type="radio" name="reg" data-on:click="$regimen = 'rev'"/>
                     <div>
                       <div class="radio-title">Inversión sujeto pasivo</div>
-                      <div class="radio-card__desc">Operaciones intracomunitarias.</div>
+                      <div class="radio-card-desc">Operaciones intracomunitarias.</div>
                     </div>
                   </label>
                   <label class="radio-card flex-1">
                     <input type="radio" name="reg" data-on:click="$regimen = 'rec_ag'"/>
                     <div>
                       <div class="radio-title">Régimen agrario</div>
-                      <div class="radio-card__desc">Productores de origen agrícola.</div>
+                      <div class="radio-card-desc">Productores de origen agrícola.</div>
                     </div>
                   </label>
                 </div>
               </div>
               <label class="field">
-                <span class="field__label">Número EORI (opcional)</span>
+                <span class="field-label">Número EORI (opcional)</span>
                 <input class="input" value="ESB87654321" placeholder="ej. ESB12345678"/>
-                <span class="field__hint">Necesario para importaciones/exportaciones fuera de la UE.</span>
+                <span class="field-hint">Necesario para importaciones/exportaciones fuera de la UE.</span>
               </label>
             </div>
           </div>

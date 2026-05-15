@@ -24,13 +24,13 @@
   font-family: var(--font-sans);
 }
 
-.osk__row {
+.osk-row {
   display: flex;
   gap: var(--gap);
   width: 100%;
 }
 
-.osk__key {
+.osk-key {
   flex: 1 1 var(--min-width);
   min-width: var(--min-width);
   height: var(--height);
@@ -51,30 +51,30 @@
               border-color var(--dur-fast) var(--ease-out);
   font-variant-numeric: tabular-nums;
 }
-.osk__key:hover { background: var(--bg-4); }
-.osk__key:active { transform: scale(0.97); }
-.osk__key:focus-visible {
+.osk-key:hover { background: var(--bg-4); }
+.osk-key:active { transform: scale(0.97); }
+.osk-key:focus-visible {
   outline: var(--border-w-2) solid var(--accent-background);
   outline-offset: 0.125rem;
 }
 
-.osk__key--wide { flex-grow: 1.5; }
-.osk__key--xwide { flex-grow: 2; }
-.osk__key--space { flex-grow: 6; }
+.osk-key--wide { flex-grow: 1.5; }
+.osk-key--xwide { flex-grow: 2; }
+.osk-key--space { flex-grow: 6; }
 
-.osk__key--enter {
+.osk-key--enter {
   background: var(--accent-background);
   color: var(--accent-color);
   border-color: transparent;
   flex-grow: 1.6;
 }
-.osk__key--enter:hover { background: var(--accent-background-hover); }
+.osk-key--enter:hover { background: var(--accent-background-hover); }
 
-.osk__key--shift,
-.osk__key--del,
-.osk__key--num,
-.osk__key--tab,
-.osk__key--mod {
+.osk-key--shift,
+.osk-key--del,
+.osk-key--num,
+.osk-key--tab,
+.osk-key--mod {
   background: var(--bg-4);
   color: var(--ink-2);
   font-size: var(--text-sm);
@@ -83,18 +83,18 @@
   text-transform: uppercase;
   flex-grow: 1.4;
 }
-.osk__key--shift:hover,
-.osk__key--del:hover,
-.osk__key--num:hover,
-.osk__key--tab:hover,
-.osk__key--mod:hover { background: var(--bg-3); color: var(--ink); }
+.osk-key--shift:hover,
+.osk-key--del:hover,
+.osk-key--num:hover,
+.osk-key--tab:hover,
+.osk-key--mod:hover { background: var(--bg-3); color: var(--ink); }
 
-.osk.is-shift .osk__key--shift {
+.osk.is-shift .osk-key--shift {
   background: var(--accent-background);
   color: var(--accent-color);
   border-color: transparent;
 }
-.osk.is-shift .osk__key:not(.osk__key--shift):not(.osk__key--del):not(.osk__key--num):not(.osk__key--space):not(.osk__key--enter):not(.osk__key--tab):not(.osk__key--mod) {
+.osk.is-shift .osk-key:not(.osk-key--shift):not(.osk-key--del):not(.osk-key--num):not(.osk-key--space):not(.osk-key--enter):not(.osk-key--tab):not(.osk-key--mod) {
   text-transform: uppercase;
 }
 
@@ -113,10 +113,10 @@
   gap: var(--_osk-gap);
   max-width: 20rem;
 }
-.osk.numeric .osk__row {
+.osk.numeric .osk-row {
   display: contents;
 }
-.osk.numeric .osk__key {
+.osk.numeric .osk-key {
   font-family: var(--font-display);
   font-size: 1.375rem;
   font-weight: 600;

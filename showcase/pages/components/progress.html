@@ -7,7 +7,7 @@
 
 {% block content %}
 <h1>Progress</h1>
-<p class="showcase__lead">Barra de progreso lineal. Sin <code>label</code> renderiza solo la pista; con <code>label</code> envuelve en <code>.ok-progress-block</code> con cabecera label + value.</p>
+<p class="showcase-lead">Barra de progreso lineal. Sin <code>label</code> renderiza solo la pista; con <code>label</code> envuelve en <code>.ok-progress-block</code> con cabecera label + value.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/progress.jinja" import progress %}
 <div style="width: 100%; max-width: 360px;">
@@ -108,7 +108,7 @@
 {% from "ui/button.jinja" import button %}
 <div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
   <div class="progress" data-attr:style="'--progress-value:' + $pct + '%'">
-    <div class="progress__bar"></div>
+    <div class="progress-bar"></div>
   </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     {{ button("−10", variant="ghost", size="sm", attrs={"data-on:click": "$pct = Math.max(0, $pct - 10)"}) }}
@@ -118,7 +118,7 @@
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_6 %}{% raw %}<div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
   <div class="progress" data-attr:style="'--progress-value:' + $pct + '%'">
-    <div class="progress__bar"></div>
+    <div class="progress-bar"></div>
   </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     <Button label="−10" variant="ghost" size="sm" data-on:click="$pct = Math.max(0, $pct - 10)" />
@@ -132,7 +132,7 @@
     jinjax_src=_src_jinjax_6) %}
 <div data-signals="{ pct: 35 }" style="width: 100%; max-width: 480px;">
   <div class="progress" data-attr:style="'--progress-value:' + $pct + '%'">
-    <div class="progress__bar"></div>
+    <div class="progress-bar"></div>
   </div>
   <div style="margin-top: 10px; display: flex; gap: 8px;">
     {{ button("−10", variant="ghost", size="sm", attrs={"data-on:click": "$pct = Math.max(0, $pct - 10)"}) }}

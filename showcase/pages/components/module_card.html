@@ -1,0 +1,127 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Module card — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Module card</h1>
+<p class="showcase-lead">Card de módulo / producto para marketplaces y catálogos. Diferente de <code>.feature-card</code> (marketing) y <code>.pricing-card</code> (planes). Incluye autor, descripción, chips de metadata y footer con precio.</p>
+
+{% set _src_1 %}{% raw %}<div class="grid-3">
+  <a class="module-card" href="#">
+    <div class="module-card-head">
+      <div class="module-card-icon"><iconify-icon icon="lucide:shopping-cart"></iconify-icon></div>
+      <div class="module-card-info">
+        <h3 class="module-card-name">POS &amp; Sales</h3>
+        <span class="module-card-author">@erplora</span>
+      </div>
+    </div>
+    <p class="module-card-desc">Invoicing, receipts, returns. Modulo certificado AEAT.</p>
+    <div class="module-card-meta">
+      <span class="chip success sm">Compatible</span>
+      <span class="chip neutral sm">Verifactu</span>
+    </div>
+    <div class="module-card-footer">
+      <span class="module-card-price">29 €/mes</span>
+      <span class="chip outline sm">Free trial</span>
+    </div>
+  </a>
+
+  <a class="module-card" href="#">
+    <div class="module-card-head">
+      <div class="module-card-icon"><iconify-icon icon="lucide:package"></iconify-icon></div>
+      <div class="module-card-info">
+        <h3 class="module-card-name">Inventory</h3>
+        <span class="module-card-author">@erplora</span>
+      </div>
+    </div>
+    <p class="module-card-desc">Almacenes, traspasos y conteo cíclico con código de barras.</p>
+    <div class="module-card-meta">
+      <span class="chip success sm">Compatible</span>
+      <span class="chip info sm">Multi-warehouse</span>
+    </div>
+    <div class="module-card-footer">
+      <span class="module-card-price free">Gratis</span>
+      <span class="chip outline sm">Open source</span>
+    </div>
+  </a>
+
+  <a class="module-card" href="#">
+    <div class="module-card-head">
+      <div class="module-card-icon"><iconify-icon icon="lucide:bar-chart-3"></iconify-icon></div>
+      <div class="module-card-info">
+        <h3 class="module-card-name">Analytics Pro</h3>
+        <span class="module-card-author">@datasense</span>
+      </div>
+    </div>
+    <p class="module-card-desc">Dashboards customizables con conectores a Google Analytics, Stripe y Shopify.</p>
+    <div class="module-card-meta">
+      <span class="chip warn sm">Beta</span>
+      <span class="chip neutral sm">3rd party</span>
+    </div>
+    <div class="module-card-footer">
+      <span class="module-card-price">19 €/mes</span>
+    </div>
+  </a>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("3 módulos en grid (marketplace)", jinja_src=_src_1, jinjax_src=_src_1) %}
+<div class="grid-3">
+  <a class="module-card" href="#">
+    <div class="module-card-head">
+      <div class="module-card-icon"><iconify-icon icon="lucide:shopping-cart"></iconify-icon></div>
+      <div class="module-card-info">
+        <h3 class="module-card-name">POS &amp; Sales</h3>
+        <span class="module-card-author">@erplora</span>
+      </div>
+    </div>
+    <p class="module-card-desc">Invoicing, receipts, returns. Modulo certificado AEAT.</p>
+    <div class="module-card-meta">
+      <span class="chip success sm">Compatible</span>
+      <span class="chip neutral sm">Verifactu</span>
+    </div>
+    <div class="module-card-footer">
+      <span class="module-card-price">29 €/mes</span>
+      <span class="chip outline sm">Free trial</span>
+    </div>
+  </a>
+
+  <a class="module-card" href="#">
+    <div class="module-card-head">
+      <div class="module-card-icon"><iconify-icon icon="lucide:package"></iconify-icon></div>
+      <div class="module-card-info">
+        <h3 class="module-card-name">Inventory</h3>
+        <span class="module-card-author">@erplora</span>
+      </div>
+    </div>
+    <p class="module-card-desc">Almacenes, traspasos y conteo cíclico con código de barras.</p>
+    <div class="module-card-meta">
+      <span class="chip success sm">Compatible</span>
+      <span class="chip info sm">Multi-warehouse</span>
+    </div>
+    <div class="module-card-footer">
+      <span class="module-card-price free">Gratis</span>
+      <span class="chip outline sm">Open source</span>
+    </div>
+  </a>
+
+  <a class="module-card" href="#">
+    <div class="module-card-head">
+      <div class="module-card-icon"><iconify-icon icon="lucide:bar-chart-3"></iconify-icon></div>
+      <div class="module-card-info">
+        <h3 class="module-card-name">Analytics Pro</h3>
+        <span class="module-card-author">@datasense</span>
+      </div>
+    </div>
+    <p class="module-card-desc">Dashboards customizables con conectores a Google Analytics, Stripe y Shopify.</p>
+    <div class="module-card-meta">
+      <span class="chip warn sm">Beta</span>
+      <span class="chip neutral sm">3rd party</span>
+    </div>
+    <div class="module-card-footer">
+      <span class="module-card-price">19 €/mes</span>
+    </div>
+  </a>
+</div>
+{% endcall %}
+{% endblock %}

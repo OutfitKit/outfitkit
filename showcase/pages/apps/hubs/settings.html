@@ -78,7 +78,7 @@
     <div class="content scroll body">
       <div class="page-header">
         <div class="page-header-title">
-          <h1 class="flex items-center gap-3">acme-prod · Configuración <span class="badge success"><span class="badge__dot"></span>Producción · Activo</span></h1>
+          <h1 class="flex items-center gap-3">acme-prod · Configuración <span class="badge success"><span class="badge-dot"></span>Producción · Activo</span></h1>
           <div class="page-header-sub">acme.erplora.cloud · región EU-West-1 · plan Enterprise</div>
         </div>
         <div class="actions">
@@ -109,21 +109,21 @@
           <div class="body">
             <div class="row">
               <label class="field col-md-6">
-                <span class="field__label">Nombre del hub</span>
+                <span class="field-label">Nombre del hub</span>
                 <input class="input" value="Acme Industries · Producción"/>
               </label>
               <label class="field col-md-6">
-                <span class="field__label">Identificador interno</span>
+                <span class="field-label">Identificador interno</span>
                 <input class="input opacity-70" value="acme-prod" readonly/>
               </label>
             </div>
             <label class="field mt-3">
-              <span class="field__label">Descripción</span>
+              <span class="field-label">Descripción</span>
               <textarea class="textarea" rows="3">Hub principal de Acme Industries S.L. para todas las tiendas físicas y el almacén central de Sant Cugat.</textarea>
             </label>
             <div class="row mt-3">
               <label class="field col-md-6">
-                <span class="field__label">Zona horaria</span>
+                <span class="field-label">Zona horaria</span>
                 <select class="select">
                   <option>Europe/Madrid (UTC+01:00)</option>
                   <option>Europe/Lisbon (UTC+00:00)</option>
@@ -131,7 +131,7 @@
                 </select>
               </label>
               <label class="field col-md-6">
-                <span class="field__label">Idioma por defecto</span>
+                <span class="field-label">Idioma por defecto</span>
                 <select class="select">
                   <option>Español (España)</option>
                   <option>Català</option>
@@ -152,7 +152,7 @@
           </div>
           <div class="body">
             <label class="field mb-4">
-              <span class="field__label">Subdominio principal</span>
+              <span class="field-label">Subdominio principal</span>
               <div style="display:flex;gap:8px;align-items:stretch;">
                 <input class="input" value="acme.erplora.cloud" readonly style="opacity:0.85;flex:1;"/>
                 <button class="btn secondary sm" data-on:click="$copied = true" data-class:is-loading="$copied">
@@ -160,19 +160,19 @@
                   <span data-show="$copied">Copiado ✓</span>
                 </button>
               </div>
-              <span class="field__hint">El subdominio gestionado no se puede cambiar tras la creación.</span>
+              <span class="field-hint">El subdominio gestionado no se puede cambiar tras la creación.</span>
             </label>
 
-            <div class="field__label mb-2">Dominios personalizados</div>
+            <div class="field-label mb-2">Dominios personalizados</div>
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
               <div data-show="$domains.includes('pos.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">pos.acme.com</span>
-                <span class="badge success"><span class="badge__dot"></span>SSL activo</span>
+                <span class="badge success"><span class="badge-dot"></span>SSL activo</span>
                 <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'pos.acme.com')">Quitar</button>
               </div>
               <div data-show="$domains.includes('tienda.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">tienda.acme.com</span>
-                <span class="badge warning"><span class="badge__dot"></span>Esperando DNS</span>
+                <span class="badge warning"><span class="badge-dot"></span>Esperando DNS</span>
                 <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'tienda.acme.com')">Quitar</button>
               </div>
               <template data-show="false"></template>
@@ -197,13 +197,13 @@
           <div class="body">
             <div class="row">
               <label class="field col-md-6">
-                <span class="field__label">Email del admin</span>
+                <span class="field-label">Email del admin</span>
                 <input class="input" type="email" value="ioan@acme.com"/>
               </label>
               <label class="field col-md-6">
-                <span class="field__label">Contacto de incidencias</span>
+                <span class="field-label">Contacto de incidencias</span>
                 <input class="input" type="email" value="incidencias@acme.com"/>
-                <span class="field__hint">Recibe alertas críticas las 24 h.</span>
+                <span class="field-hint">Recibe alertas críticas las 24 h.</span>
               </label>
             </div>
           </div>
@@ -219,32 +219,32 @@
           </div>
           <div class="body">
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Alertas críticas</div>
-                <div class="toggle-row__desc">Hub caído, pago fallido, brechas de seguridad. No se puede desactivar.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Alertas críticas</div>
+                <div class="toggle-row-desc">Hub caído, pago fallido, brechas de seguridad. No se puede desactivar.</div>
               </div>
-              <label class="toggle"><input type="checkbox" checked disabled/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" checked disabled/><span class="toggle-track"></span></label>
             </div>
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Resumen diario</div>
-                <div class="toggle-row__desc">Email cada mañana con KPIs del día anterior.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Resumen diario</div>
+                <div class="toggle-row-desc">Email cada mañana con KPIs del día anterior.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:notif-daily/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:notif-daily/><span class="toggle-track"></span></label>
             </div>
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Métricas semanales</div>
-                <div class="toggle-row__desc">Tendencias y comparativa con la semana anterior, los lunes.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Métricas semanales</div>
+                <div class="toggle-row-desc">Tendencias y comparativa con la semana anterior, los lunes.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:notif-weekly/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:notif-weekly/><span class="toggle-track"></span></label>
             </div>
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Marketing y novedades</div>
-                <div class="toggle-row__desc">Nuevos módulos, casos de uso y eventos de ERPlora.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Marketing y novedades</div>
+                <div class="toggle-row-desc">Nuevos módulos, casos de uso y eventos de ERPlora.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:notif-marketing/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:notif-marketing/><span class="toggle-track"></span></label>
             </div>
           </div>
         </section>
@@ -260,7 +260,7 @@
           <div class="body">
             <div class="row">
               <label class="field col-md-6 col-lg-4">
-                <span class="field__label">Día de la semana</span>
+                <span class="field-label">Día de la semana</span>
                 <select class="select">
                   <option>Domingo</option>
                   <option>Lunes</option>
@@ -272,11 +272,11 @@
                 </select>
               </label>
               <label class="field col-md-6 col-lg-4">
-                <span class="field__label">Hora de inicio</span>
+                <span class="field-label">Hora de inicio</span>
                 <input class="input" type="time" value="03:00"/>
               </label>
               <label class="field col-md-6 col-lg-4">
-                <span class="field__label">Duración máxima</span>
+                <span class="field-label">Duración máxima</span>
                 <select class="select">
                   <option>30 minutos</option>
                   <option>1 hora</option>
@@ -285,11 +285,11 @@
               </label>
             </div>
             <div class="callout info mt-3">
-              <span class="callout__icon">
+              <span class="callout-icon">
                 <iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon>
               </span>
-              <div class="callout__body">
-                <div class="callout__desc">Próxima ventana: <b>domingo 11 mayo 2026, 03:00</b>. Avisaremos por email 24 h antes.</div>
+              <div class="callout-body">
+                <div class="callout-desc">Próxima ventana: <b>domingo 11 mayo 2026, 03:00</b>. Avisaremos por email 24 h antes.</div>
               </div>
             </div>
           </div>
@@ -316,12 +316,12 @@
             <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
               <div data-show="$domains.includes('pos.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">pos.acme.com</span>
-                <span class="badge success"><span class="badge__dot"></span>SSL activo</span>
+                <span class="badge success"><span class="badge-dot"></span>SSL activo</span>
                 <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'pos.acme.com')">Quitar</button>
               </div>
               <div data-show="$domains.includes('tienda.acme.com')" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 12px;background:var(--bg-1);border:1px solid var(--line);border-radius:8px;">
                 <span style="font-family:var(--font-mono);font-size:13px;">tienda.acme.com</span>
-                <span class="badge warning"><span class="badge__dot"></span>Esperando DNS</span>
+                <span class="badge warning"><span class="badge-dot"></span>Esperando DNS</span>
                 <button class="btn ghost sm text-danger" data-on:click="$domains = $domains.filter(d => d !== 'tienda.acme.com')">Quitar</button>
               </div>
               <div data-show="$domains.length === 0" style="font-size:12px;color:var(--ink-3);padding:6px 0;">No hay dominios personalizados configurados.</div>
@@ -331,8 +331,8 @@
               <button class="btn secondary sm" data-on:click="if ($newDomain) { $domains = [...$domains, $newDomain]; $newDomain = ''; }">+ Añadir dominio</button>
             </div>
             <div class="callout info mt-3">
-              <div class="callout__body">
-                <div class="callout__desc">Añade un registro CNAME apuntando a <code>acme.erplora.cloud</code>. SSL se emite automáticamente vía Let's Encrypt.</div>
+              <div class="callout-body">
+                <div class="callout-desc">Añade un registro CNAME apuntando a <code>acme.erplora.cloud</code>. SSL se emite automáticamente vía Let's Encrypt.</div>
               </div>
             </div>
           </div>
@@ -350,32 +350,32 @@
           </div>
           <div class="body">
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Stripe</div>
-                <div class="toggle-row__desc">Procesamiento de pagos y suscripciones.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Stripe</div>
+                <div class="toggle-row-desc">Procesamiento de pagos y suscripciones.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:int-stripe/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:int-stripe/><span class="toggle-track"></span></label>
             </div>
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Slack</div>
-                <div class="toggle-row__desc">Notificaciones de pedidos y alertas en canales.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Slack</div>
+                <div class="toggle-row-desc">Notificaciones de pedidos y alertas en canales.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:int-slack/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:int-slack/><span class="toggle-track"></span></label>
             </div>
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Google Calendar</div>
-                <div class="toggle-row__desc">Sincroniza eventos y reservas.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Google Calendar</div>
+                <div class="toggle-row-desc">Sincroniza eventos y reservas.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:int-gcal/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:int-gcal/><span class="toggle-track"></span></label>
             </div>
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Zapier</div>
-                <div class="toggle-row__desc">Conecta con +5 000 apps mediante zaps.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Zapier</div>
+                <div class="toggle-row-desc">Conecta con +5 000 apps mediante zaps.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:int-zapier/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:int-zapier/><span class="toggle-track"></span></label>
             </div>
           </div>
         </section>
@@ -392,18 +392,18 @@
           </div>
           <div class="body">
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Backups automáticos</div>
-                <div class="toggle-row__desc">Snapshot diario a las 04:00 UTC.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Backups automáticos</div>
+                <div class="toggle-row-desc">Snapshot diario a las 04:00 UTC.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:auto-backup/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:auto-backup/><span class="toggle-track"></span></label>
             </div>
             <div class="toggle-row">
-              <div class="toggle-row__text">
-                <div class="toggle-row__label">Cifrado AES-256</div>
-                <div class="toggle-row__desc">Cifra los snapshots con tu propia clave KMS.</div>
+              <div class="toggle-row-text">
+                <div class="toggle-row-label">Cifrado AES-256</div>
+                <div class="toggle-row-desc">Cifra los snapshots con tu propia clave KMS.</div>
               </div>
-              <label class="toggle"><input type="checkbox" data-bind:encrypt-backup/><span class="toggle__track"></span></label>
+              <label class="toggle"><input type="checkbox" data-bind:encrypt-backup/><span class="toggle-track"></span></label>
             </div>
             <div class="mt-3">
               <button class="btn secondary sm">Crear snapshot manual</button>

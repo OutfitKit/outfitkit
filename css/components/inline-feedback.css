@@ -66,7 +66,7 @@
   flex-shrink: 0;
 }
 
-.banner__action {
+.banner-action {
   background: var(--action-bg);
   border: var(--border-w) solid var(--action-border);
   color: var(--action-color);
@@ -80,11 +80,11 @@
   transition: background var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
 }
 
-.banner__action:hover {
+.banner-action:hover {
   background: var(--action-hover-bg);
 }
 
-.banner__action--primary {
+.banner-action--primary {
   --action-bg: var(--variant, var(--color-primary));
   --action-color: var(--variant-contrast, var(--color-primary-contrast));
   --action-border: var(--variant, var(--color-primary));
@@ -151,7 +151,7 @@
   line-height: var(--leading-normal);
 }
 
-.callout__icon {
+.callout-icon {
   width: var(--icon-size);
   height: var(--icon-size);
   border-radius: var(--radius-sm);
@@ -162,27 +162,27 @@
   flex-shrink: 0;
 }
 
-.callout__icon svg {
+.callout-icon svg {
   width: 0.9375rem;
   height: 0.9375rem;
 }
 
-.callout__body {
+.callout-body {
   min-width: 0;
 }
 
-.callout__title {
+.callout-title {
   font-weight: var(--weight-semibold);
   color: var(--ink);
   margin: var(--space-0) var(--space-0) var(--border-w-2);
   font-size: var(--text-md);
 }
 
-.callout__desc {
+.callout-desc {
   color: var(--ink-2);
 }
 
-.callout__desc code {
+.callout-desc code {
   font-family: var(--font-mono);
   font-size: var(--text-sm);
   padding: var(--border-w) 0.3125rem;
@@ -191,7 +191,7 @@
   color: var(--ink);
 }
 
-.callout__list {
+.callout-list {
   margin: var(--space-1-5) var(--space-0) var(--space-0);
   padding-left: 1.125rem;
   font-size: var(--text-sm);
@@ -199,20 +199,20 @@
   line-height: 1.6;
 }
 
-.callout__actions {
+.callout-actions {
   display: flex;
   gap: var(--space-1-5);
   margin-top: var(--space-2);
 }
 
-.callout__link {
+.callout-link {
   color: var(--variant, var(--color-primary));
   font-weight: var(--weight-medium);
   font-size: var(--text-sm);
   text-decoration: none;
 }
 
-.callout__link:hover {
+.callout-link:hover {
   text-decoration: underline;
 }
 
@@ -227,21 +227,21 @@
   align-items: center;
 }
 
-.callout.compact .callout__icon {
+.callout.compact .callout-icon {
   background: transparent;
   border-radius: 0;
 }
 
-.callout.compact .callout__icon svg {
+.callout.compact .callout-icon svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
 }
 
-.callout.compact .callout__title {
+.callout.compact .callout-title {
   display: inline;
 }
 
-.callout.compact .callout__desc {
+.callout.compact .callout-desc {
   display: inline;
   margin-left: var(--space-1-5);
   color: var(--ink-3);

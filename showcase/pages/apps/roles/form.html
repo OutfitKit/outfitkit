@@ -60,17 +60,17 @@
             <div class="body">
               <div class="form-row">
                 <div class="field">
-                  <label class="field__label field__label--req">Identificador interno</label>
+                  <label class="field-label field-label--req">Identificador interno</label>
                   <input class="input" pattern="[a-z_]+" data-bind:name placeholder="warehouse_staff"/>
-                  <span class="field__hint">Solo minúsculas y guion bajo. No se puede cambiar después.</span>
+                  <span class="field-hint">Solo minúsculas y guion bajo. No se puede cambiar después.</span>
                 </div>
                 <div class="field">
-                  <label class="field__label field__label--req">Nombre visible</label>
+                  <label class="field-label field-label--req">Nombre visible</label>
                   <input class="input" data-bind:display placeholder="Personal de almacén"/>
                 </div>
               </div>
               <div class="field mt-3">
-                <label class="field__label">Descripción</label>
+                <label class="field-label">Descripción</label>
                 <textarea class="input" rows="3" data-bind:desc placeholder="Qué puede hacer este rol…"></textarea>
               </div>
             </div>
@@ -92,10 +92,10 @@
                   <div class="flex-1"><div class="font-semibold">Sales</div><div class="text-xs text-ink-3">Tickets, pedidos y devoluciones</div></div>
                 </div>
                 <div class="row gap-sm">
-                  <label class="check"><input type="checkbox" data-bind:perms.sales_view/><span class="check__box"></span> <span class="text-md">sales.view</span></label>
-                  <label class="check"><input type="checkbox" data-bind:perms.sales_create/><span class="check__box"></span> <span class="text-md">sales.create</span></label>
-                  <label class="check"><input type="checkbox"/><span class="check__box"></span> <span class="text-md">sales.delete</span></label>
-                  <label class="check"><input type="checkbox"/><span class="check__box"></span> <span class="text-md">sales.export</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.sales_view/><span class="check-box"></span> <span class="text-md">sales.view</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.sales_create/><span class="check-box"></span> <span class="text-md">sales.create</span></label>
+                  <label class="check"><input type="checkbox"/><span class="check-box"></span> <span class="text-md">sales.delete</span></label>
+                  <label class="check"><input type="checkbox"/><span class="check-box"></span> <span class="text-md">sales.export</span></label>
                 </div>
               </div>
 
@@ -108,10 +108,10 @@
                   <div class="flex-1"><div class="font-semibold">POS</div><div class="text-xs text-ink-3">TPV, caja, comandero</div></div>
                 </div>
                 <div class="row gap-sm">
-                  <label class="check"><input type="checkbox" data-bind:perms.pos_use/><span class="check__box"></span> <span class="text-md">pos.use</span></label>
-                  <label class="check"><input type="checkbox" data-bind:perms.pos_refund/><span class="check__box"></span> <span class="text-md">pos.refund</span></label>
-                  <label class="check"><input type="checkbox"/><span class="check__box"></span> <span class="text-md">pos.cash_close</span></label>
-                  <label class="check"><input type="checkbox"/><span class="check__box"></span> <span class="text-md">pos.discount</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.pos_use/><span class="check-box"></span> <span class="text-md">pos.use</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.pos_refund/><span class="check-box"></span> <span class="text-md">pos.refund</span></label>
+                  <label class="check"><input type="checkbox"/><span class="check-box"></span> <span class="text-md">pos.cash_close</span></label>
+                  <label class="check"><input type="checkbox"/><span class="check-box"></span> <span class="text-md">pos.discount</span></label>
                 </div>
               </div>
 
@@ -124,10 +124,10 @@
                   <div class="flex-1"><div class="font-semibold">Inventory</div><div class="text-xs text-ink-3">Stock y almacenes</div></div>
                 </div>
                 <div class="row gap-sm">
-                  <label class="check"><input type="checkbox" data-bind:perms.inventory_view/><span class="check__box"></span> <span class="text-md">inventory.view</span></label>
-                  <label class="check"><input type="checkbox" data-bind:perms.inventory_edit/><span class="check__box"></span> <span class="text-md">inventory.edit</span></label>
-                  <label class="check"><input type="checkbox"/><span class="check__box"></span> <span class="text-md">inventory.transfer</span></label>
-                  <label class="check"><input type="checkbox"/><span class="check__box"></span> <span class="text-md">inventory.adjust</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.inventory_view/><span class="check-box"></span> <span class="text-md">inventory.view</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.inventory_edit/><span class="check-box"></span> <span class="text-md">inventory.edit</span></label>
+                  <label class="check"><input type="checkbox"/><span class="check-box"></span> <span class="text-md">inventory.transfer</span></label>
+                  <label class="check"><input type="checkbox"/><span class="check-box"></span> <span class="text-md">inventory.adjust</span></label>
                 </div>
               </div>
 
@@ -140,8 +140,8 @@
                   <div class="flex-1"><div class="font-semibold">KDS</div><div class="text-xs text-ink-3">Pantalla de cocina</div></div>
                 </div>
                 <div class="row gap-sm">
-                  <label class="check"><input type="checkbox" data-bind:perms.kds_view/><span class="check__box"></span> <span class="text-md">kds.view</span></label>
-                  <label class="check"><input type="checkbox" data-bind:perms.kds_complete/><span class="check__box"></span> <span class="text-md">kds.complete</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.kds_view/><span class="check-box"></span> <span class="text-md">kds.view</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.kds_complete/><span class="check-box"></span> <span class="text-md">kds.complete</span></label>
                 </div>
               </div>
 
@@ -154,11 +154,11 @@
                   <div class="flex-1"><div class="font-semibold">Administración</div><div class="text-xs text-ink-3">Empleados, módulos, ajustes</div></div>
                 </div>
                 <div class="row gap-sm">
-                  <label class="check"><input type="checkbox" data-bind:perms.employees_view/><span class="check__box"></span> <span class="text-md">employees.view</span></label>
-                  <label class="check"><input type="checkbox"/><span class="check__box"></span> <span class="text-md">employees.edit</span></label>
-                  <label class="check"><input type="checkbox" data-bind:perms.billing_view/><span class="check__box"></span> <span class="text-md">billing.view</span></label>
-                  <label class="check"><input type="checkbox" data-bind:perms.modules_install/><span class="check__box"></span> <span class="text-md">modules.install</span></label>
-                  <label class="check"><input type="checkbox" data-bind:perms.settings_edit/><span class="check__box"></span> <span class="text-md">settings.edit</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.employees_view/><span class="check-box"></span> <span class="text-md">employees.view</span></label>
+                  <label class="check"><input type="checkbox"/><span class="check-box"></span> <span class="text-md">employees.edit</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.billing_view/><span class="check-box"></span> <span class="text-md">billing.view</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.modules_install/><span class="check-box"></span> <span class="text-md">modules.install</span></label>
+                  <label class="check"><input type="checkbox" data-bind:perms.settings_edit/><span class="check-box"></span> <span class="text-md">settings.edit</span></label>
                 </div>
               </div>
             </div>
@@ -175,7 +175,7 @@
               </span>
               <h4 style="font-family:var(--font-display);font-size:16px;font-weight:600;margin:10px 0 4px;" data-text="$display || 'Nombre del rol'"></h4>
               <p style="font-size:12.5px;color:var(--ink-3);margin:0 0 12px;" data-text="$desc || 'Descripción del rol…'"></p>
-              <span class="badge"><span class="badge__dot"></span>Custom</span>
+              <span class="badge"><span class="badge-dot"></span>Custom</span>
             </div>
             <div class="body" style="border-top:1px solid var(--line);">
               <div class="eyebrow mb-1">Identificador</div>

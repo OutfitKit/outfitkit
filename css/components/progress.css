@@ -2,7 +2,7 @@
    OutfitKit · Progress / Spinner / Pagination
    ─────────────────────────────────────────────────────────────
    Uso:
-     <div class="progress"><div class="progress__bar" style="--value: 60%"></div></div>
+     <div class="progress"><div class="progress-bar" style="--value: 60%"></div></div>
      <div class="progress success indeterminate striped"><...></div>
      <span class="spinner primary lg"></span>
 
@@ -26,7 +26,7 @@
   position: relative;
 }
 
-.progress__bar {
+.progress-bar {
   height: 100%;
   width: var(--value);
   background: var(--color);
@@ -34,7 +34,7 @@
   transition: width var(--dur-base) var(--ease-out);
 }
 
-.progress.indeterminate .progress__bar {
+.progress.indeterminate .progress-bar {
   width: 35% !important;
   animation: ok-progress-indet 1.4s var(--ease-inout) infinite;
 }
@@ -44,7 +44,7 @@
   100% { transform: translateX(290%); }
 }
 
-.progress.striped .progress__bar {
+.progress.striped .progress-bar {
   background-image: linear-gradient(
     45deg,
     var(--stripe-fill) 25%,
@@ -76,7 +76,7 @@
   width: 100%;
 }
 
-.progress-segments__seg {
+.progress-segments-seg {
   flex: 1;
   height: var(--height);
   background: var(--bg-3);
@@ -85,11 +85,11 @@
   overflow: hidden;
 }
 
-.progress-segments__seg[data-state="done"] {
+.progress-segments-seg[data-state="done"] {
   background: var(--variant, var(--color-primary));
 }
 
-.progress-segments__seg[data-state="active"]::after {
+.progress-segments-seg[data-state="active"]::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -112,19 +112,19 @@
   gap: var(--space-2);
 }
 
-.progress-block__head {
+.progress-block-head {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
   font-size: var(--text-sm);
 }
 
-.progress-block__label {
+.progress-block-label {
   color: var(--ink-2);
   font-weight: var(--weight-medium);
 }
 
-.progress-block__value {
+.progress-block-value {
   color: var(--ink-3);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
@@ -172,7 +172,7 @@
   align-items: center;
 }
 
-.dots__d {
+.dots-d {
   width: var(--width);
   height: var(--width);
   border-radius: var(--radius-circle);
@@ -180,8 +180,8 @@
   animation: ok-dots-bounce 1.2s ease-in-out infinite;
 }
 
-.dots__d:nth-child(2) { animation-delay: 0.15s; }
-.dots__d:nth-child(3) { animation-delay: 0.3s; }
+.dots-d:nth-child(2) { animation-delay: 0.15s; }
+.dots-d:nth-child(3) { animation-delay: 0.3s; }
 
 @keyframes ok-dots-bounce {
   0%,
@@ -234,13 +234,13 @@
   transform: rotate(-90deg);
 }
 
-.circ__track {
+.circ-track {
   fill: none;
   stroke: var(--background);
   stroke-width: var(--border-size);
 }
 
-.circ__bar {
+.circ-bar {
   fill: none;
   stroke: var(--color);
   stroke-width: var(--border-size);
@@ -248,7 +248,7 @@
   transition: stroke-dashoffset var(--dur-slow) var(--ease-out);
 }
 
-.circ__label {
+.circ-label {
   position: absolute;
   font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
@@ -270,7 +270,7 @@
   font-size: var(--text-sm);
 }
 
-.paginator__btn {
+.paginator-btn {
   --background: transparent;
   --color:      var(--ink-2);
 
@@ -290,31 +290,31 @@
   transition: background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
 }
 
-.paginator__btn:hover {
+.paginator-btn:hover {
   --background: var(--bg-3);
   --color: var(--ink);
 }
 
-.paginator__btn[aria-current="page"],
-.paginator__btn[data-active="true"] {
+.paginator-btn[aria-current="page"],
+.paginator-btn[data-active="true"] {
   --background: var(--variant, var(--color-primary));
   --color: var(--variant-contrast, var(--color-primary-contrast));
   font-weight: var(--weight-medium);
 }
 
-.paginator__btn[disabled],
-.paginator__btn[aria-disabled="true"] {
+.paginator-btn[disabled],
+.paginator-btn[aria-disabled="true"] {
   opacity: 0.35;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.paginator__btn svg {
+.paginator-btn svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
 }
 
-.paginator__gap {
+.paginator-gap {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -332,7 +332,7 @@
   gap: 0;
 }
 
-.paginator.compact .paginator__btn {
+.paginator.compact .paginator-btn {
   border-radius: var(--radius-xs);
 }
 
@@ -348,22 +348,22 @@
   color: var(--ink-3);
 }
 
-.pager__info {
+.pager-info {
   font-variant-numeric: tabular-nums;
 }
 
-.pager__info b {
+.pager-info b {
   color: var(--ink-2);
   font-weight: var(--weight-medium);
 }
 
-.pager__pgsize {
+.pager-pgsize {
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
 }
 
-.pager__pgsize select {
+.pager-pgsize select {
   height: var(--size-sm);
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);

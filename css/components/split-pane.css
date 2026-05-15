@@ -20,7 +20,7 @@
   overflow: hidden;
 }
 
-.split__pane {
+.split-pane {
   flex: 1 1 0;
   min-width: 0;
   min-height: 0;
@@ -28,15 +28,15 @@
   overflow: hidden;
 }
 
-.split__pane--fixed {
+.split-pane--fixed {
   flex: 0 0 auto;
 }
 
-.split__pane--scroll {
+.split-pane--scroll {
   overflow: auto;
 }
 
-.split__divider {
+.split-divider {
   flex: 0 0 0.375rem;
   background: var(--bg-1);
   border-left: var(--border-w) solid var(--line);
@@ -49,11 +49,11 @@
   transition: background var(--dur-fast) var(--ease-out);
 }
 
-.split__divider:hover {
+.split-divider:hover {
   background: var(--bg-3);
 }
 
-.split__divider::before {
+.split-divider::before {
   content: "";
   width: 0.125rem;
   height: 1.125rem;
@@ -66,7 +66,7 @@
   flex-direction: column;
 }
 
-.split.vertical .split__divider {
+.split.vertical .split-divider {
   flex: 0 0 0.375rem;
   border-left: none;
   border-right: none;
@@ -76,19 +76,19 @@
   width: 100%;
 }
 
-.split.vertical .split__divider::before {
+.split.vertical .split-divider::before {
   width: 1.125rem;
   height: 0.125rem;
   background:
     radial-gradient(circle, var(--ink-4) 1px, transparent 1.5px) 0 0 / 5px 2px repeat-x;
 }
 
-.split.collapsed-left .split__pane:first-child,
-.split.collapsed-left .split__divider {
+.split.collapsed-left .split-pane:first-child,
+.split.collapsed-left .split-divider {
   display: none;
 }
 
-.split.collapsed-right .split__pane:last-child,
-.split.collapsed-right .split__divider {
+.split.collapsed-right .split-pane:last-child,
+.split.collapsed-right .split-divider {
   display: none;
 }

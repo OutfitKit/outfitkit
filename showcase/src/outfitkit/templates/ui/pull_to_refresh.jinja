@@ -1,0 +1,22 @@
+{#def state="idle", mouse=false, labels=None, attrs=None #}
+
+{# labels: dict opcional con keys idle/pulling/ready/refreshing. #}
+
+{% macro pull_to_refresh(state="idle", mouse=false, labels=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _labels = labels or {} -%}
+<div data-ptr-host{% if mouse %} data-ptr-mouse{% endif %}
+     {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <div class="ptr" data-state="{{ state }}">
+    <div class="ptr-spinner" aria-hidden="true"></div>
+    <span class="ptr-label"
+          {%- if _labels.idle %} data-idle="{{ _labels.idle }}"{% endif %}
+          {%- if _labels.pulling %} data-pulling="{{ _labels.pulling }}"{% endif %}
+          {%- if _labels.ready %} data-ready="{{ _labels.ready }}"{% endif %}
+          {%- if _labels.refreshing %} data-refreshing="{{ _labels.refreshing }}"{% endif %}>
+      {{ _labels.idle or "Tira para actualizar" }}
+    </span>
+  </div>
+  {{ caller() }}
+</div>
+{%- endmacro %}

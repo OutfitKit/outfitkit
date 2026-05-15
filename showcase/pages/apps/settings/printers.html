@@ -102,7 +102,7 @@
                 <p class="sub">Epson · Térmica 80 mm</p>
               </div>
             </div>
-            <span class="pill success"><span class="pill__dot"></span>Online</span>
+            <span class="pill success"><span class="pill-dot"></span>Online</span>
           </header>
           <div class="body grid gap-2 text-md">
             <div class="flex justify-between text-ink-3">
@@ -138,7 +138,7 @@
                 <p class="sub">Star Micronics · Térmica 80 mm</p>
               </div>
             </div>
-            <span class="pill success"><span class="pill__dot"></span>Online</span>
+            <span class="pill success"><span class="pill-dot"></span>Online</span>
           </header>
           <div class="body grid gap-2 text-md">
             <div class="flex justify-between text-ink-3">
@@ -171,7 +171,7 @@
                 <p class="sub">Bixolon · Térmica 80 mm</p>
               </div>
             </div>
-            <span class="pill success"><span class="pill__dot"></span>Online</span>
+            <span class="pill success"><span class="pill-dot"></span>Online</span>
           </header>
           <div class="body grid gap-2 text-md">
             <div class="flex justify-between text-ink-3">
@@ -204,7 +204,7 @@
                 <p class="sub">Brother · Etiquetas 62 mm</p>
               </div>
             </div>
-            <span class="pill danger"><span class="pill__dot"></span>Offline</span>
+            <span class="pill danger"><span class="pill-dot"></span>Offline</span>
           </header>
           <div class="body grid gap-2 text-md">
             <div class="flex justify-between text-ink-3">
@@ -262,8 +262,8 @@
 
             <!-- Modo de añadir -->
             <div class="segment mb-4">
-              <button class="segment__opt" data-attr:aria-pressed="$prn.mode === 'auto'" data-on:click="$prn.mode = 'auto'">Auto-detectar en red</button>
-              <button class="segment__opt" data-attr:aria-pressed="$prn.mode === 'manual'" data-on:click="$prn.mode = 'manual'">Manual (IP)</button>
+              <button class="segment-opt" data-attr:aria-pressed="$prn.mode === 'auto'" data-on:click="$prn.mode = 'auto'">Auto-detectar en red</button>
+              <button class="segment-opt" data-attr:aria-pressed="$prn.mode === 'manual'" data-on:click="$prn.mode = 'manual'">Manual (IP)</button>
             </div>
 
             <!-- Auto detect -->
@@ -276,7 +276,7 @@
                     <div class="font-medium">Epson TM-T88VI</div>
                     <div class="text-xs text-ink-3 font-mono">192.168.1.230 · 64:eb:8c:11:22:33</div>
                   </div>
-                  <span class="pill success"><span class="pill__dot"></span>Lista</span>
+                  <span class="pill success"><span class="pill-dot"></span>Lista</span>
                 </label>
                 <label class="card interactive" style="display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;">
                   <input type="radio" name="autoprn"/>
@@ -284,7 +284,7 @@
                     <div class="font-medium">Star mC-Print3</div>
                     <div class="text-xs text-ink-3 font-mono">192.168.1.231 · 00:11:62:aa:bb:cc</div>
                   </div>
-                  <span class="pill success"><span class="pill__dot"></span>Lista</span>
+                  <span class="pill success"><span class="pill-dot"></span>Lista</span>
                 </label>
               </div>
               <button class="btn ghost sm mt-3">↻ Volver a escanear</button>
@@ -293,12 +293,12 @@
             <!-- Manual -->
             <div class="form" data-show="$prn.mode === 'manual'">
               <div class="field">
-                <label class="field__label field__label--req">Nombre</label>
+                <label class="field-label field-label--req">Nombre</label>
                 <input class="input" data-bind="prn.name" placeholder="ej. Impresora terraza"/>
               </div>
               <div class="form-row">
                 <div class="field">
-                  <label class="field__label">Tipo</label>
+                  <label class="field-label">Tipo</label>
                   <select class="select">
                     <option>Tickets</option>
                     <option>Cocina</option>
@@ -308,7 +308,7 @@
                   </select>
                 </div>
                 <div class="field">
-                  <label class="field__label">Conexión</label>
+                  <label class="field-label">Conexión</label>
                   <select class="select" data-bind="prn.conn">
                     <option value="network">Red TCP/IP</option>
                     <option value="usb">USB</option>
@@ -317,19 +317,19 @@
                 </div>
               </div>
               <div class="field" data-show="$prn.conn === 'network'">
-                <label class="field__label field__label--req">IP : Puerto</label>
+                <label class="field-label field-label--req">IP : Puerto</label>
                 <input class="input" data-bind="prn.address" placeholder="192.168.1.220:9100"/>
               </div>
               <div class="field">
-                <label class="field__label">Ubicación</label>
+                <label class="field-label">Ubicación</label>
                 <input class="input" placeholder="ej. Mostrador, Cocina, Barra"/>
               </div>
               <label class="toggle-row" style="border-top:1px solid var(--line);padding-top:12px;">
-                <div class="toggle-row__text">
-                  <span class="toggle-row__label">Marcar como predeterminada</span>
-                  <span class="toggle-row__desc">Se usará para tickets si no se especifica otra.</span>
+                <div class="toggle-row-text">
+                  <span class="toggle-row-label">Marcar como predeterminada</span>
+                  <span class="toggle-row-desc">Se usará para tickets si no se especifica otra.</span>
                 </div>
-                <label class="toggle"><input type="checkbox"/><span class="toggle__track"></span></label>
+                <label class="toggle"><input type="checkbox"/><span class="toggle-track"></span></label>
               </label>
             </div>
 

@@ -1,0 +1,95 @@
+/* ============================================================
+   OutfitKit · Segmented control
+   ─────────────────────────────────────────────────────────────
+   Control de selección horizontal — iOS UISegmentedControl /
+   Android Material BottomNavigationView segmented.
+
+   Pensado para dispositivos táctiles: cada opción hereda
+   var(--tap-min) (44 px · iOS HIG mínimo). En
+   desktop también es útil como "tab compactas" o filtros
+   inline; por eso vive fuera de mobile.css.
+
+   Estructura:
+     <div class="segmented" role="tablist">
+       <button class="segmented-option is-active">Día</button>
+       <button class="segmented-option">Semana</button>
+       <button class="segmented-option">Mes</button>
+     </div>
+
+   Variants:
+     .segmented.full      → 100% width (stretch a contenedor)
+     .segmented.sm        → más compacto
+   ============================================================ */
+
+.segmented {
+  --background:         var(--bg-3);
+  --border-radius:      var(--radius, var(--radius-md));
+  --padding-y:          var(--space-1-5);
+  --padding-x:          var(--space-4);
+  --gap:                var(--space-1);
+  --font-size:          var(--text, var(--text-sm));
+  --color:              var(--ink-2);
+  --active-background:  var(--bg-2);
+  --active-color:       var(--variant, var(--ink));
+  --min-tap-height:     var(--tap-min);    /* iOS HIG */
+
+  display: inline-flex;
+  background: var(--background);
+  border-radius: var(--border-radius);
+  padding: var(--gap);
+  position: relative;
+  font-size: var(--font-size);
+}
+
+.segmented-option {
+  flex: 1;
+  min-height: var(--min-tap-height);
+  padding: var(--padding-y) var(--padding-x);
+  background: transparent;
+  border: none;
+  color: var(--color);
+  cursor: pointer;
+  border-radius: calc(var(--border-radius) - var(--gap));
+  font: inherit;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: color var(--dur-base) var(--ease-out);
+  position: relative;
+  z-index: 1;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.segmented-option:focus-visible {
+  outline: var(--border-w-2) solid var(--brand, var(--color-primary));
+  outline-offset: 2px;
+}
+
+/* Estado activo — soporta .is-active, [aria-selected="true"] y [data-active="true"] */
+.segmented-option.is-active,
+.segmented-option[aria-selected="true"],
+.segmented-option[data-active="true"] {
+  color: var(--active-color);
+  background: var(--active-background);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Variant: ancho completo */
+.segmented.full {
+  display: flex;
+  width: 100%;
+}
+
+/* Variant: compacto · solo apto cuando el contexto garantiza puntero
+   (toolbars desktop). En mobile usa el tamaño por defecto. */
+.segmented.sm {
+  --padding-y: var(--space-1);
+  --padding-x: var(--space-2-5);
+  --font-size: var(--text-xs);
+  --min-tap-height: var(--tap-tight);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .segmented-option { transition: none; }
+}
