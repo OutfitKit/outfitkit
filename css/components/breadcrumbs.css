@@ -1,119 +1,150 @@
 /* ============================================================
    OutfitKit · Breadcrumbs
+   ─────────────────────────────────────────────────────────────
+   Navegación jerárquica con separadores.
+
+   Estructura:
+     <nav class="crumbs" aria-label="breadcrumb">
+       <a class="crumbs-item" href="…">ERPlora</a>
+       <span class="crumbs-sep" aria-hidden="true">
+         <iconify-icon icon="lucide:chevron-right"></iconify-icon>
+       </span>
+       <a class="crumbs-item" href="…">Cafetería</a>
+       …
+       <span class="crumbs-item" aria-current="page">Pedido #1234</span>
+     </nav>
+
+   Variantes: .chips (pastillas tintadas) · .sm (compact)
    ============================================================ */
 
 .crumbs {
-  --color: var(--ink-3);
-  --font-size: var(--text, var(--text-sm));
-  --background-hover: var(--bg-3);
-  --color-hover: var(--ink);
-  --color-active: var(--ink);
-  --padding-y: var(--pad-y, var(--space-1));
-  --padding-x: var(--pad-x, var(--space-2));
-  --icon-size: var(--icon, var(--icon-sm));
-  --separator-size: var(--icon-sm);          /* 14px — proporcional al texto */
-  --separator-color: var(--ink-3);           /* legible, no demasiado fade */
-  --separator-gap: var(--space-1);           /* respiro entre item y chevron */
-  --max-width: 13.75rem;
-  --more-size: var(--size, var(--size-xs));
-  --more-font-size: var(--text-xs);
-  --chip-padding-y: var(--space-1);
-
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--separator-gap);
-  font-size: var(--font-size);
-  color: var(--color);
+  gap: var(--space-1);
+  padding: 0;
+  margin: 0;
+  font-size: var(--text-sm);
   font-weight: 500;
-  min-width: 0;
+  line-height: 1.5;
+  color: var(--ink-3);                    /* muted foreground */
+  list-style: none;
 }
 
+/* Items (todos los enlaces y el activo) */
 .crumbs-item {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1-5);
-  padding: var(--padding-y) var(--padding-x);
-  border-radius: var(--radius-sm);
-  color: var(--color);
+  gap: var(--space-1-5);                  /* respiro entre icono y label */
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
   text-decoration: none;
   white-space: nowrap;
-  max-width: var(--max-width);
+  max-width: 13.75rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  transition: background var(--dur-fast), color var(--dur-fast);
+  transition: color var(--dur-fast) var(--ease-out);
 }
 
-.crumbs-item:hover {
-  background: var(--background-hover);
-  color: var(--color-hover);
+a.crumbs-item:hover {
+  color: var(--ink);
 }
 
-.crumbs-item[aria-current="page"],
-.crumbs-item--current {
-  color: var(--color-active);
+a.crumbs-item:focus-visible {
+  outline: var(--border-w-2) solid var(--brand);
+  outline-offset: var(--space-1);
+  border-radius: var(--radius-xs);
+}
+
+/* Ítem activo / página actual */
+.crumbs-item[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 600;
   cursor: default;
   pointer-events: none;
 }
 
+/* Icono opcional dentro de un item */
 .crumbs-icon {
-  width: var(--icon-size);
-  height: var(--icon-size);
-  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
   color: var(--ink-3);
+  flex-shrink: 0;
+}
+.crumbs-icon svg,
+.crumbs-icon iconify-icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
 }
 
+/* Separador (chevron, slash, o cualquier carácter literal) */
 .crumbs-sep {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: var(--separator-color);
-  font-size: var(--separator-size);
-  line-height: 1;
-  user-select: none;
+  color: inherit;
+  opacity: 0.5;
   flex-shrink: 0;
 }
-
 .crumbs-sep svg,
 .crumbs-sep iconify-icon {
-  width: var(--separator-size);
-  height: var(--separator-size);
+  width: var(--icon-sm);
+  height: var(--icon-sm);
   display: block;
-  color: inherit;
 }
 
+
+/* ───── Variante: chips ──────────────────────────────────────
+   Pastillas tintadas, sin separador visual (la propia forma
+   separa visualmente los items). */
+.crumbs.chips {
+  gap: var(--space-1-5);
+}
+.crumbs.chips .crumbs-item {
+  padding: var(--space-1) var(--space-2-5);
+  border-radius: var(--radius-pill);
+  background: color-mix(in oklch, var(--ink) 6%, transparent);
+  border: var(--border-w) solid var(--line);
+}
+.crumbs.chips a.crumbs-item:hover {
+  background: color-mix(in oklch, var(--ink) 12%, transparent);
+  color: var(--ink);
+}
+.crumbs.chips .crumbs-item[aria-current="page"] {
+  background: var(--brand-soft);
+  color: var(--brand);
+  border-color: transparent;
+}
+.crumbs.chips .crumbs-sep { display: none; }
+
+
+/* ───── Variante: compact / sm ───────────────────────────── */
+.crumbs.sm {
+  font-size: var(--text-xs);
+  gap: var(--space-0-5, 2px);
+}
+
+
+/* ───── More button (collapsed crumb set) ────────────────── */
 .crumbs-more {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: var(--more-size);
-  min-width: var(--more-size);
-  padding: var(--space-0) var(--space-1-5);
+  height: var(--size-xs);
+  min-width: var(--size-xs);
+  padding: 0 var(--space-1-5);
   background: var(--bg-3);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-sm);
   color: var(--ink-3);
   cursor: pointer;
-  font-size: var(--more-font-size);
+  font-size: var(--text-xs);
   letter-spacing: 0.05em;
 }
-
 .crumbs-more:hover {
   background: var(--bg-4);
   color: var(--ink);
-}
-
-.crumbs.chips .crumbs-item {
-  background: var(--bg-3);
-  border: var(--border-w) solid var(--line);
-  border-radius: var(--radius-pill);
-  padding: var(--chip-padding-y) var(--space-2-5);
-}
-
-.crumbs.chips .crumbs-sep {
-  display: none;
-}
-
-.crumbs.chips {
-  gap: var(--space-1-5);
 }
