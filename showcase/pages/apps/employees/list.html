@@ -74,7 +74,7 @@
       <div class="table-wrap">
         <div class="dt-toolbar">
           <div class="search" style="flex:1 1 220px;max-width:280px">
-            <svg class="search__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
             <input class="input sm" placeholder="Buscar por nombre o email…" data-bind:q/>
           </div>
           <select class="select sm" style="width:auto;min-width:130px" data-bind:role>
@@ -89,14 +89,14 @@
             <option value="active">Activos</option>
             <option value="inactive">Inactivos</option>
           </select>
-          <div class="dt-toolbar__spacer"></div>
+          <div class="dt-toolbar-spacer"></div>
           <select class="select sm" style="width:auto;min-width:64px" title="Por página">
             <option>12</option><option selected>24</option><option>48</option>
           </select>
-          <div class="dt-toolbar__divider"></div>
+          <div class="dt-toolbar-divider"></div>
           <div class="view-toggle" role="tablist" aria-label="Vista">
-            <button class="view-toggle__btn" data-on:click="$empView = 'table'" data-attr:aria-pressed="$empView === 'table'" title="Tabla"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon></button>
-            <button class="view-toggle__btn" data-on:click="$empView = 'grid'" data-attr:aria-pressed="$empView === 'grid'" title="Grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
+            <button class="view-toggle-btn" data-on:click="$empView = 'table'" data-attr:aria-pressed="$empView === 'table'" title="Tabla"><iconify-icon icon="lucide:menu" width="18" height="18"></iconify-icon></button>
+            <button class="view-toggle-btn" data-on:click="$empView = 'grid'" data-attr:aria-pressed="$empView === 'grid'" title="Grid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></button>
           </div>
         </div>
 
@@ -105,7 +105,7 @@
           <table class="table">
             <thead>
               <tr>
-                <th style="width:36px"><label class="check"><input type="checkbox"/><span class="check__box"></span></label></th>
+                <th style="width:36px"><label class="check"><input type="checkbox"/><span class="check-box"></span></label></th>
                 <th class="th sortable">Empleado</th>
                 <th>Email</th>
                 <th>Rol</th>
@@ -117,7 +117,7 @@
             </thead>
             <tbody>
               <tr data-on:click="$preview = 'joan'" class="cursor-pointer">
-                <td data-on:click__stop="evt.stopPropagation()"><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+                <td data-on:click__stop="evt.stopPropagation()"><label class="check"><input type="checkbox"/><span class="check-box"></span></label></td>
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm brand">JC</span>
@@ -128,14 +128,14 @@
                 <td><span class="badge brand">Admin</span></td>
                 <td>Català</td>
                 <td>hace 2 min</td>
-                <td><span class="badge success"><span class="badge__dot"></span>Activo</span></td>
+                <td><span class="badge success"><span class="badge-dot"></span>Activo</span></td>
                 <td data-on:click__stop="evt.stopPropagation()" class="text-right">
                   <button class="icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
                   <button class="icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
                 </td>
               </tr>
               <tr>
-                <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+                <td><label class="check"><input type="checkbox"/><span class="check-box"></span></label></td>
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">MR</span>
@@ -146,14 +146,14 @@
                 <td><span class="badge info">Manager</span></td>
                 <td>Español</td>
                 <td>hace 1 h</td>
-                <td><span class="badge success"><span class="badge__dot"></span>Activo</span></td>
+                <td><span class="badge success"><span class="badge-dot"></span>Activo</span></td>
                 <td class="text-right">
                   <button class="icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
                   <button class="icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
                 </td>
               </tr>
               <tr>
-                <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+                <td><label class="check"><input type="checkbox"/><span class="check-box"></span></label></td>
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">AL</span>
@@ -164,14 +164,14 @@
                 <td><span class="badge">Cajero</span></td>
                 <td>Español</td>
                 <td>hace 3 h</td>
-                <td><span class="badge success"><span class="badge__dot"></span>Activo</span></td>
+                <td><span class="badge success"><span class="badge-dot"></span>Activo</span></td>
                 <td class="text-right">
                   <button class="icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
                   <button class="icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
                 </td>
               </tr>
               <tr>
-                <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+                <td><label class="check"><input type="checkbox"/><span class="check-box"></span></label></td>
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">PG</span>
@@ -182,14 +182,14 @@
                 <td><span class="badge">Cocinero</span></td>
                 <td>Català</td>
                 <td>ayer</td>
-                <td><span class="badge success"><span class="badge__dot"></span>Activo</span></td>
+                <td><span class="badge success"><span class="badge-dot"></span>Activo</span></td>
                 <td class="text-right">
                   <button class="icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
                   <button class="icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
                 </td>
               </tr>
               <tr style="opacity:0.6;">
-                <td><label class="check"><input type="checkbox"/><span class="check__box"></span></label></td>
+                <td><label class="check"><input type="checkbox"/><span class="check-box"></span></label></td>
                 <td>
                   <div class="flex items-center gap-2">
                     <span class="avatar sm">SM</span>
@@ -200,7 +200,7 @@
                 <td><span class="badge">Cocinero</span></td>
                 <td>Español</td>
                 <td>hace 12 d</td>
-                <td><span class="badge"><span class="badge__dot"></span>Inactivo</span></td>
+                <td><span class="badge"><span class="badge-dot"></span>Inactivo</span></td>
                 <td class="text-right">
                   <button class="icon-btn" title="Editar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></button>
                   <button class="icon-btn" title="Más"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
@@ -220,7 +220,7 @@
                 <div class="text-xs text-ink-3">joan@larambla.es</div>
               </div>
               <span class="badge brand">Admin</span>
-              <span class="badge success"><span class="badge__dot"></span>Activo</span>
+              <span class="badge success"><span class="badge-dot"></span>Activo</span>
             </div>
           </article>
           <article class="card interactive">
@@ -231,7 +231,7 @@
                 <div class="text-xs text-ink-3">maria@larambla.es</div>
               </div>
               <span class="badge info">Manager</span>
-              <span class="badge success"><span class="badge__dot"></span>Activo</span>
+              <span class="badge success"><span class="badge-dot"></span>Activo</span>
             </div>
           </article>
           <article class="card interactive">
@@ -242,7 +242,7 @@
                 <div class="text-xs text-ink-3">aitana@larambla.es</div>
               </div>
               <span class="badge">Cajero</span>
-              <span class="badge success"><span class="badge__dot"></span>Activo</span>
+              <span class="badge success"><span class="badge-dot"></span>Activo</span>
             </div>
           </article>
           <article class="card interactive">
@@ -253,7 +253,7 @@
                 <div class="text-xs text-ink-3">pol@larambla.es</div>
               </div>
               <span class="badge">Cocinero</span>
-              <span class="badge success"><span class="badge__dot"></span>Activo</span>
+              <span class="badge success"><span class="badge-dot"></span>Activo</span>
             </div>
           </article>
           <article class="card interactive" style="opacity:0.6;">
@@ -264,7 +264,7 @@
                 <div class="text-xs text-ink-3">sara@larambla.es</div>
               </div>
               <span class="badge">Cocinero</span>
-              <span class="badge"><span class="badge__dot"></span>Inactivo</span>
+              <span class="badge"><span class="badge-dot"></span>Inactivo</span>
             </div>
           </article>
         </div>
@@ -290,7 +290,7 @@
             <dl style="display:grid;grid-template-columns:minmax(90px, 120px) 1fr;gap:8px 14px;font-size:13px;margin:0;">
               <dt class="text-ink-3">PIN</dt><dd class="font-mono">••••</dd>
               <dt class="text-ink-3">Idioma</dt><dd>Català</dd>
-              <dt class="text-ink-3">Estado</dt><dd><span class="badge success"><span class="badge__dot"></span>Activo</span></dd>
+              <dt class="text-ink-3">Estado</dt><dd><span class="badge success"><span class="badge-dot"></span>Activo</span></dd>
               <dt class="text-ink-3">Último acceso</dt><dd>hace 2 minutos</dd>
               <dt class="text-ink-3">Sesiones</dt><dd>3 dispositivos</dd>
             </dl>

@@ -22,23 +22,23 @@
   border-radius: var(--radius-lg);
 }
 
-.gauge__dial {
+.gauge-dial {
   position: relative;
   width: var(--width);
   height: var(--height);
   overflow: hidden;
 }
 
-.gauge__dial svg {
+.gauge-dial svg {
   width: 100%;
   height: var(--dial-height);
   transform: rotate(0);
 }
 
-.gauge__track { stroke: var(--bg-4); }
-.gauge__fill  { stroke: var(--color); transition: stroke-dashoffset 0.6s var(--ease-out); }
+.gauge-track { stroke: var(--bg-4); }
+.gauge-fill  { stroke: var(--color); transition: stroke-dashoffset 0.6s var(--ease-out); }
 
-.gauge__value {
+.gauge-value {
   position: absolute;
   left: 0;
   right: 0;
@@ -51,14 +51,14 @@
   color: var(--ink);
 }
 
-.gauge__label {
+.gauge-label {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
 }
 
-.gauge__sub {
+.gauge-sub {
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
@@ -77,19 +77,19 @@
   gap: var(--space-1-5);
 }
 
-.bullet__head {
+.bullet-head {
   display: flex;
   justify-content: space-between;
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
 
-.bullet__head b {
+.bullet-head b {
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 
-.bullet__bar {
+.bullet-bar {
   position: relative;
   height: var(--icon-sm);
   background: var(--background);
@@ -97,7 +97,7 @@
   overflow: hidden;
 }
 
-.bullet__zone {
+.bullet-zone {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -105,11 +105,11 @@
   border-right: var(--border-w) solid var(--zone-overlay);
 }
 
-.bullet__zone--good   { background: color-mix(in oklch, var(--color-success) 18%, transparent); }
-.bullet__zone--warn   { background: color-mix(in oklch, var(--color-warning) 18%, transparent); }
-.bullet__zone--danger { background: color-mix(in oklch, var(--color-danger) 18%, transparent); }
+.bullet-zone--good   { background: color-mix(in oklch, var(--color-success) 18%, transparent); }
+.bullet-zone--warn   { background: color-mix(in oklch, var(--color-warning) 18%, transparent); }
+.bullet-zone--danger { background: color-mix(in oklch, var(--color-danger) 18%, transparent); }
 
-.bullet__fill {
+.bullet-fill {
   position: absolute;
   top: var(--fill-offset);
   bottom: var(--fill-offset);
@@ -120,7 +120,7 @@
   transition: width var(--dur-base) var(--ease-out);
 }
 
-.bullet__target {
+.bullet-target {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -149,7 +149,7 @@
   cursor: crosshair;
 }
 
-.signature__hint {
+.signature-hint {
   position: absolute;
   inset: 0;
   display: grid;
@@ -159,7 +159,7 @@
   pointer-events: none;
 }
 
-.signature__line {
+.signature-line {
   position: absolute;
   left: var(--line-offset);
   right: var(--line-offset);
@@ -168,7 +168,7 @@
   background: var(--line-2);
 }
 
-.signature__hint-x {
+.signature-hint-x {
   position: absolute;
   left: var(--line-offset);
   bottom: var(--mark-bottom);
@@ -177,7 +177,7 @@
   color: var(--ink-3);
 }
 
-.signature__svg {
+.signature-svg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -185,7 +185,7 @@
   pointer-events: none;
 }
 
-.signature__svg path {
+.signature-svg path {
   fill: none;
   stroke: var(--ink);
   stroke-width: 2;
@@ -193,7 +193,7 @@
   stroke-linejoin: round;
 }
 
-.signature__actions {
+.signature-actions {
   position: absolute;
   top: var(--actions-top);
   right: var(--actions-right);
@@ -209,7 +209,7 @@
   overflow: hidden;
 }
 
-.md__toolbar {
+.md-toolbar {
   display: flex;
   gap: var(--border-w);
   padding: var(--space-1);
@@ -217,7 +217,7 @@
   border-bottom: var(--border-w) solid var(--line);
 }
 
-.md__btn {
+.md-btn {
   width: var(--size-sm);
   height: var(--size-sm);
   display: inline-grid;
@@ -229,24 +229,24 @@
   cursor: pointer;
 }
 
-.md__btn:hover,
-.md__btn[aria-pressed="true"] {
+.md-btn:hover,
+.md-btn[aria-pressed="true"] {
   background: var(--bg-3);
   color: var(--ink);
 }
 
-.md__btn svg {
+.md-btn svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
 }
 
-.md__divider {
+.md-divider {
   width: var(--border-w);
   background: var(--line);
   margin: var(--space-1);
 }
 
-.md__textarea {
+.md-textarea {
   width: 100%;
   background: transparent;
   border: 0;
@@ -260,7 +260,7 @@
   min-height: 7.5rem;
 }
 
-.md__footer {
+.md-footer {
   padding: var(--space-1-5) var(--space-3);
   border-top: var(--border-w) solid var(--line);
   font-size: var(--text-2xs);
@@ -280,13 +280,13 @@
   overflow: hidden;
 }
 
-.diff__line {
+.diff-line {
   display: grid;
   grid-template-columns: 2.25rem 2.25rem 1fr;
   padding: var(--space-0) var(--space-3) var(--space-0) var(--space-0);
 }
 
-.diff__num {
+.diff-num {
   text-align: right;
   padding: var(--space-0) var(--space-2);
   color: var(--ink-4);
@@ -294,20 +294,20 @@
   font-size: var(--text-xs);
 }
 
-.diff__line--add { background: color-mix(in oklch, var(--color-success) 8%, transparent); }
-.diff__line--add .diff__num { color: color-mix(in oklch, var(--color-success) 70%, var(--ink-4)); }
-.diff__line--del { background: color-mix(in oklch, var(--color-danger) 8%, transparent); }
-.diff__line--del .diff__num { color: color-mix(in oklch, var(--color-danger) 70%, var(--ink-4)); }
+.diff-line--add { background: color-mix(in oklch, var(--color-success) 8%, transparent); }
+.diff-line--add .diff-num { color: color-mix(in oklch, var(--color-success) 70%, var(--ink-4)); }
+.diff-line--del { background: color-mix(in oklch, var(--color-danger) 8%, transparent); }
+.diff-line--del .diff-num { color: color-mix(in oklch, var(--color-danger) 70%, var(--ink-4)); }
 
-.diff__line--head {
+.diff-line--head {
   background: var(--bg-3);
   color: var(--ink-3);
   font-style: italic;
 }
 
-.diff__line code { color: inherit; }
-.diff__line--add code::before { content: "+ "; color: var(--color-success); }
-.diff__line--del code::before { content: "− "; color: var(--color-danger); }
+.diff-line code { color: inherit; }
+.diff-line--add code::before { content: "+ "; color: var(--color-success); }
+.diff-line--del code::before { content: "− "; color: var(--color-danger); }
 
 /* Status indicator (puntito de estado, online/offline, etc.) */
 .status-dot {
@@ -369,7 +369,7 @@
   color: var(--ink-3);
 }
 
-.refresher__spinner {
+.refresher-spinner {
   width: 1rem;
   height: 1rem;
   border: var(--border-w-2) solid var(--line-2);

@@ -6,29 +6,29 @@
 
 {% block content %}
 <h1>Datepicker</h1>
-<p class="showcase__lead">Calendario popover. Cabecera con título y navegación, rejilla de días (con día seleccionado, hoy, fuera de mes y rango).</p>
-<p class="showcase__lead"><strong>Convención de fechas:</strong> los títulos de sección y los chips de resumen usan <code>DD/MM/YYYY</code> (ej. <code>15/05/2026</code>); la cabecera interna del calendario sigue la convención habitual de widgets (<code>Mayo 2026</code>).</p>
+<p class="showcase-lead">Calendario popover. Cabecera con título y navegación, rejilla de días (con día seleccionado, hoy, fuera de mes y rango).</p>
+<p class="showcase-lead"><strong>Convención de fechas:</strong> los títulos de sección y los chips de resumen usan <code>DD/MM/YYYY</code> (ej. <code>15/05/2026</code>); la cabecera interna del calendario sigue la convención habitual de widgets (<code>Mayo 2026</code>).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/datepicker.jinja" import datepicker %}
 {% call datepicker("Mayo 2026") %}
-<div class="datepicker__grid">
-  <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
+<div class="datepicker-grid">
+  <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
   {# … rejilla de días generada por el cliente … #}
 </div>
-<div class="datepicker__shortcuts">
-  <button class="datepicker__shortcut">Hoy</button>
-  <button class="datepicker__shortcut">Ayer</button>
-  <button class="datepicker__shortcut">Esta semana</button>
-  <button class="datepicker__shortcut">Este mes</button>
+<div class="datepicker-shortcuts">
+  <button class="datepicker-shortcut">Hoy</button>
+  <button class="datepicker-shortcut">Ayer</button>
+  <button class="datepicker-shortcut">Esta semana</button>
+  <button class="datepicker-shortcut">Este mes</button>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Datepicker label="Mayo 2026">
-<div class="datepicker__grid">…</div>
-<div class="datepicker__shortcuts">
-  <button class="datepicker__shortcut">Hoy</button>
-  <button class="datepicker__shortcut">Ayer</button>
-  <button class="datepicker__shortcut">Esta semana</button>
-  <button class="datepicker__shortcut">Este mes</button>
+<div class="datepicker-grid">…</div>
+<div class="datepicker-shortcuts">
+  <button class="datepicker-shortcut">Hoy</button>
+  <button class="datepicker-shortcut">Ayer</button>
+  <button class="datepicker-shortcut">Esta semana</button>
+  <button class="datepicker-shortcut">Este mes</button>
 </div>
 </Datepicker>{% endraw %}{% endset %}
 
@@ -37,18 +37,18 @@
     jinjax_src=_src_jinjax_1) %}
 <div class="dp-mes-simple" data-dp-year="2026" data-dp-month="5" data-dp-day="15">
   {% call datepicker("Mayo 2026") %}
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
   </div>
-  <div class="datepicker__shortcuts">
-    <button type="button" class="datepicker__shortcut" data-dp-shortcut="today">Hoy</button>
-    <button type="button" class="datepicker__shortcut" data-dp-shortcut="yesterday">Ayer</button>
-    <button type="button" class="datepicker__shortcut" data-dp-shortcut="thisWeek">Esta semana</button>
-    <button type="button" class="datepicker__shortcut" data-dp-shortcut="thisMonth">Este mes</button>
+  <div class="datepicker-shortcuts">
+    <button type="button" class="datepicker-shortcut" data-dp-shortcut="today">Hoy</button>
+    <button type="button" class="datepicker-shortcut" data-dp-shortcut="yesterday">Ayer</button>
+    <button type="button" class="datepicker-shortcut" data-dp-shortcut="thisWeek">Esta semana</button>
+    <button type="button" class="datepicker-shortcut" data-dp-shortcut="thisMonth">Este mes</button>
   </div>
   {% endcall %}
-  <p class="dp-mes-simple__caption" style="margin-top:10px;font-size:13px;color:var(--ink-3);">
-    Fecha seleccionada: <strong class="dp-mes-simple__value">15/05/2026</strong>
+  <p class="dp-mes-simple-caption" style="margin-top:10px;font-size:13px;color:var(--ink-3);">
+    Fecha seleccionada: <strong class="dp-mes-simple-value">15/05/2026</strong>
   </p>
 </div>
 {% endcall %}
@@ -56,12 +56,12 @@
 {% set _src_jinja_2 %}{% raw %}{% from "ui/datepicker.jinja" import datepicker %}
 <div data-signals="{ pickedDay: 15 }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
   {% call datepicker("Mayo 2026") %}
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
-    {% for d in [27,28,29,30] %}<button class="datepicker__day datepicker__day--muted">{{ d }}</button>{% endfor %}
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="datepicker-day datepicker-day--muted">{{ d }}</button>{% endfor %}
     {% for d in range(1, 32) %}
-    <button class="datepicker__day"
-      data-attr-class="'datepicker__day' + ($pickedDay === {{ d }} ? ' datepicker__day--selected' : '')"
+    <button class="datepicker-day"
+      data-attr-class="'datepicker-day' + ($pickedDay === {{ d }} ? ' datepicker-day--selected' : '')"
       data-on:click="$pickedDay = {{ d }}">{{ d }}</button>
     {% endfor %}
   </div>
@@ -72,12 +72,12 @@
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<div data-signals="{ pickedDay: 15 }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
   <Datepicker label="Mayo 2026">
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
-    {% for d in [27,28,29,30] %}<button class="datepicker__day datepicker__day--muted">{{ d }}</button>{% endfor %}
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="datepicker-day datepicker-day--muted">{{ d }}</button>{% endfor %}
     {% for d in range(1, 32) %}
-    <button class="datepicker__day"
-      data-attr-class="'datepicker__day' + ($pickedDay === {{ d }} ? ' datepicker__day--selected' : '')"
+    <button class="datepicker-day"
+      data-attr-class="'datepicker-day' + ($pickedDay === {{ d }} ? ' datepicker-day--selected' : '')"
       data-on:click="$pickedDay = {{ d }}">{{ d }}</button>
     {% endfor %}
   </div>
@@ -93,12 +93,12 @@
     jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ pickedDay: 15 }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
   {% call datepicker("Mayo 2026") %}
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
-    {% for d in [27,28,29,30] %}<button class="datepicker__day datepicker__day--muted">{{ d }}</button>{% endfor %}
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="datepicker-day datepicker-day--muted">{{ d }}</button>{% endfor %}
     {% for d in range(1, 32) %}
-    <button class="datepicker__day"
-      data-attr-class="'datepicker__day' + ($pickedDay === {{ d }} ? ' datepicker__day--selected' : '')"
+    <button class="datepicker-day"
+      data-attr-class="'datepicker-day' + ($pickedDay === {{ d }} ? ' datepicker-day--selected' : '')"
       data-on:click="$pickedDay = {{ d }}">{{ d }}</button>
     {% endfor %}
   </div>
@@ -113,23 +113,23 @@
 {# Dos meses lado a lado: la selección de rango se pinta sobre ambos calendarios. #}
 <div style="display:flex;gap:12px;flex-wrap:wrap;">
   {% call datepicker("Mayo 2026") %}
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
-    {% for d in [27,28,29,30] %}<button class="datepicker__day datepicker__day--muted">{{ d }}</button>{% endfor %}
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="datepicker-day datepicker-day--muted">{{ d }}</button>{% endfor %}
     {% for d in range(1, 32) %}
-      {% if d == 7 %}<button class="datepicker__day datepicker__day--selected datepicker__day--range-start">{{ d }}</button>
-      {% elif d > 7 %}<button class="datepicker__day datepicker__day--in-range">{{ d }}</button>
-      {% else %}<button class="datepicker__day">{{ d }}</button>{% endif %}
+      {% if d == 7 %}<button class="datepicker-day datepicker-day--selected datepicker-day--range-start">{{ d }}</button>
+      {% elif d > 7 %}<button class="datepicker-day datepicker-day--in-range">{{ d }}</button>
+      {% else %}<button class="datepicker-day">{{ d }}</button>{% endif %}
     {% endfor %}
   </div>
   {% endcall %}
   {% call datepicker("Junio 2026") %}
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
     {% for d in range(1, 31) %}
-      {% if d == 22 %}<button class="datepicker__day datepicker__day--selected datepicker__day--range-end">{{ d }}</button>
-      {% elif d < 22 %}<button class="datepicker__day datepicker__day--in-range">{{ d }}</button>
-      {% else %}<button class="datepicker__day">{{ d }}</button>{% endif %}
+      {% if d == 22 %}<button class="datepicker-day datepicker-day--selected datepicker-day--range-end">{{ d }}</button>
+      {% elif d < 22 %}<button class="datepicker-day datepicker-day--in-range">{{ d }}</button>
+      {% else %}<button class="datepicker-day">{{ d }}</button>{% endif %}
     {% endfor %}
   </div>
   {% endcall %}
@@ -144,23 +144,23 @@
     jinjax_src=_src_jinjax_3) %}
 <div style="display:flex;gap:12px;flex-wrap:wrap;">
   {% call datepicker("Mayo 2026") %}
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
-    {% for d in [27,28,29,30] %}<button class="datepicker__day datepicker__day--muted">{{ d }}</button>{% endfor %}
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
+    {% for d in [27,28,29,30] %}<button class="datepicker-day datepicker-day--muted">{{ d }}</button>{% endfor %}
     {% for d in range(1, 32) %}
-      {% if d == 7 %}<button class="datepicker__day datepicker__day--selected datepicker__day--range-start">{{ d }}</button>
-      {% elif d > 7 %}<button class="datepicker__day datepicker__day--in-range">{{ d }}</button>
-      {% else %}<button class="datepicker__day">{{ d }}</button>{% endif %}
+      {% if d == 7 %}<button class="datepicker-day datepicker-day--selected datepicker-day--range-start">{{ d }}</button>
+      {% elif d > 7 %}<button class="datepicker-day datepicker-day--in-range">{{ d }}</button>
+      {% else %}<button class="datepicker-day">{{ d }}</button>{% endif %}
     {% endfor %}
   </div>
   {% endcall %}
   {% call datepicker("Junio 2026") %}
-  <div class="datepicker__grid">
-    <div class="datepicker__dow">L</div><div class="datepicker__dow">M</div><div class="datepicker__dow">X</div><div class="datepicker__dow">J</div><div class="datepicker__dow">V</div><div class="datepicker__dow">S</div><div class="datepicker__dow">D</div>
+  <div class="datepicker-grid">
+    <div class="datepicker-dow">L</div><div class="datepicker-dow">M</div><div class="datepicker-dow">X</div><div class="datepicker-dow">J</div><div class="datepicker-dow">V</div><div class="datepicker-dow">S</div><div class="datepicker-dow">D</div>
     {% for d in range(1, 31) %}
-      {% if d == 22 %}<button class="datepicker__day datepicker__day--selected datepicker__day--range-end">{{ d }}</button>
-      {% elif d < 22 %}<button class="datepicker__day datepicker__day--in-range">{{ d }}</button>
-      {% else %}<button class="datepicker__day">{{ d }}</button>{% endif %}
+      {% if d == 22 %}<button class="datepicker-day datepicker-day--selected datepicker-day--range-end">{{ d }}</button>
+      {% elif d < 22 %}<button class="datepicker-day datepicker-day--in-range">{{ d }}</button>
+      {% else %}<button class="datepicker-day">{{ d }}</button>{% endif %}
     {% endfor %}
   </div>
   {% endcall %}
@@ -176,7 +176,7 @@
     <tr><td><code>attrs</code></td><td>dict</td><td>None</td><td>Atributos extra (data-signals, etc).</td></tr>
   </tbody>
 </table>
-<p class="showcase__lead">Slot: la rejilla <code>.datepicker__grid</code>, accesos rápidos <code>.datepicker__shortcuts</code> y footer son markup libre dentro del macro.</p>
+<p class="showcase-lead">Slot: la rejilla <code>.datepicker-grid</code>, accesos rápidos <code>.datepicker-shortcuts</code> y footer son markup libre dentro del macro.</p>
 
 <script>
 (() => {
@@ -196,13 +196,13 @@
     const y = parseInt(root.dataset.dpYear, 10);
     const m = parseInt(root.dataset.dpMonth, 10);
     const sel = parseInt(root.dataset.dpDay, 10);
-    const head = root.querySelector('.datepicker__head .title');
-    const grid = root.querySelector('.datepicker__grid');
+    const head = root.querySelector('.datepicker-head .title');
+    const grid = root.querySelector('.datepicker-grid');
     if (!head || !grid) return;
     head.textContent = `${MONTH_NAMES[m - 1]} ${y}`;
 
     // Rebuild grid: keep the 7 dow headers, replace day buttons.
-    const dows = Array.from(grid.querySelectorAll('.datepicker__dow'));
+    const dows = Array.from(grid.querySelectorAll('.datepicker-dow'));
     grid.innerHTML = '';
     dows.forEach(d => grid.appendChild(d));
 
@@ -212,7 +212,7 @@
     for (let i = lead - 1; i >= 0; i--) {
       const b = document.createElement('button');
       b.type = 'button';
-      b.className = 'datepicker__day datepicker__day--muted';
+      b.className = 'datepicker-day datepicker-day--muted';
       b.textContent = String(prevDays - i);
       grid.appendChild(b);
     }
@@ -221,9 +221,9 @@
     for (let d = 1; d <= dim; d++) {
       const b = document.createElement('button');
       b.type = 'button';
-      let cls = 'datepicker__day';
-      if (d === sel) cls += ' datepicker__day--selected';
-      if (y === TODAY.y && m === TODAY.m && d === TODAY.d && d !== sel) cls += ' datepicker__day--today';
+      let cls = 'datepicker-day';
+      if (d === sel) cls += ' datepicker-day--selected';
+      if (y === TODAY.y && m === TODAY.m && d === TODAY.d && d !== sel) cls += ' datepicker-day--today';
       b.className = cls;
       b.textContent = String(d);
       b.addEventListener('click', () => {
@@ -233,7 +233,7 @@
       grid.appendChild(b);
     }
     // Update caption
-    const cap = root.querySelector('.dp-mes-simple__value');
+    const cap = root.querySelector('.dp-mes-simple-value');
     if (cap) {
       const day = parseInt(root.dataset.dpDay, 10);
       cap.textContent = `${pad(day)}/${pad(m)}/${y}`;
@@ -281,7 +281,7 @@
   }
 
   function init(root) {
-    const nav = root.querySelectorAll('.datepicker__nav-btn');
+    const nav = root.querySelectorAll('.datepicker-nav-btn');
     if (nav.length >= 2) {
       nav[0].addEventListener('click', () => shiftMonth(root, -1));
       nav[1].addEventListener('click', () => shiftMonth(root, +1));

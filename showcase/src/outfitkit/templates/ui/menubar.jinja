@@ -13,7 +13,7 @@
 <nav class="menubar{% if variant %} {{ variant }}{% endif %}{% if compact %} compact{% endif %}"
   data-signals="{ open: '' }"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  {% if app_name %}<span class="menubar__app-name">{{ app_name }}</span><span class="divider"></span>{% endif %}
+  {% if app_name %}<span class="menubar-app-name">{{ app_name }}</span><span class="divider"></span>{% endif %}
   {{ caller() }}
 </nav>
 {%- endmacro %}
@@ -32,7 +32,7 @@
 {% macro menubar_item(id, label, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <button type="button"
-        class="menubar__menu"
+        class="menubar-menu"
         data-on:click="$open = $open === '{{ id }}' ? '' : '{{ id }}'"
         data-attr:aria-expanded="$open === '{{ id }}'"
         data-attr:data-state="$open === '{{ id }}' ? 'open' : 'closed'"
@@ -43,7 +43,7 @@
   menubar_panel — dropdown body bound to a `menubar_item`.
 
   Shown only while the shared `open` signal equals `for_item`. Caller renders
-  the panel content (typically `.menubar__item` buttons + separators).
+  the panel content (typically `.menubar-item` buttons + separators).
 
   Args:
     for_item — id of the menubar_item that controls this panel
@@ -52,7 +52,7 @@
 #}
 {% macro menubar_panel(for_item, style="", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="menubar__panel"
+<div class="menubar-panel"
      data-show="$open === '{{ for_item }}'"
      {% if style %}style="{{ style }}"{% endif %}
      {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>

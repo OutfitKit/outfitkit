@@ -102,10 +102,10 @@
       <div style="max-width:680px;margin:0 auto;display:flex;flex-direction:column;gap:18px;">
 
         <div class="callout danger">
-          <span class="callout__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></span>
-          <div class="callout__body">
-            <div class="callout__title">Esta acción es irreversible</div>
-            <div class="callout__desc">Una vez confirmada, la eliminación se procesa de forma inmediata y no podemos restaurar tu cuenta ni los datos asociados.</div>
+          <span class="callout-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></span>
+          <div class="callout-body">
+            <div class="callout-title">Esta acción es irreversible</div>
+            <div class="callout-desc">Una vez confirmada, la eliminación se procesa de forma inmediata y no podemos restaurar tu cuenta ni los datos asociados.</div>
           </div>
         </div>
 
@@ -166,19 +166,19 @@
           <div class="body flex col gap-4">
 
             <label class="field">
-              <span class="field__label field__label--req">Tu contraseña</span>
+              <span class="field-label field-label--req">Tu contraseña</span>
               <div class="input-group with-right">
                 <input class="input" data-attr:type="$showPwd ? 'text' : 'password'" placeholder="Contraseña actual" data-bind:pwd autocomplete="current-password"/>
-                <button class="input-group__icon input-group__icon--right" type="button" aria-label="Mostrar/ocultar" data-on:click="$showPwd = !$showPwd" style="background:transparent;border:0;cursor:pointer;color:var(--ink-3);pointer-events:auto;">
+                <button class="input-group-icon input-group-icon--right" type="button" aria-label="Mostrar/ocultar" data-on:click="$showPwd = !$showPwd" style="background:transparent;border:0;cursor:pointer;color:var(--ink-3);pointer-events:auto;">
                   <iconify-icon icon="lucide:eye" width="16" height="16"></iconify-icon>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" data-show="$showPwd"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24M1 1l22 22"/></svg>
                 </button>
               </div>
-              <span class="field__hint">Verificamos tu identidad antes de eliminar nada.</span>
+              <span class="field-hint">Verificamos tu identidad antes de eliminar nada.</span>
             </label>
 
             <label class="field">
-              <span class="field__label field__label--req">Escribe <code style="background:var(--bg-3);padding:1px 6px;border-radius:4px;color:var(--danger);font-family:var(--font-mono);font-size:12px;">ELIMINAR MI CUENTA</code> para confirmar</span>
+              <span class="field-label field-label--req">Escribe <code style="background:var(--bg-3);padding:1px 6px;border-radius:4px;color:var(--danger);font-family:var(--font-mono);font-size:12px;">ELIMINAR MI CUENTA</code> para confirmar</span>
               <input class="input" data-bind:confirm placeholder="ELIMINAR MI CUENTA" data-class:input--invalid="$confirm.length > 0 && $confirm !== 'ELIMINAR MI CUENTA'" autocomplete="off"/>
               <div data-show="$confirm === 'ELIMINAR MI CUENTA'" style="display:flex;gap:6px;align-items:center;color:var(--leaf);font-size:var(--text-xs);">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 5 5L20 7"/></svg>

@@ -18,7 +18,7 @@
   {%- for k, v in _tattrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {{ label }}
   {%- if removable %}
-  <button type="button" class="tag__remove"
+  <button type="button" class="tag-remove"
     {% if remove_action %}data-on:click="{{ remove_action }}"{% endif %}
     aria-label="Eliminar">×</button>
   {%- endif %}

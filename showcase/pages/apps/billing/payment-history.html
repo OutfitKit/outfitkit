@@ -19,7 +19,7 @@
   .table-wrap { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
 
   .pay-method-cell { display: inline-flex; align-items: center; gap: 8px; }
-  .pay-method-cell__icon {
+  .pay-method-cell-icon {
     width: 28px; height: 18px;
     border-radius: 3px;
     background: var(--bg-3);
@@ -28,13 +28,13 @@
     font-family: var(--font-mono); font-size: 8px;
     font-weight: 700; color: var(--ink-2); letter-spacing: 0.06em;
   }
-  .pay-method-cell__icon--visa { background: linear-gradient(135deg, #1a1f71, #2a3593); color: #fff; }
-  .pay-method-cell__icon--mc   { background: linear-gradient(135deg, #b30100, #f9a000); color: #fff; }
-  .pay-method-cell__icon--amex { background: linear-gradient(135deg, #2671b8, #0a2d6e); color: #fff; }
-  .pay-method-cell__icon--sepa { background: var(--info-soft); color: var(--info); }
+  .pay-method-cell-icon--visa { background: linear-gradient(135deg, #1a1f71, #2a3593); color: #fff; }
+  .pay-method-cell-icon--mc   { background: linear-gradient(135deg, #b30100, #f9a000); color: #fff; }
+  .pay-method-cell-icon--amex { background: linear-gradient(135deg, #2671b8, #0a2d6e); color: #fff; }
+  .pay-method-cell-icon--sepa { background: var(--info-soft); color: var(--info); }
 
   .donut-wrap { padding: 18px; background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); }
-  .donut-wrap__title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin: 0 0 14px; }
+  .donut-wrap-title { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); margin: 0 0 14px; }
 </style>
 <div class="app" data-attr:data-sidebar="$sidebar ? 'open' : ''">
   <div class="backdrop" data-on:click="$sidebar = false"></div>
@@ -131,35 +131,35 @@
       <!-- KPI strip -->
       <div class="grid-4 mb-4">
         <div class="kpi">
-          <div class="kpi__label">Total pagado</div>
-          <div class="kpi__value">€18 240,50</div>
-          <div class="kpi__delta kpi__delta--up">+€2 286 último pedido</div>
+          <div class="kpi-label">Total pagado</div>
+          <div class="kpi-value">€18 240,50</div>
+          <div class="kpi-delta kpi-delta--up">+€2 286 último pedido</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Cobros este mes</div>
-          <div class="kpi__value">8</div>
-          <div class="kpi__delta">5 suscrip. · 3 pedidos</div>
+          <div class="kpi-label">Cobros este mes</div>
+          <div class="kpi-value">8</div>
+          <div class="kpi-delta">5 suscrip. · 3 pedidos</div>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Métodos usados</div>
-          <div class="kpi__value">3</div>
-          <div class="kpi__delta">VISA · SEPA · Amex</div>
+          <div class="kpi-label">Métodos usados</div>
+          <div class="kpi-value">3</div>
+          <div class="kpi-delta">VISA · SEPA · Amex</div>
         </div>
         <div class="kpi brand">
-          <div class="kpi__label">Última transacción</div>
-          <div class="kpi__value">hace 12h</div>
-          <div class="kpi__delta">PED-2026-0142 · €2 286</div>
+          <div class="kpi-label">Última transacción</div>
+          <div class="kpi-value">hace 12h</div>
+          <div class="kpi-delta">PED-2026-0142 · €2 286</div>
         </div>
       </div>
 
       <!-- Filter chips toolbar -->
       <div class="ph-toolbar">
         <div class="toggle-group sm">
-          <button class="toggle-group__option" data-on:click="$status = 'all'" data-class:is-selected="$status === 'all'">Todos <span class="qty-badge xs" style="margin-left:6px;">14</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'paid'" data-class:is-selected="$status === 'paid'">Cobrados <span class="qty-badge xs success" style="margin-left:6px;">11</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'pending'" data-class:is-selected="$status === 'pending'">Procesando <span class="qty-badge xs warning" style="margin-left:6px;">1</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'failed'" data-class:is-selected="$status === 'failed'">Fallidos <span class="qty-badge xs danger" style="margin-left:6px;">1</span></button>
-          <button class="toggle-group__option" data-on:click="$status = 'refund'" data-class:is-selected="$status === 'refund'">Reembolsos <span class="qty-badge xs info" style="margin-left:6px;">1</span></button>
+          <button class="toggle-group-option" data-on:click="$status = 'all'" data-class:is-selected="$status === 'all'">Todos <span class="qty-badge xs" style="margin-left:6px;">14</span></button>
+          <button class="toggle-group-option" data-on:click="$status = 'paid'" data-class:is-selected="$status === 'paid'">Cobrados <span class="qty-badge xs success" style="margin-left:6px;">11</span></button>
+          <button class="toggle-group-option" data-on:click="$status = 'pending'" data-class:is-selected="$status === 'pending'">Procesando <span class="qty-badge xs warning" style="margin-left:6px;">1</span></button>
+          <button class="toggle-group-option" data-on:click="$status = 'failed'" data-class:is-selected="$status === 'failed'">Fallidos <span class="qty-badge xs danger" style="margin-left:6px;">1</span></button>
+          <button class="toggle-group-option" data-on:click="$status = 'refund'" data-class:is-selected="$status === 'refund'">Reembolsos <span class="qty-badge xs info" style="margin-left:6px;">1</span></button>
         </div>
         <div class="flex-1"></div>
         <div class="search" style="min-width:240px;max-width:280px;">
@@ -196,7 +196,7 @@
                 <td>8 may · 14:32</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pedido #PED-2026-0142</span>
                       <span class="meta">5 artículos · TPV Modelo X + accesorios</span>
                     </div>
@@ -204,7 +204,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -218,7 +218,7 @@
                 <td>6 may · 09:15</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Suscripción acme-prod · mayo</span>
                       <span class="meta">Plan Business · 12 usuarios</span>
                     </div>
@@ -226,7 +226,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -240,7 +240,7 @@
                 <td>5 may · 18:42</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pedido #PED-2026-0138</span>
                       <span class="meta">Pack 10 rollos térmicos · ×3</span>
                     </div>
@@ -248,7 +248,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -262,7 +262,7 @@
                 <td>3 may · 11:08</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pago variable · uso API</span>
                       <span class="meta">428 200 calls · abril</span>
                     </div>
@@ -270,7 +270,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--amex">AMEX</span>
                     <span class="font-mono text-xs text-ink-2">••1004</span>
                   </span>
                 </td>
@@ -284,7 +284,7 @@
                 <td>1 may · 06:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Suscripción acme-prod · abril</span>
                       <span class="meta">Plan Business · 11 usuarios</span>
                     </div>
@@ -292,7 +292,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -306,7 +306,7 @@
                 <td>28 abr · 22:14</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pedido #PED-2026-0131</span>
                       <span class="meta">Reembolso · pantalla cliente devuelta</span>
                     </div>
@@ -314,7 +314,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -328,7 +328,7 @@
                 <td>26 abr · 14:55</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pedido #PED-2026-0128</span>
                       <span class="meta">Brother QL-820NWB · ×2</span>
                     </div>
@@ -336,7 +336,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -350,7 +350,7 @@
                 <td>22 abr · 09:31</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Add-on Reporting Pro</span>
                       <span class="meta">Suscripción mensual</span>
                     </div>
@@ -358,7 +358,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -372,7 +372,7 @@
                 <td>19 abr · 17:08</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pedido #PED-2026-0119</span>
                       <span class="meta">Caja CR-7 · 3 ud</span>
                     </div>
@@ -380,7 +380,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -394,7 +394,7 @@
                 <td>17 abr · 11:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pedido #PED-2026-0117</span>
                       <span class="meta">Bundle Tienda Básica · ×1</span>
                     </div>
@@ -402,7 +402,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--amex">AMEX</span>
                     <span class="font-mono text-xs text-ink-2">••1004</span>
                   </span>
                 </td>
@@ -416,7 +416,7 @@
                 <td>14 abr · 06:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Add-on Multitienda · marzo</span>
                       <span class="meta">3 tiendas · ajuste prorrateado</span>
                     </div>
@@ -424,7 +424,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -438,7 +438,7 @@
                 <td>10 abr · 19:48</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Pedido #PED-2026-0106</span>
                       <span class="meta">Lectores SumUp Air · ×6</span>
                     </div>
@@ -446,7 +446,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--visa">VISA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--visa">VISA</span>
                     <span class="font-mono text-xs text-ink-2">••4242</span>
                   </span>
                 </td>
@@ -460,7 +460,7 @@
                 <td>5 abr · 13:22</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Suscripción acme-stage · marzo</span>
                       <span class="meta">Plan Pro · entorno staging</span>
                     </div>
@@ -468,7 +468,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--amex">AMEX</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--amex">AMEX</span>
                     <span class="font-mono text-xs text-ink-2">••1004</span>
                   </span>
                 </td>
@@ -482,7 +482,7 @@
                 <td>1 abr · 06:00</td>
                 <td>
                   <div class="cell-rich">
-                    <div class="cell-rich__main">
+                    <div class="cell-rich-main">
                       <span class="title sm">Suscripción acme-prod · marzo</span>
                       <span class="meta">Plan Business · 11 usuarios</span>
                     </div>
@@ -490,7 +490,7 @@
                 </td>
                 <td>
                   <span class="pay-method-cell">
-                    <span class="pay-method-cell__icon pay-method-cell__icon--sepa">SEPA</span>
+                    <span class="pay-method-cell-icon pay-method-cell-icon--sepa">SEPA</span>
                     <span class="font-mono text-xs text-ink-2">ES12••9012</span>
                   </span>
                 </td>
@@ -505,52 +505,52 @@
 
         <!-- Table footer with pagination -->
         <div class="table-footer">
-          <div class="pager__info">Mostrando <b class="text-ink-2">1-14</b> de <b class="text-ink-2">87</b> transacciones</div>
+          <div class="pager-info">Mostrando <b class="text-ink-2">1-14</b> de <b class="text-ink-2">87</b> transacciones</div>
           <div class="paginator">
-            <button class="paginator__btn" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
-            <button class="paginator__btn" aria-current="page">1</button>
-            <button class="paginator__btn">2</button>
-            <button class="paginator__btn">3</button>
-            <span class="paginator__gap">…</span>
-            <button class="paginator__btn">7</button>
-            <button class="paginator__btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
+            <button class="paginator-btn" aria-disabled="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg></button>
+            <button class="paginator-btn" aria-current="page">1</button>
+            <button class="paginator-btn">2</button>
+            <button class="paginator-btn">3</button>
+            <span class="paginator-gap">…</span>
+            <button class="paginator-btn">7</button>
+            <button class="paginator-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg></button>
           </div>
         </div>
       </div>
 
       <!-- Donut by method -->
       <section class="donut-wrap" style="margin-top:18px;">
-        <h3 class="donut-wrap__title">Distribución por método de pago</h3>
+        <h3 class="donut-wrap-title">Distribución por método de pago</h3>
         <div class="donut">
-          <svg class="donut__svg" viewBox="0 0 120 120">
-            <circle class="donut__track" cx="60" cy="60" r="48"/>
+          <svg class="donut-svg" viewBox="0 0 120 120">
+            <circle class="donut-track" cx="60" cy="60" r="48"/>
             <!-- Visa 64% -->
-            <circle class="donut__slice donut__slice--brand" cx="60" cy="60" r="48"
+            <circle class="donut-slice donut-slice--brand" cx="60" cy="60" r="48"
                     stroke-dasharray="193 302" stroke-dashoffset="0"/>
             <!-- SEPA 22% -->
-            <circle class="donut__slice donut__slice--info" cx="60" cy="60" r="48"
+            <circle class="donut-slice donut-slice--info" cx="60" cy="60" r="48"
                     stroke-dasharray="66 302" stroke-dashoffset="-193"/>
             <!-- Amex 14% -->
-            <circle class="donut__slice donut__slice--warn" cx="60" cy="60" r="48"
+            <circle class="donut-slice donut-slice--warn" cx="60" cy="60" r="48"
                     stroke-dasharray="42 302" stroke-dashoffset="-259"/>
-            <text class="donut__center" x="60" y="58">
-              <tspan class="donut__center-value" x="60" dy="0">€18,2k</tspan>
-              <tspan class="donut__center-label" x="60" dy="14">PAGADO 2026</tspan>
+            <text class="donut-center" x="60" y="58">
+              <tspan class="donut-center-value" x="60" dy="0">€18,2k</tspan>
+              <tspan class="donut-center-label" x="60" dy="14">PAGADO 2026</tspan>
             </text>
           </svg>
-          <div class="donut__legend">
-            <div class="donut__legend-row">
-              <span class="donut__legend-dot" style="background:var(--brand);"></span>
+          <div class="donut-legend">
+            <div class="donut-legend-row">
+              <span class="donut-legend-dot" style="background:var(--brand);"></span>
               <span>Visa ••4242</span>
               <b>64% · €11 674</b>
             </div>
-            <div class="donut__legend-row">
-              <span class="donut__legend-dot" style="background:var(--info);"></span>
+            <div class="donut-legend-row">
+              <span class="donut-legend-dot" style="background:var(--info);"></span>
               <span>SEPA ES12••9012</span>
               <b>22% · €4 013</b>
             </div>
-            <div class="donut__legend-row">
-              <span class="donut__legend-dot" style="background:var(--warn);"></span>
+            <div class="donut-legend-row">
+              <span class="donut-legend-dot" style="background:var(--warn);"></span>
               <span>Amex ••1004</span>
               <b>14% · €2 553</b>
             </div>

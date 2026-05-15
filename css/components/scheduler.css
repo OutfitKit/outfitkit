@@ -23,7 +23,7 @@
   min-height: 0;
 }
 
-.scheduler__head {
+.scheduler-head {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: var(--_sch-time-col-w) repeat(var(--_sch-days), 1fr);
@@ -34,12 +34,12 @@
   z-index: 2;
 }
 
-.scheduler__head::before {
+.scheduler-head::before {
   content: "";
   border-right: var(--border-w) solid var(--line);
 }
 
-.scheduler__day {
+.scheduler-day {
   padding: var(--space-2) var(--space-2-5) var(--space-2-5);
   border-right: var(--border-w) solid var(--line);
   font-size: var(--text-2xs);
@@ -53,16 +53,16 @@
   align-items: flex-start;
 }
 
-.scheduler__day:last-child {
+.scheduler-day:last-child {
   border-right: none;
 }
 
-.scheduler__day-name {
+.scheduler-day-name {
   font-size: var(--text-2xs);
   color: var(--ink-3);
 }
 
-.scheduler__day-date {
+.scheduler-day-date {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;
@@ -71,22 +71,22 @@
   letter-spacing: var(--tracking-tight);
 }
 
-.scheduler__day--today .scheduler__day-date {
+.scheduler-day--today .scheduler-day-date {
   color: var(--brand);
 }
 
-.scheduler__day--today {
+.scheduler-day--today {
   background: color-mix(in oklch, var(--brand) 6%, var(--bg-1));
 }
 
-.scheduler__time-col {
+.scheduler-time-col {
   display: grid;
   grid-auto-rows: var(--_sch-row-h);
   background: var(--bg-1);
   border-right: var(--border-w) solid var(--line);
 }
 
-.scheduler__hour-label {
+.scheduler-hour-label {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   text-align: right;
@@ -96,14 +96,14 @@
   line-height: var(--leading-flat);
 }
 
-.scheduler__grid {
+.scheduler-grid {
   display: grid;
   grid-template-columns: repeat(var(--_sch-days), 1fr);
   position: relative;
   min-height: 0;
 }
 
-.scheduler__cell {
+.scheduler-cell {
   border-right: var(--border-w) solid var(--line);
   position: relative;
   min-height: var(--_sch-row-h);
@@ -127,23 +127,23 @@
   transition: background-color var(--dur-fast);
 }
 
-.scheduler__cell:last-child {
+.scheduler-cell:last-child {
   border-right: none;
 }
 
-.scheduler__cell:hover {
+.scheduler-cell:hover {
   background-color: color-mix(in oklch, var(--brand) 4%, transparent);
 }
 
-.scheduler__cell.is-selecting {
+.scheduler-cell.is-selecting {
   background-color: color-mix(in oklch, var(--brand) 18%, transparent);
 }
 
-.scheduler__cell.is-busy {
+.scheduler-cell.is-busy {
   background-color: color-mix(in oklch, var(--ink-3) 8%, transparent);
 }
 
-.scheduler__cell.is-blocked {
+.scheduler-cell.is-blocked {
   background-image: repeating-linear-gradient(
     135deg,
     var(--bg-3) 0,
@@ -154,7 +154,7 @@
   cursor: not-allowed;
 }
 
-.scheduler__appointment {
+.scheduler-appointment {
   position: absolute;
   left: 4px;
   right: 4px;
@@ -173,12 +173,12 @@
   z-index: 1;
 }
 
-.scheduler__appointment:hover {
+.scheduler-appointment:hover {
   background: color-mix(in oklch, var(--brand) 30%, var(--bg-2));
   transform: translateY(-1px);
 }
 
-.scheduler__appointment-title {
+.scheduler-appointment-title {
   font-weight: 500;
   font-size: var(--text-xs);
   color: var(--ink);
@@ -188,14 +188,14 @@
   line-height: 1.25;
 }
 
-.scheduler__appointment-time {
+.scheduler-appointment-time {
   font-size: var(--text-2xs);
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
   line-height: 1.2;
 }
 
-.scheduler__appointment-attendee {
+.scheduler-appointment-attendee {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   white-space: nowrap;
@@ -204,32 +204,32 @@
   line-height: 1.2;
 }
 
-.scheduler__appointment--brand {
+.scheduler-appointment--brand {
   background: color-mix(in oklch, var(--brand) 22%, var(--bg-2));
   border-left-color: var(--brand);
 }
 
-.scheduler__appointment--leaf {
+.scheduler-appointment--leaf {
   background: color-mix(in oklch, var(--leaf) 22%, var(--bg-2));
   border-left-color: var(--leaf);
 }
 
-.scheduler__appointment--warn {
+.scheduler-appointment--warn {
   background: color-mix(in oklch, var(--warn) 22%, var(--bg-2));
   border-left-color: var(--warn);
 }
 
-.scheduler__appointment--danger {
+.scheduler-appointment--danger {
   background: color-mix(in oklch, var(--danger) 22%, var(--bg-2));
   border-left-color: var(--danger);
 }
 
-.scheduler__appointment--info {
+.scheduler-appointment--info {
   background: color-mix(in oklch, var(--info) 22%, var(--bg-2));
   border-left-color: var(--info);
 }
 
-.scheduler__now {
+.scheduler-now {
   position: absolute;
   left: 0;
   right: 0;
@@ -239,7 +239,7 @@
   pointer-events: none;
 }
 
-.scheduler__now::before {
+.scheduler-now::before {
   content: "";
   position: absolute;
   left: -4px;
@@ -264,10 +264,10 @@
   --_sch-row-h: 64px;
 }
 
-.scheduler.day .scheduler__head {
+.scheduler.day .scheduler-head {
   grid-template-columns: var(--_sch-time-col-w) 1fr;
 }
 
-.scheduler.day .scheduler__grid {
+.scheduler.day .scheduler-grid {
   grid-template-columns: 1fr;
 }

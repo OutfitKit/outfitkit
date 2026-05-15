@@ -24,7 +24,7 @@
   transition: border-color var(--dur-base) var(--ease-out);
 }
 .attachment:hover { border-color: var(--line-2); }
-.attachment__icon {
+.attachment-icon {
   width: var(--size-md); height: var(--size-md);
   border-radius: var(--radius-sm);
   display: inline-flex;
@@ -38,26 +38,26 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-snug);
 }
-.attachment__icon--pdf { background: color-mix(in oklch, var(--color-danger) 18%, transparent); color: var(--color-danger); }
-.attachment__icon--xls { background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success); }
-.attachment__icon--img { background: color-mix(in oklch, var(--color-info) 18%, transparent); color: var(--color-info); }
-.attachment__icon--zip { background: color-mix(in oklch, var(--color-warning) 18%, transparent); color: var(--color-warning); }
+.attachment-icon--pdf { background: color-mix(in oklch, var(--color-danger) 18%, transparent); color: var(--color-danger); }
+.attachment-icon--xls { background: color-mix(in oklch, var(--color-success) 18%, transparent); color: var(--color-success); }
+.attachment-icon--img { background: color-mix(in oklch, var(--color-info) 18%, transparent); color: var(--color-info); }
+.attachment-icon--zip { background: color-mix(in oklch, var(--color-warning) 18%, transparent); color: var(--color-warning); }
 
-/* .attachment uses .title .sm + .meta inside .attachment__body */
-.attachment__body { min-width: 0; }
-.attachment__progress {
+/* .attachment uses .title .sm + .meta inside .attachment-body */
+.attachment-body { min-width: 0; }
+.attachment-progress {
   width: var(--width);
   height: var(--height);
   background: var(--bg-3);
   border-radius: var(--radius-xs);
   overflow: hidden;
 }
-.attachment__progress-fill {
+.attachment-progress-fill {
   height: 100%;
   background: var(--accent-background);
   transition: width var(--dur-slow) var(--ease-out);
 }
-.attachment__action {
+.attachment-action {
   width: var(--size-sm); height: var(--size-sm);
   border-radius: var(--radius-sm);
   background: transparent;
@@ -68,4 +68,4 @@
   align-items: center;
   justify-content: center;
 }
-.attachment__action:hover { background: var(--bg-3); color: var(--ink); }
+.attachment-action:hover { background: var(--bg-3); color: var(--ink); }

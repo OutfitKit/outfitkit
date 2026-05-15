@@ -1,0 +1,125 @@
+/* ============================================================
+   Theme: ERPlora · Warm Paper + Blue Accent
+   ─────────────────────────────────────────────────────────────
+   La identidad propia de la plataforma ERPlora — fondo cálido off-white,
+   azul de marca firme, Space Grotesk para tipografía display y de cuerpo,
+   JetBrains Mono para datos / código / etiquetas técnicas. Sombras
+   discretas, radios moderados, sin glass ni gradientes invasivos.
+
+   La marca se construye sobre un hub central (azul) rodeado de módulos
+   tintados — ese mismo lenguaje vive en los componentes del producto.
+
+   Activate with `data-template="erplora"` on <html> or <body>.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+[data-template="erplora"] {
+  /* ───── Tipografía ─────
+     Space Grotesk para todo lo legible. JetBrains Mono para datos,
+     precios, KPIs, código, etiquetas técnicas. Sin Inter.
+  */
+  --font-display: "Space Grotesk", "Inter Tight", system-ui, sans-serif;
+  --font-sans:    "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --tracking-display: -0.025em;
+  --tracking-tight:   -0.015em;
+  --tracking-near:    -0.020em;
+
+  /* ───── Acento · azul ERPlora ──── */
+  --brand:       oklch(0.62 0.14 235);
+  --brand-2:     oklch(0.55 0.16 235);                              /* hover / pressed */
+  --brand-3:     oklch(0.75 0.10 235);                              /* focus ring */
+  --brand-fg:    #FFFFFF;
+  --brand-soft:  color-mix(in oklch, var(--brand) 14%, transparent);
+
+  /* Anillo de foco — visible pero discreto sobre paper */
+  --focus:       var(--brand-3);
+
+  /* ───── Estados semánticos · armónicos al azul ─────
+     Misma claridad (≈0.6) y croma (≈0.13–0.18). Sólo varía el matiz.
+  */
+  --leaf:    oklch(0.60 0.13 155);   /* success · verde */
+  --warn:    oklch(0.72 0.14 75);    /* warning · ámbar */
+  --danger:  oklch(0.58 0.18 25);    /* danger · rojo */
+  --info:    oklch(0.65 0.10 215);   /* info · cian-teal */
+
+  /* Variantes soft (para fondos de alerts, badges suaves) */
+  --leaf-soft:   color-mix(in oklch, var(--leaf)   12%, transparent);
+  --warn-soft:   color-mix(in oklch, var(--warn)   14%, transparent);
+  --danger-soft: color-mix(in oklch, var(--danger) 12%, transparent);
+  --info-soft:   color-mix(in oklch, var(--info)   12%, transparent);
+
+  /* ───── Radios · moderados, sin pastilla ───── */
+  --radius-xs:  2px;
+  --radius-sm:  4px;
+  --radius-md:  6px;
+  --radius-lg:  10px;
+  --radius-xl:  14px;
+  --radius-2xl: 20px;
+  --radius-pill: 999px;
+
+  /* ───── Sombras · paper-friendly, discretas ───── */
+  --shadow-xs: 0 1px 2px rgba(14, 17, 22, 0.04);
+  --shadow-sm: 0 1px 3px rgba(14, 17, 22, 0.06), 0 1px 2px rgba(14, 17, 22, 0.04);
+  --shadow-md: 0 4px 12px rgba(14, 17, 22, 0.06), 0 2px 4px rgba(14, 17, 22, 0.04);
+  --shadow-lg: 0 12px 28px rgba(14, 17, 22, 0.08), 0 4px 8px rgba(14, 17, 22, 0.04);
+
+  /* ───── Layout ───── */
+  --page-pad:  28px;
+  --topbar-h:  56px;
+}
+
+/* ────────────────────────────────────────────────────────────
+   ERPlora · light · paper cálido
+   El fondo principal es un off-white levemente amarillento (#F5F3EE)
+   con superficies blancas para cards. Bordes en gama warm-stone.
+   ──────────────────────────────────────────────────────────── */
+[data-template="erplora"][data-theme="erplora-light"] {
+  --bg:    #F5F3EE;            /* paper · canvas principal */
+  --bg-1:  #ECE8E0;            /* topbar / sidebar */
+  --bg-2:  #FFFFFF;            /* cards · superficie elevada */
+  --bg-3:  #ECE8E0;            /* hover / inputs */
+  --bg-4:  #D9D4C9;            /* pressed / chips */
+
+  --line:   #D9D4C9;
+  --line-2: #C7C1B3;
+  --line-3: #9E9A90;
+
+  --ink:    #0E1116;           /* texto principal */
+  --ink-2:  #1A1F26;
+  --ink-3:  #6E6A60;           /* muted */
+  --ink-4:  #9E9A90;
+
+  color-scheme: light;
+}
+
+/* ────────────────────────────────────────────────────────────
+   ERPlora · dark · tinta cálida
+   Casi-negro neutro como fondo, papel cálido como texto. El azul
+   de marca mantiene contraste sin saturar la pantalla.
+   ──────────────────────────────────────────────────────────── */
+[data-template="erplora"][data-theme="erplora"] {
+  --bg:    #0E1116;            /* canvas · tinta */
+  --bg-1:  #1A1F26;            /* topbar / sidebar */
+  --bg-2:  #1A1F26;            /* cards */
+  --bg-3:  #232A33;            /* hover / inputs */
+  --bg-4:  #2E3641;            /* pressed / chips */
+
+  --line:   rgba(245, 243, 238, 0.10);
+  --line-2: rgba(245, 243, 238, 0.18);
+  --line-3: rgba(245, 243, 238, 0.30);
+
+  --ink:    #F5F3EE;           /* texto principal */
+  --ink-2:  #D9D4C9;
+  --ink-3:  #9E9A90;
+  --ink-4:  #6E6A60;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.30);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.50);
+
+  color-scheme: dark;
+}

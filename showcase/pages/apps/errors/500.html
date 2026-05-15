@@ -13,26 +13,26 @@
 
 {% block content %}
 <main class="error-page danger" data-signals='{"secs": 30}'>
-  <div class="error-page__inner">
-    <div class="error-page__illu">
+  <div class="error-page-inner">
+    <div class="error-page-illu">
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0zM12 9v4M12 17h.01"/></svg>
     </div>
-    <div class="error-page__code">500 · Internal Server Error</div>
-    <h1 class="error-page__title">Algo no funciona en nuestro lado</h1>
-    <p class="error-page__msg">Nuestro equipo ya ha recibido el reporte y está investigando. Intentaremos restablecer el servicio automáticamente en unos segundos.</p>
+    <div class="error-page-code">500 · Internal Server Error</div>
+    <h1 class="error-page-title">Algo no funciona en nuestro lado</h1>
+    <p class="error-page-msg">Nuestro equipo ya ha recibido el reporte y está investigando. Intentaremos restablecer el servicio automáticamente en unos segundos.</p>
 
-    <div class="error-page__retry">
+    <div class="error-page-retry">
       <span>Reintentando en</span>
-      <span class="error-page__retry-countdown" data-text="$secs"></span>
+      <span class="error-page-retry-countdown" data-text="$secs"></span>
       <span>s</span>
     </div>
-    <div class="error-page__retry-bar">
-      <div class="error-page__retry-fill" data-style-width="(100 - ($secs * 100 / 30)) + '%'"></div>
+    <div class="error-page-retry-bar">
+      <div class="error-page-retry-fill" data-style-width="(100 - ($secs * 100 / 30)) + '%'"></div>
     </div>
 
-    <details class="error-page__details">
+    <details class="error-page-details">
       <summary>Detalles técnicos</summary>
-      <pre class="error-page__trace">Trace ID:    7c8b-4f2a-3b81-9c2e
+      <pre class="error-page-trace">Trace ID:    7c8b-4f2a-3b81-9c2e
 Request ID:  req_01HXYZ123ABC
 Path:        /dashboard/billing/invoices/
 Method:      GET
@@ -42,27 +42,27 @@ Released:    v2.2.0 (sha 850419c)
 Timestamp:   2026-05-08T14:32:18.421Z</pre>
     </details>
 
-    <div class="error-page__shortcuts">
-      <a class="error-page__shortcut" href="/status/">
+    <div class="error-page-shortcuts">
+      <a class="error-page-shortcut" href="/status/">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        <span class="error-page__shortcut-title">Estado del sistema</span>
+        <span class="error-page-shortcut-title">Estado del sistema</span>
       </a>
-      <a class="error-page__shortcut" href="/help/contact/">
+      <a class="error-page-shortcut" href="/help/contact/">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.38 8.5 8.5 0 0 1-7.6-4.21A8.38 8.38 0 0 1 3 11.5a8.5 8.5 0 0 1 4.7-7.6A8.38 8.38 0 0 1 12 3a8.5 8.5 0 0 1 8.38 7.6"/><path d="M9 11h6M9 8h6M9 14h4"/></svg>
-        <span class="error-page__shortcut-title">Contactar soporte</span>
+        <span class="error-page-shortcut-title">Contactar soporte</span>
       </a>
-      <a class="error-page__shortcut" href="/">
+      <a class="error-page-shortcut" href="/">
         <iconify-icon icon="lucide:home" width="18" height="18"></iconify-icon>
-        <span class="error-page__shortcut-title">Volver al inicio</span>
+        <span class="error-page-shortcut-title">Volver al inicio</span>
       </a>
     </div>
 
-    <div class="error-page__actions">
+    <div class="error-page-actions">
       <button class="btn ghost" data-on:click="navigator.clipboard?.writeText('7c8b-4f2a-3b81-9c2e')">Copiar trace ID</button>
       <button class="btn primary" data-on:click="location.reload()">Reintentar ahora</button>
     </div>
 
-    <div class="error-page__meta">trace · 7c8b-4f2a-3b81-9c2e · 2026-05-08 14:32 UTC</div>
+    <div class="error-page-meta">trace · 7c8b-4f2a-3b81-9c2e · 2026-05-08 14:32 UTC</div>
   </div>
 </main>
 {% endblock %}

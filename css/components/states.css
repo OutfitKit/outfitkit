@@ -46,7 +46,7 @@
 @media (prefers-reduced-motion: reduce) {
   .skel,
   .skeleton,
-  .skel-chart__bar {
+  .skel-chart-bar {
     animation: none;
     background: var(--bg-3);
   }
@@ -93,7 +93,7 @@
   border-radius: var(--radius-xl);
   padding: var(--space-1-5) var(--space-3-5);
 }
-.skel-table__row {
+.skel-table-row {
   display: grid;
   grid-template-columns: 1.6fr 1fr 0.8fr 0.6fr;
   gap: var(--space-4);
@@ -101,8 +101,8 @@
   border-bottom: var(--border-w) solid var(--line);
   align-items: center;
 }
-.skel-table__row:last-child { border-bottom: none; }
-.skel-table__row--head .skel { opacity: 0.55; height: var(--text-2xs); }
+.skel-table-row:last-child { border-bottom: none; }
+.skel-table-row--head .skel { opacity: 0.55; height: var(--text-2xs); }
 
 /* Skeleton chart (bars) */
 .skel-chart {
@@ -115,7 +115,7 @@
   align-items: flex-end;
   gap: var(--space-1-5);
 }
-.skel-chart__bar {
+.skel-chart-bar {
   flex: 1;
   border-radius: var(--radius-xs);
   background: linear-gradient(180deg, var(--_skel-from) 0%, var(--_skel-to) 50%, var(--_skel-from) 100%);
@@ -301,7 +301,7 @@
 
    Use universal classes inside:
      <div class="error-page">
-       <div class="error-page__inner">
+       <div class="error-page-inner">
          <div class="icon-disc brand xl">…svg…</div>
          <span class="meta">ERROR 404</span>
          <h1 class="title" style="font-size: clamp(1.75rem,4vw,2.5rem)">Título</h1>
@@ -345,7 +345,7 @@
   pointer-events: none;
   opacity: .6;
 }
-.error-page__inner {
+.error-page-inner {
   position: relative;
   display: grid;
   gap: var(--space-5);
@@ -353,7 +353,7 @@
   max-width: var(--max-width);
   width: 100%;
 }
-.error-page__illu {
+.error-page-illu {
   display: grid;
   place-items: center;
   width: var(--icon-size);
@@ -366,7 +366,7 @@
 }
 
 /* ---------- Error page semantic children ---------- */
-.error-page__code {
+.error-page-code {
   position: relative;
   z-index: 1;
   font-family: var(--font-mono);
@@ -375,7 +375,7 @@
   color: var(--ink-3);
   letter-spacing: 0.04em;
 }
-.error-page__title {
+.error-page-title {
   position: relative;
   z-index: 1;
   font-size: var(--text-2xl);
@@ -383,7 +383,7 @@
   line-height: var(--leading-tight);
   color: var(--ink);
 }
-.error-page__msg {
+.error-page-msg {
   position: relative;
   z-index: 1;
   font-size: var(--text-sm);
@@ -392,7 +392,7 @@
   margin-inline: auto;
   line-height: var(--leading-loose);
 }
-.error-page__actions {
+.error-page-actions {
   position: relative;
   z-index: 1;
   display: flex;
@@ -401,14 +401,14 @@
   justify-content: center;
   align-items: center;
 }
-.error-page__meta {
+.error-page-meta {
   position: relative;
   z-index: 1;
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--ink-4);
 }
-.error-page__shortcut-title {
+.error-page-shortcut-title {
   font-size: var(--text-sm);
   color: var(--ink);
   white-space: nowrap;
@@ -418,14 +418,14 @@
 }
 
 /* ---------- Error page sub-atoms ---------- */
-.error-page__search {
+.error-page-search {
   position: relative;
   z-index: 1;
   max-width: var(--search-max-width);
   margin: 0 auto var(--space-5);
 }
 
-.error-page__shortcuts {
+.error-page-shortcuts {
   position: relative;
   z-index: 1;
   display: grid;
@@ -434,7 +434,7 @@
   max-width: 32.5rem;
   margin: var(--space-2) auto 0;
 }
-.error-page__shortcut {
+.error-page-shortcut {
   display: flex;
   align-items: center;
   gap: var(--space-2);
@@ -448,13 +448,13 @@
   text-align: left;
   transition: border-color var(--dur-fast), background var(--dur-fast), transform var(--dur-fast);
 }
-.error-page__shortcut:hover {
+.error-page-shortcut:hover {
   border-color: var(--line-2);
   background: var(--bg-3);
   transform: translateY(-0.0625rem);
 }
-.error-page__shortcut > svg,
-.error-page__shortcut svg {
+.error-page-shortcut > svg,
+.error-page-shortcut svg {
   width: var(--diag-icon-size);
   height: var(--diag-icon-size);
   min-width: var(--diag-icon-size);
@@ -463,7 +463,7 @@
   flex-shrink: 0;
 }
 
-.error-page__details {
+.error-page-details {
   position: relative;
   z-index: 1;
   margin: var(--space-4) auto 0;
@@ -472,7 +472,7 @@
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
-.error-page__details summary {
+.error-page-details summary {
   cursor: pointer;
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius-md);
@@ -483,20 +483,20 @@
   user-select: none;
   list-style: none;
 }
-.error-page__details summary::-webkit-details-marker { display: none; }
-.error-page__details summary::before {
+.error-page-details summary::-webkit-details-marker { display: none; }
+.error-page-details summary::before {
   content: "▸ ";
   display: inline-block;
   margin-right: var(--space-1);
   transition: transform var(--dur-fast);
 }
-.error-page__details[open] summary::before {
+.error-page-details[open] summary::before {
   transform: rotate(90deg);
 }
-.error-page__details summary:hover {
+.error-page-details summary:hover {
   border-color: var(--line-2);
 }
-.error-page__trace {
+.error-page-trace {
   margin: var(--space-2) 0 0;
   padding: var(--space-3) var(--space-3-5);
   border-radius: var(--radius-md);
@@ -510,7 +510,7 @@
   overflow-x: auto;
 }
 
-.error-page__retry {
+.error-page-retry {
   position: relative;
   z-index: 1;
   display: inline-flex;
@@ -524,14 +524,14 @@
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
-.error-page__retry-countdown {
+.error-page-retry-countdown {
   font-family: var(--font-mono);
   font-weight: var(--weight-bold);
   color: var(--accent);
   min-width: 1.5em;
   text-align: center;
 }
-.error-page__retry-bar {
+.error-page-retry-bar {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -542,14 +542,14 @@
   background: var(--bg-3);
   overflow: hidden;
 }
-.error-page__retry-fill {
+.error-page-retry-fill {
   height: 100%;
   width: 100%;
   background: var(--accent);
   transition: width var(--dur-base) linear;
 }
 
-.error-page__diagnosis {
+.error-page-diagnosis {
   position: relative;
   z-index: 1;
   display: flex;
@@ -559,7 +559,7 @@
   max-width: var(--diag-max-width);
   text-align: left;
 }
-.error-page__diagnosis-item {
+.error-page-diagnosis-item {
   display: grid;
   grid-template-columns: var(--diag-icon-size) 1fr auto;
   gap: var(--space-2-5);
@@ -571,32 +571,32 @@
   font-size: var(--text-sm);
   color: var(--ink-2);
 }
-.error-page__diagnosis-icon {
+.error-page-diagnosis-icon {
   width: var(--diag-icon-size);
   height: var(--diag-icon-size);
   display: grid;
   place-items: center;
   color: var(--ink-3);
 }
-.error-page__diagnosis-time {
+.error-page-diagnosis-time {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--ink-3);
 }
-.error-page__diagnosis-item.is-ok      .error-page__diagnosis-icon { color: var(--color-success); }
-.error-page__diagnosis-item.is-fail    { border-color: color-mix(in oklch, var(--color-danger) 30%, transparent); }
-.error-page__diagnosis-item.is-fail    .error-page__diagnosis-icon { color: var(--color-danger); }
-.error-page__diagnosis-item.is-warn    .error-page__diagnosis-icon { color: var(--color-warning); }
-.error-page__diagnosis-item.is-pending .error-page__diagnosis-icon { color: var(--color-info); }
-.error-page__diagnosis-item.is-skip    { opacity: 0.55; }
+.error-page-diagnosis-item.is-ok      .error-page-diagnosis-icon { color: var(--color-success); }
+.error-page-diagnosis-item.is-fail    { border-color: color-mix(in oklch, var(--color-danger) 30%, transparent); }
+.error-page-diagnosis-item.is-fail    .error-page-diagnosis-icon { color: var(--color-danger); }
+.error-page-diagnosis-item.is-warn    .error-page-diagnosis-icon { color: var(--color-warning); }
+.error-page-diagnosis-item.is-pending .error-page-diagnosis-icon { color: var(--color-info); }
+.error-page-diagnosis-item.is-skip    { opacity: 0.55; }
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
-  .error-page__illu {
+  .error-page-illu {
     width: 4.5rem;
     height: 4.5rem;
   }
-  .error-page__shortcuts {
+  .error-page-shortcuts {
     grid-template-columns: 1fr 1fr;
   }
 }
@@ -616,21 +616,21 @@
   background: var(--bg);
   color: var(--ink);
 }
-.bootstrap-error__panel {
+.bootstrap-error-panel {
   display: grid;
   gap: var(--space-4);
   max-width: var(--max-width);
   width: 100%;
 }
 /* bootstrap-error head: use .icon-disc.danger + .heading inside */
-.bootstrap-error__head {
+.bootstrap-error-head {
   display: flex;
   align-items: center;
   gap: var(--space-3);
   padding-bottom: var(--space-3);
   border-bottom: var(--border-w) solid var(--line);
 }
-.bootstrap-error__icon {
+.bootstrap-error-icon {
   width: var(--icon-size);
   height: var(--icon-size);
   display: grid;
@@ -640,14 +640,14 @@
   color: var(--color-danger);
   flex-shrink: 0;
 }
-.bootstrap-error__checks {
+.bootstrap-error-checks {
   display: grid;
   gap: var(--space-2);
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.bootstrap-error__check {
+.bootstrap-error-check {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -656,35 +656,35 @@
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
 }
-.bootstrap-error__check--ok    { border-color: color-mix(in oklch, var(--color-success) 25%, transparent); }
-.bootstrap-error__check--fail  { border-color: color-mix(in oklch, var(--color-danger) 35%, transparent); background: color-mix(in oklch, var(--color-danger) 4%, var(--bg-2)); }
-.bootstrap-error__check--pending { border-color: color-mix(in oklch, var(--color-warning) 25%, transparent); }
-.bootstrap-error__check-icon {
+.bootstrap-error-check--ok    { border-color: color-mix(in oklch, var(--color-success) 25%, transparent); }
+.bootstrap-error-check--fail  { border-color: color-mix(in oklch, var(--color-danger) 35%, transparent); background: color-mix(in oklch, var(--color-danger) 4%, var(--bg-2)); }
+.bootstrap-error-check--pending { border-color: color-mix(in oklch, var(--color-warning) 25%, transparent); }
+.bootstrap-error-check-icon {
   width: var(--size-xs);
   height: var(--size-xs);
   flex-shrink: 0;
 }
-.bootstrap-error__check--ok      .bootstrap-error__check-icon { color: var(--color-success); }
-.bootstrap-error__check--fail    .bootstrap-error__check-icon { color: var(--color-danger); }
-.bootstrap-error__check--pending .bootstrap-error__check-icon { color: var(--color-warning); }
-.bootstrap-error__check-body { flex: 1; min-width: 0; }
-.bootstrap-error__details {
+.bootstrap-error-check--ok      .bootstrap-error-check-icon { color: var(--color-success); }
+.bootstrap-error-check--fail    .bootstrap-error-check-icon { color: var(--color-danger); }
+.bootstrap-error-check--pending .bootstrap-error-check-icon { color: var(--color-warning); }
+.bootstrap-error-check-body { flex: 1; min-width: 0; }
+.bootstrap-error-details {
   background: var(--bg-2);
   border: var(--border-w) solid var(--line);
   border-radius: var(--radius-md);
   padding: 0;
   font-size: var(--text-sm);
 }
-.bootstrap-error__details > summary {
+.bootstrap-error-details > summary {
   cursor: pointer;
   padding: var(--space-3);
   font-weight: var(--weight-medium);
   color: var(--ink-2);
   list-style: none;
 }
-.bootstrap-error__details > summary::-webkit-details-marker { display: none; }
-.bootstrap-error__details[open] > summary { border-bottom: var(--border-w) solid var(--line); }
-.bootstrap-error__details > pre {
+.bootstrap-error-details > summary::-webkit-details-marker { display: none; }
+.bootstrap-error-details[open] > summary { border-bottom: var(--border-w) solid var(--line); }
+.bootstrap-error-details > pre {
   margin: 0;
   padding: var(--space-3);
   font-family: var(--font-mono);
@@ -694,7 +694,7 @@
   word-break: break-word;
   overflow-x: auto;
 }
-.bootstrap-error__actions {
+.bootstrap-error-actions {
   display: flex;
   gap: var(--space-2);
   justify-content: flex-end;

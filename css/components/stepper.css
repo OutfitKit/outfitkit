@@ -16,7 +16,7 @@
   font-size: var(--text-sm);
 }
 
-.stepper__step {
+.stepper-step {
   position: relative;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   padding: var(--space-1) var(--space-0);
 }
 
-.stepper__step:not(:last-child)::after {
+.stepper-step:not(:last-child)::after {
   content: "";
   flex: 1;
   height: var(--border-w);
@@ -33,11 +33,11 @@
   background: var(--line-2);
 }
 
-.stepper__step[data-state="done"]:not(:last-child)::after {
+.stepper-step[data-state="done"]:not(:last-child)::after {
   background: var(--color);
 }
 
-.stepper__bullet {
+.stepper-bullet {
   display: grid;
   place-items: center;
   width: var(--bullet-size);
@@ -52,44 +52,44 @@
   font-variant-numeric: tabular-nums;
 }
 
-.stepper__step[data-state="active"] .stepper__bullet,
-.stepper__step[data-state="done"] .stepper__bullet {
+.stepper-step[data-state="active"] .stepper-bullet,
+.stepper-step[data-state="done"] .stepper-bullet {
   background: var(--color);
   border-color: var(--color);
   color: var(--color-contrast);
 }
 
-.stepper__step[data-state="active"] .stepper__bullet {
+.stepper-step[data-state="active"] .stepper-bullet {
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--color) 18%, transparent);
 }
 
-.stepper__step[data-state="done"] .stepper__bullet::before {
+.stepper-step[data-state="done"] .stepper-bullet::before {
   content: "\2713";
   font-size: 0.75rem;
 }
 
-.stepper__step[data-state="done"] .stepper__bullet > span {
+.stepper-step[data-state="done"] .stepper-bullet > span {
   display: none;
 }
 
-.stepper__label {
+.stepper-label {
   display: flex;
   flex-direction: column;
   line-height: 1.25;
 }
 
-.stepper__title {
+.stepper-title {
   color: var(--ink-3);
   font-size: var(--text-sm);
   font-weight: 500;
 }
 
-.stepper__step[data-state="active"] .stepper__title,
-.stepper__step[data-state="done"] .stepper__title {
+.stepper-step[data-state="active"] .stepper-title,
+.stepper-step[data-state="done"] .stepper-title {
   color: var(--ink);
 }
 
-.stepper__sub {
+.stepper-sub {
   margin-top: var(--border-w-2);
   color: var(--ink-4);
   font-size: var(--text-xs);
@@ -101,13 +101,13 @@
   gap: var(--space-0);
 }
 
-.stepper.vertical .stepper__step {
+.stepper.vertical .stepper-step {
   width: 100%;
   align-items: flex-start;
   padding: var(--space-0) var(--space-0) var(--space-4) var(--space-0);
 }
 
-.stepper.vertical .stepper__step:not(:last-child)::after {
+.stepper.vertical .stepper-step:not(:last-child)::after {
   content: "";
   position: absolute;
   top: var(--line-top);
@@ -119,6 +119,6 @@
   background: var(--line-2);
 }
 
-.stepper.vertical .stepper__step[data-state="done"]:not(:last-child)::after {
+.stepper.vertical .stepper-step[data-state="done"]:not(:last-child)::after {
   background: var(--color);
 }

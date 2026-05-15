@@ -95,34 +95,34 @@
         <article class="card col-md-7 col-lg-8">
           <header class="head">
             <h3 class="title">Nueva invitación</h3>
-            <span class="badge info"><span class="badge__dot"></span>Hasta 50/día</span>
+            <span class="badge info"><span class="badge-dot"></span>Hasta 50/día</span>
           </header>
           <div class="body">
             <div class="form">
               <label class="field">
-                <span class="field__label field__label--req">Direcciones de correo</span>
+                <span class="field-label field-label--req">Direcciones de correo</span>
                 <div class="tag-input">
                   <template data-for="email in $emails" data-key="email">
                     <span class="tag brand is-removable">
                       <span data-text="email">ana@ejemplo.com</span>
-                      <button class="tag__remove" data-on:click="$emails = $emails.filter(e => e !== email)" aria-label="Quitar">×</button>
+                      <button class="tag-remove" data-on:click="$emails = $emails.filter(e => e !== email)" aria-label="Quitar">×</button>
                     </span>
                   </template>
                   <span class="tag brand is-removable">
                     ana@ejemplo.com
-                    <button class="tag__remove" data-on:click="$emails = $emails.filter(e => e !== 'ana@ejemplo.com')" aria-label="Quitar">×</button>
+                    <button class="tag-remove" data-on:click="$emails = $emails.filter(e => e !== 'ana@ejemplo.com')" aria-label="Quitar">×</button>
                   </span>
                   <span class="tag brand is-removable">
                     bruno@ejemplo.com
-                    <button class="tag__remove" data-on:click="$emails = $emails.filter(e => e !== 'bruno@ejemplo.com')" aria-label="Quitar">×</button>
+                    <button class="tag-remove" data-on:click="$emails = $emails.filter(e => e !== 'bruno@ejemplo.com')" aria-label="Quitar">×</button>
                   </span>
                   <input data-bind:current placeholder="Escribe un email y pulsa Enter…"/>
                 </div>
-                <span class="field__hint">Pega varios separados por comas. Soportamos hasta 200 invitaciones por lote.</span>
+                <span class="field-hint">Pega varios separados por comas. Soportamos hasta 200 invitaciones por lote.</span>
               </label>
 
               <label class="field">
-                <span class="field__label">Rol</span>
+                <span class="field-label">Rol</span>
                 <select class="select">
                   <option>Owner — control total, facturación incluida</option>
                   <option>Admin — administra equipo, hubs y permisos</option>
@@ -132,17 +132,17 @@
               </label>
 
               <label class="field">
-                <span class="field__label">Mensaje opcional</span>
+                <span class="field-label">Mensaje opcional</span>
                 <textarea class="textarea" placeholder="Hola! Te invito a unirte a Acme Industries en ERPlora para que coordinemos la producción de mayo…"></textarea>
-                <span class="field__hint">Se incluirá en el correo de invitación junto a un enlace de aceptación.</span>
+                <span class="field-hint">Se incluirá en el correo de invitación junto a un enlace de aceptación.</span>
               </label>
 
               <label class="toggle-row">
-                <div class="toggle-row__text">
-                  <span class="toggle-row__label">Forzar 2FA al unirse</span>
-                  <span class="toggle-row__desc">Se exige verificación en dos pasos antes del primer acceso</span>
+                <div class="toggle-row-text">
+                  <span class="toggle-row-label">Forzar 2FA al unirse</span>
+                  <span class="toggle-row-desc">Se exige verificación en dos pasos antes del primer acceso</span>
                 </div>
-                <span class="toggle"><input type="checkbox" checked/><span class="toggle__track"></span></span>
+                <span class="toggle"><input type="checkbox" checked/><span class="toggle-track"></span></span>
               </label>
             </div>
           </div>
@@ -215,7 +215,7 @@
                   <td>
                     <div class="cell-rich">
                       <span class="avatar" style="background:#7B3F2A;color:#fff;">CR</span>
-                      <div class="cell-rich__main">
+                      <div class="cell-rich-main">
                         <div class="title sm">carla.ruiz@partner.es</div>
                         <div class="meta">Invitada por Ioan Beilic</div>
                       </div>
@@ -223,14 +223,14 @@
                   </td>
                   <td><span class="badge info">Admin</span></td>
                   <td class="td mono">02 may 2026</td>
-                  <td><span class="badge success"><span class="badge__dot"></span>Aceptada</span></td>
+                  <td><span class="badge success"><span class="badge-dot"></span>Aceptada</span></td>
                   <td class="text-right"><button class="btn ghost sm">Ver perfil</button></td>
                 </tr>
                 <tr>
                   <td>
                     <div class="cell-rich">
                       <span class="avatar" style="background:#2A6B7B;color:#fff;">DG</span>
-                      <div class="cell-rich__main">
+                      <div class="cell-rich-main">
                         <div class="title sm">david.guerrero@externo.com</div>
                         <div class="meta">Invitado por Anna Calvet</div>
                       </div>
@@ -238,14 +238,14 @@
                   </td>
                   <td><span class="badge">Editor</span></td>
                   <td class="td mono">04 may 2026</td>
-                  <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                  <td><span class="badge warning"><span class="badge-dot"></span>Pendiente</span></td>
                   <td class="text-right"><button class="btn ghost sm">Reenviar</button> <button class="btn ghost sm">Cancelar</button></td>
                 </tr>
                 <tr>
                   <td>
                     <div class="cell-rich">
                       <span class="avatar" style="background:#C7407A;color:#fff;">MS</span>
-                      <div class="cell-rich__main">
+                      <div class="cell-rich-main">
                         <div class="title sm">marta.sanchez@auditoria.es</div>
                         <div class="meta">Invitada por María Rovira</div>
                       </div>
@@ -253,14 +253,14 @@
                   </td>
                   <td><span class="badge">Viewer</span></td>
                   <td class="td mono">05 may 2026</td>
-                  <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                  <td><span class="badge warning"><span class="badge-dot"></span>Pendiente</span></td>
                   <td class="text-right"><button class="btn ghost sm">Reenviar</button> <button class="btn ghost sm">Cancelar</button></td>
                 </tr>
                 <tr>
                   <td>
                     <div class="cell-rich">
                       <span class="avatar" style="background:#6E4DC4;color:#fff;">RV</span>
-                      <div class="cell-rich__main">
+                      <div class="cell-rich-main">
                         <div class="title sm">raul.vidal@gmail.com</div>
                         <div class="meta">Invitado por Ioan Beilic</div>
                       </div>
@@ -268,14 +268,14 @@
                   </td>
                   <td><span class="badge">Editor</span></td>
                   <td class="td mono">28 abr 2026</td>
-                  <td><span class="badge danger"><span class="badge__dot"></span>Rechazada</span></td>
+                  <td><span class="badge danger"><span class="badge-dot"></span>Rechazada</span></td>
                   <td class="text-right"><button class="btn ghost sm">Volver a invitar</button></td>
                 </tr>
                 <tr>
                   <td>
                     <div class="cell-rich">
                       <span class="avatar" style="background:#4F9D6E;color:#fff;">EP</span>
-                      <div class="cell-rich__main">
+                      <div class="cell-rich-main">
                         <div class="title sm">elisabeth.puig@asesoria.cat</div>
                         <div class="meta">Invitada por Anna Calvet</div>
                       </div>
@@ -283,7 +283,7 @@
                   </td>
                   <td><span class="badge">Viewer</span></td>
                   <td class="td mono">12 abr 2026</td>
-                  <td><span class="badge"><span class="badge__dot"></span>Expirada</span></td>
+                  <td><span class="badge"><span class="badge-dot"></span>Expirada</span></td>
                   <td class="text-right"><button class="btn ghost sm">Reenviar</button></td>
                 </tr>
               </tbody>
@@ -292,9 +292,9 @@
           <div class="table-footer">
             <span>5 de 5 · página 1 de 1</span>
             <div class="pagination">
-              <button class="pagination__btn" disabled>‹</button>
-              <button class="pagination__btn" aria-current="page">1</button>
-              <button class="pagination__btn" disabled>›</button>
+              <button class="pagination-btn" disabled>‹</button>
+              <button class="pagination-btn" aria-current="page">1</button>
+              <button class="pagination-btn" disabled>›</button>
             </div>
           </div>
         </div>

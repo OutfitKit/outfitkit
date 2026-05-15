@@ -6,104 +6,104 @@
 
 {% block content %}
 <h1>Manufacturing · Bill of Materials</h1>
-<p class="showcase__lead">Árbol explosionado de componentes (BOM): nivel jerárquico, SKU, cantidad, coste, stock y estado. El consumidor compone <code>.ok-bom__head</code> y <code>.ok-bom__row</code> dentro del slot. Niveles via <code>.ok-bom__name--lvl-1/2/3</code>.</p>
+<p class="showcase-lead">Árbol explosionado de componentes (BOM): nivel jerárquico, SKU, cantidad, coste, stock y estado. El consumidor compone <code>.ok-bom-head</code> y <code>.ok-bom-row</code> dentro del slot. Niveles via <code>.ok-bom-name--lvl-1/2/3</code>.</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/manufacturing.jinja" import manufacturing %}
 {% call manufacturing() %}
-<div class="bom__head">
+<div class="bom-head">
   <span>Componente</span><span>Cant.</span><span>Coste</span><span>Stock</span><span>Estado</span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-1"><span class="bom__caret bom__caret--open">▶</span><b>Bicicleta urbana B-Línea</b><span class="bom__sku">FG-BIK-001</span></div>
-  <span>1 ud</span><span>€384,20</span><span>—</span><span><span class="bom__pill">Listo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-1"><span class="bom-caret bom-caret--open">▶</span><b>Bicicleta urbana B-Línea</b><span class="bom-sku">FG-BIK-001</span></div>
+  <span>1 ud</span><span>€384,20</span><span>—</span><span><span class="bom-pill">Listo</span></span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--open">▶</span>Cuadro aluminio 6061<span class="bom__sku">SA-FRA-204</span></div>
-  <span>1 ud</span><span>€118,00</span><span>42</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--open">▶</span>Cuadro aluminio 6061<span class="bom-sku">SA-FRA-204</span></div>
+  <span>1 ud</span><span>€118,00</span><span>42</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Tubo 6061-T6 ⌀31,8mm</div>
-  <span>2,4 m</span><span>€18,40</span><span>96 m</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Tubo 6061-T6 ⌀31,8mm</div>
+  <span>2,4 m</span><span>€18,40</span><span>96 m</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Soldadura TIG argón</div>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Soldadura TIG argón</div>
   <span>0,3 h</span><span>€9,80</span><span>—</span><span>—</span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--open">▶</span>Grupo de cambio Shimano Acera<span class="bom__sku">CP-DRV-018</span></div>
-  <span>1 set</span><span>€84,50</span><span>14</span><span><span class="bom__pill bom__pill--low">Bajo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--open">▶</span>Grupo de cambio Shimano Acera<span class="bom-sku">CP-DRV-018</span></div>
+  <span>1 set</span><span>€84,50</span><span>14</span><span><span class="bom-pill bom-pill--low">Bajo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Cassette 8v 11-32T</div>
-  <span>1 ud</span><span>€22,00</span><span>14</span><span><span class="bom__pill bom__pill--low">Bajo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Cassette 8v 11-32T</div>
+  <span>1 ud</span><span>€22,00</span><span>14</span><span><span class="bom-pill bom-pill--low">Bajo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Desviador trasero</div>
-  <span>1 ud</span><span>€34,80</span><span>22</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Desviador trasero</div>
+  <span>1 ud</span><span>€34,80</span><span>22</span><span><span class="bom-pill">OK</span></span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Ruedas 700C dobles<span class="bom__sku">CP-WHL-073</span></div>
-  <span>2 ud</span><span>€96,00</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Ruedas 700C dobles<span class="bom-sku">CP-WHL-073</span></div>
+  <span>2 ud</span><span>€96,00</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Pintura epoxi blanco mate<span class="bom__sku">CN-PNT-012</span></div>
-  <span>0,4 L</span><span>€12,90</span><span>38 L</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Pintura epoxi blanco mate<span class="bom-sku">CN-PNT-012</span></div>
+  <span>0,4 L</span><span>€12,90</span><span>38 L</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Mano de obra ensamblaje</div>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Mano de obra ensamblaje</div>
   <span>1,8 h</span><span>€44,00</span><span>—</span><span>—</span>
 </div>
 {% endcall %}{% endraw %}{% endset %}
 {% set _src_jinjax_1 %}{% raw %}<Manufacturing>
-<div class="bom__head">
+<div class="bom-head">
   <span>Componente</span><span>Cant.</span><span>Coste</span><span>Stock</span><span>Estado</span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-1"><span class="bom__caret bom__caret--open">▶</span><b>Bicicleta urbana B-Línea</b><span class="bom__sku">FG-BIK-001</span></div>
-  <span>1 ud</span><span>€384,20</span><span>—</span><span><span class="bom__pill">Listo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-1"><span class="bom-caret bom-caret--open">▶</span><b>Bicicleta urbana B-Línea</b><span class="bom-sku">FG-BIK-001</span></div>
+  <span>1 ud</span><span>€384,20</span><span>—</span><span><span class="bom-pill">Listo</span></span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--open">▶</span>Cuadro aluminio 6061<span class="bom__sku">SA-FRA-204</span></div>
-  <span>1 ud</span><span>€118,00</span><span>42</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--open">▶</span>Cuadro aluminio 6061<span class="bom-sku">SA-FRA-204</span></div>
+  <span>1 ud</span><span>€118,00</span><span>42</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Tubo 6061-T6 ⌀31,8mm</div>
-  <span>2,4 m</span><span>€18,40</span><span>96 m</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Tubo 6061-T6 ⌀31,8mm</div>
+  <span>2,4 m</span><span>€18,40</span><span>96 m</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Soldadura TIG argón</div>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Soldadura TIG argón</div>
   <span>0,3 h</span><span>€9,80</span><span>—</span><span>—</span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--open">▶</span>Grupo de cambio Shimano Acera<span class="bom__sku">CP-DRV-018</span></div>
-  <span>1 set</span><span>€84,50</span><span>14</span><span><span class="bom__pill bom__pill--low">Bajo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--open">▶</span>Grupo de cambio Shimano Acera<span class="bom-sku">CP-DRV-018</span></div>
+  <span>1 set</span><span>€84,50</span><span>14</span><span><span class="bom-pill bom-pill--low">Bajo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Cassette 8v 11-32T</div>
-  <span>1 ud</span><span>€22,00</span><span>14</span><span><span class="bom__pill bom__pill--low">Bajo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Cassette 8v 11-32T</div>
+  <span>1 ud</span><span>€22,00</span><span>14</span><span><span class="bom-pill bom-pill--low">Bajo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Desviador trasero</div>
-  <span>1 ud</span><span>€34,80</span><span>22</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Desviador trasero</div>
+  <span>1 ud</span><span>€34,80</span><span>22</span><span><span class="bom-pill">OK</span></span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Ruedas 700C dobles<span class="bom__sku">CP-WHL-073</span></div>
-  <span>2 ud</span><span>€96,00</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Ruedas 700C dobles<span class="bom-sku">CP-WHL-073</span></div>
+  <span>2 ud</span><span>€96,00</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Pintura epoxi blanco mate<span class="bom__sku">CN-PNT-012</span></div>
-  <span>0,4 L</span><span>€12,90</span><span>38 L</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Pintura epoxi blanco mate<span class="bom-sku">CN-PNT-012</span></div>
+  <span>0,4 L</span><span>€12,90</span><span>38 L</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Mano de obra ensamblaje</div>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Mano de obra ensamblaje</div>
   <span>1,8 h</span><span>€44,00</span><span>—</span><span>—</span>
 </div>
 </Manufacturing>{% endraw %}{% endset %}
@@ -112,51 +112,51 @@
     jinja_src=_src_jinja_1,
     jinjax_src=_src_jinjax_1) %}
 {% call manufacturing() %}
-<div class="bom__head">
+<div class="bom-head">
   <span>Componente</span><span>Cant.</span><span>Coste</span><span>Stock</span><span>Estado</span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-1"><span class="bom__caret bom__caret--open">▶</span><b>Bicicleta urbana B-Línea</b><span class="bom__sku">FG-BIK-001</span></div>
-  <span>1 ud</span><span>€384,20</span><span>—</span><span><span class="bom__pill">Listo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-1"><span class="bom-caret bom-caret--open">▶</span><b>Bicicleta urbana B-Línea</b><span class="bom-sku">FG-BIK-001</span></div>
+  <span>1 ud</span><span>€384,20</span><span>—</span><span><span class="bom-pill">Listo</span></span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--open">▶</span>Cuadro aluminio 6061<span class="bom__sku">SA-FRA-204</span></div>
-  <span>1 ud</span><span>€118,00</span><span>42</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--open">▶</span>Cuadro aluminio 6061<span class="bom-sku">SA-FRA-204</span></div>
+  <span>1 ud</span><span>€118,00</span><span>42</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Tubo 6061-T6 ⌀31,8mm</div>
-  <span>2,4 m</span><span>€18,40</span><span>96 m</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Tubo 6061-T6 ⌀31,8mm</div>
+  <span>2,4 m</span><span>€18,40</span><span>96 m</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Soldadura TIG argón</div>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Soldadura TIG argón</div>
   <span>0,3 h</span><span>€9,80</span><span>—</span><span>—</span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--open">▶</span>Grupo de cambio Shimano Acera<span class="bom__sku">CP-DRV-018</span></div>
-  <span>1 set</span><span>€84,50</span><span>14</span><span><span class="bom__pill bom__pill--low">Bajo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--open">▶</span>Grupo de cambio Shimano Acera<span class="bom-sku">CP-DRV-018</span></div>
+  <span>1 set</span><span>€84,50</span><span>14</span><span><span class="bom-pill bom-pill--low">Bajo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Cassette 8v 11-32T</div>
-  <span>1 ud</span><span>€22,00</span><span>14</span><span><span class="bom__pill bom__pill--low">Bajo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Cassette 8v 11-32T</div>
+  <span>1 ud</span><span>€22,00</span><span>14</span><span><span class="bom-pill bom-pill--low">Bajo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Desviador trasero</div>
-  <span>1 ud</span><span>€34,80</span><span>22</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Desviador trasero</div>
+  <span>1 ud</span><span>€34,80</span><span>22</span><span><span class="bom-pill">OK</span></span>
 </div>
 
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Ruedas 700C dobles<span class="bom__sku">CP-WHL-073</span></div>
-  <span>2 ud</span><span>€96,00</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Ruedas 700C dobles<span class="bom-sku">CP-WHL-073</span></div>
+  <span>2 ud</span><span>€96,00</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Pintura epoxi blanco mate<span class="bom__sku">CN-PNT-012</span></div>
-  <span>0,4 L</span><span>€12,90</span><span>38 L</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Pintura epoxi blanco mate<span class="bom-sku">CN-PNT-012</span></div>
+  <span>0,4 L</span><span>€12,90</span><span>38 L</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2"><span class="bom__caret bom__caret--leaf">▶</span>Mano de obra ensamblaje</div>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2"><span class="bom-caret bom-caret--leaf">▶</span>Mano de obra ensamblaje</div>
   <span>1,8 h</span><span>€44,00</span><span>—</span><span>—</span>
 </div>
 {% endcall %}
@@ -165,75 +165,75 @@
 {% set _src_jinja_2 %}{% raw %}{% from "ui/manufacturing.jinja" import manufacturing %}
 <div data-signals="{ openFrame: true, openDrive: false }">
 {% call manufacturing() %}
-<div class="bom__head">
+<div class="bom-head">
   <span>Componente</span><span>Cant.</span><span>Coste</span><span>Stock</span><span>Estado</span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-1"><span class="bom__caret bom__caret--open">▶</span><b>Mesa madera roble</b><span class="bom__sku">FG-TBL-008</span></div>
-  <span>1 ud</span><span>€212,40</span><span>—</span><span><span class="bom__pill">Listo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-1"><span class="bom-caret bom-caret--open">▶</span><b>Mesa madera roble</b><span class="bom-sku">FG-TBL-008</span></div>
+  <span>1 ud</span><span>€212,40</span><span>—</span><span><span class="bom-pill">Listo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2">
-    <span class="bom__caret" data-class:bom__caret--open="$openFrame" data-on:click="$openFrame = !$openFrame">▶</span>
-    Tablero macizo<span class="bom__sku">SA-WD-014</span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2">
+    <span class="bom-caret" data-class:bom-caret--open="$openFrame" data-on:click="$openFrame = !$openFrame">▶</span>
+    Tablero macizo<span class="bom-sku">SA-WD-014</span>
   </div>
-  <span>1 ud</span><span>€84,00</span><span>9</span><span><span class="bom__pill">OK</span></span>
+  <span>1 ud</span><span>€84,00</span><span>9</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row" data-show="$openFrame">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Tabla roble 220×90×4</div>
-  <span>1 ud</span><span>€72,00</span><span>9</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row" data-show="$openFrame">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Tabla roble 220×90×4</div>
+  <span>1 ud</span><span>€72,00</span><span>9</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row" data-show="$openFrame">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Barniz mate</div>
-  <span>0,2 L</span><span>€12,00</span><span>14 L</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row" data-show="$openFrame">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Barniz mate</div>
+  <span>0,2 L</span><span>€12,00</span><span>14 L</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2">
-    <span class="bom__caret" data-class:bom__caret--open="$openDrive" data-on:click="$openDrive = !$openDrive">▶</span>
-    Patas hierro forjado<span class="bom__sku">SA-LEG-022</span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2">
+    <span class="bom-caret" data-class:bom-caret--open="$openDrive" data-on:click="$openDrive = !$openDrive">▶</span>
+    Patas hierro forjado<span class="bom-sku">SA-LEG-022</span>
   </div>
-  <span>4 ud</span><span>€96,40</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+  <span>4 ud</span><span>€96,40</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
-<div class="bom__row" data-show="$openDrive">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Pata 71cm</div>
-  <span>4 ud</span><span>€88,00</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+<div class="bom-row" data-show="$openDrive">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Pata 71cm</div>
+  <span>4 ud</span><span>€88,00</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
 {% endcall %}
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_2 %}{% raw %}<div data-signals="{ openFrame: true, openDrive: false }">
 <Manufacturing>
-<div class="bom__head">
+<div class="bom-head">
   <span>Componente</span><span>Cant.</span><span>Coste</span><span>Stock</span><span>Estado</span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-1"><span class="bom__caret bom__caret--open">▶</span><b>Mesa madera roble</b><span class="bom__sku">FG-TBL-008</span></div>
-  <span>1 ud</span><span>€212,40</span><span>—</span><span><span class="bom__pill">Listo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-1"><span class="bom-caret bom-caret--open">▶</span><b>Mesa madera roble</b><span class="bom-sku">FG-TBL-008</span></div>
+  <span>1 ud</span><span>€212,40</span><span>—</span><span><span class="bom-pill">Listo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2">
-    <span class="bom__caret" data-class:bom__caret--open="$openFrame" data-on:click="$openFrame = !$openFrame">▶</span>
-    Tablero macizo<span class="bom__sku">SA-WD-014</span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2">
+    <span class="bom-caret" data-class:bom-caret--open="$openFrame" data-on:click="$openFrame = !$openFrame">▶</span>
+    Tablero macizo<span class="bom-sku">SA-WD-014</span>
   </div>
-  <span>1 ud</span><span>€84,00</span><span>9</span><span><span class="bom__pill">OK</span></span>
+  <span>1 ud</span><span>€84,00</span><span>9</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row" data-show="$openFrame">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Tabla roble 220×90×4</div>
-  <span>1 ud</span><span>€72,00</span><span>9</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row" data-show="$openFrame">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Tabla roble 220×90×4</div>
+  <span>1 ud</span><span>€72,00</span><span>9</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row" data-show="$openFrame">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Barniz mate</div>
-  <span>0,2 L</span><span>€12,00</span><span>14 L</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row" data-show="$openFrame">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Barniz mate</div>
+  <span>0,2 L</span><span>€12,00</span><span>14 L</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2">
-    <span class="bom__caret" data-class:bom__caret--open="$openDrive" data-on:click="$openDrive = !$openDrive">▶</span>
-    Patas hierro forjado<span class="bom__sku">SA-LEG-022</span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2">
+    <span class="bom-caret" data-class:bom-caret--open="$openDrive" data-on:click="$openDrive = !$openDrive">▶</span>
+    Patas hierro forjado<span class="bom-sku">SA-LEG-022</span>
   </div>
-  <span>4 ud</span><span>€96,40</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+  <span>4 ud</span><span>€96,40</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
-<div class="bom__row" data-show="$openDrive">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Pata 71cm</div>
-  <span>4 ud</span><span>€88,00</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+<div class="bom-row" data-show="$openDrive">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Pata 71cm</div>
+  <span>4 ud</span><span>€88,00</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
 </Manufacturing>
 </div>{% endraw %}{% endset %}
@@ -243,38 +243,38 @@
     jinjax_src=_src_jinjax_2) %}
 <div data-signals="{ openFrame: true, openDrive: false }">
 {% call manufacturing() %}
-<div class="bom__head">
+<div class="bom-head">
   <span>Componente</span><span>Cant.</span><span>Coste</span><span>Stock</span><span>Estado</span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-1"><span class="bom__caret bom__caret--open">▶</span><b>Mesa madera roble</b><span class="bom__sku">FG-TBL-008</span></div>
-  <span>1 ud</span><span>€212,40</span><span>—</span><span><span class="bom__pill">Listo</span></span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-1"><span class="bom-caret bom-caret--open">▶</span><b>Mesa madera roble</b><span class="bom-sku">FG-TBL-008</span></div>
+  <span>1 ud</span><span>€212,40</span><span>—</span><span><span class="bom-pill">Listo</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2">
-    <span class="bom__caret" data-class:bom__caret--open="$openFrame" data-on:click="$openFrame = !$openFrame">▶</span>
-    Tablero macizo<span class="bom__sku">SA-WD-014</span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2">
+    <span class="bom-caret" data-class:bom-caret--open="$openFrame" data-on:click="$openFrame = !$openFrame">▶</span>
+    Tablero macizo<span class="bom-sku">SA-WD-014</span>
   </div>
-  <span>1 ud</span><span>€84,00</span><span>9</span><span><span class="bom__pill">OK</span></span>
+  <span>1 ud</span><span>€84,00</span><span>9</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row" data-show="$openFrame">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Tabla roble 220×90×4</div>
-  <span>1 ud</span><span>€72,00</span><span>9</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row" data-show="$openFrame">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Tabla roble 220×90×4</div>
+  <span>1 ud</span><span>€72,00</span><span>9</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row" data-show="$openFrame">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Barniz mate</div>
-  <span>0,2 L</span><span>€12,00</span><span>14 L</span><span><span class="bom__pill">OK</span></span>
+<div class="bom-row" data-show="$openFrame">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Barniz mate</div>
+  <span>0,2 L</span><span>€12,00</span><span>14 L</span><span><span class="bom-pill">OK</span></span>
 </div>
-<div class="bom__row">
-  <div class="bom__name bom__name--lvl-2">
-    <span class="bom__caret" data-class:bom__caret--open="$openDrive" data-on:click="$openDrive = !$openDrive">▶</span>
-    Patas hierro forjado<span class="bom__sku">SA-LEG-022</span>
+<div class="bom-row">
+  <div class="bom-name bom-name--lvl-2">
+    <span class="bom-caret" data-class:bom-caret--open="$openDrive" data-on:click="$openDrive = !$openDrive">▶</span>
+    Patas hierro forjado<span class="bom-sku">SA-LEG-022</span>
   </div>
-  <span>4 ud</span><span>€96,40</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+  <span>4 ud</span><span>€96,40</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
-<div class="bom__row" data-show="$openDrive">
-  <div class="bom__name bom__name--lvl-3"><span class="bom__caret bom__caret--leaf">▶</span>Pata 71cm</div>
-  <span>4 ud</span><span>€88,00</span><span>0</span><span><span class="bom__pill bom__pill--out">Sin stock</span></span>
+<div class="bom-row" data-show="$openDrive">
+  <div class="bom-name bom-name--lvl-3"><span class="bom-caret bom-caret--leaf">▶</span>Pata 71cm</div>
+  <span>4 ud</span><span>€88,00</span><span>0</span><span><span class="bom-pill bom-pill--out">Sin stock</span></span>
 </div>
 {% endcall %}
 </div>
@@ -286,7 +286,7 @@
   <tbody>
     <tr><td><code>tag</code></td><td>str</td><td>"div"</td><td>Tag raíz HTML.</td></tr>
     <tr><td><code>attrs</code></td><td>dict</td><td>{}</td><td>Atributos HTML extra.</td></tr>
-    <tr><td>(slot)</td><td>—</td><td>—</td><td>Header + filas <code>.ok-bom__row</code> con niveles <code>--lvl-1/2/3</code>.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Header + filas <code>.ok-bom-row</code> con niveles <code>--lvl-1/2/3</code>.</td></tr>
   </tbody>
 </table>
 {% endblock %}

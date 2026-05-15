@@ -75,23 +75,23 @@
             data-signals='{"profile": {"country": "ES", "currency": "EUR", "logoUrl": ""}}'>
 
         <div class="form-section">
-          <h3 class="form-section__title">Datos fiscales</h3>
-          <p class="form-section__desc">Aparecen en facturas, tickets y verifactu (AEAT).</p>
+          <h3 class="form-section-title">Datos fiscales</h3>
+          <p class="form-section-desc">Aparecen en facturas, tickets y verifactu (AEAT).</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Razón social</label>
+              <label class="field-label field-label--req">Razón social</label>
               <input class="input" value="Cafetería La Rambla SL"/>
             </div>
             <div class="field">
-              <label class="field__label field__label--req">CIF / NIF</label>
+              <label class="field-label field-label--req">CIF / NIF</label>
               <input class="input" value="ES B12345678"/>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Régimen fiscal</label>
+              <label class="field-label">Régimen fiscal</label>
               <select class="select">
                 <option selected>General</option>
                 <option>Recargo de equivalencia</option>
@@ -100,39 +100,39 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Sub-región</label>
+              <label class="field-label">Sub-región</label>
               <input class="input" value="ES-CT" maxlength="10" placeholder="ej. ES-CT"/>
-              <span class="field__hint">Déjalo en blanco si aplica todo el país.</span>
+              <span class="field-hint">Déjalo en blanco si aplica todo el país.</span>
             </div>
           </div>
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Dirección</h3>
-          <p class="form-section__desc">Domicilio fiscal y de operación principal.</p>
+          <h3 class="form-section-title">Dirección</h3>
+          <p class="form-section-desc">Domicilio fiscal y de operación principal.</p>
 
           <div class="field">
-            <label class="field__label field__label--req">Calle y número</label>
+            <label class="field-label field-label--req">Calle y número</label>
             <input class="input" value="Calle Major 12"/>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Código postal</label>
+              <label class="field-label field-label--req">Código postal</label>
               <input class="input" value="08001"/>
             </div>
             <div class="field">
-              <label class="field__label field__label--req">Ciudad</label>
+              <label class="field-label field-label--req">Ciudad</label>
               <input class="input" value="Barcelona"/>
             </div>
             <div class="field">
-              <label class="field__label">Provincia</label>
+              <label class="field-label">Provincia</label>
               <input class="input" value="Barcelona"/>
             </div>
           </div>
 
           <div class="field">
-            <label class="field__label field__label--req">País</label>
+            <label class="field-label field-label--req">País</label>
             <select class="select" data-bind="profile.country">
               <option value="ES" selected>España</option>
               <option value="PT">Portugal</option>
@@ -143,27 +143,27 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Contacto</h3>
-          <p class="form-section__desc">Cómo se pondrán en contacto tus clientes y proveedores.</p>
+          <h3 class="form-section-title">Contacto</h3>
+          <p class="form-section-desc">Cómo se pondrán en contacto tus clientes y proveedores.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label field__label--req">Email de contacto</label>
+              <label class="field-label field-label--req">Email de contacto</label>
               <input class="input" type="email" value="hola@larambla.es"/>
             </div>
             <div class="field">
-              <label class="field__label">Teléfono</label>
+              <label class="field-label">Teléfono</label>
               <input class="input" type="tel" value="+34 933 456 789"/>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Web</label>
+              <label class="field-label">Web</label>
               <input class="input" type="url" value="https://larambla.es"/>
             </div>
             <div class="field">
-              <label class="field__label">Idioma de la interfaz</label>
+              <label class="field-label">Idioma de la interfaz</label>
               <select class="select">
                 <option selected>Español (es)</option>
                 <option>Català (ca)</option>
@@ -174,8 +174,8 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Identidad visual</h3>
-          <p class="form-section__desc">Logo que aparece en tickets, facturas y la cabecera del Hub.</p>
+          <h3 class="form-section-title">Identidad visual</h3>
+          <p class="form-section-desc">Logo que aparece en tickets, facturas y la cabecera del Hub.</p>
 
           <div class="form-row" style="grid-template-columns: 96px 1fr; align-items:center; gap:16px;">
             <div style="width:96px;height:96px;border-radius:14px;background:var(--bg-3);border:1px solid var(--line);display:grid;place-items:center;color:var(--ink-3);font-family:var(--font-display);font-size:32px;font-weight:600;">CR</div>
@@ -187,21 +187,21 @@
                 data-on:dragleave="$drag = false"
                 data-on:drop__prevent="$drag = false">
                 <input type="file" hidden accept="image/png,image/jpeg,image/svg+xml"/>
-                <span class="dropzone__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
-                <div class="dropzone__title">Arrastra o <b>elige el logo</b></div>
-                <div class="dropzone__hint">PNG, JPG o SVG · máximo 2 MB · cuadrado recomendado 512×512</div>
+                <span class="dropzone-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg></span>
+                <div class="dropzone-title">Arrastra o <b>elige el logo</b></div>
+                <div class="dropzone-hint">PNG, JPG o SVG · máximo 2 MB · cuadrado recomendado 512×512</div>
               </label>
             </div>
           </div>
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Moneda y formato</h3>
-          <p class="form-section__desc">Cómo se muestran los precios en POS y facturas.</p>
+          <h3 class="form-section-title">Moneda y formato</h3>
+          <p class="form-section-desc">Cómo se muestran los precios en POS y facturas.</p>
 
           <div class="form-row">
             <div class="field">
-              <label class="field__label">Moneda</label>
+              <label class="field-label">Moneda</label>
               <select class="select" data-bind="profile.currency">
                 <option value="EUR" selected>EUR — Euro</option>
                 <option value="USD">USD — Dólar</option>
@@ -209,7 +209,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Zona horaria</label>
+              <label class="field-label">Zona horaria</label>
               <select class="select">
                 <option selected>Europe/Madrid (UTC+1)</option>
                 <option>Europe/Lisbon</option>
@@ -217,7 +217,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Formato fecha</label>
+              <label class="field-label">Formato fecha</label>
               <select class="select">
                 <option selected>DD/MM/YYYY</option>
                 <option>YYYY-MM-DD</option>
@@ -228,20 +228,20 @@
         </div>
 
         <div class="form-section">
-          <h3 class="form-section__title">Tipo de venta</h3>
+          <h3 class="form-section-title">Tipo de venta</h3>
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Vendo a empresas (B2B)</span>
-              <span class="toggle-row__desc">Emites facturas a otras empresas o profesionales.</span>
+            <div class="toggle-row-text">
+              <span class="toggle-row-label">Vendo a empresas (B2B)</span>
+              <span class="toggle-row-desc">Emites facturas a otras empresas o profesionales.</span>
             </div>
-            <label class="toggle"><input type="checkbox" checked/><span class="toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" checked/><span class="toggle-track"></span></label>
           </div>
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Vendo a consumidores (B2C)</span>
-              <span class="toggle-row__desc">Tickets a cliente final en POS.</span>
+            <div class="toggle-row-text">
+              <span class="toggle-row-label">Vendo a consumidores (B2C)</span>
+              <span class="toggle-row-desc">Tickets a cliente final en POS.</span>
             </div>
-            <label class="toggle"><input type="checkbox" checked/><span class="toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" checked/><span class="toggle-track"></span></label>
           </div>
         </div>
 

@@ -6,12 +6,12 @@
 
 {% block content %}
 <h1>Pinpad</h1>
-<p class="showcase__lead">Teclado numérico 3×4 para desbloqueo POS y entrada de PIN.</p>
+<p class="showcase-lead">Teclado numérico 3×4 para desbloqueo POS y entrada de PIN.</p>
 
 <div class="callout info">
-  <div class="callout__body">
-    <div class="callout__title">Sobre estas demos</div>
-    <div class="callout__desc">Las primeras dos variantes son markup estático para mostrar layout; las teclas dan feedback visual (<code>:hover</code> · <code>:active</code>) pero no escriben en ningún display. La variante Datastar al final es la única que actualiza un display de PIN al pulsar.</div>
+  <div class="callout-body">
+    <div class="callout-title">Sobre estas demos</div>
+    <div class="callout-desc">Las primeras dos variantes son markup estático para mostrar layout; las teclas dan feedback visual (<code>:hover</code> · <code>:active</code>) pero no escriben en ningún display. La variante Datastar al final es la única que actualiza un display de PIN al pulsar.</div>
   </div>
 </div>
 
@@ -38,11 +38,11 @@
 {% set _src_jinja_3 %}{% raw %}<div data-signals="{ pin: '' }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
   <div class="pinpad">
     {% for n in [1,2,3,4,5,6,7,8,9] %}
-    <button type="button" class="pinpad__key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
+    <button type="button" class="pinpad-key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
     {% endfor %}
-    <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
-    <button type="button" class="pinpad__key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
-    <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$pin = ''">↵</button>
+    <button type="button" class="pinpad-key pinpad-key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
+    <button type="button" class="pinpad-key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
+    <button type="button" class="pinpad-key pinpad-key--action" data-on:click="$pin = ''">↵</button>
   </div>
   <div>
     PIN: <strong style="font-family:var(--font-mono);font-size:18px;letter-spacing:4px;" data-text="$pin.replace(/./g, '•').padEnd(6, '_')">______</strong>
@@ -51,11 +51,11 @@
 {% set _src_jinjax_3 %}{% raw %}<div data-signals="{ pin: '' }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
   <div class="pinpad">
     {% for n in [1,2,3,4,5,6,7,8,9] %}
-    <button type="button" class="pinpad__key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
+    <button type="button" class="pinpad-key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
     {% endfor %}
-    <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
-    <button type="button" class="pinpad__key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
-    <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$pin = ''">↵</button>
+    <button type="button" class="pinpad-key pinpad-key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
+    <button type="button" class="pinpad-key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
+    <button type="button" class="pinpad-key pinpad-key--action" data-on:click="$pin = ''">↵</button>
   </div>
   <div>
     PIN: <strong style="font-family:var(--font-mono);font-size:18px;letter-spacing:4px;" data-text="$pin.replace(/./g, '•').padEnd(6, '_')">______</strong>
@@ -68,11 +68,11 @@
 <div data-signals="{ pin: '' }" style="display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap;">
   <div class="pinpad">
     {% for n in [1,2,3,4,5,6,7,8,9] %}
-    <button type="button" class="pinpad__key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
+    <button type="button" class="pinpad-key" data-on:click="if($pin.length<6) $pin += '{{ n }}'">{{ n }}</button>
     {% endfor %}
-    <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
-    <button type="button" class="pinpad__key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
-    <button type="button" class="pinpad__key pinpad__key--action" data-on:click="$pin = ''">↵</button>
+    <button type="button" class="pinpad-key pinpad-key--action" data-on:click="$pin = $pin.slice(0, -1)">⌫</button>
+    <button type="button" class="pinpad-key" data-on:click="if($pin.length<6) $pin += '0'">0</button>
+    <button type="button" class="pinpad-key pinpad-key--action" data-on:click="$pin = ''">↵</button>
   </div>
   <div>
     PIN: <strong style="font-family:var(--font-mono);font-size:18px;letter-spacing:4px;" data-text="$pin.replace(/./g, '•').padEnd(6, '_')">______</strong>

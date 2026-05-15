@@ -13,7 +13,7 @@
   font-family: var(--font-display);
 }
 
-.calc__display {
+.calc-display {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -29,7 +29,7 @@
   overflow: hidden;
 }
 
-.calc__display-prev {
+.calc-display-prev {
   width: 100%;
   font-size: var(--text-sm);
   color: var(--ink-3);
@@ -41,7 +41,7 @@
   min-height: var(--icon-sm);
 }
 
-.calc__display-value {
+.calc-display-value {
   width: 100%;
   font-size: var(--text-3xl);
   font-weight: 600;
@@ -53,13 +53,13 @@
   text-overflow: ellipsis;
 }
 
-.calc__keys {
+.calc-keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-1-5);
 }
 
-.calc__key {
+.calc-key {
   height: var(--avatar-lg);
   display: inline-flex;
   align-items: center;
@@ -77,36 +77,36 @@
   user-select: none;
   transition: background var(--dur-fast), transform var(--dur-fast);
 }
-.calc__key:hover { background: var(--bg-4); }
-.calc__key:active { transform: scale(0.96); }
-.calc__key:focus-visible {
+.calc-key:hover { background: var(--bg-4); }
+.calc-key:active { transform: scale(0.96); }
+.calc-key:focus-visible {
   outline: none;
   box-shadow: var(--shadow-glow);
 }
 
-.calc__key--op {
+.calc-key--op {
   background: color-mix(in oklch, var(--warn) 22%, var(--bg-3));
   color: var(--warn);
   border-color: color-mix(in oklch, var(--warn) 30%, transparent);
 }
-.calc__key--op:hover {
+.calc-key--op:hover {
   background: color-mix(in oklch, var(--warn) 32%, var(--bg-3));
 }
-.calc__key--op.is-active {
+.calc-key--op.is-active {
   background: var(--warn);
   color: var(--warn-fg);
   border-color: transparent;
 }
 
-.calc__key--equals {
+.calc-key--equals {
   background: var(--brand);
   color: var(--brand-fg);
   border-color: transparent;
   box-shadow: 0 1px 0 color-mix(in oklch, black 20%, transparent), inset 0 1px 0 color-mix(in oklch, white 18%, transparent);
 }
-.calc__key--equals:hover { background: var(--brand-2); }
+.calc-key--equals:hover { background: var(--brand-2); }
 
-.calc__key--fn {
+.calc-key--fn {
   background: transparent;
   color: var(--ink-2);
   font-size: var(--text-md);
@@ -115,6 +115,6 @@
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
 }
-.calc__key--fn:hover { background: var(--bg-3); color: var(--ink); }
+.calc-key--fn:hover { background: var(--bg-3); color: var(--ink); }
 
-.calc__key--wide { grid-column: span 2; }
+.calc-key--wide { grid-column: span 2; }

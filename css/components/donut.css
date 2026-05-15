@@ -9,10 +9,10 @@
   align-items: center;
 }
 
-.donut__svg { width: var(--width); height: var(--width); }
-.donut__track { fill: none; stroke: var(--bg-3); stroke-width: 16; }
+.donut-svg { width: var(--width); height: var(--width); }
+.donut-track { fill: none; stroke: var(--bg-3); stroke-width: 16; }
 
-.donut__slice {
+.donut-slice {
   fill: none;
   stroke-width: 16;
   transform: rotate(-90deg);
@@ -20,29 +20,29 @@
   transition: stroke-dasharray var(--dur-slow) var(--ease-out);
 }
 
-.donut__slice--brand { stroke: var(--brand); }
-.donut__slice--leaf { stroke: var(--leaf); }
-.donut__slice--warn { stroke: var(--warn); }
-.donut__slice--info { stroke: var(--info); }
-.donut__slice--mute { stroke: var(--bg-4); }
+.donut-slice--brand { stroke: var(--brand); }
+.donut-slice--leaf { stroke: var(--leaf); }
+.donut-slice--warn { stroke: var(--warn); }
+.donut-slice--info { stroke: var(--info); }
+.donut-slice--mute { stroke: var(--bg-4); }
 
-.donut__center {
+.donut-center {
   font-family: var(--font-display);
   fill: var(--ink);
   text-anchor: middle;
 }
 
-.donut__center-value { font-size: 1.375rem; font-weight: 600; letter-spacing: var(--tracking-display); }
-.donut__center-label { font-size: 0.5625rem; fill: var(--ink-3); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
+.donut-center-value { font-size: 1.375rem; font-weight: 600; letter-spacing: var(--tracking-display); }
+.donut-center-label { font-size: 0.5625rem; fill: var(--ink-3); text-transform: uppercase; letter-spacing: var(--tracking-wide); }
 
-.donut__legend {
+.donut-legend {
   display: flex;
   flex-direction: column;
   gap: var(--space-1-5);
   font-size: var(--text-sm);
 }
 
-.donut__legend-row {
+.donut-legend-row {
   display: grid;
   grid-template-columns: 0.625rem 1fr auto;
   gap: var(--space-2);
@@ -50,13 +50,13 @@
   color: var(--ink-2);
 }
 
-.donut__legend-row b {
+.donut-legend-row b {
   color: var(--ink);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
 
-.donut__legend-dot {
+.donut-legend-dot {
   width: var(--icon-2xs);
   height: var(--icon-2xs);
   border-radius: 0.1875rem;

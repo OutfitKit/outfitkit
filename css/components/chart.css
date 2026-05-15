@@ -21,7 +21,7 @@
 
 .chart.flat { background: transparent; border: none; padding: var(--space-0); }
 
-/* .chart__head -> use universal .head (or .row when no border is needed) */
+/* .chart-head -> use universal .head (or .row when no border is needed) */
 .chart > .head {
   border-bottom: none;
   padding: var(--space-0) var(--space-0) var(--space-2);
@@ -29,10 +29,10 @@
   justify-content: space-between;
 }
 
-/* .chart__title -> use universal .title sm */
-/* .chart__sub   -> use universal .sub sm  */
+/* .chart-title -> use universal .title sm */
+/* .chart-sub   -> use universal .sub sm  */
 
-.chart__big {
+.chart-big {
   font-family: var(--font-display);
   font-size: var(--text-2xl);
   font-weight: var(--weight-semibold);
@@ -42,17 +42,17 @@
   line-height: var(--leading-flat);
 }
 
-.chart__delta {
+.chart-delta {
   font-size: var(--text-xs);
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   margin-top: var(--space-1);
 }
 
-.chart__delta--up { color: var(--leaf); }
-.chart__delta--down { color: var(--danger); }
+.chart-delta--up { color: var(--leaf); }
+.chart-delta--down { color: var(--danger); }
 
-.chart__legend {
+.chart-legend {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
@@ -60,13 +60,13 @@
   color: var(--ink-2);
 }
 
-.chart__legend-item {
+.chart-legend-item {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
 }
 
-.chart__legend-dot {
+.chart-legend-dot {
   width: var(--dot-md);
   height: var(--dot-md);
   border-radius: 0.125rem;
@@ -75,7 +75,7 @@
 }
 
 /* Dashed indicator for legend entries that map to dashed lines in the SVG. */
-.chart__legend-dash {
+.chart-legend-dash {
   width: var(--icon-md);
   height: var(--border-w-2);
   flex-shrink: 0;
@@ -88,7 +88,7 @@
   );
 }
 
-.chart__svg {
+.chart-svg {
   width: 100%;
   height: auto;
   display: block;
@@ -97,19 +97,19 @@
   overflow: visible;
 }
 
-.chart__grid line { stroke: var(--line); stroke-width: 1; shape-rendering: crispEdges; }
-.chart__axis text { fill: var(--ink-3); font-size: 0.625rem; font-variant-numeric: tabular-nums; }
-.chart__axis line { stroke: var(--line-2); stroke-width: 1; }
+.chart-grid line { stroke: var(--line); stroke-width: 1; shape-rendering: crispEdges; }
+.chart-axis text { fill: var(--ink-3); font-size: 0.625rem; font-variant-numeric: tabular-nums; }
+.chart-axis line { stroke: var(--line-2); stroke-width: 1; }
 
-.chart__bar { fill: var(--brand); }
-.chart__bar--leaf { fill: var(--leaf); }
-.chart__bar--warn { fill: var(--warn); }
-.chart__bar--info { fill: var(--info); }
-.chart__bar--ink2 { fill: var(--ink-2); }
-.chart__bar--mute { fill: var(--ink-2); }
-.chart__bar:hover { filter: brightness(1.15); }
+.chart-bar { fill: var(--brand); }
+.chart-bar--leaf { fill: var(--leaf); }
+.chart-bar--warn { fill: var(--warn); }
+.chart-bar--info { fill: var(--info); }
+.chart-bar--ink2 { fill: var(--ink-2); }
+.chart-bar--mute { fill: var(--ink-2); }
+.chart-bar:hover { filter: brightness(1.15); }
 
-.chart__line {
+.chart-line {
   stroke: var(--brand);
   stroke-width: 2;
   fill: none;
@@ -117,17 +117,17 @@
   stroke-linejoin: round;
 }
 
-.chart__line--leaf { stroke: var(--leaf); }
-.chart__line--info { stroke: var(--info); }
-.chart__line--mute { stroke: var(--ink-2); stroke-dasharray: 4 4; stroke-width: 1.5; }
+.chart-line--leaf { stroke: var(--leaf); }
+.chart-line--info { stroke: var(--info); }
+.chart-line--mute { stroke: var(--ink-2); stroke-dasharray: 4 4; stroke-width: 1.5; }
 
-.chart__area { fill: url(#ok-area-grad); }
-.chart__area-leaf { fill: url(#ok-area-grad-leaf); }
+.chart-area { fill: url(#ok-area-grad); }
+.chart-area-leaf { fill: url(#ok-area-grad-leaf); }
 
-.chart__dot { fill: var(--brand); stroke: var(--bg-2); stroke-width: 2; }
-.chart__dot--leaf { fill: var(--leaf); }
+.chart-dot { fill: var(--brand); stroke: var(--bg-2); stroke-width: 2; }
+.chart-dot--leaf { fill: var(--leaf); }
 
-.chart__label-value {
+.chart-label-value {
   fill: var(--ink);
   font-family: var(--font-display);
   font-weight: 600;
@@ -135,9 +135,9 @@
   font-variant-numeric: tabular-nums;
 }
 
-.chart__hover {
+.chart-hover {
   fill: transparent;
   cursor: pointer;
 }
 
-.chart__hover:hover ~ .chart__hover-bar { opacity: 1; }
+.chart-hover:hover ~ .chart-hover-bar { opacity: 1; }

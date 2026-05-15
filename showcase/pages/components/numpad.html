@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Numpad</h1>
-<p class="showcase__lead">Teclado numérico para entrada de cantidades en TPV: 1-9, 0, decimal y backspace. Display opcional con etiqueta y valor. Atomic — sin slot. La interactividad se enchufa con Datastar (<code>data-on:click</code> en cada botón si quieres editar el signal).</p>
+<p class="showcase-lead">Teclado numérico para entrada de cantidades en TPV: 1-9, 0, decimal y backspace. Display opcional con etiqueta y valor. Atomic — sin slot. La interactividad se enchufa con Datastar (<code>data-on:click</code> en cada botón si quieres editar el signal).</p>
 
 {% set _src_jinja_1 %}{% raw %}{% from "ui/numpad.jinja" import numpad %}
 {{ numpad(label="A cobrar · €19,40", display="€20,00") }}{% endraw %}{% endset %}
@@ -40,42 +40,42 @@
 
 {% set _src_jinja_4 %}{% raw %}<div data-signals="{ amount: '0' }" style="max-width:240px">
   <div class="numpad-display">
-    <div class="numpad-display__label">Importe</div>
-    <div class="numpad-display__value" data-text="$amount + ' €'"></div>
+    <div class="numpad-display-label">Importe</div>
+    <div class="numpad-display-value" data-text="$amount + ' €'"></div>
   </div>
   <div class="numpad">
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
-    <button type="button" class="numpad__btn numpad__btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
-    <button type="button" class="numpad__btn numpad__btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
+    <button type="button" class="numpad-btn numpad-btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
+    <button type="button" class="numpad-btn numpad-btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
   </div>
 </div>{% endraw %}{% endset %}
 {% set _src_jinjax_4 %}{% raw %}<div data-signals="{ amount: '0' }" style="max-width:240px">
   <div class="numpad-display">
-    <div class="numpad-display__label">Importe</div>
-    <div class="numpad-display__value" data-text="$amount + ' €'"></div>
+    <div class="numpad-display-label">Importe</div>
+    <div class="numpad-display-value" data-text="$amount + ' €'"></div>
   </div>
   <div class="numpad">
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
-    <button type="button" class="numpad__btn numpad__btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
-    <button type="button" class="numpad__btn numpad__btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
+    <button type="button" class="numpad-btn numpad-btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
+    <button type="button" class="numpad-btn numpad-btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
   </div>
 </div>{% endraw %}{% endset %}
 
@@ -84,22 +84,22 @@
     jinjax_src=_src_jinjax_4) %}
 <div data-signals="{ amount: '0' }" style="max-width:240px">
   <div class="numpad-display">
-    <div class="numpad-display__label">Importe</div>
-    <div class="numpad-display__value" data-text="$amount + ' €'"></div>
+    <div class="numpad-display-label">Importe</div>
+    <div class="numpad-display-value" data-text="$amount + ' €'"></div>
   </div>
   <div class="numpad">
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
-    <button type="button" class="numpad__btn numpad__btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
-    <button type="button" class="numpad__btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
-    <button type="button" class="numpad__btn numpad__btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '1' : $amount + '1'">1</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '2' : $amount + '2'">2</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '3' : $amount + '3'">3</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '4' : $amount + '4'">4</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '5' : $amount + '5'">5</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '6' : $amount + '6'">6</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '7' : $amount + '7'">7</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '8' : $amount + '8'">8</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '9' : $amount + '9'">9</button>
+    <button type="button" class="numpad-btn numpad-btn--ghost" data-on:click="if (!$amount.includes(',')) $amount = $amount + ','">,</button>
+    <button type="button" class="numpad-btn" data-on:click="$amount = $amount === '0' ? '0' : $amount + '0'">0</button>
+    <button type="button" class="numpad-btn numpad-btn--ghost" data-on:click="$amount = $amount.length > 1 ? $amount.slice(0, -1) : '0'">⌫</button>
   </div>
 </div>
 {% endcall %}

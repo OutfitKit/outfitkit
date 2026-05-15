@@ -26,10 +26,10 @@
   }
   var KNOWN_TEMPLATES = {
     '': 1, 'default': 1, 'corporate': 1, 'glass': 1,
-    'glass-mono': 1, 'mono': 1,
+    'glass-mono': 1, 'mono': 1, 'erplora': 1,
   };
   function normTemplate(v) {
-    return KNOWN_TEMPLATES[v] ? v : '';
+    return KNOWN_TEMPLATES[v] ? v : 'erplora';
   }
 
   var STATE = {

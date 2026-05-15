@@ -8,14 +8,14 @@
   gap: var(--space-1);
 }
 
-.funnel__step {
+.funnel-step {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--space-3);
   align-items: center;
 }
 
-.funnel__bar {
+.funnel-bar {
   height: var(--avatar-sm);
   background: linear-gradient(90deg, var(--brand), color-mix(in oklch, var(--brand) 60%, var(--bg-3)));
   border-radius: var(--radius-sm);
@@ -28,15 +28,15 @@
   min-width: 0;
 }
 
-.funnel__bar--leaf { background: linear-gradient(90deg, var(--leaf), color-mix(in oklch, var(--leaf) 60%, var(--bg-3))); }
-.funnel__bar--warn { background: linear-gradient(90deg, var(--warn), color-mix(in oklch, var(--warn) 60%, var(--bg-3))); color: var(--warn-fg); }
-.funnel__bar--mute { background: var(--bg-3); color: var(--ink-2); }
+.funnel-bar--leaf { background: linear-gradient(90deg, var(--leaf), color-mix(in oklch, var(--leaf) 60%, var(--bg-3))); }
+.funnel-bar--warn { background: linear-gradient(90deg, var(--warn), color-mix(in oklch, var(--warn) 60%, var(--bg-3))); color: var(--warn-fg); }
+.funnel-bar--mute { background: var(--bg-3); color: var(--ink-2); }
 
-.funnel__meta {
+.funnel-meta {
   font-size: var(--text-xs);
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
-.funnel__meta b { color: var(--ink); font-weight: 500; }
+.funnel-meta b { color: var(--ink); font-weight: 500; }

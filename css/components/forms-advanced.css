@@ -20,7 +20,7 @@
   display: inline-block;
 }
 
-.datepicker__field {
+.datepicker-field {
   display: inline-flex;
   align-items: center;
   gap: var(--gap);
@@ -36,21 +36,21 @@
   transition: border-color var(--dur-base) var(--ease-out);
 }
 
-.datepicker__field:hover {
+.datepicker-field:hover {
   border-color: var(--line-2);
 }
 
-.datepicker__field--open {
+.datepicker-field--open {
   border-color: var(--color);
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--color) 18%, transparent);
 }
 
-.datepicker__field svg {
+.datepicker-field svg {
   color: var(--ink-3);
   flex-shrink: 0;
 }
 
-.datepicker__pop {
+.datepicker-pop {
   position: absolute;
   top: calc(100% + var(--space-1));
   left: 0;
@@ -63,19 +63,19 @@
   box-shadow: var(--shadow-lg);
 }
 
-.datepicker__head {
+.datepicker-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: var(--space-2);
 }
 
-.datepicker__nav {
+.datepicker-nav {
   display: inline-flex;
   gap: var(--space-1);
 }
 
-.datepicker__nav button {
+.datepicker-nav button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -88,19 +88,19 @@
   cursor: pointer;
 }
 
-.datepicker__nav button:hover {
+.datepicker-nav button:hover {
   background: var(--bg-3);
   color: var(--ink);
 }
 
-.datepicker__week,
-.datepicker__grid {
+.datepicker-week,
+.datepicker-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: var(--border-w-2);
 }
 
-.datepicker__week {
+.datepicker-week {
   margin-bottom: var(--space-1);
   color: var(--ink-3);
   font-family: var(--font-mono);
@@ -109,7 +109,7 @@
   text-transform: uppercase;
 }
 
-.datepicker__day {
+.datepicker-day {
   aspect-ratio: 1;
   display: inline-flex;
   align-items: center;
@@ -122,49 +122,49 @@
   transition: background var(--dur-base) var(--ease-out);
 }
 
-.datepicker__day:hover {
+.datepicker-day:hover {
   background: var(--bg-3);
 }
 
-.datepicker__day--out {
+.datepicker-day--out {
   color: var(--ink-4);
 }
 
-.datepicker__day--today {
+.datepicker-day--today {
   box-shadow: inset 0 0 0 1px var(--color);
 }
 
-.datepicker__day--sel,
-.datepicker__day--range-start,
-.datepicker__day--range-end {
+.datepicker-day--sel,
+.datepicker-day--range-start,
+.datepicker-day--range-end {
   background: var(--color);
   color: var(--color-contrast);
   font-weight: 600;
 }
 
-.datepicker__day--in-range {
+.datepicker-day--in-range {
   background: color-mix(in oklch, var(--color) 18%, transparent);
   color: var(--color);
   border-radius: 0;
 }
 
-.datepicker__day--range-start {
+.datepicker-day--range-start {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
-.datepicker__day--range-end {
+.datepicker-day--range-end {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.datepicker__day--disabled {
+.datepicker-day--disabled {
   opacity: 0.5;
   color: var(--ink-4);
   cursor: not-allowed;
 }
 
-.datepicker__presets {
+.datepicker-presets {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-1);
@@ -173,7 +173,7 @@
   border-top: var(--border-w) solid var(--line);
 }
 
-.datepicker__preset {
+.datepicker-preset {
   padding: var(--space-1) var(--space-2);
   background: var(--bg-3);
   border: none;
@@ -184,12 +184,12 @@
   transition: background var(--dur-base) var(--ease-out);
 }
 
-.datepicker__preset:hover {
+.datepicker-preset:hover {
   background: var(--bg-4);
   color: var(--ink);
 }
 
-.datepicker__preset--active {
+.datepicker-preset--active {
   background: color-mix(in oklch, var(--color) 18%, transparent);
   color: var(--color);
 }
@@ -246,7 +246,7 @@
   width: 100%;
 }
 
-.combo__field {
+.combo-field {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -260,12 +260,12 @@
   transition: border-color var(--dur-base) var(--ease-out);
 }
 
-.combo__field--open {
+.combo-field--open {
   border-color: var(--color);
   box-shadow: 0 0 0 3px color-mix(in oklch, var(--color) 18%, transparent);
 }
 
-.combo__chip {
+.combo-chip {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
@@ -276,7 +276,7 @@
   font-size: var(--text-xs);
 }
 
-.combo__chip-x {
+.combo-chip-x {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -289,12 +289,12 @@
   cursor: pointer;
 }
 
-.combo__chip-x:hover {
+.combo-chip-x:hover {
   background: var(--bg-4);
   color: var(--ink);
 }
 
-.combo__input {
+.combo-input {
   flex: 1;
   min-width: var(--min-width);
   padding: var(--space-1) var(--space-0);
@@ -306,21 +306,21 @@
   font-size: var(--text-sm);
 }
 
-.combo__input::placeholder {
+.combo-input::placeholder {
   color: var(--ink-4);
 }
 
-.combo__caret {
+.combo-caret {
   color: var(--ink-3);
   flex-shrink: 0;
   transition: transform var(--dur-base) var(--ease-out);
 }
 
-.combo__field--open .combo__caret {
+.combo-field--open .combo-caret {
   transform: rotate(180deg);
 }
 
-.combo__menu {
+.combo-menu {
   position: absolute;
   top: calc(100% + var(--menu-offset));
   left: 0;
@@ -335,7 +335,7 @@
   box-shadow: var(--shadow-lg);
 }
 
-.combo__group {
+.combo-group {
   padding: var(--space-2) var(--space-2-5) var(--space-1);
   color: var(--ink-3);
   font-family: var(--font-mono);
@@ -344,7 +344,7 @@
   letter-spacing: var(--tracking-wide);
 }
 
-.combo__option {
+.combo-option {
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -358,29 +358,29 @@
   transition: background var(--dur-base) var(--ease-out);
 }
 
-.combo__option:hover,
-.combo__option--active {
+.combo-option:hover,
+.combo-option--active {
   background: var(--bg-3);
 }
 
-.combo__option--selected {
+.combo-option--selected {
   background: color-mix(in oklch, var(--color) 18%, transparent);
   color: var(--color);
 }
 
-.combo__option-meta {
+.combo-option-meta {
   color: var(--ink-3);
   font-size: var(--text-xs);
 }
 
-.combo__option mark {
+.combo-option mark {
   padding: var(--space-0) var(--border-w);
   background: color-mix(in oklch, var(--color) 25%, transparent);
   border-radius: 2px;
   color: inherit;
 }
 
-.combo__empty {
+.combo-empty {
   padding: var(--space-4) var(--space-3);
   color: var(--ink-3);
   font-size: var(--text-sm);
@@ -405,7 +405,7 @@
   border-radius: var(--border-radius);
 }
 
-.wizard__steps {
+.wizard-steps {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
@@ -413,7 +413,7 @@
   border-bottom: var(--border-w) solid var(--line);
 }
 
-.wizard__step {
+.wizard-step {
   position: relative;
   display: grid;
   grid-template-columns: var(--step-width) 1fr;
@@ -424,11 +424,11 @@
   cursor: default;
 }
 
-.wizard__step:last-child {
+.wizard-step:last-child {
   border-right: none;
 }
 
-.wizard__step-num {
+.wizard-step-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -443,38 +443,38 @@
   font-weight: 600;
 }
 
-.wizard__step--done .wizard__step-num,
-.wizard__step--active .wizard__step-num {
+.wizard-step--done .wizard-step-num,
+.wizard-step--active .wizard-step-num {
   border-color: var(--color);
   background: var(--color);
   color: var(--color-contrast);
 }
 
-.wizard__step-name {
+.wizard-step-name {
   color: var(--ink-3);
   font-size: var(--text-sm);
   font-weight: 500;
 }
 
-.wizard__step--done .wizard__step-name {
+.wizard-step--done .wizard-step-name {
   color: var(--ink-2);
 }
 
-.wizard__step--active .wizard__step-name {
+.wizard-step--active .wizard-step-name {
   color: var(--ink);
 }
 
-.wizard__step-sub {
+.wizard-step-sub {
   margin-top: var(--border-w);
   color: var(--ink-4);
   font-size: var(--text-2xs);
 }
 
-.wizard__body {
+.wizard-body {
   padding: var(--space-6);
 }
 
-.wizard__title {
+.wizard-title {
   margin: var(--space-0) var(--space-0) var(--space-1);
   color: var(--ink);
   font-family: var(--font-display);
@@ -483,13 +483,13 @@
   letter-spacing: var(--tracking-near);
 }
 
-.wizard__sub {
+.wizard-sub {
   margin: var(--space-0) var(--space-0) var(--space-4);
   color: var(--ink-3);
   font-size: var(--text-sm);
 }
 
-.wizard__foot {
+.wizard-foot {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -498,13 +498,13 @@
   border-top: var(--border-w) solid var(--line);
 }
 
-.wizard__foot-meta {
+.wizard-foot-meta {
   color: var(--ink-3);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
 }
 
-.wizard__foot-actions {
+.wizard-foot-actions {
   display: inline-flex;
   gap: var(--space-2);
 }

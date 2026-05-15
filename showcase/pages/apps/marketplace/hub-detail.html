@@ -16,15 +16,15 @@
 <style>
   body { padding: 22px; background: var(--bg); min-height: 100vh; }
   .detail-hero { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-2xl); padding: 22px; margin-bottom: 18px; }
-  .detail-hero__top { display: flex; gap: 18px; align-items: flex-start; }
-  .detail-hero__icon { width: 64px; height: 64px; border-radius: var(--radius-lg); background: var(--brand-soft); color: var(--brand-3); display: grid; place-items: center; flex-shrink: 0; }
-  .detail-hero__icon svg { width: 32px; height: 32px; }
-  .detail-hero__title { font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); margin: 0; }
-  .detail-hero__sub { font-size: var(--text-sm); color: var(--ink-3); margin-top: 4px; }
-  .detail-hero__badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-  .detail-hero__price { font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
-  .detail-hero__price-unit { font-size: 13px; color: var(--ink-3); font-weight: 400; }
-  .detail-hero__cta { display: flex; gap: 10px; margin-top: 16px; }
+  .detail-hero-top { display: flex; gap: 18px; align-items: flex-start; }
+  .detail-hero-icon { width: 64px; height: 64px; border-radius: var(--radius-lg); background: var(--brand-soft); color: var(--brand-3); display: grid; place-items: center; flex-shrink: 0; }
+  .detail-hero-icon svg { width: 32px; height: 32px; }
+  .detail-hero-title { font-family: var(--font-display); font-size: 26px; font-weight: 600; letter-spacing: -0.03em; color: var(--ink); margin: 0; }
+  .detail-hero-sub { font-size: var(--text-sm); color: var(--ink-3); margin-top: 4px; }
+  .detail-hero-badges { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .detail-hero-price { font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .detail-hero-price-unit { font-size: 13px; color: var(--ink-3); font-weight: 400; }
+  .detail-hero-cta { display: flex; gap: 10px; margin-top: 16px; }
   .sidebar-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-xl); padding: 16px 18px; margin-bottom: 14px; }
   .sidebar-card h4 { font-family: var(--font-display); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin: 0 0 10px; }
   .sidebar-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; }
@@ -59,24 +59,24 @@
 
   <!-- Hero -->
   <div class="detail-hero">
-    <div class="detail-hero__top">
-      <div class="detail-hero__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+    <div class="detail-hero-top">
+      <div class="detail-hero-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
       <div class="flex-1">
-        <h1 class="detail-hero__title">VeriFactu</h1>
-        <div class="detail-hero__sub">Sistema verificable de facturación AEAT — obligatorio en España desde julio 2026</div>
-        <div class="detail-hero__badges">
+        <h1 class="detail-hero-title">VeriFactu</h1>
+        <div class="detail-hero-sub">Sistema verificable de facturación AEAT — obligatorio en España desde julio 2026</div>
+        <div class="detail-hero-badges">
           <span class="badge brand">Cumplimiento</span>
-          <span class="badge info"><span class="badge__dot"></span>Recomendado</span>
-          <span class="badge"><span class="badge__dot"></span>v1.0.0</span>
-          <span class="badge success"><span class="badge__dot"></span>Verificado</span>
+          <span class="badge info"><span class="badge-dot"></span>Recomendado</span>
+          <span class="badge"><span class="badge-dot"></span>v1.0.0</span>
+          <span class="badge success"><span class="badge-dot"></span>Verificado</span>
         </div>
       </div>
       <div class="text-right">
-        <div class="detail-hero__price">€9,99<span class="detail-hero__price-unit">/mes</span></div>
+        <div class="detail-hero-price">€9,99<span class="detail-hero-price-unit">/mes</span></div>
         <div style="font-size:12px;color:var(--ink-3);margin-top:4px;">15 días de prueba gratis</div>
       </div>
     </div>
-    <div class="detail-hero__cta">
+    <div class="detail-hero-cta">
       <button class="btn primary" data-on:click="$showCheckout = true">
         <iconify-icon icon="lucide:download" width="14" height="14"></iconify-icon>
         Instalar y empezar prueba
@@ -289,7 +289,7 @@
             <div style="font-size:13px;font-weight:500;">ERPlora</div>
             <div class="text-2xs text-ink-3">Equipo oficial</div>
           </div>
-          <span class="badge success" style="margin-left:auto;"><span class="badge__dot"></span>Verificado</span>
+          <span class="badge success" style="margin-left:auto;"><span class="badge-dot"></span>Verificado</span>
         </div>
       </div>
 
@@ -345,7 +345,7 @@
             <h4 style="font-size:11px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-3);margin:0 0 8px;">Resumen</h4>
             <div class="card flat" style="padding: 14px;">
               <div style="display:flex;gap:12px;align-items:center;">
-                <div class="detail-hero__icon" style="width:40px;height:40px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+                <div class="detail-hero-icon" style="width:40px;height:40px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
                 <div>
                   <div class="font-medium">VeriFactu</div>
                   <div class="text-xs text-ink-3">Plan mensual</div>
@@ -377,7 +377,7 @@
               </div>
               <label class="check mt-1">
                 <input type="checkbox" checked/>
-                <span class="check__box"></span>
+                <span class="check-box"></span>
                 <span style="font-size:12.5px;color:var(--ink-2);margin-left:6px;">Acepto los <a href="#" class="text-brand-3">términos del servicio</a> y la <a href="#" class="text-brand-3">política de privacidad</a>.</span>
               </label>
             </div>

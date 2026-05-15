@@ -18,20 +18,20 @@
   position: relative;
   overflow: hidden;
 }
-.emp__cover {
+.emp-cover {
   position: absolute;
   inset: 0 0 auto 0;
   height: var(--cover-height);
   background: linear-gradient(135deg, color-mix(in oklch, var(--brand) 30%, var(--bg-3)), var(--bg-3));
 }
-.emp__head {
+.emp-head {
   position: relative;
   display: flex;
   align-items: flex-end;
   gap: var(--space-3-5);
   margin-top: var(--head-offset);
 }
-.emp__avatar {
+.emp-avatar {
   width: var(--avatar-xl); height: var(--avatar-xl);
   border-radius: var(--radius-circle);
   background: var(--bg-4);
@@ -46,8 +46,8 @@
   letter-spacing: var(--tracking-near);
   flex-shrink: 0;
 }
-.emp__name-block { padding-bottom: var(--space-1); min-width: 0; }
-.emp__name {
+.emp-name-block { padding-bottom: var(--space-1); min-width: 0; }
+.emp-name {
   font-family: var(--font-display);
   font-size: var(--text-base);
   font-weight: 600;
@@ -55,12 +55,12 @@
   color: var(--ink);
   margin: var(--space-0);
 }
-.emp__role {
+.emp-role {
   font-size: var(--text-sm);
   color: var(--ink-3);
 }
 
-.emp__status {
+.emp-status {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
@@ -71,35 +71,35 @@
   background: color-mix(in oklch, var(--leaf) 15%, transparent);
   color: var(--leaf);
 }
-.emp__status::before {
+.emp-status::before {
   content: "";
   width: 6px; height: 6px;
   border-radius: var(--radius-circle);
   background: currentColor;
 }
-.emp__status--off { background: var(--bg-3); color: var(--ink-3); }
-.emp__status--break { background: color-mix(in oklch, var(--warn) 18%, transparent); color: var(--warn); }
+.emp-status--off { background: var(--bg-3); color: var(--ink-3); }
+.emp-status--break { background: color-mix(in oklch, var(--warn) 18%, transparent); color: var(--warn); }
 
-.emp__grid {
+.emp-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-2-5);
   padding-top: var(--space-3-5);
   border-top: var(--border-w) solid var(--line);
 }
-.emp__stat {
+.emp-stat {
   display: flex;
   flex-direction: column;
   gap: var(--border-w-2);
 }
-.emp__stat-label {
+.emp-stat-label {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--ink-3);
 }
-.emp__stat-value {
+.emp-stat-value {
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: 600;

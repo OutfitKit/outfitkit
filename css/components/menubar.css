@@ -30,7 +30,7 @@
   z-index: var(--z-sticky);
 }
 
-.menubar__app-name {
+.menubar-app-name {
   display: inline-flex;
   align-items: center;
   padding: var(--space-0) var(--space-3) var(--space-0) var(--space-2);
@@ -42,7 +42,7 @@
   flex-shrink: 0;
 }
 
-.menubar__menu {
+.menubar-menu {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -59,20 +59,20 @@
   transition: background var(--dur-fast), color var(--dur-fast);
 }
 
-.menubar__menu:hover {
+.menubar-menu:hover {
   background: var(--bg-3);
   color: var(--ink);
 }
 
-.menubar__menu--active,
-.menubar__menu.is-open,
-.menubar__menu[aria-expanded="true"],
-.menubar__menu[aria-expanded=""] {
+.menubar-menu--active,
+.menubar-menu.is-open,
+.menubar-menu[aria-expanded="true"],
+.menubar-menu[aria-expanded=""] {
   background: var(--bg-3);
   color: var(--ink);
 }
 
-.menubar__menu-shortcut {
+.menubar-menu-shortcut {
   font-size: var(--text-2xs);
   color: var(--ink-3);
   margin-left: var(--space-1-5);
@@ -80,7 +80,7 @@
   letter-spacing: var(--tracking-mono);
 }
 
-.menubar__divider {
+.menubar-divider {
   width: var(--border-w);
   margin: var(--space-1-5) var(--space-1);
   background: var(--line);
@@ -88,8 +88,8 @@
   flex-shrink: 0;
 }
 
-.menubar__version,
-.menubar__meta {
+.menubar-version,
+.menubar-meta {
   margin-left: auto;
   padding: var(--space-0) var(--space-2-5);
   align-self: center;
@@ -99,7 +99,7 @@
   letter-spacing: var(--tracking-mono);
 }
 
-.menubar__panel {
+.menubar-panel {
   position: absolute;
   top: 100%;
   left: 0;
@@ -118,7 +118,7 @@
   color: var(--ink);
 }
 
-.menubar__item {
+.menubar-item {
   display: grid;
   grid-template-columns: 16px 1fr auto auto;
   gap: var(--space-2-5);
@@ -137,18 +137,18 @@
   transition: background var(--dur-fast);
 }
 
-.menubar__item:hover {
+.menubar-item:hover {
   background: var(--bg-3);
 }
 
-.menubar__item[aria-disabled="true"],
-.menubar__item[disabled] {
+.menubar-item[aria-disabled="true"],
+.menubar-item[disabled] {
   color: var(--ink-4);
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.menubar__item-icon {
+.menubar-item-icon {
   width: 16px;
   height: 16px;
   display: grid;
@@ -157,12 +157,12 @@
   flex-shrink: 0;
 }
 
-.menubar__item-icon svg {
+.menubar-item-icon svg {
   width: 13px;
   height: 13px;
 }
 
-.menubar__item-shortcut {
+.menubar-item-shortcut {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   color: var(--ink-3);
@@ -170,13 +170,13 @@
   font-variant-numeric: tabular-nums;
 }
 
-.menubar__separator {
+.menubar-separator {
   height: var(--border-w);
   margin: var(--space-1) var(--space-1-5);
   background: var(--line);
 }
 
-.menubar__submenu {
+.menubar-submenu {
   width: var(--icon-xs);
   height: var(--icon-xs);
   color: var(--ink-3);
@@ -185,7 +185,7 @@
   flex-shrink: 0;
 }
 
-.menubar__submenu svg {
+.menubar-submenu svg {
   width: var(--icon-2xs);
   height: var(--icon-2xs);
 }
@@ -196,16 +196,16 @@
   font-size: var(--text-xs);
 }
 
-.menubar.compact .menubar__app-name {
+.menubar.compact .menubar-app-name {
   font-size: var(--text-sm);
   padding: var(--space-0) var(--space-2-5) var(--space-0) var(--space-1-5);
 }
 
-.menubar.compact .menubar__menu {
+.menubar.compact .menubar-menu {
   font-size: var(--text-xs);
 }
 
-.menubar.compact .menubar__item {
+.menubar.compact .menubar-item {
   padding: 0.3125rem var(--space-2);
 }
 
@@ -220,11 +220,11 @@
   -webkit-backdrop-filter: blur(0.875rem);
 }
 
-.menubar.floating .menubar__menu[aria-current="page"],
-.menubar.floating .menubar__menu.is-active,
-.menubar.floating .menubar__menu.is-open,
-.menubar.floating .menubar__menu[aria-expanded="true"],
-.menubar.floating .menubar__menu[aria-expanded=""] {
+.menubar.floating .menubar-menu[aria-current="page"],
+.menubar.floating .menubar-menu.is-active,
+.menubar.floating .menubar-menu.is-open,
+.menubar.floating .menubar-menu[aria-expanded="true"],
+.menubar.floating .menubar-menu[aria-expanded=""] {
   background: color-mix(in oklch, var(--brand) 14%, transparent);
   color: var(--ink);
   box-shadow: inset 0 -2px 0 var(--brand);

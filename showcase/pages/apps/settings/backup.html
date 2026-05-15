@@ -86,22 +86,22 @@
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Último backup</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Hoy · 03:00</div>
-          <span class="pill success"><span class="pill__dot"></span>Completado</span>
+          <span class="pill success"><span class="pill-dot"></span>Completado</span>
         </div>
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Próximo automático</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">Mañana · 03:00</div>
-          <span class="pill"><span class="pill__dot"></span>Diario</span>
+          <span class="pill"><span class="pill-dot"></span>Diario</span>
         </div>
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Espacio usado</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;font-variant-numeric:tabular-nums;">1,8 GB <span style="color:var(--ink-3);font-size:14px;">/ 5 GB</span></div>
-          <div class="progress mt-2"><div class="progress__bar" style="width:36%;"></div></div>
+          <div class="progress mt-2"><div class="progress-bar" style="width:36%;"></div></div>
         </div>
         <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:14px;padding:14px;">
           <div class="eyebrow">Backups guardados</div>
           <div style="font-family:var(--font-display);font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-top:4px;">14<span style="color:var(--ink-3);font-size:14px;">/14</span></div>
-          <span class="pill"><span class="pill__dot"></span>Retención 14 días</span>
+          <span class="pill"><span class="pill-dot"></span>Retención 14 días</span>
         </div>
       </div>
 
@@ -115,15 +115,15 @@
         </header>
         <div class="body">
           <div class="toggle-row">
-            <div class="toggle-row__text">
-              <span class="toggle-row__label">Activar backups automáticos</span>
-              <span class="toggle-row__desc">Snapshot cifrado con AES-256 subido a S3 cada intervalo.</span>
+            <div class="toggle-row-text">
+              <span class="toggle-row-label">Activar backups automáticos</span>
+              <span class="toggle-row-desc">Snapshot cifrado con AES-256 subido a S3 cada intervalo.</span>
             </div>
-            <label class="toggle"><input type="checkbox" data-bind="bk.autoEnabled"/><span class="toggle__track"></span></label>
+            <label class="toggle"><input type="checkbox" data-bind="bk.autoEnabled"/><span class="toggle-track"></span></label>
           </div>
           <div class="form-row" style="padding-top:14px;" data-show="$bk.autoEnabled">
             <div class="field">
-              <label class="field__label">Intervalo</label>
+              <label class="field-label">Intervalo</label>
               <select class="select">
                 <option selected>Diario · 03:00</option>
                 <option>Cada 6 horas</option>
@@ -131,7 +131,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Retención</label>
+              <label class="field-label">Retención</label>
               <select class="select">
                 <option>7 días</option>
                 <option selected>14 días</option>
@@ -140,7 +140,7 @@
               </select>
             </div>
             <div class="field">
-              <label class="field__label">Cifrado</label>
+              <label class="field-label">Cifrado</label>
               <select class="select">
                 <option selected>AES-256 (S3 SSE-KMS)</option>
                 <option>AES-256 (cliente)</option>
@@ -182,7 +182,7 @@
                 <td class="td mono">2026-05-08 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">142 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="pill-dot"></span>OK</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -195,7 +195,7 @@
                 <td class="td mono">2026-05-07 18:42</td>
                 <td><span class="badge brand">Manual</span></td>
                 <td class="td num">141 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="pill-dot"></span>OK</span></td>
                 <td class="td muted">Joan C.</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -208,7 +208,7 @@
                 <td class="td mono">2026-05-07 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">140 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="pill-dot"></span>OK</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -221,7 +221,7 @@
                 <td class="td mono">2026-05-06 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">138 MB</td>
-                <td><span class="pill warning"><span class="pill__dot"></span>Parcial</span></td>
+                <td><span class="pill warning"><span class="pill-dot"></span>Parcial</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">
@@ -234,7 +234,7 @@
                 <td class="td mono">2026-05-05 03:00</td>
                 <td><span class="badge">Auto</span></td>
                 <td class="td num">137 MB</td>
-                <td><span class="pill success"><span class="pill__dot"></span>OK</span></td>
+                <td><span class="pill success"><span class="pill-dot"></span>OK</span></td>
                 <td class="td muted">eu-west-1</td>
                 <td>
                   <div class="row-actions justify-end">

@@ -39,7 +39,7 @@
      {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
   <button type="button"
           id="{{ _trigger_id }}"
-          class="accordion__trigger"
+          class="accordion-trigger"
           aria-controls="{{ _panel_id }}"
           aria-expanded="{{ 'true' if expanded else 'false' }}"
           data-attr:aria-expanded="$open"
@@ -52,12 +52,12 @@
     {%- if meta %}
     <span class="meta">{{ meta }}</span>
     {%- endif %}
-    <span class="accordion__caret" aria-hidden="true">▾</span>
+    <span class="accordion-caret" aria-hidden="true">▾</span>
   </button>
   <div id="{{ _panel_id }}"
        role="region"
        aria-labelledby="{{ _trigger_id }}"
-       class="accordion__panel{% if no_icon %} no-icon{% endif %}">
+       class="accordion-panel{% if no_icon %} no-icon{% endif %}">
     {{ caller() }}
   </div>
 </div>

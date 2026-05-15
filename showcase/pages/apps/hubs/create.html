@@ -88,93 +88,93 @@
       </div>
 
       <div class="wizard mb-4">
-        <div class="wizard__steps">
-          <div class="wizard__step wizard__step--done">
-            <div class="wizard__step-num">✓</div>
+        <div class="wizard-steps">
+          <div class="wizard-step wizard-step--done">
+            <div class="wizard-step-num">✓</div>
             <div>
-              <div class="wizard__step-name">Organización</div>
-              <div class="wizard__step-sub">Acme Industries</div>
+              <div class="wizard-step-name">Organización</div>
+              <div class="wizard-step-sub">Acme Industries</div>
             </div>
           </div>
-          <div class="wizard__step wizard__step--active">
-            <div class="wizard__step-num">2</div>
+          <div class="wizard-step wizard-step--active">
+            <div class="wizard-step-num">2</div>
             <div>
-              <div class="wizard__step-name">Nombre y dominio</div>
-              <div class="wizard__step-sub">En curso</div>
+              <div class="wizard-step-name">Nombre y dominio</div>
+              <div class="wizard-step-sub">En curso</div>
             </div>
           </div>
-          <div class="wizard__step">
-            <div class="wizard__step-num">3</div>
+          <div class="wizard-step">
+            <div class="wizard-step-num">3</div>
             <div>
-              <div class="wizard__step-name">Plan</div>
-              <div class="wizard__step-sub">Pro · Enterprise</div>
+              <div class="wizard-step-name">Plan</div>
+              <div class="wizard-step-sub">Pro · Enterprise</div>
             </div>
           </div>
-          <div class="wizard__step">
-            <div class="wizard__step-num">4</div>
+          <div class="wizard-step">
+            <div class="wizard-step-num">4</div>
             <div>
-              <div class="wizard__step-name">Módulos iniciales</div>
-              <div class="wizard__step-sub">POS · Stock · …</div>
+              <div class="wizard-step-name">Módulos iniciales</div>
+              <div class="wizard-step-sub">POS · Stock · …</div>
             </div>
           </div>
-          <div class="wizard__step">
-            <div class="wizard__step-num">5</div>
+          <div class="wizard-step">
+            <div class="wizard-step-num">5</div>
             <div>
-              <div class="wizard__step-name">Pago</div>
-              <div class="wizard__step-sub">Confirmar</div>
+              <div class="wizard-step-name">Pago</div>
+              <div class="wizard-step-sub">Confirmar</div>
             </div>
           </div>
         </div>
 
-        <div class="wizard__body">
+        <div class="wizard-body">
           <div class="row">
 
             <!-- LEFT: form -->
             <div class="col-md-7 col-lg-8">
-              <h2 class="wizard__title">Identifica tu nuevo hub</h2>
-              <p class="wizard__sub">Elige un nombre, un subdominio y la región donde se desplegará. Puedes añadir un dominio personalizado más adelante.</p>
+              <h2 class="wizard-title">Identifica tu nuevo hub</h2>
+              <p class="wizard-sub">Elige un nombre, un subdominio y la región donde se desplegará. Puedes añadir un dominio personalizado más adelante.</p>
 
               <div class="form-section mb-6">
                 <div class="form-row row">
                   <label class="field col-md-6">
-                    <span class="field__label field__label--req">Nombre del hub</span>
+                    <span class="field-label field-label--req">Nombre del hub</span>
                     <input class="input" value="Acme Tienda 2"/>
-                    <span class="field__hint">Visible en facturación y en el topbar.</span>
+                    <span class="field-hint">Visible en facturación y en el topbar.</span>
                   </label>
                   <label class="field col-md-6">
-                    <span class="field__label">Etiqueta interna</span>
+                    <span class="field-label">Etiqueta interna</span>
                     <input class="input" placeholder="opcional · ej. tienda-norte"/>
-                    <span class="field__hint">Solo visible para el equipo.</span>
+                    <span class="field-hint">Solo visible para el equipo.</span>
                   </label>
                 </div>
               </div>
 
               <div class="form-section mb-6">
                 <label class="field">
-                  <span class="field__label field__label--req">Subdominio</span>
+                  <span class="field-label field-label--req">Subdominio</span>
                   <div class="input-group with-left" style="display:flex;align-items:stretch;">
                     <input class="input" data-bind:q="$slug" value="acme-tienda-2" style="border-top-right-radius:0;border-bottom-right-radius:0;"/>
-                    <span class="input-group__addon" style="border-top-left-radius:0;border-bottom-left-radius:0;">.erplora.cloud</span>
+                    <span class="input-group-addon" style="border-top-left-radius:0;border-bottom-left-radius:0;">.erplora.cloud</span>
                   </div>
-                  <span class="field__hint" data-show="$valid" style="color:var(--leaf);display:flex;align-items:center;gap:6px;">
+                  <span class="field-hint" data-show="$valid" style="color:var(--leaf);display:flex;align-items:center;gap:6px;">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
                     Subdominio disponible
                   </span>
-                  <span class="field__error" data-show="!$valid">Subdominio ya en uso</span>
+                  <span class="field-error" data-show="!$valid">Subdominio ya en uso</span>
                 </label>
               </div>
 
               <div class="form-section mb-6">
                 <label class="field">
-                  <span class="field__label">Dominio personalizado (opcional)</span>
+                  <span class="field-label">Dominio personalizado (opcional)</span>
                   <input class="input" placeholder="ej. pos.acme.com"/>
-                  <span class="field__hint">Necesitarás añadir un registro CNAME apuntando a <code style="font-family:var(--font-mono);background:var(--bg-3);padding:1px 5px;border-radius:3px;font-size:11px;">cname.erplora.cloud</code>.</span>
+                  <span class="field-hint">Necesitarás añadir un registro CNAME apuntando a <code style="font-family:var(--font-mono);background:var(--bg-3);padding:1px 5px;border-radius:3px;font-size:11px;">cname.erplora.cloud</code>.</span>
                 </label>
               </div>
 
               <div class="form-section mb-6">
                 <label class="field">
-                  <span class="field__label field__label--req">Región</span>
+                  <span class="field-label field-label--req">Región</span>
                   <select class="select" data-bind:q="$region">
                     <option value="eu-west-1">EU-West-1 · Irlanda (recomendado para España)</option>
                     <option value="eu-central-1">EU-Central-1 · Frankfurt</option>
@@ -182,32 +182,32 @@
                     <option value="us-east-1">US-East-1 · Virginia</option>
                     <option value="us-west-2">US-West-2 · Oregón</option>
                   </select>
-                  <span class="field__hint">La región no se puede cambiar tras la creación.</span>
+                  <span class="field-hint">La región no se puede cambiar tras la creación.</span>
                 </label>
               </div>
 
               <div class="form-section">
-                <div class="field__label mb-2">Tipo de hub</div>
+                <div class="field-label mb-2">Tipo de hub</div>
                 <div class="radio-group row" style="gap:10px;">
                   <label class="radio-card col-md-6 col-lg-4">
                     <input type="radio" name="htype" data-on:click="$htype = 'prod'" checked/>
                     <div>
                       <div class="radio-title">Producción</div>
-                      <div class="radio-card__desc">SLA 99,9% · backups diarios · soporte 24h.</div>
+                      <div class="radio-card-desc">SLA 99,9% · backups diarios · soporte 24h.</div>
                     </div>
                   </label>
                   <label class="radio-card col-md-6 col-lg-4">
                     <input type="radio" name="htype" data-on:click="$htype = 'staging'"/>
                     <div>
                       <div class="radio-title">Test / Staging</div>
-                      <div class="radio-card__desc">Entorno aislado para pruebas · sin SLA.</div>
+                      <div class="radio-card-desc">Entorno aislado para pruebas · sin SLA.</div>
                     </div>
                   </label>
                   <label class="radio-card col-md-6 col-lg-4">
                     <input type="radio" name="htype" data-on:click="$htype = 'demo'"/>
                     <div>
                       <div class="radio-title">Demo</div>
-                      <div class="radio-card__desc">Datos de ejemplo precargados · 30 días.</div>
+                      <div class="radio-card-desc">Datos de ejemplo precargados · 30 días.</div>
                     </div>
                   </label>
                 </div>
@@ -270,11 +270,11 @@
               </div>
 
               <div class="callout info compact">
-                <span class="callout__icon">
+                <span class="callout-icon">
                   <iconify-icon icon="lucide:info" width="18" height="18"></iconify-icon>
                 </span>
-                <div class="callout__body">
-                  <div class="callout__desc" style="font-size:12px;">El primer mes es gratuito. Puedes cancelar antes y no se cobrará nada.</div>
+                <div class="callout-body">
+                  <div class="callout-desc" style="font-size:12px;">El primer mes es gratuito. Puedes cancelar antes y no se cobrará nada.</div>
                 </div>
               </div>
             </aside>
@@ -282,9 +282,9 @@
           </div>
         </div>
 
-        <div class="wizard__foot">
-          <div class="wizard__foot-meta">Paso 2 de 5 · acme-tienda-2.erplora.cloud</div>
-          <div class="wizard__foot-actions">
+        <div class="wizard-foot">
+          <div class="wizard-foot-meta">Paso 2 de 5 · acme-tienda-2.erplora.cloud</div>
+          <div class="wizard-foot-actions">
             <button class="btn ghost">Atrás</button>
             <button class="btn primary">Siguiente →</button>
           </div>

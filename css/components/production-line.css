@@ -9,17 +9,17 @@
   border-radius: var(--radius-xl);
   padding: var(--space-5);
 }
-.prodline__line {
+.prodline-line {
   display: flex;
   align-items: center;
   gap: var(--space-2);
 }
-.prodline.vertical .prodline__line {
+.prodline.vertical .prodline-line {
   flex-direction: column;
   align-items: stretch;
 }
 
-.prodline__station {
+.prodline-station {
   --_st-bg: var(--bg-3);
   --_st-fg: var(--ink-2);
   --_st-bd: var(--line);
@@ -39,22 +39,22 @@
     background var(--dur-base) var(--ease-out),
     border-color var(--dur-base) var(--ease-out);
 }
-.prodline__station.is-running {
+.prodline-station.is-running {
   --_st-bg: color-mix(in oklch, var(--brand) 18%, var(--bg-2));
   --_st-fg: var(--ink);
   --_st-bd: color-mix(in oklch, var(--brand) 50%, var(--line));
 }
-.prodline__station.is-idle {
+.prodline-station.is-idle {
   --_st-bg: var(--bg-3);
   --_st-fg: var(--ink-3);
 }
-.prodline__station.is-blocked {
+.prodline-station.is-blocked {
   --_st-bg: var(--danger-soft);
   --_st-fg: var(--danger);
   --_st-bd: color-mix(in oklch, var(--danger) 50%, var(--line));
 }
 
-.prodline__station-icon {
+.prodline-station-icon {
   width: var(--size-md); height: var(--size-md);
   border-radius: var(--radius-circle);
   background: var(--bg-2);
@@ -64,12 +64,12 @@
   justify-content: center;
   color: inherit;
 }
-.prodline__station.is-running .prodline__station-icon {
+.prodline-station.is-running .prodline-station-icon {
   background: var(--brand);
   color: var(--brand-fg);
   border-color: var(--brand);
 }
-.prodline__station-name {
+.prodline-station-name {
   font-family: var(--font-display);
   font-size: var(--text-xs);
   font-weight: 600;
@@ -77,15 +77,15 @@
   color: inherit;
   line-height: 1.1;
 }
-.prodline__station-count {
+.prodline-station-count {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
-.prodline__station.is-running .prodline__station-count { color: var(--ink-2); }
+.prodline-station.is-running .prodline-station-count { color: var(--ink-2); }
 
-.prodline__connector {
+.prodline-connector {
   flex: 1;
   position: relative;
   height: var(--connector-width);
@@ -93,14 +93,14 @@
   border-radius: var(--radius-pill);
   min-width: 24px;
 }
-.prodline.vertical .prodline__connector {
+.prodline.vertical .prodline-connector {
   width: var(--connector-width);
   height: var(--connector-height);
   margin-left: auto;
   margin-right: auto;
   flex: 0 0 auto;
 }
-.prodline__connector-fill {
+.prodline-connector-fill {
   position: absolute;
   inset: 0;
   background: var(--brand);
@@ -108,8 +108,8 @@
   transition: transform var(--dur-slow) var(--ease-out);
   transform-origin: left center;
 }
-.prodline.vertical .prodline__connector-fill { transform-origin: top center; }
-.prodline__connector::after {
+.prodline.vertical .prodline-connector-fill { transform-origin: top center; }
+.prodline-connector::after {
   content: "";
   position: absolute;
   right: -1px;
@@ -121,7 +121,7 @@
   border-top: 5px solid transparent;
   border-bottom: 5px solid transparent;
 }
-.prodline.vertical .prodline__connector::after {
+.prodline.vertical .prodline-connector::after {
   right: 50%;
   top: auto;
   bottom: -1px;
@@ -131,15 +131,15 @@
   border-top: 7px solid var(--bg-4);
   border-bottom: none;
 }
-.prodline__connector--blocked {
+.prodline-connector--blocked {
   background: var(--danger-soft);
 }
-.prodline__connector--blocked .prodline__connector-fill { background: var(--danger); }
-.prodline__connector--blocked::after { border-left-color: var(--danger); }
-.prodline.vertical .prodline__connector--blocked::after { border-top-color: var(--danger); border-left-color: transparent; }
-.prodline__connector--slow {
+.prodline-connector--blocked .prodline-connector-fill { background: var(--danger); }
+.prodline-connector--blocked::after { border-left-color: var(--danger); }
+.prodline.vertical .prodline-connector--blocked::after { border-top-color: var(--danger); border-left-color: transparent; }
+.prodline-connector--slow {
   background: var(--warn-soft);
 }
-.prodline__connector--slow .prodline__connector-fill { background: var(--warn); }
-.prodline__connector--slow::after { border-left-color: var(--warn); }
-.prodline.vertical .prodline__connector--slow::after { border-top-color: var(--warn); border-left-color: transparent; }
+.prodline-connector--slow .prodline-connector-fill { background: var(--warn); }
+.prodline-connector--slow::after { border-left-color: var(--warn); }
+.prodline.vertical .prodline-connector--slow::after { border-top-color: var(--warn); border-left-color: transparent; }

@@ -4,8 +4,8 @@
 {% block page_title %}Design system{% endblock %}
 
 {% block content %}
-<h1 class="doc__title">Design system</h1>
-<p class="doc__sub">Tokens base. Todo el resto se deriva de aquí.</p>
+<h1 class="doc-title">Design system</h1>
+<p class="doc-sub">Tokens base. Todo el resto se deriva de aquí.</p>
 
 <h3 style="font-family:var(--font-display, var(--font));font-size:16px;letter-spacing:-0.03em;margin:24px 0 12px;color:var(--ink);">Paleta</h3>
 
@@ -20,9 +20,9 @@
 <div class="swatches">
   {% for name, var in palette %}
     <div class="swatch">
-      <div class="swatch__chip" style="background: var({{ var }});"></div>
-      <div class="swatch__name">{{ name }}</div>
-      <div class="swatch__var">{{ var }}</div>
+      <div class="swatch-chip" style="background: var({{ var }});"></div>
+      <div class="swatch-name">{{ name }}</div>
+      <div class="swatch-var">{{ var }}</div>
     </div>
   {% endfor %}
 </div>
@@ -30,16 +30,16 @@
 <h3 style="font-family:var(--font-display, var(--font));font-size:16px;letter-spacing:-0.03em;margin:32px 0 12px;color:var(--ink);">Tipografía</h3>
 
 <div class="type-stack">
-  <div class="type-row"><span class="type-row__label">5xl · 60</span><span style="font-family:var(--font-display, var(--font));font-size:60px;font-weight:600;line-height:1.05;letter-spacing:-0.04em;">Display 5xl</span></div>
-  <div class="type-row"><span class="type-row__label">4xl · 44</span><span style="font-family:var(--font-display, var(--font));font-size:44px;font-weight:600;line-height:1.1;letter-spacing:-0.04em;">Display 4xl</span></div>
-  <div class="type-row"><span class="type-row__label">3xl · 32</span><span style="font-size:32px;font-weight:600;letter-spacing:-0.03em;">Heading 3xl</span></div>
-  <div class="type-row"><span class="type-row__label">2xl · 24</span><span style="font-size:24px;font-weight:600;letter-spacing:-0.02em;">Heading 2xl</span></div>
-  <div class="type-row"><span class="type-row__label">xl · 19</span><span style="font-size:19px;font-weight:600;">Heading xl</span></div>
-  <div class="type-row"><span class="type-row__label">lg · 16</span><span style="font-size:16px;">Body large</span></div>
-  <div class="type-row"><span class="type-row__label">base · 14</span><span style="font-size:14px;">Body base — tono auxiliar para descripciones y body de tarjetas.</span></div>
-  <div class="type-row"><span class="type-row__label">md · 13.5</span><span style="font-size:13.5px;">Body md — texto denso para tablas y dashboards.</span></div>
-  <div class="type-row"><span class="type-row__label">sm · 12.5</span><span style="font-size:12.5px;color:var(--ink-2);">Body sm — auxiliar.</span></div>
-  <div class="type-row"><span class="type-row__label">mono · 13</span><span style="font-family:ui-monospace, SFMono-Regular, Menlo, monospace;font-size:13px;">12.342,80 €  ·  req_a8f2d1c4</span></div>
+  <div class="type-row"><span class="type-row-label">5xl · 60</span><span style="font-family:var(--font-display, var(--font));font-size:60px;font-weight:600;line-height:1.05;letter-spacing:-0.04em;">Display 5xl</span></div>
+  <div class="type-row"><span class="type-row-label">4xl · 44</span><span style="font-family:var(--font-display, var(--font));font-size:44px;font-weight:600;line-height:1.1;letter-spacing:-0.04em;">Display 4xl</span></div>
+  <div class="type-row"><span class="type-row-label">3xl · 32</span><span style="font-size:32px;font-weight:600;letter-spacing:-0.03em;">Heading 3xl</span></div>
+  <div class="type-row"><span class="type-row-label">2xl · 24</span><span style="font-size:24px;font-weight:600;letter-spacing:-0.02em;">Heading 2xl</span></div>
+  <div class="type-row"><span class="type-row-label">xl · 19</span><span style="font-size:19px;font-weight:600;">Heading xl</span></div>
+  <div class="type-row"><span class="type-row-label">lg · 16</span><span style="font-size:16px;">Body large</span></div>
+  <div class="type-row"><span class="type-row-label">base · 14</span><span style="font-size:14px;">Body base — tono auxiliar para descripciones y body de tarjetas.</span></div>
+  <div class="type-row"><span class="type-row-label">md · 13.5</span><span style="font-size:13.5px;">Body md — texto denso para tablas y dashboards.</span></div>
+  <div class="type-row"><span class="type-row-label">sm · 12.5</span><span style="font-size:12.5px;color:var(--ink-2);">Body sm — auxiliar.</span></div>
+  <div class="type-row"><span class="type-row-label">mono · 13</span><span style="font-family:ui-monospace, SFMono-Regular, Menlo, monospace;font-size:13px;">12.342,80 €  ·  req_a8f2d1c4</span></div>
 </div>
 
 <h3 style="font-family:var(--font-display, var(--font));font-size:16px;letter-spacing:-0.03em;margin:32px 0 12px;color:var(--ink);">Radios</h3>
@@ -65,13 +65,13 @@
 <style>
   .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
   .swatch { background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
-  .swatch__chip { width: 100%; height: 56px; border-radius: 6px; border: 1px solid var(--line); margin-bottom: 8px; }
-  .swatch__name { font-size: 12.5px; font-weight: 500; color: var(--ink); }
-  .swatch__var { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+  .swatch-chip { width: 100%; height: 56px; border-radius: 6px; border: 1px solid var(--line); margin-bottom: 8px; }
+  .swatch-name { font-size: 12.5px; font-weight: 500; color: var(--ink); }
+  .swatch-var { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--ink-3); margin-top: 2px; }
 
   .type-stack { display: flex; flex-direction: column; gap: 10px; }
   .type-row { display: flex; align-items: baseline; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); }
-  .type-row__label { width: 80px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--ink-3); flex-shrink: 0; }
+  .type-row-label { width: 80px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11px; color: var(--ink-3); flex-shrink: 0; }
 
   .radii-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
   .radius-cell { background: var(--bg-2); border: 1px solid var(--line); padding: 24px 12px; text-align: center; font-size: 12.5px; color: var(--ink-2); }

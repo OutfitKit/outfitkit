@@ -23,30 +23,30 @@
     border-radius: var(--radius-lg);
   }
   .cart-line + .cart-line { margin-top: 10px; }
-  .cart-line__thumb {
+  .cart-line-thumb {
     width: 80px; height: 80px; border-radius: var(--radius-md);
     display: grid; place-items: center;
     color: var(--ink-3); font-family: var(--font-mono); font-size: 10px;
   }
-  .cart-line__thumb--a { background: linear-gradient(135deg, #2a1a14, #4a2818); }
-  .cart-line__thumb--b { background: linear-gradient(135deg, #1a2a3a, #2a3a4a); }
-  .cart-line__thumb--c { background: linear-gradient(135deg, #1a2a1a, #2a3a25); }
-  .cart-line__thumb--d { background: linear-gradient(135deg, #2a1a2a, #3a2548); }
-  .cart-line__info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-  .cart-line__name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
-  .cart-line__meta { font-size: 12px; color: var(--ink-3); }
-  .cart-line__bottom { display: flex; gap: 16px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
-  .cart-line__price-block { text-align: right; min-width: 90px; }
-  .cart-line__unit { font-size: 11px; color: var(--ink-3); }
-  .cart-line__total { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+  .cart-line-thumb--a { background: linear-gradient(135deg, #2a1a14, #4a2818); }
+  .cart-line-thumb--b { background: linear-gradient(135deg, #1a2a3a, #2a3a4a); }
+  .cart-line-thumb--c { background: linear-gradient(135deg, #1a2a1a, #2a3a25); }
+  .cart-line-thumb--d { background: linear-gradient(135deg, #2a1a2a, #3a2548); }
+  .cart-line-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .cart-line-name { font-family: var(--font-display); font-size: 15px; font-weight: 600; color: var(--ink); }
+  .cart-line-meta { font-size: 12px; color: var(--ink-3); }
+  .cart-line-bottom { display: flex; gap: 16px; align-items: center; margin-top: 8px; flex-wrap: wrap; }
+  .cart-line-price-block { text-align: right; min-width: 90px; }
+  .cart-line-unit { font-size: 11px; color: var(--ink-3); }
+  .cart-line-total { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
 
   .summary-card { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 18px; }
   .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; font-size: 13px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
   .summary-row b { color: var(--ink); font-weight: 500; }
   .summary-divider { border: none; border-top: 1px dashed var(--line); margin: 10px 0; }
   .summary-total { display: flex; justify-content: space-between; align-items: baseline; margin: 4px 0 14px; }
-  .summary-total__label { font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
-  .summary-total__value { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+  .summary-total-label { font-size: 13px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .summary-total-value { font-family: var(--font-display); font-size: 28px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
 
   .pay-icons { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
   .pay-icon { width: 36px; height: 24px; border-radius: 4px; background: var(--bg-3); border: 1px solid var(--line); display: grid; place-items: center; font-family: var(--font-mono); font-size: 8px; font-weight: 700; color: var(--ink-2); letter-spacing: 0.06em; }
@@ -154,29 +154,29 @@
       <!-- Stepper progress -->
       <div class="cart-stepper-wrap">
         <div class="stepper">
-          <div class="stepper__step" data-state="active">
-            <div class="stepper__bullet"><span>1</span></div>
+          <div class="stepper-step" data-state="active">
+            <div class="stepper-bullet"><span>1</span></div>
             <div class="label">
               <span class="title sm">Carrito</span>
               <span class="meta">Revisa los artículos</span>
             </div>
           </div>
-          <div class="stepper__step">
-            <div class="stepper__bullet"><span>2</span></div>
+          <div class="stepper-step">
+            <div class="stepper-bullet"><span>2</span></div>
             <div class="label">
               <span class="title sm">Envío</span>
               <span class="meta">Dirección y entrega</span>
             </div>
           </div>
-          <div class="stepper__step">
-            <div class="stepper__bullet"><span>3</span></div>
+          <div class="stepper-step">
+            <div class="stepper-bullet"><span>3</span></div>
             <div class="label">
               <span class="title sm">Pago</span>
               <span class="meta">Tarjeta o transferencia</span>
             </div>
           </div>
-          <div class="stepper__step">
-            <div class="stepper__bullet"><span>4</span></div>
+          <div class="stepper-step">
+            <div class="stepper-bullet"><span>4</span></div>
             <div class="label">
               <span class="title sm">Confirmación</span>
               <span class="meta">Resumen del pedido</span>
@@ -191,17 +191,17 @@
         <main class="col-md-7 col-lg-8">
           <!-- Line 1 -->
           <article class="cart-line">
-            <div class="cart-line__thumb cart-line__thumb--a">[TPV Modelo X]</div>
-            <div class="cart-line__info">
-              <div class="cart-line__name">Terminal POS Modelo X Pro</div>
-              <div class="cart-line__meta">SKU: ERP-TPV-X-PRO · Color: negro · Garantía 2 años</div>
-              <div class="cart-line__bottom">
+            <div class="cart-line-thumb cart-line-thumb--a">[TPV Modelo X]</div>
+            <div class="cart-line-info">
+              <div class="cart-line-name">Terminal POS Modelo X Pro</div>
+              <div class="cart-line-meta">SKU: ERP-TPV-X-PRO · Color: negro · Garantía 2 años</div>
+              <div class="cart-line-bottom">
                 <div class="qty-stepper sm">
-                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q1 = Math.max(1, $q1 - 1)" aria-label="Quitar"></button>
-                  <input class="qty-stepper__input" type="number" data-bind:q1 value="2"/>
-                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q1 = $q1 + 1" aria-label="Añadir"></button>
+                  <button class="qty-stepper-btn qty-stepper-btn--minus" data-on:click="$q1 = Math.max(1, $q1 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper-input" type="number" data-bind:q1 value="2"/>
+                  <button class="qty-stepper-btn qty-stepper-btn--plus" data-on:click="$q1 = $q1 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="stock in-stock"><span class="stock__dot"></span><span class="stock__label">En stock</span></span>
+                <span class="stock in-stock"><span class="stock-dot"></span><span class="stock-label">En stock</span></span>
                 <button class="btn ghost sm">
                   <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/></svg>
                   Quitar
@@ -212,75 +212,75 @@
                 </button>
               </div>
             </div>
-            <div class="cart-line__price-block">
-              <div class="cart-line__unit">€890 · ud</div>
-              <div class="cart-line__total" data-text="`€${($q1 * 890).toLocaleString('es-ES')}`">€1 780</div>
+            <div class="cart-line-price-block">
+              <div class="cart-line-unit">€890 · ud</div>
+              <div class="cart-line-total" data-text="`€${($q1 * 890).toLocaleString('es-ES')}`">€1 780</div>
             </div>
           </article>
 
           <!-- Line 2 -->
           <article class="cart-line">
-            <div class="cart-line__thumb cart-line__thumb--d">[SumUp Air]</div>
-            <div class="cart-line__info">
-              <div class="cart-line__name">Lector SumUp Air contactless</div>
-              <div class="cart-line__meta">SKU: SUMUP-AIR-EU · Bluetooth + 4G</div>
-              <div class="cart-line__bottom">
+            <div class="cart-line-thumb cart-line-thumb--d">[SumUp Air]</div>
+            <div class="cart-line-info">
+              <div class="cart-line-name">Lector SumUp Air contactless</div>
+              <div class="cart-line-meta">SKU: SUMUP-AIR-EU · Bluetooth + 4G</div>
+              <div class="cart-line-bottom">
                 <div class="qty-stepper sm">
-                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q2 = Math.max(1, $q2 - 1)" aria-label="Quitar"></button>
-                  <input class="qty-stepper__input" type="number" data-bind:q2 value="1"/>
-                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q2 = $q2 + 1" aria-label="Añadir"></button>
+                  <button class="qty-stepper-btn qty-stepper-btn--minus" data-on:click="$q2 = Math.max(1, $q2 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper-input" type="number" data-bind:q2 value="1"/>
+                  <button class="qty-stepper-btn qty-stepper-btn--plus" data-on:click="$q2 = $q2 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="stock in-stock"><span class="stock__dot"></span><span class="stock__label">Llega en 24h</span></span>
+                <span class="stock in-stock"><span class="stock-dot"></span><span class="stock-label">Llega en 24h</span></span>
                 <button class="btn ghost sm">Quitar</button>
               </div>
             </div>
-            <div class="cart-line__price-block">
-              <div class="cart-line__unit">€39 · ud</div>
-              <div class="cart-line__total" data-text="`€${($q2 * 39).toLocaleString('es-ES')}`">€39</div>
+            <div class="cart-line-price-block">
+              <div class="cart-line-unit">€39 · ud</div>
+              <div class="cart-line-total" data-text="`€${($q2 * 39).toLocaleString('es-ES')}`">€39</div>
             </div>
           </article>
 
           <!-- Line 3 -->
           <article class="cart-line">
-            <div class="cart-line__thumb cart-line__thumb--c">[Star TSP143]</div>
-            <div class="cart-line__info">
-              <div class="cart-line__name">Impresora térmica Star TSP143 III</div>
-              <div class="cart-line__meta">SKU: STAR-TSP143-III · USB + Ethernet · Cable incluido</div>
-              <div class="cart-line__bottom">
+            <div class="cart-line-thumb cart-line-thumb--c">[Star TSP143]</div>
+            <div class="cart-line-info">
+              <div class="cart-line-name">Impresora térmica Star TSP143 III</div>
+              <div class="cart-line-meta">SKU: STAR-TSP143-III · USB + Ethernet · Cable incluido</div>
+              <div class="cart-line-bottom">
                 <div class="qty-stepper sm">
-                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q3 = Math.max(1, $q3 - 1)" aria-label="Quitar"></button>
-                  <input class="qty-stepper__input" type="number" data-bind:q3 value="1"/>
-                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q3 = $q3 + 1" aria-label="Añadir"></button>
+                  <button class="qty-stepper-btn qty-stepper-btn--minus" data-on:click="$q3 = Math.max(1, $q3 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper-input" type="number" data-bind:q3 value="1"/>
+                  <button class="qty-stepper-btn qty-stepper-btn--plus" data-on:click="$q3 = $q3 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="stock low"><span class="stock__dot"></span><span class="stock__label">Quedan 4</span></span>
+                <span class="stock low"><span class="stock-dot"></span><span class="stock-label">Quedan 4</span></span>
                 <button class="btn ghost sm">Quitar</button>
               </div>
             </div>
-            <div class="cart-line__price-block">
-              <div class="cart-line__unit">€229 · ud</div>
-              <div class="cart-line__total" data-text="`€${($q3 * 229).toLocaleString('es-ES')}`">€229</div>
+            <div class="cart-line-price-block">
+              <div class="cart-line-unit">€229 · ud</div>
+              <div class="cart-line-total" data-text="`€${($q3 * 229).toLocaleString('es-ES')}`">€229</div>
             </div>
           </article>
 
           <!-- Line 4 -->
           <article class="cart-line">
-            <div class="cart-line__thumb cart-line__thumb--f">[Bundle accesorios]</div>
-            <div class="cart-line__info">
-              <div class="cart-line__name">Bundle accesorios POS · 8 piezas</div>
-              <div class="cart-line__meta">SKU: ERP-ACC-BUNDLE-8 · Cables, soportes, rollos térmicos</div>
-              <div class="cart-line__bottom">
+            <div class="cart-line-thumb cart-line-thumb--f">[Bundle accesorios]</div>
+            <div class="cart-line-info">
+              <div class="cart-line-name">Bundle accesorios POS · 8 piezas</div>
+              <div class="cart-line-meta">SKU: ERP-ACC-BUNDLE-8 · Cables, soportes, rollos térmicos</div>
+              <div class="cart-line-bottom">
                 <div class="qty-stepper sm">
-                  <button class="qty-stepper__btn qty-stepper__btn--minus" data-on:click="$q4 = Math.max(1, $q4 - 1)" aria-label="Quitar"></button>
-                  <input class="qty-stepper__input" type="number" data-bind:q4 value="1"/>
-                  <button class="qty-stepper__btn qty-stepper__btn--plus" data-on:click="$q4 = $q4 + 1" aria-label="Añadir"></button>
+                  <button class="qty-stepper-btn qty-stepper-btn--minus" data-on:click="$q4 = Math.max(1, $q4 - 1)" aria-label="Quitar"></button>
+                  <input class="qty-stepper-input" type="number" data-bind:q4 value="1"/>
+                  <button class="qty-stepper-btn qty-stepper-btn--plus" data-on:click="$q4 = $q4 + 1" aria-label="Añadir"></button>
                 </div>
-                <span class="stock in-stock"><span class="stock__dot"></span><span class="stock__label">En stock</span></span>
+                <span class="stock in-stock"><span class="stock-dot"></span><span class="stock-label">En stock</span></span>
                 <button class="btn ghost sm">Quitar</button>
               </div>
             </div>
-            <div class="cart-line__price-block">
-              <div class="cart-line__unit">€85 · ud</div>
-              <div class="cart-line__total" data-text="`€${($q4 * 85).toLocaleString('es-ES')}`">€85</div>
+            <div class="cart-line-price-block">
+              <div class="cart-line-unit">€85 · ud</div>
+              <div class="cart-line-total" data-text="`€${($q4 * 85).toLocaleString('es-ES')}`">€85</div>
             </div>
           </article>
 
@@ -308,8 +308,8 @@
             <hr class="summary-divider"/>
 
             <div class="summary-total">
-              <span class="summary-total__label">Total</span>
-              <span class="summary-total__value" data-text="`€${(((($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)) * 1.21).toFixed(0)).toLocaleString('es-ES')}`">€2 581</span>
+              <span class="summary-total-label">Total</span>
+              <span class="summary-total-value" data-text="`€${(((($q1 * 890) + ($q2 * 39) + ($q3 * 229) + ($q4 * 85)) * 1.21).toFixed(0)).toLocaleString('es-ES')}`">€2 581</span>
             </div>
 
             <button class="btn primary lg block">
@@ -343,56 +343,56 @@
         <div class="grid-auto md">
 
           <article class="product compact">
-            <div class="product__media"><div class="prod-art b">[Pantalla 7'']</div></div>
-            <div class="product__body">
-              <h3 class="product__name">Pantalla cliente 7''</h3>
-              <div class="product__price-row"><span class="product__price">€189</span></div>
-              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
+            <div class="product-media"><div class="prod-art b">[Pantalla 7'']</div></div>
+            <div class="product-body">
+              <h3 class="product-name">Pantalla cliente 7''</h3>
+              <div class="product-price-row"><span class="product-price">€189</span></div>
+              <div class="product-actions"><button class="product-cta">+ Añadir</button></div>
             </div>
           </article>
 
           <article class="product compact">
-            <div class="product__media"><div class="prod-art c">[Cajón]</div></div>
-            <div class="product__body">
-              <h3 class="product__name">Cajón monedero RJ11</h3>
-              <div class="product__price-row"><span class="product__price">€85</span></div>
-              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
+            <div class="product-media"><div class="prod-art c">[Cajón]</div></div>
+            <div class="product-body">
+              <h3 class="product-name">Cajón monedero RJ11</h3>
+              <div class="product-price-row"><span class="product-price">€85</span></div>
+              <div class="product-actions"><button class="product-cta">+ Añadir</button></div>
             </div>
           </article>
 
           <article class="product compact">
-            <div class="product__media"><div class="prod-art e">[Scanner]</div></div>
-            <div class="product__body">
-              <h3 class="product__name">Scanner Voyager 1602g</h3>
-              <div class="product__price-row"><span class="product__price">€129</span></div>
-              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
+            <div class="product-media"><div class="prod-art e">[Scanner]</div></div>
+            <div class="product-body">
+              <h3 class="product-name">Scanner Voyager 1602g</h3>
+              <div class="product-price-row"><span class="product-price">€129</span></div>
+              <div class="product-actions"><button class="product-cta">+ Añadir</button></div>
             </div>
           </article>
 
           <article class="product compact">
-            <div class="product__media"><div class="prod-art d">[Brother QL]</div></div>
-            <div class="product__body">
-              <h3 class="product__name">Brother QL-820NWB</h3>
-              <div class="product__price-row"><span class="product__price">€340</span></div>
-              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
+            <div class="product-media"><div class="prod-art d">[Brother QL]</div></div>
+            <div class="product-body">
+              <h3 class="product-name">Brother QL-820NWB</h3>
+              <div class="product-price-row"><span class="product-price">€340</span></div>
+              <div class="product-actions"><button class="product-cta">+ Añadir</button></div>
             </div>
           </article>
 
           <article class="product compact">
-            <div class="product__media"><div class="prod-art a">[Soporte]</div></div>
-            <div class="product__body">
-              <h3 class="product__name">Soporte tablet metálico</h3>
-              <div class="product__price-row"><span class="product__price">€89</span></div>
-              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
+            <div class="product-media"><div class="prod-art a">[Soporte]</div></div>
+            <div class="product-body">
+              <h3 class="product-name">Soporte tablet metálico</h3>
+              <div class="product-price-row"><span class="product-price">€89</span></div>
+              <div class="product-actions"><button class="product-cta">+ Añadir</button></div>
             </div>
           </article>
 
           <article class="product compact">
-            <div class="product__media"><div class="prod-art f">[Rollos x10]</div></div>
-            <div class="product__body">
-              <h3 class="product__name">Pack 10 rollos térmicos 80mm</h3>
-              <div class="product__price-row"><span class="product__price">€18</span></div>
-              <div class="product__actions"><button class="product__cta">+ Añadir</button></div>
+            <div class="product-media"><div class="prod-art f">[Rollos x10]</div></div>
+            <div class="product-body">
+              <h3 class="product-name">Pack 10 rollos térmicos 80mm</h3>
+              <div class="product-price-row"><span class="product-price">€18</span></div>
+              <div class="product-actions"><button class="product-cta">+ Añadir</button></div>
             </div>
           </article>
 

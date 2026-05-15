@@ -15,7 +15,7 @@
   border-color: color-mix(in oklch, var(--warn) 40%, var(--line));
 }
 
-.batch__head {
+.batch-head {
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: var(--space-3);
@@ -23,7 +23,7 @@
   padding: var(--space-4) var(--space-5);
   border-bottom: var(--border-w) solid var(--line);
 }
-.batch__id {
+.batch-id {
   font-family: var(--font-mono);
   font-size: var(--text-md);
   font-weight: 600;
@@ -34,26 +34,26 @@
   border-radius: var(--radius-sm);
   color: var(--ink);
 }
-.batch__product {
+.batch-product {
   display: flex;
   flex-direction: column;
   gap: 2px;
   min-width: 0;
 }
-.batch__product-name {
+.batch-product-name {
   font-family: var(--font-display);
   font-size: var(--text-md);
   font-weight: 600;
   letter-spacing: var(--tracking-tight);
   color: var(--ink);
 }
-.batch__qty {
+.batch-qty {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
-.batch__status-badge {
+.batch-status-badge {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1-5);
@@ -67,10 +67,10 @@
   background: var(--leaf-soft);
   color: var(--leaf);
 }
-.batch.is-recalled .batch__status-badge { background: var(--danger-soft); color: var(--danger); }
-.batch.is-quarantined .batch__status-badge { background: var(--warn-soft); color: var(--warn); }
+.batch.is-recalled .batch-status-badge { background: var(--danger-soft); color: var(--danger); }
+.batch.is-quarantined .batch-status-badge { background: var(--warn-soft); color: var(--warn); }
 
-.batch__meta {
+.batch-meta {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-3);
@@ -78,30 +78,30 @@
   border-bottom: var(--border-w) solid var(--line);
   background: var(--bg-3);
 }
-.batch__meta-row {
+.batch-meta-row {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
-.batch__meta-label {
+.batch-meta-label {
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wider);
   color: var(--ink-3);
 }
-.batch__meta-value {
+.batch-meta-value {
   font-size: var(--text-sm);
   color: var(--ink);
   font-variant-numeric: tabular-nums;
 }
 
-.batch__chain {
+.batch-chain {
   padding: var(--space-4) var(--space-5);
   display: flex;
   flex-direction: column;
 }
-.batch__chain-step {
+.batch-chain-step {
   --_dot: var(--bg-3);
   --_dot-bd: var(--line-2);
   display: grid;
@@ -111,7 +111,7 @@
   padding: var(--space-2) 0;
   position: relative;
 }
-.batch__chain-step::before {
+.batch-chain-step::before {
   content: "";
   position: absolute;
   left: 11px;
@@ -120,13 +120,13 @@
   width: 2px;
   background: var(--line);
 }
-.batch__chain-step:last-child::before { display: none; }
+.batch-chain-step:last-child::before { display: none; }
 
-.batch__chain-step--done    { --_dot: var(--leaf);  --_dot-bd: var(--leaf); }
-.batch__chain-step--current { --_dot: var(--brand); --_dot-bd: var(--brand); }
-.batch__chain-step--pending { --_dot: var(--bg-3);  --_dot-bd: var(--line-2); }
+.batch-chain-step--done    { --_dot: var(--leaf);  --_dot-bd: var(--leaf); }
+.batch-chain-step--current { --_dot: var(--brand); --_dot-bd: var(--brand); }
+.batch-chain-step--pending { --_dot: var(--bg-3);  --_dot-bd: var(--line-2); }
 
-.batch__chain-step::after {
+.batch-chain-step::after {
   content: "";
   width: 14px; height: 14px;
   border-radius: var(--radius-circle);
@@ -138,7 +138,7 @@
   grid-row: 1;
   margin-left: 5px;
 }
-.batch__chain-step--current::after {
+.batch-chain-step--current::after {
   box-shadow: 0 0 0 4px color-mix(in oklch, var(--brand) 22%, transparent);
   animation: ok-batch-pulse 1.6s ease-in-out infinite;
 }
@@ -147,7 +147,7 @@
   50%      { box-shadow: 0 0 0 8px color-mix(in oklch, var(--brand) 8%, transparent); }
 }
 
-.batch__chain-step-body {
+.batch-chain-step-body {
   grid-column: 2;
   grid-row: 1;
   display: flex;
@@ -155,15 +155,15 @@
   gap: 2px;
   min-width: 0;
 }
-.batch__chain-step-label {
+.batch-chain-step-label {
   font-size: var(--text-md);
   font-weight: 500;
   color: var(--ink);
 }
-.batch__chain-step--pending .batch__chain-step-label { color: var(--ink-3); }
-.batch__chain-step--done .batch__chain-step-label { color: var(--ink-2); }
+.batch-chain-step--pending .batch-chain-step-label { color: var(--ink-3); }
+.batch-chain-step--done .batch-chain-step-label { color: var(--ink-2); }
 
-.batch__chain-step-time {
+.batch-chain-step-time {
   grid-column: 3;
   grid-row: 1;
   font-family: var(--font-mono);

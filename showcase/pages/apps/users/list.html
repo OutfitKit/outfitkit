@@ -95,34 +95,34 @@
       <!-- KPIs -->
       <div class="grid-4 mb-4">
         <div class="kpi">
-          <div class="kpi__label">Total usuarios</div>
-          <div class="kpi__value">142</div>
-          <span class="badge"><span class="badge__dot"></span>+8 este mes</span>
+          <div class="kpi-label">Total usuarios</div>
+          <div class="kpi-value">142</div>
+          <span class="badge"><span class="badge-dot"></span>+8 este mes</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Activos hoy</div>
-          <div class="kpi__value">89</div>
-          <span class="badge success"><span class="badge__dot"></span>62%</span>
+          <div class="kpi-label">Activos hoy</div>
+          <div class="kpi-value">89</div>
+          <span class="badge success"><span class="badge-dot"></span>62%</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Pendientes</div>
-          <div class="kpi__value text-warn">5</div>
-          <span class="badge warning"><span class="badge__dot"></span>invitación enviada</span>
+          <div class="kpi-label">Pendientes</div>
+          <div class="kpi-value text-warn">5</div>
+          <span class="badge warning"><span class="badge-dot"></span>invitación enviada</span>
         </div>
         <div class="kpi">
-          <div class="kpi__label">Suspendidos</div>
-          <div class="kpi__value text-danger">3</div>
-          <span class="badge danger"><span class="badge__dot"></span>baja temporal</span>
+          <div class="kpi-label">Suspendidos</div>
+          <div class="kpi-value text-danger">3</div>
+          <span class="badge danger"><span class="badge-dot"></span>baja temporal</span>
         </div>
       </div>
 
       <!-- Toolbar with multi filters -->
       <div class="toolbar mb-3">
         <div class="search" style="flex:1;min-width:240px;max-width:360px;">
-          <span class="search__icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
+          <span class="search-icon"><iconify-icon icon="lucide:search" width="18" height="18"></iconify-icon></span>
           <input class="input sm" placeholder="Buscar por nombre o email…" data-bind:q/>
         </div>
-        <div class="toolbar__spacer"></div>
+        <div class="toolbar-spacer"></div>
         <select class="select sm" style="width:auto;min-width:140px;" data-bind:hub-filter>
           <option value="all">Todos los hubs</option>
           <option value="acme-prod">acme-prod</option>
@@ -170,8 +170,8 @@
       <div class="table-wrap">
         <div class="table-toolbar">
           <span class="title">Usuarios</span>
-          <span class="table-toolbar__count">142</span>
-          <div class="table-toolbar__spacer"></div>
+          <span class="table-toolbar-count">142</span>
+          <div class="table-toolbar-spacer"></div>
           <span class="text-xs text-ink-3">Mostrando 18 · ordenado por última conexión</span>
         </div>
         <div class="table-scroll">
@@ -508,7 +508,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag warning sm">Pendiente</span></td>
                 <td class="td muted">—</td>
-                <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                <td><span class="badge warning"><span class="badge-dot"></span>Pendiente</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u14' ? null : 'u14'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u14'">
@@ -530,7 +530,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag warning sm">Pendiente</span></td>
                 <td class="td muted">—</td>
-                <td><span class="badge warning"><span class="badge__dot"></span>Pendiente</span></td>
+                <td><span class="badge warning"><span class="badge-dot"></span>Pendiente</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u15' ? null : 'u15'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u15'">
@@ -575,7 +575,7 @@
                 <td><span class="tag neutral sm">1 hub</span></td>
                 <td><span class="tag neutral sm">Viewer</span></td>
                 <td class="td muted">hace 31 d</td>
-                <td><span class="badge danger"><span class="badge__dot"></span>Suspendido</span></td>
+                <td><span class="badge danger"><span class="badge-dot"></span>Suspendido</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u17' ? null : 'u17'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u17'">
@@ -597,7 +597,7 @@
                 <td><span class="tag neutral sm">2 hubs</span></td>
                 <td><span class="tag neutral sm">Solo POS</span></td>
                 <td class="td muted">hace 42 d</td>
-                <td><span class="badge danger"><span class="badge__dot"></span>Suspendido</span></td>
+                <td><span class="badge danger"><span class="badge-dot"></span>Suspendido</span></td>
                 <td class="relative">
                   <button class="btn ghost sm" data-on:click="$openMenu = $openMenu === 'u18' ? null : 'u18'">⋯</button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u18'">
@@ -612,9 +612,9 @@
         <div class="table-footer" style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-3);">
           <span>Mostrando 1–18 de 142 usuarios</span>
           <div class="pager">
-            <button class="pager__btn" disabled>‹</button>
-            <span class="pager__info">Página 1 de 8</span>
-            <button class="pager__btn">›</button>
+            <button class="pager-btn" disabled>‹</button>
+            <span class="pager-info">Página 1 de 8</span>
+            <button class="pager-btn">›</button>
           </div>
         </div>
       </div>

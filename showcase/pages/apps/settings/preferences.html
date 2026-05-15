@@ -133,7 +133,7 @@
           <article class="card">
             <div class="body row">
               <label class="field col-md-6">
-                <span class="field__label">Idioma de la interfaz</span>
+                <span class="field-label">Idioma de la interfaz</span>
                 <select class="select">
                   <option selected>Español (España)</option>
                   <option>English</option>
@@ -145,36 +145,36 @@
                   <option>Deutsch</option>
                   <option>Italiano</option>
                 </select>
-                <span class="field__hint">Cambia inmediatamente tras guardar.</span>
+                <span class="field-hint">Cambia inmediatamente tras guardar.</span>
               </label>
               <label class="field col-md-6">
-                <span class="field__label">Zona horaria</span>
+                <span class="field-label">Zona horaria</span>
                 <div class="input-group with-left">
-                  <span class="input-group__icon input-group__icon--left"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon></span>
+                  <span class="input-group-icon input-group-icon--left"><iconify-icon icon="lucide:clock" width="18" height="18"></iconify-icon></span>
                   <input class="input" value="Europe/Madrid (GMT+02:00 CEST)"/>
                 </div>
-                <span class="field__hint">Detectada automáticamente · 8 may 2026, 09:14</span>
+                <span class="field-hint">Detectada automáticamente · 8 may 2026, 09:14</span>
               </label>
               <div class="field col-md-6">
-                <span class="field__label">Formato de fecha</span>
+                <span class="field-label">Formato de fecha</span>
                 <div class="radio-group inline">
-                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'DD/MM/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'DD/MM/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>DD/MM/YYYY <span class="text-ink-4">· 08/05/2026</span></span></label>
-                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'MM/DD/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'MM/DD/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>MM/DD/YYYY <span class="text-ink-4">· 05/08/2026</span></span></label>
-                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'YYYY-MM-DD'; $dirty = true" data-attr:checked="$dateFmt === 'YYYY-MM-DD' ? 'checked' : null"/><span class="radio__dot"></span><span>YYYY-MM-DD <span class="text-ink-4">· 2026-05-08</span></span></label>
+                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'DD/MM/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'DD/MM/YYYY' ? 'checked' : null"/><span class="radio-dot"></span><span>DD/MM/YYYY <span class="text-ink-4">· 08/05/2026</span></span></label>
+                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'MM/DD/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'MM/DD/YYYY' ? 'checked' : null"/><span class="radio-dot"></span><span>MM/DD/YYYY <span class="text-ink-4">· 05/08/2026</span></span></label>
+                  <label class="radio"><input type="radio" name="dfmt" data-on:click="$dateFmt = 'YYYY-MM-DD'; $dirty = true" data-attr:checked="$dateFmt === 'YYYY-MM-DD' ? 'checked' : null"/><span class="radio-dot"></span><span>YYYY-MM-DD <span class="text-ink-4">· 2026-05-08</span></span></label>
                 </div>
               </div>
               <div class="field col-md-6">
-                <span class="field__label">Formato de hora</span>
+                <span class="field-label">Formato de hora</span>
                 <div class="segment">
-                  <button class="segment__opt" data-on:click="$timeFmt = '12h'; $dirty = true" data-attr:aria-pressed="$timeFmt === '12h' ? 'true' : 'false'">12 h <span style="color:var(--ink-4);margin-left:4px;">9:14 AM</span></button>
-                  <button class="segment__opt" data-on:click="$timeFmt = '24h'; $dirty = true" data-attr:aria-pressed="$timeFmt === '24h' ? 'true' : 'false'">24 h <span style="color:var(--ink-4);margin-left:4px;">09:14</span></button>
+                  <button class="segment-opt" data-on:click="$timeFmt = '12h'; $dirty = true" data-attr:aria-pressed="$timeFmt === '12h' ? 'true' : 'false'">12 h <span style="color:var(--ink-4);margin-left:4px;">9:14 AM</span></button>
+                  <button class="segment-opt" data-on:click="$timeFmt = '24h'; $dirty = true" data-attr:aria-pressed="$timeFmt === '24h' ? 'true' : 'false'">24 h <span style="color:var(--ink-4);margin-left:4px;">09:14</span></button>
                 </div>
               </div>
               <div class="field col-md-6">
-                <span class="field__label">Primer día de la semana</span>
+                <span class="field-label">Primer día de la semana</span>
                 <div class="segment">
-                  <button class="segment__opt" data-on:click="$firstDay = 'mon'; $dirty = true" data-attr:aria-pressed="$firstDay === 'mon' ? 'true' : 'false'">Lunes</button>
-                  <button class="segment__opt" data-on:click="$firstDay = 'sun'; $dirty = true" data-attr:aria-pressed="$firstDay === 'sun' ? 'true' : 'false'">Domingo</button>
+                  <button class="segment-opt" data-on:click="$firstDay = 'mon'; $dirty = true" data-attr:aria-pressed="$firstDay === 'mon' ? 'true' : 'false'">Lunes</button>
+                  <button class="segment-opt" data-on:click="$firstDay = 'sun'; $dirty = true" data-attr:aria-pressed="$firstDay === 'sun' ? 'true' : 'false'">Domingo</button>
                 </div>
               </div>
             </div>
@@ -191,17 +191,17 @@
           <article class="card">
             <div class="body" style="display:flex;flex-direction:column;gap:18px;">
               <div class="field">
-                <span class="field__label">Tema</span>
+                <span class="field-label">Tema</span>
                 <div class="segment">
-                  <button class="segment__opt" data-on:click="$theme = 'auto'; $dirty = true" data-attr:aria-pressed="$theme === 'auto' ? 'true' : 'false'">
+                  <button class="segment-opt" data-on:click="$theme = 'auto'; $dirty = true" data-attr:aria-pressed="$theme === 'auto' ? 'true' : 'false'">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/></svg>
                     Auto
                   </button>
-                  <button class="segment__opt" data-on:click="$theme = 'light'; $dirty = true" data-attr:aria-pressed="$theme === 'light' ? 'true' : 'false'">
+                  <button class="segment-opt" data-on:click="$theme = 'light'; $dirty = true" data-attr:aria-pressed="$theme === 'light' ? 'true' : 'false'">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
                     Claro
                   </button>
-                  <button class="segment__opt" data-on:click="$theme = 'dark'; $dirty = true" data-attr:aria-pressed="$theme === 'dark' ? 'true' : 'false'">
+                  <button class="segment-opt" data-on:click="$theme = 'dark'; $dirty = true" data-attr:aria-pressed="$theme === 'dark' ? 'true' : 'false'">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                     Oscuro
                   </button>
@@ -209,7 +209,7 @@
               </div>
 
               <label class="field">
-                <span class="field__label">Paleta de marca</span>
+                <span class="field-label">Paleta de marca</span>
                 <select class="select" data-bind:template data-on:change="$dirty = true">
                   <option value="erplora" selected>ERPlora · terracota (default)</option>
                   <option value="corporate">Corporate · banking navy</option>
@@ -218,28 +218,28 @@
                   <option value="ocean">Ocean · tech teal</option>
                   <option value="violet">Violet · creative purple</option>
                 </select>
-                <span class="field__hint">Solo afecta a tu sesión personal. No cambia el branding de la organización.</span>
+                <span class="field-hint">Solo afecta a tu sesión personal. No cambia el branding de la organización.</span>
               </label>
 
               <div class="field">
-                <span class="field__label">Tamaño de texto · <span style="color:var(--ink);font-variant-numeric:tabular-nums;" data-text="$textSize + ' px'">16 px</span></span>
+                <span class="field-label">Tamaño de texto · <span style="color:var(--ink);font-variant-numeric:tabular-nums;" data-text="$textSize + ' px'">16 px</span></span>
                 <input type="range" class="range" min="13" max="22" step="1" data-bind:text-size data-on:input="$dirty = true"/>
-                <span class="field__hint">Aplica a toda la app. 16 px es el valor recomendado.</span>
+                <span class="field-hint">Aplica a toda la app. 16 px es el valor recomendado.</span>
               </div>
 
               <div class="toggle-row">
-                <div class="toggle-row__text">
-                  <span class="toggle-row__label">Reducir animaciones</span>
-                  <span class="toggle-row__desc">Desactiva transiciones suaves y movimientos parallax.</span>
+                <div class="toggle-row-text">
+                  <span class="toggle-row-label">Reducir animaciones</span>
+                  <span class="toggle-row-desc">Desactiva transiciones suaves y movimientos parallax.</span>
                 </div>
-                <label class="toggle"><input type="checkbox" data-bind:reduce-motion data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <label class="toggle"><input type="checkbox" data-bind:reduce-motion data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text">
-                  <span class="toggle-row__label">Contraste alto</span>
-                  <span class="toggle-row__desc">Aumenta el contraste de texto y bordes (WCAG AAA).</span>
+                <div class="toggle-row-text">
+                  <span class="toggle-row-label">Contraste alto</span>
+                  <span class="toggle-row-desc">Aumenta el contraste de texto y bordes (WCAG AAA).</span>
                 </div>
-                <label class="toggle"><input type="checkbox" data-bind:contrast data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <label class="toggle"><input type="checkbox" data-bind:contrast data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
             </div>
           </article>
@@ -255,40 +255,40 @@
           <article class="card">
             <div class="body flex col gap-4">
               <div class="field">
-                <span class="field__label">Resumen por email</span>
+                <span class="field-label">Resumen por email</span>
                 <div class="toggle-group block">
-                  <button class="toggle-group__option" data-on:click="$emailFreq = 'alert'; $dirty = true" data-class:is-selected="$emailFreq === 'alert'">Solo alertas</button>
-                  <button class="toggle-group__option" data-on:click="$emailFreq = 'daily'; $dirty = true" data-class:is-selected="$emailFreq === 'daily'">Diario</button>
-                  <button class="toggle-group__option" data-on:click="$emailFreq = 'weekly'; $dirty = true" data-class:is-selected="$emailFreq === 'weekly'">Semanal</button>
-                  <button class="toggle-group__option" data-on:click="$emailFreq = 'monthly'; $dirty = true" data-class:is-selected="$emailFreq === 'monthly'">Mensual</button>
-                  <button class="toggle-group__option" data-on:click="$emailFreq = 'never'; $dirty = true" data-class:is-selected="$emailFreq === 'never'">Nunca</button>
+                  <button class="toggle-group-option" data-on:click="$emailFreq = 'alert'; $dirty = true" data-class:is-selected="$emailFreq === 'alert'">Solo alertas</button>
+                  <button class="toggle-group-option" data-on:click="$emailFreq = 'daily'; $dirty = true" data-class:is-selected="$emailFreq === 'daily'">Diario</button>
+                  <button class="toggle-group-option" data-on:click="$emailFreq = 'weekly'; $dirty = true" data-class:is-selected="$emailFreq === 'weekly'">Semanal</button>
+                  <button class="toggle-group-option" data-on:click="$emailFreq = 'monthly'; $dirty = true" data-class:is-selected="$emailFreq === 'monthly'">Mensual</button>
+                  <button class="toggle-group-option" data-on:click="$emailFreq = 'never'; $dirty = true" data-class:is-selected="$emailFreq === 'never'">Nunca</button>
                 </div>
               </div>
 
               <div class="toggle-row">
-                <div class="toggle-row__text">
-                  <span class="toggle-row__label">Notificaciones push</span>
-                  <span class="toggle-row__desc">En navegador y app móvil. Permitido por tu organización.</span>
+                <div class="toggle-row-text">
+                  <span class="toggle-row-label">Notificaciones push</span>
+                  <span class="toggle-row-desc">En navegador y app móvil. Permitido por tu organización.</span>
                 </div>
-                <label class="toggle"><input type="checkbox" data-bind:push data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <label class="toggle"><input type="checkbox" data-bind:push data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text">
-                  <span class="toggle-row__label">Sonido</span>
-                  <span class="toggle-row__desc">Reproduce un breve "ping" para alertas críticas.</span>
+                <div class="toggle-row-text">
+                  <span class="toggle-row-label">Sonido</span>
+                  <span class="toggle-row-desc">Reproduce un breve "ping" para alertas críticas.</span>
                 </div>
-                <label class="toggle"><input type="checkbox" data-bind:sound data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <label class="toggle"><input type="checkbox" data-bind:sound data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
 
               <label class="field">
-                <span class="field__label">Horario laboral · solo recibo notificaciones en este rango</span>
+                <span class="field-label">Horario laboral · solo recibo notificaciones en este rango</span>
                 <div style="display:flex;gap:10px;align-items:center;">
                   <input class="input" type="time" value="09:00" style="max-width:140px;"/>
                   <span class="text-ink-3">→</span>
                   <input class="input" type="time" value="19:00" style="max-width:140px;"/>
                   <span style="color:var(--ink-3);font-size:var(--text-sm);">L–V</span>
                 </div>
-                <span class="field__hint">Fuera de este rango solo recibirás alertas marcadas como críticas.</span>
+                <span class="field-hint">Fuera de este rango solo recibirás alertas marcadas como críticas.</span>
               </label>
             </div>
           </article>
@@ -343,11 +343,11 @@
           <article class="card">
             <div class="body">
               <div class="toggle-group block">
-                <button class="toggle-group__option" data-on:click="$emailFreq = 'alert'; $dirty = true" data-class:is-selected="$emailFreq === 'alert'">Solo alertas</button>
-                <button class="toggle-group__option" data-on:click="$emailFreq = 'daily'; $dirty = true" data-class:is-selected="$emailFreq === 'daily'">Diario</button>
-                <button class="toggle-group__option" data-on:click="$emailFreq = 'weekly'; $dirty = true" data-class:is-selected="$emailFreq === 'weekly'">Semanal</button>
-                <button class="toggle-group__option" data-on:click="$emailFreq = 'monthly'; $dirty = true" data-class:is-selected="$emailFreq === 'monthly'">Mensual</button>
-                <button class="toggle-group__option" data-on:click="$emailFreq = 'never'; $dirty = true" data-class:is-selected="$emailFreq === 'never'">Nunca</button>
+                <button class="toggle-group-option" data-on:click="$emailFreq = 'alert'; $dirty = true" data-class:is-selected="$emailFreq === 'alert'">Solo alertas</button>
+                <button class="toggle-group-option" data-on:click="$emailFreq = 'daily'; $dirty = true" data-class:is-selected="$emailFreq === 'daily'">Diario</button>
+                <button class="toggle-group-option" data-on:click="$emailFreq = 'weekly'; $dirty = true" data-class:is-selected="$emailFreq === 'weekly'">Semanal</button>
+                <button class="toggle-group-option" data-on:click="$emailFreq = 'monthly'; $dirty = true" data-class:is-selected="$emailFreq === 'monthly'">Mensual</button>
+                <button class="toggle-group-option" data-on:click="$emailFreq = 'never'; $dirty = true" data-class:is-selected="$emailFreq === 'never'">Nunca</button>
               </div>
             </div>
           </article>
@@ -357,12 +357,12 @@
           <article class="card">
             <div class="body">
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Notificaciones push</span><span class="toggle-row__desc">En navegador y app móvil.</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:push data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Notificaciones push</span><span class="toggle-row-desc">En navegador y app móvil.</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:push data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Sonido</span><span class="toggle-row__desc">Reproduce un breve "ping".</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:sound data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Sonido</span><span class="toggle-row-desc">Reproduce un breve "ping".</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:sound data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
             </div>
           </article>
@@ -376,9 +376,9 @@
           <article class="card">
             <div class="body">
               <div class="segment">
-                <button class="segment__opt" data-on:click="$theme = 'auto'; $dirty = true" data-attr:aria-pressed="$theme === 'auto' ? 'true' : 'false'">Auto</button>
-                <button class="segment__opt" data-on:click="$theme = 'light'; $dirty = true" data-attr:aria-pressed="$theme === 'light' ? 'true' : 'false'">Claro</button>
-                <button class="segment__opt" data-on:click="$theme = 'dark'; $dirty = true" data-attr:aria-pressed="$theme === 'dark' ? 'true' : 'false'">Oscuro</button>
+                <button class="segment-opt" data-on:click="$theme = 'auto'; $dirty = true" data-attr:aria-pressed="$theme === 'auto' ? 'true' : 'false'">Auto</button>
+                <button class="segment-opt" data-on:click="$theme = 'light'; $dirty = true" data-attr:aria-pressed="$theme === 'light' ? 'true' : 'false'">Claro</button>
+                <button class="segment-opt" data-on:click="$theme = 'dark'; $dirty = true" data-attr:aria-pressed="$theme === 'dark' ? 'true' : 'false'">Oscuro</button>
               </div>
             </div>
           </article>
@@ -388,12 +388,12 @@
           <article class="card">
             <div class="body flex col gap-3">
               <div class="field">
-                <span class="field__label">Tamaño de texto · <span data-text="$textSize + ' px'"></span></span>
+                <span class="field-label">Tamaño de texto · <span data-text="$textSize + ' px'"></span></span>
                 <input type="range" class="range" min="13" max="22" step="1" data-bind:text-size data-on:input="$dirty = true"/>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Reducir animaciones</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:reduce-motion data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Reducir animaciones</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:reduce-motion data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
             </div>
           </article>
@@ -407,7 +407,7 @@
           <article class="card">
             <div class="body row">
               <label class="field col-md-6">
-                <span class="field__label">Idioma de la interfaz</span>
+                <span class="field-label">Idioma de la interfaz</span>
                 <select class="select" data-bind:lang data-on:change="$dirty = true">
                   <option value="es-ES">Español (España)</option>
                   <option value="en">English</option>
@@ -420,7 +420,7 @@
                 </select>
               </label>
               <label class="field col-md-6">
-                <span class="field__label">Moneda</span>
+                <span class="field-label">Moneda</span>
                 <select class="select" data-bind:currency data-on:change="$dirty = true">
                   <option value="EUR">EUR · Euro</option>
                   <option value="USD">USD · Dólar</option>
@@ -428,18 +428,18 @@
                 </select>
               </label>
               <div class="field col-md-6">
-                <span class="field__label">Formato de fecha</span>
+                <span class="field-label">Formato de fecha</span>
                 <div class="radio-group inline">
-                  <label class="radio"><input type="radio" name="dfmt2" data-on:click="$dateFmt = 'DD/MM/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'DD/MM/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>DD/MM/YYYY</span></label>
-                  <label class="radio"><input type="radio" name="dfmt2" data-on:click="$dateFmt = 'MM/DD/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'MM/DD/YYYY' ? 'checked' : null"/><span class="radio__dot"></span><span>MM/DD/YYYY</span></label>
-                  <label class="radio"><input type="radio" name="dfmt2" data-on:click="$dateFmt = 'YYYY-MM-DD'; $dirty = true" data-attr:checked="$dateFmt === 'YYYY-MM-DD' ? 'checked' : null"/><span class="radio__dot"></span><span>YYYY-MM-DD</span></label>
+                  <label class="radio"><input type="radio" name="dfmt2" data-on:click="$dateFmt = 'DD/MM/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'DD/MM/YYYY' ? 'checked' : null"/><span class="radio-dot"></span><span>DD/MM/YYYY</span></label>
+                  <label class="radio"><input type="radio" name="dfmt2" data-on:click="$dateFmt = 'MM/DD/YYYY'; $dirty = true" data-attr:checked="$dateFmt === 'MM/DD/YYYY' ? 'checked' : null"/><span class="radio-dot"></span><span>MM/DD/YYYY</span></label>
+                  <label class="radio"><input type="radio" name="dfmt2" data-on:click="$dateFmt = 'YYYY-MM-DD'; $dirty = true" data-attr:checked="$dateFmt === 'YYYY-MM-DD' ? 'checked' : null"/><span class="radio-dot"></span><span>YYYY-MM-DD</span></label>
                 </div>
               </div>
               <div class="field col-md-6">
-                <span class="field__label">Primer día de la semana</span>
+                <span class="field-label">Primer día de la semana</span>
                 <div class="segment">
-                  <button class="segment__opt" data-on:click="$firstDay = 'mon'; $dirty = true" data-attr:aria-pressed="$firstDay === 'mon' ? 'true' : 'false'">Lunes</button>
-                  <button class="segment__opt" data-on:click="$firstDay = 'sun'; $dirty = true" data-attr:aria-pressed="$firstDay === 'sun' ? 'true' : 'false'">Domingo</button>
+                  <button class="segment-opt" data-on:click="$firstDay = 'mon'; $dirty = true" data-attr:aria-pressed="$firstDay === 'mon' ? 'true' : 'false'">Lunes</button>
+                  <button class="segment-opt" data-on:click="$firstDay = 'sun'; $dirty = true" data-attr:aria-pressed="$firstDay === 'sun' ? 'true' : 'false'">Domingo</button>
                 </div>
               </div>
             </div>
@@ -454,28 +454,28 @@
           <article class="card">
             <div class="body">
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Contraste alto</span><span class="toggle-row__desc">Aumenta el contraste de texto y bordes (WCAG AAA).</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:contrast data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Contraste alto</span><span class="toggle-row-desc">Aumenta el contraste de texto y bordes (WCAG AAA).</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:contrast data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Reducir animaciones</span><span class="toggle-row__desc">Desactiva transiciones suaves.</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:reduce-motion data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Reducir animaciones</span><span class="toggle-row-desc">Desactiva transiciones suaves.</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:reduce-motion data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Modo lector de pantalla</span><span class="toggle-row__desc">Optimiza la app para NVDA / VoiceOver.</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:screen-reader data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Modo lector de pantalla</span><span class="toggle-row-desc">Optimiza la app para NVDA / VoiceOver.</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:screen-reader data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Navegación por teclado</span><span class="toggle-row__desc">Activa atajos completos y skip-links.</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:keyboard-nav data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Navegación por teclado</span><span class="toggle-row-desc">Activa atajos completos y skip-links.</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:keyboard-nav data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Tipografía para dislexia</span><span class="toggle-row__desc">Sustituye la fuente por OpenDyslexic.</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:dyslexic-font data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Tipografía para dislexia</span><span class="toggle-row-desc">Sustituye la fuente por OpenDyslexic.</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:dyslexic-font data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
               <div class="toggle-row">
-                <div class="toggle-row__text"><span class="toggle-row__label">Indicadores de foco visibles</span><span class="toggle-row__desc">Muestra anillos de foco también con ratón.</span></div>
-                <label class="toggle"><input type="checkbox" data-bind:focus-rings data-on:change="$dirty = true"/><span class="toggle__track"></span></label>
+                <div class="toggle-row-text"><span class="toggle-row-label">Indicadores de foco visibles</span><span class="toggle-row-desc">Muestra anillos de foco también con ratón.</span></div>
+                <label class="toggle"><input type="checkbox" data-bind:focus-rings data-on:change="$dirty = true"/><span class="toggle-track"></span></label>
               </div>
             </div>
           </article>

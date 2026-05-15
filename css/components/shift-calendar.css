@@ -10,20 +10,20 @@
   overflow: auto;
   font-size: var(--text-sm);
 }
-.shift-cal__head,
-.shift-cal__row {
+.shift-cal-head,
+.shift-cal-row {
   display: grid;
   grid-template-columns: var(--_name-w) repeat(var(--_days, 7), var(--_day-w));
   align-items: stretch;
 }
-.shift-cal__head {
+.shift-cal-head {
   position: sticky;
   top: 0;
   z-index: 1;
   background: var(--bg-3);
   border-bottom: var(--border-w) solid var(--line-2);
 }
-.shift-cal__head-cell {
+.shift-cal-head-cell {
   padding: var(--space-3) var(--space-3);
   font-family: var(--font-mono);
   font-size: var(--text-2xs);
@@ -33,16 +33,16 @@
   text-align: center;
   border-left: var(--border-w) solid var(--line);
 }
-.shift-cal__head-cell:first-child {
+.shift-cal-head-cell:first-child {
   border-left: none;
   text-align: left;
   color: var(--ink-2);
 }
-.shift-cal__head-cell--today {
+.shift-cal-head-cell--today {
   background: color-mix(in oklch, var(--brand) 10%, transparent);
   color: var(--brand-3);
 }
-.shift-cal__head-cell b {
+.shift-cal-head-cell b {
   display: block;
   font-family: var(--font-display);
   font-size: var(--text-lg);
@@ -53,13 +53,13 @@
   margin-top: var(--border-w-2);
 }
 
-.shift-cal__row {
+.shift-cal-row {
   border-top: var(--border-w) solid var(--line);
   min-height: var(--icon-2xl);
 }
-.shift-cal__row:hover { background: color-mix(in oklch, var(--bg-3) 50%, transparent); }
+.shift-cal-row:hover { background: color-mix(in oklch, var(--bg-3) 50%, transparent); }
 
-.shift-cal__name-cell {
+.shift-cal-name-cell {
   padding: var(--space-3);
   display: flex;
   flex-direction: column;
@@ -72,19 +72,19 @@
   border-right: var(--border-w) solid var(--line-2);
   z-index: 1;
 }
-.shift-cal__name-cell strong {
+.shift-cal-name-cell strong {
   font-family: var(--font-display);
   font-size: var(--text-md);
   font-weight: 600;
   color: var(--ink);
   letter-spacing: var(--tracking-tight);
 }
-.shift-cal__name-cell span {
+.shift-cal-name-cell span {
   font-size: var(--text-xs);
   color: var(--ink-3);
 }
 
-.shift-cal__cell {
+.shift-cal-cell {
   padding: var(--space-1-5);
   border-left: var(--border-w) solid var(--line);
   display: flex;
@@ -92,7 +92,7 @@
   justify-content: stretch;
 }
 
-.shift-cal__shift {
+.shift-cal-shift {
   flex: 1;
   border-radius: var(--radius-sm);
   padding: var(--space-1-5) var(--space-2);
@@ -106,44 +106,44 @@
   cursor: pointer;
   transition: transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
-.shift-cal__shift:hover { transform: translateY(-1px); border-color: var(--line-3); }
-.shift-cal__shift-time {
+.shift-cal-shift:hover { transform: translateY(-1px); border-color: var(--line-3); }
+.shift-cal-shift-time {
   font-family: var(--font-mono);
   font-size: var(--text-xs);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   color: var(--ink);
 }
-.shift-cal__shift-type {
+.shift-cal-shift-type {
   font-size: var(--text-2xs);
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);
   color: var(--ink-3);
 }
 
-.shift-cal__shift--morning {
+.shift-cal-shift--morning {
   background: color-mix(in oklch, var(--warn) 18%, var(--bg-3));
   border-color: color-mix(in oklch, var(--warn) 30%, transparent);
 }
-.shift-cal__shift--morning .shift-cal__shift-time { color: var(--warn); }
+.shift-cal-shift--morning .shift-cal-shift-time { color: var(--warn); }
 
-.shift-cal__shift--afternoon {
+.shift-cal-shift--afternoon {
   background: color-mix(in oklch, var(--brand) 18%, var(--bg-3));
   border-color: color-mix(in oklch, var(--brand) 30%, transparent);
 }
-.shift-cal__shift--afternoon .shift-cal__shift-time { color: var(--brand-3); }
+.shift-cal-shift--afternoon .shift-cal-shift-time { color: var(--brand-3); }
 
-.shift-cal__shift--night {
+.shift-cal-shift--night {
   background: color-mix(in oklch, var(--info) 18%, var(--bg-3));
   border-color: color-mix(in oklch, var(--info) 30%, transparent);
 }
-.shift-cal__shift--night .shift-cal__shift-time { color: var(--info); }
+.shift-cal-shift--night .shift-cal-shift-time { color: var(--info); }
 
-.shift-cal__shift--off {
+.shift-cal-shift--off {
   background: transparent;
   border: 1px dashed var(--line-2);
   color: var(--ink-4);
   cursor: default;
 }
-.shift-cal__shift--off:hover { transform: none; border-color: var(--line-2); }
-.shift-cal__shift--off .shift-cal__shift-time { color: var(--ink-4); }
+.shift-cal-shift--off:hover { transform: none; border-color: var(--line-2); }
+.shift-cal-shift--off .shift-cal-shift-time { color: var(--ink-4); }

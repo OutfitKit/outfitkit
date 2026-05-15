@@ -154,45 +154,45 @@
     /* Doc body — page heading + lead.
        Mobile (< 768px): full width, single 1rem of breathing room.
        Desktop  (≥ 768px): centered, 1rem block padding, ~1120px max for readability. */
-    .doc__body {
+    .doc-body {
       padding: 1rem;
       max-width: 100%;
     }
     @media (min-width: 768px) {
-      .doc__body {
+      .doc-body {
         padding: 1rem;
         max-width: 1120px;
       }
     }
-    .doc__title { font-family: var(--font-display, var(--font)); font-size: 28px; letter-spacing: -0.02em; margin: 0 0 8px; }
-    .doc__sub { color: var(--ink-3); margin: 0 0 32px; line-height: 1.55; }
+    .doc-title { font-family: var(--font-display, var(--font)); font-size: 28px; letter-spacing: -0.02em; margin: 0 0 8px; }
+    .doc-sub { color: var(--ink-3); margin: 0 0 32px; line-height: 1.55; }
 
     /* Component page lead paragraph. */
-    .showcase__lead { color: var(--ink-3); font-size: var(--text-md); line-height: var(--leading-normal); margin: var(--space-2) 0 var(--space-5); max-width: 70ch; }
+    .showcase-lead { color: var(--ink-3); font-size: var(--text-md); line-height: var(--leading-normal); margin: var(--space-2) 0 var(--space-5); max-width: 70ch; }
 
     /* "Demo grid" used by the overview page. */
     .demo-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-bottom: 24px; }
     .demo { background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
-    .demo__label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin-bottom: 8px; font-weight: 500; }
+    .demo-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin-bottom: 8px; font-weight: 500; }
 
     /* Showcase variant — small captioned wrapper used inside demo-frames
        to label individual state/size variants (sm/md/lg, on/off/disabled…). */
     .showcase-variant { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-    .showcase-variant__caption { font-size: var(--text-2xs); color: var(--ink-3); text-transform: lowercase; letter-spacing: 0.04em; }
+    .showcase-variant-caption { font-size: var(--text-2xs); color: var(--ink-3); text-transform: lowercase; letter-spacing: 0.04em; }
 
     /* Demo frame chrome (per-component pages). Inherited from the original chrome/demo_frame.jinja. */
     .demo-frame { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 24px; overflow: visible; background: var(--bg-2); }
-    .demo-frame__render { overflow: visible; }
-    .demo-frame__header { padding: 12px 18px; border-bottom: 1px solid var(--line); background: var(--bg-3); }
-    .demo-frame__header h3 { margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); font-weight: 500; }
-    .demo-frame__render { padding: 24px 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-    .demo-frame__source { margin: 0; padding: 16px 18px; background: var(--bg-1); border-top: 1px solid var(--line); color: var(--ink-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; overflow-x: auto; white-space: pre; }
+    .demo-frame-render { overflow: visible; }
+    .demo-frame-header { padding: 12px 18px; border-bottom: 1px solid var(--line); background: var(--bg-3); }
+    .demo-frame-header h3 { margin: 0; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); font-weight: 500; }
+    .demo-frame-render { padding: 24px 18px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .demo-frame-source { margin: 0; padding: 16px 18px; background: var(--bg-1); border-top: 1px solid var(--line); color: var(--ink-2); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; line-height: 1.55; overflow-x: auto; white-space: pre; }
 
     /* Viewport simulator for inline content (component docs).
        Only kicks in on real DESKTOP (≥ 768px). On real mobile there is
        nothing to "simulate", we render at device size.
 
-       The whole .doc__body becomes a "device" — a centered card with
+       The whole .doc-body becomes a "device" — a centered card with
        the simulated viewport's exact width (Tablet 768px, Mobile 375px),
        a thick rounded border, and a soft shadow so it reads as a phone
        silhouette. The body's children inherit that constrained width. */
@@ -202,8 +202,8 @@
         background: var(--bg-1);
         padding: 24px 0;
       }
-      .page[data-vp="tablet"] .doc__body,
-      .page[data-vp="mobile"] .doc__body {
+      .page[data-vp="tablet"] .doc-body,
+      .page[data-vp="mobile"] .doc-body {
         margin-inline: auto;
         background: var(--bg);
         padding: 1rem;
@@ -213,8 +213,8 @@
         box-shadow: 0 24px 60px rgba(0, 0, 0, 0.20);
         transition: max-width 0.28s ease, padding 0.28s ease;
       }
-      .page[data-vp="tablet"] .doc__body { max-width: 768px; }
-      .page[data-vp="mobile"] .doc__body { max-width: 375px; }
+      .page[data-vp="tablet"] .doc-body { max-width: 768px; }
+      .page[data-vp="mobile"] .doc-body { max-width: 375px; }
     }
 
     /* Iframe simulator (used for full-page apps in pages/apps/*).
@@ -229,7 +229,7 @@
        On real mobile (< 768px) the iframe goes full-bleed and the wrap
        drops its outer padding — the app and the showcase shell merge so
        there's no wasted space on a ~390px screen. */
-    .vp-frame__wrap {
+    .vp-frame-wrap {
       display: flex;
       justify-content: center;
       align-items: flex-start;
@@ -248,7 +248,7 @@
       transition: max-width 0.28s ease;
     }
     @media (min-width: 768px) {
-      .vp-frame__wrap {
+      .vp-frame-wrap {
         padding: 1rem;
         min-height: calc(100vh - 56px);
         min-height: calc(100dvh - 56px);
@@ -268,12 +268,12 @@
        content full-bleed, so it can be loaded inside the iframe above.
        Important: we only hide chrome under .app[data-docs] — the showcase
        wrapper. Selectors must NOT match topbars/sidebars belonging to the
-       embedded app's own .app shell, which is rendered inside .doc__body. */
+       embedded app's own .app shell, which is rendered inside .doc-body. */
     [data-embed="1"] .app[data-docs] > .sidebar,
     [data-embed="1"] .app[data-docs] > .backdrop,
     [data-embed="1"] .app[data-docs] > .page > .topbar { display: none !important; }
     [data-embed="1"] .app[data-docs] { grid-template-columns: 1fr; }
-    [data-embed="1"] .app[data-docs] > .page > .doc__body { padding: 0; max-width: none; }
+    [data-embed="1"] .app[data-docs] > .page > .doc-body { padding: 0; max-width: none; }
   </style>
 
   {# Theme runtime (synchronous, before Datastar). #}
@@ -316,11 +316,11 @@
         // Outside the iframe, on an app page: replace the inline content with
         // an iframe pointing to the same URL plus ?embed=1.
         document.addEventListener('DOMContentLoaded', function () {
-          var docBody = document.querySelector('.page > .doc__body');
+          var docBody = document.querySelector('.page > .doc-body');
           if (!docBody) return;
           var src = location.pathname + '?embed=1' + location.hash;
           var wrap = document.createElement('div');
-          wrap.className = 'vp-frame__wrap';
+          wrap.className = 'vp-frame-wrap';
           var iframe = document.createElement('iframe');
           iframe.className = 'vp-frame';
           iframe.id = 'vp-frame';
@@ -441,8 +441,9 @@
           <select class="topbar-template" aria-label="Template"
                   data-bind:template
                   data-on:change="window.okTheme.set($theme, $template); document.documentElement.setAttribute('data-template', $template)">
-            <option value="">⌘ Default</option>
-            <option value="default">✦ Default+</option>
+            <option value="erplora">⬡ ERPlora</option>
+            <option value="">⌘ Sin tema</option>
+            <option value="default">✦ Default</option>
             <option value="corporate">⬢ Corporate</option>
             <option value="glass">◉ Glass</option>
             <option value="glass-mono">◐ Glass-Mono</option>
@@ -463,7 +464,7 @@
         </div>
       </header>
 
-      <div class="doc__body">
+      <div class="doc-body">
         {% block content %}{% endblock %}
       </div>
     </main>

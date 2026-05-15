@@ -5,26 +5,26 @@
 <div class="video{% if playing %} is-playing{% endif %}" data-playing="{{ 'true' if playing else 'false' }}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
   {%- if poster %}
-  <div class="video__poster" style="background-image:url('{{ poster }}');"></div>
+  <div class="video-poster" style="background-image:url('{{ poster }}');"></div>
   {%- endif %}
   {%- if src %}
-  <video class="video__el" src="{{ src }}" preload="metadata"></video>
+  <video class="video-el" src="{{ src }}" preload="metadata"></video>
   {%- endif %}
-  <button type="button" class="video__play-overlay" aria-label="Reproducir"></button>
-  <div class="video__controls">
-    <button type="button" class="video__btn" aria-label="{% if playing %}Pausar{% else %}Reproducir{% endif %}" title="{% if playing %}Pausar{% else %}Reproducir{% endif %}">
+  <button type="button" class="video-play-overlay" aria-label="Reproducir"></button>
+  <div class="video-controls">
+    <button type="button" class="video-btn" aria-label="{% if playing %}Pausar{% else %}Reproducir{% endif %}" title="{% if playing %}Pausar{% else %}Reproducir{% endif %}">
       <iconify-icon class="play" icon="lucide:play" width="14" height="14"></iconify-icon>
       <iconify-icon class="pause" icon="lucide:pause" width="14" height="14"></iconify-icon>
     </button>
-    <span class="video__time">{{ current }}</span>
-    <div class="video__progress">
-      <div class="video__progress-fill" style="width:{{ progress }}%;"></div>
+    <span class="video-time">{{ current }}</span>
+    <div class="video-progress">
+      <div class="video-progress-fill" style="width:{{ progress }}%;"></div>
     </div>
-    <span class="video__time">{{ duration }}</span>
-    <button type="button" class="video__volume" aria-label="Volumen">
+    <span class="video-time">{{ duration }}</span>
+    <button type="button" class="video-volume" aria-label="Volumen">
       <iconify-icon icon="lucide:volume-2" width="14" height="14"></iconify-icon>
     </button>
-    <button type="button" class="video__fullscreen" aria-label="Pantalla completa">
+    <button type="button" class="video-fullscreen" aria-label="Pantalla completa">
       <iconify-icon icon="lucide:maximize" width="14" height="14"></iconify-icon>
     </button>
   </div>
