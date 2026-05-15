@@ -140,7 +140,8 @@
   transition: transform var(--dur-base);
 }
 
-/* Mobile menu */
+/* Mobile menu — slide-down debajo del navbar.
+   Controlado vía .is-open o body.menu-open. */
 .navbar-mobile {
   display: none;
   flex-direction: column;
@@ -153,8 +154,93 @@
   border-bottom: var(--border-w) solid var(--variant-shade, var(--line));
 }
 
+.navbar-mobile.is-open,
+body.menu-open .navbar-mobile { display: flex; }
+
 @media (min-width: 768px) {
-  .navbar-mobile {
+  .navbar-mobile,
+  .navbar-mobile.is-open,
+  body.menu-open .navbar-mobile {
     display: none !important;
   }
+}
+
+/* Variante .overlay — fullscreen, fixed, blur fuerte, animado.
+   Patrón típico de landings modernas (Stripe, Linear, Apple). */
+.navbar-mobile.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: calc(var(--z-modal, 100) - 1);
+  padding: calc(var(--topbar-h) + var(--space-7)) var(--padding-x) var(--space-7);
+  gap: var(--space-3);
+  background: color-mix(in oklch, var(--bg) 92%, transparent);
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong, 20px)) saturate(var(--glass-saturate, 150%));
+          backdrop-filter: blur(var(--glass-blur-strong, 20px)) saturate(var(--glass-saturate, 150%));
+  border-bottom: 0;
+
+  /* Estado cerrado por defecto (no usa display:none para permitir transición) */
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.5rem);
+  transition: opacity var(--dur-base) var(--ease-out),
+              transform var(--dur-base) var(--ease-out),
+              visibility var(--dur-base);
+}
+
+.navbar-mobile.overlay.is-open,
+body.menu-open .navbar-mobile.overlay {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Links dentro del overlay — más grandes, tipo "menú principal mobile" */
+.navbar-mobile.overlay > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  color: var(--ink);
+  text-decoration: none;
+}
+.navbar-mobile.overlay > a:hover {
+  background: var(--bg-3);
+  border-color: var(--line-2, var(--line));
+}
+.navbar-mobile.overlay > a.cta {
+  margin-top: var(--space-4);
+  background: var(--brand);
+  color: var(--brand-fg);
+  border-color: var(--brand);
+  justify-content: center;
+}
+.navbar-mobile.overlay > a.cta:hover {
+  background: var(--brand-2);
+  border-color: var(--brand-2);
+}
+
+/* Hamburger animation — al abrir, las 3 barras se convierten en X */
+.menu-button.is-open .menu-button-line:nth-child(1),
+body.menu-open .menu-button .menu-button-line:nth-child(1) {
+  transform: translateY(0.375rem) rotate(45deg);
+}
+.menu-button.is-open .menu-button-line:nth-child(2),
+body.menu-open .menu-button .menu-button-line:nth-child(2) {
+  opacity: 0;
+}
+.menu-button.is-open .menu-button-line:nth-child(3),
+body.menu-open .menu-button .menu-button-line:nth-child(3) {
+  transform: translateY(-0.375rem) rotate(-45deg);
+}
+.menu-button-line {
+  transition: transform var(--dur-base) var(--ease-out),
+              opacity var(--dur-fast) var(--ease-out);
 }

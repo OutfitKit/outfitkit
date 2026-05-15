@@ -1,0 +1,147 @@
+{% extends "_layout.jinja" %}
+{% from "ui/feature_card.jinja" import feature_card %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Feature card — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Feature card</h1>
+<p class="showcase-lead">Patrón "feature/module card" para landings, marketplaces y secciones de marketing — icono cuadrado + título + descripción corta. Modelo: Stripe, Linear, Vercel, Material 3.</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>Composición:</strong> usa <code>.feature-card</code> dentro de cualquier <code>.grid-3</code>, <code>.grid-4</code> o <code>.grid-auto</code>. El icono va en un <code>.icon-box</code> reusable que también funciona standalone.
+</div>
+
+{# ─── 1. Grid básico — 4 categorías marketing ─────────── #}
+{% set _categories = [
+  {"title": "POS & Sales",  "subtitle": "Invoicing, receipts, returns",     "icon": "lucide:shopping-cart"},
+  {"title": "Inventory",    "subtitle": "Warehouses, transfers, stocktake", "icon": "lucide:package"},
+  {"title": "Customers",    "subtitle": "Loyalty programs, rewards",        "icon": "lucide:users"},
+  {"title": "Fiscal",       "subtitle": "Verifactu, SII compliance",        "icon": "lucide:file-text"},
+] %}
+
+{% set _src_jinja_1 %}{% raw %}{% from "ui/feature_card.jinja" import feature_card %}
+<div class="grid-4 center-wide">
+  {{ feature_card(title="POS & Sales",  subtitle="Invoicing, receipts, returns",     icon="lucide:shopping-cart") }}
+  {{ feature_card(title="Inventory",    subtitle="Warehouses, transfers, stocktake", icon="lucide:package") }}
+  {{ feature_card(title="Customers",    subtitle="Loyalty programs, rewards",        icon="lucide:users") }}
+  {{ feature_card(title="Fiscal",       subtitle="Verifactu, SII compliance",        icon="lucide:file-text") }}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Categorías de módulos (landing)",
+    jinja_src=_src_jinja_1, jinjax_src=_src_jinja_1) %}
+<div class="grid-4 center-wide">
+  {%- for c in _categories %}
+  {{ feature_card(title=c.title, subtitle=c.subtitle, icon=c.icon) }}
+  {%- endfor %}
+</div>
+{% endcall %}
+
+{# ─── 2. Interactivas (href) ───────────────────────────── #}
+{% set _src_jinja_2 %}{% raw %}<div class="grid-3 center-wide">
+  {{ feature_card(title="HR & Payroll",  subtitle="Employees, attendance, payroll", icon="lucide:user-cog",       href="/modules/hr") }}
+  {{ feature_card(title="Accounting",    subtitle="Ledger, tax reports",            icon="lucide:calculator",     href="/modules/accounting") }}
+  {{ feature_card(title="Analytics",     subtitle="Reports, KPIs, dashboards",      icon="lucide:bar-chart-3",    href="/modules/analytics") }}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Variante interactiva (cada card es <a>)",
+    jinja_src=_src_jinja_2, jinjax_src=_src_jinja_2) %}
+<div class="grid-3 center-wide">
+  {{ feature_card(title="HR & Payroll",  subtitle="Employees, attendance, payroll", icon="lucide:user-cog",    href="/modules/hr") }}
+  {{ feature_card(title="Accounting",    subtitle="Ledger, tax reports",            icon="lucide:calculator",  href="/modules/accounting") }}
+  {{ feature_card(title="Analytics",     subtitle="Reports, KPIs, dashboards",      icon="lucide:bar-chart-3", href="/modules/analytics") }}
+</div>
+{% endcall %}
+
+{# ─── 3. Variantes de icon-box ─────────────────────────── #}
+{% set _src_jinja_3 %}{% raw %}<div class="grid-4">
+  {{ feature_card(title="Brand",   subtitle="(default)",  icon="lucide:zap",          icon_kind="brand")   }}
+  {{ feature_card(title="Success", subtitle=".success",   icon="lucide:check",        icon_kind="success") }}
+  {{ feature_card(title="Warn",    subtitle=".warn",      icon="lucide:alert-triangle", icon_kind="warn")  }}
+  {{ feature_card(title="Danger",  subtitle=".danger",    icon="lucide:x-circle",     icon_kind="danger")  }}
+  {{ feature_card(title="Info",    subtitle=".info",      icon="lucide:info",         icon_kind="info")    }}
+  {{ feature_card(title="Neutral", subtitle=".neutral",   icon="lucide:settings",     icon_kind="neutral") }}
+  {{ feature_card(title="Solid",   subtitle=".solid",     icon="lucide:check",        icon_kind="solid")   }}
+  {{ feature_card(title="Outline", subtitle=".outline",   icon="lucide:circle",       icon_kind="outline") }}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Icon-box · variantes semánticas",
+    jinja_src=_src_jinja_3, jinjax_src=_src_jinja_3) %}
+<div class="grid-4">
+  {{ feature_card(title="Brand",   subtitle="(default)",          icon="lucide:zap",            icon_kind="brand")   }}
+  {{ feature_card(title="Success", subtitle=".success",           icon="lucide:check",          icon_kind="success") }}
+  {{ feature_card(title="Warn",    subtitle=".warn",              icon="lucide:alert-triangle", icon_kind="warn")    }}
+  {{ feature_card(title="Danger",  subtitle=".danger",            icon="lucide:x-circle",       icon_kind="danger")  }}
+  {{ feature_card(title="Info",    subtitle=".info",              icon="lucide:info",           icon_kind="info")    }}
+  {{ feature_card(title="Neutral", subtitle=".neutral",           icon="lucide:settings",       icon_kind="neutral") }}
+  {{ feature_card(title="Solid",   subtitle=".solid",             icon="lucide:check",          icon_kind="solid")   }}
+  {{ feature_card(title="Outline", subtitle=".outline",           icon="lucide:circle",         icon_kind="outline") }}
+</div>
+{% endcall %}
+
+{# ─── 4. Variantes de layout ──────────────────────────── #}
+{% set _src_jinja_4 %}{% raw %}{# horizontal · icono a la izquierda #}
+<div class="grid-2">
+  {{ feature_card(title="Real-time sync", subtitle="Cambios se reflejan en todos los dispositivos al instante", icon="lucide:refresh-cw", variant="horizontal") }}
+  {{ feature_card(title="Encrypted",      subtitle="End-to-end con AES-256",                                      icon="lucide:lock",       variant="horizontal") }}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Variante horizontal",
+    jinja_src=_src_jinja_4, jinjax_src=_src_jinja_4) %}
+<div class="grid-2">
+  {{ feature_card(title="Real-time sync", subtitle="Cambios se reflejan en todos los dispositivos al instante", icon="lucide:refresh-cw", variant="horizontal") }}
+  {{ feature_card(title="Encrypted",      subtitle="End-to-end con AES-256",                                    icon="lucide:lock",       variant="horizontal") }}
+</div>
+{% endcall %}
+
+{# ─── 5. Compact + elevated ───────────────────────────── #}
+{% set _src_jinja_5 %}{% raw %}<div class="grid-4">
+  {{ feature_card(title="Sync",    subtitle="2-way",   icon="lucide:refresh-cw", variant="compact",  icon_size="sm") }}
+  {{ feature_card(title="Backup",  subtitle="Daily",   icon="lucide:database",   variant="elevated") }}
+  {{ feature_card(title="Audit",   subtitle="EU/UE",   icon="lucide:shield",     variant="flat")     }}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Variantes compact / elevated / flat",
+    jinja_src=_src_jinja_5, jinjax_src=_src_jinja_5) %}
+<div class="grid-4">
+  {{ feature_card(title="Sync",    subtitle="2-way",   icon="lucide:refresh-cw", variant="compact",  icon_size="sm") }}
+  {{ feature_card(title="Backup",  subtitle="Daily",   icon="lucide:database",   variant="elevated") }}
+  {{ feature_card(title="Audit",   subtitle="EU/UE",   icon="lucide:shield",     variant="flat")     }}
+</div>
+{% endcall %}
+
+<h2>Icon-box standalone</h2>
+<p>El <code>.icon-box</code> también vive fuera de las cards — para nav items, list items, stats, etc.</p>
+
+<div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+  <span class="icon-box sm"><iconify-icon icon="lucide:check"></iconify-icon></span>
+  <span class="icon-box"><iconify-icon icon="lucide:check"></iconify-icon></span>
+  <span class="icon-box lg"><iconify-icon icon="lucide:check"></iconify-icon></span>
+  <span class="icon-box xl"><iconify-icon icon="lucide:check"></iconify-icon></span>
+  <span class="icon-box round"><iconify-icon icon="lucide:check"></iconify-icon></span>
+  <span class="icon-box success"><iconify-icon icon="lucide:check"></iconify-icon></span>
+  <span class="icon-box danger"><iconify-icon icon="lucide:x"></iconify-icon></span>
+  <span class="icon-box solid"><iconify-icon icon="lucide:zap"></iconify-icon></span>
+</div>
+
+<h2>API · macro <code>feature_card()</code></h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td><code>""</code></td><td>Encabezado h3.</td></tr>
+    <tr><td><code>subtitle</code></td><td>str</td><td><code>""</code></td><td>Descripción corta p.</td></tr>
+    <tr><td><code>icon</code></td><td>str (iconify name)</td><td><code>None</code></td><td>Ej: <code>"lucide:shopping-cart"</code>. Si <code>None</code>, usa <code>{% raw %}{% call ... %}{% endraw %}</code> con SVG custom.</td></tr>
+    <tr><td><code>icon_kind</code></td><td>brand·success·warn·danger·info·neutral·solid·outline</td><td><code>"brand"</code></td><td>Color/estilo del icon-box.</td></tr>
+    <tr><td><code>icon_size</code></td><td>sm·md·lg·xl</td><td><code>"md"</code></td><td>Tamaño del icon-box.</td></tr>
+    <tr><td><code>href</code></td><td>str</td><td><code>None</code></td><td>Si presente, renderiza como <code>&lt;a&gt;</code> + activa <code>.interactive</code>.</td></tr>
+    <tr><td><code>variant</code></td><td>compact·horizontal·elevated·flat·glass</td><td><code>None</code></td><td>Modificador layout/look.</td></tr>
+  </tbody>
+</table>
+
+<h3>Modificadores CSS de <code>.icon-box</code></h3>
+<ul>
+  <li><strong>Tamaño:</strong> <code>.sm</code>, (default), <code>.lg</code>, <code>.xl</code></li>
+  <li><strong>Kind:</strong> <code>.success</code>, <code>.warn</code>, <code>.danger</code>, <code>.info</code>, <code>.neutral</code>, <code>.solid</code>, <code>.outline</code></li>
+  <li><strong>Forma:</strong> <code>.round</code> (círculo)</li>
+</ul>
+{% endblock %}

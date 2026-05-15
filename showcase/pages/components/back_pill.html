@@ -1,0 +1,45 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Back pill — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Back pill</h1>
+<p class="showcase-lead">Botón flotante "volver" para páginas internas — fixed top-right con blur. Patrón típico de páginas de detalle (módulo, settings, legal, etc.) donde el usuario llega por un enlace directo y quiere volver al hub principal.</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>Distinto de</strong>: <code>.back-btn</code> (inline en headers) y <code>.topbar-back-btn</code> (icono dentro del topbar). El <code>.back-pill</code> está <code>position:fixed</code>, vive sobre cualquier contenido.
+</div>
+
+{% set _src_1 %}{% raw %}<a class="back-pill" href="/">
+  <iconify-icon icon="lucide:arrow-left"></iconify-icon>
+  <span class="lbl">Volver al hub</span>
+</a>{% endraw %}{% endset %}
+
+{% call demo_frame("En esta página, mira arriba-derecha →", jinja_src=_src_1, jinjax_src=_src_1) %}
+<div style="position:relative; min-height:200px; padding:1.5rem; border:1px dashed var(--line-2); border-radius:var(--radius-md)">
+  <a class="back-pill" href="#" style="position:absolute; top:12px; right:12px">
+    <iconify-icon icon="lucide:arrow-left"></iconify-icon>
+    <span class="lbl">Volver</span>
+  </a>
+  <p style="margin:0; color:var(--ink-3); font-size:.875rem">Contenido de la página (simulado). El pill flota fixed encima cuando se usa en una página real — para mostrarlo aquí está dentro del frame con <code>position:absolute</code>.</p>
+</div>
+{% endcall %}
+
+{% set _src_2 %}{% raw %}<a class="back-pill left" href="/">
+  <iconify-icon icon="lucide:arrow-left"></iconify-icon>
+  <span class="lbl">Volver</span>
+</a>{% endraw %}{% endset %}
+
+{% call demo_frame(".left · posición arriba-izquierda", jinja_src=_src_2, jinjax_src=_src_2) %}
+<div style="position:relative; min-height:120px; padding:1.5rem; border:1px dashed var(--line-2); border-radius:var(--radius-md)">
+  <a class="back-pill left" href="#" style="position:absolute; top:12px; left:12px">
+    <iconify-icon icon="lucide:arrow-left"></iconify-icon>
+    <span class="lbl">Volver</span>
+  </a>
+</div>
+{% endcall %}
+
+<h3>Responsive</h3>
+<p>En pantallas pequeñas (<code>max-width: 640px</code>), el label se oculta automáticamente y el pill queda solo con el icono.</p>
+{% endblock %}

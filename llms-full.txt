@@ -63,12 +63,48 @@ Each UI macro is dual-mode:
 
 ## Main component families
 
-- buttons & status: button, badge, avatar, icon, tags, progress, rating
-- surfaces & layout: card, panel, app_shell, mobile_shell, sidebar_nav, topbar, menubar, tabbar, tabs, breadcrumbs, accordion
-- overlays: modal, drawer, toast, banner, tooltip, context_menu, system_overlays
-- data: table, datatable, list, tree, timeline, stat, stats, kpi, chart, sparkline, empty, states
-- forms: field, input, textarea, select, checkbox, radio, toggle, slider, search, autocomplete, datepicker, timepicker, colorpicker, otp, stepper, richtext
+- buttons & status: button, badge, avatar, icon, tags, progress, rating, chip, pill, theme_toggle, back_pill, back_btn
+- surfaces & layout: card, feature_card, module_card, pricing_card, benefit_card, panel, app_shell, mobile_shell, sidebar_nav, topbar, menubar, tabbar, tabs, breadcrumbs, accordion
+- overlays: modal, drawer, action_sheet, toast, banner, tooltip, context_menu, system_overlays
+- data: table, datatable, virtual_scroll, infinite_scroll, reorder, list, tree, timeline, stat, stats, kpi, chart, sparkline, empty, states
+- forms: field, input, textarea, select, checkbox, radio, toggle, slider, segmented, search, autocomplete, datepicker, timepicker, colorpicker, otp, stepper, richtext
+- touch / mobile: swipe, pull_to_refresh, action_sheet
+- marketing / public: page_hero, prose, section, navbar, footer
 - verticals: calendar, kanban, chat, pos, kds, numpad, pinpad, pay, invoice, receipt, manufacturing, hr_card, gallery, audio_player, video_player
+
+## v1.2 additions (marketing / touch / data primitives)
+
+Components added on top of v1.1:
+
+- **`feature-card`** + **`icon-box`** — feature/category card pattern (Stripe/Linear-style). Variants: `.compact`, `.horizontal`, `.elevated`, `.flat`, `.glass`, `.interactive` (auto when `<a>`). Icon-box has sizes `.sm/.lg/.xl`, kinds `.success/.warn/.danger/.info/.neutral/.solid/.outline/.round`.
+- **`module-card`** — marketplace card: head (icon + name + author), description, meta chips, footer (price + chip). Variant `.compact`.
+- **`pricing-card`** — pricing tiers. `.featured` adds brand border + glow + shadow. Sub-classes: `.price`, `.per`, `.lead`, `.ctas`, `.badge-top` (absolute positioned chip).
+- **`benefit-card`** — gradient CTA. Variants: `.success`, `.warn`, `.info`, `.solid`, `.left`.
+- **`page-hero`** — internal page hero, centered by default. Variants: `.dotted`, `.grid-bg`, `.left`. Slots: icon-box, h1, p.lead, .ctas.
+- **`prose`** — long-form typography wrapper for legal / docs / blog. Renders h1-h4, p, ul, ol, blockquote, code, pre, table, hr, img with consistent spacing. Variants: `.compact`, `.wide`, `.full`.
+- **`chip` + `.pill`** — semantic tags. Variants: `.success/.warn/.danger/.info/.neutral/.outline/.solid/.active`, sizes `.sm` (alias `.chip-sm`) / `.lg`.
+- **`theme-toggle`** — sun/moon button. CSS-only icon-switching based on `[data-theme]` attribute (`.icon-sun` visible in dark, `.icon-moon` in light). Variant `.with-label`.
+- **`back-pill`** — fixed floating back button. `.left` variant for top-left position.
+- **`segmented`** — touch-first segmented control. Variants `.sm`, `.full`. Active state via `.is-active`, `[aria-selected="true"]`, `[data-active="true"]`.
+- **`swipe`** — iOS-style swipe-to-reveal list. JS at `static/swipe.js`. Variants `.single`, kinds on `.swipe-btn`: `.archive/.danger/.warn`.
+- **`pull-to-refresh`** — touch gesture wrapper. JS at `static/pull-to-refresh.js`. Emits `CustomEvent("ptr:refresh", {detail:{done}})`.
+- **`reorder`** — drag-and-drop list with `.reorder-handle`. JS at `static/reorder.js`. Emits `CustomEvent("reorder:change", {detail:{values, to, item}})`.
+- **`virtual-scroll`** — virtualized list. JS at `static/virtual-scroll.js`. Rows serialized as `data-vs-rows` JSON; custom row template via `<template>` + `data-vs-template` attribute. Emits `vs:render` event.
+- **`infinite-scroll`** — `IntersectionObserver` sentinel. JS at `static/infinite-scroll.js`. Markup `.iscroll > .iscroll-sentinel + .iscroll-loader + .iscroll-end`. Emits `CustomEvent("iscroll:more", {detail:{done, end}})`. Classes `.is-loading` / `.is-end`.
+- **`action-sheet`** — iOS/Ionic bottom sheet. Modifiers on `.action-sheet-action`: `.destructive`, `.primary`, `.row` (icon-label-meta grid). Picker header via `.action-sheet-bar` + `.action-sheet-bar-btn.done/.primary`.
+
+### Layout utilities added
+
+- `.center-narrow` · max-width `--container-narrow` · margin auto · page padding
+- `.center-medium` · max-width `--container-reading`
+- `.center-wide` · max-width `--container-wide`
+
+### Theme + tokens
+
+- ERPlora theme refreshed: neutral cool palette (no warm/brown), Space Grotesk + JetBrains Mono, blanco puro `--bg-1/--bg-2` para chrome y cards.
+- Light is the default theme; dark via `data-theme="erplora"`.
+- New semantic tokens in `tokens.css`: `--tap-min` (44 px · iOS HIG), `--tap-comfort` (52 px), `--tap-tight` (36 px desktop-only).
+- Existing extensions: `.card.ring` (brand border + glow), `.card.glass` (blur surface), `.navbar-mobile.overlay` (fullscreen drawer), `.section-header` + `.eyebrow-icon`.
 
 ## References
 

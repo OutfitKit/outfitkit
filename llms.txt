@@ -35,9 +35,32 @@ Example:
 - global tokens are unprefixed: `--bg`, `--brand`, `--space-4`, `--radius-md`, ...
 
 ## Components
-- buttons & status: button, badge, avatar, icon, tags, progress, rating
-- surfaces & layout: card, panel, app_shell, mobile_shell, sidebar_nav, topbar, menubar, tabbar, tabs, breadcrumbs, accordion
-- overlays: modal, drawer, toast, banner, tooltip, context_menu, system_overlays
-- data: table, datatable, list, tree, timeline, stat, stats, kpi, chart, sparkline, empty, states
-- forms: field, input, textarea, select, checkbox, radio, toggle, slider, search, autocomplete, datepicker, timepicker, colorpicker, otp, stepper, richtext
+- buttons & status: button, badge, avatar, icon, tags, progress, rating, chip, pill, theme_toggle, back_pill, back_btn
+- surfaces & layout: card, feature_card, module_card, pricing_card, benefit_card, panel, app_shell, mobile_shell, sidebar_nav, topbar, menubar, tabbar, tabs, breadcrumbs, accordion
+- overlays: modal, drawer, action_sheet, toast, banner, tooltip, context_menu, system_overlays
+- data: table, datatable, virtual_scroll, infinite_scroll, reorder, list, tree, timeline, stat, stats, kpi, chart, sparkline, empty, states
+- forms: field, input, textarea, select, checkbox, radio, toggle, slider, segmented, search, autocomplete, datepicker, timepicker, colorpicker, otp, stepper, richtext
+- touch / mobile: swipe, pull_to_refresh, action_sheet
+- marketing / public: page_hero, prose, section, navbar, footer
 - verticals: calendar, kanban, chat, pos, kds, numpad, pinpad, pay, invoice, receipt, manufacturing, hr_card, gallery, audio_player, video_player
+
+## What's new (v1.2)
+- `feature-card` + `icon-box` — feature/category card pattern (Stripe/Linear-style) with icon-box, variants `.compact / .horizontal / .elevated / .flat / .glass / .interactive`
+- `module-card` — marketplace card with author, meta chips, footer price
+- `pricing-card` — pricing tiers with `.featured` glow + `.compact`
+- `benefit-card` — gradient CTA card with `.success / .warn / .info / .solid / .left`
+- `page-hero` — internal page hero with `.dotted / .grid-bg / .left`
+- `prose` — long-form typography (legal, docs, blog) with `.compact / .wide / .full`
+- `chip` + `.pill` — semantic tags/filters with `.success / .warn / .danger / .info / .neutral / .outline / .solid / .active` and sizes `.sm / .lg`
+- `theme-toggle` — sun/moon button driven by `[data-theme]`
+- `back-pill` — fixed floating back button for inner pages
+- `segmented` — touch-first segmented control with `.sm / .full`
+- `swipe` — iOS-style swipe-to-reveal list (Pointer Events, mouse fallback)
+- `pull-to-refresh` — touch gesture wrapper; emits `ptr:refresh` event
+- `reorder` — drag-and-drop list with handle, emits `reorder:change`
+- `virtual-scroll` — virtualized list (10 000+ rows), `data-vs-rows` JSON, custom `<template>`
+- `infinite-scroll` — `IntersectionObserver` sentinel; emits `iscroll:more`
+- `action-sheet` — iOS/Ionic bottom sheet with `.destructive / .primary / .row / .bar`
+- `.center-narrow / .center-medium / .center-wide` utilities for marketing layout
+- ERPlora theme refresh — neutral cool palette (no warm/brown), Space Grotesk + JetBrains Mono, light is the default theme, dark via `data-theme="erplora"`
+- `--tap-min / --tap-comfort / --tap-tight` semantic tokens (iOS HIG 44 px minimum)

@@ -52,3 +52,18 @@
 .card > .foot {
   background: color-mix(in oklch, var(--background) 82%, var(--bg-1));
 }
+
+/* Variante .ring — borde + glow del color de marca (destacar) */
+.card.ring {
+  --border-color: color-mix(in oklch, var(--brand) 40%, var(--line));
+  box-shadow:
+    0 0 0 var(--border-w) color-mix(in oklch, var(--brand) 30%, transparent),
+    var(--shadow-md);
+}
+
+/* Variante .glass — superficie translúcida con blur */
+.card.glass {
+  --background: var(--surface-glass, color-mix(in oklch, var(--bg-2) 88%, transparent));
+  -webkit-backdrop-filter: blur(var(--glass-blur-soft, 8px));
+          backdrop-filter: blur(var(--glass-blur-soft, 8px));
+}

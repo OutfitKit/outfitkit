@@ -1,0 +1,87 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Page hero — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Page hero</h1>
+<p class="showcase-lead">Hero para páginas internas — eyebrow icon + h1 + lead + CTAs. Centrado por defecto, con variantes <code>.dotted</code> y <code>.grid-bg</code> para añadir patrón sutil de fondo. Distinto del hero de landing principal (más grande, con imagen).</p>
+
+{% set _src_1 %}{% raw %}<section class="page-hero">
+  <div class="container">
+    <span class="icon-box xl"><iconify-icon icon="lucide:rocket"></iconify-icon></span>
+    <h1>Empieza con ERPlora</h1>
+    <p>Crea tu primer hub en menos de 5 minutos. Sin tarjeta de crédito, sin compromisos.</p>
+    <div class="ctas">
+      <a class="btn primary lg" href="#">Crear cuenta</a>
+      <a class="btn outline lg" href="#">Ver demo</a>
+    </div>
+  </div>
+</section>{% endraw %}{% endset %}
+
+{% call demo_frame("Default (centrado)", jinja_src=_src_1, jinjax_src=_src_1) %}
+<section class="page-hero">
+  <div class="container">
+    <span class="icon-box xl"><iconify-icon icon="lucide:rocket"></iconify-icon></span>
+    <h1>Empieza con ERPlora</h1>
+    <p>Crea tu primer hub en menos de 5 minutos. Sin tarjeta de crédito, sin compromisos.</p>
+    <div class="ctas">
+      <a class="btn primary lg" href="#">Crear cuenta</a>
+      <a class="btn outline lg" href="#">Ver demo</a>
+    </div>
+  </div>
+</section>
+{% endcall %}
+
+{% set _src_2 %}{% raw %}<section class="page-hero dotted">
+  <div class="container">
+    <span class="icon-box xl info"><iconify-icon icon="lucide:book"></iconify-icon></span>
+    <h1>Documentación</h1>
+    <p>Guías, API reference y ejemplos para integrar ERPlora con tu stack.</p>
+  </div>
+</section>{% endraw %}{% endset %}
+
+{% call demo_frame(".dotted · patrón de puntos detrás", jinja_src=_src_2, jinjax_src=_src_2) %}
+<section class="page-hero dotted">
+  <div class="container">
+    <span class="icon-box xl info"><iconify-icon icon="lucide:book"></iconify-icon></span>
+    <h1>Documentación</h1>
+    <p>Guías, API reference y ejemplos para integrar ERPlora con tu stack.</p>
+  </div>
+</section>
+{% endcall %}
+
+{% set _src_3 %}{% raw %}<section class="page-hero grid-bg">
+  <div class="container">
+    <h1>Precios transparentes</h1>
+    <p>Empieza gratis. Escala cuando lo necesites. Sin sorpresas en la factura.</p>
+  </div>
+</section>{% endraw %}{% endset %}
+
+{% call demo_frame(".grid-bg · patrón de cuadrícula", jinja_src=_src_3, jinjax_src=_src_3) %}
+<section class="page-hero grid-bg">
+  <div class="container">
+    <h1>Precios transparentes</h1>
+    <p>Empieza gratis. Escala cuando lo necesites. Sin sorpresas en la factura.</p>
+  </div>
+</section>
+{% endcall %}
+
+{% set _src_4 %}{% raw %}<section class="page-hero left">
+  <div class="container">
+    <span class="icon-box xl success"><iconify-icon icon="lucide:check-check"></iconify-icon></span>
+    <h1>Verifactu listo</h1>
+    <p>Cumple desde el día uno con la normativa AEAT vigente.</p>
+  </div>
+</section>{% endraw %}{% endset %}
+
+{% call demo_frame(".left · alineación izquierda", jinja_src=_src_4, jinjax_src=_src_4) %}
+<section class="page-hero left">
+  <div class="container">
+    <span class="icon-box xl success"><iconify-icon icon="lucide:check-check"></iconify-icon></span>
+    <h1>Verifactu listo</h1>
+    <p>Cumple desde el día uno con la normativa AEAT vigente.</p>
+  </div>
+</section>
+{% endcall %}
+{% endblock %}

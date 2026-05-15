@@ -1,15 +1,15 @@
 /* ============================================================
-   Theme: ERPlora · Clean Paper + Sky Blue
+   Theme: ERPlora · Professional · Brand Blue
    ─────────────────────────────────────────────────────────────
-   Identidad propia ERPlora — base limpia, moderna, neutra.
-   Fondo paper casi blanco (sin amarillo, sin marrón), tinta
-   negra, azul cielo vibrante como acento único, semánticos
-   armónicos (success / warn / danger / info). Space Grotesk
-   para display y body, JetBrains Mono para datos.
+   El theme corporativo propio de ERPlora — neutros fríos sobrios,
+   azul de marca firme como protagonista, Space Grotesk display +
+   JetBrains Mono para datos. Sin glass, sin gradientes invasivos,
+   sombras discretas. Chrome (topbar / sidebar) en blanco puro
+   para no competir con el contenido.
 
-   Estilo: Notion / Linear / Stripe — superficies blancas,
-   bordes finos casi imperceptibles, sombras paper-friendly,
-   sin gradientes, sin texturas, sin warmth.
+   Hereda toda la escala de tokens base (spacing, text, sizes, etc.);
+   sobreescribe solo lo que la marca exige (brand, fonts, neutrals,
+   radii, sombras).
 
    Activate with `data-template="erplora"` on <html> or <body>.
    ============================================================ */
@@ -18,8 +18,8 @@
 
 [data-template="erplora"] {
   /* ───── Tipografía ─────
-     Space Grotesk en TODO lo legible. JetBrains Mono solo en
-     datos, precios, KPIs, código, etiquetas técnicas.
+     Space Grotesk para todo lo legible. JetBrains Mono para datos,
+     precios, KPIs, código, etiquetas técnicas. Sin Inter.
   */
   --font-display: "Space Grotesk", "Inter Tight", system-ui, sans-serif;
   --font-sans:    "Space Grotesk", "Inter", system-ui, -apple-system, sans-serif;
@@ -29,64 +29,46 @@
   --tracking-tight:   -0.015em;
   --tracking-near:    -0.020em;
 
-  /* ───── Acento · azul cielo ERPlora ─────
-     Sky-500 vibrante. Reservado para CTAs, enlaces, focus.
-     Sin abuso: la identidad nace del contraste con el blanco.
+  /* ───── Acento · azul ERPlora ─────
+     El color principal del producto — hub central del logo, CTA
+     primarios, enlaces, estados de foco. Mantenido en toda la
+     librería vía --brand.
   */
-  --brand:       oklch(0.66 0.16 235);                 /* ~ #0EA5E9 */
-  --brand-2:     oklch(0.58 0.18 235);                 /* hover · pressed */
-  --brand-3:     oklch(0.78 0.10 235);                 /* focus ring · soft hover */
+  --brand:       oklch(0.62 0.14 235);
+  --brand-2:     oklch(0.55 0.16 235);                              /* hover / pressed */
+  --brand-3:     oklch(0.75 0.10 235);                              /* focus ring + variant claro */
   --brand-fg:    #FFFFFF;
   --brand-soft:  color-mix(in oklch, var(--brand) 12%, transparent);
 
   --focus:       var(--brand-3);
 
   /* ───── Estados semánticos · armónicos al azul ─────
-     Misma claridad (≈0.60) y croma (≈0.13–0.18). Solo el matiz cambia.
+     Misma claridad (~0.6) y croma (~0.13–0.18). Sólo varía el matiz.
   */
-  --leaf:    oklch(0.62 0.13 155);                     /* success · verde */
-  --warn:    oklch(0.74 0.14 75);                      /* warning · ámbar */
-  --danger:  oklch(0.60 0.18 25);                      /* danger · rojo */
-  --info:    oklch(0.66 0.10 215);                     /* info · cian-teal */
+  --leaf:    oklch(0.60 0.13 155);   /* success · verde sobrio */
+  --warn:    oklch(0.72 0.14 75);    /* warning · ámbar */
+  --danger:  oklch(0.58 0.18 25);    /* danger · rojo */
+  --info:    oklch(0.65 0.10 215);   /* info · cian-teal */
 
   --leaf-soft:   color-mix(in oklch, var(--leaf)   12%, transparent);
   --warn-soft:   color-mix(in oklch, var(--warn)   14%, transparent);
   --danger-soft: color-mix(in oklch, var(--danger) 12%, transparent);
   --info-soft:   color-mix(in oklch, var(--info)   12%, transparent);
 
-  /* ───── Radios · moderados, paper-friendly ───── */
-  --radius-xs:  2px;
-  --radius-sm:  4px;
-  --radius-md:  6px;
-  --radius-lg:  10px;
-  --radius-xl:  14px;
-  --radius-2xl: 20px;
+  /* ───── Radios · moderados, sin pastilla ───── */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   6px;
+  --radius-lg:   10px;
+  --radius-xl:   14px;
+  --radius-2xl:  20px;
   --radius-pill: 999px;
 
-  /* ───── Sombras · discretas, sin saturar el blanco ─────
-     Usa color-mix sobre slate para que las sombras tengan un
-     leve tinte frío y no rompan la sensación de "papel limpio".
-  */
-  --shadow-color: 220 18% 14%;
-  --shadow-xs: 0 1px 2px hsl(var(--shadow-color) / 0.04);
-  --shadow-sm: 0 1px 3px hsl(var(--shadow-color) / 0.06), 0 1px 2px hsl(var(--shadow-color) / 0.04);
-  --shadow-md: 0 4px 12px hsl(var(--shadow-color) / 0.06), 0 2px 4px hsl(var(--shadow-color) / 0.04);
-  --shadow-lg: 0 12px 28px hsl(var(--shadow-color) / 0.08), 0 4px 8px hsl(var(--shadow-color) / 0.04);
-  --shadow-xl: 0 24px 60px hsl(var(--shadow-color) / 0.12), 0 8px 16px hsl(var(--shadow-color) / 0.06);
-
-  /* ───── Glass · transparencia para overlays ─────
-     Activa por defecto en modales, drawers, action-sheets, popovers.
-     Backdrop con blur fuerte, superficie translúcida. iOS-like.
-  */
-  --glass-blur:         16px;
-  --glass-blur-strong:  24px;
-  --glass-blur-soft:    10px;
-  --glass-saturate:     150%;
-  --glass-saturate-strong: 180%;
-  --glass-saturate-soft:   120%;
-
-  --overlay-bg:         color-mix(in oklch, oklch(0.20 0.02 240) 38%, transparent);
-  --overlay-bg-strong:  color-mix(in oklch, oklch(0.15 0.02 240) 55%, transparent);
+  /* ───── Sombras · sutiles, neutras ───── */
+  --shadow-xs: 0 1px 2px  rgba(14, 17, 22, 0.04);
+  --shadow-sm: 0 1px 3px  rgba(14, 17, 22, 0.06), 0 1px 2px rgba(14, 17, 22, 0.04);
+  --shadow-md: 0 4px 12px rgba(14, 17, 22, 0.06), 0 2px 4px rgba(14, 17, 22, 0.04);
+  --shadow-lg: 0 12px 28px rgba(14, 17, 22, 0.08), 0 4px 8px rgba(14, 17, 22, 0.04);
 
   /* ───── Layout ───── */
   --page-pad:  28px;
@@ -94,104 +76,55 @@
 }
 
 /* ────────────────────────────────────────────────────────────
-   ERPlora · light · paper limpio (default)
-   Canvas casi blanco con un leve tinte frío neutro (no calido).
-   Cards en blanco puro. Bordes muy suaves (apenas perceptibles).
+   ERPlora · light
+   Canvas neutro fresco (no marrón). Sidebar y topbar en BLANCO
+   puro para no competir con el contenido. Bordes en grises
+   ligeramente fríos para conjugar con el azul de marca.
    ──────────────────────────────────────────────────────────── */
 [data-template="erplora"][data-theme="erplora-light"] {
-  --bg:    #F7F8FA;            /* paper · canvas principal — gris muy frío */
-  --bg-1:  #FFFFFF;            /* topbar / sidebar */
+  --bg:    #F7F8FA;            /* canvas · gris muy claro neutro-frío */
+  --bg-1:  #FFFFFF;            /* topbar / sidebar · BLANCO PURO */
   --bg-2:  #FFFFFF;            /* cards · superficie elevada */
-  --bg-3:  #F1F3F6;            /* hover / inputs */
-  --bg-4:  #E5E8ED;            /* pressed / chips */
+  --bg-3:  #F1F3F7;            /* hover / inputs */
+  --bg-4:  #E5E8EE;            /* pressed / chips */
 
-  --line:   rgba(15, 23, 42, 0.06);
-  --line-2: rgba(15, 23, 42, 0.10);
-  --line-3: rgba(15, 23, 42, 0.18);
+  --line:   #E5E8EE;
+  --line-2: #D0D5DE;
+  --line-3: #94A0B4;
 
-  --ink:    #0A0E1A;           /* texto principal — slate-950 */
-  --ink-2:  #1E293B;           /* secundario — slate-800 */
-  --ink-3:  #64748B;           /* muted — slate-500 */
-  --ink-4:  #94A3B8;           /* hint — slate-400 */
-
-  /* Para superficies que se renderizan sobre fondos arbitrarios
-     (cards en página o glass en modales) — un blanco semi-translúcido. */
-  --surface-glass:        color-mix(in oklch, white 82%, transparent);
-  --surface-glass-strong: color-mix(in oklch, white 92%, transparent);
+  --ink:    #0E1116;           /* texto principal */
+  --ink-2:  #2A3340;
+  --ink-3:  #6B7383;           /* muted */
+  --ink-4:  #A4ABB8;
 
   color-scheme: light;
 }
 
 /* ────────────────────────────────────────────────────────────
-   ERPlora · dark · tinta moderna
-   Casi-negro slate (no marrón) como fondo. El azul mantiene su
-   vibrancia. Texto blanco neutral.
+   ERPlora · dark
+   Tinta profunda como fondo, paper-tone como texto. El azul de
+   marca se mantiene legible sin saturar.
    ──────────────────────────────────────────────────────────── */
 [data-template="erplora"][data-theme="erplora"] {
-  --bg:    #0A0E1A;            /* canvas · slate-950 */
-  --bg-1:  #111827;            /* topbar / sidebar — slate-900 */
-  --bg-2:  #111827;            /* cards · slate-900 */
-  --bg-3:  #1E293B;            /* hover / inputs · slate-800 */
-  --bg-4:  #334155;            /* pressed / chips · slate-700 */
+  --bg:    #0E1116;            /* canvas · tinta */
+  --bg-1:  #14181F;            /* topbar / sidebar */
+  --bg-2:  #181D26;            /* cards */
+  --bg-3:  #1F2530;            /* hover / inputs */
+  --bg-4:  #2A313C;            /* pressed / chips */
 
-  --line:   rgba(226, 232, 240, 0.08);
-  --line-2: rgba(226, 232, 240, 0.14);
-  --line-3: rgba(226, 232, 240, 0.24);
+  --line:   rgba(245, 247, 250, 0.08);
+  --line-2: rgba(245, 247, 250, 0.16);
+  --line-3: rgba(245, 247, 250, 0.28);
 
-  --ink:    #F8FAFC;           /* texto principal — slate-50 */
-  --ink-2:  #CBD5E1;           /* secundario — slate-300 */
-  --ink-3:  #94A3B8;           /* muted — slate-400 */
-  --ink-4:  #64748B;           /* hint — slate-500 */
+  --ink:    #F5F7FA;           /* texto principal */
+  --ink-2:  #D0D5DE;
+  --ink-3:  #94A0B4;
+  --ink-4:  #6B7383;
 
-  --surface-glass:        color-mix(in oklch, oklch(0.20 0.02 240) 78%, transparent);
-  --surface-glass-strong: color-mix(in oklch, oklch(0.22 0.02 240) 90%, transparent);
-
-  --overlay-bg:         color-mix(in oklch, black 55%, transparent);
-  --overlay-bg-strong:  color-mix(in oklch, black 72%, transparent);
-
-  --shadow-color: 220 40% 4%;
-  --shadow-xs: 0 1px 2px hsl(var(--shadow-color) / 0.30);
-  --shadow-sm: 0 1px 3px hsl(var(--shadow-color) / 0.35), 0 1px 2px hsl(var(--shadow-color) / 0.20);
-  --shadow-md: 0 4px 12px hsl(var(--shadow-color) / 0.45), 0 2px 4px hsl(var(--shadow-color) / 0.25);
-  --shadow-lg: 0 12px 28px hsl(var(--shadow-color) / 0.55), 0 4px 8px hsl(var(--shadow-color) / 0.30);
-  --shadow-xl: 0 24px 60px hsl(var(--shadow-color) / 0.65), 0 8px 16px hsl(var(--shadow-color) / 0.40);
+  --shadow-xs: 0 1px 2px  rgba(0, 0, 0, 0.30);
+  --shadow-sm: 0 1px 3px  rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
+  --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.50);
 
   color-scheme: dark;
-}
-
-/* ────────────────────────────────────────────────────────────
-   Overlays · blur por defecto en erplora
-   Modales, drawers, action-sheets y popovers heredan automá-
-   ticamente el glass look. Cualquier consumidor que no quiera
-   blur puede sobreescribir --glass-blur en su contenedor.
-   ──────────────────────────────────────────────────────────── */
-[data-template="erplora"] .backdrop,
-[data-template="erplora"] .action-sheet-root .backdrop,
-[data-template="erplora"] .drawer-backdrop,
-[data-template="erplora"] .modal-root .backdrop {
-  background: var(--overlay-bg);
-  -webkit-backdrop-filter: blur(var(--glass-blur-soft));
-          backdrop-filter: blur(var(--glass-blur-soft));
-}
-
-[data-template="erplora"] .modal,
-[data-template="erplora"] .action-sheet,
-[data-template="erplora"] .drawer,
-[data-template="erplora"] .popover,
-[data-template="erplora"] .menu {
-  --background: var(--surface-glass);
-  background: var(--surface-glass);
-  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-          backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  [data-template="erplora"] .modal,
-  [data-template="erplora"] .action-sheet,
-  [data-template="erplora"] .drawer,
-  [data-template="erplora"] .popover,
-  [data-template="erplora"] .menu {
-    --background: var(--bg-2);
-    background: var(--bg-2);
-  }
 }

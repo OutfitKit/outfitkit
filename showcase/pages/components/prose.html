@@ -1,0 +1,67 @@
+{% extends "_layout.jinja" %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Prose — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Prose</h1>
+<p class="showcase-lead">Reset tipográfico para páginas de contenido largo — términos legales, política de privacidad, docs, FAQ, blog posts. Una sola clase aplica tipografía + spacing + estilo a todos los descendientes.</p>
+
+<article class="prose">
+  <h2>Política de privacidad</h2>
+  <p>Última actualización: <strong>15 de mayo de 2026</strong>. Este documento explica cómo <a href="#">ERPlora</a> recopila, usa y protege tus datos.</p>
+
+  <h3>1. Datos que recopilamos</h3>
+  <p>Cuando creas una cuenta nos das tu <em>nombre</em>, <em>correo</em> y, opcionalmente, un teléfono de contacto. Si pagas por un plan, procesamos los detalles de tarjeta vía <code>Stripe</code> (no los almacenamos nosotros).</p>
+
+  <p>Para cada hub que despliegas guardamos:</p>
+  <ul>
+    <li>El subdominio asignado (por ejemplo <code>tuempresa.erplora.com</code>)</li>
+    <li>Logs de provisión durante 30 días</li>
+    <li>Métricas de uso agregadas (CPU, RAM, peticiones/h)</li>
+  </ul>
+
+  <h3>2. Cómo usamos los datos</h3>
+  <p>Los datos se usan únicamente para:</p>
+  <ol>
+    <li>Operar y mantener tu hub</li>
+    <li>Facturarte el consumo del mes</li>
+    <li>Notificarte de cambios importantes vía email</li>
+  </ol>
+
+  <blockquote>
+    No vendemos, alquilamos ni compartimos datos personales con terceros. Tu información permanece bajo tu control en todo momento.
+  </blockquote>
+
+  <h3>3. Retención</h3>
+  <p>Si cancelas tu cuenta, retenemos los datos durante <strong>6 años</strong> conforme la AEAT lo requiere para fines fiscales. Pasado ese periodo se eliminan permanentemente.</p>
+
+  <pre><code># Solicitar eliminación manual:
+POST /api/v1/account/delete
+Authorization: Bearer &lt;tu-jwt&gt;</code></pre>
+
+  <h3>4. Contacto</h3>
+  <p>Para cualquier consulta sobre datos personales, escríbenos a <a href="mailto:privacy@erplora.com">privacy@erplora.com</a>.</p>
+
+  <hr>
+
+  <h4>Anexo · subprocesadores</h4>
+  <table>
+    <thead>
+      <tr><th>Servicio</th><th>Propósito</th><th>Región</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>AWS</td><td>Hosting + infraestructura</td><td>eu-west-1</td></tr>
+      <tr><td>Stripe</td><td>Procesamiento de pagos</td><td>EU</td></tr>
+      <tr><td>Cloudflare</td><td>CDN + WAF</td><td>Global</td></tr>
+    </tbody>
+  </table>
+</article>
+
+<h2 style="margin-top:4rem">Variantes</h2>
+<ul>
+  <li><code>.prose.compact</code> · menos line-height y margins entre bloques</li>
+  <li><code>.prose.wide</code> · max-width 60rem (para layouts wide)</li>
+  <li><code>.prose.full</code> · max-width 100% (sin ancho máximo)</li>
+</ul>
+{% endblock %}
