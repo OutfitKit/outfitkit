@@ -10,18 +10,18 @@
     {%- set current_val = item.get('current') -%}
     {%- set is_current = current_val if current_val is not none else is_last -%}
     {%- if href and not is_current -%}
-      <a class="item" href="{{ href }}">
-        {%- if item.get('icon') %}{{ item.get('icon')|safe }}{% endif -%}
+      <a class="crumbs-item" href="{{ href }}">
+        {%- if item.get('icon') %}<span class="crumbs-icon">{{ item.get('icon')|safe }}</span>{% endif -%}
         {{ item.label }}
       </a>
     {%- else -%}
-      <span class="item"{% if is_current %} aria-current="page"{% endif %}>
-        {%- if item.get('icon') %}{{ item.get('icon')|safe }}{% endif -%}
+      <span class="crumbs-item"{% if is_current %} aria-current="page"{% endif %}>
+        {%- if item.get('icon') %}<span class="crumbs-icon">{{ item.get('icon')|safe }}</span>{% endif -%}
         {{ item.label }}
       </span>
     {%- endif -%}
     {%- if not is_last and variant != 'chips' -%}
-      <span class="divider">
+      <span class="crumbs-sep" aria-hidden="true">
         {%- if separator == 'chevron' -%}
           <iconify-icon icon="lucide:chevron-right" width="14" height="14"></iconify-icon>
         {%- else -%}{{ separator }}{%- endif -%}
