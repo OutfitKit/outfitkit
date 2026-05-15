@@ -13,7 +13,7 @@
 <nav class="menubar{% if variant %} {{ variant }}{% endif %}{% if compact %} compact{% endif %}"
   data-signals="{ open: '' }"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  {% if app_name %}<span class="menubar-app-name">{{ app_name }}</span><span class="divider"></span>{% endif %}
+  {% if app_name %}<span class="menubar-app-name">{{ app_name }}</span><span class="menubar-divider" aria-hidden="true"></span>{% endif %}
   {{ caller() }}
 </nav>
 {%- endmacro %}

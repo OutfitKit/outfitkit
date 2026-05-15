@@ -91,7 +91,8 @@
   height: var(--caret-size);
 }
 
-.tree-caret--leaf {
+.tree-caret.leaf,
+.tree-caret--leaf {       /* compat: BEM legacy */
   visibility: hidden;
 }
 
@@ -109,11 +110,13 @@
   height: var(--icon-sm);
 }
 
-.tree-icon--folder {
+.tree-icon.folder,
+.tree-icon--folder {       /* compat: BEM legacy */
   color: color-mix(in oklch, var(--brand) 65%, var(--ink-3));
 }
 
-.tree-icon--file {
+.tree-icon.file,
+.tree-icon--file {         /* compat: BEM legacy */
   color: var(--ink-3);
 }
 
@@ -165,10 +168,12 @@
   padding-left: var(--space-1-5);
 }
 
-.tree.dense .tree-icon--folder {
+.tree.dense .tree-icon.folder,
+.tree.dense .tree-icon--folder {      /* compat */
   color: var(--warn);
 }
 
-.tree.dense .tree-icon--file {
+.tree.dense .tree-icon.file,
+.tree.dense .tree-icon--file {        /* compat */
   color: var(--ink-3);
 }

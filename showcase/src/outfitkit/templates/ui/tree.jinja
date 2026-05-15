@@ -39,7 +39,7 @@
      data-signals="{ {{ _ns }}: { open: {{ 'true' if expanded else 'false' }} } }"
      data-attr:data-state="${{ _ns }}.open ? 'open' : 'closed'"
      {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  <div class="row">
+  <div class="tree-row">
     <span class="tree-caret"
           role="button"
           tabindex="0"
@@ -48,11 +48,11 @@
           data-attr:aria-expanded="${{ _ns }}.open"
           data-attr:data-rotated="${{ _ns }}.open">▸</span>
     {%- if icon %}
-    <span class="icon {{ icon_kind }}">{{ icon }}</span>
+    <span class="tree-icon {{ icon_kind }}">{{ icon }}</span>
     {%- endif %}
-    <span class="label">{{ label|safe }}</span>
+    <span class="tree-label">{{ label|safe }}</span>
     {%- if meta %}
-    <span class="meta">{{ meta }}</span>
+    <span class="tree-meta">{{ meta }}</span>
     {%- endif %}
   </div>
   <div class="tree-children" data-show="${{ _ns }}.open" role="group">
@@ -75,17 +75,17 @@
 {% macro tree_leaf(label="", icon="", meta="", selected=false, value=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="tree-node">
-  <div class="row"
+  <div class="tree-row"
        {%- if value is not none %} data-on:click="$sel = '{{ value }}'" data-attr:aria-selected="$sel === '{{ value }}'"{%- endif %}
        {%- if selected %} aria-selected="true"{%- endif %}
        {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-    <span class="tree-caret leaf"></span>
+    <span class="tree-caret leaf" aria-hidden="true"></span>
     {%- if icon %}
-    <span class="icon file">{{ icon }}</span>
+    <span class="tree-icon file">{{ icon }}</span>
     {%- endif %}
-    <span class="label">{{ label|safe }}</span>
+    <span class="tree-label">{{ label|safe }}</span>
     {%- if meta %}
-    <span class="meta">{{ meta }}</span>
+    <span class="tree-meta">{{ meta }}</span>
     {%- endif %}
   </div>
 </div>
