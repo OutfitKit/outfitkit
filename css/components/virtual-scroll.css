@@ -1,0 +1,137 @@
+/* ============================================================
+   OutfitKit · Virtual Scroll
+   ─────────────────────────────────────────────────────────────
+   Lista virtualizada — solo renderiza los items visibles + un
+   buffer. Soporta cientos de miles de filas sin penalización.
+   Necesita JS (virtual-scroll.js) que se inicializa automático
+   al cargar la página sobre cualquier `.virtual-scroll`.
+
+   Estructura (la genera el JS, tú solo das el wrapper):
+     <div class="virtual-scroll"
+          data-vs-rows="[...JSON...]"
+          data-vs-height="40"
+          data-vs-buffer="5"
+          style="height: 400px;">
+       <!-- JS añade aquí .virtual-scroll-spacer y .virtual-scroll-viewport -->
+     </div>
+
+   Para una lista no virtualizada (corta, <500 items), usa `.vlist`.
+   ============================================================ */
+
+.virtual-scroll {
+  --background:    var(--bg-1);
+  --border-color:  var(--line);
+  --border-radius: var(--radius-md);
+  --row-height:    2.5rem;
+  --height:        22.5rem;
+
+  position: relative;
+  height: var(--height);
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--background);
+  border: var(--border-w) solid var(--border-color);
+  border-radius: var(--border-radius);
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Spacer: ocupa toda la altura virtual para que el scrollbar sea correcto.
+   El JS le pone height = total_rows * row_height en pixeles. */
+.virtual-scroll-spacer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Viewport: contiene SOLO las filas visibles + buffer. El JS lo
+   posiciona con `transform: translateY()` para que las filas
+   estén en su posición virtual correcta. */
+.virtual-scroll-viewport {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+}
+
+/* ───── Fila ────────────────────────────────────────────── */
+.virtual-scroll-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  height: var(--row-height);
+  padding: 0 var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--ink);
+  border-bottom: var(--border-w) solid var(--line);
+  font-variant-numeric: tabular-nums;
+  transition: background var(--dur-fast);
+}
+
+.virtual-scroll-row:hover {
+  background: var(--bg-3);
+}
+
+.virtual-scroll-row[data-selected="true"] {
+  background: color-mix(in oklch, var(--brand) 12%, transparent);
+  color: var(--ink);
+}
+
+/* ───── Sub-elementos de fila (opcionales) ──────────────── */
+.virtual-scroll-row > .vs-idx {
+  color: var(--ink-4);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  width: var(--size-md);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.virtual-scroll-row > .vs-main {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.virtual-scroll-row > .vs-meta {
+  color: var(--ink-3);
+  font-size: var(--text-xs);
+  flex-shrink: 0;
+}
+
+/* ───── Modificadores ──────────────────────────────────── */
+.virtual-scroll.dense {
+  --row-height: 1.75rem;
+}
+.virtual-scroll.dense .virtual-scroll-row {
+  font-size: var(--text-xs);
+  padding: 0 var(--space-3);
+}
+
+.virtual-scroll.borderless {
+  border: 0;
+  border-radius: 0;
+}
+
+.virtual-scroll.flush .virtual-scroll-row {
+  border-bottom: 0;
+}
+
+/* Estado "no JS / no inicializado" — muestra fallback */
+.virtual-scroll:not([data-vs-ready]) {
+  /* mientras el JS no haya corrido, ocultamos para evitar FOUC */
+}
+.virtual-scroll:not([data-vs-ready])::before {
+  content: "Cargando…";
+  display: block;
+  padding: var(--space-4);
+  color: var(--ink-3);
+  font-size: var(--text-sm);
+  text-align: center;
+}

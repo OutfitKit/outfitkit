@@ -1,0 +1,89 @@
+{% extends "_layout.jinja" %}
+{% from "ui/virtual_scroll.jinja" import virtual_scroll %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Virtual Scroll — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Virtual Scroll</h1>
+<p class="showcase-lead">Lista virtualizada — solo renderiza las filas visibles + un buffer configurable. Soporta cientos de miles de filas sin penalización. Requiere <code>virtual-scroll.js</code> (auto-init).</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>Nota:</strong> los items se serializan a <code>data-vs-rows</code> como JSON. En producción los pinta el servidor; para listas muy grandes (&gt;100k) pásalo en chunks o lee desde fetch en lazy-load. Para listas cortas (&lt;500 filas), usa <code>.vlist</code>: pesa menos y no necesita JS.
+</div>
+
+{# ─── 1. 10 000 filas con plantilla por defecto ────────── #}
+{% set _bigrows = [] %}
+{% for i in range(10000) %}
+  {%- set _ = _bigrows.append({"idx": "#" + ("%06d" | format(i+1)), "main": "Registro " ~ (i+1) ~ " — payload de ejemplo en la fila", "meta": (i % 24) ~ ":" ~ "%02d" | format(i % 60)}) %}
+{%- endfor %}
+
+{% set _src_jinja_1 %}{% raw %}{% from "ui/virtual_scroll.jinja" import virtual_scroll %}
+{# rows = lista de dicts {idx, main, meta} #}
+{{ virtual_scroll(rows=mis_10000_filas, row_height=40, height="400px") }}{% endraw %}{% endset %}
+
+{% call demo_frame("10 000 filas — performance OK",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinja_1) %}
+{{ virtual_scroll(rows=_bigrows, row_height=40, height="400px") }}
+{% endcall %}
+
+{# ─── 2. Densidad compacta + selected ──────────────────── #}
+{% set _denserows = [] %}
+{% for i in range(2000) %}
+  {%- set _ = _denserows.append({"idx": i+1, "main": "Item " ~ (i+1), "meta": (i % 100) ~ "%"}) %}
+{%- endfor %}
+
+{% set _src_jinja_2 %}{% raw %}{{ virtual_scroll(rows=mis_filas, row_height=28, height="320px", dense=true) }}{% endraw %}{% endset %}
+
+{% call demo_frame("Modo `dense` — 2000 filas compactas",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinja_2) %}
+{{ virtual_scroll(rows=_denserows, row_height=28, height="320px", dense=true) }}
+{% endcall %}
+
+{# ─── 3. Plantilla personalizada ───────────────────────── #}
+{% set _custom = [] %}
+{% set _statuses = ['ok', 'warn', 'danger', 'ok', 'ok', 'info'] %}
+{% for i in range(500) %}
+  {%- set _ = _custom.append({"name": "Servidor " ~ (i+1), "ip": "10.0." ~ (i // 256) ~ "." ~ (i % 256), "status": _statuses[i % 6]}) %}
+{%- endfor %}
+
+<template id="server-row-tpl"><span class="vs-idx">{{ '{{name}}' }}</span><span class="vs-main">{{ '{{ip}}' }}</span><span class="badge {{ '{{status}}' }} sm">{{ '{{status}}' }}</span></template>
+
+{% set _src_jinja_3 %}{% raw %}<template id="server-row-tpl"><span class="vs-idx">{{name}}</span><span class="vs-main">{{ip}}</span><span class="badge {{status}} sm">{{status}}</span></template>
+
+{{ virtual_scroll(rows=mis_servidores, row_height=44, height="360px", template_id="server-row-tpl") }}{% endraw %}{% endset %}
+
+{% call demo_frame("Plantilla personalizada via `<template>`",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinja_3) %}
+{{ virtual_scroll(rows=_custom, row_height=44, height="360px", template_id="server-row-tpl") }}
+{% endcall %}
+
+<h2>API</h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>rows</code></td><td>list[dict]</td><td><code>[]</code></td><td>Items a renderizar. Los campos del dict se interpolan en la plantilla con <code>{{ "{{key}}" }}</code>.</td></tr>
+    <tr><td><code>row_height</code></td><td>int (px)</td><td><code>40</code></td><td>Altura fija de fila — debe coincidir con la altura visual real para que el cálculo virtual sea correcto.</td></tr>
+    <tr><td><code>buffer</code></td><td>int</td><td><code>5</code></td><td>Filas extra arriba/abajo del viewport a renderizar (para suavizar scroll rápido).</td></tr>
+    <tr><td><code>height</code></td><td>str (CSS)</td><td><code>"22.5rem"</code></td><td>Altura del contenedor — fija el viewport visible.</td></tr>
+    <tr><td><code>dense</code></td><td>bool</td><td><code>false</code></td><td>Modo compacto (font + padding reducidos).</td></tr>
+    <tr><td><code>template_id</code></td><td>str</td><td>—</td><td>ID de un <code>&lt;template&gt;</code> que define el HTML de fila. Sin esto usa la plantilla por defecto (<code>vs-idx / vs-main / vs-meta</code>).</td></tr>
+  </tbody>
+</table>
+
+<h3>Eventos JS</h3>
+<table>
+  <thead><tr><th>Evento</th><th>Detail</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>vs:render</code></td><td><code>{start, end, total}</code></td><td>Disparado en el elemento <code>.virtual-scroll</code> cada vez que se re-renderiza la ventana visible.</td></tr>
+  </tbody>
+</table>
+
+<h3>API JS</h3>
+<pre><code>window.OKVirtualScroll.init(el)       // inicializa un elemento concreto
+window.OKVirtualScroll.initAll(root)  // inicializa todos los .virtual-scroll en root (default document)</code></pre>
+
+{% endblock %}
