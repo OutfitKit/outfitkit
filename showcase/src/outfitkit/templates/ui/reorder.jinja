@@ -1,0 +1,33 @@
+{#def items=[], handle_icon=true, show_index=false, attrs=None #}
+
+{# items: lista de dicts {value, label, meta?} o strings simples. #}
+
+{% macro reorder(items=[], handle_icon=true, show_index=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="reorder"
+     {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <ol class="reorder-list">
+    {%- for raw in items %}
+      {%- set item = raw if raw is mapping else {"value": raw, "label": raw} %}
+      {%- set _val = item.value if item.value is defined else item.label %}
+    <li class="reorder-item" data-value="{{ _val }}">
+      <button class="reorder-handle" type="button" aria-label="Mover {{ item.label }}" title="Mover">
+        {%- if handle_icon %}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="9" cy="6" r="1.2"/><circle cx="9" cy="12" r="1.2"/><circle cx="9" cy="18" r="1.2"/>
+          <circle cx="15" cy="6" r="1.2"/><circle cx="15" cy="12" r="1.2"/><circle cx="15" cy="18" r="1.2"/>
+        </svg>
+        {%- endif %}
+      </button>
+      <div class="reorder-content">
+        {%- if show_index %}<strong style="color:var(--ink-3); margin-right:.5rem">{{ loop.index }}.</strong>{% endif %}
+        {{ item.label }}
+      </div>
+      {%- if item.meta %}<div class="reorder-actions">{{ item.meta }}</div>{% endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</div>
+{%- endmacro %}
+
+{% if items is defined %}{{ reorder(items=items, handle_icon=handle_icon, show_index=show_index, attrs=attrs) }}{% endif %}

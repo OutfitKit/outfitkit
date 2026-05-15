@@ -1,0 +1,19 @@
+{#def options=[], active=None, full=false, size="md", aria_label="", attrs=None #}
+
+{% macro segmented(options=[], active=None, full=false, size="md", aria_label="", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="segmented{% if full %} full{% endif %}{% if size == 'sm' %} sm{% endif %}"
+     role="tablist"{% if aria_label %} aria-label="{{ aria_label }}"{% endif %}
+     {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {%- for opt in options %}
+    {%- set _value = opt.value if opt is mapping else opt %}
+    {%- set _label = opt.label if (opt is mapping and opt.label) else _value %}
+    {%- set _is_active = (active == _value) %}
+  <button type="button" class="segmented-option{% if _is_active %} is-active{% endif %}"
+          role="tab" aria-selected="{{ 'true' if _is_active else 'false' }}"
+          data-value="{{ _value }}">{{ _label }}</button>
+  {%- endfor %}
+</div>
+{%- endmacro %}
+
+{% if options is defined %}{{ segmented(options=options, active=active, full=full, size=size, aria_label=aria_label, attrs=attrs) }}{% endif %}

@@ -1,0 +1,80 @@
+{% extends "_layout.jinja" %}
+{% from "ui/segmented.jinja" import segmented %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Segmented — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Segmented</h1>
+<p class="showcase-lead">Control de selección horizontal — iOS UISegmentedControl / Material BottomNavigation segmented. Touch-friendly por defecto (mín. 40 px alto). Útil en mobile, tablet y desktop como filtro inline o tabs compactas.</p>
+
+{# ─── 1. Básico ─────────────────────────────────────────── #}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/segmented.jinja" import segmented %}
+{{ segmented(options=["Día", "Semana", "Mes", "Año"], active="Semana") }}{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<Segmented options="['Día', 'Semana', 'Mes', 'Año']" active="Semana" />{% endraw %}{% endset %}
+
+{% call demo_frame("Básico — 4 opciones, una activa",
+    jinja_src=_src_jinja_1, jinjax_src=_src_jinjax_1) %}
+{{ segmented(options=["Día", "Semana", "Mes", "Año"], active="Semana") }}
+{% endcall %}
+
+{# ─── 2. Full width ─────────────────────────────────────── #}
+{% set _src_jinja_2 %}{% raw %}{{ segmented(options=["Pendientes", "En curso", "Cerrados"], active="En curso", full=true) }}{% endraw %}{% endset %}
+
+{% call demo_frame("Full width — estira al contenedor",
+    jinja_src=_src_jinja_2, jinjax_src=_src_jinja_2) %}
+{{ segmented(options=["Pendientes", "En curso", "Cerrados"], active="En curso", full=true) }}
+{% endcall %}
+
+{# ─── 3. Compacto ───────────────────────────────────────── #}
+{% set _src_jinja_3 %}{% raw %}{{ segmented(options=["Mes", "Trim.", "Año", "Todo"], active="Trim.", size="sm") }}{% endraw %}{% endset %}
+
+{% call demo_frame("Variante .sm — inline en toolbar",
+    jinja_src=_src_jinja_3, jinjax_src=_src_jinja_3) %}
+<div style="display:flex; align-items:center; gap:.75rem">
+  <span style="color:var(--ink-3); font-size:var(--text-sm)">Periodo:</span>
+  {{ segmented(options=["Mes", "Trim.", "Año", "Todo"], active="Trim.", size="sm") }}
+</div>
+{% endcall %}
+
+{# ─── 4. Reactivo con Datastar ──────────────────────────── #}
+{% set _src_jinja_4 %}{% raw %}<div data-signals-view="grid">
+  {{ segmented(options=[
+      {"value": "grid",  "label": "Grid"},
+      {"value": "list",  "label": "Lista"},
+      {"value": "table", "label": "Tabla"}], active="grid",
+      attrs={"data-on:click": "$view = evt.target.dataset.value"}) }}
+  <p>Vista actual: <strong data-text="$view"></strong></p>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Reactivo con Datastar",
+    jinja_src=_src_jinja_4, jinjax_src=_src_jinja_4) %}
+<div data-signals-view="grid">
+  {{ segmented(options=[
+      {"value": "grid",  "label": "Grid"},
+      {"value": "list",  "label": "Lista"},
+      {"value": "table", "label": "Tabla"}], active="grid",
+      attrs={"data-on:click": "$view = evt.target.dataset.value"}) }}
+  <p style="margin-top:.75rem">Vista actual: <strong data-text="$view"></strong></p>
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>options</code></td><td>list[str] | list[dict]</td><td><code>[]</code></td><td>Strings o dicts <code>{"value": ..., "label": ...}</code>. Con strings, <code>value == label</code>.</td></tr>
+    <tr><td><code>active</code></td><td>str</td><td><code>None</code></td><td>Valor de la opción activa (comparado contra <code>value</code>).</td></tr>
+    <tr><td><code>full</code></td><td>bool</td><td><code>false</code></td><td>Estira a 100% del contenedor.</td></tr>
+    <tr><td><code>size</code></td><td>"md" | "sm"</td><td><code>"md"</code></td><td>Tamaño. "sm" reduce padding y altura mín.</td></tr>
+    <tr><td><code>aria_label</code></td><td>str</td><td><code>""</code></td><td>Etiqueta accesible para el role="tablist".</td></tr>
+  </tbody>
+</table>
+
+<h3>Modificadores CSS</h3>
+<ul>
+  <li><code>.segmented.full</code> · estira al contenedor</li>
+  <li><code>.segmented.sm</code> · variante compacta</li>
+  <li><code>.segmented-option.is-active</code> · estado activo. También funciona con <code>aria-selected="true"</code> o <code>data-active="true"</code>.</li>
+</ul>
+{% endblock %}

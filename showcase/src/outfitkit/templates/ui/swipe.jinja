@@ -1,0 +1,46 @@
+{#def items=[], actions=None, single=false, mouse=false, attrs=None #}
+
+{# Lista swipe — touch-first.
+   items: lista de dicts {avatar?, title, sub?, meta?}
+   actions: lista por defecto de dicts {label, kind} aplicada a cada item
+            (kind: 'archive' | 'danger' | 'del' | 'warn' | 'flag' | None)
+            Si un item tiene 'actions', sobreescribe el default.
+   single: si true, solo se revela 1 acción (más ancha). #}
+
+{% macro swipe_btn(action) -%}
+{%- set _kind = action.kind if action.kind else '' -%}
+<button type="button" class="swipe-btn{% if _kind %} {{ _kind }}{% endif %}">
+  {%- if action.icon %}<span aria-hidden="true">{{ action.icon }}</span>{% endif %}
+  {{- action.label -}}
+</button>
+{%- endmacro %}
+
+{% macro swipe(items=[], actions=None, single=false, mouse=false, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<ul class="swipe{% if single %} single{% endif %}"
+    {%- if mouse %} data-swipe-mouse{% endif %}
+    {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {%- for item in items %}
+  <li class="swipe-item">
+    <div class="swipe-row">
+      {%- if item.avatar %}
+      <img class="avatar" src="{{ item.avatar }}" alt="" />
+      {%- else %}
+      <span class="avatar" aria-hidden="true">{{ item.title[:1] if item.title else '·' }}</span>
+      {%- endif %}
+      <div>
+        <div class="title">{{ item.title }}</div>
+        {% if item.sub %}<div class="sub">{{ item.sub }}</div>{% endif %}
+      </div>
+      {% if item.meta %}<span class="meta">{{ item.meta }}</span>{% endif %}
+    </div>
+    <div class="swipe-actions">
+      {%- set _acts = item.actions if item.actions else (actions or []) %}
+      {%- for a in _acts %}{{ swipe_btn(a) }}{% endfor %}
+    </div>
+  </li>
+  {%- endfor %}
+</ul>
+{%- endmacro %}
+
+{% if items is defined %}{{ swipe(items=items, actions=actions, single=single, mouse=mouse, attrs=attrs) }}{% endif %}

@@ -1,0 +1,97 @@
+{% extends "_layout.jinja" %}
+{% from "ui/infinite_scroll.jinja" import infinite_scroll %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Infinite scroll — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Infinite scroll</h1>
+<p class="showcase-lead">Carga incremental al hacer scroll cerca del final — patrón <code>ion-infinite-scroll</code>. Usa <code>IntersectionObserver</code> sobre un sentinel y dispara <code>iscroll:more</code> con dos callbacks (<code>done</code>, <code>end</code>).</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>Cuándo usar:</strong> listas medianas (cientos a pocos miles de items) donde se quiere paginación natural. Para 10 000+ filas usa <a href="/components/virtual_scroll.html">virtual-scroll</a> en su lugar (solo renderiza lo visible).
+</div>
+
+{# ─── 1. Demo · cargar 20 items de cada vez ────────────── #}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/infinite_scroll.jinja" import infinite_scroll %}
+<div data-signals-rows="20" data-signals-end="false" style="max-height:340px; overflow:auto">
+  <ul id="rows-list" class="list" data-text="
+    Array.from({length:$rows}, (_,i) => `<li>Item ${i+1}</li>`).join('')
+  "></ul>
+  <div data-on:iscroll:more="
+    if ($rows >= 80) { $end = true; evt.detail.end(); }
+    else { setTimeout(() => { $rows = $rows + 20; evt.detail.done(); }, 600); }
+  ">
+    {{ infinite_scroll(scroll_root="[data-signals-rows]") }}
+  </div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Scroll vertical · carga 20 items cada 0.6s hasta 80",
+    jinja_src=_src_jinja_1, jinjax_src=_src_jinja_1) %}
+<div data-signals-rows="20" data-signals-end="false" style="max-height:340px; overflow:auto; background:var(--bg-1); border:var(--border-w) solid var(--line); border-radius:var(--radius-md); padding:.5rem 1rem">
+  <ul id="rows-list-1" class="list" style="margin:0" data-text="
+    Array.from({length:$rows}, (_,i) => `<li style='padding:.5rem 0;border-bottom:var(--border-w) solid var(--line)'>Item #${(i+1).toString().padStart(4,'0')} — payload de ejemplo</li>`).join('')
+  "></ul>
+  <div data-on:iscroll:more="
+    if ($rows >= 80) { evt.detail.end(); }
+    else { setTimeout(() => { $rows = $rows + 20; evt.detail.done(); }, 600); }
+  ">
+    {{ infinite_scroll() }}
+  </div>
+</div>
+{% endcall %}
+
+{# ─── 2. Estados estáticos ─────────────────────────────── #}
+{% set _src_jinja_2 %}{% raw %}<div class="iscroll is-loading">
+  <div class="iscroll-sentinel"></div>
+  <div class="iscroll-loader">Cargando más…</div>
+  <div class="iscroll-end">Fin de la lista</div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estado .is-loading",
+    jinja_src=_src_jinja_2, jinjax_src=_src_jinja_2) %}
+<div class="iscroll is-loading">
+  <div class="iscroll-sentinel"></div>
+  <div class="iscroll-loader">Cargando más…</div>
+  <div class="iscroll-end">Fin de la lista</div>
+</div>
+{% endcall %}
+
+{% set _src_jinja_3 %}{% raw %}<div class="iscroll is-end">
+  <div class="iscroll-sentinel"></div>
+  <div class="iscroll-loader">Cargando más…</div>
+  <div class="iscroll-end">Fin de la lista</div>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Estado .is-end",
+    jinja_src=_src_jinja_3, jinjax_src=_src_jinja_3) %}
+<div class="iscroll is-end">
+  <div class="iscroll-sentinel"></div>
+  <div class="iscroll-loader">Cargando más…</div>
+  <div class="iscroll-end">Fin de la lista</div>
+</div>
+{% endcall %}
+
+<h2>API · macro <code>infinite_scroll()</code></h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>loading_label</code></td><td>str</td><td><code>"Cargando más…"</code></td><td>Texto del loader.</td></tr>
+    <tr><td><code>end_label</code></td><td>str</td><td><code>"Fin de la lista"</code></td><td>Texto al alcanzar el final.</td></tr>
+    <tr><td><code>margin</code></td><td>str (CSS)</td><td><code>"300px 0px"</code></td><td><code>rootMargin</code> del IntersectionObserver. Más grande = pre-carga antes.</td></tr>
+    <tr><td><code>scroll_root</code></td><td>str (selector)</td><td><code>None</code></td><td>Selector del scroller. Sin esto usa el viewport.</td></tr>
+  </tbody>
+</table>
+
+<h3>Evento</h3>
+<table>
+  <thead><tr><th>Evento</th><th>Detail</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>iscroll:more</code></td><td><code>{done(): void, end(): void}</code></td><td>El sentinel entró en viewport. Llama <code>done()</code> al cargar; <code>end()</code> si no hay más (desconecta el observer y muestra <code>.iscroll-end</code>).</td></tr>
+  </tbody>
+</table>
+
+<h3>API JS · <code>window.OKInfiniteScroll</code></h3>
+<pre><code>OKInfiniteScroll.init(el)
+OKInfiniteScroll.initAll(root)</code></pre>
+{% endblock %}

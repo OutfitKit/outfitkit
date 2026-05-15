@@ -1,0 +1,14 @@
+{#def loading_label="Cargando más…", end_label="Fin de la lista", margin="300px 0px", scroll_root=None, attrs=None #}
+
+{% macro infinite_scroll(loading_label="Cargando más…", end_label="Fin de la lista", margin="300px 0px", scroll_root=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<div class="iscroll" data-iscroll-margin="{{ margin }}"
+     {%- if scroll_root %} data-iscroll-root="{{ scroll_root }}"{% endif %}
+     {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <div class="iscroll-sentinel" aria-hidden="true"></div>
+  <div class="iscroll-loader">{{ loading_label }}</div>
+  <div class="iscroll-end">{{ end_label }}</div>
+</div>
+{%- endmacro %}
+
+{% if loading_label is defined %}{{ infinite_scroll(loading_label=loading_label, end_label=end_label, margin=margin, scroll_root=scroll_root, attrs=attrs) }}{% endif %}
