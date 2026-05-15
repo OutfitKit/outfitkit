@@ -255,3 +255,79 @@
   outline: var(--border-w-2, 2px) solid var(--brand, var(--color-primary));
   outline-offset: 2px;
 }
+
+/* ───── Bar header (Cancel/Title/Done) — picker / form sheets ─────
+   Variante alternativa al .action-sheet-head centrado. Patrón
+   iOS modal (date picker, lista filtrable, formulario corto). */
+.action-sheet-bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-3, 0.75rem);
+  align-items: center;
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  border-bottom: var(--border-w, 1px) solid var(--line);
+  margin-bottom: var(--space-2, 0.5rem);
+  flex-shrink: 0;
+}
+
+.action-sheet-bar .action-sheet-title {
+  text-align: center;
+  font-size: var(--text-base, 1rem);
+  color: var(--ink);
+}
+
+/* Botones de texto integrados en la barra superior. Tap-target ≥44 px
+   (recomendación Apple HIG) — crítico para uso táctil. */
+.action-sheet-bar-btn {
+  --color: var(--ink-2);
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: var(--text-base, 1rem);
+  padding: var(--space-2, 0.5rem) var(--space-1, 0.25rem);
+  min-height: 2.75rem;
+  cursor: pointer;
+  color: var(--color);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.action-sheet-bar-btn:hover { color: var(--ink); }
+.action-sheet-bar-btn.done,
+.action-sheet-bar-btn.primary {
+  --color: var(--brand, var(--color-primary));
+  font-weight: var(--weight-semibold, 600);
+}
+.action-sheet-bar-btn:focus-visible {
+  outline: var(--border-w-2, 2px) solid var(--brand, var(--color-primary));
+  outline-offset: 2px;
+  border-radius: var(--radius-sm, 0.25rem);
+}
+
+/* ───── Row layout variant — icon · label · meta ─────────────────
+   Para hojas tipo "menú contextual" con icono a la izquierda y
+   metadato/atajo a la derecha. Touch-friendly: alto mínimo 3rem. */
+.action-sheet-action.row {
+  display: grid;
+  grid-template-columns: 1.375rem 1fr auto;
+  gap: var(--space-3, 0.75rem);
+  align-items: center;
+  text-align: left;
+  justify-content: start;
+}
+.action-sheet-action.row .icon { color: var(--ink-3); }
+.action-sheet-action.row.destructive .icon { color: var(--color-danger, var(--danger)); }
+.action-sheet-action.row .meta {
+  color: var(--ink-3);
+  font-size: var(--text-sm, 0.875rem);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ───── Body scrollable (form / picker content) ─────────────────
+   Wrapper opcional cuando el sheet contiene un formulario en vez
+   de una lista de actions. */
+.action-sheet-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  scrollbar-width: thin;
+}
