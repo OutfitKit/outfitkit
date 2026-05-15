@@ -8,20 +8,21 @@
   --background-hover: var(--bg-3);
   --color-hover: var(--ink);
   --color-active: var(--ink);
-  --padding-y: var(--pad-y, 0.1875rem);
-  --padding-x: var(--pad-x, 0.4375rem);
-  --icon-size: var(--icon, 0.8125rem);
-  --separator-size: 0.6875rem;
-  --separator-font-size: 0.625rem;
+  --padding-y: var(--pad-y, var(--space-1));
+  --padding-x: var(--pad-x, var(--space-2));
+  --icon-size: var(--icon, var(--icon-sm));
+  --separator-size: var(--icon-sm);          /* 14px — proporcional al texto */
+  --separator-color: var(--ink-3);           /* legible, no demasiado fade */
+  --separator-gap: var(--space-1);           /* respiro entre item y chevron */
   --max-width: 13.75rem;
   --more-size: var(--size, var(--size-xs));
-  --more-font-size: 0.6875rem;
-  --chip-padding-y: 0.1875rem;
+  --more-font-size: var(--text-xs);
+  --chip-padding-y: var(--space-1);
 
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: var(--border-w-2);
+  gap: var(--separator-gap);
   font-size: var(--font-size);
   color: var(--color);
   font-weight: 500;
@@ -63,16 +64,22 @@
 }
 
 .crumbs-sep {
-  color: var(--ink-4);
-  font-size: var(--separator-font-size);
-  padding: var(--space-0) var(--border-w);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--separator-color);
+  font-size: var(--separator-size);
+  line-height: 1;
   user-select: none;
+  flex-shrink: 0;
 }
 
-.crumbs-sep svg {
+.crumbs-sep svg,
+.crumbs-sep iconify-icon {
   width: var(--separator-size);
   height: var(--separator-size);
   display: block;
+  color: inherit;
 }
 
 .crumbs-more {
