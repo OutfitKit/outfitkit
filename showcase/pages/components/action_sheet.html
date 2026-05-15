@@ -1,0 +1,130 @@
+{% extends "_layout.jinja" %}
+{% from "ui/action_sheet.jinja" import action_sheet %}
+{% from "ui/button.jinja" import button %}
+{% from "demo_frame.jinja" import demo_frame %}
+
+{% block title %}Action Sheet — OutfitKit{% endblock %}
+
+{% block content %}
+<h1>Action Sheet</h1>
+<p class="showcase-lead">Hoja inferior con lista de acciones — patrón iOS / Ionic. Slide-up en móvil, modal centrado con max-width en desktop. Backdrop con blur, handle de arrastre, acción destructiva en rojo, botón "Cancelar" separado del grupo.</p>
+
+<div class="callout info" style="margin-bottom:16px">
+  <strong>Nota:</strong> los ejemplos siguientes son markup estático con <code>state="open"</code> para mostrar la pieza. Para abrir/cerrar reactivo, mira el ejemplo final con Datastar (<code>$open</code>).
+</div>
+
+{# ─────────────────────────────────────────────────────── #}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/action_sheet.jinja" import action_sheet %}
+<div style="position:relative; min-height:480px;">
+  {% call action_sheet(title="Compartir publicación", subtitle="Elige cómo quieres compartir esto", state="open") %}
+    <button class="action-sheet-action">Copiar enlace</button>
+    <button class="action-sheet-action">Enviar por mensaje</button>
+    <button class="action-sheet-action">Compartir en redes</button>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+{% set _src_jinjax_1 %}{% raw %}<div style="position:relative; min-height:480px;">
+  <ActionSheet title="Compartir publicación" subtitle="Elige cómo quieres compartir esto" state="open">
+    <button class="action-sheet-action">Copiar enlace</button>
+    <button class="action-sheet-action">Enviar por mensaje</button>
+    <button class="action-sheet-action">Compartir en redes</button>
+  </ActionSheet>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Básico · 3 acciones + cancel",
+    jinja_src=_src_jinja_1,
+    jinjax_src=_src_jinjax_1) %}
+<div style="position:relative; min-height:480px;">
+  {% call action_sheet(title="Compartir publicación", subtitle="Elige cómo quieres compartir esto", state="open") %}
+    <button class="action-sheet-action">Copiar enlace</button>
+    <button class="action-sheet-action">Enviar por mensaje</button>
+    <button class="action-sheet-action">Compartir en redes</button>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{# ─────────────────────────────────────────────────────── #}
+{% set _src_jinja_2 %}{% raw %}<div style="position:relative; min-height:480px;">
+  {% call action_sheet(title="¿Eliminar este pedido?", subtitle="Esta acción no se puede deshacer", state="open") %}
+    <button class="action-sheet-action destructive">Eliminar pedido</button>
+    <button class="action-sheet-action">Archivar en su lugar</button>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Con acción destructiva",
+    jinja_src=_src_jinja_2,
+    jinjax_src=_src_jinja_2) %}
+<div style="position:relative; min-height:480px;">
+  {% call action_sheet(title="¿Eliminar este pedido?", subtitle="Esta acción no se puede deshacer", state="open") %}
+    <button class="action-sheet-action destructive">Eliminar pedido</button>
+    <button class="action-sheet-action">Archivar en su lugar</button>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{# ─────────────────────────────────────────────────────── #}
+{% set _src_jinja_3 %}{% raw %}<div style="position:relative; min-height:480px;">
+  {% call action_sheet(state="open", cancel_label="") %}
+    <button class="action-sheet-action primary">Confirmar pago · 24,90 €</button>
+    <button class="action-sheet-action">Aplicar cupón</button>
+    <button class="action-sheet-action">Editar dirección</button>
+    <button class="action-sheet-action" disabled>Pago aplazado (no disponible)</button>
+  {% endcall %}
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Sin head, sin cancel, con acción primary + disabled",
+    jinja_src=_src_jinja_3,
+    jinjax_src=_src_jinja_3) %}
+<div style="position:relative; min-height:480px;">
+  {% call action_sheet(state="open", cancel_label="") %}
+    <button class="action-sheet-action primary">Confirmar pago · 24,90 €</button>
+    <button class="action-sheet-action">Aplicar cupón</button>
+    <button class="action-sheet-action">Editar dirección</button>
+    <button class="action-sheet-action" disabled>Pago aplazado (no disponible)</button>
+  {% endcall %}
+</div>
+{% endcall %}
+
+{# ─────────────────────────────────────────────────────── #}
+{% set _src_jinja_4 %}{% raw %}{# Reactivo con Datastar — usa $open en signals del scope. #}
+<div data-signals-open="false" style="position:relative; min-height:480px;">
+  <button class="btn primary" data-on:click="$open = true">Abrir hoja</button>
+  {% call action_sheet(title="Acciones", state="closed",
+                        attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
+    <button class="action-sheet-action" data-on:click="$open = false">Acción 1</button>
+    <button class="action-sheet-action" data-on:click="$open = false">Acción 2</button>
+    <button class="action-sheet-action destructive" data-on:click="$open = false">Eliminar</button>
+  {% endcall %}
+  {# Click en backdrop cierra. #}
+  <script>
+    document.currentScript.previousElementSibling.querySelector('.backdrop')
+      ?.addEventListener('click', () => { window.ds?.signals?.open?.set?.(false); });
+  </script>
+</div>{% endraw %}{% endset %}
+
+{% call demo_frame("Reactivo con Datastar",
+    jinja_src=_src_jinja_4,
+    jinjax_src=_src_jinja_4) %}
+<div data-signals-open="false" style="position:relative; min-height:480px;">
+  <button class="btn primary" data-on:click="$open = true">Abrir hoja</button>
+  {% call action_sheet(title="Acciones", state="closed",
+                        attrs={"data-attr:data-state": "$open ? 'open' : 'closed'"}) %}
+    <button class="action-sheet-action" data-on:click="$open = false">Acción 1</button>
+    <button class="action-sheet-action" data-on:click="$open = false">Acción 2</button>
+    <button class="action-sheet-action destructive" data-on:click="$open = false">Eliminar</button>
+  {% endcall %}
+</div>
+{% endcall %}
+
+<h2>API</h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td><code>""</code></td><td>Título opcional (omite el header si vacío y subtitle también).</td></tr>
+    <tr><td><code>subtitle</code></td><td>str</td><td><code>""</code></td><td>Subtítulo opcional bajo el título.</td></tr>
+    <tr><td><code>state</code></td><td><code>"open"</code> | <code>"closed"</code></td><td><code>"closed"</code></td><td>Estado de visibilidad. Anímalo desde Datastar con <code>data-attr:data-state</code>.</td></tr>
+    <tr><td><code>show_handle</code></td><td>bool</td><td><code>true</code></td><td>Pinta el handle de arrastre (solo se ve en móvil).</td></tr>
+    <tr><td><code>cancel_label</code></td><td>str</td><td><code>"Cancelar"</code></td><td>Texto del botón cancelar; <code>""</code> lo oculta.</td></tr>
+    <tr><td>(slot)</td><td>—</td><td>—</td><td>Lista de <code>&lt;button class="action-sheet-action"&gt;</code>. Modificadores: <code>.destructive</code> (rojo), <code>.primary</code> (resaltada), <code>disabled</code>.</td></tr>
+  </tbody>
+</table>
+{% endblock %}

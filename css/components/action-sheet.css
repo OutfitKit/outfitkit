@@ -1,0 +1,257 @@
+/* ============================================================
+   OutfitKit · Action Sheet
+   ─────────────────────────────────────────────────────────────
+   Hoja inferior con lista de acciones — patrón iOS / Ionic.
+   Slide up desde abajo en móvil, modal centrado con max-width
+   en desktop. Backdrop con click para cerrar.
+
+   Estructura:
+     <div class="action-sheet-root" data-state="open">
+       <div class="backdrop"></div>
+       <div class="action-sheet">
+         <div class="action-sheet-handle"></div>
+         <header class="action-sheet-head">
+           <h3 class="action-sheet-title">Título</h3>
+           <p class="action-sheet-sub">Subtítulo opcional</p>
+         </header>
+         <div class="action-sheet-actions">
+           <button class="action-sheet-action">Acción 1</button>
+           <button class="action-sheet-action">Acción 2</button>
+           <button class="action-sheet-action destructive">Eliminar</button>
+         </div>
+         <div class="action-sheet-cancel-wrap">
+           <button class="action-sheet-cancel">Cancelar</button>
+         </div>
+       </div>
+     </div>
+   ============================================================ */
+
+.action-sheet-root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer, 70);
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.action-sheet-root[data-state="open"] {
+  pointer-events: auto;
+}
+
+.action-sheet-root[data-state="open"] .backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.action-sheet-root:not([data-state="open"]) .backdrop {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.action-sheet-root .backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--overlay-bg, color-mix(in oklch, black 50%, transparent));
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  transition: opacity var(--dur-base, 200ms) var(--ease-out, ease-out);
+}
+
+.action-sheet {
+  --background:    var(--bg-1);
+  --color:         var(--ink);
+  --border-color:  var(--line-2);
+  --border-radius: var(--radius-xl, 1rem);
+  --shadow:        var(--shadow-xl, 0 -10px 40px -10px rgb(0 0 0 / 0.3));
+  --width:         100%;
+  --max-width:     32rem;
+  --max-height:    85vh;
+  --padding-x:     var(--space-3, 0.75rem);
+  --padding-y:     var(--space-3, 0.75rem);
+  --gap:           var(--space-2, 0.5rem);
+  --handle-width:  2.5rem;
+  --handle-height: 0.25rem;
+
+  position: relative;
+  width: var(--width);
+  max-width: min(var(--max-width), 100vw);
+  max-height: var(--max-height);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+  padding: var(--padding-y) var(--padding-x);
+  padding-bottom: calc(var(--padding-y) + var(--safe-area-bottom, 0px));
+  background: var(--background);
+  color: var(--color);
+  border-top: var(--border-w, 1px) solid var(--border-color);
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  box-shadow: var(--shadow);
+  transform: translateY(0);
+  transition: transform var(--dur-base, 200ms) var(--ease-out, ease-out);
+}
+
+.action-sheet-root:not([data-state="open"]) .action-sheet {
+  transform: translateY(100%);
+}
+
+@media (min-width: 768px) {
+  .action-sheet-root {
+    align-items: center;
+  }
+  .action-sheet {
+    border-radius: var(--border-radius);
+    border: var(--border-w, 1px) solid var(--border-color);
+    padding-bottom: var(--padding-y);
+  }
+  .action-sheet-root:not([data-state="open"]) .action-sheet {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+}
+
+/* ───── Handle (drag indicator) ─────────────────────────── */
+.action-sheet-handle {
+  width: var(--handle-width);
+  height: var(--handle-height);
+  margin: var(--space-1, 0.25rem) auto var(--space-2, 0.5rem);
+  background: var(--line-2);
+  border-radius: var(--radius-pill, 999px);
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .action-sheet-handle { display: none; }
+}
+
+/* ───── Head: título + subtítulo ────────────────────────── */
+.action-sheet-head {
+  padding: var(--space-2, 0.5rem) var(--space-3, 0.75rem);
+  text-align: center;
+  border-bottom: var(--border-w, 1px) solid var(--line);
+  margin-bottom: var(--space-1, 0.25rem);
+}
+
+.action-sheet-title {
+  font-size: var(--text-sm, 0.875rem);
+  font-weight: var(--weight-semibold, 600);
+  color: var(--ink-2);
+  margin: 0;
+  letter-spacing: var(--tracking-near, -0.01em);
+}
+
+.action-sheet-sub {
+  font-size: var(--text-xs, 0.75rem);
+  color: var(--ink-3);
+  margin: var(--space-1, 0.25rem) 0 0;
+  line-height: var(--leading-snug, 1.4);
+}
+
+/* ───── Actions list ────────────────────────────────────── */
+.action-sheet-actions {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.action-sheet-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2, 0.5rem);
+  min-height: 3rem;
+  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  font-family: inherit;
+  font-size: var(--text-base, 1rem);
+  font-weight: var(--weight-medium, 500);
+  color: var(--ink);
+  background: transparent;
+  border: 0;
+  border-bottom: var(--border-w, 1px) solid var(--line);
+  cursor: pointer;
+  transition: background var(--dur-fast, 120ms) var(--ease-out, ease-out);
+  text-align: center;
+  width: 100%;
+}
+
+.action-sheet-action:last-child {
+  border-bottom: 0;
+}
+
+.action-sheet-action:hover {
+  background: var(--bg-2);
+}
+
+.action-sheet-action:active {
+  background: var(--bg-3);
+}
+
+.action-sheet-action:focus-visible {
+  outline: var(--border-w-2, 2px) solid var(--brand, var(--color-primary));
+  outline-offset: -2px;
+}
+
+.action-sheet-action:disabled,
+.action-sheet-action[aria-disabled="true"] {
+  color: var(--ink-3);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Acción destructiva (rojo, tipo "Eliminar") */
+.action-sheet-action.destructive {
+  color: var(--color-danger, var(--danger));
+}
+
+/* Acción principal / resaltada */
+.action-sheet-action.primary {
+  color: var(--brand, var(--color-primary));
+  font-weight: var(--weight-semibold, 600);
+}
+
+/* Icono opcional dentro del botón */
+.action-sheet-action .icon {
+  width: var(--icon-sm, 1.125rem);
+  height: var(--icon-sm, 1.125rem);
+  flex-shrink: 0;
+}
+
+/* ───── Cancel button (separado del grupo principal) ───── */
+.action-sheet-cancel-wrap {
+  margin-top: var(--space-2, 0.5rem);
+  padding: 0;
+}
+
+.action-sheet-cancel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  width: 100%;
+  padding: var(--space-3, 0.75rem) var(--space-4, 1rem);
+  font-family: inherit;
+  font-size: var(--text-base, 1rem);
+  font-weight: var(--weight-semibold, 600);
+  color: var(--ink);
+  background: var(--bg-2);
+  border: var(--border-w, 1px) solid var(--line);
+  border-radius: var(--radius-lg, 0.75rem);
+  cursor: pointer;
+  transition: background var(--dur-fast, 120ms) var(--ease-out, ease-out);
+}
+
+.action-sheet-cancel:hover {
+  background: var(--bg-3);
+}
+
+.action-sheet-cancel:active {
+  background: var(--bg-2);
+}
+
+.action-sheet-cancel:focus-visible {
+  outline: var(--border-w-2, 2px) solid var(--brand, var(--color-primary));
+  outline-offset: 2px;
+}
