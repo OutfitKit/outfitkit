@@ -1,0 +1,81 @@
+{#def plan_name, price, price_period="/mo", badge=None, features=None, cta_label="Get started", cta_href=None, cta_color="brand", cta_variant=None, featured=False, attrs=None #}
+
+{# Pricing card · composición Ionic-style sobre `.card`.
+
+   Props:
+   - plan_name      — nombre del plan (e.g. "Pro")           [required]
+   - price          — precio principal (e.g. "$29")          [required]
+   - price_period   — sufijo del precio (default "/mo")
+   - badge          — pill destacado en la esquina (e.g. "Most Popular") | None
+   - features       — lista de strings o dicts {label, included}
+                       · string             → check verde + label
+                       · {label, included}  → check si included, x si no (clase muted)
+   - cta_label      — texto del CTA (default "Get started")
+   - cta_href       — destino del CTA
+   - cta_color      — variant del .btn (default "brand")
+   - cta_variant    — alias deprecado de `cta_color` (backward-compat)
+   - featured       — bool; si True añade `.ring` para resaltar
+   - attrs          — dict extra de atributos HTML
+
+   HTML emitido:
+     <article class="card layout spacious [ring]" style="position:relative;">
+       <span class="badge-top chip brand">…</span>     ← solo si badge (.badge-top en modifiers.css)
+       <header>
+         <h3 class="title lg">{plan_name}</h3>
+       </header>
+       <main>
+         <div class="flex" style="align-items:baseline;gap:var(--space-2);">
+           <span class="value 2xl">{price}</span>
+           <span class="meta">{price_period}</span>
+         </div>
+         <ul class="check-list">…features…</ul>        ← (.check-list en modifiers.css)
+       </main>
+       <footer class="actions col">
+         <a class="btn {cta_color} block" href="{cta_href}">{cta_label}</a>
+       </footer>
+     </article>
+
+   Usage:
+     <PricingCard plan_name="Pro" price="$29"
+                  features={{['10 users', '50GB', 'Priority support']}}
+                  cta_href="/signup/pro" badge="Most Popular" featured={{True}} />
+#}
+
+{% macro pricing_card(plan_name, price, price_period="/mo", badge=None, features=None, cta_label="Get started", cta_href=None, cta_color="brand", cta_variant=None, featured=False, attrs=None) -%}
+{%- if cta_variant and not cta_color %}{% set cta_color = cta_variant %}{% endif -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<article class="card layout spacious{% if featured %} ring{% endif %}" style="position:relative;"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {%- if badge %}
+  <span class="badge-top chip brand">{{ badge }}</span>
+  {%- endif %}
+  <header>
+    <h3 class="title lg">{{ plan_name }}</h3>
+  </header>
+  <main>
+    <div class="flex" style="align-items:baseline;gap:var(--space-2);">
+      <span class="value 2xl">{{ price }}</span>
+      <span class="meta">{{ price_period }}</span>
+    </div>
+    {%- if features %}
+    <ul class="check-list">
+      {%- for f in features %}
+      {%- if f is string %}
+      <li><iconify-icon icon="lucide:check" width="16"></iconify-icon> {{ f }}</li>
+      {%- else %}
+      <li{% if not f.included %} class="muted"{% endif %}>
+        <iconify-icon icon="{{ 'lucide:check' if f.included else 'lucide:x' }}" width="16"></iconify-icon>
+        {{ f.label }}
+      </li>
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </main>
+  <footer class="actions col">
+    <a class="btn {{ cta_color or 'brand' }} block" href="{{ cta_href }}">{{ cta_label or "Get started" }}</a>
+  </footer>
+</article>
+{%- endmacro %}
+
+{% if plan_name is defined %}{{ pricing_card(plan_name, price, price_period=price_period, badge=badge, features=features, cta_label=cta_label, cta_href=cta_href, cta_color=cta_color, cta_variant=cta_variant, featured=featured, attrs=attrs) }}{% endif %}

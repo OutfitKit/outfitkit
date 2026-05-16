@@ -1,0 +1,40 @@
+{#def href=None, text="Back", icon="lucide:arrow-left", use_history=false, variant_position=None, style="clear", size="md", attrs=None #}
+
+{# BackButton · back-navigation anchor compuesto sobre `.btn`.
+
+   Composición: .btn + fill-style + .shift-icon + modifiers posicionales.
+   NO usa .back-btn (clase eliminada).
+
+   Usage (JinjaX tag style):
+     <BackButton />
+     <BackButton href="/dashboard" text="Dashboard" />
+     <BackButton use_history="true" variant_position="floating" />
+     <BackButton variant_position="local" style="subtle" />
+     <BackButton variant_position="pill" style="outline" size="sm" />
+
+   Props:
+   - `href`             — URL destino. Si None y use_history=true, usa history.back().
+   - `text`             — texto visible (default "Back"). Pasar "" o false para ocultar.
+   - `icon`             — nombre iconify (default "lucide:arrow-left").
+   - `use_history`      — si true y no hay href, click usa history.back() via javascript:.
+   - `variant_position` — "floating" | "local" | "pill" o None (inline).
+   - `style`            — fill style: "clear" | "subtle" | "outline" (default "clear").
+   - `size`             — "sm" | "md" | "lg" (default "md").
+   - `attrs`            — dict extra de atributos HTML.
+#}
+{% macro back_button(href=None, text="Back", icon="lucide:arrow-left", use_history=false, variant_position=None, style="clear", size="md", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _classes = "btn " ~ (style or 'clear') ~ " shift-icon" -%}
+{%- if size and size != 'md' %}{% set _classes = _classes ~ " " ~ size %}{% endif -%}
+{%- if variant_position == 'pill' %}{% set _classes = _classes ~ " pill" %}{% endif -%}
+{%- if variant_position == 'local' %}{% set _classes = _classes ~ " pill local" %}{% endif -%}
+{%- if variant_position == 'floating' %}{% set _classes = _classes ~ " pill floating" %}{% endif -%}
+{%- set _href = href if href else ("javascript:history.back()" if use_history else "#") -%}
+<a class="{{ _classes }}" href="{{ _href }}"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  <iconify-icon icon="{{ icon or 'lucide:arrow-left' }}" width="16"></iconify-icon>
+  {%- if text != false and text != "" %}<span class="lbl">{{ text or 'Back' }}</span>{% endif %}
+</a>
+{%- endmacro %}
+
+{% if icon is defined %}{{ back_button(href=href, text=text, icon=icon, use_history=use_history, variant_position=variant_position, style=style, size=size, attrs=attrs) }}{% endif %}

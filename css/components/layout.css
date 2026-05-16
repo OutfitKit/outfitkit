@@ -1,0 +1,102 @@
+/* ============================================================
+   OutfitKit · Layout (Ionic-style)
+   Primitivo estructural universal — aplicable a cualquier
+   elemento HTML (section/article/main/div/aside) que necesite
+   estructura flex-column con header/main/footer opcionales.
+
+   Composición esperada:
+     <section class="layout">
+       <header>…</header>      (opcional)
+       <main>…</main>          (requerido)
+       <footer>…</footer>      (opcional)
+     </section>
+
+   Modificadores combinables (definidos en modifiers.css):
+     .sticky      — header/footer pegados al borde del scroll
+     .scrollable  — overflow auto (en <main> = scroll local;
+                    en .layout = scroll de todo el bloque)
+   ============================================================ */
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  gap: var(--gap, 0);
+}
+
+/* Selectores HTML5 nativos — :where() mantiene especificidad 0
+   para que .head/.body/.foot universales o style="" sigan ganando. */
+:where(.layout) > :where(header) {
+  padding: var(--head-pad-y, var(--space-4)) var(--head-pad-x, var(--space-5));
+  display: flex;
+  align-items: var(--head-align, center);
+  justify-content: var(--head-justify, flex-start);
+  gap: var(--head-gap, var(--space-3));
+  flex-shrink: 0;
+}
+
+:where(.layout) > :where(main) {
+  padding: var(--main-pad-y, var(--space-5)) var(--main-pad-x, var(--space-5));
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+:where(.layout) > :where(footer) {
+  padding: var(--foot-pad-y, var(--space-4)) var(--foot-pad-x, var(--space-5));
+  display: flex;
+  align-items: var(--foot-align, center);
+  justify-content: var(--foot-justify, flex-start);
+  gap: var(--foot-gap, var(--space-3));
+  flex-shrink: 0;
+}
+
+/* Cuando un .card adopta .layout, header/footer separados con borde */
+:where(.card.layout) > :where(header) {
+  border-bottom: var(--border-w) solid var(--line);
+}
+:where(.card.layout) > :where(footer) {
+  border-top: var(--border-w) solid var(--line);
+}
+
+/* Modal default: header space-between (título izq + close der), footer flex-end (actions der) */
+:where(.modal.layout) {
+  --head-justify: space-between;
+  --foot-justify: flex-end;
+}
+:where(.modal.layout) > :where(footer.between) {
+  --foot-justify: space-between;
+}
+
+/* Drawer default: header space-between (título izq + close der) */
+:where(.drawer.layout) {
+  --head-justify: space-between;
+}
+
+/* Sticky header/footer dentro de .layout — el padre debe permitir
+   position:sticky (no estar dentro de overflow:hidden o transform). */
+.layout > header.sticky {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--bg, inherit);
+}
+.layout > footer.sticky {
+  position: sticky;
+  top: auto;
+  bottom: 0;
+  z-index: var(--z-sticky);
+  background: var(--bg, inherit);
+}
+
+/* Scrollable — aplicable a <main> (scroll local con header/footer fijos)
+   o al propio .layout (scroll completo, header/footer scrollean). */
+.layout > main.scrollable,
+.layout.scrollable {
+  overflow: auto;
+  min-height: 0;
+}
+.layout.scrollable {
+  overscroll-behavior: contain;
+}

@@ -1,0 +1,26 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Facturas' %}
+{% set active = 'billing' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Facturación', 'href': 'billing-facturas.html'},
+  {'label': 'Facturas', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Facturas',      'href': 'billing-facturas.html',      'icon': 'lucide:credit-card', 'current': true},
+  {'label': 'Suscripciones', 'href': 'billing-suscripciones.html', 'icon': 'lucide:refresh-cw'},
+  {'label': 'Compras',       'href': 'billing-compras.html',       'icon': 'lucide:check-square'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin facturas"
+    desc="Aún no se han emitido facturas. Aparecerán aquí cuando contrates un terminal o módulo."
+    icon="lucide:credit-card" />
+</Panel>
+
+<Tabbar :items="tabs" attrs="{'style': 'margin-top: var(--space-5);'}" />
+{% endblock %}

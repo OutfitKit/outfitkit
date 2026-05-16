@@ -473,22 +473,39 @@
 }
 
 /* ============================================================
-   Cart · línea de pedido
+   Cart · contenedor principal  →  usar como <aside class="cart layout">
+   Estructura flex-column, flex:1, min-height:0 la provee .layout.
+   Aquí solo se fijan los defaults de vars y los separadores visuales.
    ============================================================ */
-.cart {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+
+/* Defaults de layout para el cart */
+.cart.layout {
+  --head-pad-y: var(--space-3-5);
+  --head-pad-x: var(--space-4);
+  --head-justify: space-between;
+  --foot-pad-y: 0;
+  --foot-pad-x: 0;
 }
-/* .cart uses .head / .foot / .content.scroll from universal classes.
-   Legacy BEM kept for gradual migration: */
-.cart-header {
-  padding: var(--space-3-5) var(--space-4);
+
+/* Header: borde inferior separador */
+:where(.cart.layout) > :where(header) {
   border-bottom: var(--border-w) solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
+
+/* Main: sin padding extra (el contenido interno lo gestiona) */
+:where(.cart.layout) > :where(main) {
+  padding: 0;
+}
+
+/* Footer: apila totals + actions en columna, sin padding propio */
+:where(.cart.layout) > :where(footer) {
+  border-top: var(--border-w) solid var(--line);
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+}
+
+/* ── Skin de cabecera (aplica tanto en layout como en legacy BEM) ── */
 .cart-title {
   font-family: var(--font-display);
   font-size: var(--text-base);
@@ -502,7 +519,22 @@
   margin-top: var(--space-0);
 }
 
-/* Use .content.scroll for the cart list area. Legacy BEM: */
+/* ── Legacy BEM — mantener hasta migración completa del HTML ── */
+/* .cart (sin .layout): flex-column autónomo para HTML sin migrar */
+.cart:not(.layout) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* .cart-header → en el nuevo HTML es <header> dentro de .cart.layout */
+.cart-header {
+  padding: var(--space-3-5) var(--space-4);
+  border-bottom: var(--border-w) solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* .cart-list → en el nuevo HTML es <main class="scrollable"> */
 .cart-list {
   flex: 1;
   overflow-y: auto;
@@ -561,11 +593,16 @@
   font-size: var(--text-xs);
 }
 
-/* Totals box */
+/* Totals box — en el nuevo HTML es el primer hijo directo de <footer> en .cart.layout.
+   border-top eliminado: en .layout la <footer> ya lleva border-top.
+   En legacy (sin .layout) el border-top lo gestiona .cart-actions. */
 .cart-totals {
-  border-top: var(--border-w) solid var(--line);
   padding: var(--space-3) var(--space-4);
   background: var(--bg);
+}
+/* Cuando .cart-totals está dentro de .cart:not(.layout), recuperar el borde */
+.cart:not(.layout) .cart-totals {
+  border-top: var(--border-w) solid var(--line);
 }
 .cart-total-row {
   display: flex;
@@ -588,11 +625,18 @@
   border-top: var(--border-w) dashed var(--line);
 }
 
+/* .cart-actions — en el nuevo HTML es el segundo hijo de <footer> en .cart.layout.
+   border-top eliminado: la <footer> ya lleva border-top (separator visual único).
+   display:grid eliminado: la <footer> es flex-column; .cart-actions puede ser div normal.
+   En legacy (sin .layout), conservar borde separador entre totals y actions. */
 .cart-actions {
   padding: var(--space-3);
-  border-top: var(--border-w) solid var(--line);
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-2);
+}
+.cart:not(.layout) .cart-actions {
+  border-top: var(--border-w) solid var(--line);
 }
 .cart-cta {
   height: var(--height, 4rem);
@@ -1025,3 +1069,5 @@
   border-color: var(--line-3);
   color: var(--ink);
 }
+
+/* (Cart · soporte .layout movido al bloque principal .cart — ver arriba) */

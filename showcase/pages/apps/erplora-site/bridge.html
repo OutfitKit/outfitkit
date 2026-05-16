@@ -1,0 +1,124 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}ERPlora Bridge{% endblock %}
+{% block page_title %}ERPlora Bridge{% endblock %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  eyebrow_icon="lucide:monitor"
+  title="ERPlora Bridge"
+  subtitle="Connect your POS terminal with receipt printers, cash drawers, and barcode scanners. Runs locally on Windows, macOS, Linux, and Android."
+  back_href="index.html"
+  attrs="{'id': 'top'}" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="grid-3 center-wide" style="margin-bottom:var(--space-9)">
+      <div class="card">
+        <span class="chip info" style="margin-bottom:8px">Most common</span>
+        <div style="text-align:center">
+          <div class="icon-box info" style="width:64px;height:64px;margin:0 auto var(--space-4)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+          <h3 style="font:var(--weight-semibold,600) var(--text-lg)/1 var(--font-display);margin:0 0 var(--space-2);color:var(--ink)">Windows</h3>
+          <p style="font-size:var(--text-sm);color:var(--ink-3);margin:0 0 var(--space-5)">Windows 10 / 11</p>
+          <Button label="Download .exe" href="#" variant="brand" icon="lucide:download" block />
+        </div>
+      </div>
+      <div class="card">
+        <div style="text-align:center">
+          <div class="icon-box warn" style="width:64px;height:64px;margin:0 auto var(--space-4)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+          <h3 style="font:var(--weight-semibold,600) var(--text-lg)/1 var(--font-display);margin:0 0 var(--space-2);color:var(--ink)">Linux</h3>
+          <p style="font-size:var(--text-sm);color:var(--ink-3);margin:0 0 var(--space-5)">Ubuntu 20.04+, Debian 11+, Fedora…</p>
+          <Button label="Download Binary" href="#" variant="brand" icon="lucide:download" block />
+        </div>
+      </div>
+      <div class="card">
+        <div style="text-align:center">
+          <div class="icon-box success" style="width:64px;height:64px;margin:0 auto var(--space-4)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <h3 style="font:var(--weight-semibold,600) var(--text-lg)/1 var(--font-display);margin:0 0 var(--space-2);color:var(--ink)">Android</h3>
+          <p style="font-size:var(--text-sm);color:var(--ink-3);margin:0 0 var(--space-5)">Android 8.0+</p>
+          <Button label="Download .apk" href="#" variant="brand" icon="lucide:download" block />
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-6">
+      <Button label="Download for macOS (.dmg)" href="#" variant="outline" icon="lucide:download" />
+    </div>
+
+    <div class="card center-wide mt-12">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:clamp(24px,3vw,32px);text-align:center;margin:0 0 var(--space-6);color:var(--ink)">System Requirements</h2>
+      <div class="grid-4">
+        <div style="text-align:center">
+          <div class="icon-box info" style="margin:0 auto var(--space-2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
+          <h4 style="font:var(--weight-semibold,600) var(--text-sm)/1.2 var(--font-display);color:var(--ink);margin:0 0 4px">Windows</h4>
+          <p style="font-size:var(--text-xs);color:var(--ink-3);margin:0">Windows 10 / 11 (64-bit)</p>
+        </div>
+        <div style="text-align:center">
+          <div class="icon-box warn" style="margin:0 auto var(--space-2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></div>
+          <h4 style="font:var(--weight-semibold,600) var(--text-sm)/1.2 var(--font-display);color:var(--ink);margin:0 0 4px">Linux</h4>
+          <p style="font-size:var(--text-xs);color:var(--ink-3);margin:0">Ubuntu 20.04+, Debian 11+</p>
+        </div>
+        <div style="text-align:center">
+          <div class="icon-box" style="background:var(--bg-3);color:var(--ink-2);margin:0 auto var(--space-2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/></svg></div>
+          <h4 style="font:var(--weight-semibold,600) var(--text-sm)/1.2 var(--font-display);color:var(--ink);margin:0 0 4px">macOS</h4>
+          <p style="font-size:var(--text-xs);color:var(--ink-3);margin:0">macOS 12 Monterey+</p>
+        </div>
+        <div style="text-align:center">
+          <div class="icon-box success" style="margin:0 auto var(--space-2)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/></svg></div>
+          <h4 style="font:var(--weight-semibold,600) var(--text-sm)/1.2 var(--font-display);color:var(--ink);margin:0 0 4px">Android</h4>
+          <p style="font-size:var(--text-xs);color:var(--ink-3);margin:0">Android 8.0+</p>
+        </div>
+      </div>
+      <p style="text-align:center;font-size:var(--text-xs);color:var(--ink-3);margin-top:var(--space-4)">USB port or network connection required for printer/drawer. ~50 MB disk space.</p>
+    </div>
+
+    <div class="grid-4 center-wide mt-12">
+      <FeatureCard
+        title="Receipt Printing"
+        subtitle="ESC/POS thermal printers via USB, network, or Bluetooth."
+        icon="lucide:printer" />
+      <FeatureCard
+        title="Cash Drawer"
+        subtitle="Open the cash drawer directly from the POS interface."
+        icon="lucide:credit-card" />
+      <FeatureCard
+        title="Barcode Scanner"
+        subtitle="Scan products and quickly add them to the sale."
+        icon="lucide:scan-barcode" />
+      <FeatureCard
+        title="WebSocket"
+        subtitle="Real-time connection between the browser and your hardware."
+        icon="lucide:wifi" />
+    </div>
+
+    <div class="card center-wide mt-12">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:clamp(24px,3vw,32px);text-align:center;margin:0 0 var(--space-7);color:var(--ink)">How does it work?</h2>
+      <div class="grid-3" style="text-align:center">
+
+          <div>
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:inline-flex;align-items:center;justify-content:center;font:var(--weight-semibold,600) var(--text-xl)/1 var(--font-display);margin-bottom:var(--space-3)">1</div>
+            <h4 style="font:var(--weight-semibold,600) var(--text-md)/1.2 var(--font-display);color:var(--ink);margin:0 0 8px">Download &amp; Install</h4>
+            <p style="font-size:var(--text-sm);color:var(--ink-3);margin:0">Download ERPlora Bridge for your platform and run it.</p>
+          </div>
+          <div>
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:inline-flex;align-items:center;justify-content:center;font:var(--weight-semibold,600) var(--text-xl)/1 var(--font-display);margin-bottom:var(--space-3)">2</div>
+            <h4 style="font:var(--weight-semibold,600) var(--text-md)/1.2 var(--font-display);color:var(--ink);margin:0 0 8px">Connect Hardware</h4>
+            <p style="font-size:var(--text-sm);color:var(--ink-3);margin:0">Plug in your printer, cash drawer, or barcode scanner.</p>
+          </div>
+          <div>
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--brand-soft);color:var(--brand);display:inline-flex;align-items:center;justify-content:center;font:var(--weight-semibold,600) var(--text-xl)/1 var(--font-display);margin-bottom:var(--space-3)">3</div>
+            <h4 style="font:var(--weight-semibold,600) var(--text-md)/1.2 var(--font-display);color:var(--ink);margin:0 0 8px">Ready to Go</h4>
+            <p style="font-size:var(--text-sm);color:var(--ink-3);margin:0">ERPlora Hub detects the Bridge automatically. Start printing and scanning.</p>
+          </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12" style="margin-top:var(--space-9)">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:clamp(24px,3vw,32px);margin:0 0 var(--space-3);color:var(--ink)">Ready to connect your hardware?</h2>
+      <p style="color:var(--ink-3);max-width:60ch;margin:0 auto var(--space-5)">Download ERPlora Bridge for free and start using your POS peripherals in seconds.</p>
+      <Button label="Download Now" href="#top" variant="brand" size="lg" icon="lucide:download" />
+    </div>
+  </div>
+</section></main>
+{% endblock %}

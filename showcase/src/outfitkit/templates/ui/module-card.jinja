@@ -1,0 +1,57 @@
+{#def title="", subtitle="", icon=None, icon_kind="brand", meta=None, value=None, value_kind="leaf", href=None, attrs=None #}
+
+{# Module card · composición sobre `.card .layout`.
+
+   API (estable — no romper):
+   - title       — texto principal (h3)
+   - subtitle    — párrafo secundario (opcional)
+   - icon        — nombre iconify (e.g. 'lucide:box') o None
+   - icon_kind   — 'brand' (default) | 'success' | 'warn' | 'danger' | 'info' | 'neutral'
+   - meta        — texto pequeño bajo el título (e.g. "v1.2.3", "Free")
+   - value       — texto al pie, ej. "€29/mo" (opcional)
+   - value_kind  — color semántico del value: 'leaf' (default) | 'brand' | 'warn' | 'danger' | 'info'
+   - href        — si presente: tag = <a> y se añade .interactive; si no: <article>
+   - attrs       — dict extra de atributos HTML
+
+   HTML emitido (composición, no clase propia):
+     <a|article class="card layout [interactive]">
+       <header>
+         <span class="icon-box {{icon_kind}}">…</span>
+         <div class="heading">
+           <h3 class="title">…</h3>
+           <span class="meta mono">…</span>     ← si meta
+         </div>
+       </header>
+       <main><p class="sub muted">…</p></main>  ← si subtitle
+       <footer><span class="value {{value_kind}}">…</span></footer>  ← si value
+     </a|article>
+#}
+
+{% macro module_card(title="", subtitle="", icon=None, icon_kind="brand", meta=None, value=None, value_kind="leaf", href=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _tag = "a" if href else "article" -%}
+{%- set _interactive = " interactive" if href else "" -%}
+<{{ _tag }} class="card layout{{ _interactive }}"
+  {%- if href %} href="{{ href }}"{% endif %}
+  {%- for key, val in _attrs.items() %} {{ key }}="{{ val }}"{% endfor %}>
+  <header>
+    {%- if icon %}<span class="icon-box {{ icon_kind or 'brand' }}" aria-hidden="true"><iconify-icon icon="{{ icon }}"></iconify-icon></span>{% endif %}
+    <div class="heading">
+      <h3 class="title">{{ title }}</h3>
+      {%- if meta %}<span class="meta mono">{{ meta }}</span>{% endif %}
+    </div>
+  </header>
+  {%- if subtitle %}
+  <main>
+    <p class="sub muted">{{ subtitle }}</p>
+  </main>
+  {%- endif %}
+  {%- if value %}
+  <footer>
+    <span class="value {{ value_kind or 'leaf' }}">{{ value }}</span>
+  </footer>
+  {%- endif %}
+</{{ _tag }}>
+{%- endmacro %}
+
+{% if title is defined %}{{ module_card(title=title, subtitle=subtitle, icon=icon, icon_kind=icon_kind, meta=meta, value=value, value_kind=value_kind, href=href, attrs=attrs) }}{% endif %}

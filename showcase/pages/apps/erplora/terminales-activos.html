@@ -1,0 +1,33 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Terminales Activos' %}
+{% set active = 'terminales' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Terminales', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Activo',   'href': 'terminales-activos.html',   'icon': 'lucide:check', 'current': true},
+  {'label': 'Inactivo', 'href': 'terminales-inactivos.html', 'icon': 'lucide:pause'},
+  {'label': 'Crear',    'href': 'terminales-crear.html',     'icon': 'lucide:plus'},
+  {'label': 'Planes',   'href': 'terminales-planes.html',    'icon': 'lucide:tag'},
+  {'label': 'Dominio',  'href': 'terminales-dominio.html',   'icon': 'lucide:globe'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin Terminales Activos"
+    desc="Crea tu primer Terminal Cloud para empezar a gestionar tu punto de venta. Cada Terminal es una instancia aislada con su propia base de datos y configuración."
+    icon="lucide:layout-dashboard">
+    <Button label="Crear Terminal" href="terminales-crear.html" variant="brand" icon="lucide:plus" />
+  </Empty>
+</Panel>
+
+<Tabbar :items="tabs" attrs="{'style': 'margin-top: var(--space-5);'}" />
+{% endblock %}
+
+{% block topbar_actions %}
+<Button label="Crear Terminal" href="terminales-crear.html" variant="brand" icon="lucide:plus" />
+{% endblock %}

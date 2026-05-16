@@ -1,0 +1,52 @@
+{#def title, subtitle=None, sub=None, actions=None, attrs=None #}
+
+{# Page header · h1 + subtitle + actions slot.
+
+   Estructura (composición Ionic-style):
+     <header class="layout spacious">
+       <div class="heading">
+         <h1 class="title 2xl">{{title}}</h1>
+         <p class="sub muted">{{subtitle}}</p>
+       </div>
+       <div class="actions">{ slot caller content }</div>
+     </header>
+
+   Usage:
+     <PageHeader title="Compras" subtitle="Hardware y módulos." />
+
+     <PageHeader title="Vista General" subtitle="Resumen…">
+       <Button label="Crear" href="/x" variant="brand" icon="lucide:plus" />
+     </PageHeader>
+
+   Props:
+   - `title`    — heading principal (required).
+   - `subtitle` — texto debajo del h1 (opcional).
+   - `sub`      — alias deprecado de `subtitle` (backward-compat).
+   - `actions`  — HTML pre-renderizado para el cluster de acciones (opcional).
+   - Slot content → `.actions` cluster a la derecha (tiene prioridad sobre `actions`).
+#}
+{% macro page_header(title, subtitle=None, sub=None, actions=None, attrs=None) -%}
+{%- if sub and not subtitle %}{% set subtitle = sub %}{% endif -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<header class="layout spacious"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <div class="heading">
+    <h1 class="title 2xl">{{ title }}</h1>
+    {%- if subtitle %}<p class="sub muted">{{ subtitle }}</p>{% endif %}
+  </div>
+  {%- if actions or caller is defined %}
+  <div class="actions">
+    {%- if caller is defined %}{{ caller() }}{%- elif actions %}{{ actions }}{% endif %}
+  </div>
+  {%- endif %}
+</header>
+{%- endmacro %}
+
+{% if title is defined %}
+  {%- if sub and not subtitle %}{% set subtitle = sub %}{% endif %}
+  {% if caller is defined %}
+    {% call page_header(title=title, subtitle=subtitle, sub=sub, actions=actions, attrs=attrs) %}{{ caller() }}{% endcall %}
+  {% else %}
+    {{ page_header(title=title, subtitle=subtitle, sub=sub, actions=actions, attrs=attrs) }}
+  {% endif %}
+{% endif %}

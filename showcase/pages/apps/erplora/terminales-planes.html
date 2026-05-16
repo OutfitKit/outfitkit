@@ -1,0 +1,70 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Planes de Terminal' %}
+{% set active = 'terminales' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Terminales', 'href': 'terminales-activos.html'},
+  {'label': 'Planes', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Activo',   'href': 'terminales-activos.html',   'icon': 'lucide:check'},
+  {'label': 'Inactivo', 'href': 'terminales-inactivos.html', 'icon': 'lucide:pause'},
+  {'label': 'Crear',    'href': 'terminales-crear.html',     'icon': 'lucide:plus'},
+  {'label': 'Planes',   'href': 'terminales-planes.html',    'icon': 'lucide:tag', 'current': true},
+  {'label': 'Dominio',  'href': 'terminales-dominio.html',   'icon': 'lucide:globe'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<div class="grid-3">
+  <div class="panel">
+    <div class="body">
+      <h3 style="margin: 0 0 4px; font: 600 var(--text-lg)/1.2 var(--font-display);">Starter</h3>
+      <p style="margin: 0 0 var(--space-3); font-size: var(--text-sm); color: var(--ink-3);">Para empezar</p>
+      <div style="font: 600 32px/1 var(--font-display); margin-bottom: var(--space-3);">29.99 €<span style="font: 500 13px/1 var(--font-sans); color: var(--ink-3); margin-left: 4px;">/mes</span></div>
+      <ul style="list-style: none; padding: 0; margin: 0 0 var(--space-4); font-size: var(--text-sm); color: var(--ink-2); display: flex; flex-direction: column; gap: 6px;">
+        <li>✓ 0.25 vCPU · 512 MB</li>
+        <li>✓ Usuarios ilimitados</li>
+        <li>✓ Todos los módulos</li>
+        <li>✓ Backups diarios (7d)</li>
+      </ul>
+      <Button label="Elegir Starter" href="terminales-crear.html" variant="brand" style="width: 100%; justify-content: center;" />
+    </div>
+  </div>
+
+  <div class="panel" style="border-color: var(--brand); box-shadow: 0 0 0 2px color-mix(in oklch, var(--brand) 25%, transparent);">
+    <div class="body">
+      <span class="chip success sm" style="margin-bottom: var(--space-2);">Más popular</span>
+      <h3 style="margin: 0 0 4px; font: 600 var(--text-lg)/1.2 var(--font-display);">Standard</h3>
+      <p style="margin: 0 0 var(--space-3); font-size: var(--text-sm); color: var(--ink-3);">Para crecer</p>
+      <div style="font: 600 32px/1 var(--font-display); margin-bottom: var(--space-3);">54.99 €<span style="font: 500 13px/1 var(--font-sans); color: var(--ink-3); margin-left: 4px;">/mes</span></div>
+      <ul style="list-style: none; padding: 0; margin: 0 0 var(--space-4); font-size: var(--text-sm); color: var(--ink-2); display: flex; flex-direction: column; gap: 6px;">
+        <li>✓ 0.5 vCPU · 1 GB</li>
+        <li>✓ 5 GB DB</li>
+        <li>✓ Dominio propio</li>
+        <li>✓ Soporte 24h</li>
+      </ul>
+      <Button label="Elegir Standard" href="terminales-crear.html" variant="brand" style="width: 100%; justify-content: center;" />
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="body">
+      <h3 style="margin: 0 0 4px; font: 600 var(--text-lg)/1.2 var(--font-display);">Pro</h3>
+      <p style="margin: 0 0 var(--space-3); font-size: var(--text-sm); color: var(--ink-3);">Para alto volumen</p>
+      <div style="font: 600 32px/1 var(--font-display); margin-bottom: var(--space-3);">109.99 €<span style="font: 500 13px/1 var(--font-sans); color: var(--ink-3); margin-left: 4px;">/mes</span></div>
+      <ul style="list-style: none; padding: 0; margin: 0 0 var(--space-4); font-size: var(--text-sm); color: var(--ink-2); display: flex; flex-direction: column; gap: 6px;">
+        <li>✓ 1 vCPU · 2 GB</li>
+        <li>✓ 20 GB DB</li>
+        <li>✓ SLA 99.99%</li>
+        <li>✓ Soporte 4h</li>
+      </ul>
+      <Button label="Elegir Pro" href="terminales-crear.html" variant="outline" style="width: 100%; justify-content: center;" />
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}

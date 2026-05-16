@@ -1,0 +1,23 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Dispositivos' %}
+{% set active = 'configuracion' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Configuración', 'href': 'configuracion.html'},
+  {'label': 'Dispositivos', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Configuración', 'href': 'configuracion.html',             'icon': 'lucide:settings'},
+  {'label': 'Dispositivos',  'href': 'configuracion-dispositivos.html','icon': 'lucide:smartphone', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin dispositivos guardados" desc='Cuando marques "Recordar este dispositivo" al iniciar sesión, aparecerá aquí.' icon="lucide:smartphone" />
+</Panel>
+
+<Tabbar :items="tabs" attrs="{'style': 'margin-top: var(--space-5);'}" />
+{% endblock %}

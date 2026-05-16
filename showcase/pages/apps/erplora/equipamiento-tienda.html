@@ -1,0 +1,86 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Tienda' %}
+{% set active = 'equipamiento' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Equipamiento', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Tienda',  'href': 'equipamiento-tienda.html',  'icon': 'lucide:store', 'current': true},
+  {'label': 'Carrito', 'href': 'equipamiento-carrito.html', 'icon': 'lucide:shopping-cart'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<div class="grid-3">
+  <div class="panel">
+    <div class="body">
+      <div><span class="chip success sm">Router</span></div>
+      <h3 class="title">ERPlora Router</h3>
+      <p>El cerebro de tu red POS. Conecta tu tablet, móvil o PC y todo funciona. Zero configuración.</p>
+      <div class="pill-row">
+        <span class="pill">WiFi AC 1200</span>
+        <span class="pill">Dual-band</span>
+        <span class="pill">2× Ethernet</span>
+        <span class="pill">Plug &amp; Play</span>
+      </div>
+      <div class="price">
+        <span class="price-amount">59,00 €</span>
+        <span class="price-meta">+ IVA</span>
+      </div>
+    </div>
+    <div class="foot">
+      <Button label="Ver detalles" href="equipment-erplora-router.html" variant="outline" />
+      <Button label="Añadir al carrito" variant="brand" icon="lucide:shopping-cart" />
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="body">
+      <div><span class="chip success sm">Bridge</span></div>
+      <h3 class="title">Bridge Adapter</h3>
+      <p>Un adaptador por impresora. Cualquier impresora térmica con Ethernet funciona — sin drivers, sin apps.</p>
+      <div class="pill-row">
+        <span class="pill">WiFi N 300</span>
+        <span class="pill">Ethernet</span>
+        <span class="pill">Pocket size</span>
+        <span class="pill">Auto-detección</span>
+      </div>
+      <div class="price">
+        <span class="price-amount">69,00 €</span>
+        <span class="price-meta">+ IVA</span>
+      </div>
+    </div>
+    <div class="foot">
+      <Button label="Ver detalles" href="equipment-bridge-adapter.html" variant="outline" />
+      <Button label="Añadir al carrito" variant="brand" icon="lucide:shopping-cart" />
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="body">
+      <div><span class="chip success sm">Kit</span></div>
+      <h3 class="title">Starter Kit</h3>
+      <p>1 Router + 1 Bridge Adapter. Tu POS imprime en menos de 5 minutos.</p>
+      <div class="pill-row">
+        <span class="pill">1× Router</span>
+        <span class="pill">1× Bridge</span>
+        <span class="pill">Cables</span>
+        <span class="pill">Listo en 5 min</span>
+      </div>
+      <div class="price">
+        <span class="price-amount">119,00 €</span>
+        <span class="price-meta">+ IVA</span>
+      </div>
+    </div>
+    <div class="foot">
+      <Button label="Ver detalles" href="equipment-starter-kit.html" variant="outline" />
+      <Button label="Añadir al carrito" variant="brand" icon="lucide:shopping-cart" />
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}

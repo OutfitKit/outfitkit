@@ -1,9 +1,41 @@
-{#def label, value, unit=None, delta=None, delta_dir=None, variant=None, sparkline=None, attrs=None #}
+{#def label, value, unit=None, delta=None, delta_dir=None, variant=None, sparkline=None, icon=None, icon_variant=None, href=None, attrs=None #}
 
-{% macro kpi(label, value, unit=None, delta=None, delta_dir=None, variant=None, sparkline=None, attrs=None) -%}
+{# KPI · métrica con label + value, opcionalmente delta y sparkline.
+
+   Variantes:
+   - Por defecto: layout vertical (label arriba, value grande abajo).
+   - `icon='lucide:icon-name'` (o cualquier nombre iconify): variante
+     horizontal con caja de icono leading (`.kpi.with-icon` + `.ic-box`).
+   - `icon_variant`: tinte de la caja: success / warn / info / danger.
+   - `href`: convierte el KPI en un anchor clickable.
+
+   Usage:
+     <Kpi label="Sales" value="12.4k" />
+     <Kpi label="Active" value="128" delta="+12" delta_dir="up" />
+     <Kpi label="Terminales" value="0" icon="lucide:layout-dashboard"
+          icon_variant="info" href="/terminals" />
+#}
+{% macro kpi(label, value, unit=None, delta=None, delta_dir=None, variant=None, sparkline=None, icon=None, icon_variant=None, href=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="kpi{% if variant %} {{ variant }}{% endif %}"
+{%- set _tag = 'a' if href else 'div' -%}
+{%- set _classes = 'kpi' ~ ((' ' ~ variant) if variant else '') ~ (' with-icon' if icon else '') -%}
+<{{ _tag }} class="{{ _classes }}"
+  {%- if href %} href="{{ href }}"{% endif %}
   {%- for key, value_attr in _attrs.items() %} {{ key }}="{{ value_attr }}"{% endfor %}>
+  {%- if icon %}
+  <span class="ic-box{% if icon_variant %} {{ icon_variant }}{% endif %}">
+    <iconify-icon icon="{{ icon }}" width="18" height="18"></iconify-icon>
+  </span>
+  <div class="info">
+    <p class="label">{{ label }}</p>
+    <p class="value">{{ value }}{% if unit %}<span class="unit">{{ unit }}</span>{% endif %}</p>
+    {%- if delta %}
+    <span class="delta{% if delta_dir %} {{ delta_dir }}{% endif %}">
+      {%- if delta_dir == 'up' -%}↑{%- elif delta_dir == 'down' -%}↓{%- endif %} {{ delta }}
+    </span>
+    {%- endif %}
+  </div>
+  {%- else %}
   <div class="label">{{ label }}</div>
   <div class="value">{{ value }}{% if unit %}<span class="unit">{{ unit }}</span>{% endif %}</div>
   {%- if delta %}
@@ -17,7 +49,8 @@
   </div>
   {%- endif %}
   {%- if sparkline %}{{ sparkline|safe }}{% endif %}
-</div>
+  {%- endif %}
+</{{ _tag }}>
 {%- endmacro %}
 
-{% if label is defined %}{{ kpi(label, value, unit=unit, delta=delta, delta_dir=delta_dir, variant=variant, sparkline=sparkline, attrs=attrs) }}{% endif %}
+{% if label is defined %}{{ kpi(label, value, unit=unit, delta=delta, delta_dir=delta_dir, variant=variant, sparkline=sparkline, icon=icon, icon_variant=icon_variant, href=href, attrs=attrs) }}{% endif %}

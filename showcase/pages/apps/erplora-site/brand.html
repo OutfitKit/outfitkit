@@ -1,0 +1,966 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+{% block title %}ERPlora · Brand Guidelines{% endblock %}
+{% block page_title %}ERPlora · Brand Guidelines{% endblock %}
+
+{% block landing_content %}
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Brand page layout · consume tokens de OutfitKit
+   Sin colores hard-coded, sin medidas literales. Todo via tokens.
+   ───────────────────────────────────────────────────────────── */
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-sans);
+  line-height:var(--leading-normal);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:var(--space-10);
+}
+
+/* ── nav ───────────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:var(--bg-1);
+  backdrop-filter:blur(10px);
+  border-bottom:var(--border-w) solid var(--line);
+  padding:var(--space-3-5) var(--space-7);
+  display:flex;align-items:center;gap:var(--space-7);
+}
+.nav .brand{
+  display:flex;align-items:center;gap:var(--space-3);
+  font-family:var(--font-display);
+  font-weight:var(--weight-semibold);
+  font-size:var(--text-lg);
+  letter-spacing:var(--tracking-tight);
+}
+.nav ul{
+  display:flex;gap:var(--space-6);list-style:none;padding:0;margin:0 0 0 auto;
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.08em;text-transform:uppercase;
+}
+.nav ul a{color:var(--ink-3);text-decoration:none;padding:6px 0;border-bottom:var(--border-w) solid transparent;transition:color var(--dur-fast),border-color var(--dur-fast)}
+.nav ul a:hover{color:var(--ink);border-bottom-color:var(--ink)}
+.nav .version{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);
+  color:var(--ink-3);
+  padding:var(--space-1) var(--space-2);
+  border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-sm);
+}
+
+/* ── cover ─────────────────────────────────────────── */
+.cover{
+  padding:var(--space-10) var(--space-7) var(--space-8);
+  max-width:1440px;margin:0 auto;
+  border-bottom:var(--border-w) solid var(--line);
+  display:grid;grid-template-columns:1fr 1fr;gap:var(--space-10);align-items:center;
+}
+.kicker{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:var(--space-5);
+}
+.cover h1{
+  font-family:var(--font-display);
+  font-weight:var(--weight-semibold);
+  font-size:var(--text-5xl);
+  line-height:1.05;
+  letter-spacing:var(--tracking-display);
+  margin:0 0 var(--space-5);
+}
+.cover h1 em{font-style:normal;color:var(--ink-3);font-weight:var(--weight-medium)}
+.cover p{
+  font-size:var(--text-lg);
+  line-height:var(--leading-normal);
+  color:var(--ink-2);
+  max-width:46ch;
+  margin:0 0 var(--space-5);
+}
+.cover .meta{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3) var(--space-6);
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  color:var(--ink-3);
+  margin-top:var(--space-7);
+  padding-top:var(--space-5);
+  border-top:var(--border-w) solid var(--line);
+}
+.cover .meta strong{color:var(--ink);font-weight:var(--weight-medium);display:block;margin-bottom:2px}
+.cover .hero-logo{display:flex;align-items:center;justify-content:center;padding:var(--space-7)}
+
+/* ── sections ──────────────────────────────────────── */
+section{
+  max-width:1440px;margin:0 auto;
+  padding:var(--space-9) var(--space-7);
+  border-bottom:var(--border-w) solid var(--line);
+}
+section:last-of-type{border-bottom:0}
+.section-head{
+  display:grid;grid-template-columns:auto 1fr;gap:var(--space-7);
+  margin-bottom:var(--space-8);align-items:end;
+}
+.section-head .num{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.2em;color:var(--ink-3);
+  padding-top:var(--space-1);
+}
+.section-head h2{
+  font-family:var(--font-display);
+  font-weight:var(--weight-semibold);
+  font-size:var(--text-4xl);
+  line-height:1.1;
+  letter-spacing:var(--tracking-display);
+  margin:0;max-width:20ch;
+}
+.section-head p{
+  font-size:var(--text-base);
+  line-height:var(--leading-normal);
+  color:var(--ink-2);
+  margin:var(--space-3) 0 0;max-width:54ch;
+  grid-column:2;
+}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+  margin:0 0 var(--space-4);
+}
+
+/* ── logo cards ────────────────────────────────────── */
+.logo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+.logo-card{
+  background:var(--bg-2);
+  border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-md);
+  padding:var(--space-8) var(--space-7);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-5);
+  min-height:260px;position:relative;
+}
+.logo-card.dark{background:#0E1116;color:#F5F3EE}
+.logo-card.dark .erp-wordmark{color:#F5F3EE}
+.logo-card.dark .erp-logo{--erp-mark:#F5F3EE}
+.logo-card .label{
+  position:absolute;left:var(--space-3);bottom:var(--space-2);
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+}
+.logo-card.dark .label{color:rgba(245,243,238,.45)}
+
+.scale-strip{
+  display:flex;align-items:flex-end;gap:var(--space-7);
+  padding:var(--space-7) var(--space-6);
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-md);
+  margin-top:var(--space-5);
+}
+.scale-strip > div{display:flex;flex-direction:column;align-items:center;gap:var(--space-2)}
+.scale-strip span{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);
+  color:var(--ink-3);
+}
+
+/* ── color swatches ────────────────────────────────── */
+.color-group{margin-bottom:var(--space-8)}
+.color-group h3{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+  margin:0 0 var(--space-4);
+  padding-bottom:var(--space-2);
+  border-bottom:var(--border-w) solid var(--line);
+}
+.swatches{display:grid;grid-template-columns:repeat(6,1fr);gap:var(--space-4)}
+.swatches.cols-4{grid-template-columns:repeat(4,1fr)}
+.swatch{
+  border-radius:var(--radius-md);overflow:hidden;
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+  display:flex;flex-direction:column;
+}
+.swatch .chip{
+  height:120px;
+  display:flex;align-items:flex-end;
+  padding:var(--space-3-5);
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-sm);
+}
+.swatch .info{
+  padding:var(--space-3) var(--space-3-5);
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);
+  line-height:var(--leading-base);
+  color:var(--ink-3);
+}
+.swatch .info strong{
+  display:block;
+  color:var(--ink);font-weight:var(--weight-medium);
+  margin-bottom:2px;
+  font-family:var(--font-display);
+  font-size:var(--text-md);
+  letter-spacing:var(--tracking-tight);
+}
+.semantic-pair{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-radius:var(--radius-md);overflow:hidden;
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+}
+.semantic-pair .half{
+  height:120px;padding:var(--space-3-5);
+  display:flex;align-items:flex-end;
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-sm);
+}
+
+/* ── typography ────────────────────────────────────── */
+.font-card{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);margin-bottom:var(--space-8)}
+.font-card .card{
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-md);
+  padding:var(--space-7);
+}
+.font-card .card .label{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);
+  margin-bottom:var(--space-4);
+}
+.font-card .card .preview{
+  font-family:var(--font-display);
+  font-weight:var(--weight-semibold);
+  font-size:80px;line-height:1;letter-spacing:-0.03em;color:var(--ink);
+}
+.font-card .card.mono .preview{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:64px;letter-spacing:-0.02em;
+}
+.font-card .card .meta{
+  margin-top:var(--space-5);
+  display:flex;justify-content:space-between;
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  color:var(--ink-3);
+}
+.font-card .card .glyphs{
+  margin-top:var(--space-4);
+  font-family:var(--font-mono);
+  font-weight:var(--weight-regular);
+  font-size:var(--text-lg);
+  line-height:var(--leading-normal);
+  color:var(--ink);letter-spacing:.04em;
+}
+
+.type-row{
+  display:grid;grid-template-columns:200px 1fr 200px;gap:var(--space-7);align-items:baseline;
+  padding:var(--space-5) 0;border-top:var(--border-w) solid var(--line);
+}
+.type-row:first-child{border-top:0}
+.type-row .name{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);
+}
+.type-row .specs{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  color:var(--ink-3);text-align:right;line-height:var(--leading-normal);
+}
+
+.t-display-xl{font:var(--weight-semibold) var(--text-5xl)/1.05 var(--font-display);letter-spacing:var(--tracking-display)}
+.t-display-l{font:var(--weight-semibold) var(--text-4xl)/1.1 var(--font-display);letter-spacing:var(--tracking-display)}
+.t-h1{font:var(--weight-semibold) var(--text-3xl)/1.15 var(--font-display);letter-spacing:var(--tracking-tight)}
+.t-h2{font:var(--weight-semibold) var(--text-2xl)/1.25 var(--font-display);letter-spacing:var(--tracking-tight)}
+.t-h3{font:var(--weight-medium) var(--text-xl)/1.35 var(--font-display);letter-spacing:var(--tracking-tight)}
+.t-body-l{font:var(--weight-regular) var(--text-lg)/1.55 var(--font-sans)}
+.t-body{font:var(--weight-regular) var(--text-base)/1.5 var(--font-sans)}
+.t-small{font:var(--weight-regular) var(--text-sm)/1.45 var(--font-sans);color:var(--ink-3)}
+.t-caption{font:var(--weight-medium) var(--text-xs)/1 var(--font-mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3)}
+.t-mono{font:var(--weight-regular) var(--text-md)/1.5 var(--font-mono)}
+
+/* ── tokens ────────────────────────────────────────── */
+.token-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-4)}
+.token{
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-md);
+  padding:var(--space-6);
+  display:flex;flex-direction:column;gap:var(--space-4);
+  min-height:180px;justify-content:space-between;
+}
+.token .demo{display:flex;align-items:center;justify-content:center;flex:1}
+.token .name{
+  font-family:var(--font-display);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-sm);color:var(--ink);
+}
+.token .name code{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);color:var(--ink-3);
+  display:block;margin-top:2px;
+}
+.space-bar{height:24px;background:var(--brand);border-radius:var(--radius-xs)}
+.radius-demo{width:80px;height:80px;background:var(--ink)}
+.shadow-demo{width:80px;height:80px;background:var(--bg-2);border-radius:var(--radius-md)}
+
+/* ── btn card ──────────────────────────────────────── */
+.btn-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-5)}
+.btn-card{
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-md);
+  padding:var(--space-6);
+  display:flex;flex-direction:column;gap:var(--space-4);
+}
+.btn-card .label{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+}
+.btn-card .stack{display:flex;flex-direction:column;gap:var(--space-2-5);align-items:flex-start}
+
+/* ── forms card ────────────────────────────────────── */
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6)}
+.form-card{
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-md);
+  padding:var(--space-6);
+}
+.form-card h4{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+  margin:0 0 var(--space-4);
+}
+
+/* ── badges ────────────────────────────────────────── */
+.badge-row{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+
+/* ── surfaces ──────────────────────────────────────── */
+.surfaces-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.surface-card{
+  padding:var(--space-6);border-radius:var(--radius-md);min-height:140px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.surface-card .name{
+  font-family:var(--font-display);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-sm);color:var(--ink);
+}
+.surface-card .name code{
+  display:block;
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);color:var(--ink-3);
+  margin-top:2px;
+}
+.surface-card .tag{
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);
+}
+.s-bg{background:var(--bg);border:var(--border-w) solid var(--line)}
+.s-bg-2{background:var(--bg-2);border:var(--border-w) solid var(--line)}
+.s-bg-3{background:var(--bg-3);border:var(--border-w) solid var(--line)}
+.s-bg-4{background:var(--bg-4);border:var(--border-w) solid var(--line)}
+.s-elev{background:var(--bg-2);border:var(--border-w) solid var(--line);box-shadow:var(--shadow-md)}
+.s-tint{background:var(--brand-soft);border:var(--border-w) solid color-mix(in oklch, var(--brand) 30%, transparent)}
+
+/* ── backgrounds ───────────────────────────────────── */
+.bg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+.bg-card{
+  height:200px;border-radius:var(--radius-md);
+  border:var(--border-w) solid var(--line);
+  position:relative;overflow:hidden;
+}
+.bg-card .label{
+  position:absolute;left:var(--space-4);top:var(--space-4);
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-xs);color:var(--ink);
+  background:var(--bg-1);
+  padding:var(--space-1-5) var(--space-2-5);border-radius:var(--radius-sm);
+  backdrop-filter:blur(4px);
+}
+.bg-card.dark .label{background:color-mix(in oklch, #0E1116 70%, transparent);color:#F5F3EE}
+
+.bg-plain{background:var(--bg)}
+.bg-dots{background:var(--bg);background-image:radial-gradient(circle, var(--line) 1px, transparent 1.5px);background-size:14px 14px}
+.bg-lines{background:var(--bg);background-image:linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);background-size:24px 24px}
+.bg-diag{background:var(--bg);background-image:repeating-linear-gradient(135deg, transparent 0 10px, var(--bg-3) 10px 11px)}
+.bg-ink{background:#0E1116}
+.bg-ink-dots{background:#0E1116;background-image:radial-gradient(circle, rgba(245,243,238,.1) 1px, transparent 1.5px);background-size:14px 14px}
+.bg-tint{background:var(--brand-soft)}
+.bg-noise{background:var(--bg);position:relative}
+.bg-noise::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.045 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");opacity:.85;pointer-events:none}
+.bg-grad{background:linear-gradient(135deg, var(--bg) 0%, var(--bg-3) 60%, var(--brand-soft) 100%)}
+
+/* ── icons ─────────────────────────────────────────── */
+.icon-system{display:grid;grid-template-columns:repeat(8,1fr);gap:var(--space-4)}
+.icon-tile{
+  background:var(--bg-2);border:var(--border-w) solid var(--line);
+  border-radius:var(--radius-md);
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  position:relative;padding:var(--space-3-5);
+}
+.icon-tile .lbl{
+  position:absolute;left:var(--space-2);bottom:6px;
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:9px;color:var(--ink-3);letter-spacing:.05em;
+}
+.ic{width:24px;height:24px;color:var(--ink)}
+.ic svg{width:100%;height:100%;stroke:currentColor;stroke-width:1.75;fill:none;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── footer ────────────────────────────────────────── */
+footer{
+  max-width:1440px;margin:var(--space-8) auto 0;
+  padding:var(--space-7);
+  border-top:var(--border-w) solid var(--line);
+  font-family:var(--font-mono);
+  font-weight:var(--weight-medium);
+  font-size:var(--text-2xs);
+  color:var(--ink-3);text-align:center;letter-spacing:.05em;
+}
+
+@media (max-width:1100px){
+  .cover{grid-template-columns:1fr;gap:var(--space-7)}
+  .logo-grid,.surfaces-grid,.bg-grid{grid-template-columns:repeat(2,1fr)}
+  .swatches{grid-template-columns:repeat(3,1fr)}
+  .btn-grid,.token-grid{grid-template-columns:repeat(2,1fr)}
+  .form-grid{grid-template-columns:1fr}
+  .icon-system{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+
+<!-- ═════════════════════ NAV ═════════════════════ -->
+<nav class="nav">
+  <div class="brand">
+    <span class="erp-logo xs">
+      <i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i>
+      <i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i>
+      <i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i>
+    </span>
+    erplora
+  </div>
+  <ul>
+    <li><a href="#logo">Logo</a></li>
+    <li><a href="#colors">Color</a></li>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#tokens">Tokens</a></li>
+    <li><a href="#buttons">Buttons</a></li>
+    <li><a href="#forms">Forms</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+    <li><a href="#surfaces">Surfaces</a></li>
+    <li><a href="#bg">Backgrounds</a></li>
+  </ul>
+  <span class="version">v1.0</span>
+</nav>
+
+<!-- ═════════════════════ COVER ═════════════════════ -->
+<header class="cover">
+  <div>
+    <div class="kicker">erplora · brand guidelines · v1.0 · powered by outfitkit</div>
+    <h1>One ERP. Infinite configurations. <em>The system that makes it visible.</em></h1>
+    <p>Base visual de ERPlora consumida desde OutfitKit. El theme propio aplica
+       tipografía Space Grotesk, paleta paper + azul ERPlora, y el logo
+       como componente CSS reutilizable.</p>
+    <div class="meta">
+      <div><strong>Librería</strong>OutfitKit · CSS-only</div>
+      <div><strong>Theme</strong>erplora (light/dark)</div>
+      <div><strong>Tipografía</strong>Space Grotesk · JetBrains Mono</div>
+      <div><strong>Activación</strong>data-template="erplora"</div>
+    </div>
+  </div>
+  <div class="hero-logo">
+    <span class="erp-lockup xl">
+      <span class="erp-logo">
+        <i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i>
+        <i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i>
+        <i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i>
+      </span>
+    </span>
+  </div>
+</header>
+
+<!-- ═════════════════════ 01 LOGO ═════════════════════ -->
+<section id="logo">
+  <div class="section-head">
+    <span class="num">01</span>
+    <div>
+      <h2>Logo · componente CSS</h2>
+      <p>Definido en <code>outfitkit/css/components/logo.css</code> como clase <code>.erp-logo</code>.
+         9 elementos hijos · tamaños preset (<code>xs</code> → <code>xl</code>) · color heredado del tema activo.</p>
+    </div>
+  </div>
+
+  <div class="logo-grid">
+    <div class="logo-card">
+      <span class="erp-logo lg">
+        <i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i>
+        <i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i>
+        <i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i>
+      </span>
+      <span class="label">isotipo · .erp-logo.lg</span>
+    </div>
+    <div class="logo-card">
+      <span class="erp-lockup lg">
+        <span class="erp-logo">
+          <i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i>
+          <i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i>
+          <i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i>
+        </span>
+        <span class="erp-wordmark">erplora</span>
+      </span>
+      <span class="label">lockup · .erp-lockup.lg</span>
+    </div>
+    <div class="logo-card dark">
+      <span class="erp-logo lg">
+        <i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i>
+        <i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i>
+        <i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i>
+      </span>
+      <span class="label">reverse · sobre tinta</span>
+    </div>
+  </div>
+
+  <div class="scale-strip">
+    <div>
+      <span class="erp-logo lg"><i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i><i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i><i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i></span>
+      <span>xl · 96px</span>
+    </div>
+    <div>
+      <span class="erp-logo md"><i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i><i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i><i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i></span>
+      <span>md · 56px</span>
+    </div>
+    <div>
+      <span class="erp-logo sm"><i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i><i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i><i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i></span>
+      <span>sm · 32px</span>
+    </div>
+    <div>
+      <span class="erp-logo xs"><i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i><i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i><i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i></span>
+      <span>xs · 16px favicon</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 02 COLORS ═════════════════════ -->
+<section id="colors">
+  <div class="section-head">
+    <span class="num">02</span>
+    <div>
+      <h2>Color · tokens del tema</h2>
+      <p>El theme <code>erplora</code> sobreescribe los tokens de OutfitKit. Cualquier componente
+         de la librería hereda esta paleta automáticamente — botones, badges, banners, inputs.</p>
+    </div>
+  </div>
+
+  <div class="color-group">
+    <h3>Brand · base</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:var(--ink);color:var(--bg)">--ink</div><div class="info"><strong>Ink</strong>Texto principal · fondos oscuros</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ink-2);color:var(--bg)">--ink-2</div><div class="info"><strong>Ink-2</strong>Texto énfasis · superficies</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--ink-3);color:var(--bg)">--ink-3</div><div class="info"><strong>Ink-3</strong>Texto muted</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--bg);color:var(--ink);border-bottom:var(--border-w) solid var(--line)">--bg</div><div class="info"><strong>Paper</strong>Canvas principal</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--bg-3);color:var(--ink);border-bottom:var(--border-w) solid var(--line)">--bg-3</div><div class="info"><strong>Surface-2</strong>Hover · inputs</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--line);color:var(--ink);border-bottom:var(--border-w) solid var(--line)">--line</div><div class="info"><strong>Rule</strong>Bordes · separadores</div></div>
+    </div>
+  </div>
+
+  <div class="color-group">
+    <h3>Brand · accent (azul ERPlora)</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:var(--brand);color:var(--brand-fg)">--brand</div><div class="info"><strong>Brand</strong>Hub · CTA primario · enlaces</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--brand-2);color:var(--brand-fg)">--brand-2</div><div class="info"><strong>Brand-2</strong>Hover · pressed</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--brand-3);color:var(--brand-fg)">--brand-3</div><div class="info"><strong>Brand-3</strong>Focus ring</div></div>
+      <div class="swatch"><div class="chip" style="background:var(--brand-soft);color:var(--ink)">--brand-soft</div><div class="info"><strong>Soft</strong>Fondos tintados sutiles</div></div>
+    </div>
+  </div>
+
+  <div class="color-group">
+    <h3>Semantic · success · warn · danger · info</h3>
+    <div class="swatches cols-4">
+      <div class="semantic-pair">
+        <div class="half" style="background:var(--leaf);color:var(--brand-fg)">--leaf</div>
+        <div class="half" style="background:var(--leaf-soft);color:var(--ink)">soft</div>
+      </div>
+      <div class="semantic-pair">
+        <div class="half" style="background:var(--warn);color:var(--ink)">--warn</div>
+        <div class="half" style="background:var(--warn-soft);color:var(--ink)">soft</div>
+      </div>
+      <div class="semantic-pair">
+        <div class="half" style="background:var(--danger);color:var(--brand-fg)">--danger</div>
+        <div class="half" style="background:var(--danger-soft);color:var(--ink)">soft</div>
+      </div>
+      <div class="semantic-pair">
+        <div class="half" style="background:var(--info);color:var(--brand-fg)">--info</div>
+        <div class="half" style="background:var(--info-soft);color:var(--ink)">soft</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 03 TYPOGRAPHY ═════════════════════ -->
+<section id="type">
+  <div class="section-head">
+    <span class="num">03</span>
+    <div>
+      <h2>Typography · escala de OutfitKit</h2>
+      <p>El theme reasigna <code>--font-display</code>, <code>--font-sans</code> y <code>--font-mono</code>.
+         La escala (<code>--text-2xs → --text-5xl</code>) se hereda de los tokens base.</p>
+    </div>
+  </div>
+
+  <div class="font-card">
+    <div class="card">
+      <div class="label">Display & Body</div>
+      <div class="preview">Aa</div>
+      <div class="glyphs">A B C D E F G H 0 1 2 3 4 5</div>
+      <div class="meta"><span>Space Grotesk</span><span>400 · 500 · 600 · 700</span></div>
+    </div>
+    <div class="card mono">
+      <div class="label">Mono & data</div>
+      <div class="preview">€29.99</div>
+      <div class="glyphs">A B C D E F G H 0 1 2 3 4 5</div>
+      <div class="meta"><span>JetBrains Mono</span><span>400 · 500 · 600</span></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="type-row"><span class="name">Display XL</span><div class="t-display-xl">One ERP. Yours.</div><span class="specs">--text-5xl<br>line 1.05</span></div>
+    <div class="type-row"><span class="name">Display L</span><div class="t-display-l">Your business. Your rules.</div><span class="specs">--text-4xl<br>line 1.1</span></div>
+    <div class="type-row"><span class="name">H1</span><div class="t-h1">Module marketplace</div><span class="specs">--text-3xl<br>line 1.15</span></div>
+    <div class="type-row"><span class="name">H2</span><div class="t-h2">Cloud Hub Plans</div><span class="specs">--text-2xl<br>line 1.25</span></div>
+    <div class="type-row"><span class="name">H3</span><div class="t-h3">Lightning Fast</div><span class="specs">--text-xl<br>line 1.35</span></div>
+    <div class="type-row"><span class="name">Body L</span><div class="t-body-l">Process transactions in milliseconds with our optimized infrastructure.</div><span class="specs">--text-lg<br>line 1.55</span></div>
+    <div class="type-row"><span class="name">Body</span><div class="t-body">All plans include unlimited users and every module in the marketplace.</div><span class="specs">--text-base<br>line 1.5</span></div>
+    <div class="type-row"><span class="name">Small</span><div class="t-small">15 days free trial · no credit card required</div><span class="specs">--text-sm<br>line 1.45</span></div>
+    <div class="type-row"><span class="name">Caption</span><div class="t-caption">most popular · 29.99 € / mo</div><span class="specs">--text-xs · mono<br>uppercase · tracked</span></div>
+    <div class="type-row"><span class="name">Mono</span><div class="t-mono">29.99 €/mo · vCPU 0.5 · RAM 1GB · 7d backups</div><span class="specs">--text-md · mono</span></div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 04 TOKENS ═════════════════════ -->
+<section id="tokens">
+  <div class="section-head">
+    <span class="num">04</span>
+    <div>
+      <h2>Tokens · spacing, radii, shadows</h2>
+      <p>Heredados de OutfitKit. El theme propio sólo ajusta radios y sombras donde la marca lo requiere
+         (radios moderados, sombras paper-friendly).</p>
+    </div>
+  </div>
+
+  <h3 class="eyebrow">Spacing scale</h3>
+  <div class="token-grid">
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-1)"></div></div><div class="name">space-1 · 4px<code>--space-1</code></div></div>
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-2)"></div></div><div class="name">space-2 · 8px<code>--space-2</code></div></div>
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-3)"></div></div><div class="name">space-3 · 12px<code>--space-3</code></div></div>
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-4)"></div></div><div class="name">space-4 · 16px<code>--space-4</code></div></div>
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-5)"></div></div><div class="name">space-5 · 20px<code>--space-5</code></div></div>
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-6)"></div></div><div class="name">space-6 · 24px<code>--space-6</code></div></div>
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-7)"></div></div><div class="name">space-7 · 32px<code>--space-7</code></div></div>
+    <div class="token"><div class="demo"><div class="space-bar" style="width:var(--space-8)"></div></div><div class="name">space-8 · 40px<code>--space-8</code></div></div>
+  </div>
+
+  <h3 class="eyebrow" style="margin-top:var(--space-7)">Radii</h3>
+  <div class="token-grid">
+    <div class="token"><div class="demo"><div class="radius-demo" style="border-radius:var(--radius-xs)"></div></div><div class="name">xs · 2px<code>--radius-xs</code></div></div>
+    <div class="token"><div class="demo"><div class="radius-demo" style="border-radius:var(--radius-sm)"></div></div><div class="name">sm · 4px<code>--radius-sm</code></div></div>
+    <div class="token"><div class="demo"><div class="radius-demo" style="border-radius:var(--radius-md)"></div></div><div class="name">md · 6px<code>--radius-md</code></div></div>
+    <div class="token"><div class="demo"><div class="radius-demo" style="border-radius:var(--radius-lg)"></div></div><div class="name">lg · 10px<code>--radius-lg</code></div></div>
+    <div class="token"><div class="demo"><div class="radius-demo" style="border-radius:var(--radius-xl)"></div></div><div class="name">xl · 14px<code>--radius-xl</code></div></div>
+    <div class="token"><div class="demo"><div class="radius-demo" style="border-radius:var(--radius-pill)"></div></div><div class="name">pill<code>--radius-pill</code></div></div>
+  </div>
+
+  <h3 class="eyebrow" style="margin-top:var(--space-7)">Shadows</h3>
+  <div class="token-grid">
+    <div class="token"><div class="demo"><div class="shadow-demo" style="box-shadow:var(--shadow-xs)"></div></div><div class="name">xs<code>--shadow-xs</code></div></div>
+    <div class="token"><div class="demo"><div class="shadow-demo" style="box-shadow:var(--shadow-sm)"></div></div><div class="name">sm<code>--shadow-sm</code></div></div>
+    <div class="token"><div class="demo"><div class="shadow-demo" style="box-shadow:var(--shadow-md)"></div></div><div class="name">md<code>--shadow-md</code></div></div>
+    <div class="token"><div class="demo"><div class="shadow-demo" style="box-shadow:var(--shadow-lg)"></div></div><div class="name">lg<code>--shadow-lg</code></div></div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 05 BUTTONS ═════════════════════ -->
+<section id="buttons">
+  <div class="section-head">
+    <span class="num">05</span>
+    <div>
+      <h2>Buttons · <code>.btn</code> de OutfitKit</h2>
+      <p>Todos los botones usan la clase nativa <code>.btn</code> con variantes
+         <code>.primary</code>, <code>.danger</code>, <code>.outline</code>, <code>.ghost</code>.
+         Tamaños: <code>.sm</code>, <code>.md</code> (default), <code>.lg</code>.</p>
+    </div>
+  </div>
+
+  <div class="btn-grid">
+    <div class="btn-card">
+      <div class="label">Primary</div>
+      <div class="stack">
+        <button class="btn primary lg">Empezar gratis</button>
+        <button class="btn primary">Empezar gratis</button>
+        <button class="btn primary sm">Empezar</button>
+        <button class="btn primary" disabled>Empezar gratis</button>
+      </div>
+    </div>
+    <div class="btn-card">
+      <div class="label">Outline</div>
+      <div class="stack">
+        <button class="btn outline lg">Ver detalles</button>
+        <button class="btn outline">Ver detalles</button>
+        <button class="btn outline sm">Detalles</button>
+        <button class="btn outline" disabled>Ver detalles</button>
+      </div>
+    </div>
+    <div class="btn-card">
+      <div class="label">Ghost</div>
+      <div class="stack">
+        <button class="btn ghost lg">Más opciones</button>
+        <button class="btn ghost">Más opciones</button>
+        <button class="btn ghost sm">Más</button>
+        <button class="btn ghost" disabled>Más opciones</button>
+      </div>
+    </div>
+    <div class="btn-card">
+      <div class="label">Danger</div>
+      <div class="stack">
+        <button class="btn danger lg">Eliminar cuenta</button>
+        <button class="btn danger">Eliminar cuenta</button>
+        <button class="btn danger sm">Eliminar</button>
+        <button class="btn danger" disabled>Eliminar cuenta</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 06 FORMS ═════════════════════ -->
+<section id="forms">
+  <div class="section-head">
+    <span class="num">06</span>
+    <div>
+      <h2>Form controls · <code>.input</code>, <code>.check</code>, <code>.toggle</code></h2>
+      <p>Las clases <code>.input</code>, <code>.select</code>, <code>.textarea</code>, <code>.check</code>,
+         <code>.radio</code>, <code>.toggle</code> de OutfitKit, dentro del wrapper <code>.field</code>.</p>
+    </div>
+  </div>
+
+  <div class="form-grid">
+    <div class="form-card">
+      <h4>Text fields</h4>
+      <div class="field">
+        <label class="label">Nombre comercial</label>
+        <div class="control"><input class="input" type="text" placeholder="ej. Café Lora" /></div>
+      </div>
+      <div class="field">
+        <label class="label">Email corporativo</label>
+        <div class="control"><input class="input" type="email" value="ana@cafelora.com" /></div>
+        <div class="hint">Te enviaremos un enlace para activar tu Hub.</div>
+      </div>
+      <div class="field error">
+        <label class="label">NIF / CIF</label>
+        <div class="control"><input class="input invalid" type="text" value="B-1234" /></div>
+        <div class="err">Formato no válido. Debe tener 9 caracteres.</div>
+      </div>
+      <div class="field">
+        <label class="label">Plan</label>
+        <div class="control">
+          <select class="select">
+            <option>Starter · 29.99 €/mo</option>
+            <option>Standard · 54.99 €/mo</option>
+            <option>Pro · 109.99 €/mo</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Notas (disabled)</label>
+        <div class="control"><textarea class="textarea" disabled>Solo lectura · plan actual no permite editar.</textarea></div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h4>Selection & toggle</h4>
+      <div class="field">
+        <label class="label">Módulos a instalar</label>
+        <label class="check"><input type="checkbox" checked /><span class="box"></span> POS &amp; Sales</label>
+        <label class="check"><input type="checkbox" checked /><span class="box"></span> Inventory</label>
+        <label class="check"><input type="checkbox" /><span class="box"></span> CRM</label>
+        <label class="check"><input type="checkbox" /><span class="box"></span> HR &amp; payroll</label>
+      </div>
+      <div class="field" style="margin-top:var(--space-6)">
+        <label class="label">Periodicidad</label>
+        <label class="radio"><input type="radio" name="p" checked /><span class="dot"></span> Mensual</label>
+        <label class="radio"><input type="radio" name="p" /><span class="dot"></span> Anual · ahorra un 18%</label>
+      </div>
+      <div class="field" style="margin-top:var(--space-6)">
+        <label class="label">Cloud backup</label>
+        <label class="toggle"><input type="checkbox" checked /><span class="track"></span></label>
+        <span class="t-mono" style="color:var(--ink-3);margin-left:var(--space-3)">activado</span>
+      </div>
+      <div class="field" style="margin-top:var(--space-4)">
+        <label class="label">Notificaciones push</label>
+        <label class="toggle"><input type="checkbox" /><span class="track"></span></label>
+        <span class="t-mono" style="color:var(--ink-3);margin-left:var(--space-3)">desactivado</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 07 FEEDBACK ═════════════════════ -->
+<section id="feedback">
+  <div class="section-head">
+    <span class="num">07</span>
+    <div>
+      <h2>Feedback · <code>.badge</code> &amp; <code>.banner</code></h2>
+      <p>Badges para etiquetar estado en listados densos. Banners para resultados de acciones o cambios
+         importantes — usan los semánticos del theme (<code>--leaf</code>, <code>--warn</code>, <code>--danger</code>, <code>--info</code>).</p>
+    </div>
+  </div>
+
+  <h3 class="eyebrow">Badges · soft (default)</h3>
+  <div class="badge-row" style="margin-bottom:var(--space-6)">
+    <span class="badge">neutral</span>
+    <span class="badge success">activo</span>
+    <span class="badge warn">pendiente</span>
+    <span class="badge danger">cancelado</span>
+    <span class="badge info">trial</span>
+    <span class="badge primary">brand</span>
+  </div>
+
+  <h3 class="eyebrow">Badges · solid</h3>
+  <div class="badge-row" style="margin-bottom:var(--space-8)">
+    <span class="badge success solid">pagado</span>
+    <span class="badge warn solid">acción requerida</span>
+    <span class="badge danger solid">error fiscal</span>
+    <span class="badge info solid">nuevo módulo</span>
+    <span class="badge primary solid">brand</span>
+  </div>
+
+  <h3 class="eyebrow">Banners · inline</h3>
+  <div class="banner ok inline" style="margin-bottom:var(--space-3)">
+    <span class="icon">✓</span>
+    <div class="body">
+      <div class="title">Verifactu activado</div>
+      <span class="meta">Tus facturas ya cumplen la normativa AEAT vigente.</span>
+    </div>
+  </div>
+  <div class="banner info inline" style="margin-bottom:var(--space-3)">
+    <span class="icon">ⓘ</span>
+    <div class="body">
+      <div class="title">Nuevo módulo disponible</div>
+      <span class="meta">“Loyalty Programs” se acaba de publicar en el marketplace.</span>
+    </div>
+  </div>
+  <div class="banner warn inline" style="margin-bottom:var(--space-3)">
+    <span class="icon">!</span>
+    <div class="body">
+      <div class="title">Tu trial caduca en 3 días</div>
+      <span class="meta">Activa tu plan para conservar el Hub y los módulos.</span>
+    </div>
+  </div>
+  <div class="banner danger inline">
+    <span class="icon">×</span>
+    <div class="body">
+      <div class="title">Fallo de sincronización</div>
+      <span class="meta">El servidor fiscal devolvió un error. Reintentaremos en 5 min.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 08 SURFACES ═════════════════════ -->
+<section id="surfaces">
+  <div class="section-head">
+    <span class="num">08</span>
+    <div>
+      <h2>Surfaces &amp; cards</h2>
+      <p>Los tokens <code>--bg</code>, <code>--bg-2</code>, <code>--bg-3</code>, <code>--bg-4</code>
+         construyen la jerarquía de superficies. <code>--brand-soft</code> para zonas tintadas.</p>
+    </div>
+  </div>
+
+  <div class="surfaces-grid">
+    <div class="surface-card s-bg"><div><div class="tag">level 0</div><div class="name" style="margin-top:var(--space-2)">Paper<code>--bg · canvas</code></div></div></div>
+    <div class="surface-card s-bg-2"><div><div class="tag">level 1</div><div class="name" style="margin-top:var(--space-2)">Card<code>--bg-2 · contenedor</code></div></div></div>
+    <div class="surface-card s-bg-3"><div><div class="tag">level 2</div><div class="name" style="margin-top:var(--space-2)">Hover<code>--bg-3 · inputs</code></div></div></div>
+    <div class="surface-card s-bg-4"><div><div class="tag">level 3</div><div class="name" style="margin-top:var(--space-2)">Pressed<code>--bg-4 · chips</code></div></div></div>
+    <div class="surface-card s-elev"><div><div class="tag">elevated</div><div class="name" style="margin-top:var(--space-2)">Elevated<code>shadow-md</code></div></div></div>
+    <div class="surface-card s-tint"><div><div class="tag">brand tint</div><div class="name" style="margin-top:var(--space-2)">Accent tint<code>--brand-soft</code></div></div></div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 09 BACKGROUNDS ═════════════════════ -->
+<section id="bg">
+  <div class="section-head">
+    <span class="num">09</span>
+    <div>
+      <h2>Backgrounds &amp; textures</h2>
+      <p>Texturas sutiles para diferenciar zonas (sandbox, marketing, build mode) sin alterar la
+         jerarquía de superficies. Construidas con <code>background-image</code> sobre tokens.</p>
+    </div>
+  </div>
+
+  <div class="bg-grid">
+    <div class="bg-card bg-plain"><span class="label">paper · liso</span></div>
+    <div class="bg-card bg-dots"><span class="label">dots · 14px grid</span></div>
+    <div class="bg-card bg-lines"><span class="label">grid · 24px líneas</span></div>
+    <div class="bg-card bg-diag"><span class="label">diagonal · 10px</span></div>
+    <div class="bg-card bg-noise"><span class="label">noise · turbulencia</span></div>
+    <div class="bg-card bg-grad"><span class="label">gradient · paper → tint</span></div>
+    <div class="bg-card bg-ink dark"><span class="label">ink · reverse</span></div>
+    <div class="bg-card bg-ink-dots dark"><span class="label">ink dots · console</span></div>
+    <div class="bg-card bg-tint"><span class="label">brand-soft · hero</span></div>
+  </div>
+</section>
+
+<!-- ═════════════════════ 10 ICONOGRAPHY ═════════════════════ -->
+<section id="icons">
+  <div class="section-head">
+    <span class="num">10</span>
+    <div>
+      <h2>Iconography</h2>
+      <p>Iconos geométricos · trazo 1.75px · esquinas redondeadas · sin relleno · heredan
+         <code>currentColor</code>. Coherentes con el lenguaje modular del logo.</p>
+    </div>
+  </div>
+
+  <div class="icon-system">
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><span class="lbl">modules</span></div>
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div><span class="lbl">menu</span></div>
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><span class="lbl">time</span></div>
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/></svg></div><span class="lbl">store</span></div>
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div><span class="lbl">list</span></div>
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 3v18"/></svg></div><span class="lbl">dashboard</span></div>
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><path d="M21 12c0 5-9 9-9 9s-9-4-9-9 4-9 9-9 9 4 9 9z"/><circle cx="12" cy="12" r="3"/></svg></div><span class="lbl">target</span></div>
+    <div class="icon-tile"><div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div><span class="lbl">add</span></div>
+  </div>
+</section>
+
+<footer>
+  erplora · brand guidelines · v1.0 · powered by outfitkit · activable con
+  <code style="font-family:var(--font-mono);color:var(--ink)">data-template="erplora"</code>
+</footer>
+{% endblock %}

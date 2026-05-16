@@ -1,0 +1,83 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}Features · ERPlora{% endblock %}
+{% block page_title %}Features · ERPlora{% endblock %}
+{% set active = 'features' %}
+
+{% block landing_content %}
+
+<main>
+
+<PageHero
+  eyebrow_icon="lucide:zap"
+  title="Powerful Features for Modern Businesses"
+  subtitle="ERPlora combines cutting-edge technology with intuitive design to deliver a complete ERP solution."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="grid-3 center-wide">
+      <FeatureCard
+        title="Lightning Fast"
+        subtitle="Process transactions in milliseconds with our optimized infrastructure. Built on Django 6.0 with WebSocket support for real-time updates."
+        icon="lucide:zap"
+        icon_kind="brand" />
+      <FeatureCard
+        title="Modular Architecture"
+        subtitle="Install only the modules you need. Start with the free POS system and add features as your business grows."
+        icon="lucide:layers"
+        icon_kind="brand" />
+      <FeatureCard
+        title="Cloud-Native"
+        subtitle="Cloud Hub with automatic backups, SSL, and 99.95% availability. Access your business from any device, anywhere."
+        icon="lucide:cloud"
+        icon_kind="brand" />
+      <FeatureCard
+        title="Multi-Platform"
+        subtitle="Run on Windows, macOS, and Linux. Build with PyInstaller for standalone distribution."
+        icon="lucide:monitor"
+        icon_kind="brand" />
+      <FeatureCard
+        title="Module System"
+        subtitle="Extend functionality with Django-based modules. Install directly from the marketplace."
+        icon="lucide:package"
+        icon_kind="brand" />
+      <FeatureCard
+        title="Enterprise Security"
+        subtitle="RS256 JWT authentication, email verification, and django-allauth for social logins."
+        icon="lucide:shield-check"
+        icon_kind="brand" />
+    </div>
+
+    <div class="card center-wide mt-12" style="margin-top:var(--space-9, 56px)">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:clamp(24px,3vw,32px);text-align:center;margin:0 0 var(--space-6);color:var(--ink)">Built with Modern Technology</h2>
+      <div class="grid-2" style="gap:var(--space-7)">
+        <div>
+          <h4 style="font:var(--weight-semibold,600) var(--text-xs)/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 var(--space-4)">Frontend</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--text-sm);color:var(--ink-2)">
+            <div style="display:flex;gap:8px;align-items:center"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> UX CSS Library (Components)</div>
+            <div style="display:flex;gap:8px;align-items:center"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Datastar (Reactivity &amp; Interactivity)</div>
+          </div>
+        </div>
+        <div>
+          <h4 style="font:var(--weight-semibold,600) var(--text-xs)/1 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 var(--space-4)">Backend</h4>
+          <div style="display:flex;flex-direction:column;gap:10px;font-size:var(--text-sm);color:var(--ink-2)">
+            <div style="display:flex;gap:8px;align-items:center"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Django 6.0</div>
+            <div style="display:flex;gap:8px;align-items:center"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> PostgreSQL</div>
+            <div style="display:flex;gap:8px;align-items:center"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Redis (Cache &amp; Real-time)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:clamp(24px,3vw,32px);margin:0 0 var(--space-3);color:var(--ink)">Ready to Get Started?</h2>
+      <p style="color:var(--ink-3);max-width:60ch;margin:0 auto var(--space-5)">Download ERPlora for free and start managing your business today.</p>
+      <Button label="Start Free" href="signup.html" variant="brand" size="lg" trailing_icon="lucide:arrow-right" />
+    </div>
+  </div>
+</section>
+</main>
+
+
+{% endblock %}

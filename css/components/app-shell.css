@@ -27,7 +27,7 @@
   --column-width: var(--sidebar-w);
   --drawer-width: min(var(--sidebar-w-mobile, 18rem), 85vw);
   --backdrop: color-mix(in oklch, black 50%, transparent);
-  --tabbar-background: color-mix(in oklch, var(--bg-1) 92%, transparent);
+  --tabbar-background: var(--bg-1);
 
   display: grid;
   grid-template-columns: var(--column-width) 1fr;
@@ -56,11 +56,19 @@
   z-index: var(--z-sticky);
 }
 
-/* El tabbar dentro de una page (no en mobile-shell) es bottom-nav
-   secundaria, relativo al final de la página. */
+/* El tabbar dentro de una page es bottom-nav secundaria. Por defecto
+   se queda pegado abajo (sticky) — así actúa como subnav persistente
+   visible mientras se scrollea el contenido. Para el comportamiento
+   antiguo (relativo, al final del scroll) usar .tabbar.flow. */
 .app .page > .tabbar {
-  position: relative;
+  position: sticky;
+  bottom: 0;
+  z-index: var(--z-sticky);
   border-top: var(--border-w) solid var(--line);
+  background: var(--bg-1);
+}
+.app .page > .tabbar.flow {
+  position: relative;
 }
 
 /* ─── Backdrop del sidebar drawer (oculto en desktop) ─────── */

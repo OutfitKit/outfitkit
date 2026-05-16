@@ -1,13 +1,50 @@
-{#def variant="default", attrs=None #}
+{#def items=None, variant="default", attrs=None #}
 
-{% macro tabbar(variant="default", attrs=None) -%}
+{# Tabbar · navegación secundaria (subnav).
+
+   Dos formas de uso:
+
+   1. Con items prop (declarativo) — recomendado:
+      {% set tabs = [
+        {'label': 'Facturas', 'href': 'billing-facturas.html', 'icon': 'lucide:credit-card'},
+        {'label': 'Compras',  'href': 'billing-compras.html',  'icon': 'lucide:check-square', 'current': true},
+      ] %}
+      <Tabbar :items="tabs" />
+
+   2. Con slot caller (libre) — para casos avanzados:
+      <Tabbar>
+        <a class="tabbar-item" href="...">...</a>
+      </Tabbar>
+
+   Props:
+   - `items` — lista de dicts {label, href, icon?, current?}
+   - `variant` — variante visual (default / dash-bottom para sticky bottom desktop)
+#}
+{% macro tabbar(items=None, variant="default", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<nav class="tabbar{% if variant != 'default' %} {{ variant }}{% endif %}"
+<nav class="tabbar{% if variant != 'default' %} {{ variant }}{% endif %}" aria-label="Secciones"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  {{ caller() }}
+  {%- if items %}
+    {%- for item in items -%}
+    <a class="tabbar-item" href="{{ item.get('href', '#') }}"{% if item.get('current') %} aria-current="page"{% endif %}>
+      {%- if item.get('icon') %}
+      <span class="tabbar-icon">
+        <iconify-icon icon="{{ item.get('icon') }}" width="20" height="20"></iconify-icon>
+      </span>
+      {%- endif %}
+      <span class="tabbar-label">{{ item.label }}</span>
+    </a>
+    {%- endfor %}
+  {%- elif caller is defined -%}
+    {{ caller() }}
+  {%- endif %}
 </nav>
 {%- endmacro %}
 
-{% if variant is defined %}
-  {% call tabbar(variant=variant, attrs=attrs) %}{{ content }}{% endcall %}
+{% if items is defined or variant is defined %}
+  {% if caller is defined %}
+    {% call tabbar(items=items, variant=variant, attrs=attrs) %}{{ caller() }}{% endcall %}
+  {% else %}
+    {{ tabbar(items=items, variant=variant, attrs=attrs) }}
+  {% endif %}
 {% endif %}

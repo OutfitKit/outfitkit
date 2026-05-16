@@ -1,0 +1,64 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Crear Terminal' %}
+{% set active = 'terminales' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Terminales', 'href': 'terminales-activos.html'},
+  {'label': 'Crear', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Activo',   'href': 'terminales-activos.html',   'icon': 'lucide:check'},
+  {'label': 'Inactivo', 'href': 'terminales-inactivos.html', 'icon': 'lucide:pause'},
+  {'label': 'Crear',    'href': 'terminales-crear.html',     'icon': 'lucide:plus', 'current': true},
+  {'label': 'Planes',   'href': 'terminales-planes.html',    'icon': 'lucide:tag'},
+  {'label': 'Dominio',  'href': 'terminales-dominio.html',   'icon': 'lucide:globe'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <form onsubmit="event.preventDefault(); alert('Demo')">
+    <div class="field">
+      <label class="label">Nombre del terminal</label>
+      <input class="input" type="text" placeholder="ej. Café Lora — Madrid" required />
+    </div>
+    <div class="field">
+      <label class="label">Organización</label>
+      <select class="input">
+        <option>Café Lora SL</option>
+        <option>+ Crear nueva...</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="label">Plan</label>
+      <select class="input">
+        <option>Starter · 29.99 €/mes</option>
+        <option>Standard · 54.99 €/mes</option>
+        <option>Pro · 109.99 €/mes</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="label">Subdominio</label>
+      <div style="display: flex; align-items: center; gap: 4px;">
+        <input class="input" type="text" placeholder="cafelora" style="flex: 1;" />
+        <span style="font-family: var(--font-mono); color: var(--ink-3); font-size: var(--text-sm);">.erplora.com</span>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Región</label>
+      <select class="input">
+        <option>EU West (Irlanda)</option>
+        <option>EU Central (Frankfurt)</option>
+      </select>
+    </div>
+    <div class="actions" style="justify-content: flex-end;">
+      <Button label="Cancelar" href="terminales-activos.html" variant="outline" />
+      <button class="btn brand" type="submit">Crear Terminal</button>
+    </div>
+  </form>
+</Panel>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}

@@ -169,3 +169,103 @@
   --color: var(--ink);
   --shadow: var(--shadow-xs);
 }
+
+
+/* ============================================================
+   Variantes Ionic-style (v3.0)
+   Mapeo de las props de <ion-button> a modifiers CSS.
+
+   - fill="default"/subtle  → .btn.subtle (neutral filled, gris)
+   - fill="outline"         → .outline (modifier universal en modifiers.css)
+   - fill="clear"           → .ghost (alias) en modifiers.css
+   - shape="round"          → .btn.round (alias de .pill)
+   - expand="full"          → .btn.full (block + no border-radius lateral)
+   - strong                 → .btn.strong (font-weight bold)
+   - posicionamiento        → .btn.floating, .btn.local
+   - icon shift on hover    → .btn.shift-icon (animación)
+   ============================================================ */
+
+/* Clear — fill="clear" Ionic, alias semántico de .ghost (transparent, no border) */
+.btn.clear {
+  --bg-mode: transparent;
+  --color-mode: var(--variant, var(--ink-2));
+  --border-mode: transparent;
+  --border-w-mode: 0;
+}
+.btn.clear:hover {
+  --bg-mode: var(--bg-3);
+  --color-mode: var(--variant, var(--ink));
+}
+
+/* Subtle — fill="default" Ionic / neutral filled (gris suave) */
+.btn.subtle {
+  --bg-mode: var(--bg-3);
+  --color-mode: var(--ink-2);
+  --border-mode: var(--line);
+  --border-w-mode: var(--border-w);
+}
+.btn.subtle:hover {
+  --bg-mode: var(--bg-4);
+  --color-mode: var(--ink);
+  --border-mode: var(--line-2);
+}
+
+/* Round — shape="round" Ionic, alias semántico de .pill */
+.btn.round {
+  --radius: var(--radius-pill);
+  border-radius: var(--radius-pill);
+}
+
+/* Full — expand="full" Ionic: block + sin esquinas/bordes laterales */
+.btn.full {
+  display: flex;
+  width: 100%;
+  border-radius: 0;
+  border-left: none;
+  border-right: none;
+}
+
+/* Strong — Ionic strong prop, peso bold */
+.btn.strong {
+  font-weight: var(--weight-bold);
+}
+
+/* === Positioning modifiers (movidos de back-btn.css, fab.css) === */
+
+/* Floating — position fixed con coords (típico FAB o back persistente) */
+.btn.floating {
+  position: fixed;
+  bottom: var(--space-5);
+  right: var(--space-5);
+  z-index: var(--z-sticky);
+}
+.btn.floating.top    { bottom: auto; top: calc(var(--topbar-h) + var(--space-3)); }
+.btn.floating.left   { right: auto; left: var(--space-4); }
+.btn.floating.center { right: 50%; left: auto; transform: translateX(50%); }
+
+/* Local — position absolute (back button dentro de hero section) */
+.btn.local {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-6);
+  z-index: 2;
+}
+
+@media (max-width: 640px) {
+  .btn.local { top: var(--space-4); left: var(--space-4); }
+  /* Pill button overlay en mobile: oculta label, queda solo icono */
+  .btn.pill .lbl { display: none; }
+  .btn.pill { padding: var(--space-2); }
+}
+
+/* === Icon-shift animation (feel de back button) === */
+.btn.shift-icon iconify-icon,
+.btn.shift-icon .btn-icon,
+.btn.shift-icon svg {
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.btn.shift-icon:hover iconify-icon,
+.btn.shift-icon:hover .btn-icon,
+.btn.shift-icon:hover svg {
+  transform: translateX(-0.125rem);
+}

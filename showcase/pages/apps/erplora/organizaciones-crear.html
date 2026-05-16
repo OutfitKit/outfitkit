@@ -1,0 +1,52 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Nueva Organización' %}
+{% set active = 'organizaciones' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Organizaciones', 'href': 'organizaciones.html'},
+  {'label': 'Crear', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <form onsubmit="event.preventDefault();">
+    <div class="field">
+      <label class="label" for="org-nombre">Nombre comercial</label>
+      <input class="input" id="org-nombre" type="text" placeholder="ej. Café Lora" required />
+    </div>
+    <div class="field">
+      <label class="label" for="org-nif">NIF / CIF</label>
+      <input class="input" id="org-nif" type="text" placeholder="B12345678" required />
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="field">
+          <label class="label" for="org-pais">País</label>
+          <select class="input" id="org-pais">
+            <option>España</option>
+            <option>Portugal</option>
+            <option>Francia</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="field">
+          <label class="label" for="org-ciudad">Ciudad</label>
+          <input class="input" id="org-ciudad" type="text" placeholder="Madrid" />
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label" for="org-direccion">Dirección fiscal</label>
+      <input class="input" id="org-direccion" type="text" placeholder="Gran Vía 123" />
+    </div>
+    <div class="actions">
+      <Button label="Cancelar" href="organizaciones.html" variant="outline" />
+      <button class="btn brand" type="submit">Crear</button>
+    </div>
+  </form>
+</Panel>
+{% endblock %}

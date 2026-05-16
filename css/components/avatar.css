@@ -60,6 +60,15 @@
   --border-color: var(--line);
 }
 
+/* Size variants — aplican los tokens --avatar-*. Usamos prefijo avatar-
+   para evitar colisión con las clases globales .xs/.sm/.md/.lg/.xl de
+   modifiers.css que setean --size para botones/inputs. */
+.avatar.avatar-xs { --size: var(--avatar-xs); --text: var(--text-2xs); }
+.avatar.avatar-sm { --size: var(--avatar-sm); --text: var(--text-xs); }
+.avatar.avatar-md { --size: var(--avatar-md); --text: var(--text-sm); }
+.avatar.avatar-lg { --size: var(--avatar-lg); --text: var(--text-md); }
+.avatar.avatar-xl { --size: var(--avatar-xl); --text: var(--text-lg); }
+
 .avatar-stack {
   display: inline-flex;
 }

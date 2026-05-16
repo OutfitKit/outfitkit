@@ -1,16 +1,71 @@
-{#def name, type="text", value="", placeholder="", size="md", invalid=false, disabled=false, required=false, attrs=None #}
+{#def name, type="text", value="", placeholder="", size="md", invalid=false, disabled=false, required=false, readonly=false, id=None, label=None, helper=None, error=None, maxlength=None, fill="outline", shape=None, label_placement="stacked", counter=false, clearable=false, icon_start=None, icon_end=None, color=None, attrs=None #}
 
-{% macro input(name, type="text", value="", placeholder="", size="md", invalid=false, disabled=false, required=false, attrs=None) -%}
+{% macro input(name, type="text", value="", placeholder="", size="md", invalid=false, disabled=false, required=false, readonly=false, id=None, label=None, helper=None, error=None, maxlength=None, fill="outline", shape=None, label_placement="stacked", counter=false, clearable=false, icon_start=None, icon_end=None, color=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _has_field = label or helper or error or counter -%}
+
+{%- set _field_classes = "field" -%}
+{%- if label_placement == 'floating' %}{% set _field_classes = _field_classes ~ " float-label" %}{% endif -%}
+{%- if label_placement == 'fixed' %}{% set _field_classes = _field_classes ~ " fixed-label" %}{% endif -%}
+{%- if label_placement == 'start' %}{% set _field_classes = _field_classes ~ " inline-label" %}{% endif -%}
+{%- if label_placement == 'end' %}{% set _field_classes = _field_classes ~ " inline-label label-end" %}{% endif -%}
+{%- if counter and maxlength %}{% set _field_classes = _field_classes ~ " counter" %}{% endif -%}
+{%- if error %}{% set _field_classes = _field_classes ~ " error" %}{% endif -%}
+{%- if color %}{% set _field_classes = _field_classes ~ " " ~ color %}{% endif -%}
+
+{%- set _input_classes = "input" -%}
+{%- if size != 'md' %}{% set _input_classes = _input_classes ~ " " ~ size %}{% endif -%}
+{%- if invalid %}{% set _input_classes = _input_classes ~ " invalid" %}{% endif -%}
+{%- if fill == 'solid' %}{% set _input_classes = _input_classes ~ " solid" %}{% endif -%}
+{%- if shape == 'round' %}{% set _input_classes = _input_classes ~ " round" %}{% endif -%}
+
+{%- set _has_group = icon_start or icon_end or clearable -%}
+{%- set _group_classes = "input-group" -%}
+{%- if icon_start %}{% set _group_classes = _group_classes ~ " with-left" %}{% endif -%}
+{%- if icon_end %}{% set _group_classes = _group_classes ~ " with-right" %}{% endif -%}
+{%- if clearable %}{% set _group_classes = _group_classes ~ " clearable" %}{% endif -%}
+
+{%- set _ctrl_id = id or name -%}
+
+{%- macro _control() -%}
 <input
+  {%- if _ctrl_id %} id="{{ _ctrl_id }}"{% endif %}
   type="{{ type }}"
   name="{{ name }}"
-  class="input{% if size != 'md' %} {{ size }}{% endif %}{% if invalid %} invalid{% endif %}"
-  {% if value != "" %}value="{{ value }}"{% endif %}
-  {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
-  {% if disabled %}disabled{% endif %}
-  {% if required %}required{% endif %}
+  class="{{ _input_classes }}"
+  {%- if value != "" and value is not none %} value="{{ value }}"{% endif %}
+  {%- if placeholder or label_placement == 'floating' %} placeholder="{{ placeholder or ' ' }}"{% endif %}
+  {%- if maxlength %} maxlength="{{ maxlength }}"{% endif %}
+  {%- if disabled %} disabled{% endif %}
+  {%- if required %} required{% endif %}
+  {%- if readonly %} readonly{% endif %}
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+{%- endmacro -%}
+
+{%- macro _control_wrapped() -%}
+{%- if _has_group -%}
+<div class="{{ _group_classes }}">
+  {%- if icon_start %}<span class="input-group-icon input-group-icon--left"><iconify-icon icon="{{ icon_start }}"></iconify-icon></span>{% endif %}
+  {{ _control() }}
+  {%- if icon_end %}<span class="input-group-icon input-group-icon--right"><iconify-icon icon="{{ icon_end }}"></iconify-icon></span>{% endif %}
+  {%- if clearable %}<button type="button" class="input-clear" aria-label="Clear" onclick="var i=this.parentElement.querySelector('.input'); i.value=''; i.dispatchEvent(new Event('input',{bubbles:true})); i.focus();"><iconify-icon icon="lucide:x" width="14"></iconify-icon></button>{% endif %}
+</div>
+{%- else -%}
+{{ _control() }}
+{%- endif -%}
+{%- endmacro -%}
+
+{%- if _has_field -%}
+<div class="{{ _field_classes }}">
+  {%- if label %}<label class="field-label"{% if _ctrl_id %} for="{{ _ctrl_id }}"{% endif %}>{{ label }}{% if required %} <span class="field-required" aria-label="obligatorio">*</span>{% endif %}</label>{% endif %}
+  {{ _control_wrapped() }}
+  {%- if counter and maxlength %}<span class="field-counter">{{ (value or '')|length }}/{{ maxlength }}</span>{% endif %}
+  {%- if helper and not error %}<span class="field-hint">{{ helper }}</span>{% endif %}
+  {%- if error %}<span class="field-error" role="alert">{{ error }}</span>{% endif %}
+</div>
+{%- else -%}
+{{ _control_wrapped() }}
+{%- endif -%}
 {%- endmacro %}
 
-{% if name is defined %}{{ input(name, type=type, value=value, placeholder=placeholder, size=size, invalid=invalid, disabled=disabled, required=required, attrs=attrs) }}{% endif %}
+{% if name is defined %}{{ input(name, type=type, value=value, placeholder=placeholder, size=size, invalid=invalid, disabled=disabled, required=required, readonly=readonly, id=id, label=label, helper=helper, error=error, maxlength=maxlength, fill=fill, shape=shape, label_placement=label_placement, counter=counter, clearable=clearable, icon_start=icon_start, icon_end=icon_end, color=color, attrs=attrs) }}{% endif %}

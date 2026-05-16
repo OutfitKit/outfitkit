@@ -1,0 +1,37 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Ganancias' %}
+{% set active = 'desarrollador' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Desarrollador', 'href': 'desarrollador-overview.html'},
+  {'label': 'Ganancias', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Vista General', 'href': 'desarrollador-overview.html',     'icon': 'lucide:layout-grid'},
+  {'label': 'Ganancias',     'href': 'desarrollador-ganancias.html',    'icon': 'lucide:wallet', 'current': true},
+  {'label': 'Pagos',         'href': 'desarrollador-pagos.html',        'icon': 'lucide:credit-card'},
+  {'label': 'Mis Módulos',   'href': 'desarrollador-modulos.html',      'icon': 'lucide:package'},
+  {'label': 'Repositorios',  'href': 'desarrollador-repositorios.html', 'icon': 'lucide:git-fork'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<section class="section">
+  <div class="grid-4">
+    <Kpi label="Este mes" value="€0,00" icon_variant="success" icon="lucide:wallet" />
+    <Kpi label="Año" value="€0,00" icon="lucide:bar-chart-3" />
+    <Kpi label="Total acumulado" value="€0,00" icon_variant="info" icon="lucide:package" />
+    <Kpi label="Próximo pago" value="—" icon_variant="warn" icon="lucide:credit-card" />
+  </div>
+</section>
+
+<section class="section">
+  <Panel title="Histórico mensual">
+    <Empty title="Sin ingresos aún" desc="Cuando alguien instale uno de tus módulos premium, las ganancias aparecerán aquí." icon="lucide:bar-chart-3" />
+  </Panel>
+</section>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}

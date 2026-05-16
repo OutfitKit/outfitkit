@@ -80,20 +80,12 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="flex wrap" style="gap:14px;align-items:center;flex:1;min-width:0;">
-          <span class="avatar xl brand" style="width:54px;height:54px;font-size:18px;">AC</span>
-          <div class="page-header-title">
-            <h1>Acme Industries SL</h1>
-            <div class="page-header-sub">Manufactura ligera · 12 miembros · 5 hubs · Plan Business</div>
-          </div>
-        </div>
-        <div class="actions">
-          <button class="btn ghost">Salir</button>
-          <button class="btn secondary">Configuración</button>
-          <button class="btn primary">Editar</button>
-        </div>
-      </div>
+      <PageHeader title="Acme Industries SL" subtitle="Manufactura ligera · 12 miembros · 5 hubs · Plan Business">
+        <span class="avatar xl brand" style="width:54px;height:54px;font-size:18px;">AC</span>
+        <button class="btn ghost">Salir</button>
+        <button class="btn secondary">Configuración</button>
+        <button class="btn primary">Editar</button>
+      </PageHeader>
 
       <div class="tabs mb-5" role="tablist">
         <button class="tab" data-on:click="$tab = 'overview'" data-class:is-active="$tab === 'overview'" data-attr:aria-selected="$tab === 'overview' ? 'true' : 'false'">Overview</button>

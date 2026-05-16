@@ -40,12 +40,7 @@
     <span class="text-xs text-ink-3">Cumplimiento</span>
   </div>
 
-  <div class="page-header mb-5">
-    <div class="page-header-title">
-      <h1>Cumplimiento legal</h1>
-      <div class="page-header-sub">Módulos obligatorios y recomendados según el país de operación</div>
-    </div>
-  </div>
+  <PageHeader title="Cumplimiento legal" subtitle="Módulos obligatorios y recomendados según el país de operación" />
 
   <div class="alert info mb-5">
     <div class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
@@ -256,12 +251,12 @@
     </table>
   </section>
 
-  <nav class="tabbar" aria-label="Navegación principal">
+  <Tabbar :attrs="{'aria-label': 'Navegación principal'}">
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:layout-dashboard" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Inicio</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:credit-card" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Facturas</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:user" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Perfil</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span><span class="tabbar-label">Más</span></a>
-  </nav>
+  </Tabbar>
 </div>
 {% endblock %}

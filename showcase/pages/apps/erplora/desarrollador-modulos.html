@@ -1,0 +1,30 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Mis Módulos' %}
+{% set active = 'desarrollador' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Desarrollador', 'href': 'desarrollador-overview.html'},
+  {'label': 'Mis Módulos', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Vista General', 'href': 'desarrollador-overview.html',     'icon': 'lucide:layout-grid'},
+  {'label': 'Ganancias',     'href': 'desarrollador-ganancias.html',    'icon': 'lucide:wallet'},
+  {'label': 'Pagos',         'href': 'desarrollador-pagos.html',        'icon': 'lucide:credit-card'},
+  {'label': 'Mis Módulos',   'href': 'desarrollador-modulos.html',      'icon': 'lucide:package', 'current': true},
+  {'label': 'Repositorios',  'href': 'desarrollador-repositorios.html', 'icon': 'lucide:git-fork'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin módulos publicados" desc="Crea tu primer módulo con el SDK e impórtalo aquí cuando esté listo." icon="lucide:package" actions='<a href="developers.html" class="btn brand"><iconify-icon icon="lucide:plus" width="16" height="16"></iconify-icon> Leer documentación</a>' />
+</Panel>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}
+
+{% block topbar_actions %}
+<Button label="Nuevo módulo" href="#" variant="brand" icon="lucide:plus" />
+{% endblock %}

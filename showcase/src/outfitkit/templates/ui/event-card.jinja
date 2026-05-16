@@ -1,0 +1,56 @@
+{#def title="", subtitle="", date_day="", date_month="", date_year=None, location=None, time=None, href=None, attrs=None #}
+
+{# Event card · composición sobre `.card .flex`.
+
+   API (estable — no romper):
+   - title        — texto principal (h3)
+   - subtitle     — párrafo secundario (opcional)
+   - date_day     — día (e.g. "15")
+   - date_month   — mes abreviado (e.g. "May")
+   - date_year    — año (opcional, e.g. "2026")
+   - location     — texto de ubicación (opcional)
+   - time         — texto de hora (opcional, e.g. "18:00")
+   - href         — si presente: envuelve el article en <a> añadiendo .interactive
+   - attrs        — dict extra de atributos HTML
+
+   HTML emitido (composición, no clase propia):
+     <a href|article class="card flex compact [interactive]">
+       <aside style="display:flex;flex-direction:column;align-items:center;padding:…;background:var(--bg-3);…">
+         <span class="value 2xl">{{date_day}}</span>
+         <span class="meta uppercase">{{date_month}}</span>
+         <span class="meta">{{date_year}}</span>  ← si date_year
+       </aside>
+       <main>
+         <h3 class="title">…</h3>
+         <p class="sub muted">…</p>               ← si subtitle
+         <div class="flex" style="gap:…">…</div>  ← si time o location
+       </main>
+     </a|article>
+#}
+
+{% macro event_card(title="", subtitle="", date_day="", date_month="", date_year=None, location=None, time=None, href=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _tag = "a" if href else "article" -%}
+{%- set _interactive = " interactive" if href else "" -%}
+<{{ _tag }} class="card flex compact{{ _interactive }}"
+  {%- if href %} href="{{ href }}"{% endif %}
+  {%- for key, val in _attrs.items() %} {{ key }}="{{ val }}"{% endfor %}>
+  <aside style="display:flex;flex-direction:column;align-items:center;padding:var(--space-3);background:var(--bg-3);border-radius:var(--radius-md);min-width:4rem;flex-shrink:0;">
+    <span class="value 2xl">{{ date_day }}</span>
+    <span class="meta uppercase">{{ date_month }}</span>
+    {%- if date_year %}<span class="meta">{{ date_year }}</span>{% endif %}
+  </aside>
+  <main>
+    <h3 class="title">{{ title }}</h3>
+    {%- if subtitle %}<p class="sub muted">{{ subtitle }}</p>{% endif %}
+    {%- if time or location %}
+    <div class="flex" style="gap:var(--space-3);align-items:center;">
+      {%- if time %}<span class="meta"><iconify-icon icon="lucide:clock" width="14"></iconify-icon> {{ time }}</span>{% endif %}
+      {%- if location %}<span class="meta"><iconify-icon icon="lucide:map-pin" width="14"></iconify-icon> {{ location }}</span>{% endif %}
+    </div>
+    {%- endif %}
+  </main>
+</{{ _tag }}>
+{%- endmacro %}
+
+{% if title is defined %}{{ event_card(title=title, subtitle=subtitle, date_day=date_day, date_month=date_month, date_year=date_year, location=location, time=time, href=href, attrs=attrs) }}{% endif %}

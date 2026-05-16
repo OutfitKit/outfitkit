@@ -4,6 +4,84 @@ All notable changes to OutfitKit are documented here. Format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.0] — 2026-05-16
+
+Refactor completo a arquitectura de dos capas — **primitivos CSS** (agnósticos, composables) y **compuestos JinjaX** (semánticos, con defaults). Inspiración: Ionic Framework para inputs/buttons/layouts.
+
+### Added
+
+#### Capa 1 · Primitivos CSS
+- `css/components/layout.css` — primitivo estructural universal `.layout` aplicable a cualquier elemento HTML con hijos `<header>` (opcional) / `<main>` (requerido) / `<footer>` (opcional). Modifiers `.sticky` y `.scrollable`. Vars `--head-justify` / `--foot-justify` para alineación.
+- `css/components/icon-box.css` — extraído de `feature-card.css`, ahora primitivo agnóstico reusable.
+- `css/responsive-utilities.css` — prefijos Tailwind-style `sm:` `md:` `lg:` `xl:` `2xl:` para display, cols, flex-direction, text-align, density.
+- `css/modifiers.css` ampliado con bloque "Composition modifiers": `.with-aside` (+ `.aside-right`), `.grid-auto-cols` + `.cols-N`, `.center`, `.full` / `.narrow` / `.wide`, `.compact` / `.spacious`, `.hero`, `.gradient` (+ variants), `.scrollable`, `.badge-top`, `.check-list`.
+- `css/components/button.css` ampliado con variantes Ionic-style: `.btn.clear` (fill="clear" alias), `.btn.subtle` (fill="default"), `.btn.round` (shape="round" alias de .pill), `.btn.full` (expand="full"), `.btn.strong`, `.btn.floating`, `.btn.local`, `.btn.shift-icon`.
+- `css/components/forms.css` ampliado con variantes Ionic-style: `.field.float-label` / `.fixed-label` / `.inline-label`, `.input.solid` / `.round`, `.field.counter` + `.field-counter`, `.input-group.clearable` + `.input-clear`, paletas semánticas `.field.danger` / `.success`, soporte nativo `:user-invalid`.
+
+#### Capa 2 · Compuestos JinjaX (nuevos)
+- `<BackButton>` — props: href, text, icon, use_history, variant_position (None|floating|local|pill), style, size.
+- `<FabButton>` — props: icon, label, color, vertical, horizontal, href.
+- `<PageHero>` — props: eyebrow, eyebrow_icon, title, subtitle, cta_label, cta_href, cta_secondary_label, cta_secondary_href, align, back_href.
+- `<PricingCard>` — props: plan_name, price, price_period, badge, features, cta_label, cta_href, cta_variant, featured.
+- `<ModuleCard>` — props: title, subtitle, icon, icon_kind, meta, value, value_kind, href.
+- `<BenefitCard>` — props: title, subtitle, cta_label, cta_href, cta_variant, gradient, solid.
+- `<EventCard>` — props: title, subtitle, date_day, date_month, date_year, location, time, href.
+
+### Changed
+
+#### Capa 1 — Containers que adoptan `.layout` (10 primitivos)
+Cada container elimina su flex-column scoped (`.X-head/.X-body/.X-foot`) y delega estructura a `.layout` + HTML5 nativo. Mantiene solo su skin específico (background, border, shadow, animation).
+- `card.css` — el más obvio; `<header>/<main>/<footer>` con bordes automáticos
+- `modal.css` — `.modal.layout` con `--head-justify: space-between`, `--foot-justify: flex-end`
+- `drawer.css` — `.drawer.layout` con `--head-justify: space-between`
+- `sidebar.css` — `<header>/<main class="scrollable">/<footer>`
+- `cmdk.css` — input en header, results en main scrollable
+- `ticket.css` — items en main, totals en footer
+- `kanban.css` — cada `.kanban-col` adopta `.layout`
+- `chat.css` — `.chat-thread.layout` con composer sticky
+- `page.css` — `.page.layout` + eliminadas reglas `.page-header*`
+- `pos.css` — refactor parcial del bloque `.cart` (pendiente full sweep)
+
+#### Capa 2 — Macros JinjaX existentes refactorizados (HTML interno actualizado, APIs preservadas)
+- `feature_card.jinja` → emite `<article class="card layout compact text-center">`
+- `hr_card.jinja` → emite `<article class="card layout>` con `<header class="card-cover gradient">`
+- `page-header.jinja` → emite `<header class="layout spacious">`
+- `input.jinja` / `textarea.jinja` / `select.jinja` → soportan props Ionic-style (fill, shape, label_placement, counter, clearable, icon_start/end, color)
+
+#### Naming
+- 6 macros card renombrados a kebab-case para JinjaX tag-style: `feature_card.jinja` → `feature-card.jinja`, `pricing_card.jinja` → `pricing-card.jinja`, etc.
+
+### Removed
+
+- `css/components/feature-card.css` (vive como `<FeatureCard>` JinjaX)
+- `css/components/pricing-card.css` (vive como `<PricingCard>`)
+- `css/components/module-card.css` (vive como `<ModuleCard>`)
+- `css/components/benefit-card.css` (vive como `<BenefitCard>`)
+- `css/components/employee-card.css` (vive como `<HrCard>`)
+- `css/components/event-card.css` (vive como `<EventCard>`)
+- `css/components/page-hero.css` (vive como `<PageHero>`)
+- `css/components/back-btn.css` (composición `.btn.clear/.subtle` + `<BackButton>`)
+- `css/components/fab.css` (composición `.btn.icon.round.floating` + `<FabButton>`)
+- `css/components/master-detail.css` (modifier `.with-aside`)
+- `css/components/mobile-shell.css`
+- `.eyebrow` duplicado en `base.css` (mantenido en `utilities.css`)
+- Reglas `.page-header*` de `page.css`
+- Duplicaciones `.flex/.flex-col/.flex-row/.inline/.sticky` en `modifiers.css` (existían en `utilities.css`)
+- Duplicaciones `.elevated/.glass` en `modifiers.css` (mergeadas)
+
+### Migration
+
+- 246 instancias de clases CSS legacy migradas en 88+ pages (erplora-site + apps + components demos)
+- ~17 pages corregidas: `<PageHero icon="…">` → `<PageHero eyebrow_icon="…">` (prop renaming bug)
+- 8 PricingCards en pricing/index con `cta_href` añadido
+- Component demos `pricing_card.html` / `benefit_card.html` / `hr_card.html` con sintaxis JinjaX correcta
+- marketplace-free/premium con subtitles e iconos específicos recuperados
+- landing.html con 16 anchors legacy migrados a `<Button>` + features pipe→list + icon_kind unificados
+
+### Reglas a futuro
+- **Si aparece patrón nuevo "nombre de dominio"** (e.g. `<TimelineCard>`) → es **compuesto JinjaX**, NUNCA `.timeline-card.css`.
+- **Si es building block** (`.button.glass`) → añadir modifier al primitivo existente, NUNCA componente CSS nuevo.
+
 ## [2.0.0] — 2026-05-11
 
 ### Changed

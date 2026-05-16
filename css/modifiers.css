@@ -301,7 +301,6 @@
    ============================================================ */
 
 .fixed   { position: fixed; }
-.sticky  { position: sticky; top: 0; }
 .inset   { position: relative; }   /* fluye normal (anti-fixed) */
 .bottom  { bottom: 0; left: 0; right: 0; }
 .top     { top: 0; left: 0; right: 0; }
@@ -385,11 +384,11 @@
    Elevación (sombras semánticas)
    ============================================================ */
 
-.elevated      { box-shadow: var(--shadow-md); }
-.elevated.xs   { box-shadow: var(--shadow-xs); }
-.elevated.sm   { box-shadow: var(--shadow-sm); }
-.elevated.lg   { box-shadow: var(--shadow-lg); }
-.elevated.xl   { box-shadow: var(--shadow-xl); }
+.elevated      { --shadow: var(--shadow-md); box-shadow: var(--shadow); }
+.elevated.xs   { --shadow: var(--shadow-xs); }
+.elevated.sm   { --shadow: var(--shadow-sm); }
+.elevated.lg   { --shadow: var(--shadow-lg); }
+.elevated.xl   { --shadow: var(--shadow-xl); }
 .flat          { box-shadow: none; }
 
 
@@ -734,18 +733,11 @@
 .saturate.sm { --saturate: var(--saturate-soft); }
 .saturate.lg { --saturate: var(--saturate-strong); }
 
-.blur.saturate,
-.glass {
+.blur.saturate {
   --blur: var(--blur-default);
   backdrop-filter: blur(var(--blur)) saturate(var(--saturate));
   -webkit-backdrop-filter: blur(var(--blur)) saturate(var(--saturate));
 }
-
-.elevated {
-  box-shadow: var(--shadow, var(--shadow-lg));
-}
-.elevated.sm { --shadow: var(--shadow-sm); }
-.elevated.xl { --shadow: var(--shadow-xl); }
 
 .brightness {
   filter: brightness(var(--brightness, var(--brightness-default)));
@@ -753,4 +745,110 @@
 .dim {
   --brightness: var(--brightness-dim);
   filter: brightness(var(--brightness));
+}
+
+
+/* ============================================================
+   Composition modifiers — universales (v3.0)
+   Aplicables a .layout/.card/cualquier contenedor para componer
+   layouts complejos sin clases específicas por dominio.
+   ============================================================ */
+
+/* ───── Layout helpers ───── */
+.with-aside {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--gap, var(--space-5));
+}
+.with-aside.aside-right { grid-template-columns: 1fr auto; }
+.with-aside.aside-right > aside { grid-column: 2; }
+
+.grid-auto-cols {
+  display: grid;
+  gap: var(--gap, var(--space-4));
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+}
+.grid-auto-cols.cols-1 { --cols: 1; }
+.grid-auto-cols.cols-2 { --cols: 2; }
+.grid-auto-cols.cols-3 { --cols: 3; }
+.grid-auto-cols.cols-4 { --cols: 4; }
+.grid-auto-cols.cols-6 { --cols: 6; }
+
+.center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ───── Width modifiers (container-style) ───── */
+.full   { width: 100%; max-width: none; }
+.narrow { max-width: var(--container-narrow, 45rem); margin-inline: auto; }
+.wide   { max-width: var(--container, 75rem);        margin-inline: auto; }
+
+/* ───── Density modifiers (override pad/gap) ───── */
+.compact {
+  --pad-x: var(--space-3);
+  --pad-y: var(--space-3);
+  --gap: var(--space-2);
+}
+.spacious {
+  --pad-x: var(--space-7);
+  --pad-y: var(--space-7);
+  --gap: var(--space-5);
+}
+
+/* ───── Visual variants ───── */
+.hero {
+  --padding-y: clamp(3rem, 7vw, 6rem);
+  padding-block: var(--padding-y);
+  text-align: var(--align, center);
+}
+
+.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-from, var(--brand-soft)),
+    var(--gradient-to, var(--leaf-soft))
+  );
+}
+.gradient.success { --gradient-from: var(--leaf-soft);   --gradient-to: var(--info-soft); }
+.gradient.warn    { --gradient-from: var(--warn-soft);   --gradient-to: var(--danger-soft); }
+.gradient.info    { --gradient-from: var(--info-soft);   --gradient-to: var(--brand-soft); }
+.gradient.brand   { --gradient-from: var(--brand-soft);  --gradient-to: var(--accent-soft, var(--brand-soft)); }
+
+/* ───── Behavior ───── */
+.scrollable {
+  overflow: auto;
+  min-height: 0;
+}
+
+
+/* ============================================================
+   Pricing / feature-list helpers
+   ============================================================ */
+
+/* Badge posicionado sobre el borde superior de un card con
+   position:relative (ej. pricing card). Componer con .chip + color. */
+.badge-top {
+  position: absolute;
+  top: -0.625rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Lista de features tipo check (pricing, planes, etc.).
+   Cada <li> lleva su propio icono como primer hijo. */
+.check-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.check-list > li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
 }

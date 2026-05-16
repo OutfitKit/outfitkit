@@ -67,3 +67,20 @@
   backdrop-filter: blur(var(--blur-sm, 0.5rem));
   -webkit-backdrop-filter: blur(var(--blur-sm, 0.5rem));
 }
+
+/* Panel action — link brand-colored en el header del panel.
+   Usado para "Ver todo →" y similares CTAs secundarios. */
+.panel-action {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5, 6px);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--brand);
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background var(--dur-fast);
+}
+.panel-action:hover { background: var(--brand-soft); }

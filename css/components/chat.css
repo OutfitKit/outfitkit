@@ -262,10 +262,11 @@
   background: var(--success-background);
 }
 
+/* classic path — used when chat-thread is rendered without .layout class.
+   In .layout path: flex:1 comes from :where(.layout)>:where(main),
+   overflow-y from .scrollable, padding from layout.css.
+   display:flex + flex-direction:column + gap are chat-specific skin, always kept. */
 .chat-messages {
-  flex: 1;
-  overflow-y: auto;
-  padding: var(--space-4);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
@@ -447,6 +448,10 @@
 }
 
 /* ---------- Composer ---------- */
+/* border-top/padding: classic path — used when .chat-composer is a direct child of
+   .chat-thread (no .layout). In .layout path these come from :where(.chat-thread.layout)>:where(footer).
+   .chat-thread is NOT .card.layout so :where(.card.layout)>footer never fires here.
+   Internal grid (tools | input | send) is composer-specific skin, always kept. */
 .chat-composer {
   border-top: var(--border-w) solid var(--border-color);
   padding: var(--space-2-5) var(--space-3);
@@ -532,4 +537,35 @@
 .chat-composer-send svg {
   width: var(--icon-sm);
   height: var(--icon-sm);
+}
+
+/* ============================================================
+   Chat thread con .layout (Ionic-style)
+   Soporta composición HTML5 semántica:
+     <section class="chat-thread layout">
+       <header class="sticky">…recipient info…</header>
+       <main class="scrollable">…messages…</main>
+       <footer class="sticky">…composer…</footer>
+     </section>
+   Convive con la composición clásica (.head / .chat-messages / .chat-composer).
+   ============================================================ */
+:where(.chat-thread.layout) > :where(header) {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: var(--border-w) solid var(--line);
+  background: var(--background, var(--bg-1));
+}
+
+:where(.chat-thread.layout) > :where(main) {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  overflow-y: auto;
+  min-height: 0;
+}
+
+:where(.chat-thread.layout) > :where(footer) {
+  padding: var(--space-3);
+  border-top: var(--border-w) solid var(--line);
+  background: var(--background, var(--bg-1));
 }

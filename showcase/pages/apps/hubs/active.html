@@ -81,16 +81,10 @@
       </header>
 
     <div class="content scroll body" data-signals='{"view": "grid", "filter": "all", "q": ""}'>
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Hubs activos</h1>
-          <div class="page-header-sub">7 hubs en producción · 24 terminales · región EU-West-1</div>
-        </div>
-        <div class="actions">
-          <button class="btn secondary sm">Exportar CSV</button>
-          <button class="btn primary sm">+ Crear hub</button>
-        </div>
-      </div>
+      <PageHeader title="Hubs activos" subtitle="7 hubs en producción · 24 terminales · región EU-West-1">
+        <Button label="Exportar CSV" variant="secondary" size="sm" />
+        <Button label="+ Crear hub" variant="primary" size="sm" />
+      </PageHeader>
 
       <!-- KPIs -->
       <div class="grid-4 mb-4">
@@ -176,9 +170,9 @@
             <div style="font-size:11px;color:var(--ink-3);margin-top:6px;">Pedidos · últimas 24 h</div>
           </div>
           <footer class="actions">
-            <button class="btn primary sm">Abrir</button>
+            <Button label="Abrir" variant="primary" size="sm" />
             <div class="relative">
-              <button class="btn ghost sm" data-on:click="$m1 = !$m1">⋯</button>
+              <Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m1 = !$m1'}" />
               <div class="menu anchor-br-gap" data-show="$m1">
                 <button class="menu-item" data-on:click="$m1 = false">Reiniciar</button>
                 <button class="menu-item" data-on:click="$m1 = false">Actualizar</button>
@@ -212,9 +206,9 @@
             <div class="text-2xs text-ink-3">Migrando a v2.1.0 · 62% completado</div>
           </div>
           <footer class="actions">
-            <button class="btn primary sm" disabled>Abrir</button>
+            <Button label="Abrir" variant="primary" size="sm" disabled="true" />
             <div class="relative">
-              <button class="btn ghost sm" data-on:click="$m2 = !$m2">⋯</button>
+              <Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m2 = !$m2'}" />
               <div class="menu anchor-br-gap" data-show="$m2">
                 <button class="menu-item" data-on:click="$m2 = false">Cancelar update</button>
                 <button class="menu-item" data-on:click="$m2 = false">Ver logs</button>
@@ -247,8 +241,8 @@
             </svg>
           </div>
           <footer class="actions">
-            <button class="btn primary sm">Abrir</button>
-            <button class="btn ghost sm">Renovar</button>
+            <Button label="Abrir" variant="primary" size="sm" />
+            <Button label="Renovar" variant="ghost" size="sm" />
           </footer>
         </article>
 
@@ -275,9 +269,9 @@
             </svg>
           </div>
           <footer class="actions">
-            <button class="btn primary sm">Abrir</button>
+            <Button label="Abrir" variant="primary" size="sm" />
             <div class="relative">
-              <button class="btn ghost sm" data-on:click="$m4 = !$m4">⋯</button>
+              <Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m4 = !$m4'}" />
               <div class="menu anchor-br-gap" data-show="$m4">
                 <button class="menu-item" data-on:click="$m4 = false">Reiniciar</button>
                 <button class="menu-item" data-on:click="$m4 = false">Promover a producción</button>
@@ -312,9 +306,9 @@
             </svg>
           </div>
           <footer class="actions">
-            <button class="btn primary sm">Abrir</button>
+            <Button label="Abrir" variant="primary" size="sm" />
             <div class="relative">
-              <button class="btn ghost sm" data-on:click="$m5 = !$m5">⋯</button>
+              <Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m5 = !$m5'}" />
               <div class="menu anchor-br-gap" data-show="$m5">
                 <button class="menu-item" data-on:click="$m5 = false">Reiniciar</button>
                 <button class="menu-item" data-on:click="$m5 = false">Actualizar</button>
@@ -349,8 +343,8 @@
             </svg>
           </div>
           <footer class="actions">
-            <button class="btn primary sm">Abrir</button>
-            <button class="btn ghost sm">QR</button>
+            <Button label="Abrir" variant="primary" size="sm" />
+            <Button label="QR" variant="ghost" size="sm" />
           </footer>
         </article>
 
@@ -377,8 +371,8 @@
             </svg>
           </div>
           <footer class="actions">
-            <button class="btn primary sm">Abrir</button>
-            <button class="btn ghost sm">QR</button>
+            <Button label="Abrir" variant="primary" size="sm" />
+            <Button label="QR" variant="ghost" size="sm" />
           </footer>
         </article>
 

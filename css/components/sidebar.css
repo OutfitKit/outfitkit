@@ -5,8 +5,8 @@
 
 .sidebar {
   /* API canónica de override */
-  --background: color-mix(in oklch, var(--bg-1) 78%, transparent);
-  --border-color: color-mix(in oklch, var(--line) 80%, transparent);
+  --background: var(--bg-1);
+  --border-color: var(--line);
   --width: var(--sidebar-w);
   --z-index: var(--z-sticky);
   --header-padding-x: 0.875rem;
@@ -58,16 +58,7 @@
 }
 
 /* ── Header / brand ── */
-/* Use <div class="head"> as direct child of .sidebar */
-.sidebar > .head {
-  --pad-x: var(--header-padding-x);
-  --pad-y: var(--header-padding-y);
-  padding-bottom: var(--header-padding-bottom);
-  height: var(--topbar-h);
-  gap: var(--header-gap);
-  align-items: center;
-  flex-shrink: 0;
-}
+/* Use <header> as direct child of .sidebar.layout */
 
 /* Square logo badge in brand area */
 .sidebar-logo {
@@ -93,14 +84,7 @@
 }
 
 /* ── Scrollable nav body ── */
-/* Use <div class="content scroll"> as direct child of .sidebar */
-.sidebar > .content {
-  padding: var(--space-3) var(--space-2);
-  display: flex;
-  flex-direction: column;
-  gap: var(--content-gap);
-}
-.sidebar > .content::-webkit-scrollbar { width: 0.375rem; }
+/* Use <main class="scrollable"> as direct child of .sidebar.layout */
 
 /* ── Group label ── */
 /* Use <div class="label"> — universal uppercase section label */
@@ -131,12 +115,13 @@
 }
 .sidebar .item[aria-current="page"],
 .sidebar .item[data-active="true"] {
-  background: color-mix(in oklch, var(--brand) 12%, transparent);
-  color: var(--ink);
+  background: var(--brand-soft);
+  color: var(--brand);
   font-weight: 600;
 }
-.sidebar .item[aria-current="page"]::before,
-.sidebar .item[data-active="true"]::before {
+/* Indicador vertical lateral — opt-in con .sidebar.with-indicator */
+.sidebar.with-indicator .item[aria-current="page"]::before,
+.sidebar.with-indicator .item[data-active="true"]::before {
   content: "";
   position: absolute;
   left: 0;
@@ -153,10 +138,12 @@
   --icon: var(--item-icon-size);
   color: var(--ink-3);
 }
-.sidebar .item:hover > .icon,
+.sidebar .item:hover > .icon {
+  color: var(--ink);
+}
 .sidebar .item[aria-current="page"] > .icon,
 .sidebar .item[data-active="true"] > .icon {
-  color: var(--ink);
+  color: var(--brand);
 }
 
 /* Nav item text (no uppercase — not a section label) */
@@ -175,10 +162,7 @@
 }
 
 /* ── Footer ── */
-/* Use <div class="foot"> as direct child of .sidebar */
-.sidebar > .foot {
-  flex-shrink: 0;
-}
+/* Use <footer> as direct child of .sidebar.layout */
 
 /* User block in footer */
 .sidebar-user {
@@ -206,10 +190,6 @@
 .sidebar.collapsed .item {
   justify-content: center;
   padding: var(--space-2);
-}
-.sidebar.collapsed > .head {
-  justify-content: center;
-  padding: var(--header-padding-y) var(--header-padding-x);
 }
 
 /* Mobile drawer */
@@ -251,3 +231,26 @@
 .sidebar .badge.saas { background: var(--info-soft);  color: var(--info); }
 .sidebar .badge.hub  { background: var(--brand-soft); color: var(--brand-3); }
 .sidebar .badge.new  { background: var(--leaf-soft);  color: var(--leaf); }
+
+/* ============================================================
+   Sidebar con .layout — usa <header>, <main class="scrollable">, <footer>
+   Composición Ionic-style. layout.css provee flex-column, padding base,
+   flex-shrink, y overflow en scrollable. Aquí solo skin específico del sidebar.
+   :where() mantiene especificidad 0 para que overrides locales ganen.
+   ============================================================ */
+
+/* Sidebar header: branding, logo, user — sin border bottom por defecto */
+:where(.sidebar.layout) > :where(header) {
+  padding: var(--head-pad-y, var(--space-4)) var(--head-pad-x, var(--space-4));
+}
+
+/* Main del sidebar: contiene la nav. Usar <main class="scrollable"> */
+:where(.sidebar.layout) > :where(main) {
+  padding: var(--main-pad-y, var(--space-3)) var(--main-pad-x, var(--space-3));
+}
+
+/* Footer del sidebar: user/settings/theme toggle */
+:where(.sidebar.layout) > :where(footer) {
+  border-top: var(--border-w) solid var(--line);
+  padding: var(--foot-pad-y, var(--space-3)) var(--foot-pad-x, var(--space-3));
+}

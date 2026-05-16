@@ -1,53 +1,7 @@
 /* ============================================================
-   OutfitKit · Page header & layout primitives
+   OutfitKit · Page layout primitives
+   (.page-header* eliminado — vive solo como <PageHeader> JinjaX)
    ============================================================ */
-
-.page-header {
-  --gap: var(--space-4);
-  --padding-y: var(--space-5);
-  --border-color: var(--line);
-
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: var(--gap);
-  padding-bottom: var(--padding-y);
-  margin-bottom: var(--padding-y);
-  border-bottom: var(--border-w) solid var(--border-color);
-}
-
-.page-header-title {
-  flex: 1 1 15rem;
-  min-width: 0;
-}
-.page-header-title h1 {
-  margin: var(--space-0);
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 600;
-  letter-spacing: var(--tracking-display);
-  color: var(--ink);
-}
-.page-header-sub {
-  margin-top: var(--space-1);
-  font-size: var(--text-sm);
-  color: var(--ink-3);
-}
-
-/* .page-header > .actions uses universal .actions */
-
-@media (max-width: 767px) {
-  .page-header {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .page-header-title { flex: 1 1 auto; }
-  .page-header > .actions {
-    flex-wrap: wrap;
-    width: 100%;
-  }
-  .page-header > .actions > * { flex: 0 1 auto; }
-}
 
 /* Section — app panel section (settings, detail pages) */
 .section {
@@ -84,4 +38,15 @@
 }
 @media (max-width: 767px) {
   .grid-2, .grid-3, .grid-4, .grid-6 { grid-template-columns: 1fr; }
+}
+
+/* Page con .layout — topbar=header, content=main, tabbar=footer (todos potencialmente sticky) */
+:where(.page.layout) {
+  height: 100%;
+}
+:where(.page.layout) > :where(main) {
+  /* contenido scrollable internamente típicamente */
+  overflow-y: auto;
+  min-height: 0;
+  padding: var(--page-pad, var(--space-5));
 }

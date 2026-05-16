@@ -1,0 +1,39 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Usuarios' %}
+{% set active = 'usuarios' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Usuarios', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<div class="panel flush">
+  <div class="body">
+    <table class="erp-table">
+      <thead>
+        <tr>
+          <th>Usuario</th>
+          <th>Email</th>
+          <th>Rol</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Support Admin</strong></td>
+          <td class="mono">support@erplora.com</td>
+          <td>Owner</td>
+          <td><span class="chip success sm">Activo</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+
+{% block topbar_actions %}
+<Button label="Invitar Usuario" href="usuarios-invitar.html" variant="brand" icon="lucide:plus" />
+{% endblock %}

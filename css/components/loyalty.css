@@ -1,0 +1,201 @@
+/* ============================================================
+   OutfitKit · Loyalty
+   Loyalty / membership card · landscape brand card
+   ============================================================ */
+.loyalty {
+  --width: 22rem;
+  --height: 13.75rem;
+  --_grad-a: var(--brand-2);
+  --_grad-b: var(--brand);
+  --_fg: var(--brand-fg);
+  --padding-x: var(--space-5);
+  --padding-y: var(--space-5);
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--radius-xl);
+  padding: var(--padding-y) var(--padding-x);
+  background: linear-gradient(135deg, var(--_grad-a), var(--_grad-b));
+  color: var(--_fg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+}
+.loyalty::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 0%, color-mix(in oklch, white 18%, transparent) 0%, transparent 45%),
+    radial-gradient(circle at 0% 100%, color-mix(in oklch, black 22%, transparent) 0%, transparent 55%);
+  z-index: -1;
+}
+.loyalty-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+.loyalty-brand {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+.loyalty-chip {
+  width: var(--size-md);
+  height: 1.5rem;
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg,
+      color-mix(in oklch, var(--_fg) 70%, transparent),
+      color-mix(in oklch, var(--_fg) 35%, transparent));
+  position: relative;
+  box-shadow: inset 0 0 0 1px color-mix(in oklch, black 25%, transparent);
+}
+.loyalty-chip::before,
+.loyalty-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0.25rem;
+  border: var(--border-w) solid color-mix(in oklch, black 35%, transparent);
+  border-radius: 0.125rem;
+}
+.loyalty-chip::after {
+  inset: 0.5rem 0.375rem;
+  border-top: 0;
+  border-bottom: 0;
+}
+.loyalty-num {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--_fg);
+  word-spacing: 0.25em;
+  text-shadow: 0 1px 1px color-mix(in oklch, black 30%, transparent);
+  align-self: center;
+}
+.loyalty-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-3);
+  align-items: end;
+}
+.loyalty-name {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: var(--tracking-tight);
+  text-transform: uppercase;
+}
+.loyalty-expires {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  opacity: 0.85;
+  letter-spacing: var(--tracking-wide);
+  text-align: right;
+}
+.loyalty-expires b {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  margin-top: var(--border-w-2);
+}
+.loyalty-points {
+  display: grid;
+  gap: var(--border-w-2);
+}
+.loyalty-points-value {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tighter);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--leading-flat);
+}
+.loyalty-points-label {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.85;
+}
+.loyalty-tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-pill);
+  background: color-mix(in oklch, white 22%, transparent);
+  border: var(--border-w) solid color-mix(in oklch, white 30%, transparent);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  backdrop-filter: blur(var(--space-1-5));
+}
+
+/* Tier variants */
+.loyalty.silver {
+  --_grad-a: var(--tier-silver-a);
+  --_grad-b: var(--tier-silver-b);
+  --_fg: var(--tier-silver-fg);
+}
+.loyalty.silver .loyalty-tier-badge {
+  background: color-mix(in oklch, black 12%, transparent);
+  border-color: color-mix(in oklch, black 22%, transparent);
+}
+.loyalty.gold {
+  --_grad-a: var(--tier-gold-a);
+  --_grad-b: var(--tier-gold-b);
+  --_fg: var(--tier-gold-fg);
+}
+.loyalty.gold .loyalty-tier-badge {
+  background: color-mix(in oklch, black 14%, transparent);
+  border-color: color-mix(in oklch, black 24%, transparent);
+}
+.loyalty.platinum {
+  --_grad-a: var(--tier-platinum-a);
+  --_grad-b: var(--tier-platinum-b);
+  --_fg: var(--tier-platinum-fg);
+}
+.loyalty.platinum::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg,
+    transparent 35%,
+    color-mix(in oklch, white 18%, transparent) 50%,
+    transparent 65%);
+  pointer-events: none;
+  z-index: -1;
+}
+.loyalty.brand {
+  --_grad-a: var(--brand-2);
+  --_grad-b: var(--brand);
+  --_fg: var(--brand-fg);
+}
+
+/* Sizes */
+.loyalty.sm {
+  --width: 18rem;
+  --height: 11.25rem;
+  --padding-x: var(--space-4);
+  --padding-y: var(--space-4);
+}
+.loyalty.sm .loyalty-num { font-size: var(--text-md); }
+.loyalty.sm .loyalty-points-value { font-size: var(--text-xl); }
+.loyalty.lg {
+  --width: 25rem;
+  --height: 15.5rem;
+  --padding-x: var(--space-6);
+  --padding-y: var(--space-6);
+}
+.loyalty.lg .loyalty-num { font-size: var(--text-xl); }
+.loyalty.lg .loyalty-points-value { font-size: var(--text-3xl); }

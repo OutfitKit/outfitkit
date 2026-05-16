@@ -1,0 +1,209 @@
+/* ============================================================
+   OutfitKit · Ticket
+   Order ticket · narrow vertical kitchen/order ticket
+   ============================================================ */
+.ticket {
+  --width: 22rem;
+  --_accent: var(--brand);
+  position: relative;
+  width: var(--width);
+  max-width: 100%;
+  background: var(--bg-2);
+  border: var(--border-w) dashed var(--line-2);
+  border-top: 4px solid var(--_accent);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  color: var(--ink);
+}
+.ticket-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2);
+  align-items: start;
+}
+.ticket-num {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tighter);
+  color: var(--ink);
+  line-height: var(--leading-flat);
+  font-variant-numeric: tabular-nums;
+}
+.ticket-time {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  align-self: start;
+  margin-top: var(--space-1);
+}
+.ticket-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.1875rem var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--bg-3);
+  border: var(--border-w) solid var(--line);
+  font-size: var(--text-2xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--ink-2);
+  margin-top: var(--space-1);
+}
+.ticket-type-badge--dine     { background: var(--info-soft); color: var(--info); border-color: transparent; }
+.ticket-type-badge--takeaway { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+.ticket-type-badge--delivery { background: var(--leaf-soft); color: var(--leaf); border-color: transparent; }
+.ticket-server {
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  margin-top: var(--border-w-2);
+}
+.ticket-divider {
+  border: none;
+  border-top: var(--border-w) dashed var(--line-2);
+  margin: var(--space-0);
+}
+.ticket-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.ticket-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  align-items: baseline;
+}
+.ticket-qty {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--brand);
+  font-variant-numeric: tabular-nums;
+  min-width: var(--size-xs);
+}
+.ticket-name {
+  color: var(--ink);
+  font-weight: 500;
+}
+.ticket-price {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  font-weight: 500;
+}
+.ticket-mods {
+  grid-column: 2 / 4;
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-style: italic;
+  line-height: var(--leading-snug);
+  margin-top: var(--border-w-2);
+}
+.ticket-totals {
+  display: flex;
+  flex-direction: column;
+  gap: var(--border-w-2);
+  padding-top: var(--space-2);
+  border-top: var(--border-w) dashed var(--line-2);
+}
+.ticket-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.ticket-total-row--main {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--ink);
+  margin-top: var(--space-1);
+  letter-spacing: var(--tracking-tight);
+}
+.ticket-notes {
+  font-size: var(--text-xs);
+  color: var(--warn);
+  background: var(--warn-soft);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2);
+  font-style: italic;
+  line-height: var(--leading-snug);
+}
+
+/* Status variants */
+.ticket.new       { --_accent: var(--brand); }
+.ticket.prepping  { --_accent: var(--warn); }
+.ticket.ready     { --_accent: var(--leaf); }
+.ticket.delivered {
+  --_accent: var(--ink-3);
+  opacity: 0.7;
+}
+.ticket.delivered .ticket-items { color: var(--ink-3); }
+
+/* Urgent state */
+.ticket.is-urgent {
+  border-left: var(--border-w-4) solid var(--danger);
+  animation: ok-ticket-pulse 2.2s ease-in-out infinite;
+}
+@keyframes ok-ticket-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 transparent; }
+  50%      { box-shadow: 0 0 0 0.3125rem color-mix(in oklch, var(--danger) 20%, transparent); }
+}
+
+/* ============================================================
+   Ticket + .layout (HTML5 nativo)
+   Soporte aditivo cuando .ticket adopta .layout primitive:
+     <article class="ticket layout">
+       <header>…</header>   (cabecera con dashed border-bottom)
+       <main>…</main>       (lista de items con dashed dividers)
+       <footer>…</footer>   (totales con dashed border-top)
+     </article>
+   :where() mantiene especificidad 0 para no pisar overrides.
+   ============================================================ */
+:where(.ticket.layout) {
+  --head-pad-x: var(--space-0);
+  --head-pad-y: var(--space-0);
+  --main-pad-x: var(--space-0);
+  --main-pad-y: var(--space-0);
+  --foot-pad-x: var(--space-0);
+  --foot-pad-y: var(--space-0);
+  --gap: var(--space-3);
+}
+:where(.ticket.layout) > :where(header) {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-2);
+  align-items: start;
+  padding-bottom: var(--space-3);
+  border-bottom: var(--border-w) dashed var(--line-2);
+}
+:where(.ticket.layout) > :where(main) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+:where(.ticket.layout) > :where(main) > :where(* + *) {
+  padding-top: var(--space-2);
+  border-top: var(--border-w) dashed var(--line-2);
+}
+:where(.ticket.layout) > :where(footer) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--border-w-2);
+  padding-top: var(--space-3);
+  border-top: var(--border-w) dashed var(--line-2);
+  font-weight: var(--weight-medium);
+}

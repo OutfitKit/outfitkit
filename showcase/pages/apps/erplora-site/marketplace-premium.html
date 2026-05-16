@@ -1,0 +1,114 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}Premium Marketplace · ERPlora{% endblock %}
+{% block page_title %}Premium Marketplace · ERPlora{% endblock %}
+{% set active = 'marketplace' %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  title="Extend Your Hub"
+  subtitle="Discover hundreds of modules to transform your Hub into the perfect business solution. From POS to CRM, inventory management, and beyond."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div style="max-width:720px;margin:0 auto var(--space-6)">
+      <input type="search" placeholder="Search by tags..." style="width:100%;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius-md);padding:14px 18px;font:var(--weight-regular,400) var(--text-md)/1.4 var(--font-sans);outline:none" />
+    </div>
+
+    <div style="text-align:center;margin-bottom:var(--space-5)">
+      <p style="font:var(--weight-medium,500) var(--text-xs)/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 var(--space-3)">Pricing</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px">
+        <a href="marketplace.html" class="chip outline chip-sm">All Modules</a>
+        <a href="marketplace-free.html" class="chip outline chip-sm">🎁 Free</a>
+        <a href="marketplace-premium.html" class="chip active chip-sm">💳 One-time + Subscription</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:var(--text-sm);color:var(--ink-3);margin:0 0 var(--space-6)">6 modules found</p>
+
+    <div class="grid-3 center-wide">
+      <ModuleCard
+        title="Verifactu"
+        subtitle="Spanish AEAT verifactu e-invoicing compliance"
+        icon="lucide:file-check"
+        icon_kind="info"
+        meta="ERPlora · v1.0.2"
+        value="From €9/mo"
+        value_kind="info"
+        href="#" />
+      <ModuleCard
+        title="SII Compliance"
+        subtitle="Real-time invoice reporting to Spanish tax authority"
+        icon="lucide:landmark"
+        icon_kind="info"
+        meta="ERPlora · v1.1.0"
+        value="From €9/mo"
+        value_kind="info"
+        href="#" />
+      <ModuleCard
+        title="Loyalty Programs"
+        subtitle="Points, rewards, tiers, in-store and online redemption"
+        icon="lucide:star"
+        icon_kind="warn"
+        meta="ERPlora · v0.9.4"
+        value="€49 one-time"
+        value_kind="warn"
+        href="#" />
+      <ModuleCard
+        title="Cloud Backup"
+        subtitle="Automated cloud backups with retention policies"
+        icon="lucide:cloud"
+        icon_kind="info"
+        meta="ERPlora · v2.0.0"
+        value="From €9/mo"
+        value_kind="info"
+        href="#" />
+      <ModuleCard
+        title="Advanced BI"
+        subtitle="Power BI/Tableau-grade analytics in your Hub"
+        icon="lucide:bar-chart-2"
+        icon_kind="info"
+        meta="ERPlora · v1.3.0"
+        value="From €9/mo"
+        value_kind="info"
+        href="#" />
+      <ModuleCard
+        title="Push Notifications"
+        subtitle="Mobile push notifications for sales, low-stock, alerts"
+        icon="lucide:bell"
+        icon_kind="warn"
+        meta="ERPlora · v1.0.5"
+        value="€49 one-time"
+        value_kind="warn"
+        href="#" />
+    </div>
+
+    <BenefitCard
+      title="Ready to Get Started?"
+      subtitle="Create your free account and start building your perfect business solution with ERPlora modules."
+      cta_label="Sign Up Free"
+      cta_href="signup.html" />
+
+    <div class="grid-3 center-wide mt-12">
+      <FeatureCard
+        title="Trusted &amp; Secure"
+        subtitle="All modules are reviewed and tested for security and quality."
+        icon="lucide:shield"
+        icon_kind="success" />
+      <FeatureCard
+        title="Always Up-to-Date"
+        subtitle="Automatic updates ensure you always have the latest features."
+        icon="lucide:rocket"
+        icon_kind="brand" />
+      <FeatureCard
+        title="Community Driven"
+        subtitle="Built by developers, for businesses of all sizes."
+        icon="lucide:users"
+        icon_kind="info" />
+    </div>
+  </div>
+</section></main>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Organizaciones' %}
+{% set active = 'organizaciones' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Organizaciones', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin organizaciones"
+    desc="Crea tu primera organización para empezar a gestionar terminales y usuarios."
+    icon="lucide:building">
+    <Button label="Crear Organización" href="organizaciones-crear.html" variant="brand" icon="lucide:plus" />
+  </Empty>
+</Panel>
+{% endblock %}
+
+{% block topbar_actions %}
+<Button label="Crear Organización" href="organizaciones-crear.html" variant="brand" icon="lucide:plus" />
+{% endblock %}

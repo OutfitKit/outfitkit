@@ -34,6 +34,12 @@ const PAGES = [
   '/apps/auth/login-saas.html',
   '/apps/profile/saas.html',
   '/apps/settings/preferences.html',
+  // ERPlora demo pages (provisional, antes de refactorizar cloud)
+  '/apps/erplora/dashboard.html',
+  '/apps/erplora/terminales-activos.html',
+  '/apps/erplora/billing-facturas.html',
+  '/apps/erplora/perfil.html',
+  '/apps/erplora/usuarios.html',
 ];
 
 /**

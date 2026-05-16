@@ -762,3 +762,229 @@ input[type="radio"]:disabled {
   flex-wrap: wrap;
   gap: var(--space-3-5);
 }
+
+
+/* ============================================================
+   Variantes Ionic-style (v3.0)
+   Mapeo de props de <ion-input>/<ion-textarea>/<ion-select> a
+   modifiers CSS puros (sin necesidad de JS para la mayoría).
+
+   - labelPlacement="stacked" (default) → .field (actual)
+   - labelPlacement="floating"          → .field.float-label
+   - labelPlacement="fixed"             → .field.fixed-label
+   - labelPlacement="start"             → .field.inline-label
+   - labelPlacement="end"               → .field.inline-label.label-end
+   - fill="outline" (default)           → .input (actual, border visible)
+   - fill="solid"                       → .input.solid (background sólido)
+   - shape="round"                      → .input.round (border-radius pill)
+   - counter                            → .field.counter (+ macro JS opcional)
+   - clearInput                         → .input-group.clearable (+ JS button)
+   - color="danger/success"             → .field.danger / .field.success
+
+   Usa selectores nativos modernos (:has(), :placeholder-shown, :user-invalid)
+   sin necesidad de classnames añadidos por framework (mejor que el hack
+   ion-invalid + ion-touched de Ionic Angular).
+   ============================================================ */
+
+/* === labelPlacement variants === */
+
+/* labelPlacement="floating" — label se posiciona absoluta y "flota" cuando
+   el input tiene valor o focus. Requiere :has() (Safari 15.4+, Chrome 105+). */
+.field.float-label {
+  position: relative;
+}
+.field.float-label > .field-label {
+  position: absolute;
+  top: 50%;
+  left: var(--space-3);
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: var(--bg-1);
+  padding: 0 var(--space-1);
+  font-size: var(--text-base);
+  color: var(--ink-3);
+  transition:
+    top var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out),
+    font-size var(--dur-fast) var(--ease-out),
+    color var(--dur-fast) var(--ease-out);
+  z-index: 1;
+}
+.field.float-label:has(.input:focus) > .field-label,
+.field.float-label:has(.input:not(:placeholder-shown)) > .field-label,
+.field.float-label:has(.textarea:focus) > .field-label,
+.field.float-label:has(.textarea:not(:placeholder-shown)) > .field-label,
+.field.float-label:has(.select:focus) > .field-label {
+  top: 0;
+  transform: translateY(-50%);
+  font-size: var(--text-xs);
+  color: var(--brand);
+}
+
+/* labelPlacement="fixed" — label con ancho fijo a la izquierda */
+.field.fixed-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.field.fixed-label > .field-label {
+  width: 100px;
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+.field.fixed-label > .input-group,
+.field.fixed-label > .input,
+.field.fixed-label > .textarea,
+.field.fixed-label > .select {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* labelPlacement="start" — label inline a la izquierda (auto-width) */
+.field.inline-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+.field.inline-label > .field-label {
+  flex-shrink: 0;
+  margin-bottom: 0;
+}
+.field.inline-label > .input-group,
+.field.inline-label > .input,
+.field.inline-label > .textarea,
+.field.inline-label > .select {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* labelPlacement="end" — label a la derecha */
+.field.inline-label.label-end > .field-label {
+  order: 2;
+}
+
+/* === Fill variants === */
+
+/* fill="solid" — background sólido en lugar de outline */
+.input.solid,
+.textarea.solid,
+.select.solid {
+  --background: var(--bg-3);
+  --border-color: transparent;
+  background: var(--background);
+  border-color: var(--border-color);
+}
+.input.solid:hover,
+.textarea.solid:hover,
+.select.solid:hover {
+  --background: var(--bg-4);
+}
+.input.solid:focus,
+.textarea.solid:focus,
+.select.solid:focus {
+  --background: var(--bg-2);
+  --border-color: var(--brand);
+}
+
+/* === Shape variants === */
+
+/* shape="round" — border-radius pill */
+.input.round,
+.select.round {
+  --radius: var(--radius-pill);
+  border-radius: var(--radius-pill);
+}
+.textarea.round {
+  --radius: var(--radius-xl);
+  border-radius: var(--radius-xl);
+}
+
+/* === Counter (Ionic counter prop) === */
+.field.counter {
+  position: relative;
+}
+.field.counter > .field-counter {
+  position: absolute;
+  bottom: 0;
+  right: var(--space-1);
+  font-size: var(--text-xs);
+  color: var(--ink-3);
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+/* === Clearable input (Ionic clearInput prop) === */
+.input-group.clearable {
+  position: relative;
+}
+.input-group.clearable > .input-clear {
+  position: absolute;
+  right: var(--space-2);
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-fast) var(--ease-out);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-1);
+  color: var(--ink-3);
+  border-radius: var(--radius-circle);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.input-group.clearable > .input-clear:hover {
+  background: var(--bg-3);
+  color: var(--ink);
+}
+/* Muestra el clear button solo cuando hay texto (no placeholder visible) */
+.input-group.clearable:has(.input:not(:placeholder-shown)) > .input-clear,
+.input-group.clearable:has(.input:focus:not(:placeholder-shown)) > .input-clear {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* === Semantic color palettes === */
+
+.field.danger > .field-label { color: var(--danger); }
+.field.danger .input,
+.field.danger .textarea,
+.field.danger .select,
+.input.danger,
+.textarea.danger,
+.select.danger {
+  --border-color: var(--danger);
+  border-color: var(--border-color);
+}
+.input.danger:focus,
+.textarea.danger:focus,
+.select.danger:focus {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--danger) 18%, transparent);
+}
+
+.field.success > .field-label { color: var(--leaf); }
+.field.success .input,
+.input.success {
+  --border-color: var(--leaf);
+  border-color: var(--border-color);
+}
+.input.success:focus {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--leaf) 18%, transparent);
+}
+
+/* === Native :user-invalid styling
+   (mejor que ion-invalid+ion-touched de Ionic, no requiere JS) === */
+
+.input:user-invalid,
+.textarea:user-invalid,
+.select:user-invalid {
+  --border-color: var(--danger);
+  border-color: var(--border-color);
+}
+.input:user-invalid:focus,
+.textarea:user-invalid:focus,
+.select:user-invalid:focus {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--danger) 18%, transparent);
+}

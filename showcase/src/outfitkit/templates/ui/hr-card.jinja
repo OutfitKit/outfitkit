@@ -1,0 +1,66 @@
+{#def name=None, role=None, avatar=None, avatar_src=None, cover_color="brand", stats=None, actions=None, tag="article", attrs=None #}
+
+{# HR employee card · composición Ionic-style sobre .card + .layout.
+
+   Estructura:
+     <article class="card layout">
+       <header class="card-cover gradient {{cover_color}}"></header>
+       <header>
+         <span class="avatar xl">…</span>
+         <div class="heading">
+           <h3 class="title">{{name}}</h3>
+           <p class="meta">{{role}}</p>
+         </div>
+       </header>
+       <main class="grid-auto-cols cols-3">{ stats }</main>
+       <footer class="actions">{ actions }</footer>
+     </article>
+
+   Props:
+   - `name`         — nombre del empleado (string).
+   - `role`         — puesto / cargo (string, opcional).
+   - `avatar`       — iniciales o texto corto (string, opcional).
+   - `avatar_src`   — URL de imagen (string, opcional).
+   - `cover_color`  — color del header gradient: 'brand' (default) | 'success' | 'warn' | 'info'.
+   - `stats`        — HTML pre-renderizado para el grid de stats (opcional).
+   - `actions`      — HTML pre-renderizado para footer de acciones (opcional).
+   - Slot/caller    — si se usa <HrCard>…</HrCard> el contenido va dentro del <main>.
+#}
+
+{% macro hr_card(name=None, role=None, avatar=None, avatar_src=None, cover_color="brand", stats=None, actions=None, tag="article", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<{{ tag }} class="card layout"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  <header class="card-cover gradient {{ cover_color or 'brand' }}"></header>
+  {%- if name or role or avatar or avatar_src %}
+  <header>
+    {%- if avatar or avatar_src %}
+    <span class="avatar xl">
+      {%- if avatar %}<span class="avatar-initials">{{ avatar }}</span>{% endif -%}
+      {%- if avatar_src %}<img src="{{ avatar_src }}" alt="{{ name or '' }}" onerror="this.remove()"/>{% endif -%}
+    </span>
+    {%- endif %}
+    <div class="heading">
+      {%- if name %}<h3 class="title">{{ name }}</h3>{% endif %}
+      {%- if role %}<p class="meta">{{ role }}</p>{% endif %}
+    </div>
+  </header>
+  {%- endif %}
+  {%- if stats or caller is defined %}
+  <main class="grid-auto-cols cols-3">
+    {%- if caller is defined %}{{ caller() }}{%- elif stats %}{{ stats }}{% endif %}
+  </main>
+  {%- endif %}
+  {%- if actions %}
+  <footer class="actions">{{ actions }}</footer>
+  {%- endif %}
+</{{ tag }}>
+{%- endmacro %}
+
+{% if name is defined or role is defined or tag is defined %}
+  {% if caller is defined %}
+    {% call hr_card(name=name, role=role, avatar=avatar, avatar_src=avatar_src, cover_color=cover_color, stats=stats, actions=actions, tag=tag, attrs=attrs) %}{{ caller() }}{% endcall %}
+  {% else %}
+    {{ hr_card(name=name, role=role, avatar=avatar, avatar_src=avatar_src, cover_color=cover_color, stats=stats, actions=actions, tag=tag, attrs=attrs) }}
+  {% endif %}
+{% endif %}

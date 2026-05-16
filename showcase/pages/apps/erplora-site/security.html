@@ -1,0 +1,58 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}Security · ERPlora{% endblock %}
+{% block page_title %}Security · ERPlora{% endblock %}
+
+{% block landing_content %}
+
+<main>
+<PageHero
+  eyebrow_icon="lucide:shield-check"
+  title="Security at ERPlora"
+  subtitle="Bank-level encryption, real isolation, and an honest security posture — explained without the marketing fog."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="grid-2 center-wide">
+      <FeatureCard
+        title="Encryption in transit"
+        subtitle="All connections use TLS 1.3 with modern ciphers. HSTS preload enabled. No mixed content anywhere."
+        icon="lucide:check" />
+      <FeatureCard
+        title="Encryption at rest"
+        subtitle="Databases and backups encrypted with AES-256. Keys rotated automatically by AWS KMS."
+        icon="lucide:check" />
+      <FeatureCard
+        title="Authentication"
+        subtitle="RS256 JWT, email verification, optional MFA. Passwords hashed with Argon2id. No password reuse against breach lists."
+        icon="lucide:check"
+        icon_kind="info" />
+      <FeatureCard
+        title="Tenant isolation"
+        subtitle="Each Hub has its own database schema and its own process. Cross-tenant access is architecturally impossible."
+        icon="lucide:check"
+        icon_kind="info" />
+      <FeatureCard
+        title="Backups &amp; recovery"
+        subtitle="Automatic daily backups with 7-day retention (Starter) up to point-in-time recovery (Pro and above)."
+        icon="lucide:check"
+        icon_kind="warn" />
+      <FeatureCard
+        title="Audit log"
+        subtitle="Every login, every write, every export — recorded with user, IP, timestamp. Exportable as JSON or CSV."
+        icon="lucide:check"
+        icon_kind="warn" />
+    </div>
+
+    <BenefitCard
+      title="Found a vulnerability?"
+      subtitle="We run a private bug bounty. Report responsibly to security@erplora.com and we'll respond within 24 hours."
+      cta_label="Report a vulnerability"
+      cta_href="mailto:security@erplora.com"
+      style="margin-top:var(--space-9)" />
+  </div>
+</section></main>
+{% endblock %}
+</content>
+</invoke>

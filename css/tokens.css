@@ -5,14 +5,14 @@
    ningún literal numérico permitido fuera de este fichero.
    ============================================================ */
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600;700&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap");
 
 :root,
 [data-theme="erplora"] {
 
    /* ───── Tipografía · familias ──────────────────────────── */
-   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
-   --font-display: "Inter Tight", "Inter", system-ui, sans-serif;
+   --font-sans: "Space Grotesk", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+   --font-display: "Space Grotesk", "Inter Tight", "Inter", system-ui, sans-serif;
    --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
    /* ───── Tipografía · escala (densa, dashboard) ────────── */
@@ -113,7 +113,7 @@
    --avatar-2xs: 1.125rem;
    --avatar-xs: 1.375rem;
    --avatar-sm: 1.75rem;
-   --avatar-md: 2.25rem;
+   --avatar-md: 2.5rem;
    --avatar-lg: 3rem;
    --avatar-xl: 4rem;
    --avatar-2xl: 6rem;
@@ -145,39 +145,39 @@
    --border-w-2: 2px;
    --border-w-4: 4px;
 
-   /* ───── Paleta neutra · oscuro (default) ───────────────── */
-   --bg: #0B0A09;
-   /* canvas */
-   --bg-1: #131210;
+   /* ───── Paleta neutra · oscuro (default · ERPlora cool blue) ─ */
+   --bg: #0E1116;
+   /* canvas · tinta */
+   --bg-1: #14181F;
    /* sidebar / topbar */
-   --bg-2: #1A1815;
+   --bg-2: #181D26;
    /* cards */
-   --bg-3: #221F1B;
+   --bg-3: #1F2530;
    /* hover / inputs */
-   --bg-4: #2B2722;
+   --bg-4: #2A313C;
    /* pressed / chips */
 
-   --line: rgba(255, 255, 255, 0.06);
-   --line-2: rgba(255, 255, 255, 0.10);
-   --line-3: rgba(255, 255, 255, 0.16);
+   --line: rgba(245, 247, 250, 0.08);
+   --line-2: rgba(245, 247, 250, 0.16);
+   --line-3: rgba(245, 247, 250, 0.28);
 
-   --ink: #F5F1EA;
+   --ink: #F5F7FA;
    /* texto principal */
-   --ink-2: #C4BCB0;
+   --ink-2: #D0D5DE;
    /* secundario */
-   --ink-3: #8A8378;
+   --ink-3: #94A0B4;
    /* terciario / muted */
-   --ink-4: #5C564D;
+   --ink-4: #6B7383;
    /* placeholder / disabled */
 
-   /* ───── Acento marca (terracota) ───────────────────────── */
-   --brand: #E8552A;
-   --brand-2: #B83A12;
+   /* ───── Acento marca · azul ERPlora ────────────────────── */
+   --brand: oklch(0.62 0.14 235);
+   --brand-2: oklch(0.55 0.16 235);
    /* hover/pressed */
-   --brand-3: #FF7A4D;
+   --brand-3: oklch(0.75 0.10 235);
    /* focus ring claro */
    --brand-fg: #FFFFFF;
-   --brand-soft: color-mix(in oklch, var(--brand) 18%, transparent);
+   --brand-soft: color-mix(in oklch, var(--brand) 12%, transparent);
 
    /* Alias accent — themes pueden sobreescribir solo accent sin tocar brand */
    --accent: var(--brand);
@@ -186,30 +186,37 @@
    --accent-fg: var(--brand-fg);
    --accent-soft: var(--brand-soft);
 
-   /* ───── Acentos semánticos ─────────────────────────────── */
-   --leaf: #4F9D6E;
-   /* éxito */
+   --focus: var(--brand-3);
+
+   /* ───── Tracking (de marca · letras más juntas) ───────── */
+   --tracking-display: -0.025em;
+   --tracking-tight: -0.015em;
+   --tracking-near: -0.020em;
+
+   /* ───── Acentos semánticos · armónicos al azul brand ──── */
+   --leaf: oklch(0.60 0.13 155);
+   /* éxito · verde sobrio */
    --leaf-2: color-mix(in oklch, var(--leaf) 80%, black);
    --leaf-fg: #FFFFFF;
-   --leaf-soft: color-mix(in oklch, var(--leaf) 18%, transparent);
+   --leaf-soft: color-mix(in oklch, var(--leaf) 12%, transparent);
 
-   --warn: #D8A23A;
-   /* aviso */
+   --warn: oklch(0.72 0.14 75);
+   /* aviso · ámbar */
    --warn-2: color-mix(in oklch, var(--warn) 80%, black);
-   --warn-fg: #1A1815;
-   --warn-soft: color-mix(in oklch, var(--warn) 18%, transparent);
+   --warn-fg: #14181F;
+   --warn-soft: color-mix(in oklch, var(--warn) 14%, transparent);
 
-   --danger: #D8553F;
-   /* error */
+   --danger: oklch(0.58 0.18 25);
+   /* error · rojo */
    --danger-2: color-mix(in oklch, var(--danger) 80%, black);
    --danger-fg: #FFFFFF;
-   --danger-soft: color-mix(in oklch, var(--danger) 18%, transparent);
+   --danger-soft: color-mix(in oklch, var(--danger) 12%, transparent);
 
-   --info: #5B8CD9;
-   /* información */
+   --info: oklch(0.65 0.10 215);
+   /* información · cian-teal */
    --info-2: color-mix(in oklch, var(--info) 80%, black);
    --info-fg: #FFFFFF;
-   --info-soft: color-mix(in oklch, var(--info) 18%, transparent);
+   --info-soft: color-mix(in oklch, var(--info) 12%, transparent);
 
 
    /* ============================================================
@@ -223,7 +230,7 @@
 
    /* Primary — alias semántico del color de marca */
    --color-primary: var(--brand);
-   --color-primary-rgb: 232, 85, 42;
+   --color-primary-rgb: 61, 135, 193;
    --color-primary-contrast: var(--brand-fg);
    --color-primary-contrast-rgb: 255, 255, 255;
    --color-primary-shade: var(--brand-2);
@@ -231,7 +238,7 @@
 
    /* Secondary — accent (themes pueden override sin tocar primary) */
    --color-secondary: var(--accent);
-   --color-secondary-rgb: 232, 85, 42;
+   --color-secondary-rgb: 61, 135, 193;
    --color-secondary-contrast: var(--accent-fg);
    --color-secondary-contrast-rgb: 255, 255, 255;
    --color-secondary-shade: var(--accent-2);
@@ -368,7 +375,7 @@
    --shadow-focus: 0 0 0 3px color-mix(in oklch, var(--accent) 28%, transparent);
 
    /* ───── Layout · alturas y anchos del shell ────────────── */
-   --sidebar-w: 14.5rem;
+   --sidebar-w: 16.25rem;
    --sidebar-w-collapsed: 3.75rem;
    --sidebar-w-mobile: 18rem;
    /* drawer offcanvas */
@@ -500,20 +507,25 @@
    Tema claro · sobrescribe solo lo que cambia
    ============================================================ */
 [data-theme="erplora-light"] {
-   --bg: #FAF8F4;
+   --bg: #F7F8FA;
+   /* canvas · gris muy claro neutro-frío */
    --bg-1: #FFFFFF;
+   /* topbar / sidebar · BLANCO PURO */
    --bg-2: #FFFFFF;
-   --bg-3: #F2EEE8;
-   --bg-4: #E6E1D8;
+   /* cards · superficie elevada */
+   --bg-3: #F1F3F7;
+   /* hover / inputs */
+   --bg-4: #E5E8EE;
+   /* pressed / chips */
 
-   --line: rgba(20, 14, 8, 0.07);
-   --line-2: rgba(20, 14, 8, 0.13);
-   --line-3: rgba(20, 14, 8, 0.22);
+   --line: #E5E8EE;
+   --line-2: #D0D5DE;
+   --line-3: #94A0B4;
 
-   --ink: #1A1612;
-   --ink-2: #524C44;
-   --ink-3: #837B70;
-   --ink-4: #B5AEA3;
+   --ink: #0E1116;
+   --ink-2: #2A3340;
+   --ink-3: #6B7383;
+   --ink-4: #A4ABB8;
 
    --brand-soft: color-mix(in oklch, var(--brand) 14%, white);
    --leaf-soft: color-mix(in oklch, var(--leaf) 14%, white);
@@ -521,11 +533,11 @@
    --danger-soft: color-mix(in oklch, var(--danger) 14%, white);
    --info-soft: color-mix(in oklch, var(--info) 14%, white);
 
-   --shadow-xs: 0 1px 0 rgba(20, 14, 8, 0.04);
-   --shadow-sm: 0 1px 3px rgba(20, 14, 8, 0.08);
-   --shadow-md: 0 8px 20px rgba(20, 14, 8, 0.10);
-   --shadow-lg: 0 20px 40px rgba(20, 14, 8, 0.12);
-   --shadow-xl: 0 32px 64px rgba(20, 14, 8, 0.14);
+   --shadow-xs: 0 1px 2px rgba(14, 17, 22, 0.04);
+   --shadow-sm: 0 1px 3px rgba(14, 17, 22, 0.06), 0 1px 2px rgba(14, 17, 22, 0.04);
+   --shadow-md: 0 4px 12px rgba(14, 17, 22, 0.06), 0 2px 4px rgba(14, 17, 22, 0.04);
+   --shadow-lg: 0 12px 28px rgba(14, 17, 22, 0.08), 0 4px 8px rgba(14, 17, 22, 0.04);
+   --shadow-xl: 0 24px 48px rgba(14, 17, 22, 0.10);
 
    color-scheme: light;
 }

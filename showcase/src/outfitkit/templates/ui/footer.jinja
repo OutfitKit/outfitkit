@@ -1,13 +1,98 @@
-{#def attrs=None #}
+{#def
+  brand_name=None,
+  brand_tagline=None,
+  brand_logo=None,
+  columns=None,
+  copyright=None,
+  social=None,
+  attrs=None
+#}
 
-{% macro footer(attrs=None) -%}
+{# Footer · marketing footer con brand, columnas de links, copyright y social.
+
+   Modo declarativo:
+     {% set footer_cols = [
+       {'title': 'Product', 'links': [{'label': 'Features', 'href': '/features'}, ...]},
+       {'title': 'Company', 'links': [...]}
+     ] %}
+     {% set footer_social = [
+       {'icon': 'lucide:github', 'href': 'https://github.com/...', 'label': 'GitHub'},
+       {'icon': 'lucide:twitter', 'href': '...', 'label': 'X'}
+     ] %}
+     <Footer brand_name="ERPlora" brand_tagline="One ERP. Infinite configurations."
+             :columns="footer_cols" copyright="© 2026 ERPlora" :social="footer_social" />
+
+   Props:
+   - `brand_name` / `brand_tagline` / `brand_logo` — bloque brand (primera columna).
+   - `columns` — lista de {title, links: [{label, href}]}.
+   - `copyright` — string del © en el bottom bar.
+   - `social` — lista de {icon, href, label} para iconos sociales en bottom bar.
+#}
+{% macro footer(
+  brand_name=None,
+  brand_tagline=None,
+  brand_logo=None,
+  columns=None,
+  copyright=None,
+  social=None,
+  attrs=None
+) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _default_logo -%}
+<span class="erp-logo sm">
+  <i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i>
+  <i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i>
+  <i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i>
+</span>
+{%- endset -%}
+
 <footer class="footer"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  {{ caller() }}
+  <div class="footer-columns">
+
+    {%- if brand_name %}
+    <div class="footer-col" style="grid-column: span 2;">
+      <div style="display:flex;align-items:center;gap:var(--space-2);font-family:var(--font-display);font-weight:var(--weight-semibold);font-size:var(--text-lg);color:var(--ink);margin-bottom:var(--space-3)">
+        {{ (brand_logo or _default_logo)|safe }}
+        <span>{{ brand_name }}</span>
+      </div>
+      {%- if brand_tagline %}
+      <p style="margin:0;color:var(--ink-3);font-size:var(--text-sm);max-width:32ch">{{ brand_tagline }}</p>
+      {%- endif %}
+    </div>
+    {%- endif %}
+
+    {%- if columns %}
+    {%- for col in columns %}
+    <div class="footer-col">
+      {%- if col.title %}<h3 class="footer-col-title">{{ col.title }}</h3>{% endif %}
+      {%- for link in (col.links or []) %}
+      <a class="footer-link" href="{{ link.href }}">{{ link.label }}</a>
+      {%- endfor %}
+    </div>
+    {%- endfor %}
+    {%- endif %}
+  </div>
+
+  {%- if copyright or social %}
+  <div class="footer-bottom">
+    {%- if copyright %}
+    <span>{{ copyright }}</span>
+    {%- endif %}
+    {%- if social %}
+    <div class="footer-social">
+      {%- for s in social %}
+      <a class="footer-social-icon" href="{{ s.href }}" aria-label="{{ s.label }}"{% if s.href.startswith('http') %} target="_blank" rel="noopener"{% endif %}>
+        <iconify-icon icon="{{ s.icon }}" width="18" height="18"></iconify-icon>
+      </a>
+      {%- endfor %}
+    </div>
+    {%- endif %}
+  </div>
+  {%- endif %}
 </footer>
 {%- endmacro %}
 
-{% if attrs is defined %}
-  {% call footer(attrs=attrs) %}{{ content }}{% endcall %}
+{% if brand_name is defined or columns is defined %}
+  {{ footer(brand_name=brand_name, brand_tagline=brand_tagline, brand_logo=brand_logo, columns=columns, copyright=copyright, social=social, attrs=attrs) }}
 {% endif %}

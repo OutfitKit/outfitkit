@@ -1,0 +1,78 @@
+{#def eyebrow=None, eyebrow_icon=None, title, subtitle=None, cta_label=None, cta_href=None, cta_color="brand", cta_variant=None, cta_secondary_label=None, cta_secondary_href=None, align="center", back_href=None, attrs=None #}
+
+{# Page hero · section grande para landing pages y portadas de módulo.
+
+   Estructura:
+     <section class="layout hero wide">
+       <a class="btn clear pill local shift-icon">…back…</a>
+       <header>
+         <span class="icon-box xl">…eyebrow_icon…</span>
+         <span class="eyebrow">{{eyebrow}}</span>
+         <h1 class="title 2xl [text-center]">{{title}}</h1>
+         <p class="sub lg muted [text-center]">{{subtitle}}</p>
+       </header>
+       <footer class="actions [center]">
+         <a class="btn {{cta_color}}">{{cta_label}}</a>
+         <a class="btn outline">{{cta_secondary_label}}</a>
+       </footer>
+     </section>
+
+   Usage:
+     <PageHero
+       title="Bienvenido"
+       subtitle="Plataforma ERP modular"
+       eyebrow="Features"
+       eyebrow_icon="lucide:rocket"
+       cta_label="Empezar"
+       cta_href="/start"
+       cta_secondary_label="Ver demo"
+       cta_secondary_href="/demo" />
+
+     <PageHero title="Detalle" back_href="/lista" align="left" />
+
+   Props:
+   - `eyebrow`              — texto sobre el title (opcional, e.g. "Features").
+   - `eyebrow_icon`         — nombre Iconify para icono sobre el eyebrow (opcional).
+   - `title`                — heading principal (required).
+   - `subtitle`             — texto debajo del h1 (opcional).
+   - `cta_label`            — etiqueta del CTA principal (opcional).
+   - `cta_href`             — href del CTA principal (opcional, default '#').
+   - `cta_color`            — clase de variante del botón principal: 'brand' (default) | 'outline' | 'clear' | etc.
+   - `cta_variant`          — alias deprecado de `cta_color` (backward-compat).
+   - `cta_secondary_label`  — etiqueta del CTA secundario (opcional).
+   - `cta_secondary_href`   — href del CTA secundario (opcional, default '#').
+   - `align`                — 'center' (default) | 'left'.
+   - `back_href`            — si se proporciona, añade botón back con .pill arriba.
+   - `attrs`                — dict extra de atributos HTML para el <section>.
+#}
+{% macro page_hero(eyebrow=None, eyebrow_icon=None, title="", subtitle=None, cta_label=None, cta_href=None, cta_color="brand", cta_variant=None, cta_secondary_label=None, cta_secondary_href=None, align="center", back_href=None, attrs=None) -%}
+{%- if cta_variant and not cta_color %}{% set cta_color = cta_variant %}{% endif -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+<section class="layout hero wide"
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {%- if back_href %}
+  <a class="btn clear pill local shift-icon" href="{{ back_href }}">
+    <iconify-icon icon="lucide:arrow-left" width="16"></iconify-icon>
+    <span class="lbl">Back</span>
+  </a>
+  {%- endif %}
+  <header>
+    {%- if eyebrow_icon %}
+    <span class="icon-box xl">
+      <iconify-icon icon="{{ eyebrow_icon }}" width="28" height="28"></iconify-icon>
+    </span>
+    {%- endif %}
+    {%- if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}
+    <h1 class="title 2xl{% if align == 'center' %} text-center{% endif %}">{{ title }}</h1>
+    {%- if subtitle %}<p class="sub lg muted{% if align == 'center' %} text-center{% endif %}">{{ subtitle }}</p>{% endif %}
+  </header>
+  {%- if cta_label or cta_secondary_label %}
+  <footer class="actions{% if align == 'center' %} center{% endif %}">
+    {%- if cta_label %}<a class="btn {{ cta_color or 'brand' }}" href="{{ cta_href or '#' }}">{{ cta_label }}</a>{% endif %}
+    {%- if cta_secondary_label %}<a class="btn outline" href="{{ cta_secondary_href or '#' }}">{{ cta_secondary_label }}</a>{% endif %}
+  </footer>
+  {%- endif %}
+</section>
+{%- endmacro %}
+
+{% if title is defined %}{{ page_hero(eyebrow=eyebrow, eyebrow_icon=eyebrow_icon, title=title, subtitle=subtitle, cta_label=cta_label, cta_href=cta_href, cta_color=cta_color, cta_variant=cta_variant, cta_secondary_label=cta_secondary_label, cta_secondary_href=cta_secondary_href, align=align, back_href=back_href, attrs=attrs) }}{% endif %}

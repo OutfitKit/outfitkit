@@ -1,0 +1,34 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Pagos' %}
+{% set active = 'desarrollador' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Desarrollador', 'href': 'desarrollador-overview.html'},
+  {'label': 'Pagos', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Vista General', 'href': 'desarrollador-overview.html',     'icon': 'lucide:layout-grid'},
+  {'label': 'Ganancias',     'href': 'desarrollador-ganancias.html',    'icon': 'lucide:wallet'},
+  {'label': 'Pagos',         'href': 'desarrollador-pagos.html',        'icon': 'lucide:credit-card', 'current': true},
+  {'label': 'Mis Módulos',   'href': 'desarrollador-modulos.html',      'icon': 'lucide:package'},
+  {'label': 'Repositorios',  'href': 'desarrollador-repositorios.html', 'icon': 'lucide:git-fork'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<section class="section">
+  <Panel title="Cuenta bancaria">
+    <Empty title="Sin cuenta configurada" desc="Conecta tu cuenta vía Stripe Connect para recibir pagos mensuales." icon="lucide:credit-card" actions='<a href="#" class="btn brand"><iconify-icon icon="lucide:plus" width="16" height="16"></iconify-icon> Conectar Stripe</a>' />
+  </Panel>
+</section>
+
+<section class="section">
+  <Panel title="Histórico de pagos">
+    <Empty title="Sin pagos" desc="Cuando recibas tu primer pago aparecerá aquí." icon="lucide:wallet" />
+  </Panel>
+</section>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}

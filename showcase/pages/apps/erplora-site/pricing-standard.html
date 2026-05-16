@@ -1,0 +1,37 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+{% block title %}Standard Plan · ERPlora{% endblock %}
+{% block page_title %}Standard Plan · ERPlora{% endblock %}
+{% set active = 'pricing' %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  eyebrow_icon="lucide:cloud"
+  title="Standard Plan"
+  subtitle="More power on AWS for growing businesses. Custom domain and automatic scaling."
+  back_href="index.html" />
+
+<section style="padding-top:0;text-align:center">
+  <div class="container">
+    <div style="font:var(--weight-semibold,600) clamp(40px,5vw,56px)/1 var(--font-display);color:var(--ink)">
+      54.99 € <span style="font:var(--weight-medium,500) var(--text-md)/1 var(--font-sans);color:var(--ink-3)">/month</span>
+    </div>
+    <div style="margin-top:var(--space-3)"><span class="chip success">15 days free trial · no credit card</span></div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="card center-medium">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:var(--text-2xl);margin:0 0 var(--space-5);color:var(--ink)">What's included</h2>
+      <ul style="list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:14px;font-size:var(--text-sm);color:var(--ink-2)">
+        <li style="display:flex;align-items:flex-start;gap:8px"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in the Starter plan</li><li style="display:flex;align-items:flex-start;gap:8px"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>More power: 0.5 vCPU, 1 GB RAM</li><li style="display:flex;align-items:flex-start;gap:8px"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>5 GB database storage</li><li style="display:flex;align-items:flex-start;gap:8px"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Custom domain (erp.yourbusiness.com)</li><li style="display:flex;align-items:flex-start;gap:8px"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Automatic resource scaling</li><li style="display:flex;align-items:flex-start;gap:8px"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority email support (24h)</li><li style="display:flex;align-items:flex-start;gap:8px"><svg class="ic ic-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>15 days free trial</li>
+      </ul>
+    </div>
+    <div class="text-center mt-12">
+      <Button label="Start Standard Plan" href="signup.html" variant="brand" size="lg" icon="lucide:rocket" />
+      <p style="margin-top:var(--space-3);font-size:var(--text-xs);color:var(--ink-3)"><a href="pricing.html" style="color:var(--brand)">← Back to all plans</a></p>
+    </div>
+  </div>
+</section></main>
+{% endblock %}

@@ -1,21 +1,23 @@
-{#def title=None, sub=None, variant=None, size=None, attrs=None #}
+{#def title=None, sub=None, actions=None, footer=None, variant=None, size=None, tag="div", attrs=None #}
 
-{% macro panel(title=None, sub=None, variant=None, size=None, attrs=None) -%}
+{% macro panel(title=None, sub=None, actions=None, footer=None, variant=None, size=None, tag="div", attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
-<div class="panel{% if variant %} {{ variant }}{% endif %}{% if size %} {{ size }}{% endif %}"
+<{{ tag }} class="panel{% if variant %} {{ variant }}{% endif %}{% if size %} {{ size }}{% endif %}"
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  {% if title or sub %}
+  {% if title or sub or actions %}
   <header class="head">
     <div class="heading">
       {% if title %}<h3 class="title">{{ title }}</h3>{% endif %}
       {% if sub %}<p class="sub">{{ sub }}</p>{% endif %}
     </div>
+    {% if actions %}<div class="actions">{{ actions|safe }}</div>{% endif %}
   </header>
   {% endif %}
   <div class="body">{{ caller() }}</div>
-</div>
+  {% if footer %}<footer class="foot actions">{{ footer|safe }}</footer>{% endif %}
+</{{ tag }}>
 {%- endmacro %}
 
 {% if title is defined %}
-  {% call panel(title=title, sub=sub, variant=variant, size=size, attrs=attrs) %}{{ content }}{% endcall %}
+  {% call panel(title=title, sub=sub, actions=actions, footer=footer, variant=variant, size=size, tag=tag, attrs=attrs) %}{{ content }}{% endcall %}
 {% endif %}

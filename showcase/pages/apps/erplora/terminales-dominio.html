@@ -1,0 +1,28 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Dominio' %}
+{% set active = 'terminales' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Terminales', 'href': 'terminales-activos.html'},
+  {'label': 'Dominio', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Activo',   'href': 'terminales-activos.html',   'icon': 'lucide:check'},
+  {'label': 'Inactivo', 'href': 'terminales-inactivos.html', 'icon': 'lucide:pause'},
+  {'label': 'Crear',    'href': 'terminales-crear.html',     'icon': 'lucide:plus'},
+  {'label': 'Planes',   'href': 'terminales-planes.html',    'icon': 'lucide:tag'},
+  {'label': 'Dominio',  'href': 'terminales-dominio.html',   'icon': 'lucide:globe', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin dominios configurados"
+    desc="Añade tu primer dominio personalizado. Solo necesitas crear un registro CNAME en tu DNS apuntando a erplora.com."
+    icon="lucide:globe" />
+</Panel>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}

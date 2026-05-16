@@ -1,0 +1,155 @@
+/* ============================================================
+   OutfitKit · PDP (Product Detail Page)
+   Gallery (master + thumb strip) and large touch-friendly quantity stepper
+   ============================================================ */
+
+/* ============================================================
+   PDP Gallery — product detail page master image + thumb strip
+   ============================================================ */
+.pdp-gallery {
+  --border-radius: var(--radius-xl);
+  --height: 2.5rem;
+  --width: 4.5rem;
+  display: grid;
+  gap: var(--space-3);
+}
+.pdp-gallery-hero {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+.pdp-gallery-hero img,
+.pdp-gallery-hero picture,
+.pdp-gallery-hero video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pdp-gallery-hero-badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 1;
+}
+.pdp-gallery-nav {
+  position: absolute;
+  top: 50%;
+  width: var(--height);
+  height: var(--height);
+  border-radius: var(--radius-circle);
+  background: color-mix(in oklch, var(--bg) 80%, transparent);
+  border: var(--border-w) solid var(--line);
+  color: var(--ink);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  backdrop-filter: blur(var(--blur-sm));
+  -webkit-backdrop-filter: blur(var(--blur-sm));
+  transition: background .15s ease;
+}
+.pdp-gallery-nav:hover { background: var(--bg); }
+.pdp-gallery-nav--prev { left: var(--space-3); }
+.pdp-gallery-nav--next { right: var(--space-3); }
+.pdp-gallery-strip {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  scrollbar-width: thin;
+  padding-bottom: var(--border-w-2);
+}
+.pdp-gallery-thumb {
+  flex-shrink: 0;
+  width: var(--width);
+  height: var(--width);
+  border-radius: var(--radius-md);
+  border: var(--border-w-2) solid var(--line);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-2);
+  padding: 0;
+  transition: border-color .15s ease;
+}
+.pdp-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.pdp-gallery-thumb:hover { border-color: color-mix(in oklch, var(--brand) 50%, var(--line)); }
+.pdp-gallery-thumb.is-active,
+.pdp-gallery-thumb[aria-current="true"] {
+  border-color: var(--brand);
+}
+
+/* ============================================================
+   PDP Quantity — large touch-friendly stepper for product pages
+   ============================================================ */
+.pdp-qty {
+  --height: var(--size-lg);
+  --width: 3rem;
+  --min-width: 3.5rem;
+  display: inline-flex;
+  align-items: stretch;
+  gap: 0;
+  background: var(--bg-2);
+  border: var(--border-w) solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  height: var(--height);
+}
+.pdp-qty-btn {
+  width: var(--width);
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: var(--text-xl);
+  font-weight: 500;
+  transition: background .12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.pdp-qty-btn:hover { background: color-mix(in oklch, var(--ink) 6%, transparent); }
+.pdp-qty-btn:active { background: color-mix(in oklch, var(--ink) 12%, transparent); }
+.pdp-qty-btn:disabled { opacity: .35; cursor: not-allowed; }
+.pdp-qty-value {
+  width: var(--min-width);
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  border-left: var(--border-w) solid var(--line);
+  border-right: var(--border-w) solid var(--line);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.pdp-qty-value input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  font-size: var(--text-base);
+  color: inherit;
+  outline: none;
+  padding: 0;
+  -moz-appearance: textfield;
+}
+.pdp-qty-value input::-webkit-outer-spin-button,
+.pdp-qty-value input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.pdp-qty.sm {
+  --height: var(--size-md);
+  --width: 2.5rem;
+  --min-width: 3rem;
+}
+.pdp-qty.sm .pdp-qty-btn { font-size: var(--text-lg); }

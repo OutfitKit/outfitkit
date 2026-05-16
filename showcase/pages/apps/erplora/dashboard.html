@@ -1,0 +1,55 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Vista General' %}
+{% set active = 'dashboard' %}
+{% set crumbs = [{'label': 'Panel de Control', 'current': true}] %}
+{% set tabs = [
+  {'label': 'Vista General', 'href': 'dashboard.html', 'icon': 'lucide:layout-grid', 'current': true},
+  {'label': 'Usuarios',      'href': 'usuarios.html',  'icon': 'lucide:users'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<section class="section">
+  <div class="grid-4">
+    <Kpi label="Terminales Activos" value="0" href="terminales-activos.html" icon="lucide:layout-dashboard" />
+    <Kpi label="Módulos Activos" value="0" href="marketplace.html" icon="lucide:box" icon_variant="info" />
+    <Kpi label="Gasto Mensual" value="€0,00" href="billing-facturas.html" icon="lucide:credit-card" icon_variant="success" delta="0%" delta_dir="down" />
+    <Kpi label="Facturas" value="0" href="billing-facturas.html" icon="lucide:file-text" icon_variant="warn" />
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid-2">
+    <Panel title="Acciones Rápidas">
+      <div class="action-list">
+        <Button label="Crear Nuevo Terminal" href="terminales-crear.html" icon="lucide:plus" />
+        <Button label="Ver Facturas" href="billing-facturas.html" icon="lucide:download" />
+        <Button label="Compras" href="billing-compras.html" icon="lucide:check-square" />
+        <Button label="Comprar Hardware" href="equipamiento-tienda.html" icon="lucide:layout-grid" />
+      </div>
+    </Panel>
+
+    <Panel title="Actividad Reciente" actions='<a href="#" class="panel-action">Ver todo →</a>'>
+      <Empty title="No hay actividad reciente" icon="lucide:clock" compact />
+    </Panel>
+  </div>
+</section>
+
+<section class="section">
+  <Panel title="Planes Actuales" actions='<a href="terminales-activos.html" class="panel-action">Ver Terminales →</a>'>
+    <Empty title="Sin suscripciones activas"
+      desc="Crea tu primer Terminal Cloud para empezar. Cada Terminal es una instancia aislada con su propia base de datos y dominio."
+      icon="lucide:layout-dashboard">
+      <Button label="Crear Tu Primer Terminal" href="terminales-crear.html" variant="brand" icon="lucide:plus" />
+    </Empty>
+  </Panel>
+</section>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}
+
+{% block topbar_actions %}
+<Button label="Crear Terminal" href="terminales-crear.html" variant="brand" icon="lucide:plus" />
+{% endblock %}

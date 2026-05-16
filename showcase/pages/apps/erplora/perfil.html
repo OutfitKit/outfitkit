@@ -1,0 +1,103 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Perfil' %}
+{% set active = 'configuracion' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Perfil', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Configuración', 'href': 'configuracion.html',             'icon': 'lucide:settings'},
+  {'label': 'Dispositivos',  'href': 'configuracion-dispositivos.html','icon': 'lucide:smartphone'},
+  {'label': 'Sesiones',      'href': 'perfil-sesiones.html',           'icon': 'lucide:shield'},
+  {'label': 'Perfil',        'href': 'perfil.html',                    'icon': 'lucide:user', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<div class="grid-2">
+  <Panel title="Avatar">
+    <div style="text-align: center;">
+      <div style="width: 96px; height: 96px; border-radius: 50%; background: var(--brand); color: var(--brand-fg); display: inline-flex; align-items: center; justify-content: center; font: 600 32px/1 var(--font-display); margin-bottom: var(--space-3);">SA</div>
+      <div><Button label="Subir Nueva Foto" variant="outline" /></div>
+    </div>
+  </Panel>
+
+  <Panel title="Información Personal">
+    <form onsubmit="event.preventDefault(); alert('Demo')">
+      <div class="field">
+        <label class="label">Nombre</label>
+        <input class="input" type="text" value="Support" />
+      </div>
+      <div class="field">
+        <label class="label">Apellido</label>
+        <input class="input" type="text" value="Admin" />
+      </div>
+      <div class="field">
+        <label class="label">Email</label>
+        <input class="input" type="email" value="support@erplora.com" />
+      </div>
+      <div class="actions" style="justify-content: flex-end;">
+        <Button label="Guardar" type="submit" variant="brand" />
+      </div>
+    </form>
+  </Panel>
+</div>
+
+<div style="margin-top: var(--space-3);">
+  <Panel title="Dirección de Facturación">
+    <form onsubmit="event.preventDefault(); alert('Demo')">
+      <div class="field">
+        <label class="label">Dirección</label>
+        <input class="input" type="text" placeholder="Gran Vía 123" />
+      </div>
+      <div class="row gap-sm">
+        <div class="field col-md-6">
+          <label class="label">Ciudad</label>
+          <input class="input" type="text" placeholder="Madrid" />
+        </div>
+        <div class="field col-md-6">
+          <label class="label">Código postal</label>
+          <input class="input" type="text" placeholder="28001" />
+        </div>
+      </div>
+      <div class="row gap-sm">
+        <div class="field col-md-6">
+          <label class="label">Provincia</label>
+          <input class="input" type="text" placeholder="Madrid" />
+        </div>
+        <div class="field col-md-6">
+          <label class="label">País</label>
+          <select class="input">
+            <option>España</option>
+          </select>
+        </div>
+      </div>
+      <div class="actions" style="justify-content: flex-end;">
+        <Button label="Guardar Dirección" type="submit" variant="brand" />
+      </div>
+    </form>
+  </Panel>
+</div>
+
+<div style="margin-top: var(--space-3);">
+  <Panel title="Seguridad">
+    <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+      <div>
+        <h4 style="margin: 0 0 4px; font: 600 var(--text-md)/1.2 var(--font-display);">Cambiar contraseña</h4>
+        <p style="margin: 0 0 8px; font-size: var(--text-sm); color: var(--ink-3);">Usa una contraseña segura y única.</p>
+        <Button label="Cambiar contraseña" href="#" variant="outline" icon="lucide:key" />
+      </div>
+      <hr style="border: 0; border-top: 1px solid var(--line); margin: 0;" />
+      <div>
+        <h4 style="margin: 0 0 4px; font: 600 var(--text-md)/1.2 var(--font-display); color: var(--danger);">Zona de peligro</h4>
+        <p style="margin: 0 0 8px; font-size: var(--text-sm); color: var(--ink-3);">Eliminar tu cuenta es una acción permanente.</p>
+        <Button label="Eliminar Cuenta" href="#" variant="outline" :attrs="{'style': 'color: var(--danger); border-color: color-mix(in oklch, var(--danger) 50%, transparent);'}" />
+      </div>
+    </div>
+  </Panel>
+</div>
+
+<Tabbar :items="tabs" attrs="{'style': 'margin-top: var(--space-5);'}" />
+{% endblock %}

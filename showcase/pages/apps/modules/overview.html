@@ -87,22 +87,16 @@
     </nav>
 
     <div class="content scroll body" data-signals='{"q": "", "range": "30d", "activityFilter": "all", "selectedActivity": null, "stripeConnected": true}'>
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Developer Hub</h1>
-          <div class="page-header-sub">12 módulos publicados · 4 colaboradores · €1 480 este mes</div>
+      <PageHeader title="Developer Hub" subtitle="12 módulos publicados · 4 colaboradores · €1 480 este mes">
+        <div class="btn-group">
+          <button data-on:click="$range = 'today'" data-attr:aria-pressed="$range === 'today'" data-attr:data-active="$range === 'today' ? 'true' : null">Hoy</button>
+          <button data-on:click="$range = '7d'" data-attr:aria-pressed="$range === '7d'" data-attr:data-active="$range === '7d' ? 'true' : null">7d</button>
+          <button data-on:click="$range = '30d'" data-attr:aria-pressed="$range === '30d'" data-attr:data-active="$range === '30d' ? 'true' : null">30d</button>
+          <button data-on:click="$range = 'year'" data-attr:aria-pressed="$range === 'year'" data-attr:data-active="$range === 'year' ? 'true' : null">Año</button>
         </div>
-        <div class="actions">
-          <div class="btn-group">
-            <button data-on:click="$range = 'today'" data-attr:aria-pressed="$range === 'today'" data-attr:data-active="$range === 'today' ? 'true' : null">Hoy</button>
-            <button data-on:click="$range = '7d'" data-attr:aria-pressed="$range === '7d'" data-attr:data-active="$range === '7d' ? 'true' : null">7d</button>
-            <button data-on:click="$range = '30d'" data-attr:aria-pressed="$range === '30d'" data-attr:data-active="$range === '30d' ? 'true' : null">30d</button>
-            <button data-on:click="$range = 'year'" data-attr:aria-pressed="$range === 'year'" data-attr:data-active="$range === 'year' ? 'true' : null">Año</button>
-          </div>
-          <button class="btn ghost">Documentación</button>
-          <button class="btn primary"><iconify-icon icon="lucide:plus" width="18" height="18"></iconify-icon>Subir nuevo módulo</button>
-        </div>
-      </div>
+        <button class="btn ghost">Documentación</button>
+        <button class="btn primary"><iconify-icon icon="lucide:plus" width="18" height="18"></iconify-icon>Subir nuevo módulo</button>
+      </PageHeader>
 
       <div class="banner info inline mb-4">
         <div class="icon">

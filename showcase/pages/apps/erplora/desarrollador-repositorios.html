@@ -1,0 +1,30 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Repositorios' %}
+{% set active = 'desarrollador' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Desarrollador', 'href': 'desarrollador-overview.html'},
+  {'label': 'Repositorios', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Vista General', 'href': 'desarrollador-overview.html',     'icon': 'lucide:layout-grid'},
+  {'label': 'Ganancias',     'href': 'desarrollador-ganancias.html',    'icon': 'lucide:wallet'},
+  {'label': 'Pagos',         'href': 'desarrollador-pagos.html',        'icon': 'lucide:credit-card'},
+  {'label': 'Mis Módulos',   'href': 'desarrollador-modulos.html',      'icon': 'lucide:package'},
+  {'label': 'Repositorios',  'href': 'desarrollador-repositorios.html', 'icon': 'lucide:git-fork', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin repositorios conectados" desc="Autoriza la app de GitHub para sincronizar tus módulos. Cada push a main publica una nueva versión." icon="lucide:git-fork" actions='<a href="#" class="btn brand"><iconify-icon icon="lucide:plus" width="16" height="16"></iconify-icon> Conectar con GitHub</a>' />
+</Panel>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}
+
+{% block topbar_actions %}
+<Button label="Conectar repo" href="#" variant="brand" icon="lucide:plus" />
+{% endblock %}

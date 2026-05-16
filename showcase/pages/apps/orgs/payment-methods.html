@@ -80,16 +80,10 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Métodos de pago</h1>
-          <div class="page-header-sub">Cobros recurrentes y bajo demanda · Acme Industries SL</div>
-        </div>
-        <div class="actions">
-          <button class="btn ghost">Conectar Stripe</button>
-          <button class="btn primary" data-on:click="$addOpen = true">+ Añadir método</button>
-        </div>
-      </div>
+      <PageHeader title="Métodos de pago" subtitle="Cobros recurrentes y bajo demanda · Acme Industries SL">
+        <Button label="Conectar Stripe" variant="ghost" />
+        <Button label="+ Añadir método" variant="primary" :attrs="{'data-on:click': '$addOpen = true'}" />
+      </PageHeader>
 
       <div class="grid-3 mb-5">
         <div class="kpi">
@@ -136,8 +130,8 @@
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
               <span class="text-xs text-ink-3">Añadida 12 ene 2025 · Stripe</span>
               <div class="flex gap-1">
-                <button class="btn ghost sm">Editar</button>
-                <button class="btn ghost sm text-danger">Eliminar</button>
+                <Button label="Editar" variant="ghost" size="sm" />
+                <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'text-danger'}" />
               </div>
             </div>
           </div>
@@ -161,8 +155,8 @@
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
               <span class="text-xs text-ink-3">Añadida 03 mar 2026 · Stripe</span>
               <div class="flex gap-1">
-                <button class="btn outline sm">Marcar predeterminada</button>
-                <button class="btn ghost sm">Editar</button>
+                <Button label="Marcar predeterminada" variant="outline" size="sm" />
+                <Button label="Editar" variant="ghost" size="sm" />
               </div>
             </div>
           </div>
@@ -186,8 +180,8 @@
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
               <span class="text-xs text-ink-3">Mandato verificado · GoCardless</span>
               <div class="flex gap-1">
-                <button class="btn ghost sm">Ver mandato</button>
-                <button class="btn ghost sm">Editar</button>
+                <Button label="Ver mandato" variant="ghost" size="sm" />
+                <Button label="Editar" variant="ghost" size="sm" />
               </div>
             </div>
           </div>
@@ -211,8 +205,8 @@
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 4px;">
               <span class="text-xs text-danger">Esta tarjeta no se puede cobrar</span>
               <div class="flex gap-1">
-                <button class="btn ghost sm">Renovar</button>
-                <button class="btn ghost sm text-danger">Eliminar</button>
+                <Button label="Renovar" variant="ghost" size="sm" />
+                <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'text-danger'}" />
               </div>
             </div>
           </div>
@@ -226,8 +220,8 @@
             <div class="meta">Últimos 8 movimientos · ene–may 2026</div>
           </div>
           <div class="flex gap-2">
-            <button class="btn ghost sm">Filtrar</button>
-            <button class="btn secondary sm">Exportar CSV</button>
+            <Button label="Filtrar" variant="ghost" size="sm" />
+            <Button label="Exportar CSV" variant="secondary" size="sm" />
           </div>
         </div>
 
@@ -253,7 +247,7 @@
                   <td><span class="tag info sm">Visa •• 4242</span></td>
                   <td class="td num">€890,00</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Pagado</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0512</a></td>
+                  <td class="text-right"><Button label="F-2026-0512" variant="link" href="#" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">28 abr 2026</td>
@@ -262,7 +256,7 @@
                   <td><span class="tag info sm">Visa •• 4242</span></td>
                   <td class="td num">€135,00</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Pagado</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0498</a></td>
+                  <td class="text-right"><Button label="F-2026-0498" variant="link" href="#" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">15 abr 2026</td>
@@ -271,7 +265,7 @@
                   <td><span class="tag info sm">Visa •• 4242</span></td>
                   <td class="td num">€890,00</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Pagado</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0411</a></td>
+                  <td class="text-right"><Button label="F-2026-0411" variant="link" href="#" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">10 abr 2026</td>
@@ -280,7 +274,7 @@
                   <td><span class="tag neutral sm">SEPA Caixa</span></td>
                   <td class="td num">€450,00</td>
                   <td><span class="badge warning"><span class="badge-dot"></span>Reintento</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0398</a></td>
+                  <td class="text-right"><Button label="F-2026-0398" variant="link" href="#" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">02 abr 2026</td>
@@ -289,7 +283,7 @@
                   <td><span class="tag info sm">Visa •• 4242</span></td>
                   <td class="td num">€220,00</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Pagado</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0367</a></td>
+                  <td class="text-right"><Button label="F-2026-0367" variant="link" href="#" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">15 mar 2026</td>
@@ -298,7 +292,7 @@
                   <td><span class="tag info sm">Visa •• 4242</span></td>
                   <td class="td num">€890,00</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Pagado</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0312</a></td>
+                  <td class="text-right"><Button label="F-2026-0312" variant="link" href="#" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">28 feb 2026</td>
@@ -307,7 +301,7 @@
                   <td><span class="tag neutral sm">Mastercard •• 0091</span></td>
                   <td class="td num">€180,00</td>
                   <td><span class="badge danger"><span class="badge-dot"></span>Fallido</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0244</a></td>
+                  <td class="text-right"><Button label="F-2026-0244" variant="link" href="#" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">15 feb 2026</td>
@@ -316,7 +310,7 @@
                   <td><span class="tag info sm">Visa •• 4242</span></td>
                   <td class="td num">€890,00</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Pagado</span></td>
-                  <td class="text-right"><a class="btn link" href="#">F-2026-0218</a></td>
+                  <td class="text-right"><Button label="F-2026-0218" variant="link" href="#" /></td>
                 </tr>
               </tbody>
             </table>

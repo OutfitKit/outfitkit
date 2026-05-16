@@ -23,9 +23,9 @@
 }
 
 .drawer {
-  --background: var(--surface-glass, color-mix(in oklch, var(--bg-1) 82%, transparent));
+  --background: var(--surface-glass, var(--bg-1));
   --color: var(--text-color);
-  --border-color: color-mix(in oklch, var(--line-2) 85%, transparent);
+  --border-color: var(--line-2);
   --border-radius: 0;
   --border-width: var(--border-w);
   --shadow: var(--shadow-xl, var(--shadow-lg));
@@ -98,18 +98,23 @@
   border-radius: var(--radius-xs);
 }
 
-.drawer > .head,
-.drawer > .body,
-.drawer > .foot,
-.drawer > .content {
-  padding: var(--padding-y) var(--padding-x);
+/* ============================================================
+   Drawer con .layout — usa <header>, <main>, <footer> HTML5
+   Aditivo: el drawer adopta el primitive .layout (ver layout.css)
+   y obtiene estructura flex-column con selectores :where() de
+   especificidad 0. Aquí solo añadimos el "skin" del drawer:
+   bordes separadores y fondo coherente con --background.
+   ============================================================ */
+:where(.drawer.layout) > :where(header) {
+  border-bottom: var(--border-w) solid var(--line);
+  background: var(--background, var(--bg-1));
 }
-
-.drawer > .head {
-  justify-content: space-between;
+:where(.drawer.layout) > :where(footer) {
+  border-top: var(--border-w) solid var(--line);
+  background: var(--background, var(--bg-1));
 }
-
-.drawer > .content,
-.drawer > .body {
-  flex: 1 1 auto;
+/* main scrollable es el patrón normal en drawers (contenido largo).
+   layout.css ya aporta overflow:auto + min-height:0 — no repetir. */
+:where(.drawer.layout) > :where(main.scrollable) {
+  /* hook reservado para overrides futuros del drawer */
 }

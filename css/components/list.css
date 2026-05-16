@@ -181,3 +181,29 @@
 .list.dense .list-title {
   font-size: var(--text-sm);
 }
+
+
+/* ============================================================
+   Action list · stack vertical de botones full-width
+   ─────────────────────────────────────────────────────────────
+   Variante simple para "acciones rápidas" en panels y empty
+   states. Cada hijo es un .btn outline que se expande al ancho
+   completo y se alinea a la izquierda.
+   ============================================================ */
+
+.action-list { display: flex; flex-direction: column; gap: 6px; }
+.action-list .btn {
+  width: 100%;
+  justify-content: flex-start;
+  padding: 10px 12px;
+  background: transparent;
+  border: var(--border-w) solid var(--line);
+  color: var(--ink);
+}
+.action-list .btn:hover {
+  background: var(--bg-3);
+  border-color: var(--brand);
+  color: var(--brand);
+}
+.action-list .ic,
+.action-list .btn svg { width: var(--icon-sm, 16px); height: var(--icon-sm, 16px); flex: none; }

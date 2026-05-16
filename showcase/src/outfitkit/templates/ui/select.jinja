@@ -1,17 +1,76 @@
-{#def name, size="md", invalid=false, disabled=false, required=false, attrs=None #}
+{#def name, size="md", invalid=false, disabled=false, required=false, id=None, label=None, helper=None, error=None, fill="outline", shape=None, label_placement="stacked", options=None, value=None, placeholder=None, icon_start=None, color=None, attrs=None #}
 
-{% macro select(name, size="md", invalid=false, disabled=false, required=false, attrs=None) -%}
+{% macro select(name, size="md", invalid=false, disabled=false, required=false, id=None, label=None, helper=None, error=None, fill="outline", shape=None, label_placement="stacked", options=None, value=None, placeholder=None, icon_start=None, color=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _has_field = label or helper or error -%}
+
+{%- set _field_classes = "field" -%}
+{%- if label_placement == 'floating' %}{% set _field_classes = _field_classes ~ " float-label" %}{% endif -%}
+{%- if label_placement == 'fixed' %}{% set _field_classes = _field_classes ~ " fixed-label" %}{% endif -%}
+{%- if label_placement == 'start' %}{% set _field_classes = _field_classes ~ " inline-label" %}{% endif -%}
+{%- if label_placement == 'end' %}{% set _field_classes = _field_classes ~ " inline-label label-end" %}{% endif -%}
+{%- if error %}{% set _field_classes = _field_classes ~ " error" %}{% endif -%}
+{%- if color %}{% set _field_classes = _field_classes ~ " " ~ color %}{% endif -%}
+
+{%- set _sel_classes = "select" -%}
+{%- if size != 'md' %}{% set _sel_classes = _sel_classes ~ " " ~ size %}{% endif -%}
+{%- if invalid %}{% set _sel_classes = _sel_classes ~ " invalid" %}{% endif -%}
+{%- if fill == 'solid' %}{% set _sel_classes = _sel_classes ~ " solid" %}{% endif -%}
+{%- if shape == 'round' %}{% set _sel_classes = _sel_classes ~ " round" %}{% endif -%}
+
+{%- set _has_group = icon_start -%}
+{%- set _group_classes = "input-group" -%}
+{%- if icon_start %}{% set _group_classes = _group_classes ~ " with-left" %}{% endif -%}
+
+{%- set _ctrl_id = id or name -%}
+
+{%- set _select_open -%}
 <select
+  {%- if _ctrl_id %} id="{{ _ctrl_id }}"{% endif %}
   name="{{ name }}"
-  class="select{% if size != 'md' %} {{ size }}{% endif %}{% if invalid %} invalid{% endif %}"
-  {% if disabled %}disabled{% endif %}
-  {% if required %}required{% endif %}
+  class="{{ _sel_classes }}"
+  {%- if disabled %} disabled{% endif %}
+  {%- if required %} required{% endif %}
   {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
-  {{ caller() }}
-</select>
+{%- endset -%}
+
+{%- set _select_options -%}
+  {%- if placeholder %}<option value="" disabled{% if value is none or value == "" %} selected{% endif %}>{{ placeholder }}</option>{% endif -%}
+  {%- if options %}
+    {%- for opt in options -%}
+      {%- if opt is mapping -%}
+<option value="{{ opt.value }}"{% if value is not none and opt.value == value %} selected{% endif %}{% if opt.get('disabled') %} disabled{% endif %}>{{ opt.label }}</option>
+      {%- else -%}
+<option value="{{ opt }}"{% if value is not none and opt == value %} selected{% endif %}>{{ opt }}</option>
+      {%- endif -%}
+    {%- endfor -%}
+  {%- elif caller %}{{ caller() }}{%- endif %}
+{%- endset -%}
+
+{%- if _has_field -%}
+<div class="{{ _field_classes }}">
+  {%- if label %}<label class="field-label"{% if _ctrl_id %} for="{{ _ctrl_id }}"{% endif %}>{{ label }}{% if required %} <span class="field-required" aria-label="obligatorio">*</span>{% endif %}</label>{% endif %}
+  {%- if _has_group %}<div class="{{ _group_classes }}">
+    {%- if icon_start %}<span class="input-group-icon input-group-icon--left"><iconify-icon icon="{{ icon_start }}"></iconify-icon></span>{% endif %}
+    {{ _select_open }}{{ _select_options }}</select>
+  </div>
+  {%- else %}{{ _select_open }}{{ _select_options }}</select>{% endif %}
+  {%- if helper and not error %}<span class="field-hint">{{ helper }}</span>{% endif %}
+  {%- if error %}<span class="field-error" role="alert">{{ error }}</span>{% endif %}
+</div>
+{%- else -%}
+{%- if _has_group %}<div class="{{ _group_classes }}">
+  {%- if icon_start %}<span class="input-group-icon input-group-icon--left"><iconify-icon icon="{{ icon_start }}"></iconify-icon></span>{% endif %}
+  {{ _select_open }}{{ _select_options }}</select>
+</div>
+{%- else %}{{ _select_open }}{{ _select_options }}</select>{% endif %}
+{%- endif -%}
 {%- endmacro %}
 
 {% if name is defined %}
-  {% call select(name, size=size, invalid=invalid, disabled=disabled, required=required, attrs=attrs) %}{{ content }}{% endcall %}
+  {%- if caller is defined %}
+    {%- call select(name, size=size, invalid=invalid, disabled=disabled, required=required, id=id, label=label, helper=helper, error=error, fill=fill, shape=shape, label_placement=label_placement, options=options, value=value, placeholder=placeholder, icon_start=icon_start, color=color, attrs=attrs) %}{{ caller() }}{%- endcall %}
+  {%- else %}
+    {{ select(name, size=size, invalid=invalid, disabled=disabled, required=required, id=id, label=label, helper=helper, error=error, fill=fill, shape=shape, label_placement=label_placement, options=options, value=value, placeholder=placeholder, icon_start=icon_start, color=color, attrs=attrs) }}
+  {%- endif %}
 {% endif %}

@@ -45,9 +45,9 @@
 }
 
 .modal {
-  --background: var(--surface-glass, color-mix(in oklch, var(--bg-2) 88%, transparent));
+  --background: var(--surface-glass, var(--bg-2));
   --color: var(--text-color);
-  --border-color: color-mix(in oklch, var(--line-2) 85%, transparent);
+  --border-color: var(--line-2);
   --border-radius: var(--radius, var(--radius-2xl));
   --border-width: var(--border-w);
   --shadow: var(--shadow-xl, var(--shadow-lg));
@@ -91,22 +91,20 @@
   opacity: 1;
 }
 
-.modal > .head,
-.modal > .body,
-.modal > .foot {
-  padding: var(--padding-y) var(--padding-x);
+/* ============================================================
+   Modal con .layout — usa <header>, <main>, <footer> HTML5
+   Skin del modal aplicado sobre el primitive .layout (que ya
+   aporta padding/flex via :where(.layout) > :where(header…)).
+   ============================================================ */
+:where(.modal.layout) > :where(header) {
+  border-bottom: var(--border-w) solid var(--line);
 }
 
-.modal > .body {
-  flex: 1 1 auto;
-  overflow: auto;
+:where(.modal.layout) > :where(footer) {
+  border-top: var(--border-w) solid var(--line);
+  background: color-mix(in oklch, var(--background, var(--bg-1)) 92%, var(--bg-2));
 }
 
-.modal > .foot {
-  background: var(--foot-background);
-  justify-content: var(--align, flex-end);
-}
-
-.modal > .foot.between {
-  justify-content: space-between;
+:where(.modal.layout) > :where(main.scrollable) {
+  max-height: 70vh;
 }

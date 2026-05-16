@@ -1,0 +1,62 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+{% block title %}Pricing · ERPlora{% endblock %}
+{% block page_title %}Pricing · ERPlora{% endblock %}
+{% set active = 'pricing' %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  eyebrow_icon="lucide:cloud"
+  title="Cloud Hub Plans"
+  subtitle="Deploy your Hub in the cloud. Access from anywhere, on any device. SSL included and fully managed. 15 days free trial — no credit card required."
+  back_href="index.html" />
+<section style="padding-top:0">
+  <div class="container">
+    <div class="grid-3 center-wide" style="align-items:stretch;gap:var(--space-6)">
+      <PricingCard
+        plan_name="Starter"
+        price="29.99 €"
+        :features="['Self-managed cloud on AWS', 'Zero server maintenance', 'Unlimited users', 'All modules included', 'Access from any device', 'Cloud PostgreSQL (Aurora)', 'Automatic daily backups (7d)', 'Data encryption (AES-256)', 'Automatic SSL certificate', '.erplora.com subdomain', 'High availability (multi-zone)', 'Email support (48h)', '15 days free trial']"
+        cta_label="Get Started"
+        cta_href="signup.html"
+        badge="Most Popular"
+        featured />
+      <PricingCard
+        plan_name="Standard"
+        price="54.99 €"
+        :features="['Everything in the Starter plan', 'More power: 0.5 vCPU, 1 GB RAM', '5 GB database storage', 'Custom domain (erp.yourbusiness.com)', 'Automatic resource scaling', 'Priority email support (24h)', '15 days free trial']"
+        cta_label="Get Started"
+        cta_href="signup.html" />
+      <PricingCard
+        plan_name="Pro"
+        price="109.99 €"
+        :features="['Everything in the Standard plan', 'High performance: 1 vCPU, 2 GB RAM', '20 GB database storage', 'Full API with no usage limits', '99.99% guaranteed uptime SLA', 'Isolated infrastructure on AWS', 'Dedicated support (4h response time)', '15 days free trial']"
+        cta_label="Available as upgrade"
+        cta_href="pricing-pro.html"
+        badge="Upgrade only" />
+    </div>
+    <div class="grid-2 center-wide" style="margin-top:var(--space-6)">
+      <PricingCard
+        plan_name="Enterprise"
+        price="209.99 €"
+        :features="['Everything in the Pro plan', 'Maximum power: 2 vCPU, 4 GB RAM', '50 GB database storage', 'Automatic container autoscaling', 'Disaster recovery (PITR)', 'Advanced monitoring with CloudWatch', '24/7 support (chat and phone)', '15 days free trial']"
+        cta_label="Available as upgrade"
+        cta_href="pricing.html"
+        badge="Upgrade only" />
+      <PricingCard
+        plan_name="Max"
+        price="434.99 €"
+        :features="['Everything in the Enterprise plan', 'Extreme performance: 4 vCPU, 12 GB RAM', 'Unlimited database storage', 'Up to 200 simultaneous connections', 'Highest priority technical support', 'Architecture built for high traffic', '15 days free trial']"
+        cta_label="Available as upgrade"
+        cta_href="pricing.html"
+        badge="Upgrade only" />
+    </div>
+    <div class="mt-12" style="margin-top:var(--space-9)">
+      <BenefitCard
+        title="Ready in 5 minutes"
+        subtitle="Pick a plan, sign up, and your Hub is live. No installation, no servers to provision, no IT setup. Access from any device with your custom domain and SSL ready from day one."
+        gradient="brand" />
+    </div>
+  </div>
+</section></main>
+{% endblock %}

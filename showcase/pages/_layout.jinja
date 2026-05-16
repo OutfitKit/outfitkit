@@ -22,6 +22,9 @@
 
   {# Theme templates — local build in local_mode, jsDelivr CDN otherwise.
      Local mode avoids Playwright hangs waiting for external CDN fetches. #}
+  {# erplora ahora es el default (en tokens.css). Solo cargamos los themes
+     alternativos (default warm/glass/mono) si el usuario los activa con
+     data-template. #}
   {% if local_mode %}
   <link rel="stylesheet" href="{{ base_path }}/css/themes/default.css">
   <link rel="stylesheet" href="{{ base_path }}/css/themes/glass.css">

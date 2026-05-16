@@ -1,0 +1,60 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}Compliance · ERPlora{% endblock %}
+{% block page_title %}Compliance · ERPlora{% endblock %}
+
+{% block landing_content %}
+
+<main>
+<PageHero
+  eyebrow_icon="lucide:shield-check"
+  icon_kind="success"
+  title="Compliance"
+  subtitle="ERPlora is built to meet European fiscal and data-protection standards out of the box — and stays current as regulations change."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="grid-3 center-wide">
+      <FeatureCard
+        title="Verifactu (AEAT, Spain)"
+        subtitle="Real-time e-invoicing certification. All invoices signed and reported to AEAT automatically. No setup required."
+        icon="lucide:check"
+        icon_kind="success" />
+      <FeatureCard
+        title="SII (Spain)"
+        subtitle="Suministro Inmediato de Información. Tax book reporting for large taxpayers, automated end to end."
+        icon="lucide:check"
+        icon_kind="success" />
+      <FeatureCard
+        title="GDPR"
+        subtitle="Right to access, rectify, port, and erase personal data. Built-in audit log of every access."
+        icon="lucide:check"
+        icon_kind="success" />
+      <FeatureCard
+        title="PCI DSS"
+        subtitle="Card data never touches our servers. Payments tokenized through Stripe (PCI Level 1 certified)."
+        icon="lucide:check"
+        icon_kind="info" />
+      <FeatureCard
+        title="ISO 27001 (in progress)"
+        subtitle="We follow ISO 27001 controls and are working towards certification with an independent auditor."
+        icon="lucide:check"
+        icon_kind="info" />
+      <FeatureCard
+        title="SOC 2 Type II (planned)"
+        subtitle="SOC 2 readiness assessment underway. Reports available to customers on Pro and above when issued."
+        icon="lucide:check"
+        icon_kind="info" />
+    </div>
+
+    <div class="card center-medium mt-12">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:var(--text-2xl);margin:0 0 var(--space-4);color:var(--ink)">Where your data lives</h2>
+      <p style="color:var(--ink-3);margin:0 0 var(--space-4)">All ERPlora Cloud Hubs run in AWS EU regions (eu-west-1 by default). Data never leaves the EU. Backups are stored in the same region.</p>
+      <p style="color:var(--ink-3);margin:0">Customers on Pro and above can request a specific region (US, UK, AP) at signup.</p>
+    </div>
+  </div>
+</section></main>
+{% endblock %}
+</content>
+</invoke>

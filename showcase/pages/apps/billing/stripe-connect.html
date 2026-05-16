@@ -78,18 +78,9 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Stripe Connect</h1>
-          <div class="page-header-sub">Cobra ventas del marketplace de módulos directamente en tu cuenta</div>
-        </div>
-        <div class="actions">
-          <button class="btn outline">
-            Visitar dashboard Stripe
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:6px;margin-right:0;"><path d="M7 17 17 7M7 7h10v10"/></svg>
-          </button>
-        </div>
-      </div>
+      <PageHeader title="Stripe Connect" subtitle="Cobra ventas del marketplace de módulos directamente en tu cuenta">
+        <Button label="Visitar dashboard Stripe" variant="outline" trailing_icon="lucide:arrow-up-right" />
+      </PageHeader>
 
       <!-- Status hero card -->
       <article class="card mb-4" data-attr:style="$connected ? 'margin-bottom:18px;border-left:3px solid var(--leaf);' : 'margin-bottom:18px;border-left:3px solid var(--danger);'">
@@ -110,7 +101,7 @@
             </div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
-            <button class="btn primary sm" data-show="!$connected" data-on:click="$connected = true">Reconectar</button>
+            <Button label="Reconectar" variant="primary" size="sm" :attrs="{'data-show': '!$connected', 'data-on:click': '$connected = true'}" />
           </div>
         </div>
       </article>
@@ -195,8 +186,8 @@
               Las transferencias se realizan vía <b class="text-ink">SEPA Instant</b> y suelen llegar en menos de 60 segundos.<br/>
               Titular verificado el <b class="text-ink">12 mar 2026</b>. Última micro-validación: 6 may 2026.
             </div>
-            <button class="btn outline sm">Cambiar cuenta bancaria</button>
-            <button class="btn ghost sm">Ver historial</button>
+            <Button label="Cambiar cuenta bancaria" variant="outline" size="sm" />
+            <Button label="Ver historial" variant="ghost" size="sm" />
           </div>
         </div>
       </section>
@@ -272,7 +263,7 @@
                         data-on:click="$uploading = true; $uploadPct = 25; setTimeout(() => $uploadPct = 60, 600); setTimeout(() => $uploadPct = 100, 1200); setTimeout(() => $uploading = false, 1400)">
                   Subir documento
                 </button>
-                <button class="btn ghost sm" data-show="$uploadPct >= 100" data-on:click="$uploadPct = 0">Reemplazar</button>
+                <Button label="Reemplazar" variant="ghost" size="sm" :attrs="{'data-show': '$uploadPct >= 100', 'data-on:click': '$uploadPct = 0'}" />
               </div>
             </div>
 
@@ -312,7 +303,7 @@
               <span data-show="$testing !== 'global'">Probar webhook</span>
               <span data-show="$testing === 'global'"><span class="spinner sm" style="margin-right:4px;"></span>Enviando…</span>
             </button>
-            <button class="btn secondary sm">+ Añadir endpoint</button>
+            <Button label="+ Añadir endpoint" variant="secondary" size="sm" />
           </div>
         </div>
         <div data-show="$testing === 'global'" class="mb-2">
@@ -345,28 +336,28 @@
                   <td><span class="tag neutral sm">payment_intent.succeeded</span></td>
                   <td class="td muted">hace 8 min · 200 OK</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Activo</span></td>
-                  <td><button class="btn ghost sm">⋯</button></td>
+                  <td><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">https://api.erplora.cloud/stripe/transfer.created</td>
                   <td><span class="tag neutral sm">transfer.created</span></td>
                   <td class="td muted">hace 2 h · 200 OK</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Activo</span></td>
-                  <td><button class="btn ghost sm">⋯</button></td>
+                  <td><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">https://api.erplora.cloud/stripe/payout.paid</td>
                   <td><span class="tag neutral sm">payout.paid + payout.failed</span></td>
                   <td class="td muted">hace 18 h · 200 OK</td>
                   <td><span class="badge success"><span class="badge-dot"></span>Activo</span></td>
-                  <td><button class="btn ghost sm">⋯</button></td>
+                  <td><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" /></td>
                 </tr>
                 <tr>
                   <td class="td mono">https://api.erplora.cloud/stripe/charge.dispute.created</td>
                   <td><span class="tag neutral sm">charge.dispute.* (3)</span></td>
                   <td class="td muted">nunca ejecutado</td>
                   <td><span class="badge"><span class="badge-dot"></span>Listo</span></td>
-                  <td><button class="btn ghost sm">⋯</button></td>
+                  <td><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" /></td>
                 </tr>
               </tbody>
             </table>
@@ -411,8 +402,8 @@
       </div>
     </div>
     <footer class="foot">
-      <button class="btn ghost" data-on:click="$confirmDisconnect = false">Cancelar</button>
-      <button class="btn danger" data-on:click="$connected = false; $confirmDisconnect = false">Desconectar</button>
+      <Button label="Cancelar" variant="ghost" :attrs="{'data-on:click': '$confirmDisconnect = false'}" />
+      <Button label="Desconectar" variant="danger" :attrs="{'data-on:click': '$connected = false; $confirmDisconnect = false'}" />
     </footer>
   </div>
 

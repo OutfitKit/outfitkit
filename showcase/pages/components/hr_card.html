@@ -1,5 +1,5 @@
 {% extends "_layout.jinja" %}
-{% from "ui/hr_card.jinja" import hr_card %}
+{% from "ui/hr-card.jinja" import hr_card %}
 {% from "demo_frame.jinja" import demo_frame %}
 
 {% block title %}HR Card — OutfitKit{% endblock %}
@@ -8,7 +8,7 @@
 <h1>HR card</h1>
 <p class="showcase-lead">Ficha de empleado: portada, avatar, nombre, rol, estado y stats (antigüedad, vacaciones, horas). El consumidor compone <code>.ok-emp-cover</code>, <code>.ok-emp-head</code> y <code>.ok-emp-grid</code> dentro del slot.</p>
 
-{% set _src_jinja_1 %}{% raw %}{% from "ui/hr_card.jinja" import hr_card %}
+{% set _src_jinja_1 %}{% raw %}{% from "ui/hr-card.jinja" import hr_card %}
 {% call hr_card() %}
 <div class="emp-cover"></div>
 <header class="emp-head">
@@ -25,7 +25,7 @@
   <div class="emp-stat"><span class="emp-stat-label">Horas mes</span><span class="emp-stat-value">142</span></div>
 </div>
 {% endcall %}{% endraw %}{% endset %}
-{% set _src_jinjax_1 %}{% raw %}<hr_card>
+{% set _src_jinjax_1 %}{% raw %}<HrCard>
 <div class="emp-cover"></div>
 <header class="emp-head">
   <div class="emp-avatar">MV</div>
@@ -40,7 +40,7 @@
   <div class="emp-stat"><span class="emp-stat-label">Vac. rest.</span><span class="emp-stat-value">14</span></div>
   <div class="emp-stat"><span class="emp-stat-label">Horas mes</span><span class="emp-stat-value">142</span></div>
 </div>
-</hr_card>{% endraw %}{% endset %}
+</HrCard>{% endraw %}{% endset %}
 
 {% call demo_frame("Empleada en turno",
     jinja_src=_src_jinja_1,
@@ -63,7 +63,7 @@
 {% endcall %}
 {% endcall %}
 
-{% set _src_jinja_2 %}{% raw %}{% from "ui/hr_card.jinja" import hr_card %}
+{% set _src_jinja_2 %}{% raw %}{% from "ui/hr-card.jinja" import hr_card %}
 {% call hr_card() %}
 <div class="emp-cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--info) 30%, var(--bg-3)), var(--bg-3))"></div>
 <header class="emp-head">
@@ -80,7 +80,7 @@
   <div class="emp-stat"><span class="emp-stat-label">Horas mes</span><span class="emp-stat-value">128</span></div>
 </div>
 {% endcall %}{% endraw %}{% endset %}
-{% set _src_jinjax_2 %}{% raw %}<hr_card>
+{% set _src_jinjax_2 %}{% raw %}<HrCard>
 <div class="emp-cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--info) 30%, var(--bg-3)), var(--bg-3))"></div>
 <header class="emp-head">
   <div class="emp-avatar" style="background:color-mix(in oklch, var(--info) 30%, var(--bg-4))">IR</div>
@@ -95,7 +95,7 @@
   <div class="emp-stat"><span class="emp-stat-label">Vac. rest.</span><span class="emp-stat-value">22</span></div>
   <div class="emp-stat"><span class="emp-stat-label">Horas mes</span><span class="emp-stat-value">128</span></div>
 </div>
-</hr_card>{% endraw %}{% endset %}
+</HrCard>{% endraw %}{% endset %}
 
 {% call demo_frame("Empleado en pausa",
     jinja_src=_src_jinja_2,
@@ -118,7 +118,7 @@
 {% endcall %}
 {% endcall %}
 
-{% set _src_jinja_3 %}{% raw %}{% from "ui/hr_card.jinja" import hr_card %}
+{% set _src_jinja_3 %}{% raw %}{% from "ui/hr-card.jinja" import hr_card %}
 {% call hr_card() %}
 <div class="emp-cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--leaf) 25%, var(--bg-3)), var(--bg-3))"></div>
 <header class="emp-head">
@@ -135,7 +135,7 @@
   <div class="emp-stat"><span class="emp-stat-label">Horas mes</span><span class="emp-stat-value">160</span></div>
 </div>
 {% endcall %}{% endraw %}{% endset %}
-{% set _src_jinjax_3 %}{% raw %}<hr_card>
+{% set _src_jinjax_3 %}{% raw %}<HrCard>
 <div class="emp-cover" style="background:linear-gradient(135deg, color-mix(in oklch, var(--leaf) 25%, var(--bg-3)), var(--bg-3))"></div>
 <header class="emp-head">
   <div class="emp-avatar" style="background:color-mix(in oklch, var(--leaf) 25%, var(--bg-4))">LP</div>
@@ -150,7 +150,7 @@
   <div class="emp-stat"><span class="emp-stat-label">Vac. rest.</span><span class="emp-stat-value">3</span></div>
   <div class="emp-stat"><span class="emp-stat-label">Horas mes</span><span class="emp-stat-value">160</span></div>
 </div>
-</hr_card>{% endraw %}{% endset %}
+</HrCard>{% endraw %}{% endset %}
 
 {% call demo_frame("Empleada fuera del turno",
     jinja_src=_src_jinja_3,

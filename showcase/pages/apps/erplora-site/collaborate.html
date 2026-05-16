@@ -1,0 +1,42 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}Collaborate · ERPlora{% endblock %}
+{% block page_title %}Collaborate · ERPlora{% endblock %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  eyebrow_icon="lucide:users"
+  title="Collaborate with us"
+  subtitle="Build modules, integrate ERPlora, or partner with us to serve your customers better."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="grid-3 center-wide">
+      <FeatureCard
+        title="Build a module"
+        subtitle="Use the Developer SDK to build and publish modules to the marketplace. Free, one-time, or subscription — your call."
+        icon="lucide:code-2"
+        icon_kind="info" />
+      <FeatureCard
+        title="Integration partner"
+        subtitle="Connect your product to ERPlora via our API. Payment gateways, shipping carriers, accounting platforms — let's talk."
+        icon="lucide:layers"
+        icon_kind="success" />
+      <FeatureCard
+        title="Implementation partner"
+        subtitle="Become a certified ERPlora consultant. Help businesses configure their Hub, train staff, and build private modules."
+        icon="lucide:briefcase"
+        icon_kind="warn" />
+    </div>
+
+    <BenefitCard
+      title="Let's talk"
+      subtitle="Whether you want to build, integrate, resell or just chat — drop us a line."
+      cta_label="Get in touch"
+      cta_href="contact.html"
+      style="margin-top:var(--space-9)" />
+  </div>
+</section></main>
+{% endblock %}

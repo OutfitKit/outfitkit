@@ -1,13 +1,139 @@
-{#def sticky=True, attrs=None #}
+{#def
+  brand_name=None,
+  brand_href="/",
+  brand_logo=None,
+  links=None,
+  active=None,
+  cta_label=None,
+  cta_href=None,
+  show_theme=True,
+  show_lang=False,
+  langs=None,
+  sticky=True,
+  attrs=None
+#}
 
-{% macro navbar(sticky=True, attrs=None) -%}
+{# Navbar · sticky horizontal con brand, links, theme toggle, lang select y CTA.
+
+   Modo declarativo (recomendado):
+     {% set links = [
+       {'label': 'Features', 'href': '/features'},
+       {'label': 'Pricing',  'href': '/pricing'}
+     ] %}
+     <Navbar brand_name="ERPlora" brand_href="/" :links="links"
+             active="features" cta_label="Get Started" cta_href="/signup" />
+
+   Modo slot (libre): usar `{% call navbar() %}...{% endcall %}` para HTML custom.
+
+   Props:
+   - `brand_name`   — texto del brand (al lado del logo).
+   - `brand_href`   — link del brand.
+   - `brand_logo`   — HTML del logo (string). Por defecto usa el .erp-logo de outfitkit.
+   - `links`        — lista de dicts {label, href, active?}.
+   - `active`       — slug de la página actual (matchea con item.label.lower()).
+   - `cta_label`    — texto del CTA brand del extremo derecho.
+   - `cta_href`     — link del CTA.
+   - `show_theme`   — true para incluir theme toggle (default true).
+   - `show_lang`    — true para incluir lang select (default false).
+   - `langs`        — lista de dicts {value, label} para el selector.
+   - `sticky`       — sticky top (default true).
+
+   Genera además: <nav class="mobile-menu"> con los mismos links + CTA, lista
+   para usarse con el sistema mobile-menu de outfitkit.
+#}
+{% macro navbar(
+  brand_name=None,
+  brand_href="/",
+  brand_logo=None,
+  links=None,
+  active=None,
+  cta_label=None,
+  cta_href=None,
+  show_theme=True,
+  show_lang=False,
+  langs=None,
+  sticky=True,
+  attrs=None
+) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _default_logo -%}
+<span class="erp-logo sm">
+  <i class="erp-nw"></i><i class="erp-n"></i><i class="erp-ne"></i>
+  <i class="erp-w"></i><i class="erp-hub"></i><i class="erp-e"></i>
+  <i class="erp-sw"></i><i class="erp-s"></i><i class="erp-se"></i>
+</span>
+{%- endset -%}
+
 <nav class="navbar{% if sticky %} sticky{% endif %}"
   {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
-  {{ caller() }}
+
+  {%- if brand_name %}
+  <a class="navbar-brand" href="{{ brand_href }}">
+    {{ (brand_logo or _default_logo)|safe }}
+    <span>{{ brand_name }}</span>
+  </a>
+  {%- endif %}
+
+  {%- if links %}
+  <ul class="navbar-nav" role="list" style="list-style:none;padding:0;margin:0">
+    {%- for item in links %}
+    <li>
+      <a class="navbar-link{% if active and (active == item.label.lower() or active == item.get('active')) %} active{% endif %}"
+         href="{{ item.href }}">{{ item.label }}</a>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+
+  <div class="navbar-end">
+    {%- if show_lang %}
+    <select class="navbar-lang" aria-label="Language">
+      {%- for lang in (langs or [{'value':'en','label':'EN'},{'value':'es','label':'ES'}]) %}
+      <option value="{{ lang.value }}">{{ lang.label }}</option>
+      {%- endfor %}
+    </select>
+    {%- endif %}
+
+    {%- if show_theme %}
+    <button class="navbar-theme-toggle" aria-label="Toggle theme"
+            data-on:click="$theme = ($theme === 'erplora' ? 'erplora-light' : 'erplora'); window.okTheme && window.okTheme.set($theme, $template)">
+      <iconify-icon class="icon-moon" icon="lucide:moon"></iconify-icon>
+      <iconify-icon class="icon-sun" icon="lucide:sun"></iconify-icon>
+    </button>
+    {%- endif %}
+
+    {%- if cta_label %}
+    <a class="btn brand sm" href="{{ cta_href or '#' }}">{{ cta_label }}</a>
+    {%- endif %}
+
+    <button class="menu-button" aria-label="Open menu"
+            data-on:click="$menuOpen = !$menuOpen"
+            data-attr-aria-expanded="$menuOpen">
+      <span class="menu-button-lines">
+        <span class="menu-button-line"></span>
+        <span class="menu-button-line"></span>
+        <span class="menu-button-line"></span>
+      </span>
+    </button>
+  </div>
 </nav>
+
+{%- if links %}
+<nav class="mobile-menu" aria-label="Mobile navigation">
+  {%- for item in links %}
+  <a href="{{ item.href }}"{% if active and (active == item.label.lower() or active == item.get('active')) %} aria-current="page"{% endif %}
+     data-on:click="$menuOpen = false">
+    <span>{{ item.label }}</span>
+    <span class="arrow">→</span>
+  </a>
+  {%- endfor %}
+  {%- if cta_label %}
+  <a class="cta" href="{{ cta_href or '#' }}" data-on:click="$menuOpen = false">{{ cta_label }}</a>
+  {%- endif %}
+</nav>
+{%- endif %}
 {%- endmacro %}
 
-{% if sticky is defined %}
-  {% call navbar(sticky=sticky, attrs=attrs) %}{{ content }}{% endcall %}
+{% if brand_name is defined or links is defined %}
+  {{ navbar(brand_name=brand_name, brand_href=brand_href, brand_logo=brand_logo, links=links, active=active, cta_label=cta_label, cta_href=cta_href, show_theme=show_theme, show_lang=show_lang, langs=langs, sticky=sticky, attrs=attrs) }}
 {% endif %}

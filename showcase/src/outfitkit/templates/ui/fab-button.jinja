@@ -1,0 +1,41 @@
+{#def icon=None, label=None, color="primary", vertical="bottom", horizontal="end", href=None, attrs=None #}
+
+{# FabButton · Floating Action Button compuesto sobre `.btn`.
+
+   Composición: .btn + color + .round + .floating + modifiers.
+   NO usa .fab (clase eliminada).
+
+   Usage (JinjaX tag style):
+     <FabButton icon="lucide:plus" />
+     <FabButton icon="lucide:plus" color="brand" />
+     <FabButton icon="lucide:edit" label="Editar" />
+     <FabButton icon="lucide:arrow-up" vertical="top" horizontal="start" />
+     <FabButton icon="lucide:plus" href="/new" />
+     <FabButton icon="lucide:check" color="success" label="Guardar" />
+
+   Props:
+   - `icon`       — nombre iconify (REQUERIDO).
+   - `label`      — texto opcional; si presente, usa pill extendido en lugar de icono solo.
+   - `color`      — "primary" | "brand" | "danger" | "success" | "warn" (default "primary").
+   - `vertical`   — "top" | "bottom" (default "bottom").
+   - `horizontal` — "start" | "end" (default "end"; start = left en LTR).
+   - `href`       — opcional → emite <a> en lugar de <button>.
+   - `attrs`      — dict extra de atributos HTML.
+#}
+{% macro fab_button(icon=None, label=None, color="primary", vertical="bottom", horizontal="end", href=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _tag = "a" if href else "button" -%}
+{%- set _classes = "btn " ~ (color or 'primary') ~ " round floating" -%}
+{%- if not label %}{% set _classes = _classes ~ " icon" %}{% endif -%}
+{%- if label %}{% set _classes = _classes ~ " pill" %}{% endif -%}
+{%- if vertical == 'top' %}{% set _classes = _classes ~ " top" %}{% endif -%}
+{%- if horizontal == 'start' %}{% set _classes = _classes ~ " left" %}{% endif -%}
+<{{ _tag }} class="{{ _classes }}"
+  {%- if href %} href="{{ href }}"{% endif %}
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  <iconify-icon icon="{{ icon }}" width="{{ '16' if label else '20' }}" height="{{ '16' if label else '20' }}"></iconify-icon>
+  {%- if label %}<span>{{ label }}</span>{% endif %}
+</{{ _tag }}>
+{%- endmacro %}
+
+{% if icon is defined %}{{ fab_button(icon=icon, label=label, color=color, vertical=vertical, horizontal=horizontal, href=href, attrs=attrs) }}{% endif %}

@@ -170,20 +170,13 @@
 
     <div class="content scroll body">
 
-      <!-- Page header -->
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Vista general</h1>
-          <div class="page-header-sub">Hoy, 8 de mayo de 2026 · 3 sedes activas</div>
-        </div>
-        <div class="actions">
-          <button class="btn ghost sm">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Exportar
-          </button>
-          <button class="btn secondary sm">Configurar widgets</button>
-        </div>
-      </div>
+      <PageHeader title="Vista general" subtitle="Hoy, 8 de mayo de 2026 · 3 sedes activas">
+        <button class="btn ghost sm">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Exportar
+        </button>
+        <button class="btn secondary sm">Configurar widgets</button>
+      </PageHeader>
 
       <!-- Compliance alerts -->
       <div class="banner warning hub-section">
@@ -459,7 +452,7 @@
   </div>
 
   <!-- ====== Mobile tab-bar ====== -->
-  <nav class="tabbar" aria-label="Navegación principal">
+  <Tabbar :attrs="{'aria-label': 'Navegación principal'}">
     <a class="tabbar-item" aria-current="page" href="/">
       <span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12 12 3l9 9M5 10v10h14V10"/></svg></span>
       <span class="tabbar-label">Inicio</span>
@@ -483,7 +476,7 @@
       <span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></span>
       <span class="tabbar-label">Más</span>
     </a>
-  </nav>
+  </Tabbar>
 
 </div>
 {% endblock %}

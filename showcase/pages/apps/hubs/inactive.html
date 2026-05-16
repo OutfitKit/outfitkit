@@ -81,15 +81,9 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Hubs inactivos</h1>
-          <div class="page-header-sub">8 hubs no operativos · revisión periódica recomendada</div>
-        </div>
-        <div class="actions">
-          <button class="btn secondary sm">Exportar histórico</button>
-        </div>
-      </div>
+      <PageHeader title="Hubs inactivos" subtitle="8 hubs no operativos · revisión periódica recomendada">
+        <Button label="Exportar histórico" variant="secondary" size="sm" />
+      </PageHeader>
 
       <!-- Top callout -->
       <div class="callout warning mb-4">
@@ -132,12 +126,12 @@
             </div>
             <div data-show="!$confirmDelete" class="flex items-center gap-2">
               <button class="btn primary sm" data-on:click="$reactivated = !$reactivated" data-text="$reactivated ? 'Deshacer' : 'Reactivar'">Reactivar</button>
-              <button class="btn ghost sm text-danger" data-on:click="$confirmDelete = true">Eliminar permanentemente</button>
+              <Button label="Eliminar permanentemente" variant="ghost" size="sm" attrs="{'class': 'text-danger', 'data-on:click': '$confirmDelete = true'}" />
             </div>
             <div data-show="$confirmDelete" class="flex items-center gap-2">
               <span class="text-xs text-danger">¿Confirmar?</span>
-              <button class="btn danger sm" data-on:click="$confirmDelete = false">Sí, eliminar</button>
-              <button class="btn ghost sm" data-on:click="$confirmDelete = false">Cancelar</button>
+              <Button label="Sí, eliminar" variant="danger" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
+              <Button label="Cancelar" variant="ghost" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
             </div>
           </div>
         </article>
@@ -156,12 +150,12 @@
             </div>
             <div data-show="!$confirmDelete" class="flex items-center gap-2">
               <button class="btn primary sm" data-on:click="$reactivated = !$reactivated" data-text="$reactivated ? 'Deshacer' : 'Reactivar'">Reactivar</button>
-              <button class="btn ghost sm text-danger" data-on:click="$confirmDelete = true">Eliminar permanentemente</button>
+              <Button label="Eliminar permanentemente" variant="ghost" size="sm" attrs="{'class': 'text-danger', 'data-on:click': '$confirmDelete = true'}" />
             </div>
             <div data-show="$confirmDelete" class="flex items-center gap-2">
               <span class="text-xs text-danger">¿Confirmar?</span>
-              <button class="btn danger sm" data-on:click="$confirmDelete = false">Sí, eliminar</button>
-              <button class="btn ghost sm" data-on:click="$confirmDelete = false">Cancelar</button>
+              <Button label="Sí, eliminar" variant="danger" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
+              <Button label="Cancelar" variant="ghost" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
             </div>
           </div>
         </article>
@@ -180,12 +174,12 @@
             </div>
             <div data-show="!$confirmDelete" class="flex items-center gap-2">
               <button class="btn primary sm" data-on:click="$reactivated = !$reactivated" data-text="$reactivated ? 'Deshacer' : 'Reactivar'">Reactivar</button>
-              <button class="btn ghost sm text-danger" data-on:click="$confirmDelete = true">Eliminar permanentemente</button>
+              <Button label="Eliminar permanentemente" variant="ghost" size="sm" attrs="{'class': 'text-danger', 'data-on:click': '$confirmDelete = true'}" />
             </div>
             <div data-show="$confirmDelete" class="flex items-center gap-2">
               <span class="text-xs text-danger">¿Confirmar?</span>
-              <button class="btn danger sm" data-on:click="$confirmDelete = false">Sí, eliminar</button>
-              <button class="btn ghost sm" data-on:click="$confirmDelete = false">Cancelar</button>
+              <Button label="Sí, eliminar" variant="danger" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
+              <Button label="Cancelar" variant="ghost" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
             </div>
           </div>
         </article>
@@ -204,12 +198,12 @@
             </div>
             <div data-show="!$confirmDelete" class="flex items-center gap-2">
               <button class="btn primary sm" data-on:click="$reactivated = !$reactivated" data-text="$reactivated ? 'Deshacer' : 'Reactivar'">Reactivar</button>
-              <button class="btn ghost sm text-danger" data-on:click="$confirmDelete = true">Eliminar permanentemente</button>
+              <Button label="Eliminar permanentemente" variant="ghost" size="sm" attrs="{'class': 'text-danger', 'data-on:click': '$confirmDelete = true'}" />
             </div>
             <div data-show="$confirmDelete" class="flex items-center gap-2">
               <span class="text-xs text-danger">¿Confirmar?</span>
-              <button class="btn danger sm" data-on:click="$confirmDelete = false">Sí, eliminar</button>
-              <button class="btn ghost sm" data-on:click="$confirmDelete = false">Cancelar</button>
+              <Button label="Sí, eliminar" variant="danger" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
+              <Button label="Cancelar" variant="ghost" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
             </div>
           </div>
         </article>
@@ -228,12 +222,12 @@
             </div>
             <div data-show="!$confirmDelete" class="flex items-center gap-2">
               <button class="btn primary sm" data-on:click="$reactivated = !$reactivated" data-text="$reactivated ? 'Deshacer' : 'Reactivar'">Reactivar</button>
-              <button class="btn ghost sm text-danger" data-on:click="$confirmDelete = true">Eliminar permanentemente</button>
+              <Button label="Eliminar permanentemente" variant="ghost" size="sm" attrs="{'class': 'text-danger', 'data-on:click': '$confirmDelete = true'}" />
             </div>
             <div data-show="$confirmDelete" class="flex items-center gap-2">
               <span class="text-xs text-danger">¿Confirmar?</span>
-              <button class="btn danger sm" data-on:click="$confirmDelete = false">Sí, eliminar</button>
-              <button class="btn ghost sm" data-on:click="$confirmDelete = false">Cancelar</button>
+              <Button label="Sí, eliminar" variant="danger" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
+              <Button label="Cancelar" variant="ghost" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
             </div>
           </div>
         </article>
@@ -258,12 +252,12 @@
             </div>
             <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;" data-show="!$confirmDelete">
               <button class="btn primary sm" data-on:click="$reactivated = !$reactivated" data-text="$reactivated ? 'Deshacer' : 'Reactivar'">Reactivar</button>
-              <button class="btn ghost sm text-danger" data-on:click="$confirmDelete = true">Eliminar permanentemente</button>
+              <Button label="Eliminar permanentemente" variant="ghost" size="sm" attrs="{'class': 'text-danger', 'data-on:click': '$confirmDelete = true'}" />
             </div>
             <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;" data-show="$confirmDelete">
               <span class="text-xs text-danger">¿Confirmar?</span>
-              <button class="btn danger sm" data-on:click="$confirmDelete = false">Sí, eliminar</button>
-              <button class="btn ghost sm" data-on:click="$confirmDelete = false">Cancelar</button>
+              <Button label="Sí, eliminar" variant="danger" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
+              <Button label="Cancelar" variant="ghost" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
             </div>
           </div>
         </article>
@@ -283,12 +277,12 @@
             </div>
             <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;" data-show="!$confirmDelete">
               <button class="btn primary sm" data-on:click="$reactivated = !$reactivated" data-text="$reactivated ? 'Deshacer' : 'Reactivar'">Reactivar</button>
-              <button class="btn ghost sm text-danger" data-on:click="$confirmDelete = true">Eliminar permanentemente</button>
+              <Button label="Eliminar permanentemente" variant="ghost" size="sm" attrs="{'class': 'text-danger', 'data-on:click': '$confirmDelete = true'}" />
             </div>
             <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;" data-show="$confirmDelete">
               <span class="text-xs text-danger">¿Confirmar?</span>
-              <button class="btn danger sm" data-on:click="$confirmDelete = false">Sí, eliminar</button>
-              <button class="btn ghost sm" data-on:click="$confirmDelete = false">Cancelar</button>
+              <Button label="Sí, eliminar" variant="danger" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
+              <Button label="Cancelar" variant="ghost" size="sm" attrs="{'data-on:click': '$confirmDelete = false'}" />
             </div>
           </div>
         </article>
@@ -308,7 +302,7 @@
           <div class="empty-title">Ningún hub pendiente de eliminación</div>
           <div class="empty-desc">Cuando canceles un hub aparecerá aquí durante los 60 días previos a su eliminación definitiva.</div>
           <div class="empty-actions">
-            <button class="btn ghost sm">Ver política de retención</button>
+            <Button label="Ver política de retención" variant="ghost" size="sm" />
           </div>
         </div>
       </div>

@@ -81,16 +81,10 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>acme-prod · Usuarios del hub</h1>
-          <div class="page-header-sub">12 usuarios activos · 16 plazas contratadas</div>
-        </div>
-        <div class="actions">
-          <button class="btn secondary sm">Exportar CSV</button>
-          <button class="btn primary sm">+ Invitar usuario</button>
-        </div>
-      </div>
+      <PageHeader title="acme-prod · Usuarios del hub" subtitle="12 usuarios activos · 16 plazas contratadas">
+        <Button label="Exportar CSV" variant="secondary" size="sm" />
+        <Button label="+ Invitar usuario" variant="primary" size="sm" />
+      </PageHeader>
 
       <!-- Tabs -->
       <div class="tabs mb-4" role="tablist">
@@ -137,13 +131,13 @@
       <div class="toolbar" data-show="$selected.length > 0" style="margin-bottom:14px;background:var(--bg-2);border:1px solid var(--brand);border-radius:8px;padding:10px 14px;">
         <div class="toolbar-group">
           <span style="font-size:12px;color:var(--ink);font-weight:500;" data-text="$selected.length + ' seleccionados'"></span>
-          <button class="btn ghost sm" data-on:click="$selected = []; $allChecked = false">Limpiar</button>
+          <Button label="Limpiar" variant="ghost" size="sm" :attrs="{'data-on:click': '$selected = []; $allChecked = false'}" />
         </div>
         <div class="toolbar-spacer"></div>
         <div class="toolbar-group">
-          <button class="btn ghost sm">Cambiar rol</button>
-          <button class="btn ghost sm">Suspender</button>
-          <button class="btn ghost sm text-danger">Eliminar</button>
+          <Button label="Cambiar rol" variant="ghost" size="sm" />
+          <Button label="Suspender" variant="ghost" size="sm" />
+          <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'text-danger'}" />
         </div>
       </div>
 
@@ -183,11 +177,11 @@
                 <td><span class="text-leaf">en línea</span></td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u1' ? null : 'u1'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u1'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -210,11 +204,11 @@
                 <td>hace 12 min</td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u2' ? null : 'u2'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u2' ? null : 'u2'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u2'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -237,11 +231,11 @@
                 <td>hace 2 h</td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u3' ? null : 'u3'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u3' ? null : 'u3'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u3'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -264,11 +258,11 @@
                 <td>hace 5 min</td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u4' ? null : 'u4'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u4' ? null : 'u4'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u4'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -291,11 +285,11 @@
                 <td>hace 28 min</td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u5' ? null : 'u5'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u5' ? null : 'u5'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u5'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -318,11 +312,11 @@
                 <td>ayer · 18:42</td>
                 <td><span class="status-dot offline"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u6' ? null : 'u6'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u6' ? null : 'u6'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u6'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -345,11 +339,11 @@
                 <td>hace 3 d</td>
                 <td><span class="status-dot offline"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u7' ? null : 'u7'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u7' ? null : 'u7'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u7'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -372,11 +366,11 @@
                 <td>hace 4 h</td>
                 <td><span class="status-dot busy"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u8' ? null : 'u8'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u8' ? null : 'u8'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u8'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -399,11 +393,11 @@
                 <td>hace 1 d</td>
                 <td><span class="status-dot offline"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u9' ? null : 'u9'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u9' ? null : 'u9'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u9'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -426,11 +420,11 @@
                 <td>hace 16 min</td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u10' ? null : 'u10'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u10' ? null : 'u10'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u10'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -453,11 +447,11 @@
                 <td>hace 6 d</td>
                 <td><span class="status-dot offline"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u11' ? null : 'u11'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u11' ? null : 'u11'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u11'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>
@@ -480,11 +474,11 @@
                 <td>hace 2 h</td>
                 <td><span class="status-dot online"></span></td>
                 <td class="text-right relative">
-                  <button class="icon-btn" data-on:click="$openMenu = $openMenu === 'u12' ? null : 'u12'">⋯</button>
+                  <button class="btn ghost sm icon" data-on:click="$openMenu = $openMenu === 'u12' ? null : 'u12'"><iconify-icon icon="lucide:more-horizontal"></iconify-icon></button>
                   <div class="menu anchor-br sm block" data-show="$openMenu === 'u12'">
-                    <button class="btn ghost sm w-full justify-start">Ver perfil</button>
-                    <button class="btn ghost sm w-full justify-start">Cambiar rol</button>
-                    <button class="btn ghost sm w-full justify-start text-danger">Eliminar</button>
+                    <Button label="Ver perfil" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Cambiar rol" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start'}" />
+                    <Button label="Eliminar" variant="ghost" size="sm" attrs="{'class': 'w-full justify-start text-danger'}" />
                   </div>
                 </td>
               </tr>

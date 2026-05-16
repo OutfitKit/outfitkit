@@ -1,0 +1,167 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+{% block title %}Free Marketplace · ERPlora{% endblock %}
+{% block page_title %}Free Marketplace · ERPlora{% endblock %}
+{% set active = 'marketplace' %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  title="Extend Your Hub"
+  subtitle="Discover hundreds of modules to transform your Hub into the perfect business solution. From POS to CRM, inventory management, and beyond."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div style="max-width:720px;margin:0 auto var(--space-6)">
+      <input type="search" placeholder="Search by tags..." style="width:100%;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);border-radius:var(--radius-md);padding:14px 18px;font:var(--weight-regular,400) var(--text-md)/1.4 var(--font-sans);outline:none" />
+    </div>
+
+    <div style="text-align:center;margin-bottom:var(--space-5)">
+      <p style="font:var(--weight-medium,500) var(--text-xs)/1 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 var(--space-3)">Pricing</p>
+      <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:8px">
+        <a href="marketplace.html" class="chip outline chip-sm">All Modules</a>
+        <a href="marketplace-free.html" class="chip active chip-sm">🎁 Free</a>
+        <a href="marketplace-premium.html" class="chip outline chip-sm">💳 One-time + Subscription</a>
+      </div>
+    </div>
+
+    <p style="text-align:center;font-size:var(--text-sm);color:var(--ink-3);margin:0 0 var(--space-6)">12 modules found</p>
+
+    <div class="grid-3 center-wide">
+      <ModuleCard
+        title="Communications"
+        subtitle="Unified multi-channel inbox with email, group routing, AI compose/reply, scheduled send, and configurable footer"
+        icon="lucide:mail"
+        icon_kind="brand"
+        meta="ERPlora · v2.1.1"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Workforce Planning"
+        subtitle="Multi-location workforce planning: shifts, calendar, coverage, and conflict detection"
+        icon="lucide:calendar-days"
+        icon_kind="brand"
+        meta="ERPlora · v1.2.4"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="WhatsApp Inbox"
+        subtitle="Receive and process WhatsApp Business messages with AI-powered auto-reply and request management"
+        icon="lucide:message-circle"
+        icon_kind="success"
+        meta="ERPlora · v2.1.3"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Appointments"
+        subtitle="Schedule and manage client appointments and availability"
+        icon="lucide:calendar-check"
+        icon_kind="brand"
+        meta="ERPlora · v1.1.6"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Timesheets"
+        subtitle="Employee time tracking, billable hours, approvals, and hourly rates"
+        icon="lucide:clock"
+        icon_kind="brand"
+        meta="ERPlora · v2.0.6"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Delivery"
+        subtitle="Delivery order management, zones, and driver tracking"
+        icon="lucide:truck"
+        icon_kind="brand"
+        meta="ERPlora · v3.0.4"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Table Reservations"
+        subtitle="Table and resource reservations with calendar view"
+        icon="lucide:utensils"
+        icon_kind="brand"
+        meta="ERPlora · v3.0.3"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Attendance &amp; Clock-in"
+        subtitle="Employee attendance tracking with clock-in/out, break management, and reporting"
+        icon="lucide:fingerprint"
+        icon_kind="brand"
+        meta="ERPlora · v2.0.8"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Kitchen Orders"
+        subtitle="Production commands — kitchens, workshops, bakeries, factories"
+        icon="lucide:chef-hat"
+        icon_kind="brand"
+        meta="ERPlora · v3.0.3"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Sales &amp; POS"
+        subtitle="Universal sales engine with multi-tax support, payment methods, and reporting"
+        icon="lucide:receipt"
+        icon_kind="brand"
+        meta="ERPlora · v2.4.9"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Services"
+        subtitle="Service catalog with pricing, duration, variants, addons, packages, and booking options"
+        icon="lucide:briefcase"
+        icon_kind="brand"
+        meta="ERPlora · v1.1.7"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+      <ModuleCard
+        title="Online Booking"
+        subtitle="Public online appointment booking page for customers"
+        icon="lucide:globe"
+        icon_kind="brand"
+        meta="ERPlora · v1.1.3"
+        value="Free"
+        value_kind="leaf"
+        href="#" />
+    </div>
+
+    <BenefitCard
+      title="Ready to Get Started?"
+      subtitle="Create your free account and start building your perfect business solution with ERPlora modules."
+      cta_label="Sign Up Free"
+      cta_href="signup.html" />
+
+    <div class="grid-3 center-wide mt-12">
+      <FeatureCard
+        title="Trusted &amp; Secure"
+        subtitle="All modules are reviewed and tested for security and quality."
+        icon="lucide:shield"
+        icon_kind="success" />
+      <FeatureCard
+        title="Always Up-to-Date"
+        subtitle="Automatic updates ensure you always have the latest features."
+        icon="lucide:rocket"
+        icon_kind="brand" />
+      <FeatureCard
+        title="Community Driven"
+        subtitle="Built by developers, for businesses of all sizes."
+        icon="lucide:users"
+        icon_kind="info" />
+    </div>
+  </div>
+</section></main>
+
+{% endblock %}

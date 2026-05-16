@@ -14,7 +14,7 @@
   /* API canónica de override.
      Color del navbar sale del contrato global de variantes.
      Si no hay variante, cae al fondo glass por defecto. */
-  --background: var(--variant, color-mix(in oklch, var(--bg) 88%, transparent));
+  --background: var(--variant, var(--bg-1));
   --color: var(--variant-contrast, var(--ink));
   --border-color: var(--variant-shade, var(--line));
   --padding-x: var(--page-pad);
@@ -243,4 +243,69 @@ body.menu-open .menu-button .menu-button-line:nth-child(3) {
 .menu-button-line {
   transition: transform var(--dur-base) var(--ease-out),
               opacity var(--dur-fast) var(--ease-out);
+}
+
+/* ============================================================
+   Slot extras: theme toggle + lang selector (compositivos).
+   ============================================================ */
+.navbar-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-md);
+  height: var(--size-md);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: var(--border-w) solid var(--line-2, var(--line));
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast);
+}
+.navbar-theme-toggle:hover { background: var(--bg-3); color: var(--ink); }
+.navbar-theme-toggle iconify-icon { width: 18px; height: 18px; }
+/* Toggle moon/sun icons via data-theme */
+.navbar-theme-toggle .icon-sun { display: none; }
+.navbar-theme-toggle .icon-moon { display: inline-flex; }
+[data-theme="erplora"] .navbar-theme-toggle .icon-sun { display: inline-flex; }
+[data-theme="erplora"] .navbar-theme-toggle .icon-moon { display: none; }
+
+.navbar-lang {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: var(--border-w) solid var(--line-2, var(--line));
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  padding: var(--space-2) var(--space-6) var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' stroke='%2364748B' stroke-width='1.5'><path d='M3 5l3 3 3-3'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+}
+
+/* Active link state for navbar links */
+.navbar-link.active,
+.navbar-link[aria-current="page"] {
+  color: var(--brand);
+  border-bottom: 2px solid var(--brand);
+  border-radius: 0;
+}
+
+/* ============================================================
+   Mobile reorder: [menu-btn]  [brand →]  [theme + end items].
+   Aplica solo cuando el navbar está en breakpoint colapsado.
+   `display: contents` eleva los hijos del .navbar-end al flex parent. */
+@media (max-width: 767px) {
+  .navbar { --padding-y: var(--space-3); gap: var(--space-3); }
+  .navbar-end { display: contents; }
+  .menu-button { order: 1; }
+  .navbar-brand { order: 2; margin-left: auto; }
+  .navbar-end .navbar-theme-toggle { order: 3; }
+  .navbar-end .navbar-lang,
+  .navbar-end .btn { display: none; }   /* esconder lang + CTA, viven en el drawer */
 }

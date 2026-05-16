@@ -1,0 +1,25 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+{% block title %}Privacy · ERPlora{% endblock %}
+{% block page_title %}Privacy · ERPlora{% endblock %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  eyebrow_icon="lucide:lock"
+  title="Privacy Policy"
+  subtitle="How we collect, use and protect your personal data. Written in plain English — no legalese theatre."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <article class="prose">
+      <p style="font:var(--weight-medium,500) var(--text-xs)/1 var(--font-mono);color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase">Last updated · May 2026</p>
+      <h2>Who we are</h2><p>ERPlora ("we", "us") is a software service operated from Spain. We process personal data as a controller for our website visitors and as a processor for our customers' Hubs.</p><h2>What we collect</h2><p>From <strong>visitors</strong>: anonymized analytics (page views, referrers), and any details you type into our contact form (name, email, message).</p><p>From <strong>customers</strong>: account email, business details, billing info (via Stripe), and any data you choose to put into your Hub.</p><h2>Why we collect it</h2><ul><li>Provide and operate the service you signed up for.</li><li>Bill you accurately for the plan you chose.</li><li>Send transactional emails (receipts, alerts, password resets).</li><li>Improve the product and prioritize roadmap items.</li></ul><h2>Who we share with</h2><p>Only sub-processors required to operate the service: AWS (hosting, EU regions), Stripe (payments), Cloudflare (CDN, DDoS), and SendGrid (transactional email). All under signed DPAs.</p><h2>Your rights (GDPR)</h2><p>You can access, correct, export, restrict, or delete your data at any time. Email <a href="mailto:privacy@erplora.com">privacy@erplora.com</a> and we will respond within 30 days.</p><h2>Retention</h2><p>Active accounts: as long as you stay. Cancelled accounts: 30 days then permanent deletion. Invoices and tax-related records: 6 years (legal requirement).</p><h2>Cookies</h2><p>We use a small number of essential cookies and one analytics cookie. See our <a href="cookies.html">Cookie Policy</a> for the full list.</p>
+      <hr/>
+      <p style="font-size:var(--text-sm);color:var(--ink-3)">
+        Questions about this policy? Reach us at <a href="mailto:legal@erplora.com">legal@erplora.com</a>.
+      </p>
+    </article>
+  </div>
+</section></main>
+{% endblock %}

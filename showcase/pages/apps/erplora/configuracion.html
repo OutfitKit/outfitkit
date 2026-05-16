@@ -1,0 +1,70 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Configuración' %}
+{% set active = 'configuracion' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Configuración', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Configuración', 'href': 'configuracion.html',             'icon': 'lucide:settings', 'current': true},
+  {'label': 'Dispositivos',  'href': 'configuracion-dispositivos.html','icon': 'lucide:smartphone'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel title="Idioma y región">
+  <div class="field">
+    <label class="label">Idioma</label>
+    <select class="input">
+      <option>Español</option>
+      <option>English</option>
+    </select>
+  </div>
+  <div class="field">
+    <label class="label">Zona horaria</label>
+    <select class="input">
+      <option>Europe/Madrid (CET)</option>
+      <option>UTC</option>
+    </select>
+  </div>
+  <div class="field">
+    <label class="label">Moneda</label>
+    <select class="input">
+      <option>EUR €</option>
+      <option>USD $</option>
+    </select>
+  </div>
+</Panel>
+
+<div style="margin-top: var(--space-3);">
+  <Panel title="Notificaciones">
+    <div style="display: flex; flex-direction: column; gap: var(--space-3);">
+      <label style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3);">
+        <span style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font: 600 var(--text-md)/1.2 var(--font-display);">Emails de facturación</span>
+          <span style="font-size: var(--text-sm); color: var(--ink-3);">Resúmenes mensuales, recibos y avisos de cobro.</span>
+        </span>
+        <input type="checkbox" checked />
+      </label>
+      <label style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3);">
+        <span style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font: 600 var(--text-md)/1.2 var(--font-display);">Alertas de seguridad</span>
+          <span style="font-size: var(--text-sm); color: var(--ink-3);">Inicios de sesión nuevos y cambios de credenciales.</span>
+        </span>
+        <input type="checkbox" checked />
+      </label>
+      <label style="display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-3);">
+        <span style="display: flex; flex-direction: column; gap: 2px;">
+          <span style="font: 600 var(--text-md)/1.2 var(--font-display);">Novedades del producto</span>
+          <span style="font-size: var(--text-sm); color: var(--ink-3);">Nuevas funciones, módulos y mejoras de ERPlora.</span>
+        </span>
+        <input type="checkbox" />
+      </label>
+    </div>
+  </Panel>
+</div>
+
+<Tabbar :items="tabs" attrs="{'style': 'margin-top: var(--space-5);'}" />
+{% endblock %}

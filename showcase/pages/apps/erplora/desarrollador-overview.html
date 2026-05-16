@@ -1,0 +1,56 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Desarrollador' %}
+{% set active = 'desarrollador' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Desarrollador', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Vista General', 'href': 'desarrollador-overview.html',      'icon': 'lucide:layout-grid', 'current': true},
+  {'label': 'Ganancias',     'href': 'desarrollador-ganancias.html',    'icon': 'lucide:wallet'},
+  {'label': 'Pagos',         'href': 'desarrollador-pagos.html',        'icon': 'lucide:credit-card'},
+  {'label': 'Mis Módulos',   'href': 'desarrollador-modulos.html',      'icon': 'lucide:package'},
+  {'label': 'Repositorios',  'href': 'desarrollador-repositorios.html', 'icon': 'lucide:git-fork'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<section class="section">
+  <div class="grid-4">
+    <Kpi label="Módulos publicados" value="0" icon="lucide:package" />
+    <Kpi label="Instalaciones" value="0" icon_variant="info" icon="lucide:bar-chart-3" />
+    <Kpi label="Ganancias del mes" value="€0,00" icon_variant="success" icon="lucide:wallet" />
+    <Kpi label="Pendiente de pago" value="€0,00" icon_variant="warn" icon="lucide:credit-card" />
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid-2">
+    <Panel title="Empezando como developer">
+      <ol style="padding-left: 1.2em; margin: 0; display: flex; flex-direction: column; gap: 8px; font-size: var(--text-sm); color: var(--ink-2);">
+        <li>Instala el SDK con <code style="font-family: var(--font-mono); background: var(--bg-3); padding: 2px 6px; border-radius: 4px;">pip install erplora-sdk</code></li>
+        <li>Inicia un módulo con <code style="font-family: var(--font-mono); background: var(--bg-3); padding: 2px 6px; border-radius: 4px;">erplora init mi-modulo</code></li>
+        <li>Conecta un repositorio GitHub para auto-publicación</li>
+        <li>Sube el módulo al marketplace y elige modelo (free / one-time / sub)</li>
+      </ol>
+    </Panel>
+
+    <Panel title="Recursos">
+      <div class="action-list">
+        <Button label="Documentación del SDK" href="developers.html" />
+        <Button label="Guía de publicación" href="#" />
+        <Button label="Política de revenue share" href="#" />
+        <Button label="Comunidad de developers" href="#" />
+      </div>
+    </Panel>
+  </div>
+</section>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}
+
+{% block topbar_actions %}
+<Button label="Nuevo módulo" href="desarrollador-modulos.html" variant="brand" icon="lucide:plus" />
+{% endblock %}

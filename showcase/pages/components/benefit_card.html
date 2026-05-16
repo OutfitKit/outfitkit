@@ -5,73 +5,63 @@
 
 {% block content %}
 <h1>Benefit card</h1>
-<p class="showcase-lead">Card de "beneficio destacado" — gradiente sutil + CTAs centrados. Diferente de <code>.feature-card</code> (uno de 3-4 en grid) y <code>.pricing-card</code> (planes). Para llamada a la acción única y prominente.</p>
+<p class="showcase-lead">Card de "beneficio destacado" — gradiente sutil + CTAs centrados. Diferente de <code>FeatureCard</code> (uno de 3-4 en grid) y <code>PricingCard</code> (planes). Para llamada a la acción única y prominente.</p>
 
-{% set _src_1 %}{% raw %}<aside class="benefit-card">
-  <h3>
-    <iconify-icon icon="lucide:zap"></iconify-icon>
-    Empieza gratis durante 30 días
-  </h3>
-  <p>Sin tarjeta de crédito. Cancela cuando quieras. Setup en menos de 5 minutos.</p>
-  <div class="ctas">
-    <a class="btn primary lg">Crear cuenta</a>
-    <a class="btn outline lg">Ver demo</a>
-  </div>
-</aside>{% endraw %}{% endset %}
+{% set _src_1 %}{% raw %}<BenefitCard
+  title="Empieza gratis durante 30 días"
+  subtitle="Sin tarjeta de crédito. Cancela cuando quieras. Setup en menos de 5 minutos."
+  cta_label="Crear cuenta"
+  cta_href="#"
+  gradient="brand" />{% endraw %}{% endset %}
 
 {% call demo_frame("Default · gradient brand-soft → leaf-soft", jinja_src=_src_1, jinjax_src=_src_1) %}
-<aside class="benefit-card">
-  <h3>
-    <iconify-icon icon="lucide:zap"></iconify-icon>
-    Empieza gratis durante 30 días
-  </h3>
-  <p>Sin tarjeta de crédito. Cancela cuando quieras. Setup en menos de 5 minutos.</p>
-  <div class="ctas">
-    <a class="btn primary lg">Crear cuenta</a>
-    <a class="btn outline lg">Ver demo</a>
-  </div>
-</aside>
+<BenefitCard
+  title="Empieza gratis durante 30 días"
+  subtitle="Sin tarjeta de crédito. Cancela cuando quieras. Setup en menos de 5 minutos."
+  cta_label="Crear cuenta"
+  cta_href="#"
+  gradient="brand" />
 {% endcall %}
 
-{% set _src_2 %}{% raw %}<aside class="benefit-card info">
-  <h3>
-    <iconify-icon icon="lucide:info"></iconify-icon>
-    Nuevo: API webhook
-  </h3>
-  <p>Suscríbete a eventos en tiempo real. Disponible para todos los planes.</p>
-</aside>{% endraw %}{% endset %}
+{% set _src_2 %}{% raw %}<BenefitCard
+  title="Nuevo: API webhook"
+  subtitle="Suscríbete a eventos en tiempo real. Disponible para todos los planes."
+  gradient="info" />{% endraw %}{% endset %}
 
-{% call demo_frame(".info · variante de gradiente", jinja_src=_src_2, jinjax_src=_src_2) %}
-<aside class="benefit-card info">
-  <h3>
-    <iconify-icon icon="lucide:info"></iconify-icon>
-    Nuevo: API webhook
-  </h3>
-  <p>Suscríbete a eventos en tiempo real. Disponible para todos los planes.</p>
-</aside>
+{% call demo_frame("gradient=\"info\" · variante de gradiente", jinja_src=_src_2, jinjax_src=_src_2) %}
+<BenefitCard
+  title="Nuevo: API webhook"
+  subtitle="Suscríbete a eventos en tiempo real. Disponible para todos los planes."
+  gradient="info" />
 {% endcall %}
 
-{% set _src_3 %}{% raw %}<aside class="benefit-card solid">
-  <h3>
-    <iconify-icon icon="lucide:rocket"></iconify-icon>
-    Lanza tu hub hoy mismo
-  </h3>
-  <p>Provisionamos tu instancia en AWS automáticamente.</p>
-  <div class="ctas">
-    <a class="btn lg" style="background:white; color:var(--brand)">Crear hub</a>
-  </div>
-</aside>{% endraw %}{% endset %}
+{% set _src_3 %}{% raw %}<BenefitCard
+  title="Lanza tu hub hoy mismo"
+  subtitle="Provisionamos tu instancia en AWS automáticamente."
+  cta_label="Crear hub"
+  cta_href="#"
+  solid />{% endraw %}{% endset %}
 
-{% call demo_frame(".solid · fondo brand pleno", jinja_src=_src_3, jinjax_src=_src_3) %}
-<aside class="benefit-card solid">
-  <h3>
-    <iconify-icon icon="lucide:rocket"></iconify-icon>
-    Lanza tu hub hoy mismo
-  </h3>
-  <p>Provisionamos tu instancia en AWS automáticamente.</p>
-  <div class="ctas">
-    <a class="btn lg" style="background:white; color:var(--brand)">Crear hub</a>
-  </div>
-</aside>
+{% call demo_frame("solid · fondo brand pleno", jinja_src=_src_3, jinjax_src=_src_3) %}
+<BenefitCard
+  title="Lanza tu hub hoy mismo"
+  subtitle="Provisionamos tu instancia en AWS automáticamente."
+  cta_label="Crear hub"
+  cta_href="#"
+  solid />
 {% endcall %}
+
+<h2>API · <code>BenefitCard</code></h2>
+<table>
+  <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+  <tbody>
+    <tr><td><code>title</code></td><td>str</td><td><code>""</code></td><td>Texto principal (h3).</td></tr>
+    <tr><td><code>subtitle</code></td><td>str</td><td><code>""</code></td><td>Párrafo secundario.</td></tr>
+    <tr><td><code>cta_label</code></td><td>str</td><td><code>None</code></td><td>Texto del botón CTA. Si no hay, no se emite footer.</td></tr>
+    <tr><td><code>cta_href</code></td><td>str</td><td><code>"#"</code></td><td>Destino del CTA.</td></tr>
+    <tr><td><code>cta_variant</code></td><td>brand·success·warn·danger·info</td><td><code>"brand"</code></td><td>Clase del botón.</td></tr>
+    <tr><td><code>gradient</code></td><td>None·brand·success·warn·info</td><td><code>None</code></td><td>Gradiente de fondo sutil.</td></tr>
+    <tr><td><code>solid</code></td><td>bool</td><td><code>False</code></td><td>Fondo sólido brand en lugar de gradient.</td></tr>
+  </tbody>
+</table>
 {% endblock %}

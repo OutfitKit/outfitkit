@@ -1,12 +1,54 @@
-{#def label, variant="", size="md", icon=false, block=false, disabled=false, type="button", attrs=None #}
+{#def label=None, href=None, variant="", size="md", icon=None, trailing_icon=None, icon_only=false, block=false, disabled=false, type="button", target=None, rel=None, attrs=None #}
 
-{% macro button(label, variant="", size="md", icon=false, block=false, disabled=false, type="button", attrs=None) -%}
+{# Button (or anchor when href is provided).
+
+   Usage (JinjaX tag style):
+     <Button label="Save" />
+     <Button label="Crear" variant="brand" />
+     <Button label="Editar" href="/edit" variant="outline" />
+     <Button label="Crear Terminal" icon="lucide:plus" variant="brand" />
+     <Button label="Next" trailing_icon="lucide:arrow-right" variant="brand" />
+     <Button icon="lucide:trash" icon_only variant="ghost" />
+     <Button label="External" href="https://x" target="_blank" trailing_icon="lucide:external-link" />
+
+   Props:
+   - `label`        — texto del botón.
+   - `href`         — convierte en <a>. Sin él emite <button>.
+   - `variant`      — brand / outline / ghost / soft / link / danger / etc.
+   - `size`         — sm / md / lg / xl.
+   - `icon`         — nombre iconify (e.g. "lucide:plus") leading.
+   - `trailing_icon`— nombre iconify trailing.
+   - `icon_only`    — true para botón cuadrado solo con icono (ignora label).
+   - `block`        — width: 100%.
+   - `disabled`     — aplica a <button> y <a>.
+   - `type`         — type del <button> (button / submit / reset).
+   - `target`/`rel` — para anchors.
+#}
+{% macro button(label=None, href=None, variant="", size="md", icon=None, trailing_icon=None, icon_only=false, block=false, disabled=false, type="button", target=None, rel=None, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _classes = "btn " ~ variant ~ ((' ' ~ size) if size != 'md' else '') ~ (' block' if block else '') ~ (' icon' if icon_only else '') ~ (' disabled' if disabled else '') -%}
+{%- if href -%}
+<a href="{{ href }}"
+  class="{{ _classes|trim }}"
+  {% if target %}target="{{ target }}"{% endif %}
+  {% if target == '_blank' and not rel %}rel="noopener"{% elif rel %}rel="{{ rel }}"{% endif %}
+  {% if disabled %}aria-disabled="true" tabindex="-1"{% endif %}
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+{%- if icon %}<iconify-icon icon="{{ icon }}" width="16" height="16"></iconify-icon>{% endif -%}
+{%- if caller is defined %}{{ caller() }}{% elif label and not icon_only %}{{ label }}{% endif -%}
+{%- if trailing_icon %}<iconify-icon icon="{{ trailing_icon }}" width="16" height="16"></iconify-icon>{% endif -%}
+</a>
+{%- else -%}
 <button
   type="{{ type }}"
-  class="btn {{ variant }}{% if size != 'md' %} {{ size }}{% endif %}{% if block %} block{% endif %}{% if icon %} icon{% endif %}"
+  class="{{ _classes|trim }}"
   {% if disabled %}disabled aria-disabled="true"{% endif %}
-  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>{{ label }}</button>
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+{%- if icon %}<iconify-icon icon="{{ icon }}" width="16" height="16"></iconify-icon>{% endif -%}
+{%- if caller is defined %}{{ caller() }}{% elif label and not icon_only %}{{ label }}{% endif -%}
+{%- if trailing_icon %}<iconify-icon icon="{{ trailing_icon }}" width="16" height="16"></iconify-icon>{% endif -%}
+</button>
+{%- endif -%}
 {%- endmacro %}
 
-{% if label is defined %}{{ button(label, variant=variant, size=size, icon=icon, block=block, disabled=disabled, type=type, attrs=attrs) }}{% endif %}
+{% if label is defined and not (caller is defined) %}{{ button(label, href=href, variant=variant, size=size, icon=icon, trailing_icon=trailing_icon, icon_only=icon_only, block=block, disabled=disabled, type=type, target=target, rel=rel, attrs=attrs) }}{% endif %}

@@ -1,0 +1,72 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}Developers · ERPlora{% endblock %}
+{% block page_title %}Developers · ERPlora{% endblock %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  eyebrow_icon="lucide:code-2"
+  icon_kind="info"
+  title="Developer SDK"
+  subtitle="Build custom modules locally with pip install. Full access to AI tools, signals, and hooks. Same code runs in production."
+  back_href="index.html"
+  cta_label="Get Started"
+  cta_href="#install"
+  secondary_cta_label="Read the docs"
+  secondary_cta_href="#docs" />
+
+<section style="padding-top:0" id="install">
+  <div class="container">
+    <div class="card center-medium">
+      <h2 style="font-family:var(--font-display);font-weight:var(--weight-semibold,600);font-size:var(--text-2xl);margin:0 0 var(--space-3);color:var(--ink)">Install in 30 seconds</h2>
+      <p style="color:var(--ink-3);margin:0 0 var(--space-5)">The ERPlora SDK is a normal Python package. One command and you have a full local Hub with hot-reload and a fake DB.</p>
+      <div style="background:var(--bg);border:1px solid var(--line);border-radius:var(--radius-md);padding:var(--space-4) var(--space-5);font:var(--weight-medium,500) var(--text-sm)/1.5 var(--font-mono);color:var(--ink);overflow-x:auto">
+$ pip install erplora-sdk<br>
+$ erplora init my-module<br>
+$ erplora dev
+      </div>
+      <p style="font-size:var(--text-sm);color:var(--ink-3);margin-top:var(--space-3)">Your module is now live at <code>http://localhost:8000</code> with auto-reload.</p>
+    </div>
+
+    <div class="grid-3 center-wide mt-12">
+      <FeatureCard
+        title="Python &amp; Django"
+        subtitle="Standard Django ORM, views, and templates. If you know Django, you already know how to build for ERPlora."
+        icon="lucide:code-2" />
+      <FeatureCard
+        title="AI tools built-in"
+        subtitle="Hooks for AI suggestions, classifications, and generative actions. Bring your own model or use ours."
+        icon="lucide:cpu"
+        icon_kind="info" />
+      <FeatureCard
+        title="Signals &amp; hooks"
+        subtitle="Extend every core action without monkey-patching. Subscribe to events, modify behavior cleanly."
+        icon="lucide:wifi"
+        icon_kind="success" />
+      <FeatureCard
+        title="Same code, anywhere"
+        subtitle="Your module runs identically on the developer SDK, your own Hub, and the cloud. No surprises in production."
+        icon="lucide:square"
+        icon_kind="warn" />
+      <FeatureCard
+        title="Marketplace ready"
+        subtitle="One command publishes your module. Set it free, one-time, or subscription. Get paid automatically."
+        icon="lucide:hexagon" />
+      <FeatureCard
+        title="Sandboxed in production"
+        subtitle="Each Hub installs modules in an isolated environment. A bug in your module can never affect another tenant."
+        icon="lucide:shield-check"
+        icon_kind="success" />
+    </div>
+
+    <BenefitCard
+      title="Open source SDK"
+      subtitle="The SDK, CLI, and examples are open source on GitHub. Pull requests welcome."
+      cta_label="View on GitHub"
+      cta_href="#"
+      style="margin-top:var(--space-9)"
+      id="docs" />
+  </div>
+</section></main>
+{% endblock %}

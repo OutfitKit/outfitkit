@@ -3,9 +3,9 @@
    ============================================================ */
 
 .card {
-  --background:    color-mix(in oklch, var(--variant, var(--bg-2)) 8%, var(--bg-2));
+  --background:    var(--bg-2);
   --color:         var(--color-mode, var(--ink));
-  --border-color:  var(--border-mode, color-mix(in oklch, var(--variant, var(--line)) 25%, var(--line)));
+  --border-color:  var(--border-mode, var(--line));
   --border-radius: var(--radius, var(--radius-xl));
 
   background: var(--background);
@@ -45,11 +45,14 @@
   outline-offset: 0.125rem;
 }
 
-.card > .head + .body {
-  padding-top: var(--space-0);
+/* Composición .card + .layout — HTML5 nativo (header/main/footer).
+   Los selectores :where(.layout) > :where(header/main/footer) de layout.css
+   ya aplican padding base; aquí solo añadimos los matices visuales del card. */
+:where(.card.layout) > :where(header) + :where(main) {
+  padding-top: 0;
 }
 
-.card > .foot {
+:where(.card.layout) > :where(footer) {
   background: color-mix(in oklch, var(--background) 82%, var(--bg-1));
 }
 
@@ -66,4 +69,22 @@
   --background: var(--surface-glass, color-mix(in oklch, var(--bg-2) 88%, transparent));
   -webkit-backdrop-filter: blur(var(--glass-blur-soft, 8px));
           backdrop-filter: blur(var(--glass-blur-soft, 8px));
+}
+
+/* .card-cover — header decorativo con altura fija (no padding del layout).
+   Pensado para HrCard y similares: zona superior con color/gradient
+   que actúa de portada visual antes del contenido del card. */
+:where(.card) > .card-cover {
+  padding: 0;
+  min-height: var(--cover-h, 5rem);
+  background: var(--cover-bg, var(--brand-soft));
+  border-bottom: var(--border-w) solid var(--line);
+}
+
+:where(.card) > .card-cover.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-from, var(--brand-soft)),
+    var(--gradient-to, var(--accent-soft, var(--leaf-soft)))
+  );
 }

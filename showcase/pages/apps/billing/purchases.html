@@ -118,20 +118,14 @@
     </nav>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Mis compras</h1>
-          <div class="page-header-sub">Equipamiento, terminales y módulos pedidos</div>
-        </div>
-        <div class="actions">
-          <select class="select sm" style="width: auto; min-width: 130px;">
-            <option>Año 2026</option>
-            <option>Año 2025</option>
-            <option>Año 2024</option>
-          </select>
-          <button class="btn outline sm">Exportar</button>
-        </div>
-      </div>
+      <PageHeader title="Mis compras" subtitle="Equipamiento, terminales y módulos pedidos">
+        <select class="select sm" style="width: auto; min-width: 130px;">
+          <option>Año 2026</option>
+          <option>Año 2025</option>
+          <option>Año 2024</option>
+        </select>
+        <Button label="Exportar" variant="outline" size="sm" />
+      </PageHeader>
 
       <!-- KPIs -->
       <div class="grid-3 mb-5">
@@ -185,7 +179,7 @@
             </div>
             <span class="badge info"><span class="badge-dot"></span>En tránsito</span>
             <div class="order-card-total">1 240,00 €</div>
-            <button class="btn ghost sm">Ver detalles</button>
+            <Button label="Ver detalles" variant="ghost" size="sm" />
             <span class="order-card-caret" data-class:is-open="$open1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open1">
@@ -235,20 +229,12 @@
                   <span class="td mono" style="font-size: 11px;">3X-981-2026-A4</span>
                 </div>
                 <div class="text-xs text-ink-3">Entrega estimada · <b class="text-ink">10 may 2026</b></div>
-                <button class="btn outline block sm mt-2">
-                  Ver seguimiento en SEUR
-                </button>
+                <Button label="Ver seguimiento en SEUR" variant="outline" block="true" size="sm" attrs="{'class': 'mt-2'}" />
               </div>
               <div class="order-side-block">
                 <h4>Documentación</h4>
-                <button class="btn ghost block sm justify-start">
-                  <iconify-icon icon="lucide:file-text" width="14" height="14"></iconify-icon>
-                  Albarán PDF
-                </button>
-                <button class="btn ghost block sm justify-start">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
-                  Pedir factura
-                </button>
+                <Button label="Albarán PDF" variant="ghost" block="true" size="sm" icon="lucide:file-text" attrs="{'class': 'justify-start'}" />
+                <Button label="Pedir factura" variant="ghost" block="true" size="sm" icon="lucide:file-text" attrs="{'class': 'justify-start'}" />
               </div>
             </div>
           </div>
@@ -265,7 +251,7 @@
             </div>
             <span class="badge success"><span class="badge-dot"></span>Recibido</span>
             <div class="order-card-total">540,00 €</div>
-            <button class="btn ghost sm">Ver detalles</button>
+            <Button label="Ver detalles" variant="ghost" size="sm" />
             <span class="order-card-caret" data-class:is-open="$open2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open2">
@@ -292,10 +278,7 @@
               </div>
               <div class="order-side-block">
                 <h4>Documentación</h4>
-                <button class="btn ghost block sm justify-start">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
-                  Factura INV-2026-0136
-                </button>
+                <Button label="Factura INV-2026-0136" variant="ghost" block="true" size="sm" icon="lucide:file-text" attrs="{'class': 'justify-start'}" />
               </div>
             </div>
           </div>
@@ -312,7 +295,7 @@
             </div>
             <span class="badge success"><span class="badge-dot"></span>Recibido</span>
             <div class="order-card-total">820,00 €</div>
-            <button class="btn ghost sm">Ver detalles</button>
+            <Button label="Ver detalles" variant="ghost" size="sm" />
             <span class="order-card-caret" data-class:is-open="$open3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open3">
@@ -365,14 +348,8 @@
               </div>
               <div class="order-side-block">
                 <h4>Documentación</h4>
-                <button class="btn ghost block sm justify-start">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
-                  Factura INV-2026-0132
-                </button>
-                <button class="btn ghost block sm justify-start">
-                  <iconify-icon icon="lucide:file-text" width="14" height="14"></iconify-icon>
-                  Albarán de entrega
-                </button>
+                <Button label="Factura INV-2026-0132" variant="ghost" block="true" size="sm" icon="lucide:file-text" attrs="{'class': 'justify-start'}" />
+                <Button label="Albarán de entrega" variant="ghost" block="true" size="sm" icon="lucide:file-text" attrs="{'class': 'justify-start'}" />
               </div>
             </div>
           </div>
@@ -389,7 +366,7 @@
             </div>
             <span class="badge info"><span class="badge-dot"></span>En tránsito</span>
             <div class="order-card-total">1 080,00 €</div>
-            <button class="btn ghost sm">Ver detalles</button>
+            <Button label="Ver detalles" variant="ghost" size="sm" />
             <span class="order-card-caret" data-class:is-open="$open4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open4">
@@ -437,7 +414,7 @@
             </div>
             <span class="badge warning"><span class="badge-dot"></span>Procesando</span>
             <div class="order-card-total">240,00 €</div>
-            <button class="btn ghost sm">Ver detalles</button>
+            <Button label="Ver detalles" variant="ghost" size="sm" />
             <span class="order-card-caret" data-class:is-open="$open5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open5">
@@ -472,7 +449,7 @@
             </div>
             <span class="badge success"><span class="badge-dot"></span>Recibido</span>
             <div class="order-card-total">360,00 €</div>
-            <button class="btn ghost sm">Ver detalles</button>
+            <Button label="Ver detalles" variant="ghost" size="sm" />
             <span class="order-card-caret" data-class:is-open="$open6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></span>
           </div>
           <div class="order-body" data-show="$open6">
@@ -490,10 +467,7 @@
             <div class="order-side">
               <div class="order-side-block">
                 <h4>Documentación</h4>
-                <button class="btn ghost block sm justify-start">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h4"/></svg>
-                  Factura INV-2026-0119
-                </button>
+                <Button label="Factura INV-2026-0119" variant="ghost" block="true" size="sm" icon="lucide:file-text" attrs="{'class': 'justify-start'}" />
               </div>
             </div>
           </div>

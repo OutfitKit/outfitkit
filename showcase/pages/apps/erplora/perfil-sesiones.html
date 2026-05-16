@@ -1,0 +1,59 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Sesiones' %}
+{% set active = 'configuracion' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Perfil', 'href': 'perfil.html'},
+  {'label': 'Sesiones', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Configuración', 'href': 'configuracion.html',             'icon': 'lucide:settings'},
+  {'label': 'Dispositivos',  'href': 'configuracion-dispositivos.html','icon': 'lucide:smartphone'},
+  {'label': 'Sesiones',      'href': 'perfil-sesiones.html',           'icon': 'lucide:shield', 'current': true},
+  {'label': 'Perfil',        'href': 'perfil.html',                    'icon': 'lucide:user'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<div class="panel flush">
+  <div class="body">
+    <table class="erp-table">
+      <thead>
+        <tr>
+          <th>Dispositivo</th>
+          <th>Ubicación</th>
+          <th>Última actividad</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <strong>MacBook Pro · Chrome</strong><br/>
+            <span class="chip success sm">Esta sesión</span>
+          </td>
+          <td>Madrid, ES</td>
+          <td class="mono">Ahora</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>iPhone · Safari</td>
+          <td>Madrid, ES</td>
+          <td class="mono">Hace 2 días</td>
+          <td>
+            <Button label="Cerrar" variant="outline" :attrs="{'style': 'color: var(--danger); border-color: color-mix(in oklch, var(--danger) 50%, transparent);'}" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="margin-top: var(--space-3); text-align: right;">
+  <Button label="Cerrar todas las demás sesiones" variant="outline" :attrs="{'style': 'color: var(--danger); border-color: color-mix(in oklch, var(--danger) 50%, transparent);'}" />
+</div>
+
+<Tabbar :items="tabs" attrs="{'style': 'margin-top: var(--space-5);'}" />
+{% endblock %}

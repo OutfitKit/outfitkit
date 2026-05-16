@@ -80,16 +80,10 @@
       </header>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Facturación · Acme Industries</h1>
-          <div class="page-header-sub">Datos fiscales y método de cobro · CIF B-87654321</div>
-        </div>
-        <div class="actions">
-          <button class="btn ghost">Cancelar</button>
-          <button class="btn primary">Guardar cambios</button>
-        </div>
-      </div>
+      <PageHeader title="Facturación · Acme Industries" subtitle="Datos fiscales y método de cobro · CIF B-87654321">
+        <button class="btn ghost">Cancelar</button>
+        <button class="btn primary">Guardar cambios</button>
+      </PageHeader>
 
       <div class="banner info mb-4">
         <span class="icon"><iconify-icon icon="lucide:info" width="16" height="16"></iconify-icon></span>
@@ -100,14 +94,7 @@
       </div>
 
       <div class="grid-2 mb-5">
-        <article class="card">
-          <header class="head">
-            <div>
-              <h3 class="title">Datos fiscales</h3>
-              <div class="sub">Aparecen en cada factura emitida</div>
-            </div>
-          </header>
-          <div class="body">
+        <Panel title="Datos fiscales" sub="Aparecen en cada factura emitida" tag="article">
             <div class="form">
               <label class="field">
                 <span class="field-label field-label--req">Razón social</span>
@@ -155,17 +142,9 @@
                 </label>
               </div>
             </div>
-          </div>
-        </article>
+        </Panel>
 
-        <article class="card">
-          <header class="head">
-            <div>
-              <h3 class="title">Contacto de facturación</h3>
-              <div class="sub">Persona que recibirá facturas y avisos de cobro</div>
-            </div>
-          </header>
-          <div class="body">
+        <Panel title="Contacto de facturación" sub="Persona que recibirá facturas y avisos de cobro" tag="article">
             <div class="form">
               <label class="field">
                 <span class="field-label field-label--req">Nombre completo</span>
@@ -198,8 +177,7 @@
                 <span class="toggle"><input type="checkbox" checked/><span class="toggle-track"></span></span>
               </label>
             </div>
-          </div>
-        </article>
+        </Panel>
       </div>
 
       <div class="section">

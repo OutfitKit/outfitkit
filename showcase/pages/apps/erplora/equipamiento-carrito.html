@@ -1,0 +1,23 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Carrito' %}
+{% set active = 'equipamiento' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Equipamiento', 'href': 'equipamiento-tienda.html'},
+  {'label': 'Carrito', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Tienda',  'href': 'equipamiento-tienda.html',  'icon': 'lucide:store'},
+  {'label': 'Carrito', 'href': 'equipamiento-carrito.html', 'icon': 'lucide:shopping-cart', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Tu carrito está vacío" desc="Añade productos desde la tienda para hacer un pedido." icon="lucide:shopping-cart" actions='<a href="equipamiento-tienda.html" class="btn brand"><iconify-icon icon="lucide:store" width="16" height="16"></iconify-icon> Ir a la tienda</a>' />
+</Panel>
+{% endblock %}
+
+{% block dashboard_tabbar %}<Tabbar :items="tabs" />{% endblock %}

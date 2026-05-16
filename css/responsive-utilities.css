@@ -1,0 +1,139 @@
+/* ============================================================
+   OutfitKit · Responsive Utilities (v3.0)
+   Prefijos sm:/md:/lg:/xl:/2xl: estilo Tailwind para utilities
+   que necesitan cambiar por viewport. Mobile-first: cada media
+   query es min-width.
+
+   El grid system (12 cols + container queries + clamp + subgrid)
+   sigue en grid.css — esto solo añade prefijos a utilities de
+   display, cols, flex-direction, density y text-align.
+   ============================================================ */
+
+/* === sm: ≥640px ============================================ */
+@media (min-width: 640px) {
+  .sm\:hidden { display: none !important; }
+  .sm\:block { display: block !important; }
+  .sm\:inline-block { display: inline-block !important; }
+  .sm\:flex { display: flex !important; }
+  .sm\:inline-flex { display: inline-flex !important; }
+  .sm\:grid { display: grid !important; }
+
+  .sm\:flex-row { flex-direction: row; }
+  .sm\:flex-col { flex-direction: column; }
+
+  .sm\:cols-1 { --cols: 1; }
+  .sm\:cols-2 { --cols: 2; }
+  .sm\:cols-3 { --cols: 3; }
+  .sm\:cols-4 { --cols: 4; }
+  .sm\:cols-6 { --cols: 6; }
+
+  .sm\:text-left { text-align: left; }
+  .sm\:text-center { text-align: center; }
+  .sm\:text-right { text-align: right; }
+
+  .sm\:compact  { --pad-x: var(--space-3); --pad-y: var(--space-3); --gap: var(--space-2); }
+  .sm\:spacious { --pad-x: var(--space-7); --pad-y: var(--space-7); --gap: var(--space-5); }
+
+  .sm\:full   { width: 100%; max-width: none; }
+  .sm\:narrow { max-width: var(--container-narrow, 45rem); margin-inline: auto; }
+  .sm\:wide   { max-width: var(--container, 75rem);        margin-inline: auto; }
+}
+
+/* === md: ≥768px ============================================ */
+@media (min-width: 768px) {
+  .md\:hidden { display: none !important; }
+  .md\:block { display: block !important; }
+  .md\:inline-block { display: inline-block !important; }
+  .md\:flex { display: flex !important; }
+  .md\:inline-flex { display: inline-flex !important; }
+  .md\:grid { display: grid !important; }
+
+  .md\:flex-row { flex-direction: row; }
+  .md\:flex-col { flex-direction: column; }
+
+  .md\:cols-1 { --cols: 1; }
+  .md\:cols-2 { --cols: 2; }
+  .md\:cols-3 { --cols: 3; }
+  .md\:cols-4 { --cols: 4; }
+  .md\:cols-6 { --cols: 6; }
+
+  .md\:text-left { text-align: left; }
+  .md\:text-center { text-align: center; }
+  .md\:text-right { text-align: right; }
+
+  .md\:compact  { --pad-x: var(--space-3); --pad-y: var(--space-3); --gap: var(--space-2); }
+  .md\:spacious { --pad-x: var(--space-7); --pad-y: var(--space-7); --gap: var(--space-5); }
+
+  .md\:full   { width: 100%; max-width: none; }
+  .md\:narrow { max-width: var(--container-narrow, 45rem); margin-inline: auto; }
+  .md\:wide   { max-width: var(--container, 75rem);        margin-inline: auto; }
+}
+
+/* === lg: ≥1024px =========================================== */
+@media (min-width: 1024px) {
+  .lg\:hidden { display: none !important; }
+  .lg\:block { display: block !important; }
+  .lg\:inline-block { display: inline-block !important; }
+  .lg\:flex { display: flex !important; }
+  .lg\:inline-flex { display: inline-flex !important; }
+  .lg\:grid { display: grid !important; }
+
+  .lg\:flex-row { flex-direction: row; }
+  .lg\:flex-col { flex-direction: column; }
+
+  .lg\:cols-1 { --cols: 1; }
+  .lg\:cols-2 { --cols: 2; }
+  .lg\:cols-3 { --cols: 3; }
+  .lg\:cols-4 { --cols: 4; }
+  .lg\:cols-6 { --cols: 6; }
+
+  .lg\:text-left { text-align: left; }
+  .lg\:text-center { text-align: center; }
+  .lg\:text-right { text-align: right; }
+
+  .lg\:compact  { --pad-x: var(--space-3); --pad-y: var(--space-3); --gap: var(--space-2); }
+  .lg\:spacious { --pad-x: var(--space-7); --pad-y: var(--space-7); --gap: var(--space-5); }
+
+  .lg\:full   { width: 100%; max-width: none; }
+  .lg\:narrow { max-width: var(--container-narrow, 45rem); margin-inline: auto; }
+  .lg\:wide   { max-width: var(--container, 75rem);        margin-inline: auto; }
+}
+
+/* === xl: ≥1200px =========================================== */
+@media (min-width: 1200px) {
+  .xl\:hidden { display: none !important; }
+  .xl\:block { display: block !important; }
+  .xl\:inline-block { display: inline-block !important; }
+  .xl\:flex { display: flex !important; }
+  .xl\:inline-flex { display: inline-flex !important; }
+  .xl\:grid { display: grid !important; }
+
+  .xl\:flex-row { flex-direction: row; }
+  .xl\:flex-col { flex-direction: column; }
+
+  .xl\:cols-1 { --cols: 1; }
+  .xl\:cols-2 { --cols: 2; }
+  .xl\:cols-3 { --cols: 3; }
+  .xl\:cols-4 { --cols: 4; }
+  .xl\:cols-6 { --cols: 6; }
+
+  .xl\:text-left { text-align: left; }
+  .xl\:text-center { text-align: center; }
+  .xl\:text-right { text-align: right; }
+}
+
+/* === 2xl: ≥1440px ========================================== */
+@media (min-width: 1440px) {
+  .\32xl\:hidden { display: none !important; }
+  .\32xl\:block { display: block !important; }
+  .\32xl\:flex { display: flex !important; }
+  .\32xl\:grid { display: grid !important; }
+
+  .\32xl\:flex-row { flex-direction: row; }
+  .\32xl\:flex-col { flex-direction: column; }
+
+  .\32xl\:cols-2 { --cols: 2; }
+  .\32xl\:cols-3 { --cols: 3; }
+  .\32xl\:cols-4 { --cols: 4; }
+  .\32xl\:cols-6 { --cols: 6; }
+}

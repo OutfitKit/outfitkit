@@ -1,0 +1,47 @@
+{#def title="", subtitle="", cta_label=None, cta_href=None, cta_color="brand", cta_variant=None, gradient=None, solid=false, attrs=None #}
+
+{# Benefit card · composición sobre `.card .layout`.
+
+   API (estable — no romper):
+   - title        — texto principal (h3)
+   - subtitle     — párrafo secundario (opcional)
+   - cta_label    — texto del botón CTA (opcional; si no hay, no se emite footer)
+   - cta_href     — destino del CTA (fallback "#")
+   - cta_color    — clase del botón: 'brand' (default) | 'success' | 'warn' | 'danger' | 'info'
+   - cta_variant  — alias deprecado de `cta_color` (backward-compat)
+   - gradient     — None (sin gradient) | 'brand' | 'success' | 'warn' | 'info'
+   - solid        — boolean; fondo plano (.filled) en lugar de gradient
+   - attrs        — dict extra de atributos HTML
+
+   HTML emitido (composición, no clase propia):
+     <aside class="card layout narrow text-center [gradient {{gradient}}] [filled] spacious">
+       <header><h3 class="title">…</h3></header>
+       <main><p class="sub">…</p></main>           ← si subtitle
+       <footer class="actions center">…</footer>  ← si cta_label
+     </aside>
+#}
+
+{% macro benefit_card(title="", subtitle="", cta_label=None, cta_href=None, cta_color="brand", cta_variant=None, gradient=None, solid=false, attrs=None) -%}
+{%- if cta_variant and not cta_color %}{% set cta_color = cta_variant %}{% endif -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _gradient = (" gradient " ~ gradient) if gradient else "" -%}
+{%- set _solid = " filled" if solid else "" -%}
+<aside class="card layout narrow text-center{{ _gradient }}{{ _solid }} spacious"
+  {%- for key, val in _attrs.items() %} {{ key }}="{{ val }}"{% endfor %}>
+  <header>
+    <h3 class="title">{{ title }}</h3>
+  </header>
+  {%- if subtitle %}
+  <main>
+    <p class="sub">{{ subtitle }}</p>
+  </main>
+  {%- endif %}
+  {%- if cta_label %}
+  <footer class="actions center">
+    <a class="btn {{ cta_color or 'brand' }}" href="{{ cta_href or '#' }}">{{ cta_label }}</a>
+  </footer>
+  {%- endif %}
+</aside>
+{%- endmacro %}
+
+{% if title is defined %}{{ benefit_card(title=title, subtitle=subtitle, cta_label=cta_label, cta_href=cta_href, cta_color=cta_color, cta_variant=cta_variant, gradient=gradient, solid=solid, attrs=attrs) }}{% endif %}

@@ -1,0 +1,43 @@
+{% extends "apps/erplora-site/_landing.jinja" %}
+
+{% block title %}About · ERPlora{% endblock %}
+{% block page_title %}About · ERPlora{% endblock %}
+{% set active = 'about' %}
+
+{% block landing_content %}
+<main>
+<PageHero
+  eyebrow_icon="lucide:info"
+  title="About ERPlora"
+  subtitle="The ERP that adapts to your business — not the other way around."
+  back_href="index.html" />
+
+<section style="padding-top:0">
+  <div class="container">
+    <div class="prose">
+      <h2>Our story</h2>
+      <p>ERPlora was born from a simple idea: the software you run your business on should bend to fit your operations, not force you to bend to fit it. Every business is different — every shop, restaurant, workshop, agency, service provider has its own rhythm, its own quirks, its own non-negotiables.</p>
+      <p>Traditional ERP systems force everyone into the same workflow. ERPlora is built around a modular core: install only the modules you need, configure them to match how <em>you</em> work, and add more as your business grows.</p>
+
+      <h2>What we believe</h2>
+      <ul>
+        <li><strong>Software should be honest.</strong> No hidden per-user fees. No surprise transaction commissions. One plan, all modules, unlimited users.</li>
+        <li><strong>Vendor lock-in is a tax on your future.</strong> Your data is yours. Export it any time, in standard formats.</li>
+        <li><strong>Modern stacks make better products.</strong> ERPlora runs on Django 6.0, PostgreSQL, Redis, and a real-time WebSocket layer. Fast, reliable, and built to last.</li>
+        <li><strong>Universal features should be free forever.</strong> If a feature helps the whole community, we build it once and everyone benefits.</li>
+      </ul>
+
+      <h2>Built in the open</h2>
+      <p>ERPlora's marketplace is a living ecosystem. Universal modules — POS, inventory, CRM, invoicing, scheduling, attendance — are free, open, and continuously improved. Private modules let businesses encode their unique logic without paying recurring fees forever.</p>
+
+      <h2>Where we're headed</h2>
+      <p>We're a small team that ships fast. New modules every few weeks, weekly improvements to the core, and a public roadmap. If you have an idea, <a href="contact.html">tell us</a> — chances are we're already working on it.</p>
+    </div>
+
+    <div class="text-center mt-12" style="margin-top:var(--space-9)">
+      <Button label="Try ERPlora free" href="signup.html" variant="brand" size="lg" icon="lucide:wand-sparkles" />
+    </div>
+  </div>
+</section>
+</main>
+{% endblock %}

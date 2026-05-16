@@ -1,0 +1,38 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Invitar Usuario' %}
+{% set active = 'usuarios' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Usuarios', 'href': 'usuarios.html'},
+  {'label': 'Invitar', 'current': true}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <form onsubmit="event.preventDefault(); alert('Demo')">
+    <div class="field">
+      <label class="label">Email</label>
+      <input class="input" type="email" placeholder="usuario@example.com" required />
+    </div>
+    <div class="field">
+      <label class="label">Rol</label>
+      <select class="input">
+        <option>Administrador</option>
+        <option>Editor</option>
+        <option>Solo lectura</option>
+      </select>
+    </div>
+    <div class="field">
+      <label class="label">Mensaje (opcional)</label>
+      <textarea class="input" rows="3" placeholder="¡Bienvenido al equipo!"></textarea>
+    </div>
+    <div class="actions" style="justify-content: flex-end;">
+      <Button label="Cancelar" href="usuarios.html" variant="outline" />
+      <button class="btn brand" type="submit">Enviar Invitación</button>
+    </div>
+  </form>
+</Panel>
+{% endblock %}

@@ -52,16 +52,10 @@
     </nav>
 
     <div class="content scroll body">
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Tareas programadas</h1>
-          <div class="page-header-sub">7 tareas registradas · 5 activas · 0 con error</div>
-        </div>
-        <div class="actions">
-          <button class="btn secondary sm">Pausar todas</button>
-          <button class="btn primary sm">+ Nueva tarea</button>
-        </div>
-      </div>
+      <PageHeader title="Tareas programadas" subtitle="7 tareas registradas · 5 activas · 0 con error">
+        <button class="btn secondary sm">Pausar todas</button>
+        <button class="btn primary sm">+ Nueva tarea</button>
+      </PageHeader>
 
       <div class="banner info inline mb-4">
         <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span>
@@ -224,12 +218,12 @@
     </div>
   </div>
 
-  <nav class="tabbar" aria-label="Navegación principal">
+  <Tabbar :attrs="{'aria-label': 'Navegación principal'}">
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9"/></svg></span><span class="tabbar-label">Inicio</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="7" r="4"/></svg></span><span class="tabbar-label">Empleados</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><iconify-icon icon="lucide:package" width="18" height="18"></iconify-icon></span><span class="tabbar-label">Módulos</span></a>
     <a class="tabbar-item" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/></svg></span><span class="tabbar-label">Facturas</span></a>
     <a class="tabbar-item" aria-current="page" href="#"><span class="tabbar-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><span class="tabbar-label">Tareas</span></a>
-  </nav>
+  </Tabbar>
 </div>
 {% endblock %}

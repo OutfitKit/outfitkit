@@ -1,14 +1,41 @@
 {#def title, desc=None, icon=None, actions=None, compact=False, attrs=None #}
 
+{# Empty state.
+
+   Usage (JinjaX tag):
+     <Empty title="Sin datos" desc="Crea uno para empezar" icon="lucide:inbox" />
+     <Empty title="No hay resultados" icon="lucide:search" compact />
+
+   Props:
+   - `title` — heading principal.
+   - `desc`  — texto explicativo opcional.
+   - `icon`  — nombre iconify (e.g. "lucide:inbox") para la caja redonda.
+   - `actions` — HTML raw (string) o slot caller() para botones de acción.
+   - `compact` — variante reducida.
+#}
 {% macro empty(title, desc=None, icon=None, actions=None, compact=False, attrs=None) -%}
 {%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
 <div class="empty{% if compact %} compact{% endif %}"
   {%- for key, v in _attrs.items() %} {{ key }}="{{ v }}"{% endfor %}>
-  {%- if icon %}<div class="icon">{{ icon|safe }}</div>{% endif %}
-  <h3 class="title lg">{{ title }}</h3>
+  {%- if icon %}
+  <span class="ic-circle">
+    <iconify-icon icon="{{ icon }}" width="22" height="22"></iconify-icon>
+  </span>
+  {%- endif %}
+  <h4 class="title">{{ title }}</h4>
   {%- if desc %}<p class="sub">{{ desc }}</p>{% endif %}
-  {%- if actions %}<div class="actions">{{ actions|safe }}</div>{% endif %}
+  {%- if caller is defined %}
+  <div class="actions">{{ caller() }}</div>
+  {%- elif actions %}
+  <div class="actions">{{ actions|safe }}</div>
+  {%- endif %}
 </div>
 {%- endmacro %}
 
-{% if title is defined %}{{ empty(title, desc=desc, icon=icon, actions=actions, compact=compact, attrs=attrs) }}{% endif %}
+{% if title is defined %}
+  {% if caller is defined %}
+    {% call empty(title, desc=desc, icon=icon, compact=compact, attrs=attrs) %}{{ caller() }}{% endcall %}
+  {% else %}
+    {{ empty(title, desc=desc, icon=icon, actions=actions, compact=compact, attrs=attrs) }}
+  {% endif %}
+{% endif %}

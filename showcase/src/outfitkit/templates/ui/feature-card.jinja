@@ -1,0 +1,88 @@
+{#def title="", subtitle="", icon=None, icon_kind="brand", icon_size="md", href=None, variant=None, attrs=None #}
+
+{# Feature card · composición Ionic-style sobre `.card`.
+
+   API (estable — no romper):
+   - title, subtitle    — textos principales
+   - icon               — nombre iconify (e.g. 'lucide:rocket') o None para SVG via caller()
+   - icon_kind          — 'brand' (default) | 'success' | 'warn' | 'danger' | 'info' |
+                          'neutral' | 'solid' | 'outline'
+   - icon_size          — 'sm' | 'md' (default) | 'lg' | 'xl'
+   - href               — si se pasa, tag = <a> y se añade .interactive
+   - variant            — None (default = compact centrado) | 'compact' | 'horizontal' |
+                          'elevated' | 'flat' | 'glass'
+                          · 'elevated' → .card.layout.compact.text-center + .elevated (modifier universal: box-shadow)
+                          · 'flat'     → .card.layout.compact.text-center + .flat (modifier universal: sin sombra)
+                          · 'glass'    → .card.layout.compact.text-center + .glass (modifier universal: blur)
+   - attrs              — dict extra de atributos HTML
+
+   HTML emitido (composición, no `.feature-card`):
+     - default/compact/elevated/flat/glass:
+         <article class="card layout compact text-center [variant]">
+           <header><span class="icon-box ..."></span></header>
+           <main>
+             <h3 class="title">…</h3>
+             <p class="sub muted">…</p>
+           </main>
+         </article>
+
+     - horizontal:
+         <article class="card flex compact">
+           <aside><span class="icon-box ..."></span></aside>
+           <main>
+             <h3 class="title">…</h3>
+             <p class="sub muted">…</p>
+           </main>
+         </article>
+#}
+
+{% macro feature_card(title="", subtitle="", icon=None, icon_kind="brand", icon_size="md", href=None, variant=None, attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _tag = "a" if href else "article" -%}
+{%- set _interactive = " interactive" if href else "" -%}
+{%- set _icon_kind = "" if icon_kind == "brand" else " " ~ icon_kind -%}
+{%- set _icon_size = "" if icon_size == "md" else " " ~ icon_size -%}
+{%- if variant == "horizontal" -%}
+  {%- set _classes = "card flex compact" ~ _interactive -%}
+{%- elif variant in ("elevated", "flat", "glass") -%}
+  {%- set _classes = "card layout compact text-center " ~ variant ~ _interactive -%}
+{%- else -%}
+  {# None or 'compact' #}
+  {%- set _classes = "card layout compact text-center" ~ _interactive -%}
+{%- endif -%}
+<{{ _tag }} class="{{ _classes }}"
+  {%- if href %} href="{{ href }}"{% endif %}
+  {%- for key, value in _attrs.items() %} {{ key }}="{{ value }}"{% endfor %}>
+  {%- if variant == "horizontal" %}
+  {%- if icon or caller is defined %}
+  <aside>
+    <span class="icon-box{{ _icon_kind }}{{ _icon_size }}" aria-hidden="true">
+      {%- if icon %}<iconify-icon icon="{{ icon }}"></iconify-icon>
+      {%- elif caller is defined %}{{ caller() }}
+      {%- endif %}
+    </span>
+  </aside>
+  {%- endif %}
+  <main>
+    {%- if title %}<h3 class="title">{{ title }}</h3>{% endif %}
+    {%- if subtitle %}<p class="sub muted">{{ subtitle }}</p>{% endif %}
+  </main>
+  {%- else %}
+  {%- if icon or caller is defined %}
+  <header>
+    <span class="icon-box{{ _icon_kind }}{{ _icon_size }}" aria-hidden="true">
+      {%- if icon %}<iconify-icon icon="{{ icon }}"></iconify-icon>
+      {%- elif caller is defined %}{{ caller() }}
+      {%- endif %}
+    </span>
+  </header>
+  {%- endif %}
+  <main>
+    {%- if title %}<h3 class="title">{{ title }}</h3>{% endif %}
+    {%- if subtitle %}<p class="sub muted">{{ subtitle }}</p>{% endif %}
+  </main>
+  {%- endif %}
+</{{ _tag }}>
+{%- endmacro %}
+
+{% if title is defined %}{{ feature_card(title=title, subtitle=subtitle, icon=icon, icon_kind=icon_kind, icon_size=icon_size, href=href, variant=variant, attrs=attrs) }}{% endif %}

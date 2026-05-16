@@ -1,0 +1,95 @@
+/* ============================================================
+   OutfitKit · Icon Box
+   Primitivo agnóstico — contenedor cuadrado decorativo para
+   un icono centrado. Se usa en feature cards, page hero,
+   module cards, section eyebrow, etc.
+
+   Composición esperada:
+     <span class="icon-box">
+       <iconify-icon icon="lucide:sparkles"></iconify-icon>
+     </span>
+     <span class="icon-box xl solid danger">…</span>
+     <span class="icon-box outline round">…</span>
+   ============================================================ */
+
+.icon-box {
+  --background:    var(--brand-soft);
+  --color:         var(--brand);
+  --size:          var(--size-lg);
+  --icon-size:     var(--icon-md);
+  --border-radius: var(--radius-md);
+
+  display: inline-grid;
+  place-items: center;
+  width: var(--size);
+  height: var(--size);
+  background: var(--background);
+  color: var(--color);
+  border-radius: var(--border-radius);
+  flex-shrink: 0;
+  line-height: 1;
+}
+.icon-box svg,
+.icon-box iconify-icon {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: block;
+}
+
+/* Tamaños */
+.icon-box.sm {
+  --size:      var(--size-md);
+  --icon-size: var(--icon-sm);
+}
+.icon-box.lg {
+  --size:      var(--size-xl);
+  --icon-size: var(--icon-lg);
+}
+.icon-box.xl {
+  --size:      var(--size-2xl);
+  --icon-size: var(--icon-xl);
+  --border-radius: var(--radius-lg);
+}
+
+/* Variantes semánticas (color tint heredado de tokens) */
+.icon-box.success {
+  --background: var(--leaf-soft);
+  --color:      var(--leaf);
+}
+.icon-box.warn,
+.icon-box.warning {
+  --background: var(--warn-soft);
+  --color:      var(--warn);
+}
+.icon-box.danger {
+  --background: var(--danger-soft);
+  --color:      var(--danger);
+}
+.icon-box.info {
+  --background: var(--info-soft);
+  --color:      var(--info);
+}
+.icon-box.neutral {
+  --background: var(--bg-3);
+  --color:      var(--ink-2);
+}
+
+/* Variante solid (sin tint, fondo plano de color del brand/semantic) */
+.icon-box.solid {
+  --background: var(--brand);
+  --color:      var(--brand-fg);
+}
+.icon-box.solid.success { --background: var(--leaf);   --color: var(--leaf-fg, white); }
+.icon-box.solid.warn    { --background: var(--warn);   --color: var(--warn-fg, white); }
+.icon-box.solid.danger  { --background: var(--danger); --color: var(--danger-fg, white); }
+.icon-box.solid.info    { --background: var(--info);   --color: var(--info-fg, white); }
+
+/* Variante outline (borde + transparente) */
+.icon-box.outline {
+  --background: transparent;
+  --color:      var(--brand);
+  box-shadow: inset 0 0 0 var(--border-w) var(--line-2);
+}
+
+/* Variante circular */
+.icon-box.round { --border-radius: var(--radius-circle); }

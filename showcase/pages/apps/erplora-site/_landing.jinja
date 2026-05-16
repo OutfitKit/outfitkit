@@ -1,0 +1,95 @@
+{# Layout para las páginas landing/marketing públicas de ERPlora.
+   Provee Navbar sticky con links comunes (Features, Solutions, etc.),
+   Footer con columnas + social + copyright, y wrapper Datastar para
+   el mobile-menu (signal menuOpen).
+
+   Cada página solo necesita:
+     - set active = 'features' (marca link activo en el nav)
+     - block landing_content con el contenido único (sin nav ni footer)
+#}
+{% extends "_layout.jinja" %}
+
+{# Links comunes del nav. `active` viene de cada page (default vacío). #}
+{% set navbar_links = [
+  {'label': 'Features',    'href': 'features.html'},
+  {'label': 'Solutions',   'href': 'solutions.html'},
+  {'label': 'Marketplace', 'href': 'marketplace.html'},
+  {'label': 'Pricing',     'href': 'pricing.html'},
+  {'label': 'Contact',     'href': 'contact.html'},
+] %}
+
+{# Columnas del footer. #}
+{% set footer_columns = [
+  {'title': 'Product', 'links': [
+    {'label': 'Features',    'href': 'features.html'},
+    {'label': 'Pricing',     'href': 'pricing.html'},
+    {'label': 'Marketplace', 'href': 'marketplace.html'},
+    {'label': 'Equipment',   'href': 'equipment.html'},
+  ]},
+  {'title': 'Company', 'links': [
+    {'label': 'About',       'href': 'about.html'},
+    {'label': 'Contact',     'href': 'contact.html'},
+    {'label': 'Developers',  'href': 'developers.html'},
+    {'label': 'Bridge',      'href': 'bridge.html'},
+  ]},
+  {'title': 'Solutions', 'links': [
+    {'label': 'Industries',  'href': 'industries.html'},
+    {'label': 'Security',    'href': 'security.html'},
+    {'label': 'Compliance',  'href': 'compliance.html'},
+    {'label': 'Collaborate', 'href': 'collaborate.html'},
+  ]},
+  {'title': 'Legal', 'links': [
+    {'label': 'Privacy', 'href': 'privacy.html'},
+    {'label': 'Terms',   'href': 'terms.html'},
+    {'label': 'Cookies', 'href': 'cookies.html'},
+    {'label': 'Brand',   'href': 'brand.html'},
+  ]},
+] %}
+
+{% set footer_social = [
+  {'icon': 'lucide:github',   'href': 'https://github.com/OutfitKit', 'label': 'GitHub'},
+  {'icon': 'lucide:twitter',  'href': '#', 'label': 'X'},
+  {'icon': 'lucide:linkedin', 'href': '#', 'label': 'LinkedIn'},
+] %}
+
+{% set active = active|default(none) %}
+
+{% block content %}
+<style>
+  html { background: var(--bg); }
+  body { margin: 0; }
+</style>
+
+<div data-signals="{menuOpen: false}"
+     data-class="{ 'menu-open': $menuOpen }"
+     data-on-keydown__window="evt.key === 'Escape' && ($menuOpen = false)"
+     data-effect="document.body.style.overflow = $menuOpen ? 'hidden' : ''">
+
+  <Navbar brand_name="ERPlora" brand_href="index.html"
+          :links="navbar_links" :active="active"
+          show_theme show_lang
+          cta_label="Get Started" cta_href="signup.html" />
+
+  {% block landing_content %}{% endblock %}
+
+  <Footer brand_name="ERPlora"
+          brand_tagline="One ERP. Infinite configurations. Yours."
+          :columns="footer_columns"
+          copyright="© 2026 ERPlora · Built on OutfitKit"
+          :social="footer_social" />
+
+  {# Backdrop del mobile menu — siempre en el DOM, controlado por menuOpen. #}
+  <div class="mobile-menu-backdrop" aria-hidden="true"
+       data-on:click="$menuOpen = false"></div>
+</div>
+
+{# Reparenta el .mobile-menu al wrapper Datastar para que position:fixed no
+   quede confinado por <nav class="navbar"> (que crea stacking context). #}
+<script>
+  (function () {
+    var menu = document.querySelector('.mobile-menu');
+    var wrapper = document.querySelector('[data-signals*="menuOpen"]');
+    if (menu && wrapper && menu.parentElement !== wrapper) wrapper.appendChild(menu);
+  })();
+</script>
+{% endblock %}

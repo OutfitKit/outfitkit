@@ -1,0 +1,28 @@
+{% extends "apps/erplora/_dashboard.jinja" %}
+{% set page_title = 'Suscripciones' %}
+{% set active = 'billing' %}
+{% set crumbs = [
+  {'label': 'Panel de Control', 'href': 'dashboard.html'},
+  {'label': 'Facturación', 'href': 'billing-facturas.html'},
+  {'label': 'Suscripciones', 'current': true}
+] %}
+{% set tabs = [
+  {'label': 'Facturas',      'href': 'billing-facturas.html',      'icon': 'lucide:credit-card'},
+  {'label': 'Suscripciones', 'href': 'billing-suscripciones.html', 'icon': 'lucide:refresh-cw', 'current': true},
+  {'label': 'Compras',       'href': 'billing-compras.html',       'icon': 'lucide:check-square'}
+] %}
+
+{% block dashboard_content %}
+
+<Breadcrumbs :items="crumbs" />
+
+<Panel>
+  <Empty title="Sin suscripciones activas"
+    desc="Cuando contrates un Terminal Cloud aparecerá aquí."
+    icon="lucide:refresh-cw">
+    <Button label="Crear Terminal" href="terminales-crear.html" variant="brand" icon="lucide:plus" />
+  </Empty>
+</Panel>
+
+<Tabbar :items="tabs" attrs="{'style': 'margin-top: var(--space-5);'}" />
+{% endblock %}

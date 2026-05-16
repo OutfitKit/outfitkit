@@ -87,16 +87,10 @@
     </nav>
 
     <div class="content scroll body" data-signals='{"q": "", "errOpen": null}'>
-      <div class="page-header">
-        <div class="page-header-title">
-          <h1>Repositorios</h1>
-          <div class="page-header-sub">8 repos conectados desde GitHub · Webhooks en tiempo real</div>
-        </div>
-        <div class="actions">
-          <button class="btn ghost"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16M21 21v-5h-5"/></svg>Sincronizar todo</button>
-          <button class="btn primary"><svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>+ Conectar repo</button>
-        </div>
-      </div>
+      <PageHeader title="Repositorios" subtitle="8 repos conectados desde GitHub · Webhooks en tiempo real">
+        <Button label="Sincronizar todo" variant="ghost" icon="lucide:refresh-cw" />
+        <Button label="+ Conectar repo" variant="primary" icon="lucide:github" />
+      </PageHeader>
 
       <!-- KPIs -->
       <div class="grid-3 mb-4">
@@ -133,10 +127,10 @@
       <div class="toolbar" data-show="$sel.length > 0" style="margin-bottom:12px;background:var(--bg-2);border:1px solid var(--line);border-radius:var(--radius-md);padding:8px 12px;">
         <span style="font-size:13px;color:var(--ink-2);"><b data-text="$sel.length" class="text-ink">2</b> seleccionados</span>
         <div class="toolbar-spacer"></div>
-        <button class="btn secondary sm">Sincronizar todos</button>
-        <button class="btn secondary sm">Regenerar webhooks</button>
-        <button class="btn ghost sm text-danger">Eliminar seleccionados</button>
-        <button class="btn ghost sm" data-on:click="$sel = []">Cancelar</button>
+        <Button label="Sincronizar todos" variant="secondary" size="sm" />
+        <Button label="Regenerar webhooks" variant="secondary" size="sm" />
+        <Button label="Eliminar seleccionados" variant="ghost" size="sm" attrs="{'class': 'text-danger'}" />
+        <Button label="Cancelar" variant="ghost" size="sm" :attrs="{'data-on:click': '$sel = []'}" />
       </div>
 
       <!-- Datatable -->
@@ -187,7 +181,7 @@
                 <td><span class="badge success"><span class="badge-dot"></span>activo</span></td>
                 <td class="td num">42</td>
                 <td><span class="badge success"><span class="badge-dot"></span>Sincronizado</span></td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item">Ver en GitHub</button><button class="menu-item">Forzar sync</button><button class="menu-item">Editar webhook</button><div class="menu-divider"></div><button class="menu-item menu-item--danger">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item">Ver en GitHub</button><button class="menu-item">Forzar sync</button><button class="menu-item">Editar webhook</button><div class="menu-divider"></div><button class="menu-item menu-item--danger">Desconectar</button></div></div></td>
               </tr>
               <tr data-show="$q === '' || 'bodegas-casadejus/inventario-vinos'.toLowerCase().includes($q.toLowerCase())">
                 <td><input type="checkbox" class="check" data-on:change="$sel = $sel.includes('r2') ? $sel.filter(x=>x!=='r2') : [...$sel,'r2']" data-attr:checked="$sel.includes('r2')"/></td>
@@ -203,7 +197,7 @@
                 <td><span class="badge success"><span class="badge-dot"></span>activo</span></td>
                 <td class="td num">17</td>
                 <td><span class="badge"><span class="spinner sm" style="margin-right:4px;"></span>Sync en curso</span></td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
               </tr>
               <tr data-attr:aria-selected="$sel.includes('r3') ? 'true' : 'false'" data-show="$q === '' || 'mariola-tienda/repostería-pos'.toLowerCase().includes($q.toLowerCase())">
                 <td><input type="checkbox" class="check" data-on:change="$sel = $sel.includes('r3') ? $sel.filter(x=>x!=='r3') : [...$sel,'r3']" data-attr:checked="$sel.includes('r3')"/></td>
@@ -225,7 +219,7 @@
                     PAT sin permisos <code>repo:webhook</code>. Renueva el token en Configuración global.
                   </div>
                 </td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Renovar webhook</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Renovar webhook</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
               </tr>
               <tr data-show="$q === '' || 'acme/erplora-warehouse'.toLowerCase().includes($q.toLowerCase())">
                 <td><input type="checkbox" class="check" data-on:change="$sel = $sel.includes('r4') ? $sel.filter(x=>x!=='r4') : [...$sel,'r4']" data-attr:checked="$sel.includes('r4')"/></td>
@@ -241,7 +235,7 @@
                 <td><span class="badge success"><span class="badge-dot"></span>activo</span></td>
                 <td class="td num">28</td>
                 <td><span class="badge success"><span class="badge-dot"></span>Sincronizado</span></td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
               </tr>
               <tr data-show="$q === '' || 'ferreteria-puig/erp-modulo-clientes'.toLowerCase().includes($q.toLowerCase())">
                 <td><input type="checkbox" class="check" data-on:change="$sel = $sel.includes('r5') ? $sel.filter(x=>x!=='r5') : [...$sel,'r5']" data-attr:checked="$sel.includes('r5')"/></td>
@@ -257,7 +251,7 @@
                 <td><span class="badge success"><span class="badge-dot"></span>activo</span></td>
                 <td class="td num">9</td>
                 <td><span class="badge success"><span class="badge-dot"></span>Sincronizado</span></td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
               </tr>
               <tr data-attr:aria-selected="$sel.includes('r6') ? 'true' : 'false'" data-show="$q === '' || 'logistica-peninsular/dispatch-board'.toLowerCase().includes($q.toLowerCase())">
                 <td><input type="checkbox" class="check" data-on:change="$sel = $sel.includes('r6') ? $sel.filter(x=>x!=='r6') : [...$sel,'r6']" data-attr:checked="$sel.includes('r6')"/></td>
@@ -279,7 +273,7 @@
                     Último intento: <code>502 Bad Gateway</code>. Reintentar o regenerar webhook.
                   </div>
                 </td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Renovar webhook</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Renovar webhook</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
               </tr>
               <tr data-show="$q === '' || 'acme/erplora-reports'.toLowerCase().includes($q.toLowerCase())">
                 <td><input type="checkbox" class="check" data-on:change="$sel = $sel.includes('r7') ? $sel.filter(x=>x!=='r7') : [...$sel,'r7']" data-attr:checked="$sel.includes('r7')"/></td>
@@ -295,7 +289,7 @@
                 <td><span class="badge"><span class="badge-dot"></span>pausado</span></td>
                 <td class="td num">5</td>
                 <td><span class="badge"><span class="badge-dot"></span>Pausado</span></td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Reanudar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Reanudar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
               </tr>
               <tr data-show="$q === '' || 'vinos-roca/etiquetas-ai'.toLowerCase().includes($q.toLowerCase())">
                 <td><input type="checkbox" class="check" data-on:change="$sel = $sel.includes('r8') ? $sel.filter(x=>x!=='r8') : [...$sel,'r8']" data-attr:checked="$sel.includes('r8')"/></td>
@@ -311,7 +305,7 @@
                 <td><span class="badge success"><span class="badge-dot"></span>activo</span></td>
                 <td class="td num">21</td>
                 <td><span class="badge success"><span class="badge-dot"></span>Sincronizado</span></td>
-                <td data-signals='{"m": false}'><div class="relative"><button class="btn ghost sm" data-on:click="$m = !$m">⋯</button><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
+                <td data-signals='{"m": false}'><div class="relative"><Button icon="lucide:more-horizontal" icon_only variant="ghost" size="sm" :attrs="{'data-on:click': '$m = !$m'}" /><div class="menu anchor-br-gap" data-show="$m"><button class="menu-item" data-on:click="$m = false">Forzar sync</button><button class="menu-item" data-on:click="$m = false">Ver en GitHub</button><div class="menu-divider"></div><button class="menu-item menu-item--danger" data-on:click="$m = false">Desconectar</button></div></div></td>
               </tr>
             </tbody>
           </table>
@@ -326,7 +320,7 @@
             <p class="sub">Credenciales y comportamiento por defecto al conectar nuevos repositorios</p>
           </div>
           <div class="actions">
-            <button class="btn secondary sm">Test connection</button>
+            <Button label="Test connection" variant="secondary" size="sm" />
           </div>
         </div>
         <div class="body">
@@ -380,7 +374,7 @@
         </div>
         <div class="foot">
           <span class="text-xs text-ink-3">Última prueba: 8 may 2026 · 09:14 — <span class="text-leaf">200 OK</span></span>
-          <button class="btn primary sm">Guardar cambios</button>
+          <Button label="Guardar cambios" variant="primary" size="sm" />
         </div>
       </div>
 
