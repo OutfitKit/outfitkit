@@ -1,0 +1,41 @@
+{#def cols=3, gap="4", align=None, justify=None, tag="div", attrs=None #}
+
+{# Grid · universal grid container composing the .grid CSS primitive.
+
+   Props:
+   - cols     — number of columns (1|2|3|4|6|12). Default 3.
+   - gap      — gap size token (1|2|3|4|5|6|7|8). Default "4" → var(--space-4).
+   - align    — items alignment (start|center|end|stretch).
+   - justify  — items justification (start|center|end|stretch|between).
+   - tag      — wrapper element (div|section|main|ul|ol). Default div.
+   - attrs    — extra HTML attributes.
+
+   Slot content: items inside the grid (children become grid items).
+
+   Usage:
+     <Grid cols=3 gap="5">
+       <Card>...</Card>
+       <Card>...</Card>
+     </Grid>
+
+     <Grid cols=4 gap="6" tag="section">
+       <FeatureCard ... />
+       ...
+     </Grid>
+#}
+
+{% macro grid(cols=3, gap="4", align=None, justify=None, tag="div", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- set _classes = "grid cols-" ~ cols -%}
+{%- if gap %}{% set _classes = _classes ~ " gap-" ~ gap %}{% endif -%}
+{%- if align %}{% set _classes = _classes ~ " items-" ~ align %}{% endif -%}
+{%- if justify %}{% set _classes = _classes ~ " justify-" ~ justify %}{% endif -%}
+<{{ tag }} class="{{ _classes }}"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  {{ caller() }}
+</{{ tag }}>
+{%- endmacro %}
+
+{% if cols is defined and caller is defined %}
+  {% call grid(cols=cols, gap=gap, align=align, justify=justify, tag=tag, attrs=attrs) %}{{ caller() }}{% endcall %}
+{% endif %}
