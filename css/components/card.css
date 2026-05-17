@@ -52,9 +52,8 @@
   padding-top: 0;
 }
 
-:where(.card.layout) > :where(footer) {
-  background: color-mix(in oklch, var(--background) 82%, var(--bg-1));
-}
+/* Footer reads the card's own background; no color-mix override
+   that would pollute the theme. Add a separator via border-top if needed. */
 
 /* Variante .ring — borde + glow del color de marca (destacar) */
 .card.ring {
