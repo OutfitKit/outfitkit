@@ -1,0 +1,78 @@
+{#def themes=None, default_theme="erplora", storage_key="ok-theme", attrs=None #}
+
+{# Theme switcher · dropdown de swatches (cuadrados de color) sin texto.
+
+   Cada swatch muestra el color primario del theme. Click → aplica
+   `data-template="<id>"` al <html>, persiste en localStorage.
+
+   Props:
+   - themes        — list of {id, color} dicts.
+                     Default: los 5 themes oficiales de outfitkit:
+                     erplora (azul), default (terracota), glass (fuchsia),
+                     mono (lime), glass-mono (black)
+   - default_theme — id del theme activo cuando no hay persistencia (default "erplora")
+   - storage_key   — clave localStorage (default "ok-theme")
+   - attrs         — atributos HTML extra
+#}
+
+{% macro theme_switcher(themes=None, default_theme="erplora", storage_key="ok-theme", attrs=None) -%}
+{%- set _attrs = attrs|attr('as_dict')|default(attrs or {}) -%}
+{%- if themes is none -%}
+  {%- set themes = [
+    {'id': 'erplora',    'color': '#3B82F6'},
+    {'id': 'default',    'color': '#DD6B3A'},
+    {'id': 'glass',      'color': '#C026D3'},
+    {'id': 'mono',       'color': '#84CC16'},
+    {'id': 'glass-mono', 'color': '#0A0A0A'}
+  ] -%}
+{%- endif -%}
+
+<details class="theme-switcher"
+  {%- for k, v in _attrs.items() %} {{ k }}="{{ v }}"{% endfor %}>
+  <summary aria-label="Theme">
+    <span class="theme-swatch theme-swatch-current" aria-hidden="true"></span>
+  </summary>
+  <div class="theme-swatch-menu" role="menu">
+    {%- for t in themes %}
+    <button type="button" class="theme-swatch" role="menuitemradio"
+            data-theme-id="{{ t.id }}"
+            style="--swatch-color: {{ t.color }}"
+            aria-label="{{ t.id }}"></button>
+    {%- endfor %}
+  </div>
+</details>
+
+<script data-theme-switcher>
+(function () {
+  var KEY = '{{ storage_key }}';
+  var DEFAULT = '{{ default_theme }}';
+  var root = document.documentElement;
+  function setActive(id) {
+    root.setAttribute('data-template', id);
+    var current = document.querySelector('.theme-swatch-current');
+    var btn = document.querySelector('.theme-swatch[data-theme-id="' + id + '"]');
+    if (current && btn) {
+      var c = btn.style.getPropertyValue('--swatch-color') || getComputedStyle(btn).backgroundColor;
+      current.style.setProperty('--swatch-color', c);
+    }
+    document.querySelectorAll('.theme-swatch[data-theme-id]').forEach(function (b) {
+      b.setAttribute('aria-current', b.dataset.themeId === id ? 'true' : 'false');
+    });
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  setActive(saved || DEFAULT);
+  document.querySelectorAll('.theme-swatch[data-theme-id]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var id = b.dataset.themeId;
+      try { localStorage.setItem(KEY, id); } catch (e) {}
+      setActive(id);
+      var details = b.closest('details');
+      if (details) details.removeAttribute('open');
+    });
+  });
+})();
+</script>
+{%- endmacro %}
+
+{% if default_theme is defined or themes is defined %}{{ theme_switcher(themes=themes, default_theme=default_theme, storage_key=storage_key, attrs=attrs) }}{% endif %}

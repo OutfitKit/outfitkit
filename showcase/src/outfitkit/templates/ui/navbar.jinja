@@ -7,6 +7,8 @@
   cta_label=None,
   cta_href=None,
   show_theme=True,
+  show_theme_picker=False,
+  theme_picker_default="erplora",
   show_lang=False,
   langs=None,
   sticky=True,
@@ -50,6 +52,8 @@
   cta_label=None,
   cta_href=None,
   show_theme=True,
+  show_theme_picker=False,
+  theme_picker_default="erplora",
   show_lang=False,
   langs=None,
   sticky=True,
@@ -92,6 +96,10 @@
       <option value="{{ lang.value }}">{{ lang.label }}</option>
       {%- endfor %}
     </select>
+    {%- endif %}
+
+    {%- if show_theme_picker %}
+    <ThemeSwitcher :default_theme="theme_picker_default" />
     {%- endif %}
 
     {%- if show_theme %}
