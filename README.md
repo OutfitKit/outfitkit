@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.png" alt="OutfitKit" width="128" height="128">
+</p>
+
 # OutfitKit
 
 Librería CSS de componentes para aplicaciones web. API composable sin clases combinadas: componente + variante + tamaño + estilo.

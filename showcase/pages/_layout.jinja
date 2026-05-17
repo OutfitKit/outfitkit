@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{% block title %}OutfitKit · Librería{% endblock %}</title>
+  <link rel="icon" type="image/png" href="{{ base_path }}/static/logo.png">
+  <link rel="apple-touch-icon" href="{{ base_path }}/static/logo.png">
 
   {# Inter font preload — skipped in local mode to avoid hanging on external
      resources (Playwright, offline). Google Fonts loads via @import in
@@ -43,6 +45,23 @@
 
     /* Save-bar clearance — pages with a fixed bottom save bar. */
     .pb-save-bar { padding-bottom: 80px !important; }
+
+    /* Sidebar brand logo — uses the OutfitKit PNG mark instead of the
+       default text badge. Sized to match the slot the .sidebar-logo
+       gradient square used to occupy. */
+    .sidebar-logo-img {
+      width: var(--logo-size);
+      height: var(--logo-size);
+      border-radius: var(--logo-radius);
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+    }
+    /* Footer mini-avatar variant for the OK mark. */
+    .sidebar-foot-logo {
+      width: 28px; height: 28px; border-radius: 8px;
+      object-fit: contain; flex-shrink: 0; display: block;
+    }
 
     /* Sidebar overrides for the showcase: a bit wider so labels don't truncate.
        On mobile the sidebar collapses to an off-canvas drawer (handled by
@@ -377,7 +396,7 @@
     {# ====== SIDEBAR ====== #}
     <aside class="sidebar">
       <div class="head">
-        <div class="sidebar-logo">OK</div>
+        <img class="sidebar-logo-img" src="{{ base_path }}/static/logo.png" alt="OutfitKit">
         <div class="sidebar-brand-text">
           <span class="title md">OutfitKit</span>
           <span class="meta">v1 · Librería</span>
@@ -409,7 +428,7 @@
 
       <div class="foot">
         <div class="sidebar-user">
-          <span class="avatar sm brand">OK</span>
+          <img class="sidebar-foot-logo" src="{{ base_path }}/static/logo.png" alt="OutfitKit">
           <div class="sidebar-user-info">
             <div class="title sm">Sistema</div>
             <div class="meta">Rama main · GH Pages</div>
